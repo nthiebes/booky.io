@@ -1,0 +1,10 @@
+.a-button--light {
+    background-color: transparent;
+    border-color: $color__font--light;
+    color: $color__font--light;
+
+    &:hover, &:active {
+        background-color: $color__font--light;
+        color: $color__font--primary;
+    }
+}

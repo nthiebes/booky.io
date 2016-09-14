@@ -1,0 +1,27 @@
+@import "reset";
+@import "config";
+
+html,
+body {
+    -webkit-text-size-adjust: none; /** Prevent font scaling in landscape */
+    background-color: $color__background--light;
+    font-size: $size__font--phone;
+    height: 100%;
+
+    @include tablet {
+        font-size: $size__font--tablet;
+    }
+
+    @include desktop {
+        font-size: $size__font--desktop;
+    }
+}
+
+::-moz-selection {
+    color: $color__font--light;
+    background-color: $color__font--primary;
+}
+::selection {
+    color: $color__font--light;
+    background-color: $color__font--primary;
+}

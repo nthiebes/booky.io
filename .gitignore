@@ -1,0 +1,5 @@
+
+lib-cov
+coverage
+node_modules
+dist

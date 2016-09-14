@@ -1,0 +1,54 @@
+/**
+ * Color
+ */
+$color__background--primary: #eb7260;
+$color__background--dark: #4a4a4a;
+$color__background--light: #ffffff;
+
+$color__font--primary: #eb7260;
+$color__font--dark: #3e3e3e;
+$color__font--light: #ffffff;
+
+/**
+ * Size
+ */
+$size__font--phone: 13px;
+$size__font--tablet: 16px;
+$size__font--desktop: 16px;
+
+/**
+ * Misc
+ */
+$font-family: "Trebuchet MS", Tahoma, sans-serif;
+
+/**
+ * Breakpoints
+ */
+$width--mobile: 480px;
+$width--tablet: 920px;
+
+@mixin mobile {
+    @media (max-width: #{$width--mobile}) {
+        @content;
+    }
+}
+@mixin mobile-tablet {
+    @media (max-width: #{$width--tablet}) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: #{$width--mobile + 1px}) and (max-width: #{$width--tablet}) {
+        @content;
+    }
+}
+@mixin tablet-desktop {
+    @media (min-width: #{$width--mobile + 1px}) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media (min-width: #{$width--tablet + 1px}) {
+        @content;
+    }
+}

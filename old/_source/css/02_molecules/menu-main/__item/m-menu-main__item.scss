@@ -1,0 +1,16 @@
+.m-menu-main__item {
+    font-family: $font-family;
+    list-style: none;
+    cursor: pointer;
+
+    @include tablet-desktop {
+        padding: 0 1rem;
+        position: relative;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@import "m-menu-main__item--light";
