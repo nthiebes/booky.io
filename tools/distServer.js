@@ -15,12 +15,13 @@ browserSync({
   ui: {
     port: 3001
   },
+  open: false,
   server: {
-    baseDir: 'dist'
+    baseDir: '_public'
   },
 
   files: [
-    'src/*.html'
+    '_source/*.html'
   ],
 
   middleware: [historyApiFallback()]

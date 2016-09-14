@@ -11,13 +11,13 @@ export default {
   noInfo: true, // set to false to see a list of every file being bundled.
   entry: [
     // must be first entry to properly set public path
-    './src/webpack-public-path',
+    './_source/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
-    './src/index'
+    './_source/index'
   ],
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
   output: {
-    path: `${__dirname}/src`, // Note: Physical files are only output by the production build task `npm run build`.
+    path: `${__dirname}/_source`, // Note: Physical files are only output by the production build task `npm run build`.
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -29,7 +29,7 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
-      template: 'src/index.ejs',
+      template: '_source/index.ejs',
       minify: {
         removeComments: true,
         collapseWhitespace: true
