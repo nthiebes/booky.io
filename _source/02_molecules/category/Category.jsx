@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './category.scss';
+
 export default class Category extends React.Component {
     constructor() {
         super();

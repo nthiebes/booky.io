@@ -1,7 +1,7 @@
 import React from 'react';
 
+import Categories from '../../03_organisms/categories/Categories.jsx';
 import './booky.scss';
-import Categories from '../03_organisms/categories/Categories.jsx';
 
 export default class Booky extends React.Component {
     constructor() {
