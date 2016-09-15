@@ -8,17 +8,17 @@ export default class Categories extends React.Component {
     }
 
     render() {
-    	const PROPS = this.props;
-    	const CATEGORIES = PROPS.categories;
+        const PROPS = this.props;
+        const CATEGORIES = PROPS.categories;
 
         return (
             <div className="o-categories">
-	            {CATEGORIES.map(category =>
-					<Category
-					key={category.id}
-					{...category}
-					/>
-				)}
+                {CATEGORIES.map(category =>
+                    <Category
+                    key={category.id}
+                    {...category}
+                    />
+                )}
             </div>
         );
     }
