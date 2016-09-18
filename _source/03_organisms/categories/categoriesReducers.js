@@ -11,6 +11,7 @@ const initialState = [{
     name: 'Category 3'
 }];
 
+const categories = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CATEGORY:
             return [
@@ -33,5 +34,6 @@ const initialState = [{
         default:
             return state;
     }
+};
 
 export default categories;
