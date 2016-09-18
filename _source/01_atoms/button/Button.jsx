@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './link.scss';
+import './button.scss';
 
-export default class Link extends React.Component {
+export default class Button extends React.Component {
     constructor() {
         super();
     }
@@ -11,9 +11,9 @@ export default class Link extends React.Component {
         const PROPS = this.props;
 
         return (
-            <a className="a-link" onClick={ PROPS.onClick }>
+            <button className="a-button" onClick={ PROPS.onClick }>
                 { PROPS.text }
-            </a>
+            </button>
         );
     }
 }
