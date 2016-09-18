@@ -1,0 +1,21 @@
+.o-header__logo {
+    align-items: center;
+    background-size: contain;
+    background: url("/images/logo.png") no-repeat center center transparent;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    height: 85%;
+    justify-content: center;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include tablet-desktop {
+        flex-grow: 0;
+        order: -1;
+        text-align: left;
+        width: 170px;
+    }
+}

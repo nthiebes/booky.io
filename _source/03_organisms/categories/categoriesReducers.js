@@ -1,17 +1,6 @@
 import { ADD_CATEGORY, TOGGLE_CATEGORY } from './categoriesActions';
 
-const initialState = [{
-    id: '0',
-    name: 'Category 1'
-}, {
-    id: '1',
-    name: 'Category 2'
-}, {
-    id: '2',
-    name: 'Category 3'
-}];
-
-const categories = (state = initialState, action) => {
+const categories = (state = [], action) => {
     switch (action.type) {
         case ADD_CATEGORY:
             return [

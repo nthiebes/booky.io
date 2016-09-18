@@ -1,0 +1,27 @@
+@import "__button/m-menu-account__link";
+@import "__button/m-menu-account__button";
+@import "m-menu-account--open";
+
+.m-menu-account {
+    display: flex;
+
+    @include mobile-tablet {
+        align-items: center;
+        background-color: $color__background--light;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        flex-direction: column;
+        padding: 5px 5% 5px 10px;
+        position: fixed;
+        right: 0;
+        top: 42px;
+        transform: translate3d(100%,0,0);
+        transition: transform 0.3s ease;
+    }
+
+    @include desktop {
+        justify-content: flex-end;
+        order: 3;
+        padding: 5px;
+        width: 300px;
+    }
+}

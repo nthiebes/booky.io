@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Category from '../../02_molecules/category/Category.jsx';
-import './categories.scss';
 
 export default class Categories extends React.Component {
     constructor() {

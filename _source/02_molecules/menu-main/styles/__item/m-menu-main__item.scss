@@ -1,0 +1,36 @@
+.m-menu-main__item {
+    @include mobile {
+        color: $color__font--primary;
+        line-height: 30px;
+        padding: 0 20px 0 5px;
+        width: 100%;
+
+        &:hover, &:active {
+            background-color: $color__background--primary;
+            color: $color__font--light;
+        }
+    }
+
+    @include tablet-desktop {
+        font-weight: bold;
+        padding: 0 1rem;
+        position: relative;
+
+        &:before {
+            background-color: rgba($color__background--primary, 0.4);
+            border-radius: 0.25rem;
+            content: " ";
+            height: 0.25rem;
+            left: -0.15rem;
+            position: absolute;
+            top: 0.35rem;
+            width: 0.25rem;
+        }
+
+        &:first-child  {
+            &:before {
+                display: none;
+            }
+        }
+    }
+}

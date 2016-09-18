@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './button.scss';
-
 export default class Button extends React.Component {
     constructor() {
         super();
