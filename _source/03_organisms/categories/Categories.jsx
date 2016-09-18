@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Category from '../../02_molecules/category/Category.jsx';
+import './categories.scss';
 
 export default class Categories extends React.Component {
     constructor() {
@@ -14,10 +15,7 @@ export default class Categories extends React.Component {
         return (
             <div className="o-categories">
                 {CATEGORIES.map(category =>
-                    <Category
-                    key={category.id}
-                    {...category}
-                    />
+                    <Category key={category.id} {...category} />
                 )}
             </div>
         );

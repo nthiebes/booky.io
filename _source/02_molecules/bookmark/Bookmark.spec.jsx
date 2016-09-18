@@ -2,11 +2,11 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 
-// import Booky from './Booky';
+import Bookmark from './Bookmark';
 
-describe('<Booky />', function() {
+describe('<Bookmark />', function() {
 
-    it('should have a main element', function() {
+    it('Should have a stupid test', function() {
         expect(true).to.equal(true);
     });
 });
