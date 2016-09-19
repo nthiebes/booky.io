@@ -4,8 +4,7 @@
 ## What is booky.io?
 booky.io is an online bookmarking service with high focus on performance, mobile support and customizability.
 
-###### Learn more about booky.io:
-https://booky.io/about
+[Learn more about booky.io](https://booky.io/about)
 
 ## Setup
 ```
