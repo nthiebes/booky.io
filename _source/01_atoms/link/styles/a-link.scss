@@ -1,0 +1,10 @@
+@import "../../00_base/config";
+@import "a-link--light";
+
+.a-link {
+    font-family: $font-family;
+    font-size: 1rem;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s;
+}

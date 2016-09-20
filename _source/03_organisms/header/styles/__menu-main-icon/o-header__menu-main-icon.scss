@@ -1,0 +1,5 @@
+.o-header__menu-main-icon {
+    @include tablet-desktop {
+        display: none;
+    }
+}

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './bookmark.scss';
-
 export default class Bookmark extends React.Component {
     constructor() {
         super();

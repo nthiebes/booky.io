@@ -1,0 +1,26 @@
+@import "../../00_base/config";
+@import "__menu-main-icon/o-header__menu-main-icon";
+@import "__menu-account-icon/o-header__menu-account-icon";
+@import "__logo/o-header__logo";
+
+.o-header {
+    align-items: center;
+    background-color: $color__background--primary;
+    display: flex;
+    height: 42px;
+    justify-content: center;
+    padding: 0 3%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+
+    @include tablet {
+        height: 64px;
+    }
+
+    @include desktop {
+        height: 86px;
+        position: relative;
+    }
+}
