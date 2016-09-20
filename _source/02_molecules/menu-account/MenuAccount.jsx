@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from '../../01_atoms/button/Button.jsx';
+
 export default class MenuAccount extends React.Component {
     constructor() {
         super();
@@ -7,9 +9,9 @@ export default class MenuAccount extends React.Component {
 
     render() {
         return (
-            <div className="m-menu-main" id="menu-main">
-                <a className="m-menu-main__item a-link a-link--light" href="">Sign Up</a>
-                <a className="m-menu-main__item a-link a-link--light" href="">Log In</a>
+            <div className="m-menu-account" id="menu-account">
+                <Button className="m-menu-account__button a-button--light" icon="profile" />
+                <Button className="m-menu-account__button a-button--light" icon="cogs" />
             </div>
         );
     }

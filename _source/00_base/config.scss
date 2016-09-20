@@ -11,14 +11,15 @@ $color__font--light: #ffffff;
 /**
  * Size
  */
-$size__font--phone: 13px;
-$size__font--tablet: 16px;
-$size__font--desktop: 16px;
+$size--phone: 13px;
+$size--tablet: 16px;
+$size--desktop: 16px;
 
 /**
  * Misc
  */
-$font-family: "Trebuchet MS", Tahoma, sans-serif;
+$font__family-heading: "Josefin Sans", "Trebuchet MS", Tahoma, sans-serif;
+$font__family-text: "Roboto", "Trebuchet MS", Tahoma, sans-serif;
 
 /**
  * Breakpoints

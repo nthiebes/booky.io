@@ -1,0 +1,18 @@
+@import "../../00_base/config";
+@import "__text/a-button__text";
+
+.a-button {
+    user-select: none;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $font__family-text;
+    font-size: 1rem;
+    padding: 5px 10px;
+    transition: color 0.2s linear, background-color 0.2s linear;
+    white-space: nowrap;
+}
+
+@import "a-button--light";
+@import "a-button--primary";

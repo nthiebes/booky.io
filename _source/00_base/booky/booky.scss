@@ -14,15 +14,16 @@ html,
 body {
     -webkit-text-size-adjust: none; /** Prevent font scaling in landscape */
     background-color: $color__background--light;
-    font-size: $size__font--phone;
+    font-family: $font__family-text;
+    font-size: $size--phone;
     height: 100%;
 
     @include tablet {
-        font-size: $size__font--tablet;
+        font-size: $size--tablet;
     }
 
     @include desktop {
-        font-size: $size__font--desktop;
+        font-size: $size--desktop;
     }
 }
 
