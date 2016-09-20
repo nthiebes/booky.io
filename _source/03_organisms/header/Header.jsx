@@ -13,11 +13,11 @@ export default class Header extends React.Component {
     render() {
         return (
             <header className="o-header">
-                <Icon icon="menu" className="m-menu-main__item a-icon--light" />
+                <Icon icon="menu" className="o-header__menu-main-icon a-icon--light" />
                 <MenuMain />
-                <Link className="o-header__logo" href="/" title="Home" />
+                <Link className="o-header__logo" href="/" title="Home" icon="heart" />
                 <MenuAccount />
-                <Icon icon="more" className="m-menu-account__item a-icon--light" />
+                <Icon icon="more" className="o-header__menu-account-icon a-icon--light" />
             </header>
         );
     }

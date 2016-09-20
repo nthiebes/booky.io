@@ -13,4 +13,14 @@
     transition: color 0.3s;
     user-select: none;
     width: 2rem;
+
+    &:active {
+        color: $color__font--dark;
+    }
+
+    @include tablet-desktop {
+        &:hover {
+            color: $color__font--dark;
+        }
+    }
 }
