@@ -1,4 +1,6 @@
 # booky.io
+[![Build Status](https://travis-ci.org/nthiebes/booky.io.svg?branch=master)](https://travis-ci.org/nthiebes/booky.io)
+
 [booky.io](https://booky.io) + [Atomic Design](http://atomicdesign.bradfrost.com/) + [BEM](https://en.bem.info) + [React](https://facebook.github.io/react/)
 
 ## What is booky.io?
