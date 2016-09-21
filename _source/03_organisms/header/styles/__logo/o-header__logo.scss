@@ -1,5 +1,7 @@
 .o-header__logo {
     align-items: center;
+    background: url("../../images/logo.png") no-repeat center center transparent;
+    background-size: contain;
     cursor: pointer;
     display: flex;
     flex-grow: 1;

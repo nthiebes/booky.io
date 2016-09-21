@@ -10,8 +10,8 @@ export default class MenuAccount extends React.Component {
     render() {
         return (
             <div className="m-menu-account" id="menu-account">
-                <Button className="m-menu-account__button a-button--light" icon="profile" />
-                <Button className="m-menu-account__button a-button--light" icon="cogs" />
+                <Button className="m-menu-account__button a-button--light a-button--icon" icon="profile" />
+                <Button className="m-menu-account__button a-button--light a-button--icon" icon="cogs" />
             </div>
         );
     }

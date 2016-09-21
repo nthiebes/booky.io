@@ -6,13 +6,13 @@
     display: inline-block;
     fill: currentColor;
     font-size: 1rem;
-    height: 2rem;
-    margin: 5px;
+    height: 36px;
+    padding: 5px;
     stroke-width: 0;
     stroke: currentColor;
     transition: color 0.3s;
     user-select: none;
-    width: 2rem;
+    width: 36px;
 
     &:active {
         color: $color__font--dark;

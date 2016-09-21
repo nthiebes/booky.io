@@ -5,7 +5,8 @@
 
 .o-header {
     align-items: center;
-    background-color: $color__background--primary;
+    background-color: rgba($color__background--primary, 0.97);
+    // background-color: $color__background--primary;
     display: flex;
     height: 42px;
     justify-content: center;
