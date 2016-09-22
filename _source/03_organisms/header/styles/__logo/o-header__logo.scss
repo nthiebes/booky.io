@@ -1,7 +1,5 @@
 .o-header__logo {
     align-items: center;
-    background: url("../../images/logo.png") no-repeat center center transparent;
-    background-size: contain;
     cursor: pointer;
     display: flex;
     flex-grow: 1;
@@ -18,3 +16,6 @@
         width: 170px;
     }
 }
+
+@import "o-header__logo--small";
+@import "o-header__logo--large";

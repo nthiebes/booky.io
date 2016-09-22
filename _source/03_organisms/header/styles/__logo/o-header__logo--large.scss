@@ -1,0 +1,8 @@
+.o-header__logo--large {
+	background: url("../../images/logo.png") no-repeat center center transparent;
+    background-size: contain;
+
+    @include mobile {
+        display: none;
+    }
+}
