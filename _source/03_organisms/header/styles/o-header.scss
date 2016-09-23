@@ -2,10 +2,11 @@
 @import "__menu-main-icon/o-header__menu-main-icon";
 @import "__menu-account-icon/o-header__menu-account-icon";
 @import "__logo/o-header__logo";
+@import "__label/o-header__label";
 
 .o-header {
     align-items: center;
-    background-color: $color__background--primary;
+    background-color: rgba($color__background--primary, 0.97);
     display: flex;
     height: 42px;
     justify-content: center;

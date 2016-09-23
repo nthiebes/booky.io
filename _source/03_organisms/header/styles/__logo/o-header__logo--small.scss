@@ -1,0 +1,5 @@
+.o-header__logo--small {
+    @include tablet-desktop {
+        display: none;
+    }
+}
