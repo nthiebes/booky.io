@@ -8,13 +8,19 @@ import Link from '../../01_atoms/link/Link.jsx';
 export default class Header extends React.Component {
     constructor() {
         super();
+
+        this.onMainMenuClick = this.onMainMenuClick.bind(this);
+    }
+
+    onMainMenuClick() {
+        console.log(this);
     }
 
     render() {
         return (
             <header className="o-header">
-                <Icon icon="menu" className="o-header__menu-main-icon a-icon--light" />
-                <label className="o-header__label o-header__label--light">Menu</label>
+                <Icon icon="menu" className="o-header__menu-main-icon a-icon--light" onClick={ this.onMainMenuClick } />
+                <label className="o-header__label o-header__label--light" onClick={ this.onMainMenuClick }>Menu</label>
                 <MenuMain />
 
                 <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />

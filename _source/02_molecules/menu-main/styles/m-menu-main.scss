@@ -1,5 +1,4 @@
 @import "__item/m-menu-main__item";
-@import "m-menu-main--open";
 
 .m-menu-main {
     display: flex;
@@ -33,3 +32,5 @@
         max-width: 720px;
     }
 }
+
+@import "m-menu-main--open";
