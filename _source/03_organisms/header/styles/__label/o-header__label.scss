@@ -1,6 +1,6 @@
 .o-header__label {
-    width: 0;
-    
+	margin-right: 46px;
+	
     @include tablet-desktop {
         display: none;
     }

@@ -21,7 +21,8 @@ export default class Header extends React.Component {
                 <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />
 
                 <Icon icon="search" className="o-header__menu-account-icon a-icon--light" />
-                <Icon icon="dashboards" className="o-header__menu-account-icon a-icon--light" />
+                <Icon icon="add" className="o-header__menu-account-icon a-icon--light" />
+                <Icon icon="dashboard" className="o-header__menu-account-icon a-icon--light" />
             </header>
         );
     }
