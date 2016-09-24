@@ -8,8 +8,11 @@ export default class MenuMain extends React.Component {
     }
 
     render() {
+        const PROPS = this.props;
+        const CLASS = 'm-menu-main ' + PROPS.className;
+
         return (
-            <div className="m-menu-main">
+            <div className={ CLASS }>
                 <Link className="m-menu-main__item a-link--light" href="" text="About" />
                 <Link className="m-menu-main__item a-link--light" href="" text="Help" />
                 <Link className="m-menu-main__item a-link--light" href="" text="Next" />
