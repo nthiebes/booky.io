@@ -1,17 +1,19 @@
 .m-menu-main__item {
     @include mobile {
-        color: $color__font--primary;
-        line-height: 30px;
-        padding: 0 20px 0 5px;
+        border-bottom: 1px solid #ccc;
+        color: $color__font--dark;
+        flex-shrink: 0;
+        height: 3rem;
+        transition: color 0.3s linear;
         width: 100%;
 
         &:hover, &:active {
-            background-color: $color__background--primary;
-            color: $color__font--light;
+            color: $color__font--primary;
         }
     }
 
     @include tablet-desktop {
+        color: $color__font--light;
         font-weight: bold;
         padding: 0 1rem;
         position: relative;
@@ -31,6 +33,10 @@
             &:before {
                 display: none;
             }
+        }
+
+        .a-icon__svg {
+            display: none;
         }
     }
 }

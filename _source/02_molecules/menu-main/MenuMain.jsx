@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Link from '../../01_atoms/link/Link.jsx';
+import Icon from '../../01_atoms/icon/Icon.jsx';
 
 export default class MenuMain extends React.Component {
     constructor() {
@@ -12,11 +12,11 @@ export default class MenuMain extends React.Component {
         const CLASS = 'm-menu-main ' + PROPS.className;
 
         return (
-            <div className={ CLASS }>
-                <Link className="m-menu-main__item a-link--light" href="" text="About" />
-                <Link className="m-menu-main__item a-link--light" href="" text="Help" />
-                <Link className="m-menu-main__item a-link--light" href="" text="Next" />
-            </div>
+            <ul className={ CLASS }>
+                <Icon className="m-menu-main__item" icon="about" label="About" />
+                <Icon className="m-menu-main__item" icon="help" label="Help" />
+                <Icon className="m-menu-main__item" icon="next" label="Next" />
+            </ul>
         );
     }
 }

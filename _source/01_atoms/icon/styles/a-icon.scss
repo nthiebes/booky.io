@@ -1,16 +1,58 @@
 @import "../../00_base/config";
-@import "a-icon--light";
+@import "__svg/a-icon__svg";
+@import "__label/a-icon__label";
 
 .a-icon {
+    align-items: center;
     cursor: pointer;
-    display: inline-block;
-    fill: currentColor;
+    display: flex;
     font-size: 1rem;
     height: 36px;
-    padding: 5px;
-    stroke-width: 0;
-    stroke: currentColor;
-    transition: color 0.3s;
+    position: relative;
     user-select: none;
-    width: 36px;
+
+    &:after {
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 50%;
+        content: " ";
+        height: 36px;
+        left: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) scale(0);
+        transition: height 0.3s linear, width 0.3s linear, opacity 0.3s linear;
+        width: 36px;
+    }
+
+    &:hover {
+        .a-icon__svg {
+            transform: scale(0.9);
+        }
+    }
+
+    &:active {
+        &:after {
+            animation: 0.3s linear 1 circle;
+        }
+    }
 }
+
+@keyframes circle {
+    0% {
+        transform: translateY(-50%) scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 0;
+    }
+}
+
+@import "a-icon--primary";
+@import "a-icon--dark";
+@import "a-icon--light";

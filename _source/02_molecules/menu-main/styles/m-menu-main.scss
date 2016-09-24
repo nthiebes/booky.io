@@ -21,7 +21,7 @@
         width: 70%;
 
         &:after {
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.1);
             bottom: 0;
             content: " ";
             left: 100%;
@@ -29,7 +29,7 @@
             position: absolute;
             right: 0;
             top: 0;
-            transition: opacity 0.3s linear, width 0.1s 0.3s linear;
+            transition: opacity 0.3s linear, width 0.1s 0.5s linear;
             width: 0;
         }
     }
