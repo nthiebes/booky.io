@@ -21,16 +21,16 @@ export default class Header extends React.Component {
         const MENU_MAIN_CLASS = PROPS.menuMainOpen ? 'm-menu-main--open' : '';
 
         return (
-            <header className="o-header">
-                <Icon icon="menu" className="o-header__menu-main-icon a-icon--light" label="Menu" onClick={ this.props.onMainMenuClick } />
+            <header className="o-header o-header--light">
+                <Icon icon="menu" className="o-header__menu-main-icon a-icon--dark" label="Menu" onClick={ this.props.onMainMenuClick } />
                 <MenuMain className={ MENU_MAIN_CLASS } />
 
-                <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />
-                <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />
+                <Link className="o-header__logo o-header__logo--small a-link--primary" href="/" title="Home" icon="heart" />
+                <Link className="o-header__logo o-header__logo--large a-link--primary" href="/" title="Home" />
 
-                <Icon icon="search" className="o-header__menu-account-icon a-icon--light" />
-                <Icon icon="add" className="o-header__menu-account-icon a-icon--light" />
-                <Icon icon="dashboard" className="o-header__menu-account-icon a-icon--light" />
+                <Icon icon="search" className="o-header__menu-account-icon a-icon--dark" />
+                <Icon icon="add" className="o-header__menu-account-icon a-icon--dark" />
+                <Icon icon="dashboard" className="o-header__menu-account-icon a-icon--dark" />
             </header>
         );
     }

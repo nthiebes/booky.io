@@ -1,19 +1,13 @@
 .m-menu-main__item {
     @include mobile {
         border-bottom: 1px solid #ccc;
-        color: $color__font--dark;
         flex-shrink: 0;
         height: 3rem;
         transition: color 0.3s linear;
         width: 100%;
-
-        &:hover, &:active {
-            color: $color__font--primary;
-        }
     }
 
     @include tablet-desktop {
-        color: $color__font--light;
         font-weight: bold;
         padding: 0 1rem;
         position: relative;

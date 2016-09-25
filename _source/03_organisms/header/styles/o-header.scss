@@ -5,7 +5,6 @@
 
 .o-header {
     align-items: center;
-    background-color: rgba($color__background--primary, 0.97);
     border-bottom: 2px solid rgba(0,0,0,0.1);
     display: flex;
     height: 42px;
@@ -25,3 +24,6 @@
         position: relative;
     }
 }
+
+@import "o-header--light";
+@import "o-header--primary";
