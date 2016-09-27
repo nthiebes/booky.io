@@ -1,0 +1,9 @@
+.m-search {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+
+    @include desktop {
+        flex-grow: 0;
+    }
+}

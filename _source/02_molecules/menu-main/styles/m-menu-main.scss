@@ -3,6 +3,7 @@
 .m-menu-main {
     display: flex;
     justify-content: flex-start;
+    z-index: 1;
 
     @include mobile {
         align-items: center;

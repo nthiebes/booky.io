@@ -2,6 +2,8 @@
 @import "__menu-main-icon/o-header__menu-main-icon";
 @import "__menu-account-icon/o-header__menu-account-icon";
 @import "__logo/o-header__logo";
+@import "__icon/o-header__icon";
+@import "__toolbar/o-header__toolbar";
 
 .o-header {
     align-items: center;
@@ -21,7 +23,6 @@
 
     @include desktop {
         height: 86px;
-        position: relative;
     }
 }
 

@@ -1,0 +1,18 @@
+.a-input__field {
+    background-color: $color__background--light;
+    color: $color__font--dark;
+    font-family: $font__family-text;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 9px;
+    width: 100%;
+
+    @include desktop {
+        transition: width 0.3s ease;
+        width: 200px;
+
+        &:focus {
+            width: 300px;
+        }
+    }
+}

@@ -6,22 +6,35 @@
         height: 3rem;
         transition: color 0.3s linear;
         width: 100%;
+
+        &:hover {
+            color: $color__background--primary;
+        }
     }
 
     @include tablet-desktop {
         color: $color__font--light;
         font-weight: bold;
-        padding: 0 1rem;
+        margin: 0 1rem;
         position: relative;
+        transition: color 0.2s linear;
+
+        &:hover {
+            color: rgba($color__background--dark, 0.8);
+        }
+
+        &:after {
+            display: none;
+        }
 
         &:before {
-            background-color: rgba($color__background--primary, 0.4);
+            background-color: rgba($color__background--dark, 0.4);
             border-radius: 0.25rem;
             content: " ";
             height: 0.25rem;
-            left: -0.15rem;
+            left: -1.15rem;
             position: absolute;
-            top: 0.35rem;
+            top: 1rem;
             width: 0.25rem;
         }
 
