@@ -32,11 +32,6 @@ export default class Header extends React.Component {
                 <Icon icon="edit" className="o-header__icon a-icon--light" />
                 <Icon icon="add" className="o-header__icon a-icon--light" />
                 <Icon icon="dashboard" className="o-header__icon a-icon--light" />
-
-                <section className="o-header__toolbar">
-                    <Icon icon="edit" className="a-icon--dark" />
-                    <Search />
-                </section>
             </header>
         );
     }
