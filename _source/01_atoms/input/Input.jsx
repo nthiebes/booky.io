@@ -1,10 +1,15 @@
 import React from 'react';
-
-import Icon from '../../01_atoms/icon/Icon.jsx';
+import { findDOMNode } from 'react-dom';
 
 export default class Input extends React.Component {
     constructor() {
         super();
+    }
+
+    componentDidUpdate() {
+        if (this.props.focus) {
+            findDOMNode(this.refs.nameInput).focus(); 
+        }
     }
 
     render() {
@@ -16,7 +21,7 @@ export default class Input extends React.Component {
 
         return (
             <div className="a-input">
-                <input {...INPUT_PROPS} />
+                <input ref="nameInput" {...INPUT_PROPS} />
             </div>
         );
     }
