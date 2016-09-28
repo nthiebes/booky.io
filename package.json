@@ -28,7 +28,8 @@
     "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"_source/**/*.spec.*\" --reporter progress",
     "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root src --report lcovonly _mocha -- --require ./tools/testSetup.js \"_source/**/*.spec.*\" && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch",
-    "open:cover": "npm run test:cover && open coverage/index.html"
+    "open:cover": "npm run test:cover && open coverage/index.html",
+    "docs:create": "./node_modules/.bin/jsdoc -c ./jsdoc.json -d docs"
   },
   "author": "Nico Thiebes",
   "license": "SEE LICENSE IN \"LICENSE\"",
@@ -72,6 +73,7 @@
     "file-loader": "0.9.0",
     "html-webpack-plugin": "2.22.0",
     "isparta": "4.0.0",
+    "jsdoc": "3.4.1",
     "mocha": "3.0.2",
     "mockdate": "1.0.4",
     "node-sass": "3.8.0",

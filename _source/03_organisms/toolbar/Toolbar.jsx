@@ -1,14 +1,28 @@
+/**
+ * Toolbar module
+ * @module 03_organisms/toolbar/Toolbar
+ */
 import React from 'react';
 
 import Search from '../../02_molecules/search/Search.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Button from '../../01_atoms/button/Button.jsx';
 
+/**
+ * Class for the toolbar
+ */
 export default class Toolbar extends React.Component {
+    /**
+     * Adds a toolbar
+     */
     constructor() {
         super();
     }
 
+    /**
+     * Render function
+     * @return {jsx} Test
+     */
     render() {
         const PROPS = this.props;
         const SEARCH_CLASS = PROPS.searchOpen ? 'm-search--open' : '';

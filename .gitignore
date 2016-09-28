@@ -2,3 +2,4 @@ lib-cov
 coverage
 node_modules
 _public
+docs
