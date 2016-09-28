@@ -1,9 +1,0 @@
-.o-header__label {
-	margin-right: 46px;
-	
-    @include tablet-desktop {
-        display: none;
-    }
-}
-
-@import "o-header__label--light";

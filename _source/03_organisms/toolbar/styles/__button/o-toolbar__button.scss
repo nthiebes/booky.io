@@ -1,0 +1,5 @@
+.o-toolbar__button {
+	@include mobile-tablet {
+		display: none;
+	}
+}

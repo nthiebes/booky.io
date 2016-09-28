@@ -2,11 +2,11 @@
 @import "__menu-main-icon/o-header__menu-main-icon";
 @import "__menu-account-icon/o-header__menu-account-icon";
 @import "__logo/o-header__logo";
-@import "__label/o-header__label";
+@import "__icon/o-header__icon";
 
 .o-header {
     align-items: center;
-    background-color: rgba($color__background--primary, 0.97);
+    border-bottom: 2px solid rgba(0,0,0,0.1);
     display: flex;
     height: 42px;
     justify-content: center;
@@ -22,6 +22,8 @@
 
     @include desktop {
         height: 86px;
-        position: relative;
     }
 }
+
+@import "o-header--light";
+@import "o-header--primary";

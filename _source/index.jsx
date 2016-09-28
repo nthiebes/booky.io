@@ -16,7 +16,13 @@ const initialState = {
     }, {
         id: 2,
         name: 'Category 3'
-    }]
+    }],
+    header: {
+        menuMainOpen: false
+    },
+    toolbar: {
+        searchOpen: false
+    }
 };
 
 let store = createStore(bookyApp, initialState);

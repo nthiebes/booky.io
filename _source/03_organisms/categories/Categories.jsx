@@ -12,11 +12,11 @@ export default class Categories extends React.Component {
         const CATEGORIES = PROPS.categories;
 
         return (
-            <div className="o-categories">
+            <main className="o-categories">
                 {CATEGORIES.map(category =>
                     <Category key={category.id} {...category} />
                 )}
-            </div>
+            </main>
         );
     }
 }

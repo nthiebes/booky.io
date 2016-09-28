@@ -1,5 +1,4 @@
 @import "../../00_base/config";
-@import "a-link--light";
 
 .a-link {
     font-size: 1rem;
@@ -7,3 +6,6 @@
     text-decoration: none;
     transition: color 0.3s;
 }
+
+@import "a-link--light";
+@import "a-link--primary";
