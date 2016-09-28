@@ -1,0 +1,7 @@
+.o-toolbar__icon {
+    pointer-events: auto;
+
+    @include desktop {
+        display: none;
+    }
+}

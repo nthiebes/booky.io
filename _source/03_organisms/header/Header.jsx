@@ -23,7 +23,7 @@ export default class Header extends React.Component {
 
         return (
             <header className="o-header o-header--primary">
-                <Icon icon="menu" className="o-header__icon o-header__menu-main-icon a-icon--light" label="Menu" onClick={ this.props.onMainMenuClick } />
+                <Icon icon="menu" className="o-header__icon o-header__menu-main-icon a-icon--light" label="Menu" onClick={ PROPS.onMainMenuClick } />
                 <MenuMain className={ MENU_MAIN_CLASS } />
 
                 <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />

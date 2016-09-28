@@ -1,6 +1,6 @@
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 
-import Icon from '../../01_atoms/icon/Icon.jsx';
 import Input from '../../01_atoms/input/Input.jsx';
 
 export default class Search extends React.Component {
@@ -10,11 +10,11 @@ export default class Search extends React.Component {
 
     render() {
         const PROPS = this.props;
+        const CLASS = 'm-search ' + PROPS.className;
 
         return (
-            <div className="m-search">
+            <div className={ CLASS }>
                 <Input placeholder="Search booky..." />
-                <Icon icon="search" className="a-icon--dark" />
             </div>
         );
     }

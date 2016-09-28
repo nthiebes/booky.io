@@ -19,6 +19,9 @@ const initialState = {
     }],
     header: {
         menuMainOpen: false
+    },
+    toolbar: {
+        searchOpen: false
     }
 };
 

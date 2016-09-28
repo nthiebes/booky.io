@@ -2,8 +2,12 @@
     align-items: center;
     display: flex;
     flex-grow: 1;
+    opacity: 0;
 
     @include desktop {
+        opacity: 1;
         flex-grow: 0;
     }
 }
+
+@import "m-search--open";

@@ -7,21 +7,18 @@ import Button from '../../01_atoms/button/Button.jsx';
 export default class Toolbar extends React.Component {
     constructor() {
         super();
-
-        this.onMainMenuClick = this.onMainMenuClick.bind(this);
-    }
-
-    onMainMenuClick() {
-        console.log(this);
     }
 
     render() {
         const PROPS = this.props;
+        const SEARCH_CLASS = PROPS.searchOpen ? 'm-search--open' : '';
+        const TOOLBAR_CLASS = PROPS.searchOpen ? 'o-toolbar o-toolbar--open' : 'o-toolbar';
 
         return (
-            <div className="o-toolbar">
+            <div className={ TOOLBAR_CLASS }>
                 <Button className="o-toolbar__button a-button--primary" text="New " buzzword="category" />
-                <Search />
+                <Search className={ SEARCH_CLASS } />
+                <Icon icon="search" className="o-toolbar__icon a-icon--dark" onClick={ PROPS.onSearchClick } />
             </div>
         );
     }

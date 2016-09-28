@@ -1,9 +1,8 @@
 @import "/__button/o-toolbar__button";
+@import "/__icon/o-toolbar__icon";
 
 .o-toolbar {
     align-items: center;
-    background-color: rgba($color__background--medium, 0.97);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     margin-top: 2px;
@@ -12,6 +11,7 @@
     top: 40px;
     width: 100%;
     z-index: 1;
+    pointer-events: none;
 
     @include tablet {
         // height: 0;
@@ -20,8 +20,13 @@
     }
 
     @include desktop {
+        background-color: rgba($color__background--medium, 0.97);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        pointer-events: auto;
         // height: auto;
         // opacity: 1;
         top: 84px;
     }
 }
+
+@import "o-toolbar--open";
