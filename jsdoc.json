@@ -1,6 +1,9 @@
 {
     "source": {
-        "include": [ "_source", "_source/03_organisms/toolbar" ],
+        "include": [ "_source" ],
         "excludePattern": ""
+    },
+    "opts": {
+        "recurse": true
     }
 }
