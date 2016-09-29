@@ -30,6 +30,7 @@
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/index.html",
     "docs:html": "./node_modules/.bin/jsdoc -c ./jsdoc.json -d docs",
+    "docs:md": "./node_modules/.bin/jsdoc2md \"_source/**/*.jsx\" > DOCS.md --conf jsdoc.json"
   },
   "author": "Nico Thiebes",
   "license": "SEE LICENSE IN \"LICENSE\"",
