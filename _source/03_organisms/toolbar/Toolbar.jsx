@@ -6,6 +6,10 @@ import Button from '../../01_atoms/button/Button.jsx';
 
 /**
  * @class 03_organisms/toolbar/Toolbar
+ * 
+ * @requires 02_molecules/search/Search
+ * @requires 02_molecules/icon/Icon
+ * @requires 02_molecules/button/Button
  */
 export default class Toolbar extends React.Component {
     constructor() {
