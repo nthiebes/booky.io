@@ -2,6 +2,9 @@ import React from 'react';
 
 import Button from '../../01_atoms/button/Button.jsx';
 
+/**
+ * @class 02_molecules/menu-account/MenuAccount
+ */
 export default class MenuAccount extends React.Component {
     constructor() {
         super();

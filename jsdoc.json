@@ -1,0 +1,9 @@
+{
+    "source": {
+        "include": [ "_source" ],
+        "excludePattern": ""
+    },
+    "opts": {
+        "recurse": true
+    }
+}

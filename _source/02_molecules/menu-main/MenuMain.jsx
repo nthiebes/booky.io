@@ -2,6 +2,9 @@ import React from 'react';
 
 import Icon from '../../01_atoms/icon/Icon.jsx';
 
+/**
+ * @class 02_molecules/menu-main/MenuMain
+ */
 export default class MenuMain extends React.Component {
     constructor() {
         super();

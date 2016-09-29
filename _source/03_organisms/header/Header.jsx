@@ -6,6 +6,9 @@ import Search from '../../02_molecules/search/Search.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Link from '../../01_atoms/link/Link.jsx';
 
+/**
+ * @class 03_organisms/header/Header
+ */
 export default class Header extends React.Component {
     constructor() {
         super();
@@ -14,7 +17,7 @@ export default class Header extends React.Component {
     }
 
     onMainMenuClick() {
-        console.log(this);
+        console.log('Yay!');
     }
 
     render() {
@@ -36,8 +39,3 @@ export default class Header extends React.Component {
         );
     }
 }
-
-/**
-<MenuAccount />
-<Icon icon="more" className="o-header__menu-account-icon a-icon--light" />
- */

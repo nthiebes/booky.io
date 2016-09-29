@@ -2,6 +2,10 @@ import React from 'react';
 
 import Category from '../../02_molecules/category/Category.jsx';
 
+/**
+ * A wrapper for all categories
+ * @class 03_organisms/categories/Categories
+ */
 export default class Categories extends React.Component {
     constructor() {
         super();

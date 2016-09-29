@@ -11,7 +11,15 @@ booky.io is an online bookmarking service with high focus on performance, mobile
 [Learn more about booky.io](https://booky.io/about)
 
 ## Setup
+Install dependencies and start the server:
 ```
 npm install
 npm start
 ```
+
+## Documentation
+[DOCS.md](DOCS.md) or
+```
+npm run docs:html
+```
+Docs will be created inside the `docs` folder.
