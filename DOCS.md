@@ -1,12 +1,42 @@
-## Modules
+## Classes
 
 <dl>
-<dt><a href="#module_03_organisms/toolbar/Toolbar">03_organisms/toolbar/Toolbar</a></dt>
-<dd><p>Toolbar module</p>
-</dd>
-<dt><a href="#module_03_organisms/toolbar/Toolbar">03_organisms/toolbar/Toolbar</a></dt>
-<dd><p>Toolbar module</p>
-</dd>
+<dt><a href="#00_base/booky/Booky">00_base/booky/Booky</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/bookmark/Bookmark">02_molecules/bookmark/Bookmark</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/category/Category">02_molecules/category/Category</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/menu-account/MenuAccount">02_molecules/menu-account/MenuAccount</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/menu-main/MenuMain">02_molecules/menu-main/MenuMain</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/search/Search">02_molecules/search/Search</a></dt>
+<dd></dd>
+<dt><a href="#03_organisms/categories/Categories">03_organisms/categories/Categories</a></dt>
+<dd></dd>
+<dt><a href="#03_organisms/header/Header">03_organisms/header/Header</a></dt>
+<dd></dd>
+<dt><a href="#03_organisms/toolbar/Toolbar">03_organisms/toolbar/Toolbar</a></dt>
+<dd></dd>
+<dt><a href="#00_base/booky/Booky">00_base/booky/Booky</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/bookmark/Bookmark">02_molecules/bookmark/Bookmark</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/category/Category">02_molecules/category/Category</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/menu-account/MenuAccount">02_molecules/menu-account/MenuAccount</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/menu-main/MenuMain">02_molecules/menu-main/MenuMain</a></dt>
+<dd></dd>
+<dt><a href="#02_molecules/search/Search">02_molecules/search/Search</a></dt>
+<dd></dd>
+<dt><a href="#03_organisms/categories/Categories">03_organisms/categories/Categories</a></dt>
+<dd></dd>
+<dt><a href="#03_organisms/header/Header">03_organisms/header/Header</a></dt>
+<dd></dd>
+<dt><a href="#03_organisms/toolbar/Toolbar">03_organisms/toolbar/Toolbar</a></dt>
+<dd></dd>
 </dl>
 
 ## Constants
@@ -37,50 +67,200 @@
 </dd>
 </dl>
 
-<a name="module_03_organisms/toolbar/Toolbar"></a>
+<a name="00_base/booky/Booky"></a>
+
+## 00_base/booky/Booky
+**Kind**: global class  
+**Requires**: <code>module:03_organisms/header/HeaderContainer</code>, <code>module:03_organisms/toolbar/ToolbarContainer</code>, <code>module:03_organisms/categories/CategoriesContainer</code>  
+
+* [00_base/booky/Booky](#00_base/booky/Booky)
+    * [new 00_base/booky/Booky()](#new_00_base/booky/Booky_new)
+    * [new 00_base/booky/Booky()](#new_00_base/booky/Booky_new)
+
+<a name="new_00_base/booky/Booky_new"></a>
+
+### new 00_base/booky/Booky()
+booky.io base class
+
+<a name="new_00_base/booky/Booky_new"></a>
+
+### new 00_base/booky/Booky()
+booky.io base class
+
+<a name="02_molecules/bookmark/Bookmark"></a>
+
+## 02_molecules/bookmark/Bookmark
+**Kind**: global class  
+<a name="02_molecules/category/Category"></a>
+
+## 02_molecules/category/Category
+**Kind**: global class  
+<a name="02_molecules/menu-account/MenuAccount"></a>
+
+## 02_molecules/menu-account/MenuAccount
+**Kind**: global class  
+<a name="02_molecules/menu-main/MenuMain"></a>
+
+## 02_molecules/menu-main/MenuMain
+**Kind**: global class  
+<a name="02_molecules/search/Search"></a>
+
+## 02_molecules/search/Search
+**Kind**: global class  
+<a name="03_organisms/categories/Categories"></a>
+
+## 03_organisms/categories/Categories
+**Kind**: global class  
+
+* [03_organisms/categories/Categories](#03_organisms/categories/Categories)
+    * [new 03_organisms/categories/Categories()](#new_03_organisms/categories/Categories_new)
+    * [new 03_organisms/categories/Categories()](#new_03_organisms/categories/Categories_new)
+
+<a name="new_03_organisms/categories/Categories_new"></a>
+
+### new 03_organisms/categories/Categories()
+A wrapper for all categories
+
+<a name="new_03_organisms/categories/Categories_new"></a>
+
+### new 03_organisms/categories/Categories()
+A wrapper for all categories
+
+<a name="03_organisms/header/Header"></a>
+
+## 03_organisms/header/Header
+**Kind**: global class  
+
+* [03_organisms/header/Header](#03_organisms/header/Header)
+    * [new 03_organisms/header/Header()](#new_03_organisms/header/Header_new)
+    * [new 03_organisms/header/Header()](#new_03_organisms/header/Header_new)
+
+<a name="new_03_organisms/header/Header_new"></a>
+
+### new 03_organisms/header/Header()
+Header
+
+<a name="new_03_organisms/header/Header_new"></a>
+
+### new 03_organisms/header/Header()
+Header
+
+<a name="03_organisms/toolbar/Toolbar"></a>
 
 ## 03_organisms/toolbar/Toolbar
-Toolbar module
+**Kind**: global class  
 
+* [03_organisms/toolbar/Toolbar](#03_organisms/toolbar/Toolbar)
+    * [new 03_organisms/toolbar/Toolbar()](#new_03_organisms/toolbar/Toolbar_new)
+    * [new 03_organisms/toolbar/Toolbar()](#new_03_organisms/toolbar/Toolbar_new)
 
-* [03_organisms/toolbar/Toolbar](#module_03_organisms/toolbar/Toolbar)
-    * [module.exports](#exp_module_03_organisms/toolbar/Toolbar--module.exports) ⏏
-    * [module.exports](#exp_module_03_organisms/toolbar/Toolbar--module.exports) ⏏
+<a name="new_03_organisms/toolbar/Toolbar_new"></a>
 
-<a name="exp_module_03_organisms/toolbar/Toolbar--module.exports"></a>
+### new 03_organisms/toolbar/Toolbar()
+Toolbar
 
-### module.exports ⏏
-Class for the toolbar
+<a name="new_03_organisms/toolbar/Toolbar_new"></a>
 
-**Kind**: Exported class  
-<a name="exp_module_03_organisms/toolbar/Toolbar--module.exports"></a>
+### new 03_organisms/toolbar/Toolbar()
+Toolbar
 
-### module.exports ⏏
-Class for the toolbar
+<a name="00_base/booky/Booky"></a>
 
-**Kind**: Exported class  
-<a name="module_03_organisms/toolbar/Toolbar"></a>
+## 00_base/booky/Booky
+**Kind**: global class  
+**Requires**: <code>module:03_organisms/header/HeaderContainer</code>, <code>module:03_organisms/toolbar/ToolbarContainer</code>, <code>module:03_organisms/categories/CategoriesContainer</code>  
+
+* [00_base/booky/Booky](#00_base/booky/Booky)
+    * [new 00_base/booky/Booky()](#new_00_base/booky/Booky_new)
+    * [new 00_base/booky/Booky()](#new_00_base/booky/Booky_new)
+
+<a name="new_00_base/booky/Booky_new"></a>
+
+### new 00_base/booky/Booky()
+booky.io base class
+
+<a name="new_00_base/booky/Booky_new"></a>
+
+### new 00_base/booky/Booky()
+booky.io base class
+
+<a name="02_molecules/bookmark/Bookmark"></a>
+
+## 02_molecules/bookmark/Bookmark
+**Kind**: global class  
+<a name="02_molecules/category/Category"></a>
+
+## 02_molecules/category/Category
+**Kind**: global class  
+<a name="02_molecules/menu-account/MenuAccount"></a>
+
+## 02_molecules/menu-account/MenuAccount
+**Kind**: global class  
+<a name="02_molecules/menu-main/MenuMain"></a>
+
+## 02_molecules/menu-main/MenuMain
+**Kind**: global class  
+<a name="02_molecules/search/Search"></a>
+
+## 02_molecules/search/Search
+**Kind**: global class  
+<a name="03_organisms/categories/Categories"></a>
+
+## 03_organisms/categories/Categories
+**Kind**: global class  
+
+* [03_organisms/categories/Categories](#03_organisms/categories/Categories)
+    * [new 03_organisms/categories/Categories()](#new_03_organisms/categories/Categories_new)
+    * [new 03_organisms/categories/Categories()](#new_03_organisms/categories/Categories_new)
+
+<a name="new_03_organisms/categories/Categories_new"></a>
+
+### new 03_organisms/categories/Categories()
+A wrapper for all categories
+
+<a name="new_03_organisms/categories/Categories_new"></a>
+
+### new 03_organisms/categories/Categories()
+A wrapper for all categories
+
+<a name="03_organisms/header/Header"></a>
+
+## 03_organisms/header/Header
+**Kind**: global class  
+
+* [03_organisms/header/Header](#03_organisms/header/Header)
+    * [new 03_organisms/header/Header()](#new_03_organisms/header/Header_new)
+    * [new 03_organisms/header/Header()](#new_03_organisms/header/Header_new)
+
+<a name="new_03_organisms/header/Header_new"></a>
+
+### new 03_organisms/header/Header()
+Header
+
+<a name="new_03_organisms/header/Header_new"></a>
+
+### new 03_organisms/header/Header()
+Header
+
+<a name="03_organisms/toolbar/Toolbar"></a>
 
 ## 03_organisms/toolbar/Toolbar
-Toolbar module
+**Kind**: global class  
 
+* [03_organisms/toolbar/Toolbar](#03_organisms/toolbar/Toolbar)
+    * [new 03_organisms/toolbar/Toolbar()](#new_03_organisms/toolbar/Toolbar_new)
+    * [new 03_organisms/toolbar/Toolbar()](#new_03_organisms/toolbar/Toolbar_new)
 
-* [03_organisms/toolbar/Toolbar](#module_03_organisms/toolbar/Toolbar)
-    * [module.exports](#exp_module_03_organisms/toolbar/Toolbar--module.exports) ⏏
-    * [module.exports](#exp_module_03_organisms/toolbar/Toolbar--module.exports) ⏏
+<a name="new_03_organisms/toolbar/Toolbar_new"></a>
 
-<a name="exp_module_03_organisms/toolbar/Toolbar--module.exports"></a>
+### new 03_organisms/toolbar/Toolbar()
+Toolbar
 
-### module.exports ⏏
-Class for the toolbar
+<a name="new_03_organisms/toolbar/Toolbar_new"></a>
 
-**Kind**: Exported class  
-<a name="exp_module_03_organisms/toolbar/Toolbar--module.exports"></a>
+### new 03_organisms/toolbar/Toolbar()
+Toolbar
 
-### module.exports ⏏
-Class for the toolbar
-
-**Kind**: Exported class  
 <a name="ADD_CATEGORY"></a>
 
 ## ADD_CATEGORY

@@ -2,6 +2,9 @@ import React from 'react';
 
 import Bookmark from '../bookmark/Bookmark.jsx';
 
+/**
+ * @class 02_molecules/category/Category
+ */
 export default class Category extends React.Component {
     constructor() {
         super();
