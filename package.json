@@ -24,13 +24,13 @@
     "remove-dist": "rimraf ./_public",
     "prebuild": "npm run clean-dist && npm run lint && npm run test",
     "build": "babel-node tools/build.js && npm run open:dist",
-    "test": "mocha tools/testSetup.js \"_source/**/*.spec.jsx\" --reporter progress",
-    "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root _source --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"_source/**/*.spec.jsx\" --reporter progress",
-    "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root _source --report lcovonly _mocha -- --require ./tools/testSetup.js \"_source/**/*.spec.jsx\" && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test": "mocha tools/testSetup.js \"_source/**/*.spec.js\" --reporter progress",
+    "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root _source --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"_source/**/*.spec.js\" --reporter progress",
+    "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root _source --report lcovonly _mocha -- --require ./tools/testSetup.js \"_source/**/*.spec.js\" && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/index.html",
     "docs:html": "./node_modules/.bin/jsdoc -c ./jsdoc.json -d docs",
-    "docs:md": "./node_modules/.bin/jsdoc2md \"_source/**/*.jsx\" > DOCS.md --conf jsdoc.json"
+    "docs:md": "./node_modules/.bin/jsdoc2md \"_source/**/*.js\" > DOCS.md --conf jsdoc.json"
   },
   "author": "Nico Thiebes",
   "license": "SEE LICENSE IN \"LICENSE\"",
