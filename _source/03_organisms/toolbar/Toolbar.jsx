@@ -5,11 +5,15 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
 import Button from '../../01_atoms/button/Button.jsx';
 
 /**
+ * React component
  * @class 03_organisms/toolbar/Toolbar
  * 
  * @requires 02_molecules/search/Search
  * @requires 02_molecules/icon/Icon
  * @requires 02_molecules/button/Button
+ *
+ * @prop {boolean}  searchOpen    Search bar open and visible
+ * @prop {function} onSearchClick Icon click callback
  */
 export default class Toolbar extends React.Component {
     constructor() {

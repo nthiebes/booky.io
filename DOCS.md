@@ -51,11 +51,29 @@
 <dt><a href="#TOGGLE_SEARCH">TOGGLE_SEARCH</a></dt>
 <dd><p>Action types</p>
 </dd>
+<dt><a href="#ADD_CATEGORY">ADD_CATEGORY</a></dt>
+<dd><p>Action types</p>
+</dd>
+<dt><a href="#TOGGLE_MAIN_MENU">TOGGLE_MAIN_MENU</a></dt>
+<dd><p>Action types</p>
+</dd>
+<dt><a href="#TOGGLE_SEARCH">TOGGLE_SEARCH</a></dt>
+<dd><p>Action types</p>
+</dd>
 </dl>
 
 ## Functions
 
 <dl>
+<dt><a href="#addCategory">addCategory()</a></dt>
+<dd><p>Action creators</p>
+</dd>
+<dt><a href="#toggleMainMenu">toggleMainMenu()</a></dt>
+<dd><p>Action creators</p>
+</dd>
+<dt><a href="#toggleSearch">toggleSearch()</a></dt>
+<dd><p>Action creators</p>
+</dd>
 <dt><a href="#addCategory">addCategory()</a></dt>
 <dd><p>Action creators</p>
 </dd>
@@ -130,25 +148,18 @@ A wrapper for all categories
 
 ## 03_organisms/header/Header
 **Kind**: global class  
-
-* [03_organisms/header/Header](#03_organisms/header/Header)
-    * [new 03_organisms/header/Header()](#new_03_organisms/header/Header_new)
-    * [new 03_organisms/header/Header()](#new_03_organisms/header/Header_new)
-
-<a name="new_03_organisms/header/Header_new"></a>
-
-### new 03_organisms/header/Header()
-Header
-
-<a name="new_03_organisms/header/Header_new"></a>
-
-### new 03_organisms/header/Header()
-Header
-
 <a name="03_organisms/toolbar/Toolbar"></a>
 
 ## 03_organisms/toolbar/Toolbar
 **Kind**: global class  
+**Requires**: <code>module:02_molecules/search/Search</code>, <code>module:02_molecules/icon/Icon</code>, <code>module:02_molecules/button/Button</code>  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| searchOpen | <code>boolean</code> | Search bar open and visible |
+| onSearchClick | <code>function</code> | Icon click callback |
+
 
 * [03_organisms/toolbar/Toolbar](#03_organisms/toolbar/Toolbar)
     * [new 03_organisms/toolbar/Toolbar()](#new_03_organisms/toolbar/Toolbar_new)
@@ -157,12 +168,12 @@ Header
 <a name="new_03_organisms/toolbar/Toolbar_new"></a>
 
 ### new 03_organisms/toolbar/Toolbar()
-Toolbar
+React component
 
 <a name="new_03_organisms/toolbar/Toolbar_new"></a>
 
 ### new 03_organisms/toolbar/Toolbar()
-Toolbar
+React component
 
 <a name="00_base/booky/Booky"></a>
 
@@ -227,25 +238,18 @@ A wrapper for all categories
 
 ## 03_organisms/header/Header
 **Kind**: global class  
-
-* [03_organisms/header/Header](#03_organisms/header/Header)
-    * [new 03_organisms/header/Header()](#new_03_organisms/header/Header_new)
-    * [new 03_organisms/header/Header()](#new_03_organisms/header/Header_new)
-
-<a name="new_03_organisms/header/Header_new"></a>
-
-### new 03_organisms/header/Header()
-Header
-
-<a name="new_03_organisms/header/Header_new"></a>
-
-### new 03_organisms/header/Header()
-Header
-
 <a name="03_organisms/toolbar/Toolbar"></a>
 
 ## 03_organisms/toolbar/Toolbar
 **Kind**: global class  
+**Requires**: <code>module:02_molecules/search/Search</code>, <code>module:02_molecules/icon/Icon</code>, <code>module:02_molecules/button/Button</code>  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| searchOpen | <code>boolean</code> | Search bar open and visible |
+| onSearchClick | <code>function</code> | Icon click callback |
+
 
 * [03_organisms/toolbar/Toolbar](#03_organisms/toolbar/Toolbar)
     * [new 03_organisms/toolbar/Toolbar()](#new_03_organisms/toolbar/Toolbar_new)
@@ -254,12 +258,12 @@ Header
 <a name="new_03_organisms/toolbar/Toolbar_new"></a>
 
 ### new 03_organisms/toolbar/Toolbar()
-Toolbar
+React component
 
 <a name="new_03_organisms/toolbar/Toolbar_new"></a>
 
 ### new 03_organisms/toolbar/Toolbar()
-Toolbar
+React component
 
 <a name="ADD_CATEGORY"></a>
 
@@ -279,6 +283,42 @@ Action types
 Action types
 
 **Kind**: global constant  
+<a name="ADD_CATEGORY"></a>
+
+## ADD_CATEGORY
+Action types
+
+**Kind**: global constant  
+<a name="TOGGLE_MAIN_MENU"></a>
+
+## TOGGLE_MAIN_MENU
+Action types
+
+**Kind**: global constant  
+<a name="TOGGLE_SEARCH"></a>
+
+## TOGGLE_SEARCH
+Action types
+
+**Kind**: global constant  
+<a name="addCategory"></a>
+
+## addCategory()
+Action creators
+
+**Kind**: global function  
+<a name="toggleMainMenu"></a>
+
+## toggleMainMenu()
+Action creators
+
+**Kind**: global function  
+<a name="toggleSearch"></a>
+
+## toggleSearch()
+Action creators
+
+**Kind**: global function  
 <a name="addCategory"></a>
 
 ## addCategory()
