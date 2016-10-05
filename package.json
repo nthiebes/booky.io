@@ -27,8 +27,8 @@
     "test:watch": "npm run test -- --watch",
     "test:cover": "jest --config .jestrc --no-cache --coverage",
     "test:cover:watch": "npm run test:cover -- --watch",
-    "docs:html": "./node_modules/.bin/jsdoc -c ./jsdoc.json -d docs",
-    "docs:md": "./node_modules/.bin/jsdoc2md \"_source/**/*.{js,jsx}\" > DOCS.md --conf jsdoc.json"
+    "docs:html": "./node_modules/.bin/jsdoc -c ./.jsdocrc -d docs",
+    "docs:md": "./node_modules/.bin/jsdoc2md \"_source/**/*.{js,jsx}\" > DOCS.md --conf .jsdocrc"
   },
   "author": "Nico Thiebes",
   "license": "SEE LICENSE IN \"LICENSE\"",
