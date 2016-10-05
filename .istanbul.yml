@@ -1,3 +1,0 @@
-instrumentation:
-  excludes: ['*.spec.jsx', '*.spec.js']
-  extensions: ['.js', '.jsx']
