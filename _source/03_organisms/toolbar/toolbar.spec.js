@@ -16,8 +16,12 @@ describe('<Toolbar />', function() {
     	
     	expect(toolbar.find('.o-toolbar')).to.have.length(1);
 
-    	expect(toolbar.contains(<Button className="o-toolbar__button a-button--primary" text="New " buzzword="category" />)).to.equal(true);
+    	expect(toolbar.contains(
+    		<Button className="o-toolbar__button a-button--primary" text="New " buzzword="category" />)
+    	).to.equal(true);
 
-    	expect(toolbar.contains(<Search className="" open={false} />)).to.equal(true);
+    	expect(toolbar.contains(
+    		<Search className="" open={ false } />)
+    	).to.equal(true);
     });
 });
