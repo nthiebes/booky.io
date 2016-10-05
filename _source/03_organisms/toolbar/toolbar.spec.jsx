@@ -2,6 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Toolbar from './Toolbar';
+import ToolbarContainer from './toolbarContainer';
+import { toggleSearch } from  './toolbarActions';
+import toolbar from './toolbarReducers';
 import Button from '../../01_atoms/button/Button.jsx';
 import Search from '../../02_molecules/search/Search.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
@@ -76,6 +79,52 @@ describe('<Toolbar />', function() {
             expect(toolbar.contains(
                 <Icon icon="search" className="o-toolbar__icon a-icon--dark" onClick={ callback } />
             )).toEqual(true);
+        });
+    });
+});
+
+describe('toolbar: container', function() {
+
+});
+
+describe('toolbar: actions', function() {
+
+    describe('toggleSearch()', function() {
+
+        it('should return the action', function() {
+            var action = toggleSearch();
+
+            expect(action).toEqual({
+                type: 'TOGGLE_SEARCH'
+            });
+        });
+    });
+});
+
+describe('toolbar: reducers', function() {
+
+    describe('called with no valid action', function() {
+
+        it('should return a default state', function() {
+            expect(toolbar(undefined, 'BANANA')).toEqual({});
+        });
+    });
+
+    describe('called with an action', function() {
+
+        it('TOGGLE_SEARCH: should return the new state', function() {
+            var state = {searchOpen: true};
+
+            // ...and not mutate it
+            expect(toolbar(state, toggleSearch())).not.toBe(state);
+
+            expect(toolbar({searchOpen: true}, toggleSearch())).toEqual({
+                searchOpen: false
+            });
+
+            expect(toolbar({searchOpen: false}, toggleSearch())).toEqual({
+                searchOpen: true
+            });
         });
     });
 });
