@@ -1,4 +1,5 @@
 {
     "collectCoverageFrom": ["**/*.{js,jsx}", "!**/node_modules/**", "!**/.spec.{js,jsx}"],
-    "rootDir": "_source"
+    "rootDir": "_source",
+    "scriptPreprocessor": "../node_modules/babel-jest"
 }
