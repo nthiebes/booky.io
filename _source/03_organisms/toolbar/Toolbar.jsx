@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 
 import Search from '../../02_molecules/search/Search.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
@@ -15,7 +15,7 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @prop {boolean}  searchOpen    Search bar open and visible
  * @prop {function} onSearchClick Icon click callback
  */
-export default class Toolbar extends React.Component {
+export default class Toolbar extends Component {
     constructor() {
         super();
     }
@@ -34,3 +34,8 @@ export default class Toolbar extends React.Component {
         );
     }
 }
+
+Toolbar.propTypes = {
+    searchOpen: PropTypes.bool.isRequired,
+    onSearchClick: PropTypes.func.isRequired
+};

@@ -11,119 +11,122 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
 
 describe('<Toolbar />', function() {
 
-    let toolbar,
-        callback,
-        getComponent = function(props) {
-            return <Toolbar { ...props } />;
-        };
+    describe('component', function() {
 
-    beforeEach(function() {
-        callback = jest.fn();
-    });
-
-    describe('when rendered open', function() {
+        let toolbar,
+            callback,
+            getComponent = function(props = {}) {
+                return <Toolbar { ...props } />;
+            };
 
         beforeEach(function() {
-            toolbar = shallow(getComponent({
-                searchOpen: true
-            }));
+            callback = jest.fn();
         });
 
-        it('should have the correct class', function() {
-            expect(toolbar.find('.o-toolbar').length).toBe(1);
-            expect(toolbar.find('.o-toolbar--open').length).toBe(1);
+        describe('should always', function() {
+
+            beforeEach(function() {
+                toolbar = shallow(getComponent({
+                    onSearchClick: callback
+                }));
+            });
+
+            it('include a button for new categories', function() {
+                expect(toolbar.contains(
+                    <Button className="o-toolbar__button a-button--primary" text="New " buzzword="category" />
+                )).toEqual(true);
+            });
+
+            it('include an icon', function() {
+                expect(toolbar.contains(
+                    <Icon icon="search" className="o-toolbar__icon a-icon--dark" onClick={ callback } />
+                )).toEqual(true);
+            });
         });
 
-        it('should include a search bar', function() {
-            expect(toolbar.contains(
-                <Search className="m-search--open" open={ true } />
-            )).toEqual(true);
-        });
-    });
+        describe('when rendered open', function() {
 
-    describe('when rendered closed', function() {
+            beforeEach(function() {
+                toolbar = shallow(getComponent({
+                    searchOpen: true
+                }));
+            });
 
-        beforeEach(function() {
-            toolbar = shallow(getComponent({
-                searchOpen: false
-            }));
-        });
+            it('should have the correct class', function() {
+                expect(toolbar.find('.o-toolbar').length).toBe(1);
+                expect(toolbar.find('.o-toolbar--open').length).toBe(1);
+            });
 
-        it('should have the correct class', function() {
-            expect(toolbar.find('.o-toolbar').length).toBe(1);
-            expect(toolbar.find('.o-toolbar--open').length).toBe(0);
-        });
-
-        it('should include a search bar', function() {
-            expect(toolbar.contains(
-                <Search className="" open={ false } />
-            )).toEqual(true);
-        });
-    });
-
-    describe('should always', function() {
-
-        beforeEach(function() {
-            toolbar = shallow(getComponent({
-                onSearchClick: callback
-            }));
+            it('should include a search bar', function() {
+                expect(toolbar.contains(
+                    <Search className="m-search--open" open={ true } />
+                )).toEqual(true);
+            });
         });
 
-        it('include a button for new categories', function() {
-            expect(toolbar.contains(
-                <Button className="o-toolbar__button a-button--primary" text="New " buzzword="category" />
-            )).toEqual(true);
-        });
+        describe('when rendered closed', function() {
 
-        it('include an icon', function() {
-            expect(toolbar.contains(
-                <Icon icon="search" className="o-toolbar__icon a-icon--dark" onClick={ callback } />
-            )).toEqual(true);
-        });
-    });
-});
+            beforeEach(function() {
+                toolbar = shallow(getComponent({
+                    searchOpen: false
+                }));
+            });
 
-describe('toolbar: container', function() {
+            it('should have the correct class', function() {
+                expect(toolbar.find('.o-toolbar').length).toBe(1);
+                expect(toolbar.find('.o-toolbar--open').length).toBe(0);
+            });
 
-});
-
-describe('toolbar: actions', function() {
-
-    describe('toggleSearch()', function() {
-
-        it('should return the action', function() {
-            let action = toggleSearch();
-
-            expect(action).toEqual({
-                type: 'TOGGLE_SEARCH'
+            it('should include a search bar', function() {
+                expect(toolbar.contains(
+                    <Search className="" open={ false } />
+                )).toEqual(true);
             });
         });
     });
-});
 
-describe('toolbar: reducers', function() {
+    describe('container', function() {
 
-    describe('called with no valid action', function() {
+    });
 
-        it('should return a default state', function() {
-            expect(toolbar(undefined, 'BANANA')).toEqual({});
+    describe('actions', function() {
+
+        describe('toggleSearch()', function() {
+
+            it('should return the action', function() {
+                let action = toggleSearch();
+
+                expect(action).toEqual({
+                    type: 'TOGGLE_SEARCH'
+                });
+            });
         });
     });
 
-    describe('called with an action', function() {
+    describe('reducers', function() {
 
-        it('TOGGLE_SEARCH: should return the new state', function() {
-            let state = {searchOpen: true};
+        describe('called with no valid action', function() {
 
-            // ...and not mutate it
-            expect(toolbar(state, toggleSearch())).not.toBe(state);
-
-            expect(toolbar({searchOpen: true}, toggleSearch())).toEqual({
-                searchOpen: false
+            it('should return the initial state', function() {
+                expect(toolbar(undefined, {})).toEqual({});
             });
+        });
 
-            expect(toolbar({searchOpen: false}, toggleSearch())).toEqual({
-                searchOpen: true
+        describe('called with an action', function() {
+
+            it('TOGGLE_SEARCH: should return the new state', function() {
+                let state = {searchOpen: true};
+
+                // ...and not mutate it
+                expect(toolbar(state, toggleSearch())).not.toBe(state);
+
+                expect(toolbar({searchOpen: true}, toggleSearch())).toEqual({
+                    searchOpen: false
+                });
+
+                expect(toolbar({searchOpen: false}, toggleSearch())).toEqual({
+                    searchOpen: true
+                });
             });
         });
     });
