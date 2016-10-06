@@ -1,8 +1,6 @@
 import React from 'react';
 
 import MenuMain from '../../02_molecules/menu-main/MenuMain.jsx';
-import MenuAccount from '../../02_molecules/menu-account/MenuAccount.jsx';
-import Search from '../../02_molecules/search/Search.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Link from '../../01_atoms/link/Link.jsx';
 
@@ -17,7 +15,7 @@ export default class Header extends React.Component {
     }
 
     onMainMenuClick() {
-        console.log('Yay!');
+        // console.log('Yay!');
     }
 
     render() {

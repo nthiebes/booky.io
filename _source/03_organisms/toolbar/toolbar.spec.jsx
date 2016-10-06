@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Toolbar from './Toolbar';
+import Toolbar from './Toolbar.jsx';
 import ToolbarContainer from './toolbarContainer';
 import { toggleSearch } from  './toolbarActions';
 import toolbar from './toolbarReducers';
@@ -11,10 +11,10 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
 
 describe('<Toolbar />', function() {
 
-    var toolbar,
+    let toolbar,
         callback,
         getComponent = function(props) {
-            return <Toolbar {...props} />;
+            return <Toolbar { ...props } />;
         };
 
     beforeEach(function() {
@@ -92,7 +92,7 @@ describe('toolbar: actions', function() {
     describe('toggleSearch()', function() {
 
         it('should return the action', function() {
-            var action = toggleSearch();
+            let action = toggleSearch();
 
             expect(action).toEqual({
                 type: 'TOGGLE_SEARCH'
@@ -113,7 +113,7 @@ describe('toolbar: reducers', function() {
     describe('called with an action', function() {
 
         it('TOGGLE_SEARCH: should return the new state', function() {
-            var state = {searchOpen: true};
+            let state = {searchOpen: true};
 
             // ...and not mutate it
             expect(toolbar(state, toggleSearch())).not.toBe(state);

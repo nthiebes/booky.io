@@ -14,7 +14,7 @@ export default class Icon extends React.Component {
         return (
             <div className={ CLASS } onClick={ PROPS.onClick ? PROPS.onClick : '' }>
                 <svg className="a-icon__svg">
-                    <use xlinkHref={ LINK }></use>
+                    <use xlinkHref={ LINK } />
                 </svg>
                 { LABEL }
             </div>

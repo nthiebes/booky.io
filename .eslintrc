@@ -19,8 +19,7 @@
     "es6": true,
     "browser": true,
     "node": true,
-    "jquery": true,
-    "mocha": true
+    "jest": true
   },
   "rules": {
     "quotes": 0,
@@ -38,7 +37,7 @@
     "react/forbid-prop-types": [1, {"forbid": ["any"]}],
     "react/jsx-boolean-value": 0,
     "react/jsx-closing-bracket-location": 0,
-    "react/jsx-curly-spacing": 1,
+    "react/jsx-curly-spacing": [1, "always"],
     "react/jsx-indent-props": 0,
     "react/jsx-key": 1,
     "react/jsx-max-props-per-line": 0,
@@ -61,10 +60,9 @@
     "react/prefer-es6-class": 1,
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 1,
-    "react/require-extension": 1,
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    "react/jsx-wrap-multilines": 1
   },
   "globals": {
   }

@@ -21,8 +21,18 @@ export default class Input extends React.Component {
 
         return (
             <div className="a-input">
-                <input ref="nameInput" {...INPUT_PROPS} />
+                <input ref="nameInput" { ...INPUT_PROPS } />
             </div>
         );
     }
 }
+
+Input.propTypes = {
+    focus: React.PropTypes.bool,
+    placeholder: React.PropTypes.string
+};
+
+Input.defaultProps = {
+    focus: false,
+    placeholder: ""
+};

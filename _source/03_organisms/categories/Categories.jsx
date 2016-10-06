@@ -18,7 +18,7 @@ export default class Categories extends React.Component {
         return (
             <main className="o-categories">
                 {CATEGORIES.map(category =>
-                    <Category key={category.id} {...category} />
+                    <Category key={ category.id } { ...category } />
                 )}
             </main>
         );
