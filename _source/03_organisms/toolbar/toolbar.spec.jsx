@@ -5,9 +5,6 @@ import Toolbar from './Toolbar.jsx';
 import ToolbarContainer from './toolbarContainer';
 import { toggleSearch } from  './toolbarActions';
 import toolbar from './toolbarReducers';
-import Button from '../../01_atoms/button/Button.jsx';
-import Search from '../../02_molecules/search/Search.jsx';
-import Icon from '../../01_atoms/icon/Icon.jsx';
 
 describe('<Toolbar />', function() {
 
@@ -32,15 +29,19 @@ describe('<Toolbar />', function() {
             });
 
             it('include a button for new categories', function() {
-                expect(toolbar.contains(
-                    <Button className="o-toolbar__button a-button--primary" text="New " buzzword="category" />
-                )).toEqual(true);
+                const buttonProps = toolbar.find('Button').props();
+
+                expect(buttonProps.className).toBe('o-toolbar__button a-button--primary');
+                expect(buttonProps.text).toBe('New ');
+                expect(buttonProps.buzzword).toBe('category');
             });
 
             it('include an icon', function() {
-                expect(toolbar.contains(
-                    <Icon icon="search" className="o-toolbar__icon a-icon--dark" onClick={ callback } />
-                )).toEqual(true);
+                const iconProps = toolbar.find('Icon').props();
+
+                expect(iconProps.className).toBe('o-toolbar__icon a-icon--dark');
+                expect(iconProps.icon).toBe('search');
+                expect(iconProps.onClick).toBe(callback);
             });
         });
 
@@ -53,14 +54,14 @@ describe('<Toolbar />', function() {
             });
 
             it('should have the correct class', function() {
-                expect(toolbar.find('.o-toolbar').length).toBe(1);
-                expect(toolbar.find('.o-toolbar--open').length).toBe(1);
+                expect(toolbar.find('div').hasClass('o-toolbar o-toolbar--open')).toBe(true);
             });
 
             it('should include a search bar', function() {
-                expect(toolbar.contains(
-                    <Search className="m-search--open" open={ true } />
-                )).toEqual(true);
+                const searchProps = toolbar.find('Search').props();
+
+                expect(searchProps.className).toBe('m-search--open');
+                expect(searchProps.open).toBe(true);
             });
         });
 
@@ -73,14 +74,15 @@ describe('<Toolbar />', function() {
             });
 
             it('should have the correct class', function() {
-                expect(toolbar.find('.o-toolbar').length).toBe(1);
-                expect(toolbar.find('.o-toolbar--open').length).toBe(0);
+                expect(toolbar.find('div').hasClass('o-toolbar')).toBe(true);
+                expect(toolbar.find('div').hasClass('o-toolbar--open')).toBe(false);
             });
 
             it('should include a search bar', function() {
-                expect(toolbar.contains(
-                    <Search className="" open={ false } />
-                )).toEqual(true);
+                const searchProps = toolbar.find('Search').props();
+
+                expect(searchProps.className).toBe('');
+                expect(searchProps.open).toBe(false);
             });
         });
     });
