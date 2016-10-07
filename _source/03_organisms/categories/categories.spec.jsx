@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Categories from './Categories.jsx';
-import { CategoriesContainer, mapStateToProps } from './categoriesContainer';
+import CategoriesContainer, { mapStateToProps } from './categoriesContainer';
 import Category from '../../02_molecules/category/Category.jsx';
 
 describe('<Categories />', function() {

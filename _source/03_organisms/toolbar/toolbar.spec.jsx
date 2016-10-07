@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Toolbar from './Toolbar.jsx';
-import { ToolbarContainer, mapStateToProps, mapDispatchToProps } from './toolbarContainer';
+import ToolbarContainer, { mapStateToProps, mapDispatchToProps } from './toolbarContainer';
 import { toggleSearch } from './toolbarActions';
 import toolbar from './toolbarReducers';
 

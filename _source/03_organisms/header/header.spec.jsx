@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Header from './Header.jsx';
-import { HeaderContainer, mapStateToProps, mapDispatchToProps } from './headerContainer';
+import HeaderContainer, { mapStateToProps, mapDispatchToProps } from './headerContainer';
 import { toggleMainMenu } from './headerActions';
 import header from './headerReducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
