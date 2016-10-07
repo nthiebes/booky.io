@@ -24,7 +24,8 @@ describe('<Toolbar />', function() {
 
             beforeEach(function() {
                 toolbar = shallow(getComponent({
-                    onSearchClick: callback
+                    onSearchClick: callback,
+                    searchOpen: false
                 }));
             });
 
@@ -49,7 +50,8 @@ describe('<Toolbar />', function() {
 
             beforeEach(function() {
                 toolbar = shallow(getComponent({
-                    searchOpen: true
+                    searchOpen: true,
+                    onSearchClick: function() {}
                 }));
             });
 
@@ -69,7 +71,8 @@ describe('<Toolbar />', function() {
 
             beforeEach(function() {
                 toolbar = shallow(getComponent({
-                    searchOpen: false
+                    searchOpen: false,
+                    onSearchClick: function() {}
                 }));
             });
 

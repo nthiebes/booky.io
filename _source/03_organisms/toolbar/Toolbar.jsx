@@ -9,8 +9,8 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @class 03_organisms/toolbar/Toolbar
  * 
  * @requires 02_molecules/search/Search
- * @requires 02_molecules/icon/Icon
- * @requires 02_molecules/button/Button
+ * @requires 01_atoms/icon/Icon
+ * @requires 01_atoms/button/Button
  *
  * @prop {boolean}  searchOpen    Search bar open and visible
  * @prop {function} onSearchClick Icon click callback
