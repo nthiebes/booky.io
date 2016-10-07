@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 
 import Category from '../../02_molecules/category/Category.jsx';
 
 /**
+ * React component
  * A wrapper for all categories
  * @class 03_organisms/categories/Categories
+ * 
+ * @requires 02_molecules/category/Category
+ *
+ * @prop {array} categories A list of categories
  */
-export default class Categories extends React.Component {
+export default class Categories extends Component {
     constructor() {
         super();
     }
@@ -24,3 +29,7 @@ export default class Categories extends React.Component {
         );
     }
 }
+
+Categories.propTypes = {
+    categories: PropTypes.array.isRequired
+};
