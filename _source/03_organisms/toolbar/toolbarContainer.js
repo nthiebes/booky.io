@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 import Toolbar from './Toolbar.jsx';
 import { toggleSearch } from  './toolbarActions';
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
     return {
         searchOpen: state.toolbar.searchOpen
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
     return {
         onSearchClick: () => {
             dispatch(toggleSearch());

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Toolbar from './Toolbar.jsx';
-import ToolbarContainer from './toolbarContainer';
+import { ToolbarContainer, mapStateToProps, mapDispatchToProps } from './toolbarContainer';
 import { toggleSearch } from  './toolbarActions';
 import toolbar from './toolbarReducers';
 
@@ -91,7 +91,24 @@ describe('<Toolbar />', function() {
     });
 
     describe('container', function() {
+        
+        const state = {
+                toolbar: {
+                    searchOpen: 'banana'
+                }
+            },
+            dispatch = jest.fn();
 
+        it('should map the state to props', function() {
+            expect(mapStateToProps(state)).toEqual(state.toolbar);
+        });
+
+        it('should map dispatch actions to props', function() {
+            mapDispatchToProps(dispatch).onSearchClick();
+            
+            expect(typeof mapDispatchToProps(dispatch).onSearchClick).toBe('function');
+            expect(dispatch).toHaveBeenCalledWith(toggleSearch());
+        });
     });
 
     describe('actions', function() {
