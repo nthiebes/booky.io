@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 import Header from './Header.jsx';
 import { toggleMainMenu } from  './headerActions';
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
     return {
         menuMainOpen: state.header.menuMainOpen
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
     return {
         onMainMenuClick: () => {
             dispatch(toggleMainMenu());

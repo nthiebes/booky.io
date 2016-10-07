@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Toolbar from './Toolbar.jsx';
 import { ToolbarContainer, mapStateToProps, mapDispatchToProps } from './toolbarContainer';
-import { toggleSearch } from  './toolbarActions';
+import { toggleSearch } from './toolbarActions';
 import toolbar from './toolbarReducers';
 
 describe('<Toolbar />', function() {
@@ -51,7 +51,7 @@ describe('<Toolbar />', function() {
             beforeEach(function() {
                 toolbar = shallow(getComponent({
                     searchOpen: true,
-                    onSearchClick: function() {}
+                    onSearchClick: callback
                 }));
             });
 
@@ -72,7 +72,7 @@ describe('<Toolbar />', function() {
             beforeEach(function() {
                 toolbar = shallow(getComponent({
                     searchOpen: false,
-                    onSearchClick: function() {}
+                    onSearchClick: callback
                 }));
             });
 

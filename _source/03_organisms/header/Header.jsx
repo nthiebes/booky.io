@@ -12,8 +12,8 @@ import Link from '../../01_atoms/link/Link.jsx';
  * @requires 01_atoms/icon/Icon
  * @requires 01_atoms/link/Link
  *
- * @prop {boolean}  searchOpen    Search bar open and visible
- * @prop {function} onSearchClick Icon click callback
+ * @prop {boolean}  menuMainOpen    Main menu open
+ * @prop {function} onMainMenuClick Main menu icon click callback
  */
 export default class Header extends React.Component {
     constructor() {
