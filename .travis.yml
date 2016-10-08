@@ -2,6 +2,9 @@ language: node_js
 node_js:
   - "6"
   - "5"
+script:
+  # ESLint
+  - npm run lint
 after_success:
   # Send coverage data to coveralls.
   - npm run test:cover
