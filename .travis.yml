@@ -3,6 +3,8 @@ node_js:
   - "6"
   - "5"
 script:
+  # Tests
+  - npm run test
   # ESLint
   - npm run lint
 after_success:
