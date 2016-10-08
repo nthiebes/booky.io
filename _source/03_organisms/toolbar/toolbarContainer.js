@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Toolbar from './Toolbar.jsx';
-import { toggleSearch } from  './toolbarActions';
+import { toggleSearch } from './toolbarActions';
 
 export const mapStateToProps = (state) => {
     return {

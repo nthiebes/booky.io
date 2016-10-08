@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Toolbar from './Toolbar.jsx';
-import ToolbarContainer, { mapStateToProps, mapDispatchToProps } from './toolbarContainer';
+import { mapStateToProps, mapDispatchToProps } from './toolbarContainer';
 import { toggleSearch } from './toolbarActions';
 import toolbar from './toolbarReducers';
 
@@ -10,7 +10,7 @@ describe('<Toolbar />', function() {
 
     describe('component', function() {
 
-        let toolbar,
+        let component,
             callback,
             getComponent = function(props = {}) {
                 return <Toolbar { ...props } />;
@@ -23,14 +23,14 @@ describe('<Toolbar />', function() {
         describe('should always', function() {
 
             beforeEach(function() {
-                toolbar = shallow(getComponent({
+                component = shallow(getComponent({
                     onSearchClick: callback,
                     searchOpen: false
                 }));
             });
 
             it('include a button for new categories', function() {
-                const buttonProps = toolbar.find('Button').props();
+                const buttonProps = component.find('Button').props();
 
                 expect(buttonProps.className).toBe('o-toolbar__button a-button--primary');
                 expect(buttonProps.text).toBe('New ');
@@ -38,7 +38,7 @@ describe('<Toolbar />', function() {
             });
 
             it('include an icon', function() {
-                const iconProps = toolbar.find('Icon').props();
+                const iconProps = component.find('Icon').props();
 
                 expect(iconProps.className).toBe('o-toolbar__icon a-icon--dark');
                 expect(iconProps.icon).toBe('search');
@@ -49,18 +49,18 @@ describe('<Toolbar />', function() {
         describe('when rendered open', function() {
 
             beforeEach(function() {
-                toolbar = shallow(getComponent({
+                component = shallow(getComponent({
                     searchOpen: true,
                     onSearchClick: callback
                 }));
             });
 
             it('should have the correct class', function() {
-                expect(toolbar.find('div').hasClass('o-toolbar o-toolbar--open')).toBe(true);
+                expect(component.find('div').hasClass('o-toolbar o-toolbar--open')).toBe(true);
             });
 
             it('should include a search bar', function() {
-                const searchProps = toolbar.find('Search').props();
+                const searchProps = component.find('Search').props();
 
                 expect(searchProps.className).toBe('m-search--open');
                 expect(searchProps.open).toBe(true);
@@ -70,19 +70,19 @@ describe('<Toolbar />', function() {
         describe('when rendered closed', function() {
 
             beforeEach(function() {
-                toolbar = shallow(getComponent({
+                component = shallow(getComponent({
                     searchOpen: false,
                     onSearchClick: callback
                 }));
             });
 
             it('should have the correct class', function() {
-                expect(toolbar.find('div').hasClass('o-toolbar')).toBe(true);
-                expect(toolbar.find('div').hasClass('o-toolbar--open')).toBe(false);
+                expect(component.find('div').hasClass('o-toolbar')).toBe(true);
+                expect(component.find('div').hasClass('o-toolbar--open')).toBe(false);
             });
 
             it('should include a search bar', function() {
-                const searchProps = toolbar.find('Search').props();
+                const searchProps = component.find('Search').props();
 
                 expect(searchProps.className).toBe('');
                 expect(searchProps.open).toBe(false);
@@ -130,7 +130,9 @@ describe('<Toolbar />', function() {
         describe('called with no valid action', function() {
 
             it('should return the initial state', function() {
-                expect(toolbar(undefined, {})).toEqual({});
+                let state;
+
+                expect(toolbar(state, {})).toEqual({});
             });
         });
 

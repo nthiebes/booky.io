@@ -2,20 +2,20 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Categories from './Categories.jsx';
-import CategoriesContainer, { mapStateToProps } from './categoriesContainer';
+import { mapStateToProps } from './categoriesContainer';
 import Category from '../../02_molecules/category/Category.jsx';
 
 describe('<Categories />', function() {
 
     describe('component', function() {
 
-        let categories,
+        let component,
             getComponent = function(props = {}) {
                 return <Categories { ...props } />;
             };
 
         beforeEach(function() {
-            categories = shallow(getComponent({
+            component = shallow(getComponent({
                 categories: [{
                     id: 0,
                     name: 'Category 1'
@@ -27,14 +27,14 @@ describe('<Categories />', function() {
         });
 
         it('should have the correct class', function() {
-            expect(categories.find('main').hasClass('o-categories')).toBe(true);
+            expect(component.find('main').hasClass('o-categories')).toBe(true);
         });
 
         it('include all categories passed in', function() {
-            expect(categories.containsMatchingElement(
+            expect(component.containsMatchingElement(
                 <Category key={ 0 } id={ 0 } name={ 'Category 1' } />
             )).toBe(true);
-            expect(categories.containsMatchingElement(
+            expect(component.containsMatchingElement(
                 <Category key={ 1 } id={ 1 } name={ 'Category 2' } />
             )).toBe(true);
         });

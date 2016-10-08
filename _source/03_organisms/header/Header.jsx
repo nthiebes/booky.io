@@ -15,7 +15,7 @@ import Link from '../../01_atoms/link/Link.jsx';
  * @prop {boolean}  menuMainOpen    Main menu open
  * @prop {function} onMainMenuClick Main menu icon click callback
  */
-export default class Header extends React.Component {
+export default class Header extends Component {
     constructor() {
         super();
     }

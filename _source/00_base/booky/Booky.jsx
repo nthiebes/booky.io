@@ -6,6 +6,7 @@ import CategoriesContainer from '../../03_organisms/categories/categoriesContain
 import './booky.scss';
 
 /**
+ * React component
  * booky.io base class
  * 
  * @class 00_base/booky/Booky

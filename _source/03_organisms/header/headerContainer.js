@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Header from './Header.jsx';
-import { toggleMainMenu } from  './headerActions';
+import { toggleMainMenu } from './headerActions';
 
 export const mapStateToProps = (state) => {
     return {

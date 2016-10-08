@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Header from './Header.jsx';
-import HeaderContainer, { mapStateToProps, mapDispatchToProps } from './headerContainer';
+import { mapStateToProps, mapDispatchToProps } from './headerContainer';
 import { toggleMainMenu } from './headerActions';
 import header from './headerReducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
@@ -12,7 +12,7 @@ describe('<Header />', function() {
 
     describe('component', function() {
 
-        let header,
+        let component,
             callback,
             getComponent = function(props = {}) {
                 return <Header { ...props } />;
@@ -25,40 +25,40 @@ describe('<Header />', function() {
         describe('should always', function() {
 
             beforeEach(function() {
-                header = shallow(getComponent({
+                component = shallow(getComponent({
                     onMainMenuClick: callback,
                     menuMainOpen: false
                 }));
             });
 
             it('have the correct class', function() {
-                expect(header.find('header').hasClass('o-header o-header--primary')).toBe(true);
+                expect(component.find('header').hasClass('o-header o-header--primary')).toBe(true);
             });
 
             it('include links', function() {
-                expect(header.containsMatchingElement(
+                expect(component.containsMatchingElement(
                     <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />
                 )).toBe(true);
 
-                expect(header.containsMatchingElement(
+                expect(component.containsMatchingElement(
                     <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />
                 )).toBe(true);
             });
 
             it('include icons', function() {
-                expect(header.containsMatchingElement(
+                expect(component.containsMatchingElement(
                     <Icon icon="menu" className="o-header__icon o-header__menu-main-icon a-icon--light" label="Menu" onClick={ callback } />
                 )).toBe(true);
                 
-                expect(header.containsMatchingElement(
+                expect(component.containsMatchingElement(
                     <Icon icon="edit" className="o-header__icon a-icon--light" />
                 )).toBe(true);
 
-                expect(header.containsMatchingElement(
+                expect(component.containsMatchingElement(
                     <Icon icon="add" className="o-header__icon a-icon--light" />
                 )).toBe(true);
 
-                expect(header.containsMatchingElement(
+                expect(component.containsMatchingElement(
                     <Icon icon="dashboard" className="o-header__icon a-icon--light" />
                 )).toBe(true);
             });
@@ -67,14 +67,14 @@ describe('<Header />', function() {
         describe('when rendered open', function() {
 
             beforeEach(function() {
-                header = shallow(getComponent({
+                component = shallow(getComponent({
                     menuMainOpen: true,
                     onMainMenuClick: callback
                 }));
             });
 
             it('should include the MenuMain with the correct class', function() {
-                const mainMenuProps = header.find('MenuMain').props();
+                const mainMenuProps = component.find('MenuMain').props();
 
                 expect(mainMenuProps.className).toBe('m-menu-main--open');
             });
@@ -83,14 +83,14 @@ describe('<Header />', function() {
         describe('when rendered closed', function() {
 
             beforeEach(function() {
-                header = shallow(getComponent({
+                component = shallow(getComponent({
                     menuMainOpen: false,
                     onMainMenuClick: callback
                 }));
             });
 
             it('should include the MenuMain with the correct class', function() {
-                const mainMenuProps = header.find('MenuMain').props();
+                const mainMenuProps = component.find('MenuMain').props();
 
                 expect(mainMenuProps.className).toBe('');
             });
@@ -137,7 +137,9 @@ describe('<Header />', function() {
         describe('called with no valid action', function() {
 
             it('should return the initial state', function() {
-                expect(header(undefined, {})).toEqual({});
+                let state;
+
+                expect(header(state, {})).toEqual({});
             });
         });
 
