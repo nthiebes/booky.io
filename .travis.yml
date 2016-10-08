@@ -3,10 +3,8 @@ node_js:
   - "6"
   - "5"
 script:
-  # Tests
-  - npm run test
-  # ESLint
-  - npm run lint
+  # Tests and linting
+  - npm run qa
 after_success:
   # Send coverage data to coveralls.
   - npm run test:cover
