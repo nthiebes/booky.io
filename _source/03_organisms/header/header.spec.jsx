@@ -13,10 +13,11 @@ describe('<Header />', function() {
     describe('component', function() {
 
         let component,
-            callback,
-            getComponent = function(props = {}) {
-                return <Header { ...props } />;
-            };
+            callback;
+        
+        const getComponent = function(props = {}) {
+            return <Header { ...props } />;
+        };
 
         beforeEach(function() {
             callback = jest.fn();
@@ -26,8 +27,8 @@ describe('<Header />', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
-                    onMainMenuClick: callback,
-                    menuMainOpen: false
+                    'onMainMenuClick': callback,
+                    'menuMainOpen': false
                 }));
             });
 
@@ -68,8 +69,8 @@ describe('<Header />', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
-                    menuMainOpen: true,
-                    onMainMenuClick: callback
+                    'menuMainOpen': true,
+                    'onMainMenuClick': callback
                 }));
             });
 
@@ -84,8 +85,8 @@ describe('<Header />', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
-                    menuMainOpen: false,
-                    onMainMenuClick: callback
+                    'menuMainOpen': false,
+                    'onMainMenuClick': callback
                 }));
             });
 
@@ -100,8 +101,8 @@ describe('<Header />', function() {
     describe('container', function() {
         
         const state = {
-                header: {
-                    menuMainOpen: 'banana'
+                'header': {
+                    'menuMainOpen': 'banana'
                 }
             },
             dispatch = jest.fn();
@@ -123,10 +124,10 @@ describe('<Header />', function() {
         describe('toggleMainMenu()', function() {
 
             it('should return the action', function() {
-                let action = toggleMainMenu();
+                const action = toggleMainMenu();
 
                 expect(action).toEqual({
-                    type: 'TOGGLE_MAIN_MENU'
+                    'type': 'TOGGLE_MAIN_MENU'
                 });
             });
         });
@@ -146,17 +147,17 @@ describe('<Header />', function() {
         describe('called with an action', function() {
 
             it('TOGGLE_MAIN_MENU: should return the new state', function() {
-                let state = {menuMainOpen: true};
+                const state = {'menuMainOpen': true};
 
                 // ...and not mutate it
                 expect(header(state, toggleMainMenu())).not.toBe(state);
 
-                expect(header({menuMainOpen: true}, toggleMainMenu())).toEqual({
-                    menuMainOpen: false
+                expect(header({'menuMainOpen': true}, toggleMainMenu())).toEqual({
+                    'menuMainOpen': false
                 });
 
-                expect(header({menuMainOpen: false}, toggleMainMenu())).toEqual({
-                    menuMainOpen: true
+                expect(header({'menuMainOpen': false}, toggleMainMenu())).toEqual({
+                    'menuMainOpen': true
                 });
             });
         });

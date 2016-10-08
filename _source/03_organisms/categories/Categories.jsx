@@ -12,17 +12,13 @@ import Category from '../../02_molecules/category/Category.jsx';
  * @prop {array} categories A list of categories
  */
 export default class Categories extends Component {
-    constructor() {
-        super();
-    }
-
     render() {
         const PROPS = this.props;
         const CATEGORIES = PROPS.categories;
 
         return (
             <main className="o-categories">
-                {CATEGORIES.map(category =>
+                {CATEGORIES.map((category) =>
                     <Category key={ category.id } { ...category } />
                 )}
             </main>
@@ -31,5 +27,5 @@ export default class Categories extends Component {
 }
 
 Categories.propTypes = {
-    categories: PropTypes.array.isRequired
+    'categories': PropTypes.array.isRequired
 };

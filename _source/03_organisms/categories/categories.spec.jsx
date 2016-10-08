@@ -9,19 +9,20 @@ describe('<Categories />', function() {
 
     describe('component', function() {
 
-        let component,
-            getComponent = function(props = {}) {
-                return <Categories { ...props } />;
-            };
+        let component;
+        
+        const getComponent = function(props = {}) {
+            return <Categories { ...props } />;
+        };
 
         beforeEach(function() {
             component = shallow(getComponent({
-                categories: [{
-                    id: 0,
-                    name: 'Category 1'
+                'categories': [{
+                    'id': 0,
+                    'name': 'Category 1'
                 }, {
-                    id: 1,
-                    name: 'Category 2'
+                    'id': 1,
+                    'name': 'Category 2'
                 }]
             }));
         });
@@ -43,7 +44,7 @@ describe('<Categories />', function() {
     describe('container', function() {
         
         const state = {
-            categories: []
+            'categories': []
         };
 
         it('should map the state to props', function() {

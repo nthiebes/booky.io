@@ -6,10 +6,6 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
  * @class 02_molecules/menu-main/MenuMain
  */
 export default class MenuMain extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
         const PROPS = this.props;
         const CLASS = 'm-menu-main ' + PROPS.className;

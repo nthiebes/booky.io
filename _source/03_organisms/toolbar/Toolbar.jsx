@@ -16,10 +16,6 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @prop {function} onSearchClick Icon click callback
  */
 export default class Toolbar extends Component {
-    constructor() {
-        super();
-    }
-
     render() {
         const PROPS = this.props;
         const SEARCH_CLASS = PROPS.searchOpen ? 'm-search--open' : '';
@@ -36,6 +32,6 @@ export default class Toolbar extends Component {
 }
 
 Toolbar.propTypes = {
-    searchOpen: PropTypes.bool.isRequired,
-    onSearchClick: PropTypes.func.isRequired
+    'searchOpen': PropTypes.bool.isRequired,
+    'onSearchClick': PropTypes.func.isRequired
 };

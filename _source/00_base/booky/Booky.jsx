@@ -16,10 +16,6 @@ import './booky.scss';
  * @requires 03_organisms/categories/categoriesContainer
  */
 export default class Booky extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
             <div>

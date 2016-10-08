@@ -16,10 +16,6 @@ import Link from '../../01_atoms/link/Link.jsx';
  * @prop {function} onMainMenuClick Main menu icon click callback
  */
 export default class Header extends Component {
-    constructor() {
-        super();
-    }
-
     render() {
         const PROPS = this.props;
         const MENU_MAIN_CLASS = PROPS.menuMainOpen ? 'm-menu-main--open' : '';
@@ -41,6 +37,6 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
-    menuMainOpen: PropTypes.bool.isRequired,
-    onMainMenuClick: PropTypes.func.isRequired
+    'menuMainOpen': PropTypes.bool.isRequired,
+    'onMainMenuClick': PropTypes.func.isRequired
 };

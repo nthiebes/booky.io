@@ -6,10 +6,6 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @class 02_molecules/menu-account/MenuAccount
  */
 export default class MenuAccount extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
             <div className="m-menu-account" id="menu-account">

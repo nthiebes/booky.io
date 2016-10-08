@@ -11,10 +11,11 @@ describe('<Toolbar />', function() {
     describe('component', function() {
 
         let component,
-            callback,
-            getComponent = function(props = {}) {
-                return <Toolbar { ...props } />;
-            };
+            callback;
+
+        const getComponent = function(props = {}) {
+            return <Toolbar { ...props } />;
+        };
 
         beforeEach(function() {
             callback = jest.fn();
@@ -24,8 +25,8 @@ describe('<Toolbar />', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
-                    onSearchClick: callback,
-                    searchOpen: false
+                    'onSearchClick': callback,
+                    'searchOpen': false
                 }));
             });
 
@@ -50,8 +51,8 @@ describe('<Toolbar />', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
-                    searchOpen: true,
-                    onSearchClick: callback
+                    'searchOpen': true,
+                    'onSearchClick': callback
                 }));
             });
 
@@ -71,8 +72,8 @@ describe('<Toolbar />', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
-                    searchOpen: false,
-                    onSearchClick: callback
+                    'searchOpen': false,
+                    'onSearchClick': callback
                 }));
             });
 
@@ -91,10 +92,10 @@ describe('<Toolbar />', function() {
     });
 
     describe('container', function() {
-        
+
         const state = {
-                toolbar: {
-                    searchOpen: 'banana'
+                'toolbar': {
+                    'searchOpen': 'banana'
                 }
             },
             dispatch = jest.fn();
@@ -105,7 +106,7 @@ describe('<Toolbar />', function() {
 
         it('should map dispatch actions to props', function() {
             mapDispatchToProps(dispatch).onSearchClick();
-            
+
             expect(typeof mapDispatchToProps(dispatch).onSearchClick).toBe('function');
             expect(dispatch).toHaveBeenCalledWith(toggleSearch());
         });
@@ -116,10 +117,10 @@ describe('<Toolbar />', function() {
         describe('toggleSearch()', function() {
 
             it('should return the action', function() {
-                let action = toggleSearch();
+                const action = toggleSearch();
 
                 expect(action).toEqual({
-                    type: 'TOGGLE_SEARCH'
+                    'type': 'TOGGLE_SEARCH'
                 });
             });
         });
@@ -139,17 +140,17 @@ describe('<Toolbar />', function() {
         describe('called with an action', function() {
 
             it('TOGGLE_SEARCH: should return the new state', function() {
-                let state = {searchOpen: true};
+                const state = {'searchOpen': true};
 
                 // ...and not mutate it
                 expect(toolbar(state, toggleSearch())).not.toBe(state);
 
-                expect(toolbar({searchOpen: true}, toggleSearch())).toEqual({
-                    searchOpen: false
+                expect(toolbar({'searchOpen': true}, toggleSearch())).toEqual({
+                    'searchOpen': false
                 });
 
-                expect(toolbar({searchOpen: false}, toggleSearch())).toEqual({
-                    searchOpen: true
+                expect(toolbar({'searchOpen': false}, toggleSearch())).toEqual({
+                    'searchOpen': true
                 });
             });
         });

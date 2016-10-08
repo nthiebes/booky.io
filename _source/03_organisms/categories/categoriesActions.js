@@ -10,7 +10,7 @@ export const TOGGLE_CATEGORY = 'TOGGLE_CATEGORY';
  */
 export function addCategory(name, id) {
     return {
-        type: ADD_CATEGORY,
+        'type': ADD_CATEGORY,
         name,
         id
     };
@@ -18,7 +18,7 @@ export function addCategory(name, id) {
 
 export function toggleCategory(id) {
     return {
-        type: TOGGLE_CATEGORY,
+        'type': TOGGLE_CATEGORY,
         id
     };
 }
