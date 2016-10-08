@@ -43,8 +43,8 @@ describe('<Categories />', function() {
     describe('container', function() {
         
         const state = {
-                categories: []
-            };
+            categories: []
+        };
 
         it('should map the state to props', function() {
             expect(mapStateToProps(state)).toEqual(state);
