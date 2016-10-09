@@ -8,7 +8,7 @@ import toolbar from './toolbarReducers';
 
 describe('<Toolbar />', function() {
 
-    describe('component', function() {
+    describe('presentational component', function() {
 
         let component,
             callback;
@@ -36,6 +36,7 @@ describe('<Toolbar />', function() {
                 expect(buttonProps.className).toBe('o-toolbar__button a-button--primary');
                 expect(buttonProps.text).toBe('New ');
                 expect(buttonProps.buzzword).toBe('category');
+                expect(buttonProps.icon).toBe('category');
             });
 
             it('include an icon', function() {
@@ -91,7 +92,7 @@ describe('<Toolbar />', function() {
         });
     });
 
-    describe('container', function() {
+    describe('container component', function() {
 
         const state = {
                 'toolbar': {

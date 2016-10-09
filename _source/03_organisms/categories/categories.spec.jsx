@@ -7,7 +7,7 @@ import Category from '../../02_molecules/category/Category.jsx';
 
 describe('<Categories />', function() {
 
-    describe('component', function() {
+    describe('presentational component', function() {
 
         let component;
         
@@ -41,7 +41,7 @@ describe('<Categories />', function() {
         });
     });
 
-    describe('container', function() {
+    describe('container component', function() {
         
         const state = {
             'categories': []

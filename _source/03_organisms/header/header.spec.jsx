@@ -10,7 +10,7 @@ import Link from '../../01_atoms/link/Link.jsx';
 
 describe('<Header />', function() {
 
-    describe('component', function() {
+    describe('presentational component', function() {
 
         let component,
             callback;
@@ -98,7 +98,7 @@ describe('<Header />', function() {
         });
     });
 
-    describe('container', function() {
+    describe('container component', function() {
         
         const state = {
                 'header': {

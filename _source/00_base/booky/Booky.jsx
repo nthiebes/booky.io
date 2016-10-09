@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import HeaderContainer from '../../03_organisms/header/headerContainer';
 import ToolbarContainer from '../../03_organisms/toolbar/toolbarContainer';
@@ -15,7 +15,7 @@ import './booky.scss';
  * @requires 03_organisms/toolbar/toolbarContainer
  * @requires 03_organisms/categories/categoriesContainer
  */
-export default class Booky extends React.Component {
+export default class Booky extends Component {
     render() {
         return (
             <div>
