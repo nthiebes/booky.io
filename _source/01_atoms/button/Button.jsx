@@ -3,10 +3,6 @@ import React from 'react';
 import Icon from '../icon/Icon.jsx';
 
 export default class Button extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
         const PROPS = this.props;
         const CLASS = 'a-button ' + PROPS.className;

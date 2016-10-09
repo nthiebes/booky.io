@@ -4,7 +4,7 @@ const toolbar = (state = {}, action) => {
     switch (action.type) {
         case TOGGLE_SEARCH:
             return Object.assign({}, state, {
-                searchOpen: !state.searchOpen
+                'searchOpen': !state.searchOpen
             });
 
         default:

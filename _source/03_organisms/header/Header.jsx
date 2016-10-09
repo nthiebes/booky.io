@@ -1,25 +1,21 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 
 import MenuMain from '../../02_molecules/menu-main/MenuMain.jsx';
-import MenuAccount from '../../02_molecules/menu-account/MenuAccount.jsx';
-import Search from '../../02_molecules/search/Search.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Link from '../../01_atoms/link/Link.jsx';
 
 /**
+ * React component
  * @class 03_organisms/header/Header
+ * 
+ * @requires 02_molecules/menu-main/MenuMain
+ * @requires 01_atoms/icon/Icon
+ * @requires 01_atoms/link/Link
+ *
+ * @prop {boolean}  menuMainOpen    Main menu open
+ * @prop {function} onMainMenuClick Main menu icon click callback
  */
-export default class Header extends React.Component {
-    constructor() {
-        super();
-
-        this.onMainMenuClick = this.onMainMenuClick.bind(this);
-    }
-
-    onMainMenuClick() {
-        console.log('Yay!');
-    }
-
+export default class Header extends Component {
     render() {
         const PROPS = this.props;
         const MENU_MAIN_CLASS = PROPS.menuMainOpen ? 'm-menu-main--open' : '';
@@ -39,3 +35,8 @@ export default class Header extends React.Component {
         );
     }
 }
+
+Header.propTypes = {
+    'menuMainOpen': PropTypes.bool.isRequired,
+    'onMainMenuClick': PropTypes.func.isRequired
+};

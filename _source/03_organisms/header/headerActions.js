@@ -9,6 +9,6 @@ export const TOGGLE_MAIN_MENU = 'TOGGLE_MAIN_MENU';
  */
 export function toggleMainMenu() {
     return {
-        type: TOGGLE_MAIN_MENU
+        'type': TOGGLE_MAIN_MENU
     };
 }

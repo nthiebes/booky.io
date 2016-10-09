@@ -3,10 +3,6 @@ import React from 'react';
 import Icon from '../icon/Icon.jsx';
 
 export default class Link extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
         const PROPS = this.props;
         const CLASS = 'a-link ' + PROPS.className;

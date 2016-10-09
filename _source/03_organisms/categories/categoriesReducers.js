@@ -6,16 +6,16 @@ const categories = (state = [], action) => {
             return [
                 ...state,
                 {
-                    id: action.id,
-                    name: action.name,
-                    expanded: true
+                    'id': action.id,
+                    'name': action.name,
+                    'expanded': true
                 }
             ];
         case TOGGLE_CATEGORY:
             return state.map((category) => {
                 if (category.id === action.id) {
                     return Object.assign({}, category, {
-                        expanded: !category.expanded
+                        'expanded': !category.expanded
                     });
                 }
                 return category;

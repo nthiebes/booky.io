@@ -1,4 +1,6 @@
 {
     "collectCoverageFrom": ["**/*.{js,jsx}", "!**/node_modules/**", "!**/.spec.{js,jsx}"],
-    "rootDir": "_source"
+    "coveragePathIgnorePatterns": ["_source/webpack-public-path", "_source/00_base/booky"],
+    "rootDir": "_source",
+    "scriptPreprocessor": "../node_modules/babel-jest"
 }
