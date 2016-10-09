@@ -1,0 +1,9 @@
+.a-button--large-primary {
+    background-color: rgba($color__background--primary, 0.9);
+    color: $color__font--light;
+    height: 60px;
+
+    &:hover, &:active {
+        background-color: $color__background--primary;
+    }
+}

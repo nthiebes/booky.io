@@ -1,21 +1,24 @@
 @import "../../00_base/config";
 @import "__text/a-button__text";
+@import "__icon/a-button__icon";
 
 .a-button {
+    align-items: center;
     user-select: none;
     border-radius: 3px;
     border: 1px solid transparent;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
     font-family: $font__family-text;
     font-size: 0;
-    padding: 5px 10px;
+    padding: 0 15px;
     transition: color 0.2s linear, background-color 0.2s linear;
     white-space: nowrap;
     height: 38px;
     line-height: 38px;
+    text-transform: uppercase;
 }
 
-@import "a-button--light";
-@import "a-button--primary";
-@import "a-button--icon";
+@import "a-button--small-light";
+@import "a-button--small-primary";
+@import "a-button--large-primary";
