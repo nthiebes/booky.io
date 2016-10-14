@@ -34,9 +34,10 @@ describe('<Toolbar />', function() {
                 const buttonProps = component.find('Button').props();
 
                 expect(buttonProps.className).toBe('o-toolbar__button a-button--primary');
-                expect(buttonProps.text).toBe('New ');
+                expect(buttonProps.text).toBe('New');
                 expect(buttonProps.buzzword).toBe('category');
-                expect(buttonProps.icon).toBe('category');
+                expect(buttonProps.color).toBe('primary');
+                expect(buttonProps.size).toBe('small');
             });
 
             it('include an icon', function() {
