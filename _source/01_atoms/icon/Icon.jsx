@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 
-export default class Icon extends React.Component {
+/**
+ * React component
+ * @class 01_atoms/icon/Icon
+ *
+ * @prop {string} [className] Additional class name
+ * @prop {string} icon        Icon name
+ * @prop {string} [label]     Button label
+ * @prop {string} [onCLick]   Click callback
+ */
+export default class Icon extends Component {
     render() {
         const PROPS = this.props;
         const LINK = 'images/symbol-defs.svg#icon-' + PROPS.icon;
-        const CLASS = PROPS.className ? 'a-icon ' + PROPS.className : 'a-icon';
+        const CLASS = 'a-icon ' + PROPS.className;
         const LABEL = PROPS.label ? <label className="a-icon__label">{ PROPS.label }</label> : '';
 
         return (
@@ -17,3 +26,14 @@ export default class Icon extends React.Component {
         );
     }
 }
+
+Icon.propTypes = {
+    'className': PropTypes.string,
+    'icon': PropTypes.string.isRequired,
+    'label': PropTypes.string,
+    'onClick': PropTypes.func
+};
+
+Icon.defaultProps = {
+    'className': ''
+};
