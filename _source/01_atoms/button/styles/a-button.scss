@@ -10,7 +10,7 @@
     cursor: pointer;
     display: flex;
     font-family: $font__family-text;
-    font-size: 0;
+    font-size: 0.85rem;
     padding: 0 15px;
     transition: color 0.2s linear, background-color 0.2s linear;
     white-space: nowrap;
@@ -22,3 +22,4 @@
 @import "a-button--small-light";
 @import "a-button--small-primary";
 @import "a-button--large-primary";
+@import "a-button--large";

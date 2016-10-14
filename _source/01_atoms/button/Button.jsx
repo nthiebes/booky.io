@@ -5,7 +5,7 @@ import Icon from '../icon/Icon.jsx';
 export default class Button extends Component {
     render() {
         const PROPS = this.props;
-        const CLASS = 'a-button a-button--' + PROPS.size + '-' + PROPS.color + ' ' + PROPS.className;
+        const CLASS = `a-button a-button--${PROPS.size} a-button--${PROPS.size}-${PROPS.color} ${PROPS.className}`;
         const ICON = PROPS.icon ? <Icon icon={ PROPS.icon } className="a-button__icon" /> : '';
         const TEXT = PROPS.text ? PROPS.text : '';
         const BUZZWORD = PROPS.buzzword ? PROPS.buzzword : '';

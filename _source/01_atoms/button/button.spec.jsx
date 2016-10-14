@@ -22,7 +22,7 @@ describe('<Button />', function() {
         });
 
         it('should have the correct class', function() {
-            expect(component.find('button').hasClass('a-button a-button--small-primary')).toBe(true);
+            expect(component.find('button').hasClass('a-button a-button--small a-button--small-primary')).toBe(true);
         });
 
         it('should include the text', function() {
@@ -46,7 +46,7 @@ describe('<Button />', function() {
         });
 
         it('should have the correct class', function() {
-            expect(component.find('button').hasClass('a-button a-button--large-light banana')).toBe(true);
+            expect(component.find('button').hasClass('a-button a-button--large a-button--large-light banana')).toBe(true);
         });
 
         it('should include the text', function() {
@@ -61,7 +61,7 @@ describe('<Button />', function() {
             )).toBe(true);
         });
 
-        it('should include the buzzword', function() {
+        it('should include the icon', function() {
             const iconProps = component.find('Icon').props();
 
             expect(iconProps).toEqual({

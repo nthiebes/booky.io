@@ -1,5 +1,6 @@
 @import "a-button__text--buzzword";
 
 .a-button__text {
-    font-size: 0.85rem;
+    font-size: 1em;
+    transition: transform 0.2s ease;
 }
