@@ -66,6 +66,7 @@ describe('<Toolbar />', function() {
 
                 expect(iconProps.className).toBe('o-toolbar__icon a-icon--dark');
                 expect(iconProps.icon).toBe('close');
+                expect(iconProps.onClick).toBe(callback);
             });
         });
 
@@ -95,6 +96,7 @@ describe('<Toolbar />', function() {
 
                 expect(iconProps.className).toBe('o-toolbar__icon a-icon--dark');
                 expect(iconProps.icon).toBe('search');
+                expect(iconProps.onClick).toBe(callback);
             });
         });
     });
