@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 
 import Icon from '../../01_atoms/icon/Icon.jsx';
 
 /**
+ * React component
  * @class 02_molecules/menu-main/MenuMain
+ * 
+ * @requires 01_atoms/icon/Icon
+ *
+ * @prop {string} [className] Additional class name
+ * @prop {string} [icon]      Icon name
+ * @prop {string} [text]      Link text
  */
-export default class MenuMain extends React.Component {
+export default class MenuMain extends Component {
     render() {
         const PROPS = this.props;
         const CLASS = 'm-menu-main ' + PROPS.className;
@@ -19,3 +26,11 @@ export default class MenuMain extends React.Component {
         );
     }
 }
+
+MenuMain.propTypes = {
+    'className': PropTypes.string
+};
+
+MenuMain.defaultProps = {
+    'className': ''
+};
