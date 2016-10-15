@@ -56,7 +56,7 @@ describe('<Header />', function() {
                 )).toBe(true);
 
                 expect(component.containsMatchingElement(
-                    <Icon icon="add" className="o-header__icon a-icon--light" />
+                    <Icon icon="add" className="o-header__icon o-header__icon--add a-icon--light" />
                 )).toBe(true);
 
                 expect(component.containsMatchingElement(

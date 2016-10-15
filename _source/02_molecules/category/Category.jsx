@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 
 import Bookmark from '../bookmark/Bookmark.jsx';
+import Icon from '../../01_atoms/icon/Icon.jsx';
 
 /**
+ * React component
+ * A wrapper for all categories
  * @class 02_molecules/category/Category
+ * 
+ * @requires 02_molecules/bookmark/Bookmark
+ *
+ * @prop {string} name Name of the category
  */
-export default class Category extends React.Component {
+export default class Category extends Component {
     render() {
         const PROPS = this.props;
 
         return (
             <section className="m-category">
-                <div className="m-category__icon a-icon a-icon--reduce" />
+                <Icon className="m-category__icon a-icon--primary" icon="reduce" />
                 <h1 className="m-category__name">{ PROPS.name }</h1>
                 <div className="m-category__icon a-icon a-icon--move" />
                 <div className="m-category__icon a-icon a-icon--edit" />
@@ -25,3 +32,7 @@ export default class Category extends React.Component {
         );
     }
 }
+
+Category.propTypes = {
+    'name': PropTypes.string.isRequired
+};

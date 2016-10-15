@@ -29,7 +29,7 @@ export default class Header extends Component {
                 <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />
 
                 <Icon icon="edit" className="o-header__icon a-icon--light" />
-                <Icon icon="add" className="o-header__icon a-icon--light" />
+                <Icon icon="add" className="o-header__icon o-header__icon--add a-icon--light" />
                 <Icon icon="dashboard" className="o-header__icon a-icon--light" />
             </header>
         );

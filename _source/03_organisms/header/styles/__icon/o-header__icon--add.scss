@@ -1,0 +1,5 @@
+.o-header__icon--add {
+    @include desktop {
+        display: none;
+    }
+}

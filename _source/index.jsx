@@ -16,6 +16,12 @@ const initialState = {
     }, {
         'id': 2,
         'name': 'Category 3'
+    }, {
+        'id': 3,
+        'name': 'Category 4'
+    }, {
+        'id': 4,
+        'name': 'Category 5'
     }],
     'header': {
         'menuMainOpen': false
