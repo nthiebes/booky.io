@@ -28,6 +28,10 @@ body {
     @include desktop {
         font-size: $size--desktop;
     }
+
+    &.booky--no-animation {
+        transition: none !important;
+    }
 }
 
 ::-moz-selection {
