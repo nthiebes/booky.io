@@ -27,9 +27,10 @@ describe('<Header />', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
+                    'menuMainOpen': false,
+                    'editMode': false,
                     'onMainMenuClick': callback,
-                    'onEditModeClick': callback,
-                    'menuMainOpen': false
+                    'onEditModeClick': callback
                 }));
             });
 
@@ -53,15 +54,15 @@ describe('<Header />', function() {
                 )).toBe(true);
                 
                 expect(component.containsMatchingElement(
-                    <Icon icon="edit" className="o-header__icon a-icon--light" />
+                    <Icon icon="edit" className="o-header__icon a-icon--light" title="Edit mode" />
                 )).toBe(true);
 
                 expect(component.containsMatchingElement(
-                    <Icon icon="add" className="o-header__icon o-header__icon--add a-icon--light" />
+                    <Icon icon="add" className="o-header__icon o-header__icon--add a-icon--light" title="Add" />
                 )).toBe(true);
 
                 expect(component.containsMatchingElement(
-                    <Icon icon="dashboard" className="o-header__icon a-icon--light" />
+                    <Icon icon="dashboard" className="o-header__icon a-icon--light" title="Dashboards" />
                 )).toBe(true);
             });
         });
@@ -71,6 +72,7 @@ describe('<Header />', function() {
             beforeEach(function() {
                 component = shallow(getComponent({
                     'menuMainOpen': true,
+                    'editMode': false,
                     'onMainMenuClick': callback,
                     'onEditModeClick': callback
                 }));
@@ -88,6 +90,7 @@ describe('<Header />', function() {
             beforeEach(function() {
                 component = shallow(getComponent({
                     'menuMainOpen': false,
+                    'editMode': false,
                     'onMainMenuClick': callback,
                     'onEditModeClick': callback
                 }));

@@ -4,9 +4,10 @@
     flex-wrap: wrap;
 
     &.o-categories--edit-mode {
-        .m-category__icon--edit-mode {
+        .m-category__icon--edit-mode,
+        .m-bookmark__icon--edit-mode {
             opacity: 1;
-            transition: color 0.2s linear, opacity 0.2s 0.2s linear, width 0.2s linear;
+            transition: color 0.2s linear, opacity 0.2s linear;
             width: 36px;
         }
     }

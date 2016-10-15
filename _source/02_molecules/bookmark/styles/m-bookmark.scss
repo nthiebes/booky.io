@@ -1,0 +1,15 @@
+@import "__link/m-bookmark__link";
+@import "__icon/m-bookmark__icon";
+
+.m-bookmark {
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+        &:hover .m-bookmark__icon--edit-mode {
+            opacity: 1;
+            transition: color 0.2s linear, opacity 0.2s linear;
+            width: 36px;
+        }
+    }
+}

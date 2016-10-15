@@ -28,7 +28,8 @@ describe('<Link />', function() {
             component = shallow(getComponent({
                 'className': 'banana',
                 'text': 'Gscheider Text!',
-                'icon': 'link'
+                'icon': 'link',
+                'title': 'Potato'
             }));
         });
 
@@ -47,6 +48,10 @@ describe('<Link />', function() {
             expect(component.contains(
                 'Gscheider Text!'
             )).toBe(true);
+        });
+
+        it('should have a title', function() {
+            expect(component.find('a').prop('title')).toBe('Potato');
         });
     });
 });

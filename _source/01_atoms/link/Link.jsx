@@ -11,6 +11,7 @@ import Icon from '../icon/Icon.jsx';
  * @prop {string} [className] Additional class name
  * @prop {string} [icon]      Icon name
  * @prop {string} [text]      Link text
+ * @prop {string} [title]     Title
  */
 export default class Link extends Component {
     render() {
@@ -30,10 +31,12 @@ export default class Link extends Component {
 Link.propTypes = {
     'className': PropTypes.string,
     'icon': PropTypes.string,
-    'text': PropTypes.string
+    'text': PropTypes.string,
+    'title': PropTypes.string
 };
 
 Link.defaultProps = {
     'className': '',
-    'text': ''
+    'text': '',
+    'title': ''
 };
