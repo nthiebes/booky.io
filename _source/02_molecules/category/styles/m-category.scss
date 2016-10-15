@@ -1,8 +1,15 @@
+@import "__icon/m-category__icon";
+@import "__name/m-category__name";
+@import "__bookmarks/m-category__bookmarks";
+
 .m-category {
-    background-color: grey;
-    margin: 2rem 3%;
+    align-items: center;
+    display: flex;
     flex-grow: 1;
+    flex-wrap: wrap;
+    margin: 2rem 3%;
     padding: 6px;
+    position: relative;
     width: 300px;
 
     @include desktop {

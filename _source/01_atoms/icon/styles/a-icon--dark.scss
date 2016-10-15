@@ -1,7 +1,8 @@
 .a-icon--dark {
     color: $color__font--dark;
+    border-color: $color__font--dark;
 
-    &:hover, &:active {
+    &:active {
         color: $color__font--primary;
     }
 }

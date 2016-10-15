@@ -1,0 +1,18 @@
+.m-category__name {
+    color: $color__font--dark;
+    display: flex;
+    flex-grow: 1;
+    font-family: $font__family--heading;
+    font-size: 2rem;
+    font-weight: 600;
+
+    &:after {
+        background-color: $color__background--primary;
+        top: 3rem;
+        content: " ";
+        height: 2px;
+        left: 6px;
+        position: absolute;
+        right: 6px;
+    }
+}

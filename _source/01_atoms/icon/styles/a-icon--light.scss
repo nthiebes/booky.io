@@ -1,4 +1,8 @@
 .a-icon--light {
     color: $color__font--light;
     border-color: $color__font--light;
+
+    &:active {
+        color: $color__font--dark;
+    }
 }

@@ -18,11 +18,11 @@ export default class Category extends Component {
 
         return (
             <section className="m-category">
-                <Icon className="m-category__icon a-icon--primary" icon="reduce" />
+                <Icon className="m-category__icon a-icon--dark" icon="reduce" />
                 <h1 className="m-category__name">{ PROPS.name }</h1>
-                <div className="m-category__icon a-icon a-icon--move" />
-                <div className="m-category__icon a-icon a-icon--edit" />
-                <div className="m-category__icon a-icon a-icon--delete" />
+                <Icon className="m-category__icon a-icon--dark" icon="edit" />
+                <Icon className="m-category__icon a-icon--dark" icon="delete" />
+                <Icon className="m-category__icon a-icon--dark" icon="drag" />
                 <ul className="m-category__bookmarks">
                     <Bookmark title="Bookmark 1" url="https://booky.io" />
                     <Bookmark title="Bookmark 2" url="https://booky.io" />

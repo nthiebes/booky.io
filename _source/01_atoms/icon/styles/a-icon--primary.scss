@@ -1,4 +1,8 @@
 .a-icon--primary {
     color: $color__font--primary;
     border-color: $color__font--primary;
+
+    &:active {
+        color: $color__font--dark;
+    }
 }
