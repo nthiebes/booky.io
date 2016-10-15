@@ -28,7 +28,9 @@ describe('<Input />', function() {
             expect(labelProps).toEqual({
                 'className': 'a-input__field',
                 'placeholder': '',
-                'type': 'text'
+                'type': 'text',
+                'onBlur': '',
+                'onFocus': ''
             });
 
             expect(inputField.node.ref).toBe('inputField');
@@ -57,7 +59,9 @@ describe('<Input />', function() {
             expect(labelProps).toEqual({
                 'className': 'a-input__field',
                 'placeholder': 'Gscheider placeholder!',
-                'type': 'password'
+                'type': 'password',
+                'onBlur': '',
+                'onFocus': ''
             });
 
             expect(inputField.node.ref).toBe('inputField');
