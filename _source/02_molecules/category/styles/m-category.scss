@@ -1,12 +1,11 @@
+@import "__header/m-category__header";
 @import "__icon/m-category__icon";
 @import "__name/m-category__name";
+@import "__name-inner/m-category__name-inner";
 @import "__bookmarks/m-category__bookmarks";
 
 .m-category {
-    align-items: center;
-    display: flex;
     flex-grow: 1;
-    flex-wrap: wrap;
     margin: 2rem 3%;
     padding: 6px;
     position: relative;
@@ -14,5 +13,11 @@
 
     @include desktop {
         width: 400px;
+
+        &:hover .m-category__icon--edit-mode {
+            opacity: 1;
+            transition: color 0.2s linear, opacity 0.2s 0.2s linear, width 0.2s linear;
+            width: 36px;
+        }
     }
 }

@@ -14,11 +14,13 @@ import Link from '../../01_atoms/link/Link.jsx';
  *
  * @prop {boolean}  menuMainOpen    Main menu open
  * @prop {function} onMainMenuClick Main menu icon click callback
+ * @prop {function} onEditModeClick Edit mode icon click callback
  */
 export default class Header extends Component {
     render() {
         const PROPS = this.props;
         const MENU_MAIN_CLASS = PROPS.menuMainOpen ? 'm-menu-main--open' : '';
+        const EDIT_MODE_ICON = PROPS.editMode ? 'view' : 'edit';
 
         return (
             <header className="o-header o-header--primary">
@@ -28,7 +30,7 @@ export default class Header extends Component {
                 <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />
                 <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />
 
-                <Icon icon="edit" className="o-header__icon a-icon--light" />
+                <Icon icon={ EDIT_MODE_ICON } className="o-header__icon a-icon--light" onClick={ PROPS.onEditModeClick } />
                 <Icon icon="add" className="o-header__icon o-header__icon--add a-icon--light" />
                 <Icon icon="dashboard" className="o-header__icon a-icon--light" />
             </header>
@@ -38,5 +40,6 @@ export default class Header extends Component {
 
 Header.propTypes = {
     'menuMainOpen': PropTypes.bool.isRequired,
-    'onMainMenuClick': PropTypes.func.isRequired
+    'onMainMenuClick': PropTypes.func.isRequired,
+    'onEditModeClick': PropTypes.func.isRequired
 };

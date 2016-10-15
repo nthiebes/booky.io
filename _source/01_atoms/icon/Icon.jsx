@@ -17,7 +17,7 @@ export default class Icon extends Component {
         const LABEL = PROPS.label ? <label className="a-icon__label">{ PROPS.label }</label> : '';
 
         return (
-            <div className={ CLASS } onClick={ PROPS.onClick ? PROPS.onClick : '' }>
+            <div className={ CLASS } title={ PROPS.title } onClick={ PROPS.onClick ? PROPS.onClick : '' }>
                 <svg className="a-icon__svg">
                     <use xlinkHref={ LINK } />
                 </svg>
@@ -31,9 +31,11 @@ Icon.propTypes = {
     'className': PropTypes.string,
     'icon': PropTypes.string.isRequired,
     'label': PropTypes.string,
-    'onClick': PropTypes.func
+    'onClick': PropTypes.func,
+    'title': PropTypes.string
 };
 
 Icon.defaultProps = {
-    'className': ''
+    'className': '',
+    'title': ''
 };

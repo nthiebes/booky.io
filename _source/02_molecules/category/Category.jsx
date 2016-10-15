@@ -5,9 +5,9 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
 
 /**
  * React component
- * A wrapper for all categories
  * @class 02_molecules/category/Category
  * 
+ * @requires 01_atoms/icon/Icon
  * @requires 02_molecules/bookmark/Bookmark
  *
  * @prop {string} name Name of the category
@@ -18,11 +18,15 @@ export default class Category extends Component {
 
         return (
             <section className="m-category">
-                <Icon className="m-category__icon a-icon--dark" icon="reduce" />
-                <h1 className="m-category__name">{ PROPS.name }</h1>
-                <Icon className="m-category__icon a-icon--dark" icon="edit" />
-                <Icon className="m-category__icon a-icon--dark" icon="delete" />
-                <Icon className="m-category__icon a-icon--dark" icon="drag" />
+                <header className="m-category__header">
+                    <Icon className="m-category__icon a-icon--dark" icon="reduce" />
+                    <h1 className="m-category__name">
+                        <span className="m-category__name-inner">{ PROPS.name }</span>
+                    </h1>
+                    <Icon className="m-category__icon m-category__icon--edit-mode a-icon--dark" icon="edit" title="Edit category" />
+                    <Icon className="m-category__icon m-category__icon--edit-mode a-icon--dark" icon="delete" title="Delete category" />
+                    <Icon className="m-category__icon m-category__icon--edit-mode m-category__icon--drag a-icon--dark" icon="drag" title="Drag me" />
+                </header>
                 <ul className="m-category__bookmarks">
                     <Bookmark title="Bookmark 1" url="https://booky.io" />
                     <Bookmark title="Bookmark 2" url="https://booky.io" />

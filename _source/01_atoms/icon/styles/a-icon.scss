@@ -9,8 +9,8 @@
     font-size: 1rem;
     height: 36px;
     position: relative;
+    transition: color 0.2s linear, opacity 0.2s linear, width 0.2s 0.2s linear;
     user-select: none;
-    transition: color 0.2s linear;
 
     &:after {
         background-color: rgba(0,0,0,0.1);

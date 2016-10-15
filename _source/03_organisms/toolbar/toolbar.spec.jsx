@@ -64,11 +64,8 @@ describe('<Toolbar />', function() {
             it('include an icon', function() {
                 const iconProps = component.find('Icon').props();
 
-                expect(iconProps).toEqual({
-                    'className': 'o-toolbar__icon a-icon--dark',
-                    'icon': 'close',
-                    'onClick': callback
-                });
+                expect(iconProps.className).toBe('o-toolbar__icon a-icon--dark');
+                expect(iconProps.icon).toBe('close');
             });
         });
 
@@ -96,11 +93,8 @@ describe('<Toolbar />', function() {
             it('include an icon', function() {
                 const iconProps = component.find('Icon').props();
 
-                expect(iconProps).toEqual({
-                    'className': 'o-toolbar__icon a-icon--dark',
-                    'icon': 'search',
-                    'onClick': callback
-                });
+                expect(iconProps.className).toBe('o-toolbar__icon a-icon--dark');
+                expect(iconProps.icon).toBe('search');
             });
         });
     });

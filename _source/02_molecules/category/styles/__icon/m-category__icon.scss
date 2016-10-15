@@ -1,3 +1,6 @@
 .m-category__icon {
     display: flex;
 }
+
+@import "m-category__icon--drag";
+@import "m-category__icon--edit-mode";

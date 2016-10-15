@@ -39,10 +39,8 @@ describe('<Link />', function() {
         it('should include an icon', function() {
             const iconProps = component.find('Icon').props();
 
-            expect(iconProps).toEqual({
-                'icon': 'link',
-                'className': 'a-link__icon'
-            });
+            expect(iconProps.className).toBe('a-link__icon');
+            expect(iconProps.icon).toBe('link');
         });
 
         it('should include the text', function() {

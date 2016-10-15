@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import Header from './Header.jsx';
-import { toggleMainMenu } from './headerActions';
+import { toggleMainMenu, toggleEditMode } from './headerActions';
 
 export const mapStateToProps = function(state) {
     return {
-        'menuMainOpen': state.header.menuMainOpen
+        'menuMainOpen': state.header.menuMainOpen,
+        'editMode': state.header.editMode
     };
 };
 
@@ -12,6 +13,9 @@ export const mapDispatchToProps = function(dispatch) {
     return {
         'onMainMenuClick': () => {
             dispatch(toggleMainMenu());
+        },
+        'onEditModeClick': () => {
+            dispatch(toggleEditMode());
         }
     };
 };

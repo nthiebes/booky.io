@@ -15,9 +15,10 @@ export default class Categories extends Component {
     render() {
         const PROPS = this.props;
         const CATEGORIES = PROPS.categories;
+        const CLASS = 'o-categories' + (PROPS.editMode ? ' o-categories--edit-mode' : '');
 
         return (
-            <main className="o-categories">
+            <main className={ CLASS }>
                 {CATEGORIES.map((category) =>
                     <Category key={ category.id } { ...category } />
                 )}
@@ -27,5 +28,6 @@ export default class Categories extends Component {
 }
 
 Categories.propTypes = {
-    'categories': PropTypes.array.isRequired
+    'categories': PropTypes.array.isRequired,
+    'editMode': PropTypes.bool.isRequired
 };

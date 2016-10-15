@@ -9,7 +9,7 @@ import Booky from './00_base/booky/Booky.jsx';
 const initialState = {
     'categories': [{
         'id': 0,
-        'name': 'Category 1'
+        'name': 'Category 1 loooong naaaaame'
     }, {
         'id': 1,
         'name': 'Category 2'
@@ -24,7 +24,8 @@ const initialState = {
         'name': 'Category 5'
     }],
     'header': {
-        'menuMainOpen': false
+        'menuMainOpen': false,
+        'editMode': false
     },
     'toolbar': {
         'searchOpen': false

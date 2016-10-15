@@ -38,12 +38,17 @@ describe('<Icon />', function() {
             component = shallow(getComponent({
                 'icon': 'gscheid',
                 'className': 'banana',
-                'label': 'Gscheides label!'
+                'label': 'Gscheides label!',
+                'title': 'Moin!'
             }));
         });
 
         it('should have the correct class', function() {
             expect(component.find('div').hasClass('a-icon banana')).toBe(true);
+        });
+
+        it('should have a title', function() {
+            expect(component.find('div').prop('title')).toBe('Moin!');
         });
 
         it('should include a label', function() {

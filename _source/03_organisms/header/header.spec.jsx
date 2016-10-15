@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Header from './Header.jsx';
 import { mapStateToProps, mapDispatchToProps } from './headerContainer';
-import { toggleMainMenu } from './headerActions';
+import { toggleMainMenu, toggleEditMode } from './headerActions';
 import header from './headerReducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Link from '../../01_atoms/link/Link.jsx';
@@ -28,6 +28,7 @@ describe('<Header />', function() {
             beforeEach(function() {
                 component = shallow(getComponent({
                     'onMainMenuClick': callback,
+                    'onEditModeClick': callback,
                     'menuMainOpen': false
                 }));
             });
@@ -70,7 +71,8 @@ describe('<Header />', function() {
             beforeEach(function() {
                 component = shallow(getComponent({
                     'menuMainOpen': true,
-                    'onMainMenuClick': callback
+                    'onMainMenuClick': callback,
+                    'onEditModeClick': callback
                 }));
             });
 
@@ -86,7 +88,8 @@ describe('<Header />', function() {
             beforeEach(function() {
                 component = shallow(getComponent({
                     'menuMainOpen': false,
-                    'onMainMenuClick': callback
+                    'onMainMenuClick': callback,
+                    'onEditModeClick': callback
                 }));
             });
 
@@ -102,7 +105,8 @@ describe('<Header />', function() {
         
         const state = {
                 'header': {
-                    'menuMainOpen': 'banana'
+                    'menuMainOpen': 'banana',
+                    'editMode': 'potato'
                 }
             },
             dispatch = jest.fn();
@@ -116,6 +120,11 @@ describe('<Header />', function() {
             
             expect(typeof mapDispatchToProps(dispatch).onMainMenuClick).toBe('function');
             expect(dispatch).toHaveBeenCalledWith(toggleMainMenu());
+
+            mapDispatchToProps(dispatch).onEditModeClick();
+            
+            expect(typeof mapDispatchToProps(dispatch).onEditModeClick).toBe('function');
+            expect(dispatch).toHaveBeenCalledWith(toggleEditMode());
         });
     });
 
@@ -128,6 +137,17 @@ describe('<Header />', function() {
 
                 expect(action).toEqual({
                     'type': 'TOGGLE_MAIN_MENU'
+                });
+            });
+        });
+
+        describe('toggleEditMode()', function() {
+
+            it('should return the action', function() {
+                const action = toggleEditMode();
+
+                expect(action).toEqual({
+                    'type': 'TOGGLE_EDIT_MODE'
                 });
             });
         });
@@ -158,6 +178,21 @@ describe('<Header />', function() {
 
                 expect(header({'menuMainOpen': false}, toggleMainMenu())).toEqual({
                     'menuMainOpen': true
+                });
+            });
+
+            it('TOGGLE_EDIT_MODE: should return the new state', function() {
+                const state = {'editMode': true};
+
+                // ...and not mutate it
+                expect(header(state, toggleEditMode())).not.toBe(state);
+
+                expect(header({'editMode': true}, toggleEditMode())).toEqual({
+                    'editMode': false
+                });
+
+                expect(header({'editMode': false}, toggleEditMode())).toEqual({
+                    'editMode': true
                 });
             });
         });

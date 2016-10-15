@@ -23,7 +23,8 @@ describe('<Categories />', function() {
                 }, {
                     'id': 1,
                     'name': 'Category 2'
-                }]
+                }],
+                'editMode': false
             }));
         });
 
@@ -44,11 +45,17 @@ describe('<Categories />', function() {
     describe('container component', function() {
         
         const state = {
-            'categories': []
+            'categories': [],
+            'header': {
+                'editMode': 'banana'
+            }
         };
 
         it('should map the state to props', function() {
-            expect(mapStateToProps(state)).toEqual(state);
+            expect(mapStateToProps(state)).toEqual({
+                'categories': [],
+                'editMode': 'banana'
+            });
         });
     });
 });

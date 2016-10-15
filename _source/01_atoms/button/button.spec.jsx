@@ -64,10 +64,8 @@ describe('<Button />', function() {
         it('should include the icon', function() {
             const iconProps = component.find('Icon').props();
 
-            expect(iconProps).toEqual({
-                'className': 'a-button__icon',
-                'icon': 'category'
-            });
+            expect(iconProps.className).toBe('a-button__icon');
+            expect(iconProps.icon).toBe('category');
         });
     });
 });

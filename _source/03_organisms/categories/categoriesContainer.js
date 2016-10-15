@@ -3,7 +3,8 @@ import Categories from './Categories.jsx';
 
 export const mapStateToProps = function(state) {
     return {
-        'categories': state.categories
+        'categories': state.categories,
+        'editMode': state.header.editMode
     };
 };
 
