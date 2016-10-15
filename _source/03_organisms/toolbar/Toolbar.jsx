@@ -20,12 +20,13 @@ export default class Toolbar extends Component {
         const PROPS = this.props;
         const SEARCH_CLASS = PROPS.searchOpen ? 'm-search--open' : '';
         const TOOLBAR_CLASS = PROPS.searchOpen ? 'o-toolbar o-toolbar--open' : 'o-toolbar';
+        const ICON = PROPS.searchOpen ? 'close' : 'search';
 
         return (
             <div className={ TOOLBAR_CLASS }>
                 <Button className="o-toolbar__button a-button--primary" size="small" color="primary" text="New" buzzword="category" />
                 <Search className={ SEARCH_CLASS } open={ PROPS.searchOpen } />
-                <Icon icon="search" className="o-toolbar__icon a-icon--dark" onClick={ PROPS.onSearchClick } />
+                <Icon icon={ ICON } className="o-toolbar__icon a-icon--dark" onClick={ PROPS.onSearchClick } />
             </div>
         );
     }

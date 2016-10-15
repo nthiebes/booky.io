@@ -39,14 +39,6 @@ describe('<Toolbar />', function() {
                 expect(buttonProps.color).toBe('primary');
                 expect(buttonProps.size).toBe('small');
             });
-
-            it('include an icon', function() {
-                const iconProps = component.find('Icon').props();
-
-                expect(iconProps.className).toBe('o-toolbar__icon a-icon--dark');
-                expect(iconProps.icon).toBe('search');
-                expect(iconProps.onClick).toBe(callback);
-            });
         });
 
         describe('when rendered open', function() {
@@ -67,6 +59,16 @@ describe('<Toolbar />', function() {
 
                 expect(searchProps.className).toBe('m-search--open');
                 expect(searchProps.open).toBe(true);
+            });
+
+            it('include an icon', function() {
+                const iconProps = component.find('Icon').props();
+
+                expect(iconProps).toEqual({
+                    'className': 'o-toolbar__icon a-icon--dark',
+                    'icon': 'close',
+                    'onClick': callback
+                });
             });
         });
 
@@ -89,6 +91,16 @@ describe('<Toolbar />', function() {
 
                 expect(searchProps.className).toBe('');
                 expect(searchProps.open).toBe(false);
+            });
+
+            it('include an icon', function() {
+                const iconProps = component.find('Icon').props();
+
+                expect(iconProps).toEqual({
+                    'className': 'o-toolbar__icon a-icon--dark',
+                    'icon': 'search',
+                    'onClick': callback
+                });
             });
         });
     });

@@ -89,4 +89,8 @@
 <title>reduce</title>
 <path class="path1" d="M18.984 12.984h-13.969v-1.969h13.969v1.969z"></path>
 </symbol>
+<symbol id="icon-close" viewBox="0 0 24 24">
+<title>close</title>
+<path class="path1" d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
+</symbol>
 </svg>
