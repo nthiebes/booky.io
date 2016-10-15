@@ -1,4 +1,4 @@
-# booky.io
+# booky.io ![alt text](https://booky.io/github/heart2.png)
 [booky.io](https://booky.io) + [Atomic Design](http://atomicdesign.bradfrost.com/) + [BEM](https://en.bem.info) + [React](https://facebook.github.io/react/) + [Redux](https://github.com/reactjs/redux)
 
 [![Build Status](https://travis-ci.org/nthiebes/booky.io.svg?branch=master)](https://travis-ci.org/nthiebes/booky.io)
