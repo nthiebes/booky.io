@@ -18,8 +18,10 @@ import Button from '../../01_atoms/button/Button.jsx';
 export default class Toolbar extends Component {
     render() {
         const PROPS = this.props;
+        const STICKY_CLASS = PROPS.sticky ? 'o-toolbar--sticky' : '';
         const SEARCH_CLASS = PROPS.searchOpen ? 'm-search--open' : '';
-        const TOOLBAR_CLASS = PROPS.searchOpen ? 'o-toolbar o-toolbar--open' : 'o-toolbar';
+        const OPEN_CLASS = PROPS.searchOpen ? 'o-toolbar--open' : '';
+        const TOOLBAR_CLASS = `o-toolbar ${STICKY_CLASS} ${OPEN_CLASS}`;
         const ICON = PROPS.searchOpen ? 'close' : 'search';
 
         return (

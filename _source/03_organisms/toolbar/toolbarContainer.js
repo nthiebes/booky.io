@@ -4,7 +4,8 @@ import { toggleSearch } from './toolbarActions';
 
 export const mapStateToProps = function(state) {
     return {
-        'searchOpen': state.toolbar.searchOpen
+        'searchOpen': state.toolbar.searchOpen,
+        'sticky': state.toolbar.sticky
     };
 };
 

@@ -5,7 +5,9 @@ import { toggleMainMenu, toggleEditMode } from './headerActions';
 export const mapStateToProps = function(state) {
     return {
         'menuMainOpen': state.header.menuMainOpen,
-        'editMode': state.header.editMode
+        'editMode': state.header.editMode,
+        'sticky': state.header.sticky,
+        'color': state.header.color
     };
 };
 

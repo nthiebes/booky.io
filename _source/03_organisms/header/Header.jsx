@@ -18,14 +18,20 @@ import Link from '../../01_atoms/link/Link.jsx';
  * @prop {function} onEditModeClick Edit mode icon click callback
  */
 export default class Header extends Component {
+    getColor() {
+        return 'primary';
+    }
+
     render() {
         const PROPS = this.props;
+        const STICKY_CLASS = PROPS.sticky ? 'o-header--sticky' : '';
+        const HEADER_CLASS = `o-header o-header--${this.getColor()} ${STICKY_CLASS}`;
         const MENU_MAIN_CLASS = PROPS.menuMainOpen ? 'm-menu-main--open' : '';
         const EDIT_MODE_ICON = PROPS.editMode ? 'view' : 'edit';
         const EDIT_MODE_TITLE = PROPS.editMode ? 'View mode' : 'Edit mode';
 
         return (
-            <header className="o-header o-header--primary">
+            <header className={ HEADER_CLASS }>
                 <Icon icon="menu" className="o-header__icon o-header__menu-main-icon a-icon--light" label="Menu" onClick={ PROPS.onMainMenuClick } />
                 <MenuMain className={ MENU_MAIN_CLASS } />
 

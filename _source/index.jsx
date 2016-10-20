@@ -25,10 +25,19 @@ const initialState = {
     }],
     'header': {
         'menuMainOpen': false,
-        'editMode': false
+        'editMode': false,
+        'sticky': false,
+        'color': 0
     },
     'toolbar': {
-        'searchOpen': false
+        'searchOpen': false,
+        'sticky': false
+    },
+    'userSettings': {
+        'sticky': {
+            'header': false,
+            'toolbar': true
+        }
     }
 };
 
