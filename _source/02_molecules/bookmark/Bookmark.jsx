@@ -17,7 +17,7 @@ export default class Bookmark extends Component {
 
         return (
             <li className="m-bookmark">
-                <a className="m-bookmark__link" href={ PROPS.url } target={ PROPS.target }>{ PROPS.title }</a>
+                <a className="m-bookmark__link" href={ PROPS.url } target={ PROPS.target }>{ PROPS.name }</a>
                 <Icon className="m-bookmark__icon m-bookmark__icon--edit-mode a-icon--dark" icon="edit" title="Edit bookmark" />
                 <Icon className="m-bookmark__icon m-bookmark__icon--edit-mode a-icon--dark" icon="delete" title="Delete bookmark" />
                 <Icon className="m-bookmark__icon m-bookmark__icon--edit-mode a-icon--dark m-bookmark__icon--drag" icon="drag" title="Drag bookmark" />
@@ -27,7 +27,7 @@ export default class Bookmark extends Component {
 }
 
 Bookmark.propTypes = {
-    'title': PropTypes.string.isRequired,
+    'name': PropTypes.string.isRequired,
     'url': PropTypes.string.isRequired,
     'target': PropTypes.string
 };
