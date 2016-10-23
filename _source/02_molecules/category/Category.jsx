@@ -28,9 +28,9 @@ export default class Category extends Component {
                     <Icon className="m-category__icon m-category__icon--edit-mode a-icon--dark m-category__icon--drag" icon="drag" title="Drag category" />
                 </header>
                 <ul className="m-category__bookmarks">
-                    <Bookmark title="Bookmark 1 veeeeeeery veeeeeeery loooooong tiiiitle !!!!!!" url="https://booky.io" />
-                    <Bookmark title="Bookmark 2" url="https://booky.io" />
-                    <Bookmark title="Bookmark 3" url="https://booky.io" />
+                    <Bookmark name="Bookmark 1 veeeeeeery veeeeeeery loooooong tiiiitle !!!!!!" url="https://booky.io" />
+                    <Bookmark name="Bookmark 2" url="https://booky.io" />
+                    <Bookmark name="Bookmark 3" url="https://booky.io" />
                 </ul>
             </section>
         );
