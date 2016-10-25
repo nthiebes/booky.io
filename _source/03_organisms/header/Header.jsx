@@ -12,7 +12,7 @@ import Link from '../../01_atoms/link/Link.jsx';
  * @requires 01_atoms/icon/Icon
  * @requires 01_atoms/link/Link
  *
- * @prop {boolean}  menuMainOpen    Main menu open
+ * @prop {boolean}  menuMainOpen    Main menu open/closed
  * @prop {boolean}  editMode        Edit mode active
  * @prop {function} onMainMenuClick Main menu icon click callback
  * @prop {function} onEditModeClick Edit mode icon click callback
@@ -25,15 +25,15 @@ export default class Header extends Component {
     render() {
         const PROPS = this.props;
         const STICKY_CLASS = PROPS.sticky ? 'o-header--sticky' : '';
-        const HEADER_CLASS = `o-header o-header--${this.getColor()} ${STICKY_CLASS}`;
-        const MENU_MAIN_CLASS = PROPS.menuMainOpen ? 'm-menu-main--open' : '';
+        const MENU_MAIN_OPEN_CLASS = PROPS.menuMainOpen ? 'o-header--main-menu-open' : '';
+        const HEADER_CLASS = `o-header o-header--${this.getColor()} ${STICKY_CLASS} ${MENU_MAIN_OPEN_CLASS}`;
         const EDIT_MODE_ICON = PROPS.editMode ? 'view' : 'edit';
         const EDIT_MODE_TITLE = PROPS.editMode ? 'View mode' : 'Edit mode';
 
         return (
             <header className={ HEADER_CLASS }>
                 <Icon icon="menu" className="o-header__icon o-header__menu-main-icon a-icon--light" label="Menu" onClick={ PROPS.onMainMenuClick } />
-                <MenuMain className={ MENU_MAIN_CLASS } />
+                <MenuMain menuMainOpen={ PROPS.menuMainOpen } />
 
                 <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />
                 <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />

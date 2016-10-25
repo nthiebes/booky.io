@@ -78,10 +78,14 @@ describe('<Header />', function() {
                 }));
             });
 
-            it('should include the MenuMain with the correct class', function() {
+            it('should have the correct class', function() {
+                expect(component.find('header').hasClass('o-header--main-menu-open')).toBe(true);
+            });
+
+            it('should include the MenuMain with the correct props', function() {
                 const mainMenuProps = component.find('MenuMain').props();
 
-                expect(mainMenuProps.className).toBe('m-menu-main--open');
+                expect(mainMenuProps.menuMainOpen).toBe(true);
             });
         });
 
@@ -96,10 +100,14 @@ describe('<Header />', function() {
                 }));
             });
 
-            it('should include the MenuMain with the correct class', function() {
+            it('should have the correct class', function() {
+                expect(component.find('header').hasClass('o-header--main-menu-open')).toBe(false);
+            });
+
+            it('should include the MenuMain with the correct props', function() {
                 const mainMenuProps = component.find('MenuMain').props();
 
-                expect(mainMenuProps.className).toBe('');
+                expect(mainMenuProps.menuMainOpen).toBe(false);
             });
         });
     });

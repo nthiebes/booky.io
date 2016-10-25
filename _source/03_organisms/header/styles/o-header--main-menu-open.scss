@@ -1,0 +1,8 @@
+.o-header--main-menu-open {
+    @include mobile {
+        &:before {
+            opacity: 1;
+            transition: opacity 0.5s linear;
+        }
+    }
+}

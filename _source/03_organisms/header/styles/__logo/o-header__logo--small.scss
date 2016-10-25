@@ -1,4 +1,9 @@
 .o-header__logo--small {
+    .a-icon__svg {
+        fill-opacity: 0;
+        stroke-width: 2px;
+    }
+
     @include tablet-desktop {
         display: none;
     }
