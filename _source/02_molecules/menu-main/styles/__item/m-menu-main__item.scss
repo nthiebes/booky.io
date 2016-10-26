@@ -1,5 +1,5 @@
 .m-menu-main__item {
-    @include mobile {
+    @include mobile-tablet {
         border-bottom: 1px solid #ccc;
         color: $color__font--dark;
         flex-shrink: 0;
@@ -12,7 +12,7 @@
         }
     }
 
-    @include tablet-desktop {
+    @include desktop {
         color: $color__font--light;
         font-weight: bold;
         margin: 0 1rem;

@@ -11,6 +11,7 @@ const categories = (state = [], action) => {
                     'expanded': true
                 }
             ];
+
         case TOGGLE_CATEGORY:
             return state.map((category) => {
                 if (category.id === action.id) {
@@ -20,6 +21,7 @@ const categories = (state = [], action) => {
                 }
                 return category;
             });
+            
         default:
             return state;
     }

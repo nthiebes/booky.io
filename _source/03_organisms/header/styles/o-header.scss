@@ -2,7 +2,8 @@
 @import "__menu-main-icon/o-header__menu-main-icon";
 @import "__menu-account-icon/o-header__menu-account-icon";
 @import "__logo/o-header__logo";
-@import "__icon/o-header__icon";
+@import "__sign-out/o-header__sign-out";
+@import "__dashboards/o-header__dashboards";
 
 .o-header {
     align-items: center;
@@ -16,7 +17,7 @@
     width: 100%;
     z-index: 2;
 
-    @include mobile {
+    @include mobile-tablet {
         &:before {
             background-color: rgba(0, 0, 0, 0.1);
             bottom: 0;
@@ -32,6 +33,10 @@
 
     @include tablet {
         height: 64px;
+
+        &:before {
+            top: 64px;
+        }
     }
 
     @include desktop {

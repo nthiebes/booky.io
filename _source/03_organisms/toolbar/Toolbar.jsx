@@ -23,16 +23,22 @@ export default class Toolbar extends Component {
         const OPEN_CLASS = PROPS.searchOpen ? 'o-toolbar--open' : '';
         const TOOLBAR_CLASS = `o-toolbar ${STICKY_CLASS} ${OPEN_CLASS}`;
         const SEARCH_ICON = PROPS.searchOpen ? 'close' : 'search';
+        const SEARCH_TITLE = PROPS.searchOpen ? 'Close' : 'Search';
         const EDIT_MODE_ICON = PROPS.editMode ? 'view' : 'edit';
         const EDIT_MODE_TITLE = PROPS.editMode ? 'View mode' : 'Edit mode';
 
         return (
             <div className={ TOOLBAR_CLASS }>
                 <Icon icon={ EDIT_MODE_ICON } className="o-toolbar__icon a-icon--dark" title={ EDIT_MODE_TITLE } onClick={ PROPS.onEditModeClick } />
-                <Icon icon="add" className="o-toolbar__icon a-icon--dark" />
-                <Button className="o-toolbar__button a-button--primary" size="small" color="primary" text="New" buzzword="category" />
+                <Icon icon="add-category" className="o-toolbar__icon o-toolbar__icon--add-category a-icon--dark" title="New category" />
+                <Button className="o-toolbar__button a-button--primary" size="small" color="primary" text="New" buzzword="Category" />
                 <Search className={ SEARCH_CLASS } open={ PROPS.searchOpen } />
-                <Icon icon={ SEARCH_ICON } className="o-toolbar__icon a-icon--dark" onClick={ PROPS.onSearchClick } />
+                <Icon 
+                    icon={ SEARCH_ICON } 
+                    className="o-toolbar__icon o-toolbar__icon--search a-icon--dark" 
+                    onClick={ PROPS.onSearchClick } 
+                    title={ SEARCH_TITLE } 
+                />
             </div>
         );
     }

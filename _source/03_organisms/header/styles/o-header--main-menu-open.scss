@@ -1,5 +1,5 @@
 .o-header--main-menu-open {
-    @include mobile {
+    @include mobile-tablet {
         &:before {
             opacity: 1;
             transition: opacity 0.5s linear;

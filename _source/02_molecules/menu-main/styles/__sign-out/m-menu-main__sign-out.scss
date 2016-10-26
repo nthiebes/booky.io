@@ -1,0 +1,5 @@
+.m-menu-main__sign-out {
+    @include tablet-desktop {
+        display: none;
+    }
+}

@@ -2,7 +2,7 @@
     display: inline-block;
     left: 0;
     position: absolute;
-    transform: translateX(0);
+    transform: translateX(-100%);
     transition: color 0.2s linear, transform 0.2s ease;
 
     &:hover {

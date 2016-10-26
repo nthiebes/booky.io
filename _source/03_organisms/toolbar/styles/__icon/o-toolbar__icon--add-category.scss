@@ -1,0 +1,5 @@
+.o-toolbar__icon--add-category {
+    @include desktop {
+        display: none;
+    }
+}

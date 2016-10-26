@@ -1,11 +1,13 @@
 @import "__item/m-menu-main__item";
+@import "__customize/m-menu-main__customize";
+@import "__sign-out/m-menu-main__sign-out";
 
 .m-menu-main {
     display: flex;
     justify-content: flex-start;
     z-index: 1;
 
-    @include mobile {
+    @include mobile-tablet {
         align-items: center;
         background-color: $color__background--light;
         bottom: 0;
@@ -22,13 +24,13 @@
         width: 70%;
     }
 
-    @include tablet-desktop {
-        flex-direction: row;
-        flex-grow: 1;
-        padding-left: 1rem;
+    @include tablet {
+        top: 64px;
     }
 
     @include desktop {
+        flex-direction: row;
+        flex-grow: 1;
         padding-left: 3rem;
         // max-width: 720px;
     }

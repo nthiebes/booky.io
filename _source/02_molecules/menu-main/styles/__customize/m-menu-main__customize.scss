@@ -1,0 +1,5 @@
+.m-menu-main__customize {
+    @include tablet-desktop {
+        display: none;
+    }
+}

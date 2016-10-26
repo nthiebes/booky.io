@@ -18,12 +18,12 @@ export default class MenuMain extends Component {
         this.onMenuClick = this.onMenuClick.bind(this);
     }
 
-    onMenuClick(event) {
-        event.stopPropagation();
+    componentWillReceiveProps(nextProps) {
+        document.body.classList.toggle('booky--no-scrolling-mobile-tablet', nextProps.menuMainOpen);
     }
 
-    componentWillReceiveProps(nextProps) {
-        document.body.classList.toggle('booky--no-scrolling', nextProps.menuMainOpen);
+    onMenuClick(event) {
+        event.stopPropagation();
     }
 
     render() {
@@ -35,10 +35,10 @@ export default class MenuMain extends Component {
             <ul className={ CLASS } onClick={ this.onMenuClick }>
                 <Icon className="m-menu-main__item" icon="about" label="About" />
                 <Icon className="m-menu-main__item" icon="help" label="Help" />
-                <Icon className="m-menu-main__item" icon="next" label="Account" />
+                <Icon className="m-menu-main__item" icon="account" label="Account" />
                 <Icon className="m-menu-main__item" icon="next" label="Next" />
-                <Icon className="m-menu-main__item" icon="next" label="Customize" />
-                <Icon className="m-menu-main__item" icon="next" label="Sign Out" />
+                <Icon className="m-menu-main__item m-menu-main__customize" icon="settings" label="Customize" />
+                <Icon className="m-menu-main__item m-menu-main__sign-out" icon="sign-out" label="Sign Out" />
             </ul>
         );
     }
