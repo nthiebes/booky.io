@@ -24,9 +24,9 @@
             left: 0;
             opacity: 0;
             position: fixed;
-            right: 0;
+            width: 0;
             top: 42px;
-            transition: opacity 0.3s linear, width 0.1s 0.5s linear;
+            transition: opacity 0.3s linear, width 0s 0.3s linear;
         }
     }
 

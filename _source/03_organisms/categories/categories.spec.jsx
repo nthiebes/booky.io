@@ -46,7 +46,7 @@ describe('<Categories />', function() {
         
         const state = {
             'categories': [],
-            'header': {
+            'toolbar': {
                 'editMode': 'banana'
             }
         };

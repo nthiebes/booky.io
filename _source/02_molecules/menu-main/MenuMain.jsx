@@ -12,6 +12,16 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
  * @prop {string}  [className]  Additional class name
  */
 export default class MenuMain extends Component {
+    constructor(props) {
+        super(props);
+
+        this.onMenuClick = this.onMenuClick.bind(this);
+    }
+
+    onMenuClick(event) {
+        event.stopPropagation();
+    }
+
     componentWillReceiveProps(nextProps) {
         document.body.classList.toggle('booky--no-scrolling', nextProps.menuMainOpen);
     }
@@ -22,7 +32,7 @@ export default class MenuMain extends Component {
         const CLASS = 'm-menu-main ' + MENU_MAIN_OPEN_CLASS + PROPS.className;
 
         return (
-            <ul className={ CLASS }>
+            <ul className={ CLASS } onClick={ this.onMenuClick }>
                 <Icon className="m-menu-main__item" icon="about" label="About" />
                 <Icon className="m-menu-main__item" icon="help" label="Help" />
                 <Icon className="m-menu-main__item" icon="next" label="Account" />
