@@ -37,7 +37,6 @@ export default class MenuMain extends Component {
                 <Icon className="m-menu-main__item" icon="help" label="Help" />
                 <Icon className="m-menu-main__item" icon="account" label="Account" />
                 <Icon className="m-menu-main__item" icon="next" label="Next" />
-                <Icon className="m-menu-main__item m-menu-main__customize" icon="settings" label="Customize" />
                 <Icon className="m-menu-main__item m-menu-main__sign-out" icon="sign-out" label="Sign Out" />
             </ul>
         );
