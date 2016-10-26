@@ -157,13 +157,13 @@ const initialState = {
     }],
     'header': {
         'menuMainOpen': false,
-        'editMode': false,
-        'sticky': false,
+        'sticky': true,
         'color': 0
     },
     'toolbar': {
         'searchOpen': false,
-        'sticky': false
+        'editMode': false,
+        'sticky': true
     },
     'userSettings': {
         'sticky': {

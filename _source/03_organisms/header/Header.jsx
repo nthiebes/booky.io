@@ -12,12 +12,21 @@ import Link from '../../01_atoms/link/Link.jsx';
  * @requires 01_atoms/icon/Icon
  * @requires 01_atoms/link/Link
  *
- * @prop {boolean}  menuMainOpen    Main menu open
- * @prop {boolean}  editMode        Edit mode active
+ * @prop {boolean}  menuMainOpen    Main menu open/closed
  * @prop {function} onMainMenuClick Main menu icon click callback
- * @prop {function} onEditModeClick Edit mode icon click callback
+ * @prop {function} onHeaderClick   Header click callback
  */
 export default class Header extends Component {
+    constructor(props) {
+        super(props);
+
+        // this.onHeaderClick = this.onHeaderClick.bind(this);
+    }
+
+    // onHeaderClick(event) {
+        
+    // }
+
     getColor() {
         return 'primary';
     }
@@ -25,21 +34,17 @@ export default class Header extends Component {
     render() {
         const PROPS = this.props;
         const STICKY_CLASS = PROPS.sticky ? 'o-header--sticky' : '';
-        const HEADER_CLASS = `o-header o-header--${this.getColor()} ${STICKY_CLASS}`;
-        const MENU_MAIN_CLASS = PROPS.menuMainOpen ? 'm-menu-main--open' : '';
-        const EDIT_MODE_ICON = PROPS.editMode ? 'view' : 'edit';
-        const EDIT_MODE_TITLE = PROPS.editMode ? 'View mode' : 'Edit mode';
+        const MENU_MAIN_OPEN_CLASS = PROPS.menuMainOpen ? 'o-header--main-menu-open' : '';
+        const HEADER_CLASS = `o-header o-header--${this.getColor()} ${STICKY_CLASS} ${MENU_MAIN_OPEN_CLASS}`;
 
         return (
-            <header className={ HEADER_CLASS }>
-                <Icon icon="menu" className="o-header__icon o-header__menu-main-icon a-icon--light" label="Menu" onClick={ PROPS.onMainMenuClick } />
-                <MenuMain className={ MENU_MAIN_CLASS } />
+            <header className={ HEADER_CLASS } onClick={ PROPS.onHeaderClick }>
+                <Icon icon="menu" className="o-header__icon o-header__menu-main-icon a-icon--light" label="Menu" onClick={ PROPS.onMainMenuClick } stopPropagation={ true } />
+                <MenuMain menuMainOpen={ PROPS.menuMainOpen } />
 
                 <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />
                 <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />
 
-                <Icon icon={ EDIT_MODE_ICON } className="o-header__icon a-icon--light" title={ EDIT_MODE_TITLE } onClick={ PROPS.onEditModeClick } />
-                <Icon icon="add" className="o-header__icon o-header__icon--add a-icon--light" title="Add" />
                 <Icon icon="dashboard" className="o-header__icon a-icon--light" title="Dashboards" />
             </header>
         );
@@ -48,7 +53,6 @@ export default class Header extends Component {
 
 Header.propTypes = {
     'menuMainOpen': PropTypes.bool.isRequired,
-    'editMode': PropTypes.bool.isRequired,
     'onMainMenuClick': PropTypes.func.isRequired,
-    'onEditModeClick': PropTypes.func.isRequired
+    'onHeaderClick': PropTypes.func.isRequired
 };

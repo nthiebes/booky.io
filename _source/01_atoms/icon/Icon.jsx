@@ -10,6 +10,22 @@ import React, { PropTypes, Component } from 'react';
  * @prop {string} [onCLick]   Click callback
  */
 export default class Icon extends Component {
+    constructor(props) {
+        super(props);
+
+        this.onIconClick = this.onIconClick.bind(this);
+    }
+
+    onIconClick(event) {
+        if (this.props.stopPropagation) {
+            event.stopPropagation();
+        }
+
+        if (this.props.onClick) {
+            this.props.onClick();
+        }
+    }
+
     render() {
         const PROPS = this.props;
         const LINK = 'images/symbol-defs.svg#icon-' + PROPS.icon;
@@ -17,7 +33,7 @@ export default class Icon extends Component {
         const LABEL = PROPS.label ? <label className="a-icon__label">{ PROPS.label }</label> : '';
 
         return (
-            <div className={ CLASS } title={ PROPS.title } onClick={ PROPS.onClick ? PROPS.onClick : '' }>
+            <div className={ CLASS } title={ PROPS.title } onClick={ this.onIconClick }>
                 <svg className="a-icon__svg">
                     <use xlinkHref={ LINK } />
                 </svg>

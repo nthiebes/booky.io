@@ -2,7 +2,7 @@
  * Action types
  */
 export const TOGGLE_MAIN_MENU = 'TOGGLE_MAIN_MENU';
-export const TOGGLE_EDIT_MODE = 'TOGGLE_EDIT_MODE';
+export const CLOSE_MAIN_MENU = 'CLOSE_MAIN_MENU';
 
 
 /**
@@ -14,8 +14,8 @@ export function toggleMainMenu() {
     };
 }
 
-export function toggleEditMode() {
+export function closeMainMenu() {
     return {
-        'type': TOGGLE_EDIT_MODE
+        'type': CLOSE_MAIN_MENU
     };
 }

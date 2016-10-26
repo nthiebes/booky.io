@@ -15,11 +15,11 @@
 
 html,
 body {
-    -webkit-text-size-adjust: none; /** Prevent font scaling in landscape */
     background-color: $color__background--light;
     font-family: $font__family--text;
     font-size: $size--phone;
     height: 100%;
+    -webkit-text-size-adjust: none; /** Prevent font scaling in landscape */
 
     @include tablet {
         font-size: $size--tablet;
@@ -31,6 +31,10 @@ body {
 
     &.booky--no-animation {
         transition: none !important;
+    }
+
+    &.booky--no-scrolling {
+        overflow: hidden;
     }
 }
 
