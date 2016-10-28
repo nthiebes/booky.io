@@ -9,13 +9,15 @@ import Button from '../../01_atoms/button/Button.jsx';
  * React component
  * @class 03_organisms/header/Header
  * 
- * @requires 02_molecules/menu-main/MenuMain
+ * @requires 01_atoms/button/Button
  * @requires 01_atoms/icon/Icon
  * @requires 01_atoms/link/Link
+ * @requires 02_molecules/menu-main/MenuMain
  *
  * @prop {boolean}  menuMainOpen    Main menu open/closed
- * @prop {function} onMainMenuClick Main menu icon click callback
+ * @prop {boolean}  sticky          Fixed header enabled/disabled
  * @prop {function} onHeaderClick   Header click callback
+ * @prop {function} onMenuMainClick Main menu icon click callback
  */
 export default class Header extends Component {
     getColor() {
@@ -25,7 +27,7 @@ export default class Header extends Component {
     render() {
         const PROPS = this.props;
         const STICKY_CLASS = PROPS.sticky ? 'o-header--sticky' : '';
-        const MENU_MAIN_OPEN_CLASS = PROPS.menuMainOpen ? 'o-header--main-menu-open' : '';
+        const MENU_MAIN_OPEN_CLASS = PROPS.menuMainOpen ? 'o-header--menu-main-open' : '';
         const HEADER_CLASS = `o-header o-header--${this.getColor()} ${STICKY_CLASS} ${MENU_MAIN_OPEN_CLASS}`;
 
         return (
@@ -33,7 +35,7 @@ export default class Header extends Component {
                 <Icon 
                     icon="menu" 
                     className="o-header__icon o-header__menu-main-icon a-icon--light" 
-                    label="Menu" onClick={ PROPS.onMainMenuClick } 
+                    label="Menu" onClick={ PROPS.onMenuMainClick } 
                     stopPropagation={ true } 
                 />
                 <MenuMain menuMainOpen={ PROPS.menuMainOpen } />
@@ -51,6 +53,11 @@ export default class Header extends Component {
 
 Header.propTypes = {
     'menuMainOpen': PropTypes.bool.isRequired,
-    'onMainMenuClick': PropTypes.func.isRequired,
-    'onHeaderClick': PropTypes.func.isRequired
+    'onMenuMainClick': PropTypes.func.isRequired,
+    'onHeaderClick': PropTypes.func.isRequired,
+    'sticky': PropTypes.bool
+};
+
+Header.defaultProps = {
+    'sticky': true
 };

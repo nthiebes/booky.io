@@ -12,7 +12,7 @@ export const mapStateToProps = function(state) {
 
 export const mapDispatchToProps = function(dispatch) {
     return {
-        'onMainMenuClick': () => {
+        'onMenuMainClick': () => {
             dispatch(toggleMainMenu());
         },
         'onHeaderClick': () => {

@@ -3,55 +3,70 @@ import { shallow } from 'enzyme';
 
 import Toolbar from './Toolbar.jsx';
 import { mapStateToProps, mapDispatchToProps } from './toolbarContainer';
-import { toggleSearch } from './toolbarActions';
+import { toggleSearch, toggleEditMode } from './toolbarActions';
 import toolbar from './toolbarReducers';
+import Icon from '../../01_atoms/icon/Icon.jsx';
+import Button from '../../01_atoms/button/Button.jsx';
 
 describe('<Toolbar />', function() {
 
     describe('presentational component', function() {
 
         let component,
-            callback;
+            onEditModeClickCallback,
+            onSearchClickCallback;
 
         const getComponent = function(props = {}) {
             return <Toolbar { ...props } />;
         };
 
         beforeEach(function() {
-            callback = jest.fn();
+            onEditModeClickCallback = jest.fn();
+            onSearchClickCallback = jest.fn();
         });
 
         describe('should always', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
-                    'onSearchClick': callback,
-                    'searchOpen': false
+                    'onSearchClick': onSearchClickCallback,
+                    'onEditModeClick': onEditModeClickCallback,
+                    'searchOpen': false,
+                    'editMode': false
                 }));
             });
 
-            it('include a button for new categories', function() {
-                const buttonProps = component.find('Button').props();
+            it('have the correct class', function() {
+                expect(component.find('div').hasClass('o-toolbar o-toolbar--sticky ')).toBe(true);
+            });
 
-                expect(buttonProps.className).toBe('o-toolbar__button a-button--primary');
-                expect(buttonProps.text).toBe('New');
-                expect(buttonProps.buzzword).toBe('category');
-                expect(buttonProps.color).toBe('primary');
-                expect(buttonProps.size).toBe('small');
+            it('include the category icon', function() {
+                expect(component.contains(
+                    <Icon icon="add-category" className="o-toolbar__icon o-toolbar__icon--add-category a-icon--dark" title="New category" />
+                ));
+            });
+
+            it('include a button for new categories', function() {
+                expect(component.contains(
+                    <Button className="o-toolbar__button a-button--primary" size="small" color="primary" text="New" buzzword="Category" />
+                ));
             });
         });
 
-        describe('when rendered open', function() {
+        describe('when rendered open and with optional props', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
+                    'onSearchClick': onSearchClickCallback,
+                    'onEditModeClick': onEditModeClickCallback,
                     'searchOpen': true,
-                    'onSearchClick': callback
+                    'editMode': false,
+                    'sticky': false
                 }));
             });
 
             it('should have the correct class', function() {
-                expect(component.find('div').hasClass('o-toolbar o-toolbar--open')).toBe(true);
+                expect(component.find('div').hasClass('o-toolbar--open')).toBe(true);
             });
 
             it('should include a search bar', function() {
@@ -61,12 +76,15 @@ describe('<Toolbar />', function() {
                 expect(searchProps.open).toBe(true);
             });
 
-            it('include an icon', function() {
-                const iconProps = component.find('Icon').props();
-
-                expect(iconProps.className).toBe('o-toolbar__icon a-icon--dark');
-                expect(iconProps.icon).toBe('close');
-                expect(iconProps.onClick).toBe(callback);
+            it('include the correct icon', function() {
+                expect(component.contains(
+                    <Icon 
+                        icon={ 'search' } 
+                        className="o-toolbar__icon o-toolbar__icon--search a-icon--dark" 
+                        onClick={ onSearchClickCallback } 
+                        title={ 'Search' } 
+                    />
+                ));
             });
         });
 
@@ -74,13 +92,15 @@ describe('<Toolbar />', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
+                    'onSearchClick': onSearchClickCallback,
+                    'onEditModeClick': onEditModeClickCallback,
                     'searchOpen': false,
-                    'onSearchClick': callback
+                    'editMode': false,
+                    'sticky': false
                 }));
             });
 
             it('should have the correct class', function() {
-                expect(component.find('div').hasClass('o-toolbar')).toBe(true);
                 expect(component.find('div').hasClass('o-toolbar--open')).toBe(false);
             });
 
@@ -91,12 +111,53 @@ describe('<Toolbar />', function() {
                 expect(searchProps.open).toBe(false);
             });
 
-            it('include an icon', function() {
-                const iconProps = component.find('Icon').props();
+            it('include the correct icon', function() {
+                expect(component.contains(
+                    <Icon 
+                        icon={ 'close' } 
+                        className="o-toolbar__icon o-toolbar__icon--search a-icon--dark" 
+                        onClick={ onSearchClickCallback } 
+                        title={ 'Close' } 
+                    />
+                ));
+            });
+        });
 
-                expect(iconProps.className).toBe('o-toolbar__icon a-icon--dark');
-                expect(iconProps.icon).toBe('search');
-                expect(iconProps.onClick).toBe(callback);
+        describe('when edit mode is enabled', function() {
+
+            beforeEach(function() {
+                component = shallow(getComponent({
+                    'onSearchClick': onSearchClickCallback,
+                    'onEditModeClick': onEditModeClickCallback,
+                    'searchOpen': true,
+                    'editMode': true,
+                    'sticky': false
+                }));
+            });
+
+            it('should include the correct icon', function() {
+                expect(component.contains(
+                    <Icon icon={ 'edit' } className="o-toolbar__icon a-icon--dark" title={ 'Edit mode' } onClick={ onEditModeClickCallback } />
+                ));
+            });
+        });
+
+        describe('when edit mode is disabled', function() {
+
+            beforeEach(function() {
+                component = shallow(getComponent({
+                    'onSearchClick': onSearchClickCallback,
+                    'onEditModeClick': onEditModeClickCallback,
+                    'searchOpen': true,
+                    'editMode': false,
+                    'sticky': false
+                }));
+            });
+
+            it('should include the correct icon', function() {
+                expect(component.contains(
+                    <Icon icon={ 'view' } className="o-toolbar__icon a-icon--dark" title={ 'View mode' } onClick={ onEditModeClickCallback } />
+                ));
             });
         });
     });
@@ -105,7 +166,9 @@ describe('<Toolbar />', function() {
 
         const state = {
                 'toolbar': {
-                    'searchOpen': 'banana'
+                    'searchOpen': 'banana',
+                    'editMode': false,
+                    'sticky': true
                 }
             },
             dispatch = jest.fn();
@@ -119,6 +182,11 @@ describe('<Toolbar />', function() {
 
             expect(typeof mapDispatchToProps(dispatch).onSearchClick).toBe('function');
             expect(dispatch).toHaveBeenCalledWith(toggleSearch());
+
+            mapDispatchToProps(dispatch).onEditModeClick();
+
+            expect(typeof mapDispatchToProps(dispatch).onEditModeClick).toBe('function');
+            expect(dispatch).toHaveBeenCalledWith(toggleEditMode());
         });
     });
 
@@ -131,6 +199,17 @@ describe('<Toolbar />', function() {
 
                 expect(action).toEqual({
                     'type': 'TOGGLE_SEARCH'
+                });
+            });
+        });
+
+        describe('toggleEditMode()', function() {
+
+            it('should return the action', function() {
+                const action = toggleEditMode();
+
+                expect(action).toEqual({
+                    'type': 'TOGGLE_EDIT_MODE'
                 });
             });
         });
@@ -161,6 +240,21 @@ describe('<Toolbar />', function() {
 
                 expect(toolbar({'searchOpen': false}, toggleSearch())).toEqual({
                     'searchOpen': true
+                });
+            });
+
+            it('TOGGLE_EDIT_MODE: should return the new state', function() {
+                const state = {'editMode': true};
+
+                // ...and not mutate it
+                expect(toolbar(state, toggleEditMode())).not.toBe(state);
+
+                expect(toolbar({'editMode': true}, toggleEditMode())).toEqual({
+                    'editMode': false
+                });
+
+                expect(toolbar({'editMode': false}, toggleEditMode())).toEqual({
+                    'editMode': true
                 });
             });
         });

@@ -8,12 +8,15 @@ import Button from '../../01_atoms/button/Button.jsx';
  * React component
  * @class 03_organisms/toolbar/Toolbar
  * 
- * @requires 02_molecules/search/Search
- * @requires 01_atoms/icon/Icon
  * @requires 01_atoms/button/Button
+ * @requires 01_atoms/icon/Icon
+ * @requires 02_molecules/search/Search
  *
- * @prop {boolean}  searchOpen    Search bar open and visible
- * @prop {function} onSearchClick Icon click callback
+ * @prop {boolean}  editMode        Edit mode enabled/disabled
+ * @prop {boolean}  searchOpen      Search bar open and visible
+ * @prop {boolean}  sticky          Fixed header enabled/disabled
+ * @prop {function} onEditModeClick Edit mode callback
+ * @prop {function} onSearchClick   Icon click callback
  */
 export default class Toolbar extends Component {
     render() {
@@ -48,5 +51,10 @@ Toolbar.propTypes = {
     'searchOpen': PropTypes.bool.isRequired,
     'editMode': PropTypes.bool.isRequired,
     'onSearchClick': PropTypes.func.isRequired,
-    'onEditModeClick': PropTypes.func.isRequired
+    'onEditModeClick': PropTypes.func.isRequired,
+    'sticky': PropTypes.bool
+};
+
+Toolbar.defaultProps = {
+    'sticky': true
 };
