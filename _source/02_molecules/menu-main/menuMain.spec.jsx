@@ -20,16 +20,29 @@ describe('<MenuMain />', function() {
             }));
         });
 
-        it('should include the icons and class', function() {
+        it('should have the correct class', function() {
+            expect(component.find('ul').hasClass('m-menu-main m-menu-main--open ')).toBe(true);
+        });
+
+        it('prevent the event propagation on click', function() {
+            // how!?
+        });
+
+        it('should include the icons', function() {
             expect(component.contains(
-                <ul className="m-menu-main m-menu-main--open ">
-                    <Icon className="m-menu-main__item" icon="about" label="About" />
-                    <Icon className="m-menu-main__item" icon="help" label="Help" />
-                    <Icon className="m-menu-main__item" icon="next" label="Account" />
-                    <Icon className="m-menu-main__item" icon="next" label="Next" />
-                    <Icon className="m-menu-main__item" icon="next" label="Customize" />
-                    <Icon className="m-menu-main__item" icon="next" label="Sign Out" />
-                </ul>
+                <Icon className="m-menu-main__item" icon="about" label="About" />
+            )).toBe(true);
+            expect(component.contains(
+                <Icon className="m-menu-main__item" icon="help" label="Help" />
+            )).toBe(true);
+            expect(component.contains(
+                <Icon className="m-menu-main__item" icon="account" label="Account" />
+            )).toBe(true);
+            expect(component.contains(
+                <Icon className="m-menu-main__item" icon="next" label="Next" />
+            )).toBe(true);
+            expect(component.contains(
+                <Icon className="m-menu-main__item m-menu-main__sign-out" icon="sign-out" label="Sign Out" />
             )).toBe(true);
         });
     });
