@@ -4,10 +4,12 @@ import React, { PropTypes, Component } from 'react';
  * React component
  * @class 01_atoms/icon/Icon
  *
- * @prop {string} [className] Additional class name
- * @prop {string} icon        Icon name
- * @prop {string} [label]     Button label
- * @prop {string} [onCLick]   Click callback
+ * @prop {boolean}  [stopPropagation] Prevent event propagation
+ * @prop {function} [onCLick]         Click callback
+ * @prop {string}   [className]       Additional class name
+ * @prop {string}   [label]           Button label
+ * @prop {string}   [title]           Button title
+ * @prop {string}   icon              Icon name
  */
 export default class Icon extends Component {
     constructor(props) {
@@ -48,7 +50,8 @@ Icon.propTypes = {
     'icon': PropTypes.string.isRequired,
     'label': PropTypes.string,
     'onClick': PropTypes.func,
-    'title': PropTypes.string
+    'title': PropTypes.string,
+    'stopPropagation': PropTypes.bool
 };
 
 Icon.defaultProps = {
