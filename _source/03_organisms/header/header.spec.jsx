@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Header from './Header.jsx';
 import { mapStateToProps, mapDispatchToProps } from './headerContainer';
 import { toggleMainMenu, closeMainMenu } from './headerActions';
-import headerReducers from './headerReducers';
+import header from './headerReducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Link from '../../01_atoms/link/Link.jsx';
 import Button from '../../01_atoms/button/Button.jsx';
@@ -183,7 +183,7 @@ describe('<Header />', function() {
             it('should return the initial state', function() {
                 let state;
 
-                expect(headerReducers(state, {})).toEqual({});
+                expect(header(state, {})).toEqual({});
             });
         });
 
@@ -193,13 +193,13 @@ describe('<Header />', function() {
                 const state = {'menuMainOpen': true};
 
                 // ...and not mutate it
-                expect(headerReducers(state, toggleMainMenu())).not.toBe(state);
+                expect(header(state, toggleMainMenu())).not.toBe(state);
 
-                expect(headerReducers({'menuMainOpen': true}, toggleMainMenu())).toEqual({
+                expect(header({'menuMainOpen': true}, toggleMainMenu())).toEqual({
                     'menuMainOpen': false
                 });
 
-                expect(headerReducers({'menuMainOpen': false}, toggleMainMenu())).toEqual({
+                expect(header({'menuMainOpen': false}, toggleMainMenu())).toEqual({
                     'menuMainOpen': true
                 });
             });
@@ -208,9 +208,9 @@ describe('<Header />', function() {
                 const state = {'menuMainOpen': true};
 
                 // ...and not mutate it
-                expect(headerReducers(state, closeMainMenu())).not.toBe(state);
+                expect(header(state, closeMainMenu())).not.toBe(state);
 
-                expect(headerReducers({'menuMainOpen': true}, closeMainMenu())).toEqual({
+                expect(header({'menuMainOpen': true}, closeMainMenu())).toEqual({
                     'menuMainOpen': false
                 });
             });

@@ -1,6 +1,6 @@
 import { TOGGLE_MAIN_MENU, CLOSE_MAIN_MENU } from './headerActions';
 
-const headerReducers = (state = {}, action) => {
+const header = (state = {}, action) => {
     switch (action.type) {
         case TOGGLE_MAIN_MENU:
             return Object.assign({}, state, {
@@ -17,4 +17,4 @@ const headerReducers = (state = {}, action) => {
     }
 };
 
-export default headerReducers;
+export default header;
