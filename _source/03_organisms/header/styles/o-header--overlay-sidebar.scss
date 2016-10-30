@@ -1,0 +1,7 @@
+.o-header--overlay-sidebar {
+    &:before {
+        opacity: 1;
+        transition: opacity 0.5s linear;
+        width: 100%;
+    }
+}

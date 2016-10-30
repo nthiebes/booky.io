@@ -165,7 +165,8 @@ const initialState = {
         'editMode': false,
         'sticky': true
     },
-    'userSettings': {
+    'sidebar': {
+        'open': false,
         'sticky': {
             'header': false,
             'toolbar': true

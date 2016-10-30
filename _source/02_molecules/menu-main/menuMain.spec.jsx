@@ -24,7 +24,11 @@ describe('<MenuMain />', function() {
             expect(component.find('ul').hasClass('m-menu-main m-menu-main--open ')).toBe(true);
         });
 
-        it('prevent the event propagation on click', function() {
+        it('should prevent the event propagation on click', function() {
+            // how!?
+        });
+
+        it('should update the body class', function() {
             // how!?
         });
 

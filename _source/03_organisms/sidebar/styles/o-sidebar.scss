@@ -1,0 +1,32 @@
+@import "__heading/o-sidebar__heading";
+@import "__subheading/o-sidebar__subheading";
+@import "__button/o-sidebar__button";
+
+.o-sidebar {
+    align-items: center;
+    background-color: $color__background--light;
+    border-left: 2px solid rgba(0,0,0,0.15);
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 80%;
+    padding: 10px 3% 10px 3%;
+    position: fixed;
+    right: 0;
+    top: 42px;
+    transform: translate3d(100%,0,0);
+    transition: transform 0.3s ease;
+    width: 350px;
+    z-index: 3;
+
+    @include tablet {
+        top: 64px;
+    }
+
+    @include desktop {
+        top: 86px;
+    }
+}
+
+@import "o-sidebar--open";

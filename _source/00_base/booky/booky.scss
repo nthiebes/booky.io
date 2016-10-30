@@ -8,9 +8,11 @@
 @import "../../02_molecules/bookmark/styles/m-bookmark";
 @import "../../02_molecules/category/styles/m-category";
 @import "../../02_molecules/search/styles/m-search";
+@import "../../02_molecules/color-picker/styles/m-color-picker";
 @import "../../03_organisms/categories/styles/o-categories";
 @import "../../03_organisms/header/styles/o-header";
 @import "../../03_organisms/toolbar/styles/o-toolbar";
+@import "../../03_organisms/sidebar/styles/o-sidebar";
 
 html,
 body {
@@ -30,6 +32,10 @@ body {
 
     &.booky--no-animation {
         transition: none !important;
+    }
+
+    &.booky--no-scrolling {
+        overflow: hidden;
     }
 
     @include mobile-tablet {

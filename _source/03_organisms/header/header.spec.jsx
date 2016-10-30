@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import Header from './Header.jsx';
 import { mapStateToProps, mapDispatchToProps } from './headerContainer';
 import { toggleMainMenu, closeMainMenu } from './headerActions';
+import { toggleSidebar, closeSidebar } from '../sidebar/sidebarActions';
 import header from './headerReducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Link from '../../01_atoms/link/Link.jsx';
@@ -15,6 +16,7 @@ describe('<Header />', function() {
 
         let component,
             onMenuMainClickCallback,
+            onSidebarClickCallback,
             onHeaderClickCallback;
         
         const getComponent = function(props = {}) {
@@ -24,6 +26,7 @@ describe('<Header />', function() {
         beforeEach(function() {
             onMenuMainClickCallback = jest.fn();
             onHeaderClickCallback = jest.fn();
+            onSidebarClickCallback = jest.fn();
         });
 
         describe('should always', function() {
@@ -31,8 +34,10 @@ describe('<Header />', function() {
             beforeEach(function() {
                 component = shallow(getComponent({
                     'menuMainOpen': false,
+                    'sidebarOpen': false,
                     'onMenuMainClick': onMenuMainClickCallback,
-                    'onHeaderClick': onHeaderClickCallback
+                    'onHeaderClick': onHeaderClickCallback,
+                    'onSidebarClick': onSidebarClickCallback
                 }));
             });
 
@@ -65,7 +70,7 @@ describe('<Header />', function() {
                 )).toBe(true);
                 
                 expect(component.containsMatchingElement(
-                    <Icon icon="settings" className="a-icon--light" title="Customize booky" />
+                    <Icon icon="customize" className="a-icon--light" title="Customize booky" stopPropagation={ true } onClick={ onSidebarClickCallback } />
                 )).toBe(true);
 
                 expect(component.containsMatchingElement(
@@ -80,18 +85,21 @@ describe('<Header />', function() {
             });
         });
 
-        describe('when rendered open', function() {
+        describe('when rendered with open main menu and closed sidebar', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
                     'menuMainOpen': true,
+                    'sidebarOpen': false,
                     'onMenuMainClick': onMenuMainClickCallback,
-                    'onHeaderClick': onHeaderClickCallback
+                    'onHeaderClick': onHeaderClickCallback,
+                    'onSidebarClick': onSidebarClickCallback
                 }));
             });
 
             it('should have the correct class', function() {
-                expect(component.find('header').hasClass('o-header--menu-main-open')).toBe(true);
+                expect(component.find('header').hasClass('o-header--overlay-menu-main')).toBe(true);
+                expect(component.find('header').hasClass('o-header--overlay-sidebar')).toBe(false);
             });
 
             it('should include the MenuMain with the correct props', function() {
@@ -101,18 +109,21 @@ describe('<Header />', function() {
             });
         });
 
-        describe('when rendered closed', function() {
+        describe('when rendered closed main menu and open sidebar', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
                     'menuMainOpen': false,
+                    'sidebarOpen': true,
                     'onMenuMainClick': onMenuMainClickCallback,
-                    'onHeaderClick': onHeaderClickCallback
+                    'onHeaderClick': onHeaderClickCallback,
+                    'onSidebarClick': onSidebarClickCallback
                 }));
             });
 
             it('should have the correct class', function() {
-                expect(component.find('header').hasClass('o-header--menu-main-open')).toBe(false);
+                expect(component.find('header').hasClass('o-header--overlay-menu-main')).toBe(false);
+                expect(component.find('header').hasClass('o-header--overlay-sidebar')).toBe(true);
             });
 
             it('should include the MenuMain with the correct props', function() {
@@ -128,8 +139,12 @@ describe('<Header />', function() {
         const state = {
                 'header': {
                     'menuMainOpen': 'banana',
+                    'sidebarOpen': 'potato',
                     'sticky': true,
                     'color': 'primary'
+                },
+                'sidebar': {
+                    'open': 'potato'
                 }
             },
             dispatch = jest.fn();
@@ -139,15 +154,27 @@ describe('<Header />', function() {
         });
 
         it('should map dispatch actions to props', function() {
+            // Main menu icon click
             mapDispatchToProps(dispatch).onMenuMainClick();
             
             expect(typeof mapDispatchToProps(dispatch).onMenuMainClick).toBe('function');
             expect(dispatch).toHaveBeenCalledWith(toggleMainMenu());
+            expect(dispatch).toHaveBeenCalledWith(closeSidebar());
 
+            // Sidebar icon click
+            mapDispatchToProps(dispatch).onSidebarClick();
+            
+            expect(typeof mapDispatchToProps(dispatch).onSidebarClick).toBe('function');
+            expect(dispatch).toHaveBeenCalledWith(toggleSidebar());
+            expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
+
+            // Header click
             mapDispatchToProps(dispatch).onHeaderClick();
             
             expect(typeof mapDispatchToProps(dispatch).onHeaderClick).toBe('function');
             expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
+            expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+
         });
     });
 

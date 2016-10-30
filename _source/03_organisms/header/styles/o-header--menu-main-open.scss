@@ -1,9 +1,0 @@
-.o-header--menu-main-open {
-    @include mobile-tablet {
-        &:before {
-            opacity: 1;
-            transition: opacity 0.5s linear;
-            width: 100%;
-        }
-    }
-}
