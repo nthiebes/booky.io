@@ -103,7 +103,7 @@
     "no-new-wrappers": 1,
     "no-octal-escape": 1,
     "no-param-reassign": 1,
-    "no-plusplus": 1,
+    "no-plusplus": 0,
     "no-proto": 1,
     "no-restricted-globals": 1,
     "no-return-assign": 1,

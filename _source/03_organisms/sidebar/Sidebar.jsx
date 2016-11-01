@@ -25,7 +25,8 @@ export default class Sidebar extends Component {
                 <h2 className="o-sidebar__subheading">{ 'Global color scheme' }</h2>
                 <ColorPicker defaultColor={ 0 } activeColor={ 0 } />
 
-                <h2 className="o-sidebar__subheading">{ 'Navigation bar' }</h2>
+                <h2 className="o-sidebar__subheading">{ 'Header color' }</h2>
+                <ColorPicker defaultColor={ 0 } activeColor={ 0 } />
 
                 <h2 className="o-sidebar__subheading">{ 'Layout' }</h2>
 
