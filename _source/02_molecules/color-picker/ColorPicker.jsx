@@ -16,11 +16,12 @@ export default class ColorPicker extends Component {
     }
 
     getColor(color) {
-        const ACTIVE_CLASS = this.props.activeColor === color.key ? 'm-color-picker__color--active' : '';
+        const ACTIVE_COLOR = this.props.activeColor || this.props.defaultColor;
+        const ACTIVE_CLASS = ACTIVE_COLOR === color.key ? 'm-color-picker__color--active' : '';
         const CLASS = `m-color-picker__color m-color-picker__color--${color.key} ${ACTIVE_CLASS}`;
-        const item = <span key={ color.key } className={ CLASS } />;
+        const ITEM = <span key={ color.key } className={ CLASS } />;
 
-        return item;
+        return ITEM;
     }
 
     getColors() {
@@ -40,7 +41,7 @@ export default class ColorPicker extends Component {
         const COLORS = this.getColors();
 
         return (
-            <div className={ CLASS } onClick={ this.onMenuClick }>
+            <div className={ CLASS }>
                 {COLORS.map(this.getColor)}
             </div>
         );

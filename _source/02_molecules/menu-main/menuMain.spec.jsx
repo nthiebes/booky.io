@@ -24,30 +24,26 @@ describe('<MenuMain />', function() {
             expect(component.find('ul').hasClass('m-menu-main m-menu-main--open ')).toBe(true);
         });
 
-        it('should prevent the event propagation on click', function() {
+        xit('should prevent the event propagation on click', function() {
             // how!?
         });
 
-        it('should update the body class', function() {
+        xit('should update the body class', function() {
             // how!?
         });
 
         it('should include the icons', function() {
-            expect(component.contains(
-                <Icon className="m-menu-main__item" icon="about" label="About" />
-            )).toBe(true);
-            expect(component.contains(
-                <Icon className="m-menu-main__item" icon="help" label="Help" />
-            )).toBe(true);
-            expect(component.contains(
-                <Icon className="m-menu-main__item" icon="account" label="Account" />
-            )).toBe(true);
-            expect(component.contains(
-                <Icon className="m-menu-main__item" icon="next" label="Next" />
-            )).toBe(true);
-            expect(component.contains(
+
+            /* eslint-disable react/jsx-key */
+            expect(component.contains([
+                <Icon className="m-menu-main__item" icon="about" label="About" />,
+                <Icon className="m-menu-main__item" icon="help" label="Help" />,
+                <Icon className="m-menu-main__item" icon="account" label="Account" />,
+                <Icon className="m-menu-main__item" icon="next" label="Next" />,
                 <Icon className="m-menu-main__item m-menu-main__sign-out" icon="sign-out" label="Sign Out" />
-            )).toBe(true);
+            ])).toBe(true);
+            
+            /* eslint-enable react/jsx-key */
         });
     });
 
