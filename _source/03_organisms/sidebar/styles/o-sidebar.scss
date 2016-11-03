@@ -3,13 +3,9 @@
 @import "__button/o-sidebar__button";
 
 .o-sidebar {
-    align-items: center;
     background-color: $color__background--light;
     border-left: 2px solid rgba(0,0,0,0.15);
     bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     max-width: 100%;
     padding: 10px 2rem;
     position: fixed;
