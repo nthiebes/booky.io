@@ -5,11 +5,18 @@ import Input from './Input.jsx';
 
 describe('<Input />', function() {
 
-    let component;
+    let component,
+        onBlurCallback,
+        onFocusCallback;
         
     const getComponent = function(props = {}) {
         return <Input { ...props } />;
     };
+
+    beforeEach(function() {
+        onBlurCallback = jest.fn();
+        onFocusCallback = jest.fn();
+    });
 
     describe('when initialized without optional parameters', function() {
 
@@ -41,10 +48,11 @@ describe('<Input />', function() {
 
         beforeEach(function() {
             component = shallow(getComponent({
-                'placeholder': 'Gscheider placeholder!',
                 'className': 'banana',
-                'focus': true,
-                'type': 'password'
+                'placeholder': 'Gscheider placeholder!',
+                'type': 'password',
+                'onBlur': onBlurCallback,
+                'onFocus': onFocusCallback
             }));
         });
 
@@ -52,7 +60,7 @@ describe('<Input />', function() {
             expect(component.find('div').hasClass('a-input banana')).toBe(true);
         });
 
-        it('should include a input field', function() {
+        it('should include a input field with all props', function() {
             const inputField = component.find('input');
             const labelProps = inputField.props();
 
@@ -60,11 +68,18 @@ describe('<Input />', function() {
                 'className': 'a-input__field',
                 'placeholder': 'Gscheider placeholder!',
                 'type': 'password',
-                'onBlur': '',
-                'onFocus': ''
+                'onBlur': onBlurCallback,
+                'onFocus': onFocusCallback
             });
 
             expect(inputField.node.ref).toBe('inputField');
+        });
+    });
+
+    xdescribe('when initialized with autofocus', function() {
+
+        it('should focus the input field', function() {
+            // how!?
         });
     });
 });

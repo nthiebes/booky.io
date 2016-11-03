@@ -41,7 +41,7 @@ export default class Header extends Component {
                     label="Menu" onClick={ PROPS.onMenuMainClick } 
                     stopPropagation={ true } 
                 />
-                <MenuMain menuMainOpen={ PROPS.menuMainOpen } />
+                <MenuMain document={ document } menuMainOpen={ PROPS.menuMainOpen } />
 
                 <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />
                 <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />

@@ -10,6 +10,7 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
  *
  * @prop {boolean} menuMainOpen Main menu open/closed
  * @prop {string}  [className]  Additional class name
+ * @prop {object}  document     The page document object
  */
 export default class MenuMain extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ export default class MenuMain extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        document.body.classList.toggle('booky--no-scrolling-mobile-tablet', nextProps.menuMainOpen);
+        nextProps.document.body.classList.toggle('booky--no-scrolling-mobile-tablet', nextProps.menuMainOpen);
     }
 
     onMenuClick(event) {
@@ -45,7 +46,8 @@ export default class MenuMain extends Component {
 
 MenuMain.propTypes = {
     'menuMainOpen': PropTypes.bool.isRequired,
-    'className': PropTypes.string
+    'className': PropTypes.string,
+    'document': PropTypes.object.isRequired
 };
 
 MenuMain.defaultProps = {

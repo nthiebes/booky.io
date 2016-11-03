@@ -1,22 +1,34 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import MenuMain from './MenuMain.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 
 describe('<MenuMain />', function() {
 
-    let component;
+    let component,
+        documentMock;
         
     const getComponent = function(props = {}) {
         return <MenuMain { ...props } />;
     };
 
+    beforeEach(function() {
+        documentMock = {
+            'body': {
+                'classList': {
+                    'toggle': jest.fn()
+                }
+            }
+        };
+    });
+
     describe('when initialized without optional parameters and open', function() {
 
         beforeEach(function() {
             component = shallow(getComponent({
-                'menuMainOpen': true
+                'menuMainOpen': true,
+                'document': documentMock
             }));
         });
 
@@ -24,12 +36,23 @@ describe('<MenuMain />', function() {
             expect(component.find('ul').hasClass('m-menu-main m-menu-main--open ')).toBe(true);
         });
 
-        xit('should prevent the event propagation on click', function() {
-            // how!?
+        it('should prevent the event propagation on click', function() {
+            const eventMock = {
+                'stopPropagation': jest.fn()
+            };
+
+            component.find('ul').props().onClick(eventMock);
+            expect(eventMock.stopPropagation).toHaveBeenCalled();
         });
 
-        xit('should update the body class', function() {
-            // how!?
+        it('should update the body class', function() {
+            component = mount(getComponent({
+                'menuMainOpen': true,
+                'document': documentMock
+            }));
+
+            component.update();
+            expect(documentMock.body.classList.toggle).toHaveBeenCalledWith('booky--no-scrolling-mobile-tablet', true);
         });
 
         it('should include the icons', function() {
@@ -52,6 +75,7 @@ describe('<MenuMain />', function() {
         beforeEach(function() {
             component = shallow(getComponent({
                 'menuMainOpen': false,
+                'document': documentMock,
                 'className': 'banana'
             }));
         });

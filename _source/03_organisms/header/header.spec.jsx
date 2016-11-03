@@ -106,6 +106,7 @@ describe('<Header />', function() {
                 const mainMenuProps = component.find('MenuMain').props();
 
                 expect(mainMenuProps.menuMainOpen).toBe(true);
+                expect(typeof mainMenuProps.document).toBe('object');
             });
         });
 
@@ -130,6 +131,7 @@ describe('<Header />', function() {
                 const mainMenuProps = component.find('MenuMain').props();
 
                 expect(mainMenuProps.menuMainOpen).toBe(false);
+                expect(typeof mainMenuProps.document).toBe('object');
             });
         });
     });
@@ -153,28 +155,31 @@ describe('<Header />', function() {
             expect(mapStateToProps(state)).toEqual(state.header);
         });
 
-        it('should map dispatch actions to props', function() {
-            // Main menu icon click
-            mapDispatchToProps(dispatch).onMenuMainClick();
-            
-            expect(typeof mapDispatchToProps(dispatch).onMenuMainClick).toBe('function');
-            expect(dispatch).toHaveBeenCalledWith(toggleMainMenu());
-            expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+        describe('should map dispatch actions to props', function() {
 
-            // Sidebar icon click
-            mapDispatchToProps(dispatch).onSidebarClick();
-            
-            expect(typeof mapDispatchToProps(dispatch).onSidebarClick).toBe('function');
-            expect(dispatch).toHaveBeenCalledWith(toggleSidebar());
-            expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
+            it('onMenuMainClick()', function() {
+                mapDispatchToProps(dispatch).onMenuMainClick();
+                
+                expect(typeof mapDispatchToProps(dispatch).onMenuMainClick).toBe('function');
+                expect(dispatch).toHaveBeenCalledWith(toggleMainMenu());
+                expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+            });
 
-            // Header click
-            mapDispatchToProps(dispatch).onHeaderClick();
+            it('onSidebarClick()', function() {
+                mapDispatchToProps(dispatch).onSidebarClick();
             
-            expect(typeof mapDispatchToProps(dispatch).onHeaderClick).toBe('function');
-            expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
-            expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+                expect(typeof mapDispatchToProps(dispatch).onSidebarClick).toBe('function');
+                expect(dispatch).toHaveBeenCalledWith(toggleSidebar());
+                expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
+            });
 
+            it('onHeaderClick()', function() {
+                mapDispatchToProps(dispatch).onHeaderClick();
+            
+                expect(typeof mapDispatchToProps(dispatch).onHeaderClick).toBe('function');
+                expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
+                expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+            });
         });
     });
 

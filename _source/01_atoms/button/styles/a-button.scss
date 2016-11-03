@@ -9,7 +9,7 @@
     cursor: pointer;
     display: flex;
     font-family: $font__family--text;
-    font-size: 0.875rem;
+    font-size: 0.923rem;
     height: 38px;
     line-height: 38px;
     padding: 0 15px;
@@ -20,8 +20,8 @@
     white-space: nowrap;
 
     @include mobile {
-        height: 30px;
-        line-height: 30px;
+        height: 32px;
+        line-height: 33px;
     }
 }
 
