@@ -24,14 +24,14 @@ component="import React, { PropTypes, Component } from 'react';
 
 /**
  * React component
- * @class $modulePath/${name,}/${name^}
+ * @class $modulePath/$folder/${name^}
  *
- * @prop {boolean} prop1 Prop1 description
+ * @prop {string} className Optional class name
  */
 export default class ${name^} extends Component {
     render() {
         const PROPS = this.props;
-        const CLASS = '$moduleType-${name,} ' + PROPS.class;
+        const CLASS = '$moduleType-$folder ' + PROPS.className;
 
         return (
             <div className={ CLASS }>
@@ -42,18 +42,104 @@ export default class ${name^} extends Component {
 }
 
 ${name^}.propTypes = {
-    'prop1': PropTypes.bool.isRequired
+    'className': PropTypes.string
 };
 
 ${name^}.defaultProps = {
-    'prop1': true
-};
-"
+    'className': ''
+};"
 echo "$component" >> "_source/$modulePath/$folder/${name^}.jsx"
 
-echo data >> "_source/$modulePath/$folder/${name,}.spec.jsx"
+specs="import React from 'react';
+import { shallow } from 'enzyme';
+
+import ${name^} from './${name^}.jsx';
+
+describe('<${name^} />', function() {
+
+    describe('presentational component', function() {
+
+        let component;
+        
+        const getComponent = function(props = {}) {
+            return <${name^} { ...props } />;
+        };
+
+        describe('when initialized with optional parameters', function() {
+
+            beforeEach(function() {
+                component = shallow(getComponent({
+                    'className': 'banana'
+                }));
+            });
+
+            it('should have the correct class', function() {
+                expect(component.find('div').hasClass('$moduleType-$folder ')).toBe(true);
+            });
+        });
+    });
+});"
+echo "$specs" >> "_source/$modulePath/$folder/${name,}.spec.jsx"
+
 if [ $redux == "y" ]; then
-    echo data >> "_source/$modulePath/$folder/${name,}Actions.js"
-    echo data >> "_source/$modulePath/$folder/${name,}Container.js"
-    echo data >> "_source/$modulePath/$folder/${name,}Reducers.js"
+
+actions="/**
+ * Action types
+ */
+export const TOGGLE_${name^^} = 'TOGGLE_${name^^}';
+
+
+/**
+ * Action creators
+ */
+export function toggle${name^}() {
+    return {
+        'type': TOGGLE_${name^^}
+    };
+}"
+echo "$actions" >> "_source/$modulePath/$folder/${name,}Actions.js"
+
+reducers="import { TOGGLE_${name^^} } from './${name,}Actions';
+
+const ${name,} = (state = {}, action) => {
+    switch (action.type) {
+        case TOGGLE_${name^^}:
+            return Object.assign({}, state, {
+                'open': !state.open
+            });
+
+        default:
+            return state;
+    }
+};
+
+export default ${name,};"
+echo "$reducers" >> "_source/$modulePath/$folder/${name,}Reducers.js"
+
+container="import { connect } from 'react-redux';
+import ${name^} from './${name^}.jsx';
+import { toggle${name^} } from './${name,}Actions';
+
+export const mapStateToProps = function(state) {
+    return {
+        'open': state.${name,}.open
+    };
+};
+
+export const mapDispatchToProps = function(dispatch) {
+    return {
+        'on${name^}Click': () => {
+            dispatch(toggle${name^}());
+        }
+    };
+};
+
+const ${name^}Container = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(${name^});
+
+export default ${name^}Container;"
+echo "$container" >> "_source/$modulePath/$folder/${name,}Container.js"
+
 fi
