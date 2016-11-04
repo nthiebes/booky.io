@@ -20,6 +20,14 @@ mkdir "_source/$modulePath/$folder"
 echo "Component name:"
 read name
 
+mkdir "_source/$modulePath/$folder/styles"
+styles="@import "../../00_base/config";
+
+.$moduleType-$folder {
+    
+}"
+echo "$styles" >> "_source/$modulePath/$folder/styles/$moduleType-$folder.scss"
+
 component="import React, { PropTypes, Component } from 'react';
 
 /**
@@ -74,7 +82,7 @@ describe('<${name^} />', function() {
             });
 
             it('should have the correct class', function() {
-                expect(component.find('div').hasClass('$moduleType-$folder ')).toBe(true);
+                expect(component.find('div').hasClass('$moduleType-$folder banana')).toBe(true);
             });
         });
     });
