@@ -8,12 +8,13 @@ import Icon from '../icon/Icon.jsx';
  * 
  * @requires 01_atoms/icon/Icon
  *
- * @prop {string} [buzzword]  Buzzword (bold)
- * @prop {string} [className] Additional class name
- * @prop {string} [color]     Icon color
- * @prop {string} [icon]      Icon name
- * @prop {string} [size]      Button size
- * @prop {string} [text]      Button text
+ * @prop {function} onButtonClick Button click callback
+ * @prop {string}  [buzzword]     Buzzword (bold)
+ * @prop {string}  [className]    Additional class name
+ * @prop {string}  [color]        Icon color
+ * @prop {string}  [icon]         Icon name
+ * @prop {string}  [size]         Button size
+ * @prop {string}  [text]         Button text
  */
 export default class Button extends Component {
     render() {
@@ -24,7 +25,7 @@ export default class Button extends Component {
         const BUZZWORD = PROPS.buzzword;
 
         return (
-            <button className={ CLASS }>
+            <button className={ CLASS } onClick={ PROPS.onButtonClick }>
                 { ICON }
                 <span className="a-button__text">{ TEXT }</span>
                 <span className="a-button__text a-button__text--buzzword">{ BUZZWORD }</span>
@@ -39,7 +40,8 @@ Button.propTypes = {
     'color': PropTypes.string,
     'icon': PropTypes.string,
     'size': PropTypes.string,
-    'text': PropTypes.string
+    'text': PropTypes.string,
+    'onButtonClick': PropTypes.func
 };
 
 Button.defaultProps = {

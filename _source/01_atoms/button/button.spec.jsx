@@ -5,11 +5,16 @@ import Button from './Button.jsx';
 
 describe('<Button />', function() {
 
-    let component;
+    let component,
+        onButtonClickCallback;
         
     const getComponent = function(props = {}) {
         return <Button { ...props } />;
     };
+
+    beforeEach(function() {
+        onButtonClickCallback = jest.fn();
+    });
 
     describe('when initialized without optional parameters', function() {
 
@@ -17,7 +22,8 @@ describe('<Button />', function() {
             component = shallow(getComponent({
                 'text': 'Troll',
                 'size': 'small',
-                'color': 'primary'
+                'color': 'primary',
+                'onButtonClick': onButtonClickCallback
             }));
         });
 
@@ -30,6 +36,10 @@ describe('<Button />', function() {
                 <span className="a-button__text">{ 'Troll' }</span>
             )).toBe(true);
         });
+
+        it('should include a click callback', function() {
+            expect(component.find('button').props().onClick).toBe(onButtonClickCallback);
+        });
     });
 
     describe('when initialized with optional parameters', function() {
@@ -41,7 +51,8 @@ describe('<Button />', function() {
                 'size': 'large',
                 'color': 'light',
                 'buzzword': 'Troll',
-                'icon': 'category'
+                'icon': 'category',
+                'onButtonClick': onButtonClickCallback
             }));
         });
 
