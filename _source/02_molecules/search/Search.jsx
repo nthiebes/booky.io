@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 
 import Input from '../../01_atoms/input/Input.jsx';
 
@@ -6,18 +6,16 @@ import Input from '../../01_atoms/input/Input.jsx';
  * React component
  * @class 02_molecules/search/Search
  * 
- * @requires 02_molecules/search/Search
- * @requires 01_atoms/icon/Icon
- * @requires 01_atoms/button/Button
+ * @requires 01_atoms/input/Input
  *
- * @prop {boolean}  searchOpen    Search bar open and visible
- * @prop {function} onSearchClick Icon click callback
+ * @prop {boolean} [open]      Search bar open and visible
+ * @prop {string}  [className] Optional class name
  */
-export default class Search extends React.Component {
+export default class Search extends Component {
     render() {
         const PROPS = this.props;
         const CLASS = 'm-search ' + PROPS.className;
-
+        
         return (
             <div className={ CLASS }>
                 <Input placeholder="Search booky..." focus={ PROPS.open } />
@@ -25,3 +23,13 @@ export default class Search extends React.Component {
         );
     }
 }
+
+Search.propTypes = {
+    'open': PropTypes.bool,
+    'className': PropTypes.string
+};
+
+Search.defaultProps = {
+    'className': '',
+    'open': false
+};
