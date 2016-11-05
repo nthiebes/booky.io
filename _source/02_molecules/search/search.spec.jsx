@@ -33,7 +33,7 @@ describe('<Search />', function() {
 
         beforeEach(function() {
             component = shallow(getComponent({
-                'open': true,
+                'focus': true,
                 'className': 'banana'
             }));
         });

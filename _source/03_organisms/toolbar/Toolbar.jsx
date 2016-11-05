@@ -12,9 +12,10 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @requires 01_atoms/icon/Icon
  * @requires 02_molecules/search/Search
  *
+ * @prop {boolean}  [searchFocused] Search input field focused
+ * @prop {boolean}  [sticky]        Fixed header enabled/disabled
  * @prop {boolean}  editMode        Edit mode enabled/disabled
  * @prop {boolean}  searchOpen      Search bar open and visible
- * @prop {boolean}  sticky          Fixed header enabled/disabled
  * @prop {function} onEditModeClick Edit mode callback
  * @prop {function} onSearchClick   Icon click callback
  */
@@ -35,7 +36,7 @@ export default class Toolbar extends Component {
                 <Icon icon={ EDIT_MODE_ICON } className="o-toolbar__icon a-icon--dark" title={ EDIT_MODE_TITLE } onClick={ PROPS.onEditModeClick } />
                 <Icon icon="add-category" className="o-toolbar__icon o-toolbar__icon--add-category a-icon--dark" title="New category" />
                 <Button className="o-toolbar__button a-button--primary" size="small" color="primary" text="New" buzzword="Category" />
-                <Search className={ SEARCH_CLASS } open={ PROPS.searchOpen } />
+                <Search className={ SEARCH_CLASS } focus={ PROPS.searchFocused } />
                 <Icon 
                     icon={ SEARCH_ICON } 
                     className="o-toolbar__icon o-toolbar__icon--search a-icon--dark" 
@@ -49,6 +50,7 @@ export default class Toolbar extends Component {
 
 Toolbar.propTypes = {
     'searchOpen': PropTypes.bool.isRequired,
+    'searchFocused': PropTypes.bool,
     'editMode': PropTypes.bool.isRequired,
     'onSearchClick': PropTypes.func.isRequired,
     'onEditModeClick': PropTypes.func.isRequired,

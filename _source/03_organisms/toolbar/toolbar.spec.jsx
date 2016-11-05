@@ -61,7 +61,8 @@ describe('<Toolbar />', function() {
                     'onEditModeClick': onEditModeClickCallback,
                     'searchOpen': true,
                     'editMode': false,
-                    'sticky': false
+                    'sticky': false,
+                    'searchFocused': true
                 }));
             });
 
@@ -73,7 +74,7 @@ describe('<Toolbar />', function() {
                 const searchProps = component.find('Search').props();
 
                 expect(searchProps.className).toBe('m-search--open');
-                expect(searchProps.open).toBe(true);
+                expect(searchProps.focus).toBe(true);
             });
 
             it('include the correct icon', function() {
@@ -108,7 +109,7 @@ describe('<Toolbar />', function() {
                 const searchProps = component.find('Search').props();
 
                 expect(searchProps.className).toBe('');
-                expect(searchProps.open).toBe(false);
+                expect(searchProps.focus).toBe(false);
             });
 
             it('include the correct icon', function() {
@@ -168,7 +169,8 @@ describe('<Toolbar />', function() {
                 'toolbar': {
                     'searchOpen': 'banana',
                     'editMode': false,
-                    'sticky': true
+                    'sticky': true,
+                    'searchFocused': true
                 }
             },
             dispatch = jest.fn();
@@ -229,17 +231,22 @@ describe('<Toolbar />', function() {
         describe('called with an action', function() {
 
             it('TOGGLE_SEARCH: should return the new state', function() {
-                const state = {'searchOpen': true};
+                const state = {
+                    'searchOpen': true,
+                    'searchFocused': true
+                };
 
                 // ...and not mutate it
                 expect(toolbar(state, toggleSearch())).not.toBe(state);
 
                 expect(toolbar({'searchOpen': true}, toggleSearch())).toEqual({
-                    'searchOpen': false
+                    'searchOpen': false,
+                    'searchFocused': false
                 });
 
                 expect(toolbar({'searchOpen': false}, toggleSearch())).toEqual({
-                    'searchOpen': true
+                    'searchOpen': true,
+                    'searchFocused': true
                 });
             });
 
@@ -250,11 +257,13 @@ describe('<Toolbar />', function() {
                 expect(toolbar(state, toggleEditMode())).not.toBe(state);
 
                 expect(toolbar({'editMode': true}, toggleEditMode())).toEqual({
-                    'editMode': false
+                    'editMode': false,
+                    'searchFocused': false
                 });
 
                 expect(toolbar({'editMode': false}, toggleEditMode())).toEqual({
-                    'editMode': true
+                    'editMode': true,
+                    'searchFocused': false
                 });
             });
         });

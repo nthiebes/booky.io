@@ -5,6 +5,7 @@ import { toggleSearch, toggleEditMode } from './toolbarActions';
 export const mapStateToProps = function(state) {
     return {
         'searchOpen': state.toolbar.searchOpen,
+        'searchFocused': state.toolbar.searchFocused,
         'editMode': state.toolbar.editMode,
         'sticky': state.toolbar.sticky
     };

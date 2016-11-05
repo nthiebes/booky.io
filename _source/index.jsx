@@ -162,6 +162,7 @@ const initialState = {
     },
     'toolbar': {
         'searchOpen': false,
+        'searchFocused': false,
         'editMode': false,
         'sticky': true
     },

@@ -8,28 +8,28 @@ import Input from '../../01_atoms/input/Input.jsx';
  * 
  * @requires 01_atoms/input/Input
  *
- * @prop {boolean} [open]      Search bar open and visible
+ * @prop {boolean} [focus]     Focus input field
  * @prop {string}  [className] Optional class name
  */
 export default class Search extends Component {
     render() {
         const PROPS = this.props;
         const CLASS = 'm-search ' + PROPS.className;
-        
+
         return (
             <div className={ CLASS }>
-                <Input placeholder="Search booky..." focus={ PROPS.open } />
+                <Input placeholder="Search booky..." focus={ PROPS.focus } />
             </div>
         );
     }
 }
 
 Search.propTypes = {
-    'open': PropTypes.bool,
+    'focus': PropTypes.bool,
     'className': PropTypes.string
 };
 
 Search.defaultProps = {
     'className': '',
-    'open': false
+    'focus': false
 };
