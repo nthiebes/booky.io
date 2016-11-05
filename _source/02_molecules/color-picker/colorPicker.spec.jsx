@@ -5,17 +5,23 @@ import ColorPicker from './ColorPicker.jsx';
 
 describe('<ColorPicker />', function() {
 
-    let component;
+    let component,
+        onColorChangeCallback;
         
     const getComponent = function(props = {}) {
         return <ColorPicker { ...props } />;
     };
 
+    beforeEach(function() {
+        onColorChangeCallback = jest.fn();
+    });
+
     describe('when initialized without optional parameters', function() {
 
         beforeEach(function() {
             component = shallow(getComponent({
-                'defaultColor': 0
+                'activeColor': 0,
+                'onColorChange': onColorChangeCallback
             }));
         });
 
@@ -24,21 +30,41 @@ describe('<ColorPicker />', function() {
         });
 
         it('should include all the colors', function() {
-
-            /* eslint-disable react/jsx-key */
-            expect(component.contains([
-                <span key={ 0 } className={ 'm-color-picker__color m-color-picker__color--0 m-color-picker__color--active' } />,
-                <span key={ 1 } className={ 'm-color-picker__color m-color-picker__color--1 ' } />,
-                <span key={ 2 } className={ 'm-color-picker__color m-color-picker__color--2 ' } />,
-                <span key={ 3 } className={ 'm-color-picker__color m-color-picker__color--3 ' } />,
-                <span key={ 4 } className={ 'm-color-picker__color m-color-picker__color--4 ' } />,
-                <span key={ 5 } className={ 'm-color-picker__color m-color-picker__color--5 ' } />,
-                <span key={ 6 } className={ 'm-color-picker__color m-color-picker__color--6 ' } />,
-                <span key={ 7 } className={ 'm-color-picker__color m-color-picker__color--7 ' } />,
+            expect(component.containsMatchingElement(
+                <span key={ 0 } className={ 'm-color-picker__color m-color-picker__color--0 m-color-picker__color--active' } />
+            )).toBe(true);
+            expect(component.containsMatchingElement(
+                <span key={ 1 } className={ 'm-color-picker__color m-color-picker__color--1 ' } />
+            )).toBe(true);
+            expect(component.containsMatchingElement(
+                <span key={ 2 } className={ 'm-color-picker__color m-color-picker__color--2 ' } />
+            )).toBe(true);
+            expect(component.containsMatchingElement(
+                <span key={ 3 } className={ 'm-color-picker__color m-color-picker__color--3 ' } />
+            )).toBe(true);
+            expect(component.containsMatchingElement(
+                <span key={ 4 } className={ 'm-color-picker__color m-color-picker__color--4 ' } />
+            )).toBe(true);
+            expect(component.containsMatchingElement(
+                <span key={ 5 } className={ 'm-color-picker__color m-color-picker__color--5 ' } />
+            )).toBe(true);
+            expect(component.containsMatchingElement(
+                <span key={ 6 } className={ 'm-color-picker__color m-color-picker__color--6 ' } />
+            )).toBe(true);
+            expect(component.containsMatchingElement(
+                <span key={ 7 } className={ 'm-color-picker__color m-color-picker__color--7 ' } />
+            )).toBe(true);
+            expect(component.containsMatchingElement(
                 <span key={ 8 } className={ 'm-color-picker__color m-color-picker__color--8 ' } />
-            ])).toBe(true);
+            )).toBe(true);
+        });
 
-            /* eslint-enable react/jsx-key */
+        it('should return the new color on click', function() {
+            const newColor = 0;
+
+            component.find('span').first().props().onClick(newColor);
+
+            expect(onColorChangeCallback).toHaveBeenCalledWith(newColor);
         });
     });
 
@@ -46,9 +72,9 @@ describe('<ColorPicker />', function() {
 
         beforeEach(function() {
             component = shallow(getComponent({
-                'defaultColor': 0,
                 'activeColor': 1,
-                'className': 'banana'
+                'className': 'banana',
+                'onColorChange': onColorChangeCallback
             }));
         });
 
@@ -57,11 +83,11 @@ describe('<ColorPicker />', function() {
         });
 
         it('should select the active color', function() {
-            expect(component.contains(
+            expect(component.containsMatchingElement(
                 <span key={ 0 } className={ 'm-color-picker__color m-color-picker__color--0 m-color-picker__color--active' } />
             )).toBe(false);
 
-            expect(component.contains(
+            expect(component.containsMatchingElement(
                 <span key={ 1 } className={ 'm-color-picker__color m-color-picker__color--1 m-color-picker__color--active' } />
             )).toBe(true);
         });

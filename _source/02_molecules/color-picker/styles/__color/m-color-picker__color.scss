@@ -1,16 +1,12 @@
 .m-color-picker__color {
-    border: 1px solid rgba(0,0,0,0.15);
+    border: 2px solid rgba(0,0,0,0.15);
     cursor: pointer;
-    height: 25px;
-    width: 25px;
+    height: 1.5rem;
+    transition: border-color 0.2s linear;
+    width: 1.5rem;
 
     &:hover {
-        outline: 2px solid #000;
-    }
-
-    @include mobile {
-        height: 22px;
-        width: 22px;
+        border-color: #000;
     }
 }
 

@@ -4,22 +4,27 @@ import React, { PropTypes, Component } from 'react';
  * React component
  * @class 02_molecules/color-picker/ColorPicker
  *
- * @prop {boolean} [activeColor] The selected color
- * @prop {boolean} defaultColor  The default color
- * @prop {string}  [className]   Additional class name
+ * @prop {boolean}  activeColor   The selected color
+ * @prop {function} onColorChange Color change callback
+ * @prop {string}   [className]   Additional class name
  */
 export default class ColorPicker extends Component {
     constructor(props) {
         super(props);
         
         this.getColor = this.getColor.bind(this);
+        this.onColorChange = this.onColorChange.bind(this);
+    }
+
+    onColorChange(key) {
+        this.props.onColorChange(key);
     }
 
     getColor(color) {
-        const ACTIVE_COLOR = this.props.activeColor || this.props.defaultColor;
+        const ACTIVE_COLOR = this.props.activeColor;
         const ACTIVE_CLASS = ACTIVE_COLOR === color.key ? 'm-color-picker__color--active' : '';
         const CLASS = `m-color-picker__color m-color-picker__color--${color.key} ${ACTIVE_CLASS}`;
-        const ITEM = <span key={ color.key } className={ CLASS } />;
+        const ITEM = <span key={ color.key } className={ CLASS } onClick={ this.onColorChange.bind(this, color.key) } />;
 
         return ITEM;
     }
@@ -49,9 +54,9 @@ export default class ColorPicker extends Component {
 }
 
 ColorPicker.propTypes = {
-    'activeColor': PropTypes.number,
-    'defaultColor': PropTypes.number.isRequired,
-    'className': PropTypes.string
+    'activeColor': PropTypes.number.isRequired,
+    'className': PropTypes.string,
+    'onColorChange': PropTypes.func.isRequired
 };
 
 ColorPicker.defaultProps = {
