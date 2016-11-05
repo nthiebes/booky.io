@@ -1,0 +1,11 @@
+.a-checkbox__icon {
+    fill: currentColor;
+    height: 100%;
+    opacity: 0;
+    stroke-width: 0;
+    stroke: currentColor;
+    transition: color 0.2s, transform 0.2s linear, opacity 0.2s linear;
+    width: 100%;
+}
+
+@import "a-checkbox__icon--checked";

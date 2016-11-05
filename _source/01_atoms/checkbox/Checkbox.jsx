@@ -4,19 +4,24 @@ import React, { PropTypes, Component } from 'react';
  * React component
  * @class 01_atoms/checkbox/Checkbox
  *
+ * @prop {boolean}  checked         Checkbox checked?
+ * @prop {function} onCheckboxClick Click callback
  * @prop {string}   [className]     Optional class name
  * @prop {string}   [label]         Label text
- * @prop {function} onCheckboxClick Click callback
  */
 export default class Checkbox extends Component {
     render() {
         const PROPS = this.props;
         const CLASS = 'a-checkbox ' + PROPS.className;
-        const BOX_CLASS = PROPS.checked ? 'a-checkbox__box a-checkbox__box--checked' : 'a-checkbox__box';
+        const BOX_CLASS = PROPS.checked ? 'a-checkbox__icon a-checkbox__icon--checked' : 'a-checkbox__icon';
 
         return (
             <div className={ CLASS } onClick={ PROPS.onCheckboxClick } >
-                <span className={ BOX_CLASS } />
+                <span className="a-checkbox__box">
+                    <svg className={ BOX_CLASS }>
+                        <use xlinkHref="images/symbol-defs.svg#icon-check" />
+                    </svg>
+                </span>
                 <label className="a-checkbox__label">{ PROPS.label }</label>
             </div>
         );
@@ -24,6 +29,7 @@ export default class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
+    'checked': PropTypes.bool.isRequired,
     'label': PropTypes.string,
     'className': PropTypes.string,
     'onCheckboxClick': PropTypes.func.isRequired
