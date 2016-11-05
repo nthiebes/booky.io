@@ -3,7 +3,7 @@
 
     @include mobile-tablet {
         &:before {
-            background: radial-gradient(circle closest-side, $color__font--light, transparent);
+            background: radial-gradient(circle closest-side, $color__font--light, rgba(255,255,255,0.1));
             border-radius: 50%;
             content: " ";
             height: 150%;
