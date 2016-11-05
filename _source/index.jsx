@@ -167,10 +167,13 @@ const initialState = {
     },
     'sidebar': {
         'open': false,
-        'sticky': {
-            'header': false,
-            'toolbar': true
-        }
+        'notes': true,
+        'autofill': true,
+        'newtab': true,
+        'stickyHeader': true,
+        'stickyToolbar': true,
+        'globalColor': 0,
+        'headerColor': 0
     }
 };
 
