@@ -24,8 +24,11 @@ export default class ColorPicker extends Component {
         const ACTIVE_COLOR = this.props.activeColor;
         const ACTIVE_CLASS = ACTIVE_COLOR === color.key ? 'm-color-picker__color--active' : '';
         const CLASS = `m-color-picker__color m-color-picker__color--${color.key} ${ACTIVE_CLASS}`;
-        const ITEM = <span key={ color.key } className={ CLASS } onClick={ this.onColorChange.bind(this, color.key) } />;
 
+        /* eslint-disable react/jsx-no-bind */
+        const ITEM = <span key={ color.key } className={ CLASS } onClick={ this.onColorChange.bind(this, color.key) } />;
+        
+        /* eslint-enable react/jsx-no-bind */
         return ITEM;
     }
 

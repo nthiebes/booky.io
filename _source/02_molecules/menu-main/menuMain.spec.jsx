@@ -56,17 +56,13 @@ describe('<MenuMain />', function() {
         });
 
         it('should include the icons', function() {
-
-            /* eslint-disable react/jsx-key */
-            expect(component.contains([
+            expect(component.contains(
                 <Icon className="m-menu-main__item" icon="about" label="About" />,
                 <Icon className="m-menu-main__item" icon="help" label="Help" />,
                 <Icon className="m-menu-main__item" icon="account" label="Account" />,
                 <Icon className="m-menu-main__item" icon="next" label="Next" />,
                 <Icon className="m-menu-main__item m-menu-main__sign-out" icon="sign-out" label="Sign Out" />
-            ])).toBe(true);
-            
-            /* eslint-enable react/jsx-key */
+            )).toBe(true);
         });
     });
 
