@@ -19,12 +19,13 @@ import ColorPicker from '../../02_molecules/color-picker/ColorPicker.jsx';
  * @prop {boolean}  stickyHeader         Sticky header enabled/disabled
  * @prop {boolean}  stickyToolbar        Sticky toolbar enabled/disabled
  * @prop {function} onAutofillClick      Autofill click callback
+ * @prop {function} onDoneClick          Done button click callback
  * @prop {function} onGlobalColorChange  Global color change callback
  * @prop {function} onHeaderColorChange  Header color change callback
  * @prop {function} onNewtabClick        New tab click callback
  * @prop {function} onNotesClick         Notes click callback
  * @prop {function} onStickyHeaderClick  Sticky header click callback
- * @prop {function} onToolbarHeaderClick Sticky toolbar click callback
+ * @prop {function} onStickyToolbarClick Sticky toolbar click callback
  * @prop {number}   globalColor          Global color key
  * @prop {number}   headerColor          Header color key
  */
@@ -37,7 +38,7 @@ export default class Sidebar extends Component {
         return (
             <aside className={ SIDEBAR_CLASS }>
                 <h1 className="o-sidebar__heading">{ 'Customize booky' }</h1>
-                <Button className="o-sidebar__button" text="Done" />
+                <Button onButtonClick={ PROPS.onDoneClick } className="o-sidebar__button" text="Done" />
 
                 <h2 className="o-sidebar__subheading">{ 'Global color scheme' }</h2>
                 <ColorPicker activeColor={ PROPS.globalColor } onColorChange={ PROPS.onGlobalColorChange } />
@@ -47,7 +48,7 @@ export default class Sidebar extends Component {
 
                 <h2 className="o-sidebar__subheading">{ 'Layout' }</h2>
                 <Checkbox label={ 'Sticky header' } checked={ PROPS.stickyHeader } onCheckboxClick={ PROPS.onStickyHeaderClick } />
-                <Checkbox label={ 'Sticky toolbar' } checked={ PROPS.stickyToolbar } onCheckboxClick={ PROPS.onToolbarHeaderClick } />
+                <Checkbox label={ 'Sticky toolbar' } checked={ PROPS.stickyToolbar } onCheckboxClick={ PROPS.onStickyToolbarClick } />
 
                 <h2 className="o-sidebar__subheading">{ 'Dashboards' }</h2>
 
@@ -70,10 +71,11 @@ Sidebar.propTypes = {
     'stickyHeader': PropTypes.bool.isRequired,
     'stickyToolbar': PropTypes.bool.isRequired,
     'onStickyHeaderClick': PropTypes.func.isRequired,
-    'onToolbarHeaderClick': PropTypes.func.isRequired,
+    'onStickyToolbarClick': PropTypes.func.isRequired,
     'onNotesClick': PropTypes.func.isRequired,
     'onAutofillClick': PropTypes.func.isRequired,
     'onNewtabClick': PropTypes.func.isRequired,
     'onGlobalColorChange': PropTypes.func.isRequired,
-    'onHeaderColorChange': PropTypes.func.isRequired
+    'onHeaderColorChange': PropTypes.func.isRequired,
+    'onDoneClick': PropTypes.func.isRequired
 };

@@ -1,6 +1,15 @@
 import { connect } from 'react-redux';
 import Sidebar from './Sidebar.jsx';
-import { toggleNotes, toggleAutofill, toggleNewtab, toggleStickyHeader, toggleStickyToolbar, updateGlobalColor, updateHeaderColor } from './sidebarActions';
+import {
+    toggleNotes, 
+    toggleAutofill, 
+    toggleNewtab, 
+    toggleStickyHeader, 
+    toggleStickyToolbar, 
+    updateGlobalColor, 
+    updateHeaderColor, 
+    closeSidebar
+} from './sidebarActions';
 
 export const mapStateToProps = function(state) {
     return {
@@ -29,7 +38,7 @@ export const mapDispatchToProps = function(dispatch) {
         'onStickyHeaderClick': () => {
             dispatch(toggleStickyHeader());
         },
-        'onToolbarHeaderClick': () => {
+        'onStickyToolbarClick': () => {
             dispatch(toggleStickyToolbar());
         },
         'onGlobalColorChange': (key) => {
@@ -37,6 +46,9 @@ export const mapDispatchToProps = function(dispatch) {
         },
         'onHeaderColorChange': (key) => {
             dispatch(updateHeaderColor(key));
+        },
+        'onDoneClick': () => {
+            dispatch(closeSidebar());
         }
     };
 };
