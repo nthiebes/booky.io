@@ -21,7 +21,7 @@ echo "Component name:"
 read name
 
 mkdir "_source/$modulePath/$folder/styles"
-styles="@import "../../00_base/config";
+styles="@import \"../../00_base/config\";
 
 .$moduleType-$folder {
     
@@ -34,7 +34,7 @@ component="import React, { PropTypes, Component } from 'react';
  * React component
  * @class $modulePath/$folder/${name^}
  *
- * @prop {string} className Optional class name
+ * @prop {string} [className] Optional class name
  */
 export default class ${name^} extends Component {
     render() {
