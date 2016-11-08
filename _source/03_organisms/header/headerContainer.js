@@ -7,7 +7,7 @@ export const mapStateToProps = function(state) {
     return {
         'menuMainOpen': state.header.menuMainOpen,
         'sidebarOpen': state.sidebar.open,
-        'sticky': state.header.sticky,
+        'sticky': state.sidebar.stickyHeader,
         'color': state.sidebar.headerColor
     };
 };

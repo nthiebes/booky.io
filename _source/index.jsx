@@ -156,8 +156,7 @@ const initialState = {
         'position': 0
     }],
     'header': {
-        'menuMainOpen': false,
-        'sticky': true
+        'menuMainOpen': false
     },
     'toolbar': {
         'searchOpen': false,

@@ -43,7 +43,7 @@ describe('<Header />', function() {
             });
 
             it('have the correct class', function() {
-                expect(component.find('header').hasClass('o-header o-header--color-0 o-header--sticky ')).toBe(true);
+                expect(component.find('header').hasClass('o-header o-header--color-0 o-header--sticky')).toBe(true);
             });
 
             it('have a click callback', function() {
@@ -137,6 +137,26 @@ describe('<Header />', function() {
                 expect(typeof mainMenuProps.document).toBe('object');
             });
         });
+
+        describe('when rendered with optional parameters', function() {
+
+            beforeEach(function() {
+                component = shallow(getComponent({
+                    'menuMainOpen': false,
+                    'sidebarOpen': true,
+                    'color': 1,
+                    'sticky': false,
+                    'onMenuMainClick': onMenuMainClickCallback,
+                    'onHeaderClick': onHeaderClickCallback,
+                    'onSidebarClick': onSidebarClickCallback
+                }));
+            });
+
+            it('should have the correct class', function() {
+                expect(component.find('header').hasClass('o-header--sticky')).toBe(false);
+                expect(component.find('header').hasClass('o-header--color-1')).toBe(true);
+            });
+        });
     });
 
     describe('container component', function() {
@@ -145,12 +165,13 @@ describe('<Header />', function() {
                 'header': {
                     'menuMainOpen': 'menuMainOpen',
                     'sidebarOpen': 'open',
-                    'sticky': 'sticky',
+                    'sticky': 'stickyHeader',
                     'color': 'headerColor'
                 },
                 'sidebar': {
                     'headerColor': 'headerColor',
-                    'open': 'open'
+                    'open': 'open',
+                    'stickyHeader': 'stickyHeader'
                 }
             },
             dispatch = jest.fn();
