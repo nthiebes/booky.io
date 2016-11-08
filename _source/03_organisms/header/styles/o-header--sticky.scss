@@ -1,3 +1,19 @@
 .o-header--sticky {
     position: fixed;
+
+    &:before {
+        top: 42px;
+    }
+
+    @include tablet {
+        &:before {
+            top: 64px;
+        }
+    }
+
+    @include desktop {
+        &:before {
+            top: 86px;
+        }
+    }
 }
