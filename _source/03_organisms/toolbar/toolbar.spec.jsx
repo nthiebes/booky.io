@@ -68,6 +68,7 @@ describe('<Toolbar />', function() {
 
             it('should have the correct class', function() {
                 expect(component.find('div').hasClass('o-toolbar--open')).toBe(true);
+                expect(component.find('div').hasClass('o-toolbar--sticky')).toBe(false);
             });
 
             it('should include a search bar', function() {
@@ -167,10 +168,13 @@ describe('<Toolbar />', function() {
 
         const state = {
                 'toolbar': {
-                    'searchOpen': 'banana',
-                    'editMode': false,
-                    'sticky': true,
-                    'searchFocused': true
+                    'searchOpen': 'searchOpen',
+                    'editMode': 'editMode',
+                    'sticky': 'stickyToolbar',
+                    'searchFocused': 'searchFocused'
+                },
+                'sidebar': {
+                    'stickyToolbar': 'stickyToolbar'
                 }
             },
             dispatch = jest.fn();

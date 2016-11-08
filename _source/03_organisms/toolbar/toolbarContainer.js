@@ -7,7 +7,7 @@ export const mapStateToProps = function(state) {
         'searchOpen': state.toolbar.searchOpen,
         'searchFocused': state.toolbar.searchFocused,
         'editMode': state.toolbar.editMode,
-        'sticky': state.toolbar.sticky
+        'sticky': state.sidebar.stickyToolbar
     };
 };
 
