@@ -58,14 +58,15 @@ describe('<Dropdown />', function() {
 
             it('should return the option on change', function() {
                 const event = {
-                    'target': {
-                        'value': 1
-                    }
-                };
+                        'target': {
+                            'value': '1'
+                        }
+                    },
+                    newValue = 1;
 
                 component.find('select').props().onChange(event);
 
-                expect(onDropdownChangeCallback).toHaveBeenCalledWith(event.target.value);
+                expect(onDropdownChangeCallback).toHaveBeenCalledWith(newValue);
             });
         });
 

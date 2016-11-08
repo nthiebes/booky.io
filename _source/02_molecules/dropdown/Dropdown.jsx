@@ -17,7 +17,7 @@ export default class Dropdown extends Component {
     }
 
     onSelectChange(event) {
-        const value = event.target.value;
+        const value = parseInt(event.target.value, 10);
 
         this.props.onDropdownChange(value);
     }

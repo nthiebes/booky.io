@@ -2,6 +2,20 @@
 @import "__option/m-dropdown__option";
 
 .m-dropdown {
-    font-size: 1rem;
+    background-color: $color__background--light;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom-width: 2px;
+    border-radius: 0;
     color: $color__font--dark;
+    font-family: $font__family--text;
+    font-size: 1rem;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 9px;
+    transition: border-color 0.3s linear;
+    width: 100%;
+
+    &:hover, &:focus {
+        border-bottom-color: $color--blue;
+    }
 }
