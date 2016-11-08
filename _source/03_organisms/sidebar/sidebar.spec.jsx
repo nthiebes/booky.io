@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* eslint-disable max-statements */
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -13,12 +14,15 @@ import {
     toggleStickyToolbar, 
     updateGlobalColor, 
     updateHeaderColor, 
-    closeSidebar
+    closeSidebar,
+    toggleMaxWidth,
+    updateDashboardType
 } from '../sidebar/sidebarActions';
 import sidebar from './sidebarReducers';
 import Button from '../../01_atoms/button/Button.jsx';
 import Checkbox from '../../01_atoms/checkbox/Checkbox.jsx';
 import ColorPicker from '../../02_molecules/color-picker/ColorPicker.jsx';
+import Dropdown from '../../02_molecules/dropdown/Dropdown.jsx';
 
 describe('<Sidebar />', function() {
 
@@ -32,7 +36,9 @@ describe('<Sidebar />', function() {
             onNewtabClickCallback,
             onNotesClickCallback,
             onStickyHeaderClickCallback,
-            onStickyToolbarClickCallback;
+            onStickyToolbarClickCallback,
+            onMaxWidthClickCallback,
+            onDashboardChangeCallback;
         
         const getComponent = function(props = {}) {
             return <Sidebar { ...props } />;
@@ -47,6 +53,8 @@ describe('<Sidebar />', function() {
             onNotesClickCallback = jest.fn();
             onStickyHeaderClickCallback = jest.fn();
             onStickyToolbarClickCallback = jest.fn();
+            onMaxWidthClickCallback = jest.fn();
+            onDashboardChangeCallback = jest.fn();
         });
 
         describe('should always', function() {
@@ -60,7 +68,9 @@ describe('<Sidebar />', function() {
                     'stickyHeader': true,
                     'stickyToolbar': true,
                     'globalColor': 0,
-                    'headerColor': 0,
+                    'headerColor': 1,
+                    'maxWidth': true,
+                    'dashboard': 2,
                     'onAutofillClick': onAutofillClickCallback,
                     'onDoneClick': onDoneClickCallback,
                     'onGlobalColorChange': onGlobalColorChangeCallback,
@@ -68,7 +78,9 @@ describe('<Sidebar />', function() {
                     'onNewtabClick': onNewtabClickCallback,
                     'onNotesClick': onNotesClickCallback,
                     'onStickyHeaderClick': onStickyHeaderClickCallback,
-                    'onStickyToolbarClick': onStickyToolbarClickCallback
+                    'onStickyToolbarClick': onStickyToolbarClickCallback,
+                    'onMaxWidthClick': onMaxWidthClickCallback,
+                    'onDashboardChange': onDashboardChangeCallback
                 }));
             });
 
@@ -77,17 +89,22 @@ describe('<Sidebar />', function() {
             });
 
             it('include all required elements', function() {
+                const options = [{'name': 'Display as dropdown'}, {'name': 'Display as sidebar'}];
+
                 expect(component.contains(
                     <h1 className="o-sidebar__heading">{ 'Customize booky' }</h1>,
                     <Button onButtonClick={ onDoneClickCallback } className="o-sidebar__button" text="Done" />,
                     <h2 className="o-sidebar__subheading">{ 'Global color scheme' }</h2>,
                     <ColorPicker onColorChange={ onGlobalColorChangeCallback } activeColor={ 0 } />,
                     <h2 className="o-sidebar__subheading">{ 'Header color' }</h2>,
-                    <ColorPicker onColorChange={ onHeaderColorChangeCallback } activeColor={ 0 } />,
+                    <ColorPicker onColorChange={ onHeaderColorChangeCallback } activeColor={ 1 } />,
                     <h2 className="o-sidebar__subheading">{ 'Layout' }</h2>,
                     <Checkbox onCheckboxClick={ onStickyHeaderClickCallback } label={ 'Sticky header' } checked={ true } />,
                     <Checkbox onCheckboxClick= { onStickyToolbarClickCallback } label={ 'Sticky toolbar' } checked={ true } />,
+                    <Checkbox label={ 'Maximum width (two columns)' } checked={ true } onCheckboxClick={ onMaxWidthClickCallback } />,
                     <h2 className="o-sidebar__subheading">{ 'Dashboards' }</h2>,
+                    <Dropdown onDropdownChange={ onDashboardChangeCallback } options={ options } selectedKey={ 2 } />,
+                    <p className="o-sidebar__note">{ '(smaller screens will always use a sidebar)' }</p>,
                     <h2 className="o-sidebar__subheading">{ 'Preferences' }</h2>,
                     <Checkbox onCheckboxClick={ onNotesClickCallback } label={ 'Bookmark notes' } checked={ true } />,
                     <Checkbox onCheckboxClick={ onAutofillClickCallback } label={ 'Autofill bookmark name' } checked={ true } />,
@@ -107,7 +124,9 @@ describe('<Sidebar />', function() {
                     'stickyHeader': true,
                     'stickyToolbar': true,
                     'globalColor': 0,
-                    'headerColor': 0,
+                    'headerColor': 1,
+                    'maxWidth': true,
+                    'dashboard': 2,
                     'onAutofillClick': onAutofillClickCallback,
                     'onDoneClick': onDoneClickCallback,
                     'onGlobalColorChange': onGlobalColorChangeCallback,
@@ -115,7 +134,9 @@ describe('<Sidebar />', function() {
                     'onNewtabClick': onNewtabClickCallback,
                     'onNotesClick': onNotesClickCallback,
                     'onStickyHeaderClick': onStickyHeaderClickCallback,
-                    'onStickyToolbarClick': onStickyToolbarClickCallback
+                    'onStickyToolbarClick': onStickyToolbarClickCallback,
+                    'onMaxWidthClick': onMaxWidthClickCallback,
+                    'onDashboardChange': onDashboardChangeCallback
                 }));
             });
 
@@ -136,7 +157,9 @@ describe('<Sidebar />', function() {
                     'stickyHeader': 'stickyHeader',
                     'stickyToolbar': 'stickyToolbar',
                     'globalColor': 'globalColor',
-                    'headerColor': 'headerColor'
+                    'headerColor': 'headerColor',
+                    'maxWidth': 'maxWidth',
+                    'dashboard': 'dashboard'
                 }
             },
             dispatch = jest.fn();
@@ -178,22 +201,34 @@ describe('<Sidebar />', function() {
                 expect(dispatch).toHaveBeenCalledWith(toggleStickyToolbar());
             });
             it('onGlobalColorChange()', function() {
-                mapDispatchToProps(dispatch).onGlobalColorChange();
+                mapDispatchToProps(dispatch).onGlobalColorChange('banana');
                 
                 expect(typeof mapDispatchToProps(dispatch).onGlobalColorChange).toBe('function');
-                expect(dispatch).toHaveBeenCalledWith(updateGlobalColor());
+                expect(dispatch).toHaveBeenCalledWith(updateGlobalColor('banana'));
             });
             it('onHeaderColorChange()', function() {
-                mapDispatchToProps(dispatch).onHeaderColorChange();
+                mapDispatchToProps(dispatch).onHeaderColorChange('banana');
                 
                 expect(typeof mapDispatchToProps(dispatch).onHeaderColorChange).toBe('function');
-                expect(dispatch).toHaveBeenCalledWith(updateHeaderColor());
+                expect(dispatch).toHaveBeenCalledWith(updateHeaderColor('banana'));
             });
             it('onDoneClick()', function() {
                 mapDispatchToProps(dispatch).onDoneClick();
                 
                 expect(typeof mapDispatchToProps(dispatch).onDoneClick).toBe('function');
                 expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+            });
+            it('onMaxWidthClick()', function() {
+                mapDispatchToProps(dispatch).onMaxWidthClick();
+                
+                expect(typeof mapDispatchToProps(dispatch).onMaxWidthClick).toBe('function');
+                expect(dispatch).toHaveBeenCalledWith(toggleMaxWidth());
+            });
+            it('onDashboardChange()', function() {
+                mapDispatchToProps(dispatch).onDashboardChange('banana');
+                
+                expect(typeof mapDispatchToProps(dispatch).onDashboardChange).toBe('function');
+                expect(dispatch).toHaveBeenCalledWith(updateDashboardType('banana'));
             });
         });
     });
@@ -251,6 +286,13 @@ describe('<Sidebar />', function() {
                     'type': 'TOGGLE_STICKY_TOOLBAR'
                 });
             });
+            it('toggleMaxWidth()', function() {
+                const action = toggleMaxWidth();
+
+                expect(action).toEqual({
+                    'type': 'TOGGLE_MAX_WIDTH'
+                });
+            });
             it('updateGlobalColor()', function() {
                 const action = updateGlobalColor();
 
@@ -263,6 +305,13 @@ describe('<Sidebar />', function() {
 
                 expect(action).toEqual({
                     'type': 'UPDATE_HEADER_COLOR'
+                });
+            });
+            it('updateDashboardType()', function() {
+                const action = updateDashboardType();
+
+                expect(action).toEqual({
+                    'type': 'UPDATE_DASHBOARD_TYPE'
                 });
             });
         });
@@ -382,6 +431,21 @@ describe('<Sidebar />', function() {
                 });
             });
 
+            it('TOGGLE_MAX_WIDTH: should return the new state', function() {
+                const state = {'maxWidth': true};
+
+                // ...and not mutate it
+                expect(sidebar(state, toggleMaxWidth())).not.toBe(state);
+
+                expect(sidebar({'maxWidth': true}, toggleMaxWidth())).toEqual({
+                    'maxWidth': false
+                });
+
+                expect(sidebar({'maxWidth': false}, toggleMaxWidth())).toEqual({
+                    'maxWidth': true
+                });
+            });
+
             it('UPDATE_GLOBAL_COLOR: should return the new state', function() {
                 const state = {'globalColor': 0},
                     newColor = 1;
@@ -405,8 +469,21 @@ describe('<Sidebar />', function() {
                     'headerColor': 1
                 });
             });
+
+            it('UPDATE_DASHBOARD_TYPE: should return the new state', function() {
+                const state = {'dashboard': 0},
+                    newDashboard = 1;
+
+                // ...and not mutate it
+                expect(sidebar(state, updateDashboardType())).not.toBe(state);
+
+                expect(sidebar({'dashboard': 0}, updateDashboardType(newDashboard))).toEqual({
+                    'dashboard': 1
+                });
+            });
         });
     });
 });
 
 /* eslint-enable max-lines */
+/* eslint-enable max-statements */

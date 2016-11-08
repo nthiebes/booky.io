@@ -6,8 +6,10 @@ import {
     TOGGLE_NEWTAB, 
     TOGGLE_STICKY_HEADER, 
     TOGGLE_STICKY_TOOLBAR,
+    TOGGLE_MAX_WIDTH,
     UPDATE_GLOBAL_COLOR,
-    UPDATE_HEADER_COLOR
+    UPDATE_HEADER_COLOR,
+    UPDATE_DASHBOARD_TYPE
 } from './sidebarActions';
 
 const sidebar = (state = {}, action) => {
@@ -47,6 +49,11 @@ const sidebar = (state = {}, action) => {
                 'stickyToolbar': !state.stickyToolbar
             });
 
+        case TOGGLE_MAX_WIDTH:
+            return Object.assign({}, state, {
+                'maxWidth': !state.maxWidth
+            });
+
         case UPDATE_GLOBAL_COLOR:
             return Object.assign({}, state, {
                 'globalColor': action.color
@@ -55,6 +62,11 @@ const sidebar = (state = {}, action) => {
         case UPDATE_HEADER_COLOR:
             return Object.assign({}, state, {
                 'headerColor': action.color
+            });
+
+        case UPDATE_DASHBOARD_TYPE:
+            return Object.assign({}, state, {
+                'dashboard': action.dashboard
             });
 
         default:

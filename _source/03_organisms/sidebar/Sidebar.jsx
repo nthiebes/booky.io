@@ -3,6 +3,7 @@ import React, { PropTypes, Component } from 'react';
 import Button from '../../01_atoms/button/Button.jsx';
 import Checkbox from '../../01_atoms/checkbox/Checkbox.jsx';
 import ColorPicker from '../../02_molecules/color-picker/ColorPicker.jsx';
+import Dropdown from '../../02_molecules/dropdown/Dropdown.jsx';
 
 /**
  * React component
@@ -11,21 +12,26 @@ import ColorPicker from '../../02_molecules/color-picker/ColorPicker.jsx';
  * @requires 01_atoms/button/Button
  * @requires 01_atoms/checkbox/Checkbox
  * @requires 02_molecules/color-picker/ColorPicker
+ * @requires 02_molecules/dropdown/Dropdown
  *
  * @prop {boolean}  autofill             Autofill enabled/disabled
+ * @prop {boolean}  maxWidth             Maximum content width enabled/disabled
  * @prop {boolean}  newtab               New tab enabled/disabled
  * @prop {boolean}  notes                Notes enabled/disabled
  * @prop {boolean}  open                 Sidebar open/closed
  * @prop {boolean}  stickyHeader         Sticky header enabled/disabled
  * @prop {boolean}  stickyToolbar        Sticky toolbar enabled/disabled
  * @prop {function} onAutofillClick      Autofill click callback
+ * @prop {function} onDashboardChange    Dashboard change callback
  * @prop {function} onDoneClick          Done button click callback
  * @prop {function} onGlobalColorChange  Global color change callback
  * @prop {function} onHeaderColorChange  Header color change callback
+ * @prop {function} onMaxWidthClick      Maximum content width callback
  * @prop {function} onNewtabClick        New tab click callback
  * @prop {function} onNotesClick         Notes click callback
  * @prop {function} onStickyHeaderClick  Sticky header click callback
  * @prop {function} onStickyToolbarClick Sticky toolbar click callback
+ * @prop {number}   dashboard            Dashboard type
  * @prop {number}   globalColor          Global color key
  * @prop {number}   headerColor          Header color key
  */
@@ -34,6 +40,13 @@ export default class Sidebar extends Component {
         const PROPS = this.props;
         const OPEN_CLASS = PROPS.open ? 'o-sidebar--open' : '';
         const SIDEBAR_CLASS = 'o-sidebar ' + OPEN_CLASS;
+        const DASHBOARD_OPTIONS = [
+            {
+                'name': 'Display as dropdown'
+            }, {
+                'name': 'Display as sidebar'
+            }
+        ];
 
         return (
             <aside className={ SIDEBAR_CLASS }>
@@ -49,8 +62,11 @@ export default class Sidebar extends Component {
                 <h2 className="o-sidebar__subheading">{ 'Layout' }</h2>
                 <Checkbox label={ 'Sticky header' } checked={ PROPS.stickyHeader } onCheckboxClick={ PROPS.onStickyHeaderClick } />
                 <Checkbox label={ 'Sticky toolbar' } checked={ PROPS.stickyToolbar } onCheckboxClick={ PROPS.onStickyToolbarClick } />
+                <Checkbox label={ 'Maximum width (two columns)' } checked={ PROPS.maxWidth } onCheckboxClick={ PROPS.onMaxWidthClick } />
 
                 <h2 className="o-sidebar__subheading">{ 'Dashboards' }</h2>
+                <Dropdown onDropdownChange={ PROPS.onDashboardChange } options={ DASHBOARD_OPTIONS } selectedKey={ PROPS.dashboard } />
+                <p className="o-sidebar__note">{ '(smaller screens will always use a sidebar)' }</p>
 
                 <h2 className="o-sidebar__subheading">{ 'Preferences' }</h2>
                 <Checkbox label={ 'Bookmark notes' } checked={ PROPS.notes } onCheckboxClick={ PROPS.onNotesClick } />
@@ -70,6 +86,8 @@ Sidebar.propTypes = {
     'headerColor': PropTypes.number.isRequired,
     'stickyHeader': PropTypes.bool.isRequired,
     'stickyToolbar': PropTypes.bool.isRequired,
+    'maxWidth': PropTypes.bool.isRequired,
+    'dashboard': PropTypes.number.isRequired,
     'onStickyHeaderClick': PropTypes.func.isRequired,
     'onStickyToolbarClick': PropTypes.func.isRequired,
     'onNotesClick': PropTypes.func.isRequired,
@@ -77,5 +95,7 @@ Sidebar.propTypes = {
     'onNewtabClick': PropTypes.func.isRequired,
     'onGlobalColorChange': PropTypes.func.isRequired,
     'onHeaderColorChange': PropTypes.func.isRequired,
-    'onDoneClick': PropTypes.func.isRequired
+    'onDoneClick': PropTypes.func.isRequired,
+    'onMaxWidthClick': PropTypes.func.isRequired,
+    'onDashboardChange': PropTypes.func.isRequired
 };

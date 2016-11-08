@@ -8,7 +8,9 @@ import {
     toggleStickyToolbar, 
     updateGlobalColor, 
     updateHeaderColor, 
-    closeSidebar
+    closeSidebar,
+    updateDashboardType,
+    toggleMaxWidth
 } from './sidebarActions';
 
 export const mapStateToProps = function(state) {
@@ -20,7 +22,9 @@ export const mapStateToProps = function(state) {
         'stickyHeader': state.sidebar.stickyHeader,
         'stickyToolbar': state.sidebar.stickyToolbar,
         'globalColor': state.sidebar.globalColor,
-        'headerColor': state.sidebar.headerColor
+        'headerColor': state.sidebar.headerColor,
+        'maxWidth': state.sidebar.maxWidth,
+        'dashboard': state.sidebar.dashboard
     };
 };
 
@@ -49,6 +53,12 @@ export const mapDispatchToProps = function(dispatch) {
         },
         'onDoneClick': () => {
             dispatch(closeSidebar());
+        },
+        'onMaxWidthClick': () => {
+            dispatch(toggleMaxWidth());
+        },
+        'onDashboardChange': (key) => {
+            dispatch(updateDashboardType(key));
         }
     };
 };
