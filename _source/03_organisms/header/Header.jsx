@@ -20,18 +20,15 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @prop {function} onHeaderClick   Header click callback
  * @prop {function} onMenuMainClick Main menu icon click callback
  * @prop {function} onSidebarClick  Sidebar icon click callback
+ * @prop {number}   [color]         Header background color
  */
 export default class Header extends Component {
-    getColor() {
-        return 'primary';
-    }
-
     render() {
         const PROPS = this.props;
         const STICKY_CLASS = PROPS.sticky ? 'o-header--sticky' : '';
         const OVERLAY_MENU_MAIN_CLASS = PROPS.menuMainOpen ? 'o-header--overlay-menu-main' : '';
         const OVERLAY_SIDEBAR_CLASS = PROPS.sidebarOpen ? 'o-header--overlay-sidebar' : '';
-        const HEADER_CLASS = `o-header o-header--${this.getColor()} ${STICKY_CLASS} ${OVERLAY_MENU_MAIN_CLASS} ${OVERLAY_SIDEBAR_CLASS}`;
+        const HEADER_CLASS = `o-header o-header--color-${PROPS.color} ${STICKY_CLASS} ${OVERLAY_MENU_MAIN_CLASS} ${OVERLAY_SIDEBAR_CLASS}`;
 
         return (
             <header className={ HEADER_CLASS } onClick={ PROPS.onHeaderClick }>
@@ -60,9 +57,11 @@ Header.propTypes = {
     'onMenuMainClick': PropTypes.func.isRequired,
     'onHeaderClick': PropTypes.func.isRequired,
     'onSidebarClick': PropTypes.func.isRequired,
-    'sticky': PropTypes.bool
+    'sticky': PropTypes.bool,
+    'color': PropTypes.number
 };
 
 Header.defaultProps = {
-    'sticky': true
+    'sticky': true,
+    'color': 0
 };

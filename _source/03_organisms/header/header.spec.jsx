@@ -35,6 +35,7 @@ describe('<Header />', function() {
                 component = shallow(getComponent({
                     'menuMainOpen': false,
                     'sidebarOpen': false,
+                    'color': 0,
                     'onMenuMainClick': onMenuMainClickCallback,
                     'onHeaderClick': onHeaderClickCallback,
                     'onSidebarClick': onSidebarClickCallback
@@ -42,7 +43,7 @@ describe('<Header />', function() {
             });
 
             it('have the correct class', function() {
-                expect(component.find('header').hasClass('o-header o-header--primary o-header--sticky ')).toBe(true);
+                expect(component.find('header').hasClass('o-header o-header--color-0 o-header--sticky ')).toBe(true);
             });
 
             it('have a click callback', function() {
@@ -91,6 +92,7 @@ describe('<Header />', function() {
                 component = shallow(getComponent({
                     'menuMainOpen': true,
                     'sidebarOpen': false,
+                    'color': 0,
                     'onMenuMainClick': onMenuMainClickCallback,
                     'onHeaderClick': onHeaderClickCallback,
                     'onSidebarClick': onSidebarClickCallback
@@ -116,6 +118,7 @@ describe('<Header />', function() {
                 component = shallow(getComponent({
                     'menuMainOpen': false,
                     'sidebarOpen': true,
+                    'color': 0,
                     'onMenuMainClick': onMenuMainClickCallback,
                     'onHeaderClick': onHeaderClickCallback,
                     'onSidebarClick': onSidebarClickCallback
@@ -140,13 +143,14 @@ describe('<Header />', function() {
         
         const state = {
                 'header': {
-                    'menuMainOpen': 'banana',
-                    'sidebarOpen': 'potato',
-                    'sticky': true,
-                    'color': 'primary'
+                    'menuMainOpen': 'menuMainOpen',
+                    'sidebarOpen': 'open',
+                    'sticky': 'sticky',
+                    'color': 'headerColor'
                 },
                 'sidebar': {
-                    'open': 'potato'
+                    'headerColor': 'headerColor',
+                    'open': 'open'
                 }
             },
             dispatch = jest.fn();

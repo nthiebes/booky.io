@@ -157,8 +157,7 @@ const initialState = {
     }],
     'header': {
         'menuMainOpen': false,
-        'sticky': true,
-        'color': 0
+        'sticky': true
     },
     'toolbar': {
         'searchOpen': false,
