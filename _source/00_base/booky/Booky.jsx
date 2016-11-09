@@ -14,6 +14,7 @@ import './booky.scss';
  * 
  * @requires 03_organisms/header/headerContainer
  * @requires 03_organisms/toolbar/toolbarContainer
+ * @requires 03_organisms/sidebar/sidebarContainer
  * @requires 03_organisms/categories/categoriesContainer
  */
 export default class Booky extends Component {
@@ -21,7 +22,7 @@ export default class Booky extends Component {
         return (
             <div>
                 <HeaderContainer />
-                <ToolbarContainer />
+                <ToolbarContainer document={ document } window={ window } />
                 <SidebarContainer />
                 <CategoriesContainer />
             </div>

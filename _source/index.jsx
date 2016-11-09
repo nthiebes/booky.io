@@ -162,7 +162,8 @@ const initialState = {
         'searchOpen': false,
         'searchFocused': false,
         'editMode': false,
-        'sticky': true
+        'sticky': true,
+        'currentlySticky': true
     },
     'sidebar': {
         'open': false,

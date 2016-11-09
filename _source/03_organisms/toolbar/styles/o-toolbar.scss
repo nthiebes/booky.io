@@ -7,11 +7,11 @@
     justify-content: space-between;
     margin-top: 2px;
     padding: 0.5rem 3%;
+    pointer-events: none;
     position: absolute;
     top: 40px;
     width: 100%;
     z-index: 1;
-    pointer-events: none;
 
     @include tablet {
         top: 62px;
@@ -27,3 +27,4 @@
 
 @import "o-toolbar--open";
 @import "o-toolbar--sticky";
+@import "o-toolbar--sticky-one-and-only";

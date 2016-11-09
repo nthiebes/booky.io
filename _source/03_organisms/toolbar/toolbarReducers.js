@@ -1,4 +1,4 @@
-import { TOGGLE_SEARCH, TOGGLE_EDIT_MODE } from './toolbarActions';
+import { TOGGLE_SEARCH, TOGGLE_EDIT_MODE, UPDATE_STICKY } from './toolbarActions';
 
 const toolbar = (state = {}, action) => {
     switch (action.type) {
@@ -12,6 +12,11 @@ const toolbar = (state = {}, action) => {
             return Object.assign({}, state, {
                 'editMode': !state.editMode,
                 'searchFocused': false
+            });
+
+        case UPDATE_STICKY:
+            return Object.assign({}, state, {
+                'currentlySticky': action.sticky
             });
 
         default:

@@ -62,7 +62,7 @@
     "no-alert": 1,
     "no-array-constructor": 1,
     "no-bitwise": 1,
-    "no-extra-parens": 2,
+    "no-extra-parens": 1,
     "no-caller": 1,
     "no-case-declarations": 1,
     "no-catch-shadow": 1,

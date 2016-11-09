@@ -1,3 +1,12 @@
 .o-toolbar--sticky {
     position: fixed;
+    top: 40px;
+
+    @include tablet {
+        top: 62px;
+    }
+
+    @include desktop {
+        top: 84px;
+    }
 }
