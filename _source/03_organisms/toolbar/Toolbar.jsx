@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { scrolling } from '../../00_base/utils/Scrolling';
 
 import Search from '../../02_molecules/search/Search.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
@@ -26,27 +27,39 @@ export default class Toolbar extends Component {
     constructor(props) {
         super(props);
 
-        this.onPageScroll = this.onPageScroll.bind(this);
-        this.scrollActions = {
-            'sticky': {
-                'active': false,
-                'action': function(sticky) {
-                    this.props.updateSticky(sticky);
-                }
-            }
-        };
+        // this.onPageScroll = this.onPageScroll.bind(this);
+        // this.scrollActions = {
+        //     'sticky': {
+        //         'active': false,
+        //         'action': function(sticky) {
+        //             this.props.updateSticky(sticky);
+        //         }
+        //     }
+        // };
     }
 
     componentDidMount() {
-        this.props.window.addEventListener('scroll', this.onPageScroll);
+        console.log(scrolling);
+        scrolling.addAction('toolbar', {
+            'offset': 85,
+            'active': false,
+            'isAbove': function() {
+                console.log('isAbove');
+            },
+            'isBelow': function() {
+                console.log('isBelow');
+            }
+        });
+
+        // this.props.window.addEventListener('scroll', this.onPageScroll);
     }
 
     componentDidUpdate() {
-        this.onPageScroll();
+        // this.onPageScroll();
     }
 
     componentWillUnmount() {
-        this.props.window.removeEventListener('scroll', this.onPageScroll);
+        // this.props.window.removeEventListener('scroll', this.onPageScroll);
     }
 
     onPageScroll() {
