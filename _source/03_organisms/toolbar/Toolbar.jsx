@@ -24,8 +24,8 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @prop {function} updateSticky      Callback for updating the sticky state
  */
 export default class Toolbar extends Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
         // this.onPageScroll = this.onPageScroll.bind(this);
         // this.scrollActions = {
@@ -36,22 +36,21 @@ export default class Toolbar extends Component {
         //         }
         //     }
         // };
-    }
+    // }
 
     componentDidMount() {
-        console.log(scrolling);
+        
         scrolling.addAction('toolbar', {
             'offset': 85,
             'active': false,
             'isAbove': function() {
+                console.log(this);
                 console.log('isAbove');
             },
             'isBelow': function() {
                 console.log('isBelow');
             }
         });
-
-        // this.props.window.addEventListener('scroll', this.onPageScroll);
     }
 
     componentDidUpdate() {
@@ -59,24 +58,24 @@ export default class Toolbar extends Component {
     }
 
     componentWillUnmount() {
-        // this.props.window.removeEventListener('scroll', this.onPageScroll);
+        scrolling.removeAction('toolbar');
     }
 
-    onPageScroll() {
-        const HEADER_SCROLL_OFFSET = 85, // needs to be a dynamic height
-            PROPS = this.props, 
-            TOP = PROPS.window.pageYOffset || PROPS.document.documentElement.scrollTop;
+    // onPageScroll() {
+    //     const HEADER_SCROLL_OFFSET = 85, // needs to be a dynamic height
+    //         PROPS = this.props, 
+    //         TOP = PROPS.window.pageYOffset || PROPS.document.documentElement.scrollTop;
 
-        if (TOP >= HEADER_SCROLL_OFFSET) {
-            if (!this.scrollActions.sticky.active) {
-                this.scrollActions.sticky.active = true;
-                this.scrollActions.sticky.action.call(this, true);
-            }
-        } else if (this.scrollActions.sticky.active && !PROPS.headerSticky) {
-            this.scrollActions.sticky.active = false;
-            this.scrollActions.sticky.action.call(this, false);
-        }
-    }
+    //     if (TOP >= HEADER_SCROLL_OFFSET) {
+    //         if (!this.scrollActions.sticky.active) {
+    //             this.scrollActions.sticky.active = true;
+    //             this.scrollActions.sticky.action.call(this, true);
+    //         }
+    //     } else if (this.scrollActions.sticky.active && !PROPS.headerSticky) {
+    //         this.scrollActions.sticky.active = false;
+    //         this.scrollActions.sticky.action.call(this, false);
+    //     }
+    // }
 
     getStickyClass(PROPS) {
         if (PROPS.sticky && PROPS.headerSticky && PROPS.currentlySticky) {

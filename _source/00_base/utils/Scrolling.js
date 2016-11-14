@@ -2,18 +2,19 @@
  * Scrolling helper
  * @class 00_base/utils/Scrolling
  *
- * @prop {boolean} [currentlySticky] Fixed
+ * @prop {object} config
+ * @prop {object} config.window
+ * @prop {object} config.document
  */
-class Scrolling {
+export class Scrolling {
     constructor(config) {
-        /** @type {[type]} [description] */
         this.config = config;
         this.actions = {};
 
         this.addAction = this.addAction.bind(this);
         this.onPageScroll = this.onPageScroll.bind(this);
 
-        this.config.window.addEventListener('scroll', this.onPageScroll);
+        // this.config.window.addEventListener('scroll', this.onPageScroll);
     }
 
     onPageScroll() {
@@ -41,7 +42,19 @@ class Scrolling {
     }
 
     addAction(actionName, actionConfig) {
+        if (JSON.stringify(this.actions).length === 2) {
+            this.config.window.addEventListener('scroll', this.onPageScroll);
+        }
+
         this.actions[actionName] = actionConfig;
+    }
+
+    removeAction(actionName) {
+        delete this.actions[actionName];
+
+        if (JSON.stringify(this.actions).length === 2) {
+            this.config.window.removeEventListener('scroll', this.onPageScroll);
+        }
     }
 }
 
