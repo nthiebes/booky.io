@@ -42,7 +42,6 @@ export default class Toolbar extends Component {
         
         scrolling.addAction('toolbar', {
             'offset': 85,
-            'active': false,
             'isAbove': function() {
                 console.log(this);
                 console.log('isAbove');
@@ -126,9 +125,7 @@ Toolbar.propTypes = {
     'updateSticky': PropTypes.func.isRequired,
     'headerSticky': PropTypes.bool,
     'currentlySticky': PropTypes.bool,
-    'sticky': PropTypes.bool,
-    'window': PropTypes.object.isRequired,
-    'document': PropTypes.object.isRequired
+    'sticky': PropTypes.bool
 };
 
 Toolbar.defaultProps = {

@@ -13,8 +13,6 @@ export class Scrolling {
 
         this.addAction = this.addAction.bind(this);
         this.onPageScroll = this.onPageScroll.bind(this);
-
-        // this.config.window.addEventListener('scroll', this.onPageScroll);
     }
 
     onPageScroll() {
@@ -25,22 +23,25 @@ export class Scrolling {
 
         for (item in ACTIONS) {
             if (ACTIONS.hasOwnProperty(item)) {
-                let action = ACTIONS[item];
+                const action = ACTIONS[item];
 
                 if (TOP >= action.offset) {
                     if (!action.active) {
                         action.active = true;
-                        action.isBelow.call(this, true);
+                        action.isBelow.call(this);
                     }
                 } else if (action.active) {
                     action.active = false;
-                    action.isAbove.call(this, false);
+                    action.isAbove.call(this);
                 }
             
             }
         }
     }
 
+    /**
+     * @memberof 00_base/utils/Scrolling
+     */
     addAction(actionName, actionConfig) {
         if (JSON.stringify(this.actions).length === 2) {
             this.config.window.addEventListener('scroll', this.onPageScroll);
