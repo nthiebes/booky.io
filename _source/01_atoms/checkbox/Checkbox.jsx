@@ -2,7 +2,9 @@ import React, { PropTypes, Component } from 'react';
 
 /**
  * React component
- * @class 01_atoms/checkbox/Checkbox
+ * 
+ * @class Checkbox
+ * @classdesc 01_atoms/checkbox/Checkbox
  *
  * @prop {boolean}  checked         Checkbox checked?
  * @prop {function} onCheckboxClick Click callback

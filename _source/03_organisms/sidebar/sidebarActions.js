@@ -1,6 +1,3 @@
-/**
- * Action types
- */
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const CLOSE_SIDEBAR = 'CLOSE_SIDEBAR';
 export const TOGGLE_NOTES = 'TOGGLE_NOTES';
@@ -13,10 +10,6 @@ export const UPDATE_GLOBAL_COLOR = 'UPDATE_GLOBAL_COLOR';
 export const UPDATE_HEADER_COLOR = 'UPDATE_HEADER_COLOR';
 export const UPDATE_DASHBOARD_TYPE = 'UPDATE_DASHBOARD_TYPE';
 
-
-/**
- * Action creators
- */
 export function toggleSidebar() {
     return {
         'type': TOGGLE_SIDEBAR

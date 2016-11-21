@@ -1,6 +1,8 @@
 /**
  * Scrolling helper
- * @class 00_base/utils/Scrolling
+ *
+ * @class Scrolling
+ * @classdesc 00_base/utils/Scrolling
  *
  * @prop {object} config
  * @prop {object} config.window
@@ -40,7 +42,10 @@ export class Scrolling {
     }
 
     /**
-     * @memberof 00_base/utils/Scrolling
+     * @memberof Scrolling
+     *
+     * @param {string} actionName
+     * @param {object} actionConfig
      */
     addAction(actionName, actionConfig) {
         if (JSON.stringify(this.actions).length === 2) {
@@ -50,6 +55,11 @@ export class Scrolling {
         this.actions[actionName] = actionConfig;
     }
 
+    /**
+     * @memberof Scrolling
+     *
+     * @param {string} actionName
+     */
     removeAction(actionName) {
         delete this.actions[actionName];
 

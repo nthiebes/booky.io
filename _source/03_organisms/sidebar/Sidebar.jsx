@@ -7,7 +7,9 @@ import Dropdown from '../../02_molecules/dropdown/Dropdown.jsx';
 
 /**
  * React component
- * @class 03_organisms/sidebar/Sidebar
+ *
+ * @class Sidebar
+ * @classdesc 03_organisms/sidebar/Sidebar
  * 
  * @requires 01_atoms/button/Button
  * @requires 01_atoms/checkbox/Checkbox

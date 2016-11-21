@@ -4,8 +4,9 @@ import Category from '../../02_molecules/category/Category.jsx';
 
 /**
  * React component
- * A wrapper for all categories
- * @class 03_organisms/categories/Categories
+ *
+ * @class Categories
+ * @classdesc 03_organisms/categories/Categories
  * 
  * @requires 02_molecules/category/Category
  *

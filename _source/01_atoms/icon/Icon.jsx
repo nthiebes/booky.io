@@ -2,7 +2,9 @@ import React, { PropTypes, Component } from 'react';
 
 /**
  * React component
- * @class 01_atoms/icon/Icon
+ * 
+ * @class Icon
+ * @classdesc 01_atoms/icon/Icon
  *
  * @prop {boolean}  [stopPropagation] Prevent event propagation
  * @prop {function} [onCLick]         Click callback

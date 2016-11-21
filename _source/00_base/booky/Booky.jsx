@@ -8,9 +8,9 @@ import './booky.scss';
 
 /**
  * React component
- * booky.io base class
  * 
- * @class 00_base/booky/Booky
+ * @class Booky
+ * @classdesc 00_base/booky/Booky
  * 
  * @requires 03_organisms/header/headerContainer
  * @requires 03_organisms/toolbar/toolbarContainer

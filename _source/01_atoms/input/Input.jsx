@@ -3,7 +3,9 @@ import { findDOMNode } from 'react-dom';
 
 /**
  * React component
- * @class 01_atoms/input/Input
+ *
+ * @class Input
+ * @classdesc 01_atoms/input/Input
  *
  * @prop {string}   [className]   Additional class name
  * @prop {boolean}  [focus]       Autofocus input field

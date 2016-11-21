@@ -4,7 +4,9 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
 
 /**
  * React component
- * @class 02_molecules/menu-main/MenuMain
+ *
+ * @class MenuMain
+ * @classdesc 02_molecules/menu-main/MenuMain
  * 
  * @requires 01_atoms/icon/Icon
  *

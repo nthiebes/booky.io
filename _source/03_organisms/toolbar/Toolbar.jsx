@@ -7,7 +7,9 @@ import Button from '../../01_atoms/button/Button.jsx';
 
 /**
  * React component
- * @class 03_organisms/toolbar/Toolbar
+ *
+ * @class Toolbar
+ * @classdesc 03_organisms/toolbar/Toolbar
  * 
  * @requires 01_atoms/button/Button
  * @requires 01_atoms/icon/Icon

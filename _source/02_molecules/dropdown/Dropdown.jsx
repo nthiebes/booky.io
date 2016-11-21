@@ -2,7 +2,9 @@ import React, { PropTypes, Component } from 'react';
 
 /**
  * React component
- * @class 02_molecules/dropdown/Dropdown
+ * 
+ * @class Dropdown
+ * @classdesc 02_molecules/dropdown/Dropdown
  *
  * @prop {array}    options          An array of options
  * @prop {function} onDropdownChange Dropdown change callback
