@@ -2,6 +2,7 @@
  * Scrolling helper
  *
  * @namespace utils/Scrolling
+ * @classdesc 00_base/utils/Scrolling
  *
  * @prop {object} config
  * @prop {object} config.window
@@ -40,7 +41,7 @@ export class Scrolling {
     }
 
     /**
-     * @memberof Scrolling
+     * @memberof utils/Scrolling
      *
      * @param {string} actionName
      * @param {object} actionConfig
@@ -56,7 +57,7 @@ export class Scrolling {
     }
 
     /**
-     * @memberof Scrolling
+     * @memberof utils/Scrolling
      *
      * @param {string} actionName
      */
