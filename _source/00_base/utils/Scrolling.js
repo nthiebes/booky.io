@@ -1,8 +1,7 @@
 /**
  * Scrolling helper
  *
- * @class Scrolling
- * @classdesc 00_base/utils/Scrolling
+ * @namespace utils/Scrolling
  *
  * @prop {object} config
  * @prop {object} config.window
@@ -36,7 +35,6 @@ export class Scrolling {
                     action.active = false;
                     action.isAbove.call(this);
                 }
-            
             }
         }
     }
@@ -48,7 +46,9 @@ export class Scrolling {
      * @param {object} actionConfig
      */
     addAction(actionName, actionConfig) {
-        if (JSON.stringify(this.actions).length === 2) {
+        const lengthNoActions = 2;
+
+        if (JSON.stringify(this.actions).length === lengthNoActions) {
             this.config.window.addEventListener('scroll', this.onPageScroll);
         }
 
@@ -61,9 +61,11 @@ export class Scrolling {
      * @param {string} actionName
      */
     removeAction(actionName) {
+        const lengthNoActions = 2;
+        
         delete this.actions[actionName];
 
-        if (JSON.stringify(this.actions).length === 2) {
+        if (JSON.stringify(this.actions).length === lengthNoActions) {
             this.config.window.removeEventListener('scroll', this.onPageScroll);
         }
     }
