@@ -19,6 +19,8 @@
 html,
 body {
     -webkit-text-size-adjust: none; /** Prevent font scaling in landscape */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background-color: $color__background--light;
     font-family: $font__family--text;
     font-size: $size--phone;
