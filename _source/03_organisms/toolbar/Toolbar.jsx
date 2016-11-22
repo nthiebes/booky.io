@@ -41,11 +41,10 @@ export default class Toolbar extends Component {
     // }
 
     componentDidMount() {
-        
         scrolling.addAction('toolbar', {
             'offset': 85,
+            'scope': this,
             'isAbove': function() {
-                console.log(this);
                 console.log('isAbove');
             },
             'isBelow': function() {

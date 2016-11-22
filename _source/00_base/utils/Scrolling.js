@@ -30,11 +30,11 @@ export class Scrolling {
                 if (TOP >= action.offset) {
                     if (!action.active) {
                         action.active = true;
-                        action.isBelow.call(this);
+                        action.isBelow.call(action.scope);
                     }
                 } else if (action.active) {
                     action.active = false;
-                    action.isAbove.call(this);
+                    action.isAbove.call(action.scope);
                 }
             }
         }
@@ -45,6 +45,10 @@ export class Scrolling {
      *
      * @param {string} actionName
      * @param {object} actionConfig
+     * @param {object} actionConfig.offset
+     * @param {object} actionConfig.scope
+     * @param {object} actionConfig.isAbove
+     * @param {object} actionConfig.isBelow
      */
     addAction(actionName, actionConfig) {
         const lengthNoActions = 2;
