@@ -26,34 +26,34 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @prop {function} updateSticky      Callback for updating the sticky state
  */
 export default class Toolbar extends Component {
-    // constructor(props) {
-    //     super(props);
+    constructor(props) {
+        super(props);
 
-        // this.onPageScroll = this.onPageScroll.bind(this);
-        // this.scrollActions = {
-        //     'sticky': {
-        //         'active': false,
-        //         'action': function(sticky) {
-        //             this.props.updateSticky(sticky);
-        //         }
-        //     }
-        // };
-    // }
+        this.isAboveActions = this.isAboveActions.bind(this);
+        this.isBelowActions = this.isBelowActions.bind(this);
+    }
 
     componentDidMount() {
         scrolling.addAction('toolbar', {
             'offset': 85,
             'scope': this,
             'isAbove': function() {
-                console.log('isAbove');
+                this.isAboveActions();
             },
             'isBelow': function() {
-                console.log('isBelow');
+                this.isBelowActions();
             }
         });
     }
 
+    componentWillUpdate() {
+        console.log('--------------- update ---------------');
+        scrolling.updateStatus('toolbar');
+    }
+
     componentDidUpdate() {
+        console.log('--------------- ------ ---------------');
+        // scrolling.updateStatus('toolbar');
         // this.onPageScroll();
     }
 
@@ -61,21 +61,24 @@ export default class Toolbar extends Component {
         scrolling.removeAction('toolbar');
     }
 
-    // onPageScroll() {
-    //     const HEADER_SCROLL_OFFSET = 85, // needs to be a dynamic height
-    //         PROPS = this.props, 
-    //         TOP = PROPS.window.pageYOffset || PROPS.document.documentElement.scrollTop;
+    isAboveActions() {
+        console.log('isAbove');
+        if (this.props.sticky && !this.props.headerSticky) {
+            console.log('update sticky to false');
+            this.props.updateSticky(false);
+        } else if (this.props.sticky && this.props.headerSticky) {
+            console.log('update sticky to true');
+            this.props.updateSticky(true);
+        }
+    }
 
-    //     if (TOP >= HEADER_SCROLL_OFFSET) {
-    //         if (!this.scrollActions.sticky.active) {
-    //             this.scrollActions.sticky.active = true;
-    //             this.scrollActions.sticky.action.call(this, true);
-    //         }
-    //     } else if (this.scrollActions.sticky.active && !PROPS.headerSticky) {
-    //         this.scrollActions.sticky.active = false;
-    //         this.scrollActions.sticky.action.call(this, false);
-    //     }
-    // }
+    isBelowActions() {
+        console.log('isBelow');
+        if (this.props.sticky && !this.props.headerSticky) {
+            console.log('update sticky to true');
+            this.props.updateSticky(true);
+        }
+    }
 
     getStickyClass(PROPS) {
         if (PROPS.sticky && PROPS.headerSticky && PROPS.currentlySticky) {
@@ -99,6 +102,11 @@ export default class Toolbar extends Component {
         const SEARCH_TITLE = PROPS.searchOpen ? 'Close' : 'Search';
         const EDIT_MODE_ICON = PROPS.editMode ? 'view' : 'edit';
         const EDIT_MODE_TITLE = PROPS.editMode ? 'View mode' : 'Edit mode';
+
+        // console.log( 'sticky', PROPS.sticky );
+        // console.log( 'headerSticky', PROPS.headerSticky );
+        console.log( 'currentlySticky', PROPS.currentlySticky );
+        console.log('STICKY_CLASS', STICKY_CLASS);
 
         return (
             <div className={ TOOLBAR_CLASS }>

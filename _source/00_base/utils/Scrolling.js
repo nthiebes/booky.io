@@ -74,6 +74,24 @@ export class Scrolling {
             this.config.window.removeEventListener('scroll', this.onPageScroll);
         }
     }
+
+    /**
+     * @memberof utils/Scrolling
+     */
+    updateStatus(actionName) {
+        const TOP = this.config.window.pageYOffset || this.config.document.documentElement.scrollTop,
+            ACTION = this.actions[actionName];
+
+        console.log('active:', ACTION.active);
+
+        if (TOP >= ACTION.offset) {
+            ACTION.active = true;
+            ACTION.isBelow.call(ACTION.scope);
+        } else {
+            ACTION.active = false;
+            ACTION.isAbove.call(ACTION.scope);
+        }
+    }
 }
 
 export const scrolling = new Scrolling({
