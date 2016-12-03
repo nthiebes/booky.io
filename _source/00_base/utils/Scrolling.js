@@ -13,7 +13,7 @@ export class Scrolling {
         this.config = config;
         this.actions = {};
 
-        this.addAction = this.addAction.bind(this);
+        this.registerAction = this.registerAction.bind(this);
         this.onPageScroll = this.onPageScroll.bind(this);
     }
 
@@ -50,7 +50,7 @@ export class Scrolling {
      * @param {object} actionConfig.isAbove
      * @param {object} actionConfig.isBelow
      */
-    addAction(actionName, actionConfig) {
+    registerAction(actionName, actionConfig) {
         const lengthNoActions = 2;
 
         if (JSON.stringify(this.actions).length === lengthNoActions) {
@@ -77,17 +77,17 @@ export class Scrolling {
 
     /**
      * @memberof utils/Scrolling
+     *
+     * @param {string} actionName
      */
     updateStatus(actionName) {
         const TOP = this.config.window.pageYOffset || this.config.document.documentElement.scrollTop,
             ACTION = this.actions[actionName];
 
-        console.log('active:', ACTION.active);
-
         if (TOP >= ACTION.offset) {
             ACTION.active = true;
             ACTION.isBelow.call(ACTION.scope);
-        } else {
+        } else if (TOP < ACTION.offset) {
             ACTION.active = false;
             ACTION.isAbove.call(ACTION.scope);
         }

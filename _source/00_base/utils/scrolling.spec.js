@@ -11,6 +11,19 @@ describe('scrolling', function() {
             'documentElement': {
                 'scrollTop': 0
             }
+        },
+        scroll = function(offset, useScrollTop) {
+            const firstCall = 0,
+                secondArgument = 1;
+
+            if (useScrollTop) {
+                documentMock.documentElement.scrollTop = offset;
+                windowMock.pageYOffset = null;
+            } else {
+                windowMock.pageYOffset = offset;
+                documentMock.documentElement.scrollTop = null;
+            }
+            windowMock.addEventListener.mock.calls[firstCall][secondArgument]();
         };
 
     let instance;
@@ -27,10 +40,10 @@ describe('scrolling', function() {
         windowMock.removeEventListener.mockClear();
     });
 
-    describe('addAction()', function() {
+    describe('registerAction()', function() {
 
         it('should add a new action', function() {
-            instance.addAction('banana', {'banana': true});
+            instance.registerAction('banana', {'banana': true});
 
             expect(instance.actions).toEqual({
                 'banana': {'banana': true}
@@ -42,8 +55,8 @@ describe('scrolling', function() {
             it('should register a scroll event', function() {
                 const callsLength = 1;
 
-                instance.addAction('potato', {'banana': true});
-                instance.addAction('apple', {'banana': true});
+                instance.registerAction('potato', {'banana': true});
+                instance.registerAction('apple', {'banana': true});
                 expect(windowMock.addEventListener).toHaveBeenCalledWith('scroll', instance.onPageScroll);
                 expect(windowMock.addEventListener.mock.calls.length).toBe(callsLength);
             });
@@ -53,7 +66,7 @@ describe('scrolling', function() {
     describe('removeAction()', function() {
 
         it('should remove an action', function() {
-            instance.addAction('potato', {'banana': true});
+            instance.registerAction('potato', {'banana': true});
             instance.removeAction('potato');
 
             expect(instance.actions).toEqual({});
@@ -62,8 +75,8 @@ describe('scrolling', function() {
         describe('for the last action', function() {
 
             it('should remove the event listener', function() {
-                instance.addAction('potato', {'banana': true});
-                instance.addAction('apple', {'banana': true});
+                instance.registerAction('potato', {'banana': true});
+                instance.registerAction('apple', {'banana': true});
                 instance.removeAction('potato');
 
                 expect(windowMock.removeEventListener).not.toHaveBeenCalled();
@@ -75,24 +88,62 @@ describe('scrolling', function() {
         });
     });
 
-    describe('when scrolling', function() {
+    describe('updateStatus()', function() {
 
         let isAboveMock,
             isBelowMock,
-            scroll = function(offset, usePageYOffset) {
-                if (usePageYOffset) {
-                    windowMock.pageYOffset = offset;
-                } else {
-                    documentMock.documentElement.scrollTop = offset;
-                }
-                windowMock.addEventListener.mock.calls[0][1]();
-            };
+            undefinedVariable;
+
+        beforeEach(function() {
+            isAboveMock = jest.fn();
+            isBelowMock = jest.fn();
+        });
+
+        describe('when scroll position is before the offset', function() {
+
+            it('should fire the callback', function() {
+                instance.registerAction('potato', {
+                    'offset': 10,
+                    'isAbove': isAboveMock,
+                    'isBelow': isBelowMock
+                });
+
+                windowMock.pageYOffset = undefinedVariable;
+
+                instance.updateStatus('potato');
+
+                expect(isAboveMock).toHaveBeenCalled();
+            });
+        });
+
+        describe('when scroll position is after the offset', function() {
+            
+            it('should fire the callback', function() {
+                instance.registerAction('potato', {
+                    'offset': 10,
+                    'isAbove': isAboveMock,
+                    'isBelow': isBelowMock
+                });
+
+                windowMock.pageYOffset = 15;
+
+                instance.updateStatus('potato');
+
+                expect(isBelowMock).toHaveBeenCalled();
+            });
+        });
+    });
+
+    describe('when scrolling', function() {
+
+        let isAboveMock,
+            isBelowMock;
 
         beforeEach(function() {
             isAboveMock = jest.fn();
             isBelowMock = jest.fn();
 
-            instance.addAction('potato', {
+            instance.registerAction('potato', {
                 'offset': 10,
                 'isAbove': isAboveMock,
                 'isBelow': isBelowMock
@@ -102,7 +153,7 @@ describe('scrolling', function() {
         describe('and still before the offset', function() {
             
             it('should not fire the callbacks', function() {
-                scroll(5);
+                scroll(5, true); // 'true' to also test 'document.documentElement.scrollTop'
 
                 expect(isAboveMock).not.toHaveBeenCalled();
                 expect(isBelowMock).not.toHaveBeenCalled();
