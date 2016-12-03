@@ -5,7 +5,9 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
 
 /**
  * React component
- * @class 02_molecules/category/Category
+ *
+ * @class Category
+ * @classdesc 02_molecules/category/Category
  * 
  * @requires 01_atoms/icon/Icon
  * @requires 02_molecules/bookmark/Bookmark

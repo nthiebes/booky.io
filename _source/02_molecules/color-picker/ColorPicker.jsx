@@ -2,7 +2,9 @@ import React, { PropTypes, Component } from 'react';
 
 /**
  * React component
- * @class 02_molecules/color-picker/ColorPicker
+ *
+ * @class ColorPicker
+ * @classdesc 02_molecules/color-picker/ColorPicker
  *
  * @prop {boolean}  activeColor   The selected color
  * @prop {function} onColorChange Color change callback

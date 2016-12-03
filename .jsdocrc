@@ -4,6 +4,7 @@
         "excludePattern": ""
     },
     "opts": {
-        "recurse": true
+        "recurse": true,
+        "template": "node_modules/minami"
     }
 }

@@ -7,7 +7,9 @@ import Button from '../../01_atoms/button/Button.jsx';
 
 /**
  * React component
- * @class 03_organisms/header/Header
+ *
+ * @class Header
+ * @classdesc 03_organisms/header/Header
  * 
  * @requires 01_atoms/button/Button
  * @requires 01_atoms/icon/Icon

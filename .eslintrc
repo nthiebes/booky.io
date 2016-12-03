@@ -89,7 +89,7 @@
     "no-lone-blocks": 1,
     "no-lonely-if": 1,
     "no-loop-func": 1,
-    "no-magic-numbers": 1,
+    "no-magic-numbers": 0,
     "no-mixed-operators": 1,
     "no-mixed-spaces-and-tabs": 1,
     "no-multi-spaces": 1,

@@ -16,7 +16,7 @@ const toolbar = (state = {}, action) => {
 
         case UPDATE_STICKY:
             return Object.assign({}, state, {
-                'currentlySticky': action.sticky
+                'currentlySticky': action.currentlySticky
             });
 
         default:

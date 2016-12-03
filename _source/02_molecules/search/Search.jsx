@@ -4,7 +4,9 @@ import Input from '../../01_atoms/input/Input.jsx';
 
 /**
  * React component
- * @class 02_molecules/search/Search
+ *
+ * @class Search
+ * @classdesc 02_molecules/search/Search
  * 
  * @requires 01_atoms/input/Input
  *
