@@ -15,26 +15,27 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @requires 01_atoms/icon/Icon
  * @requires 02_molecules/search/Search
  *
- * @prop {boolean}  [currentlySticky] Fixed toolbar currently enabled/disabled
- * @prop {boolean}  [headerSticky]    Fixed header enabled/disabled
- * @prop {boolean}  [searchFocused]   Search input field focused
- * @prop {boolean}  [sticky]          Fixed toolbar enabled/disabled
- * @prop {boolean}  editMode          Edit mode enabled/disabled
- * @prop {boolean}  searchOpen        Search bar open and visible
- * @prop {function} onEditModeClick   Edit mode callback
- * @prop {function} onSearchClick     Icon click callback
- * @prop {function} updateSticky      Callback for updating the sticky state
+ * @prop {boolean}  [currentlySticky]     Fixed toolbar currently enabled/disabled
+ * @prop {boolean}  [headerSticky]        Fixed header enabled/disabled
+ * @prop {boolean}  [searchFocused]       Search input field focused
+ * @prop {boolean}  [sticky]              Fixed toolbar enabled/disabled
+ * @prop {boolean}  editMode              Edit mode enabled/disabled
+ * @prop {boolean}  searchOpen            Search bar open and visible
+ * @prop {function} onEditModeClick       Edit mode callback
+ * @prop {function} onSearchClick         Icon click callback
+ * @prop {function} updateCurrentlySticky Callback for updating the sticky state
  */
 export default class Toolbar extends Component {
     constructor(props) {
         super(props);
 
+        this.nextProps = {};
         this.isAboveActions = this.isAboveActions.bind(this);
         this.isBelowActions = this.isBelowActions.bind(this);
     }
 
     componentDidMount() {
-        scrolling.addAction('toolbar', {
+        scrolling.registerAction('toolbar', {
             'offset': 85,
             'scope': this,
             'isAbove': function() {
@@ -46,15 +47,9 @@ export default class Toolbar extends Component {
         });
     }
 
-    componentWillUpdate() {
-        console.log('--------------- update ---------------');
+    componentWillReceiveProps(nextProps) {
+        this.nextProps = nextProps;
         scrolling.updateStatus('toolbar');
-    }
-
-    componentDidUpdate() {
-        console.log('--------------- ------ ---------------');
-        // scrolling.updateStatus('toolbar');
-        // this.onPageScroll();
     }
 
     componentWillUnmount() {
@@ -62,21 +57,14 @@ export default class Toolbar extends Component {
     }
 
     isAboveActions() {
-        console.log('isAbove');
-        if (this.props.sticky && !this.props.headerSticky) {
-            console.log('update sticky to false');
-            this.props.updateSticky(false);
-        } else if (this.props.sticky && this.props.headerSticky) {
-            console.log('update sticky to true');
-            this.props.updateSticky(true);
+        if (this.nextProps.sticky && !this.nextProps.headerSticky) {
+            this.props.updateCurrentlySticky(false);
         }
     }
 
     isBelowActions() {
-        console.log('isBelow');
-        if (this.props.sticky && !this.props.headerSticky) {
-            console.log('update sticky to true');
-            this.props.updateSticky(true);
+        if (this.nextProps.sticky && !this.nextProps.headerSticky) {
+            this.props.updateCurrentlySticky(true);
         }
     }
 
@@ -103,11 +91,6 @@ export default class Toolbar extends Component {
         const EDIT_MODE_ICON = PROPS.editMode ? 'view' : 'edit';
         const EDIT_MODE_TITLE = PROPS.editMode ? 'View mode' : 'Edit mode';
 
-        // console.log( 'sticky', PROPS.sticky );
-        // console.log( 'headerSticky', PROPS.headerSticky );
-        console.log( 'currentlySticky', PROPS.currentlySticky );
-        console.log('STICKY_CLASS', STICKY_CLASS);
-
         return (
             <div className={ TOOLBAR_CLASS }>
                 <Icon icon={ EDIT_MODE_ICON } className="o-toolbar__icon a-icon--dark" title={ EDIT_MODE_TITLE } onClick={ PROPS.onEditModeClick } />
@@ -131,14 +114,14 @@ Toolbar.propTypes = {
     'editMode': PropTypes.bool.isRequired,
     'onSearchClick': PropTypes.func.isRequired,
     'onEditModeClick': PropTypes.func.isRequired,
-    'updateSticky': PropTypes.func.isRequired,
+    'updateCurrentlySticky': PropTypes.func.isRequired,
     'headerSticky': PropTypes.bool,
-    'currentlySticky': PropTypes.bool,
-    'sticky': PropTypes.bool
+    'sticky': PropTypes.bool,
+    'currentlySticky': PropTypes.bool
 };
 
 Toolbar.defaultProps = {
     'headerSticky': true,
-    'currentlySticky': true,
-    'sticky': true
+    'sticky': true,
+    'currentlySticky': true
 };

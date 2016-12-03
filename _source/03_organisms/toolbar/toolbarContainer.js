@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import Toolbar from './Toolbar.jsx';
-import { toggleSearch, toggleEditMode, updateSticky } from './toolbarActions';
+import { toggleSearch, toggleEditMode, updateCurrentlySticky } from './toolbarActions';
 
 export const mapStateToProps = function(state) {
     return {
-        'searchOpen': state.toolbar.searchOpen,
-        'searchFocused': state.toolbar.searchFocused,
+        'currentlySticky': state.toolbar.currentlySticky,
         'editMode': state.toolbar.editMode,
-        'sticky': state.sidebar.stickyToolbar,
         'headerSticky': state.sidebar.stickyHeader,
-        'currentlySticky': state.toolbar.currentlySticky
+        'searchFocused': state.toolbar.searchFocused,
+        'searchOpen': state.toolbar.searchOpen,
+        'sticky': state.sidebar.stickyToolbar
     };
 };
 
@@ -21,8 +21,8 @@ export const mapDispatchToProps = function(dispatch) {
         'onEditModeClick': () => {
             dispatch(toggleEditMode());
         },
-        'updateSticky': (sticky) => {
-            dispatch(updateSticky(sticky));
+        'updateCurrentlySticky': (sticky) => {
+            dispatch(updateCurrentlySticky(sticky));
         }
     };
 };

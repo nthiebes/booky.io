@@ -14,9 +14,9 @@ export function toggleEditMode() {
     };
 }
 
-export function updateSticky(sticky) {
+export function updateCurrentlySticky(sticky) {
     return {
         'type': UPDATE_STICKY,
-        'sticky': sticky
+        'currentlySticky': sticky
     };
 }

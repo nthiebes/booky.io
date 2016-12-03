@@ -1,20 +1,28 @@
+/* eslint-disable max-lines */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import Toolbar from './Toolbar.jsx';
 import { mapStateToProps, mapDispatchToProps } from './toolbarContainer';
-import { toggleSearch, toggleEditMode } from './toolbarActions';
+import { toggleSearch, toggleEditMode, updateCurrentlySticky } from './toolbarActions';
 import toolbar from './toolbarReducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Button from '../../01_atoms/button/Button.jsx';
+
+/* eslint-disable import/no-unresolved */
+import { scrolling } from 'Scrolling';
+
+/* eslint-enable import/no-unresolved */
 
 describe('<Toolbar />', function() {
 
     describe('presentational component', function() {
 
         let component,
+            mountedComponent,
             onEditModeClickCallback,
-            onSearchClickCallback;
+            onSearchClickCallback,
+            updateCurrentlyStickyCallback;
 
         const getComponent = function(props = {}) {
             return <Toolbar { ...props } />;
@@ -23,6 +31,7 @@ describe('<Toolbar />', function() {
         beforeEach(function() {
             onEditModeClickCallback = jest.fn();
             onSearchClickCallback = jest.fn();
+            updateCurrentlyStickyCallback = jest.fn();
         });
 
         describe('should always', function() {
@@ -31,6 +40,7 @@ describe('<Toolbar />', function() {
                 component = shallow(getComponent({
                     'onSearchClick': onSearchClickCallback,
                     'onEditModeClick': onEditModeClickCallback,
+                    'updateCurrentlySticky': updateCurrentlyStickyCallback,
                     'searchOpen': false,
                     'editMode': false
                 }));
@@ -53,12 +63,44 @@ describe('<Toolbar />', function() {
             });
         });
 
+        describe('after mounting', function() {
+
+            beforeEach(function() {
+                mountedComponent = mount(getComponent({
+                    'onSearchClick': onSearchClickCallback,
+                    'onEditModeClick': onEditModeClickCallback,
+                    'updateCurrentlySticky': updateCurrentlyStickyCallback,
+                    'searchOpen': false,
+                    'editMode': false
+                }));
+            });
+
+            it('should register the scroll action', function() {
+                
+            });
+        });
+
+        describe('before receiving props', function() {
+
+            it('should update the scroll status', function() {
+                
+            });
+        });
+
+        describe('before unmounting', function() {
+
+            it('should remove the scroll action', function() {
+                
+            });
+        });
+
         describe('when rendered open and with optional props', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
                     'onSearchClick': onSearchClickCallback,
                     'onEditModeClick': onEditModeClickCallback,
+                    'updateCurrentlySticky': updateCurrentlyStickyCallback,
                     'searchOpen': true,
                     'editMode': false,
                     'sticky': false,
@@ -96,6 +138,7 @@ describe('<Toolbar />', function() {
                 component = shallow(getComponent({
                     'onSearchClick': onSearchClickCallback,
                     'onEditModeClick': onEditModeClickCallback,
+                    'updateCurrentlySticky': updateCurrentlyStickyCallback,
                     'searchOpen': false,
                     'editMode': false,
                     'sticky': false
@@ -131,6 +174,7 @@ describe('<Toolbar />', function() {
                 component = shallow(getComponent({
                     'onSearchClick': onSearchClickCallback,
                     'onEditModeClick': onEditModeClickCallback,
+                    'updateCurrentlySticky': updateCurrentlyStickyCallback,
                     'searchOpen': true,
                     'editMode': true,
                     'sticky': false
@@ -150,6 +194,7 @@ describe('<Toolbar />', function() {
                 component = shallow(getComponent({
                     'onSearchClick': onSearchClickCallback,
                     'onEditModeClick': onEditModeClickCallback,
+                    'updateCurrentlySticky': updateCurrentlyStickyCallback,
                     'searchOpen': true,
                     'editMode': false,
                     'sticky': false
@@ -162,19 +207,69 @@ describe('<Toolbar />', function() {
                 ));
             });
         });
+
+        describe('when toolbar is sticky', function() {
+
+            describe('and header is not', function() {
+
+                describe('before the offset', function() {
+
+                    beforeEach(function() {
+                        component = shallow(getComponent({
+                            'onSearchClick': onSearchClickCallback,
+                            'onEditModeClick': onEditModeClickCallback,
+                            'updateCurrentlySticky': updateCurrentlyStickyCallback,
+                            'searchOpen': true,
+                            'editMode': true,
+                            'sticky': true,
+                            'headerSticky': false,
+                            'currentlySticky': false
+                        }));
+                    });
+
+                    it('should have the correct class', function() {
+                        expect(component.find('div').hasClass('o-toolbar--sticky')).toBe(false);
+                        expect(component.find('div').hasClass('o-toolbar--sticky-one-and-only')).toBe(false);
+                    });
+                });
+
+                describe('after the offset', function() {
+
+                    beforeEach(function() {
+                        component = shallow(getComponent({
+                            'onSearchClick': onSearchClickCallback,
+                            'onEditModeClick': onEditModeClickCallback,
+                            'updateCurrentlySticky': updateCurrentlyStickyCallback,
+                            'searchOpen': true,
+                            'editMode': true,
+                            'sticky': true,
+                            'headerSticky': false,
+                            'currentlySticky': true
+                        }));
+                    });
+
+                    it('should have the correct class', function() {
+                        expect(component.find('div').hasClass('o-toolbar--sticky-one-and-only')).toBe(true);
+                    });
+                });
+            });
+        });
     });
 
     describe('container component', function() {
 
         const state = {
                 'toolbar': {
-                    'searchOpen': 'searchOpen',
+                    'currentlySticky': 'currentlySticky',
                     'editMode': 'editMode',
-                    'sticky': 'stickyToolbar',
-                    'searchFocused': 'searchFocused'
+                    'headerSticky': 'stickyHeader',
+                    'searchFocused': 'searchFocused',
+                    'searchOpen': 'searchOpen',
+                    'sticky': 'stickyToolbar'
                 },
                 'sidebar': {
-                    'stickyToolbar': 'stickyToolbar'
+                    'stickyToolbar': 'stickyToolbar',
+                    'stickyHeader': 'stickyHeader'
                 }
             },
             dispatch = jest.fn();
@@ -193,6 +288,11 @@ describe('<Toolbar />', function() {
 
             expect(typeof mapDispatchToProps(dispatch).onEditModeClick).toBe('function');
             expect(dispatch).toHaveBeenCalledWith(toggleEditMode());
+
+            mapDispatchToProps(dispatch).updateCurrentlySticky();
+
+            expect(typeof mapDispatchToProps(dispatch).updateCurrentlySticky).toBe('function');
+            expect(dispatch).toHaveBeenCalledWith(updateCurrentlySticky());
         });
     });
 
@@ -216,6 +316,18 @@ describe('<Toolbar />', function() {
 
                 expect(action).toEqual({
                     'type': 'TOGGLE_EDIT_MODE'
+                });
+            });
+        });
+
+        describe('updateCurrentlySticky()', function() {
+
+            it('should return the action', function() {
+                const action = updateCurrentlySticky('potato');
+
+                expect(action).toEqual({
+                    'type': 'UPDATE_STICKY',
+                    'currentlySticky': 'potato'
                 });
             });
         });
@@ -270,6 +382,19 @@ describe('<Toolbar />', function() {
                     'searchFocused': false
                 });
             });
+
+            it('UPDATE_STICKY: should return the new state', function() {
+                const state = {'currentlySticky': 'banana'};
+
+                // ...and not mutate it
+                expect(toolbar(state, updateCurrentlySticky())).not.toBe(state);
+
+                expect(toolbar({'currentlySticky': 'potato'}, updateCurrentlySticky('potato'))).toEqual({
+                    'currentlySticky': 'potato'
+                });
+            });
         });
     });
 });
+
+/* eslint-enable max-lines */
