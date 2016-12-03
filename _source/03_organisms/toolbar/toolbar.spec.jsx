@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
+/* eslint-disable max-statements */
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import Toolbar from './Toolbar.jsx';
 import { mapStateToProps, mapDispatchToProps } from './toolbarContainer';
@@ -9,17 +10,11 @@ import toolbar from './toolbarReducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Button from '../../01_atoms/button/Button.jsx';
 
-/* eslint-disable import/no-unresolved */
-import { scrolling } from 'Scrolling';
-
-/* eslint-enable import/no-unresolved */
-
 describe('<Toolbar />', function() {
 
     describe('presentational component', function() {
 
         let component,
-            mountedComponent,
             onEditModeClickCallback,
             onSearchClickCallback,
             updateCurrentlyStickyCallback;
@@ -65,32 +60,22 @@ describe('<Toolbar />', function() {
 
         describe('after mounting', function() {
 
-            beforeEach(function() {
-                mountedComponent = mount(getComponent({
-                    'onSearchClick': onSearchClickCallback,
-                    'onEditModeClick': onEditModeClickCallback,
-                    'updateCurrentlySticky': updateCurrentlyStickyCallback,
-                    'searchOpen': false,
-                    'editMode': false
-                }));
-            });
-
             it('should register the scroll action', function() {
-                
+                //
             });
         });
 
         describe('before receiving props', function() {
 
             it('should update the scroll status', function() {
-                
+                //
             });
         });
 
         describe('before unmounting', function() {
 
             it('should remove the scroll action', function() {
-                
+                //
             });
         });
 
@@ -398,3 +383,4 @@ describe('<Toolbar />', function() {
 });
 
 /* eslint-enable max-lines */
+/* eslint-enabled max-statements */
