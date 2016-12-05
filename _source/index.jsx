@@ -29,21 +29,21 @@ const initialState = {
         'expanded': true
     }, {
         'id': 1,
-        'name': 'Category 2',
+        'name': 'مرحبا كيف حالك؟ asas!',
         'dashboard': 0,
         'position': 2,
         'color': 2,
         'expanded': true
     }, {
         'id': 2,
-        'name': 'Category 3',
+        'name': 'Category こんにちはお元気で 3',
         'dashboard': 0,
         'position': 1,
         'color': 3,
         'expanded': false
     }, {
         'id': 3,
-        'name': 'Category 4',
+        'name': 'Category Привет, как дела 4',
         'dashboard': 0,
         'position': 3,
         'color': 4,
@@ -66,7 +66,7 @@ const initialState = {
     }, {
         'id': 1,
         'category': 0,
-        'name': 'Bookmark 1 veeeeeeery veeeeeeery loooooong tiiiitle !!!!!!',
+        'name': 'Bookmark 1 veeeeeeery loooooong tiiiitle !!!!!!',
         'url': 'https://booky.io',
         'favicon': 'base64',
         'position': 0
