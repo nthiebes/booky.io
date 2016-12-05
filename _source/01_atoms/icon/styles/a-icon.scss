@@ -25,13 +25,11 @@
         width: 36px;
     }
 
-    &:hover {
+    &:active {
         .a-icon__svg {
             transform: scale(0.9);
         }
-    }
 
-    &:active {
         &:after {
             animation: 0.3s linear 1 circle;
         }
