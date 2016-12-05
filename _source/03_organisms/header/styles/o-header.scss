@@ -25,16 +25,24 @@
         opacity: 0;
         position: fixed;
         width: 0;
-        top: 0;
+        top: 42px;
         transition: opacity 0.3s linear, width 0s 0.3s linear;
     }
 
     @include tablet {
         height: 64px;
+
+        &:before {
+            top: 64px;
+        }
     }
 
     @include desktop {
         height: 86px;
+
+        &:before {
+            top: 86px;
+        }
     }
 }
 

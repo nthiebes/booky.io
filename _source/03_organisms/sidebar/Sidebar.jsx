@@ -41,8 +41,7 @@ export default class Sidebar extends Component {
     render() {
         const PROPS = this.props;
         const OPEN_CLASS = PROPS.open ? 'o-sidebar--open' : '';
-        const STICKY_CLASS = PROPS.stickyHeader ? '' : ' o-sidebar--no-offset';
-        const SIDEBAR_CLASS = 'o-sidebar ' + OPEN_CLASS + STICKY_CLASS;
+        const SIDEBAR_CLASS = 'o-sidebar ' + OPEN_CLASS;
         const DASHBOARD_OPTIONS = [
             {
                 'name': 'Display as dropdown'

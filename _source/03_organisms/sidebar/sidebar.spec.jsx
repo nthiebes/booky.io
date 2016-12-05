@@ -143,12 +143,6 @@ describe('<Sidebar />', function() {
             it('should have the correct class', function() {
                 expect(component.find('aside').hasClass('o-sidebar o-sidebar--open')).toBe(true);
             });
-
-            describe('and the header is not sticky', function() {
-                it('should have the correct class', function() {
-                    expect(component.find('aside').hasClass('o-sidebar--no-offset')).toBe(true);
-                });
-            });
         });
     });
 
