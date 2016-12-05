@@ -69,7 +69,7 @@ export default class Toolbar extends Component {
     }
 
     getStickyClass(PROPS) {
-        if (PROPS.sticky && PROPS.headerSticky && PROPS.currentlySticky) {
+        if (PROPS.sticky && PROPS.headerSticky) {
             return 'o-toolbar--sticky';
         }
 
