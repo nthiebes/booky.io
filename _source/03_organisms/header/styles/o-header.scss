@@ -27,7 +27,6 @@
         width: 0;
         top: 0;
         transition: opacity 0.3s linear, width 0s 0.3s linear;
-        z-index: 2;
     }
 
     @include tablet {

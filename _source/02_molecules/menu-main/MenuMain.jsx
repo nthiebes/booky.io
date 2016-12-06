@@ -21,9 +21,9 @@ export default class MenuMain extends Component {
         this.onMenuClick = this.onMenuClick.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.document.body.classList.toggle('booky--no-scrolling-mobile-tablet', nextProps.menuMainOpen);
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     nextProps.document.body.classList.toggle('booky--no-scrolling-mobile-tablet', nextProps.menuMainOpen);
+    // }
 
     onMenuClick(event) {
         event.stopPropagation();

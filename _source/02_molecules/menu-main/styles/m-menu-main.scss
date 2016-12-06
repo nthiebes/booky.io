@@ -4,7 +4,7 @@
 .m-menu-main {
     display: flex;
     justify-content: flex-start;
-    z-index: 1;
+    top: 0;
 
     @include mobile-tablet {
         align-items: center;
@@ -17,14 +17,10 @@
         min-width: 200px;
         padding: 10px 0 10px 3%;
         position: fixed;
-        top: 42px;
         transform: translate3d(-100%,0,0);
         transition: transform 0.3s ease;
         width: 70%;
-    }
-
-    @include tablet {
-        top: 64px;
+        z-index: 2;
     }
 
     @include desktop {
@@ -32,6 +28,7 @@
         flex-grow: 1;
         padding-left: 3rem;
         // max-width: 720px;
+        z-index: 1;
     }
 }
 
