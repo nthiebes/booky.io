@@ -32,7 +32,7 @@ describe('<Categories />', function() {
             });
 
             it('should have the correct class', function() {
-                expect(component.find('main').hasClass('o-categories')).toBe(true);
+                expect(component.find('div').first().hasClass('o-categories')).toBe(true);
             });
 
             it('include all categories passed in', function() {
@@ -56,7 +56,7 @@ describe('<Categories />', function() {
             });
 
             it('should have the correct class', function() {
-                expect(component.find('main').hasClass('o-categories--edit-mode')).toBe(true);
+                expect(component.find('div').first().hasClass('o-categories--edit-mode')).toBe(true);
             });
         });
 
@@ -71,7 +71,7 @@ describe('<Categories />', function() {
             });
 
             it('should have the correct class', function() {
-                expect(component.find('main').hasClass('o-categories--max-width')).toBe(true);
+                expect(component.find('div').first().hasClass('o-categories--max-width')).toBe(true);
             });
         });
     });
