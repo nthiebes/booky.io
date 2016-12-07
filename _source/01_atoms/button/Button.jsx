@@ -27,11 +27,11 @@ export default class Button extends Component {
         const BUZZWORD = PROPS.buzzword;
 
         return (
-            <button className={ CLASS } onClick={ PROPS.onButtonClick }>
+            <div className={ CLASS } onClick={ PROPS.onButtonClick }>
                 { ICON }
                 <span className="a-button__text">{ TEXT }</span>
                 <span className="a-button__text a-button__text--buzzword">{ BUZZWORD }</span>
-            </button>
+            </div>
         );
     }
 }

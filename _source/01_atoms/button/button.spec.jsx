@@ -28,7 +28,7 @@ describe('<Button />', function() {
         });
 
         it('should have the correct class', function() {
-            expect(component.find('button').hasClass('a-button a-button--small a-button--small-primary')).toBe(true);
+            expect(component.find('div').hasClass('a-button a-button--small a-button--small-primary')).toBe(true);
         });
 
         it('should include the text', function() {
@@ -38,7 +38,7 @@ describe('<Button />', function() {
         });
 
         it('should include a click callback', function() {
-            expect(component.find('button').props().onClick).toBe(onButtonClickCallback);
+            expect(component.find('div').props().onClick).toBe(onButtonClickCallback);
         });
     });
 
@@ -57,7 +57,7 @@ describe('<Button />', function() {
         });
 
         it('should have the correct class', function() {
-            expect(component.find('button').hasClass('a-button a-button--large a-button--large-light banana')).toBe(true);
+            expect(component.find('div').hasClass('a-button a-button--large a-button--large-light banana')).toBe(true);
         });
 
         it('should include the text', function() {

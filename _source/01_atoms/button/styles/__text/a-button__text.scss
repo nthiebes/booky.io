@@ -1,6 +1,7 @@
 @import "a-button__text--buzzword";
 
 .a-button__text {
+    display: inline-block;
     font-size: 1em;
     transition: transform 0.2s ease;
 }

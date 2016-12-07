@@ -7,11 +7,12 @@
     border-radius: 3px;
     border: 1px solid transparent;
     cursor: pointer;
-    display: flex;
+    display: inline-block;
     font-family: $font__family--text;
     font-size: 0.923rem;
     height: 38px;
     line-height: 38px;
+    overflow: hidden;
     padding: 0 15px;
     position: relative;
     text-transform: uppercase;
