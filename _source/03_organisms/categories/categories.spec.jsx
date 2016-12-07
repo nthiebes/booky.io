@@ -15,30 +15,64 @@ describe('<Categories />', function() {
             return <Categories { ...props } />;
         };
 
-        beforeEach(function() {
-            component = shallow(getComponent({
-                'categories': [{
-                    'id': 0,
-                    'name': 'Category 1'
-                }, {
-                    'id': 1,
-                    'name': 'Category 2'
-                }],
-                'editMode': false
-            }));
+        describe('should always', function() {
+
+            beforeEach(function() {
+                component = shallow(getComponent({
+                    'categories': [{
+                        'id': 0,
+                        'name': 'Category 1'
+                    }, {
+                        'id': 1,
+                        'name': 'Category 2'
+                    }],
+                    'editMode': false,
+                    'maxWidth': false
+                }));
+            });
+
+            it('should have the correct class', function() {
+                expect(component.find('main').hasClass('o-categories')).toBe(true);
+            });
+
+            it('include all categories passed in', function() {
+                expect(component.containsMatchingElement(
+                    <Category key={ 0 } id={ 0 } name={ 'Category 1' } />
+                )).toBe(true);
+                expect(component.containsMatchingElement(
+                    <Category key={ 1 } id={ 1 } name={ 'Category 2' } />
+                )).toBe(true);
+            });
         });
 
-        it('should have the correct class', function() {
-            expect(component.find('main').hasClass('o-categories')).toBe(true);
+        describe('with active edit mode', function() {
+
+            beforeEach(function() {
+                component = shallow(getComponent({
+                    'categories': [],
+                    'editMode': true,
+                    'maxWidth': false
+                }));
+            });
+
+            it('should have the correct class', function() {
+                expect(component.find('main').hasClass('o-categories--edit-mode')).toBe(true);
+            });
         });
 
-        it('include all categories passed in', function() {
-            expect(component.containsMatchingElement(
-                <Category key={ 0 } id={ 0 } name={ 'Category 1' } />
-            )).toBe(true);
-            expect(component.containsMatchingElement(
-                <Category key={ 1 } id={ 1 } name={ 'Category 2' } />
-            )).toBe(true);
+        describe('with active max width', function() {
+
+            beforeEach(function() {
+                component = shallow(getComponent({
+                    'categories': [],
+                    'editMode': false,
+                    'maxWidth': true
+                }));
+            });
+
+            it('should have the correct class', function() {
+                expect(component.find('main').hasClass('o-categories--max-width')).toBe(true);
+            });
         });
     });
 
@@ -48,13 +82,17 @@ describe('<Categories />', function() {
             'categories': [],
             'toolbar': {
                 'editMode': 'banana'
+            },
+            'sidebar': {
+                'maxWidth': 'maxWidth'
             }
         };
 
         it('should map the state to props', function() {
             expect(mapStateToProps(state)).toEqual({
                 'categories': [],
-                'editMode': 'banana'
+                'editMode': 'banana',
+                'maxWidth': 'maxWidth'
             });
         });
     });

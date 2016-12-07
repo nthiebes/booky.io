@@ -10,13 +10,17 @@ import Category from '../../02_molecules/category/Category.jsx';
  * 
  * @requires 02_molecules/category/Category
  *
- * @prop {array} categories A list of categories
+ * @prop {array}   categories A list of categories
+ * @prop {boolean} editMode   Edit mode enabled/disabled
+ * @prop {boolean} maxWidth   Max-width enabled/disabled
  */
 export default class Categories extends Component {
     render() {
         const PROPS = this.props;
         const CATEGORIES = PROPS.categories;
-        const CLASS = 'o-categories' + (PROPS.editMode ? ' o-categories--edit-mode' : '');
+        const EDIT_MODE_CLASS = PROPS.editMode ? ' o-categories--edit-mode' : '';
+        const MAX_WIDTH_CLASS = PROPS.maxWidth ? ' o-categories--max-width' : '';
+        const CLASS = 'o-categories' + EDIT_MODE_CLASS + MAX_WIDTH_CLASS;
 
         return (
             <main className={ CLASS }>
@@ -30,5 +34,6 @@ export default class Categories extends Component {
 
 Categories.propTypes = {
     'categories': PropTypes.array.isRequired,
-    'editMode': PropTypes.bool.isRequired
+    'editMode': PropTypes.bool.isRequired,
+    'maxWidth': PropTypes.bool.isRequired
 };

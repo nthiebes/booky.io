@@ -101,7 +101,7 @@ describe('<Sidebar />', function() {
                     <h2 className="o-sidebar__subheading">{ 'Layout' }</h2>,
                     <Checkbox onCheckboxClick={ onStickyHeaderClickCallback } label={ 'Sticky header' } checked={ true } />,
                     <Checkbox onCheckboxClick= { onStickyToolbarClickCallback } label={ 'Sticky toolbar' } checked={ true } />,
-                    <Checkbox label={ 'Maximum width (two columns)' } checked={ true } onCheckboxClick={ onMaxWidthClickCallback } />,
+                    <Checkbox label={ 'Width limitation (two columns)' } checked={ true } onCheckboxClick={ onMaxWidthClickCallback } />,
                     <h2 className="o-sidebar__subheading">{ 'Dashboards' }</h2>,
                     <Dropdown onDropdownChange={ onDashboardChangeCallback } options={ options } selectedKey={ 2 } />,
                     <p className="o-sidebar__note">{ '(smaller screens will always use a sidebar)' }</p>,

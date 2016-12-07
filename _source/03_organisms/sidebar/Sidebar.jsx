@@ -64,7 +64,7 @@ export default class Sidebar extends Component {
                 <h2 className="o-sidebar__subheading">{ 'Layout' }</h2>
                 <Checkbox label={ 'Sticky header' } checked={ PROPS.stickyHeader } onCheckboxClick={ PROPS.onStickyHeaderClick } />
                 <Checkbox label={ 'Sticky toolbar' } checked={ PROPS.stickyToolbar } onCheckboxClick={ PROPS.onStickyToolbarClick } />
-                <Checkbox label={ 'Maximum width (two columns)' } checked={ PROPS.maxWidth } onCheckboxClick={ PROPS.onMaxWidthClick } />
+                <Checkbox label={ 'Width limitation (two columns)' } checked={ PROPS.maxWidth } onCheckboxClick={ PROPS.onMaxWidthClick } />
 
                 <h2 className="o-sidebar__subheading">{ 'Dashboards' }</h2>
                 <Dropdown onDropdownChange={ PROPS.onDashboardChange } options={ DASHBOARD_OPTIONS } selectedKey={ PROPS.dashboard } />

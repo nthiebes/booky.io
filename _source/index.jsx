@@ -174,7 +174,7 @@ const initialState = {
         'stickyToolbar': true,
         'globalColor': 0,
         'headerColor': 0,
-        'maxWidth': false,
+        'maxWidth': true,
         'dashboard': 0
     }
 };
