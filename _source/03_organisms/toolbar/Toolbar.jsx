@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { scrolling } from '../../00_base/utils/Scrolling';
 
+import DashboardsContainer from '../../03_organisms/dashboards/dashboardsContainer';
 import Search from '../../02_molecules/search/Search.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Button from '../../01_atoms/button/Button.jsx';
@@ -14,6 +15,7 @@ import Button from '../../01_atoms/button/Button.jsx';
  * @requires 01_atoms/button/Button
  * @requires 01_atoms/icon/Icon
  * @requires 02_molecules/search/Search
+ * @requires 03_organisms/dashboards/dashboardsContainer
  *
  * @prop {boolean}  [currentlySticky]     Fixed toolbar currently enabled/disabled
  * @prop {boolean}  [headerSticky]        Fixed header enabled/disabled
@@ -96,6 +98,7 @@ export default class Toolbar extends Component {
                 <Icon icon={ EDIT_MODE_ICON } className="o-toolbar__icon a-icon--dark" title={ EDIT_MODE_TITLE } onClick={ PROPS.onEditModeClick } />
                 <Icon icon="add-category" className="o-toolbar__icon o-toolbar__icon--add-category a-icon--dark" title="New category" />
                 <Button className="o-toolbar__button a-button--primary" size="small" color="primary" text="New" buzzword="Category" />
+                <DashboardsContainer position={ 0 } />
                 <Search className={ SEARCH_CLASS } focus={ PROPS.searchFocused } />
                 <Icon 
                     icon={ SEARCH_ICON } 

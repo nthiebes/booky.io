@@ -32,7 +32,8 @@ component="import React, { PropTypes, Component } from 'react';
 
 /**
  * React component
- * @class $modulePath/$folder/${name^}
+ * @class ${name^}
+ * @classdesc $modulePath/$folder/${name^}
  *
  * @prop {string} [className] Optional class name
  */

@@ -23,11 +23,11 @@ export default class Categories extends Component {
         const CLASS = 'o-categories' + EDIT_MODE_CLASS + MAX_WIDTH_CLASS;
 
         return (
-            <main className={ CLASS }>
+            <div className={ CLASS }>
                 {CATEGORIES.map((category) =>
                     <Category key={ category.id } { ...category } />
                 )}
-            </main>
+            </div>
         );
     }
 }

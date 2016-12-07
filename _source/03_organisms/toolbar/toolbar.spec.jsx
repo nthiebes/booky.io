@@ -9,6 +9,7 @@ import { toggleSearch, toggleEditMode, updateCurrentlySticky } from './toolbarAc
 import toolbar from './toolbarReducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Button from '../../01_atoms/button/Button.jsx';
+import DashboardsContainer from '../../03_organisms/dashboards/dashboardsContainer';
 
 describe('<Toolbar />', function() {
 
@@ -48,13 +49,19 @@ describe('<Toolbar />', function() {
             it('include the category icon', function() {
                 expect(component.contains(
                     <Icon icon="add-category" className="o-toolbar__icon o-toolbar__icon--add-category a-icon--dark" title="New category" />
-                ));
+                )).toBe(true);
             });
 
             it('include a button for new categories', function() {
                 expect(component.contains(
                     <Button className="o-toolbar__button a-button--primary" size="small" color="primary" text="New" buzzword="Category" />
-                ));
+                )).toBe(true);
+            });
+
+            it('include the dashboards', function() {
+                expect(component.contains(
+                    <DashboardsContainer position={ 0 } />
+                )).toBe(true);
             });
         });
 
@@ -79,7 +86,7 @@ describe('<Toolbar />', function() {
             });
         });
 
-        describe('when rendered open and with optional props', function() {
+        describe('when rendered with open search and with optional props', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
@@ -108,16 +115,16 @@ describe('<Toolbar />', function() {
             it('include the correct icon', function() {
                 expect(component.contains(
                     <Icon 
-                        icon={ 'search' } 
+                        icon={ 'close' } 
                         className="o-toolbar__icon o-toolbar__icon--search a-icon--dark" 
                         onClick={ onSearchClickCallback } 
-                        title={ 'Search' } 
+                        title={ 'Close' } 
                     />
-                ));
+                )).toBe(true);
             });
         });
 
-        describe('when rendered closed', function() {
+        describe('when rendered with closed search', function() {
 
             beforeEach(function() {
                 component = shallow(getComponent({
@@ -144,12 +151,12 @@ describe('<Toolbar />', function() {
             it('include the correct icon', function() {
                 expect(component.contains(
                     <Icon 
-                        icon={ 'close' } 
+                        icon={ 'search' } 
                         className="o-toolbar__icon o-toolbar__icon--search a-icon--dark" 
                         onClick={ onSearchClickCallback } 
-                        title={ 'Close' } 
+                        title={ 'Search' } 
                     />
-                ));
+                )).toBe(true);
             });
         });
 
@@ -168,8 +175,8 @@ describe('<Toolbar />', function() {
 
             it('should include the correct icon', function() {
                 expect(component.contains(
-                    <Icon icon={ 'edit' } className="o-toolbar__icon a-icon--dark" title={ 'Edit mode' } onClick={ onEditModeClickCallback } />
-                ));
+                    <Icon icon={ 'view' } className="o-toolbar__icon a-icon--dark" title={ 'View mode' } onClick={ onEditModeClickCallback } />
+                )).toBe(true);
             });
         });
 
@@ -188,8 +195,8 @@ describe('<Toolbar />', function() {
 
             it('should include the correct icon', function() {
                 expect(component.contains(
-                    <Icon icon={ 'view' } className="o-toolbar__icon a-icon--dark" title={ 'View mode' } onClick={ onEditModeClickCallback } />
-                ));
+                    <Icon icon={ 'edit' } className="o-toolbar__icon a-icon--dark" title={ 'Edit mode' } onClick={ onEditModeClickCallback } />
+                )).toBe(true);
             });
         });
 
