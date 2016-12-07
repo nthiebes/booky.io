@@ -53,7 +53,7 @@ export default class Sidebar extends Component {
         return (
             <aside className={ SIDEBAR_CLASS }>
                 <h1 className="o-sidebar__heading">{ 'Customize booky' }</h1>
-                <Button onButtonClick={ PROPS.onDoneClick } className="o-sidebar__button" text="Done" />
+                <Button onButtonClick={ PROPS.onDoneClick } text="Done" />
 
                 <h2 className="o-sidebar__subheading">{ 'Global color scheme' }</h2>
                 <ColorPicker activeColor={ PROPS.globalColor } onColorChange={ PROPS.onGlobalColorChange } />
