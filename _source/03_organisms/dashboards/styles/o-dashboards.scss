@@ -6,6 +6,7 @@
 
 .o-dashboards {
     display: none;
+    user-select: none;
 }
 
 @import "o-dashboards--sidebar";

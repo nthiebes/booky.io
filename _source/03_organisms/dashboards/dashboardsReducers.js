@@ -2,7 +2,7 @@ import { CHANGE_DASHBOARD } from './dashboardsActions';
 
 const dashboards = (state = {}, action) => {
 
-    console.log('reducer', state, action);
+    // console.log('reducer', state, action);
 
     switch (action.type) {
         case CHANGE_DASHBOARD:
