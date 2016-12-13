@@ -1,0 +1,27 @@
+@import "../../00_base/config";
+@import "__icon/m-dashboard__icon";
+@import "__title/m-dashboard__title";
+
+.m-dashboard {
+    background-color: $color__background--light;
+    border-left: 1px solid $color__background--primary;
+    border-right: 1px solid $color__background--primary;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    
+    &:hover {
+        background-color: lighten($color__background--primary, 3);
+
+        .m-dashboard__title {
+            color: $color__font--light;
+            padding: 0 0 0 15px;
+        }
+
+        .m-dashboard__icon {
+            display: inherit;
+        }
+    }
+}
+
+@import "m-dashboard--active";
