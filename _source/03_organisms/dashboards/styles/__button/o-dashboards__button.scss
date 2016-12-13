@@ -1,0 +1,19 @@
+.o-dashboards__button {
+    background-color: lighten($color__background--primary, 3);
+    border-bottom: 1px solid $color__background--primary;
+    border-left: 1px solid $color__background--primary;
+    border-radius: 0 0 3px 3px;
+    border-right: 1px solid $color__background--primary;
+    color: $color__font--light;
+    cursor: pointer;
+    display: block;
+    padding: 0 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-color 0.2s linear;
+    user-select: none;
+
+    &:hover {
+        background-color: $color__background--primary;
+    }
+}

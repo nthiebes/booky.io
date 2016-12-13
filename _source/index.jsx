@@ -7,19 +7,19 @@ import bookyApp from './rootReducer';
 import Booky from './00_base/booky/Booky.jsx';
 
 const initialState = {
-    'dashboards': [{
-        'id': 0,
-        'name': 'Dashboard 1',
-        'position': 1
-    }, {
-        'id': 2,
-        'name': 'Dashboard 2',
-        'position': 0
-    }, {
-        'id': 3,
-        'name': 'Dashboard 3',
-        'position': 2
-    }],
+    'dashboards': {
+        'items': [{
+            'id': 0,
+            'name': 'Dashboard كيف ح вет, как 1'
+        }, {
+            'id': 1,
+            'name': 'Dashboard looooooooooooooooong 2'
+        }, {
+            'id': 2,
+            'name': 'Dashboard こんにち 3'
+        }],
+        'active': 0
+    },
     'categories': [{
         'id': 0,
         'name': 'Category 1 loooong naaaaame',

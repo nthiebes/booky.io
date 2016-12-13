@@ -1,10 +1,13 @@
-import { TOGGLE_DASHBOARDS } from './dashboardsActions';
+import { CHANGE_DASHBOARD } from './dashboardsActions';
 
 const dashboards = (state = {}, action) => {
+
+    console.log('reducer', state, action);
+
     switch (action.type) {
-        case TOGGLE_DASHBOARDS:
+        case CHANGE_DASHBOARD:
             return Object.assign({}, state, {
-                'open': !state.open
+                'active': action.id
             });
 
         default:

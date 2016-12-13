@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
 import Dashboards from './Dashboards.jsx';
-import { toggleDashboards } from './dashboardsActions';
+import { changeDashboard } from './dashboardsActions';
 
 export const mapStateToProps = function(state) {
     return {
-        'activePosition': state.sidebar.dashboard
+        'activePosition': state.sidebar.dashboard,
+        'dashboards': state.dashboards.items,
+        'activeDashboard': state.dashboards.active
     };
 };
 
 export const mapDispatchToProps = function(dispatch) {
     return {
-        'onDashboardsClick': () => {
-            dispatch(toggleDashboards());
+        'onDashboardClick': (id) => {
+            dispatch(changeDashboard(id));
         }
     };
 };

@@ -1,12 +1,20 @@
 import React, { PropTypes, Component } from 'react';
 
+import Dashboard from '../../02_molecules/dashboard/Dashboard.jsx';
+
 /**
  * React component
  * 
  * @class Dashboards
  * @classdesc 03_organisms/dashboards/Dashboards
  *
- * @prop {string} [className] Optional class name
+ * @requires 02_molecules/dashboard/Dashboard
+ *
+ * @prop {array}    dashboards       Array of all dashboards
+ * @prop {function} onDashboardClick Dashboard click callback
+ * @prop {number}   activeDashboard  The active dashboard
+ * @prop {number}   activePosition   0 for sidebar, 1 for dropdown
+ * @prop {number}   position         0 for sidebar, 1 for dropdown
  */
 export default class Dashboards extends Component {
     getClassName() {
@@ -29,16 +37,22 @@ export default class Dashboards extends Component {
     }
 
     render() {
+        const PROPS = this.props;
+        const DASHBOARDS = PROPS.dashboards;
         const CLASS = this.getClassName();
 
         return (
             <aside className={ CLASS }>
                 <ul className="o-dashboards__list">
                     <li className="o-dashboards__title">{ 'Dashboards' }</li>
-                    <li className="o-dashboards__item">Dashboard 1</li>
-                    <li className="o-dashboards__item">Dashboard loooooooooooong 2</li>
-                    <li className="o-dashboards__item">Dashboard 3</li>
-                    <li className="o-dashboards__item">{ 'Add dashboard' }</li>
+                    {DASHBOARDS.map((dashboard) =>
+                        <Dashboard 
+                            key={ dashboard.id } { ...dashboard } 
+                            onDashboardClick={ PROPS.onDashboardClick } 
+                            isActive={ this.props.activeDashboard === dashboard.id }
+                        />
+                    )}
+                    <li className="o-dashboards__button">{ 'Add ' }<span className="o-dashboards__buzzword">{ 'dashboard' }</span></li>
                 </ul>
             </aside>
         );
@@ -47,5 +61,8 @@ export default class Dashboards extends Component {
 
 Dashboards.propTypes = {
     'position': PropTypes.number.isRequired,
-    'activePosition': PropTypes.number.isRequired
+    'activePosition': PropTypes.number.isRequired,
+    'dashboards': PropTypes.array.isRequired,
+    'onDashboardClick': PropTypes.func.isRequired,
+    'activeDashboard': PropTypes.number.isRequired
 };

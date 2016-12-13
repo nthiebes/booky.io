@@ -1,7 +1,8 @@
 @import "../../00_base/config";
 @import "__list/o-dashboards__list";
-@import "__item/o-dashboards__item";
 @import "__title/o-dashboards__title";
+@import "__button/o-dashboards__button";
+@import "__buzzword/o-dashboards__buzzword";
 
 .o-dashboards {
     display: none;

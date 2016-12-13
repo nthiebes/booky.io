@@ -3,6 +3,7 @@
     border: 1px solid $color__font--primary;
     color: $color__font--primary;
     font-weight: bold;
-    text-transform: uppercase;
     text-align: center;
+    text-transform: uppercase;
+    user-select: none;
 }
