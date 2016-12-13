@@ -32,6 +32,7 @@ component="import React, { PropTypes, Component } from 'react';
 
 /**
  * React component
+ *
  * @class ${name^}
  * @classdesc $modulePath/$folder/${name^}
  *
@@ -93,14 +94,8 @@ echo "$specs" >> "_source/$modulePath/$folder/${name,}.spec.jsx"
 if [ $redux == "y" ]; then
 
 actions="/**
- * Action types
- */
 export const TOGGLE_${name^^} = 'TOGGLE_${name^^}';
 
-
-/**
- * Action creators
- */
 export function toggle${name^}() {
     return {
         'type': TOGGLE_${name^^}
