@@ -6,7 +6,9 @@ export const mapStateToProps = function(state) {
     return {
         'activePosition': state.sidebar.dashboard,
         'dashboards': state.dashboards.items,
-        'activeDashboard': state.dashboards.active
+        'activeDashboard': state.dashboards.active,
+        'sidebarOpen': state.header.dashboardsOpen,
+        'editMode': state.toolbar.editMode
     };
 };
 

@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 
 import Dashboard from '../../02_molecules/dashboard/Dashboard.jsx';
+import Button from '../../01_atoms/button/Button.jsx';
 
 /**
  * React component
@@ -8,9 +9,11 @@ import Dashboard from '../../02_molecules/dashboard/Dashboard.jsx';
  * @class Dashboards
  * @classdesc 03_organisms/dashboards/Dashboards
  *
+ * @requires 01_atoms/button/Button
  * @requires 02_molecules/dashboard/Dashboard
  *
  * @prop {array}    dashboards       Array of all dashboards
+ * @prop {boolean}  editMode         Edit mode enabled/disabled
  * @prop {function} onDashboardClick Dashboard click callback
  * @prop {number}   activeDashboard  The active dashboard
  * @prop {number}   activePosition   0 for sidebar, 1 for dropdown
@@ -18,7 +21,8 @@ import Dashboard from '../../02_molecules/dashboard/Dashboard.jsx';
  */
 export default class Dashboards extends Component {
     getClassName() {
-        const PROPS = this.props;
+        const PROPS = this.props,
+            SIDEBAR_OPEN_CLASS = PROPS.sidebarOpen ? ' o-dashboards--sidebar-open' : '';
         let className = 'o-dashboards ';
 
         if (PROPS.position === 1) {
@@ -32,6 +36,8 @@ export default class Dashboards extends Component {
         } else if (PROPS.position === 0 && PROPS.activePosition === 0) {
             className += 'o-dashboards--dropdown-active';
         }
+
+        className += SIDEBAR_OPEN_CLASS;
 
         return className;
     }
@@ -49,10 +55,13 @@ export default class Dashboards extends Component {
                         <Dashboard 
                             key={ dashboard.id } { ...dashboard } 
                             onDashboardClick={ PROPS.onDashboardClick } 
-                            isActive={ this.props.activeDashboard === dashboard.id }
+                            isActive={ this.props.activeDashboard === dashboard.id } 
+                            editMode={ PROPS.editMode }
                         />
                     )}
-                    <li className="o-dashboards__button">{ 'Add ' }<span className="o-dashboards__buzzword">{ 'dashboard' }</span></li>
+                    <li className="o-dashboards__button-wrapper">
+                        <Button text="Add" buzzword="dashboard" className="o-dashboards__button" />
+                    </li>
                 </ul>
             </aside>
         );
@@ -64,5 +73,6 @@ Dashboards.propTypes = {
     'activePosition': PropTypes.number.isRequired,
     'dashboards': PropTypes.array.isRequired,
     'onDashboardClick': PropTypes.func.isRequired,
-    'activeDashboard': PropTypes.number.isRequired
+    'activeDashboard': PropTypes.number.isRequired,
+    'editMode': PropTypes.bool.isRequired
 };
