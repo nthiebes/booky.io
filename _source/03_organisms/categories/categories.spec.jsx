@@ -27,7 +27,8 @@ describe('<Categories />', function() {
                         'name': 'Category 2'
                     }],
                     'editMode': false,
-                    'maxWidth': false
+                    'maxWidth': false,
+                    'dashboardsPosition': 0
                 }));
             });
 
@@ -51,7 +52,8 @@ describe('<Categories />', function() {
                 component = shallow(getComponent({
                     'categories': [],
                     'editMode': true,
-                    'maxWidth': false
+                    'maxWidth': false,
+                    'dashboardsPosition': 0
                 }));
             });
 
@@ -66,12 +68,29 @@ describe('<Categories />', function() {
                 component = shallow(getComponent({
                     'categories': [],
                     'editMode': false,
-                    'maxWidth': true
+                    'maxWidth': true,
+                    'dashboardsPosition': 0
                 }));
             });
 
             it('should have the correct class', function() {
                 expect(component.find('div').first().hasClass('o-categories--max-width')).toBe(true);
+            });
+        });
+
+        describe('with dashboards as sidebar', function() {
+
+            beforeEach(function() {
+                component = shallow(getComponent({
+                    'categories': [],
+                    'editMode': false,
+                    'maxWidth': true,
+                    'dashboardsPosition': 1
+                }));
+            });
+
+            it('should have the correct class', function() {
+                expect(component.find('div').first().hasClass('o-categories--sidebar')).toBe(true);
             });
         });
     });
@@ -84,7 +103,8 @@ describe('<Categories />', function() {
                 'editMode': 'banana'
             },
             'sidebar': {
-                'maxWidth': 'maxWidth'
+                'maxWidth': 'maxWidth',
+                'dashboard': 'dashboard'
             }
         };
 
@@ -92,7 +112,8 @@ describe('<Categories />', function() {
             expect(mapStateToProps(state)).toEqual({
                 'categories': [],
                 'editMode': 'banana',
-                'maxWidth': 'maxWidth'
+                'maxWidth': 'maxWidth',
+                'dashboardsPosition': 'dashboard'
             });
         });
     });

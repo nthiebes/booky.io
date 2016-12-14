@@ -1,0 +1,5 @@
+.o-categories--sidebar {
+    @include desktop() {
+        padding-left: 300px;
+    }
+}
