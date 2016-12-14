@@ -10,13 +10,13 @@ import Icon from '../icon/Icon.jsx';
  * 
  * @requires 01_atoms/icon/Icon
  *
- * @prop {function} onButtonClick Button click callback
- * @prop {string}   [buzzword]    Buzzword (bold)
- * @prop {string}   [className]   Additional class name
- * @prop {string}   [color]       Icon color
- * @prop {string}   [icon]        Icon name
- * @prop {string}   [size]        Button size
- * @prop {string}   [text]        Button text
+ * @prop {function} [onButtonClick] Button click callback
+ * @prop {string}   [buzzword]      Buzzword (bold)
+ * @prop {string}   [className]     Additional class name
+ * @prop {string}   [color]         Icon color
+ * @prop {string}   [icon]          Icon name
+ * @prop {string}   [size]          Button size
+ * @prop {string}   [text]          Button text
  */
 export default class Button extends Component {
     render() {
