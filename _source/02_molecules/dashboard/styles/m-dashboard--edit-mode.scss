@@ -1,0 +1,18 @@
+.m-dashboard--edit-mode {
+    .m-dashboard__icon {
+        color: $color__font--dark;
+        display: inherit;
+
+        @include mobile-tablet() {
+            &:active {
+                color: $color__font--primary;
+            }
+        }
+
+        @include desktop() {
+            &:hover {
+                color: $color__font--light;
+            }
+        }
+    }
+}

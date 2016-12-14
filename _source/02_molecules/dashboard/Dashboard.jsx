@@ -10,6 +10,7 @@ import Icon from '../../01_atoms/icon/Icon.jsx';
  *
  * @requires 01_atoms/icon/Icon
  *
+ * @prop {boolean}  editMode         Edit mode enabled/disabled
  * @prop {boolean}  isActive         Active dashboard
  * @prop {function} onDashboardClick Dashboard click callback
  * @prop {number}   id
@@ -28,8 +29,9 @@ export default class Dashboard extends Component {
 
     render() {
         const PROPS = this.props;
-        const ACTIVE_CLASS = PROPS.isActive ? 'm-dashboard--active' : '';
-        const CLASS = ACTIVE_CLASS + ' m-dashboard';
+        const ACTIVE_CLASS = PROPS.isActive ? ' m-dashboard--active' : '';
+        const EDIT_MODE_CLASS = PROPS.editMode ? ' m-dashboard--edit-mode' : '';
+        const CLASS = 'm-dashboard' + ACTIVE_CLASS + EDIT_MODE_CLASS;
 
         return (
             <li className={ CLASS }>
@@ -46,5 +48,6 @@ Dashboard.propTypes = {
     'id': PropTypes.number.isRequired,
     'name': PropTypes.string.isRequired,
     'onDashboardClick': PropTypes.func.isRequired,
-    'isActive': PropTypes.bool.isRequired
+    'isActive': PropTypes.bool.isRequired,
+    'editMode': PropTypes.bool.editMode
 };

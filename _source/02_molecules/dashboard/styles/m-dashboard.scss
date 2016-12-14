@@ -10,18 +10,31 @@
     flex-direction: row;
     white-space: nowrap;
     
-    &:hover {
-        background-color: lighten($color__background--primary, 3);
+    @include mobile-tablet {
+        padding: 0 2rem;
 
-        .m-dashboard__title {
-            color: $color__font--light;
-            padding: 0 0 0 15px;
+        &:active {
+            .m-dashboard__title {
+                color: $color__font--primary;
+            }
         }
+    }
 
-        .m-dashboard__icon {
-            display: inherit;
+    @include desktop() {
+        &:hover {
+            background-color: lighten($color__background--primary, 3);
+
+            .m-dashboard__title {
+                color: $color__font--light;
+                padding: 0 0 0 15px;
+            }
+
+            .m-dashboard__icon {
+                display: inherit;
+            }
         }
     }
 }
 
 @import "m-dashboard--active";
+@import "m-dashboard--edit-mode";
