@@ -156,7 +156,8 @@ const initialState = {
         'position': 0
     }],
     'header': {
-        'menuMainOpen': false
+        'menuMainOpen': false,
+        'dashboardsOpen': false
     },
     'toolbar': {
         'searchOpen': false,
@@ -175,7 +176,7 @@ const initialState = {
         'globalColor': 0,
         'headerColor': 0,
         'maxWidth': true,
-        'dashboard': 0
+        'dashboard': 1
     }
 };
 

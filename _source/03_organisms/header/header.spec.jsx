@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Header from './Header.jsx';
 import { mapStateToProps, mapDispatchToProps } from './headerContainer';
-import { toggleMainMenu, closeMainMenu } from './headerActions';
+import { toggleMainMenu, closeMainMenu, toggleDashboards, closeDashboards } from './headerActions';
 import { toggleSidebar, closeSidebar } from '../sidebar/sidebarActions';
 import header from './headerReducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
@@ -17,7 +17,8 @@ describe('<Header />', function() {
         let component,
             onMenuMainClickCallback,
             onSidebarClickCallback,
-            onHeaderClickCallback;
+            onHeaderClickCallback,
+            onDashboardsClickCallback;
         
         const getComponent = function(props = {}) {
             return <Header { ...props } />;
@@ -27,6 +28,7 @@ describe('<Header />', function() {
             onMenuMainClickCallback = jest.fn();
             onHeaderClickCallback = jest.fn();
             onSidebarClickCallback = jest.fn();
+            onDashboardsClickCallback = jest.fn();
         });
 
         describe('should always', function() {
@@ -34,16 +36,19 @@ describe('<Header />', function() {
             beforeEach(function() {
                 component = shallow(getComponent({
                     'menuMainOpen': false,
+                    'dashboardsOpen': false,
                     'sidebarOpen': false,
                     'color': 0,
                     'onMenuMainClick': onMenuMainClickCallback,
                     'onHeaderClick': onHeaderClickCallback,
-                    'onSidebarClick': onSidebarClickCallback
+                    'onSidebarClick': onSidebarClickCallback,
+                    'onDashboardsClick': onDashboardsClickCallback
                 }));
             });
 
             it('have the correct class', function() {
-                expect(component.find('header').hasClass('o-header o-header--color-0 o-header--sticky')).toBe(true);
+                expect(component.find('header').hasClass('o-header o-header--color-0')).toBe(true);
+                expect(component.find('header').hasClass('o-header--sticky')).toBe(true);
             });
 
             it('have a click callback', function() {
@@ -75,7 +80,13 @@ describe('<Header />', function() {
                 )).toBe(true);
 
                 expect(component.containsMatchingElement(
-                    <Icon icon="dashboard" className="o-header__dashboards a-icon--light" title="Dashboards" />
+                    <Icon 
+                        icon="dashboard" 
+                        className="o-header__dashboards a-icon--light" 
+                        title="Dashboards" 
+                        stopPropagation={ true } 
+                        onClick={ onDashboardsClickCallback } 
+                    />
                 )).toBe(true);
             });
 
@@ -92,10 +103,12 @@ describe('<Header />', function() {
                 component = shallow(getComponent({
                     'menuMainOpen': true,
                     'sidebarOpen': false,
+                    'dashboardsOpen': false,
                     'color': 0,
                     'onMenuMainClick': onMenuMainClickCallback,
                     'onHeaderClick': onHeaderClickCallback,
-                    'onSidebarClick': onSidebarClickCallback
+                    'onSidebarClick': onSidebarClickCallback,
+                    'onDashboardsClick': onDashboardsClickCallback
                 }));
             });
 
@@ -118,10 +131,12 @@ describe('<Header />', function() {
                 component = shallow(getComponent({
                     'menuMainOpen': false,
                     'sidebarOpen': true,
+                    'dashboardsOpen': false,
                     'color': 0,
                     'onMenuMainClick': onMenuMainClickCallback,
                     'onHeaderClick': onHeaderClickCallback,
-                    'onSidebarClick': onSidebarClickCallback
+                    'onSidebarClick': onSidebarClickCallback,
+                    'onDashboardsClick': onDashboardsClickCallback
                 }));
             });
 
@@ -144,17 +159,20 @@ describe('<Header />', function() {
                 component = shallow(getComponent({
                     'menuMainOpen': false,
                     'sidebarOpen': true,
+                    'dashboardsOpen': true,
                     'color': 1,
                     'sticky': false,
                     'onMenuMainClick': onMenuMainClickCallback,
                     'onHeaderClick': onHeaderClickCallback,
-                    'onSidebarClick': onSidebarClickCallback
+                    'onSidebarClick': onSidebarClickCallback,
+                    'onDashboardsClick': onDashboardsClickCallback
                 }));
             });
 
             it('should have the correct class', function() {
                 expect(component.find('header').hasClass('o-header--sticky')).toBe(false);
                 expect(component.find('header').hasClass('o-header--color-1')).toBe(true);
+                expect(component.find('header').hasClass('o-header--overlay-dashboards')).toBe(true);
             });
         });
     });
@@ -231,6 +249,28 @@ describe('<Header />', function() {
                 });
             });
         });
+
+        describe('toggleDashboards()', function() {
+
+            it('should return the action', function() {
+                const action = toggleDashboards();
+
+                expect(action).toEqual({
+                    'type': 'TOGGLE_DASHBOARDS'
+                });
+            });
+        });
+
+        describe('closeDashboards()', function() {
+
+            it('should return the action', function() {
+                const action = closeDashboards();
+
+                expect(action).toEqual({
+                    'type': 'CLOSE_DASHBOARDS'
+                });
+            });
+        });
     });
 
     describe('reducers', function() {
@@ -269,6 +309,32 @@ describe('<Header />', function() {
 
                 expect(header({'menuMainOpen': true}, closeMainMenu())).toEqual({
                     'menuMainOpen': false
+                });
+            });
+
+            it('TOGGLE_DASHBOARDS: should return the new state', function() {
+                const state = {'dashboardsOpen': true};
+
+                // ...and not mutate it
+                expect(header(state, toggleDashboards())).not.toBe(state);
+
+                expect(header({'dashboardsOpen': true}, toggleDashboards())).toEqual({
+                    'dashboardsOpen': false
+                });
+
+                expect(header({'dashboardsOpen': false}, toggleDashboards())).toEqual({
+                    'dashboardsOpen': true
+                });
+            });
+
+            it('CLOSE_DASHBOARDS: should return the new state', function() {
+                const state = {'dashboardsOpen': true};
+
+                // ...and not mutate it
+                expect(header(state, closeDashboards())).not.toBe(state);
+
+                expect(header({'dashboardsOpen': true}, closeDashboards())).toEqual({
+                    'dashboardsOpen': false
                 });
             });
         });
