@@ -184,7 +184,8 @@ describe('<Header />', function() {
                     'menuMainOpen': 'menuMainOpen',
                     'sidebarOpen': 'open',
                     'sticky': 'stickyHeader',
-                    'color': 'headerColor'
+                    'color': 'headerColor',
+                    'dashboardsOpen': 'dashboardsOpen'
                 },
                 'sidebar': {
                     'headerColor': 'headerColor',
@@ -206,6 +207,7 @@ describe('<Header />', function() {
                 expect(typeof mapDispatchToProps(dispatch).onMenuMainClick).toBe('function');
                 expect(dispatch).toHaveBeenCalledWith(toggleMainMenu());
                 expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+                expect(dispatch).toHaveBeenCalledWith(closeDashboards());
             });
 
             it('onSidebarClick()', function() {
@@ -214,6 +216,16 @@ describe('<Header />', function() {
                 expect(typeof mapDispatchToProps(dispatch).onSidebarClick).toBe('function');
                 expect(dispatch).toHaveBeenCalledWith(toggleSidebar());
                 expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
+                expect(dispatch).toHaveBeenCalledWith(closeDashboards());
+            });
+
+            it('onDashboardsClick()', function() {
+                mapDispatchToProps(dispatch).onDashboardsClick();
+            
+                expect(typeof mapDispatchToProps(dispatch).onDashboardsClick).toBe('function');
+                expect(dispatch).toHaveBeenCalledWith(toggleDashboards());
+                expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
+                expect(dispatch).toHaveBeenCalledWith(closeSidebar());
             });
 
             it('onHeaderClick()', function() {
@@ -222,6 +234,7 @@ describe('<Header />', function() {
                 expect(typeof mapDispatchToProps(dispatch).onHeaderClick).toBe('function');
                 expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
                 expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+                expect(dispatch).toHaveBeenCalledWith(closeDashboards());
             });
         });
     });
