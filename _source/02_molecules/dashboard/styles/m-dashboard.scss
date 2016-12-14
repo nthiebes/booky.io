@@ -8,6 +8,7 @@
     border-right: 1px solid $color__background--primary;
     display: flex;
     flex-direction: row;
+    transition: background-color 0.2s linear;
     white-space: nowrap;
     
     @include mobile-tablet {
@@ -28,10 +29,12 @@
                 color: $color__font--light;
                 padding: 0 0 0 15px;
             }
+        }
 
-            .m-dashboard__icon {
-                display: inherit;
-            }
+        &:hover .m-dashboard__icon--edit-mode {
+            opacity: 1;
+            transition: color 0.2s linear, opacity 0.2s linear;
+            width: 36px;
         }
     }
 }

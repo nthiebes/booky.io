@@ -36,9 +36,9 @@ export default class Dashboard extends Component {
         return (
             <li className={ CLASS }>
                 <span className="m-dashboard__title" title={ PROPS.name } onClick={ this.onDashboardClick }>{ PROPS.name }</span>
-                <Icon icon="edit" className="m-dashboard__icon m-dashboard__icon--edit a-icon--light" title="Edit dashboard" />
-                <Icon icon="delete" className="m-dashboard__icon m-dashboard__icon--delete a-icon--light" title="Delete dashboard" />
-                <Icon icon="drag" className="m-dashboard__icon m-dashboard__icon--drag a-icon--light" title="Drag dashboard" />
+                <Icon icon="edit" className="m-dashboard__icon m-dashboard__icon--edit-mode a-icon--light" title="Edit dashboard" />
+                <Icon icon="delete" className="m-dashboard__icon m-dashboard__icon--edit-mode a-icon--light" title="Delete dashboard" />
+                <Icon icon="drag" className="m-dashboard__icon m-dashboard__icon--edit-mode a-icon--light" title="Drag dashboard" />
             </li>
         );
     }

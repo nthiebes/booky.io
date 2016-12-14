@@ -1,7 +1,17 @@
 .m-dashboard--edit-mode {
+    @include desktop() {
+        &:hover {
+            .m-dashboard__icon {
+                color: $color__font--light;
+            }
+        }
+    }
+
     .m-dashboard__icon {
         color: $color__font--dark;
-        display: inherit;
+        opacity: 1;
+        transition: color 0.2s linear, opacity 0.2s linear;
+        width: 36px;
 
         @include mobile-tablet() {
             &:active {
@@ -11,7 +21,7 @@
 
         @include desktop() {
             &:hover {
-                color: $color__font--light;
+                color: $color__font--dark;
             }
         }
     }
