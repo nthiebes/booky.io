@@ -12,6 +12,7 @@ export class Scrolling {
     constructor(config) {
         this.config = config;
         this.actions = {};
+        this.count = 0;
 
         this.registerAction = this.registerAction.bind(this);
         this.onPageScroll = this.onPageScroll.bind(this);
@@ -51,12 +52,13 @@ export class Scrolling {
      * @param {object} actionConfig.isBelow
      */
     registerAction(actionName, actionConfig) {
-        const lengthNoActions = 2;
+        const lengthNoActions = 0;
 
-        if (JSON.stringify(this.actions).length === lengthNoActions) {
+        if (this.count === lengthNoActions) {
             this.config.window.addEventListener('scroll', this.onPageScroll);
         }
 
+        this.count++;
         this.actions[actionName] = actionConfig;
     }
 
@@ -66,11 +68,12 @@ export class Scrolling {
      * @param {string} actionName
      */
     removeAction(actionName) {
-        const lengthNoActions = 2;
+        const lengthNoActions = 0;
         
         delete this.actions[actionName];
+        this.count--;
 
-        if (JSON.stringify(this.actions).length === lengthNoActions) {
+        if (this.count === lengthNoActions) {
             this.config.window.removeEventListener('scroll', this.onPageScroll);
         }
     }
