@@ -1,0 +1,5 @@
+.o-dashboards--sidebar-active {
+    @include desktop() {
+        display: block;
+    }
+}

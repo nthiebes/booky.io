@@ -1,0 +1,5 @@
+.o-header__dashboards {
+    @include desktop {
+        display: none;
+    }
+}

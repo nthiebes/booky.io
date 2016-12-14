@@ -4,19 +4,26 @@
 
 .a-button {
     align-items: center;
-    user-select: none;
     border-radius: 3px;
     border: 1px solid transparent;
     cursor: pointer;
-    display: flex;
+    display: inline-block;
     font-family: $font__family--text;
-    font-size: 0.875rem;
-    padding: 0 15px;
-    transition: color 0.2s linear, background-color 0.2s linear;
-    white-space: nowrap;
+    font-size: 0.923rem;
     height: 38px;
     line-height: 38px;
+    overflow: hidden;
+    padding: 0 15px;
+    position: relative;
     text-transform: uppercase;
+    transition: color 0.2s linear, background-color 0.2s linear;
+    user-select: none;
+    white-space: nowrap;
+
+    @include mobile {
+        height: 32px;
+        line-height: 32px;
+    }
 }
 
 @import "a-button--small-light";

@@ -7,19 +7,19 @@ import bookyApp from './rootReducer';
 import Booky from './00_base/booky/Booky.jsx';
 
 const initialState = {
-    'dashboards': [{
-        'id': 0,
-        'name': 'Dashboard 1',
-        'position': 1
-    }, {
-        'id': 2,
-        'name': 'Dashboard 2',
-        'position': 0
-    }, {
-        'id': 3,
-        'name': 'Dashboard 3',
-        'position': 2
-    }],
+    'dashboards': {
+        'items': [{
+            'id': 0,
+            'name': 'Dashboard كيف ح вет, как 1'
+        }, {
+            'id': 1,
+            'name': 'Dashboard looooooooooooooooong 2'
+        }, {
+            'id': 2,
+            'name': 'Dashboard こんにち 3'
+        }],
+        'active': 0
+    },
     'categories': [{
         'id': 0,
         'name': 'Category 1 loooong naaaaame',
@@ -29,21 +29,21 @@ const initialState = {
         'expanded': true
     }, {
         'id': 1,
-        'name': 'Category 2',
+        'name': 'مرحبا كيف حالك؟ asas!',
         'dashboard': 0,
         'position': 2,
         'color': 2,
         'expanded': true
     }, {
         'id': 2,
-        'name': 'Category 3',
+        'name': 'Category こんにちはお元気で 3',
         'dashboard': 0,
         'position': 1,
         'color': 3,
         'expanded': false
     }, {
         'id': 3,
-        'name': 'Category 4',
+        'name': 'Category Привет, как дела 4',
         'dashboard': 0,
         'position': 3,
         'color': 4,
@@ -66,7 +66,7 @@ const initialState = {
     }, {
         'id': 1,
         'category': 0,
-        'name': 'Bookmark 1 veeeeeeery veeeeeeery loooooong tiiiitle !!!!!!',
+        'name': 'Bookmark 1 veeeeeeery loooooong tiiiitle !!!!!!',
         'url': 'https://booky.io',
         'favicon': 'base64',
         'position': 0
@@ -157,10 +157,26 @@ const initialState = {
     }],
     'header': {
         'menuMainOpen': false,
-        'editMode': false
+        'dashboardsOpen': false
     },
     'toolbar': {
-        'searchOpen': false
+        'searchOpen': false,
+        'searchFocused': false,
+        'editMode': false,
+        'sticky': true,
+        'currentlySticky': true
+    },
+    'sidebar': {
+        'open': false,
+        'notes': true,
+        'autofill': true,
+        'newtab': true,
+        'stickyHeader': true,
+        'stickyToolbar': true,
+        'globalColor': 0,
+        'headerColor': 0,
+        'maxWidth': true,
+        'dashboard': 1
     }
 };
 

@@ -1,4 +1,4 @@
-import { TOGGLE_MAIN_MENU, TOGGLE_EDIT_MODE } from './headerActions';
+import { TOGGLE_MAIN_MENU, CLOSE_MAIN_MENU, TOGGLE_DASHBOARDS, CLOSE_DASHBOARDS } from './headerActions';
 
 const header = (state = {}, action) => {
     switch (action.type) {
@@ -7,9 +7,19 @@ const header = (state = {}, action) => {
                 'menuMainOpen': !state.menuMainOpen
             });
 
-        case TOGGLE_EDIT_MODE:
+        case CLOSE_MAIN_MENU:
             return Object.assign({}, state, {
-                'editMode': !state.editMode
+                'menuMainOpen': false
+            });
+
+        case TOGGLE_DASHBOARDS:
+            return Object.assign({}, state, {
+                'dashboardsOpen': !state.dashboardsOpen
+            });
+
+        case CLOSE_DASHBOARDS:
+            return Object.assign({}, state, {
+                'dashboardsOpen': false
             });
 
         default:

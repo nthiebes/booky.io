@@ -1,0 +1,10 @@
+.o-header--overlay-menu-main {
+    @include mobile-tablet {
+        &:before {
+            opacity: 1;
+            transition: opacity 0.5s linear;
+            width: 100%;
+            z-index: 2;
+        }
+    }
+}

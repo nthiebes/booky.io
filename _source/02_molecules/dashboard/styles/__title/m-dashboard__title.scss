@@ -1,0 +1,16 @@
+.m-dashboard__title {
+    color: $color__font--dark;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0 15px;
+    text-align: left;
+    text-overflow: ellipsis;
+    transition: color 0.2s linear;
+    white-space: nowrap;
+    width: 100%;
+
+    @include mobile-tablet {
+        padding: 0;
+    }
+}

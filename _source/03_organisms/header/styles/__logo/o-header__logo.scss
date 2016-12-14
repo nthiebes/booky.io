@@ -3,18 +3,9 @@
     cursor: pointer;
     display: flex;
     flex-grow: 1;
-    height: 85%;
     justify-content: center;
     padding: 5px;
     text-align: center;
-
-    @include tablet-desktop {
-        flex-grow: 0;
-        order: -1;
-        text-align: left;
-        justify-content: flex-start;
-        width: 150px;
-    }
 }
 
 @import "o-header__logo--small";

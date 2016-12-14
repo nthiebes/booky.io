@@ -1,21 +1,39 @@
 import { connect } from 'react-redux';
 import Header from './Header.jsx';
-import { toggleMainMenu, toggleEditMode } from './headerActions';
+import { toggleMainMenu, closeMainMenu, toggleDashboards, closeDashboards } from './headerActions';
+import { toggleSidebar, closeSidebar } from '../sidebar/sidebarActions';
 
 export const mapStateToProps = function(state) {
     return {
         'menuMainOpen': state.header.menuMainOpen,
-        'editMode': state.header.editMode
+        'sidebarOpen': state.sidebar.open,
+        'dashboardsOpen': state.header.dashboardsOpen,
+        'sticky': state.sidebar.stickyHeader,
+        'color': state.sidebar.headerColor
     };
 };
 
 export const mapDispatchToProps = function(dispatch) {
     return {
-        'onMainMenuClick': () => {
+        'onMenuMainClick': () => {
             dispatch(toggleMainMenu());
+            dispatch(closeSidebar());
+            dispatch(closeDashboards());
         },
-        'onEditModeClick': () => {
-            dispatch(toggleEditMode());
+        'onSidebarClick': () => {
+            dispatch(toggleSidebar());
+            dispatch(closeMainMenu());
+            dispatch(closeDashboards());
+        },
+        'onDashboardsClick': () => {
+            dispatch(toggleDashboards());
+            dispatch(closeSidebar());
+            dispatch(closeMainMenu());
+        },
+        'onHeaderClick': () => {
+            dispatch(closeMainMenu());
+            dispatch(closeSidebar());
+            dispatch(closeDashboards());
         }
     };
 };

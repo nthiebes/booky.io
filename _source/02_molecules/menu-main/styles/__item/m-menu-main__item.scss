@@ -1,5 +1,5 @@
 .m-menu-main__item {
-    @include mobile {
+    @include mobile-tablet {
         border-bottom: 1px solid #ccc;
         color: $color__font--dark;
         flex-shrink: 0;
@@ -12,7 +12,7 @@
         }
     }
 
-    @include tablet-desktop {
+    @include desktop {
         color: $color__font--light;
         font-weight: bold;
         margin: 0 1rem;
@@ -24,7 +24,7 @@
         }
 
         &:after {
-            display: none;
+            // display: none;
         }
 
         &:before {
@@ -34,7 +34,7 @@
             height: 0.25rem;
             left: -1.15rem;
             position: absolute;
-            top: 1rem;
+            top: 1.2rem;
             width: 0.25rem;
         }
 
@@ -45,7 +45,9 @@
         }
 
         .a-icon__svg {
-            display: none;
+            padding: 6px 6px 6px 0;
+            width: 30px;
+            // display: none;
         }
     }
 }

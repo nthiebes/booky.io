@@ -1,0 +1,5 @@
+.o-dashboards--dropdown-active {
+    @include desktop() {
+        display: inline-block;
+    }
+}

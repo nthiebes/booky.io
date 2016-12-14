@@ -4,7 +4,9 @@ import Icon from '../icon/Icon.jsx';
 
 /**
  * React component
- * @class 01_atoms/link/Link
+ *
+ * @class Link
+ * @classdesc 01_atoms/link/Link
  * 
  * @requires 01_atoms/icon/Icon
  *

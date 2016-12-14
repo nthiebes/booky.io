@@ -2,7 +2,15 @@
     color: $color__font--light;
     border-color: $color__font--light;
 
-    &:active {
-        color: $color__font--dark;
+    @include mobile-tablet {
+        &:active {
+            color: $color__font--dark;
+        }   
+    }
+
+    @include desktop {
+        &:hover {
+            color: $color__font--dark;
+        }   
     }
 }

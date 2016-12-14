@@ -5,11 +5,16 @@ import Button from './Button.jsx';
 
 describe('<Button />', function() {
 
-    let component;
+    let component,
+        onButtonClickCallback;
         
     const getComponent = function(props = {}) {
         return <Button { ...props } />;
     };
+
+    beforeEach(function() {
+        onButtonClickCallback = jest.fn();
+    });
 
     describe('when initialized without optional parameters', function() {
 
@@ -17,18 +22,23 @@ describe('<Button />', function() {
             component = shallow(getComponent({
                 'text': 'Troll',
                 'size': 'small',
-                'color': 'primary'
+                'color': 'primary',
+                'onButtonClick': onButtonClickCallback
             }));
         });
 
         it('should have the correct class', function() {
-            expect(component.find('button').hasClass('a-button a-button--small a-button--small-primary')).toBe(true);
+            expect(component.find('div').hasClass('a-button a-button--small a-button--small-primary')).toBe(true);
         });
 
         it('should include the text', function() {
             expect(component.contains(
                 <span className="a-button__text">{ 'Troll' }</span>
             )).toBe(true);
+        });
+
+        it('should include a click callback', function() {
+            expect(component.find('div').props().onClick).toBe(onButtonClickCallback);
         });
     });
 
@@ -41,12 +51,13 @@ describe('<Button />', function() {
                 'size': 'large',
                 'color': 'light',
                 'buzzword': 'Troll',
-                'icon': 'category'
+                'icon': 'category',
+                'onButtonClick': onButtonClickCallback
             }));
         });
 
         it('should have the correct class', function() {
-            expect(component.find('button').hasClass('a-button a-button--large a-button--large-light banana')).toBe(true);
+            expect(component.find('div').hasClass('a-button a-button--large a-button--large-light banana')).toBe(true);
         });
 
         it('should include the text', function() {

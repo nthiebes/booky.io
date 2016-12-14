@@ -1,0 +1,33 @@
+@import "__box/a-checkbox__box";
+@import "__icon/a-checkbox__icon";
+@import "__label/a-checkbox__label";
+
+.a-checkbox {
+    align-items: center;
+    color: $color__font--dark;
+    cursor: pointer;
+    display: flex;
+    margin-top: 1rem;
+    transition: color 0.2s;
+    user-select: none;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:hover {
+        color: #000;
+    }
+
+    &:active {
+        color: $color__font--primary;
+    }
+
+    &:hover .a-checkbox__icon {
+        transform: scale(0.9);
+    }
+
+    &:active .a-checkbox__icon {
+        color: $color__font--primary;
+    }
+}

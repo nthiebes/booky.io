@@ -5,11 +5,16 @@ import Icon from './Icon.jsx';
 
 describe('<Icon />', function() {
 
-    let component;
+    let component,
+        onClickCallback;
         
     const getComponent = function(props = {}) {
         return <Icon { ...props } />;
     };
+
+    beforeEach(function() {
+        onClickCallback = jest.fn();
+    });
 
     describe('when initialized without optional parameters', function() {
 
@@ -39,7 +44,8 @@ describe('<Icon />', function() {
                 'icon': 'gscheid',
                 'className': 'banana',
                 'label': 'Gscheides label!',
-                'title': 'Moin!'
+                'title': 'Moin!',
+                'onClick': onClickCallback
             }));
         });
 
@@ -58,6 +64,32 @@ describe('<Icon />', function() {
                 'className': 'a-icon__label',
                 'children': 'Gscheides label!'
             });
+        });
+
+        it('should include a click callback', function() {
+            component.find('div').props().onClick();
+            expect(onClickCallback).toHaveBeenCalled();
+        });
+    });
+
+    describe('when event propagation needs to be prevented', function() {
+
+        beforeEach(function() {
+            component = shallow(getComponent({
+                'icon': 'gscheid',
+                'stopPropagation': true,
+                'onClick': onClickCallback
+            }));
+        });
+
+        it('should prevent it', function() {
+            const eventMock = {
+                'stopPropagation': jest.fn()
+            };
+
+            component.find('div').props().onClick(eventMock);
+            expect(onClickCallback).toHaveBeenCalled();
+            expect(eventMock.stopPropagation).toHaveBeenCalled();
         });
     });
 });

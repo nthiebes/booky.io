@@ -1,0 +1,5 @@
+.m-menu-main__sign-out {
+    @include desktop {
+        display: none;
+    }
+}

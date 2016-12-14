@@ -74,5 +74,9 @@ export default {
       {test: /(\.css|\.scss)$/, loader: ExtractTextPlugin.extract('css?sourceMap!postcss!sass?sourceMap')}
     ]
   },
-  postcss: ()=> [autoprefixer]
+  postcss: function() {
+    return [autoprefixer({
+      browsers: ['last 2 versions', 'iOS >= 6', '> 1%']
+    })];
+  }
 };

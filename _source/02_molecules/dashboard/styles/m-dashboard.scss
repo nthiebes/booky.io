@@ -1,0 +1,43 @@
+@import "../../00_base/config";
+@import "__icon/m-dashboard__icon";
+@import "__title/m-dashboard__title";
+
+.m-dashboard {
+    background-color: $color__background--light;
+    border-left: 1px solid $color__background--primary;
+    border-right: 1px solid $color__background--primary;
+    display: flex;
+    flex-direction: row;
+    transition: background-color 0.2s linear;
+    white-space: nowrap;
+    
+    @include mobile-tablet {
+        padding: 0 2rem;
+
+        &:active {
+            .m-dashboard__title {
+                color: $color__font--primary;
+            }
+        }
+    }
+
+    @include desktop() {
+        &:hover {
+            background-color: lighten($color__background--primary, 3);
+
+            .m-dashboard__title {
+                color: $color__font--light;
+                padding: 0 0 0 15px;
+            }
+        }
+
+        &:hover .m-dashboard__icon--edit-mode {
+            opacity: 1;
+            transition: color 0.2s linear, opacity 0.2s linear;
+            width: 36px;
+        }
+    }
+}
+
+@import "m-dashboard--active";
+@import "m-dashboard--edit-mode";
