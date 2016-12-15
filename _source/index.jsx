@@ -18,7 +18,8 @@ const initialState = {
             'id': 2,
             'name': 'Dashboard こんにち 3'
         }],
-        'active': 0
+        'active': 0,
+        'offset': 3
     },
     'categories': [{
         'id': 0,

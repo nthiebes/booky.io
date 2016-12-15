@@ -49,5 +49,5 @@ Dashboard.propTypes = {
     'name': PropTypes.string.isRequired,
     'onDashboardClick': PropTypes.func.isRequired,
     'isActive': PropTypes.bool.isRequired,
-    'editMode': PropTypes.bool.editMode
+    'editMode': PropTypes.bool.isRequired
 };

@@ -2,6 +2,7 @@ export const CHANGE_DASHBOARD = 'CHANGE_DASHBOARD';
 export const EDIT_DASHBOARD = 'EDIT_DASHBOARD';
 export const DELETE_DASHBOARD = 'DELETE_DASHBOARD';
 export const ADD_DASHBOARD = 'ADD_DASHBOARD';
+export const UPDATE_OFFSET = 'UPDATE_OFFSET';
 
 export function changeDashboard(id) {
     return {
@@ -30,5 +31,12 @@ export function addDashboard(name) {
     return {
         'type': ADD_DASHBOARD,
         name
+    };
+}
+
+export function updateOffset(offset) {
+    return {
+        'type': UPDATE_OFFSET,
+        offset
     };
 }

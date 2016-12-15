@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Dashboards from './Dashboards.jsx';
-import { changeDashboard } from './dashboardsActions';
+import { changeDashboard, updateOffset } from './dashboardsActions';
 
 export const mapStateToProps = function(state) {
     return {
@@ -8,7 +8,10 @@ export const mapStateToProps = function(state) {
         'dashboards': state.dashboards.items,
         'activeDashboard': state.dashboards.active,
         'sidebarOpen': state.header.dashboardsOpen,
-        'editMode': state.toolbar.editMode
+        'editMode': state.toolbar.editMode,
+        'headerSticky': state.sidebar.stickyHeader,
+        'toolbarSticky': state.sidebar.stickyToolbar,
+        'offset': state.dashboards.offset
     };
 };
 
@@ -16,6 +19,9 @@ export const mapDispatchToProps = function(dispatch) {
     return {
         'onDashboardClick': (id) => {
             dispatch(changeDashboard(id));
+        },
+        'updateOffset': (offset) => {
+            dispatch(updateOffset(offset));
         }
     };
 };
