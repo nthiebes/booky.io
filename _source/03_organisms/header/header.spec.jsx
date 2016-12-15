@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -353,3 +354,5 @@ describe('<Header />', function() {
         });
     });
 });
+
+/* eslint-enable max-lines */

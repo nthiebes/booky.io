@@ -28,16 +28,20 @@ export class Scrolling {
             if (ACTIONS.hasOwnProperty(item)) {
                 const action = ACTIONS[item];
 
-                if (TOP >= action.offset) {
-                    if (!action.active) {
-                        action.active = true;
-                        action.isBelow.call(action.scope);
-                    }
-                } else if (action.active) {
-                    action.active = false;
-                    action.isAbove.call(action.scope);
-                }
+                this.checkAndTriggerAction(TOP, action);
             }
+        }
+    }
+
+    checkAndTriggerAction(TOP, action) {
+        if (TOP >= action.offset) {
+            if (!action.active) {
+                action.active = true;
+                action.isBelow.call(action.scope);
+            }
+        } else if (action.active) {
+            action.active = false;
+            action.isAbove.call(action.scope);
         }
     }
 
