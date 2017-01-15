@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-
-import bookyApp from './rootReducer';
-import Booky from './00_base/booky/Booky.jsx';
+import { Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import router from './router.jsx';
+import configureStore from './configureStore';
 
 const initialState = {
     'dashboards': {
@@ -12,10 +12,10 @@ const initialState = {
             'id': 0,
             'name': 'Dashboard كيف ح вет, как 1'
         }, {
-            'id': 1,
+            'id': 2,
             'name': 'Dashboard looooooooooooooooong 2'
         }, {
-            'id': 2,
+            'id': 1,
             'name': 'Dashboard こんにち 3'
         }],
         'active': 0,
@@ -181,11 +181,13 @@ const initialState = {
     }
 };
 
-const store = createStore(bookyApp, initialState);
+const store = configureStore(initialState);
+
+const history = syncHistoryWithStore(browserHistory, store);
 
 render(
     <Provider store={ store }>
-        <Booky />
+        <Router history={ history } routes={ router } />
     </Provider>,
-    document.getElementById('app')
+    document.getElementById('root')
 );

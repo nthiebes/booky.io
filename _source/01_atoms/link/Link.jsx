@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { Link as RegularLink, IndexLink } from 'react-router';
 
 import Icon from '../icon/Icon.jsx';
 
@@ -21,11 +22,12 @@ export default class Link extends Component {
         const CLASS = 'a-link ' + PROPS.className;
         const ICON = PROPS.icon ? <Icon className="a-link__icon" icon={ PROPS.icon } /> : '';
         const TEXT = PROPS.text;
+        const CustomTag = PROPS.href === '/' ? IndexLink : RegularLink;
 
         return (
-            <a className={ CLASS } href={ PROPS.href } title={ PROPS.title }>
+            <CustomTag className={ CLASS } to={ PROPS.href } title={ PROPS.title }>
                 { ICON }{ TEXT }
-            </a>
+            </CustomTag>
         );
     }
 }
