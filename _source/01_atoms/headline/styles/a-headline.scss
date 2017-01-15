@@ -1,0 +1,10 @@
+@import "../../00_base/config";
+
+.a-headline {
+    color: $color__font--dark;
+    font-family: $font__family--heading;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-top: 2rem;
+    text-align: center;
+}
