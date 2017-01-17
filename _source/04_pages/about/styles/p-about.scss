@@ -1,0 +1,13 @@
+@import "../../00_base/config";
+
+.p-about {
+    padding-top: 42px;
+
+    @include tablet {
+        padding-top: 64px;
+    }
+
+    @include desktop {
+        padding-top: 86px;
+    }
+}

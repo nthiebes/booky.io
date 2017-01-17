@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 
+import Headline from '../../01_atoms/headline/Headline.jsx';
+import P from '../../01_atoms/paragraph/Paragraph.jsx';
 import HeaderContainer from '../../03_organisms/header/headerContainer';
 import SidebarContainer from '../../03_organisms/sidebar/sidebarContainer';
-import Headline from '../../01_atoms/headline/Headline';
 
 /**
  * React component
  * 
  * @class AboutPage
  * @classdesc 04_pages/about/AboutPage
- * 
- * @requires 03_organisms/header/headerContainer
- * @requires 03_organisms/sidebar/sidebarContainer
  */
 export default class AboutPage extends Component {
     render() {
@@ -19,12 +17,18 @@ export default class AboutPage extends Component {
             <div>
                 <HeaderContainer />
                 <SidebarContainer />
-                <main>
+                <main className="p-about">
+                    <Headline type={ 1 } text="Servus, wie geht's dir? Lorem ipsum dolor sit amet!" />
+                    <P>{`Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet..`}</P>
+                    <P>{`Web forms are the evolution of their paper counterparts. 
+                        A collection of labels, boxes and circles designed to constrain input and make it easier for data to be processed.`}</P>
                     <Headline type={ 1 } text="Servus, wie geht's?" />
-                    <Headline type={ 1 } text="Servus, wie geht's?" />
-                    <Headline type={ 1 } text="Category こんにちはお元気で 3" />
-                    <Headline type={ 1 } text="مرحبا كيف حالك؟" />
-                    <Headline type={ 1 } text="Привет, как дела 3" />
+                    <P>{`Lorem存有悲坐阿梅德，tempor labore sadipscing多年来，但是最精彩的UT labore等dolore直径tempor invidunt eirmod`}</P>
+                    <Headline type={ 1 } text="Привет, как дела 123?" />
+                    <P>{`أبجد هوز دولور الجلوس امات، tempor labore sadipscing على مر السنين، ولكن الأكثر إثارة التحرير labore آخرون غير مؤلمة بقطر tempor invidunt eirmod`}</P>
+                    <P>{`Lorem Ipsum Dolor сидеть Амет, TEMPOR Лаборе sadipscing на протяжении многих лет, но самая захватывающая ут Лаборе и др Dolore диам TEMPOR invidunt eirmod`}</P>
+                    <Headline type={ 1 } text="مرحبا كيف حالك 123؟" />
+                    <Headline type={ 1 } text="你好，你怎么样 123？" />
                 </main>
             </div>
         );

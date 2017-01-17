@@ -6,6 +6,7 @@
 @import "../../01_atoms/input/styles/a-input";
 @import "../../01_atoms/checkbox/styles/a-checkbox";
 @import "../../01_atoms/headline/styles/a-headline";
+@import "../../01_atoms/paragraph/styles/a-paragraph";
 @import "../../02_molecules/menu-main/styles/m-menu-main";
 @import "../../02_molecules/bookmark/styles/m-bookmark";
 @import "../../02_molecules/category/styles/m-category";
@@ -18,6 +19,7 @@
 @import "../../03_organisms/toolbar/styles/o-toolbar";
 @import "../../03_organisms/sidebar/styles/o-sidebar";
 @import "../../03_organisms/dashboards/styles/o-dashboards";
+@import "../../04_pages/about/styles/p-about";
 
 html,
 body {
