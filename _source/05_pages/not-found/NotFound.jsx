@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 
+import Page from '../../04_templates/page';
+
 /**
  * React component
  * 
- * @class NotFoundPage
- * @classdesc 04_pages/not-found/NotFoundPage
+ * @class NotFound
+ * @classdesc 05_pages/not-found/NotFound
  */
-export default class NotFoundPage extends Component {
+export default class NotFound extends Component {
     render() {
         return (
-            <div>
+            <Page>
                 { '404: Page not found' }
-            </div>
+            </Page>
         );
     }
 }

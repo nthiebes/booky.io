@@ -9,16 +9,10 @@ import DashboardsContainer from '../../03_organisms/dashboards/dashboardsContain
 /**
  * React component
  * 
- * @class HomePage
- * @classdesc 04_pages/home/HomePage
- * 
- * @requires 03_organisms/header/headerContainer
- * @requires 03_organisms/toolbar/toolbarContainer
- * @requires 03_organisms/sidebar/sidebarContainer
- * @requires 03_organisms/categories/categoriesContainer
- * @requires 03_organisms/dashboards/dashboardsContainer
+ * @class Home
+ * @classdesc 05_pages/home/Home
  */
-export default class HomePage extends Component {
+export default class Home extends Component {
     render() {
         return (
             <div>
