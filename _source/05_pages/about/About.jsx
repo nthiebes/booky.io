@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
+import Page from '../../04_templates/page';
 import Headline from '../../01_atoms/headline/Headline.jsx';
 import P from '../../01_atoms/paragraph/Paragraph.jsx';
-import HeaderContainer from '../../03_organisms/header/headerContainer';
-import SidebarContainer from '../../03_organisms/sidebar/sidebarContainer';
 
 /**
  * React component
@@ -14,10 +13,8 @@ import SidebarContainer from '../../03_organisms/sidebar/sidebarContainer';
 export default class AboutPage extends Component {
     render() {
         return (
-            <div>
-                <HeaderContainer />
-                <SidebarContainer />
-                <main className="p-about">
+            <Page>
+                <main>
                     <Headline type={ 1 } text="Servus, wie geht's dir? Lorem ipsum dolor sit amet!" />
                     <P>{`Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet..`}</P>
                     <P>{`Web forms are the evolution of their paper counterparts. 
@@ -30,7 +27,7 @@ export default class AboutPage extends Component {
                     <Headline type={ 1 } text="مرحبا كيف حالك 123؟" />
                     <Headline type={ 1 } text="你好，你怎么样 123？" />
                 </main>
-            </div>
+            </Page>
         );
     }
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import Booky from './00_base/booky/Booky.jsx';
-import Home from './04_pages/home/Home';
-import About from './04_pages/about/About';
-import NotFound from './04_pages/not-found/NotFound';
+import Booky from './00_base/Booky.jsx';
+import Home from './05_pages/home/Home.jsx';
+import About from './05_pages/about/About.jsx';
+import NotFound from './05_pages/not-found/NotFound.jsx';
 
 export default (
     <Route path="/" component={ Booky }>
