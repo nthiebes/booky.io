@@ -14,11 +14,13 @@ describe('<Link />', function() {
     describe('when initialized without optional parameters', function() {
 
         beforeEach(function() {
-            component = shallow(getComponent({}));
+            component = shallow(getComponent({
+                'href': 'link'
+            }));
         });
 
         it('should have the correct class', function() {
-            expect(component.find('a').hasClass('a-link')).toBe(true);
+            expect(component.find('Link').hasClass('a-link')).toBe(true);
         });
     });
 
@@ -27,31 +29,24 @@ describe('<Link />', function() {
         beforeEach(function() {
             component = shallow(getComponent({
                 'className': 'banana',
-                'text': 'Gscheider Text!',
-                'icon': 'link',
-                'title': 'Potato'
+                'children': <span>{ 'children' }</span>,
+                'title': 'Potato',
+                'href': '/'
             }));
         });
 
         it('should have the correct class', function() {
-            expect(component.find('a').hasClass('a-link banana')).toBe(true);
+            expect(component.find('IndexLink').hasClass('a-link banana')).toBe(true);
         });
 
-        it('should include an icon', function() {
-            const iconProps = component.find('Icon').props();
-
-            expect(iconProps.className).toBe('a-link__icon');
-            expect(iconProps.icon).toBe('link');
-        });
-
-        it('should include the text', function() {
+        it('should include the children', function() {
             expect(component.contains(
-                'Gscheider Text!'
+                <span>{ 'children' }</span>
             )).toBe(true);
         });
 
         it('should have a title', function() {
-            expect(component.find('a').prop('title')).toBe('Potato');
+            expect(component.find('IndexLink').prop('title')).toBe('Potato');
         });
     });
 });

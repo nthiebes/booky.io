@@ -26,6 +26,7 @@ export default class Link extends Component {
 }
 
 Link.propTypes = {
+    'href': PropTypes.string.isRequired,
     'className': PropTypes.string,
     'children': PropTypes.element,
     'title': PropTypes.string

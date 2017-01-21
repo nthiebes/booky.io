@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme';
 
 import MenuMain from './MenuMain.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
+import Link from '../../01_atoms/link/Link.jsx';
 
 describe('<MenuMain />', function() {
 
@@ -55,13 +56,20 @@ describe('<MenuMain />', function() {
             expect(documentMock.body.classList.toggle).toHaveBeenCalledWith('booky--no-scrolling-mobile-tablet', true);
         });
 
-        it('should include the icons', function() {
+        it('should include the menu items', function() {
             expect(component.contains(
-                <Icon className="m-menu-main__item" icon="about" label="About" />,
-                <Icon className="m-menu-main__item" icon="help" label="Help" />,
-                <Icon className="m-menu-main__item" icon="account" label="Account" />,
-                <Icon className="m-menu-main__item" icon="next" label="Next" />,
-                <Icon className="m-menu-main__item m-menu-main__sign-out" icon="sign-out" label="Sign Out" />
+                <Link className="m-menu-main__item" href="/help">
+                    <Icon icon="help" label="Help" />
+                </Link>,
+                <Link className="m-menu-main__item" href="/account">
+                    <Icon icon="account" label="Account" />
+                </Link>,
+                <Link className="m-menu-main__item" href="/next">
+                    <Icon icon="next" label="Next" />
+                </Link>,
+                <Link className="m-menu-main__item m-menu-main__sign-out" href="/sign-out">
+                    <Icon icon="sign-out" label="Sign Out" />
+                </Link>
             )).toBe(true);
         });
     });

@@ -29,10 +29,13 @@ function configureStoreDev(initialState) {
         thunk
     ];
 
+    /* eslint-disable no-underscore-dangle */
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
     const store = createStore(reducers, initialState, composeEnhancers(
         applyMiddleware(...middlewares)
     ));
+
+    /* eslint-enable no-underscore-dangle */
 
     if (module.hot) {
         // Enable Webpack hot module replacement for reducers
