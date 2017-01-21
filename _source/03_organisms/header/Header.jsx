@@ -10,11 +10,6 @@ import Button from '../../01_atoms/button/Button.jsx';
  *
  * @class Header
  * @classdesc 03_organisms/header/Header
- * 
- * @requires 01_atoms/button/Button
- * @requires 01_atoms/icon/Icon
- * @requires 01_atoms/link/Link
- * @requires 02_molecules/menu-main/MenuMain
  *
  * @prop {boolean}  [sticky]          Fixed header enabled/disabled
  * @prop {boolean}  dashboardsOpen    Dashboards sidebar open/closed
@@ -50,7 +45,9 @@ export default class Header extends Component {
                 />
                 <MenuMain document={ document } menuMainOpen={ PROPS.menuMainOpen } />
 
-                <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />
+                <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home">
+                    <Icon icon="heart" />
+                </Link>
                 <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />
 
                 <Icon icon="customize" className="a-icon--light" title="Customize booky" stopPropagation={ true } onClick={ PROPS.onSidebarClick } />
