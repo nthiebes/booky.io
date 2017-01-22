@@ -24,5 +24,9 @@ export default class Page extends Component {
 }
 
 Page.propTypes = {
-    'children': PropTypes.element.isRequired
+    'children': PropTypes.oneOfType([
+        PropTypes.array,
+        PropTypes.element,
+        PropTypes.string
+    ]).isRequired
 };

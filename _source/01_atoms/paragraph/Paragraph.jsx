@@ -6,8 +6,8 @@ import React, { PropTypes, Component } from 'react';
  * @class Paragraph
  * @classdesc 01_atoms/paragraph/Paragraph
  *
- * @prop {string}  [className] Additional class name
  * @prop {element} children    Paragraph content
+ * @prop {string}  [className] Additional class name
  */
 export default class Paragraph extends Component {
     render() {
@@ -24,7 +24,11 @@ export default class Paragraph extends Component {
 
 Paragraph.propTypes = {
     'className': PropTypes.string,
-    'children': PropTypes.element.isRequired
+    'children': PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.element,
+        PropTypes.array
+    ]).isRequired
 };
 
 Paragraph.defaultProps = {
