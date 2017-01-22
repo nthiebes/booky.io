@@ -58,7 +58,9 @@ describe('<Header />', function() {
 
             it('include links', function() {
                 expect(component.containsMatchingElement(
-                    <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home" icon="heart" />
+                    <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home">
+                        <Icon icon="heart" />
+                    </Link>
                 )).toBe(true);
 
                 expect(component.containsMatchingElement(

@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-import bookyApp from './rootReducer';
+import bookyApp from './reducers';
 import toolbar from './03_organisms/toolbar/toolbarReducers';
 import categories from './03_organisms/categories/categoriesReducers';
 import header from './03_organisms/header/headerReducers';
