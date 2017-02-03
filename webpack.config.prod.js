@@ -54,7 +54,7 @@ export default {
         minifyURLs: true
       },
       inject: true,
-      filename: 'index.php'
+      filename: 'index.html'
     }),
 
     // Eliminate duplicate packages when generating bundle
