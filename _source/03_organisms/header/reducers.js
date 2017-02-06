@@ -1,4 +1,4 @@
-import { TOGGLE_MAIN_MENU, CLOSE_MAIN_MENU, TOGGLE_DASHBOARDS, CLOSE_DASHBOARDS } from './headerActions';
+import { TOGGLE_MAIN_MENU, CLOSE_MAIN_MENU, TOGGLE_DASHBOARDS, CLOSE_DASHBOARDS } from './actions';
 
 const header = (state = {}, action) => {
     switch (action.type) {

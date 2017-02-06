@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import HeaderContainer from '../../03_organisms/header/headerContainer';
+import HeaderContainer from '../../03_organisms/header';
 import ToolbarContainer from '../../03_organisms/toolbar/toolbarContainer';
 import CategoriesContainer from '../../03_organisms/categories/categoriesContainer';
 import SidebarContainer from '../../03_organisms/sidebar/sidebarContainer';

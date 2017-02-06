@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import HeaderContainer from '../../03_organisms/header/headerContainer';
+import HeaderContainer from '../../03_organisms/header';
 import SidebarContainer from '../../03_organisms/sidebar/sidebarContainer';
 
 /**

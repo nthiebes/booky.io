@@ -2,11 +2,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Header from './Header.jsx';
-import { mapStateToProps, mapDispatchToProps } from './headerContainer';
-import { toggleMainMenu, closeMainMenu, toggleDashboards, closeDashboards } from './headerActions';
+import Header from './component.jsx';
+import { mapStateToProps, mapDispatchToProps } from './container';
+import { toggleMainMenu, closeMainMenu, toggleDashboards, closeDashboards } from './actions';
 import { toggleSidebar, closeSidebar } from '../sidebar/sidebarActions';
-import header from './headerReducers';
+import header from './reducers';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Link from '../../01_atoms/link/Link.jsx';
 import Button from '../../01_atoms/button/Button.jsx';

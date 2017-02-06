@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Page from './component.jsx';
-import HeaderContainer from '../../03_organisms/header/headerContainer';
+import HeaderContainer from '../../03_organisms/header';
 import SidebarContainer from '../../03_organisms/sidebar/sidebarContainer';
 
 describe('<Page />', function() {

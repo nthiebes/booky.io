@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import Header from './Header.jsx';
-import { toggleMainMenu, closeMainMenu, toggleDashboards, closeDashboards } from './headerActions';
+import Header from './component.jsx';
+import { toggleMainMenu, closeMainMenu, toggleDashboards, closeDashboards } from './actions';
 import { toggleSidebar, closeSidebar } from '../sidebar/sidebarActions';
 
 export const mapStateToProps = function(state) {
