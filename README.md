@@ -10,6 +10,8 @@ booky.io is an online bookmarking service with high focus on performance, mobile
 
 [Learn more about booky.io](https://booky.io/about)
 
+This project is a frontend rewrite of the existing site.
+
 ## Development
 ### Setup
 Install dependencies and start the server:
