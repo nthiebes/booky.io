@@ -1,4 +1,7 @@
 export default {
+    'booky': {
+        'loggedIn': false
+    },
     'dashboards': {
         'items': [{
             'id': 0,

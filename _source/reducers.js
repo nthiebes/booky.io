@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
+import booky from './00_base/booky/bookyReducers';
 import dashboards from './03_organisms/dashboards/dashboardsReducers';
 import categories from './03_organisms/categories/categoriesReducers';
 import header from './03_organisms/header/headerReducers';
@@ -8,6 +9,7 @@ import sidebar from './03_organisms/sidebar/sidebarReducers';
 
 const reducers = combineReducers({
     'routing': routerReducer,
+    booky,
     dashboards,
     categories,
     header,

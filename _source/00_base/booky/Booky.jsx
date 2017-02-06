@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 
-import './booky.scss';
+import './styles/booky.scss';
 
 /**
  * React component
@@ -21,5 +21,6 @@ export default class Booky extends Component {
 }
 
 Booky.propTypes = {
-    'children': PropTypes.element
+    'children': PropTypes.element,
+    'loggedIn': PropTypes.bool.isRequired
 };

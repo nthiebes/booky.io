@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import BookyApp from './00_base/Booky.jsx';
+import BookyApp from './00_base/booky/bookyContainer';
 import Home from './05_pages/home/Home.jsx';
 import About from './05_pages/about/About.jsx';
 import NotFound from './05_pages/not-found/NotFound.jsx';
