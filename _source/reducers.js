@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import booky from './00_base/booky/bookyReducers';
+import { reducers as booky } from './00_base/booky';
 import dashboards from './03_organisms/dashboards/dashboardsReducers';
 import categories from './03_organisms/categories/categoriesReducers';
 import { reducers as header } from './03_organisms/header';
