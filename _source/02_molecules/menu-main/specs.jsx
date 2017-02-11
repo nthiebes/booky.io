@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import MenuMain from './MenuMain.jsx';
+import MenuMain from './component.jsx';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Link from '../../01_atoms/link/Link.jsx';
 
