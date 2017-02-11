@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 
-import MenuMain from '../../02_molecules/menu-main/MenuMain.jsx';
+import MenuMain from '../../02_molecules/menu-main';
 import Icon from '../../01_atoms/icon/Icon.jsx';
 import Link from '../../01_atoms/link/Link.jsx';
 import Button from '../../01_atoms/button/Button.jsx';
@@ -10,20 +10,11 @@ import Button from '../../01_atoms/button/Button.jsx';
  *
  * @class Header
  * @classdesc 03_organisms/header/Header
- *
- * @prop {boolean}  [sticky]          Fixed header enabled/disabled
- * @prop {boolean}  dashboardsOpen    Dashboards sidebar open/closed
- * @prop {boolean}  menuMainOpen      Main menu open/closed
- * @prop {boolean}  sidebarOpen       Sidebar open/closed
- * @prop {function} onDashboardsClick Dashboards icon click callback
- * @prop {function} onHeaderClick     Header click callback
- * @prop {function} onMenuMainClick   Main menu icon click callback
- * @prop {function} onSidebarClick    Sidebar icon click callback
- * @prop {number}   [color]           Header background color
  */
 export default class Header extends Component {
     render() {
         const PROPS = this.props;
+        const LOGGED_IN = PROPS.loggedIn;
         const STICKY_CLASS = PROPS.sticky ? 'o-header--sticky' : '';
         const OVERLAY_MENU_MAIN_CLASS = PROPS.menuMainOpen ? 'o-header--overlay-menu-main' : '';
         const OVERLAY_SIDEBAR_CLASS = PROPS.sidebarOpen ? 'o-header--overlay-sidebar' : '';
@@ -43,40 +34,66 @@ export default class Header extends Component {
                     onClick={ PROPS.onMenuMainClick } 
                     stopPropagation={ true } 
                 />
-                <MenuMain document={ document } menuMainOpen={ PROPS.menuMainOpen } />
+                <MenuMain document={ document } menuMainOpen={ PROPS.menuMainOpen } loggedIn={ LOGGED_IN } />
 
                 <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home">
                     <Icon icon="heart" />
                 </Link>
                 <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />
 
-                <Icon icon="customize" className="a-icon--light" title="Customize booky" stopPropagation={ true } onClick={ PROPS.onSidebarClick } />
-                <Icon 
+                { LOGGED_IN ? <Icon 
+                    icon="customize" 
+                    className="a-icon--light" 
+                    title="Customize booky" 
+                    stopPropagation={ true } 
+                    onClick={ PROPS.onSidebarClick } 
+                /> : null }
+                { LOGGED_IN ? <Icon 
                     icon="dashboard" 
                     className="o-header__dashboards a-icon--light" 
                     title="Dashboards" 
                     stopPropagation={ true } 
                     onClick={ PROPS.onDashboardsClick } 
-                />
-                <Button className="o-header__sign-out a-button--light" size="small" color="light" text="Sign" buzzword="Out" />
+                /> : null }
+                { LOGGED_IN ? null : <Button 
+                    className="o-header__join" 
+                    size="small" 
+                    color="light" 
+                    text="Join" 
+                    buzzword="Booky" 
+                /> }
+                { LOGGED_IN ? <Button 
+                    className="o-header__sign-out" 
+                    size="small" 
+                    color="light" 
+                    text="Sign" 
+                    buzzword="Out" 
+                /> : <Button 
+                    className="o-header__sign-in" 
+                    size="small" 
+                    color="light" 
+                    text="Sign" 
+                    buzzword="In" 
+                /> }
             </header>
         );
     }
 }
 
 Header.propTypes = {
-    'menuMainOpen': PropTypes.bool.isRequired,
+    'color': PropTypes.number,
     'dashboardsOpen': PropTypes.bool.isRequired,
-    'sidebarOpen': PropTypes.bool.isRequired,
-    'onMenuMainClick': PropTypes.func.isRequired,
+    'loggedIn': PropTypes.bool.isRequired,
+    'menuMainOpen': PropTypes.bool.isRequired,
     'onDashboardsClick': PropTypes.func.isRequired,
     'onHeaderClick': PropTypes.func.isRequired,
+    'onMenuMainClick': PropTypes.func.isRequired,
     'onSidebarClick': PropTypes.func.isRequired,
-    'sticky': PropTypes.bool,
-    'color': PropTypes.number
+    'sidebarOpen': PropTypes.bool.isRequired,
+    'sticky': PropTypes.bool
 };
 
 Header.defaultProps = {
-    'sticky': true,
-    'color': 0
+    'color': 0,
+    'sticky': true
 };
