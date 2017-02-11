@@ -21,6 +21,5 @@ export default class Booky extends Component {
 }
 
 Booky.propTypes = {
-    'children': PropTypes.element,
-    'loggedIn': PropTypes.bool.isRequired
+    'children': PropTypes.element
 };
