@@ -24,10 +24,9 @@ export default class MenuMain extends Component {
   }
 
   render() {
-    const PROPS = this.props;
-    const LOGGED_IN = PROPS.loggedIn;
-    const MENU_MAIN_OPEN_CLASS = PROPS.menuMainOpen ? 'm-menu-main--open ' : '';
-    const CLASS = 'm-menu-main ' + MENU_MAIN_OPEN_CLASS + PROPS.className;
+    const { loggedIn, className, menuMainOpen } = this.props;
+    const MENU_MAIN_OPEN_CLASS = menuMainOpen ? 'm-menu-main--open ' : '';
+    const CLASS = 'm-menu-main ' + MENU_MAIN_OPEN_CLASS + className;
 
     return (
       <ul className={ CLASS } onClick={ this.onMenuClick }>
@@ -37,13 +36,13 @@ export default class MenuMain extends Component {
         <Link className="m-menu-main__item" href="/help">
           <Icon icon="help" label="Help" />
         </Link>
-        { LOGGED_IN ? <Link className="m-menu-main__item" href="/account">
+        { loggedIn ? <Link className="m-menu-main__item" href="/account">
           <Icon icon="account" label="Account" />
         </Link> : null }
-        { LOGGED_IN ? <Link className="m-menu-main__item" href="/next">
+        { loggedIn ? <Link className="m-menu-main__item" href="/next">
           <Icon icon="next" label="Next" />
         </Link> : null }
-        { LOGGED_IN ? <Link className="m-menu-main__item m-menu-main__sign-out" href="/sign-out">
+        { loggedIn ? <Link className="m-menu-main__item m-menu-main__sign-out" href="/logout">
           <Icon icon="sign-out" label="Sign Out" />
         </Link> : null }
       </ul>

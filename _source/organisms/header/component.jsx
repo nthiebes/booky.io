@@ -35,31 +35,32 @@ export default class Header extends Component {
         />
         <MenuMain document={ document } menuMainOpen={ PROPS.menuMainOpen } loggedIn={ LOGGED_IN } />
 
-        <Link className="o-header__logo o-header__logo--small a-link--light" href="/" title="Home">
+        <Link className="o-header__logo o-header__logo--small" color="light" href="/" title="Home">
           <Icon icon="heart" />
         </Link>
-        <Link className="o-header__logo o-header__logo--large a-link--light" href="/" title="Home" />
+        <Link className="o-header__logo o-header__logo--large" color="light" href="/" title="Home" />
 
-        { LOGGED_IN ? <Icon 
+        { LOGGED_IN && <Icon 
           icon="customize" 
           className="a-icon--light" 
           title="Customize booky" 
           stopPropagation={ true } 
           onClick={ PROPS.onSidebarClick } 
-        /> : null }
-        { LOGGED_IN ? <Icon 
+        /> }
+        { LOGGED_IN && <Icon 
           icon="dashboard" 
           className="o-header__dashboards a-icon--light" 
           title="Dashboards" 
           stopPropagation={ true } 
           onClick={ PROPS.onDashboardsClick } 
-        /> : null }
-        { LOGGED_IN ? null : <Button 
+        /> }
+        { !LOGGED_IN && <Button 
           className="o-header__join" 
           size="small" 
           color="light" 
           text="Join" 
           buzzword="Booky" 
+          href="join"
         /> }
         { LOGGED_IN ? <Button 
           className="o-header__sign-out" 
@@ -67,12 +68,14 @@ export default class Header extends Component {
           color="light" 
           text="Sign" 
           buzzword="Out" 
+          href="logout"
         /> : <Button 
           className="o-header__sign-in" 
           size="small" 
           color="light" 
           text="Sign" 
           buzzword="In" 
+          href="login"
         /> }
       </header>
     );
