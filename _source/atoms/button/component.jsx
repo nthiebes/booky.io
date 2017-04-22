@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import Icon from '../icon';
+import Link from '../link';
 
 /**
  * React component
@@ -9,18 +10,17 @@ import Icon from '../icon';
  */
 export default class Button extends Component {
   render() {
-    const PROPS = this.props;
-    const CLASS = `a-button a-button--${PROPS.size} a-button--${PROPS.size}-${PROPS.color} ${PROPS.className}`;
-    const ICON = PROPS.icon ? <Icon icon={ PROPS.icon } className="a-button__icon" /> : '';
-    const TEXT = PROPS.text;
-    const BUZZWORD = PROPS.buzzword;
+    const { size, icon, buzzword, className, color, text, onButtonClick, href } = this.props;
+    const CLASS = `a-button a-button--${size} a-button--${size}-${color} ${className}`;
+    const ICON = icon ? <Icon icon={ icon } className="a-button__icon" /> : '';
+    const CustomTag = href ? Link : 'div';
 
     return (
-      <div className={ CLASS } onClick={ PROPS.onButtonClick }>
+      <CustomTag className={ CLASS } onClick={ onButtonClick } href={ href }>
         { ICON }
-        <span className="a-button__text">{ TEXT }</span>
-        <span className="a-button__text a-button__text--buzzword">{ BUZZWORD }</span>
-      </div>
+        <span className="a-button__text">{ text }</span>
+        <span className="a-button__text a-button__text--buzzword">{ buzzword }</span>
+      </CustomTag>
     );
   }
 }
@@ -32,6 +32,7 @@ Button.propTypes = {
   'icon': PropTypes.string,
   'size': PropTypes.string,
   'text': PropTypes.string,
+  'href': PropTypes.string,
   'onButtonClick': PropTypes.func
 };
 
@@ -40,5 +41,6 @@ Button.defaultProps = {
   'className': '',
   'color': 'primary',
   'size': 'small',
-  'text': ''
+  'text': '',
+  'href': ''
 };
