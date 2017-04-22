@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import './styles/m-dropdown.scss';
 
 /**
  * React component

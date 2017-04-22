@@ -1,7 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
-import './styles/m-menu-main.scss';
 
 /**
  * React component

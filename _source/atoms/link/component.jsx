@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import { Link as RegularLink, IndexLink } from 'react-router';
-import './styles/a-link.scss';
 
 /**
  * React component

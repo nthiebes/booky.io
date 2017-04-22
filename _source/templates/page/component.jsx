@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Header from '../../organisms/header';
 import Sidebar from '../../organisms/sidebar';
-import './styles.scss';
+import Toolbar from '../../organisms/toolbar';
 
 /**
  * React component
@@ -11,12 +11,15 @@ import './styles.scss';
  */
 export default class Page extends Component {
   render() {
+    const { children, toolbar } = this.props;
+
     return (
       <div>
         <Header />
+        { toolbar && <Toolbar document={ document } window={ window } /> }
         <Sidebar />
         <main className="t-page">
-          { this.props.children }
+          { children }
         </main>
       </div>
     );
@@ -24,6 +27,7 @@ export default class Page extends Component {
 }
 
 Page.propTypes = {
+  'toolbar': PropTypes.bool,
   'children': PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,

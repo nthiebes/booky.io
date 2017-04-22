@@ -1,12 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import Page from '../../templates/page';
-import Headline from '../../atoms/headline/Headline.jsx';
-import P from '../../atoms/paragraph/Paragraph.jsx';
-import HeaderContainer from '../../organisms/header';
-import ToolbarContainer from '../../organisms/toolbar/toolbarContainer';
-import CategoriesContainer from '../../organisms/categories/categoriesContainer';
-import SidebarContainer from '../../organisms/sidebar/sidebarContainer';
-import DashboardsContainer from '../../organisms/dashboards/dashboardsContainer';
+import Headline from '../../atoms/headline';
+import P from '../../atoms/paragraph';
+import Categories from '../../organisms/categories';
+import Dashboards from '../../organisms/dashboards';
 
 /**
  * React component
@@ -19,15 +16,10 @@ export default class Home extends Component {
     const { loggedIn } = this.props;
 
     return loggedIn ? (
-      <div>
-        <HeaderContainer />
-        <ToolbarContainer document={ document } window={ window } />
-        <SidebarContainer />
-        <main>
-          <DashboardsContainer position={ 1 } />
-          <CategoriesContainer />
-        </main>
-      </div>
+      <Page toolbar={ loggedIn }>
+        <Dashboards position={ 1 } />
+        <Categories />
+      </Page>
     ) : (
       <Page>
         <Headline type={ 1 } text="Servus, wie geht's dir? Lorem ipsum dolor sit amet!" />

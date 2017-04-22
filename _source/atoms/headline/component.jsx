@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import './styles/a-headline.scss';
 
 /**
  * React component

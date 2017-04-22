@@ -3,7 +3,6 @@ import MenuMain from '../../molecules/menu-main';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Button from '../../atoms/button';
-import './styles/o-header.scss';
 
 /**
  * React component

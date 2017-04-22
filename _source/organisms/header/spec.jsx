@@ -1,15 +1,13 @@
 /* eslint-disable max-lines */
 import React from 'react';
 import { shallow } from 'enzyme';
-
 import Header from './component.jsx';
 import { mapStateToProps, mapDispatchToProps } from './container';
-import { toggleMainMenu, closeMainMenu, toggleDashboards, closeDashboards } from './actions';
-import { toggleSidebar, closeSidebar } from '../sidebar/sidebarActions';
-import header from './reducers';
-import Icon from '../../01_atoms/icon/Icon.jsx';
-import Link from '../../01_atoms/link/Link.jsx';
-import Button from '../../01_atoms/button/Button.jsx';
+import { toggleMainMenu, closeMainMenu, toggleDashboards, closeDashboards } from '../../_state/header/actions';
+import { actions as sidebarActions } from '../../_state/sidebar';
+import Icon from '../../atoms/icon';
+import Link from '../../atoms/link';
+import Button from '../../atoms/button';
 
 describe('<Header />', function() {
 
@@ -209,7 +207,7 @@ describe('<Header />', function() {
         
         expect(typeof mapDispatchToProps(dispatch).onMenuMainClick).toBe('function');
         expect(dispatch).toHaveBeenCalledWith(toggleMainMenu());
-        expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+        expect(dispatch).toHaveBeenCalledWith(sidebarActions.closeSidebar());
         expect(dispatch).toHaveBeenCalledWith(closeDashboards());
       });
 
@@ -217,7 +215,7 @@ describe('<Header />', function() {
         mapDispatchToProps(dispatch).onSidebarClick();
       
         expect(typeof mapDispatchToProps(dispatch).onSidebarClick).toBe('function');
-        expect(dispatch).toHaveBeenCalledWith(toggleSidebar());
+        expect(dispatch).toHaveBeenCalledWith(sidebarActions.toggleSidebar());
         expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
         expect(dispatch).toHaveBeenCalledWith(closeDashboards());
       });
@@ -228,7 +226,7 @@ describe('<Header />', function() {
         expect(typeof mapDispatchToProps(dispatch).onDashboardsClick).toBe('function');
         expect(dispatch).toHaveBeenCalledWith(toggleDashboards());
         expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
-        expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+        expect(dispatch).toHaveBeenCalledWith(sidebarActions.closeSidebar());
       });
 
       it('onHeaderClick()', function() {
@@ -236,122 +234,8 @@ describe('<Header />', function() {
       
         expect(typeof mapDispatchToProps(dispatch).onHeaderClick).toBe('function');
         expect(dispatch).toHaveBeenCalledWith(closeMainMenu());
-        expect(dispatch).toHaveBeenCalledWith(closeSidebar());
+        expect(dispatch).toHaveBeenCalledWith(sidebarActions.closeSidebar());
         expect(dispatch).toHaveBeenCalledWith(closeDashboards());
-      });
-    });
-  });
-
-  describe('actions', function() {
-
-    describe('toggleMainMenu()', function() {
-
-      it('should return the action', function() {
-        const action = toggleMainMenu();
-
-        expect(action).toEqual({
-          'type': 'TOGGLE_MAIN_MENU'
-        });
-      });
-    });
-
-    describe('closeMainMenu()', function() {
-
-      it('should return the action', function() {
-        const action = closeMainMenu();
-
-        expect(action).toEqual({
-          'type': 'CLOSE_MAIN_MENU'
-        });
-      });
-    });
-
-    describe('toggleDashboards()', function() {
-
-      it('should return the action', function() {
-        const action = toggleDashboards();
-
-        expect(action).toEqual({
-          'type': 'TOGGLE_DASHBOARDS'
-        });
-      });
-    });
-
-    describe('closeDashboards()', function() {
-
-      it('should return the action', function() {
-        const action = closeDashboards();
-
-        expect(action).toEqual({
-          'type': 'CLOSE_DASHBOARDS'
-        });
-      });
-    });
-  });
-
-  describe('reducers', function() {
-
-    describe('called with no valid action', function() {
-
-      it('should return the initial state', function() {
-        let state;
-
-        expect(header(state, {})).toEqual({});
-      });
-    });
-
-    describe('called with an action', function() {
-
-      it('TOGGLE_MAIN_MENU: should return the new state', function() {
-        const state = {'menuMainOpen': true};
-
-        // ...and not mutate it
-        expect(header(state, toggleMainMenu())).not.toBe(state);
-
-        expect(header({'menuMainOpen': true}, toggleMainMenu())).toEqual({
-          'menuMainOpen': false
-        });
-
-        expect(header({'menuMainOpen': false}, toggleMainMenu())).toEqual({
-          'menuMainOpen': true
-        });
-      });
-
-      it('CLOSE_MAIN_MENU: should return the new state', function() {
-        const state = {'menuMainOpen': true};
-
-        // ...and not mutate it
-        expect(header(state, closeMainMenu())).not.toBe(state);
-
-        expect(header({'menuMainOpen': true}, closeMainMenu())).toEqual({
-          'menuMainOpen': false
-        });
-      });
-
-      it('TOGGLE_DASHBOARDS: should return the new state', function() {
-        const state = {'dashboardsOpen': true};
-
-        // ...and not mutate it
-        expect(header(state, toggleDashboards())).not.toBe(state);
-
-        expect(header({'dashboardsOpen': true}, toggleDashboards())).toEqual({
-          'dashboardsOpen': false
-        });
-
-        expect(header({'dashboardsOpen': false}, toggleDashboards())).toEqual({
-          'dashboardsOpen': true
-        });
-      });
-
-      it('CLOSE_DASHBOARDS: should return the new state', function() {
-        const state = {'dashboardsOpen': true};
-
-        // ...and not mutate it
-        expect(header(state, closeDashboards())).not.toBe(state);
-
-        expect(header({'dashboardsOpen': true}, closeDashboards())).toEqual({
-          'dashboardsOpen': false
-        });
       });
     });
   });

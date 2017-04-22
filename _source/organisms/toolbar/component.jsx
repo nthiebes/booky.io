@@ -4,7 +4,6 @@ import Dashboards from '../../organisms/dashboards';
 import Search from '../../molecules/search';
 import Icon from '../../atoms/icon';
 import Button from '../../atoms/button';
-import './styles/o-toolbar.scss';
 
 /**
  * React component

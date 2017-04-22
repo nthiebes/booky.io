@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import Category from '../../molecules/category';
-import './styles/o-categories.scss';
 
 /**
  * React component

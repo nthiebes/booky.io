@@ -1,4 +1,4 @@
-import { Scrolling } from './Scrolling';
+import { Scrolling } from './scrolling';
 
 describe('scrolling', function() {
 

@@ -1,7 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
-import './styles/m-category.scss';
 
 /**
  * React component

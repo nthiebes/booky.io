@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Category from './Category.jsx';
-import Icon from '../../01_atoms/icon/Icon.jsx';
+import Category from './component.jsx';
+import Icon from '../../atoms/icon';
 
 describe('<Category />', function() {
 

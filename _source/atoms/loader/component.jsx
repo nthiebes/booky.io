@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Icon from '../icon';
-import './styles/a-loader.scss';
 
 /**
  * React component

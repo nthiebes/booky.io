@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import Icon from '../../atoms/icon';
-import './styles/m-dashboard.scss';
 
 /**
  * React component

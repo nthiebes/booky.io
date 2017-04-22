@@ -1,52 +1,52 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Link from './Link.jsx';
+import Link from './component.jsx';
 
 describe('<Link />', function() {
 
-    let component;
-        
-    const getComponent = function(props = {}) {
-        return <Link { ...props } />;
-    };
+  let component;
+    
+  const getComponent = function(props = {}) {
+    return <Link { ...props } />;
+  };
 
-    describe('when initialized without optional parameters', function() {
+  describe('when initialized without optional parameters', function() {
 
-        beforeEach(function() {
-            component = shallow(getComponent({
-                'href': 'link'
-            }));
-        });
-
-        it('should have the correct class', function() {
-            expect(component.find('Link').hasClass('a-link')).toBe(true);
-        });
+    beforeEach(function() {
+      component = shallow(getComponent({
+        'href': 'link'
+      }));
     });
 
-    describe('when initialized with optional parameters', function() {
-
-        beforeEach(function() {
-            component = shallow(getComponent({
-                'className': 'banana',
-                'children': <span>{ 'children' }</span>,
-                'title': 'Potato',
-                'href': '/'
-            }));
-        });
-
-        it('should have the correct class', function() {
-            expect(component.find('IndexLink').hasClass('a-link banana')).toBe(true);
-        });
-
-        it('should include the children', function() {
-            expect(component.contains(
-                <span>{ 'children' }</span>
-            )).toBe(true);
-        });
-
-        it('should have a title', function() {
-            expect(component.find('IndexLink').prop('title')).toBe('Potato');
-        });
+    it('should have the correct class', function() {
+      expect(component.find('Link').hasClass('a-link')).toBe(true);
     });
+  });
+
+  describe('when initialized with optional parameters', function() {
+
+    beforeEach(function() {
+      component = shallow(getComponent({
+        'className': 'banana',
+        'children': <span>{ 'children' }</span>,
+        'title': 'Potato',
+        'href': '/'
+      }));
+    });
+
+    it('should have the correct class', function() {
+      expect(component.find('IndexLink').hasClass('a-link banana')).toBe(true);
+    });
+
+    it('should include the children', function() {
+      expect(component.contains(
+        <span>{ 'children' }</span>
+      )).toBe(true);
+    });
+
+    it('should have a title', function() {
+      expect(component.find('IndexLink').prop('title')).toBe('Potato');
+    });
+  });
 });

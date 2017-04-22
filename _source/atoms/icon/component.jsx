@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import './styles/a-icon.scss';
 
 /**
  * React component
@@ -26,7 +25,7 @@ export default class Icon extends Component {
 
   render() {
     const PROPS = this.props;
-    const LINK = 'images/symbol-defs.svg#icon-' + PROPS.icon;
+    const LINK = '_assets/symbol-defs.svg#icon-' + PROPS.icon;
     const CLASS = 'a-icon ' + PROPS.className;
     const LABEL = PROPS.label ? <label className="a-icon__label">{ PROPS.label }</label> : '';
 

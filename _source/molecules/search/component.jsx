@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import Input from '../../atoms/input';
-import './styles/m-search.scss';
 
 /**
  * React component

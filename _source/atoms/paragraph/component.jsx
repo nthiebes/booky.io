@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import './styles/a-paragraph.scss';
 
 /**
  * React component

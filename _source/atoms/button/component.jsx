@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import Icon from '../icon/Icon.jsx';
-import './styles/a-button.scss';
+import Icon from '../icon';
 
 /**
  * React component

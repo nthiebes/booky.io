@@ -2,7 +2,6 @@ import React, { PropTypes, Component } from 'react';
 import scrolling from '../../_utils/scrolling';
 import Dashboard from '../../molecules/dashboard';
 import Button from '../../atoms/button';
-import './styles/o-dashboards.scss';
 
 /**
  * React component

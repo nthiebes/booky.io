@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import { findDOMNode } from 'react-dom';
-import './styles/a-input.scss';
 
 /**
  * React component

@@ -1,9 +1,8 @@
 import React, { PropTypes, Component } from 'react';
-import Button from '../../atoms/button/Button.jsx';
-import Checkbox from '../../atoms/checkbox/Checkbox.jsx';
-import ColorPicker from '../../molecules/color-picker/ColorPicker.jsx';
-import Dropdown from '../../molecules/dropdown/Dropdown.jsx';
-import './styles/o-sidebar.scss';
+import Button from '../../atoms/button';
+import Checkbox from '../../atoms/checkbox';
+import ColorPicker from '../../molecules/color-picker';
+import Dropdown from '../../molecules/dropdown';
 
 /**
  * React component
