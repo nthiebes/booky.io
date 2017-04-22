@@ -11,7 +11,7 @@ export default class NotFound extends Component {
   render() {
     return (
       <Page>
-        { '404: Page not found' }
+        { '404: This is not the page you have been looking for' }
       </Page>
     );
   }
