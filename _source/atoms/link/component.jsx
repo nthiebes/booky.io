@@ -9,13 +9,13 @@ import { Link as RegularLink, IndexLink } from 'react-router';
  */
 export default class Link extends Component {
   render() {
-    const PROPS = this.props;
-    const CLASS = 'a-link ' + PROPS.className;
-    const CustomTag = PROPS.href === '/' ? IndexLink : RegularLink;
+    const { color, className, href, title, children } = this.props;
+    const CLASS = `a-link a-link--${color} ${className}`;
+    const CustomTag = href === '/' ? IndexLink : RegularLink;
 
     return (
-      <CustomTag className={ CLASS } to={ PROPS.href } title={ PROPS.title }>
-        { PROPS.children }
+      <CustomTag className={ CLASS } to={ href } title={ title }>
+        { children }
       </CustomTag>
     );
   }
@@ -25,10 +25,12 @@ Link.propTypes = {
   'href': PropTypes.string.isRequired,
   'className': PropTypes.string,
   'children': PropTypes.element,
-  'title': PropTypes.string
+  'title': PropTypes.string,
+  'color': PropTypes.string
 };
 
 Link.defaultProps = {
   'className': '',
-  'title': ''
+  'title': '',
+  'color': ''
 };
