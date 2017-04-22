@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import Booky from './00_base/booky';
-import Home from './05_pages/home';
-import About from './05_pages/about/About.jsx';
-import NotFound from './05_pages/not-found/NotFound.jsx';
+import BookyApp from './_base';
+import Home from './pages/home';
+import About from './pages/about';
+import NotFound from './pages/not-found';
 
 export default (
-    <Route path="/" component={ Booky }>
-        <IndexRoute component={ Home } />
-        <Route path="about" component={ About } />
-        <Route path="*" component={ NotFound } />
-    </Route>
+  <Route path="/" component={ BookyApp }>
+    <IndexRoute component={ Home } />
+    <Route path="about" component={ About } />
+    <Route path="*" component={ NotFound } />
+  </Route>
 );
