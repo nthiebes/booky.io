@@ -24,7 +24,11 @@ export default class Link extends Component {
 Link.propTypes = {
   'href': PropTypes.string.isRequired,
   'className': PropTypes.string,
-  'children': PropTypes.element,
+  'children': PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.array
+  ]),
   'title': PropTypes.string,
   'color': PropTypes.string
 };
