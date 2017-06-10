@@ -30,6 +30,7 @@ body {
   background-color: $color__background--light;
   font-family: $font__family--text;
   font-size: $size--phone;
+  font-weight: 100;
   height: 100%;
 
   @include tablet {

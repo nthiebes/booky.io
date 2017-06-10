@@ -12,7 +12,7 @@
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
     "start": "npm-run-all --parallel test:watch open:source lint:watch",
-    "start:quick": "open:source",
+    "start:quick": "npm run open:source",
     "open:source": "babel-node tools/srcServer.js",
     "open:public": "babel-node tools/distServer.js",
     "lint": "./node_modules/.bin/esw \"_source/**/*.{js,jsx}\" --ext .js,.jsx --color",

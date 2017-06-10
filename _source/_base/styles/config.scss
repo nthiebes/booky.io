@@ -7,12 +7,13 @@ $color__background--medium: #f5f5f5;
 $color__background--light: #ffffff;
 
 $color__font--primary: #eb7260;
-$color__font--dark: #3e3e3e;
+$color__font--dark: #171717;
+$color__font--medium: #313d3e;
 $color__font--light: #ffffff;
 
 $color--blue: #3a9ad9;
 $color--green: #92b06a;
-$color--dark: #3e3e3e;
+$color--dark: #313d3e;
 
 $color--0: $color__font--primary;
 $color--1: $color--blue;
@@ -28,14 +29,14 @@ $color--8: #777;
  * Size
  */
 $size--phone: 13px;
-$size--tablet: 16px;
-$size--desktop: 16px;
+$size--tablet: 18px;
+$size--desktop: 18px;
 
 /**
  * Misc
  */
-$font__family--heading: "Roboto Condensed", "Trebuchet MS", Tahoma, sans-serif;
-$font__family--text: "Roboto", "Trebuchet MS", Tahoma, sans-serif;
+$font__family--heading: "Roboto", sans-serif;
+$font__family--text: "Roboto", sans-serif;
 
 /**
  * Breakpoints
