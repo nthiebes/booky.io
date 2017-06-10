@@ -5,15 +5,14 @@
   "homepage": "https://booky.io",
   "email": "hello@booky.io",
   "private": true,
-  "jsnext:main": "_source/index.jsx",
+  "jsnext:main": "_source/main.jsx",
   "engines": {
     "npm": ">=3"
   },
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
-    "start-message": "babel-node tools/startMessage.js",
-    "prestart": "npm-run-all --parallel start-message remove-dist",
     "start": "npm-run-all --parallel test:watch open:source lint:watch",
+    "start:quick": "open:source",
     "open:source": "babel-node tools/srcServer.js",
     "open:public": "babel-node tools/distServer.js",
     "lint": "./node_modules/.bin/esw \"_source/**/*.{js,jsx}\" --ext .js,.jsx --color",
