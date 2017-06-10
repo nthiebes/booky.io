@@ -1,4 +1,4 @@
-# booky.io ![alt text](https://github.com/nthiebes/booky.io/blob/master/_source/images/icons/favicon-16x16.png?raw=true)
+# booky.io ![alt text](https://github.com/nthiebes/booky.io/blob/master/_source/images/icons/favicon-32x32.png?raw=true)
 [booky.io](https://booky.io) + [Atomic Design](http://atomicdesign.bradfrost.com/) + [BEM](https://en.bem.info) + [React](https://facebook.github.io/react/) + [Redux](https://github.com/reactjs/redux)
 
 [![Build Status](https://travis-ci.org/nthiebes/booky.io.svg?branch=master)](https://travis-ci.org/nthiebes/booky.io)
