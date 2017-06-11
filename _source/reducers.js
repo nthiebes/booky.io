@@ -1,20 +1,20 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import booky from './00_base/booky/bookyReducers';
-import dashboards from './03_organisms/dashboards/dashboardsReducers';
-import categories from './03_organisms/categories/categoriesReducers';
-import header from './03_organisms/header/headerReducers';
-import toolbar from './03_organisms/toolbar/toolbarReducers';
-import sidebar from './03_organisms/sidebar/sidebarReducers';
+import booky from './_state/booky';
+import dashboards from './_state/dashboards';
+import categories from './_state/categories';
+import header from './_state/header';
+import toolbar from './_state/toolbar';
+import sidebar from './_state/sidebar';
 
 const reducers = combineReducers({
-    'routing': routerReducer,
-    booky,
-    dashboards,
-    categories,
-    header,
-    toolbar,
-    sidebar
+  'routing': routerReducer,
+  booky,
+  dashboards,
+  categories,
+  header,
+  toolbar,
+  sidebar
 });
 
 export default reducers;

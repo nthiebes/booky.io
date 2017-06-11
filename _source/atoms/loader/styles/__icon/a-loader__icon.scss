@@ -1,0 +1,18 @@
+.a-loader__icon {
+    animation: 0.5s ease-in infinite alternate pulse;
+    cursor: default;
+    height: 75%;
+    pointer-events: none;
+    width: 75%;
+
+    svg {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@keyframes pulse {
+    100% {
+        transform: scale(1.2);
+    }
+}

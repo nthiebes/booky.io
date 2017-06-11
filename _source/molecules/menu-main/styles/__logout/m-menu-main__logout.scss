@@ -1,0 +1,5 @@
+.m-menu-main__logout {
+    @include desktop {
+        display: none;
+    }
+}

@@ -1,0 +1,13 @@
+@import "__icon/a-loader__icon";
+@import "__circle/a-loader__circle";
+
+.a-loader {
+    align-items: center;
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    margin: 1rem auto;
+    position: relative;
+    width: 3rem;
+    font-size: 1rem;
+}
