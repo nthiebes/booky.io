@@ -141,7 +141,7 @@
     "prefer-const": 1,
     "prefer-rest-params": 1,
     "prefer-spread": 1,
-    "quote-props": 1,
+    "quote-props": 0,
     "quotes": [1, "single"],
     "radix": 1,
     "rest-spread-spacing": 1,
