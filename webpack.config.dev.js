@@ -12,7 +12,6 @@ export default {
   entry: [
     // must be first entry to properly set public path
     './_source/webpack-public-path',
-    './env.dev',
     'webpack-hot-middleware/client?reload=true',
     './_source/main'
   ],
