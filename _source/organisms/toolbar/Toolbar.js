@@ -49,13 +49,15 @@ export default class Toolbar extends Component {
     }
   }
 
-  getStickyClass(PROPS) {
-    if (PROPS.sticky && PROPS.headerSticky) {
-      return 'o-toolbar--sticky';
+  getStickyClass() {
+    const { sticky, headerSticky, currentlySticky } = this.props;
+
+    if (sticky && headerSticky) {
+      return 'toolbar--sticky';
     }
 
-    if (PROPS.sticky && !PROPS.headerSticky && PROPS.currentlySticky) {
-      return 'o-toolbar--sticky-one-and-only';
+    if (sticky && !headerSticky && currentlySticky) {
+      return 'toolbar--sticky-one-and-only';
     }
 
     return '';
@@ -63,12 +65,9 @@ export default class Toolbar extends Component {
 
   render() {
     const { dashboards } = this.props;
-    // const STICKY_CLASS = this.getStickyClass(PROPS);
-    // const OPEN_CLASS = PROPS.searchOpen ? 'o-toolbar--open' : '';
-    // const TOOLBAR_CLASS = `o-toolbar ${STICKY_CLASS} ${OPEN_CLASS}`;
 
     return (
-      <div className="toolbar">
+      <div className={ `toolbar ${this.getStickyClass()}` }>
         <TabBar tabs={ dashboards } />
         <div className="toolbar__gradient" />
         <Icon icon="add" color="dark" />

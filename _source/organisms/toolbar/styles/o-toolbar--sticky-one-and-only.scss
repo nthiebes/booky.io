@@ -1,8 +1,0 @@
-.o-toolbar--sticky-one-and-only {
-    position: fixed;
-    top: 0;
-
-    @include tablet-desktop {
-        top: 0;
-    }
-}

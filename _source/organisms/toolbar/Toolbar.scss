@@ -11,14 +11,36 @@
   height: 45px;
 
   @include tablet {
-    // top: 62px;
+    top: 62px;
   }
 
   @include desktop {
-    // background-color: rgba($color__background--light, 0.95);
-    // border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba($color__background--light, 0.95);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     // pointer-events: auto;
-    // top: 84px;
+    top: 84px;
+  }
+
+  &.toolbar--sticky {
+    position: fixed;
+    top: 40px;
+
+    @include tablet {
+      top: 62px;
+    }
+
+    @include desktop {
+      top: 84px;
+    }
+  }
+
+  &.toolbar--sticky-one-and-only {
+    position: fixed;
+    top: 0;
+
+    @include tablet-desktop {
+      top: 0;
+    }
   }
 }
 
