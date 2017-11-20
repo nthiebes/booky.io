@@ -1,11 +1,15 @@
-.m-search {
+.search {
   align-items: center;
   display: flex;
   flex-grow: 1;
-  margin-left: 1rem;
+  margin: 0 1rem;
 
   @include desktop {
     flex-grow: 1;
     text-align: right;
   }
+}
+
+.search__input {
+  height: 2.5rem;
 }

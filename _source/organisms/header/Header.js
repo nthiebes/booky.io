@@ -28,12 +28,12 @@ export default class Header extends Component {
       searchFocused,
       onEditModeClick
     } = this.props;
-    const STICKY_CLASS = sticky ? 'o-header--sticky' : '';
-    const OVERLAY_MENU_MAIN_CLASS = menuMainOpen ? 'o-header--overlay-menu-main' : '';
-    const OVERLAY_SIDEBAR_CLASS = sidebarOpen ? 'o-header--overlay-sidebar' : '';
-    const OVERLAY_DASHBOARDS_CLASS = dashboardsOpen ? 'o-header--overlay-dashboards' : '';
+    const STICKY_CLASS = sticky ? 'header--sticky' : '';
+    const OVERLAY_MENU_MAIN_CLASS = menuMainOpen ? 'header--overlay-menu-main' : '';
+    const OVERLAY_SIDEBAR_CLASS = sidebarOpen ? 'header--overlay-sidebar' : '';
+    const OVERLAY_DASHBOARDS_CLASS = dashboardsOpen ? 'header--overlay-dashboards' : '';
     const HEADER_CLASS = classNames(
-      `o-header o-header--color-${color}`,
+      `header header--color-${color}`,
       STICKY_CLASS,
       OVERLAY_MENU_MAIN_CLASS,
       OVERLAY_SIDEBAR_CLASS,
@@ -47,22 +47,22 @@ export default class Header extends Component {
           color="light"
           onClick={ onMenuMainClick }
           stopPropagation={ true }
-          className="o-header__menu-main-icon"
+          className="header__menu-main-icon"
         />
-        <Link className="o-header__logo o-header__logo--large" color="light" href="/" title="Home" />
+        <Link className="header__logo header__logo--large" color="light" href="/" title="Home" />
         <MenuMain document={ document } menuMainOpen={ menuMainOpen } loggedIn={ loggedIn } />
         { loggedIn && [
           <Search key="0" className="b-hide-desktop" focus={ searchFocused } />,
           <Icon key="1" icon="add-category" color="light" title="New category" className="b-hide-desktop" />,
           <Icon key="2" icon="edit" title={ 'EDIT_MODE_TITLE' } color="light" className="b-hide-desktop" onClick={ onEditModeClick } />
         ] || (
-          <Link className="o-header__logo o-header__logo--small" color="light" href="/" title="Home">
+          <Link className="header__logo header__logo--small" color="light" href="/" title="Home">
             <Icon icon="heart" color="light" />
           </Link>
         ) }
 
         { !loggedIn && <Button 
-          className="o-header__join" 
+          className="header__join" 
           size="small" 
           color="light" 
           text="Join" 
@@ -70,7 +70,7 @@ export default class Header extends Component {
           href="join"
         /> }
         { !loggedIn && <Button 
-          className="o-header__sign-in" 
+          className="header__sign-in" 
           size="small" 
           color="light" 
           text="Sign" 
