@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Page from '../../templates/page';
 import Headline from '../../atoms/headline';
 import P from '../../atoms/paragraph';
@@ -17,14 +18,11 @@ export default class Home extends Component {
 
     return loggedIn ? (
       <Page toolbar={ loggedIn }>
-        <Dashboards position={ 1 } />
-        <Categories />
+        { '' }
       </Page>
     ) : (
       <Page>
-        <Headline type={ 1 } text="Servus, wie geht's dir? Lorem ipsum dolor sit amet!" />
-        <P>{`Web forms are the evolution of their paper counterparts. 
-          A collection of labels, boxes and circles designed to constrain input and make it easier for data to be processed.`}</P>
+        { '' }
       </Page>
     );
   }

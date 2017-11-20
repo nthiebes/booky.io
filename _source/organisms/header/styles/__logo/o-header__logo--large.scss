@@ -1,21 +1,17 @@
 .o-header__logo--large {
 	background: url("../../_assets/logo-primary.png") no-repeat center center transparent;
-    background-size: contain;
-    height: 50px;
-    width: 150px;
+  background-size: contain;
+  height: 50px;
+  width: 150px;
 
-    @include tablet {
-        margin-right: 16px;
-    }
+  @include tablet-desktop {
+    // flex-grow: 0;
+    // justify-content: flex-start;
+    // order: -1;
+    // text-align: left;
+  }
 
-    @include desktop {
-        flex-grow: 0;
-        justify-content: flex-start;
-        order: -1;
-        text-align: left;
-    }
-
-    @include mobile {
-        display: none;
-    }
+  @include mobile-tablet {
+    display: none;
+  }
 }

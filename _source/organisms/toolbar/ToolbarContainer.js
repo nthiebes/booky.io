@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Component from './component.jsx';
+import Component from './Toolbar';
 import { actions as toolbarActions } from '../../_state/toolbar';
 
 export const mapStateToProps = function(state) {
@@ -9,7 +9,8 @@ export const mapStateToProps = function(state) {
     'headerSticky': state.sidebar.stickyHeader,
     'searchFocused': state.toolbar.searchFocused,
     'searchOpen': state.toolbar.searchOpen,
-    'sticky': state.sidebar.stickyToolbar
+    'sticky': state.sidebar.stickyToolbar,
+    dashboards: state.dashboards
   };
 };
 

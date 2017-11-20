@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import ColorPicker from '../../molecules/color-picker';

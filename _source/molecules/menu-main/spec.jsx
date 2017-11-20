@@ -5,7 +5,7 @@ import MenuMain from './component.jsx';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 
-describe('<MenuMain />', function() {
+xdescribe('<MenuMain />', function() {
 
   let component,
     documentMock;

@@ -4,7 +4,7 @@ import Categories from './component.jsx';
 import { mapStateToProps } from './container';
 import Category from '../../molecules/category';
 
-describe('<Categories />', function() {
+xdescribe('<Categories />', function() {
 
   describe('presentational component', function() {
 

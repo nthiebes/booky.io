@@ -9,7 +9,7 @@ import Icon from '../../atoms/icon';
 import Button from '../../atoms/button';
 import Dashboards from '../../organisms/dashboards';
 
-describe('<Toolbar />', function() {
+xdescribe('<Toolbar />', function() {
 
   describe('presentational component', function() {
 

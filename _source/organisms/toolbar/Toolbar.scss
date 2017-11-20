@@ -1,0 +1,40 @@
+.toolbar {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+  padding: 0 3% 0.5rem 0;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  z-index: 1;
+  height: 45px;
+
+  @include tablet {
+    // top: 62px;
+  }
+
+  @include desktop {
+    // background-color: rgba($color__background--light, 0.95);
+    // border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    // pointer-events: auto;
+    // top: 84px;
+  }
+}
+
+.toolbar__gradient {
+  position: relative;
+  height: 100%;
+  margin-right: 3%;
+  pointer-events: none;
+
+  &::before {
+    position: absolute;
+    content: " ";
+    width: 30px;
+    bottom: 2px;
+    top: 0;
+    left: -20px;
+    background-image: linear-gradient(to right, transparent, #fff)
+  }
+}

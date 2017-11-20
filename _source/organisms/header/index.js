@@ -1,3 +1,3 @@
-import container from './container';
+import container from './HeaderContainer';
 
 export default container;

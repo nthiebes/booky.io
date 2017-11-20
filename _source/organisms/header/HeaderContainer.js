@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Component from './component.jsx';
+import Component from './Header';
 import { actions as headerActions } from '../../_state/header';
 import { actions as sidebarActions } from '../../_state/sidebar';
 

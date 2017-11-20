@@ -1,15 +1,11 @@
 .m-search {
-    align-items: center;
-    display: flex;
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  margin-left: 1rem;
+
+  @include desktop {
     flex-grow: 1;
-    margin-left: 1rem;
-    opacity: 0;
-
-    @include desktop {
-        flex-grow: 1;
-        opacity: 1;
-        text-align: right;
-    }
+    text-align: right;
+  }
 }
-
-@import "m-search--open";

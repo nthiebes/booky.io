@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Bookmark from './component.jsx';
 import Icon from '../../atoms/icon';
 
-describe('<Bookmark />', function() {
+xdescribe('<Bookmark />', function() {
 
   let component;
     

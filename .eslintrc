@@ -90,7 +90,7 @@
     "no-lonely-if": 1,
     "no-loop-func": 1,
     "no-magic-numbers": 0,
-    "no-mixed-operators": 1,
+    "no-mixed-operators": 0,
     "no-mixed-spaces-and-tabs": 1,
     "no-multi-spaces": 1,
     "no-multi-str": 1,
@@ -190,6 +190,12 @@
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
     "react/jsx-wrap-multilines": 1
+  },
+  "settings": {
+    "import/ignore": [
+      "node_modules",
+      "\\.(coffee|scss|css|less|hbs|svg|json)$",
+    ]
   },
   "globals": {
   }

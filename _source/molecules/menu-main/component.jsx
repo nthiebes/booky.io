@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 

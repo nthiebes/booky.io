@@ -4,7 +4,7 @@ import Page from './component.jsx';
 import HeaderContainer from '../../organisms/header';
 import SidebarContainer from '../../organisms/sidebar';
 
-describe('<Page />', function() {
+xdescribe('<Page />', function() {
 
   let component;
     

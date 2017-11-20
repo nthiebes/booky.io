@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Dashboard from './component.jsx';
 
-describe('<Dashboard />', function() {
+xdescribe('<Dashboard />', function() {
 
   describe('presentational component', function() {
 

@@ -4,7 +4,7 @@ import toolbar from './organisms/toolbar';
 import categories from './organisms/categories';
 import header from './organisms/header';
 
-describe('rootReducer', function() {
+xdescribe('rootReducer', function() {
 
   let store,
     undefinedState;

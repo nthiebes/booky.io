@@ -1,12 +1,11 @@
 .o-header__logo {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    padding: 5px;
-    text-align: center;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 5px;
+  text-align: center;
 }
 
-@import "o-header__logo--small";
 @import "o-header__logo--large";

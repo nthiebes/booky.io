@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Icon from './component.jsx';
 
-describe('<Icon />', function() {
+xdescribe('<Icon />', function() {
 
   let component,
     onClickCallback;

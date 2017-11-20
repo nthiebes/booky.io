@@ -1,4 +1,6 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * React component
@@ -24,13 +26,13 @@ export default class Icon extends Component {
   }
 
   render() {
-    const PROPS = this.props;
-    const LINK = '_assets/symbol-defs.svg#icon-' + PROPS.icon;
-    const CLASS = 'a-icon ' + PROPS.className;
-    const LABEL = PROPS.label ? <label className="a-icon__label">{ PROPS.label }</label> : '';
+    const { icon, className, label, color, title } = this.props;
+    const LINK = '_assets/symbol-defs.svg#icon-' + icon;
+    const CLASS = classNames('a-icon', className, `a-icon--${color}`);
+    const LABEL = label ? <label className="a-icon__label">{ label }</label> : '';
 
     return (
-      <div className={ CLASS } title={ PROPS.title } onClick={ this.onIconClick }>
+      <div className={ CLASS } title={ title } onClick={ this.onIconClick }>
         <svg className="a-icon__svg">
           <use xlinkHref={ LINK } />
         </svg>
@@ -46,10 +48,12 @@ Icon.propTypes = {
   'label': PropTypes.string,
   'onClick': PropTypes.func,
   'title': PropTypes.string,
-  'stopPropagation': PropTypes.bool
+  'stopPropagation': PropTypes.bool,
+  color: PropTypes.string
 };
 
 Icon.defaultProps = {
-  'className': '',
-  'title': ''
+  className: '',
+  title: '',
+  color: 'dark'
 };

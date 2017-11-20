@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import scrolling from '../../_utils/scrolling';
 import Dashboard from '../../molecules/dashboard';
 import Button from '../../atoms/button';

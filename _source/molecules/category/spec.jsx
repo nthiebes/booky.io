@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Category from './component.jsx';
 import Icon from '../../atoms/icon';
 
-describe('<Category />', function() {
+xdescribe('<Category />', function() {
 
   let component;
     

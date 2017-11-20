@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
 
 /**
@@ -21,8 +22,8 @@ export default class Input extends Component {
       'className': 'a-input__field',
       'placeholder': PROPS.placeholder,
       'type': PROPS.type,
-      'onBlur': PROPS.onBlur ? PROPS.onBlur : '',
-      'onFocus': PROPS.onFocus ? PROPS.onFocus : ''
+      'onBlur': PROPS.onBlur ? PROPS.onBlur : null,
+      'onFocus': PROPS.onFocus ? PROPS.onFocus : null
     };
 
     return (
