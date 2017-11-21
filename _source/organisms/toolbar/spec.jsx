@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import Toolbar from './component.jsx';
 import { mapStateToProps, mapDispatchToProps } from './container';
 import { toggleSearch, toggleEditMode, updateCurrentlySticky } from '../../_state/toolbar/actions';
-import Icon from '../../atoms/Icon';
+import Icon from '../../atoms/icon';
 import Button from '../../atoms/button';
 import Dashboards from '../../organisms/dashboards';
 

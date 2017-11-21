@@ -11,12 +11,11 @@ export default class Headline extends Component {
   render() {
     const PROPS = this.props;
     const CLASS = 'a-headline ' + PROPS.className;
-    const TEXT = PROPS.text;
     const CustomTag = `h${PROPS.type}`;
 
     return (
       <CustomTag className={ CLASS }>
-        { TEXT }
+        { PROPS.children }
       </CustomTag>
     );
   }
@@ -24,8 +23,7 @@ export default class Headline extends Component {
 
 Headline.propTypes = {
   'className': PropTypes.string,
-  'type': PropTypes.number.isRequired,
-  'text': PropTypes.string.isRequired
+  'type': PropTypes.number.isRequired
 };
 
 Headline.defaultProps = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import MenuMain from '../../molecules/menu-main';
-import Icon from '../../atoms/Icon';
+import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Search from '../../molecules/search';
 import Button from '../../atoms/button';

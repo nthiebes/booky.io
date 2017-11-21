@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../../atoms/Icon';
+import Icon from '../../atoms/icon';
 
 /**
  * React component

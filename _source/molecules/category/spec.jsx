@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Category from './component.jsx';
-import Icon from '../../atoms/Icon';
+import Icon from '../../atoms/icon';
 
 xdescribe('<Category />', function() {
 

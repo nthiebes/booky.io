@@ -35,3 +35,7 @@ Page.propTypes = {
     PropTypes.string
   ]).isRequired
 };
+
+Page.defaultProps = {
+  'toolbar': false
+};

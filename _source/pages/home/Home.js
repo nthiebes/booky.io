@@ -14,11 +14,11 @@ import Dashboards from '../../organisms/dashboards';
  */
 export default class Home extends Component {
   render() {
-    const { loggedIn } = this.props;
+    const { loggedIn, dashboard } = this.props;
 
     return loggedIn ? (
-      <Page toolbar={ loggedIn }>
-        { '' }
+      <Page>
+        <Headline type={ 3 }>{ dashboard.name }</Headline>
       </Page>
     ) : (
       <Page>
@@ -29,5 +29,6 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-  'loggedIn': PropTypes.bool.isRequired
+  'loggedIn': PropTypes.bool.isRequired,
+  dashboard: PropTypes.object
 };

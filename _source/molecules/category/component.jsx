@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Bookmark from '../bookmark';
-import Icon from '../../atoms/Icon';
+import Icon from '../../atoms/icon';
 
 /**
  * React component
