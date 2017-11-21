@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import MenuMain from './component.jsx';
-import Icon from '../../atoms/icon';
+import Icon from '../../atoms/Icon';
 import Link from '../../atoms/link';
 
 xdescribe('<MenuMain />', function() {

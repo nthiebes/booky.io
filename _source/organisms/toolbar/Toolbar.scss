@@ -51,12 +51,12 @@
   pointer-events: none;
 
   &::before {
+    background: linear-gradient(to right, rgba(255,255,255,0), #fff);
     position: absolute;
     content: " ";
     width: 30px;
     bottom: 2px;
     top: 0;
     left: -20px;
-    background-image: linear-gradient(to right, transparent, #fff)
   }
 }

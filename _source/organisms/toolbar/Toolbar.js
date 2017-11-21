@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import scrolling from '../../_utils/scrolling';
 // import Button from '../../atoms/button';
-import Icon from '../../atoms/icon';
+import Icon from '../../atoms/Icon';
 import TabBar from '../../molecules/tab-bar';
 // import Dashboards from '../../organisms/dashboards';
 

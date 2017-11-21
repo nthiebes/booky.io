@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-/**
- * React component
- * 
- * @class Icon
- * @classdesc atoms/icon/Icon
- */
 export default class Icon extends Component {
   constructor(props) {
     super(props);
@@ -28,12 +22,12 @@ export default class Icon extends Component {
   render() {
     const { icon, className, label, color, title } = this.props;
     const LINK = '_assets/symbol-defs.svg#icon-' + icon;
-    const CLASS = classNames('a-icon', className, `a-icon--${color}`);
-    const LABEL = label ? <label className="a-icon__label">{ label }</label> : '';
+    const CLASS = classNames('icon', className, `icon--${color}`);
+    const LABEL = label ? <label className="icon__label">{ label }</label> : '';
 
     return (
       <div className={ CLASS } title={ title } onClick={ this.onIconClick }>
-        <svg className="a-icon__svg">
+        <svg className="icon__svg">
           <use xlinkHref={ LINK } />
         </svg>
         { LABEL }

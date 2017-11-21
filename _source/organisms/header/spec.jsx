@@ -5,7 +5,7 @@ import Header from './component.jsx';
 import { mapStateToProps, mapDispatchToProps } from './container';
 import { toggleMainMenu, closeMainMenu, toggleDashboards, closeDashboards } from '../../_state/header/actions';
 import { actions as sidebarActions } from '../../_state/sidebar';
-import Icon from '../../atoms/icon';
+import Icon from '../../atoms/Icon';
 import Link from '../../atoms/link';
 import Button from '../../atoms/button';
 
