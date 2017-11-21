@@ -10,7 +10,8 @@ export const mapStateToProps = function(state) {
     'searchFocused': state.toolbar.searchFocused,
     'searchOpen': state.toolbar.searchOpen,
     'sticky': state.sidebar.stickyToolbar,
-    dashboards: state.dashboards
+    dashboards: state.dashboards,
+    dashboard: state.dashboards.items[state.dashboards.active]
   };
 };
 

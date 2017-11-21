@@ -1,9 +1,9 @@
 .toolbar {
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   justify-content: space-between;
   margin-top: 2px;
-  padding: 0 3% 0.5rem 0;
+  padding: 0 3% 0.5rem 3%;
   position: absolute;
   top: 40px;
   width: 100%;
@@ -42,6 +42,11 @@
       top: 0;
     }
   }
+}
+
+.toolbar__headline {
+  margin: 0 !important;
+  flex-grow: 1;
 }
 
 .toolbar__gradient {

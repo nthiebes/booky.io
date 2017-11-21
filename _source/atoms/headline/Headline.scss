@@ -1,0 +1,23 @@
+.headline {
+  color: $color__font--dark;
+  font-family: $font__family--heading;
+
+  &.headline--h1 {
+    font-size: 2.333rem;
+    font-weight: 100;
+    line-height: 2.889rem;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  &.headline--h2 {
+    
+  }
+
+  &.headline--h3 {
+    color: $color__font--medium;
+    font-weight: 700;
+    font-size: $size--phone;
+    margin-top: 1rem;
+  }
+}

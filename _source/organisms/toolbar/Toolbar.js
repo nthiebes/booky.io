@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import scrolling from '../../_utils/scrolling';
 // import Button from '../../atoms/button';
 import Icon from '../../atoms/icon';
+import { H3 } from '../../atoms/headline';
 import TabBar from '../../molecules/tab-bar';
 // import Dashboards from '../../organisms/dashboards';
 
@@ -64,15 +65,17 @@ export default class Toolbar extends Component {
   }
 
   render() {
-    const { dashboards } = this.props;
+    const { dashboard } = this.props;
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
-        <TabBar tabs={ dashboards } />
-        <div className="toolbar__gradient" />
-        <Icon icon="add" color="dark" />
+        <H3 className="toolbar__headline">{ dashboard.name }</H3>
+        <Icon icon="sort" color="medium" />
+        <Icon icon="settings" color="medium" />
       </div>
     );
+    // <div className="toolbar__gradient" />
+    // <TabBar tabs={ dashboards } />
     // <Icon icon="dashboard" color="dark" />
   }
 }
@@ -87,7 +90,8 @@ Toolbar.propTypes = {
   'headerSticky': PropTypes.bool,
   'sticky': PropTypes.bool,
   'currentlySticky': PropTypes.bool,
-  dashboards: PropTypes.object
+  dashboards: PropTypes.object,
+  dashboard: PropTypes.object
 };
 
 Toolbar.defaultProps = {
