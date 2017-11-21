@@ -31,7 +31,7 @@
     }
   }
 
-  .icon--primary {
+  &.icon--primary {
     color: $color__font--primary;
     border-color: $color__font--primary;
 
@@ -65,7 +65,7 @@
     }
   }
 
-  .icon--light {
+  &.icon--light {
     color: $color__font--light;
     border-color: $color__font--light;
 

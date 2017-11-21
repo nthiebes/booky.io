@@ -53,8 +53,7 @@ export default class Header extends Component {
         <MenuMain document={ document } menuMainOpen={ menuMainOpen } loggedIn={ loggedIn } />
         { loggedIn && [
           <Search key="0" className="b-hide-desktop" focus={ searchFocused } />,
-          <Icon key="1" icon="add-category" color="light" title="New category" className="b-hide-desktop" />,
-          <Icon key="2" icon="edit" title={ 'EDIT_MODE_TITLE' } color="light" className="b-hide-desktop" onClick={ onEditModeClick } />
+          <Icon key="2" icon="add" color="light" />
         ] || (
           <Link className="header__logo header__logo--small" color="light" href="/" title="Home">
             <Icon icon="heart" color="light" />
@@ -79,6 +78,8 @@ export default class Header extends Component {
         /> }
       </header>
     );
+    // <Icon key="1" icon="add-category" color="light" title="New category" className="b-hide-desktop" />,
+    // <Icon key="2" icon="edit" title={ 'EDIT_MODE_TITLE' } color="light" className="b-hide-desktop" onClick={ onEditModeClick } />
   }
 }
 

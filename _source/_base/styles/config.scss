@@ -34,10 +34,10 @@ $size--tablet: 16px;
 $size--desktop: 16px;
 
 /**
- * Misc
+ * Fonts
  */
-$font__family--heading: "Roboto", sans-serif;
-$font__family--text: "Roboto", sans-serif;
+$font__family--heading: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+$font__family--text: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 
 /**
  * Breakpoints

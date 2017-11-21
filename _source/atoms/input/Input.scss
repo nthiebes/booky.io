@@ -16,7 +16,7 @@
   width: 100%;
 
   &:focus {
-    background-color: $color__background--medium;
+    // background-color: $color__background--medium;
     border-color: $color--blue;
     box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
   }

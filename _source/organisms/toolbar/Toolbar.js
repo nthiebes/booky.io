@@ -71,9 +71,9 @@ export default class Toolbar extends Component {
         <TabBar tabs={ dashboards } />
         <div className="toolbar__gradient" />
         <Icon icon="add" color="dark" />
-        <Icon icon="dashboard" color="dark" />
       </div>
     );
+    // <Icon icon="dashboard" color="dark" />
   }
 }
 
