@@ -70,8 +70,8 @@ export default class Toolbar extends Component {
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
-        <Icon icon="sort" color="medium" />
-        <Icon icon="settings" color="medium" />
+        <Icon icon="sort" color="dark" />
+        <Icon icon="settings" color="dark" />
       </div>
     );
     // <div className="toolbar__gradient" />

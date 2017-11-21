@@ -5,15 +5,16 @@ import Icon from '../../atoms/icon';
 
 export default class Category extends Component {
   render() {
-    const PROPS = this.props;
+    const { name } = this.props;
 
     return (
       <section className="category">
         <header className="category__header">
           <Icon className="category__icon a-icon--dark" icon="reduce" title="Reduce category" />
           <h1 className="category__name">
-            <span className="category__name-inner">{ PROPS.name }</span>
+            <span className="category__name-inner">{ name }</span>
           </h1>
+          <Icon className="category__icon" icon="edit" />
           <Icon className="category__icon category__icon--edit-mode a-icon--dark" icon="edit" title="Edit category" />
           <Icon className="category__icon category__icon--edit-mode a-icon--dark" icon="delete" title="Delete category" />
           <Icon className="category__icon category__icon--edit-mode a-icon--dark category__icon--drag" icon="drag" title="Drag category" />

@@ -65,6 +65,23 @@
     }
   }
 
+  &.icon--medium {
+    color: $color__font--medium;
+    border-color: $color__font--medium;
+
+    @include mobile-tablet {
+      &:active {
+        color: $color__font--primary;
+      }   
+    }
+
+    @include desktop {
+      &:hover {
+        color: $color__font--primary;
+      }   
+    }
+  }
+
   &.icon--light {
     color: $color__font--light;
     border-color: $color__font--light;
