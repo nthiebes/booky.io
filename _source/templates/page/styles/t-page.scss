@@ -1,6 +1,6 @@
-.t-page {
+.page {
   margin: 0 auto;
-  padding: 42px 6px 100px 6px;
+  padding: 80px 6px 100px 6px;
   max-width: 94%;
 
   @include tablet {
@@ -10,5 +10,11 @@
   @include desktop {
     max-width: 800px;
     padding: 86px 0 100px 0;
+  }
+
+  &.page--full-width {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
   }
 }

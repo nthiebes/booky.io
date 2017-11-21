@@ -6,22 +6,22 @@
 @import "../../atoms/button/styles/a-button";
 @import "../../atoms/input/Input";
 @import "../../atoms/checkbox/styles/a-checkbox";
-@import "../../atoms/headline/headline";
+@import "../../atoms/headline/Headline";
 @import "../../atoms/paragraph/styles/a-paragraph";
 @import "../../atoms/loader/styles/a-loader";
 
 @import "../../molecules/menu-main/styles/m-menu-main";
 @import "../../molecules/bookmark/styles/m-bookmark";
-@import "../../molecules/category/styles/m-category";
+@import "../../molecules/category/Category";
 @import "../../molecules/search/Search";
 @import "../../molecules/color-picker/styles/m-color-picker";
 @import "../../molecules/dropdown/styles/m-dropdown";
 @import "../../molecules/dashboard/styles/m-dashboard";
 @import "../../molecules/tab-bar/TabBar";
 
-@import "../../organisms/categories/styles/o-categories";
-@import "../../organisms/header/header";
-@import "../../organisms/toolbar/toolbar";
+@import "../../organisms/categories/categories";
+@import "../../organisms/header/Header";
+@import "../../organisms/toolbar/Toolbar";
 @import "../../organisms/sidebar/styles/o-sidebar";
 @import "../../organisms/dashboards/styles/o-dashboards";
 

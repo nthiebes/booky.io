@@ -1,0 +1,40 @@
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+
+  // &.categories--edit-mode {
+  //   .category__icon--edit-mode,
+  //   .bookmark__icon--edit-mode {
+  //     opacity: 1;
+  //     transition: color 0.2s linear, opacity 0.2s linear;
+  //     width: 36px;
+  //   }
+  // }
+
+  @include tablet {
+    margin-top: 110px;
+  }
+
+  @include desktop {
+    margin-top: 180px;
+  }
+
+  // &.categories--sidebar {
+  //   @include desktop() {
+  //     padding-left: 300px;
+  //   }
+  // }
+
+  // &.categories--max-width {
+  //   max-width: 1400px;
+  //   margin: 80px auto;
+
+  //   @include tablet {
+  //     margin: 110px auto;
+  //   }
+
+  //   @include desktop {
+  //     margin: 180px auto;
+  //   }
+  // }
+}

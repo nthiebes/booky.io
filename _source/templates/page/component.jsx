@@ -12,14 +12,14 @@ import Toolbar from '../../organisms/toolbar';
  */
 export default class Page extends Component {
   render() {
-    const { children, toolbar } = this.props;
+    const { children, toolbar, className } = this.props;
 
     return (
       <div>
         <Header />
         { toolbar && <Toolbar document={ document } window={ window } /> }
         <Sidebar />
-        <main className="t-page">
+        <main className={ `page ${className}` }>
           { children }
         </main>
       </div>

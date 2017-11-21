@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Component from './component.jsx';
+import Component from './Categories';
 
 export const mapStateToProps = function(state) {
   return {
