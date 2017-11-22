@@ -1,5 +1,10 @@
 .categories {
   display: flex;
+  // grid-template-columns: auto;
+  // grid-template-rows: auto;
+  // grid-gap: 3%;
+  // align-items: start;
+
   flex-wrap: wrap;
 
   // &.categories--edit-mode {
@@ -13,6 +18,8 @@
 
   @include tablet {
     margin-top: 110px;
+
+    // grid-template-columns: 50% 50%;
   }
 
   @include desktop {

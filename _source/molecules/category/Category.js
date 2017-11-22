@@ -28,14 +28,14 @@ export default class Category extends Component {
       <section className="category">
         <header className="category__header">
           <Icon
-            icon={ open ? 'reduce' : 'expand' }
+            icon={ open ? 'expand' : 'reduce' }
             title={ open ? 'Reduce category' : 'Expand category' }
             onClick={ this.toggleCategory }
           />
           <h1 className="category__name" onClick={ this.toggleCategory }>
             <span className="category__name-inner">{ name }</span>
           </h1>
-          <Icon icon="more-horiz" />
+          <Icon icon="edit-mode" />
           <Icon className="category__icon category__icon--edit-mode" icon="edit" title="Edit category" />
           <Icon className="category__icon category__icon--edit-mode" icon="delete" title="Delete category" />
           <Icon className="category__icon category__icon--edit-mode category__icon--drag" icon="drag" title="Drag category" />
