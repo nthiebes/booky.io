@@ -5,34 +5,34 @@ import { actions as sidebarActions } from '../../_state/sidebar';
 
 export const mapStateToProps = function(state) {
   return {
-    'menuMainOpen': state.header.menuMainOpen,
-    'sidebarOpen': state.sidebar.open,
-    'dashboardsOpen': state.header.dashboardsOpen,
-    'sticky': state.sidebar.stickyHeader,
-    'color': state.sidebar.headerColor,
-    'loggedIn': state.booky.loggedIn
+    menuOpen: state.header.menuOpen,
+    sidebarOpen: state.sidebar.open,
+    dashboardsOpen: state.header.dashboardsOpen,
+    sticky: state.sidebar.stickyHeader,
+    color: state.sidebar.headerColor,
+    loggedIn: state.booky.loggedIn
   };
 };
 
 export const mapDispatchToProps = function(dispatch) {
   return {
-    'onMenuMainClick': () => {
-      dispatch(headerActions.toggleMainMenu());
+    onMenuClick: () => {
+      dispatch(headerActions.toggleMenu());
       dispatch(sidebarActions.closeSidebar());
       dispatch(headerActions.closeDashboards());
     },
-    'onSidebarClick': () => {
+    onSidebarClick: () => {
       dispatch(sidebarActions.toggleSidebar());
-      dispatch(headerActions.closeMainMenu());
+      dispatch(headerActions.closeMenu());
       dispatch(headerActions.closeDashboards());
     },
-    'onDashboardsClick': () => {
+    onDashboardsClick: () => {
       dispatch(headerActions.toggleDashboards());
       dispatch(sidebarActions.closeSidebar());
-      dispatch(headerActions.closeMainMenu());
+      dispatch(headerActions.closeMenu());
     },
-    'onHeaderClick': () => {
-      dispatch(headerActions.closeMainMenu());
+    onHeaderClick: () => {
+      dispatch(headerActions.closeMenu());
       dispatch(sidebarActions.closeSidebar());
       dispatch(headerActions.closeDashboards());
     }

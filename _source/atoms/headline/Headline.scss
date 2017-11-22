@@ -11,13 +11,18 @@
   }
 
   &.headline--h2 {
-    
+    font-size: 1.714rem;
+    font-weight: 100;
+    margin-bottom: 1rem;
   }
 
   &.headline--h3 {
     color: $color__font--medium;
     font-weight: 700;
-    font-size: $size--phone;
-    margin-top: 1rem;
+    font-size: 1rem;
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    line-height: 1rem;
   }
 }

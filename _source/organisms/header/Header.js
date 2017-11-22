@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import MenuMain from '../../molecules/menu-main';
+import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Search from '../../molecules/search';
@@ -18,10 +18,10 @@ export default class Header extends Component {
     const {
       onSearchClick,
       onHeaderClick,
-      onMenuMainClick,
+      onMenuClick,
       loggedIn,
       sticky,
-      menuMainOpen,
+      menuOpen,
       sidebarOpen,
       dashboardsOpen,
       color,
@@ -29,13 +29,13 @@ export default class Header extends Component {
       onEditModeClick
     } = this.props;
     const STICKY_CLASS = sticky ? 'header--sticky' : '';
-    const OVERLAY_MENU_MAIN_CLASS = menuMainOpen ? 'header--overlay-menu-main' : '';
+    const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
     const OVERLAY_SIDEBAR_CLASS = sidebarOpen ? 'header--overlay-sidebar' : '';
     const OVERLAY_DASHBOARDS_CLASS = dashboardsOpen ? 'header--overlay-dashboards' : '';
     const HEADER_CLASS = classNames(
       `header header--color-${color}`,
       STICKY_CLASS,
-      OVERLAY_MENU_MAIN_CLASS,
+      OVERLAY_MENU_CLASS,
       OVERLAY_SIDEBAR_CLASS,
       OVERLAY_DASHBOARDS_CLASS
     );
@@ -45,15 +45,15 @@ export default class Header extends Component {
         <Icon
           icon="menu"
           color="light"
-          onClick={ onMenuMainClick }
+          onClick={ onMenuClick }
           stopPropagation={ true }
-          className="header__menu-main-icon"
+          className="header__menu-icon"
         />
         <Link className="header__logo header__logo--large" color="light" href="/" title="Home" />
-        <MenuMain document={ document } menuMainOpen={ menuMainOpen } loggedIn={ loggedIn } />
+        <Menu menuOpen={ menuOpen } loggedIn={ loggedIn } />
         { loggedIn && [
           <Search key="0" className="b-hide-desktop" focus={ searchFocused } />,
-          <Icon key="2" icon="add-link" color="light" />
+          <Icon key="1" icon="add" color="light" />
         ] || (
           <Link className="header__logo header__logo--small" color="light" href="/" title="Home">
             <Icon icon="heart" color="light" />
@@ -87,10 +87,10 @@ Header.propTypes = {
   'color': PropTypes.number,
   'dashboardsOpen': PropTypes.bool.isRequired,
   'loggedIn': PropTypes.bool.isRequired,
-  'menuMainOpen': PropTypes.bool.isRequired,
+  'menuOpen': PropTypes.bool.isRequired,
   'onDashboardsClick': PropTypes.func.isRequired,
   'onHeaderClick': PropTypes.func.isRequired,
-  'onMenuMainClick': PropTypes.func.isRequired,
+  'onMenuClick': PropTypes.func.isRequired,
   'onSidebarClick': PropTypes.func.isRequired,
   'sidebarOpen': PropTypes.bool.isRequired,
   'sticky': PropTypes.bool

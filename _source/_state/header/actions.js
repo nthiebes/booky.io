@@ -1,17 +1,17 @@
-export const TOGGLE_MAIN_MENU = 'TOGGLE_MAIN_MENU';
-export const CLOSE_MAIN_MENU = 'CLOSE_MAIN_MENU';
+export const TOGGLE_MENU = 'TOGGLE_MENU';
+export const CLOSE_MENU = 'CLOSE_MENU';
 export const TOGGLE_DASHBOARDS = 'TOGGLE_DASHBOARDS';
 export const CLOSE_DASHBOARDS = 'CLOSE_DASHBOARDS';
 
-export function toggleMainMenu() {
+export function toggleMenu() {
   return {
-    'type': TOGGLE_MAIN_MENU
+    'type': TOGGLE_MENU
   };
 }
 
-export function closeMainMenu() {
+export function closeMenu() {
   return {
-    'type': CLOSE_MAIN_MENU
+    'type': CLOSE_MENU
   };
 }
 

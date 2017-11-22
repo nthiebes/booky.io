@@ -152,7 +152,7 @@ export default {
     'position': 0
   }],
   'header': {
-    'menuMainOpen': false,
+    'menuOpen': false,
     'dashboardsOpen': false
   },
   'toolbar': {

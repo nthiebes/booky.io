@@ -1,7 +1,7 @@
 .icon {
   align-items: center;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   font-size: 1rem;
   height: 36px;
   position: relative;
@@ -111,12 +111,12 @@
   width: 36px;
 }
 
-.a-icon__label {
+.icon__label {
   cursor: pointer;
   font-family: $font__family--heading;
-  font-size: 1.375em;
-  font-weight: 300;
-  text-shadow: 0 0 0;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 4px;
 }
 
 @keyframes circle {
