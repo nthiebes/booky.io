@@ -48,10 +48,10 @@ export default class Header extends Component {
         />
         <Link className="header__logo header__logo--large" color="light" href="/" title="Home" />
         <Menu menuOpen={ menuOpen } loggedIn={ loggedIn } />
-        { loggedIn && [
+        { loggedIn ? [
           <Search key="0" className="b-hide-desktop" />,
           <Icon key="1" icon="add" color="light" />
-        ] || (
+        ] : (
           <Link className="header__logo header__logo--small" color="light" href="/" title="Home">
             <Icon icon="heart" color="light" />
           </Link>

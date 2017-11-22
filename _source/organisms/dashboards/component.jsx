@@ -110,14 +110,14 @@ export default class Dashboards extends Component {
       <aside className={ CLASS }>
         <ul className="o-dashboards__list">
           <li className="o-dashboards__title">{ 'Dashboards' }</li>
-          {DASHBOARDS.map((dashboard) =>
+          { DASHBOARDS.map((dashboard) => (
             <Dashboard 
               key={ dashboard.id } { ...dashboard } 
               onDashboardClick={ PROPS.onDashboardClick } 
               isActive={ this.props.activeDashboard === dashboard.id } 
               editMode={ PROPS.editMode }
             />
-          )}
+          )) }
           <li className="o-dashboards__button-wrapper">
             <Button text="Add" buzzword="dashboard" className="o-dashboards__button" />
           </li>
