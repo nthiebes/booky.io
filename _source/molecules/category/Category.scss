@@ -11,12 +11,6 @@
 
   @include desktop {
     width: 390px;
-
-    // &:hover .category__icon--edit-mode {
-    //   opacity: 1;
-    //   transition: color 0.2s linear, opacity 0.2s linear;
-    //   width: 36px;
-    // }
   }
 }
 
@@ -34,13 +28,27 @@
   align-items: center;
   display: flex;
   flex-wrap: nowrap;
+
+  @include desktop {
+    // &:hover .category__icon {
+    //   opacity: 1;
+    //   transition: color 0.2s linear, opacity 0.2s linear;
+    //   width: inherit;
+    // }
+  }
+
+  &.category__header--edit-mode .category__icon {
+    opacity: 1;
+    transition: color 0.2s linear, opacity 0.2s linear;
+    width: inherit;
+    overflow: inherit;
+  }
 }
 
 .category__icon {
-  // &.category__icon--edit-mode {
-  //   opacity: 0;
-  //   width: 0;
-  // }
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
 
   &.category__icon--drag {
     cursor: move;

@@ -1,0 +1,46 @@
+.bookmark {
+  display: flex;
+  align-items: center;
+
+  @include desktop {
+    &:hover .bookmark__icon {
+      opacity: 1;
+      transition: color 0.2s linear, opacity 0.2s linear;
+      width: inherit;
+      overflow: inherit;
+    }
+  }
+
+  &.bookmark--edit-mode .bookmark__icon {
+    opacity: 1;
+    transition: color 0.2s linear, opacity 0.2s linear;
+    width: inherit;
+    overflow: inherit;
+  }
+}
+
+.bookmark__link {
+  color: $color__font--dark;
+  flex-grow: 1;
+  font-size: 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: color 0.2s linear;
+  white-space: nowrap;
+
+  &:hover,
+  &:active {
+    color: $color__font--primary;
+  }
+}
+
+.bookmark__icon {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+
+  &.bookmark__icon--drag {
+    cursor: move;
+  }
+}

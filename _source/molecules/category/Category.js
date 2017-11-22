@@ -34,7 +34,7 @@ export default class Category extends Component {
 
     return (
       <section className="category">
-        <header className="category__header">
+        <header className={ classNames('category__header', editMode && 'category__header--edit-mode') }>
           <Icon
             icon={ open ? 'expand' : 'reduce' }
             title={ open ? 'Reduce category' : 'Expand category' }
@@ -43,17 +43,16 @@ export default class Category extends Component {
           <h1 className="category__name" onClick={ this.toggleCategory }>
             <span className="category__name-inner">{ name }</span>
           </h1>
-          { editMode ? [
-            <Icon key="0" className="category__icon" icon="edit" title="Edit category" />,
-            <Icon key="1" className="category__icon" icon="delete" title="Delete category" />,
-            <Icon key="2" className="category__icon category__icon--drag" icon="drag" title="Drag category" />,
+          <Icon className="category__icon" icon="edit" title="Edit category" />
+          <Icon className="category__icon" icon="delete" title="Delete category" />
+          <Icon className="category__icon category__icon--drag" icon="drag" title="Drag category" />
+          { editMode ? (
             <Icon
-              key="3"
               icon="view"
               title="View mode"
               onClick={ this.toggleEditMode }
             />
-          ] : (
+          ) : (
             <Icon
               icon="edit-mode"
               title="Edit mode"
@@ -62,9 +61,9 @@ export default class Category extends Component {
           ) }
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
-          <Bookmark name="Bookmark 1 veeeeeeery こんにちはお元気で loooooong tiiiitle !!!!!!" url="https://booky.io" />
-          <Bookmark name="Bookmark مرحبا كيف حال 2" url="https://booky.io" />
-          <Bookmark name="Bookmark Привет, как дела 3" url="https://booky.io" />
+          <Bookmark editMode={ editMode } name="Bookmark 1 veeeeeeery こんにちはお元気で loooooong tiiiitle !!!!!!" url="https://booky.io" />
+          <Bookmark editMode={ editMode } name="Bookmark مرحبا كيف حال 2" url="https://booky.io" />
+          <Bookmark editMode={ editMode } name="Bookmark Привет, как дела 3" url="https://booky.io" />
         </ul>
       </section>
     );
