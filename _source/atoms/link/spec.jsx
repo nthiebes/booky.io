@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Link from './component.jsx';
 
-describe('<Link />', function() {
+xdescribe('<Link />', function() {
 
   let component;
     

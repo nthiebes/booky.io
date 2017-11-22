@@ -4,12 +4,6 @@ import Header from '../../organisms/header';
 import Sidebar from '../../organisms/sidebar';
 import Toolbar from '../../organisms/toolbar';
 
-/**
- * React component
- * 
- * @class Page
- * @classdesc templates/page/Page
- */
 export default class Page extends Component {
   render() {
     const { children, toolbar, className } = this.props;
@@ -28,14 +22,16 @@ export default class Page extends Component {
 }
 
 Page.propTypes = {
-  'toolbar': PropTypes.bool,
-  'children': PropTypes.oneOfType([
+  toolbar: PropTypes.bool,
+  children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
     PropTypes.string
-  ]).isRequired
+  ]).isRequired,
+  className: PropTypes.string
 };
 
 Page.defaultProps = {
-  'toolbar': false
+  toolbar: false,
+  className: ''
 };

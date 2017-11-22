@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Page from '../../templates/page';
+import { H1 } from '../../atoms/headline';
+import P from '../../atoms/paragraph';
 
-/**
- * React component
- * 
- * @class NotFound
- * @classdesc pages/not-found/NotFound
- */
 export default class NotFound extends Component {
   render() {
     return (
       <Page>
-        { '404: This is not the page you have been looking for' }
+        <H1>{ 'Page not found' }</H1>
+        <P>{ '404: This is not the page you have been looking for' }</P>
       </Page>
     );
   }

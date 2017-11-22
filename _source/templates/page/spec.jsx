@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Page from './component.jsx';
+import Page from './Page';
 import HeaderContainer from '../../organisms/header';
 import SidebarContainer from '../../organisms/sidebar';
 

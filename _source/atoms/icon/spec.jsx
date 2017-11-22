@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Icon from './component.jsx';
+import Icon from './Icon';
 
 xdescribe('<Icon />', function() {
 

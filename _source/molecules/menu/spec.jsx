@@ -1,17 +1,17 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import MenuMain from './component.jsx';
+import Menu from './Menu';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 
-xdescribe('<MenuMain />', function() {
+xdescribe('<Menu />', function() {
 
   let component,
     documentMock;
     
   const getComponent = function(props = {}) {
-    return <MenuMain { ...props } />;
+    return <Menu { ...props } />;
   };
 
   beforeEach(function() {

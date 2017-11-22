@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Paragraph from './component.jsx';
 
-describe('<Paragraph />', function() {
+xdescribe('<Paragraph />', function() {
 
   let component;
     

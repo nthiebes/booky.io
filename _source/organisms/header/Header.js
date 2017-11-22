@@ -16,7 +16,6 @@ import Button from '../../atoms/button';
 export default class Header extends Component {
   render() {
     const {
-      onSearchClick,
       onHeaderClick,
       onMenuClick,
       loggedIn,
@@ -24,9 +23,7 @@ export default class Header extends Component {
       menuOpen,
       sidebarOpen,
       dashboardsOpen,
-      color,
-      searchFocused,
-      onEditModeClick
+      color
     } = this.props;
     const STICKY_CLASS = sticky ? 'header--sticky' : '';
     const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
@@ -52,7 +49,7 @@ export default class Header extends Component {
         <Link className="header__logo header__logo--large" color="light" href="/" title="Home" />
         <Menu menuOpen={ menuOpen } loggedIn={ loggedIn } />
         { loggedIn && [
-          <Search key="0" className="b-hide-desktop" focus={ searchFocused } />,
+          <Search key="0" className="b-hide-desktop" />,
           <Icon key="1" icon="add" color="light" />
         ] || (
           <Link className="header__logo header__logo--small" color="light" href="/" title="Home">

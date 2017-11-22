@@ -3,7 +3,7 @@
 import { toggleSearch, toggleEditMode, updateCurrentlySticky } from './actions';
 import reducer from './reducer';
 
-describe('toolbar', function() {
+xdescribe('toolbar', function() {
 
   describe('actions', function() {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Bookmark from './component.jsx';
+import Bookmark from './Bookmark';
 import Icon from '../../atoms/icon';
 
 xdescribe('<Bookmark />', function() {

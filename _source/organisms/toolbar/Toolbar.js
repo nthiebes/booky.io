@@ -4,8 +4,7 @@ import scrolling from '../../_utils/scrolling';
 // import Button from '../../atoms/button';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
-import TabBar from '../../molecules/tab-bar';
-// import Dashboards from '../../organisms/dashboards';
+// import TabBar from '../../molecules/tab-bar';
 
 export default class Toolbar extends Component {
   constructor(props) {

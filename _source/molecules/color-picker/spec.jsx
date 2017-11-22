@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import ColorPicker from './component.jsx';
 
-describe('<ColorPicker />', function() {
+xdescribe('<ColorPicker />', function() {
 
   let component,
     onColorChangeCallback;

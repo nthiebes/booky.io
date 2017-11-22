@@ -2,8 +2,8 @@
 /* eslint-disable max-statements */
 import React from 'react';
 import { shallow } from 'enzyme';
-import Toolbar from './component.jsx';
-import { mapStateToProps, mapDispatchToProps } from './container';
+import Toolbar from './Toolbar';
+import { mapStateToProps, mapDispatchToProps } from './ToolbarContainer';
 import { toggleSearch, toggleEditMode, updateCurrentlySticky } from '../../_state/toolbar/actions';
 import Icon from '../../atoms/icon';
 import Button from '../../atoms/button';
