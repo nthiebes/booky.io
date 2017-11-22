@@ -16,13 +16,14 @@ export default class Checkbox extends Component {
     return (
       <div className={ CLASS } onClick={ PROPS.onCheckboxClick } >
         <span className="a-checkbox__box">
-          <svg className={ BOX_CLASS }>
-            <use xlinkHref="images/symbol-defs.svg#icon-check" />
-          </svg>
+          { 'icon' }
         </span>
         <label className="a-checkbox__label">{ PROPS.label }</label>
       </div>
     );
+    // <svg className={ BOX_CLASS }>
+    //         <use xlinkHref="images/symbol-defs.svg#icon-check" />
+    //       </svg>
   }
 }
 
