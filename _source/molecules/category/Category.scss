@@ -12,17 +12,18 @@
   @include desktop {
     width: 390px;
 
-    &:hover .category__icon--edit-mode {
-      opacity: 1;
-      transition: color 0.2s linear, opacity 0.2s linear;
-      width: 36px;
-    }
+    // &:hover .category__icon--edit-mode {
+    //   opacity: 1;
+    //   transition: color 0.2s linear, opacity 0.2s linear;
+    //   width: 36px;
+    // }
   }
 }
 
 .category__bookmarks {
   width: 100%;
   list-style: none;
+  margin-top: 1rem;
 
   &.category__bookmarks--hidden {
     display: none;
@@ -33,14 +34,13 @@
   align-items: center;
   display: flex;
   flex-wrap: nowrap;
-  margin-bottom: 1rem;
 }
 
 .category__icon {
-  &.category__icon--edit-mode {
-    opacity: 0;
-    width: 0;
-  }
+  // &.category__icon--edit-mode {
+  //   opacity: 0;
+  //   width: 0;
+  // }
 
   &.category__icon--drag {
     cursor: move;

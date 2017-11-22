@@ -9,8 +9,10 @@ export default class Category extends Component {
     super(props);
 
     this.toggleCategory = this.toggleCategory.bind(this);
+    this.toggleEditMode = this.toggleEditMode.bind(this);
     this.state = {
-      open: props.open
+      open: props.open,
+      editMode: false
     };
   }
 
@@ -20,9 +22,15 @@ export default class Category extends Component {
     });
   }
 
+  toggleEditMode() {
+    this.setState({
+      editMode: !this.state.editMode
+    });
+  }
+
   render() {
     const { name } = this.props;
-    const { open } = this.state;
+    const { open, editMode } = this.state;
 
     return (
       <section className="category">
@@ -35,10 +43,23 @@ export default class Category extends Component {
           <h1 className="category__name" onClick={ this.toggleCategory }>
             <span className="category__name-inner">{ name }</span>
           </h1>
-          <Icon icon="edit-mode" />
-          <Icon className="category__icon category__icon--edit-mode" icon="edit" title="Edit category" />
-          <Icon className="category__icon category__icon--edit-mode" icon="delete" title="Delete category" />
-          <Icon className="category__icon category__icon--edit-mode category__icon--drag" icon="drag" title="Drag category" />
+          { editMode ? [
+            <Icon key="0" className="category__icon" icon="edit" title="Edit category" />,
+            <Icon key="1" className="category__icon" icon="delete" title="Delete category" />,
+            <Icon key="2" className="category__icon category__icon--drag" icon="drag" title="Drag category" />,
+            <Icon
+              key="3"
+              icon="view"
+              title="View mode"
+              onClick={ this.toggleEditMode }
+            />
+          ] : (
+            <Icon
+              icon="edit-mode"
+              title="Edit mode"
+              onClick={ this.toggleEditMode }
+            />
+          ) }
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
           <Bookmark name="Bookmark 1 veeeeeeery こんにちはお元気で loooooong tiiiitle !!!!!!" url="https://booky.io" />
