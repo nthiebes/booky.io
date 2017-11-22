@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 export default class Headline extends Component {
   render() {
-    const { className, children, type } = this.props;
+    const { className, children, type, onClick } = this.props;
     const CustomTag = `h${type}`;
 
     return (
-      <CustomTag className={ `headline headline--h${type} ${className}` }>
+      <CustomTag className={ `headline headline--h${type} ${className}` } onClick={ onClick && onClick }>
         { children }
       </CustomTag>
     );
@@ -21,7 +21,8 @@ Headline.propTypes = {
     PropTypes.element,
     PropTypes.string
   ]).isRequired,
-  type: PropTypes.string
+  type: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 Headline.defaultProps = {

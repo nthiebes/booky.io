@@ -20,18 +20,20 @@
 .category__bookmarks {
   width: 100%;
   list-style: none;
-  margin-top: 1rem;
+
+  &.category__bookmarks--hidden {
+    display: none;
+  }
 }
 
 .category__header {
   align-items: center;
   display: flex;
   flex-wrap: nowrap;
+  margin-bottom: 1rem;
 }
 
 .category__icon {
-  display: flex;
-
   &.category__icon--edit-mode {
     opacity: 0;
     width: 0;

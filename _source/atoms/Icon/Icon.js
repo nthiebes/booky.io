@@ -6,10 +6,10 @@ export default class Icon extends Component {
   constructor(props) {
     super(props);
 
-    this.onIconClick = this.onIconClick.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  onIconClick(event) {
+  onClick(event) {
     if (this.props.stopPropagation) {
       event.stopPropagation();
     }
@@ -26,7 +26,7 @@ export default class Icon extends Component {
     const LABEL = label ? <label className="icon__label">{ label }</label> : '';
 
     return (
-      <div className={ CLASS } title={ title } onClick={ this.onIconClick }>
+      <div className={ CLASS } title={ title } onClick={ this.onClick }>
         <svg className="icon__svg">
           <use xlinkHref={ LINK } />
         </svg>
