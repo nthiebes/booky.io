@@ -2,7 +2,6 @@
   flex-grow: 1;
   margin: 1.143rem 3vw;
   max-width: 94%;
-  padding: 6px;
   width: 300px;
   position: relative;
 
@@ -14,7 +13,7 @@
 .category__bookmarks {
   width: 100%;
   list-style: none;
-  margin-top: 1rem;
+  margin-top: 0.7rem;
 
   &.category__bookmarks--hidden {
     display: none;
@@ -31,6 +30,16 @@
     transition: color 0.2s linear, opacity 0.2s linear;
     width: auto;
     overflow: inherit;
+  }
+
+  &:after {
+    background-color: $color__background--primary;
+    top: 2.7rem;
+    content: " ";
+    height: 2px;
+    left: 6px;
+    position: absolute;
+    right: 6px;
   }
 }
 
@@ -59,34 +68,17 @@
 }
 
 .category__name {
-  color: $color__font--dark;
   cursor: default;
-  display: flex;
   flex-grow: 1;
-  font-family: $font__family--heading;
-  font-size: 2rem;
-  font-weight: 300;
-  min-width: 0;
-  text-shadow: 0 0 0;
   user-select: none;
-
-  &:after {
-    background-color: $color__background--primary;
-    top: 3rem;
-    content: " ";
-    height: 2px;
-    left: 6px;
-    position: absolute;
-    right: 6px;
-  }
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0 !important;
+  padding: 0 !important;
 
   &:active {
     color: $color__font--primary;
   }
-}
-
-.category__name-inner {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }

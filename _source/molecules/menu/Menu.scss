@@ -82,14 +82,20 @@
   padding-bottom: 1rem;
 
   .menu__item {
-    padding: 0 3vw 0 calc(3vw + 6px);
+    padding: 0 calc(3vw + 6px);
   }
 
-  &.menu__dashboards--edit-mode .menu__icon {
-    opacity: 1;
-    transition: color 0.2s linear, opacity 0.2s linear;
-    width: auto;
-    overflow: inherit;
+  &.menu__dashboards--edit-mode {
+    .menu__item {
+      padding: 0 3vw 0 calc(3vw + 6px);
+    }
+    
+    .menu__icon {
+      opacity: 1;
+      transition: color 0.2s linear, opacity 0.2s linear;
+      width: auto;
+      overflow: inherit;
+    }
   }
 }
 

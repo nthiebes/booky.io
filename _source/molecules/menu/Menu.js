@@ -31,7 +31,7 @@ export default class Menu extends Component {
     const { editMode } = this.state;
 
     return (
-      <aside className={ `menu ${menuOpen && 'menu--open'}` } onClick={ this.onMenuClick }>
+      <aside className={ `menu ${menuOpen ? 'menu--open' : ''}` } onClick={ this.onMenuClick }>
         <header className="menu__header">
           <Icon icon="menu" onClick={ closeMenu } />
           <Link href="/" className="menu__logo" onClick={ closeMenu }>{ 'booky.io (logo)' }</Link>
@@ -59,7 +59,7 @@ export default class Menu extends Component {
             { dashboards.items.map((item, index) => (
               <li
                 key={ index }
-                className={ `menu__item ${index === dashboards.active && 'menu__item--active'}` }
+                className={ `menu__item ${index === dashboards.active ? 'menu__item--active' : ''}` }
                 onClick={ closeMenu }>
                 <label className="menu__label">{ item.name }</label>
                 <Icon className="menu__icon" icon="edit" title="Edit dashboard" />

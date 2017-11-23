@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
+import { H2 } from '../../atoms/headline';
 
 export default class Category extends Component {
   constructor(props) {
@@ -41,9 +42,9 @@ export default class Category extends Component {
             title={ open ? 'Reduce category' : 'Expand category' }
             onClick={ this.toggleCategory }
           />
-          <h1 className="category__name" onClick={ this.toggleCategory }>
-            <span className="category__name-inner">{ name }</span>
-          </h1>
+          <H2 className="category__name" onClick={ this.toggleCategory }>
+            { name }
+          </H2>
           <Icon className="category__icon" icon="edit" title="Edit category" />
           <Icon className="category__icon" icon="delete" title="Delete category" />
           <Icon className="category__icon category__icon--drag" icon="drag" title="Drag category" />
