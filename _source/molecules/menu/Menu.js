@@ -69,7 +69,7 @@ export default class Menu extends Component {
             )) }
           </ul>
           <hr className="menu__hr" />
-          <H3 className="menu__headline-wrapper">{ 'Navigation' }</H3>
+          <H3 className="menu__headline">{ 'Navigation' }</H3>
           <ul className="menu__nav">
             <Link className="menu__item" href="/" onClick={ closeMenu }>
               <Icon icon="heart-border" />

@@ -59,13 +59,19 @@
 .menu__headline-wrapper {
   display: flex;
   align-items: center;
-  padding: 0 calc(3vw + 6px);
+  padding: 0 3vw 0 calc(3vw + 6px);
 
   .menu__headline {
     flex-grow: 1;
     margin: 0 !important;
-    padding-top: 0 !important;
+    padding: 0 !important;
   }
+}
+
+.menu__headline {
+  padding: 0 calc(3vw + 6px) !important;
+  margin: 0 !important;
+  line-height: 36px !important;
 }
 
 .menu__logo {
@@ -76,7 +82,7 @@
   padding-bottom: 1rem;
 
   .menu__item {
-    padding: 0 calc(3vw + 6px);
+    padding: 0 3vw 0 calc(3vw + 6px);
   }
 
   &.menu__dashboards--edit-mode .menu__icon {
@@ -134,7 +140,7 @@
     line-height: 2.5rem;
     width: 100%;
     list-style: none;
-    padding: 0 3vw;
+    padding: 0 calc(3vw + 6px) 0 3vw;
     user-select: none;
     transition: none;
 
