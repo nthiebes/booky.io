@@ -33,14 +33,14 @@
     // &:hover .category__icon {
     //   opacity: 1;
     //   transition: color 0.2s linear, opacity 0.2s linear;
-    //   width: inherit;
+    //   width: auto;
     // }
   }
 
   &.category__header--edit-mode .category__icon {
     opacity: 1;
     transition: color 0.2s linear, opacity 0.2s linear;
-    width: inherit;
+    width: auto;
     overflow: inherit;
   }
 }

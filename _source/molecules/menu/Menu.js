@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
@@ -9,6 +10,10 @@ export default class Menu extends Component {
     super(props);
 
     this.onMenuClick = this.onMenuClick.bind(this);
+    this.toggleEditMode = this.toggleEditMode.bind(this);
+    this.state = {
+      editMode: false
+    };
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -19,28 +24,52 @@ export default class Menu extends Component {
     event.stopPropagation();
   }
 
+  toggleEditMode() {
+    this.setState({
+      editMode: !this.state.editMode
+    });
+  }
+
   render() {
     const { loggedIn, menuOpen, closeMenu, dashboards } = this.props;
+    const { editMode } = this.state;
 
     return (
       <aside className={ `menu ${menuOpen && 'menu--open'}` } onClick={ this.onMenuClick }>
         <header className="menu__header">
           <Icon icon="menu" onClick={ closeMenu } />
-          <div className="menu__logo">{ 'booky.io (logo)' }</div>
+          <Link href="/" className="menu__logo" onClick={ closeMenu }>{ 'booky.io (logo)' }</Link>
         </header>
         <hr className="menu__hr" />
         <div className="menu__scroll-wrapper">
           <div className="menu__headline-wrapper">
             <H3 className="menu__headline">{ 'Dashboards' }</H3>
-            <Icon icon="edit-mode" color="medium" />
+            { editMode ? (
+              <Icon
+                color="medium"
+                icon="view"
+                title="View mode"
+                onClick={ this.toggleEditMode }
+              />
+            ) : (
+              <Icon
+                color="medium"
+                icon="edit-mode"
+                title="Edit mode"
+                onClick={ this.toggleEditMode }
+              />
+            ) }
           </div>
-          <ul className="menu__dashboards">
+          <ul className={ classNames('menu__dashboards', editMode && 'menu__dashboards--edit-mode') }>
             { dashboards.items.map((item, index) => (
               <li
                 key={ index }
                 className={ `menu__item ${index === dashboards.active && 'menu__item--active'}` }
                 onClick={ closeMenu }>
                 <label className="menu__label">{ item.name }</label>
+                <Icon className="menu__icon" icon="edit" title="Edit dashboard" />
+                <Icon className="menu__icon" icon="delete" title="Delete dashboard" />
+                <Icon className="menu__icon menu__icon--drag" icon="drag" title="Drag dashboard" />
               </li>
             )) }
           </ul>

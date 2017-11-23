@@ -6,7 +6,7 @@
     &:hover .bookmark__icon {
       opacity: 1;
       transition: color 0.2s linear, opacity 0.2s linear;
-      width: inherit;
+      width: auto;
       overflow: inherit;
     }
   }
@@ -14,7 +14,7 @@
   &.bookmark--edit-mode .bookmark__icon {
     opacity: 1;
     transition: color 0.2s linear, opacity 0.2s linear;
-    width: inherit;
+    width: auto;
     overflow: inherit;
   }
 }
