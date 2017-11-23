@@ -1,25 +1,9 @@
 .categories {
   display: flex;
-  // grid-template-columns: auto;
-  // grid-template-rows: auto;
-  // grid-gap: 3vw;
-  // align-items: start;
-
   flex-wrap: wrap;
-
-  // &.categories--edit-mode {
-  //   .category__icon--edit-mode,
-  //   .bookmark__icon--edit-mode {
-  //     opacity: 1;
-  //     transition: color 0.2s linear, opacity 0.2s linear;
-  //     width: 36px;
-  //   }
-  // }
 
   @include tablet {
     margin-top: 110px;
-
-    // grid-template-columns: 50% 50%;
   }
 
   @include desktop {

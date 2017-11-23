@@ -27,7 +27,6 @@
 }
 
 .menu__header {
-  background-color: rgba($color__background--light, 0.95);
   display: flex;
   height: 42px;
   align-items: center;
@@ -38,11 +37,11 @@
 
 .menu__scroll-wrapper {
   position: absolute;
-  top: 0;
+  top: 43px;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: calc(1rem + 43px) 0 1rem 0;
+  padding: 1rem 0;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;

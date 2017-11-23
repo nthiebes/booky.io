@@ -1,13 +1,10 @@
 .category {
   flex-grow: 1;
-  margin: 2rem 3vw;
+  margin: 1.143rem 3vw;
   max-width: 94%;
   padding: 6px;
   width: 300px;
   position: relative;
-  
-  // display: grid;
-  // overflow: hidden;
 
   @include desktop {
     width: 390px;
@@ -28,14 +25,6 @@
   align-items: center;
   display: flex;
   flex-wrap: nowrap;
-
-  @include desktop {
-    // &:hover .category__icon {
-    //   opacity: 1;
-    //   transition: color 0.2s linear, opacity 0.2s linear;
-    //   width: auto;
-    // }
-  }
 
   &.category__header--edit-mode .category__icon {
     opacity: 1;
@@ -73,6 +62,7 @@
   font-weight: 300;
   min-width: 0;
   text-shadow: 0 0 0;
+  user-select: none;
 
   &:after {
     background-color: $color__background--primary;
@@ -82,6 +72,10 @@
     left: 6px;
     position: absolute;
     right: 6px;
+  }
+
+  &:active {
+    color: $color__font--primary;
   }
 }
 
