@@ -37,17 +37,17 @@ export default class Icon extends Component {
 }
 
 Icon.propTypes = {
-  'className': PropTypes.string,
-  'icon': PropTypes.string.isRequired,
-  'label': PropTypes.string,
-  'onClick': PropTypes.func,
-  'title': PropTypes.string,
-  'stopPropagation': PropTypes.bool,
+  className: PropTypes.string,
+  icon: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  onClick: PropTypes.func,
+  title: PropTypes.string,
+  stopPropagation: PropTypes.bool,
   color: PropTypes.string
 };
 
 Icon.defaultProps = {
   className: '',
   title: '',
-  color: 'dark'
+  color: 'medium'
 };

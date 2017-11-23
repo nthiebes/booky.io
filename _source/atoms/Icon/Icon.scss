@@ -22,10 +22,6 @@
   }
 
   &:active {
-    .a-icon__svg {
-      // transform: scale(0.9);
-    }
-
     &:after {
       animation: 0.3s linear 1 circle;
     }
