@@ -45,6 +45,14 @@
   }
 }
 
+.category__toggle-icon {
+  transition: transform 0.2s linear;
+
+  &.category__toggle-icon--rotate {
+    transform: rotate(-90deg);
+  }
+}
+
 .category__icon {
   opacity: 0;
   width: 0;

@@ -36,7 +36,8 @@ export default class Category extends Component {
       <section className="category">
         <header className={ classNames('category__header', editMode && 'category__header--edit-mode') }>
           <Icon
-            icon={ open ? 'expand' : 'reduce' }
+            className={ classNames('category__toggle-icon', !open && 'category__toggle-icon--rotate') }
+            icon="expand"
             title={ open ? 'Reduce category' : 'Expand category' }
             onClick={ this.toggleCategory }
           />
