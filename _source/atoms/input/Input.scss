@@ -16,8 +16,7 @@
   width: 100%;
 
   &:focus {
-    // background-color: $color__background--medium;
-    border-color: $color--blue;
+    border-color: $color--8;
     box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
   }
 
@@ -32,5 +31,17 @@
     &:focus {
       width: 300px;
     }
+  }
+
+  &.input__field--color-primary {
+    border-color: $color--primary;
+  }
+
+  &.input__field--color-blue {
+    border-color: $color--blue;
+  }
+
+  &.input__field--color-green {
+    border-color: $color--green;
   }
 }
