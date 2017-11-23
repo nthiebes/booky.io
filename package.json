@@ -25,9 +25,7 @@
     "test": "jest --config jest.config.json --no-cache",
     "test:watch": "npm run test -- --watch",
     "test:cover": "jest --config jest.config.json --no-cache --coverage",
-    "qa": "npm-run-all test lint",
-    "docs:html": "./node_modules/.bin/jsdoc -c ./.jsdocrc -d docs",
-    "docs:md": "./node_modules/.bin/jsdoc2md \"_source/**/*.{js,jsx}\" > DOCS.md --conf .jsdocrc"
+    "qa": "npm-run-all test lint"
   },
   "author": "Nico Thiebes",
   "license": "SEE LICENSE IN \"LICENSE\"",
