@@ -52,6 +52,12 @@
   }
 }
 
+.category__edit-icon--hide {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
 .category__name {
   color: $color__font--dark;
   cursor: default;

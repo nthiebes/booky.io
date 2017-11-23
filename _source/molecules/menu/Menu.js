@@ -16,12 +16,8 @@ export default class Menu extends Component {
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //     nextProps.document.body.classList.toggle('booky--no-scrolling-mobile-tablet', nextProps.menuOpen);
-  // }
-
-  onMenuClick(event) {
-    event.stopPropagation();
+  onMenuClick(e) {
+    e.stopPropagation();
   }
 
   toggleEditMode() {
@@ -44,21 +40,18 @@ export default class Menu extends Component {
         <div className="menu__scroll-wrapper">
           <div className="menu__headline-wrapper">
             <H3 className="menu__headline">{ 'Dashboards' }</H3>
-            { editMode ? (
-              <Icon
-                color="medium"
-                icon="view"
-                title="View mode"
-                onClick={ this.toggleEditMode }
-              />
-            ) : (
-              <Icon
-                color="medium"
-                icon="edit-mode"
-                title="Edit mode"
-                onClick={ this.toggleEditMode }
-              />
-            ) }
+            <Icon
+              className={ editMode ? '' : 'menu__edit-icon--hide' }
+              icon="view"
+              title="View mode"
+              onClick={ this.toggleEditMode }
+            />
+            <Icon
+              className={ editMode ? 'menu__edit-icon--hide' : '' }
+              icon="edit-mode"
+              title="Edit mode"
+              onClick={ this.toggleEditMode }
+            />
           </div>
           <ul className={ classNames('menu__dashboards', editMode && 'menu__dashboards--edit-mode') }>
             { dashboards.items.map((item, index) => (

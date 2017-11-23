@@ -88,6 +88,12 @@
   }
 }
 
+.menu__edit-icon--hide {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
 .menu__nav {
   display: flex;
   justify-content: flex-start;
@@ -117,13 +123,23 @@
     align-items: center;
     height: 2.5rem;
     line-height: 2.5rem;
-    transition: color 0.3s linear;
     width: 100%;
     list-style: none;
     padding: 0 3vw;
+    user-select: none;
+    transition: none;
+
+    .icon {
+      transition: none;
+    }
 
     &:active {
       background-color: $color__background--medium;
+      color: $color__font--primary;
+
+      &:active .icon {
+        color: $color__font--primary;
+      }
     }
   }
 
@@ -174,7 +190,6 @@
 .menu__label {
   font-family: $font__family--text;
   font-size: 1rem;
-  font-weight: 400;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
