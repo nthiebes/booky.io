@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import router from './router.jsx';
+import router from './router';
 import configureStore from './configureStore';
 import initialState from './initialState';
 

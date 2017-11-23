@@ -36,7 +36,10 @@ export default class Menu extends Component {
           </div>
           <ul className="menu__dashboards">
             { dashboards.items.map((item, index) => (
-              <li key={ index } className={ `menu__item ${index === dashboards.active && 'menu__item--active'}` }>
+              <li
+                key={ index }
+                className={ `menu__item ${index === dashboards.active && 'menu__item--active'}` }
+                onClick={ closeMenu }>
                 <label className="menu__label">{ item.name }</label>
               </li>
             )) }
@@ -44,28 +47,28 @@ export default class Menu extends Component {
           <hr className="menu__hr" />
           <H3 className="menu__headline-wrapper">{ 'Navigation' }</H3>
           <ul className="menu__nav">
-            <Link className="menu__item" href="/">
+            <Link className="menu__item" href="/" onClick={ closeMenu }>
               <Icon icon="heart-border" />
               <label className="menu__label">{ 'Home' }</label>
             </Link>
-            <Link className="menu__item" href="/about">
+            <Link className="menu__item" href="/about" onClick={ closeMenu }>
               <Icon icon="about" />
               <label className="menu__label">{ 'About' }</label>
             </Link>
-            <Link className="menu__item" href="/help">
+            <Link className="menu__item" href="/help" onClick={ closeMenu }>
               <Icon icon="help" />
               <label className="menu__label">{ 'Help' }</label>
             </Link>
             { loggedIn && [
-              <Link key="0" className="menu__item" href="/account">
+              <Link key="0" className="menu__item" href="/account" onClick={ closeMenu }>
                 <Icon icon="account"/>
                 <label className="menu__label">{ 'Account' }</label>
               </Link>,
-              <Link key="1" className="menu__item" href="/next">
+              <Link key="1" className="menu__item" href="/next" onClick={ closeMenu }>
                 <Icon icon="next" />
                 <label className="menu__label">{ 'Next' }</label>
               </Link>,
-              <Link key="2" className="menu__item" href="/logout">
+              <Link key="2" className="menu__item" href="/logout" onClick={ closeMenu }>
                 <Icon icon="sign-out" />
                 <label className="menu__label">{ 'Sign Out' }</label>
               </Link>
