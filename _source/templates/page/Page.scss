@@ -1,20 +1,28 @@
 .page {
   margin: 0 auto;
-  padding: 80px 6px 100px 6px;
+  padding: 7rem 6px 7rem 6px;
   max-width: 94%;
 
   @include tablet {
-    padding-top: 64px;
+    padding: 9rem 6px 9rem 6px;
   }
 
   @include desktop {
     max-width: 800px;
-    padding: 86px 0 100px 0;
+    // padding: 6rem 0 8rem 0;
   }
 
   &.page--full-width {
     max-width: 100%;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  &.page--no-toolbar {
+    padding: 4rem 6px 4rem 6px;
+
+    @include tablet {
+      padding: 6rem 6px 6rem 6px;
+    }
   }
 }

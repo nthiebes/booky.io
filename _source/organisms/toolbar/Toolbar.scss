@@ -5,7 +5,7 @@
   margin-top: 2px;
   padding: 0 3vw 0 calc(3vw + 6px);
   position: absolute;
-  top: 40px;
+  top: 3rem;
   width: 100%;
   z-index: 1;
   height: 42px;
@@ -13,26 +13,25 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 
   @include tablet {
-    top: 62px;
+    top: 4.4rem;
   }
 
   @include desktop {
     background-color: rgba($color__background--light, 0.95);
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-    // pointer-events: auto;
-    top: 84px;
+    top: 6.2rem;
   }
 
   &.toolbar--sticky {
     position: fixed;
-    top: 40px;
+    top: 3rem;
 
     @include tablet {
-      top: 62px;
+      top: 4.4rem;
     }
 
     @include desktop {
-      top: 84px;
+      top: 6.2rem;
     }
   }
 

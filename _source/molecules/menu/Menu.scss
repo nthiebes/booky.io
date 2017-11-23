@@ -16,10 +16,10 @@
     overflow: hidden;
   }
 
-  @include desktop {
-    padding-left: 3rem;
-    z-index: 1;
-  }
+  // @include desktop {
+  //   padding-left: 3rem;
+  //   z-index: 1;
+  // }
 
   &.menu--open {
     transform: translate3d(0,0,0);
@@ -28,16 +28,21 @@
 
 .menu__header {
   display: flex;
-  height: 42px;
+  height: 3rem;
   align-items: center;
   position: relative;
   z-index: 3;
   padding: 0 3vw;
+
+  @include tablet {
+    height: 4.4rem;
+  }
 }
 
 .menu__scroll-wrapper {
   position: absolute;
-  top: 43px;
+  top: 3rem;
+  margin-top: 1px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -45,6 +50,10 @@
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+
+  @include tablet {
+    top: 4.4rem;
+  }
 }
 
 .menu__headline-wrapper {

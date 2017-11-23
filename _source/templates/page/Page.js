@@ -13,7 +13,7 @@ export default class Page extends Component {
         <Header />
         { toolbar && <Toolbar document={ document } window={ window } /> }
         <Sidebar />
-        <main className={ `page ${className}` }>
+        <main className={ `page ${className} ${toolbar ? '' : 'page--no-toolbar'}` }>
           { children }
         </main>
       </div>
