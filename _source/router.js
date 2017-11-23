@@ -17,7 +17,7 @@ export default (
     <IndexRoute component={ Home } />
     <Route path="about" component={ About } />
     <Route path="help" component={ Help } />
-    <Route path="profile" component={ Account } />
+    <Route path="account" component={ Account } />
     <Route path="logout" component={ Logout } />
     <Route path="login" component={ Login } />
     <Route path="join" component={ Join } />
