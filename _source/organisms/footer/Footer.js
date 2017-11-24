@@ -31,7 +31,7 @@ export default class Footer extends Component {
             <Link className="footer__menu-item" href="/privacy">{ 'Privacy Policy' }</Link>
             <Link className="footer__menu-item" href="/legal">{ 'Legal Notice' }</Link>
           </ul>
-          <ButtonSmallLight className="footer__button">
+          <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
             <b>{ 'Back' }</b>{ ' to ' }<b>{ 'top' }</b>
           </ButtonSmallLight>
           <div className="footer__logo">{ 'booky.io (logo)' }</div>
