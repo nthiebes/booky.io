@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Paragraph from './component.jsx';
+import Paragraph from './Paragraph';
 
 xdescribe('<Paragraph />', function() {
 
