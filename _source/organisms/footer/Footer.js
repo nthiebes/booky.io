@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
-import Button from '../../atoms/button';
+import { ButtonSmallLight } from '../../atoms/button';
 
 export default class Footer extends Component {
   render() {
@@ -31,7 +31,9 @@ export default class Footer extends Component {
             <Link className="footer__menu-item" href="/privacy">{ 'Privacy Policy' }</Link>
             <Link className="footer__menu-item" href="/legal">{ 'Legal Notice' }</Link>
           </ul>
-          <Button className="footer__button" text="Back to top" color="light" />
+          <ButtonSmallLight className="footer__button">
+            <b>{ 'Back' }</b>{ ' to ' }<b>{ 'top' }</b>
+          </ButtonSmallLight>
           <div className="footer__logo">{ 'booky.io (logo)' }</div>
           <div className="footer__copy">
             { '© 2014-2017' }

@@ -1,0 +1,185 @@
+.button {
+  align-items: center;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-family: $font__family--text;
+  font-size: 1rem;
+  overflow: hidden;
+  padding: 0 1.2rem;
+  position: relative;
+  text-transform: uppercase;
+  transition: color 0.2s linear, background-color 0.2s linear;
+  user-select: none;
+  white-space: nowrap;
+
+  &.button--small {
+
+  }
+
+  &.button--small-light {
+    background-color: transparent;
+    border-color: $color__font--white;
+    color: $color__font--white;
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: $color__font--white;
+        color: $color__font--primary;
+      }
+      &:active .icon {
+        color: $color__font--primary;
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: $color__font--white;
+        color: $color__font--primary;
+      }
+      &:hover .icon {
+        color: $color__font--primary;
+      }
+    }
+  }
+
+  &.button--small-primary {
+    background-color: transparent;
+    border-color: $color__font--primary;
+    color: $color__font--primary;
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: $color__font--primary;
+        color: $color__font--white;
+      }
+      &:active .icon {
+        color: $color__font--white;
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: $color__font--primary;
+        color: $color__font--white;
+      }
+      &:hover .icon {
+        color: $color__font--white;
+      }
+    }
+  }
+
+  &.button--small-dark {
+    background-color: transparent;
+    border-color: $color__font--dark;
+    color: $color__font--dark;
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: $color__font--dark;
+        color: $color__font--white;
+      }
+      &:active .icon {
+        color: $color__font--white;
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: $color__font--dark;
+        color: $color__font--white;
+      }
+      &:hover .icon {
+        color: $color__font--white;
+      }
+    }
+  }
+
+  &.button--large {
+    justify-content: center;
+
+    @include mobile-tablet() {
+      height: 40px;
+      width: calc(94vw - 12px);
+
+      .button__icon {
+        display: none;
+      }
+    }
+
+    @include desktop() {
+      height: 60px;
+      width: 200px;
+
+      &:hover {
+        .icon,
+        .icon__svg {
+          color: $color__font--white;
+        }
+
+        .button__icon {
+          transform: translateX(10px);
+        }
+
+        .button__text {
+          transform: translateX(20px);
+        }
+      }
+
+      .button__icon {
+        display: inline-block;
+        left: 0;
+        position: absolute;
+        transform: translateX(-100%);
+        transition: color 0.2s linear, transform 0.2s ease;
+
+        &:hover {
+          .icon__svg {
+            transform: none;
+          }
+        }
+      }
+    }
+  }
+
+  &.button--large-primary {
+    background-color: rgba($color__background--primary, 0.9);
+    color: $color__font--white;
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: $color__background--primary;
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: $color__background--primary;
+      }
+    }
+  }
+}
+
+.button__text {
+  display: inline-block;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+  height: 2rem;
+  line-height: 2rem;
+}
+
+.button--small {
+  .icon {
+    height: 24px;
+    width: 24px;
+    margin-right: 6px;
+  }
+
+  .icon__svg {
+    padding: 0;
+    height: 24px;
+    width: 24px;
+  }
+}

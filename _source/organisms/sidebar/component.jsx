@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../atoms/button';
+import { ButtonSmallPrimary } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import ColorPicker from '../../molecules/color-picker';
 import Dropdown from '../../molecules/dropdown';
@@ -27,7 +27,7 @@ export default class Sidebar extends Component {
     return (
       <aside className={ SIDEBAR_CLASS }>
         <h1 className="o-sidebar__heading">{ 'Customize booky' }</h1>
-        <Button onButtonClick={ PROPS.onDoneClick } text="Done" />
+        <ButtonSmallPrimary onButtonClick={ PROPS.onDoneClick }>{ 'Done' }</ButtonSmallPrimary>
 
         <h2 className="o-sidebar__subheading">{ 'Global color scheme' }</h2>
         <ColorPicker activeColor={ PROPS.globalColor } onColorChange={ PROPS.onGlobalColorChange } />
