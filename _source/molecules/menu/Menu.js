@@ -42,7 +42,7 @@ export default class Menu extends Component {
             <H3 className="menu__headline">{ 'Dashboards' }</H3>
             <Icon
               className={ editMode ? '' : 'menu__edit-icon--hide' }
-              icon="view"
+              icon="close"
               title="View mode"
               onClick={ this.toggleEditMode }
             />

@@ -50,7 +50,7 @@ export default class Category extends Component {
           <Icon className="category__icon category__icon--drag" icon="drag" title="Drag category" />
           <Icon
             className={ editMode ? '' : 'category__edit-icon--hide' }
-            icon="view"
+            icon="close"
             title="View mode"
             onClick={ this.toggleEditMode }
           />
