@@ -79,8 +79,8 @@
   }
 
   &.icon--light {
-    color: $color__font--light;
-    border-color: $color__font--light;
+    color: $color__font--white;
+    border-color: $color__font--white;
 
     @include mobile-tablet {
       &:active {

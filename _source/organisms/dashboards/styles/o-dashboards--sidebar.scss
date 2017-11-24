@@ -7,7 +7,7 @@
     top: 0;
     
     @include mobile-tablet() {
-        background-color: $color__background--light;
+        background-color: $color__background--white;
         border-left: 2px solid rgba(0,0,0,0.15);
         bottom: 0;
         display: block;

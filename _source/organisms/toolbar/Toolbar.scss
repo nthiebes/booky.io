@@ -9,7 +9,7 @@
   width: 100%;
   z-index: 1;
   height: 42px;
-  background-color: rgba($color__background--light, 0.95);
+  background-color: rgba($color__background--white, 0.95);
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 
   @include tablet {
@@ -17,7 +17,7 @@
   }
 
   @include desktop {
-    background-color: rgba($color__background--light, 0.95);
+    background-color: rgba($color__background--white, 0.95);
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     top: 6.2rem;
   }

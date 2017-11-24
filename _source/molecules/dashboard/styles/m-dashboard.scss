@@ -2,7 +2,7 @@
 @import "__title/m-dashboard__title";
 
 .m-dashboard {
-    background-color: $color__background--light;
+    background-color: $color__background--white;
     border-left: 1px solid $color__background--primary;
     border-right: 1px solid $color__background--primary;
     display: flex;
@@ -25,7 +25,7 @@
             background-color: lighten($color__background--primary, 3);
 
             .m-dashboard__title {
-                color: $color__font--light;
+                color: $color__font--white;
                 padding: 0 0 0 15px;
             }
         }
