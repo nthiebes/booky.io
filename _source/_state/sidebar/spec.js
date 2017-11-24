@@ -15,7 +15,7 @@ import {
 } from './actions';
 import reducer from './reducer';
 
-describe('sidebar', function() {
+xdescribe('sidebar', function() {
 
   describe('actions', function() {
 

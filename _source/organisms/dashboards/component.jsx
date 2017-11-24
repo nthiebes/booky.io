@@ -1,7 +1,8 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import scrolling from '../../_utils/scrolling';
 import Dashboard from '../../molecules/dashboard';
-import Button from '../../atoms/button';
+import { ButtonSmallPrimary } from '../../atoms/button';
 
 /**
  * React component
@@ -109,16 +110,18 @@ export default class Dashboards extends Component {
       <aside className={ CLASS }>
         <ul className="o-dashboards__list">
           <li className="o-dashboards__title">{ 'Dashboards' }</li>
-          {DASHBOARDS.map((dashboard) =>
+          { DASHBOARDS.map((dashboard) => (
             <Dashboard 
               key={ dashboard.id } { ...dashboard } 
               onDashboardClick={ PROPS.onDashboardClick } 
               isActive={ this.props.activeDashboard === dashboard.id } 
               editMode={ PROPS.editMode }
             />
-          )}
+          )) }
           <li className="o-dashboards__button-wrapper">
-            <Button text="Add" buzzword="dashboard" className="o-dashboards__button" />
+            <ButtonSmallPrimary className="o-dashboards__button">
+              { 'Add ' }<b>{ 'dashboard' }</b>
+            </ButtonSmallPrimary>
           </li>
         </ul>
       </aside>

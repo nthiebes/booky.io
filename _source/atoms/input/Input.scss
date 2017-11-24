@@ -1,0 +1,47 @@
+.input {
+  flex-grow: 1;
+}
+
+.input__field {
+  background-color: $color__background--white;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0;
+  color: $color__font--dark;
+  font-family: $font__family--text;
+  font-size: $size--phone;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 9px;
+  transition: background-color 0.3s, border-color 0.3s linear, box-shadow 0.3s linear;
+  width: 100%;
+
+  &:focus {
+    border-color: $color__font--medium;
+    box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
+  }
+
+  @include desktop {
+    transition: width 0.3s ease, border-color 0.3s linear, box-shadow 0.3s linear;
+    width: 200px;
+
+    &:hover {
+      border-color: $color--blue;
+    }
+
+    &:focus {
+      width: 300px;
+    }
+  }
+
+  &.input__field--color-primary {
+    border-color: $color--primary;
+  }
+
+  &.input__field--color-blue {
+    border-color: $color--blue;
+  }
+
+  &.input__field--color-green {
+    border-color: $color--green;
+  }
+}

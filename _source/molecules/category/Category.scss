@@ -1,0 +1,84 @@
+.category {
+  flex-grow: 1;
+  margin: 1.143rem 3vw;
+  max-width: 94%;
+  width: 300px;
+  position: relative;
+
+  @include desktop {
+    width: 390px;
+  }
+}
+
+.category__bookmarks {
+  width: 100%;
+  list-style: none;
+  margin-top: 0.7rem;
+
+  &.category__bookmarks--hidden {
+    display: none;
+  }
+}
+
+.category__header {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+
+  &.category__header--edit-mode .category__icon {
+    opacity: 1;
+    transition: color 0.2s linear, opacity 0.2s linear;
+    width: auto;
+    overflow: inherit;
+  }
+
+  &:after {
+    background-color: $color__background--primary;
+    top: 2.7rem;
+    content: " ";
+    height: 2px;
+    left: 6px;
+    position: absolute;
+    right: 6px;
+  }
+}
+
+.category__toggle-icon {
+  transition: transform 0.2s linear;
+
+  &.category__toggle-icon--rotate {
+    transform: rotate(-90deg);
+  }
+}
+
+.category__icon {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+
+  &.category__icon--drag {
+    cursor: move;
+  }
+}
+
+.category__edit-icon--hide {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.category__name {
+  cursor: default;
+  flex-grow: 1;
+  user-select: none;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  &:active {
+    color: $color__font--primary;
+  }
+}

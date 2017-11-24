@@ -10,7 +10,7 @@ booky.io is an online bookmarking service with high focus on performance, mobile
 
 [Learn more about booky.io](https://booky.io/about)
 
-This project is a frontend rewrite of the existing site.
+This project is a frontend rewrite of the existing site. It is work in progress.
 
 ## Development
 ### Setup
@@ -19,10 +19,3 @@ Install dependencies and start the server:
 npm install
 npm start
 ```
-
-### Documentation
-[DOCS.md](DOCS.md) or
-```
-npm run docs:html
-```
-Docs will be created inside the `docs` folder.

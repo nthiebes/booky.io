@@ -1,0 +1,21 @@
+.search {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  margin: 0 1rem;
+
+  // @include desktop {
+  //   flex-grow: 1;
+  //   text-align: right;
+  // }
+}
+
+.search__input {
+  height: 2.429rem;
+  line-height: 2.429rem;
+
+  @include tablet {
+    height: 3rem;
+    line-height: 3rem;
+  }
+}

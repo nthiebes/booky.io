@@ -2,7 +2,7 @@
     @include desktop() {
         &:hover {
             .m-dashboard__icon {
-                color: $color__font--light;
+                color: $color__font--white;
             }
         }
     }

@@ -1,0 +1,14 @@
+.link {
+  font-size: 1rem;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &.link--primary {
+    color: $color__font--primary;
+  }
+
+  &.link--light {
+    color: $color__font--white;
+  }
+}

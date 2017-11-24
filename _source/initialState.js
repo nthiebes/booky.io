@@ -1,6 +1,6 @@
 export default {
   'booky': {
-    'loggedIn': false
+    'loggedIn': true
   },
   'dashboards': {
     'items': [{
@@ -25,21 +25,21 @@ export default {
     'expanded': true
   }, {
     'id': 1,
-    'name': 'مرحبا كيف حالك؟ asas!',
+    'name': 'Category 2 مرحبا كيف حالك؟ asas!',
     'dashboard': 0,
     'position': 2,
     'color': 2,
     'expanded': true
   }, {
     'id': 2,
-    'name': 'Category こんにちはお元気で 3',
+    'name': 'Category 3 こんにちはお元気で 3',
     'dashboard': 0,
     'position': 1,
     'color': 3,
     'expanded': false
   }, {
     'id': 3,
-    'name': 'Category Привет, как дела 4',
+    'name': 'Category 4 Привет, как дела 4',
     'dashboard': 0,
     'position': 3,
     'color': 4,
@@ -152,7 +152,7 @@ export default {
     'position': 0
   }],
   'header': {
-    'menuMainOpen': false,
+    'menuOpen': false,
     'dashboardsOpen': false
   },
   'toolbar': {

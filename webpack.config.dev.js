@@ -12,9 +12,8 @@ export default {
   entry: [
     // must be first entry to properly set public path
     './_source/webpack-public-path',
-    './env.dev',
     'webpack-hot-middleware/client?reload=true',
-    './_source/main'
+    './_source/index.js'
   ],
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
   output: {

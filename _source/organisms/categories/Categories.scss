@@ -1,0 +1,31 @@
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include tablet {
+    // margin-top: 110px;
+  }
+
+  @include desktop {
+    // margin-top: 180px;
+  }
+
+  // &.categories--sidebar {
+  //   @include desktop() {
+  //     padding-left: 300px;
+  //   }
+  // }
+
+  // &.categories--max-width {
+  //   max-width: 1400px;
+  //   margin: 80px auto;
+
+  //   @include tablet {
+  //     margin: 110px auto;
+  //   }
+
+  //   @include desktop {
+  //     margin: 180px auto;
+  //   }
+  // }
+}

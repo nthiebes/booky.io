@@ -1,3 +1,3 @@
-import container from './container';
+import container from './CategoriesContainer';
 
 export default container;

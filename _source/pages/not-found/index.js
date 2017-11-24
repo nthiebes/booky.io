@@ -1,3 +1,3 @@
-import component from './component.jsx';
+import component from './NotFound';
 
 export default component;

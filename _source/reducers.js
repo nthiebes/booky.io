@@ -8,7 +8,7 @@ import toolbar from './_state/toolbar';
 import sidebar from './_state/sidebar';
 
 const reducers = combineReducers({
-  'routing': routerReducer,
+  routing: routerReducer,
   booky,
   dashboards,
   categories,

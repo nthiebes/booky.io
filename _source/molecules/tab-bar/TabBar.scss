@@ -1,0 +1,30 @@
+.tab-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.tab-bar__tab {
+  user-select: none;
+  color: $color__font--medium;
+  font-weight: bold;
+  white-space: nowrap;
+  padding: 6px 3vw;
+  flex: 0 0 auto;
+  cursor: pointer;
+  border-bottom: 2px solid $color__background--medium;
+  transition: color 0.2s, border-bottom-color 0.2s;
+}
+
+.tab-bar__tab:active {
+  color: $color__font--dark;
+}
+
+.tab-bar__tab--active {
+  cursor: default;
+  color: $color--primary;
+  border-bottom-color: $color--primary;
+}

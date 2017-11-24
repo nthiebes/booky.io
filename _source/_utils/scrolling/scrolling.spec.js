@@ -1,6 +1,6 @@
 import { Scrolling } from './scrolling';
 
-describe('scrolling', function() {
+xdescribe('scrolling', function() {
 
   const windowMock = {
       'addEventListener': jest.fn(),

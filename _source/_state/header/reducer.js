@@ -1,15 +1,15 @@
-import { TOGGLE_MAIN_MENU, CLOSE_MAIN_MENU, TOGGLE_DASHBOARDS, CLOSE_DASHBOARDS } from './actions';
+import { TOGGLE_MENU, CLOSE_MENU, TOGGLE_DASHBOARDS, CLOSE_DASHBOARDS } from './actions';
 
 const header = (state = {}, action) => {
   switch (action.type) {
-    case TOGGLE_MAIN_MENU:
+    case TOGGLE_MENU:
       return Object.assign({}, state, {
-        'menuMainOpen': !state.menuMainOpen
+        'menuOpen': !state.menuOpen
       });
 
-    case CLOSE_MAIN_MENU:
+    case CLOSE_MENU:
       return Object.assign({}, state, {
-        'menuMainOpen': false
+        'menuOpen': false
       });
 
     case TOGGLE_DASHBOARDS:

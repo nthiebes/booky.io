@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Checkbox from './component.jsx';
 
-describe('<Checkbox />', function() {
+xdescribe('<Checkbox />', function() {
 
   describe('presentational component', function() {
 
