@@ -1,4 +1,5 @@
 .footer {
+  font-size: $size--small;
   text-align: center;
 }
 
@@ -16,13 +17,93 @@
   flex-direction: column;
   align-items: center;
   padding: 0 1rem;
+  user-select: none;
+  text-decoration: none;
+
+  @include mobile-tablet {
+    &:active {
+      .footer__icon,
+      .footer__label {
+        color: $color__font--primary;
+      }
+    }
+  }
+
+  @include desktop {
+    &:hover {
+      .footer__icon,
+      .footer__label {
+        color: $color__font--primary;
+      }
+    }
+  }
 }
 
 .footer__label {
+  transition: color 0.2s linear;
   color: $color__font--white;
+  cursor: pointer;
 }
 
 .footer__content {
   background-color: $color__background--dark;
   padding: 2rem 3vw;
+}
+
+.footer__menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+}
+
+.footer__menu-item {
+  font-size: $size--small;
+  padding: 0 0.5rem;
+  color: $color__font--white;
+  line-height: 1.5rem;
+
+  @include mobile-tablet {
+    &:active {
+      color: $color__font--primary;
+    }
+  }
+
+  @include desktop() {
+    &:hover {
+      color: $color__font--primary;
+    }
+  }
+}
+
+.footer__logo {
+  color: $color__font--white;
+  margin-top: 2rem;
+}
+
+.footer__button {
+  margin-top: 2rem;
+}
+
+.footer__copy {
+  color: $color__font--light;
+  margin-top: 2rem;
+}
+
+.footer__copy-link {
+  font-size: $size--small;
+  color: $color__font--white;
+  padding: 0 0.3rem;
+
+  @include mobile-tablet {
+    &:active {
+      color: $color__font--primary;
+    }
+  }
+
+  @include desktop() {
+    &:hover {
+      color: $color__font--primary;
+    }
+  }
 }

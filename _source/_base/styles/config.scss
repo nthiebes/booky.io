@@ -15,6 +15,7 @@ $color__background--white: #fff;
 $color__font--primary: $color--primary;
 $color__font--dark: #14171a;
 $color__font--medium: #657786;
+$color__font--light: #999;
 $color__font--white: #fff;
 
 $color--0: $color--primary;
@@ -30,6 +31,7 @@ $color--8: #777;
 /**
  * Size
  */
+$size--small: 12px;
 $size--phone: 14px;
 $size--tablet: 14px;
 $size--desktop: 16px;

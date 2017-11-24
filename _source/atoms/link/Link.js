@@ -6,14 +6,19 @@ import classNames from 'classnames';
 export default class Link extends Component {
   render() {
     const { color, className, href, title, children, onClick } = this.props;
-    const CustomTag = href === '/' ? IndexLink : RegularLink;
+    const isMail = href.indexOf('mailto') >= 0;
+    const props = {
+      className: classNames('link', className && className, color && `link--${color}`),
+      [isMail ? 'href' : 'to']: href,
+      title: title,
+      onClick: onClick && onClick
+    };
+    let CustomTag = href === '/' ? IndexLink : RegularLink;
+
+    CustomTag = isMail ? 'a' : CustomTag;
 
     return (
-      <CustomTag
-        className={ classNames('link', className && className, color && `link--${color}`) }
-        to={ href }
-        title={ title }
-        onClick={ onClick && onClick }>
+      <CustomTag { ...props }>
         { children }
       </CustomTag>
     );
