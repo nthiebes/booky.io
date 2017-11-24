@@ -7,7 +7,7 @@ import { toggleMenu, closeMenu, toggleDashboards, closeDashboards } from '../../
 import { actions as sidebarActions } from '../../_state/sidebar';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
-import Button from '../../atoms/button';
+// import Button from '../../atoms/button';
 
 xdescribe('<Header />', function() {
 
@@ -93,7 +93,7 @@ xdescribe('<Header />', function() {
 
       it('include a button', function() {
         expect(component.containsMatchingElement(
-          <Button className="o-header__sign-out a-button--light" size="small" color="light" text="Sign" buzzword="Out" />
+          // <Button className="o-header__sign-out a-button--light" size="small" color="light" text="Sign" buzzword="Out" />
         )).toBe(true);
       });
     });

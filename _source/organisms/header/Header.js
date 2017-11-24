@@ -5,7 +5,7 @@ import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Search from '../../molecules/search';
-import Button from '../../atoms/button';
+import { ButtonSmallLight } from '../../atoms/button';
 
 /**
  * React component
@@ -57,22 +57,16 @@ export default class Header extends Component {
           </Link>
         ) }
 
-        { !loggedIn && <Button 
-          className="header__join" 
-          size="small" 
-          color="light" 
-          text="Join" 
-          buzzword="Booky" 
-          href="join"
-        /> }
-        { !loggedIn && <Button 
-          className="header__sign-in" 
-          size="small" 
-          color="light" 
-          text="Sign" 
-          buzzword="In" 
-          href="login"
-        /> }
+        { !loggedIn && (
+          <ButtonSmallLight className="header__sign-in" href="/join">
+            { 'Join ' }<b>{ 'Booky' }</b>
+          </ButtonSmallLight>
+        ) }
+        { !loggedIn && (
+          <ButtonSmallLight className="header__sign-in" href="/login">
+            { 'Sign ' }<b>{ 'In' }</b>
+          </ButtonSmallLight>
+        ) }
       </header>
     );
     // <Icon key="1" icon="add-category" color="light" title="New category" className="b-hide-desktop" />,

@@ -16,7 +16,7 @@ import {
   toggleMaxWidth,
   updateDashboardType
 } from '../../_state/sidebar/actions';
-import Button from '../../atoms/button';
+// import Button from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import ColorPicker from '../../molecules/color-picker';
 import Dropdown from '../../molecules/dropdown';
@@ -90,7 +90,7 @@ xdescribe('<Sidebar />', function() {
 
         expect(component.contains(
           <h1 className="o-sidebar__heading">{ 'Customize booky' }</h1>,
-          <Button onButtonClick={ onDoneClickCallback } text="Done" />,
+          // <Button onButtonClick={ onDoneClickCallback } text="Done" />,
           <h2 className="o-sidebar__subheading">{ 'Global color scheme' }</h2>,
           <ColorPicker onColorChange={ onGlobalColorChangeCallback } activeColor={ 0 } />,
           <h2 className="o-sidebar__subheading">{ 'Header color' }</h2>,
