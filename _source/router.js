@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import Booky from './_base';
+import Booky from './templates/booky';
 import Home from './pages/home';
 import About from './pages/about';
 import Help from './pages/help';
