@@ -51,7 +51,7 @@ export default class Category extends Component {
           <Icon
             className={ editMode ? '' : 'category__edit-icon--hide' }
             icon="close"
-            title="View mode"
+            title="Close edit mode"
             onClick={ this.toggleEditMode }
           />
           <Icon

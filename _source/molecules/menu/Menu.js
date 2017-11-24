@@ -43,7 +43,7 @@ export default class Menu extends Component {
             <Icon
               className={ editMode ? '' : 'menu__edit-icon--hide' }
               icon="close"
-              title="View mode"
+              title="Close edit mode"
               onClick={ this.toggleEditMode }
             />
             <Icon
