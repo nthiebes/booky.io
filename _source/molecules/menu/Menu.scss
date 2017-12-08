@@ -149,6 +149,7 @@
     padding: 0 calc(3vw + 6px) 0 3vw;
     user-select: none;
     transition: none;
+    cursor: pointer;
 
     .icon {
       transition: none;
@@ -215,6 +216,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   flex-grow: 1;
+  cursor: pointer;
 }
 
 .menu__hr {
