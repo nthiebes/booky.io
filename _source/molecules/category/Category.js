@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Droppable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
@@ -30,7 +31,7 @@ export default class Category extends Component {
   }
 
   render() {
-    const { name } = this.props;
+    const { name, id, bookmarks } = this.props;
     const { open, editMode } = this.state;
 
     return (
@@ -62,9 +63,22 @@ export default class Category extends Component {
           />
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
-          <Bookmark editMode={ editMode } name="Bookmark 1 veeeeeeery こんにちはお元気で loooooong tiiiitle !!!!!!" url="https://booky.io" />
-          <Bookmark editMode={ editMode } name="Bookmark مرحبا كيف حال 2" url="https://booky.io" />
-          <Bookmark editMode={ editMode } name="Bookmark Привет, как дела 3" url="https://booky.io" />
+          <Droppable droppableId={ id.toString() } type="bookmark">
+            { (provided) => (
+              <div ref={ provided.innerRef }>
+                { bookmarks.map((bookmark, index) => (
+                  <Bookmark
+                    key={ index }
+                    id={ bookmark.id }
+                    editMode={ editMode }
+                    name={ bookmark.name }
+                    url={ bookmark.url }
+                  />
+                )) }
+                { provided.placeholder }
+              </div>
+            ) }
+          </Droppable>
         </ul>
       </section>
     );
@@ -73,9 +87,12 @@ export default class Category extends Component {
 
 Category.propTypes = {
   name: PropTypes.string.isRequired,
-  open: PropTypes.bool
+  open: PropTypes.bool,
+  id: PropTypes.number.isRequired,
+  bookmarks: PropTypes.array
 };
 
 Category.defaultProps = {
-  open: true
+  open: true,
+  bookmarks: []
 };
