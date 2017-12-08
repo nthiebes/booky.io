@@ -1,3 +1,3 @@
-import Booky from './Booky';
+import Booky from './BookyContainer';
 
 export default Booky;

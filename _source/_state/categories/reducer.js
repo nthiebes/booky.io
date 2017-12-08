@@ -1,4 +1,5 @@
-import { ADD_CATEGORY, TOGGLE_CATEGORY } from './actions';
+import { ADD_CATEGORY, TOGGLE_CATEGORY, ADD_BOOKMARK } from './actions';
+import { arrayMove } from '../../_utils/array';
 
 const categories = (state = [], action) => {
   switch (action.type) {
@@ -6,9 +7,9 @@ const categories = (state = [], action) => {
       return [
         ...state,
         {
-          'id': action.id,
-          'name': action.name,
-          'expanded': true
+          id: action.id,
+          name: action.name,
+          expanded: true
         }
       ];
 
@@ -16,11 +17,42 @@ const categories = (state = [], action) => {
       return state.map((category) => {
         if (category.id === action.id) {
           return Object.assign({}, category, {
-            'expanded': !category.expanded
+            expanded: !category.expanded
           });
         }
         return category;
       });
+
+    case ADD_BOOKMARK: {
+      const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = action.data;
+
+      return state.map((category) => {
+        const bookmarks = Object.assign([], category.bookmarks);
+        
+        if (category.id === sourceCategoryId) {
+
+          if (category.id === destinationCategoryId) {
+            arrayMove(bookmarks, sourceIndex, destinationIndex);
+          } else {
+            bookmarks.splice(sourceIndex, 1);
+          }
+
+          return Object.assign({}, category, {
+            bookmarks: Object.assign([], bookmarks)
+          });
+        } else if (category.id === destinationCategoryId) {
+          const bookmark = state[sourceCategoryId].bookmarks[sourceIndex];
+          
+          bookmarks.splice(destinationIndex, 0, bookmark);
+
+          return Object.assign({}, category, {
+            bookmarks: Object.assign([], bookmarks)
+          });
+        }
+
+        return category;
+      });
+    }
       
     default:
       return state;
