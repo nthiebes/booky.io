@@ -62,7 +62,6 @@ export default class Menu extends Component {
                 <label className="menu__label">{ item.name }</label>
                 <Icon className="menu__icon" icon="edit" title="Edit dashboard" />
                 <Icon className="menu__icon" icon="delete" title="Delete dashboard" />
-                <Icon className="menu__icon menu__icon--drag" icon="drag" title="Drag dashboard" />
               </li>
             )) }
           </ul>

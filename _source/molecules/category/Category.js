@@ -48,7 +48,6 @@ export default class Category extends Component {
           </H2>
           <Icon className="category__icon" icon="edit" title="Edit category" />
           <Icon className="category__icon" icon="delete" title="Delete category" />
-          <Icon className="category__icon category__icon--drag" icon="drag" title="Drag category" />
           <Icon
             className={ editMode ? '' : 'category__edit-icon--hide' }
             icon="close"
