@@ -8,10 +8,20 @@ import { H3 } from '../../atoms/headline';
 export default class Modal extends Component {
   render() {
     const { children, open, onClose, headline } = this.props;
+    const body = document.getElementsByTagName('body')[0];
+    const html = document.getElementsByTagName('html')[0];
+
+    if (open) {  
+      body.classList.add('booky--no-scrolling');
+      html.classList.add('booky--no-scrolling');
+    } else {
+      body.classList.remove('booky--no-scrolling');
+      html.classList.remove('booky--no-scrolling');
+    }
 
     return (
-      <div className={ classNames(['modal', open && 'modal--open']) }>
-        <div className="modal__inner">
+      <div className={ classNames(['modal', open && 'modal--open']) } onClick={ onClose }>
+        <div className="modal__inner" onClick={ (e) => { e.stopPropagation(); } }>
           <header className="modal__header">
             { headline && <H3 className="modal__headline">{ headline }</H3> }
             <Icon icon="close" onClick={ onClose } />

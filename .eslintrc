@@ -28,7 +28,7 @@
     "arrow-spacing": 1,
     "block-scoped-var": 1,
     "block-spacing": 1,
-    "brace-style": 1,
+    "brace-style": 0,
     "camelcase": 1,
     "comma-dangle": 1,
     "comma-spacing": 1,

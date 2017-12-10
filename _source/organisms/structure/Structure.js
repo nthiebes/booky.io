@@ -14,7 +14,7 @@ export default class Structure extends Component {
             <label className="structure__label">{ dashboard.name }</label>
             <Icon className="structure__icon" icon="drag" title="Drag dashboard" />
           </li>,
-          <div key={ index } className="structure__categories">
+          <div key={ index + dashboards.length } className="structure__categories">
             { dashboard.categories.map((category, categoryIndex) => (
               <li key={ categoryIndex } className="structure__category">
                 <label className="structure__label">{ category.name }</label>
