@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, TOGGLE_CATEGORY, ADD_BOOKMARK } from './actions';
+import { ADD_CATEGORY, TOGGLE_CATEGORY, DRAG_BOOKMARK } from './actions';
 import { arrayMove } from '../../_utils/array';
 
 const categories = (state = [], action) => {
@@ -23,7 +23,7 @@ const categories = (state = [], action) => {
         return category;
       });
 
-    case ADD_BOOKMARK: {
+    case DRAG_BOOKMARK: {
       const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = action.data;
 
       return state.map((category) => {

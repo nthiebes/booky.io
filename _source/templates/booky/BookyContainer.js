@@ -4,8 +4,8 @@ import { actions } from '../../_state/categories';
 
 export const mapDispatchToProps = function(dispatch) {
   return {
-    addBookmark: (data) => {
-      dispatch(actions.addBookmark(data));
+    dragBookmark: (data) => {
+      dispatch(actions.dragBookmark(data));
     }
   };
 };

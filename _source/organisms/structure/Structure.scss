@@ -1,0 +1,34 @@
+.structure__dashboard,
+.structure__category {
+  color: $color__font--dark;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  width: 100%;
+  list-style: none;
+  user-select: none;
+  padding-left: 6px;
+}
+
+.structure__category {
+  padding-left: 18px;
+}
+
+.structure__label {
+  font-family: $font__family--text;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.structure__icon {
+  cursor: move;
+}
+
+.structure__categories {
+  min-height: 36px;
+}

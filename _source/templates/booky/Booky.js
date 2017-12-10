@@ -19,7 +19,7 @@ export default class Booky extends Component {
     // console.log('onDragEnd', result);
     if (result.destination) {
       if (result.type === 'bookmark') {
-        this.props.addBookmark({
+        this.props.dragBookmark({
           destinationIndex: result.destination.index,
           bookmarkId: parseInt(result.draggableId, 10),
           destinationCategoryId: parseInt(result.destination.droppableId, 10),
@@ -41,5 +41,5 @@ export default class Booky extends Component {
 
 Booky.propTypes = {
   children: PropTypes.element.isRequired,
-  addBookmark: PropTypes.func.isRequired
+  dragBookmark: PropTypes.func.isRequired
 };

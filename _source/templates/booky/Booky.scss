@@ -23,10 +23,12 @@
 @import "../../organisms/header/Header";
 @import "../../organisms/footer/Footer";
 @import "../../organisms/toolbar/Toolbar";
+@import "../../organisms/structure/Structure";
 @import "../../organisms/sidebar/styles/o-sidebar";
 @import "../../organisms/dashboards/styles/o-dashboards";
 
 @import "../../templates/page/Page";
+@import "../../templates/modal/Modal";
 
 html,
 body {

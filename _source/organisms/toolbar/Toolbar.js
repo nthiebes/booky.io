@@ -64,13 +64,13 @@ export default class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard } = this.props;
+    const { dashboard, toggleStructureView } = this.props;
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
         <Icon icon="settings" title="Configure dashboard" />
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
-        <Icon icon="tree" title="Site structure" />
+        <Icon icon="tree" title="Edit site structure" onClick={ toggleStructureView } />
       </div>
     );
     // <div className="toolbar__gradient" />
@@ -89,7 +89,8 @@ Toolbar.propTypes = {
   'sticky': PropTypes.bool,
   'currentlySticky': PropTypes.bool,
   dashboards: PropTypes.object,
-  dashboard: PropTypes.object
+  dashboard: PropTypes.object,
+  toggleStructureView: PropTypes.func.isRequired
 };
 
 Toolbar.defaultProps = {

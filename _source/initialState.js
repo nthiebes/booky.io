@@ -5,16 +5,40 @@ export default {
   'dashboards': {
     'items': [{
       'id': 0,
-      'name': 'Dashboard كيف ح вет, как 1'
+      'name': 'Dashboard كيف ح вет, как 1',
+      categories: [{
+        'id': 0,
+        'name': 'Category 1 loooong naaaaame',
+        'position': 0
+      }, {
+        'id': 1,
+        'name': 'Category 1 loooong naaaaame',
+        'position': 2
+      }, {
+        'id': 2,
+        'name': 'Category 1 loooong naaaaame',
+        'position': 3
+      }]
     }, {
       'id': 2,
-      'name': 'Dashboard looooooooooooooooong 2'
+      'name': 'Dashboard looooooooooooooooong 2',
+      categories: [{
+        'id': 3,
+        'name': 'Category 1 loooong naaaaame',
+        'position': 0
+      }, {
+        'id': 4,
+        'name': 'Category 1 loooong naaaaame',
+        'position': 1
+      }]
     }, {
       'id': 1,
-      'name': 'Dashboard こんにち 3'
+      'name': 'Dashboard こんにち 3',
+      categories: []
     }],
     'active': 0,
-    'offset': 3
+    'offset': 3,
+    structureOpen: false
   },
   'categories': [{
     'id': 0,

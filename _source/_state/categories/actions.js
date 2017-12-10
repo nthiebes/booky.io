@@ -1,6 +1,6 @@
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const TOGGLE_CATEGORY = 'TOGGLE_CATEGORY';
-export const ADD_BOOKMARK = 'ADD_BOOKMARK';
+export const DRAG_BOOKMARK = 'DRAG_BOOKMARK';
 
 export function addCategory(name, id) {
   return {
@@ -17,9 +17,9 @@ export function toggleCategory(id) {
   };
 }
 
-export function addBookmark(data) {
+export function dragBookmark(data) {
   return {
-    type: ADD_BOOKMARK,
+    type: DRAG_BOOKMARK,
     data
   };
 }
