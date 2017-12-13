@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: width 0s 0.2s linear;
 
   &:before {
     background-color: rgba(0, 0, 0, 0.1);
@@ -20,15 +21,16 @@
     position: fixed;
     width: 0;
     top: 0;
-    transition: opacity 0.3s linear, width 0s 0.3s linear;
+    transition: opacity 0.2s linear, width 0s 0.2s linear;
   }
 
   &.modal--open {
     width: 100%;
+    transition: none;
 
     &:before {
       opacity: 1;
-      transition: opacity 0.3s linear;
+      transition: opacity 0.2s linear;
       width: 100%;
       z-index: 2;
     }
@@ -44,7 +46,7 @@
   z-index: 3;
   border: 2px solid rgba(0,0,0,0.15);
   transition: opacity 0.2s linear, width 0s 0.2s linear, transform 0.2s;
-  // transform: translate3d(0,10px,0);
+  transform: scale(0.95);
   max-width: $width--mobile;
 }
 
@@ -53,7 +55,7 @@
     opacity: 1;
     width: 94vw;
     transition: opacity 0.2s linear, transform 0.2s;
-    // transform: translate3d(0,0,0);
+    transform: scale(1);
   }
 }
 
