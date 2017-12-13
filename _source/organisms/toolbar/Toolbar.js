@@ -17,12 +17,12 @@ export default class Toolbar extends Component {
 
   componentDidMount() {
     scrolling.registerAction('toolbar', {
-      'offset': 85,
-      'scope': this,
-      'isAbove': function() {
+      offset: 85,
+      scope: this,
+      isAbove: function() {
         this.isAboveActions();
       },
-      'isBelow': function() {
+      isBelow: function() {
         this.isBelowActions();
       }
     });
@@ -68,7 +68,7 @@ export default class Toolbar extends Component {
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
-        <Icon icon="settings" title="Configure dashboard" />
+        <Icon icon="edit" title="Edit dashboard" />
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
         <Icon icon="tree" title="Edit site structure" onClick={ toggleStructureView } />
       </div>
@@ -79,15 +79,15 @@ export default class Toolbar extends Component {
 }
 
 Toolbar.propTypes = {
-  'searchOpen': PropTypes.bool.isRequired,
-  'searchFocused': PropTypes.bool,
-  'editMode': PropTypes.bool.isRequired,
-  'onSearchClick': PropTypes.func.isRequired,
-  'onEditModeClick': PropTypes.func.isRequired,
-  'updateCurrentlySticky': PropTypes.func.isRequired,
-  'headerSticky': PropTypes.bool,
-  'sticky': PropTypes.bool,
-  'currentlySticky': PropTypes.bool,
+  searchOpen: PropTypes.bool.isRequired,
+  searchFocused: PropTypes.bool,
+  editMode: PropTypes.bool.isRequired,
+  onSearchClick: PropTypes.func.isRequired,
+  onEditModeClick: PropTypes.func.isRequired,
+  updateCurrentlySticky: PropTypes.func.isRequired,
+  headerSticky: PropTypes.bool,
+  sticky: PropTypes.bool,
+  currentlySticky: PropTypes.bool,
   dashboards: PropTypes.object,
   dashboard: PropTypes.object,
   toggleStructureView: PropTypes.func.isRequired
