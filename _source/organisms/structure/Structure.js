@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Modal from '../../templates/modal';
 import Icon from '../../atoms/icon';
+import Categories from './Categories';
 
 export default class Structure extends Component {
   render() {
@@ -9,20 +11,34 @@ export default class Structure extends Component {
 
     return (
       <Modal open={ open } onClose={ toggleStructureView } headline="Edit site structure">
-        { dashboards.map((dashboard, index) => [
-          <li key={ index } className="structure__dashboard">
-            <label className="structure__label">{ dashboard.name }</label>
-            <Icon className="structure__icon" icon="drag" title="Drag dashboard" />
-          </li>,
-          <div key={ index + dashboards.length } className="structure__categories">
-            { dashboard.categories.map((category, categoryIndex) => (
-              <li key={ categoryIndex } className="structure__category">
-                <label className="structure__label">{ category.name }</label>
-                <Icon className="structure__icon" icon="drag" title="Drag dashboard" />
-              </li>
-            )) }
-          </div>
-        ]) }
+        <Droppable droppableId="structure" type="dashboard">
+          { (provided) => (
+            <div ref={ provided.innerRef }>
+              { dashboards.map((dashboard, index) => (
+                <Draggable draggableId={ `dashboard-${dashboard.id}` } type="dashboard" key={ index }>
+                  { (providedInner) => (
+                    <div>
+                      <div style={ providedInner.draggableStyle } ref={ providedInner.innerRef }>
+                        <div className="structure__dashboard">
+                          <label className="structure__label">{ dashboard.name }</label>
+                          <Icon
+                            className="structure__icon"
+                            icon="drag"
+                            title="Drag dashboard"
+                            dragHandleProps={ providedInner.dragHandleProps }
+                          />
+                        </div>
+                        <Categories dashboard={ dashboard } />
+                      </div>
+                      {providedInner.placeholder}
+                    </div>
+                  ) }
+                </Draggable>
+              )) }
+              { provided.placeholder }
+            </div>
+          ) }
+        </Droppable>
       </Modal>
     );
   }

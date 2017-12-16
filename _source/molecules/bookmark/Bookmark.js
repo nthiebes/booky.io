@@ -9,7 +9,7 @@ export default class Bookmark extends Component {
     const { url, target, name, editMode, id } = this.props;
 
     return (
-      <Draggable draggableId={ id.toString() } type="bookmark">
+      <Draggable draggableId={ id } type="bookmark">
         { (provided) => (
           <div>
             <div ref={ provided.innerRef } style={ provided.draggableStyle }>
@@ -46,7 +46,7 @@ Bookmark.propTypes = {
   url: PropTypes.string.isRequired,
   editMode: PropTypes.bool.isRequired,
   target: PropTypes.string,
-  id: PropTypes.number.isRequired
+  id: PropTypes.string.isRequired
 };
 
 Bookmark.defaultProps = {
