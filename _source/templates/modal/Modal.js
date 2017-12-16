@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from '../../atoms/icon';
-import { ButtonLargePrimary } from '../../atoms/button';
+import { ButtonLargePrimary, ButtonLargeLight } from '../../atoms/button';
 import { H3 } from '../../atoms/headline';
 
 export default class Modal extends Component {
   render() {
-    const { children, open, onClose, headline } = this.props;
+    const { children, open, onClose, headline, noPadding, noCancel } = this.props;
     const body = document.getElementsByTagName('body')[0];
     const html = document.getElementsByTagName('html')[0];
 
@@ -26,10 +26,11 @@ export default class Modal extends Component {
             { headline && <H3 className="modal__headline">{ headline }</H3> }
             <Icon icon="close" onClick={ onClose } />
           </header>
-          <div className="modal__content">
+          <div className={ classNames(['modal__content', !noPadding && 'modal__content--padding']) }>
             { children }
           </div>
           <footer className="modal__footer">
+            { !noCancel && <ButtonLargeLight className="modal__button modal__button--cancel" onClick={ onClose }>{ 'Cancel' }</ButtonLargeLight> }
             <ButtonLargePrimary className="modal__button" onClick={ onClose }>{ 'Done' }</ButtonLargePrimary>
           </footer>
         </div>
@@ -46,10 +47,14 @@ Modal.propTypes = {
   ]).isRequired,
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  headline: PropTypes.string
+  headline: PropTypes.string,
+  noPadding: PropTypes.bool,
+  noCancel: PropTypes.bool
 };
 
 Modal.defaultProps = {
   toolbar: false,
-  className: ''
+  className: '',
+  noPadding: false,
+  noCancel: false
 };

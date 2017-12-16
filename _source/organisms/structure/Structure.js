@@ -10,7 +10,7 @@ export default class Structure extends Component {
     const { dashboards, open, toggleStructureView } = this.props;
 
     return (
-      <Modal open={ open } onClose={ toggleStructureView } headline="Edit site structure">
+      <Modal open={ open } onClose={ toggleStructureView } headline="Edit site structure" noPadding noCancel>
         <Droppable droppableId="structure" type="dashboard">
           { (provided) => (
             <div ref={ provided.innerRef }>

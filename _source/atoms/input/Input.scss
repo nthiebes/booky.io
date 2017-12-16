@@ -1,10 +1,102 @@
+// .input {
+//   position:relative; 
+//   margin-top: 1rem;
+//   padding-bottom: 1rem;
+// }
+
+// .input__field {
+//   color: $color__font--dark;
+//   font-size: 1rem;
+//   display: block;
+//   width: 100%;
+//   border: none;
+//   border-bottom: 1px solid $color__font--dark;
+//   height: 3rem;
+//   line-height: 3rem;
+//   padding: 0 9px;
+
+//   &:focus ~ .input__label,
+//   &:valid ~ .input__label {
+//     top: -10px;
+//     font-size: 0.8rem;
+//   }
+
+//   &:focus ~ .input__bar:before,
+//   &:focus ~ .input__bar:after {
+//     width: 50%;
+//   }
+
+//   &:focus ~ .input__highlight {
+//     animation: inputHighlighter 0.3s ease;
+//   }
+// }
+
+// .input__label {
+//   color: $color__font--medium; 
+//   font-size: 1rem;
+//   font-weight: normal;
+//   position: absolute;
+//   pointer-events: none;
+//   left: 5px;
+//   top: 10px;
+//   transition: 0.2s ease all;
+// }
+
+// .input__bar {
+//   position: relative;
+//   display: block;
+
+//   &:before,
+//   &:after {
+//     content: '';
+//     height: 2px; 
+//     width: 0;
+//     bottom: 1px; 
+//     position: absolute;
+//     background: $color--primary; 
+//     transition: 0.2s ease all;
+//   }
+
+//   &:before {
+//     left: 50%;
+//   }
+
+//   &:after {
+//     right: 50%; 
+//   }
+// }
+
+// .input__highlight {
+//   position: absolute;
+//   height: 60%; 
+//   width: 100px; 
+//   top: 25%; 
+//   left: 0;
+//   pointer-events: none;
+//   opacity: 0.5;
+// }
+
+// @keyframes inputHighlighter {
+//   from {
+//     background: $color--primary;
+//   }
+//   to {
+//     width: 0;
+//     background: transparent;
+//   }
+// }
+
 .input {
   flex-grow: 1;
 }
 
 .input__field {
-  background-color: $color__background--white;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  // background-color: #f5f5f5;
+  background: #fafafa;
+  // box-shadow: 1px 1px 4px #CCC inset;
+  border-bottom: 2px solid rgba(#000, 0.15);
+  // border-bottom: 2px solid transparent;
+  // border-color: $color__font--medium;
   border-radius: 0;
   color: $color__font--dark;
   font-family: $font__family--text;
@@ -16,32 +108,26 @@
   width: 100%;
 
   &:focus {
+    // border-bottom: 2px solid rgba(#000, 0.15);
     border-color: $color__font--medium;
     box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
   }
 
   @include desktop {
-    transition: width 0.3s ease, border-color 0.3s linear, box-shadow 0.3s linear;
-    width: 200px;
-
     &:hover {
       border-color: $color--blue;
     }
-
-    &:focus {
-      width: 300px;
-    }
   }
 
-  &.input__field--color-primary {
+  &.input__field--color-primary:focus {
     border-color: $color--primary;
   }
 
-  &.input__field--color-blue {
+  &.input__field--color-blue:focus {
     border-color: $color--blue;
   }
 
-  &.input__field--color-green {
+  &.input__field--color-green:focus {
     border-color: $color--green;
   }
 }

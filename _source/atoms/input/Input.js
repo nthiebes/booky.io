@@ -11,13 +11,16 @@ export default class Input extends Component {
   }
 
   render() {
-    const { className, placeholder, type, onBlur, onFocus, color } = this.props;
+    const { className, placeholder, type, onBlur, onFocus, color, name, id, required, label } = this.props;
     const inputProps = {
       className: classNames('input__field', className && className, color && `input__field--color-${color}`),
-      placeholder: placeholder,
-      type: type,
       onBlur: onBlur ? onBlur : null,
-      onFocus: onFocus ? onFocus : null
+      onFocus: onFocus ? onFocus : null,
+      placeholder,
+      type,
+      name,
+      id,
+      required
     };
 
     return (
@@ -28,6 +31,15 @@ export default class Input extends Component {
   }
 }
 
+/*
+<div className={ `input ${className}` }>
+        <input className="input__field" ref="inputField" { ...inputProps } />
+        <span className="input__highlight" />
+        <span className="input__bar" />
+        <label className="input__label">{ label }</label>
+      </div>
+ */
+
 Input.propTypes = {
   className: PropTypes.string,
   focus: PropTypes.bool,
@@ -35,7 +47,10 @@ Input.propTypes = {
   onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   type: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
+  name: PropTypes.string,
+  id: PropTypes.string,
+  required: PropTypes.bool
 };
 
 Input.defaultProps = {
@@ -43,5 +58,8 @@ Input.defaultProps = {
   focus: false,
   placeholder: '',
   type: 'text',
-  color: ''
+  color: '',
+  name: '',
+  id: '',
+  required: false
 };

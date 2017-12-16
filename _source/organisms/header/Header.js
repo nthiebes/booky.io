@@ -6,14 +6,24 @@ import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Search from '../../molecules/search';
 import { ButtonSmallLight } from '../../atoms/button';
+import AddBookmarkModal from '../modals/add-bookmark';
 
-/**
- * React component
- *
- * @class Header
- * @classdesc 03_organisms/header/Header
- */
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onBookmarkModalToggle = this.onBookmarkModalToggle.bind(this);
+    this.state = {
+      bookmarkModalOpen: false
+    };
+  }
+
+  onBookmarkModalToggle() {
+    this.setState({
+      bookmarkModalOpen: !this.state.bookmarkModalOpen
+    });
+  }
+
   render() {
     const {
       onHeaderClick,
@@ -50,7 +60,7 @@ export default class Header extends Component {
         <Menu menuOpen={ menuOpen } loggedIn={ loggedIn } />
         { loggedIn ? [
           <Search key="0" className="b-hide-desktop" />,
-          <Icon key="1" icon="add" color="light" />
+          <Icon key="1" icon="add" color="light" onClick={ this.onBookmarkModalToggle } />
         ] : (
           <Link className="header__logo header__logo--small" color="light" href="/" title="Home">
             <Icon icon="heart" color="light" />
@@ -67,10 +77,10 @@ export default class Header extends Component {
             { 'Sign ' }<b>{ 'In' }</b>
           </ButtonSmallLight>
         ) }
+
+        <AddBookmarkModal onClose={ this.onBookmarkModalToggle } open={ this.state.bookmarkModalOpen } />
       </header>
     );
-    // <Icon key="1" icon="add-category" color="light" title="New category" className="b-hide-desktop" />,
-    // <Icon key="2" icon="edit" title={ 'EDIT_MODE_TITLE' } color="light" className="b-hide-desktop" onClick={ onEditModeClick } />
   }
 }
 
