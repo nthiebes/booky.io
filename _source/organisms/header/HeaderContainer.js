@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Component from './Header';
 import { actions as headerActions } from '../../_state/header';
 import { actions as sidebarActions } from '../../_state/sidebar';
+import { actions as modalActions } from '../../_state/modal';
 
 export const mapStateToProps = function(state) {
   return {
@@ -35,6 +36,9 @@ export const mapDispatchToProps = function(dispatch) {
       dispatch(headerActions.closeMenu());
       dispatch(sidebarActions.closeSidebar());
       dispatch(headerActions.closeDashboards());
+    },
+    openModal: (type) => {
+      dispatch(modalActions.openModal(type));
     }
   };
 };

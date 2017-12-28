@@ -6,7 +6,6 @@ import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Search from '../../molecules/search';
 import { ButtonSmallLight } from '../../atoms/button';
-import AddBookmarkModal from '../modals/add-bookmark';
 
 export default class Header extends Component {
   constructor(props) {
@@ -33,7 +32,8 @@ export default class Header extends Component {
       menuOpen,
       sidebarOpen,
       dashboardsOpen,
-      color
+      color,
+      openModal
     } = this.props;
     const STICKY_CLASS = sticky ? 'header--sticky' : '';
     const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
@@ -60,7 +60,7 @@ export default class Header extends Component {
         <Menu menuOpen={ menuOpen } loggedIn={ loggedIn } />
         { loggedIn ? [
           <Search key="0" className="b-hide-desktop" />,
-          <Icon key="1" icon="add" color="light" onClick={ this.onBookmarkModalToggle } />
+          <Icon key="1" icon="add" color="light" onClick={ () => { openModal('AddBookmark'); } } />
         ] : (
           <Link className="header__logo header__logo--small" color="light" href="/" title="Home">
             <Icon icon="heart" color="light" />
@@ -77,8 +77,6 @@ export default class Header extends Component {
             { 'Sign ' }<b>{ 'In' }</b>
           </ButtonSmallLight>
         ) }
-
-        <AddBookmarkModal onClose={ this.onBookmarkModalToggle } open={ this.state.bookmarkModalOpen } />
       </header>
     );
   }
@@ -94,7 +92,8 @@ Header.propTypes = {
   'onMenuClick': PropTypes.func.isRequired,
   'onSidebarClick': PropTypes.func.isRequired,
   'sidebarOpen': PropTypes.bool.isRequired,
-  'sticky': PropTypes.bool
+  'sticky': PropTypes.bool,
+  openModal: PropTypes.func.isRequired
 };
 
 Header.defaultProps = {

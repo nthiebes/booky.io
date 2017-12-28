@@ -1,3 +1,3 @@
-import component from './Bookmark';
+import container from './BookmarkContainer';
 
-export default component;
+export default container;

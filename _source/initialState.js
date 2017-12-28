@@ -229,5 +229,9 @@ export default {
     'headerColor': 0,
     'maxWidth': true,
     'dashboard': 1
+  },
+  modal: {
+    modal: '',
+    open: false
   }
 };

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Component from './Toolbar';
 import { actions as toolbarActions } from '../../_state/toolbar';
 import { actions as dashboardsActions } from '../../_state/dashboards';
+import { actions as modalActions } from '../../_state/modal';
 
 export const mapStateToProps = function(state) {
   return {
@@ -29,6 +30,9 @@ export const mapDispatchToProps = function(dispatch) {
     },
     toggleStructureView: () => {
       dispatch(dashboardsActions.toggleStructureView());
+    },
+    openModal: (type) => {
+      dispatch(modalActions.openModal(type));
     }
   };
 };

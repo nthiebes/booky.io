@@ -31,7 +31,7 @@ export default class Category extends Component {
   }
 
   render() {
-    const { name, id, bookmarks } = this.props;
+    const { name, id, bookmarks, openModal } = this.props;
     const { open, editMode } = this.state;
 
     return (
@@ -46,8 +46,18 @@ export default class Category extends Component {
           <H2 className="category__name" onClick={ this.toggleCategory }>
             { name }
           </H2>
-          <Icon className="category__icon" icon="edit" title="Edit category" />
-          <Icon className="category__icon" icon="delete" title="Delete category" />
+          <Icon
+            className="category__icon"
+            icon="edit"
+            title="Edit category"
+            onClick={ () => { openModal('EditCategory'); } }
+          />
+          <Icon
+            className="category__icon"
+            icon="delete"
+            title="Delete category"
+            onClick={ () => { openModal('DeleteCategory'); } }
+          />
           <Icon
             className={ editMode ? '' : 'category__edit-icon--hide' }
             icon="close"
@@ -88,7 +98,8 @@ Category.propTypes = {
   name: PropTypes.string.isRequired,
   open: PropTypes.bool,
   id: PropTypes.number.isRequired,
-  bookmarks: PropTypes.array
+  bookmarks: PropTypes.array,
+  openModal: PropTypes.func.isRequired
 };
 
 Category.defaultProps = {

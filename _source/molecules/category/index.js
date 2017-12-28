@@ -1,3 +1,3 @@
-import component from './Category';
+import container from './CategoryContainer';
 
-export default component;
+export default container;

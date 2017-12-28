@@ -13,6 +13,9 @@ export default class Toolbar extends Component {
     this.nextProps = {};
     this.isAboveActions = this.isAboveActions.bind(this);
     this.isBelowActions = this.isBelowActions.bind(this);
+    this.state = {
+      dashboardModalOpen: false
+    };
   }
 
   componentDidMount() {
@@ -64,11 +67,11 @@ export default class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, toggleStructureView } = this.props;
+    const { dashboard, toggleStructureView, openModal } = this.props;
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
-        <Icon icon="edit" title="Edit dashboard" />
+        <Icon icon="edit" title="Edit dashboard" onClick={ () => { openModal('EditDashboard'); } } />
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
         <Icon icon="tree" title="Edit site structure" onClick={ toggleStructureView } />
       </div>
@@ -90,7 +93,8 @@ Toolbar.propTypes = {
   currentlySticky: PropTypes.bool,
   dashboards: PropTypes.object,
   dashboard: PropTypes.object,
-  toggleStructureView: PropTypes.func.isRequired
+  toggleStructureView: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired
 };
 
 Toolbar.defaultProps = {

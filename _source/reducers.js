@@ -6,6 +6,7 @@ import categories from './_state/categories';
 import header from './_state/header';
 import toolbar from './_state/toolbar';
 import sidebar from './_state/sidebar';
+import modal from './_state/modal';
 
 const reducers = combineReducers({
   routing: routerReducer,
@@ -14,7 +15,8 @@ const reducers = combineReducers({
   categories,
   header,
   toolbar,
-  sidebar
+  sidebar,
+  modal
 });
 
 export default reducers;
