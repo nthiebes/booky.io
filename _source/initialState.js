@@ -232,6 +232,7 @@ export default {
   },
   modal: {
     modal: '',
-    open: false
+    open: false,
+    data: {}
   }
 };

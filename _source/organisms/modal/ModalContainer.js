@@ -5,7 +5,11 @@ import { actions } from '../../_state/modal';
 export const mapStateToProps = function(state) {
   return {
     modal: state.modal.modal,
-    open: state.modal.open
+    open: state.modal.open,
+    data: {
+      ...state.modal.data,
+      categories: state.categories
+    }
   };
 };
 

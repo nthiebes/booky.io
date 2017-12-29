@@ -20,8 +20,18 @@ const modalMap = {
 };
 
 export default class Modal extends Component {
+  constructor(props) {
+    super(props);
+
+    this.saveModal = this.saveModal.bind(this);
+  }
+
+  saveModal(data) {
+    console.log(data);
+  }
+
   render() {
-    const { modal, open, closeModal } = this.props;
+    const { modal, open, closeModal, data } = this.props;
     const body = document.getElementsByTagName('body')[0];
     const html = document.getElementsByTagName('html')[0];
     const CustomTag = modalMap[modal] || AddBookmark;
@@ -36,7 +46,7 @@ export default class Modal extends Component {
 
     return (
       <div className={ classNames(['modal', open && 'modal--open']) } onClick={ closeModal }>
-        <CustomTag onClose={ closeModal } />
+        <CustomTag onClose={ closeModal } onSave={ this.saveModal } data={ data } />
       </div>
     );
   }
@@ -45,9 +55,11 @@ export default class Modal extends Component {
 Modal.propTypes = {
   modal: PropTypes.string,
   open: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired,
+  data: PropTypes.object
 };
 
 Modal.defaultProps = {
-  modal: ''
+  modal: '',
+  data: {}
 };

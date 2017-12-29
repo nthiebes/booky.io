@@ -5,7 +5,8 @@ const header = (state = {}, action) => {
     case OPEN_MODAL:
       return {
         modal: action.modal,
-        open: true
+        open: true,
+        data: action.data
       };
 
     case CLOSE_MODAL:

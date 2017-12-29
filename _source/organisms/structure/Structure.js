@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import Modal from '../../templates/modal';
+// import Modal from '../../templates/modal';
 import Icon from '../../atoms/icon';
 import Categories from './Categories';
 
 export default class Structure extends Component {
   render() {
     const { dashboards, open, toggleStructureView } = this.props;
+
+    return null;
 
     return (
       <Modal open={ open } onClose={ toggleStructureView } headline="Edit site structure" noPadding noCancel>

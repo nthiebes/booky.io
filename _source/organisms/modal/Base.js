@@ -7,7 +7,7 @@ import { H3 } from '../../atoms/headline';
 
 export default class Modal extends Component {
   render() {
-    const { children, onClose, headline, noPadding, noCancel } = this.props;
+    const { children, onClose, headline, noPadding, noCancel, onSave } = this.props;
 
     return (
       <div className="modal__inner" onClick={ (e) => { e.stopPropagation(); } }>
@@ -20,7 +20,7 @@ export default class Modal extends Component {
         </div>
         <footer className="modal__footer">
           { !noCancel && <ButtonLargeLight className="modal__button modal__button--cancel" onClick={ onClose }>{ 'Cancel' }</ButtonLargeLight> }
-          <ButtonLargePrimary className="modal__button" onClick={ onClose }>{ 'Done' }</ButtonLargePrimary>
+          <ButtonLargePrimary className="modal__button" onClick={ onSave }>{ 'Done' }</ButtonLargePrimary>
         </footer>
       </div>
     );
@@ -34,6 +34,7 @@ Modal.propTypes = {
     PropTypes.string
   ]).isRequired,
   onClose: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
   headline: PropTypes.string,
   noPadding: PropTypes.bool,
   noCancel: PropTypes.bool

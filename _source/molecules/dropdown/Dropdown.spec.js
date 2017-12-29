@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Dropdown from './component.jsx';
+import Dropdown from './Dropdown';
 
 xdescribe('<Dropdown />', function() {
 

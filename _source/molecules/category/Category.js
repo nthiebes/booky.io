@@ -56,7 +56,10 @@ export default class Category extends Component {
             className="category__icon"
             icon="delete"
             title="Delete category"
-            onClick={ () => { openModal('DeleteCategory'); } }
+            onClick={ () => { openModal('DeleteCategory', {
+              name,
+              id
+            }); } }
           />
           <Icon
             className={ editMode ? '' : 'category__edit-icon--hide' }
