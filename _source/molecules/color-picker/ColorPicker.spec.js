@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ColorPicker from './component.jsx';
+import ColorPicker from './ColorPicker';
 
 xdescribe('<ColorPicker />', function() {
 

@@ -31,7 +31,7 @@ export default class Category extends Component {
   }
 
   render() {
-    const { name, id, bookmarks, openModal } = this.props;
+    const { name, id, color, bookmarks, openModal } = this.props;
     const { open, editMode } = this.state;
 
     return (
@@ -50,7 +50,11 @@ export default class Category extends Component {
             className="category__icon"
             icon="edit"
             title="Edit category"
-            onClick={ () => { openModal('EditCategory'); } }
+            onClick={ () => { openModal('EditCategory', {
+              name,
+              id,
+              color
+            }); } }
           />
           <Icon
             className="category__icon"
@@ -99,6 +103,7 @@ export default class Category extends Component {
 
 Category.propTypes = {
   name: PropTypes.string.isRequired,
+  color: PropTypes.number.isRequired,
   open: PropTypes.bool,
   id: PropTypes.number.isRequired,
   bookmarks: PropTypes.array,
