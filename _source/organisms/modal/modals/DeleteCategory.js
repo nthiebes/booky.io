@@ -38,7 +38,10 @@ export default class DeleteCategory extends Component {
 
     return (
       <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Delete category">
-        <label className="modal__label">{ 'This category will be deleted: ' }<b>{ data.name }</b></label>
+        <label className="modal__label">
+          <div>{ 'This category will be deleted:' }</div>
+          <b>{ data.name }</b>
+        </label>
         <label className="modal__label">{ 'What do you want to do with the bookmarks?' }</label>
         <Dropdown options={ options } onChange={ this.onChange } value={ this.state.value } />
       </Base>

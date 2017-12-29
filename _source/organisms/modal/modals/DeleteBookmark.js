@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Base from '../Base';
-import Input from '../../../atoms/input';
 
 export default class DeleteBookmark extends Component {
   render() {
+    const { data, onClose, onSave } = this.props;
+
     return (
-      <Base { ...this.props } headline="Delete bookmark">
-        <label className="modal__label" htmlFor="url">{ 'Delete bookmark:' }</label>
-        <Input id="url" color="primary" required />
+      <Base onClose={ onClose } onSave={ () => { onSave({id: data.id}); } } headline="Delete bookmark">
+        <label className="modal__label">
+          <div>{ 'This bookmark will be deleted:' }</div>
+          <b>{ data.name }</b>
+        </label>
       </Base>
     );
   }
 }
+
+DeleteBookmark.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired
+};
