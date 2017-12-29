@@ -83,7 +83,7 @@ export default class Category extends Component {
                 { bookmarks.map((bookmark, index) => (
                   <Bookmark
                     key={ index }
-                    id={ `bookmark-${bookmark.id}` }
+                    id={ bookmark.id }
                     editMode={ editMode }
                     name={ bookmark.name }
                     url={ bookmark.url }

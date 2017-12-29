@@ -4,8 +4,8 @@ import { actions } from '../../_state/modal';
 
 export const mapDispatchToProps = function(dispatch) {
   return {
-    openModal: (type) => {
-      dispatch(actions.openModal(type));
+    openModal: (type, data) => {
+      dispatch(actions.openModal(type, data));
     }
   };
 };

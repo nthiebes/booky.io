@@ -9,7 +9,7 @@ export default class Bookmark extends Component {
     const { url, target, name, editMode, id, openModal } = this.props;
 
     return (
-      <Draggable draggableId={ id } type="bookmark">
+      <Draggable draggableId={ `bookmark-${id}` } type="bookmark">
         { (provided) => (
           <div>
             <div ref={ provided.innerRef } style={ provided.draggableStyle }>
@@ -19,13 +19,21 @@ export default class Bookmark extends Component {
                   className="bookmark__icon"
                   icon="edit"
                   title="Edit bookmark"
-                  onClick={ () => { openModal('EditBookmark'); } }
+                  onClick={ () => { openModal('EditBookmark', {
+                    id,
+                    url,
+                    name
+                  }); } }
                 />
                 <Icon
                   className="bookmark__icon"
                   icon="delete"
                   title="Delete bookmark"
-                  onClick={ () => { openModal('DeleteBookmark'); } }
+                  onClick={ () => { openModal('DeleteBookmark', {
+                    id,
+                    url,
+                    name
+                  }); } }
                 />
                 <Icon
                   className="bookmark__icon bookmark__icon--drag"
@@ -48,7 +56,7 @@ Bookmark.propTypes = {
   url: PropTypes.string.isRequired,
   editMode: PropTypes.bool.isRequired,
   target: PropTypes.string,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   openModal: PropTypes.func.isRequired
 };
 
