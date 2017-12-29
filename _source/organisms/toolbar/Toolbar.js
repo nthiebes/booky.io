@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import scrolling from '../../_utils/scrolling';
-// import Button from '../../atoms/button';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 // import TabBar from '../../molecules/tab-bar';
@@ -74,6 +73,7 @@ export default class Toolbar extends Component {
         <Icon icon="edit" title="Edit dashboard" onClick={ () => { openModal('EditDashboard'); } } />
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
         <Icon icon="tree" title="Edit site structure" onClick={ toggleStructureView } />
+        <Icon icon="add-category" title="Add category" onClick={ () => { openModal('AddCategory'); } } />
       </div>
     );
     // <div className="toolbar__gradient" />
