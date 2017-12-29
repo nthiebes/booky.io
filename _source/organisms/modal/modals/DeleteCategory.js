@@ -8,14 +8,26 @@ export default class DeleteCategory extends Component {
     super(props);
 
     this.onChange = this.onChange.bind(this);
-    this.data = {
+    this.state = {
       id: props.data.id,
-      newCategoryId: null
+      newCategoryId: null,
+      value: 0
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      id: nextProps.data.id,
+      newCategoryId: null,
+      value: 0
+    });
+  }
+
   onChange(index) {
-    this.data.newCategoryId = index === 0 ? null : this.props.data.categories[index - 1].id;
+    this.setState({
+      newCategoryId: index === 0 ? null : this.props.data.categories[index - 1].id,
+      value: index
+    });
   }
 
   render() {
@@ -25,10 +37,10 @@ export default class DeleteCategory extends Component {
     }))];
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.data); } } headline="Delete category">
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Delete category">
         <label className="modal__label">{ 'This category will be deleted: ' }<b>{ data.name }</b></label>
         <label className="modal__label">{ 'What do you want to do with the bookmarks?' }</label>
-        <Dropdown options={ options } onChange={ this.onChange } />
+        <Dropdown options={ options } onChange={ this.onChange } value={ this.state.value } />
       </Base>
     );
   }

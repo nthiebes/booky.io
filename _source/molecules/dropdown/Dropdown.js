@@ -6,25 +6,19 @@ export default class Dropdown extends Component {
     super(props);
 
     this.onChange = this.onChange.bind(this);
-    this.state = {
-      selectedKey: props.selectedKey
-    };
   }
 
   onChange(event) {
     const value = parseInt(event.target.value, 10);
 
-    this.setState({
-      selectedKey: value
-    });
     this.props.onChange(value);
   }
 
   render() {
-    const { options, className } = this.props;
+    const { options, className, value } = this.props;
 
     return (
-      <select className={ `dropdown ${className}` } onChange={ this.onChange } value={ this.state.selectedKey }>
+      <select className={ `dropdown ${className}` } onChange={ this.onChange } value={ value }>
         { options.map((option, index) =>
           <option className="dropdown__option" value={ index } key={ index }>{ option.name }</option>
         ) }
@@ -35,12 +29,12 @@ export default class Dropdown extends Component {
 
 Dropdown.propTypes = {
   className: PropTypes.string,
-  selectedKey: PropTypes.number,
+  value: PropTypes.number,
   options: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired
 };
 
 Dropdown.defaultProps = {
   className: '',
-  selectedKey: 0
+  value: 0
 };

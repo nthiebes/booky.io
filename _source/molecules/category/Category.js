@@ -43,9 +43,7 @@ export default class Category extends Component {
             title={ open ? 'Reduce category' : 'Expand category' }
             onClick={ this.toggleCategory }
           />
-          <H2 className="category__name" onClick={ this.toggleCategory }>
-            { name }
-          </H2>
+          <H2 className="category__name" onClick={ this.toggleCategory }>{ name }</H2>
           <Icon
             className="category__icon"
             icon="edit"
