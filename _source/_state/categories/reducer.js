@@ -41,7 +41,7 @@ const categories = (state = [], action) => {
             bookmarks: Object.assign([], bookmarks)
           });
         } else if (category.id === destinationCategoryId) {
-          const bookmark = state[sourceCategoryId].bookmarks[sourceIndex];
+          const bookmark = state.find((item) => item.id === sourceCategoryId).bookmarks[sourceIndex];
           
           bookmarks.splice(destinationIndex, 0, bookmark);
 
