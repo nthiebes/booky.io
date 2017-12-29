@@ -41,7 +41,7 @@ export default {
     structureOpen: false
   },
   'categories': [{
-    'id': 0,
+    'id': 123,
     'name': 'Category 1 loooong naaaaame',
     'dashboard': 0,
     'position': 0,
@@ -147,7 +147,7 @@ export default {
       'position': 0
     }]
   }, {
-    'id': 1,
+    'id': 345,
     'name': 'Category 2 مرحبا كيف حالك؟ asas!',
     'dashboard': 0,
     'position': 2,
@@ -162,7 +162,7 @@ export default {
       'position': 0
     }]
   }, {
-    'id': 2,
+    'id': 45,
     'name': 'Category 3 こんにちはお元気で 3',
     'dashboard': 0,
     'position': 1,
@@ -177,7 +177,7 @@ export default {
       'position': 0
     }]
   }, {
-    'id': 3,
+    'id': 76,
     'name': 'Category 4 Привет, как дела 4',
     'dashboard': 0,
     'position': 3,
@@ -192,7 +192,7 @@ export default {
       'position': 0
     }]
   }, {
-    'id': 4,
+    'id': 89,
     'name': 'Category 5',
     'dashboard': 2,
     'position': 0,

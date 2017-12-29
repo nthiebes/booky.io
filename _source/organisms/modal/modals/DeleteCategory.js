@@ -20,8 +20,8 @@ export default class DeleteCategory extends Component {
 
   render() {
     const { data, onClose, onSave } = this.props;
-    const options = [{name: 'Delete all'}, ...data.categories.map((category) => ({
-      name: `Move to: ${category.name}`
+    const options = [{name: 'Delete all'}, ...data.categories.map(({name}) => ({
+      name: `Move to: ${name}`
     }))];
 
     return (

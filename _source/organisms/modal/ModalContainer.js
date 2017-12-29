@@ -8,7 +8,7 @@ export const mapStateToProps = function(state) {
     open: state.modal.open,
     data: {
       ...state.modal.data,
-      categories: state.categories
+      categories: state.categories.filter(({id}) => id !== state.modal.data.id)
     }
   };
 };
