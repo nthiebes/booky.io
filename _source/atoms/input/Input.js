@@ -4,18 +4,30 @@ import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 
 export default class Input extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onChange = this.onChange.bind(this);
+  }
+
   componentDidUpdate() {
     if (this.focus) {
       findDOMNode(this.refs.inputField).focus();
     }
   }
 
+  onChange(event) {
+    this.props.onChange(event.target.value);
+  }
+
   render() {
-    const { className, placeholder, type, onBlur, onFocus, color, name, id, required, label } = this.props;
+    const { className, placeholder, type, onBlur, onFocus, color, name, id, required, value } = this.props;
     const inputProps = {
       className: classNames('input__field', className && className, color && `input__field--color-${color}`),
       onBlur: onBlur ? onBlur : null,
       onFocus: onFocus ? onFocus : null,
+      onChange: this.onChange,
+      value: value,
       placeholder,
       type,
       name,
@@ -31,26 +43,19 @@ export default class Input extends Component {
   }
 }
 
-/*
-<div className={ `input ${className}` }>
-        <input className="input__field" ref="inputField" { ...inputProps } />
-        <span className="input__highlight" />
-        <span className="input__bar" />
-        <label className="input__label">{ label }</label>
-      </div>
- */
-
 Input.propTypes = {
   className: PropTypes.string,
   focus: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
+  onChange: PropTypes.func,
   placeholder: PropTypes.string,
   type: PropTypes.string,
   color: PropTypes.string,
   name: PropTypes.string,
   id: PropTypes.string,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  value: PropTypes.string
 };
 
 Input.defaultProps = {
@@ -61,5 +66,6 @@ Input.defaultProps = {
   color: '',
   name: '',
   id: '',
-  required: false
+  required: false,
+  value: ''
 };
