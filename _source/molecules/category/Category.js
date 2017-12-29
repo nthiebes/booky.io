@@ -34,10 +34,15 @@ export default class Category extends Component {
   render() {
     const { name, id, color, bookmarks, openModal } = this.props;
     const { open, editMode } = this.state;
+    const headerClassName = classNames(
+      'category__header',
+      `category__header--color${color}`,
+      editMode && 'category__header--edit-mode'
+    );
 
     return (
       <section className="category">
-        <header className={ classNames('category__header', editMode && 'category__header--edit-mode') }>
+        <header className={ headerClassName }>
           <Icon
             className={ classNames('category__toggle-icon', !open && 'category__toggle-icon--rotate') }
             icon="expand"
