@@ -97,6 +97,32 @@
     }
   }
 
+  &.button--small-medium {
+    background-color: transparent;
+    border-color: $color__font--medium;
+    color: $color__font--medium;
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: $color__font--medium;
+        color: $color__font--white;
+      }
+      &:active .icon {
+        color: $color__font--white;
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: $color__font--medium;
+        color: $color__font--white;
+      }
+      &:hover .icon {
+        color: $color__font--white;
+      }
+    }
+  }
+
   &.button--large {
     justify-content: center;
 

@@ -11,6 +11,11 @@ export function ButtonSmallLight(props) {
 }
 ButtonSmallLight.displayName = 'ButtonSmallLight';
 
+export function ButtonSmallMedium(props) {
+  return <Button { ...props } size="small" color="medium" />;
+}
+ButtonSmallMedium.displayName = 'ButtonSmallMedium';
+
 export function ButtonSmallDark(props) {
   return <Button { ...props } size="small" color="dark" />;
 }

@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
 import { H2 } from '../../atoms/headline';
+import { ButtonSmallMedium } from '../../atoms/button';
 
 export default class Category extends Component {
   constructor(props) {
@@ -77,6 +78,13 @@ export default class Category extends Component {
           />
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
+          { editMode && (
+            <ButtonSmallMedium
+              className="category__button"
+              onClick={ () => { openModal('AddBookmark'); } }>
+              { 'Add ' }<b>{ 'bookmark' }</b>
+            </ButtonSmallMedium>
+          ) }
           <Droppable droppableId={ id.toString() } type="bookmark">
             { (provided) => (
               <div className="category__bookmark-drag-wrapper" ref={ provided.innerRef }>
