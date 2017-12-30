@@ -65,6 +65,7 @@ export default class Menu extends Component {
                   className="menu__icon"
                   icon="edit"
                   title="Edit dashboard"
+                  stopPropagation
                   onClick={ () => { openModal('EditDashboard', {
                     id: dashboard.id,
                     name: dashboard.name
@@ -74,6 +75,7 @@ export default class Menu extends Component {
                   className="menu__icon"
                   icon="delete"
                   title="Delete dashboard"
+                  stopPropagation
                   onClick={ () => { openModal('DeleteDashboard', {
                     id: dashboard.id,
                     name: dashboard.name

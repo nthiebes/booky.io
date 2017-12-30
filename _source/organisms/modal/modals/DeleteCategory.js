@@ -10,7 +10,7 @@ export default class DeleteCategory extends Component {
     this.onChange = this.onChange.bind(this);
     this.state = {
       id: props.data.id,
-      newCategoryId: null,
+      newId: null,
       value: 0
     };
   }
@@ -18,14 +18,14 @@ export default class DeleteCategory extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       id: nextProps.data.id,
-      newCategoryId: null,
+      newId: null,
       value: 0
     });
   }
 
   onChange(index) {
     this.setState({
-      newCategoryId: index === 0 ? null : this.props.data.categories[index - 1].id,
+      newId: index === 0 ? null : this.props.data.categories[index - 1].id,
       value: index
     });
   }

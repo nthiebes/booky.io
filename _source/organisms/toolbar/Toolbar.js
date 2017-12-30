@@ -66,16 +66,26 @@ export default class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, toggleStructureView, openModal } = this.props;
+    const { dashboard, toggleStructureView } = this.props;
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
-        <Icon icon="edit" title="Edit dashboard" onClick={ () => { openModal('EditDashboard'); } } />
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
         <Icon icon="tree" title="Edit site structure" onClick={ toggleStructureView } />
-        <Icon icon="add-category" title="Add category" onClick={ () => { openModal('AddCategory'); } } />
       </div>
     );
+    
+    /*
+    <Icon
+      icon="edit"
+      title="Edit dashboard"
+      onClick={ () => { openModal('EditDashboard', {
+        id: dashboard.id,
+        name: dashboard.name
+      }); } }
+    />
+     */
+    // <Icon icon="add-category" title="Add category" onClick={ () => { openModal('AddCategory'); } } />
     // <div className="toolbar__gradient" />
     // <TabBar tabs={ dashboards } />
   }

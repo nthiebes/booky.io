@@ -2,3 +2,9 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.categories__button {
+  display: flex;
+  margin: 1rem calc(3vw + 6px) 0;
+  width: 100%;
+}

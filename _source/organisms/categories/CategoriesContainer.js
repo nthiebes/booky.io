@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Component from './Categories';
+import { actions } from '../../_state/modal';
 
 export const mapStateToProps = function(state) {
   return {
@@ -10,8 +11,17 @@ export const mapStateToProps = function(state) {
   };
 };
 
+export const mapDispatchToProps = function(dispatch) {
+  return {
+    openModal: (modal) => {
+      dispatch(actions.openModal(modal));
+    }
+  };
+};
+
 const Container = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Component);
 
 export default Container;

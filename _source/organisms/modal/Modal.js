@@ -36,17 +36,17 @@ export default class Modal extends Component {
 
   render() {
     const { modal, open, closeModal, data } = this.props;
-    const body = document.getElementsByTagName('body')[0];
-    const html = document.getElementsByTagName('html')[0];
     const CustomTag = modalMap[modal] || AddBookmark;
+    // const body = document.getElementsByTagName('body')[0];
+    // const html = document.getElementsByTagName('html')[0];
 
-    if (open) {  
-      body.classList.add('booky--no-scrolling');
-      html.classList.add('booky--no-scrolling');
-    } else {
-      body.classList.remove('booky--no-scrolling');
-      html.classList.remove('booky--no-scrolling');
-    }
+    // if (open) {  
+    //   body.classList.add('booky--no-scrolling');
+    //   html.classList.add('booky--no-scrolling');
+    // } else {
+    //   body.classList.remove('booky--no-scrolling');
+    //   html.classList.remove('booky--no-scrolling');
+    // }
 
     return (
       <div className={ classNames(['modal', open && 'modal--open']) } onClick={ closeModal }>

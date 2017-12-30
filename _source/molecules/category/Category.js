@@ -83,13 +83,6 @@ export default class Category extends Component {
           />
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
-          { editMode && (
-            <ButtonSmallMedium
-              className="category__button"
-              onClick={ () => { openModal('AddBookmark'); } }>
-              { 'Add ' }<b>{ 'bookmark' }</b>
-            </ButtonSmallMedium>
-          ) }
           <Droppable droppableId={ id.toString() } type="bookmark">
             { (provided) => (
               <div className="category__bookmark-drag-wrapper" ref={ provided.innerRef }>
@@ -107,6 +100,11 @@ export default class Category extends Component {
             ) }
           </Droppable>
         </ul>
+        { editMode && <ButtonSmallMedium
+          className="category__button"
+          onClick={ () => { openModal('AddBookmark'); } }>
+          { 'Add ' }<b>{ 'bookmark' }</b>
+        </ButtonSmallMedium> }
       </section>
     );
   }

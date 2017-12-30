@@ -16,7 +16,8 @@
   margin-top: 0.7rem;
 
   &.category__bookmarks--hidden {
-    display: none;
+    height: 0;
+    overflow: hidden;
   }
 }
 
@@ -119,7 +120,6 @@
 }
 
 .category__button {
-  margin: 1rem 6px 0 6px;
+  margin: 6px 6px 0 6px;
   display: flex;
-  justify-content: center;
 }

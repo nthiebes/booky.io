@@ -60,7 +60,14 @@ export default class Header extends Component {
         <Menu menuOpen={ menuOpen } loggedIn={ loggedIn } />
         { loggedIn ? [
           <Search key="0" className="b-hide-desktop" />,
-          <Icon key="1" icon="add" color="light" onClick={ () => { openModal('AddBookmark'); } } />
+          <Icon
+            key="1"
+            icon="add"
+            color="light"
+            onClick={ () => { openModal('AddBookmark', {
+              source: 'header'
+            }); } }
+          />
         ] : (
           <Link className="header__logo header__logo--small" color="light" href="/" title="Home">
             <Icon icon="heart" color="light" />

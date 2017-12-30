@@ -37,8 +37,8 @@ export const mapDispatchToProps = function(dispatch) {
       dispatch(sidebarActions.closeSidebar());
       dispatch(headerActions.closeDashboards());
     },
-    openModal: (type) => {
-      dispatch(modalActions.openModal(type));
+    openModal: (modal, data) => {
+      dispatch(modalActions.openModal(modal, data));
     }
   };
 };

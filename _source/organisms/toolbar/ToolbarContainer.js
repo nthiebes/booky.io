@@ -31,8 +31,8 @@ export const mapDispatchToProps = function(dispatch) {
     toggleStructureView: () => {
       dispatch(dashboardsActions.toggleStructureView());
     },
-    openModal: (type) => {
-      dispatch(modalActions.openModal(type));
+    openModal: (modal, data) => {
+      dispatch(modalActions.openModal(modal, data));
     }
   };
 };
