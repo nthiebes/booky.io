@@ -8,7 +8,8 @@ export const mapStateToProps = function(state) {
     open: state.modal.open,
     data: {
       ...state.modal.data,
-      categories: state.categories.filter(({id}) => id !== state.modal.data.id)
+      categories: state.categories.filter(({id}) => id !== state.modal.data.id),
+      dashboards: state.dashboards.items.filter(({id}) => id !== state.modal.data.id)
     }
   };
 };

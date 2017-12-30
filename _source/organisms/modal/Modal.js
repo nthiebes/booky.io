@@ -7,7 +7,9 @@ import DeleteBookmark from './modals/DeleteBookmark';
 import AddCategory from './modals/AddCategory';
 import EditCategory from './modals/EditCategory';
 import DeleteCategory from './modals/DeleteCategory';
+import AddDashboard from './modals/AddDashboard';
 import EditDashboard from './modals/EditDashboard';
+import DeleteDashboard from './modals/DeleteDashboard';
 
 const modalMap = {
   AddBookmark,
@@ -16,7 +18,9 @@ const modalMap = {
   AddCategory,
   EditCategory,
   DeleteCategory,
-  EditDashboard
+  AddDashboard,
+  EditDashboard,
+  DeleteDashboard
 };
 
 export default class Modal extends Component {

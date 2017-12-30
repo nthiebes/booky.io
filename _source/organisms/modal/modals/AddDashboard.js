@@ -3,21 +3,19 @@ import PropTypes from 'prop-types';
 import Base from '../Base';
 import Input from '../../../atoms/input';
 
-export default class EditDashboard extends Component {
+export default class AddDashboard extends Component {
   constructor(props) {
     super(props);
 
     this.onNameChange = this.onNameChange.bind(this);
     this.state = {
-      id: props.data.id,
-      name: props.data.name
+      name: ''
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     this.setState({
-      id: nextProps.data.id,
-      name: nextProps.data.name
+      name: ''
     });
   }
 
@@ -32,7 +30,7 @@ export default class EditDashboard extends Component {
     const { name } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Edit dashboard">
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Add a dashboard">
         <label className="modal__label" htmlFor="dashboard-name">{ 'Name:' }</label>
         <Input id="dashboard-name" color="primary" value={ name } onChange={ this.onNameChange } required />
       </Base>
@@ -40,8 +38,7 @@ export default class EditDashboard extends Component {
   }
 }
 
-EditDashboard.propTypes = {
+AddDashboard.propTypes = {
   onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired
+  onSave: PropTypes.func.isRequired
 };
