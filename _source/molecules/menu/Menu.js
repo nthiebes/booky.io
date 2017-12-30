@@ -28,7 +28,7 @@ export default class Menu extends Component {
   }
 
   render() {
-    const { loggedIn, menuOpen, closeMenu, dashboards, openModal } = this.props;
+    const { loggedIn, menuOpen, closeMenu, dashboards, openModal, changeDashboard } = this.props;
     const { editMode } = this.state;
 
     return (
@@ -58,8 +58,8 @@ export default class Menu extends Component {
             { dashboards.items.map((dashboard, index) => (
               <li
                 key={ index }
-                className={ `menu__item ${index === dashboards.active ? 'menu__item--active' : ''}` }
-                onClick={ closeMenu }>
+                className={ `menu__item ${dashboard.id === dashboards.active ? 'menu__item--active' : ''}` }
+                onClick={ () => { changeDashboard(dashboard.id); } }>
                 <label className="menu__label">{ dashboard.name }</label>
                 <Icon
                   className="menu__icon"
@@ -130,6 +130,7 @@ Menu.propTypes = {
   menuOpen: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
+  changeDashboard: PropTypes.func.isRequired,
   dashboards: PropTypes.object
 };
 

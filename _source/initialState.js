@@ -4,7 +4,7 @@ export default {
   },
   'dashboards': {
     'items': [{
-      'id': 0,
+      'id': 567,
       'name': 'Dashboard كيف ح вет, как 1',
       categories: [{
         'id': 0,
@@ -20,7 +20,7 @@ export default {
         'position': 3
       }]
     }, {
-      'id': 2,
+      'id': 678,
       'name': 'Dashboard looooooooooooooooong 2',
       categories: [{
         'id': 3,
@@ -32,11 +32,11 @@ export default {
         'position': 1
       }]
     }, {
-      'id': 1,
+      'id': 789,
       'name': 'Dashboard こんにち 3',
       categories: []
     }],
-    active: 0,
+    active: 567,
     offset: 3,
     structureOpen: false
   },
@@ -208,13 +208,9 @@ export default {
     }]
   }],
   'header': {
-    'menuOpen': false,
-    'dashboardsOpen': false
+    'menuOpen': false
   },
   'toolbar': {
-    'searchOpen': false,
-    'searchFocused': false,
-    'editMode': false,
     'sticky': true,
     'currentlySticky': true
   },

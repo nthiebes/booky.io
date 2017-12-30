@@ -7,13 +7,10 @@ import { actions as modalActions } from '../../_state/modal';
 export const mapStateToProps = function(state) {
   return {
     'currentlySticky': state.toolbar.currentlySticky,
-    'editMode': state.toolbar.editMode,
     'headerSticky': state.sidebar.stickyHeader,
-    'searchFocused': state.toolbar.searchFocused,
-    'searchOpen': state.toolbar.searchOpen,
     'sticky': state.sidebar.stickyToolbar,
     dashboards: state.dashboards,
-    dashboard: state.dashboards.items[state.dashboards.active]
+    dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active)
   };
 };
 
