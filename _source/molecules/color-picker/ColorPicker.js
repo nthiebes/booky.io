@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Icon from '../../atoms/icon';
 
 export default class ColorPicker extends Component {
   constructor(props) {
@@ -19,7 +20,11 @@ export default class ColorPicker extends Component {
     const className = `color-picker__color color-picker__color--${color.key} ${activeClass}`;
 
     /* eslint-disable react/jsx-no-bind */
-    return <span key={ color.key } className={ className } onClick={ this.onChange.bind(this, color.key) } />;
+    return (
+      <span key={ color.key } className={ className } onClick={ this.onChange.bind(this, color.key) }>
+        { this.props.value === color.key && <Icon icon="check" color="dark" className="color-picker__icon" /> }
+      </span>
+    );
     
     /* eslint-enable react/jsx-no-bind */
   }

@@ -65,3 +65,10 @@
     background-color: $color--8;
   }
 }
+
+.color-picker__icon,
+.color-picker__icon .icon__svg {
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
