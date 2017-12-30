@@ -29,10 +29,25 @@ const categories = (state = [], action) => {
       });
 
     case DELETE_CATEGORY: {
-      const newState = state.slice();
+      const { id, newId } = action.payload;
+      let newState = Object.assign([], state);
+      const bookmarks = newState.find((category) => category.id === id).bookmarks;
 
-      state.map((category, index) => {
-        if (state[index].id === action.payload.id) {
+      // Move bookmarks
+      newState = newState.map((category) => {
+        if (category.id !== newId) {
+          return category;
+        }
+
+        return {
+          ...category,
+          bookmarks: category.bookmarks.concat(bookmarks)
+        };
+      });
+
+      // Remove category
+      newState.map((category, index) => {
+        if (category.id === id) {
           newState.splice(index, 1);
         }
       });
