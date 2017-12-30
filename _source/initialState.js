@@ -150,7 +150,7 @@ export default {
     'id': 345,
     'name': 'Category 2 مرحبا كيف حالك؟ asas!',
     'dashboard': 0,
-    'position': 2,
+    'position': 1,
     'color': 2,
     'expanded': true,
     bookmarks: [{
@@ -165,7 +165,7 @@ export default {
     'id': 45,
     'name': 'Category 3 こんにちはお元気で 3',
     'dashboard': 0,
-    'position': 1,
+    'position': 2,
     'color': 3,
     'expanded': false,
     bookmarks: [{
@@ -195,7 +195,7 @@ export default {
     'id': 89,
     'name': 'Category 5',
     'dashboard': 2,
-    'position': 0,
+    'position': 4,
     'color': 0,
     'expanded': false,
     bookmarks: [{
@@ -231,7 +231,7 @@ export default {
     'dashboard': 1
   },
   modal: {
-    modal: '',
+    modal: 'AddBookmark',
     open: false,
     data: {}
   }

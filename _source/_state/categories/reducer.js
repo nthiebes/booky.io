@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, TOGGLE_CATEGORY, DRAG_BOOKMARK } from './actions';
+import { ADD_CATEGORY, EDIT_CATEGORY, DELETE_CATEGORY, TOGGLE_CATEGORY, DRAG_BOOKMARK } from './actions';
 import { arrayMove } from '../../_utils/array';
 
 const categories = (state = [], action) => {
@@ -7,11 +7,38 @@ const categories = (state = [], action) => {
       return [
         ...state,
         {
-          id: action.id,
-          name: action.name,
+          id: 123456789,
+          name: action.payload.name,
+          color: action.payload.color,
+          dashboard: action.payload.dashboard,
+          position: state.length,
           expanded: true
         }
       ];
+
+    case EDIT_CATEGORY:
+      return state.map((category, index) => {
+        if (state[index].id !== action.payload.id) {
+          return category;
+        }
+        
+        return {
+          ...category,
+          ...action.payload
+        };    
+      });
+
+    case DELETE_CATEGORY: {
+      const newState = state.slice();
+
+      state.map((category, index) => {
+        if (state[index].id === action.payload.id) {
+          newState.splice(index, 1);
+        }
+      });
+
+      return newState;
+    }
 
     case TOGGLE_CATEGORY:
       return state.map((category) => {
