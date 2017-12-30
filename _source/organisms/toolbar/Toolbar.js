@@ -92,11 +92,6 @@ export default class Toolbar extends Component {
 }
 
 Toolbar.propTypes = {
-  searchOpen: PropTypes.bool.isRequired,
-  searchFocused: PropTypes.bool,
-  editMode: PropTypes.bool.isRequired,
-  onSearchClick: PropTypes.func.isRequired,
-  onEditModeClick: PropTypes.func.isRequired,
   updateCurrentlySticky: PropTypes.func.isRequired,
   headerSticky: PropTypes.bool,
   sticky: PropTypes.bool,

@@ -91,7 +91,6 @@ export default class Header extends Component {
 
 Header.propTypes = {
   'color': PropTypes.number,
-  'dashboardsOpen': PropTypes.bool.isRequired,
   'loggedIn': PropTypes.bool.isRequired,
   'menuOpen': PropTypes.bool.isRequired,
   'onDashboardsClick': PropTypes.func.isRequired,
