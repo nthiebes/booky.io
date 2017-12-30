@@ -1,8 +1,88 @@
-import { ADD_CATEGORY, EDIT_CATEGORY, DELETE_CATEGORY, TOGGLE_CATEGORY, DRAG_BOOKMARK } from './actions';
+import {
+  ADD_BOOKMARK,
+  EDIT_BOOKMARK,
+  DELETE_BOOKMARK,
+  ADD_CATEGORY,
+  EDIT_CATEGORY,
+  DELETE_CATEGORY,
+  TOGGLE_CATEGORY,
+  DRAG_BOOKMARK
+} from './actions';
 import { arrayMove } from '../../_utils/array';
 
 const categories = (state = [], action) => {
   switch (action.type) {
+    case ADD_BOOKMARK: {
+      const { categoryId, url, name } = action.payload;
+
+      return state.map((category) => {
+        if (category.id !== categoryId) {
+          return category;
+        }
+        
+        return {
+          ...category,
+          bookmarks: [
+            ...category.bookmarks,
+            {
+              id: 123456789,
+              name,
+              url,
+              categoryId
+            }
+          ]
+        };    
+      });
+    }
+
+    case EDIT_BOOKMARK: {
+      const { id, url, name, categoryId } = action.payload;
+
+      return state.map((category) => {
+        if (category.id !== categoryId) {
+          return category;
+        }
+        
+        return {
+          ...category,
+          bookmarks: category.bookmarks.map((bookmark) => {
+            if (bookmark.id !== id) {
+              return bookmark;
+            }
+            
+            return {
+              ...bookmark,
+              url,
+              name
+            };
+          })
+        };
+      });
+    }
+
+    case DELETE_BOOKMARK: {
+      const { id, categoryId } = action.payload;
+
+      return state.map((category) => {
+        if (category.id !== categoryId) {
+          return category;
+        }
+
+        const newBookmarks = category.bookmarks.slice();
+
+        newBookmarks.map((bookmark, index) => {
+          if (bookmark.id === id) {
+            newBookmarks.splice(index, 1);
+          }
+        });
+        
+        return {
+          ...category,
+          bookmarks: newBookmarks
+        };
+      });
+    }
+
     case ADD_CATEGORY:
       return [
         ...state,
@@ -16,21 +96,25 @@ const categories = (state = [], action) => {
         }
       ];
 
-    case EDIT_CATEGORY:
-      return state.map((category, index) => {
-        if (state[index].id !== action.payload.id) {
+    case EDIT_CATEGORY: {
+      const { color, name } = action.payload;
+
+      return state.map((category) => {
+        if (category.id !== action.payload.id) {
           return category;
         }
         
         return {
           ...category,
-          ...action.payload
-        };    
+          color,
+          name
+        };
       });
+    }
 
     case DELETE_CATEGORY: {
       const { id, newId } = action.payload;
-      let newState = Object.assign([], state);
+      let newState = state.slice();
       const bookmarks = newState.find((category) => category.id === id).bookmarks;
 
       // Move bookmarks

@@ -19,15 +19,15 @@ export default class Modal extends Component {
     this.modalMap = {
       AddBookmark: {
         modal: AddBookmark,
-        action: props.addCategory
+        action: props.addBookmark
       },
       EditBookmark: {
         modal: EditBookmark,
-        action: props.addCategory
+        action: props.editBookmark
       },
       DeleteBookmark: {
         modal: DeleteBookmark,
-        action: props.addCategory
+        action: props.deleteBookmark
       },
       AddCategory: {
         modal: AddCategory,
@@ -43,15 +43,15 @@ export default class Modal extends Component {
       },
       AddDashboard: {
         modal: AddDashboard,
-        action: props.addCategory
+        action: props.addDashboard
       },
       EditDashboard: {
         modal: EditDashboard,
-        action: props.addCategory
+        action: props.editDashboard
       },
       DeleteDashboard: {
         modal: DeleteDashboard,
-        action: props.addCategory
+        action: props.deleteDashboard
       }
     };
   }
@@ -92,9 +92,15 @@ Modal.propTypes = {
   open: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   data: PropTypes.object,
+  addBookmark: PropTypes.func.isRequired,
+  editBookmark: PropTypes.func.isRequired,
+  deleteBookmark: PropTypes.func.isRequired,
   addCategory: PropTypes.func.isRequired,
   editCategory: PropTypes.func.isRequired,
-  deleteCategory: PropTypes.func.isRequired
+  deleteCategory: PropTypes.func.isRequired,
+  addDashboard: PropTypes.func.isRequired,
+  editDashboard: PropTypes.func.isRequired,
+  deleteDashboard: PropTypes.func.isRequired
 };
 
 Modal.defaultProps = {

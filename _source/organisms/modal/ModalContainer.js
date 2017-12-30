@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Component from './Modal';
 import { actions as modalActions } from '../../_state/modal';
 import { actions as categoriesActions } from '../../_state/categories';
+import { actions as dashboardsActions } from '../../_state/dashboards';
 
 export const mapStateToProps = function(state) {
   return {
@@ -21,6 +22,18 @@ export const mapDispatchToProps = function(dispatch) {
     closeModal: () => {
       dispatch(modalActions.closeModal());
     },
+    addBookmark: (data) => {
+      dispatch(categoriesActions.addBookmark(data));
+      dispatch(modalActions.closeModal());
+    },
+    editBookmark: (data) => {
+      dispatch(categoriesActions.editBookmark(data));
+      dispatch(modalActions.closeModal());
+    },
+    deleteBookmark: (data) => {
+      dispatch(categoriesActions.deleteBookmark(data));
+      dispatch(modalActions.closeModal());
+    },
     addCategory: (data) => {
       dispatch(categoriesActions.addCategory(data));
       dispatch(modalActions.closeModal());
@@ -31,6 +44,18 @@ export const mapDispatchToProps = function(dispatch) {
     },
     deleteCategory: (data) => {
       dispatch(categoriesActions.deleteCategory(data));
+      dispatch(modalActions.closeModal());
+    },
+    addDashboard: (data) => {
+      dispatch(dashboardsActions.addDashboard(data));
+      dispatch(modalActions.closeModal());
+    },
+    editDashboard: (data) => {
+      dispatch(dashboardsActions.editDashboard(data));
+      dispatch(modalActions.closeModal());
+    },
+    deleteDashboard: (data) => {
+      dispatch(dashboardsActions.deleteDashboard(data));
       dispatch(modalActions.closeModal());
     }
   };

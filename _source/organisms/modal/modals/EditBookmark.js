@@ -12,7 +12,8 @@ export default class EditBookmark extends Component {
     this.state = {
       id: props.data.id,
       name: props.data.name,
-      url: props.data.url
+      url: props.data.url,
+      categoryId: props.data.categoryId
     };
   }
 
@@ -20,7 +21,8 @@ export default class EditBookmark extends Component {
     this.setState({
       id: nextProps.data.id,
       name: nextProps.data.name,
-      url: nextProps.data.url
+      url: nextProps.data.url,
+      categoryId: nextProps.data.categoryId
     });
   }
 

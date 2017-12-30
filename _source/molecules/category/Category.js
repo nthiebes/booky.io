@@ -90,6 +90,7 @@ export default class Category extends Component {
                   <Bookmark
                     key={ index }
                     id={ bookmark.id }
+                    categoryId={ id }
                     editMode={ editMode }
                     name={ bookmark.name }
                     url={ bookmark.url }
@@ -102,7 +103,9 @@ export default class Category extends Component {
         </ul>
         { editMode && <ButtonSmallMedium
           className="category__button"
-          onClick={ () => { openModal('AddBookmark'); } }>
+          onClick={ () => { openModal('AddBookmark', {
+            categoryId: id
+          }); } }>
           { 'Add ' }<b>{ 'bookmark' }</b>
         </ButtonSmallMedium> }
       </section>

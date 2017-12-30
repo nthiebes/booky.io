@@ -14,16 +14,16 @@ export default class AddBookmark extends Component {
     this.state = {
       name: '',
       url: '',
-      categoryId: null,
+      categoryId: props.data.source === 'header' ? props.data.categories[0].id : props.data.categoryId,
       value: 0
     };
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
     this.setState({
       name: '',
       url: '',
-      categoryId: null,
+      categoryId: nextProps.data.source === 'header' ? nextProps.data.categories[0].id : nextProps.data.categoryId,
       value: 0
     });
   }

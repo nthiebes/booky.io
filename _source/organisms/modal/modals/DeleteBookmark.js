@@ -7,7 +7,10 @@ export default class DeleteBookmark extends Component {
     const { data, onClose, onSave } = this.props;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave({id: data.id}); } } headline="Delete bookmark">
+      <Base onClose={ onClose } onSave={ () => { onSave({
+        id: data.id,
+        categoryId: data.categoryId
+      }); } } headline="Delete bookmark">
         <label className="modal__label">
           <div>{ 'This bookmark will be deleted:' }</div>
           <b>{ data.name }</b>
