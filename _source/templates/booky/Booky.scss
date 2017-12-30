@@ -52,13 +52,8 @@ body {
   }
 
   &.booky--no-scrolling {
+    position: fixed; // temp fix for iOs input fields
     overflow: hidden;
-  }
-
-  @include mobile-tablet {
-    &.booky--no-scrolling-mobile-tablet {
-      overflow: hidden;
-    }
   }
 }
 
