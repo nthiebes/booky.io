@@ -92,7 +92,8 @@ const categories = (state = [], action) => {
           color: action.payload.color,
           dashboard: action.payload.dashboard,
           position: state.length,
-          expanded: true
+          expanded: true,
+          bookmarks: []
         }
       ];
 
