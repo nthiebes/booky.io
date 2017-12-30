@@ -36,8 +36,8 @@ export default {
       'name': 'Dashboard こんにち 3',
       categories: []
     }],
-    'active': 0,
-    'offset': 3,
+    active: 0,
+    offset: 3,
     structureOpen: false
   },
   'categories': [{

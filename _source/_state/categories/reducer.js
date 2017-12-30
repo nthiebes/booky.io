@@ -2,11 +2,11 @@ import {
   ADD_BOOKMARK,
   EDIT_BOOKMARK,
   DELETE_BOOKMARK,
+  DRAG_BOOKMARK,
   ADD_CATEGORY,
   EDIT_CATEGORY,
   DELETE_CATEGORY,
-  TOGGLE_CATEGORY,
-  DRAG_BOOKMARK
+  TOGGLE_CATEGORY
 } from './actions';
 import { arrayMove } from '../../_utils/array';
 

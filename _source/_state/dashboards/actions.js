@@ -1,43 +1,41 @@
 export const CHANGE_DASHBOARD = 'CHANGE_DASHBOARD';
+export const ADD_DASHBOARD = 'ADD_DASHBOARD';
 export const EDIT_DASHBOARD = 'EDIT_DASHBOARD';
 export const DELETE_DASHBOARD = 'DELETE_DASHBOARD';
-export const ADD_DASHBOARD = 'ADD_DASHBOARD';
 export const UPDATE_OFFSET = 'UPDATE_OFFSET';
 export const TOGGLE_STRUCTURE_VIEW = 'TOGGLE_STRUCTURE_VIEW';
 
 export function changeDashboard(id) {
   return {
-    'type': CHANGE_DASHBOARD,
+    type: CHANGE_DASHBOARD,
     id
   };
 }
 
-export function editDashboard(data) {
+export function editDashboard(payload) {
   return {
-    'type': EDIT_DASHBOARD,
-    'id': data.id,
-    'name': data.name,
-    'position': data.position
+    type: EDIT_DASHBOARD,
+    payload
   };
 }
 
-export function deleteDashboard(id) {
+export function deleteDashboard(payload) {
   return {
-    'type': DELETE_DASHBOARD,
-    id
+    type: DELETE_DASHBOARD,
+    payload
   };
 }
 
-export function addDashboard(name) {
+export function addDashboard(payload) {
   return {
-    'type': ADD_DASHBOARD,
-    name
+    type: ADD_DASHBOARD,
+    payload
   };
 }
 
 export function updateOffset(offset) {
   return {
-    'type': UPDATE_OFFSET,
+    type: UPDATE_OFFSET,
     offset
   };
 }
