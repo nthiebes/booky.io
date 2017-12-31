@@ -12,11 +12,11 @@ export default {
         'position': 0
       }, {
         'id': 1,
-        'name': 'Category 1 loooong naaaaame',
+        'name': 'Category 2 loooong naaaaame',
         'position': 2
       }, {
         'id': 2,
-        'name': 'Category 1 loooong naaaaame',
+        'name': 'Category 3 loooong naaaaame',
         'position': 3
       }]
     }, {
@@ -24,11 +24,11 @@ export default {
       'name': 'Dashboard looooooooooooooooong 2',
       categories: [{
         'id': 3,
-        'name': 'Category 1 loooong naaaaame',
+        'name': 'Category 4 loooong naaaaame',
         'position': 0
       }, {
         'id': 4,
-        'name': 'Category 1 loooong naaaaame',
+        'name': 'Category 5 loooong naaaaame',
         'position': 1
       }]
     }, {

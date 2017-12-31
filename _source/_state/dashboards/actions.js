@@ -3,7 +3,8 @@ export const ADD_DASHBOARD = 'ADD_DASHBOARD';
 export const EDIT_DASHBOARD = 'EDIT_DASHBOARD';
 export const DELETE_DASHBOARD = 'DELETE_DASHBOARD';
 export const UPDATE_OFFSET = 'UPDATE_OFFSET';
-export const TOGGLE_STRUCTURE_VIEW = 'TOGGLE_STRUCTURE_VIEW';
+export const DRAG_DASHBOARD = 'DRAG_DASHBOARD';
+export const DRAG_CATEGORY = 'DRAG_CATEGORY';
 
 export function changeDashboard(id) {
   return {
@@ -40,8 +41,16 @@ export function updateOffset(offset) {
   };
 }
 
-export function toggleStructureView() {
+export function dragDashboard(data) {
   return {
-    type: TOGGLE_STRUCTURE_VIEW
+    type: DRAG_DASHBOARD,
+    data
+  };
+}
+
+export function dragCategory(data) {
+  return {
+    type: DRAG_CATEGORY,
+    data
   };
 }
