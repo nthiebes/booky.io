@@ -34,7 +34,7 @@ export default class EditDashboard extends Component {
     return (
       <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Edit dashboard">
         <label className="modal__label" htmlFor="dashboard-name">{ 'Name:' }</label>
-        <Input id="dashboard-name" color="primary" value={ name } onChange={ this.onNameChange } required />
+        <Input id="dashboard-name" color="primary" value={ name } onChange={ this.onNameChange } required maxLength="50" />
       </Base>
     );
   }

@@ -54,9 +54,9 @@ export default class AddBookmark extends Component {
     return (
       <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Add a bookmark">
         <label className="modal__label" htmlFor="bookmark-url">{ 'URL:' }</label>
-        <Input id="bookmark-url" color="primary" value={ url } onChange={ this.onUrlChange } type="url" required />
+        <Input id="bookmark-url" value={ url } onChange={ this.onUrlChange } required maxLength="2000" />
         <label className="modal__label" htmlFor="bookmark-name">{ 'Name:' }</label>
-        <Input id="bookmark-name" color="primary" value={ name } onChange={ this.onNameChange } required />
+        <Input id="bookmark-name" value={ name } onChange={ this.onNameChange } required maxLength="80" />
         { data.source === 'header' && [
           <label key="0" className="modal__label">{ 'Category:' }</label>,
           <Dropdown key="1" options={ data.categories } onChange={ this.onCategoryChange } value={ this.state.value } />

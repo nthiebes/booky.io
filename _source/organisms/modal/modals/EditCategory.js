@@ -44,7 +44,7 @@ export default class EditCategory extends Component {
     return (
       <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Edit category">
         <label className="modal__label" htmlFor="category-name">{ 'Name:' }</label>
-        <Input id="category-name" color="primary" value={ name } onChange={ this.onNameChange } required />
+        <Input id="category-name" color="primary" value={ name } onChange={ this.onNameChange } required maxLength="50" />
         <label className="modal__label" htmlFor="color">{ 'Color:' }</label>
         <ColorPicker value={ color } onChange={ this.onColorChange } />
       </Base>

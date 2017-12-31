@@ -1,5 +1,6 @@
 .input {
   flex-grow: 1;
+  position: relative;
 }
 
 .input__field {
@@ -23,6 +24,14 @@
     // border-bottom: 2px solid rgba(#000, 0.15);
     border-color: $color__font--medium;
     box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
+
+    &:required:valid {
+      border-color: $color--green;
+    }
+
+    &:required:invalid {
+      border-color: $color--primary;
+    }
   }
 
   @include desktop {
@@ -31,15 +40,23 @@
     }
   }
 
-  &.input__field--color-primary:focus {
-    border-color: $color--primary;
-  }
+  // &.input__field--color-primary:focus {
+  //   border-color: $color--primary;
+  // }
 
-  &.input__field--color-blue:focus {
-    border-color: $color--blue;
-  }
+  // &.input__field--color-blue:focus {
+  //   border-color: $color--blue;
+  // }
 
-  &.input__field--color-green:focus {
-    border-color: $color--green;
-  }
+  // &.input__field--color-green:focus {
+  //   border-color: $color--green;
+  // }
+}
+
+.input__icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }

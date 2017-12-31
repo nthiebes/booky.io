@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
+import Icon from '../icon';
 
 export default class Input extends Component {
   constructor(props) {
     super(props);
 
     this.onChange = this.onChange.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+    this.state = {
+      errorColor: 'medium'
+    };
   }
 
-  componentDidUpdate() {
-    if (this.focus) {
+  componentDidMount() {
+    if (this.props.focus) {
       findDOMNode(this.refs.inputField).focus();
     }
   }
@@ -20,24 +26,41 @@ export default class Input extends Component {
     this.props.onChange(event.target.value);
   }
 
+  onFocus() {
+    this.setState({
+      errorColor: 'primary'
+    });
+    this.props.onFocus && this.props.onFocus();
+  }
+
+  onBlur() {
+    this.setState({
+      errorColor: 'medium'
+    });
+    this.props.onBlur && this.props.onBlur();
+  }
+
   render() {
-    const { className, placeholder, type, onBlur, onFocus, color, name, id, required, value } = this.props;
+    const { className, placeholder, type, color, name, id, required, value, maxLength } = this.props;
     const inputProps = {
       className: classNames('input__field', className && className, color && `input__field--color-${color}`),
-      onBlur: onBlur ? onBlur : null,
-      onFocus: onFocus ? onFocus : null,
+      onBlur: this.onBlur,
+      onFocus: this.onFocus,
       onChange: this.onChange,
-      value: value,
+      value,
       placeholder,
       type,
       name,
       id,
-      required
+      required,
+      maxLength
     };
 
     return (
       <div className={ `input ${className}` }>
         <input ref="inputField" { ...inputProps } />
+        { required && value && <Icon icon="check" color="green" className="input__icon" /> }
+        { required && !value && <Icon icon="error" color={ this.state.errorColor } className="input__icon" /> }
       </div>
     );
   }
@@ -55,7 +78,8 @@ Input.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
   required: PropTypes.bool,
-  value: PropTypes.string
+  value: PropTypes.string,
+  maxLength: PropTypes.string
 };
 
 Input.defaultProps = {
@@ -67,5 +91,6 @@ Input.defaultProps = {
   name: '',
   id: '',
   required: false,
-  value: ''
+  value: '',
+  maxlength: ''
 };
