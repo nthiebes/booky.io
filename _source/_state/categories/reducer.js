@@ -143,9 +143,10 @@ const categories = (state = [], action) => {
     case TOGGLE_CATEGORY:
       return state.map((category) => {
         if (category.id === action.id) {
-          return Object.assign({}, category, {
+          return {
+            ...category,
             expanded: !category.expanded
-          });
+          };
         }
         return category;
       });
@@ -154,27 +155,32 @@ const categories = (state = [], action) => {
       const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = action.data;
 
       return state.map((category) => {
-        const bookmarks = Object.assign([], category.bookmarks);
+        const bookmarks = [...category.bookmarks];
         
         if (category.id === sourceCategoryId) {
 
+          // Same category - move bookmark
           if (category.id === destinationCategoryId) {
             arrayMove(bookmarks, sourceIndex, destinationIndex);
+          // Different category - remove bookmark
           } else {
             bookmarks.splice(sourceIndex, 1);
           }
 
-          return Object.assign({}, category, {
-            bookmarks: Object.assign([], bookmarks)
-          });
+          return {
+            ...category,
+            bookmarks: [...bookmarks]
+          };
+        // Insert bookmark in new category
         } else if (category.id === destinationCategoryId) {
           const bookmark = state.find((item) => item.id === sourceCategoryId).bookmarks[sourceIndex];
           
           bookmarks.splice(destinationIndex, 0, bookmark);
 
-          return Object.assign({}, category, {
-            bookmarks: Object.assign([], bookmarks)
-          });
+          return {
+            ...category,
+            bookmarks: [...bookmarks]
+          };
         }
 
         return category;
