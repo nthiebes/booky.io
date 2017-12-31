@@ -14,9 +14,11 @@
   transition: color 0.2s linear, background-color 0.2s linear;
   user-select: none;
   white-space: nowrap;
+  justify-content: center;
 
-  &.button--small {
-
+  &.button--disabled {
+    pointer-events: none;
+    opacity: 0.5;
   }
 
   &.button--small-light {
@@ -97,6 +99,32 @@
     }
   }
 
+  &.button--small-medium {
+    background-color: transparent;
+    border-color: $color__font--medium;
+    color: $color__font--medium;
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: $color__font--medium;
+        color: $color__font--white;
+      }
+      &:active .icon {
+        color: $color__font--white;
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: $color__font--medium;
+        color: $color__font--white;
+      }
+      &:hover .icon {
+        color: $color__font--white;
+      }
+    }
+  }
+
   &.button--large {
     justify-content: center;
 
@@ -157,6 +185,73 @@
     @include desktop() {
       &:hover {
         background-color: $color__background--primary;
+      }
+    }
+  }
+
+  &.button--large-green {
+    background-color: rgba($color--green, 0.9);
+    color: $color__font--white;
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: color--green;
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: color--green;
+      }
+    }
+  }
+
+  &.button--large-blue {
+    background-color: rgba($color--blue, 0.9);
+    color: $color__font--white;
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: color--blue;
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: color--blue;
+      }
+    }
+  }
+
+  &.button--large-dark {
+    background-color: rgba($color__background--dark, 0.9);
+    color: $color__font--white;
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: $color__background--dark;
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: $color__background--dark;
+      }
+    }
+  }
+
+  &.button--large-light {
+    background-color: rgba(0,0,0,0.1);
+
+    @include mobile-tablet() {
+      &:active {
+        background-color: rgba(0,0,0,0.15);
+      }
+    }
+
+    @include desktop() {
+      &:hover {
+        background-color: rgba(0,0,0,0.15);
       }
     }
   }

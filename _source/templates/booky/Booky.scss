@@ -14,17 +14,17 @@
 @import "../../molecules/bookmark/Bookmark";
 @import "../../molecules/category/Category";
 @import "../../molecules/search/Search";
-@import "../../molecules/color-picker/styles/m-color-picker";
-@import "../../molecules/dropdown/styles/m-dropdown";
-@import "../../molecules/dashboard/styles/m-dashboard";
+@import "../../molecules/color-picker/ColorPicker";
+@import "../../molecules/dropdown/Dropdown";
 @import "../../molecules/tab-bar/TabBar";
 
 @import "../../organisms/categories/Categories";
 @import "../../organisms/header/Header";
 @import "../../organisms/footer/Footer";
 @import "../../organisms/toolbar/Toolbar";
+@import "../../organisms/structure/Structure";
 @import "../../organisms/sidebar/styles/o-sidebar";
-@import "../../organisms/dashboards/styles/o-dashboards";
+@import "../../organisms/modal/Modal";
 
 @import "../../templates/page/Page";
 
@@ -52,13 +52,8 @@ body {
   }
 
   &.booky--no-scrolling {
+    position: fixed; // temp fix for iOs input fields
     overflow: hidden;
-  }
-
-  @include mobile-tablet {
-    &.booky--no-scrolling-mobile-tablet {
-      overflow: hidden;
-    }
   }
 }
 

@@ -18,13 +18,30 @@ export default class Booky extends Component {
   onDragEnd(result) {
     // console.log('onDragEnd', result);
     if (result.destination) {
-      this.props.addBookmark({
-        destinationIndex: result.destination.index,
-        bookmarkId: parseInt(result.draggableId, 10),
-        destinationCategoryId: parseInt(result.destination.droppableId, 10),
-        sourceCategoryId: parseInt(result.source.droppableId, 10),
-        sourceIndex: result.source.index
-      });
+      if (result.type === 'dashboard') {
+        this.props.dragDashboard({
+          destinationIndex: result.destination.index,
+          sourceIndex: result.source.index,
+          dashboardId: parseInt(result.draggableId, 10)
+        });
+      }
+      if (result.type === 'category') {
+        this.props.dragCategory({
+          destinationIndex: result.destination.index,
+          sourceIndex: result.source.index,
+          sourceDashboardId: parseInt(result.source.droppableId.replace('dashboard-', ''), 10),
+          destinationDashboardId: parseInt(result.destination.droppableId.replace('dashboard-', ''), 10)
+        });
+      }
+      if (result.type === 'bookmark') {
+        this.props.dragBookmark({
+          destinationIndex: result.destination.index,
+          bookmarkId: parseInt(result.draggableId, 10),
+          destinationCategoryId: parseInt(result.destination.droppableId, 10),
+          sourceCategoryId: parseInt(result.source.droppableId, 10),
+          sourceIndex: result.source.index
+        });
+      }
     }
   }
 
@@ -39,5 +56,7 @@ export default class Booky extends Component {
 
 Booky.propTypes = {
   children: PropTypes.element.isRequired,
-  addBookmark: PropTypes.func.isRequired
+  dragBookmark: PropTypes.func.isRequired,
+  dragCategory: PropTypes.func.isRequired,
+  dragDashboard: PropTypes.func.isRequired
 };

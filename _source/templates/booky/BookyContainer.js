@@ -1,11 +1,18 @@
 import { connect } from 'react-redux';
 import Component from './Booky';
-import { actions } from '../../_state/categories';
+import { actions as dashboardsActions } from '../../_state/dashboards';
+import { actions as categoriesActions } from '../../_state/categories';
 
 export const mapDispatchToProps = function(dispatch) {
   return {
-    addBookmark: (data) => {
-      dispatch(actions.addBookmark(data));
+    dragDashboard: (data) => {
+      dispatch(dashboardsActions.dragDashboard(data));
+    },
+    dragCategory: (data) => {
+      dispatch(dashboardsActions.dragCategory(data));
+    },
+    dragBookmark: (data) => {
+      dispatch(categoriesActions.dragBookmark(data));
     }
   };
 };

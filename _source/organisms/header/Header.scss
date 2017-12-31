@@ -38,7 +38,7 @@
     @include mobile-tablet {
       &:before {
         opacity: 1;
-        transition: opacity 0.5s linear;
+        transition: opacity 0.3s linear;
         width: 100%;
         z-index: 2;
       }
@@ -49,7 +49,7 @@
     @include mobile-tablet {
       &:before {
         opacity: 1;
-        transition: opacity 0.5s linear;
+        transition: opacity 0.3s linear;
         width: 100%;
         z-index: 2;
       }
@@ -59,7 +59,7 @@
   &.header--overlay-sidebar {
     &:before {
       opacity: 1;
-      transition: opacity 0.5s linear;
+      transition: opacity 0.3s linear;
       width: 100%;
       z-index: 2;
     }

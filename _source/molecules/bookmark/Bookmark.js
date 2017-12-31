@@ -6,10 +6,10 @@ import Icon from '../../atoms/icon';
 
 export default class Bookmark extends Component {
   render() {
-    const { url, target, name, editMode, id } = this.props;
+    const { url, target, name, editMode, id, openModal, categoryId } = this.props;
 
     return (
-      <Draggable draggableId={ id.toString() } type="bookmark">
+      <Draggable draggableId={ `bookmark-${id}` } type="bookmark">
         { (provided) => (
           <div>
             <div ref={ provided.innerRef } style={ provided.draggableStyle }>
@@ -19,11 +19,23 @@ export default class Bookmark extends Component {
                   className="bookmark__icon"
                   icon="edit"
                   title="Edit bookmark"
+                  onClick={ () => { openModal('EditBookmark', {
+                    id,
+                    url,
+                    name,
+                    categoryId
+                  }); } }
                 />
                 <Icon
                   className="bookmark__icon"
                   icon="delete"
                   title="Delete bookmark"
+                  onClick={ () => { openModal('DeleteBookmark', {
+                    id,
+                    url,
+                    name,
+                    categoryId
+                  }); } }
                 />
                 <Icon
                   className="bookmark__icon bookmark__icon--drag"
@@ -46,7 +58,9 @@ Bookmark.propTypes = {
   url: PropTypes.string.isRequired,
   editMode: PropTypes.bool.isRequired,
   target: PropTypes.string,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  openModal: PropTypes.func.isRequired,
+  categoryId: PropTypes.number.isRequired
 };
 
 Bookmark.defaultProps = {

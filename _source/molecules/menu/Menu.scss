@@ -76,6 +76,7 @@
 
 .menu__logo {
   margin-left: 1rem;
+  color: $color__font--primary;
 }
 
 .menu__dashboards {
@@ -103,10 +104,6 @@
   opacity: 0;
   width: 0;
   overflow: hidden;
-
-  &.menu__icon--drag {
-    cursor: move;
-  }
 }
 
 .menu__edit-icon--hide {
@@ -150,6 +147,7 @@
     user-select: none;
     transition: none;
     cursor: pointer;
+    text-decoration: none;
 
     .icon {
       transition: none;
@@ -226,4 +224,9 @@
   width: 140%;
   left: -20%;
   margin-bottom: 1rem;
+}
+
+.menu__button {
+  margin: 1rem calc(3vw + 6px);
+  display: flex;
 }

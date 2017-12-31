@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import scrolling from '../../_utils/scrolling';
-// import Button from '../../atoms/button';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 // import TabBar from '../../molecules/tab-bar';
 
-export default class Toolbar extends Component {
+class Toolbar extends Component {
   constructor(props) {
     super(props);
 
     this.nextProps = {};
     this.isAboveActions = this.isAboveActions.bind(this);
     this.isBelowActions = this.isBelowActions.bind(this);
+    this.state = {
+      dashboardModalOpen: false
+    };
   }
 
   componentDidMount() {
     scrolling.registerAction('toolbar', {
-      'offset': 85,
-      'scope': this,
-      'isAbove': function() {
+      offset: 85,
+      scope: this,
+      isAbove: function() {
         this.isAboveActions();
       },
-      'isBelow': function() {
+      isBelow: function() {
         this.isBelowActions();
       }
     });
@@ -64,33 +67,42 @@ export default class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard } = this.props;
+    const { dashboard, router } = this.props;
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
-        <Icon icon="settings" title="Configure dashboard" />
+        <Icon icon="tree" title="Edit site structure" onClick={ () => { router.push('/structure'); } } />
       </div>
     );
-    // <Icon icon="sort" color="dark" />
+    
+    /*
+    <Icon
+      icon="edit"
+      title="Edit dashboard"
+      onClick={ () => { openModal('EditDashboard', {
+        id: dashboard.id,
+        name: dashboard.name
+      }); } }
+    />
+     */
+    // <Icon icon="add-category" title="Add category" onClick={ () => { openModal('AddCategory'); } } />
     // <div className="toolbar__gradient" />
     // <TabBar tabs={ dashboards } />
-    // <Icon icon="dashboard" color="dark" />
   }
 }
 
+export default withRouter(Toolbar);
+
 Toolbar.propTypes = {
-  'searchOpen': PropTypes.bool.isRequired,
-  'searchFocused': PropTypes.bool,
-  'editMode': PropTypes.bool.isRequired,
-  'onSearchClick': PropTypes.func.isRequired,
-  'onEditModeClick': PropTypes.func.isRequired,
-  'updateCurrentlySticky': PropTypes.func.isRequired,
-  'headerSticky': PropTypes.bool,
-  'sticky': PropTypes.bool,
-  'currentlySticky': PropTypes.bool,
+  updateCurrentlySticky: PropTypes.func.isRequired,
+  headerSticky: PropTypes.bool,
+  sticky: PropTypes.bool,
+  currentlySticky: PropTypes.bool,
   dashboards: PropTypes.object,
-  dashboard: PropTypes.object
+  dashboard: PropTypes.object,
+  openModal: PropTypes.func.isRequired,
+  router: PropTypes.object.isRequired
 };
 
 Toolbar.defaultProps = {

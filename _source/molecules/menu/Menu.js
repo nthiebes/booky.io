@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { IndexLink } from 'react-router';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
+import { ButtonSmallMedium } from '../../atoms/button';
 
 export default class Menu extends Component {
   constructor(props) {
@@ -27,7 +29,7 @@ export default class Menu extends Component {
   }
 
   render() {
-    const { loggedIn, menuOpen, closeMenu, dashboards } = this.props;
+    const { loggedIn, menuOpen, closeMenu, dashboards, openModal, changeDashboard } = this.props;
     const { editMode } = this.state;
 
     return (
@@ -43,28 +45,50 @@ export default class Menu extends Component {
             <Icon
               className={ editMode ? '' : 'menu__edit-icon--hide' }
               icon="close"
-              title="Close edit mode"
+              title="Quit edit mode"
               onClick={ this.toggleEditMode }
             />
             <Icon
               className={ editMode ? 'menu__edit-icon--hide' : '' }
-              icon="edit"
+              icon="more-horiz"
               title="Edit mode"
               onClick={ this.toggleEditMode }
             />
           </div>
           <ul className={ classNames('menu__dashboards', editMode && 'menu__dashboards--edit-mode') }>
-            { dashboards.items.map((item, index) => (
-              <li
+            { dashboards.items.map((dashboard, index) => (
+              <IndexLink
                 key={ index }
-                className={ `menu__item ${index === dashboards.active ? 'menu__item--active' : ''}` }
-                onClick={ closeMenu }>
-                <label className="menu__label">{ item.name }</label>
-                <Icon className="menu__icon" icon="edit" title="Edit dashboard" />
-                <Icon className="menu__icon" icon="delete" title="Delete dashboard" />
-                <Icon className="menu__icon menu__icon--drag" icon="drag" title="Drag dashboard" />
-              </li>
+                className={ `menu__item ${dashboard.id === dashboards.active ? 'menu__item--active' : ''}` }
+                onClick={ () => { changeDashboard(dashboard.id); } } to="/">
+                <label className="menu__label">{ dashboard.name }</label>
+                <Icon
+                  className="menu__icon"
+                  icon="edit"
+                  title="Edit dashboard"
+                  stopPropagation
+                  onClick={ () => { openModal('EditDashboard', {
+                    id: dashboard.id,
+                    name: dashboard.name
+                  }); } }
+                />
+                <Icon
+                  className="menu__icon"
+                  icon="delete"
+                  title="Delete dashboard"
+                  stopPropagation
+                  onClick={ () => { openModal('DeleteDashboard', {
+                    id: dashboard.id,
+                    name: dashboard.name
+                  }); } }
+                />
+              </IndexLink>
             )) }
+            <ButtonSmallMedium
+              className="menu__button"
+              onClick={ () => { openModal('AddDashboard'); } }>
+              { 'Add ' }<b>{ 'dashboard' }</b>
+            </ButtonSmallMedium>
           </ul>
           <hr className="menu__hr" />
           <H3 className="menu__headline">{ 'Navigation' }</H3>
@@ -106,6 +130,8 @@ Menu.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   menuOpen: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+  changeDashboard: PropTypes.func.isRequired,
   dashboards: PropTypes.object
 };
 

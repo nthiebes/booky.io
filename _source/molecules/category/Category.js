@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
 import { H2 } from '../../atoms/headline';
+import { ButtonSmallMedium } from '../../atoms/button';
 
 export default class Category extends Component {
   constructor(props) {
@@ -31,33 +32,52 @@ export default class Category extends Component {
   }
 
   render() {
-    const { name, id, bookmarks } = this.props;
+    const { name, id, color, bookmarks, openModal } = this.props;
     const { open, editMode } = this.state;
+    const headerClassName = classNames(
+      'category__header',
+      `category__header--color${color}`,
+      editMode && 'category__header--edit-mode'
+    );
 
     return (
       <section className="category">
-        <header className={ classNames('category__header', editMode && 'category__header--edit-mode') }>
+        <header className={ headerClassName }>
           <Icon
             className={ classNames('category__toggle-icon', !open && 'category__toggle-icon--rotate') }
             icon="expand"
             title={ open ? 'Reduce category' : 'Expand category' }
             onClick={ this.toggleCategory }
           />
-          <H2 className="category__name" onClick={ this.toggleCategory }>
-            { name }
-          </H2>
-          <Icon className="category__icon" icon="edit" title="Edit category" />
-          <Icon className="category__icon" icon="delete" title="Delete category" />
-          <Icon className="category__icon category__icon--drag" icon="drag" title="Drag category" />
+          <H2 className="category__name" onClick={ this.toggleCategory }>{ name }</H2>
+          <Icon
+            className="category__icon"
+            icon="edit"
+            title="Edit category"
+            onClick={ () => { openModal('EditCategory', {
+              name,
+              id,
+              color
+            }); } }
+          />
+          <Icon
+            className="category__icon"
+            icon="delete"
+            title="Delete category"
+            onClick={ () => { openModal('DeleteCategory', {
+              name,
+              id
+            }); } }
+          />
           <Icon
             className={ editMode ? '' : 'category__edit-icon--hide' }
             icon="close"
-            title="Close edit mode"
+            title="Quit edit mode"
             onClick={ this.toggleEditMode }
           />
           <Icon
             className={ editMode ? 'category__edit-icon--hide' : '' }
-            icon="edit"
+            icon="more-horiz"
             title="Edit mode"
             onClick={ this.toggleEditMode }
           />
@@ -70,6 +90,7 @@ export default class Category extends Component {
                   <Bookmark
                     key={ index }
                     id={ bookmark.id }
+                    categoryId={ id }
                     editMode={ editMode }
                     name={ bookmark.name }
                     url={ bookmark.url }
@@ -80,6 +101,13 @@ export default class Category extends Component {
             ) }
           </Droppable>
         </ul>
+        { editMode && <ButtonSmallMedium
+          className="category__button"
+          onClick={ () => { openModal('AddBookmark', {
+            categoryId: id
+          }); } }>
+          { 'Add ' }<b>{ 'bookmark' }</b>
+        </ButtonSmallMedium> }
       </section>
     );
   }
@@ -87,9 +115,11 @@ export default class Category extends Component {
 
 Category.propTypes = {
   name: PropTypes.string.isRequired,
+  color: PropTypes.number.isRequired,
   open: PropTypes.bool,
   id: PropTypes.number.isRequired,
-  bookmarks: PropTypes.array
+  bookmarks: PropTypes.array,
+  openModal: PropTypes.func.isRequired
 };
 
 Category.defaultProps = {

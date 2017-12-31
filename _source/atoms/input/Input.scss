@@ -1,14 +1,19 @@
 .input {
   flex-grow: 1;
+  position: relative;
 }
 
 .input__field {
-  background-color: $color__background--white;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  // background-color: #f5f5f5;
+  background: #fafafa;
+  // box-shadow: 1px 1px 4px #CCC inset;
+  border-bottom: 2px solid rgba(#000, 0.15);
+  // border-bottom: 2px solid transparent;
+  // border-color: $color__font--medium;
   border-radius: 0;
   color: $color__font--dark;
   font-family: $font__family--text;
-  font-size: $size--phone;
+  font-size: 1rem;
   height: 3rem;
   line-height: 3rem;
   padding: 0 9px;
@@ -16,32 +21,42 @@
   width: 100%;
 
   &:focus {
+    // border-bottom: 2px solid rgba(#000, 0.15);
     border-color: $color__font--medium;
     box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
+
+    &:required:valid {
+      border-color: $color--green;
+    }
+
+    &:required:invalid {
+      border-color: $color--primary;
+    }
   }
 
   @include desktop {
-    transition: width 0.3s ease, border-color 0.3s linear, box-shadow 0.3s linear;
-    width: 200px;
-
     &:hover {
       border-color: $color--blue;
     }
-
-    &:focus {
-      width: 300px;
-    }
   }
 
-  &.input__field--color-primary {
-    border-color: $color--primary;
-  }
+  // &.input__field--color-primary:focus {
+  //   border-color: $color--primary;
+  // }
 
-  &.input__field--color-blue {
-    border-color: $color--blue;
-  }
+  // &.input__field--color-blue:focus {
+  //   border-color: $color--blue;
+  // }
 
-  &.input__field--color-green {
-    border-color: $color--green;
-  }
+  // &.input__field--color-green:focus {
+  //   border-color: $color--green;
+  // }
+}
+
+.input__icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }

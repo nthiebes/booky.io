@@ -94,6 +94,23 @@
       }   
     }
   }
+
+  &.icon--green {
+    color: $color--green;
+    border-color: $color--green;
+
+    @include mobile-tablet {
+      &:active {
+        color: $color__font--dark;
+      }   
+    }
+
+    @include desktop {
+      &:hover {
+        color: $color__font--dark;
+      }   
+    }
+  }
 }
 
 .icon__svg {

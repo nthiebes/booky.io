@@ -7,13 +7,22 @@ import Link from '../../atoms/link';
 import Search from '../../molecules/search';
 import { ButtonSmallLight } from '../../atoms/button';
 
-/**
- * React component
- *
- * @class Header
- * @classdesc 03_organisms/header/Header
- */
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onBookmarkModalToggle = this.onBookmarkModalToggle.bind(this);
+    this.state = {
+      bookmarkModalOpen: false
+    };
+  }
+
+  onBookmarkModalToggle() {
+    this.setState({
+      bookmarkModalOpen: !this.state.bookmarkModalOpen
+    });
+  }
+
   render() {
     const {
       onHeaderClick,
@@ -22,19 +31,17 @@ export default class Header extends Component {
       sticky,
       menuOpen,
       sidebarOpen,
-      dashboardsOpen,
-      color
+      color,
+      openModal
     } = this.props;
     const STICKY_CLASS = sticky ? 'header--sticky' : '';
     const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
     const OVERLAY_SIDEBAR_CLASS = sidebarOpen ? 'header--overlay-sidebar' : '';
-    const OVERLAY_DASHBOARDS_CLASS = dashboardsOpen ? 'header--overlay-dashboards' : '';
     const HEADER_CLASS = classNames(
       `header header--color-${color}`,
       STICKY_CLASS,
       OVERLAY_MENU_CLASS,
-      OVERLAY_SIDEBAR_CLASS,
-      OVERLAY_DASHBOARDS_CLASS
+      OVERLAY_SIDEBAR_CLASS
     );
 
     return (
@@ -50,7 +57,14 @@ export default class Header extends Component {
         <Menu menuOpen={ menuOpen } loggedIn={ loggedIn } />
         { loggedIn ? [
           <Search key="0" className="b-hide-desktop" />,
-          <Icon key="1" icon="add" color="light" />
+          <Icon
+            key="1"
+            icon="add"
+            color="light"
+            onClick={ () => { openModal('AddBookmark', {
+              source: 'header'
+            }); } }
+          />
         ] : (
           <Link className="header__logo header__logo--small" color="light" href="/" title="Home">
             <Icon icon="heart" color="light" />
@@ -69,14 +83,11 @@ export default class Header extends Component {
         ) }
       </header>
     );
-    // <Icon key="1" icon="add-category" color="light" title="New category" className="b-hide-desktop" />,
-    // <Icon key="2" icon="edit" title={ 'EDIT_MODE_TITLE' } color="light" className="b-hide-desktop" onClick={ onEditModeClick } />
   }
 }
 
 Header.propTypes = {
   'color': PropTypes.number,
-  'dashboardsOpen': PropTypes.bool.isRequired,
   'loggedIn': PropTypes.bool.isRequired,
   'menuOpen': PropTypes.bool.isRequired,
   'onDashboardsClick': PropTypes.func.isRequired,
@@ -84,7 +95,8 @@ Header.propTypes = {
   'onMenuClick': PropTypes.func.isRequired,
   'onSidebarClick': PropTypes.func.isRequired,
   'sidebarOpen': PropTypes.bool.isRequired,
-  'sticky': PropTypes.bool
+  'sticky': PropTypes.bool,
+  openModal: PropTypes.func.isRequired
 };
 
 Header.defaultProps = {

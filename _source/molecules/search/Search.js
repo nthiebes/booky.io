@@ -4,22 +4,20 @@ import Input from '../../atoms/input';
 
 export default class Search extends Component {
   render() {
-    const { className, focus } = this.props;
+    const { className } = this.props;
 
     return (
       <div className={ `search ${className}` }>
-        <Input placeholder="Search booky..." focus={ focus } className="search__input" />
+        <Input placeholder="Search booky..." className="search__input" />
       </div>
     );
   }
 }
 
 Search.propTypes = {
-  'focus': PropTypes.bool,
-  'className': PropTypes.string
+  className: PropTypes.string
 };
 
 Search.defaultProps = {
-  'className': '',
-  'focus': false
+  className: ''
 };

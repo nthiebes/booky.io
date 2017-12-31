@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import Component from './Header';
 import { actions as headerActions } from '../../_state/header';
 import { actions as sidebarActions } from '../../_state/sidebar';
+import { actions as modalActions } from '../../_state/modal';
 
 export const mapStateToProps = function(state) {
   return {
     menuOpen: state.header.menuOpen,
     sidebarOpen: state.sidebar.open,
-    dashboardsOpen: state.header.dashboardsOpen,
     sticky: state.sidebar.stickyHeader,
     color: state.sidebar.headerColor,
     loggedIn: state.booky.loggedIn
@@ -35,6 +35,9 @@ export const mapDispatchToProps = function(dispatch) {
       dispatch(headerActions.closeMenu());
       dispatch(sidebarActions.closeSidebar());
       dispatch(headerActions.closeDashboards());
+    },
+    openModal: (modal, data) => {
+      dispatch(modalActions.openModal(modal, data));
     }
   };
 };
