@@ -31,20 +31,17 @@ export default class Header extends Component {
       sticky,
       menuOpen,
       sidebarOpen,
-      dashboardsOpen,
       color,
       openModal
     } = this.props;
     const STICKY_CLASS = sticky ? 'header--sticky' : '';
     const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
     const OVERLAY_SIDEBAR_CLASS = sidebarOpen ? 'header--overlay-sidebar' : '';
-    const OVERLAY_DASHBOARDS_CLASS = dashboardsOpen ? 'header--overlay-dashboards' : '';
     const HEADER_CLASS = classNames(
       `header header--color-${color}`,
       STICKY_CLASS,
       OVERLAY_MENU_CLASS,
-      OVERLAY_SIDEBAR_CLASS,
-      OVERLAY_DASHBOARDS_CLASS
+      OVERLAY_SIDEBAR_CLASS
     );
 
     return (

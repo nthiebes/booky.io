@@ -9,11 +9,11 @@
   width: 100%;
   list-style: none;
   user-select: none;
-  padding-left: 6px;
+  position: relative;
 }
 
 .structure__category {
-  padding-left: 18px;
+  padding-left: 12px;
 }
 
 .structure__label {
@@ -27,8 +27,20 @@
 
 .structure__icon {
   cursor: move;
+  position: relative;
+  left: 6px;
 }
 
 .structure__categories {
   min-height: 36px;
+  position: relative;
+}
+
+.structure__button {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.structure__headline {
+  margin-top: 2rem !important;
 }

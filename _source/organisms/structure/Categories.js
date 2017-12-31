@@ -8,7 +8,7 @@ export default class Categories extends Component {
     const { dashboard } = this.props;
 
     return (
-      <Droppable droppableId="dashboard" type="category">
+      <Droppable droppableId={ `dashboard-${dashboard.id}` } type="category">
         { (provided) => (
           <div ref={ provided.innerRef }>
             <div className="structure__categories">

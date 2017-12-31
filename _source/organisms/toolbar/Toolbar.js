@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import scrolling from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 // import TabBar from '../../molecules/tab-bar';
 
-export default class Toolbar extends Component {
+class Toolbar extends Component {
   constructor(props) {
     super(props);
 
@@ -66,12 +67,12 @@ export default class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, toggleStructureView } = this.props;
+    const { dashboard, router } = this.props;
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
-        <Icon icon="tree" title="Edit site structure" onClick={ toggleStructureView } />
+        <Icon icon="tree" title="Edit site structure" onClick={ () => { router.push('/structure'); } } />
       </div>
     );
     
@@ -91,6 +92,8 @@ export default class Toolbar extends Component {
   }
 }
 
+export default withRouter(Toolbar);
+
 Toolbar.propTypes = {
   updateCurrentlySticky: PropTypes.func.isRequired,
   headerSticky: PropTypes.bool,
@@ -98,8 +101,8 @@ Toolbar.propTypes = {
   currentlySticky: PropTypes.bool,
   dashboards: PropTypes.object,
   dashboard: PropTypes.object,
-  toggleStructureView: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired
+  openModal: PropTypes.func.isRequired,
+  router: PropTypes.object.isRequired
 };
 
 Toolbar.defaultProps = {
