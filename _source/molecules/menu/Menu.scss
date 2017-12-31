@@ -76,6 +76,7 @@
 
 .menu__logo {
   margin-left: 1rem;
+  color: $color__font--primary;
 }
 
 .menu__dashboards {
@@ -146,6 +147,7 @@
     user-select: none;
     transition: none;
     cursor: pointer;
+    text-decoration: none;
 
     .icon {
       transition: none;

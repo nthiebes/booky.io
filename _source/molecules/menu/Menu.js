@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { IndexLink } from 'react-router';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
@@ -56,10 +57,10 @@ export default class Menu extends Component {
           </div>
           <ul className={ classNames('menu__dashboards', editMode && 'menu__dashboards--edit-mode') }>
             { dashboards.items.map((dashboard, index) => (
-              <li
+              <IndexLink
                 key={ index }
                 className={ `menu__item ${dashboard.id === dashboards.active ? 'menu__item--active' : ''}` }
-                onClick={ () => { changeDashboard(dashboard.id); } }>
+                onClick={ () => { changeDashboard(dashboard.id); } } to="/">
                 <label className="menu__label">{ dashboard.name }</label>
                 <Icon
                   className="menu__icon"
@@ -81,7 +82,7 @@ export default class Menu extends Component {
                     name: dashboard.name
                   }); } }
                 />
-              </li>
+              </IndexLink>
             )) }
             <ButtonSmallMedium
               className="menu__button"
