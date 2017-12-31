@@ -10,29 +10,32 @@ export default class EditDashboard extends Component {
     this.onNameChange = this.onNameChange.bind(this);
     this.state = {
       id: props.data.id,
-      name: props.data.name
+      name: props.data.name,
+      valid: true
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       id: nextProps.data.id,
-      name: nextProps.data.name
+      name: nextProps.data.name,
+      valid: true
     });
   }
 
   onNameChange(value) {
     this.setState({
-      name: value
+      name: value,
+      valid: Boolean(value)
     });
   }
 
   render() {
     const { onClose, onSave } = this.props;
-    const { name } = this.state;
+    const { name, valid } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Edit dashboard">
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline="Edit dashboard">
         <label className="modal__label" htmlFor="dashboard-name">{ 'Name:' }</label>
         <Input id="dashboard-name" color="primary" value={ name } onChange={ this.onNameChange } required maxLength="50" />
       </Base>

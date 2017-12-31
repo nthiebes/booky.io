@@ -13,7 +13,8 @@ export default class EditCategory extends Component {
     this.state = {
       id: props.data.id,
       name: props.data.name,
-      color: props.data.color
+      color: props.data.color,
+      valid: true
     };
   }
 
@@ -21,28 +22,31 @@ export default class EditCategory extends Component {
     this.setState({
       id: nextProps.data.id,
       name: nextProps.data.name,
-      color: nextProps.data.color
+      color: nextProps.data.color,
+      valid: true
     });
   }
 
   onNameChange(value) {
     this.setState({
-      name: value
+      name: value,
+      valid: Boolean(value)
     });
   }
 
   onColorChange(value) {
     this.setState({
-      color: value
+      color: value,
+      valid: Boolean(value)
     });
   }
 
   render() {
     const { onClose, onSave } = this.props;
-    const { name, color } = this.state;
+    const { name, color, valid } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Edit category">
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline="Edit category">
         <label className="modal__label" htmlFor="category-name">{ 'Name:' }</label>
         <Input id="category-name" color="primary" value={ name } onChange={ this.onNameChange } required maxLength="50" />
         <label className="modal__label" htmlFor="color">{ 'Color:' }</label>

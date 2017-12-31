@@ -15,7 +15,8 @@ export default class AddBookmark extends Component {
       name: '',
       url: '',
       categoryId: props.data.source === 'header' ? props.data.categories[0].id : props.data.categoryId,
-      value: 0
+      value: 0,
+      valid: false
     };
   }
 
@@ -24,19 +25,22 @@ export default class AddBookmark extends Component {
       name: '',
       url: '',
       categoryId: nextProps.data.source === 'header' ? nextProps.data.categories[0].id : nextProps.data.categoryId,
-      value: 0
+      value: 0,
+      valid: false
     });
   }
 
   onNameChange(value) {
     this.setState({
-      name: value
+      name: value,
+      valid: Boolean(value && this.state.url)
     });
   }
 
   onUrlChange(value) {
     this.setState({
-      url: value
+      url: value,
+      valid: Boolean(value && this.state.name)
     });
   }
 
@@ -49,10 +53,10 @@ export default class AddBookmark extends Component {
 
   render() {
     const { onClose, onSave, data } = this.props;
-    const { name, url } = this.state;
+    const { name, url, valid } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Add a bookmark">
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline="Add a bookmark">
         <label className="modal__label" htmlFor="bookmark-url">{ 'URL:' }</label>
         <Input id="bookmark-url" value={ url } onChange={ this.onUrlChange } required maxLength="2000" />
         <label className="modal__label" htmlFor="bookmark-name">{ 'Name:' }</label>

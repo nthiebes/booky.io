@@ -12,20 +12,23 @@ export default class AddCategory extends Component {
     this.onColorChange = this.onColorChange.bind(this);
     this.state = {
       name: '',
-      color: 0
+      color: 0,
+      valid: false
     };
   }
 
   componentWillReceiveProps() {
     this.setState({
       name: '',
-      color: 0
+      color: 0,
+      valid: false
     });
   }
 
   onNameChange(value) {
     this.setState({
-      name: value
+      name: value,
+      valid: Boolean(value)
     });
   }
 
@@ -37,10 +40,10 @@ export default class AddCategory extends Component {
 
   render() {
     const { onClose, onSave } = this.props;
-    const { name, color } = this.state;
+    const { name, color, valid } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Add a category">
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline="Add a category">
         <label className="modal__label" htmlFor="category-name">{ 'Name:' }</label>
         <Input id="category-name" color="primary" value={ name } onChange={ this.onNameChange } required maxLength="50" />
         <label className="modal__label" htmlFor="color">{ 'Color:' }</label>

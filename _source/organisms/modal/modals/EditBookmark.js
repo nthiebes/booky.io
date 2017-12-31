@@ -13,7 +13,8 @@ export default class EditBookmark extends Component {
       id: props.data.id,
       name: props.data.name,
       url: props.data.url,
-      categoryId: props.data.categoryId
+      categoryId: props.data.categoryId,
+      valid: true
     };
   }
 
@@ -22,28 +23,31 @@ export default class EditBookmark extends Component {
       id: nextProps.data.id,
       name: nextProps.data.name,
       url: nextProps.data.url,
-      categoryId: nextProps.data.categoryId
+      categoryId: nextProps.data.categoryId,
+      valid: true
     });
   }
 
   onNameChange(value) {
     this.setState({
-      name: value
+      name: value,
+      valid: Boolean(value && this.state.url)
     });
   }
 
   onUrlChange(value) {
     this.setState({
-      url: value
+      url: value,
+      valid: Boolean(value && this.state.name)
     });
   }
 
   render() {
     const { onClose, onSave } = this.props;
-    const { name, url } = this.state;
+    const { name, url, valid } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Edit bookmark">
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline="Edit bookmark">
         <label className="modal__label" htmlFor="bookmark-url">{ 'URL:' }</label>
         <Input id="bookmark-url" color="primary" value={ url } onChange={ this.onUrlChange } type="url" required maxLength="2000" />
         <label className="modal__label" htmlFor="bookmark-name">{ 'Name:' }</label>

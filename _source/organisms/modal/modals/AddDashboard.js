@@ -9,28 +9,31 @@ export default class AddDashboard extends Component {
 
     this.onNameChange = this.onNameChange.bind(this);
     this.state = {
-      name: ''
+      name: '',
+      valid: false
     };
   }
 
   componentWillReceiveProps() {
     this.setState({
-      name: ''
+      name: '',
+      valid: false
     });
   }
 
   onNameChange(value) {
     this.setState({
-      name: value
+      name: value,
+      valid: Boolean(value)
     });
   }
 
   render() {
     const { onClose, onSave } = this.props;
-    const { name } = this.state;
+    const { name, valid } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Add a dashboard">
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline="Add a dashboard">
         <label className="modal__label" htmlFor="dashboard-name">{ 'Name:' }</label>
         <Input id="dashboard-name" color="primary" value={ name } onChange={ this.onNameChange } required maxLength="50" />
       </Base>

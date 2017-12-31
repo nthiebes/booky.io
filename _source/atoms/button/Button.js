@@ -6,12 +6,12 @@ import Link from '../link';
 
 export default class Button extends Component {
   render() {
-    const { size, icon, className, color, onClick, href, children } = this.props;
+    const { size, icon, className, color, onClick, href, children, disabled } = this.props;
     const CustomTag = href ? Link : 'div';
 
     return (
       <CustomTag
-        className={ classNames('button', `button--${size}`, `button--${size}-${color}`, className) }
+        className={ classNames('button', `button--${size}`, `button--${size}-${color}`, className, disabled && 'button--disabled') }
         onClick={ onClick }
         href={ href }>
         { icon && <Icon icon={ icon } color={ size === 'small' ? color : 'light' } className="button__icon" /> }
@@ -28,6 +28,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.string.isRequired,
   icon: PropTypes.string,
+  disabled: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
@@ -37,5 +38,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   className: '',
-  href: ''
+  href: '',
+  disabled: false
 };

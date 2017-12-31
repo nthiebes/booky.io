@@ -16,8 +16,9 @@
   white-space: nowrap;
   justify-content: center;
 
-  &.button--small {
-
+  &.button--disabled {
+    pointer-events: none;
+    opacity: 0.5;
   }
 
   &.button--small-light {
