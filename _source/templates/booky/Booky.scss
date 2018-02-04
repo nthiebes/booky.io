@@ -57,31 +57,31 @@ body {
   }
 }
 
-.b-hide-mobile {
+.booky--hide-mobile {
   @include mobile {
     display: none;
   }
 }
 
-.b-hide-mobile-tablet {
+.booky--hide-mobile-tablet {
   @include mobile-tablet {
     display: none;
   }
 }
 
-.b-hide-tablet {
+.booky--hide-tablet {
   @include tablet {
     display: none;
   }
 }
 
-.b-hide-tablet-desktop {
+.booky--hide-tablet-desktop {
   @include tablet-desktop {
     display: none;
   }
 }
 
-.b-hide-desktop {
+.booky--hide-desktop {
   @include desktop {
     display: none;
   }

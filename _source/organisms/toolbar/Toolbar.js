@@ -67,11 +67,19 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, router } = this.props;
+    const { dashboard, router, openModal } = this.props;
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
+        <Icon
+          icon="edit"
+          title="Edit dashboard"
+          onClick={ () => { openModal('EditDashboard', {
+            id: dashboard.id,
+            name: dashboard.name
+          }); } }
+        />
         <Icon icon="tree" title="Edit site structure" onClick={ () => { router.push('/structure'); } } />
       </div>
     );

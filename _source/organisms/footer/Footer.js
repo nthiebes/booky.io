@@ -36,7 +36,7 @@ export default class Footer extends Component {
           </ButtonSmallLight>
           <div className="footer__logo">{ 'booky.io (logo)' }</div>
           <div className="footer__copy">
-            { '© 2014-2017' }
+            { '© 2014-2018' }
             <Link className="footer__copy-link" href="/about">{ 'booky.io' }</Link>
             { '| All Rights Reserved.' }
           </div>

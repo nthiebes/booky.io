@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
 import Component from './Toolbar';
 import { actions as toolbarActions } from '../../_state/toolbar';
-import { actions as dashboardsActions } from '../../_state/dashboards';
 import { actions as modalActions } from '../../_state/modal';
 
 export const mapStateToProps = function(state) {
   return {
-    'currentlySticky': state.toolbar.currentlySticky,
-    'headerSticky': state.sidebar.stickyHeader,
-    'sticky': state.sidebar.stickyToolbar,
+    currentlySticky: state.toolbar.currentlySticky,
+    headerSticky: state.sidebar.stickyHeader,
+    sticky: state.sidebar.stickyToolbar,
     dashboards: state.dashboards,
     dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active)
   };
@@ -24,9 +23,6 @@ export const mapDispatchToProps = function(dispatch) {
     },
     updateCurrentlySticky: (sticky) => {
       dispatch(toolbarActions.updateCurrentlySticky(sticky));
-    },
-    toggleStructureView: () => {
-      dispatch(dashboardsActions.toggleStructureView());
     },
     openModal: (modal, data) => {
       dispatch(modalActions.openModal(modal, data));

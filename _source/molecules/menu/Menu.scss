@@ -14,15 +14,16 @@
     width: 80%;
     z-index: 2;
     overflow: hidden;
+
+    &.menu--open {
+      transform: translate3d(0,0,0);
+    }
   }
 
-  // @include desktop {
-  //   padding-left: 3rem;
-  //   z-index: 1;
-  // }
-
-  &.menu--open {
-    transform: translate3d(0,0,0);
+  @include desktop {
+    padding: 0 1rem;
+    flex-grow: 1;
+    // z-index: 1;
   }
 }
 
@@ -37,19 +38,25 @@
   @include tablet {
     height: 4.4rem;
   }
+
+  @include desktop {
+    display: none;
+  }
 }
 
 .menu__scroll-wrapper {
-  position: absolute;
-  top: 3rem;
-  margin-top: 1px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  @include mobile-tablet {
+    position: absolute;
+    top: 3rem;
+    margin-top: 1px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
   @include tablet {
     top: 4.4rem;
@@ -66,12 +73,20 @@
     margin: 0 !important;
     padding: 0 !important;
   }
+
+  @include desktop {
+    display: none;
+  }
 }
 
 .menu__headline {
   padding: 0 calc(3vw + 6px) !important;
   margin: 0 !important;
   line-height: 36px !important;
+
+  @include desktop {
+    display: none;
+  }
 }
 
 .menu__logo {
@@ -98,6 +113,10 @@
       overflow: inherit;
     }
   }
+
+  @include desktop {
+    display: none;
+  }
 }
 
 .menu__icon {
@@ -119,17 +138,17 @@
   @include mobile-tablet {
     align-items: center;
     flex-direction: column;
+
+    .menu__item {
+      :first-child {
+        margin-right: 6px;
+      }
+    }
   }
 
   @include desktop {
     flex-direction: row;
     flex-grow: 1;
-  }
-
-  .menu__item {
-    :first-child {
-      margin-right: 6px;
-    }
   }
 }
 
@@ -147,7 +166,6 @@
     user-select: none;
     transition: none;
     cursor: pointer;
-    text-decoration: none;
 
     .icon {
       transition: none;
@@ -157,8 +175,12 @@
       background-color: $color__background--ligth;
       color: $color__font--primary;
 
-      &:active .icon {
+      .menu__label {
         color: $color__font--primary;
+      }
+
+      &:active .icon {
+        // color: $color__font--primary;
       }
     }
   }
@@ -167,47 +189,41 @@
     font-weight: 700;
   }
 
-  // @include desktop {
-  //   color: $color__font--white;
-  //   font-weight: bold;
-  //   margin: 0 1rem;
-  //   position: relative;
-  //   transition: color 0.2s linear;
+  @include desktop {
+    display: inline-flex;
+    color: $color__font--white;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    position: relative;
+    transition: color 0.2s linear;
+    align-items: center;
 
-  //   &:hover {
-  //     color: rgba($color__background--dark, 0.8);
-  //   }
+    &:hover {
+      color: $color__font--dark;
 
-  //   &:after {
-  //     // display: none;
-  //   }
+      .menu__label {
+        color: $color__font--dark;
+      }
 
-  //   &:before {
-  //     background-color: rgba($color__background--dark, 0.4);
-  //     border-radius: 0.25rem;
-  //     content: " ";
-  //     height: 0.25rem;
-  //     left: -1.15rem;
-  //     position: absolute;
-  //     top: 1.2rem;
-  //     width: 0.25rem;
-  //   }
+      &:hover .icon {
+        color: $color__font--dark;
+      }
+    }
 
-  //   &:first-child  {
-  //     &:before {
-  //       display: none;
-  //     }
-  //   }
+    &:first-child  {
+      &:before {
+        display: none;
+      }
+    }
 
-  //   .icon__svg {
-  //     padding: 6px 6px 6px 0;
-  //     width: 30px;
-  //     // display: none;
-  //   }
-  // }
+    .icon {
+      color: $color__font--white;
+    }
+  }
 }
 
 .menu__label {
+  color: $color__font--dark;
   font-family: $font__family--text;
   font-size: 1rem;
   white-space: nowrap;
@@ -215,6 +231,12 @@
   overflow: hidden;
   flex-grow: 1;
   cursor: pointer;
+  text-decoration: none;
+
+  @include desktop {
+    transition: color 0.2s linear;
+    color: $color__font--white;
+  }
 }
 
 .menu__hr {
@@ -224,6 +246,10 @@
   width: 140%;
   left: -20%;
   margin-bottom: 1rem;
+
+  @include desktop {
+    display: none;
+  }
 }
 
 .menu__button {
