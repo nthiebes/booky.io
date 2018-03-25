@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import scrolling from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
+import Search from '../../molecules/search';
 // import TabBar from '../../molecules/tab-bar';
 
 class Toolbar extends Component {
@@ -71,7 +72,6 @@ class Toolbar extends Component {
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
-        <H3 className="toolbar__headline">{ dashboard.name }</H3>
         <Icon
           icon="edit"
           title="Edit dashboard"
@@ -80,6 +80,8 @@ class Toolbar extends Component {
             name: dashboard.name
           }); } }
         />
+        <H3 className="toolbar__headline">{ dashboard.name }</H3>
+        <Search className="booky--hide-mobile-tablet" />
         <Icon icon="tree" title="Edit site structure" onClick={ () => { router.push('/structure'); } } />
       </div>
     );

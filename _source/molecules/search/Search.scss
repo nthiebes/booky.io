@@ -3,6 +3,11 @@
   display: flex;
   flex-grow: 1;
   margin: 0 1rem;
+
+  @include desktop {
+    max-width: 200px;
+    height: 80%;
+  }
 }
 
 .search__input {
@@ -13,8 +18,17 @@
     height: 3rem;
     line-height: 3rem;
   }
+
+  @include desktop {
+    height: 100%;
+    line-height: 100%;
+  }
 }
 
 .search__input .input__field {
   background-color: $color__background--white;
+
+  @include desktop {
+    background-color: #fafafa;
+  }
 }

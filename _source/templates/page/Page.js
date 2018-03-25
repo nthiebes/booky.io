@@ -7,11 +7,11 @@ import Toolbar from '../../organisms/toolbar';
 
 export default class Page extends Component {
   render() {
-    const { children, toolbar, className } = this.props;
+    const { children, toolbar, search, className } = this.props;
 
     return (
       <div>
-        <Header />
+        <Header search={ search } />
         { toolbar && <Toolbar document={ document } window={ window } /> }
         <main className={ `page ${className} ${toolbar ? '' : 'page--no-toolbar'}` }>
           { children }
@@ -26,6 +26,7 @@ export default class Page extends Component {
 
 Page.propTypes = {
   toolbar: PropTypes.bool,
+  search: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
@@ -35,6 +36,5 @@ Page.propTypes = {
 };
 
 Page.defaultProps = {
-  toolbar: false,
   className: ''
 };

@@ -52,12 +52,20 @@ export default class Menu extends Component {
                 <Icon icon="next" />
                 <label className="menu__label">{ 'Next' }</label>
               </Link>,
-              <Link key="2" className="menu__item booky--hide-desktop" href="/logout" onClick={ closeMenu }>
+              <Link key="2" className="menu__item booky--hide-desktop" href="" onClick={ closeMenu }>
+                <Icon icon="settings" />
+                <label className="menu__label">{ 'Customize' }</label>
+              </Link>,
+              <Link key="3" className="menu__item booky--hide-desktop" href="/logout" onClick={ closeMenu }>
                 <Icon icon="logout" />
                 <label className="menu__label">{ 'Sign Out' }</label>
               </Link>
             ] }
           </ul>
+          <Icon className="menu__item booky--hide-mobile-tablet" icon="settings" title="Customize" color="light" />
+          <Link className="menu__item booky--hide-mobile-tablet" href="/logout">
+            <Icon icon="logout" title="Sign Out" />
+          </Link>
         </div>
       </aside>
     );

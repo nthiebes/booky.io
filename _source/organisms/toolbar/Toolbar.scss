@@ -2,8 +2,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  // margin-top: 2px;
-  padding: 0 3vw 0 calc(3vw + 6px);
+  padding: 0 3%;
   position: absolute;
   top: 3rem;
   width: 100%;
@@ -19,6 +18,7 @@
   @include desktop {
     background-color: rgba($color__background--white, 0.95);
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    height: 62px;
     top: 6.2rem;
   }
 
@@ -46,7 +46,7 @@
 }
 
 .toolbar__headline {
-  margin: 0 !important;
+  margin: 0 1rem !important;
   padding: 0 !important;
   flex-grow: 1;
   white-space: nowrap;

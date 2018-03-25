@@ -1,7 +1,7 @@
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
 <symbol id="icon-logout" viewBox="0 0 24 24">
-<path d="M18 15v-3h-7.5v-3h7.5v-3l4.5 4.5zM16.5 13.5v6h-7.5v4.5l-9-4.5v-19.5h16.5v7.5h-1.5v-6h-12l6 3v13.5h6v-4.5z"></path>
+<path d="M18.984 3c1.078 0 2.016 0.938 2.016 2.016v13.969c0 1.078-0.938 2.016-2.016 2.016h-13.969c-1.125 0-2.016-0.938-2.016-2.016v-3.984h2.016v3.984h13.969v-13.969h-13.969v3.984h-2.016v-3.984c0-1.078 0.891-2.016 2.016-2.016h13.969zM10.078 15.609l2.578-2.625h-9.656v-1.969h9.656l-2.578-2.625 1.406-1.406 5.016 5.016-5.016 5.016z"></path>
 </symbol>
 <symbol id="icon-login" viewBox="0 0 24 24">
 <path d="M9 12h-7.5v-3h7.5v-3l4.5 4.5-4.5 4.5zM24 0v19.5l-9 4.5v-4.5h-9v-6h1.5v4.5h7.5v-13.5l6-3h-13.5v6h-1.5v-7.5z"></path>

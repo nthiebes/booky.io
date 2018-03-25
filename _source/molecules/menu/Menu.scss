@@ -21,9 +21,8 @@
   }
 
   @include desktop {
-    padding: 0 1rem;
+    padding: 0;
     flex-grow: 1;
-    // z-index: 1;
   }
 }
 
@@ -60,6 +59,10 @@
 
   @include tablet {
     top: 4.4rem;
+  }
+
+  @include desktop {
+    display: flex;
   }
 }
 
@@ -147,6 +150,7 @@
   }
 
   @include desktop {
+    display: inline-flex;
     flex-direction: row;
     flex-grow: 1;
   }
@@ -214,6 +218,10 @@
       &:before {
         display: none;
       }
+    }
+
+    &:last-child  {
+      margin: 0;
     }
 
     .icon {

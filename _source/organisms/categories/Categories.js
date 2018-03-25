@@ -12,7 +12,7 @@ export default class Categories extends Component {
         <ButtonSmallMedium
           className="categories__button"
           onClick={ () => { openModal('AddCategory'); } }>
-          { 'Add ' }<b>{ 'category' }</b>
+          { 'New ' }<b>{ 'category' }</b>
         </ButtonSmallMedium>
         {categories.map((category) =>
           <Category key={ category.id } { ...category } />
@@ -20,7 +20,7 @@ export default class Categories extends Component {
         { categories.length && <ButtonSmallMedium
           className="categories__button"
           onClick={ () => { openModal('AddCategory'); } }>
-          { 'Add ' }<b>{ 'category' }</b>
+          { 'New ' }<b>{ 'category' }</b>
         </ButtonSmallMedium> }
       </div>
     );

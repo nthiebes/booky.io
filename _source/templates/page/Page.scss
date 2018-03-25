@@ -1,33 +1,31 @@
 .page {
   margin: 0 auto;
-  padding: 7rem 6px 7rem 6px;
+  padding: 3rem 0;
   max-width: 94%;
   min-height: 100%;
 
   @include tablet {
-    padding: 9rem 6px 9rem 6px;
+    padding: 5rem 0;
   }
 
   @include desktop {
-    max-width: 800px;
-    padding: 11rem 6px 11rem 6px;
+    max-width: 860px;
+    padding: 7rem 0;
   }
 
-  // &.page--full-width {
-  //   max-width: 100%;
-  //   padding-left: 0;
-  //   padding-right: 0;
+  &.page--full-width {
+    max-width: inherit;
+  }
+
+  // &.page--no-toolbar {
+  //   padding: 4rem 6px 4rem 6px;
+
+  //   @include tablet {
+  //     padding: 6rem 6px 6rem 6px;
+  //   }
+
+  //   @include desktop {
+  //     padding: 8rem 6px 8rem 6px;
+  //   }
   // }
-
-  &.page--no-toolbar {
-    padding: 4rem 6px 4rem 6px;
-
-    @include tablet {
-      padding: 6rem 6px 6rem 6px;
-    }
-
-    @include desktop {
-      padding: 8rem 6px 8rem 6px;
-    }
-  }
 }

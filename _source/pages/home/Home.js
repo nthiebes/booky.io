@@ -8,7 +8,7 @@ export default class Home extends Component {
     const { loggedIn } = this.props;
 
     return loggedIn ? (
-      <Page className="page--full-width" toolbar={ loggedIn }>
+      <Page className="page--full-width" toolbar={ loggedIn } search>
         <Categories />
       </Page>
     ) : (

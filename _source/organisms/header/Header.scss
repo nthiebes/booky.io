@@ -107,17 +107,6 @@
     width: 150px;
     flex-grow: 0;
     flex-shrink: 0;
-
-    @include tablet-desktop {
-      // flex-grow: 0;
-      // justify-content: flex-start;
-      // order: -1;
-      // text-align: left;
-    }
-
-    @include mobile-tablet {
-      display: none;
-    }
   }
 }
 
