@@ -52,8 +52,9 @@ body {
   }
 
   &.booky--no-scrolling {
-    position: fixed; // temp fix for iOs input fields
-    overflow: hidden;
+    // position: fixed; // temp fix for iOs input fields
+    // overflow: hidden;
+    // width: 100%;
   }
 }
 

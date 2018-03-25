@@ -144,7 +144,7 @@
       &:hover {
         .icon,
         .icon__svg {
-          color: $color__font--white;
+          color: $color__font--medium;
         }
 
         .button__icon {
@@ -185,6 +185,11 @@
     @include desktop() {
       &:hover {
         background-color: $color__background--primary;
+
+        .icon,
+        .icon__svg {
+          color: $color__font--white;
+        }
       }
     }
   }
@@ -195,13 +200,18 @@
 
     @include mobile-tablet() {
       &:active {
-        background-color: color--green;
+        background-color: $color--green;
       }
     }
 
     @include desktop() {
       &:hover {
-        background-color: color--green;
+        background-color: $color--green;
+
+        .icon,
+        .icon__svg {
+          color: $color__font--white;
+        }
       }
     }
   }
@@ -212,13 +222,18 @@
 
     @include mobile-tablet() {
       &:active {
-        background-color: color--blue;
+        background-color: $color--blue;
       }
     }
 
     @include desktop() {
       &:hover {
-        background-color: color--blue;
+        background-color: $color--blue;
+
+        .icon,
+        .icon__svg {
+          color: $color__font--white;
+        }
       }
     }
   }

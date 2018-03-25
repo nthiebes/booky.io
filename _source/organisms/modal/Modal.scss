@@ -91,14 +91,28 @@
   width: 100%;
   padding: 6px;
   border-top: 2px solid rgba(0, 0, 0, 0.1);
+
+  @include desktop() {
+    display: flex;
+  }
 }
 
 .modal__button {
   width: 100% !important;
+
+  @include desktop() {
+    margin-left: 0.5rem;
+  }
 }
 
 .modal__button--cancel {
   margin-bottom: 6px;
+
+  @include desktop() {
+    margin-bottom: 0;
+    margin-right: 0.5rem;
+    margin-left: 0;
+  }
 }
 
 .modal__label {

@@ -13,6 +13,10 @@
 
   &:active {
     border-color: #000;
+
+    .icon {
+      color: #000;
+    }
   }
 
   &:last-child {
@@ -22,6 +26,10 @@
   @include desktop() {
     &:hover {
       border-color: #000;
+
+      .icon {
+        color: #000;
+      }
     }
   }
 
