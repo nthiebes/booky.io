@@ -31,7 +31,8 @@ Page.propTypes = {
     PropTypes.element,
     PropTypes.string
   ]).isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  dashboards: PropTypes.bool
 };
 
 Page.defaultProps = {

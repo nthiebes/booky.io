@@ -1,7 +1,7 @@
 .page {
   margin: 0 auto;
   padding: 3rem 0;
-  max-width: 94%;
+  max-width: calc(94% - 12px);
   min-height: 100%;
 
   @include tablet {
