@@ -85,11 +85,6 @@
   @include desktop {
     &:hover {
       background-color: $color__background--ligth;
-      // color: $color__font--primary;
-
-      .dashboards__label {
-        // color: $color__font--primary;
-      }
     }
   }
 }

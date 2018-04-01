@@ -130,7 +130,7 @@
 
     @include mobile-tablet() {
       height: 40px;
-      width: calc(94vw - 12px);
+      width: calc(94% - 12px);
 
       .button__icon {
         display: none;
