@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Category from '../../molecules/category';
 import { ButtonSmallMedium } from '../../atoms/button';
 
 export default class Categories extends Component {
   render() {
-    const { categories, openModal } = this.props;
+    const { categories, openModal, dashboards } = this.props;
 
     return (
-      <div className="categories">
+      <div className={ classNames('categories', dashboards && 'categories--dashboards') }>
         <ButtonSmallMedium
           className="categories__button"
           onClick={ () => { openModal('AddCategory'); } }>
@@ -29,5 +30,6 @@ export default class Categories extends Component {
 
 Categories.propTypes = {
   categories: PropTypes.array.isRequired,
-  openModal: PropTypes.func.isRequired
+  openModal: PropTypes.func.isRequired,
+  dashboards: PropTypes.bool
 };

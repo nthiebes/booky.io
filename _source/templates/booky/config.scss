@@ -47,6 +47,7 @@ $font__family--text: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-S
  */
 $width--mobile: 480px;
 $width--tablet: 920px;
+$width--xxl: 1280px;
 
 @mixin mobile {
   @media (max-width: #{$width--mobile}) {
@@ -70,6 +71,11 @@ $width--tablet: 920px;
 }
 @mixin desktop {
   @media (min-width: #{$width--tablet + 1px}) {
+    @content;
+  }
+}
+@mixin xxl {
+  @media (min-width: #{$width--xxl}) {
     @content;
   }
 }

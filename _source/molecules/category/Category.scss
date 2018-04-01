@@ -11,6 +11,24 @@
   @include desktop {
     width: 27.33%;
   }
+
+  @include xxl {
+    width: 19%;
+  }
+}
+
+.categories--dashboards {
+  @include desktop {
+    .category {
+      width: 44%;
+    }
+  }
+
+  @include xxl {
+    .category {
+      width: 27.33%;
+    }
+  }
 }
 
 .category__bookmarks {

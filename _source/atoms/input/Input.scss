@@ -33,6 +33,10 @@
     &:hover {
       border-color: $color--blue;
     }
+
+    &:hover:focus {
+      border-color: $color__font--medium;
+    }
   }
 }
 

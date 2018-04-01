@@ -17,7 +17,7 @@ export default class Menu extends Component {
   }
 
   render() {
-    const { loggedIn, menuOpen, closeMenu } = this.props;
+    const { loggedIn, menuOpen, closeMenu, dashboards } = this.props;
 
     return (
       <aside className={ `menu ${menuOpen ? 'menu--open' : ''}` } onClick={ this.onMenuClick }>
@@ -27,8 +27,8 @@ export default class Menu extends Component {
         </header>
         <hr className="menu__hr" />
         <div className="menu__scroll-wrapper">
-          <Dashboards />
-          <hr className="menu__hr" />
+          { dashboards && <Dashboards /> }
+          { dashboards && <hr className="menu__hr" /> }
           <H3 className="menu__headline">{ 'Navigation' }</H3>
           <ul className="menu__nav">
             <Link className="menu__item" href="/" onClick={ closeMenu }>
@@ -75,5 +75,6 @@ export default class Menu extends Component {
 Menu.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   menuOpen: PropTypes.bool.isRequired,
-  closeMenu: PropTypes.func.isRequired
+  closeMenu: PropTypes.func.isRequired,
+  dashboards: PropTypes.bool
 };
