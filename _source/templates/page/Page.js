@@ -10,7 +10,7 @@ export default class Page extends Component {
     const { children, toolbar, search, className, dashboards } = this.props;
 
     return (
-      <div>
+      <Fragment>
         <Header search={ search } dashboards={ dashboards } />
         { toolbar && <Toolbar document={ document } window={ window } /> }
         <main className={ `page ${className} ${toolbar ? '' : 'page--no-toolbar'}` }>
@@ -18,7 +18,7 @@ export default class Page extends Component {
         </main>
         <Footer />
         <Modal />
-      </div>
+      </Fragment>
     );
   }
 }
