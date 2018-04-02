@@ -11,12 +11,12 @@ export default class Structure extends Component {
     return (
       <Droppable droppableId="structure" type="dashboard">
         { (provided) => (
-          <div ref={ provided.innerRef }>
+          <div ref={ provided.innerRef } { ...provided.droppableProps }>
             { dashboards.map((dashboard, index) => (
-              <Draggable draggableId={ `dashboard-${dashboard.id}` } type="dashboard" key={ index }>
+              <Draggable draggableId={ `dashboard-${dashboard.id}` } key={ index } index={ index }>
                 { (providedInner) => (
                   <div>
-                    <div style={ providedInner.draggableStyle } ref={ providedInner.innerRef }>
+                    <div { ...providedInner.draggableProps } ref={ providedInner.innerRef }>
                       <div className="structure__dashboard">
                         <label className="structure__label">{ dashboard.name }</label>
                         <Icon
