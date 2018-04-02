@@ -11,6 +11,7 @@ import Login from './pages/login';
 import Join from './pages/join';
 import Next from './pages/next';
 import Structure from './pages/structure';
+import Privacy from './pages/privacy';
 import NotFound from './pages/not-found';
 
 export default (
@@ -24,6 +25,7 @@ export default (
     <Route path="join" component={ Join } />
     <Route path="next" component={ Next } />
     <Route path="structure" component={ Structure } />
+    <Route path="privacy" component={ Privacy } />
     <Route path="*" component={ NotFound } />
   </Route>
 );

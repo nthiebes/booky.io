@@ -41,5 +41,5 @@ Link.propTypes = {
 Link.defaultProps = {
   className: '',
   title: '',
-  color: ''
+  color: 'primary'
 };
