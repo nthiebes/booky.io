@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import Page from '../../templates/page';
-import { H1, H2 } from '../../atoms/headline';
+import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-import Label from '../../atoms/label';
 import Input from '../../atoms/input';
-import { ButtonSmallMedium, ButtonLargePrimary } from '../../atoms/button';
+import { ButtonLargePrimary } from '../../atoms/button';
 import { TabBar, Tab } from '../../molecules/tab-bar';
 
 const tabs = [{
