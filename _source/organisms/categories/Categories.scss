@@ -1,10 +1,14 @@
 .categories {
-  display: flex;
-  flex-wrap: wrap;
+  margin-top: 6rem;
+}
+
+@include desktop {
+  .categories--dashboards {
+    margin-left: 300px;
+  }
 }
 
 .categories__button {
-  display: flex;
-  margin: 1rem calc(3vw + 6px) 0;
-  width: 100%;
+  width: calc(94% - 12px);
+  margin: 0 calc(3% + 6px);
 }

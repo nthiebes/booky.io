@@ -1,12 +1,33 @@
 .category {
-  flex-grow: 1;
-  margin: 1.143rem 3vw;
-  max-width: 94%;
-  width: 300px;
+  width: 94%;
   position: relative;
+  float: left;
+  margin: 1rem 3%;
+
+  @include tablet {
+    width: 44%;
+  }
 
   @include desktop {
-    width: 390px;
+    width: 27.33%;
+  }
+
+  @include xxl {
+    width: 19%;
+  }
+}
+
+.categories--dashboards {
+  @include desktop {
+    .category {
+      width: 44%;
+    }
+  }
+
+  @include xxl {
+    .category {
+      width: 27.33%;
+    }
   }
 }
 

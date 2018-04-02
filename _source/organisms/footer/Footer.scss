@@ -7,7 +7,7 @@
   background-color: $color__background--medium;
   border-top: 2px solid rgba(255,255,255,0.2);
   border-bottom: 2px solid rgba(255,255,255,0.03);
-  padding: calc(2rem - 4px) 3vw calc(2rem + 2px) 3vw;
+  padding: calc(2rem - 4px) calc(3% + 6px) calc(2rem + 2px) calc(3% + 6px);
   display: flex;
   justify-content: center;
 }
@@ -47,7 +47,7 @@
 
 .footer__content {
   background-color: $color__background--dark;
-  padding: 2rem 3vw;
+  padding: 2rem calc(3% + 6px);
 }
 
 .footer__menu {

@@ -4,12 +4,8 @@
 }
 
 .input__field {
-  // background-color: #f5f5f5;
-  background: #fafafa;
-  // box-shadow: 1px 1px 4px #CCC inset;
+  background-color: #fafafa;
   border-bottom: 2px solid rgba(#000, 0.15);
-  // border-bottom: 2px solid transparent;
-  // border-color: $color__font--medium;
   border-radius: 0;
   color: $color__font--dark;
   font-family: $font__family--text;
@@ -21,7 +17,6 @@
   width: 100%;
 
   &:focus {
-    // border-bottom: 2px solid rgba(#000, 0.15);
     border-color: $color__font--medium;
     box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
 
@@ -38,19 +33,11 @@
     &:hover {
       border-color: $color--blue;
     }
+
+    &:hover:focus {
+      border-color: $color__font--medium;
+    }
   }
-
-  // &.input__field--color-primary:focus {
-  //   border-color: $color--primary;
-  // }
-
-  // &.input__field--color-blue:focus {
-  //   border-color: $color--blue;
-  // }
-
-  // &.input__field--color-green:focus {
-  //   border-color: $color--green;
-  // }
 }
 
 .input__icon {

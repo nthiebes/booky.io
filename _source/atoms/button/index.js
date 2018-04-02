@@ -54,4 +54,4 @@ ButtonLargeBlue.displayName = 'ButtonLargeBlue';
 export function ButtonLargeGreen(props) {
   return <Button { ...props } size="large" color="green" />;
 }
-ButtonLargeBlue.displayName = 'ButtonLargeGreen';
+ButtonLargeGreen.displayName = 'ButtonLargeGreen';

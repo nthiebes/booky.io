@@ -1,3 +1,7 @@
-import component from './TabBar';
+import TabBar from './TabBar';
+import Tab from './Tab';
 
-export default component;
+export {
+  TabBar,
+  Tab
+};

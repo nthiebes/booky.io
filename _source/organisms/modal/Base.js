@@ -19,8 +19,8 @@ export default class Modal extends Component {
           { children }
         </div>
         <footer className="modal__footer">
-          { !noCancel && <ButtonLargeLight className="modal__button modal__button--cancel" onClick={ onClose }>{ 'Cancel' }</ButtonLargeLight> }
-          <ButtonLargePrimary disabled={ !valid } className="modal__button" onClick={ onSave }>{ 'Done' }</ButtonLargePrimary>
+          { !noCancel && <ButtonLargeLight className="modal__button modal__button--cancel" icon="close" onClick={ onClose }>{ 'Cancel' }</ButtonLargeLight> }
+          <ButtonLargePrimary disabled={ !valid } className="modal__button" icon="save" onClick={ onSave }>{ 'Confirm' }</ButtonLargePrimary>
         </footer>
       </div>
     );

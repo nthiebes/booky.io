@@ -4,10 +4,12 @@ import classNames from 'classnames';
 
 export default class Tab extends Component {
   render() {
-    const { name, active } = this.props;
+    const { name, active, tabId, onClick } = this.props;
 
     return (
-      <div className={ classNames('tab-bar__tab', active && 'tab-bar__tab--active') }>
+      <div
+        className={ classNames('tab-bar__tab', active && 'tab-bar__tab--active') }
+        onClick={ () => { onClick(tabId); } }>
         { name }
       </div>
     );
@@ -16,5 +18,7 @@ export default class Tab extends Component {
 
 Tab.propTypes = {
   name: PropTypes.string.isRequired,
-  active: PropTypes.bool
+  tabId: PropTypes.number.isRequired,
+  active: PropTypes.bool,
+  onClick: PropTypes.func.isRequired
 };

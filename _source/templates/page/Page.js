@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../organisms/header';
 import Footer from '../../organisms/footer';
@@ -7,34 +7,34 @@ import Toolbar from '../../organisms/toolbar';
 
 export default class Page extends Component {
   render() {
-    const { children, toolbar, className } = this.props;
+    const { children, toolbar, search, className, dashboards } = this.props;
 
     return (
-      <div>
-        <Header />
+      <Fragment>
+        <Header search={ search } dashboards={ dashboards } />
         { toolbar && <Toolbar document={ document } window={ window } /> }
         <main className={ `page ${className} ${toolbar ? '' : 'page--no-toolbar'}` }>
           { children }
         </main>
         <Footer />
         <Modal />
-      </div>
+      </Fragment>
     );
-    // <Sidebar />
   }
 }
 
 Page.propTypes = {
   toolbar: PropTypes.bool,
+  search: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
     PropTypes.string
   ]).isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  dashboards: PropTypes.bool
 };
 
 Page.defaultProps = {
-  toolbar: false,
   className: ''
 };

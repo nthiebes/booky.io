@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import scrolling from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
-// import TabBar from '../../molecules/tab-bar';
+import Search from '../../molecules/search';
 
 class Toolbar extends Component {
   constructor(props) {
@@ -72,21 +72,18 @@ class Toolbar extends Component {
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
+        <Search className="booky--hide-mobile-tablet" />
         <Icon icon="tree" title="Edit site structure" onClick={ () => { router.push('/structure'); } } />
       </div>
     );
-    
-    /*
-    <Icon
-      icon="edit"
-      title="Edit dashboard"
-      onClick={ () => { openModal('EditDashboard', {
-        id: dashboard.id,
-        name: dashboard.name
-      }); } }
-    />
-     */
-    // <Icon icon="add-category" title="Add category" onClick={ () => { openModal('AddCategory'); } } />
+    // <Icon
+    //   icon="edit"
+    //   title="Edit dashboard"
+    //   onClick={ () => { openModal('EditDashboard', {
+    //     id: dashboard.id,
+    //     name: dashboard.name
+    //   }); } }
+    // />
     // <div className="toolbar__gradient" />
     // <TabBar tabs={ dashboards } />
   }
@@ -106,8 +103,8 @@ Toolbar.propTypes = {
 };
 
 Toolbar.defaultProps = {
-  'headerSticky': true,
-  'sticky': true,
-  'currentlySticky': true,
+  headerSticky: true,
+  sticky: true,
+  currentlySticky: true,
   dashboards: {}
 };

@@ -34,17 +34,6 @@
     position: fixed;
   }
 
-  &.header--overlay-dashboards {
-    @include mobile-tablet {
-      &:before {
-        opacity: 1;
-        transition: opacity 0.3s linear;
-        width: 100%;
-        z-index: 2;
-      }
-    }
-  }
-
   &.header--overlay-menu {
     @include mobile-tablet {
       &:before {
@@ -102,12 +91,6 @@
   }
 }
 
-.header__menu-icon {
-  @include desktop {
-    display: none;
-  }
-}
-
 .header__logo {
   align-items: center;
   cursor: pointer;
@@ -122,36 +105,11 @@
     background-size: contain;
     height: 50px;
     width: 150px;
-
-    @include tablet-desktop {
-      // flex-grow: 0;
-      // justify-content: flex-start;
-      // order: -1;
-      // text-align: left;
-    }
-
-    @include mobile-tablet {
-      display: none;
-    }
+    flex-grow: 0;
+    flex-shrink: 0;
   }
 }
 
-.header__join {
-  @include mobile-tablet {
-    display: none;
-  }
-
-  margin-left: 1rem;
-}
-
-.header__sign-in {
-  margin-left: 1rem;
-}
-
-.header__sign-out {
-  @include mobile-tablet {
-    display: none;
-  }
-
+.header__login {
   margin-left: 1rem;
 }

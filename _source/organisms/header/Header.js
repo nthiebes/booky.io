@@ -32,7 +32,9 @@ export default class Header extends Component {
       menuOpen,
       sidebarOpen,
       color,
-      openModal
+      openModal,
+      search,
+      dashboards
     } = this.props;
     const STICKY_CLASS = sticky ? 'header--sticky' : '';
     const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
@@ -51,36 +53,33 @@ export default class Header extends Component {
           color="light"
           onClick={ onMenuClick }
           stopPropagation={ true }
-          className="header__menu-icon"
+          className="booky--hide-desktop"
         />
-        <Link className="header__logo header__logo--large" color="light" href="/" title="Home" />
-        <Menu menuOpen={ menuOpen } loggedIn={ loggedIn } />
-        { loggedIn ? [
-          <Search key="0" className="b-hide-desktop" />,
+        <Link className="header__logo header__logo--large booky--hide-mobile-tablet" color="light" href="/" title="Home" />
+        <Menu menuOpen={ menuOpen } dashboards={ dashboards } />
+        { loggedIn && search && <Search className="booky--hide-desktop" /> }
+        { !search && <Link className="header__logo header__logo--small booky--hide-desktop" color="light" href="/" title="Home">
+          <Icon icon="heart" color="light" />
+        </Link> }
+        { loggedIn && (
           <Icon
-            key="1"
+            className="booky--hide-desktop"
             icon="add"
             color="light"
             onClick={ () => { openModal('AddBookmark', {
               source: 'header'
             }); } }
           />
-        ] : (
-          <Link className="header__logo header__logo--small" color="light" href="/" title="Home">
-            <Icon icon="heart" color="light" />
-          </Link>
         ) }
-
-        { !loggedIn && (
-          <ButtonSmallLight className="header__sign-in" href="/join">
+        { !loggedIn && [
+          <Icon key="0" icon="login" color="light" className="header__login-icon booky--hide-desktop" />,
+          <ButtonSmallLight key="1" className="booky--hide-mobile-tablet" href="/join">
             { 'Join ' }<b>{ 'Booky' }</b>
-          </ButtonSmallLight>
-        ) }
-        { !loggedIn && (
-          <ButtonSmallLight className="header__sign-in" href="/login">
+          </ButtonSmallLight>,
+          <ButtonSmallLight key="2" className="booky--hide-mobile-tablet header__login" href="/login">
             { 'Sign ' }<b>{ 'In' }</b>
           </ButtonSmallLight>
-        ) }
+        ] }
       </header>
     );
   }
@@ -96,7 +95,9 @@ Header.propTypes = {
   'onSidebarClick': PropTypes.func.isRequired,
   'sidebarOpen': PropTypes.bool.isRequired,
   'sticky': PropTypes.bool,
-  openModal: PropTypes.func.isRequired
+  openModal: PropTypes.func.isRequired,
+  search: PropTypes.bool,
+  dashboards: PropTypes.bool
 };
 
 Header.defaultProps = {

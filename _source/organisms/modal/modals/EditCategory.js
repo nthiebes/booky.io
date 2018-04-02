@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Base from '../Base';
 import Input from '../../../atoms/input';
+import Label from '../../../atoms/label';
 import ColorPicker from '../../../molecules/color-picker';
 
 export default class EditCategory extends Component {
@@ -47,9 +48,8 @@ export default class EditCategory extends Component {
 
     return (
       <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline="Edit category">
-        <label className="modal__label" htmlFor="category-name">{ 'Name:' }</label>
-        <Input id="category-name" color="primary" value={ name } onChange={ this.onNameChange } required maxLength="50" />
-        <label className="modal__label" htmlFor="color">{ 'Color:' }</label>
+        <Input id="category-name" color="primary" value={ name } onChange={ this.onNameChange } required maxLength="50" label="Name:" />
+        <Label>{ 'Color:' }</Label>
         <ColorPicker value={ color } onChange={ this.onColorChange } />
       </Base>
     );
