@@ -10,12 +10,12 @@ export default class Categories extends Component {
     return (
       <Droppable droppableId={ `dashboard-${dashboard.id}` } type="category">
         { (provided) => (
-          <div ref={ provided.innerRef }>
+          <div ref={ provided.innerRef } { ...provided.droppableProps }>
             <div className="structure__categories">
               { dashboard.categories.map((category, index) => (
-                <Draggable draggableId={ `category-${category.id}` } type="category" key={ index }>
+                <Draggable draggableId={ `category-${category.id}` } key={ index } index={ index }>
                   { (providedInner) => (
-                    <div ref={ providedInner.innerRef } style={ providedInner.draggableStyle }>
+                    <div { ...providedInner.draggableProps } ref={ providedInner.innerRef }>
                       <div key={ index } className="structure__category">
                         <label className="structure__label">{ category.name }</label>
                         <Icon

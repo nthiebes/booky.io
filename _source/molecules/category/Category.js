@@ -85,10 +85,11 @@ export default class Category extends Component {
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
           <Droppable droppableId={ id.toString() } type="bookmark">
             { (provided) => (
-              <div className="category__bookmark-drag-wrapper" ref={ provided.innerRef }>
+              <div className="category__bookmark-drag-wrapper" ref={ provided.innerRef } { ...provided.droppableProps }>
                 { bookmarks.map((bookmark, index) => (
                   <Bookmark
                     key={ index }
+                    index={ index }
                     id={ bookmark.id }
                     categoryId={ id }
                     editMode={ editMode }
