@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
+
+import Label from '../../atoms/label';
 import Icon from '../icon';
 
 export default class Input extends Component {
@@ -41,7 +43,7 @@ export default class Input extends Component {
   }
 
   render() {
-    const { className, placeholder, type, color, name, id, required, value, maxLength } = this.props;
+    const { className, placeholder, type, color, name, id, required, value, maxLength, label } = this.props;
     const inputProps = {
       className: classNames('input__field', className && className, color && `input__field--color-${color}`),
       onBlur: this.onBlur,
@@ -57,11 +59,14 @@ export default class Input extends Component {
     };
 
     return (
-      <div className={ `input ${className}` }>
-        <input ref="inputField" { ...inputProps } />
-        { required && value && <Icon icon="check" color="green" className="input__icon" /> }
-        { required && !value && <Icon icon="error" color={ this.state.errorColor } className="input__icon" /> }
-      </div>
+      <Fragment>
+        { label && <Label htmlFor={ id }>{ label }</Label> }
+        <div className={ `input ${className}` }>
+          <input ref="inputField" { ...inputProps } />
+          { required && value && <Icon icon="check" color="green" className="input__icon" /> }
+          { required && !value && <Icon icon="error" color={ this.state.errorColor } className="input__icon" /> }
+        </div>
+      </Fragment>
     );
   }
 }
@@ -79,7 +84,8 @@ Input.propTypes = {
   id: PropTypes.string,
   required: PropTypes.bool,
   value: PropTypes.string,
-  maxLength: PropTypes.string
+  maxLength: PropTypes.string,
+  label: PropTypes.string
 };
 
 Input.defaultProps = {
@@ -92,5 +98,6 @@ Input.defaultProps = {
   id: '',
   required: false,
   value: '',
-  maxlength: ''
+  maxlength: '',
+  label: ''
 };

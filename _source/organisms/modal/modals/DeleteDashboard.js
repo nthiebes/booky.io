@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Base from '../Base';
+import Label from '../../../atoms/label';
 import Dropdown from '../../../molecules/dropdown';
 
 export default class DeleteDashboard extends Component {
@@ -38,12 +39,16 @@ export default class DeleteDashboard extends Component {
 
     return (
       <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Delete dashboard">
-        <label className="modal__label">
+        <Label>
           <div>{ 'This dashboard will be deleted:' }</div>
           <b>{ data.name }</b>
-        </label>
-        <label className="modal__label">{ 'What do you want to do with the categories?' }</label>
-        <Dropdown options={ options } onChange={ this.onChange } value={ this.state.value } />
+        </Label>
+        <Dropdown
+          label="What do you want to do with the categories?"
+          options={ options }
+          onChange={ this.onChange }
+          value={ this.state.value }
+        />
       </Base>
     );
   }

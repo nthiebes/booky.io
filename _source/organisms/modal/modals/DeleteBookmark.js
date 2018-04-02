@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Base from '../Base';
+import Label from '../../../atoms/label';
 
 export default class DeleteBookmark extends Component {
   render() {
@@ -11,10 +12,10 @@ export default class DeleteBookmark extends Component {
         id: data.id,
         categoryId: data.categoryId
       }); } } headline="Delete bookmark">
-        <label className="modal__label">
+        <Label>
           <div>{ 'This bookmark will be deleted:' }</div>
           <b>{ data.name }</b>
-        </label>
+        </Label>
       </Base>
     );
   }

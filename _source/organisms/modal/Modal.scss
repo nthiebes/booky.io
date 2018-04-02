@@ -94,12 +94,11 @@
 
   @include desktop() {
     display: flex;
+    justify-content: space-between;
   }
 }
 
 .modal__button {
-  width: 100% !important;
-
   @include desktop() {
     margin-left: 0.5rem;
   }
@@ -113,11 +112,4 @@
     margin-right: 0.5rem;
     margin-left: 0;
   }
-}
-
-.modal__label {
-  display: block;
-  margin-top: 1rem;
-  padding-bottom: 0.5rem;
-  line-height: 1.556rem;
 }

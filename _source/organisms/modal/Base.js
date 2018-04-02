@@ -20,7 +20,7 @@ export default class Modal extends Component {
         </div>
         <footer className="modal__footer">
           { !noCancel && <ButtonLargeLight className="modal__button modal__button--cancel" icon="close" onClick={ onClose }>{ 'Cancel' }</ButtonLargeLight> }
-          <ButtonLargePrimary disabled={ !valid } className="modal__button" icon="save" onClick={ onSave }>{ 'Done' }</ButtonLargePrimary>
+          <ButtonLargePrimary disabled={ !valid } className="modal__button" icon="save" onClick={ onSave }>{ 'Confirm' }</ButtonLargePrimary>
         </footer>
       </div>
     );

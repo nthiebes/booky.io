@@ -2,6 +2,10 @@
   display: flex;
   flex-wrap: nowrap;
   flex-grow: 1;
+  width: 100%;
+  position: relative;
+  left: calc(-3vw - 6px);
+  padding: 0 3vw;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -12,19 +16,33 @@
   color: $color__font--medium;
   font-weight: bold;
   white-space: nowrap;
-  padding: 6px 3%;
+  padding: 6px;
   flex: 0 0 auto;
   cursor: pointer;
-  border-bottom: 2px solid $color__background--medium;
   transition: color 0.2s, border-bottom-color 0.2s;
+  margin-right: 1rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .tab-bar__tab:active {
   color: $color__font--dark;
 }
 
+@include desktop {
+  .tab-bar__tab:hover {
+    color: $color__font--dark;
+  }
+}
+
 .tab-bar__tab--active {
   cursor: default;
   color: $color--primary;
-  border-bottom-color: $color--primary;
+  border-bottom: 2px solid $color--primary;
+  
+  &:hover {
+    color: $color--primary;
+  }
 }
