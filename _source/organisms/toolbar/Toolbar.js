@@ -5,7 +5,6 @@ import scrolling from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 import Search from '../../molecules/search';
-// import TabBar from '../../molecules/tab-bar';
 
 class Toolbar extends Component {
   constructor(props) {
@@ -68,35 +67,23 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, router, openModal } = this.props;
+    const { dashboard, router } = this.props;
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
-        <Icon
-          icon="edit"
-          title="Edit dashboard"
-          onClick={ () => { openModal('EditDashboard', {
-            id: dashboard.id,
-            name: dashboard.name
-          }); } }
-        />
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
         <Search className="booky--hide-mobile-tablet" />
         <Icon icon="tree" title="Edit site structure" onClick={ () => { router.push('/structure'); } } />
       </div>
     );
-    
-    /*
-    <Icon
-      icon="edit"
-      title="Edit dashboard"
-      onClick={ () => { openModal('EditDashboard', {
-        id: dashboard.id,
-        name: dashboard.name
-      }); } }
-    />
-     */
-    // <Icon icon="add-category" title="Add category" onClick={ () => { openModal('AddCategory'); } } />
+    // <Icon
+    //   icon="edit"
+    //   title="Edit dashboard"
+    //   onClick={ () => { openModal('EditDashboard', {
+    //     id: dashboard.id,
+    //     name: dashboard.name
+    //   }); } }
+    // />
     // <div className="toolbar__gradient" />
     // <TabBar tabs={ dashboards } />
   }
@@ -116,8 +103,8 @@ Toolbar.propTypes = {
 };
 
 Toolbar.defaultProps = {
-  'headerSticky': true,
-  'sticky': true,
-  'currentlySticky': true,
+  headerSticky: true,
+  sticky: true,
+  currentlySticky: true,
   dashboards: {}
 };

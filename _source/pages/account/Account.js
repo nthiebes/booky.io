@@ -50,16 +50,17 @@ export default class Account extends Component {
         </TabBar>
         { activeTab === 0 && (
           <Fragment>
-            <P first>{ 'Update your account data' }</P>
+            <P first>{ 'Update your account data.' }</P>
             <Input id="account-email" value={ 'nico@is.awesome' } required maxLength="150" label="Email:" />
             <Input id="account-password" value="" type="password" required maxLength="225" label="New password:" />
             <Input id="account-password-confirm" value="" type="password" required maxLength="225" label="Confirm new password:" />
+            <Input id="account-password-old" value="" type="password" required maxLength="225" label="Current password:" />
             <ButtonLargePrimary icon="save">{ 'Confirm' }</ButtonLargePrimary>
           </Fragment>
         ) }
         { activeTab === 1 && (
           <Fragment>
-            <P first>{ 'Import your bookmarks' }</P>
+            <P first>{ 'Import new bookmarks.' }</P>
           </Fragment>
         ) }
         { activeTab === 2 && (
