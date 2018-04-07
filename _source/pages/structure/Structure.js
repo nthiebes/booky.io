@@ -9,7 +9,7 @@ export default class Structure extends Component {
   render() {
     return (
       <Page>
-        <ButtonSmallPrimary className="structure__button" href="/">
+        <ButtonSmallPrimary className="structure__button" to="/">
           { 'Done' }
         </ButtonSmallPrimary>
         <H3 className="structure__headline">
