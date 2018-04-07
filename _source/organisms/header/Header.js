@@ -55,10 +55,10 @@ export default class Header extends Component {
           stopPropagation={ true }
           className="booky--hide-desktop"
         />
-        <Link className="header__logo header__logo--large booky--hide-mobile-tablet" color="light" href="/" title="Home" />
+        <Link className="header__logo header__logo--large booky--hide-mobile-tablet" color="light" to="/" title="Home" />
         <Menu menuOpen={ menuOpen } dashboards={ dashboards } />
         { loggedIn && search && <Search className="booky--hide-desktop" /> }
-        { !search && <Link className="header__logo header__logo--small booky--hide-desktop" color="light" href="/" title="Home">
+        { !search && <Link className="header__logo header__logo--small booky--hide-desktop" color="light" to="/" title="Home">
           <Icon icon="heart" color="light" />
         </Link> }
         { loggedIn && (
@@ -73,10 +73,10 @@ export default class Header extends Component {
         ) }
         { !loggedIn && [
           <Icon key="0" icon="login" color="light" className="header__login-icon booky--hide-desktop" />,
-          <ButtonSmallLight key="1" className="booky--hide-mobile-tablet" href="/join">
+          <ButtonSmallLight key="1" className="booky--hide-mobile-tablet" to="/join">
             { 'Join ' }<b>{ 'Booky' }</b>
           </ButtonSmallLight>,
-          <ButtonSmallLight key="2" className="booky--hide-mobile-tablet header__login" href="/login">
+          <ButtonSmallLight key="2" className="booky--hide-mobile-tablet header__login" to="/login">
             { 'Sign ' }<b>{ 'In' }</b>
           </ButtonSmallLight>
         ] }

@@ -2,13 +2,33 @@
   font-size: 1rem;
   position: relative;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.2s linear;
 
   &.link--primary {
     color: $color__font--primary;
+
+    &:active {
+      color: $color__font--medium;
+    }
+
+    @include desktop {
+      &:hover {
+        color: $color__font--medium;
+      }
+    }
   }
 
   &.link--light {
     color: $color__font--white;
+
+    &:active {
+      color: $color__font--primary;
+    }
+
+    @include desktop {
+      &:hover {
+        color: $color__font--primary;
+      }
+    }
   }
 }

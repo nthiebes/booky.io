@@ -25,11 +25,11 @@ export default class Footer extends Component {
         </section>
         <section className="footer__content">
           <ul className="footer__menu">
-            <Link className="footer__menu-item" href="/about">{ 'About' }</Link>
-            <Link className="footer__menu-item" href="/help">{ 'Help' }</Link>
-            <Link className="footer__menu-item" href="mailto:hello@booky.io">{ 'Contact' }</Link>
-            <Link className="footer__menu-item" href="/privacy">{ 'Privacy Policy' }</Link>
-            <Link className="footer__menu-item" href="/legal">{ 'Legal Notice' }</Link>
+            <Link className="footer__menu-item" color="light" to="/about">{ 'About' }</Link>
+            <Link className="footer__menu-item" color="light" to="/help">{ 'Help' }</Link>
+            <Link className="footer__menu-item" color="light" href="mailto:hello@booky.io">{ 'Contact' }</Link>
+            <Link className="footer__menu-item" color="light" to="/privacy">{ 'Privacy Policy' }</Link>
+            <Link className="footer__menu-item" color="light" to="/legal">{ 'Legal Notice' }</Link>
           </ul>
           <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
             <b>{ 'Back' }</b>{ ' to ' }<b>{ 'top' }</b>
@@ -37,7 +37,7 @@ export default class Footer extends Component {
           <div className="footer__logo">{ 'booky.io (logo)' }</div>
           <div className="footer__copy">
             { '© 2014-2018' }
-            <Link className="footer__copy-link" href="/about">{ 'booky.io' }</Link>
+            <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
             { '| All Rights Reserved.' }
           </div>
         </section>
