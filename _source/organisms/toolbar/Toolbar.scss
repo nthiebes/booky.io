@@ -15,6 +15,10 @@
     top: 4.4rem;
   }
 
+  @include xxl {
+    padding: 0 38px;
+  }
+
   @include desktop {
     background-color: rgba($color__background--white, 0.95);
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);

@@ -48,6 +48,10 @@
 .footer__content {
   background-color: $color__background--dark;
   padding: 2rem calc(3% + 6px);
+
+  @include xxl {
+    padding: 2rem calc(38px + 6px);
+  }
 }
 
 .footer__menu {

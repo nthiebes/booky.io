@@ -18,6 +18,10 @@
   align-items: center;
   padding: 0 3vw 0 calc(3vw + 6px);
 
+  @include xxl {
+    padding: 0 38px 0 calc(38px + 6px);
+  }
+
   .menu__headline {
     flex-grow: 1;
     margin: 0 !important;
@@ -32,6 +36,10 @@
 .dashboards__list--edit-mode {
   .dashboards__item {
     padding: 0 3vw 0 calc(3vw + 6px);
+
+    @include xxl {
+      padding: 0 38px 0 calc(38px + 6px);
+    }
 
     &:active,
     &:hover {
@@ -68,6 +76,10 @@
   transition: none;
   cursor: pointer;
   text-decoration: none;
+
+  @include xxl {
+    padding: 0 calc(38px + 6px);
+  }
 
   &:active {
     background-color: $color__background--ligth;
