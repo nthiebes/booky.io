@@ -5,20 +5,12 @@ import classNames from 'classnames';
 
 export default class Link extends Component {
   render() {
-    const { color, className, href, title, children, onClick } = this.props;
-    const isMail = href.indexOf('mailto') >= 0;
-    const props = {
-      className: classNames('link', className && className, color && `link--${color}`),
-      [isMail ? 'href' : 'to']: href,
-      title: title,
-      onClick: onClick && onClick
-    };
-    let CustomTag = href === '/' ? IndexLink : RegularLink;
-
-    CustomTag = isMail ? 'a' : CustomTag;
+    const { color, children, className, ...props } = this.props;
+    const internalType = this.props.to === '/' ? IndexLink : RegularLink;
+    const CustomTag = this.props.href ? 'a' : internalType;
 
     return (
-      <CustomTag { ...props }>
+      <CustomTag { ...props } className={ classNames('link', className && className, color && `link--${color}`) }>
         { children }
       </CustomTag>
     );
@@ -26,7 +18,8 @@ export default class Link extends Component {
 }
 
 Link.propTypes = {
-  href: PropTypes.string.isRequired,
+  href: PropTypes.string,
+  to: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.string,
@@ -35,7 +28,8 @@ Link.propTypes = {
   ]),
   title: PropTypes.string,
   color: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  target: PropTypes.string
 };
 
 Link.defaultProps = {
