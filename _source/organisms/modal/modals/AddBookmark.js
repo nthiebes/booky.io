@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
+
 import Base from '../Base';
 import Input from '../../../atoms/input';
 import Dropdown from '../../../molecules/dropdown';
 
-export default class AddBookmark extends Component {
+class AddBookmark extends Component {
   constructor(props) {
     super(props);
 
@@ -52,19 +54,19 @@ export default class AddBookmark extends Component {
   }
 
   render() {
-    const { onClose, onSave, data } = this.props;
+    const { onClose, onSave, data, intl } = this.props;
     const { name, url, valid } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline="Add a bookmark">
-        <Input id="bookmark-url" value={ url } onChange={ this.onUrlChange } required maxLength="2000" label="URL:" />
-        <Input id="bookmark-name" value={ name } onChange={ this.onNameChange } required maxLength="80" label="Name:" />
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }>
+        <Input id="bookmark-url" value={ url } onChange={ this.onUrlChange } required maxLength="2000" label={ intl.formatMessage({ id: 'modal.url' }) } />
+        <Input id="bookmark-name" value={ name } onChange={ this.onNameChange } required maxLength="80" label={ intl.formatMessage({ id: 'modal.name' }) } />
         { data.source === 'header' && (
           <Dropdown
             options={ data.categories }
             onChange={ this.onCategoryChange }
             value={ this.state.value }
-            label="Category:"
+            label={ intl.formatMessage({ id: 'modal.category' }) }
           />
         ) }
       </Base>
@@ -72,10 +74,13 @@ export default class AddBookmark extends Component {
   }
 }
 
+export default injectIntl(AddBookmark);
+
 AddBookmark.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  data: PropTypes.object
+  data: PropTypes.object,
+  intl: PropTypes.object.isRequired
 };
 
 AddBookmark.defaultProps = {

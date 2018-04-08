@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
+import { injectIntl } from 'react-intl';
+
 import Icon from '../../atoms/icon';
 
-export default class Categories extends Component {
+class Categories extends Component {
   render() {
-    const { dashboard } = this.props;
+    const { dashboard, intl } = this.props;
 
     return (
       <Droppable droppableId={ `dashboard-${dashboard.id}` } type="category">
@@ -21,7 +23,7 @@ export default class Categories extends Component {
                         <Icon
                           className="structure__icon"
                           icon="drag"
-                          title="Drag dashboard"
+                          title={ intl.formatMessage({ id: 'category.drag' }) }
                           dragHandleProps={ providedInner.dragHandleProps }
                         />
                       </div>
@@ -39,6 +41,9 @@ export default class Categories extends Component {
   }
 }
 
+export default injectIntl(Categories);
+
 Categories.propTypes = {
-  dashboard: PropTypes.object.isRequired
+  dashboard: PropTypes.object.isRequired,
+  intl: PropTypes.object.isRequired
 };

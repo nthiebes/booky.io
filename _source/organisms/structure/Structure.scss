@@ -29,6 +29,7 @@
   cursor: move;
   position: relative;
   left: 6px;
+  cursor: move !important;
 }
 
 .structure__categories {
@@ -37,10 +38,10 @@
 }
 
 .structure__button {
-  display: flex;
-  margin-top: 2rem;
-}
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
-.structure__headline {
-  margin-top: 2rem !important;
+  @include mobile-tablet() {
+    // display: flex;
+  }
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FormattedHTMLMessage } from 'react-intl';
+
 import Category from '../../molecules/category';
 import { ButtonSmallMedium } from '../../atoms/button';
 
@@ -13,7 +15,7 @@ export default class Categories extends Component {
         <ButtonSmallMedium
           className="categories__button"
           onClick={ () => { openModal('AddCategory'); } }>
-          { 'New ' }<b>{ 'category' }</b>
+          <FormattedHTMLMessage id="category.new" />
         </ButtonSmallMedium>
         {categories.map((category) =>
           <Category key={ category.id } { ...category } />
@@ -21,7 +23,7 @@ export default class Categories extends Component {
         { categories.length && <ButtonSmallMedium
           className="categories__button"
           onClick={ () => { openModal('AddCategory'); } }>
-          { 'New ' }<b>{ 'category' }</b>
+          <FormattedHTMLMessage id="category.new" />
         </ButtonSmallMedium> }
       </div>
     );

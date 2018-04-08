@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
+
 import Base from '../Base';
 import Input from '../../../atoms/input';
 
-export default class AddDashboard extends Component {
+class AddDashboard extends Component {
   constructor(props) {
     super(props);
 
@@ -29,18 +31,29 @@ export default class AddDashboard extends Component {
   }
 
   render() {
-    const { onClose, onSave } = this.props;
+    const { onClose, onSave, intl } = this.props;
     const { name, valid } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline="Add a dashboard">
-        <Input id="dashboard-name" color="primary" value={ name } onChange={ this.onNameChange } required maxLength="50" label="Name:" />
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline={ intl.formatMessage({ id: 'modal.addDashboard' }) }>
+        <Input
+          id="dashboard-name"
+          color="primary"
+          value={ name }
+          onChange={ this.onNameChange }
+          required
+          maxLength="50"
+          label={ intl.formatMessage({ id: 'modal.name' }) }
+        />
       </Base>
     );
   }
 }
 
+export default injectIntl(AddDashboard);
+
 AddDashboard.propTypes = {
   onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired
+  onSave: PropTypes.func.isRequired,
+  intl: PropTypes.object.isRequired
 };

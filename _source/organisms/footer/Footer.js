@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
-
 import React, { Component } from 'react';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import { ButtonSmallLight } from '../../atoms/button';
@@ -25,20 +26,21 @@ export default class Footer extends Component {
         </section>
         <section className="footer__content">
           <ul className="footer__menu">
-            <Link className="footer__menu-item" color="light" to="/about">{ 'About' }</Link>
-            <Link className="footer__menu-item" color="light" to="/help">{ 'Help' }</Link>
-            <Link className="footer__menu-item" color="light" href="mailto:hello@booky.io">{ 'Contact' }</Link>
-            <Link className="footer__menu-item" color="light" to="/privacy">{ 'Privacy Policy' }</Link>
-            <Link className="footer__menu-item" color="light" to="/legal">{ 'Legal Notice' }</Link>
+            <Link className="footer__menu-item" color="light" to="/about"><FormattedMessage id="menu.about" /></Link>
+            <Link className="footer__menu-item" color="light" to="/help"><FormattedMessage id="menu.help" /></Link>
+            <Link className="footer__menu-item" color="light" href="mailto:hello@booky.io"><FormattedMessage id="menu.contact" /></Link>
+            <Link className="footer__menu-item" color="light" to="/privacy"><FormattedMessage id="menu.privacy" /></Link>
+            <Link className="footer__menu-item" color="light" to="/legal"><FormattedMessage id="menu.legal" /></Link>
           </ul>
           <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
-            <b>{ 'Back' }</b>{ ' to ' }<b>{ 'top' }</b>
+            <FormattedHTMLMessage id="footer.scroll" />
           </ButtonSmallLight>
           <div className="footer__logo">{ 'booky.io (logo)' }</div>
           <div className="footer__copy">
             { '© 2014-2018' }
             <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
-            { '| All Rights Reserved.' }
+            { '| ' }
+            <FormattedMessage id="footer.copy" />
           </div>
         </section>
       </footer>
