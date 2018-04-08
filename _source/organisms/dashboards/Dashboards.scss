@@ -111,3 +111,12 @@
   flex-grow: 1;
   cursor: pointer;
 }
+
+.dashboards__button {
+  margin: 1rem calc(3vw + 6px);
+  display: flex;
+
+  @include xxl {
+    margin: 1rem calc(38px + 6px);
+  }
+}
