@@ -12,7 +12,7 @@
     width: 27.33%;
   }
 
-  @include xxl {
+  @include hd {
     width: 19%;
   }
 }
@@ -24,9 +24,15 @@
     }
   }
 
-  @include xxl {
+  @include hd {
     .category {
       width: 27.33%;
+    }
+  }
+
+  @include fullhd {
+    .category {
+      width: 19%;
     }
   }
 }
