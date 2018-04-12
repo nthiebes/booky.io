@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
+import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
 import { H2 } from '../../atoms/headline';
 import { ButtonSmallMedium } from '../../atoms/button';
 
-export default class Category extends Component {
+class Category extends Component {
   constructor(props) {
     super(props);
 
@@ -32,7 +34,7 @@ export default class Category extends Component {
   }
 
   render() {
-    const { name, id, color, bookmarks, openModal } = this.props;
+    const { name, id, color, bookmarks, openModal, intl } = this.props;
     const { open, editMode } = this.state;
     const headerClassName = classNames(
       'category__header',
@@ -46,14 +48,14 @@ export default class Category extends Component {
           <Icon
             className={ classNames('category__toggle-icon', !open && 'category__toggle-icon--rotate') }
             icon="expand"
-            title={ open ? 'Reduce category' : 'Expand category' }
+            title={ open ? intl.formatMessage({ id: 'category.reduce' }) : intl.formatMessage({ id: 'category.expand' }) }
             onClick={ this.toggleCategory }
           />
           <H2 className="category__name" onClick={ this.toggleCategory }>{ name }</H2>
           <Icon
             className="category__icon"
             icon="edit"
-            title="Edit category"
+            title={ intl.formatMessage({ id: 'category.edit' }) }
             onClick={ () => { openModal('EditCategory', {
               name,
               id,
@@ -63,7 +65,7 @@ export default class Category extends Component {
           <Icon
             className="category__icon"
             icon="delete"
-            title="Delete category"
+            title={ intl.formatMessage({ id: 'category.delete' }) }
             onClick={ () => { openModal('DeleteCategory', {
               name,
               id
@@ -72,13 +74,13 @@ export default class Category extends Component {
           <Icon
             className={ editMode ? '' : 'category__edit-icon--hide' }
             icon="close"
-            title="Quit edit mode"
+            title={ intl.formatMessage({ id: 'category.editModeQuit' }) }
             onClick={ this.toggleEditMode }
           />
           <Icon
             className={ editMode ? 'category__edit-icon--hide' : '' }
             icon="more-horiz"
-            title="Edit mode"
+            title={ intl.formatMessage({ id: 'category.editMode' }) }
             onClick={ this.toggleEditMode }
           />
         </header>
@@ -107,12 +109,14 @@ export default class Category extends Component {
           onClick={ () => { openModal('AddBookmark', {
             categoryId: id
           }); } }>
-          { 'Add ' }<b>{ 'bookmark' }</b>
+          <FormattedHTMLMessage id="bookmark.add" />
         </ButtonSmallMedium> }
       </section>
     );
   }
 }
+
+export default injectIntl(Category);
 
 Category.propTypes = {
   name: PropTypes.string.isRequired,
@@ -120,7 +124,8 @@ Category.propTypes = {
   open: PropTypes.bool,
   id: PropTypes.number.isRequired,
   bookmarks: PropTypes.array,
-  openModal: PropTypes.func.isRequired
+  openModal: PropTypes.func.isRequired,
+  intl: PropTypes.object.isRequired
 };
 
 Category.defaultProps = {

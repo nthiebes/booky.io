@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage, injectIntl } from 'react-intl';
+
 import Base from '../Base';
 import Label from '../../../atoms/label';
 import Dropdown from '../../../molecules/dropdown';
 
-export default class DeleteDashboard extends Component {
+class DeleteDashboard extends Component {
   constructor(props) {
     super(props);
 
@@ -32,19 +34,19 @@ export default class DeleteDashboard extends Component {
   }
 
   render() {
-    const { data, onClose, onSave } = this.props;
+    const { data, onClose, onSave, intl } = this.props;
     const options = [{name: 'Delete all'}, ...data.dashboards.map(({name}) => ({
       name: `Move to: ${name}`
     }))];
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline="Delete dashboard">
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } headline={ intl.formatMessage({ id: 'modal.deleteDashboard' }) }>
         <Label>
-          <div>{ 'This dashboard will be deleted:' }</div>
+          <div><FormattedMessage id="modal.deleteDashboardLabel" /></div>
           <b>{ data.name }</b>
         </Label>
         <Dropdown
-          label="What do you want to do with the categories?"
+          label={ intl.formatMessage({ id: 'modal.deleteDashboardFuture' }) }
           options={ options }
           onChange={ this.onChange }
           value={ this.state.value }
@@ -54,8 +56,11 @@ export default class DeleteDashboard extends Component {
   }
 }
 
+export default injectIntl(DeleteDashboard);
+
 DeleteDashboard.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  intl: PropTypes.object.isRequired
 };

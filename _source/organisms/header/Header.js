@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+
 import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Search from '../../molecules/search';
 import { ButtonSmallLight } from '../../atoms/button';
 
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props);
 
@@ -34,7 +36,8 @@ export default class Header extends Component {
       color,
       openModal,
       search,
-      dashboards
+      dashboards,
+      intl
     } = this.props;
     const STICKY_CLASS = sticky ? 'header--sticky' : '';
     const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
@@ -55,12 +58,18 @@ export default class Header extends Component {
           stopPropagation={ true }
           className="booky--hide-desktop"
         />
-        <Link className="header__logo header__logo--large booky--hide-mobile-tablet" color="light" to="/" title="Home" />
+        <Link
+          className="header__logo header__logo--large booky--hide-mobile-tablet"
+          color="light"
+          to="/"
+          title={ intl.formatMessage({ id: 'menu.home' }) }
+        />
         <Menu menuOpen={ menuOpen } dashboards={ dashboards } />
         { loggedIn && search && <Search className="booky--hide-desktop" /> }
-        { !search && <Link className="header__logo header__logo--small booky--hide-desktop" color="light" to="/" title="Home">
-          <Icon icon="heart" color="light" />
-        </Link> }
+        { !search && (
+          <Link className="header__logo header__logo--small booky--hide-desktop" color="light" to="/" title={ intl.formatMessage({ id: 'menu.home' }) }>
+            <Icon icon="heart" color="light" />
+          </Link>) }
         { loggedIn && (
           <Icon
             className="booky--hide-desktop"
@@ -71,19 +80,23 @@ export default class Header extends Component {
             }); } }
           />
         ) }
-        { !loggedIn && [
-          <Icon key="0" icon="login" color="light" className="header__login-icon booky--hide-desktop" />,
-          <ButtonSmallLight key="1" className="booky--hide-mobile-tablet" to="/join">
-            { 'Join ' }<b>{ 'Booky' }</b>
-          </ButtonSmallLight>,
-          <ButtonSmallLight key="2" className="booky--hide-mobile-tablet header__login" to="/login">
-            { 'Sign ' }<b>{ 'In' }</b>
-          </ButtonSmallLight>
-        ] }
+        { !loggedIn && (
+          <Fragment>
+            <Icon icon="login" color="light" className="header__login-icon booky--hide-desktop" />
+            <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join">
+              <FormattedHTMLMessage id="header.register" />
+            </ButtonSmallLight>
+            <ButtonSmallLight className="booky--hide-mobile-tablet header__login" to="/login">
+              <FormattedHTMLMessage id="header.login" />
+            </ButtonSmallLight>
+          </Fragment>
+        ) }
       </header>
     );
   }
 }
+
+export default injectIntl(Header);
 
 Header.propTypes = {
   'color': PropTypes.number,
@@ -97,7 +110,8 @@ Header.propTypes = {
   'sticky': PropTypes.bool,
   openModal: PropTypes.func.isRequired,
   search: PropTypes.bool,
-  dashboards: PropTypes.bool
+  dashboards: PropTypes.bool,
+  intl: PropTypes.object.isRequired
 };
 
 Header.defaultProps = {

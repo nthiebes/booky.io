@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 import { ButtonSmallMedium } from '../../atoms/button';
 
-export default class Dashboards extends Component {
+class Dashboards extends Component {
   constructor(props) {
     super(props);
 
@@ -22,23 +24,23 @@ export default class Dashboards extends Component {
   }
 
   render() {
-    const { dashboards, openModal, changeDashboard, className } = this.props;
+    const { dashboards, openModal, changeDashboard, className, intl } = this.props;
     const { editMode } = this.state;
 
     return (
       <aside className={ className }>
         <div className="dashboards__headline-wrapper">
-          <H3 className="menu__headline">{ 'Dashboards' }</H3>
+          <H3 className="menu__headline"><FormattedMessage id="dashboard.title" /></H3>
           <Icon
             className={ editMode ? '' : 'menu__edit-icon--hide' }
             icon="close"
-            title="Quit edit mode"
+            title={ intl.formatMessage({ id: 'dashboard.editModeQuit' }) }
             onClick={ this.toggleEditMode }
           />
           <Icon
             className={ editMode ? 'menu__edit-icon--hide' : '' }
             icon="more-horiz"
-            title="Edit mode"
+            title={ intl.formatMessage({ id: 'dashboard.editMode' }) }
             onClick={ this.toggleEditMode }
           />
         </div>
@@ -52,7 +54,7 @@ export default class Dashboards extends Component {
               <Icon
                 className="menu__icon"
                 icon="edit"
-                title="Edit dashboard"
+                title={ intl.formatMessage({ id: 'dashboard.edit' }) }
                 stopPropagation
                 onClick={ () => { openModal('EditDashboard', {
                   id: dashboard.id,
@@ -62,7 +64,7 @@ export default class Dashboards extends Component {
               <Icon
                 className="menu__icon"
                 icon="delete"
-                title="Delete dashboard"
+                title={ intl.formatMessage({ id: 'dashboard.delete' }) }
                 stopPropagation
                 onClick={ () => { openModal('DeleteDashboard', {
                   id: dashboard.id,
@@ -71,10 +73,8 @@ export default class Dashboards extends Component {
               />
             </div>
           )) }
-          <ButtonSmallMedium
-            className="menu__button"
-            onClick={ () => { openModal('AddDashboard'); } }>
-            { 'Add ' }<b>{ 'dashboard' }</b>
+          <ButtonSmallMedium className="dashboards__button" onClick={ () => { openModal('AddDashboard'); } }>
+            <FormattedHTMLMessage id="dashboard.add" />
           </ButtonSmallMedium>
         </ul>
       </aside>
@@ -82,11 +82,14 @@ export default class Dashboards extends Component {
   }
 }
 
+export default injectIntl(Dashboards);
+
 Dashboards.propTypes = {
   openModal: PropTypes.func.isRequired,
   changeDashboard: PropTypes.func.isRequired,
   dashboards: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
+  intl: PropTypes.object.isRequired
 };
 
 Dashboards.defaultProps = {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import { injectIntl } from 'react-intl';
+
 import scrolling from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
@@ -67,13 +69,13 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, router } = this.props;
+    const { dashboard, router, intl } = this.props;
 
     return (
       <div className={ `toolbar ${this.getStickyClass()}` }>
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
         <Search className="booky--hide-mobile-tablet" />
-        <Icon icon="tree" title="Edit site structure" onClick={ () => { router.push('/structure'); } } />
+        <Icon icon="tree" title={ intl.formatMessage({ id: 'structure.title' }) } onClick={ () => { router.push('/structure'); } } />
       </div>
     );
     // <Icon
@@ -89,7 +91,7 @@ class Toolbar extends Component {
   }
 }
 
-export default withRouter(Toolbar);
+export default withRouter(injectIntl(Toolbar));
 
 Toolbar.propTypes = {
   updateCurrentlySticky: PropTypes.func.isRequired,
@@ -99,7 +101,8 @@ Toolbar.propTypes = {
   dashboards: PropTypes.object,
   dashboard: PropTypes.object,
   openModal: PropTypes.func.isRequired,
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired,
+  intl: PropTypes.object.isRequired
 };
 
 Toolbar.defaultProps = {

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-
 import React, { Component } from 'react';
+
 import Page from '../../templates/page';
 import { H1, H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
