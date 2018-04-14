@@ -16,10 +16,10 @@ const bundler = webpack(config);
 // Run Browsersync and use middleware for Hot Module Replacement
 browserSync({
   port: 3000,
+  open: false,
   ui: {
     port: 3001
   },
-  open: false,
   server: {
     baseDir: '_source',
 
@@ -31,7 +31,7 @@ browserSync({
         publicPath: config.output.publicPath,
 
         // These settings suppress noisy webpack output so only errors are displayed to the console.
-        noInfo: false,
+        noInfo: true,
         quiet: false,
         stats: {
           assets: false,
@@ -41,10 +41,10 @@ browserSync({
           timings: false,
           chunks: false,
           chunkModules: false
-        },
+        }
 
         // for other settings see
-        // http://webpack.github.io/docs/webpack-dev-middleware.html
+        // https://webpack.js.org/guides/development/#using-webpack-dev-middleware
       }),
 
       // bundler should be the same as above
