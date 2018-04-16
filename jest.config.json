@@ -2,13 +2,5 @@
   "collectCoverageFrom": ["**/*.{js,jsx}", "!**/node_modules/**", "!**/.spec.{js,jsx}"],
   "coveragePathIgnorePatterns": ["_source/webpack-public-path", "_source/main", "_source/00_base/Booky", "_source/04_templates", "_source/05_pages", "_source/configureStore", "_source/router"],
   "rootDir": "_source",
-  "transform": {".*": "../node_modules/babel-jest"},
-  "moduleNameMapper": {
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
-    "\\.(css)$": "<rootDir>/tools/assetsTransformer.js"
-  },
-  "setupFiles": [
-    "raf/polyfill",
-    "./tools/enzymeTestAdapterSetup.js"
-  ]
+  "transform": {".*": "../node_modules/babel-jest"}
 }
