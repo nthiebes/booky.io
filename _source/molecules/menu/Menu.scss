@@ -130,7 +130,7 @@
       transition: none;
     }
 
-    &:active {
+    &:active, &:focus {
       background-color: $color__background--ligth;
       color: $color__font--primary;
 
@@ -157,14 +157,14 @@
     transition: color 0.2s linear;
     align-items: center;
 
-    &:hover {
+    &:hover, &:focus {
       color: $color__font--dark;
 
       .menu__label {
         color: $color__font--dark;
       }
 
-      &:hover .icon {
+      &:hover .icon, &:focus .icon {
         color: $color__font--dark;
       }
     }

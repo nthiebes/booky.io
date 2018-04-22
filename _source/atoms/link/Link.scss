@@ -7,7 +7,7 @@
   &.link--primary {
     color: $color__font--primary;
 
-    &:active {
+    &:active, &:focus {
       color: $color__font--medium;
     }
 
@@ -21,7 +21,7 @@
   &.link--light {
     color: $color__font--white;
 
-    &:active {
+    &:active, &:focus {
       color: $color__font--primary;
     }
 

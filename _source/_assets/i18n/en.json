@@ -34,7 +34,7 @@
   "dashboard.drag": "Drag collection",
 
   "category.new": "Add <b>category</b>",
-  "category.reduce": "Reduce category",
+  "category.reduce": "Collapse category",
   "category.expand": "Expand category",
   "category.delete": "Delete category",
   "category.edit": "Edit category",

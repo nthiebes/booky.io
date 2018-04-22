@@ -5,13 +5,14 @@ import P from '../../atoms/paragraph';
 import Input from '../../atoms/input';
 import { ButtonLargePrimary } from '../../atoms/button';
 import { TabBar, Tab } from '../../molecules/tab-bar';
+import './Account.scss';
 
 const tabs = [{
-  name: 'Account data'
+  name: 'User data'
 }, {
   name: 'Import'
 }, {
-  name: 'Backup'
+  name: 'Export'
 }];
 
 export default class Account extends Component {
@@ -54,7 +55,7 @@ export default class Account extends Component {
             <Input id="account-password" value="" type="password" required maxLength="225" label="New password:" />
             <Input id="account-password-confirm" value="" type="password" required maxLength="225" label="Confirm new password:" />
             <Input id="account-password-old" value="" type="password" required maxLength="225" label="Current password:" />
-            <ButtonLargePrimary icon="save">{ 'Confirm' }</ButtonLargePrimary>
+            <ButtonLargePrimary icon="save" className="account__button">{ 'Confirm' }</ButtonLargePrimary>
           </Fragment>
         ) }
         { activeTab === 1 && (

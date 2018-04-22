@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from '../icon';
 import Link from '../link';
+import './Button.scss';
 
 export default class Button extends Component {
   render() {
     const { size, icon, className, color, onClick, href, to, children, disabled } = this.props;
-    const CustomTag = href || to ? Link : 'div';
+    const CustomTag = href || to ? Link : 'button';
 
     return (
       <CustomTag
