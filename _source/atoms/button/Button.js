@@ -3,19 +3,39 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from '../icon';
 import Link from '../link';
-import './Button.scss';
 
 export default class Button extends Component {
   render() {
-    const { size, icon, className, color, onClick, href, to, children, disabled } = this.props;
+    const {
+      size,
+      icon,
+      className,
+      color,
+      onClick,
+      href,
+      to,
+      children,
+      disabled,
+      tabIndex,
+      solid
+    } = this.props;
     const CustomTag = href || to ? Link : 'button';
 
     return (
       <CustomTag
-        className={ classNames('button', `button--${size}`, `button--${size}-${color}`, className, disabled && 'button--disabled') }
+        className={ classNames(
+          'button',
+          `button--${size}`,
+          `button--${size}-${color}`,
+          solid && 'button--solid',
+          disabled && 'button--disabled',
+          className)
+        }
         onClick={ onClick }
         href={ href }
-        to={ to }>
+        to={ to }
+        tabIndex={ tabIndex }
+      >
         { icon && <Icon icon={ icon } color={ size === 'small' ? color : 'light' } className="button__icon" /> }
         <span className="button__text">{ children }</span>
       </CustomTag>
@@ -36,11 +56,14 @@ Button.propTypes = {
     PropTypes.array,
     PropTypes.element,
     PropTypes.string
-  ]).isRequired
+  ]).isRequired,
+  tabIndex: PropTypes.string,
+  solid: PropTypes.bool
 };
 
 Button.defaultProps = {
   className: '',
   href: '',
-  disabled: false
+  disabled: false,
+  tabIndex: ''
 };

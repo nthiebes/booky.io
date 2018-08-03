@@ -2,8 +2,8 @@
 /* eslint-disable max-statements */
 import React from 'react';
 import { shallow } from 'enzyme';
-import Sidebar from './component.jsx';
-import { mapStateToProps, mapDispatchToProps } from './container';
+import Sidebar from './Sidebar';
+import { mapStateToProps, mapDispatchToProps } from './SidebarContainer';
 import {
   toggleNotes, 
   toggleAutofill, 

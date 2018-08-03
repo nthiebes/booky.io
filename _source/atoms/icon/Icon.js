@@ -20,13 +20,13 @@ export default class Icon extends Component {
   }
 
   render() {
-    const { icon, className, label, color, title, dragHandleProps } = this.props;
+    const { icon, className, label, color, title, dragHandleProps, tabIndex } = this.props;
     const LINK = '_assets/symbol-defs.svg#icon-' + icon;
     const CLASS = classNames('icon', className, `icon--${color}`);
     const LABEL = label ? <label className="icon__label">{ label }</label> : '';
 
     return (
-      <div className={ CLASS } title={ title } onClick={ this.onClick } { ...dragHandleProps }>
+      <div className={ CLASS } title={ title } onClick={ this.onClick } tabIndex={ tabIndex } { ...dragHandleProps }>
         <svg className="icon__svg">
           <use xlinkHref={ LINK } />
         </svg>
@@ -44,11 +44,13 @@ Icon.propTypes = {
   title: PropTypes.string,
   stopPropagation: PropTypes.bool,
   color: PropTypes.string,
-  dragHandleProps: PropTypes.object
+  dragHandleProps: PropTypes.object,
+  tabIndex: PropTypes.string
 };
 
 Icon.defaultProps = {
   className: '',
   title: '',
-  color: 'medium'
+  color: 'medium',
+  tabIndex: ''
 };

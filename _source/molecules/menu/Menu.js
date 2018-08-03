@@ -24,7 +24,7 @@ class Menu extends Component {
     return (
       <aside className={ `menu ${menuOpen ? 'menu--open' : ''}` } onClick={ this.onMenuClick }>
         <header className="menu__header">
-          <Icon icon="menu" onClick={ closeMenu } />
+          <Icon icon="back" onClick={ closeMenu } />
           <Link to="/" className="menu__logo" onClick={ closeMenu }>{ 'booky.io (logo)' }</Link>
         </header>
         <hr className="menu__hr" />

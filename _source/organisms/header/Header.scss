@@ -3,7 +3,7 @@
   border-bottom: 2px solid rgba(0,0,0,0.1);
   display: flex;
   height: 3rem;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0 3%;
   position: absolute;
   top: 0;
@@ -96,24 +96,75 @@
 }
 
 .header__logo {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  padding: 5px;
-  text-align: center;
+  margin-right: 1rem;
 
-  &.header__logo--large {
-    background: url("../../_assets/logo-primary.png") no-repeat center center transparent;
-    background-size: contain;
-    height: 50px;
-    width: 150px;
-    flex-grow: 0;
-    flex-shrink: 0;
+  @include mobile {
+    flex-grow: 1;
+  }
+  
+  &:focus {
+    outline: 1px dashed #fff;
   }
 }
 
 .header__login {
-  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.header__nav {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  margin-right: 0.5rem;
+}
+
+.header__nav-item {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: " ";
+    height: 2px;
+    left: 36px;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    transition: background-color 0.2s linear;
+  }
+
+  &:active,
+  &:focus {
+    color: $color__font--dark;
+
+    .icon {
+      color: $color__font--dark;
+    }
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--dark;
+
+      .icon {
+        color: $color__font--dark;
+      }
+    }
+  }
+}
+
+.header__nav-item--active {
+  &::after {
+    background-color: $color__font--white;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    &::after {
+      background-color: $color__font--dark;
+    }
+  }
 }

@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import classNames from 'classnames';
-import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
@@ -37,7 +38,8 @@ class Header extends Component {
       openModal,
       search,
       dashboards,
-      intl
+      intl,
+      location
     } = this.props;
     const STICKY_CLASS = sticky ? 'header--sticky' : '';
     const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
@@ -48,28 +50,32 @@ class Header extends Component {
       OVERLAY_MENU_CLASS,
       OVERLAY_SIDEBAR_CLASS
     );
+    const pathname = location.pathname;
+    const menuItems = [
+      {
+        name: 'home',
+        route: '/'
+      },
+      {
+        name: 'about',
+        route: '/about'
+      },
+      {
+        name: 'help',
+        route: '/help'
+      }
+    ];
 
     return (
-      <header className={ HEADER_CLASS } onClick={ onHeaderClick }>
-        <Icon
-          icon="menu"
-          color="light"
-          onClick={ onMenuClick }
-          stopPropagation={ true }
-          className="booky--hide-desktop"
-        />
-        <Link
-          className="header__logo header__logo--large booky--hide-mobile-tablet"
-          color="light"
-          to="/"
-          title={ intl.formatMessage({ id: 'menu.home' }) }
-        />
-        <Menu menuOpen={ menuOpen } dashboards={ dashboards } />
+      <header className={ HEADER_CLASS }>
+        { loggedIn && (
+          <Icon
+            className="booky--hide-desktop"
+            icon="menu"
+            color="light"
+          />
+        ) }
         { loggedIn && search && <Search className="booky--hide-desktop" /> }
-        { !search && (
-          <Link className="header__logo header__logo--small booky--hide-desktop" color="light" to="/" title={ intl.formatMessage({ id: 'menu.home' }) }>
-            <Icon icon="heart" color="light" />
-          </Link>) }
         { loggedIn && (
           <Icon
             className="booky--hide-desktop"
@@ -82,39 +88,66 @@ class Header extends Component {
         ) }
         { !loggedIn && (
           <Fragment>
-            <Icon icon="login" color="light" className="header__login-icon booky--hide-desktop" />
-            <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join">
-              <FormattedHTMLMessage id="header.register" />
+            <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="header__logo" tabIndex="1">
+              <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
+            </Link>
+            <nav className="header__nav booky--hide-mobile">
+              { menuItems.map(({ name, route }, index) => (
+                <Link
+                  key={ index }
+                  className={ classNames('header__nav-item', pathname === route && 'header__nav-item--active') }
+                  to={ route }
+                  color="light"
+                >
+                  <Icon icon={ name } color="light" />
+                  <FormattedMessage id={ `menu.${name}` } />
+                </Link>  
+              )) }
+            </nav>
+            <ButtonSmallLight className="booky--hide-tablet-desktop" onClick={ onMenuClick } tabIndex="2">
+              <FormattedHTMLMessage id="header.menu" />
             </ButtonSmallLight>
+            <Icon
+              className="booky--hide-desktop"
+              icon="more"
+              color="light"
+              tabIndex="2"
+              title={ intl.formatMessage({ id: 'header.more' }) }
+            />
             <ButtonSmallLight className="booky--hide-mobile-tablet header__login" to="/login">
               <FormattedHTMLMessage id="header.login" />
             </ButtonSmallLight>
+            <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join" icon="join" solid>
+              <FormattedHTMLMessage id="header.register" />
+            </ButtonSmallLight>
           </Fragment>
         ) }
+        <Menu menuOpen={ menuOpen } dashboards={ dashboards } />
       </header>
     );
   }
 }
 
-export default injectIntl(Header);
+export default injectIntl(withRouter(Header));
 
 Header.propTypes = {
-  'color': PropTypes.number,
-  'loggedIn': PropTypes.bool.isRequired,
-  'menuOpen': PropTypes.bool.isRequired,
-  'onDashboardsClick': PropTypes.func.isRequired,
-  'onHeaderClick': PropTypes.func.isRequired,
-  'onMenuClick': PropTypes.func.isRequired,
-  'onSidebarClick': PropTypes.func.isRequired,
-  'sidebarOpen': PropTypes.bool.isRequired,
-  'sticky': PropTypes.bool,
+  color: PropTypes.number,
+  loggedIn: PropTypes.bool.isRequired,
+  menuOpen: PropTypes.bool.isRequired,
+  onDashboardsClick: PropTypes.func.isRequired,
+  onHeaderClick: PropTypes.func.isRequired,
+  onMenuClick: PropTypes.func.isRequired,
+  onSidebarClick: PropTypes.func.isRequired,
+  sidebarOpen: PropTypes.bool.isRequired,
+  sticky: PropTypes.bool,
   openModal: PropTypes.func.isRequired,
   search: PropTypes.bool,
   dashboards: PropTypes.bool,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 Header.defaultProps = {
-  'color': 0,
-  'sticky': true
+  color: 0,
+  sticky: true
 };

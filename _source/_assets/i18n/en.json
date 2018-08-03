@@ -18,6 +18,8 @@
 
   "header.login": "Sign <b>in</b>",
   "header.register": "Join <b>booky</b>",
+  "header.menu": "Menu",
+  "header.more": "More",
 
   "structure.title": "Edit site structure",
   

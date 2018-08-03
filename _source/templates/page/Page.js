@@ -12,16 +12,19 @@ export default class Page extends Component {
     return (
       <Fragment>
         <Header search={ search } dashboards={ dashboards } />
+      </Fragment>
+    );
+  }
+}
+
+/*
         { toolbar && <Toolbar document={ document } window={ window } /> }
         <main className={ `page ${className} ${toolbar ? '' : 'page--no-toolbar'}` }>
           { children }
         </main>
         <Footer />
         <Modal />
-      </Fragment>
-    );
-  }
-}
+ */
 
 Page.propTypes = {
   toolbar: PropTypes.bool,

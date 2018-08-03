@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Component from './component.jsx';
+import Component from './Sidebar';
 import { actions as sidebarActions } from '../../_state/sidebar';
 
 export const mapStateToProps = function(state) {
