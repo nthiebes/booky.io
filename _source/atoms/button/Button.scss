@@ -311,6 +311,11 @@
     &:hover,
     &:focus {
       background-color: $color__background--dark;
+
+      .icon,
+      .icon__svg {
+        color: $color__font--white;
+      }
     }
   }
 }

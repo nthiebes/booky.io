@@ -25,7 +25,8 @@
     "test:watch": "npm run test -- --watch",
     "test:cover": "jest --config jest.config.json --no-cache --coverage",
     "qa": "npm-run-all test lint",
-    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "storybook": "start-storybook -p 9001 -c storybook -s ./_public"
   },
   "author": "Nico Thiebes",
   "license": "SEE LICENSE IN \"LICENSE\"",
@@ -44,6 +45,8 @@
     "whatwg-fetch": "2.0.4"
   },
   "devDependencies": {
+    "@storybook/addon-viewport": "3.4.10",
+    "@storybook/react": "3.4.10",
     "autoprefixer": "7.1.4",
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",
@@ -88,6 +91,7 @@
     "raf": "3.3.2",
     "react-addons-test-utils": "15.4.2",
     "react-hot-loader": "3.0.0-beta.6",
+    "react-storybook-addon-chapters": "2.1.5",
     "react-test-renderer": "16.0.0",
     "redux-immutable-state-invariant": "2.0.0",
     "redux-mock-store": "1.3.0",
