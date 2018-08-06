@@ -21,7 +21,8 @@
   text-decoration: none;
 
   @include mobile-tablet {
-    &:active {
+    &:active,
+    &:focus {
       .footer__icon,
       .footer__label {
         color: $color__font--primary;
@@ -30,7 +31,8 @@
   }
 
   @include desktop {
-    &:hover {
+    &:hover,
+    &:focus {
       .footer__icon,
       .footer__label {
         color: $color__font--primary;
@@ -64,25 +66,14 @@
 .footer__menu-item {
   font-size: $size--small;
   padding: 0 0.5rem;
-  color: $color__font--white;
   line-height: 1.5rem;
-
-  @include mobile-tablet {
-    &:active {
-      color: $color__font--primary;
-    }
-  }
-
-  @include desktop() {
-    &:hover {
-      color: $color__font--primary;
-    }
-  }
 }
 
 .footer__logo {
   color: $color__font--white;
   margin-top: 2rem;
+  display: block;
+  font-size: $size--small;
 }
 
 .footer__button {
@@ -98,16 +89,4 @@
   font-size: $size--small;
   color: $color__font--white;
   padding: 0 0.3rem;
-
-  @include mobile-tablet {
-    &:active {
-      color: $color__font--primary;
-    }
-  }
-
-  @include desktop() {
-    &:hover {
-      color: $color__font--primary;
-    }
-  }
 }

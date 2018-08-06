@@ -1,77 +1,86 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { ButtonSmallPrimary } from '../../atoms/button';
-import Checkbox from '../../atoms/checkbox';
-import ColorPicker from '../../molecules/color-picker';
-import Dropdown from '../../molecules/dropdown';
+import classNames from 'classnames';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-/**
- * React component
- *
- * @class Sidebar
- * @classdesc organisms/sidebar/Sidebar
- */
-export default class Sidebar extends Component {
+import Link from '../../atoms/link';
+import Icon from '../../atoms/icon';
+import { H3 } from '../../atoms/headline';
+import Dashboards from '../../organisms/dashboards';
+
+class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onMenuClick = this.onMenuClick.bind(this);
+  }
+
+  onMenuClick(e) {
+    e.stopPropagation();
+  }
+
   render() {
-    const PROPS = this.props;
-    const OPEN_CLASS = PROPS.open ? 'o-sidebar--open' : '';
-    const SIDEBAR_CLASS = 'o-sidebar ' + OPEN_CLASS;
-    const DASHBOARD_OPTIONS = [
-      {
-        'name': 'Display as dropdown'
-      }, {
-        'name': 'Display as sidebar'
-      }
-    ];
+    const { loggedIn, open, closeMenu, dashboards, intl } = this.props;
 
     return (
-      <aside className={ SIDEBAR_CLASS }>
-        <h1 className="o-sidebar__heading">{ 'Customize booky' }</h1>
-        <ButtonSmallPrimary onButtonClick={ PROPS.onDoneClick }>{ 'Done' }</ButtonSmallPrimary>
-
-        <h2 className="o-sidebar__subheading">{ 'Global color scheme' }</h2>
-        <ColorPicker activeColor={ PROPS.globalColor } onColorChange={ PROPS.onGlobalColorChange } />
-
-        <h2 className="o-sidebar__subheading">{ 'Header color' }</h2>
-        <ColorPicker activeColor={ PROPS.headerColor } onColorChange={ PROPS.onHeaderColorChange } />
-
-        <h2 className="o-sidebar__subheading">{ 'Layout' }</h2>
-        <Checkbox label={ 'Sticky header' } checked={ PROPS.stickyHeader } onCheckboxClick={ PROPS.onStickyHeaderClick } />
-        <Checkbox label={ 'Sticky toolbar' } checked={ PROPS.stickyToolbar } onCheckboxClick={ PROPS.onStickyToolbarClick } />
-        <Checkbox label={ 'Width limitation (two columns)' } checked={ PROPS.maxWidth } onCheckboxClick={ PROPS.onMaxWidthClick } />
-
-        <h2 className="o-sidebar__subheading">{ 'Dashboards' }</h2>
-        <Dropdown onDropdownChange={ PROPS.onDashboardChange } options={ DASHBOARD_OPTIONS } selectedKey={ PROPS.dashboard } />
-        <p className="o-sidebar__note">{ '(smaller screens will always use a sidebar)' }</p>
-
-        <h2 className="o-sidebar__subheading">{ 'Preferences' }</h2>
-        <Checkbox label={ 'Bookmark notes' } checked={ PROPS.notes } onCheckboxClick={ PROPS.onNotesClick } />
-        <Checkbox label={ 'Autofill bookmark name' } checked={ PROPS.autofill } onCheckboxClick={ PROPS.onAutofillClick } />
-        <Checkbox label={ 'Open bookmarks in new tab' } checked={ PROPS.newtab } onCheckboxClick={ PROPS.onNewtabClick } />
+      <aside className={ classNames('sidebar', open && 'sidebar--open') }>
+        <header className="sidebar__header">
+          <Icon icon="back" onClick={ closeMenu } tabIndex="0" />
+          <Link to="/" className="sidebar__logo" onClick={ closeMenu }>{ 'booky.io (logo)' }</Link>
+        </header>
+        <hr className="sidebar__hr" />
+        <div className="sidebar__scroll-wrapper">
+          { dashboards && <Dashboards /> }
+          { dashboards && <hr className="sidebar__hr" /> }
+          <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
+          <ul className="sidebar__nav">
+            <Link className="sidebar__item" to="/about" onClick={ closeMenu }>
+              <Icon icon="about" />
+              <label className="sidebar__label"><FormattedMessage id="menu.about" /></label>
+            </Link>
+            <Link className="sidebar__item" to="/help" onClick={ closeMenu }>
+              <Icon icon="help" />
+              <label className="sidebar__label"><FormattedMessage id="menu.help" /></label>
+            </Link>
+            { loggedIn && [
+              <Link key="0" className="sidebar__item" to="/account" onClick={ closeMenu }>
+                <Icon icon="account"/>
+                <label className="sidebar__label"><FormattedMessage id="menu.account" /></label>
+              </Link>,
+              <Link key="1" className="sidebar__item" to="/next" onClick={ closeMenu }>
+                <Icon icon="next" />
+                <label className="sidebar__label"><FormattedMessage id="menu.next" /></label>
+              </Link>,
+              <Link key="2" className="sidebar__item booky--hide-desktop" to="" onClick={ closeMenu }>
+                <Icon icon="settings" />
+                <label className="sidebar__label"><FormattedMessage id="menu.customize" /></label>
+              </Link>,
+              <Link key="3" className="sidebar__item booky--hide-desktop" to="/logout" onClick={ closeMenu }>
+                <Icon icon="logout" />
+                <label className="sidebar__label"><FormattedMessage id="menu.logout" /></label>
+              </Link>
+            ] }
+          </ul>
+          { loggedIn && (
+            <Fragment>
+              <Icon className="sidebar__item booky--hide-mobile-tablet" icon="settings" title={ intl.formatMessage({ id: 'menu.customize' }) } color="light" />
+              <Link className="sidebar__item booky--hide-mobile-tablet" to="/logout">
+                <Icon icon="logout" title={ intl.formatMessage({ id: 'menu.logout' }) } />
+              </Link>
+            </Fragment>
+          ) }
+        </div>
       </aside>
     );
   }
 }
 
+export default injectIntl(Sidebar);
+
 Sidebar.propTypes = {
-  'open': PropTypes.bool.isRequired,
-  'notes': PropTypes.bool.isRequired,
-  'autofill': PropTypes.bool.isRequired,
-  'newtab': PropTypes.bool.isRequired,
-  'globalColor': PropTypes.number.isRequired,
-  'headerColor': PropTypes.number.isRequired,
-  'stickyHeader': PropTypes.bool.isRequired,
-  'stickyToolbar': PropTypes.bool.isRequired,
-  'maxWidth': PropTypes.bool.isRequired,
-  'dashboard': PropTypes.number.isRequired,
-  'onStickyHeaderClick': PropTypes.func.isRequired,
-  'onStickyToolbarClick': PropTypes.func.isRequired,
-  'onNotesClick': PropTypes.func.isRequired,
-  'onAutofillClick': PropTypes.func.isRequired,
-  'onNewtabClick': PropTypes.func.isRequired,
-  'onGlobalColorChange': PropTypes.func.isRequired,
-  'onHeaderColorChange': PropTypes.func.isRequired,
-  'onDoneClick': PropTypes.func.isRequired,
-  'onMaxWidthClick': PropTypes.func.isRequired,
-  'onDashboardChange': PropTypes.func.isRequired
+  loggedIn: PropTypes.bool.isRequired,
+  open: PropTypes.bool.isRequired,
+  closeMenu: PropTypes.func.isRequired,
+  dashboards: PropTypes.bool,
+  intl: PropTypes.object.isRequired
 };

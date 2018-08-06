@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../organisms/header';
+import Sidebar from '../../organisms/sidebar';
 import Footer from '../../organisms/footer';
 import Modal from '../../organisms/modal';
 import Toolbar from '../../organisms/toolbar';
@@ -12,6 +13,11 @@ export default class Page extends Component {
     return (
       <Fragment>
         <Header search={ search } dashboards={ dashboards } />
+        <main className={ `page ${className} ${toolbar ? '' : 'page--no-toolbar'}` }>
+          { children }
+        </main>
+        <Sidebar />
+        <Footer />
       </Fragment>
     );
   }

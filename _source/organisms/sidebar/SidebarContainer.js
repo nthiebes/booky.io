@@ -1,53 +1,22 @@
 import { connect } from 'react-redux';
 import Component from './Sidebar';
-import { actions as sidebarActions } from '../../_state/sidebar';
+import { actions as headerActions } from '../../_state/header';
+import { actions as modalActions } from '../../_state/modal';
 
 export const mapStateToProps = function(state) {
   return {
-    'open': state.sidebar.open,
-    'notes': state.sidebar.notes,
-    'autofill': state.sidebar.autofill,
-    'newtab': state.sidebar.newtab,
-    'stickyHeader': state.sidebar.stickyHeader,
-    'stickyToolbar': state.sidebar.stickyToolbar,
-    'globalColor': state.sidebar.globalColor,
-    'headerColor': state.sidebar.headerColor,
-    'maxWidth': state.sidebar.maxWidth,
-    'dashboard': state.sidebar.dashboard
+    loggedIn: state.booky.loggedIn,
+    open: state.header.menuOpen
   };
 };
 
 export const mapDispatchToProps = function(dispatch) {
   return {
-    'onNotesClick': () => {
-      dispatch(sidebarActions.toggleNotes());
+    closeMenu: () => {
+      dispatch(headerActions.closeMenu());
     },
-    'onAutofillClick': () => {
-      dispatch(sidebarActions.toggleAutofill());
-    },
-    'onNewtabClick': () => {
-      dispatch(sidebarActions.toggleNewtab());
-    },
-    'onStickyHeaderClick': () => {
-      dispatch(sidebarActions.toggleStickyHeader());
-    },
-    'onStickyToolbarClick': () => {
-      dispatch(sidebarActions.toggleStickyToolbar());
-    },
-    'onGlobalColorChange': (key) => {
-      dispatch(sidebarActions.updateGlobalColor(key));
-    },
-    'onHeaderColorChange': (key) => {
-      dispatch(sidebarActions.updateHeaderColor(key));
-    },
-    'onDoneClick': () => {
-      dispatch(sidebarActions.closeSidebar());
-    },
-    'onMaxWidthClick': () => {
-      dispatch(sidebarActions.toggleMaxWidth());
-    },
-    'onDashboardChange': (key) => {
-      dispatch(sidebarActions.updateDashboardType(key));
+    openModal: (modal, data) => {
+      dispatch(modalActions.openModal(modal, data));
     }
   };
 };

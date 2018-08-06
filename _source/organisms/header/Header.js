@@ -50,21 +50,6 @@ class Header extends Component {
       OVERLAY_MENU_CLASS,
       OVERLAY_SIDEBAR_CLASS
     );
-    const pathname = location.pathname;
-    const menuItems = [
-      {
-        name: 'home',
-        route: '/'
-      },
-      {
-        name: 'about',
-        route: '/about'
-      },
-      {
-        name: 'help',
-        route: '/help'
-      }
-    ];
 
     return (
       <header className={ HEADER_CLASS }>
@@ -88,33 +73,14 @@ class Header extends Component {
         ) }
         { !loggedIn && (
           <Fragment>
-            <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="header__logo" tabIndex="1">
+            <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="header__logo">
               <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
             </Link>
-            <nav className="header__nav booky--hide-mobile">
-              { menuItems.map(({ name, route }, index) => (
-                <Link
-                  key={ index }
-                  className={ classNames('header__nav-item', pathname === route && 'header__nav-item--active') }
-                  to={ route }
-                  color="light"
-                >
-                  <Icon icon={ name } color="light" />
-                  <FormattedMessage id={ `menu.${name}` } />
-                </Link>  
-              )) }
-            </nav>
-            <ButtonSmallLight className="booky--hide-tablet-desktop" onClick={ onMenuClick } tabIndex="2">
+            <Menu className="booky--hide-mobile" />
+            <ButtonSmallLight className="booky--hide-tablet-desktop" onClick={ onMenuClick }>
               <FormattedHTMLMessage id="header.menu" />
             </ButtonSmallLight>
-            <Icon
-              className="booky--hide-desktop"
-              icon="more"
-              color="light"
-              tabIndex="2"
-              title={ intl.formatMessage({ id: 'header.more' }) }
-            />
-            <ButtonSmallLight className="booky--hide-mobile-tablet header__login" to="/login">
+            <ButtonSmallLight className="booky--hide-mobile header__login" to="/login">
               <FormattedHTMLMessage id="header.login" />
             </ButtonSmallLight>
             <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join" icon="join" solid>
@@ -122,7 +88,6 @@ class Header extends Component {
             </ButtonSmallLight>
           </Fragment>
         ) }
-        <Menu menuOpen={ menuOpen } dashboards={ dashboards } />
       </header>
     );
   }

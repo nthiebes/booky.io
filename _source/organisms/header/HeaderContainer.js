@@ -18,8 +18,8 @@ export const mapDispatchToProps = function(dispatch) {
   return {
     onMenuClick: () => {
       dispatch(headerActions.toggleMenu());
-      dispatch(sidebarActions.closeSidebar());
-      dispatch(headerActions.closeDashboards());
+      // dispatch(sidebarActions.closeSidebar());
+      // dispatch(headerActions.closeDashboards());
     },
     onSidebarClick: () => {
       dispatch(sidebarActions.toggleSidebar());

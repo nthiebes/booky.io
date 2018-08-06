@@ -108,63 +108,7 @@
 }
 
 .header__login {
-  margin-right: 1rem;
-}
-
-.header__nav {
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-start;
-  margin-right: 0.5rem;
-}
-
-.header__nav-item {
-  display: flex;
-  align-items: center;
-  margin-right: 0.5rem;
-  position: relative;
-
-  &::after {
-    position: absolute;
-    content: " ";
-    height: 2px;
-    left: 36px;
-    right: 0;
-    bottom: 0;
-    background-color: transparent;
-    transition: background-color 0.2s linear;
-  }
-
-  &:active,
-  &:focus {
-    color: $color__font--dark;
-
-    .icon {
-      color: $color__font--dark;
-    }
-  }
-
   @include desktop {
-    &:hover {
-      color: $color__font--dark;
-
-      .icon {
-        color: $color__font--dark;
-      }
-    }
-  }
-}
-
-.header__nav-item--active {
-  &::after {
-    background-color: $color__font--white;
-  }
-
-  &:active,
-  &:focus,
-  &:hover {
-    &::after {
-      background-color: $color__font--dark;
-    }
+    margin-right: 1rem;
   }
 }
