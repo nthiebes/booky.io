@@ -26,16 +26,26 @@ export default class Footer extends Component {
         </section>
         <section className="footer__content">
           <nav className="footer__menu">
-            <Link className="footer__menu-item" color="light" to="/about"><FormattedMessage id="menu.about" /></Link>
-            <Link className="footer__menu-item" color="light" to="/help"><FormattedMessage id="menu.help" /></Link>
-            <Link className="footer__menu-item" color="light" href="mailto:hello@booky.io"><FormattedMessage id="menu.contact" /></Link>
-            <Link className="footer__menu-item" color="light" to="/privacy"><FormattedMessage id="menu.privacy" /></Link>
-            <Link className="footer__menu-item" color="light" to="/legal"><FormattedMessage id="menu.legal" /></Link>
+            <Link className="footer__menu-item" color="light" to="/about">
+              <FormattedMessage id="menu.about" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/help">
+              <FormattedMessage id="menu.help" />
+            </Link>
+            <Link className="footer__menu-item" color="light" href="mailto:hello@booky.io">
+              <FormattedMessage id="menu.contact" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/privacy">
+              <FormattedMessage id="menu.privacy" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/legal">
+              <FormattedMessage id="menu.legal" />
+            </Link>
           </nav>
           <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
             <FormattedHTMLMessage id="footer.scroll" />
           </ButtonSmallLight>
-          <Link to="/" className="footer__logo" color="light">{ 'booky.io (logo)' }</Link>
+          <Link to="/about" className="footer__logo" color="light">{ 'booky.io (logo)' }</Link>
           <div className="footer__copy">
             { '© 2014-2018' }
             <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>

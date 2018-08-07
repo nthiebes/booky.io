@@ -50,6 +50,8 @@
 .footer__content {
   background-color: $color__background--dark;
   padding: 2rem calc(3% + 6px);
+  display: flex;
+  flex-direction: column;
 
   @include hd {
     padding: 2rem calc(38px + 6px);
@@ -72,12 +74,13 @@
 .footer__logo {
   color: $color__font--white;
   margin-top: 2rem;
-  display: block;
   font-size: $size--small;
+  align-self: center;
 }
 
 .footer__button {
   margin-top: 2rem;
+  align-self: center;
 }
 
 .footer__copy {

@@ -10,6 +10,8 @@
   "menu.customize": "Customize",
   "menu.logout": "Sign out",
   "menu.navigation": "Navigation",
+  "menu.login": "Sign in",
+  "menu.register": "Join booky",
 
   "footer.scroll": "<b>Back</b> to <b>top</b>",
   "footer.copy": "All Rights Reserved.",

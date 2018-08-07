@@ -10,6 +10,8 @@
   "menu.customize": "Anpassen",
   "menu.logout": "Abmelden",
   "menu.navigation": "Navigation",
+  "menu.login": "Anmelden",
+  "menu.register": "Booky beitreten",
 
   "footer.scroll": "Nach <b>oben</b>",
   "footer.copy": "Alle Rechte vorbehalten.",

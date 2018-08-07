@@ -12,6 +12,7 @@ import Join from './pages/join';
 import Next from './pages/next';
 import Structure from './pages/structure';
 import Privacy from './pages/privacy';
+import Legal from './pages/legal';
 import NotFound from './pages/not-found';
 
 export default (
@@ -26,6 +27,7 @@ export default (
     <Route path="next" component={ Next } />
     <Route path="structure" component={ Structure } />
     <Route path="privacy" component={ Privacy } />
+    <Route path="legal" component={ Legal } />
     <Route path="*" component={ NotFound } />
   </Route>
 );

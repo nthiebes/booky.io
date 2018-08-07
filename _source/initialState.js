@@ -207,14 +207,14 @@ export default {
       'position': 0
     }]
   }],
-  'header': {
-    'menuOpen': false
+  sidebar: {
+    open: false
   },
   'toolbar': {
     'sticky': true,
     'currentlySticky': true
   },
-  'sidebar': {
+  'customize': {
     'open': false,
     'notes': true,
     'autofill': true,

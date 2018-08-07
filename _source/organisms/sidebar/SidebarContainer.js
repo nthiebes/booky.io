@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 import Component from './Sidebar';
-import { actions as headerActions } from '../../_state/header';
+import { actions as sidebarActions } from '../../_state/sidebar';
 import { actions as modalActions } from '../../_state/modal';
 
 export const mapStateToProps = function(state) {
   return {
     loggedIn: state.booky.loggedIn,
-    open: state.header.menuOpen
+    open: state.sidebar.open
   };
 };
 
 export const mapDispatchToProps = function(dispatch) {
   return {
     closeMenu: () => {
-      dispatch(headerActions.closeMenu());
+      dispatch(sidebarActions.closeSidebar());
     },
     openModal: (modal, data) => {
       dispatch(modalActions.openModal(modal, data));

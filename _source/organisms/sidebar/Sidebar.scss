@@ -14,6 +14,18 @@
   z-index: 2;
   overflow: hidden;
 
+  // &::before {
+  //   background-color: rgba(0, 0, 0, 0.1);
+  //   bottom: 0;
+  //   content: " ";
+  //   left: 0;
+  //   opacity: 0;
+  //   position: fixed;
+  //   width: 0;
+  //   top: 0;
+  //   transition: opacity 0.3s linear, width 0s 0.3s linear;
+  // }
+
   @include desktop {
     display: none;
   }
@@ -21,6 +33,15 @@
 
 .sidebar--open {
   transform: translate3d(0,0,0);
+
+  @include mobile-tablet {
+    &::before {
+      opacity: 1;
+      transition: opacity 0.3s linear;
+      width: 100vw;
+      z-index: 1;
+    }
+  }
 }
 
 .sidebar__header {
@@ -81,6 +102,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .sidebar__item {
@@ -138,5 +160,4 @@
   background-color: rgba(0,0,0,0.15);
   width: 140%;
   left: -20%;
-  margin-bottom: 1rem;
 }

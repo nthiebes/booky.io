@@ -13,10 +13,10 @@ export default class Page extends Component {
     return (
       <Fragment>
         <Header search={ search } dashboards={ dashboards } />
+        <Sidebar />
         <main className={ `page ${className} ${toolbar ? '' : 'page--no-toolbar'}` }>
           { children }
         </main>
-        <Sidebar />
         <Footer />
       </Fragment>
     );

@@ -25,23 +25,35 @@ class Sidebar extends Component {
     return (
       <aside className={ classNames('sidebar', open && 'sidebar--open') }>
         <header className="sidebar__header">
-          <Icon icon="back" onClick={ closeMenu } tabIndex="0" />
-          <Link to="/" className="sidebar__logo" onClick={ closeMenu }>{ 'booky.io (logo)' }</Link>
+          <Icon icon="back" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' } />
+          <Link to="/" className="sidebar__logo" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>{ 'booky.io (logo)' }</Link>
         </header>
         <hr className="sidebar__hr" />
         <div className="sidebar__scroll-wrapper">
           { dashboards && <Dashboards /> }
           { dashboards && <hr className="sidebar__hr" /> }
           <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
-          <ul className="sidebar__nav">
-            <Link className="sidebar__item" to="/about" onClick={ closeMenu }>
+          <nav className="sidebar__nav">
+            <Link className="sidebar__item" to="/about" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>
               <Icon icon="about" />
               <label className="sidebar__label"><FormattedMessage id="menu.about" /></label>
             </Link>
-            <Link className="sidebar__item" to="/help" onClick={ closeMenu }>
+            <Link className="sidebar__item" to="/help" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>
               <Icon icon="help" />
               <label className="sidebar__label"><FormattedMessage id="menu.help" /></label>
             </Link>
+            { !loggedIn && (
+              <Fragment>
+                <Link className="sidebar__item" to="/login" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>
+                  <Icon icon="login" />
+                  <label className="sidebar__label"><FormattedMessage id="menu.login" /></label>
+                </Link>
+                <Link className="sidebar__item" to="/join" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>
+                  <Icon icon="join" />
+                  <label className="sidebar__label"><FormattedMessage id="menu.register" /></label>
+                </Link>
+              </Fragment>
+            ) }
             { loggedIn && [
               <Link key="0" className="sidebar__item" to="/account" onClick={ closeMenu }>
                 <Icon icon="account"/>
@@ -60,7 +72,7 @@ class Sidebar extends Component {
                 <label className="sidebar__label"><FormattedMessage id="menu.logout" /></label>
               </Link>
             ] }
-          </ul>
+          </nav>
           { loggedIn && (
             <Fragment>
               <Icon className="sidebar__item booky--hide-mobile-tablet" icon="settings" title={ intl.formatMessage({ id: 'menu.customize' }) } color="light" />

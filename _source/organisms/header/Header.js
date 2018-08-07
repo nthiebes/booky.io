@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
@@ -28,31 +27,16 @@ class Header extends Component {
 
   render() {
     const {
-      onHeaderClick,
       onMenuClick,
       loggedIn,
-      sticky,
-      menuOpen,
-      sidebarOpen,
       color,
       openModal,
       search,
-      dashboards,
-      intl,
-      location
+      intl
     } = this.props;
-    const STICKY_CLASS = sticky ? 'header--sticky' : '';
-    const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
-    const OVERLAY_SIDEBAR_CLASS = sidebarOpen ? 'header--overlay-sidebar' : '';
-    const HEADER_CLASS = classNames(
-      `header header--color-${color}`,
-      STICKY_CLASS,
-      OVERLAY_MENU_CLASS,
-      OVERLAY_SIDEBAR_CLASS
-    );
 
     return (
-      <header className={ HEADER_CLASS }>
+      <header className={ `header header--color-${color}` }>
         { loggedIn && (
           <Icon
             className="booky--hide-desktop"
@@ -98,12 +82,9 @@ export default injectIntl(withRouter(Header));
 Header.propTypes = {
   color: PropTypes.number,
   loggedIn: PropTypes.bool.isRequired,
-  menuOpen: PropTypes.bool.isRequired,
   onDashboardsClick: PropTypes.func.isRequired,
   onHeaderClick: PropTypes.func.isRequired,
   onMenuClick: PropTypes.func.isRequired,
-  onSidebarClick: PropTypes.func.isRequired,
-  sidebarOpen: PropTypes.bool.isRequired,
   sticky: PropTypes.bool,
   openModal: PropTypes.func.isRequired,
   search: PropTypes.bool,

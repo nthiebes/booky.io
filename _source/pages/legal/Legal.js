@@ -3,12 +3,12 @@ import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 
-export default class Login extends Component {
+export default class Legal extends Component {
   render() {
     return (
       <Page>
-        <H1>{ 'Login' }</H1>
-        <P>{ 'Login page' }</P>
+        <H1>{ 'Legal' }</H1>
+        <P>{ 'Legal page' }</P>
       </Page>
     );
   }

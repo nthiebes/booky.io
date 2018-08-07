@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import Categories from '../../organisms/categories';
 import Page from '../../templates/page';
 import Dashboards from '../../organisms/dashboards';
+import { H1 } from '../../atoms/headline';
+import P from '../../atoms/paragraph';
 
 export default class Home extends Component {
   render() {
@@ -15,7 +18,8 @@ export default class Home extends Component {
       </Page>
     ) : (
       <Page>
-        { '' }
+        <H1>{ 'Welcome!' }</H1>
+        <P>{ 'Booky start page' }</P>
       </Page>
     );
   }
