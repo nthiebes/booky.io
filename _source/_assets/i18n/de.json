@@ -69,5 +69,9 @@
   "modal.deleteDashboardFuture": "Was soll mit den Kategorien geschehen?",
   "modal.deleteCategoryLabel": "Diese Kategorie wird gelöscht:",
   "modal.deleteCategoryFuture": "Was soll mit den Lesezeichen geschehen?",
-  "modal.deleteBookmarkLabel": "Dieses Lesezeichen wird gelöscht:"
+  "modal.deleteBookmarkLabel": "Dieses Lesezeichen wird gelöscht:",
+
+  "login.username": "Benutzername",
+  "login.password": "Passwort",
+  "login.forgot": "Passwort vergessen?"
 }

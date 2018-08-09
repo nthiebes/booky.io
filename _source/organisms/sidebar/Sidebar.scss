@@ -2,52 +2,41 @@
   top: 0;
   background-color: $color__background--white;
   bottom: 0;
-  border-right: 2px solid rgba(0,0,0,0.15);
-  left: 0;
   max-width: 300px;
   min-width: 200px;
   padding-bottom: 1rem;
   position: fixed;
-  transform: translate3d(-100%,0,0);
   transition: transform 0.3s ease;
   width: 80%;
-  z-index: 2;
   overflow: hidden;
+  z-index: 2;
 
-  // &::before {
-  //   background-color: rgba(0, 0, 0, 0.1);
-  //   bottom: 0;
-  //   content: " ";
-  //   left: 0;
-  //   opacity: 0;
-  //   position: fixed;
-  //   width: 0;
-  //   top: 0;
-  //   transition: opacity 0.3s linear, width 0s 0.3s linear;
-  // }
-
-  @include desktop {
+  @include tablet-desktop {
     display: none;
   }
 }
 
+.sidebar--left {
+  border-right: 2px solid rgba(0,0,0,0.15);
+  left: 0;
+  transform: translate3d(-100%,0,0);
+}
+
+.sidebar--right {
+  border-left: 2px solid rgba(0,0,0,0.15);
+  right: 0;
+  transform: translate3d(100%,0,0);
+}
+
 .sidebar--open {
   transform: translate3d(0,0,0);
-
-  @include mobile-tablet {
-    &::before {
-      opacity: 1;
-      transition: opacity 0.3s linear;
-      width: 100vw;
-      z-index: 1;
-    }
-  }
 }
 
 .sidebar__header {
   display: flex;
   height: 3rem;
   align-items: center;
+  justify-content: space-between;
   position: relative;
   z-index: 3;
   padding: 0 3vw;
@@ -81,8 +70,15 @@
 }
 
 .sidebar__logo {
-  margin-left: 1rem;
   color: $color__font--primary;
+
+  &:focus {
+    outline: 1px dashed $color__font--medium;
+  }
+}
+
+.sidebar--left .sidebar__logo {
+  margin-left: 1rem;
 }
 
 .sidebar__icon {
@@ -138,8 +134,8 @@
   }
 }
 
-.sidebar__item--active {
-  font-weight: 700;
+.sidebar__item--highlighted {
+  font-weight: bold;
 }
 
 .sidebar__label {
@@ -149,9 +145,36 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  flex-grow: 1;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: " ";
+    height: 2px;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    background-color: transparent;
+  }
+}
+
+.sidebar__item--active {
+  .sidebar__label {
+    &::after {
+      background-color: $color__font--dark;
+    }
+  }
+
+  &:active,
+  &:focus {
+    .sidebar__label {
+      &::after {
+        background-color: $color__font--primary;
+      }
+    }
+  }
 }
 
 .sidebar__hr {

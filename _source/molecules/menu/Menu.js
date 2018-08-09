@@ -9,8 +9,8 @@ import Link from '../../atoms/link';
 
 class Menu extends Component {
   render() {
-    const { className } = this.props;
-    const pathname = location.pathname;
+    const { className, location } = this.props;
+    const { pathname } = location;
     const menuItems = [
       {
         name: 'about',

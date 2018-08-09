@@ -1,31 +1,14 @@
 .page {
   margin: 0 auto;
-  padding: 3rem 0 6rem 0;
-  max-width: calc(94% - 12px);
+  padding: 3rem 3% 6rem 3%;
   min-height: 100%;
 
   @include tablet {
-    padding: 5rem 0 10rem 0;
+    padding: 5rem 3% 10rem 3%;
   }
 
   @include desktop {
-    max-width: 860px;
-    padding: 7rem 0 14rem 0;
+    max-width: 1000px;
+    padding: 7rem 38px 14rem 38px;
   }
-
-  &.page--full-width {
-    max-width: inherit;
-  }
-
-  // &.page--no-toolbar {
-  //   padding: 4rem 6px 4rem 6px;
-
-  //   @include tablet {
-  //     padding: 6rem 6px 6rem 6px;
-  //   }
-
-  //   @include desktop {
-  //     padding: 8rem 6px 8rem 6px;
-  //   }
-  // }
 }

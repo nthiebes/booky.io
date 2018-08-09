@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+
 import Header from '../../organisms/header';
 import Sidebar from '../../organisms/sidebar';
 import Footer from '../../organisms/footer';
@@ -14,7 +16,7 @@ export default class Page extends Component {
       <Fragment>
         <Header search={ search } dashboards={ dashboards } />
         <Sidebar />
-        <main className={ `page ${className} ${toolbar ? '' : 'page--no-toolbar'}` }>
+        <main className={ classNames('page', className) }>
           { children }
         </main>
         <Footer />

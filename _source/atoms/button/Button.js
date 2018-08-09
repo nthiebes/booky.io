@@ -17,7 +17,9 @@ export default class Button extends Component {
       children,
       disabled,
       tabIndex,
-      solid
+      solid,
+      type,
+      contentBefore
     } = this.props;
     const CustomTag = href || to ? Link : 'button';
 
@@ -29,12 +31,14 @@ export default class Button extends Component {
           `button--${size}-${color}`,
           solid && 'button--solid',
           disabled && 'button--disabled',
-          className)
+          contentBefore && 'button--content-before',
+          className && className)
         }
         onClick={ onClick }
         href={ href }
         to={ to }
         tabIndex={ tabIndex }
+        type={ type }
       >
         { icon && <Icon icon={ icon } color={ size === 'small' ? color : 'light' } className="button__icon" /> }
         <span className="button__text">{ children }</span>
@@ -58,12 +62,11 @@ Button.propTypes = {
     PropTypes.string
   ]).isRequired,
   tabIndex: PropTypes.string,
-  solid: PropTypes.bool
+  solid: PropTypes.bool,
+  type: PropTypes.string,
+  contentBefore: PropTypes.bool
 };
 
 Button.defaultProps = {
-  className: '',
-  href: '',
-  disabled: false,
-  tabIndex: ''
+  disabled: false
 };

@@ -7,7 +7,8 @@ export const mapStateToProps = function(state) {
   return {
     sticky: state.sidebar.stickyHeader,
     color: state.sidebar.headerColor,
-    loggedIn: state.booky.loggedIn
+    loggedIn: state.booky.loggedIn,
+    sidebarOpen: state.sidebar.open
   };
 };
 
@@ -29,7 +30,7 @@ export const mapDispatchToProps = function(dispatch) {
       // dispatch(headerActions.closeMenu());
     },
     onHeaderClick: () => {
-      // dispatch(headerActions.closeMenu());
+      dispatch(sidebarActions.closeSidebar());
       // dispatch(sidebarActions.closeSidebar());
       // dispatch(headerActions.closeDashboards());
     },

@@ -43,7 +43,7 @@ export default class Input extends Component {
   }
 
   render() {
-    const { className, placeholder, type, color, name, id, required, value, maxLength, label } = this.props;
+    const { className, placeholder, type, color, name, id, required, value, maxLength, label, autoComplete } = this.props;
     const inputProps = {
       className: classNames('input__field', className && className, color && `input__field--color-${color}`),
       onBlur: this.onBlur,
@@ -55,13 +55,14 @@ export default class Input extends Component {
       name,
       id,
       required,
-      maxLength
+      maxLength,
+      autoComplete
     };
 
     return (
       <Fragment>
         { label && <Label htmlFor={ id }>{ label }</Label> }
-        <div className={ `input ${className}` }>
+        <div className={ classNames('input', className && className) }>
           <input ref="inputField" { ...inputProps } />
           { required && value && <Icon icon="check" color="green" className="input__icon" /> }
           { required && !value && <Icon icon="error" color={ this.state.errorColor } className="input__icon" /> }
@@ -85,19 +86,13 @@ Input.propTypes = {
   required: PropTypes.bool,
   value: PropTypes.string,
   maxLength: PropTypes.string,
-  label: PropTypes.string
+  label: PropTypes.string,
+  autoComplete: PropTypes.string
 };
 
 Input.defaultProps = {
-  className: '',
   focus: false,
-  placeholder: '',
   type: 'text',
   color: '',
-  name: '',
-  id: '',
-  required: false,
-  value: '',
-  maxlength: '',
-  label: ''
+  value: ''
 };

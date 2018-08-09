@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -20,13 +21,27 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { loggedIn, open, closeMenu, dashboards, intl } = this.props;
+    const { loggedIn, open, closeMenu, dashboards, intl, direction, location } = this.props;
+    const { pathname } = location;
 
     return (
-      <aside className={ classNames('sidebar', open && 'sidebar--open') }>
+      <aside className={ classNames('sidebar', open && 'sidebar--open', `sidebar--${direction}`) }>
         <header className="sidebar__header">
-          <Icon icon="back" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' } />
-          <Link to="/" className="sidebar__logo" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>{ 'booky.io (logo)' }</Link>
+          <Link
+            to="/"
+            title={ intl.formatMessage({ id: 'menu.home' }) }
+            className="sidebar__logo"
+            onClick={ closeMenu }
+            tabIndex={ open ? '' : '-1' }
+          >
+            <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
+          </Link>
+          <Icon
+            icon={ direction === 'left' ? 'back' : 'forward' }
+            onClick={ closeMenu }
+            tabIndex={ open ? '0' : '-1' }
+            title={ intl.formatMessage({ id: 'modal.close' }) }
+          />
         </header>
         <hr className="sidebar__hr" />
         <div className="sidebar__scroll-wrapper">
@@ -34,21 +49,41 @@ class Sidebar extends Component {
           { dashboards && <hr className="sidebar__hr" /> }
           <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
           <nav className="sidebar__nav">
-            <Link className="sidebar__item" to="/about" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>
+            <Link
+              className={ classNames('sidebar__item', pathname === '/about' && 'sidebar__item--active') }
+              to="/about"
+              onClick={ closeMenu }
+              tabIndex={ open ? '' : '-1' }
+            >
               <Icon icon="about" />
               <label className="sidebar__label"><FormattedMessage id="menu.about" /></label>
             </Link>
-            <Link className="sidebar__item" to="/help" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>
+            <Link
+              className={ classNames('sidebar__item', pathname === '/help' && 'sidebar__item--active') }
+              to="/help"
+              onClick={ closeMenu }
+              tabIndex={ open ? '' : '-1' }
+            >
               <Icon icon="help" />
               <label className="sidebar__label"><FormattedMessage id="menu.help" /></label>
             </Link>
             { !loggedIn && (
               <Fragment>
-                <Link className="sidebar__item" to="/login" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>
-                  <Icon icon="login" />
+                <Link
+                  className={ classNames('sidebar__item', pathname === '/login' && 'sidebar__item--active') }
+                  to="/login"
+                  onClick={ closeMenu }
+                  tabIndex={ open ? '' : '-1' }
+                >
+                  <Icon icon="account" />
                   <label className="sidebar__label"><FormattedMessage id="menu.login" /></label>
                 </Link>
-                <Link className="sidebar__item" to="/join" onClick={ closeMenu } tabIndex={ open ? '' : '-1' }>
+                <Link
+                  className={ classNames('sidebar__item sidebar__item--highlighted', pathname === '/join' && 'sidebar__item--active') }
+                  to="/join"
+                  onClick={ closeMenu }
+                  tabIndex={ open ? '' : '-1' }
+                >
                   <Icon icon="join" />
                   <label className="sidebar__label"><FormattedMessage id="menu.register" /></label>
                 </Link>
@@ -87,12 +122,18 @@ class Sidebar extends Component {
   }
 }
 
-export default injectIntl(Sidebar);
+export default injectIntl(withRouter(Sidebar));
 
 Sidebar.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   open: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
   dashboards: PropTypes.bool,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  direction: PropTypes.string
+};
+
+Sidebar.defaultProps = {
+  direction: 'right'
 };

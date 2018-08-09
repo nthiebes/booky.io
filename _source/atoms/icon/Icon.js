@@ -22,7 +22,7 @@ export default class Icon extends Component {
   render() {
     const { icon, className, label, color, title, dragHandleProps, tabIndex } = this.props;
     const LINK = '_assets/symbol-defs.svg#icon-' + icon;
-    const CLASS = classNames('icon', className, `icon--${color}`);
+    const CLASS = classNames('icon', `icon--${color}`, className && className);
     const LABEL = label ? <label className="icon__label">{ label }</label> : '';
 
     return (
@@ -49,8 +49,5 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-  className: '',
-  title: '',
-  color: 'medium',
-  tabIndex: ''
+  color: 'medium'
 };
