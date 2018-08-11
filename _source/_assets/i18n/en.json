@@ -17,6 +17,8 @@
   "footer.copy": "All Rights Reserved.",
 
   "misc.search": "Search bookmarks...",
+  "misc.validEmail": "Must be a valid email address.",
+  "misc.validPassword": "Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.",
 
   "header.login": "Sign <b>in</b>",
   "header.register": "Join <b>booky</b>",
@@ -71,7 +73,15 @@
   "modal.deleteCategoryFuture": "What should happen to the bookmarks?",
   "modal.deleteBookmarkLabel": "This bookmark will be deleted:",
 
+  "login.headline": "Sign in to booky",
   "login.username": "Username",
   "login.password": "Password",
-  "login.forgot": "Password forgotten?"
+  "login.email": "Email address",
+  "login.forgot": "Password forgotten?",
+  "login.new": "New to booky?",
+  "login.join": "Join now",
+
+  "join.headline": "Join booky",
+  "join.registered": "Already joined?",
+  "join.login": "Sign in now"
 }

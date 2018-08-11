@@ -17,6 +17,8 @@
   "footer.copy": "Alle Rechte vorbehalten.",
   
   "misc.search": "Lesezeichen suchen...",
+  "misc.validEmail": "Muss eine valide E-Mail-Adresse sein.",
+  "misc.validPassword": "Dein Passwort muss mindestens 6 Zeichen lang sein und zudem einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten.",
   
   "header.login": "Anmelden",
   "header.register": "<b>Booky</b> beitreten",
@@ -71,7 +73,15 @@
   "modal.deleteCategoryFuture": "Was soll mit den Lesezeichen geschehen?",
   "modal.deleteBookmarkLabel": "Dieses Lesezeichen wird gelöscht:",
 
+  "login.headline": "Bei booky anmelden",
   "login.username": "Benutzername",
   "login.password": "Passwort",
-  "login.forgot": "Passwort vergessen?"
+  "login.email": "E-Mail-Adresse",
+  "login.forgot": "Passwort vergessen?",
+  "login.new": "Neu bei booky?",
+  "login.join": "Jetzt beitreten",
+
+  "join.headline": "Booky beitreten",
+  "join.registered": "Schon beigetreten?",
+  "join.login": "Jetzt anmelden"
 }

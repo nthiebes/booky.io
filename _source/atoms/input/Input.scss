@@ -1,11 +1,15 @@
 .input {
   flex-grow: 1;
   position: relative;
+  overflow: hidden;
 }
 
 .input__field {
   background-color: #fafafa;
-  border-bottom: 2px solid rgba(#000, 0.15);
+  box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
+  border: 1px solid transparent;
+  border-right: 1px solid rgba(#000, 0.15);
+  border-bottom: 2px solid $color__font--medium;
   border-radius: 0;
   color: $color__font--dark;
   font-family: $font__family--text;
@@ -16,26 +20,55 @@
   transition: background-color 0.3s, border-color 0.3s linear, box-shadow 0.3s linear;
   width: 100%;
 
-  &:focus {
-    border-color: $color__font--medium;
-    box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
+  &:valid ~.input__icon--valid {
+    opacity: 1;
+    transform: none;
+  }
 
-    &:required:valid {
-      border-color: $color--green;
+  &:focus {
+    background-color: #fff;
+    border-bottom-color: $color__font--medium;
+
+    &:valid {
+      border-bottom-color: $color--green;
     }
 
-    &:required:invalid {
-      border-color: $color--primary;
+    &:invalid {
+      border-bottom-color: $color--primary;
+
+      ~.input__requirements {
+        max-height: 5rem;
+        opacity: 1;
+      }
+    }
+
+    &:valid ~.input__icon--valid {
+      color: $color--green;
+    }
+
+    &:invalid ~.input__icon--invalid {
+      opacity: 1;
+      transform: none;
+      color: $color--primary;
     }
   }
 
   @include desktop {
     &:hover {
-      border-color: $color--blue;
+      background-color: #fff;
+      border-bottom-color: $color--blue;
     }
 
     &:hover:focus {
-      border-color: $color__font--medium;
+      border-bottom-color: $color__font--medium;
+
+      &:valid {
+        border-bottom-color: $color--green;
+      }
+
+      &:invalid {
+        border-bottom-color: $color--primary;
+      }
     }
   }
 }
@@ -43,7 +76,19 @@
 .input__icon {
   position: absolute;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 6px;
+  transform: translateX(100%);
   pointer-events: none;
+  transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s ease;
+  opacity: 0;
+  color: $color__font--medium;
+}
+
+.input__requirements {
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.2s linear, max-height 0.3s ease;
+  color: $color--primary;
+  margin-top: 0.5rem;
+  opacity: 0;
 }

@@ -1,14 +1,30 @@
 .page {
   margin: 0 auto;
-  padding: 3rem 3% 6rem 3%;
+  padding: 3rem calc(3% + 6px) 6rem calc(3% + 6px);
   min-height: 100%;
 
   @include tablet {
-    padding: 5rem 3% 10rem 3%;
+    padding: 5rem calc(3% + 6px) 10rem calc(3% + 6px);
   }
 
   @include desktop {
     max-width: 1000px;
     padding: 7rem 38px 14rem 38px;
+  }
+}
+
+.page--compact {
+  @include tablet-desktop {
+    // box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    // max-width: calc(94% - 12px);
+    // padding: 1rem 2rem 2rem 2rem;
+    // margin-top: 8rem;
+    // margin-bottom: 10rem;
+    width: 480px;
+  }
+
+  @include desktop {
+    // margin-top: 10rem;
+    // margin-bottom: 14rem;
   }
 }

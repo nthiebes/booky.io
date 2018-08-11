@@ -13,9 +13,6 @@ export default class Input extends Component {
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
-    this.state = {
-      errorColor: 'medium'
-    };
   }
 
   componentDidMount() {
@@ -29,21 +26,15 @@ export default class Input extends Component {
   }
 
   onFocus() {
-    this.setState({
-      errorColor: 'primary'
-    });
     this.props.onFocus && this.props.onFocus();
   }
 
   onBlur() {
-    this.setState({
-      errorColor: 'medium'
-    });
     this.props.onBlur && this.props.onBlur();
   }
 
   render() {
-    const { className, placeholder, type, color, name, id, required, value, maxLength, label, autoComplete } = this.props;
+    const { className, placeholder, type, color, name, id, required, value, maxLength, label, autoComplete, pattern, requirements } = this.props;
     const inputProps = {
       className: classNames('input__field', className && className, color && `input__field--color-${color}`),
       onBlur: this.onBlur,
@@ -56,7 +47,9 @@ export default class Input extends Component {
       id,
       required,
       maxLength,
-      autoComplete
+      autoComplete,
+      pattern,
+      requirements
     };
 
     return (
@@ -64,8 +57,11 @@ export default class Input extends Component {
         { label && <Label htmlFor={ id }>{ label }</Label> }
         <div className={ classNames('input', className && className) }>
           <input ref="inputField" { ...inputProps } />
-          { required && value && <Icon icon="check" color="green" className="input__icon" /> }
-          { required && !value && <Icon icon="error" color={ this.state.errorColor } className="input__icon" /> }
+          <Icon icon="check" color="green" className="input__icon input__icon--valid" />
+          <Icon icon="error" color="primary" className="input__icon input__icon--invalid" />
+          { requirements && <div className="input__requirements">
+            { requirements }
+          </div> }
         </div>
       </Fragment>
     );
@@ -87,7 +83,9 @@ Input.propTypes = {
   value: PropTypes.string,
   maxLength: PropTypes.string,
   label: PropTypes.string,
-  autoComplete: PropTypes.string
+  autoComplete: PropTypes.string,
+  pattern: PropTypes.string,
+  requirements: PropTypes.string
 };
 
 Input.defaultProps = {

@@ -10,13 +10,13 @@ import Toolbar from '../../organisms/toolbar';
 
 export default class Page extends Component {
   render() {
-    const { children, toolbar, search, className, dashboards } = this.props;
+    const { children, toolbar, search, className, dashboards, compact } = this.props;
 
     return (
       <Fragment>
         <Header search={ search } dashboards={ dashboards } />
         <Sidebar />
-        <main className={ classNames('page', className) }>
+        <main className={ classNames('page', compact && 'page--compact', className && className) }>
           { children }
         </main>
         <Footer />
@@ -43,9 +43,6 @@ Page.propTypes = {
     PropTypes.string
   ]).isRequired,
   className: PropTypes.string,
-  dashboards: PropTypes.bool
-};
-
-Page.defaultProps = {
-  className: ''
+  dashboards: PropTypes.bool,
+  compact: PropTypes.bool
 };

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
+import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
-import { ButtonLargePrimary } from '../../atoms/button';
+import { ButtonLargeBlue } from '../../atoms/button';
 import Form from '../../molecules/form';
+
+import './Login.scss';
 
 class Login extends Component {
   constructor(props) {
@@ -42,16 +46,19 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <Page>
+      <Page compact>
         <Form onSubmit={ this.handleSubmit }>
-          <H1><FormattedMessage id="menu.login" /></H1>
+          <H1>
+            <FormattedMessage id="login.headline" />
+          </H1>
           <Input
             value={ username }
             name="username"
             id="username"
             autoComplete="username"
-            onChange={ this.handleUsernameChange }
             label={ intl.formatMessage({ id: 'login.username' }) }
+            onChange={ this.handleUsernameChange }
+            maxLength="50"
             required
           />
           <Input
@@ -59,21 +66,33 @@ class Login extends Component {
             name="password"
             id="password"
             autoComplete="current-password"
-            onChange={ this.handlePasswordChange }
             label={ intl.formatMessage({ id: 'login.password' }) }
+            onChange={ this.handlePasswordChange }
+            maxLength="225"
             required
             type="password"
           />
-          <ButtonLargePrimary icon="join" type="submit" contentBefore>
+          <ButtonLargeBlue icon="join" type="submit" contentBefore>
             <FormattedMessage id="menu.login" />
-          </ButtonLargePrimary>
-          <Link>
+          </ButtonLargeBlue>
+          <Link className="login__forgot" to="/forgot">
             <FormattedMessage id="login.forgot" />
           </Link>
+          <P className="login__join">
+            <FormattedMessage id="login.new" />
+            { ' ' }
+            <Link to="/join">
+              <FormattedMessage id="login.join" />
+            </Link>
+          </P>
         </Form>
       </Page>
     );
   }
 }
+
+Login.propTypes = {
+  intl: PropTypes.object.isRequired
+};
 
 export default injectIntl(Login);
