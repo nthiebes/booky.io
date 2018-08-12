@@ -63,6 +63,7 @@
   flex-wrap: wrap;
   list-style: none;
   justify-content: center;
+  align-items: center;
 }
 
 .footer__menu-item {
@@ -71,11 +72,23 @@
   line-height: 1.5rem;
 }
 
+.footer__language {
+  color: $color__font--white;
+
+  &:focus {
+    color: $color__font--primary;
+  }
+}
+
 .footer__logo {
   color: $color__font--white;
   margin-top: 2rem;
   font-size: $size--small;
   align-self: center;
+
+  &:focus {
+    outline: 1px dashed $color__font--white;
+  }
 }
 
 .footer__button {

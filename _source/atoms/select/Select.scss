@@ -1,0 +1,22 @@
+.select {
+  border-radius: 0;
+  color: $color__font--dark;
+  font-family: $font__family--text;
+  font-size: 1rem;
+}
+
+.select--large {
+  background-color: #fafafa;
+  border: 1px solid transparent;
+  border-right: 1px solid rgba(#000, 0.15);
+  border-bottom: 2px solid $color__font--medium;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 9px;
+  transition: background-color 0.3s, border-color 0.3s linear;
+  width: 100%;
+}
+
+.select--compact {
+  background-color: transparent;
+}

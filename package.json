@@ -37,6 +37,7 @@
     "react-beautiful-dnd": "6.0.1",
     "react-dom": "16.3.0",
     "react-intl": "2.4.0",
+    "react-intl-redux": "2.0.2",
     "react-redux": "5.0.7",
     "react-router": "3.2.0",
     "react-router-redux": "4.0.7",

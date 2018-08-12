@@ -1,13 +1,19 @@
 /* eslint-disable max-len */
+
 import React, { Component } from 'react';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import PropTypes from 'prop-types';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import 'whatwg-fetch';
 
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
+import LanguageSwitcher from '../../molecules/language-switcher';
 import { ButtonSmallLight } from '../../atoms/button';
 
-export default class Footer extends Component {
+class Footer extends Component {
   render() {
+    const { intl } = this.props;
+
     return (
       <footer className="footer">
         <section className="footer__social">
@@ -41,11 +47,14 @@ export default class Footer extends Component {
             <Link className="footer__menu-item" color="light" to="/legal">
               <FormattedMessage id="menu.legal" />
             </Link>
+            <LanguageSwitcher className="footer__menu-item footer__language" />
           </nav>
           <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
             <FormattedHTMLMessage id="footer.scroll" />
           </ButtonSmallLight>
-          <Link to="/about" className="footer__logo" color="light">{ 'booky.io (logo)' }</Link>
+          <Link to="/about" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
+            <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
+          </Link>
           <div className="footer__copy">
             { '© 2014-2018' }
             <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
@@ -57,5 +66,11 @@ export default class Footer extends Component {
     );
   }
 }
+
+Footer.propTypes = {
+  intl: PropTypes.object.isRequired
+};
+
+export default injectIntl(Footer);
 
 /* eslint-disable max-len */

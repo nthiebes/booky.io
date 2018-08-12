@@ -88,7 +88,6 @@ class Header extends Component {
   }
 }
 
-export default injectIntl(withRouter(Header));
 
 Header.propTypes = {
   color: PropTypes.number,
@@ -108,3 +107,5 @@ Header.defaultProps = {
   color: 0,
   sticky: true
 };
+
+export default injectIntl(withRouter(Header));
