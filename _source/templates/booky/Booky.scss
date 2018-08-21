@@ -11,6 +11,7 @@
 @import "../../atoms/paragraph/Paragraph";
 @import "../../atoms/loader/styles/a-loader";
 @import "../../atoms/label/Label";
+@import "../../atoms/display/Display";
 
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
@@ -20,6 +21,7 @@
 @import "../../molecules/dropdown/Dropdown";
 @import "../../molecules/tab-bar/TabBar";
 @import "../../molecules/language-switcher/LanguageSwitcher";
+@import "../../molecules/section/Section";
 
 @import "../../organisms/categories/Categories";
 @import "../../organisms/header/Header";
@@ -30,7 +32,17 @@
 @import "../../organisms/modal/Modal";
 @import "../../organisms/dashboards/Dashboards";
 
+@import "../../pages/home/Home";
+
 @import "../../templates/page/Page";
+
+html {
+  font-size: calc(14px + 0.2vw);
+
+  @include desktop {
+    font-size: 16px;
+  }
+}
 
 body {
   -webkit-text-size-adjust: none; /** Prevent font scaling in landscape */
@@ -38,17 +50,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: $color__background--white;
   font-family: $font__family--text;
-  font-size: $size--phone;
   font-weight: 100;
   height: 100%;
-
-  @include tablet {
-    font-size: $size--tablet;
-  }
-
-  @include desktop {
-    font-size: $size--desktop;
-  }
 
   &.booky--no-animation {
     transition: none !important;
