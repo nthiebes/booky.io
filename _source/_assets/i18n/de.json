@@ -21,7 +21,7 @@
   "misc.validPassword": "Dein Passwort muss mindestens 6 Zeichen lang sein und zudem einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten.",
   
   "header.login": "Anmelden",
-  "header.register": "<b>Booky</b> beitreten",
+  "header.register": "Booky <b>beitreten</b>",
   "header.menu": "Menü",
   "header.more": "Mehr",
   

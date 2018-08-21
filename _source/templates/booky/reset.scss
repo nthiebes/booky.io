@@ -18,3 +18,7 @@ textarea:focus,
 button:focus {
   outline: 1px solid transparent;
 }
+
+b {
+  font-weight: 700; /* Was still 400 in Firefox */
+}

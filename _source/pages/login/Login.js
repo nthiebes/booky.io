@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
@@ -75,7 +75,7 @@ class Login extends Component {
               type="password"
             />
             <ButtonLargeBlue icon="join" type="submit" contentBefore>
-              <FormattedMessage id="menu.login" />
+              <FormattedHTMLMessage id="header.login" />
             </ButtonLargeBlue>
             <Link className="login__forgot" to="/forgot">
               <FormattedMessage id="login.forgot" />
