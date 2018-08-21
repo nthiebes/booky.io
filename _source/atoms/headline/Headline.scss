@@ -2,31 +2,35 @@
   color: $color__font--dark;
   font-family: $font__family--heading;
   overflow: hidden;
+}
 
-  &.headline--h1 {
-    font-size: 2.3rem;
-    line-height: 2.6rem;
-    font-weight: 100;
-    margin-top: 2rem;
-    padding-bottom: 1rem;
-  }
+.headline--h1 {
+  font-size: 2.5rem;
+  line-height: 2.6rem;
+  font-weight: 100;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
 
-  &.headline--h2 {
-    font-size: 1.5rem;
-    line-height: 1.8rem;
-    font-weight: 400;
-    margin-top: 1rem;
-    padding-bottom: 0.5rem;
-    color: $color__font--medium;
-  }
+.headline--h2 {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 400;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  color: $color__font--medium;
+}
 
-  &.headline--h3 {
-    font-size: 1rem;
-    line-height: 1rem;
-    font-weight: 700;
-    margin-top: 1rem;
-    padding-bottom: 0.5rem;
-    color: $color__font--medium;
-    text-transform: uppercase;
-  }
+.headline--h3 {
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  color: $color__font--medium;
+  text-transform: uppercase;
+}
+
+.headline--no-margin {
+  margin-top: 0;
 }

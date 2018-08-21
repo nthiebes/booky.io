@@ -81,7 +81,18 @@
   "login.new": "Neu bei booky?",
   "login.join": "Jetzt beitreten",
 
-  "join.headline": "Booky beitreten",
-  "join.registered": "Schon beigetreten?",
-  "join.login": "Jetzt anmelden"
+  "join.headline": "Jetzt booky beitreten",
+  "join.registered": "Schon dabei?",
+  "join.login": "Jetzt anmelden",
+
+  "home.display": "Speichere deine wichtigen Lesezeichen online.",
+  "home.display2": "Privat. Anpassbar. Schnell.",
+  "home.performant": "Schnell",
+  "home.mobile": "Mobil",
+  "home.private": "Privat",
+  "home.customizable": "Anpassbar",
+  "home.performantHeadline": "Schnell und einfach zu nutzen.",
+  "home.mobileHeadline": "Überall verfügbar.",
+  "home.privateHeadline": "Private Lesezeichen.",
+  "home.customizeHeadline": "Booky anpassen."
 }

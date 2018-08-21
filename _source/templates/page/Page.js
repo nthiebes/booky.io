@@ -5,18 +5,18 @@ import classNames from 'classnames';
 import Header from '../../organisms/header';
 import Sidebar from '../../organisms/sidebar';
 import Footer from '../../organisms/footer';
-import Modal from '../../organisms/modal';
-import Toolbar from '../../organisms/toolbar';
+// import Modal from '../../organisms/modal';
+// import Toolbar from '../../organisms/toolbar';
 
 export default class Page extends Component {
   render() {
-    const { children, toolbar, search, className, dashboards, compact } = this.props;
+    const { children, search, className, dashboards, compact, fullWidth } = this.props;
 
     return (
       <Fragment>
         <Header search={ search } dashboards={ dashboards } />
         <Sidebar />
-        <main className={ classNames('page', compact && 'page--compact', className && className) }>
+        <main className={ classNames('page', compact && 'page--compact', fullWidth && 'page--full-width', className && className) }>
           { children }
         </main>
         <Footer />
@@ -44,5 +44,6 @@ Page.propTypes = {
   ]).isRequired,
   className: PropTypes.string,
   dashboards: PropTypes.bool,
-  compact: PropTypes.bool
+  compact: PropTypes.bool,
+  fullWidth: PropTypes.bool
 };

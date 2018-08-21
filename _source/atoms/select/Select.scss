@@ -1,11 +1,11 @@
 .select {
-  border-radius: 0;
   color: $color__font--dark;
   font-family: $font__family--text;
   font-size: 1rem;
 }
 
 .select--large {
+  border-radius: 0;
   background-color: #fafafa;
   border: 1px solid transparent;
   border-right: 1px solid rgba(#000, 0.15);

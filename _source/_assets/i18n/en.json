@@ -81,7 +81,18 @@
   "login.new": "New to booky?",
   "login.join": "Join now",
 
-  "join.headline": "Join booky",
+  "join.headline": "Join booky now",
   "join.registered": "Already joined?",
-  "join.login": "Sign in now"
+  "join.login": "Sign in now",
+
+  "home.display": "Store your favorite bookmarks online.",
+  "home.display2": "Private. Customizable. Fast.",
+  "home.performant": "Performant",
+  "home.mobile": "Mobile",
+  "home.private": "Private",
+  "home.customizable": "Customizable",
+  "home.performantHeadline": "Fast and easy to use.",
+  "home.mobileHeadline": "Available everywhere.",
+  "home.privateHeadline": "Private bookmarks.",
+  "home.customizeHeadline": "Customize booky."
 }

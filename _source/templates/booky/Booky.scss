@@ -38,6 +38,7 @@
 
 html {
   font-size: calc(14px + 0.2vw);
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
 
   @include desktop {
     font-size: 16px;
