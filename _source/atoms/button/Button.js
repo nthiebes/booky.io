@@ -19,7 +19,8 @@ export default class Button extends Component {
       tabIndex,
       solid,
       type,
-      contentBefore
+      contentBefore,
+      pending
     } = this.props;
     const CustomTag = href || to ? Link : 'button';
 
@@ -30,7 +31,7 @@ export default class Button extends Component {
           `button--${size}`,
           `button--${size}-${color}`,
           solid && 'button--solid',
-          disabled && 'button--disabled',
+          pending && 'button--pending',
           contentBefore && 'button--content-before',
           className && className)
         }
@@ -39,6 +40,7 @@ export default class Button extends Component {
         to={ to }
         tabIndex={ tabIndex }
         type={ type }
+        disabled={ disabled }
       >
         { icon && <Icon icon={ icon } color={ size === 'small' ? color : 'light' } className="button__icon" /> }
         <span className="button__text">{ children }</span>
@@ -64,7 +66,8 @@ Button.propTypes = {
   tabIndex: PropTypes.string,
   solid: PropTypes.bool,
   type: PropTypes.string,
-  contentBefore: PropTypes.bool
+  contentBefore: PropTypes.bool,
+  pending: PropTypes.bool
 };
 
 Button.defaultProps = {

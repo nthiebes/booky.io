@@ -8,6 +8,7 @@ import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
 import { ButtonLargeBlue } from '../../atoms/button';
+import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 
@@ -19,32 +20,51 @@ class Login extends Component {
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      disabled: false,
+      pending: false,
+      showPassword: false
     };
   }
 
   handleUsernameChange(value) {
     this.setState({
-      username: value
+      username: value,
+      disabled: false,
+      pending: false
     });
   }
 
   handlePasswordChange(value) {
     this.setState({
-      password: value
+      password: value,
+      disabled: false,
+      pending: false
+    });
+  }
+
+  handleCheckboxChange(checked) {
+    this.setState({
+      showPassword: checked
     });
   }
 
   handleSubmit(params) {
     console.log(params);
+
+    this.setState({
+      disabled: true,
+      pending: true
+    });
   }
 
   render() {
     const { intl } = this.props;
-    const { username, password } = this.state;
+    const { username, password, pending, disabled, showPassword } = this.state;
 
     return (
       <Page>
@@ -62,6 +82,7 @@ class Login extends Component {
               onChange={ this.handleUsernameChange }
               maxLength="50"
               required
+              disabled={ disabled }
             />
             <Input
               value={ password }
@@ -72,9 +93,17 @@ class Login extends Component {
               onChange={ this.handlePasswordChange }
               maxLength="225"
               required
-              type="password"
+              type={ showPassword ? 'text' : 'password' }
+              disabled={ disabled }
             />
-            <ButtonLargeBlue icon="join" type="submit" contentBefore>
+            <Checkbox label="Show password" id="show-password" name="show-password" onChange={ this.handleCheckboxChange } />
+            <ButtonLargeBlue
+              icon={ pending ? 'spinner' : 'join' }
+              type="submit"
+              pending={ pending }
+              disabled={ disabled }
+              contentBefore
+            >
               <FormattedHTMLMessage id="header.login" />
             </ButtonLargeBlue>
             <Link className="login__forgot" to="/forgot">

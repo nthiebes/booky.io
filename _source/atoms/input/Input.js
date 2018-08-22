@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 
-import Label from '../../atoms/label';
+import Label from '../label';
 import Icon from '../icon';
 
 export default class Input extends Component {
@@ -34,7 +34,22 @@ export default class Input extends Component {
   }
 
   render() {
-    const { className, placeholder, type, color, name, id, required, value, maxLength, label, autoComplete, pattern, requirements } = this.props;
+    const {
+      className,
+      placeholder,
+      type,
+      color,
+      name,
+      id,
+      required,
+      value,
+      maxLength,
+      label,
+      autoComplete,
+      pattern,
+      requirements,
+      disabled
+    } = this.props;
     const inputProps = {
       className: classNames('input__field', className && className, color && `input__field--color-${color}`),
       onBlur: this.onBlur,
@@ -49,7 +64,8 @@ export default class Input extends Component {
       maxLength,
       autoComplete,
       pattern,
-      requirements
+      requirements,
+      disabled
     };
 
     return (
@@ -85,7 +101,8 @@ Input.propTypes = {
   label: PropTypes.string,
   autoComplete: PropTypes.string,
   pattern: PropTypes.string,
-  requirements: PropTypes.string
+  requirements: PropTypes.string,
+  disabled: PropTypes.bool
 };
 
 Input.defaultProps = {

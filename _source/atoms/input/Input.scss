@@ -20,6 +20,10 @@
   transition: background-color 0.3s, border-color 0.3s linear, box-shadow 0.3s linear;
   width: 100%;
 
+  &:disabled {
+    pointer-events: none;
+  }
+
   &:valid ~.input__icon--valid {
     opacity: 1;
     transform: none;

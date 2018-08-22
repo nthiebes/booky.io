@@ -31,7 +31,15 @@
     outline: none;
   }
 }
-  
+
+.icon--spinner {
+  animation: 1s linear infinite rotate;
+
+  &.button__icon {
+    animation: 1s linear infinite rotateInButton;
+  }
+}
+
 .icon--primary {
   color: $color__font--primary;
   border-color: $color__font--primary;
@@ -144,7 +152,6 @@
   position: relative;
   stroke-width: 0;
   stroke: currentColor;
-  // transition: transform 0.2s linear;
   width: 36px;
 }
 
@@ -154,6 +161,26 @@
   font-size: 1rem;
   font-weight: 400;
   margin-left: 4px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateInButton {
+  0% {
+    transform: translateX(10px) rotate(0);
+  }
+
+  100% {
+    transform: translateX(10px) rotate(360deg);
+  }
 }
 
 // @keyframes circle {

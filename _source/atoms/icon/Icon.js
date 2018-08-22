@@ -21,16 +21,20 @@ export default class Icon extends Component {
 
   render() {
     const { icon, className, label, color, title, dragHandleProps, tabIndex } = this.props;
-    const LINK = '_assets/symbol-defs.svg#icon-' + icon;
-    const CLASS = classNames('icon', `icon--${color}`, className && className);
-    const LABEL = label ? <label className="icon__label">{ label }</label> : '';
+    const link = '_assets/symbol-defs.svg#icon-' + icon;
 
     return (
-      <div className={ CLASS } title={ title } onClick={ this.onClick } tabIndex={ tabIndex } { ...dragHandleProps }>
+      <div
+        className={ classNames('icon', `icon--${color}`, icon === 'spinner' && 'icon--spinner', className && className) }
+        title={ title }
+        onClick={ this.onClick }
+        tabIndex={ tabIndex }
+        { ...dragHandleProps }
+      >
         <svg className="icon__svg">
-          <use xlinkHref={ LINK } />
+          <use xlinkHref={ link } />
         </svg>
-        { LABEL }
+        { label && <label className="icon__label">{ label }</label> }
       </div>
     );
   }

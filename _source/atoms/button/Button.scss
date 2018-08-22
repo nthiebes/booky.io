@@ -17,15 +17,29 @@
   user-select: none;
   white-space: nowrap;
   justify-content: center;
-}
 
-.button--disabled {
-  pointer-events: none;
-  opacity: 0.5;
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 .button--content-before {
   margin-top: 2rem;
+}
+
+.button--small {
+  .icon {
+    height: 24px;
+    width: 24px;
+    margin-right: 6px;
+  }
+
+  .icon__svg {
+    padding: 0;
+    height: 24px;
+    width: 24px;
+  }
 }
 
 .button--small-light {
@@ -196,7 +210,8 @@
     width: 200px;
 
     &:hover,
-    &:focus {
+    &:focus,
+    &.button--pending {
       .icon,
       .icon__svg {
         color: $color__font--dark;
@@ -241,7 +256,8 @@
 
   @include desktop() {
     &:hover,
-    &:focus {
+    &:focus,
+    &.button--pending {
       background-color: $color__background--primary;
 
       .icon,
@@ -265,7 +281,8 @@
 
   @include desktop() {
     &:hover,
-    &:focus {
+    &:focus,
+    &.button--pending {
       background-color: $color--green;
 
       .icon,
@@ -289,7 +306,8 @@
 
   @include desktop() {
     &:hover,
-    &:focus {
+    &:focus,
+    &.button--pending {
       background-color: $color--blue;
 
       .icon,
@@ -313,7 +331,8 @@
 
   @include desktop() {
     &:hover,
-    &:focus {
+    &:focus,
+    &.button--pending {
       background-color: $color__background--dark;
 
       .icon,
@@ -336,23 +355,10 @@
 
   @include desktop() {
     &:hover,
-    &:focus {
+    &:focus,
+    &.button--pending {
       background-color: rgba(0,0,0,0.15);
     }
-  }
-}
-
-.button--small {
-  .icon {
-    height: 24px;
-    width: 24px;
-    margin-right: 6px;
-  }
-
-  .icon__svg {
-    padding: 0;
-    height: 24px;
-    width: 24px;
   }
 }
 
