@@ -1,6 +1,7 @@
 @import "reset";
 @import "config";
 
+@import "../../atoms/label/Label";
 @import "../../atoms/icon/Icon";
 @import "../../atoms/link/Link";
 @import "../../atoms/button/Button";
@@ -10,7 +11,6 @@
 @import "../../atoms/headline/Headline";
 @import "../../atoms/paragraph/Paragraph";
 @import "../../atoms/loader/styles/a-loader";
-@import "../../atoms/label/Label";
 @import "../../atoms/display/Display";
 
 @import "../../molecules/menu/Menu";

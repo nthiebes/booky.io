@@ -17,7 +17,10 @@ export default class Checkbox extends Component {
   handleInputChange(event) {
     const { onChange } = this.props;
 
-    onChange && onChange(event.target.checked);
+    onChange && onChange({
+      name: event.target.name,
+      checked: event.target.checked
+    });
   }
 
   render() {

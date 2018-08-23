@@ -47,7 +47,7 @@ class Login extends Component {
     });
   }
 
-  handleCheckboxChange(checked) {
+  handleCheckboxChange({ checked }) {
     this.setState({
       showPassword: checked
     });
@@ -96,7 +96,12 @@ class Login extends Component {
               type={ showPassword ? 'text' : 'password' }
               disabled={ disabled }
             />
-            <Checkbox label="Show password" id="show-password" name="show-password" onChange={ this.handleCheckboxChange } />
+            <Checkbox
+              label="Show password"
+              id="show-password"
+              name="show-password"
+              onChange={ this.handleCheckboxChange }
+            />
             <ButtonLargeBlue
               icon={ pending ? 'spinner' : 'join' }
               type="submit"

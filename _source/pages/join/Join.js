@@ -8,6 +8,7 @@ import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
 import { ButtonLargeBlue } from '../../atoms/button';
+import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 
@@ -20,11 +21,13 @@ class Join extends Component {
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       username: '',
       email: '',
-      password: ''
+      password: '',
+      showPassword: false
     };
   }
 
@@ -46,13 +49,19 @@ class Join extends Component {
     });
   }
 
+  handleCheckboxChange({ checked }) {
+    this.setState({
+      showPassword: checked
+    });
+  }
+
   handleSubmit(params) {
     console.log(params);
   }
 
   render() {
     const { intl } = this.props;
-    const { username, email, password } = this.state;
+    const { username, email, password, showPassword } = this.state;
 
     return (
       <Page>
@@ -92,9 +101,15 @@ class Join extends Component {
               onChange={ this.handlePasswordChange }
               maxLength="225"
               required
-              type="password"
+              type={ showPassword ? 'text' : 'password' }
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
               requirements={ intl.formatMessage({ id: 'misc.validPassword' }) }
+            />
+            <Checkbox
+              label="Show password"
+              id="show-password"
+              name="show-password"
+              onChange={ this.handleCheckboxChange }
             />
             <ButtonLargeBlue icon="join" type="submit" contentBefore>
               <FormattedHTMLMessage id="header.register" />

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 export default class Label extends Component {
   render() {
-    const { children, htmlFor } = this.props;
+    const { children, htmlFor, className } = this.props;
 
     return (
-      <label className="label" htmlFor={ htmlFor }>{ children }</label>
+      <label className={ classNames('label', className && className) } htmlFor={ htmlFor }>
+        { children }
+      </label>
     );
   }
 }
@@ -17,9 +20,6 @@ Label.propTypes = {
     PropTypes.node,
     PropTypes.array
   ]).isRequired,
-  htmlFor: PropTypes.string
-};
-
-Label.defaultProps = {
-  htmlFor: ''
+  htmlFor: PropTypes.string,
+  className: PropTypes.string
 };
