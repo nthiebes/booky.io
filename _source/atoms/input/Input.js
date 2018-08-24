@@ -22,7 +22,7 @@ export default class Input extends Component {
   }
 
   onChange(event) {
-    this.props.onChange(event.target.value);
+    this.props.onChange(event.target.value, this.props.name);
   }
 
   onFocus() {
@@ -75,9 +75,11 @@ export default class Input extends Component {
           <input ref="inputField" { ...inputProps } />
           <Icon icon="check" color="green" className="input__icon input__icon--valid" />
           <Icon icon="error" color="primary" className="input__icon input__icon--invalid" />
-          { requirements && <div className="input__requirements">
-            { requirements }
-          </div> }
+          { requirements && (
+            <div className="input__requirements">
+              { requirements }
+            </div>
+          ) }
         </div>
       </Fragment>
     );

@@ -18,8 +18,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
@@ -31,17 +30,9 @@ class Login extends Component {
     };
   }
 
-  handleUsernameChange(value) {
+  handleInputChange(value, name) {
     this.setState({
-      username: value,
-      disabled: false,
-      pending: false
-    });
-  }
-
-  handlePasswordChange(value) {
-    this.setState({
-      password: value,
+      [name]: value,
       disabled: false,
       pending: false
     });
@@ -79,7 +70,7 @@ class Login extends Component {
               id="username"
               autoComplete="username"
               label={ intl.formatMessage({ id: 'login.username' }) }
-              onChange={ this.handleUsernameChange }
+              onChange={ this.handleInputChange }
               maxLength="50"
               required
               disabled={ disabled }
@@ -90,7 +81,7 @@ class Login extends Component {
               id="password"
               autoComplete="current-password"
               label={ intl.formatMessage({ id: 'login.password' }) }
-              onChange={ this.handlePasswordChange }
+              onChange={ this.handleInputChange }
               maxLength="225"
               required
               type={ showPassword ? 'text' : 'password' }

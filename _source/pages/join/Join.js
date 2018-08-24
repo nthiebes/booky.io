@@ -18,34 +18,24 @@ class Join extends Component {
   constructor(props) {
     super(props);
 
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       username: '',
       email: '',
       password: '',
+      disabled: false,
+      pending: false,
       showPassword: false
     };
   }
 
-  handleUsernameChange(value) {
+  handleInputChange(value, name) {
     this.setState({
-      username: value
-    });
-  }
-
-  handleEmailChange(value) {
-    this.setState({
-      email: value
-    });
-  }
-
-  handlePasswordChange(value) {
-    this.setState({
-      password: value
+      [name]: value,
+      disabled: false,
+      pending: false
     });
   }
 
@@ -57,11 +47,16 @@ class Join extends Component {
 
   handleSubmit(params) {
     console.log(params);
+
+    this.setState({
+      disabled: true,
+      pending: true
+    });
   }
 
   render() {
     const { intl } = this.props;
-    const { username, email, password, showPassword } = this.state;
+    const { username, email, password, pending, disabled, showPassword } = this.state;
 
     return (
       <Page>
@@ -76,7 +71,7 @@ class Join extends Component {
               id="username"
               autoComplete="username"
               label={ intl.formatMessage({ id: 'login.username' }) }
-              onChange={ this.handleUsernameChange }
+              onChange={ this.handleInputChange }
               maxLength="50"
               required
             />
@@ -86,7 +81,7 @@ class Join extends Component {
               id="email"
               autoComplete="email"
               label={ intl.formatMessage({ id: 'login.email' }) }
-              onChange={ this.handleEmailChange }
+              onChange={ this.handleInputChange }
               maxLength="150"
               required
               type="email"
@@ -98,7 +93,7 @@ class Join extends Component {
               id="password"
               autoComplete="current-password"
               label={ intl.formatMessage({ id: 'login.password' }) }
-              onChange={ this.handlePasswordChange }
+              onChange={ this.handleInputChange }
               maxLength="225"
               required
               type={ showPassword ? 'text' : 'password' }
@@ -111,7 +106,13 @@ class Join extends Component {
               name="show-password"
               onChange={ this.handleCheckboxChange }
             />
-            <ButtonLargeBlue icon="join" type="submit" contentBefore>
+            <ButtonLargeBlue
+              icon={ pending ? 'spinner' : 'join' }
+              type="submit"
+              pending={ pending }
+              disabled={ disabled }
+              contentBefore
+            >
               <FormattedHTMLMessage id="header.register" />
             </ButtonLargeBlue>
             <P className="join__login">
