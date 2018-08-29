@@ -32,7 +32,6 @@ class Footer extends Component {
       <div className={ classNames('language-switcher', className && className) }>
         <Icon icon="language" color="light" className="language-switcher__icon" />
         <Select
-          className={ classNames(className && className) }
           compact
           selected={ locale }
           onChange={ this.onChange }

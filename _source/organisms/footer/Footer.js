@@ -47,8 +47,8 @@ class Footer extends Component {
             <Link className="footer__menu-item" color="light" to="/legal">
               <FormattedMessage id="menu.legal" />
             </Link>
-            <LanguageSwitcher className="footer__menu-item footer__language" />
           </nav>
+          <LanguageSwitcher className="footer__language" />
           <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
             <FormattedHTMLMessage id="footer.scroll" />
           </ButtonSmallLight>

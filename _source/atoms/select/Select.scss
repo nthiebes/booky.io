@@ -1,7 +1,19 @@
 .select {
-  color: $color__font--dark;
+  color: $color__font--white;
   font-family: $font__family--text;
-  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s linear;
+
+  &:active,
+  &:focus {
+    color: $color__font--primary;
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--primary;
+    }
+  }
 }
 
 .select--large {
@@ -15,8 +27,10 @@
   padding: 0 9px;
   transition: background-color 0.3s, border-color 0.3s linear;
   width: 100%;
+  font-size: 1rem;
 }
 
 .select--compact {
+  font-size: 0.8571rem;
   background-color: transparent;
 }
