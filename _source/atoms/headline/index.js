@@ -1,6 +1,11 @@
 import React from 'react';
 import Headline from './Headline';
 
+export function Display(props) {
+  return <Headline { ...props } type="1" display />;
+}
+Display.displayName = 'Display';
+
 export function H1(props) {
   return <Headline { ...props } type="1" />;
 }

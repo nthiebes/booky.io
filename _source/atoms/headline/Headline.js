@@ -4,12 +4,17 @@ import classNames from 'classnames';
 
 export default class Headline extends Component {
   render() {
-    const { className, children, type, onClick, noMargin, id } = this.props;
+    const { className, children, type, onClick, noMargin, id, display } = this.props;
     const CustomTag = `h${type}`;
 
     return (
       <CustomTag
-        className={ classNames(`headline headline--h${type}`, className && className, noMargin && 'headline--no-margin') }
+        className={ classNames(
+          `headline headline--h${type}`,
+          display && 'headline--display',
+          noMargin && 'headline--no-margin',
+          className && className
+        ) }
         onClick={ onClick && onClick }
         id={ id }
       >
@@ -29,9 +34,6 @@ Headline.propTypes = {
   type: PropTypes.string,
   onClick: PropTypes.func,
   noMargin: PropTypes.bool,
-  id: PropTypes.string
-};
-
-Headline.defaultProps = {
-  type: '1'
+  id: PropTypes.string,
+  display: PropTypes.bool
 };

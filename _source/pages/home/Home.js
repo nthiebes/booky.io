@@ -5,10 +5,9 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import Dashboards from '../../organisms/dashboards';
-import { H2 } from '../../atoms/headline';
+import { H2, Display } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
-import Display from '../../atoms/display';
 import Section from '../../molecules/section';
 
 class Home extends Component {
