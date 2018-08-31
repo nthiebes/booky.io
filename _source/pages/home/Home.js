@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
@@ -8,6 +8,7 @@ import Dashboards from '../../organisms/dashboards';
 import { H2, Display } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
+import { ButtonLargeLight, ButtonLargeBlue } from '../../atoms/button';
 import Section from '../../molecules/section';
 
 class Home extends Component {
@@ -28,8 +29,14 @@ class Home extends Component {
           <H2>
             <FormattedMessage id="home.display2" />
           </H2>
+          <ButtonLargeLight icon="about" contentBefore className="header__learn-more" to="/about">
+            <FormattedHTMLMessage id="header.learnMore" />
+          </ButtonLargeLight>
+          <ButtonLargeBlue icon="join" to="/join">
+            <FormattedHTMLMessage id="header.register" />
+          </ButtonLargeBlue>
         </Section>
-        <Section color="light" fullWidth>
+        <Section fullWidth>
           <nav className="home__navigation">
             <a className="home__item" href="#performant">
               <Icon icon="performance" />
@@ -49,8 +56,10 @@ class Home extends Component {
             </a>
           </nav>
         </Section>
-        <Section>
-          { 'Testimonials' }
+        <Section className="home__testimonials">
+          <blockquote className="home__quote">{ 'booky is awesome' }</blockquote>
+          <blockquote className="home__quote">{ 'booky is awesome' }</blockquote>
+          <blockquote className="home__quote">{ 'booky is awesome' }</blockquote>
         </Section>
         <Section>
           <H2 id="performant">

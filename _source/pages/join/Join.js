@@ -113,7 +113,7 @@ class Join extends Component {
               disabled={ disabled }
               contentBefore
             >
-              <FormattedHTMLMessage id="header.register" />
+              <FormattedHTMLMessage id="join.joinNow" />
             </ButtonLargeBlue>
             <P className="join__login">
               <FormattedMessage id="join.registered" />

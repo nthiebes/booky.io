@@ -24,6 +24,7 @@
   "header.register": "<b>Join</b> booky",
   "header.menu": "Menu",
   "header.more": "More",
+  "header.learnMore": "Learn <b>more</b>",
 
   "structure.title": "Edit site structure",
   
@@ -73,6 +74,11 @@
   "modal.deleteCategoryFuture": "What should happen to the bookmarks?",
   "modal.deleteBookmarkLabel": "This bookmark will be deleted:",
 
+  "footer.people": "Booky members.",
+  "footer.bookmarks": "Bookmarks saved.",
+  "footer.categories": "Categories created.",
+  "footer.dashboards": "Dashboards in use.",
+
   "login.headline": "Sign in to booky",
   "login.username": "Username",
   "login.password": "Password",
@@ -84,9 +90,11 @@
   "join.headline": "Join booky now",
   "join.registered": "Already joined?",
   "join.login": "Sign in now",
+  "join.joinNow": "<b>Join</b> now",
 
   "home.display": "Store your favorite bookmarks online.",
   "home.display2": "Private. Customizable. Fast.",
+  "home.headline1": "Your bookmarks available everywhere.",
   "home.performant": "Performant",
   "home.mobile": "Mobile",
   "home.private": "Private",

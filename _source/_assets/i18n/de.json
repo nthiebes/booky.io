@@ -24,6 +24,7 @@
   "header.register": "Booky <b>beitreten</b>",
   "header.menu": "Menü",
   "header.more": "Mehr",
+  "header.learnMore": "<b>Mehr</b> lernen",
   
   "structure.title": "Seitenstruktur bearbeiten",
   
@@ -73,6 +74,11 @@
   "modal.deleteCategoryFuture": "Was soll mit den Lesezeichen geschehen?",
   "modal.deleteBookmarkLabel": "Dieses Lesezeichen wird gelöscht:",
 
+  "footer.people": "Booky Mitglieder.",
+  "footer.bookmarks": "Gespeicherte Lesezeichen.",
+  "footer.categories": "Erstellte Kategorien.",
+  "footer.dashboards": "Angelegte Sammlungen.",
+
   "login.headline": "Bei booky anmelden",
   "login.username": "Benutzername",
   "login.password": "Passwort",
@@ -84,9 +90,11 @@
   "join.headline": "Jetzt booky beitreten",
   "join.registered": "Schon dabei?",
   "join.login": "Jetzt anmelden",
+  "join.joinNow": "<b>Jetzt</b> beitreten",
 
   "home.display": "Speichere deine wichtigen Lesezeichen online.",
   "home.display2": "Privat. Anpassbar. Schnell.",
+  "home.headline1": "Deine Lesezeichen überall verfügbar.",
   "home.performant": "Schnell",
   "home.mobile": "Mobil",
   "home.private": "Privat",

@@ -14,6 +14,16 @@
   }
 }
 
+.header__learn-more {
+  @include mobile {
+    margin-bottom: 1rem;
+  }
+
+  @include tablet-desktop {
+    margin-right: 1rem;
+  }
+}
+
 .home__navigation {
   display: flex;
   justify-content: center;
@@ -48,4 +58,14 @@
     width: 4rem;
     height: 4rem;
   }
+}
+
+.home__testimonials {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-evenly;
+}
+
+.home__quote {
+
 }

@@ -3,6 +3,25 @@
   text-align: center;
 }
 
+.footer__stats {
+  background-color: $color--primary;
+  border-top: 2px solid rgba(255,255,255,0.2);
+  padding: 1rem calc(3% + 6px);
+  color: $color__font--white;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer__stats-item {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  height: 4.5rem;
+  justify-content: space-between;
+}
+
 .footer__social {
   background-color: $color__background--medium;
   border-top: 2px solid rgba(255,255,255,0.2);

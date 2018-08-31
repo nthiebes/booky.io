@@ -205,6 +205,11 @@
     }
   }
 
+  @include tablet() {
+    height: 50px;
+    width: 200px;
+  }
+
   @include desktop() {
     height: 60px;
     width: 200px;
@@ -251,6 +256,7 @@
     &:active,
     &:focus {
       background-color: $color__background--primary;
+      color: $color__font--white;
     }
   }
 
@@ -259,6 +265,7 @@
     &:focus,
     &.button--pending {
       background-color: $color__background--primary;
+      color: $color__font--white;
 
       .icon,
       .icon__svg {
@@ -276,6 +283,7 @@
     &:active,
     &:focus {
       background-color: $color--green;
+      color: $color__font--white;
     }
   }
 
@@ -284,6 +292,7 @@
     &:focus,
     &.button--pending {
       background-color: $color--green;
+      color: $color__font--white;
 
       .icon,
       .icon__svg {
@@ -301,6 +310,7 @@
     &:active,
     &:focus {
       background-color: $color--blue;
+      color: $color__font--white;
     }
   }
 
@@ -309,6 +319,7 @@
     &:focus,
     &.button--pending {
       background-color: $color--blue;
+      color: $color__font--white;
 
       .icon,
       .icon__svg {
@@ -326,6 +337,7 @@
     &:active,
     &:focus {
       background-color: $color__background--dark;
+      color: $color__font--white;
     }
   }
 
@@ -334,6 +346,7 @@
     &:focus,
     &.button--pending {
       background-color: $color__background--dark;
+      color: $color__font--white;
 
       .icon,
       .icon__svg {
@@ -345,11 +358,13 @@
 
 .button--large-light {
   background-color: rgba(0,0,0,0.1);
+  color: $color__font--dark;
 
   @include mobile-tablet() {
     &:active,
     &:focus {
       background-color: rgba(0,0,0,0.15);
+      color: $color__font--dark;
     }
   }
 
@@ -358,6 +373,7 @@
     &:focus,
     &.button--pending {
       background-color: rgba(0,0,0,0.15);
+      color: $color__font--dark;
     }
   }
 }
