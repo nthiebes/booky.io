@@ -32,6 +32,7 @@
   "license": "SEE LICENSE IN \"LICENSE\"",
   "dependencies": {
     "classnames": "2.2.5",
+    "es-cookie": "1.2.0",
     "object-assign": "4.1.1",
     "react": "16.3.0",
     "react-beautiful-dnd": "6.0.1",

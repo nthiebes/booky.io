@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Component from './LanguageSwitcher';
 import { updateIntl } from 'react-intl-redux';
+import * as Cookies from 'es-cookie';
 
 export const mapStateToProps = function(state) {
   return {
@@ -11,6 +12,8 @@ export const mapStateToProps = function(state) {
 export const mapDispatchToProps = function(dispatch) {
   return {
     updateIntl: (data) => {
+      Cookies.set('lang', data.locale, { expires: 365 });
+      document.documentElement.setAttribute('lang', data.locale);
       dispatch(updateIntl(data));
     }
   };

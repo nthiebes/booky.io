@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import * as Cookies from 'es-cookie';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { addLocaleData } from 'react-intl';
@@ -11,17 +12,19 @@ import router from './router';
 import configureStore from './configureStore';
 import initialState from './initialState';
 
-let locale = navigator.language || navigator.userLanguage;
+const cookieLanguage = Cookies.get('lang');
+const locale = cookieLanguage || navigator.language || navigator.userLanguage;
+const language = (locale || 'en').slice(0, 2);
 
-locale = (locale || 'en').slice(0, 2);
-// locale = 'en';
+Cookies.set('lang', language, { expires: 365 });
+document.documentElement.setAttribute('lang', language);
 
-fetch(`/_assets/i18n/${locale}.json`)
+fetch(`/_assets/i18n/${language}.json`)
   .then((response) => response.json()).then((messages) => {
     const store = configureStore({
       ...initialState,
       intl: {
-        locale,
+        locale: language,
         messages
       }
     });
