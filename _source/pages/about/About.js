@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import Page from '../../templates/page';
 import { H1, H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-import Display from '../../atoms/display';
 import Section from '../../molecules/section';
 
 export default class About extends Component {
@@ -12,7 +11,6 @@ export default class About extends Component {
     return (
       <Page>
         <Section>
-          <Display>{ 'This is a short headline in english' }</Display>
           <H1>{ 'This is a short headline in english' }</H1>
           <H2>{ 'This is a short headline in english' }</H2>
           <H3>{ 'This is a short headline in english' }</H3>
