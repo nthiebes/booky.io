@@ -1,3 +1,3 @@
-import component from './Privacy';
+import container from './PrivacyContainer';
 
-export default component;
+export default container;

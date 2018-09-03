@@ -1,3 +1,3 @@
-import component from './Legal';
+import container from './LegalContainer';
 
-export default component;
+export default container;
