@@ -1,0 +1,34 @@
+.testimonial {
+  display: flex;
+  padding: 1rem calc(3vw + 6px);
+
+  @include desktop {
+    padding: 1rem 38px;
+  }
+}
+
+.testimonial__wrapper {
+  
+}
+
+.testimonial__image {
+  margin-right: 1rem;
+}
+
+.testimonial__link {
+  font-size: $font-size--small;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.testimonial__name {
+  color: black;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.testimonial__text {
+  width: 100%;
+  padding-bottom: 0;
+}

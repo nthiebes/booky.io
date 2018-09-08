@@ -1,5 +1,5 @@
 .footer {
-  font-size: 0.8571rem;
+  font-size: $font-size--small;
   text-align: center;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .footer__menu-item {
-  font-size: 0.8571rem;
+  font-size: $font-size--small;
   padding: 0 0.5rem;
   line-height: 1.5rem;
 }
@@ -99,7 +99,7 @@
 .footer__logo {
   color: $color__font--white;
   margin-top: 2rem;
-  font-size: 0.8571rem;
+  font-size: $font-size--small;
   align-self: center;
 
   &:focus {
@@ -118,7 +118,7 @@
 }
 
 .footer__copy-link {
-  font-size: 0.8571rem;
+  font-size: $font-size--small;
   color: $color__font--white;
   padding: 0 0.3rem;
 }

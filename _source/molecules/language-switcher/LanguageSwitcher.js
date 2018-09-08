@@ -6,7 +6,7 @@ import 'whatwg-fetch';
 import Icon from '../../atoms/icon';
 import Select from '../../atoms/select';
 
-class Footer extends Component {
+class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
 
@@ -48,10 +48,10 @@ class Footer extends Component {
   }
 }
 
-Footer.propTypes = {
+LanguageSwitcher.propTypes = {
   className: PropTypes.string,
   updateIntl: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired
 };
 
-export default Footer;
+export default LanguageSwitcher;

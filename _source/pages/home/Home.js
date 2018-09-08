@@ -10,6 +10,7 @@ import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
 import { ButtonLargeLight, ButtonLargeBlue } from '../../atoms/button';
 import Section from '../../molecules/section';
+import Testimonial from '../../molecules/testimonial';
 
 class Home extends Component {
   render() {
@@ -56,10 +57,31 @@ class Home extends Component {
             </a>
           </nav>
         </Section>
-        <Section className="home__testimonials">
-          <blockquote className="home__quote">{ 'booky is awesome' }</blockquote>
-          <blockquote className="home__quote">{ 'booky is awesome' }</blockquote>
-          <blockquote className="home__quote">{ 'booky is awesome' }</blockquote>
+        <Section color="light" className="home__testimonials">
+          <Testimonial
+            className="home__testimonial"
+            name="Siddharth Chaujar"
+            twitter="_gscheid"
+            url="https://twitter.com/_gscheid"
+            image="_assets/_gscheid.jpg"
+            text="My portal to the Web."
+          />
+          <Testimonial
+            className="home__testimonial"
+            name="Clausailgoa"
+            twitter="twittername"
+            url="https://twitter.com/_gscheid"
+            image="_assets/_gscheid.jpg"
+            text="Thank you for this incredible project."
+          />
+          <Testimonial
+            className="home__testimonial"
+            name="Aniket Mohite"
+            twitter="_gscheid"
+            url="https://twitter.com/_gscheid"
+            image="_assets/_gscheid.jpg"
+            text="This is so amazing, just what I needed."
+          />
         </Section>
         <Section>
           <H2 id="performant">
