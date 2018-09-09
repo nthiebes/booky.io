@@ -4,16 +4,13 @@
 }
 
 .search__input {
-  height: 2.4rem;
-  line-height: 2.4rem;
+  @include mobile {
+    height: 2.4rem;
+    line-height: 2.4rem;
+  }
 
   @include tablet {
     height: 3rem;
     line-height: 3rem;
-  }
-
-  @include desktop {
-    height: 100%;
-    line-height: 100%;
   }
 }

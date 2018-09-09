@@ -61,9 +61,13 @@
   }
 
   @include desktop {
+    &.input__field--no-validation:hover:valid,
+    &.input__field--no-validation:hover:focus:valid {
+      border-bottom-color: $color--blue;
+    }
+
     &:hover {
       background-color: #fff;
-      border-bottom-color: $color--blue;
     }
 
     &:hover:focus {
