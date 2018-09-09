@@ -5,7 +5,7 @@
   width: 100%;
   z-index: 1;
 
-  @include mobile {
+  @include mobile-tablet {
     &::after {
       background-color: rgba(0, 0, 0, 0.1);
       bottom: 0;
@@ -21,7 +21,7 @@
 }
 
 .header--overlay {
-  @include mobile {
+  @include mobile-tablet {
     &::after {
       opacity: 1;
       transition: opacity 0.3s linear;
@@ -99,4 +99,8 @@
   @include desktop {
     margin-right: 1rem;
   }
+}
+
+.header__add {
+  margin-left: calc(1rem - 6px);
 }

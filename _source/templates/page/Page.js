@@ -10,11 +10,11 @@ import Footer from '../../organisms/footer';
 
 export default class Page extends Component {
   render() {
-    const { children, search, className, dashboards, compact, fullWidth } = this.props;
+    const { children, className, dashboards, compact, fullWidth, home } = this.props;
 
     return (
       <Fragment>
-        <Header search={ search } dashboards={ dashboards } />
+        <Header dashboards={ dashboards } home={ home } />
         <Sidebar />
         <main className={ classNames('page', compact && 'page--compact', fullWidth && 'page--full-width', className && className) }>
           { children }
@@ -36,7 +36,6 @@ export default class Page extends Component {
 
 Page.propTypes = {
   toolbar: PropTypes.bool,
-  search: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
@@ -45,5 +44,6 @@ Page.propTypes = {
   className: PropTypes.string,
   dashboards: PropTypes.bool,
   compact: PropTypes.bool,
-  fullWidth: PropTypes.bool
+  fullWidth: PropTypes.bool,
+  home: PropTypes.bool
 };

@@ -16,12 +16,13 @@
   "footer.scroll": "Nach <b>oben</b>",
   "footer.copy": "Alle Rechte vorbehalten.",
   
-  "misc.search": "Lesezeichen suchen...",
+  "misc.search": "Suchen...",
   "misc.validEmail": "Muss eine valide E-Mail-Adresse sein.",
   "misc.validPassword": "Dein Passwort muss mindestens 6 Zeichen lang sein und zudem einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten.",
   
   "header.login": "Anmelden",
   "header.register": "Booky <b>beitreten</b>",
+  "header.logout": "Abmelden",
   "header.menu": "Menü",
   "header.more": "Mehr",
   "header.learnMore": "<b>Mehr</b> lernen",
@@ -81,6 +82,7 @@
 
   "login.headline": "Bei booky anmelden",
   "login.username": "Benutzername",
+  "login.usernameEmail": "Benutzername / E-Mail-Adresse",
   "login.password": "Passwort",
   "login.email": "E-Mail-Adresse",
   "login.forgot": "Passwort vergessen?",

@@ -39,42 +39,59 @@ class Header extends Component {
       loggedIn,
       color,
       openModal,
-      search,
       intl,
-      sidebarOpen
+      sidebarOpen,
+      home
     } = this.props;
 
     return (
       <header className={ classNames(`header header--color-${color}`, sidebarOpen && 'header--overlay') } onClick={ onHeaderClick }>
         <div className="header__wrapper">
-          { loggedIn && (
-            <Icon
-              className="booky--hide-desktop"
-              icon="menu"
-              color="light"
-            />
+          { loggedIn && home && (
+            <Fragment>
+              <Icon
+                className="booky--hide-desktop"
+                icon="add"
+                color="light"
+                onClick={ () => { openModal('AddBookmark', {
+                  source: 'header'
+                }); } }
+              />
+              <Search className="booky--hide-desktop" />
+            </Fragment>
           ) }
-          { loggedIn && search && <Search className="booky--hide-desktop" /> }
+          <Link
+            to="/"
+            title={ intl.formatMessage({ id: 'menu.home' }) }
+            className={ classNames('header__logo', loggedIn && home && 'booky--hide-mobile-tablet') }
+          >
+            <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
+          </Link>
+          <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (
-            <Icon
-              className="booky--hide-desktop"
-              icon="add"
-              color="light"
-              onClick={ () => { openModal('AddBookmark', {
-                source: 'header'
-              }); } }
-            />
+            <Fragment>
+              <Link to="/customize">
+                <Icon
+                  className="booky--hide-mobile-tablet"
+                  icon="settings"
+                  color="light"
+                />
+              </Link>
+              <Link to="/logout">
+                <Icon
+                  className="booky--hide-mobile-tablet"
+                  icon="logout"
+                  color="light"
+                />
+              </Link>
+              <ButtonSmallLight className="header__add booky--hide-mobile-tablet" solid>
+                <FormattedHTMLMessage id="Add" />
+              </ButtonSmallLight>
+            </Fragment>
           ) }
           { !loggedIn && (
             <Fragment>
-              <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="header__logo">
-                <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
-              </Link>
-              <Menu className="booky--hide-mobile" />
-              <ButtonSmallLight className="booky--hide-tablet-desktop" onClick={ this.onMenuClick }>
-                <FormattedHTMLMessage id="header.menu" />
-              </ButtonSmallLight>
-              <ButtonSmallLight className="booky--hide-mobile header__login" to="/login">
+              <ButtonSmallLight className="booky--hide-mobile-tablet header__login" to="/login">
                 <FormattedHTMLMessage id="header.login" />
               </ButtonSmallLight>
               <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join" icon="join" solid>
@@ -82,6 +99,9 @@ class Header extends Component {
               </ButtonSmallLight>
             </Fragment>
           ) }
+          <ButtonSmallLight className="booky--hide-desktop" onClick={ this.onMenuClick }>
+            <FormattedHTMLMessage id="header.menu" />
+          </ButtonSmallLight>
         </div>
       </header>
     );
@@ -96,11 +116,11 @@ Header.propTypes = {
   onMenuClick: PropTypes.func.isRequired,
   sticky: PropTypes.bool,
   openModal: PropTypes.func.isRequired,
-  search: PropTypes.bool,
   dashboards: PropTypes.bool,
   intl: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  sidebarOpen: PropTypes.bool
+  sidebarOpen: PropTypes.bool,
+  home: PropTypes.bool
 };
 
 Header.defaultProps = {

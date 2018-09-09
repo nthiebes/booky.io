@@ -25,7 +25,7 @@ class Sidebar extends Component {
     const { pathname } = location;
 
     return (
-      <aside className={ classNames('sidebar', open && 'sidebar--open', `sidebar--${direction}`) }>
+      <aside className={ classNames('sidebar', open && 'sidebar--open', `sidebar--${direction}`, 'booky--hide-desktop') }>
         <header className="sidebar__header">
           <Link
             to="/"

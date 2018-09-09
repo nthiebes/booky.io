@@ -47,6 +47,8 @@ class Login extends Component {
   handleSubmit(params) {
     console.log(params);
 
+    this.props.login();
+
     this.setState({
       disabled: true,
       pending: true
@@ -69,7 +71,7 @@ class Login extends Component {
               name="username"
               id="username"
               autoComplete="username"
-              label={ intl.formatMessage({ id: 'login.username' }) }
+              label={ intl.formatMessage({ id: 'login.usernameEmail' }) }
               onChange={ this.handleInputChange }
               maxLength="50"
               required
@@ -120,7 +122,8 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 export default injectIntl(Login);

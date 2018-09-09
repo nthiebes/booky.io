@@ -9,9 +9,9 @@ import Link from '../../atoms/link';
 
 class Menu extends Component {
   render() {
-    const { className, location } = this.props;
+    const { className, location, loggedIn } = this.props;
     const { pathname } = location;
-    const menuItems = [
+    const menuItemsLoggedOut = [
       {
         name: 'about',
         route: '/about'
@@ -21,6 +21,18 @@ class Menu extends Component {
         route: '/help'
       }
     ];
+    const menuItemsLoggedIn = [
+      ...menuItemsLoggedOut,
+      {
+        name: 'account',
+        route: '/account'
+      },
+      {
+        name: 'next',
+        route: '/next'
+      }
+    ];
+    const menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     return (
       <nav className={ classNames('menu', className && className) }>
@@ -45,5 +57,6 @@ export default injectIntl(withRouter(Menu));
 Menu.propTypes = {
   intl: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  loggedIn: PropTypes.bool
 };

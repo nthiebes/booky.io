@@ -17,12 +17,12 @@ class Home extends Component {
     const { loggedIn, intl } = this.props;
 
     return loggedIn ? (
-      <Page toolbar={ loggedIn } search dashboards>
+      <Page toolbar={ loggedIn } dashboards home>
         <Dashboards className="dashboards-sidebar" />
         <Categories dashboards />
       </Page>
     ) : (
-      <Page>
+      <Page home>
         <Section className="home__header">
           <Display>
             <FormattedMessage id="home.display" />

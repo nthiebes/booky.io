@@ -10,10 +10,6 @@
   width: 80%;
   overflow: hidden;
   z-index: 2;
-
-  @include tablet-desktop {
-    display: none;
-  }
 }
 
 .sidebar--left {

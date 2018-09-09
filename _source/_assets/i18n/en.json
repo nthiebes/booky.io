@@ -16,12 +16,13 @@
   "footer.scroll": "<b>Back</b> to <b>top</b>",
   "footer.copy": "All Rights Reserved.",
 
-  "misc.search": "Search bookmarks...",
+  "misc.search": "Search...",
   "misc.validEmail": "Must be a valid email address.",
   "misc.validPassword": "Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.",
 
   "header.login": "Sign <b>in</b>",
   "header.register": "<b>Join</b> booky",
+  "header.logout": "Sign <b>out</b>",
   "header.menu": "Menu",
   "header.more": "More",
   "header.learnMore": "Learn <b>more</b>",
@@ -81,6 +82,7 @@
 
   "login.headline": "Sign in to booky",
   "login.username": "Username",
+  "login.usernameEmail": "Username / Email address",
   "login.password": "Password",
   "login.email": "Email address",
   "login.forgot": "Password forgotten?",
