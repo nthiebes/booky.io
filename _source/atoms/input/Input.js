@@ -48,10 +48,16 @@ export default class Input extends Component {
       autoComplete,
       pattern,
       requirements,
-      disabled
+      disabled,
+      validation
     } = this.props;
     const inputProps = {
-      className: classNames('input__field', className && className, color && `input__field--color-${color}`),
+      className: classNames(
+        'input__field',
+        className && className,
+        color && `input__field--color-${color}`,
+        !validation && 'input__field--no-validation'
+      ),
       onBlur: this.onBlur,
       onFocus: this.onFocus,
       onChange: this.onChange,
@@ -73,8 +79,12 @@ export default class Input extends Component {
         { label && <Label htmlFor={ id }>{ label }</Label> }
         <div className={ classNames('input', className && className) }>
           <input ref="inputField" { ...inputProps } />
-          <Icon icon="check" color="green" className="input__icon input__icon--valid" />
-          <Icon icon="error" color="primary" className="input__icon input__icon--invalid" />
+          { validation && (
+            <Fragment>
+              <Icon icon="check" color="green" className="input__icon input__icon--valid" />
+              <Icon icon="error" color="primary" className="input__icon input__icon--invalid" />
+            </Fragment>
+          ) }
           { requirements && (
             <div className="input__requirements">
               { requirements }
@@ -104,12 +114,14 @@ Input.propTypes = {
   autoComplete: PropTypes.string,
   pattern: PropTypes.string,
   requirements: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  validation: PropTypes.bool
 };
 
 Input.defaultProps = {
   focus: false,
   type: 'text',
   color: '',
-  value: ''
+  value: '',
+  validation: true
 };

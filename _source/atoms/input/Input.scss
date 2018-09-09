@@ -29,9 +29,12 @@
     transform: none;
   }
 
+  &.input__field--no-validation:focus:valid {
+    border-bottom-color: $color--blue;
+  }
+
   &:focus {
     background-color: #fff;
-    border-bottom-color: $color__font--medium;
 
     &:valid {
       border-bottom-color: $color--green;

@@ -1,18 +1,11 @@
 .search {
-  align-items: center;
-  display: flex;
+  margin: 0 calc(1rem + 6px) 0 1rem;
   flex-grow: 1;
-  margin: 0 1rem;
-
-  @include desktop {
-    max-width: 200px;
-    height: 80%;
-  }
 }
 
 .search__input {
-  height: 2.429rem;
-  line-height: 2.429rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
 
   @include tablet {
     height: 3rem;
@@ -22,13 +15,5 @@
   @include desktop {
     height: 100%;
     line-height: 100%;
-  }
-}
-
-.search__input .input__field {
-  background-color: $color__background--white;
-
-  @include desktop {
-    background-color: #fafafa;
   }
 }

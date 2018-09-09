@@ -85,7 +85,7 @@ class Header extends Component {
                 />
               </Link>
               <ButtonSmallLight className="header__add booky--hide-mobile-tablet" solid>
-                <FormattedHTMLMessage id="Add" />
+                <FormattedHTMLMessage id="header.add" />
               </ButtonSmallLight>
             </Fragment>
           ) }
