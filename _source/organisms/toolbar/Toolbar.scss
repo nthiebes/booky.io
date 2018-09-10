@@ -15,15 +15,12 @@
     top: 4.4rem;
   }
 
-  @include hd {
-    padding: 0 38px;
-  }
-
   @include desktop {
     background-color: rgba($color__background--white, 0.95);
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     height: 62px;
     top: 6.2rem;
+    padding: 0 32px 0 38px;
   }
 
   &.toolbar--sticky {
@@ -50,12 +47,16 @@
 }
 
 .toolbar__headline {
-  margin: 0 1rem 0 6px !important;
-  padding: 0 !important;
+  margin: 0 1rem 0 6px;
+  padding: 0;
   flex-grow: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @include desktop {
+    margin: 0 1rem 0 0;
+  }
 }
 
 .toolbar__gradient {

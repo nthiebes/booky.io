@@ -1,6 +1,10 @@
 .search {
   margin: 0 calc(1rem + 6px) 0 1rem;
   flex-grow: 1;
+
+  @include desktop {
+    margin-left: 0;
+  }
 }
 
 .search__input {
@@ -12,5 +16,9 @@
   @include tablet {
     height: 3rem;
     line-height: 3rem;
+  }
+
+  @include desktop {
+    min-width: 200px;
   }
 }

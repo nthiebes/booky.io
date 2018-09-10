@@ -72,11 +72,11 @@ class Toolbar extends Component {
     const { dashboard, router, intl } = this.props;
 
     return (
-      <div className={ `toolbar ${this.getStickyClass()}` }>
+      <section className={ `toolbar ${this.getStickyClass()}` }>
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
         <Search className="booky--hide-mobile-tablet" />
         <Icon icon="tree" title={ intl.formatMessage({ id: 'structure.title' }) } onClick={ () => { router.push('/structure'); } } />
-      </div>
+      </section>
     );
     // <Icon
     //   icon="edit"
