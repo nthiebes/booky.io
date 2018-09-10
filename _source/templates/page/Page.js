@@ -6,7 +6,7 @@ import Header from '../../organisms/header';
 import Sidebar from '../../organisms/sidebar';
 import Footer from '../../organisms/footer';
 // import Modal from '../../organisms/modal';
-// import Toolbar from '../../organisms/toolbar';
+import Toolbar from '../../organisms/toolbar';
 
 export default class Page extends Component {
   render() {
@@ -15,7 +15,8 @@ export default class Page extends Component {
     return (
       <Fragment>
         <Header dashboards={ dashboards } home={ home } />
-        <Sidebar />
+        { toolbar && <Toolbar document={ document } window={ window } /> }
+        <Sidebar dashboards={ dashboards } />
         <main className={ classNames('page', compact && 'page--compact', fullWidth && 'page--full-width', className && className) }>
           { children }
         </main>

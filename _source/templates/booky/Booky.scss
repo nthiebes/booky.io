@@ -58,6 +58,10 @@ body {
   transition: none !important;
 }
 
+.booky--hide {
+  display: none;
+}
+
 .booky--hide-mobile {
   @include mobile {
     display: none;

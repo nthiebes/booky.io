@@ -30,15 +30,15 @@ class Dashboards extends Component {
     return (
       <aside className={ className }>
         <div className="dashboards__headline-wrapper">
-          <H3 className="menu__headline"><FormattedMessage id="dashboard.title" /></H3>
+          <H3 className="dashboards__headline"><FormattedMessage id="dashboard.title" /></H3>
           <Icon
-            className={ editMode ? '' : 'menu__edit-icon--hide' }
+            className={ !editMode && 'booky--hide' }
             icon="close"
             title={ intl.formatMessage({ id: 'dashboard.editModeQuit' }) }
             onClick={ this.toggleEditMode }
           />
           <Icon
-            className={ editMode ? 'menu__edit-icon--hide' : '' }
+            className={ editMode && 'booky--hide' }
             icon="more-horiz"
             title={ intl.formatMessage({ id: 'dashboard.editMode' }) }
             onClick={ this.toggleEditMode }
@@ -46,13 +46,13 @@ class Dashboards extends Component {
         </div>
         <ul className={ classNames('dashboards__list', editMode && 'dashboards__list--edit-mode') }>
           { dashboards.items.map((dashboard, index) => (
-            <div
+            <li
               key={ index }
               className={ classNames('dashboards__item', dashboard.id === dashboards.active && 'dashboards__item--active') }
               onClick={ () => { !editMode && changeDashboard(dashboard.id); } }>
               <label className="dashboards__label">{ dashboard.name }</label>
               <Icon
-                className="menu__icon"
+                className="dashboards__icon"
                 icon="edit"
                 title={ intl.formatMessage({ id: 'dashboard.edit' }) }
                 stopPropagation
@@ -62,7 +62,7 @@ class Dashboards extends Component {
                 }); } }
               />
               <Icon
-                className="menu__icon"
+                className="dashboards__icon"
                 icon="delete"
                 title={ intl.formatMessage({ id: 'dashboard.delete' }) }
                 stopPropagation
@@ -71,7 +71,7 @@ class Dashboards extends Component {
                   name: dashboard.name
                 }); } }
               />
-            </div>
+            </li>
           )) }
           <ButtonSmallMedium className="dashboards__button" onClick={ () => { openModal('AddDashboard'); } }>
             <FormattedHTMLMessage id="dashboard.add" />

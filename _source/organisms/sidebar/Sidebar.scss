@@ -9,7 +9,7 @@
   transition: transform 0.3s ease;
   width: 80%;
   overflow: hidden;
-  z-index: 2;
+  z-index: 4;
 }
 
 .sidebar--left {
@@ -45,7 +45,6 @@
 .sidebar__scroll-wrapper {
   position: absolute;
   top: 3rem;
-  margin-top: 1px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -60,9 +59,9 @@
 }
 
 .sidebar__headline {
-  padding: 0 calc(3vw + 6px) !important;
-  margin: 0 !important;
-  line-height: 36px !important;
+  padding: 1rem calc(3vw + 6px) 0;
+  margin: 0;
+  line-height: 36px;
 }
 
 .sidebar__logo {
@@ -94,7 +93,6 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 .sidebar__item {
