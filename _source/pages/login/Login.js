@@ -24,7 +24,6 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
-      disabled: false,
       pending: false,
       showPassword: false
     };
@@ -33,7 +32,6 @@ class Login extends Component {
   handleInputChange(value, name) {
     this.setState({
       [name]: value,
-      disabled: false,
       pending: false
     });
   }
@@ -50,14 +48,13 @@ class Login extends Component {
     this.props.login();
 
     this.setState({
-      disabled: true,
       pending: true
     });
   }
 
   render() {
     const { intl } = this.props;
-    const { username, password, pending, disabled, showPassword } = this.state;
+    const { username, password, pending, showPassword } = this.state;
 
     return (
       <Page>
@@ -75,7 +72,7 @@ class Login extends Component {
               onChange={ this.handleInputChange }
               maxLength="50"
               required
-              disabled={ disabled }
+              disabled={ pending }
             />
             <Input
               value={ password }
@@ -87,7 +84,7 @@ class Login extends Component {
               maxLength="225"
               required
               type={ showPassword ? 'text' : 'password' }
-              disabled={ disabled }
+              disabled={ pending }
             />
             <Checkbox
               label="Show password"
@@ -99,7 +96,7 @@ class Login extends Component {
               icon={ pending ? 'spinner' : 'join' }
               type="submit"
               pending={ pending }
-              disabled={ disabled }
+              disabled={ pending }
               contentBefore
             >
               <FormattedHTMLMessage id="header.login" />

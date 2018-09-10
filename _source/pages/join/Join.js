@@ -25,7 +25,6 @@ class Join extends Component {
       username: '',
       email: '',
       password: '',
-      disabled: false,
       pending: false,
       showPassword: false
     };
@@ -34,7 +33,6 @@ class Join extends Component {
   handleInputChange(value, name) {
     this.setState({
       [name]: value,
-      disabled: false,
       pending: false
     });
   }
@@ -49,14 +47,13 @@ class Join extends Component {
     console.log(params);
 
     this.setState({
-      disabled: true,
       pending: true
     });
   }
 
   render() {
     const { intl } = this.props;
-    const { username, email, password, pending, disabled, showPassword } = this.state;
+    const { username, email, password, pending, showPassword } = this.state;
 
     return (
       <Page>
@@ -74,6 +71,7 @@ class Join extends Component {
               onChange={ this.handleInputChange }
               maxLength="50"
               required
+              disabled={ pending }
             />
             <Input
               value={ email }
@@ -86,6 +84,7 @@ class Join extends Component {
               required
               type="email"
               requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
+              disabled={ pending }
             />
             <Input
               value={ password }
@@ -99,6 +98,7 @@ class Join extends Component {
               type={ showPassword ? 'text' : 'password' }
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
               requirements={ intl.formatMessage({ id: 'misc.validPassword' }) }
+              disabled={ pending }
             />
             <Checkbox
               label="Show password"
@@ -110,7 +110,7 @@ class Join extends Component {
               icon={ pending ? 'spinner' : 'join' }
               type="submit"
               pending={ pending }
-              disabled={ disabled }
+              disabled={ pending }
               contentBefore
             >
               <FormattedHTMLMessage id="join.joinNow" />
