@@ -35,14 +35,14 @@
   "button.confirm": "Bestätigen",
 
   "dashboard.title": "Sammlungen",
-  "dashboard.add": "Neue <b>Sammlung</b>",
+  "dashboard.add": "<b>Sammlung</b>",
   "dashboard.editMode": "Editiermodus",
   "dashboard.editModeQuit": "Editiermodus beenden",
   "dashboard.edit": "Sammlung bearbeiten",
   "dashboard.delete": "Sammlung löschen",
   "dashboard.drag": "Sammlung verschieben",
 
-  "category.new": "Neue <b>Kategorie</b>",
+  "category.add": "<b>Kategorie</b>",
   "category.reduce": "Kategorie reduzieren",
   "category.expand": "Kategorie erweitern",
   "category.delete": "Kategorie löschen",
@@ -51,7 +51,7 @@
   "category.editModeQuit": "Editiermodus beenden",
   "category.drag": "Kategorie verschieben",
 
-  "bookmark.add": "Neues <b>Lesezeichen</b>",
+  "bookmark.add": "<b>Lesezeichen</b>",
   "bookmark.edit": "Lesezeichen bearbeiten",
   "bookmark.delete": "Lesezeichen löschen",
   "bookmark.drag": "Lesezeichen verschieben",

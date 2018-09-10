@@ -35,14 +35,14 @@
   "button.confirm": "Confirm",
 
   "dashboard.title": "Collections",
-  "dashboard.add": "Add <b>collection</b>",
+  "dashboard.add": "<b>Collection</b>",
   "dashboard.editMode": "Edit mode",
   "dashboard.editModeQuit": "Quit edit mode",
   "dashboard.edit": "Edit collection",
   "dashboard.delete": "Delete collection",
   "dashboard.drag": "Drag collection",
 
-  "category.new": "Add <b>category</b>",
+  "category.add": "<b>Category</b>",
   "category.reduce": "Collapse category",
   "category.expand": "Expand category",
   "category.delete": "Delete category",
@@ -51,7 +51,7 @@
   "category.editModeQuit": "Quit edit mode",
   "category.drag": "Drag category",
 
-  "bookmark.add": "Add <b>bookmark</b>",
+  "bookmark.add": "<b>Bookmark</b>",
   "bookmark.edit": "Edit bookmark",
   "bookmark.delete": "Delete bookmark",
   "bookmark.drag": "Drag bookmark",

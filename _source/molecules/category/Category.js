@@ -7,7 +7,7 @@ import { FormattedHTMLMessage, injectIntl } from 'react-intl';
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
 import { H2 } from '../../atoms/headline';
-import { ButtonSmallMedium } from '../../atoms/button';
+import { ButtonSmallPrimary } from '../../atoms/button';
 
 class Category extends Component {
   constructor(props) {
@@ -104,13 +104,17 @@ class Category extends Component {
             ) }
           </Droppable>
         </ul>
-        { editMode && <ButtonSmallMedium
-          className="category__button"
-          onClick={ () => { openModal('AddBookmark', {
-            categoryId: id
-          }); } }>
-          <FormattedHTMLMessage id="bookmark.add" />
-        </ButtonSmallMedium> }
+        { open && (
+          <ButtonSmallPrimary
+            icon="add"
+            className="category__button"
+            onClick={ () => { openModal('AddBookmark', {
+              categoryId: id
+            }); } }
+          >
+            <FormattedHTMLMessage id="bookmark.add" />
+          </ButtonSmallPrimary>
+        ) }
       </section>
     );
   }

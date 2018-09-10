@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { FormattedHTMLMessage } from 'react-intl';
 
 import Category from '../../molecules/category';
-import { ButtonSmallMedium } from '../../atoms/button';
+import { ButtonSmallPrimary } from '../../atoms/button';
 
 export default class Categories extends Component {
   render() {
@@ -12,19 +12,25 @@ export default class Categories extends Component {
 
     return (
       <div className={ classNames('categories', dashboards && 'categories--dashboards') }>
-        <ButtonSmallMedium
+        <ButtonSmallPrimary
+          icon="add"
           className="categories__button"
-          onClick={ () => { openModal('AddCategory'); } }>
-          <FormattedHTMLMessage id="category.new" />
-        </ButtonSmallMedium>
+          onClick={ () => { openModal('AddCategory'); } }
+        >
+          <FormattedHTMLMessage id="category.add" />
+        </ButtonSmallPrimary>
         {categories.map((category) =>
           <Category key={ category.id } { ...category } />
         )}
-        { categories.length && <ButtonSmallMedium
-          className="categories__button"
-          onClick={ () => { openModal('AddCategory'); } }>
-          <FormattedHTMLMessage id="category.new" />
-        </ButtonSmallMedium> }
+        { categories.length && (
+          <ButtonSmallPrimary
+            icon="add"
+            className="categories__button categories__button--bottom"
+            onClick={ () => { openModal('AddCategory'); } }
+          >
+            <FormattedHTMLMessage id="category.add" />
+          </ButtonSmallPrimary>
+        ) }
       </div>
     );
   }

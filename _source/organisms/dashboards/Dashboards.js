@@ -73,7 +73,7 @@ class Dashboards extends Component {
               />
             </li>
           )) }
-          <ButtonSmallPrimary className="dashboards__button" onClick={ () => { openModal('AddDashboard'); } }>
+          <ButtonSmallPrimary icon="add" className="dashboards__button" onClick={ () => { openModal('AddDashboard'); } }>
             <FormattedHTMLMessage id="dashboard.add" />
           </ButtonSmallPrimary>
         </ul>
