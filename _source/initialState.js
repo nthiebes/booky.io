@@ -1,6 +1,6 @@
 export default {
-  'booky': {
-    'loggedIn': false
+  booky: {
+    loggedIn: true
   },
   'dashboards': {
     'items': [{
