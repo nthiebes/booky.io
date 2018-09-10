@@ -2,7 +2,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0 3%;
+  padding: 0 calc(3% + 6px);
   position: absolute;
   top: 3rem;
   width: 100%;
@@ -20,7 +20,10 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     height: 62px;
     top: 6.2rem;
-    padding: 0 32px 0 38px;
+  }
+
+  @include hd {
+    padding: 0 38px;
   }
 
   &.toolbar--sticky {
@@ -47,16 +50,12 @@
 }
 
 .toolbar__headline {
-  margin: 0 1rem 0 6px;
+  margin: 0 1rem 0 0;
   padding: 0;
   flex-grow: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
-  @include desktop {
-    margin: 0 1rem 0 0;
-  }
 }
 
 .toolbar__gradient {

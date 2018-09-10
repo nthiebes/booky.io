@@ -1,6 +1,10 @@
 .footer {
   font-size: $font-size--small;
   text-align: center;
+
+  @include desktop {
+    margin-left: 300px;
+  }
 }
 
 .footer__stats {

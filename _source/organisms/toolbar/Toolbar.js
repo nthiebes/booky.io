@@ -74,8 +74,12 @@ class Toolbar extends Component {
     return (
       <section className={ `toolbar ${this.getStickyClass()}` }>
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
+        <Icon
+          icon="tree"
+          title={ intl.formatMessage({ id: 'structure.title' }) }
+          onClick={ () => { router.push('/structure'); } }
+        />
         <Search className="booky--hide-mobile-tablet" />
-        <Icon icon="tree" title={ intl.formatMessage({ id: 'structure.title' }) } onClick={ () => { router.push('/structure'); } } />
       </section>
     );
     // <Icon

@@ -93,6 +93,5 @@ Dashboards.propTypes = {
 };
 
 Dashboards.defaultProps = {
-  dashboards: [],
-  className: ''
+  dashboards: []
 };

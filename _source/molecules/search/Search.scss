@@ -3,7 +3,8 @@
   flex-grow: 1;
 
   @include desktop {
-    margin-left: 0;
+    flex-grow: 0;
+    margin: 0 0 0 1rem;
   }
 }
 
@@ -19,6 +20,6 @@
   }
 
   @include desktop {
-    min-width: 200px;
+    width: 250px;
   }
 }

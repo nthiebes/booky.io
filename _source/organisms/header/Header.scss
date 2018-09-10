@@ -82,8 +82,11 @@
 
   @include desktop {
     height: 6.2rem;
-    padding: 0 38px;
     margin: 0 auto;
+  }
+
+  @include hd {
+    padding: 0 38px;
   }
 }
 
