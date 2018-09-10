@@ -84,7 +84,13 @@ class Header extends Component {
                   color="light"
                 />
               </Link>
-              <ButtonSmallLight className="header__add booky--hide-mobile-tablet" solid>
+              <ButtonSmallLight
+                className="header__add booky--hide-mobile-tablet"
+                onClick={ () => { openModal('AddBookmark', {
+                  source: 'header'
+                }); } }
+                solid
+              >
                 <FormattedHTMLMessage id="header.add" />
               </ButtonSmallLight>
             </Fragment>

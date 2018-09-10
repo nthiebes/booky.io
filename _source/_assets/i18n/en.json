@@ -75,6 +75,8 @@
   "modal.deleteCategoryLabel": "This category will be deleted:",
   "modal.deleteCategoryFuture": "What should happen to the bookmarks?",
   "modal.deleteBookmarkLabel": "This bookmark will be deleted:",
+  "modal.deleteAll": "Delete all",
+  "modal.moveTo": "Move to",
 
   "footer.people": "Booky members.",
   "footer.bookmarks": "Bookmarks saved.",

@@ -82,14 +82,7 @@ class Toolbar extends Component {
         <Search className="booky--hide-mobile-tablet" />
       </section>
     );
-    // <Icon
-    //   icon="edit"
-    //   title="Edit dashboard"
-    //   onClick={ () => { openModal('EditDashboard', {
-    //     id: dashboard.id,
-    //     name: dashboard.name
-    //   }); } }
-    // />
+
     // <div className="toolbar__gradient" />
     // <TabBar tabs={ dashboards } />
   }

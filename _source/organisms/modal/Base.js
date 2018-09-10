@@ -6,13 +6,29 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Icon from '../../atoms/icon';
 import { ButtonLargePrimary, ButtonLargeLight } from '../../atoms/button';
 import { H3 } from '../../atoms/headline';
+import Form from '../../molecules/form';
 
 class Modal extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+  }
+
+  onCancel() {
+    this.props.onClose();
+  }
+
+  onSubmit(data) {
+    this.props.onSave(data);
+  }
+
   render() {
-    const { children, onClose, headline, noPadding, noCancel, onSave, valid, intl } = this.props;
+    const { children, onClose, headline, noPadding, noCancel, intl, pending } = this.props;
 
     return (
-      <div className="modal__inner" onClick={ (e) => { e.stopPropagation(); } }>
+      <Form className="modal__inner" onSubmit={ this.onSubmit } onClick={ (e) => { e.stopPropagation(); } }>
         <header className="modal__header">
           { headline && <H3 className="modal__headline">{ headline }</H3> }
           <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } />
@@ -22,15 +38,15 @@ class Modal extends Component {
         </div>
         <footer className="modal__footer">
           { !noCancel && (
-            <ButtonLargeLight className="modal__button modal__button--cancel" icon="close" onClick={ onClose }>
+            <ButtonLargeLight className="modal__button modal__button--cancel" icon="close" onClick={ this.onCancel } type="button">
               <FormattedMessage id="button.cancel" />
             </ButtonLargeLight>
           ) }
-          <ButtonLargePrimary disabled={ !valid } className="modal__button" icon="save" onClick={ onSave }>
+          <ButtonLargePrimary pending={ pending } disabled={ pending } className="modal__button" icon="save" type="submit">
             <FormattedMessage id="button.confirm" />
           </ButtonLargePrimary>
         </footer>
-      </div>
+      </Form>
     );
   }
 }
@@ -48,8 +64,8 @@ Modal.propTypes = {
   headline: PropTypes.string,
   noPadding: PropTypes.bool,
   noCancel: PropTypes.bool,
-  valid: PropTypes.bool,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  pending: PropTypes.bool.isRequired
 };
 
 Modal.defaultProps = {

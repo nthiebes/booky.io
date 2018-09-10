@@ -8,6 +8,7 @@ export const mapStateToProps = function(state) {
   return {
     modal: state.modal.modal,
     open: state.modal.open,
+    pending: state.modal.pending,
     data: {
       ...state.modal.data,
       categories: state.categories.filter(({id}) => id !== state.modal.data.id),

@@ -29,10 +29,10 @@ export default class Form extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, className, onClick } = this.props;
 
     return (
-      <form ref={ (form) => { this.form = form; } } onSubmit={ this.handleSubmit }>
+      <form ref={ (form) => { this.form = form; } } onSubmit={ this.handleSubmit } className={ className } onClick={ onClick }>
         { children }
       </form>
     );
@@ -44,5 +44,7 @@ Form.propTypes = {
     PropTypes.array,
     PropTypes.element
   ]).isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onClick: PropTypes.func,
+  className: PropTypes.string
 };

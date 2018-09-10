@@ -24,7 +24,7 @@ export default class Icon extends Component {
     const link = '_assets/symbol-defs.svg#icon-' + icon;
 
     return (
-      <div
+      <span
         className={ classNames('icon', `icon--${color}`, icon === 'spinner' && 'icon--spinner', className && className) }
         title={ title }
         onClick={ this.onClick }
@@ -35,7 +35,7 @@ export default class Icon extends Component {
           <use xlinkHref={ link } />
         </svg>
         { label && <label className="icon__label">{ label }</label> }
-      </div>
+      </span>
     );
   }
 }

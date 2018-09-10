@@ -77,7 +77,7 @@ export default class Input extends Component {
     return (
       <Fragment>
         { label && <Label htmlFor={ id }>{ label }</Label> }
-        <div className={ classNames('input', className && className) }>
+        <span className={ classNames('input', className && className) }>
           <input ref="inputField" { ...inputProps } />
           { validation && (
             <Fragment>
@@ -90,7 +90,7 @@ export default class Input extends Component {
               { requirements }
             </div>
           ) }
-        </div>
+        </span>
       </Fragment>
     );
   }

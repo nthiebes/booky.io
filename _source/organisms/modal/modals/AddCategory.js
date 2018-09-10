@@ -15,23 +15,20 @@ class AddCategory extends Component {
     this.onColorChange = this.onColorChange.bind(this);
     this.state = {
       name: '',
-      color: 0,
-      valid: false
+      color: 0
     };
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      name: '',
-      color: 0,
-      valid: false
-    });
-  }
+  // componentWillReceiveProps() {
+  //   this.setState({
+  //     name: '',
+  //     color: 0
+  //   });
+  // }
 
   onNameChange(value) {
     this.setState({
-      name: value,
-      valid: Boolean(value)
+      name: value
     });
   }
 
@@ -42,19 +39,21 @@ class AddCategory extends Component {
   }
 
   render() {
-    const { onClose, onSave, intl } = this.props;
-    const { name, color, valid } = this.state;
+    const { onClose, onSave, intl, pending } = this.props;
+    const { name, color } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline={ intl.formatMessage({ id: 'modal.addCategory' }) }>
+      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addCategory' }) }>
         <Input
           id="category-name"
+          name="name"
           color="primary"
           value={ name }
           onChange={ this.onNameChange }
           required
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
+          disabled={ pending }
         />
         <Label><FormattedMessage id="modal.color" /></Label>
         <ColorPicker value={ color } onChange={ this.onColorChange } />
@@ -68,5 +67,6 @@ export default injectIntl(AddCategory);
 AddCategory.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  pending: PropTypes.bool
 };

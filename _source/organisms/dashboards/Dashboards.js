@@ -5,7 +5,7 @@ import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
-import { ButtonSmallMedium } from '../../atoms/button';
+import { ButtonSmallPrimary } from '../../atoms/button';
 
 class Dashboards extends Component {
   constructor(props) {
@@ -32,13 +32,13 @@ class Dashboards extends Component {
         <div className="dashboards__headline-wrapper">
           <H3 className="dashboards__headline"><FormattedMessage id="dashboard.title" /></H3>
           <Icon
-            className={ !editMode && 'booky--hide' }
+            className={ classNames(!editMode && 'booky--hide') }
             icon="close"
             title={ intl.formatMessage({ id: 'dashboard.editModeQuit' }) }
             onClick={ this.toggleEditMode }
           />
           <Icon
-            className={ editMode && 'booky--hide' }
+            className={ classNames(editMode && 'booky--hide') }
             icon="more-horiz"
             title={ intl.formatMessage({ id: 'dashboard.editMode' }) }
             onClick={ this.toggleEditMode }
@@ -73,9 +73,9 @@ class Dashboards extends Component {
               />
             </li>
           )) }
-          <ButtonSmallMedium className="dashboards__button" onClick={ () => { openModal('AddDashboard'); } }>
+          <ButtonSmallPrimary className="dashboards__button" onClick={ () => { openModal('AddDashboard'); } }>
             <FormattedHTMLMessage id="dashboard.add" />
-          </ButtonSmallMedium>
+          </ButtonSmallPrimary>
         </ul>
       </aside>
     );

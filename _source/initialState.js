@@ -227,8 +227,9 @@ export default {
     'dashboard': 1
   },
   modal: {
-    modal: 'AddBookmark',
+    modal: null,
     open: false,
-    data: {}
+    data: {},
+    pending: false
   }
 };

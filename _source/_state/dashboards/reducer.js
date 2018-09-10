@@ -30,7 +30,7 @@ const dashboards = (state = {}, action) => {
       return {
         ...state,
         items: state.items.map((dashboard) => {
-          if (dashboard.id !== id) {
+          if (dashboard.id !== parseInt(id, 10)) {
             return dashboard;
           }
           

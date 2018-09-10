@@ -1,4 +1,5 @@
 .input {
+  display: block;
   flex-grow: 1;
   position: relative;
   overflow: hidden;
@@ -67,12 +68,11 @@
     }
 
     &:hover {
+      border-bottom-color: $color--blue;
       background-color: #fff;
     }
 
     &:hover:focus {
-      border-bottom-color: $color__font--medium;
-
       &:valid {
         border-bottom-color: $color--green;
       }

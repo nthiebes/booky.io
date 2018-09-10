@@ -13,7 +13,7 @@
   transition: width 0s 0.2s linear;
 
   &:before {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
     bottom: 0;
     content: " ";
     left: 0;
@@ -73,8 +73,8 @@
 .modal__headline {
   text-align: center;
   flex-grow: 1;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
 }
 
 .modal__content {
@@ -82,37 +82,32 @@
   width: 100%;
 
   &.modal__content--padding {
-    padding: 0 6px;
-
-    @include desktop() {
-      padding: 0 12px;
-    }
+    padding: 0 1rem;
   }
 }
 
 .modal__footer {
   margin-top: 1rem;
   width: 100%;
-  padding: 6px;
+  padding: 1rem;
   border-top: 2px solid rgba(0, 0, 0, 0.1);
 
-  @include desktop() {
+  @include tablet-desktop() {
     display: flex;
     justify-content: space-between;
-    padding: 12px;
   }
 }
 
 .modal__button {
-  @include desktop() {
+  @include tablet-desktop() {
     margin-left: 0.5rem;
   }
 }
 
 .modal__button--cancel {
-  margin-bottom: 6px;
+  margin-bottom: 1rem;
 
-  @include desktop() {
+  @include tablet-desktop() {
     margin-bottom: 0;
     margin-right: 0.5rem;
     margin-left: 0;

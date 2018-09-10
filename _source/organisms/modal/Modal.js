@@ -66,29 +66,23 @@ export default class Modal extends Component {
   }
 
   render() {
-    const { modal, open, closeModal, data } = this.props;
-    const CustomTag = this.modalMap[modal].modal;
-    const body = document.getElementsByTagName('body')[0];
-
-    if (open) {  
-      body.classList.add('booky--no-scrolling');
-    } else {
-      body.classList.remove('booky--no-scrolling');
-    }
+    const { modal, open, closeModal, data, pending } = this.props;
+    const CustomTag = this.modalMap[modal] && this.modalMap[modal].modal;
 
     return (
       <div className={ classNames(['modal', open && 'modal--open']) } onClick={ closeModal }>
-        <CustomTag onClose={ closeModal } onSave={ this.saveModal } data={ data } />
+        { CustomTag && <CustomTag onClose={ closeModal } onSave={ this.saveModal } data={ data } pending={ pending } /> }
       </div>
     );
   }
 }
 
 Modal.propTypes = {
-  modal: PropTypes.string.isRequired,
+  modal: PropTypes.string,
   open: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   data: PropTypes.object,
+  pending: PropTypes.bool,
   addBookmark: PropTypes.func.isRequired,
   editBookmark: PropTypes.func.isRequired,
   deleteBookmark: PropTypes.func.isRequired,

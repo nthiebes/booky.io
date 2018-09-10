@@ -16,7 +16,7 @@ const categories = (state = [], action) => {
       const { categoryId, url, name } = action.payload;
 
       return state.map((category) => {
-        if (category.id !== categoryId) {
+        if (category.id !== parseInt(categoryId, 10)) {
           return category;
         }
         
@@ -39,14 +39,14 @@ const categories = (state = [], action) => {
       const { id, url, name, categoryId } = action.payload;
 
       return state.map((category) => {
-        if (category.id !== categoryId) {
+        if (category.id !== parseInt(categoryId, 10)) {
           return category;
         }
         
         return {
           ...category,
           bookmarks: category.bookmarks.map((bookmark) => {
-            if (bookmark.id !== id) {
+            if (bookmark.id !== parseInt(id, 10)) {
               return bookmark;
             }
             

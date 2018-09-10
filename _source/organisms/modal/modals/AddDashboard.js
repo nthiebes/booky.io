@@ -11,39 +11,38 @@ class AddDashboard extends Component {
 
     this.onNameChange = this.onNameChange.bind(this);
     this.state = {
-      name: '',
-      valid: false
+      name: ''
     };
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      name: '',
-      valid: false
-    });
-  }
+  // componentWillReceiveProps() {
+  //   this.setState({
+  //     name: ''
+  //   });
+  // }
 
   onNameChange(value) {
     this.setState({
-      name: value,
-      valid: Boolean(value)
+      name: value
     });
   }
 
   render() {
-    const { onClose, onSave, intl } = this.props;
-    const { name, valid } = this.state;
+    const { onClose, onSave, pending, intl } = this.props;
+    const { name } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline={ intl.formatMessage({ id: 'modal.addDashboard' }) }>
+      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addDashboard' }) }>
         <Input
           id="dashboard-name"
+          name="name"
           color="primary"
           value={ name }
           onChange={ this.onNameChange }
           required
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
+          disabled={ pending }
         />
       </Base>
     );
@@ -55,5 +54,6 @@ export default injectIntl(AddDashboard);
 AddDashboard.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  pending: PropTypes.bool
 };

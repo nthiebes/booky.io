@@ -75,6 +75,8 @@
   "modal.deleteCategoryLabel": "Diese Kategorie wird gelöscht:",
   "modal.deleteCategoryFuture": "Was soll mit den Lesezeichen geschehen?",
   "modal.deleteBookmarkLabel": "Dieses Lesezeichen wird gelöscht:",
+  "modal.deleteAll": "Alle löschen",
+  "modal.moveTo": "Verschieben nach",
 
   "footer.people": "Booky Mitglieder.",
   "footer.bookmarks": "Gespeicherte Lesezeichen.",
