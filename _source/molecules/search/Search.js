@@ -32,6 +32,7 @@ class Search extends Component {
           value={ value }
           onChange={ this.onChange }
           validation={ false }
+          icon="search"
         />
       </div>
     );

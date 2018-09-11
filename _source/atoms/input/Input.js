@@ -43,14 +43,16 @@ export default class Input extends Component {
       requirements,
       disabled,
       validation,
-      autoFocus
+      autoFocus,
+      icon
     } = this.props;
     const inputProps = {
       className: classNames(
         'input__field',
         className && className,
         color && `input__field--color-${color}`,
-        !validation && 'input__field--no-validation'
+        !validation && 'input__field--no-validation',
+        icon && 'input__field--icon'
       ),
       onBlur: this.onBlur,
       onFocus: this.onFocus,
@@ -80,6 +82,7 @@ export default class Input extends Component {
               <Icon icon="error" color="primary" className="input__icon input__icon--invalid" />
             </Fragment>
           ) }
+          { icon && <Icon icon={ icon } className="input__icon input__icon--visible" /> }
           { requirements && (
             <div className="input__requirements">
               { requirements }
@@ -110,7 +113,8 @@ Input.propTypes = {
   pattern: PropTypes.string,
   requirements: PropTypes.string,
   disabled: PropTypes.bool,
-  validation: PropTypes.bool
+  validation: PropTypes.bool,
+  icon: PropTypes.string
 };
 
 Input.defaultProps = {

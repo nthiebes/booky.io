@@ -17,12 +17,16 @@
   font-size: 1rem;
   height: 3rem;
   line-height: 3rem;
-  padding: 0 9px;
+  padding: 0 10px;
   transition: background-color 0.3s, border-color 0.3s linear, box-shadow 0.3s linear;
   width: 100%;
 
   &:disabled {
     pointer-events: none;
+  }
+
+  &:valid {
+    padding: 0 36px 0 10px;
   }
 
   &:valid ~.input__icon--valid {
@@ -35,6 +39,7 @@
   }
 
   &:focus {
+    padding: 0 36px 0 10px;
     background-color: #fff;
 
     &:valid {
@@ -84,6 +89,10 @@
   }
 }
 
+.input__field--icon {
+  padding: 0 36px 0 10px;
+}
+
 .input__icon {
   position: absolute;
   right: 0;
@@ -93,6 +102,11 @@
   transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s ease;
   opacity: 0;
   color: $color__font--medium;
+}
+
+.input__icon--visible {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .input__requirements {
