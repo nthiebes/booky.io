@@ -1,3 +1,3 @@
-import component from './Page';
+import container from './PageContainer';
 
-export default component;
+export default container;

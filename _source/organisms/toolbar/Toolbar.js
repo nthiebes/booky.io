@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import scrolling from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
@@ -69,10 +70,10 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, router, intl } = this.props;
+    const { dashboard, router, intl, className } = this.props;
 
     return (
-      <section className={ `toolbar ${this.getStickyClass()}` }>
+      <section className={ classNames('toolbar', this.getStickyClass(), className && className) }>
         <Icon
           icon="tree"
           title={ intl.formatMessage({ id: 'structure.title' }) }
@@ -99,7 +100,8 @@ Toolbar.propTypes = {
   dashboard: PropTypes.object,
   openModal: PropTypes.func.isRequired,
   router: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  className: PropTypes.string
 };
 
 Toolbar.defaultProps = {

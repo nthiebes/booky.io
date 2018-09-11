@@ -21,11 +21,11 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { loggedIn, open, closeMenu, dashboards, intl, direction, location } = this.props;
+    const { loggedIn, open, closeMenu, dashboards, intl, direction, location, className } = this.props;
     const { pathname } = location;
 
     return (
-      <aside className={ classNames('sidebar', open && 'sidebar--open', `sidebar--${direction}`, 'booky--hide-desktop') }>
+      <aside className={ classNames('sidebar', open && 'sidebar--open', `sidebar--${direction}`, 'booky--hide-desktop', className && className) }>
         <header className="sidebar__header">
           <Link
             to="/"
@@ -131,7 +131,8 @@ Sidebar.propTypes = {
   dashboards: PropTypes.bool,
   intl: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  direction: PropTypes.string
+  direction: PropTypes.string,
+  className: PropTypes.string
 };
 
 Sidebar.defaultProps = {

@@ -41,11 +41,12 @@ class Header extends Component {
       openModal,
       intl,
       sidebarOpen,
-      home
+      home,
+      className
     } = this.props;
 
     return (
-      <header className={ classNames(`header header--color-${color}`, sidebarOpen && 'header--overlay') } onClick={ onHeaderClick }>
+      <header className={ classNames(`header header--color-${color}`, sidebarOpen && 'header--overlay', className && className) } onClick={ onHeaderClick }>
         <div className="header__wrapper">
           { loggedIn && home && (
             <Fragment>
@@ -126,7 +127,8 @@ Header.propTypes = {
   intl: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   sidebarOpen: PropTypes.bool,
-  home: PropTypes.bool
+  home: PropTypes.bool,
+  className: PropTypes.string
 };
 
 Header.defaultProps = {

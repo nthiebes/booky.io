@@ -13,10 +13,10 @@ import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends Component {
   render() {
-    const { intl, dashboardsOpen, hasSidebar } = this.props;
+    const { intl, dashboardsOpen, hasSidebar, className } = this.props;
 
     return (
-      <footer className={ classNames('footer', hasSidebar && 'footer--sidebar', hasSidebar && dashboardsOpen && 'footer--shifted') }>
+      <footer className={ classNames('footer', hasSidebar && 'footer--sidebar', hasSidebar && dashboardsOpen && 'footer--shifted', className && className) }>
         <section>
           <ul className="footer__stats">
             <li className="footer__stats-item">
@@ -91,7 +91,8 @@ class Footer extends Component {
 Footer.propTypes = {
   intl: PropTypes.object.isRequired,
   dashboardsOpen: PropTypes.bool,
-  hasSidebar: PropTypes.bool
+  hasSidebar: PropTypes.bool,
+  className: PropTypes.string
 };
 
 export default injectIntl(Footer);

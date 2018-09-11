@@ -16,3 +16,7 @@
     width: 480px;
   }
 }
+
+.page--blur {
+  filter: blur(3px) grayscale(100%);
+}
