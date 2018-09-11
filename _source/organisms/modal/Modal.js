@@ -57,17 +57,24 @@ export default class Modal extends Component {
   }
 
   saveModal(modalData) {
-    const { modal, data } = this.props;
+    const { modal, data, closeModal } = this.props;
 
     this.modalMap[modal].action({
       ...modalData,
       dashboard: data.activeDashboard
     });
+    closeModal();
   }
 
   render() {
-    const { modal, open, closeModal, data, pending } = this.props;
-    const CustomTag = this.modalMap[modal] && this.modalMap[modal].modal;
+    const { modal, open, data, pending, closeModal } = this.props;
+    let CustomTag;
+
+    if (open) {
+      CustomTag = this.modalMap[modal] && this.modalMap[modal].modal;
+    } else {
+      CustomTag = null;
+    }
 
     return (
       <div className={ classNames(['modal', open && 'modal--open']) } onClick={ closeModal }>
