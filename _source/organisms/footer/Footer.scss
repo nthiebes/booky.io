@@ -1,9 +1,20 @@
 .footer {
   font-size: $font-size--small;
   text-align: center;
+}
 
+.footer--sidebar {
   @include desktop {
-    margin-left: 300px;
+    width: calc(100% - 36px);
+    transition: transform 0.3s ease, width 0.3s ease;
+    transform: translate3d(36px,0,0);
+  }
+}
+
+.footer--shifted {
+  @include desktop {
+    width: calc(100% - 300px);
+    transform: translate3d(300px,0,0);
   }
 }
 

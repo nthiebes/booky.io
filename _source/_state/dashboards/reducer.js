@@ -5,7 +5,8 @@ import {
   CHANGE_DASHBOARD,
   UPDATE_OFFSET,
   DRAG_DASHBOARD,
-  DRAG_CATEGORY
+  DRAG_CATEGORY,
+  TOGGLE_DASHBOARD_OPEN
 } from './actions';
 import { arrayMove } from '../../_utils/array';
 
@@ -123,6 +124,12 @@ const dashboards = (state = {}, action) => {
         })
       };
     }
+
+    case TOGGLE_DASHBOARD_OPEN:
+      return {
+        ...state,
+        open: !state.open
+      };
 
     default:
       return state;

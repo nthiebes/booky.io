@@ -1,16 +1,27 @@
-.dashboards-sidebar {
+.dashboards--sidebar {
   width: 300px;
   background-color: #fff;
-  border-right: 2px solid rgba(0,0,0,0.15);
+  border-right: 2px solid rgba(0,0,0, 0.15);
   top: calc(10rem + 1px);
   z-index: 2;
   position: fixed;
   bottom: 0;
-  padding: 1rem 0;
+  padding-bottom: 1rem;
+  transition: transform 0.3s ease;
+  transform: translate3d(0,0,0);
 
   @include mobile-tablet {
     display: none;
   }
+}
+
+.dashboards--hide {
+  transform: translate3d(calc(-100% + 36px),0,0);
+}
+
+.dashboards__header {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .dashboards__headline-wrapper {
@@ -125,4 +136,11 @@
   @include hd {
     margin: 1rem calc(38px + 6px);
   }
+}
+
+.dashboards__hr {
+  height: 2px;
+  background-color: rgba(0,0,0,0.15);
+  width: 100%;
+  margin-bottom: 1rem;
 }

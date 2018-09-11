@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 import 'whatwg-fetch';
+import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
@@ -12,10 +13,10 @@ import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends Component {
   render() {
-    const { intl } = this.props;
+    const { intl, dashboardsOpen, hasSidebar } = this.props;
 
     return (
-      <footer className="footer">
+      <footer className={ classNames('footer', hasSidebar && 'footer--sidebar', hasSidebar && dashboardsOpen && 'footer--shifted') }>
         <section color="primary">
           <ul className="footer__stats">
             <li className="footer__stats-item">
@@ -88,7 +89,9 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  dashboardsOpen: PropTypes.bool,
+  hasSidebar: PropTypes.bool
 };
 
 export default injectIntl(Footer);

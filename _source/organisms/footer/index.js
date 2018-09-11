@@ -1,3 +1,3 @@
-import component from './Footer';
+import container from './FooterContainer';
 
-export default component;
+export default container;

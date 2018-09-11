@@ -38,7 +38,8 @@ export default {
     }],
     active: 567,
     offset: 3,
-    structureOpen: false
+    open: true,
+    sidebar: true
   },
   'categories': [{
     'id': 123,

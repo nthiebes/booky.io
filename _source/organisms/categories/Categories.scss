@@ -2,9 +2,18 @@
   margin-top: 3rem;
 }
 
-@include desktop {
-  .categories--dashboards {
-    margin-left: 300px;
+.categories--sidebar {
+  @include desktop {
+    transition: transform 0.3s ease, width 0.3s ease;
+    width: calc(100% - 36px);
+    transform: translate3d(36px,0,0);
+  }
+}
+
+.categories--shifted {
+  @include desktop {
+    width: calc(100% - 300px);
+    transform: translate3d(300px,0,0);
   }
 }
 

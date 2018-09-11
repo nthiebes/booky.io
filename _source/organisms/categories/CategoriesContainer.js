@@ -6,7 +6,8 @@ export const mapStateToProps = function(state) {
   return {
     categories: state.categories,
     maxWidth: state.sidebar.maxWidth,
-    dashboardsPosition: state.sidebar.dashboard
+    dashboardsOpen: state.dashboards.open,
+    hasSidebar: state.dashboards.sidebar
   };
 };
 

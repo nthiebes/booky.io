@@ -8,10 +8,10 @@ import { ButtonSmallPrimary } from '../../atoms/button';
 
 export default class Categories extends Component {
   render() {
-    const { categories, openModal, dashboards } = this.props;
+    const { categories, openModal, dashboardsOpen, hasSidebar } = this.props;
 
     return (
-      <div className={ classNames('categories', dashboards && 'categories--dashboards') }>
+      <div className={ classNames('categories', hasSidebar && 'categories--sidebar', hasSidebar && dashboardsOpen && 'categories--shifted') }>
         <ButtonSmallPrimary
           icon="add"
           className="categories__button"
@@ -39,5 +39,6 @@ export default class Categories extends Component {
 Categories.propTypes = {
   categories: PropTypes.array.isRequired,
   openModal: PropTypes.func.isRequired,
-  dashboards: PropTypes.bool
+  dashboardsOpen: PropTypes.bool,
+  hasSidebar: PropTypes.bool
 };

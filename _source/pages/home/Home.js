@@ -18,8 +18,8 @@ class Home extends Component {
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
-        <Dashboards className="dashboards-sidebar" />
-        <Categories dashboards />
+        <Dashboards className="dashboards--sidebar" />
+        <Categories />
       </Page>
     ) : (
       <Page home>

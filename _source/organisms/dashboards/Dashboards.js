@@ -12,6 +12,7 @@ class Dashboards extends Component {
     super(props);
 
     this.toggleEditMode = this.toggleEditMode.bind(this);
+    this.toggleOpen = this.toggleOpen.bind(this);
     this.state = {
       editMode: false
     };
@@ -23,12 +24,24 @@ class Dashboards extends Component {
     });
   }
 
+  toggleOpen() {
+    this.props.toggleDashboardOpen();
+  }
+
   render() {
-    const { dashboards, openModal, changeDashboard, className, intl } = this.props;
+    const { dashboards, openModal, changeDashboard, className, intl, activeId, open } = this.props;
     const { editMode } = this.state;
 
     return (
-      <aside className={ className }>
+      <aside className={ classNames('dashboards', className && className, !open && 'dashboards--hide') }>
+        <header className="dashboards__header booky--hide-mobile-tablet">
+          <Icon
+            icon={ open ? 'back' : 'forward' }
+            onClick={ this.toggleOpen }
+            title={ intl.formatMessage({ id: 'modal.close' }) }
+          />
+        </header>
+        <hr className="dashboards__hr booky--hide-mobile-tablet" />
         <div className="dashboards__headline-wrapper">
           <H3 className="dashboards__headline"><FormattedMessage id="dashboard.title" /></H3>
           <Icon
@@ -45,10 +58,10 @@ class Dashboards extends Component {
           />
         </div>
         <ul className={ classNames('dashboards__list', editMode && 'dashboards__list--edit-mode') }>
-          { dashboards.items.map((dashboard, index) => (
+          { dashboards.map((dashboard, index) => (
             <li
               key={ index }
-              className={ classNames('dashboards__item', dashboard.id === dashboards.active && 'dashboards__item--active') }
+              className={ classNames('dashboards__item', dashboard.id === activeId && 'dashboards__item--active') }
               onClick={ () => { !editMode && changeDashboard(dashboard.id); } }>
               <label className="dashboards__label">{ dashboard.name }</label>
               <Icon
@@ -87,9 +100,12 @@ export default injectIntl(Dashboards);
 Dashboards.propTypes = {
   openModal: PropTypes.func.isRequired,
   changeDashboard: PropTypes.func.isRequired,
-  dashboards: PropTypes.object,
+  dashboards: PropTypes.array,
   className: PropTypes.string,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  open: PropTypes.bool,
+  activeId: PropTypes.number,
+  toggleDashboardOpen: PropTypes.func.isRequired
 };
 
 Dashboards.defaultProps = {
