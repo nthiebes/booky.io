@@ -54,6 +54,7 @@ class AddCategory extends Component {
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
+          autoFocus
         />
         <Label><FormattedMessage id="modal.color" /></Label>
         <ColorPicker value={ color } onChange={ this.onColorChange } />

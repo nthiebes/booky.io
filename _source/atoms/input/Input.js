@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 
 import Label from '../label';
@@ -13,12 +12,6 @@ export default class Input extends Component {
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
-  }
-
-  componentDidMount() {
-    if (this.props.focus) {
-      findDOMNode(this.refs.inputField).focus();
-    }
   }
 
   onChange(event) {
@@ -49,7 +42,8 @@ export default class Input extends Component {
       pattern,
       requirements,
       disabled,
-      validation
+      validation,
+      autoFocus
     } = this.props;
     const inputProps = {
       className: classNames(
@@ -71,14 +65,15 @@ export default class Input extends Component {
       autoComplete,
       pattern,
       requirements,
-      disabled
+      disabled,
+      autoFocus
     };
 
     return (
       <Fragment>
         { label && <Label htmlFor={ id }>{ label }</Label> }
         <span className={ classNames('input', className && className) }>
-          <input ref="inputField" { ...inputProps } />
+          <input { ...inputProps } />
           { validation && (
             <Fragment>
               <Icon icon="check" color="green" className="input__icon input__icon--valid" />
@@ -98,7 +93,7 @@ export default class Input extends Component {
 
 Input.propTypes = {
   className: PropTypes.string,
-  focus: PropTypes.bool,
+  autoFocus: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   onChange: PropTypes.func,
@@ -119,7 +114,6 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  focus: false,
   type: 'text',
   color: '',
   value: '',

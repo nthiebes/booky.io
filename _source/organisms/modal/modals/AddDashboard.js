@@ -43,6 +43,7 @@ class AddDashboard extends Component {
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
+          autoFocus
         />
       </Base>
     );
