@@ -42,7 +42,8 @@ class Header extends Component {
       intl,
       sidebarOpen,
       home,
-      className
+      className,
+      router
     } = this.props;
 
     return (
@@ -71,28 +72,28 @@ class Header extends Component {
           <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (
             <Fragment>
-              <Link to="/customize">
-                <Icon
-                  className="booky--hide-mobile-tablet"
-                  icon="settings"
-                  color="light"
-                />
-              </Link>
-              <Link to="/logout">
-                <Icon
-                  className="booky--hide-mobile-tablet"
-                  icon="logout"
-                  color="light"
-                />
-              </Link>
+              <Icon
+                className="booky--hide-mobile-tablet"
+                icon="settings"
+                color="light"
+                onClick={ () => { router.push('/customize'); } }
+                title={ intl.formatMessage({ id: 'menu.customize' }) }
+              />
+              <Icon
+                className="booky--hide-mobile-tablet"
+                icon="logout"
+                color="light"
+                title={ intl.formatMessage({ id: 'menu.logout' }) }
+              />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"
                 onClick={ () => { openModal('AddBookmark', {
                   source: 'header'
                 }); } }
+                icon="add"
                 solid
               >
-                <FormattedHTMLMessage id="header.add" />
+                <FormattedHTMLMessage id="bookmark.add" />
               </ButtonSmallLight>
             </Fragment>
           ) }

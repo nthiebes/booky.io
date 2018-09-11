@@ -38,22 +38,15 @@ class Dashboards extends Component {
           <Icon
             icon={ open ? 'back' : 'forward' }
             onClick={ this.toggleOpen }
-            title={ intl.formatMessage({ id: 'modal.close' }) }
+            title={ open ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
           />
         </header>
         <hr className="dashboards__hr booky--hide-mobile-tablet" />
         <div className="dashboards__headline-wrapper">
           <H3 className="dashboards__headline"><FormattedMessage id="dashboard.title" /></H3>
           <Icon
-            className={ classNames(!editMode && 'booky--hide') }
-            icon="close"
-            title={ intl.formatMessage({ id: 'dashboard.editModeQuit' }) }
-            onClick={ this.toggleEditMode }
-          />
-          <Icon
-            className={ classNames(editMode && 'booky--hide') }
-            icon="more-horiz"
-            title={ intl.formatMessage({ id: 'dashboard.editMode' }) }
+            icon={ editMode ? 'close' : 'more-horiz' }
+            title={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
             onClick={ this.toggleEditMode }
           />
         </div>

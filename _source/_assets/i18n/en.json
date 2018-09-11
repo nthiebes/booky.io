@@ -33,6 +33,7 @@
   "button.done": "Done",
   "button.cancel": "Cancel",
   "button.confirm": "Confirm",
+  "button.save": "Save",
 
   "dashboard.title": "Collections",
   "dashboard.add": "<b>Collection</b>",
@@ -41,6 +42,8 @@
   "dashboard.edit": "Edit collection",
   "dashboard.delete": "Delete collection",
   "dashboard.drag": "Drag collection",
+  "dashboard.expand": "Show collections",
+  "dashboard.reduce": "Hide collections",
 
   "category.add": "<b>Category</b>",
   "category.reduce": "Collapse category",
@@ -156,5 +159,24 @@
   "privacy.31": "Contacting Us",
   "privacy.32": "If there are any questions regarding this privacy policy you may contact us using the information below.",
   "privacy.33": "Email: ",
-  "privacy.34": "This policy is powered by Free Privacy Policy and Rhino Support "
+  "privacy.34": "This policy is powered by Free Privacy Policy and Rhino Support ",
+
+  "notFound.text": "This is not the web page you are looking for.",
+
+  "about.title": "About us",
+
+  "help.title": "Help page",
+
+  "next.title": "Next features",
+
+  "account.title": "Your account",
+  "account.userData": "Access data",
+  "account.import": "Import",
+  "account.export": "Export",
+  "account.account": "Account",
+  "account.newPassword": "New password",
+  "account.deleteText": "Permanently delete your account",
+  "account.deleteButton": "<b>Delete</b> account",
+  "account.exportText": "Export all your bookmarks as <b>.html</b> file.",
+  "account.importText": "Import bookmarks."
 }

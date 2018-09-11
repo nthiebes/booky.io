@@ -26,7 +26,7 @@ export default class Page extends Component {
         ) }>
           { children }
         </main>
-        <Footer className={ classNames(blurContent && 'page--blur') } />
+        <Footer className={ classNames(blurContent && 'page--blur') } home={ home } />
         <Modal />
       </Fragment>
     );

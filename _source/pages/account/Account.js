@@ -1,21 +1,17 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Input from '../../atoms/input';
-import { ButtonLargePrimary } from '../../atoms/button';
+import { ButtonLargeBlue } from '../../atoms/button';
 import { TabBar, Tab } from '../../molecules/tab-bar';
-import './Account.scss';
+import Section from '../../molecules/section';
+import Form from '../../molecules/form';
 
-const tabs = [{
-  name: 'User data'
-}, {
-  name: 'Import'
-}, {
-  name: 'Export'
-}];
-
-export default class Account extends Component {
+class Account extends Component {
   constructor(props) {
     super(props);
 
@@ -23,6 +19,15 @@ export default class Account extends Component {
     this.state = {
       activeTab: 0
     };
+    this.tabs = [{
+      name: props.intl.formatMessage({ id: 'account.userData' })
+    }, {
+      name: props.intl.formatMessage({ id: 'account.import' })
+    }, {
+      name: props.intl.formatMessage({ id: 'account.export' })
+    }, {
+      name: props.intl.formatMessage({ id: 'account.account' })
+    }];
   }
 
   onTabClick(tabId) {
@@ -32,44 +37,108 @@ export default class Account extends Component {
   }
 
   render() {
+    const { intl } = this.props;
     const { activeTab } = this.state;
 
     return (
       <Page>
-        <H1>{ 'Account' }</H1>
-        <TabBar>
-          { tabs.map((tab, index) => (
-            <Tab
-              key={ index }
-              tabId={ index }
-              active={ activeTab === index }
-              name={ tab.name }
-              onClick={ this.onTabClick }
-            />
-          )) }
-        </TabBar>
-        { activeTab === 0 && (
-          <Fragment>
-            <P first>{ 'Update your account data.' }</P>
-            <Input id="account-email" value={ 'nico@is.awesome' } required maxLength="150" label="Email:" />
-            <Input id="account-password" value="" type="password" required maxLength="225" label="New password:" />
-            <Input id="account-password-confirm" value="" type="password" required maxLength="225" label="Confirm new password:" />
-            <Input id="account-password-old" value="" type="password" required maxLength="225" label="Current password:" />
-            <ButtonLargePrimary icon="save" className="account__button">{ 'Confirm' }</ButtonLargePrimary>
-          </Fragment>
-        ) }
-        { activeTab === 1 && (
-          <Fragment>
-            <P first>{ 'Import new bookmarks.' }</P>
-          </Fragment>
-        ) }
-        { activeTab === 2 && (
-          <Fragment>
-            <P first>{ 'Export all your bookmarks as ' }<b>{ '.html' }</b>{ ' file:' }</P>
-            <ButtonLargePrimary icon="download">{ 'Download' }</ButtonLargePrimary>
-          </Fragment>
-        ) }
+        <Section>
+          <H1>
+            <FormattedMessage id="account.title" />
+          </H1>
+          <br />
+          <TabBar>
+            { this.tabs.map((tab, index) => (
+              <Tab
+                key={ index }
+                tabId={ index }
+                active={ activeTab === index }
+                name={ tab.name }
+                onClick={ this.onTabClick }
+              />
+            )) }
+          </TabBar>
+          { activeTab === 0 && (
+            <Form>
+              <Input
+                value="Gscheid"
+                name="username"
+                id="username"
+                label={ intl.formatMessage({ id: 'login.username' }) }
+                maxLength="50"
+                required
+              />
+              <Input
+                value="gscheid@is.awesome"
+                name="email"
+                id="email"
+                label={ intl.formatMessage({ id: 'login.email' }) }
+                maxLength="150"
+                required
+                type="email"
+                requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
+              />
+              <Input
+                name="password"
+                id="password"
+                label={ intl.formatMessage({ id: 'login.password' }) }
+                maxLength="225"
+                required
+                type="password"
+                autoComplete="current-password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+              />
+              <Input
+                name="new-password"
+                id="new-password"
+                label={ intl.formatMessage({ id: 'account.newPassword' }) }
+                maxLength="225"
+                type="password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                requirements={ intl.formatMessage({ id: 'misc.validPassword' }) }
+              />
+              <ButtonLargeBlue 
+                icon="save"
+                className="account__button"
+                contentBefore
+              >
+                <FormattedMessage id="button.save" />
+              </ButtonLargeBlue>
+            </Form>
+          ) }
+          { activeTab === 1 && (
+            <Fragment>
+              <P first>
+                <FormattedHTMLMessage id="account.importText" />
+              </P>
+            </Fragment>
+          ) }
+          { activeTab === 2 && (
+            <Fragment>
+              <P first>
+                <FormattedHTMLMessage id="account.exportText" />
+              </P>
+              <ButtonLargeBlue icon="download">{ 'Download' }</ButtonLargeBlue>
+            </Fragment>
+          ) }
+          { activeTab === 3 && (
+            <Fragment>
+              <P first>
+                <FormattedMessage id="account.deleteText" />
+              </P>
+              <ButtonLargeBlue icon="delete">
+                <FormattedHTMLMessage id="account.deleteButton" />
+              </ButtonLargeBlue>
+            </Fragment>
+          ) }
+        </Section>
       </Page>
     );
   }
 }
+
+Account.propTypes = {
+  intl: PropTypes.object.isRequired
+};
+
+export default injectIntl(Account);

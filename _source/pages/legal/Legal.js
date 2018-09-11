@@ -18,7 +18,7 @@ export default class Legal extends Component {
           <H1>
             <FormattedMessage id="legal.title" />
           </H1>
-          <P>
+          <P first>
             <FormattedMessage id="legal.1" />
           </P>
           <P>

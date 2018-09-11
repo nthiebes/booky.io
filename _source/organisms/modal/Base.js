@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Icon from '../../atoms/icon';
-import { ButtonLargePrimary, ButtonLargeLight } from '../../atoms/button';
+import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
 import { H3 } from '../../atoms/headline';
 import Form from '../../molecules/form';
 
@@ -42,9 +42,9 @@ class Modal extends Component {
               <FormattedMessage id="button.cancel" />
             </ButtonLargeLight>
           ) }
-          <ButtonLargePrimary pending={ pending } disabled={ pending } className="modal__button" icon="save" type="submit">
+          <ButtonLargeBlue pending={ pending } disabled={ pending } className="modal__button" icon="save" type="submit">
             <FormattedMessage id="button.confirm" />
-          </ButtonLargePrimary>
+          </ButtonLargeBlue>
         </footer>
       </Form>
     );

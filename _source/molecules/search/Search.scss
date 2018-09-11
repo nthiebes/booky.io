@@ -2,6 +2,12 @@
   margin: 0 calc(1rem + 6px) 0 1rem;
   flex-grow: 1;
 
+  @include mobile {
+    .icon {
+      top: 0;
+    }
+  }
+
   @include desktop {
     flex-grow: 0;
     margin: 0 0 0 1rem;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 
 export default class Help extends Component {
@@ -10,8 +10,9 @@ export default class Help extends Component {
     return (
       <Page>
         <Section>
-          <H1>{ 'Help' }</H1>
-          <P>{ 'Help page' }</P>
+          <H1>
+            <FormattedMessage id="help.title" />
+          </H1>
         </Section>
       </Page>
     );
