@@ -3,11 +3,6 @@
   max-width: 1000px;
   padding-left: calc(3% + 6px);
   padding-right: calc(3% + 6px);
-
-  @include hd {
-    padding-left: 38px;
-    padding-right: 38px;
-  }
 }
 
 .section--full-width {

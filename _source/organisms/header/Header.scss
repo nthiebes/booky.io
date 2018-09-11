@@ -84,10 +84,6 @@
     height: 6.2rem;
     margin: 0 auto;
   }
-
-  @include hd {
-    padding: 0 38px;
-  }
 }
 
 .header__logo {
@@ -106,4 +102,8 @@
 
 .header__add {
   margin-left: calc(1rem - 6px);
+}
+
+.header__add-icon {
+  margin-left: -6px;
 }

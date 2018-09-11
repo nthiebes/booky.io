@@ -6,7 +6,7 @@
 .footer--sidebar {
   @include desktop {
     width: calc(100% - 36px);
-    transition: transform 0.3s ease, width 0.3s ease;
+    // transition: transform 0.3s ease, width 0.3s ease;
     transform: translate3d(36px,0,0);
   }
 }
@@ -21,7 +21,7 @@
 .footer__stats {
   background-color: $color--primary;
   border-top: 2px solid rgba(255,255,255,0.2);
-  padding: 1rem calc(3% + 6px);
+  padding: 1rem calc(3vw + 6px);
   color: $color__font--white;
   list-style: none;
   display: flex;
@@ -41,7 +41,7 @@
   background-color: $color__background--medium;
   border-top: 2px solid rgba(255,255,255,0.2);
   border-bottom: 2px solid rgba(255,255,255,0.03);
-  padding: calc(2rem - 4px) calc(3% + 6px) calc(2rem + 2px) calc(3% + 6px);
+  padding: calc(2rem - 4px) calc(3vw + 6px) calc(2rem + 2px) calc(3vw + 6px);
   display: flex;
   justify-content: center;
 }
@@ -83,13 +83,9 @@
 
 .footer__content {
   background-color: $color__background--dark;
-  padding: 2rem calc(3% + 6px);
+  padding: 2rem calc(3vw + 6px);
   display: flex;
   flex-direction: column;
-
-  @include hd {
-    padding: 2rem calc(38px + 6px);
-  }
 }
 
 .footer__menu {

@@ -50,7 +50,7 @@ class Header extends Component {
           { loggedIn && home && (
             <Fragment>
               <Icon
-                className="booky--hide-desktop"
+                className="booky--hide-desktop header__add-icon"
                 icon="add"
                 color="light"
                 onClick={ () => { openModal('AddBookmark', {

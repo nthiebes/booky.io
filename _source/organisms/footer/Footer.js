@@ -17,7 +17,7 @@ class Footer extends Component {
 
     return (
       <footer className={ classNames('footer', hasSidebar && 'footer--sidebar', hasSidebar && dashboardsOpen && 'footer--shifted') }>
-        <section color="primary">
+        <section>
           <ul className="footer__stats">
             <li className="footer__stats-item">
               <b>{ '18.860' }</b>

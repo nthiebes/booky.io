@@ -1,10 +1,14 @@
 .categories {
-  margin-top: 3rem;
+  margin-top: 4rem;
+
+  @include desktop {
+    margin-top: calc(3rem + 6px);
+  }
 }
 
 .categories--sidebar {
   @include desktop {
-    transition: transform 0.3s ease, width 0.3s ease;
+    // transition: transform 0.3s ease, width 0.3s ease;
     width: calc(100% - 36px);
     transform: translate3d(36px,0,0);
   }
@@ -18,8 +22,28 @@
 }
 
 .categories__button {
-  width: calc(94% - 12px);
-  margin: 0 calc(3% + 6px);
+  width: calc(94vw - 12px);
+  margin: 0 calc(3vw + 6px);
+
+  @include desktop {
+    // transition: width 0.3s ease;
+  }
+}
+
+.categories--sidebar {
+  .categories__button {
+    @include desktop {
+      width: calc(94vw - 48px);
+    }
+  }
+}
+
+.categories--shifted {
+  .categories__button {
+    @include desktop {
+      width: calc(94vw - 312px);
+    }
+  }
 }
 
 .categories__button--bottom {

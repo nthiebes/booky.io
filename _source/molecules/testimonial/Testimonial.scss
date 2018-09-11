@@ -1,10 +1,6 @@
 .testimonial {
   display: flex;
   padding: 1rem calc(3vw + 6px);
-
-  @include hd {
-    padding: 1rem 38px;
-  }
 }
 
 .testimonial__wrapper {
