@@ -5,7 +5,7 @@
   width: 0;
   right: 0;
   top: 0;
-  z-index: 2;
+  z-index: 5;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -32,7 +32,7 @@
       opacity: 1;
       transition: opacity 0.2s linear;
       width: 100%;
-      z-index: 2;
+      z-index: 5;
     }
   }
 }
@@ -43,7 +43,7 @@
   width: 0;
   max-height: 94%;
   background-color: $color__background--white;
-  z-index: 3;
+  z-index: 6;
   border: 2px solid rgba(0,0,0,0.15);
   transition: opacity 0.2s linear, width 0s 0.2s linear, transform 0.2s;
   transform: scale(0.95);
