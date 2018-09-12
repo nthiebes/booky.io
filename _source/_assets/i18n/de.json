@@ -154,5 +154,7 @@
   "account.deleteText": "Hier kannst du deinen Account endgültig löschen.",
   "account.deleteButton": "Account <b>löschen</b>",
   "account.exportText": "Exportiere alle deine Lesezeichen als <b>.html</b>-Datei.",
-  "account.importText": "Importiere Lesezeichen."
+  "account.importText": "Importiere Lesezeichen.",
+
+  "customize.title": "Booky anpassen"
 }

@@ -178,5 +178,7 @@
   "account.deleteText": "Permanently delete your account",
   "account.deleteButton": "<b>Delete</b> account",
   "account.exportText": "Export all your bookmarks as <b>.html</b> file.",
-  "account.importText": "Import bookmarks."
+  "account.importText": "Import bookmarks.",
+
+  "customize.title:": "Customize booky"
 }

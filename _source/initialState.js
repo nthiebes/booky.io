@@ -1,6 +1,7 @@
 export default {
   booky: {
-    loggedIn: true
+    loggedIn: true,
+    headerColor: 0
   },
   'dashboards': {
     'items': [{
