@@ -12,9 +12,13 @@ import router from './router';
 import configureStore from './configureStore';
 import initialState from './initialState';
 
+const supportedLanguages = ['en', 'de'];
 const cookieLanguage = Cookies.get('lang');
-const locale = cookieLanguage || navigator.language || navigator.userLanguage;
-const language = (locale || 'en').slice(0, 2);
+let locale = cookieLanguage || navigator.language || navigator.userLanguage;
+
+locale = locale.slice(0, 2);
+
+const language = supportedLanguages.indexOf(locale) === -1 ? 'en' : locale;
 
 Cookies.set('lang', language, { expires: 365 });
 document.documentElement.setAttribute('lang', language);
