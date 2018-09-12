@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
+import fetcher from '../../_utils/fetch';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
@@ -16,6 +17,18 @@ class Dashboards extends Component {
     this.state = {
       editMode: false
     };
+  }
+
+  componentDidMount() {
+    fetcher({
+      url: '/dashboards',
+      onSuccess: (data) => {
+        console.log('success', data);
+      },
+      onError: (error) => {
+        console.log('error:', error);
+      }
+    });
   }
 
   toggleEditMode() {

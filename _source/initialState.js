@@ -1,6 +1,6 @@
 export default {
   booky: {
-    loggedIn: false,
+    loggedIn: true,
     pending: false,
     error: null,
     headerColor: 0

@@ -1,6 +1,7 @@
 import 'whatwg-fetch';
 
 const env = document.location.origin;
+// const baseUrl = '/api';
 const baseUrl = 'http://localhost:8001/api';
 const defaultOptions = {
   credentials: 'same-origin'
