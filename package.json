@@ -28,6 +28,7 @@
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
     "storybook": "start-storybook -p 9001 -c storybook -s ./_public"
   },
+  "proxy": "http://localhost:9000",
   "author": "Nico Thiebes",
   "license": "SEE LICENSE IN \"LICENSE\"",
   "dependencies": {

@@ -43,9 +43,7 @@ class Login extends Component {
   }
 
   handleSubmit(params) {
-    console.log(params);
-
-    this.props.login();
+    this.props.login(params);
 
     this.setState({
       pending: true
@@ -89,7 +87,6 @@ class Login extends Component {
             <Checkbox
               label="Show password"
               id="show-password"
-              name="show-password"
               onChange={ this.handleCheckboxChange }
             />
             <ButtonLargeBlue

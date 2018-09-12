@@ -22,10 +22,10 @@ export default class Form extends Component {
   handleSubmit(event) {
     const { onSubmit } = this.props;
 
+    event.preventDefault();
     onSubmit && onSubmit({
       ...this.getData()
     });
-    event.preventDefault();
   }
 
   render() {

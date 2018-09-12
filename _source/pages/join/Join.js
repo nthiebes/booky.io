@@ -103,7 +103,6 @@ class Join extends Component {
             <Checkbox
               label="Show password"
               id="show-password"
-              name="show-password"
               onChange={ this.handleCheckboxChange }
             />
             <ButtonLargeBlue
