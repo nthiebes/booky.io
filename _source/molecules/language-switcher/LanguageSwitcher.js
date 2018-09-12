@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import 'whatwg-fetch';
 
-import fetcher from '../../_utils/fetch';
 import Icon from '../../atoms/icon';
 import Select from '../../atoms/select';
 
@@ -16,16 +16,17 @@ class LanguageSwitcher extends Component {
   onChange(locale) {
     const { updateIntl } = this.props;
 
-    fetcher({
-      url: `/_assets/i18n/${locale}.json`,
-      onSuccess: (messages) => {
+    fetch(`/_assets/i18n/${locale}.json`)
+      .then((response) => response.json())
+      .then((messages) => {
         updateIntl({
           locale,
           messages
         });
-      },
-      onError: (error) => { console.log('error:', error); }
-    });
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   }
 
   render() {
