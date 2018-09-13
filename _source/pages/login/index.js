@@ -1,3 +1,3 @@
-import container from './LoginContainer';
+import component from './Login';
 
-export default container;
+export default component;

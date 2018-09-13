@@ -3,7 +3,7 @@ import Component from './Home';
 
 export const mapStateToProps = function(state) {
   return {
-    loggedIn: state.booky.loggedIn
+    loggedIn: state.user.loggedIn
   };
 };
 

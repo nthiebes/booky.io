@@ -1,13 +1,14 @@
 import 'whatwg-fetch';
 
-const env = document.location.hostname === 'localhost' ? 'DEV' : 'PROD';
-const baseUrl = env === 'DEV' ? 'http://localhost:8001/api' : '/api';
-// const baseUrl = '/api';
+// eslint-disable-next-line
+const baseUrl = window.___browserSync___ ? `http://${document.location.hostname}:8001/api` : '/api';
 const defaultOptions = {
   credentials: 'same-origin'
 };
+// window.___browserSync___ ? 'include' : 'same-origin'
 
 // function checkStatus(response) {
+//   console.log('response', response);
 //   if (response.status >= 200 && response.status < 300) {
 //     return response;
 //   }
@@ -44,6 +45,7 @@ const fetcher = function({ params, type = 'GET', url, onSuccess, onError, option
       },
       body: JSON.stringify(params)
     })
+      // .then(checkStatus)
       .then((response) => response.json())
       .then((data) => {
         onSuccess(data);

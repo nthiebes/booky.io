@@ -1,8 +1,8 @@
 export default {
+  user: {
+    loggedIn: false
+  },
   booky: {
-    loggedIn: true,
-    pending: false,
-    error: null,
     headerColor: 0
   },
   'dashboards': {
@@ -217,18 +217,6 @@ export default {
   'toolbar': {
     'sticky': true,
     'currentlySticky': true
-  },
-  'customize': {
-    'open': false,
-    'notes': true,
-    'autofill': true,
-    'newtab': true,
-    'stickyHeader': true,
-    'stickyToolbar': true,
-    'globalColor': 0,
-    'headerColor': 0,
-    'maxWidth': true,
-    'dashboard': 1
   },
   modal: {
     modal: null,

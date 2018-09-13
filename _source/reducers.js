@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { intlReducer } from 'react-intl-redux';
 
-import booky from './_state/booky';
+import user from './_state/user';
 import dashboards from './_state/dashboards';
 import categories from './_state/categories';
 import toolbar from './_state/toolbar';
@@ -12,7 +12,7 @@ import modal from './_state/modal';
 const reducers = combineReducers({
   routing: routerReducer,
   intl: intlReducer,
-  booky,
+  user,
   toolbar,
   sidebar,
   modal,

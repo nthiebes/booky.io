@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Page from '../../templates/page';
 import { H1, H2 } from '../../atoms/headline';
 import Label from '../../atoms/label';
-import P from '../../atoms/paragraph';
+// import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import ColorPicker from '../../molecules/color-picker';
 

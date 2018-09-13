@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
+import fetcher from '../../_utils/fetcher';
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
@@ -43,7 +44,17 @@ class Login extends Component {
   }
 
   handleSubmit(params) {
-    this.props.login(params);
+    fetcher({
+      url: '/login',
+      type: 'POST',
+      params,
+      onSuccess: (data) => {
+        console.log('success:', data);
+      },
+      onError: (error) => {
+        console.log('error:', error);
+      }
+    });
 
     this.setState({
       pending: true
@@ -116,8 +127,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  intl: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired
+  intl: PropTypes.object.isRequired
 };
 
 export default injectIntl(Login);

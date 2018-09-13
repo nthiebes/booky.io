@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Component from './Sidebar';
-import { actions as sidebarActions } from '../../_state/sidebar';
+// import { actions as sidebarActions } from '../../_state/sidebar';
 
 export const mapStateToProps = function(state) {
   return {
@@ -17,39 +17,39 @@ export const mapStateToProps = function(state) {
   };
 };
 
-export const mapDispatchToProps = function(dispatch) {
-  return {
-    'onNotesClick': () => {
-      dispatch(sidebarActions.toggleNotes());
-    },
-    'onAutofillClick': () => {
-      dispatch(sidebarActions.toggleAutofill());
-    },
-    'onNewtabClick': () => {
-      dispatch(sidebarActions.toggleNewtab());
-    },
-    'onStickyHeaderClick': () => {
-      dispatch(sidebarActions.toggleStickyHeader());
-    },
-    'onStickyToolbarClick': () => {
-      dispatch(sidebarActions.toggleStickyToolbar());
-    },
-    'onGlobalColorChange': (key) => {
-      dispatch(sidebarActions.updateGlobalColor(key));
-    },
-    'onHeaderColorChange': (key) => {
-      dispatch(sidebarActions.updateHeaderColor(key));
-    },
-    'onDoneClick': () => {
-      dispatch(sidebarActions.closeSidebar());
-    },
-    'onMaxWidthClick': () => {
-      dispatch(sidebarActions.toggleMaxWidth());
-    },
-    'onDashboardChange': (key) => {
-      dispatch(sidebarActions.updateDashboardType(key));
-    }
-  };
+export const mapDispatchToProps = function() {
+  // return {
+  //   'onNotesClick': () => {
+  //     dispatch(sidebarActions.toggleNotes());
+  //   },
+  //   'onAutofillClick': () => {
+  //     dispatch(sidebarActions.toggleAutofill());
+  //   },
+  //   'onNewtabClick': () => {
+  //     dispatch(sidebarActions.toggleNewtab());
+  //   },
+  //   'onStickyHeaderClick': () => {
+  //     dispatch(sidebarActions.toggleStickyHeader());
+  //   },
+  //   'onStickyToolbarClick': () => {
+  //     dispatch(sidebarActions.toggleStickyToolbar());
+  //   },
+  //   'onGlobalColorChange': (key) => {
+  //     dispatch(sidebarActions.updateGlobalColor(key));
+  //   },
+  //   'onHeaderColorChange': (key) => {
+  //     dispatch(sidebarActions.updateHeaderColor(key));
+  //   },
+  //   'onDoneClick': () => {
+  //     dispatch(sidebarActions.closeSidebar());
+  //   },
+  //   'onMaxWidthClick': () => {
+  //     dispatch(sidebarActions.toggleMaxWidth());
+  //   },
+  //   'onDashboardChange': (key) => {
+  //     dispatch(sidebarActions.updateDashboardType(key));
+  //   }
+  // };
 };
 
 const Container = connect(

@@ -51,6 +51,7 @@ body {
   background-color: $color__background--white;
   font-family: $font__family--text;
   height: 100%;
+  color: $color__font--dark;
 }
 
 .booky--no-animation {
@@ -89,6 +90,14 @@ body {
   @include desktop {
     display: none;
   }
+}
+
+.booky__loader {
+  position: absolute;
+  color: #657786;
+  cursor: default;
+  left: calc(50% - 18px);
+  top: calc(50% - 18px);
 }
 
 ::-moz-selection {

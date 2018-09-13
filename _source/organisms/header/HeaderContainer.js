@@ -7,7 +7,7 @@ export const mapStateToProps = function(state) {
   return {
     sticky: state.sidebar.stickyHeader,
     color: state.sidebar.headerColor,
-    loggedIn: state.booky.loggedIn,
+    loggedIn: state.user.loggedIn,
     sidebarOpen: state.sidebar.open
   };
 };
