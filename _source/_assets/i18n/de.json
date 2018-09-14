@@ -156,5 +156,8 @@
   "account.exportText": "Exportiere alle deine Lesezeichen als <b>.html</b>-Datei.",
   "account.importText": "Importiere Lesezeichen.",
 
-  "customize.title": "Booky anpassen"
+  "customize.title": "Booky anpassen",
+
+  "error.default": "Oops! Da ist bei uns wohl etwas ist schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
+  "error.email": "E-Mail"
 }

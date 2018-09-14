@@ -8,6 +8,7 @@ import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
+import ErrorMessage from '../../atoms/error-message';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
@@ -26,7 +27,8 @@ class Login extends Component {
       username: '',
       password: '',
       pending: false,
-      showPassword: false
+      showPassword: false,
+      error: null
     };
   }
 
@@ -45,7 +47,8 @@ class Login extends Component {
 
   handleSubmit(params) {
     this.setState({
-      pending: true
+      pending: true,
+      error: false
     });
 
     fetcher({
@@ -54,13 +57,20 @@ class Login extends Component {
       params,
       onSuccess: (data) => {
         console.log('success:', data);
+
+        window.setTimeout(() => {
+          this.setState({
+            pending: false
+          });
+        }, 300);
       },
       onError: (error) => {
         console.log('error:', error);
 
         window.setTimeout(() => {
           this.setState({
-            pending: false
+            pending: false,
+            error: true
           });
         }, 300);
       }
@@ -69,7 +79,7 @@ class Login extends Component {
 
   render() {
     const { intl } = this.props;
-    const { username, password, pending, showPassword } = this.state;
+    const { username, password, pending, showPassword, error } = this.state;
 
     return (
       <Page>
@@ -106,8 +116,9 @@ class Login extends Component {
               id="show-password"
               onChange={ this.handleCheckboxChange }
             />
+            { error && <ErrorMessage hasIcon /> }
             <ButtonLargeBlue
-              icon="join"
+              icon="account"
               type="submit"
               pending={ pending }
               disabled={ pending }

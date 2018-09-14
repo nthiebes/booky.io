@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import Label from '../label';
 import Icon from '../icon';
+import ErrorMessage from '../error-message';
 
 export default class Input extends Component {
   constructor(props) {
@@ -44,7 +45,8 @@ export default class Input extends Component {
       disabled,
       validation,
       autoFocus,
-      icon
+      icon,
+      error
     } = this.props;
     const inputProps = {
       className: classNames(
@@ -88,6 +90,9 @@ export default class Input extends Component {
               { requirements }
             </div>
           ) }
+          { error && (
+            <ErrorMessage id={ error } />
+          ) }
         </span>
       </Fragment>
     );
@@ -114,7 +119,8 @@ Input.propTypes = {
   requirements: PropTypes.string,
   disabled: PropTypes.bool,
   validation: PropTypes.bool,
-  icon: PropTypes.string
+  icon: PropTypes.string,
+  error: PropTypes.string
 };
 
 Input.defaultProps = {

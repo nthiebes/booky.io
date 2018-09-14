@@ -180,5 +180,8 @@
   "account.exportText": "Export all your bookmarks as <b>.html</b> file.",
   "account.importText": "Import bookmarks.",
 
-  "customize.title:": "Customize booky"
+  "customize.title:": "Customize booky",
+
+  "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
+  "error.email": "email"
 }

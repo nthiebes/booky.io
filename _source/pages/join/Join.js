@@ -7,6 +7,7 @@ import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
+import ErrorMessage from '../../atoms/error-message';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
@@ -26,7 +27,8 @@ class Join extends Component {
       email: '',
       password: '',
       pending: false,
-      showPassword: false
+      showPassword: false,
+      error: null
     };
   }
 
@@ -53,7 +55,7 @@ class Join extends Component {
 
   render() {
     const { intl } = this.props;
-    const { username, email, password, pending, showPassword } = this.state;
+    const { username, email, password, pending, showPassword, error } = this.state;
 
     return (
       <Page>
@@ -105,6 +107,7 @@ class Join extends Component {
               id="show-password"
               onChange={ this.handleCheckboxChange }
             />
+            { error && <ErrorMessage hasIcon /> }
             <ButtonLargeBlue
               icon="join"
               type="submit"

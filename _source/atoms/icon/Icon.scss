@@ -137,6 +137,27 @@
   }
 }
 
+.icon--orange {
+  color: $color--3;
+  border-color: $color--3;
+
+  @include mobile-tablet {
+    &:active {
+      color: $color__font--dark;
+    }   
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--dark;
+    }   
+  }
+
+  &:focus {
+    color: $color__font--dark;
+  }
+}
+
 .icon__svg {
   fill: currentColor;
   height: 36px;

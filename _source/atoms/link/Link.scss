@@ -22,6 +22,36 @@
   }
 }
 
+.link--medium {
+  color: $color__font--medium;
+
+  &:active,
+  &:focus {
+    color: $color__font--dark;
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--dark;
+    }
+  }
+}
+
+.link--dark {
+  color: $color__font--dark;
+
+  &:active,
+  &:focus {
+    color: $color__font--medium;
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--medium;
+    }
+  }
+}
+
 .link--light {
   color: $color__font--white;
 
