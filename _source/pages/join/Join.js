@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
+import fetcher from '../../_utils/fetcher';
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
@@ -46,10 +47,35 @@ class Join extends Component {
   }
 
   handleSubmit(params) {
-    console.log(params);
-
     this.setState({
-      pending: true
+      pending: true,
+      error: false
+    });
+
+    fetcher({
+      url: '/join',
+      type: 'POST',
+      params,
+      onSuccess: (data) => {
+        // console.log('success:', data);
+
+        window.setTimeout(() => {
+          this.setState({
+            pending: false,
+            error: data.error
+          });
+        }, 300);
+
+        !data.error && this.props.updateUser(data.user);
+      },
+      onError: () => {
+        window.setTimeout(() => {
+          this.setState({
+            pending: false,
+            error: 'error.default'
+          });
+        }, 300);
+      }
     });
   }
 
@@ -103,7 +129,7 @@ class Join extends Component {
               disabled={ pending }
             />
             <Checkbox
-              label="Show password"
+              label={ intl.formatMessage({ id: 'login.showPassword'}) }
               id="show-password"
               onChange={ this.handleCheckboxChange }
             />
@@ -132,7 +158,8 @@ class Join extends Component {
 }
 
 Join.propTypes = {
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  updateUser: PropTypes.func.isRequired
 };
 
 export default injectIntl(Join);
