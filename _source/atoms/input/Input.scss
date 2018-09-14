@@ -111,7 +111,7 @@
 
 .input__requirements {
   max-height: 0;
-  transition: opacity 0.2s linear, max-height 0.3s ease;
+  transition: opacity 0.2s linear, max-height 0.3s linear;
   color: $color__font--medium;
   margin-top: 0.5rem;
   opacity: 0;

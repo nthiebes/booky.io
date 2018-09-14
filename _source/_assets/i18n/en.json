@@ -183,5 +183,6 @@
   "customize.title:": "Customize booky",
 
   "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
-  "error.email": "email"
+  "error.email": "email",
+  "error.failedLogin": "The username and password do not match."
 }

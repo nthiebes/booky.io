@@ -56,21 +56,22 @@ class Login extends Component {
       type: 'POST',
       params,
       onSuccess: (data) => {
-        console.log('success:', data);
-
-        window.setTimeout(() => {
-          this.setState({
-            pending: false
-          });
-        }, 300);
-      },
-      onError: (error) => {
-        console.log('error:', error);
+        // console.log('success:', data);
 
         window.setTimeout(() => {
           this.setState({
             pending: false,
-            error: true
+            error: data.error
+          });
+        }, 300);
+
+        !data.error && this.props.updateUser(data.user);
+      },
+      onError: () => {
+        window.setTimeout(() => {
+          this.setState({
+            pending: false,
+            error: 'error.default'
           });
         }, 300);
       }
@@ -116,7 +117,7 @@ class Login extends Component {
               id="show-password"
               onChange={ this.handleCheckboxChange }
             />
-            { error && <ErrorMessage hasIcon /> }
+            { error && <ErrorMessage message={ error } hasIcon /> }
             <ButtonLargeBlue
               icon="account"
               type="submit"
@@ -144,7 +145,8 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  updateUser: PropTypes.func.isRequired
 };
 
 export default injectIntl(Login);
