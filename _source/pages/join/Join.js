@@ -106,7 +106,7 @@ class Join extends Component {
               onChange={ this.handleCheckboxChange }
             />
             <ButtonLargeBlue
-              icon={ pending ? 'spinner' : 'join' }
+              icon="join"
               type="submit"
               pending={ pending }
               disabled={ pending }

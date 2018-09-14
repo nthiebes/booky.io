@@ -69,7 +69,7 @@ storiesOf('Button')
         title: 'Primary',
         sections: [{
           title: 'Regular',
-          sectionFn: () => (<ButtonSmallPrimary>{ 'Button text' }</ButtonSmallPrimary>)
+          sectionFn: () => (getButton(ButtonSmallPrimary, { icon: null }))
         }, {
           title: 'Regular With icon',
           sectionFn: () => (<ButtonSmallPrimary icon="heart">{ 'Button text' }</ButtonSmallPrimary>)
@@ -84,7 +84,7 @@ storiesOf('Button')
         title: 'Light',
         sections: [{
           title: 'Regular',
-          sectionFn: () => (<ButtonSmallLight>{ 'Button text' }</ButtonSmallLight>)
+          sectionFn: () => (getButton(ButtonSmallLight))
         }, {
           title: 'Regular With icon',
           sectionFn: () => (<ButtonSmallLight icon="heart">{ 'Button text' }</ButtonSmallLight>)
@@ -99,7 +99,7 @@ storiesOf('Button')
         title: 'Medium',
         sections: [{
           title: 'Regular',
-          sectionFn: () => (<ButtonSmallMedium>{ 'Button text' }</ButtonSmallMedium>)
+          sectionFn: () => (getButton(ButtonSmallMedium))
         }, {
           title: 'Regular With icon',
           sectionFn: () => (<ButtonSmallMedium icon="heart">{ 'Button text' }</ButtonSmallMedium>)
@@ -114,7 +114,7 @@ storiesOf('Button')
         title: 'Dark',
         sections: [{
           title: 'Regular',
-          sectionFn: () => (<ButtonSmallDark>{ 'Button text' }</ButtonSmallDark>)
+          sectionFn: () => (getButton(ButtonSmallDark))
         }, {
           title: 'Regular With icon',
           sectionFn: () => (<ButtonSmallDark icon="heart">{ 'Button text' }</ButtonSmallDark>)

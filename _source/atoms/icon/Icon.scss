@@ -32,14 +32,6 @@
   }
 }
 
-.icon--spinner {
-  animation: 1s linear infinite rotate;
-
-  &.button__icon {
-    animation: 1s linear infinite rotateInButton;
-  }
-}
-
 .icon--primary {
   color: $color__font--primary;
   border-color: $color__font--primary;
@@ -155,6 +147,10 @@
   width: 36px;
 }
 
+.icon__svg--spinner {
+  animation: 1s linear infinite rotate;
+}
+
 .icon__label {
   cursor: pointer;
   font-family: $font__family--heading;
@@ -170,16 +166,6 @@
 
   100% {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes rotateInButton {
-  0% {
-    transform: translateX(10px) rotate(0);
-  }
-
-  100% {
-    transform: translateX(10px) rotate(360deg);
   }
 }
 

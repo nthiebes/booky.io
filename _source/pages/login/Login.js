@@ -44,6 +44,10 @@ class Login extends Component {
   }
 
   handleSubmit(params) {
+    this.setState({
+      pending: true
+    });
+
     fetcher({
       url: '/login',
       type: 'POST',
@@ -53,11 +57,13 @@ class Login extends Component {
       },
       onError: (error) => {
         console.log('error:', error);
-      }
-    });
 
-    this.setState({
-      pending: true
+        window.setTimeout(() => {
+          this.setState({
+            pending: false
+          });
+        }, 300);
+      }
     });
   }
 
@@ -101,7 +107,7 @@ class Login extends Component {
               onChange={ this.handleCheckboxChange }
             />
             <ButtonLargeBlue
-              icon={ pending ? 'spinner' : 'join' }
+              icon="join"
               type="submit"
               pending={ pending }
               disabled={ pending }

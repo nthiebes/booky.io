@@ -25,13 +25,13 @@ export default class Icon extends Component {
 
     return (
       <span
-        className={ classNames('icon', `icon--${color}`, icon === 'spinner' && 'icon--spinner', className && className) }
+        className={ classNames('icon', `icon--${color}`, className && className) }
         title={ title }
         onClick={ this.onClick }
         tabIndex={ tabIndex }
         { ...dragHandleProps }
       >
-        <svg className="icon__svg">
+        <svg className={ classNames('icon__svg', icon === 'spinner' && 'icon__svg--spinner') }>
           <use xlinkHref={ link } />
         </svg>
         { label && <label className="icon__label">{ label }</label> }

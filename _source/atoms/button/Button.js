@@ -42,7 +42,7 @@ export default class Button extends Component {
         type={ type }
         disabled={ disabled }
       >
-        { icon && <Icon icon={ icon } color={ size === 'small' ? color : 'light' } className="button__icon" /> }
+        { icon && <Icon icon={ pending ? 'spinner' : icon } color={ size === 'small' ? color : 'light' } className="button__icon" /> }
         <span className="button__text">{ children }</span>
       </CustomTag>
     );
