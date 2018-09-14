@@ -47,7 +47,7 @@
     }
 
     &:invalid {
-      border-bottom-color: $color--primary;
+      border-bottom-color: $color--3;
     }
 
     &:valid ~.input__icon--valid {
@@ -57,7 +57,7 @@
     &:invalid ~.input__icon--invalid {
       opacity: 1;
       transform: none;
-      color: $color--primary;
+      color: $color--3;
     }
 
     ~.input__requirements {
@@ -83,7 +83,7 @@
       }
 
       &:invalid {
-        border-bottom-color: $color--primary;
+        border-bottom-color: $color--3;
       }
     }
   }

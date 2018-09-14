@@ -33,7 +33,7 @@ export default class ErrorMessage extends Component {
 
     return (
       <P className={ classNames('error', animate && 'error--animate', className && classNames) }>
-        { hasIcon && <Icon icon="error" color="primary" className="error__icon" /> }
+        { hasIcon && <Icon icon="error" color="orange" className="error__icon" /> }
         <FormattedMessage
           id={ message }
           values={ { mail: <Link href="mailto:hello@booky.io" color="dark">{ <FormattedMessage id="error.email" /> }</Link> } }

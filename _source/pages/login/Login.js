@@ -113,7 +113,7 @@ class Login extends Component {
               disabled={ pending }
             />
             <Checkbox
-              label="Show password"
+              label={ intl.formatMessage({ id: 'login.showPassword'}) }
               id="show-password"
               onChange={ this.handleCheckboxChange }
             />
