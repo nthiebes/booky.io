@@ -94,6 +94,7 @@
   "login.forgot": "Password forgotten?",
   "login.new": "New to booky?",
   "login.join": "Join now",
+  "login.showPassword": "Show password",
 
   "join.headline": "Join booky now",
   "join.registered": "Already joined?",
@@ -184,5 +185,9 @@
 
   "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
   "error.email": "email",
-  "error.failedLogin": "The username and password do not match."
+  "error.failedLogin": "The username and password do not match.",
+  "error.usernameInUse": "The username is already in use.",
+  "error.emailInUse": "The email address is already in use.",
+  "error.invalidEmail": "Please enter a valid email address.",
+  "error.invalidPassword": "Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number."
 }

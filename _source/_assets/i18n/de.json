@@ -94,6 +94,7 @@
   "login.forgot": "Passwort vergessen?",
   "login.new": "Neu bei booky?",
   "login.join": "Jetzt beitreten",
+  "login.showPassword": "Passwort anzeigen",
 
   "join.headline": "Jetzt booky beitreten",
   "join.registered": "Schon dabei?",
@@ -158,7 +159,11 @@
 
   "customize.title": "Booky anpassen",
 
-  "error.default": "Oops! Da ist bei uns wohl etwas ist schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
+  "error.default": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
   "error.email": "E-Mail",
-  "error.failedLogin": "Der Benutzername und das Passwort stimmen nicht überein."
+  "error.failedLogin": "Der Benutzername und das Passwort stimmen nicht überein.",
+  "error.usernameInUse": "Der Benutzername ist bereits vergeben.",
+  "error.emailInUse": "Die E-Mail-Adresse ist bereits vergeben.",
+  "error.invalidEmail": "Bitte gib eine valide E-Mail-Adresse ein.",
+  "error.invalidPassword": "Dein Passwort muss mindestens 6 Zeichen lang sein und zudem einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten."
 }
