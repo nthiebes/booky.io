@@ -33,9 +33,9 @@
 @import "../../organisms/modal/Modal";
 @import "../../organisms/dashboards/Dashboards";
 
-@import "../../pages/home/Home";
-
 @import "../../templates/page/Page";
+
+@import "../../pages/home/Home";
 
 html {
   font-size: calc(14px + 0.2vw);

@@ -2,6 +2,7 @@
   color: $color__font--dark;
   font-family: $font__family--heading;
   overflow: hidden;
+  position: relative;
 }
 
 .headline--h1 {
@@ -31,14 +32,20 @@
 .headline--display {
   font-size: 3rem;
   font-weight: 700;
-  color: #657786;
-  line-height: 1;
 
-  @include tablet-desktop {
+  @include tablet {
+    font-size: 3.5rem;
+  }
+
+  @include desktop {
     font-size: 4rem;
   }
 }
 
 .headline--no-margin {
   margin-top: 0;
+}
+
+.headline--color-light {
+  color: $color__font--white;
 }

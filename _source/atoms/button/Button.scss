@@ -356,13 +356,13 @@
 }
 
 .button--large-light {
-  background-color: rgba(0,0,0,0.1);
+  background-color: $color__background--ligth;
   color: $color__font--dark;
 
   @include mobile-tablet() {
     &:active,
     &:focus {
-      background-color: rgba(0,0,0,0.15);
+      background-color: rgba($color__background--ligth, 0.9);
       color: $color__font--dark;
     }
   }
@@ -371,7 +371,7 @@
     &:hover,
     &:focus,
     &.button--pending {
-      background-color: rgba(0,0,0,0.15);
+      background-color: rgba($color__background--ligth, 0.9);
       color: $color__font--dark;
     }
   }
