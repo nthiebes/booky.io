@@ -23,25 +23,27 @@ class Home extends Component {
       </Page>
     ) : (
       <Page className="home" home>
-        <Section className="home__header">
+        <section className="home__header">
           <div className="home__image-wrapper">
             <img className="home__image" src="../../_assets/header.svg" />
           </div>
-          <Display color="light" noMargin>
-            <FormattedMessage id="home.display" />
-          </Display>
-          <H2 color="light">
-            <FormattedMessage id="home.display2" />
-          </H2>
-          <ButtonLargeLight icon="about" contentBefore className="header__learn-more" to="/about">
-            <FormattedHTMLMessage id="header.learnMore" />
-          </ButtonLargeLight>
-          <ButtonLargeBlue icon="join" to="/join">
-            <FormattedHTMLMessage id="header.register" />
-          </ButtonLargeBlue>
-          <img className="home__header-image--desktop booky--hide-mobile-tablet" src="../../_assets/desktop.svg" />
-          <img className="home__header-image--mobile booky--hide-mobile-tablet" src="../../_assets/mobile.svg" />
-        </Section>
+          <div className="home__header-content">
+            <Display color="light" noMargin>
+              <FormattedMessage id="home.display" />
+            </Display>
+            <H2 color="light">
+              <FormattedMessage id="home.display2" />
+            </H2>
+            <ButtonLargeLight icon="about" contentBefore className="header__learn-more" to="/about">
+              <FormattedHTMLMessage id="header.learnMore" />
+            </ButtonLargeLight>
+            <ButtonLargeBlue icon="join" to="/join">
+              <FormattedHTMLMessage id="header.register" />
+            </ButtonLargeBlue>
+            <img className="home__header-image--desktop booky--hide-mobile-tablet" src="../../_assets/desktop.svg" />
+            <img className="home__header-image--mobile booky--hide-mobile-tablet" src="../../_assets/mobile.svg" />
+          </div>
+        </section>
         <Section>
           <nav className="home__navigation">
             <a className="home__item" href="#performant">

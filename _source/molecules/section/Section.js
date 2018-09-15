@@ -11,10 +11,11 @@ export default class Section extends Component {
         'section',
         color && `section--${color}`,
         fullWidth && 'section--full-width',
-        compact && 'section--compact',
-        className && className
+        compact && 'section--compact'
       ) }>
-        { children }
+        <div className={ classNames('section__content', className && className) }>
+          { children }
+        </div>
       </section>
     );
   }
