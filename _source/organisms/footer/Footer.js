@@ -13,10 +13,15 @@ import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends Component {
   render() {
-    const { intl, dashboardsOpen, hasSidebar, className, home } = this.props;
+    const { intl, dashboardsOpen, hasSidebar, className, home, loggedIn } = this.props;
 
     return (
-      <footer className={ classNames('footer', hasSidebar && home && 'footer--sidebar', hasSidebar && home && dashboardsOpen && 'footer--shifted', className && className) }>
+      <footer className={ classNames(
+        'footer',
+        hasSidebar && home && loggedIn && 'footer--sidebar',
+        hasSidebar && home && loggedIn && dashboardsOpen && 'footer--shifted',
+        className && className
+      ) }>
         <section>
           <ul className="footer__stats">
             <li className="footer__stats-item">
@@ -73,7 +78,7 @@ class Footer extends Component {
           <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
             <FormattedHTMLMessage id="footer.scroll" />
           </ButtonSmallLight>
-          <Link to="/about" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
+          <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
             <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
           </Link>
           <div className="footer__copy">
@@ -93,7 +98,8 @@ Footer.propTypes = {
   dashboardsOpen: PropTypes.bool,
   hasSidebar: PropTypes.bool,
   className: PropTypes.string,
-  home: PropTypes.bool
+  home: PropTypes.bool,
+  loggedIn: PropTypes.bool
 };
 
 export default injectIntl(Footer);
