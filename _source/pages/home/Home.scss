@@ -35,13 +35,21 @@
   padding: 0 calc(3% + 6px);
   max-width: 1000px;
   margin: 0 auto;
+
+  @include desktop {
+    padding: 0 36px;
+  }
 }
 
 .home__image-wrapper {
   position: absolute;
-  bottom: -360px;
+  bottom: -390px;
   width: 100%;
   overflow: hidden;
+
+  @include tablet {
+    bottom: -360px;
+  }
 }
 
 .home__image {
@@ -112,9 +120,16 @@
 
 .home__testimonials {
   display: flex;
-  padding: 2rem 0;
-  overflow-x: scroll;
+  padding: 2rem 3%;
   width: 100%;
+
+  @include mobile-tablet {
+    overflow-x: scroll;
+  }
+
+  @include desktop {
+    padding: 2rem 36px;
+  }
 }
 
 .home__testimonial {

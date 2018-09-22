@@ -1,20 +1,23 @@
 .testimonial {
   display: flex;
-  padding: 1rem calc(3vw + 6px);
+  padding: 1rem 6px;
+  position: relative;
 }
 
 .testimonial__wrapper {
-  
+  margin-top: 7px;
 }
 
 .testimonial__image {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.1);
 }
 
 .testimonial__link {
   font-size: $font-size--small;
   display: flex;
-  flex-wrap: wrap;
 }
 
 .testimonial__name {
@@ -27,4 +30,17 @@
 .testimonial__text {
   width: 100%;
   padding-bottom: 0;
+}
+
+.testimonial__icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 64px;
+  width: 64px;
+
+  .icon__svg {
+    height: 64px;
+    width: 64px;
+  }
 }

@@ -11,18 +11,12 @@
   }
 }
 
-.page--compact {
-  @include tablet-desktop {
-    width: 480px;
-  }
-}
-
 .page--blur {
   filter: blur(3px) grayscale(100%);
 }
 
 .page--hidden {
-  transition: opacity 0.5s ease;
+  // transition: opacity 0.5s ease;
   opacity: 0;
 }
 

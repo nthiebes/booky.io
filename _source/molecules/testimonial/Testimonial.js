@@ -5,6 +5,7 @@ import 'whatwg-fetch';
 
 import Link from '../../atoms/link';
 import P from '../../atoms/paragraph';
+import Icon from '../../atoms/icon';
 
 class Testimonial extends Component {
   render() {
@@ -20,6 +21,7 @@ class Testimonial extends Component {
           </Link>
           <P className="testimonial__text">{ text }</P>
         </div>
+        <Icon icon="quote" color="medium" className="testimonial__icon" />
       </blockquote>
     );
   }

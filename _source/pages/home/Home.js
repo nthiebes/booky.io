@@ -67,7 +67,7 @@ class Home extends Component {
         <Section color="light" className="home__testimonials">
           <Testimonial
             className="home__testimonial"
-            name="Siddharth Chaujar"
+            name="Siddharth"
             twitter="_gscheid"
             url="https://twitter.com/_gscheid"
             image="_assets/_gscheid.jpg"

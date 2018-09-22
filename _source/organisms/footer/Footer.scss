@@ -27,6 +27,11 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
+  @include desktop {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
 }
 
 .footer__stats-item {
@@ -44,6 +49,11 @@
   padding: calc(2rem - 4px) calc(3vw + 6px) calc(2rem + 2px) calc(3vw + 6px);
   display: flex;
   justify-content: center;
+
+  @include desktop {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
 }
 
 .footer__social-item {
@@ -86,6 +96,11 @@
   padding: 2rem calc(3vw + 6px);
   display: flex;
   flex-direction: column;
+
+  @include desktop {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
 }
 
 .footer__menu {

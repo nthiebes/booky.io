@@ -10,6 +10,10 @@
 .section--compact .section__content {
   width: 480px;
   max-width: 100%;
+
+  @include tablet-desktop {
+    padding: 0 22px;
+  }
 }
 
 .section--primary {
@@ -30,8 +34,11 @@
 .section__content {
   margin: 0 auto;
   max-width: 1000px;
-  padding-left: calc(3% + 6px);
-  padding-right: calc(3% + 6px);
+  padding: 0 calc(3% + 6px);
+
+  @include desktop {
+    padding: 0 36px;
+  }
 }
 
 /*

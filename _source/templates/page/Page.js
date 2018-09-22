@@ -29,7 +29,7 @@ export default class Page extends Component {
   }
 
   render() {
-    const { children, className, dashboards, compact, fullWidth, home, toolbar, blurContent } = this.props;
+    const { children, className, dashboards, fullWidth, home, toolbar, blurContent } = this.props;
     const { show } = this.state;
 
     return (
@@ -48,7 +48,6 @@ export default class Page extends Component {
         />
         <main className={ classNames(
           'page',
-          compact && 'page--compact',
           fullWidth && 'page--full-width',
           blurContent && 'page--blur',
           'page--hidden',
@@ -76,7 +75,6 @@ Page.propTypes = {
   ]).isRequired,
   className: PropTypes.string,
   dashboards: PropTypes.bool,
-  compact: PropTypes.bool,
   fullWidth: PropTypes.bool,
   home: PropTypes.bool,
   blurContent: PropTypes.bool
