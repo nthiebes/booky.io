@@ -26,7 +26,7 @@
 
   @include desktop {
     padding-top: 10rem;
-    margin-bottom: 14rem;
+    margin-bottom: 16rem;
   }
 }
 
@@ -136,10 +136,15 @@
   align-items: center;
   flex-wrap: wrap;
 
-  @include desktop {
-    flex-wrap: nowrap;
+  @include tablet {
     padding-top: 4rem;
     padding-bottom: 4rem;
+  }
+
+  @include desktop {
+    flex-wrap: nowrap;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 }
 
@@ -179,11 +184,4 @@
 
 .home__not-a-member {
   text-align: center;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-
-  @include desktop {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
 }

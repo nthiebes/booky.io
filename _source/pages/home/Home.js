@@ -105,7 +105,10 @@ class Home extends Component {
           </P>
         </Section>
         <Section color="light" className="home__not-a-member">
-          <Display2 noMargin>
+          { 'muh' }
+        </Section>
+        <Section className="home__not-a-member">
+          <Display2>
             <FormattedMessage id="home.notAMember" />
           </Display2>
           <P>

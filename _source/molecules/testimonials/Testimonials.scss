@@ -1,6 +1,6 @@
 .testimonials {
   display: flex;
-  padding: 2rem 1.5%;
+  padding: 3rem 1.5%;
   width: 100%;
 
   @include mobile-tablet {
@@ -8,14 +8,18 @@
     -webkit-overflow-scrolling: touch;
   }
 
+  @include tablet {
+    padding: 4rem 1.5%;
+  }
+
   @include desktop {
-    padding: 2rem 18px;
+    padding: 6rem 18px;
   }
 }
 
 .testimonials__testimonial {
   display: flex;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   position: relative;
   background-color: #fff;
   border-radius: 5px;
@@ -30,6 +34,7 @@
   }
 
   @include desktop {
+    padding: 2rem 1rem;
     width: 33%;
     margin: 0 18px;
   }
