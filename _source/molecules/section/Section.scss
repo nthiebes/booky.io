@@ -1,5 +1,11 @@
 .section {
   position: relative;
+  margin-bottom: 2rem;
+  border-top: 1px solid transparent;
+
+  @include desktop {
+    margin-bottom: 3rem;
+  }
 }
 
 .section--full-width .section__content {
@@ -39,6 +45,10 @@
   @include desktop {
     padding: 0 36px;
   }
+}
+
+.section__content--noPadding {
+  padding: 0;
 }
 
 /*

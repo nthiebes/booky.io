@@ -12,16 +12,16 @@ class Testimonial extends Component {
     const { className, url, name, twitter, image, text } = this.props;
 
     return (
-      <blockquote className={ classNames('testimonial', className && className) }>
-        <img src={ image } width="50" height="50" className="testimonial__image" />
-        <div className="testimonial__wrapper">
-          <Link href={ url } className="testimonial__link">
-            <div className="testimonial__name">{ name }</div>
+      <blockquote className={ classNames('testimonials__testimonial', className && className) }>
+        <img src={ image } width="50" height="50" className="testimonials__image" />
+        <div className="testimonials__content">
+          <Link href={ url } className="testimonials__link">
+            <div className="testimonials__name">{ name }</div>
             { twitter && <div>{ `@${twitter}` }</div> }
           </Link>
-          <P className="testimonial__text">{ text }</P>
+          <P className="testimonials__text">{ text }</P>
         </div>
-        <Icon icon="quote" color="medium" className="testimonial__icon" />
+        <Icon icon="quote" color="medium" className="testimonials__icon" />
       </blockquote>
     );
   }

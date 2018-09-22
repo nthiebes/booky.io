@@ -10,7 +10,7 @@ import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
 import { ButtonLargeLight, ButtonLargeBlue } from '../../atoms/button';
 import Section from '../../molecules/section';
-import Testimonial from '../../molecules/testimonial';
+import Testimonials from '../../molecules/testimonials';
 
 class Home extends Component {
   render() {
@@ -44,80 +44,62 @@ class Home extends Component {
             <img className="home__header-image--mobile booky--hide-mobile-tablet" src="../../_assets/mobile.svg" />
           </div>
         </section>
-        <Section>
+        <Section noPadding>
           <nav className="home__navigation">
-            <a className="home__item" href="#performant">
-              <Icon icon="performance" />
-              <FormattedMessage id="home.performant" />
-            </a>
-            <a className="home__item" href="#mobile">
-              <Icon icon="phone" />
-              <FormattedMessage id="home.mobile" />
-            </a>
-            <a className="home__item" href="#private">
+            <a className="home__nav-item" href="#private">
               <Icon icon="lock" />
               <FormattedMessage id="home.private" />
             </a>
-            <a className="home__item" href="#customizable">
+            <a className="home__nav-item" href="#customizable">
               <Icon icon="settings" />
               <FormattedMessage id="home.customizable" />
             </a>
+            <a className="home__nav-item" href="#mobile">
+              <Icon icon="phone" />
+              <FormattedMessage id="home.mobile" />
+            </a>
+            <a className="home__nav-item" href="#performant">
+              <Icon icon="performance" />
+              <FormattedMessage id="home.performant" />
+            </a>
           </nav>
         </Section>
-        <Section color="light" className="home__testimonials">
-          <Testimonial
-            className="home__testimonial"
-            name="Siddharth"
-            twitter="_gscheid"
-            url="https://twitter.com/_gscheid"
-            image="_assets/_gscheid.jpg"
-            text="My portal to the Web."
-          />
-          <Testimonial
-            className="home__testimonial"
-            name="Clausailgoa"
-            twitter="twittername"
-            url="https://twitter.com/_gscheid"
-            image="_assets/_gscheid.jpg"
-            text="Thank you for this incredible project."
-          />
-          <Testimonial
-            className="home__testimonial"
-            name="Aniket Mohite"
-            twitter="_gscheid"
-            url="https://twitter.com/_gscheid"
-            image="_assets/_gscheid.jpg"
-            text="This is so amazing, just what I needed."
-          />
-        </Section>
-        <Section>
-          <H2 id="performant">
-            { intl.formatMessage({ id: 'home.performantHeadline' }) }
-          </H2>
-          <P>{ 'On the go? No problem with our mobile web app! Your bookmarks can be accessed from anywhere on desktop or mobile.' }</P>
-        </Section>
-        <Section>
-          <H2 id="mobile">
-            { intl.formatMessage({ id: 'home.mobileHeadline' }) }
-          </H2>
-          <P>{ 'On the go? No problem with our mobile web app! Your bookmarks can be accessed from anywhere on desktop or mobile.' }</P>
+        <Section color="light" noPadding>
+          <Testimonials />
         </Section>
         <Section>
           <H2 id="private">
             { intl.formatMessage({ id: 'home.privateHeadline' }) }
           </H2>
-          <P>{ 'On the go? No problem with our mobile web app! Your bookmarks can be accessed from anywhere on desktop or mobile.' }</P>
+          <P>
+            <FormattedMessage id="home.privateText" />
+          </P>
+          <H2 id="performant">
+            { intl.formatMessage({ id: 'home.performantHeadline' }) }
+          </H2>
+          <P>
+            <FormattedMessage id="home.performantText" />
+          </P>
+        </Section>
+        <Section color="primary" className="home__bookmarklet">
+          <Icon icon="extension" color="light" className="home__bookmarklet-icon" />
+          <H2 noMargin className="home__bookmarklet-headline">
+            { 'Quickly add links to booky with our bookmarklet or Chrome extension.' }
+          </H2>
         </Section>
         <Section>
-          <H2 id="customizable">
-            { intl.formatMessage({ id: 'home.customizeHeadline' }) }
+          <H2 id="mobile">
+            { intl.formatMessage({ id: 'home.mobileHeadline' }) }
           </H2>
-          <P>{ 'On the go? No problem with our mobile web app! Your bookmarks can be accessed from anywhere on desktop or mobile.' }</P>
-        </Section>
-        <Section color="primary" fullWidth>
+          <P>
+            <FormattedMessage id="home.mobileText" />
+          </P>
           <H2 id="customizable">
-            { 'Quickly add links to booky with our bookmarklet Chrome extension.' }
+            { intl.formatMessage({ id: 'home.customizableHeadline' }) }
           </H2>
+          <P>
+            <FormattedMessage id="home.customizableText" />
+          </P>
         </Section>
       </Page>
     );
