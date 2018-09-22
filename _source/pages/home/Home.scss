@@ -131,13 +131,15 @@
 
 .home__bookmarklet {
   display: flex;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   align-items: center;
+  flex-wrap: wrap;
 
   @include desktop {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    flex-wrap: nowrap;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
 
@@ -156,4 +158,32 @@
 .home__bookmarklet-headline {
   flex-grow: 1;
   padding: 0;
+
+  @include mobile-tablet {
+    max-width: calc(100% - 64px - 1rem);
+  }
+
+  @include desktop {
+    margin-right: 1rem;
+  }
+}
+
+.home__bookmarklet-button {
+  flex-shrink: 0;
+
+  @include mobile-tablet {
+    margin-top: 1rem;
+    margin-left: calc(64px + 1rem);
+  }
+}
+
+.home__not-a-member {
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  @include desktop {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }

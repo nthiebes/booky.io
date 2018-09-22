@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import Dashboards from '../../organisms/dashboards';
-import { H2, Display } from '../../atoms/headline';
+import { H2, Display1, Display2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
-import { ButtonLargeLight, ButtonLargeBlue } from '../../atoms/button';
+import { ButtonLargeLight, ButtonLargeBlue, ButtonSmallLight } from '../../atoms/button';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
 
 class Home extends Component {
   render() {
-    const { loggedIn, intl } = this.props;
+    const { loggedIn } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
@@ -28,9 +28,9 @@ class Home extends Component {
             <img className="home__image" src="../../_assets/header.svg" />
           </div>
           <div className="home__header-content">
-            <Display color="light" noMargin>
+            <Display1 color="light" noMargin>
               <FormattedMessage id="home.display" />
-            </Display>
+            </Display1>
             <H2 color="light">
               <FormattedMessage id="home.display2" />
             </H2>
@@ -69,13 +69,13 @@ class Home extends Component {
         </Section>
         <Section>
           <H2 id="private">
-            { intl.formatMessage({ id: 'home.privateHeadline' }) }
+            <FormattedMessage id="home.privateHeadline" />
           </H2>
           <P>
             <FormattedMessage id="home.privateText" />
           </P>
           <H2 id="performant">
-            { intl.formatMessage({ id: 'home.performantHeadline' }) }
+            <FormattedMessage id="home.performantHeadline" />
           </H2>
           <P>
             <FormattedMessage id="home.performantText" />
@@ -86,27 +86,44 @@ class Home extends Component {
           <H2 noMargin className="home__bookmarklet-headline">
             { 'Quickly add links to booky with our bookmarklet or Chrome extension.' }
           </H2>
+          <ButtonSmallLight className="home__bookmarklet-button" to="/about">
+            <FormattedHTMLMessage id="home.bookmarkletButton" />
+          </ButtonSmallLight>
         </Section>
         <Section>
           <H2 id="mobile">
-            { intl.formatMessage({ id: 'home.mobileHeadline' }) }
+            <FormattedMessage id="home.mobileHeadline" />
           </H2>
           <P>
             <FormattedMessage id="home.mobileText" />
           </P>
           <H2 id="customizable">
-            { intl.formatMessage({ id: 'home.customizableHeadline' }) }
+            <FormattedMessage id="home.customizableHeadline" />
           </H2>
           <P>
             <FormattedMessage id="home.customizableText" />
           </P>
+        </Section>
+        <Section color="light" className="home__not-a-member">
+          <Display2 noMargin>
+            <FormattedMessage id="home.notAMember" />
+          </Display2>
+          <P>
+            <FormattedMessage id="home.promoText" />
+          </P>
+          <ButtonLargeLight icon="about" contentBefore className="header__learn-more" to="/about">
+            <FormattedHTMLMessage id="header.learnMore" />
+          </ButtonLargeLight>
+          <ButtonLargeBlue icon="join" to="/join">
+            <FormattedHTMLMessage id="header.register" />
+          </ButtonLargeBlue>
         </Section>
       </Page>
     );
   }
 }
 
-export default injectIntl(Home);
+export default Home;
 
 Home.propTypes = {
   loggedIn: PropTypes.bool.isRequired,

@@ -1,10 +1,15 @@
 import React from 'react';
 import Headline from './Headline';
 
-export function Display(props) {
+export function Display1(props) {
   return <Headline { ...props } type="1" display />;
 }
-Display.displayName = 'Display';
+Display1.displayName = 'Display1';
+
+export function Display2(props) {
+  return <Headline { ...props } type="2" display />;
+}
+Display2.displayName = 'Display2';
 
 export function H1(props) {
   return <Headline { ...props } type="1" />;
