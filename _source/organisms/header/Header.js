@@ -58,6 +58,7 @@ class Header extends Component {
                 onClick={ () => { openModal('AddBookmark', {
                   source: 'header'
                 }); } }
+                tabIndex="0"
               />
               <Search className="booky--hide-desktop" />
             </Fragment>
@@ -78,12 +79,14 @@ class Header extends Component {
                 color="light"
                 onClick={ () => { router.push('/customize'); } }
                 title={ intl.formatMessage({ id: 'menu.customize' }) }
+                tabIndex="0"
               />
               <Icon
                 className="booky--hide-mobile-tablet"
                 icon="logout"
                 color="light"
                 title={ intl.formatMessage({ id: 'menu.logout' }) }
+                tabIndex="0"
               />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"
@@ -129,7 +132,8 @@ Header.propTypes = {
   location: PropTypes.object.isRequired,
   sidebarOpen: PropTypes.bool,
   home: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
+  router: PropTypes.object.isRequired
 };
 
 Header.defaultProps = {

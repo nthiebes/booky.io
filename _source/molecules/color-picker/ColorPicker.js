@@ -21,7 +21,7 @@ export default class ColorPicker extends Component {
 
     /* eslint-disable react/jsx-no-bind */
     return (
-      <span key={ color.key } className={ className } onClick={ this.onChange.bind(this, color.key) }>
+      <span key={ color.key } className={ className } onClick={ this.onChange.bind(this, color.key) } tabIndex="0">
         { this.props.value === color.key && <Icon icon="check" color="light" className="color-picker__icon" /> }
       </span>
     );

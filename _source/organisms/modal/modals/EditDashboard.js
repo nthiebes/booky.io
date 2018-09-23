@@ -34,7 +34,7 @@ class EditDashboard extends Component {
     const { name } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) }>
+      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) } hasAnchor>
         <Input
           id="dashboard-name"
           name="name"

@@ -3,15 +3,6 @@
   align-items: center;
   padding: 0 6px;
 
-  // @include desktop {
-  //   &:hover .bookmark__icon {
-  //     opacity: 1;
-  //     transition: color 0.2s linear, opacity 0.2s linear;
-  //     width: auto;
-  //     overflow: inherit;
-  //   }
-  // }
-
   &.bookmark--edit-mode {
     padding-right: 0;
     
@@ -35,9 +26,15 @@
   white-space: nowrap;
   line-height: 36px;
 
-  &:hover,
+  &:focus,
   &:active {
     color: $color__font--primary;
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--primary;
+    }
   }
 }
 

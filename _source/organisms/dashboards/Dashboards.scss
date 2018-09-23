@@ -28,6 +28,10 @@
   display: flex;
   align-items: center;
   padding: 0 3vw 0 calc(3vw + 6px);
+
+  @include desktop {
+    padding: 0 30px 0 36px;
+  }
 }
 
 .dashboards__headline {
@@ -51,7 +55,7 @@
     padding: 0 3vw 0 calc(3vw + 6px);
 
     &:active,
-    &:hover {
+    &:focus {
       color: inherit;
       background-color: inherit;
       cursor: default;
@@ -59,6 +63,21 @@
       .dashboards__label {
         color: inherit;
         cursor: default;
+      }
+    }
+
+    @include desktop {
+      padding: 0 30px 0 36px;
+
+      &:hover {
+        color: inherit;
+        background-color: inherit;
+        cursor: default;
+
+        .dashboards__label {
+          color: inherit;
+          cursor: default;
+        }
       }
     }
   }
@@ -86,7 +105,12 @@
   cursor: pointer;
   text-decoration: none;
 
-  &:active {
+  @include desktop {
+    padding: 0 36px;
+  }
+
+  &:active,
+  &:focus {
     background-color: $color__background--ligth;
     color: $color__font--primary;
 

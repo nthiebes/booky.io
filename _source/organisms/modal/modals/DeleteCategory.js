@@ -47,7 +47,13 @@ class DeleteCategory extends Component {
     ];
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } pending={ pending } headline={ intl.formatMessage({ id: 'modal.deleteCategory' }) }>
+      <Base
+        onClose={ onClose }
+        onSave={ () => { onSave(this.state); } }
+        pending={ pending }
+        headline={ intl.formatMessage({ id: 'modal.deleteCategory' }) }
+        hasAnchor
+      >
         <Label>
           <FormattedMessage id="modal.deleteCategoryLabel" /><br />
           <b>{ data.name }</b>

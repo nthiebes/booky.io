@@ -45,7 +45,7 @@ class EditBookmark extends Component {
     const { name, url } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editBookmark' }) }>
+      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editBookmark' }) } hasAnchor>
         <Input
           id="bookmark-url"
           name="url"

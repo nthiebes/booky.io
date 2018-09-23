@@ -7,11 +7,12 @@
   "menu.contact": "Kontakt",
   "menu.privacy": "Datenschutzerklärung",
   "menu.legal": "Impressum",
-  "menu.customize": "Anpassen",
+  "menu.customize": "Booky anpassen",
   "menu.logout": "Abmelden",
   "menu.navigation": "Navigation",
   "menu.login": "Anmelden",
   "menu.register": "Booky beitreten",
+  "menu.close": "Menü ausblenden",
 
   "footer.scroll": "Nach <b>oben</b>",
   "footer.copy": "Alle Rechte vorbehalten.",
@@ -59,7 +60,7 @@
   "bookmark.delete": "Lesezeichen löschen",
   "bookmark.drag": "Lesezeichen verschieben",
 
-  "modal.close": "Schließen",
+  "modal.close": "Fenster schließen",
   "modal.url": "URL:",
   "modal.name": "Name:",
   "modal.color": "Farbe:",
@@ -80,6 +81,7 @@
   "modal.deleteBookmarkLabel": "Dieses Lesezeichen wird gelöscht:",
   "modal.deleteAll": "Alle löschen",
   "modal.moveTo": "Verschieben nach",
+  "modal.tabAnchor": "Du bist in einem Fenster, drücke tab um das erste Element zu fokussieren",
 
   "footer.people": "Booky Nutzer.",
   "footer.bookmarks": "Gespeicherte Lesezeichen.",

@@ -16,6 +16,10 @@ class Modal extends Component {
     this.onCancel = this.onCancel.bind(this);
   }
 
+  componentDidMount() {
+    this.props.hasAnchor && this.anchor.focus();
+  }
+
   onCancel() {
     this.props.onClose();
   }
@@ -25,13 +29,21 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noPadding, noCancel, intl, pending } = this.props;
+    const { children, onClose, headline, noPadding, noCancel, intl, pending, hasAnchor } = this.props;
 
     return (
       <Form className="modal__inner" onSubmit={ this.onSubmit } onClick={ (e) => { e.stopPropagation(); } }>
         <header className="modal__header">
+          { hasAnchor && (
+            <a
+              tabIndex="0"
+              title={ this.props.intl.formatMessage({ id: 'modal.tabAnchor' }) }
+              className="modal__tab-index-link"
+              ref={ (anchor) => { this.anchor = anchor; } }
+            />
+          ) }
           { headline && <H3 className="modal__headline">{ headline }</H3> }
-          <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } />
+          <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
         </header>
         <div className={ classNames(['modal__content', !noPadding && 'modal__content--padding']) }>
           { children }
@@ -65,7 +77,8 @@ Modal.propTypes = {
   noPadding: PropTypes.bool,
   noCancel: PropTypes.bool,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool.isRequired
+  pending: PropTypes.bool.isRequired,
+  hasAnchor: PropTypes.bool
 };
 
 Modal.defaultProps = {

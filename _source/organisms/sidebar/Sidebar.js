@@ -32,7 +32,7 @@ class Sidebar extends Component {
             title={ intl.formatMessage({ id: 'menu.home' }) }
             className="sidebar__logo"
             onClick={ closeMenu }
-            tabIndex={ open ? '' : '-1' }
+            tabIndex={ open ? '0' : '-1' }
           >
             <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
           </Link>
@@ -40,12 +40,12 @@ class Sidebar extends Component {
             icon={ direction === 'left' ? 'back' : 'forward' }
             onClick={ closeMenu }
             tabIndex={ open ? '0' : '-1' }
-            title={ intl.formatMessage({ id: 'modal.close' }) }
+            title={ intl.formatMessage({ id: 'menu.close' }) }
           />
         </header>
         <hr className="sidebar__hr" />
         <div className="sidebar__scroll-wrapper">
-          { dashboards && <Dashboards /> }
+          { dashboards && <Dashboards useTabIndex={ open } /> }
           { dashboards && <hr className="sidebar__hr" /> }
           <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
           <nav className="sidebar__nav">
@@ -53,7 +53,7 @@ class Sidebar extends Component {
               className={ classNames('sidebar__item', pathname === '/about' && 'sidebar__item--active') }
               to="/about"
               onClick={ closeMenu }
-              tabIndex={ open ? '' : '-1' }
+              tabIndex={ open ? '0' : '-1' }
             >
               <Icon icon="about" />
               <label className="sidebar__label"><FormattedMessage id="menu.about" /></label>
@@ -62,7 +62,7 @@ class Sidebar extends Component {
               className={ classNames('sidebar__item', pathname === '/help' && 'sidebar__item--active') }
               to="/help"
               onClick={ closeMenu }
-              tabIndex={ open ? '' : '-1' }
+              tabIndex={ open ? '0' : '-1' }
             >
               <Icon icon="help" />
               <label className="sidebar__label"><FormattedMessage id="menu.help" /></label>
@@ -73,7 +73,7 @@ class Sidebar extends Component {
                   className={ classNames('sidebar__item', pathname === '/login' && 'sidebar__item--active') }
                   to="/login"
                   onClick={ closeMenu }
-                  tabIndex={ open ? '' : '-1' }
+                  tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="account" />
                   <label className="sidebar__label"><FormattedMessage id="menu.login" /></label>
@@ -82,7 +82,7 @@ class Sidebar extends Component {
                   className={ classNames('sidebar__item sidebar__item--highlighted', pathname === '/join' && 'sidebar__item--active') }
                   to="/join"
                   onClick={ closeMenu }
-                  tabIndex={ open ? '' : '-1' }
+                  tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="join" />
                   <label className="sidebar__label"><FormattedMessage id="menu.register" /></label>
@@ -90,32 +90,24 @@ class Sidebar extends Component {
               </Fragment>
             ) }
             { loggedIn && [
-              <Link key="0" className="sidebar__item" to="/account" onClick={ closeMenu }>
+              <Link key="0" className="sidebar__item" to="/account" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' }>
                 <Icon icon="account"/>
                 <label className="sidebar__label"><FormattedMessage id="menu.account" /></label>
               </Link>,
-              <Link key="1" className="sidebar__item" to="/next" onClick={ closeMenu }>
+              <Link key="1" className="sidebar__item" to="/next" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' }>
                 <Icon icon="next" />
                 <label className="sidebar__label"><FormattedMessage id="menu.next" /></label>
               </Link>,
-              <Link key="2" className="sidebar__item booky--hide-desktop" to="" onClick={ closeMenu }>
+              <Link key="2" className="sidebar__item booky--hide-desktop" to="" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' }>
                 <Icon icon="settings" />
                 <label className="sidebar__label"><FormattedMessage id="menu.customize" /></label>
               </Link>,
-              <Link key="3" className="sidebar__item booky--hide-desktop" to="/logout" onClick={ closeMenu }>
+              <Link key="3" className="sidebar__item booky--hide-desktop" to="/logout" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' }>
                 <Icon icon="logout" />
                 <label className="sidebar__label"><FormattedMessage id="menu.logout" /></label>
               </Link>
             ] }
           </nav>
-          { loggedIn && (
-            <Fragment>
-              <Icon className="sidebar__item booky--hide-mobile-tablet" icon="settings" title={ intl.formatMessage({ id: 'menu.customize' }) } color="light" />
-              <Link className="sidebar__item booky--hide-mobile-tablet" to="/logout">
-                <Icon icon="logout" title={ intl.formatMessage({ id: 'menu.logout' }) } />
-              </Link>
-            </Fragment>
-          ) }
         </div>
       </aside>
     );

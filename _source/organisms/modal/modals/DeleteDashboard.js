@@ -47,7 +47,13 @@ class DeleteDashboard extends Component {
     ];
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } pending={ pending } headline={ intl.formatMessage({ id: 'modal.deleteDashboard' }) }>
+      <Base
+        onClose={ onClose }
+        onSave={ () => { onSave(this.state); } }
+        pending={ pending }
+        headline={ intl.formatMessage({ id: 'modal.deleteDashboard' }) }
+        hasAnchor
+      >
         <Label>
           <FormattedMessage id="modal.deleteDashboardLabel" /><br />
           <b>{ data.name }</b>

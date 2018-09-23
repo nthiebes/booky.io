@@ -11,11 +11,7 @@ select,
 textarea,
 button,
 a,
-a:focus,
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
+*:focus {
   outline: 1px solid transparent;
 }
 

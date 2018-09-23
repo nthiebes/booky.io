@@ -16,6 +16,7 @@ export default class Modal extends Component {
     super(props);
 
     this.saveModal = this.saveModal.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
     this.modalMap = {
       AddBookmark: {
         modal: AddBookmark,
@@ -66,6 +67,12 @@ export default class Modal extends Component {
     closeModal();
   }
 
+  handleKeyUp(event) {
+    if (event.key === 'Escape') {
+      this.props.closeModal();
+    }
+  }
+
   render() {
     const { modal, open, data, pending, closeModal } = this.props;
     let CustomTag;
@@ -77,7 +84,7 @@ export default class Modal extends Component {
     }
 
     return (
-      <div className={ classNames(['modal', open && 'modal--open']) } onClick={ closeModal }>
+      <div className={ classNames(['modal', open && 'modal--open']) } onClick={ closeModal } onKeyUp={ this.handleKeyUp }>
         { CustomTag && <CustomTag onClose={ closeModal } onSave={ this.saveModal } data={ data } pending={ pending } /> }
       </div>
     );

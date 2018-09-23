@@ -129,6 +129,5 @@ class Home extends Component {
 export default Home;
 
 Home.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
-  intl: PropTypes.object.isRequired
+  loggedIn: PropTypes.bool.isRequired
 };

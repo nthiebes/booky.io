@@ -18,6 +18,7 @@ class DeleteBookmark extends Component {
         }); } }
         pending={ pending }
         headline={ intl.formatMessage({ id: 'modal.deleteBookmark' }) }
+        hasAnchor
       >
         <Label>
           <FormattedMessage id="modal.deleteBookmarkLabel" /><br />

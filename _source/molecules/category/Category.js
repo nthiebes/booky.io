@@ -50,6 +50,7 @@ class Category extends Component {
             icon="expand"
             title={ open ? intl.formatMessage({ id: 'category.reduce' }) : intl.formatMessage({ id: 'category.expand' }) }
             onClick={ this.toggleCategory }
+            tabIndex="0"
           />
           <H2 className="category__name" onClick={ this.toggleCategory }>{ name }</H2>
           <Icon
@@ -61,6 +62,7 @@ class Category extends Component {
               id,
               color
             }); } }
+            tabIndex={ editMode ? '0' : '-1' }
           />
           <Icon
             className="category__icon"
@@ -70,25 +72,20 @@ class Category extends Component {
               name,
               id
             }); } }
+            tabIndex={ editMode ? '0' : '-1' }
           />
           <Icon
-            className={ editMode ? '' : 'category__edit-icon--hide' }
-            icon="close"
-            title={ intl.formatMessage({ id: 'category.editModeQuit' }) }
+            icon={ editMode ? 'close' : 'more-horiz' }
+            title={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
             onClick={ this.toggleEditMode }
-          />
-          <Icon
-            className={ editMode ? 'category__edit-icon--hide' : '' }
-            icon="more-horiz"
-            title={ intl.formatMessage({ id: 'category.editMode' }) }
-            onClick={ this.toggleEditMode }
+            tabIndex="0"
           />
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
           <Droppable droppableId={ id.toString() } type="bookmark">
             { (provided) => (
               <div className="category__bookmark-drag-wrapper" ref={ provided.innerRef } { ...provided.droppableProps }>
-                { bookmarks.map((bookmark, index) => (
+                { open && bookmarks.map((bookmark, index) => (
                   <Bookmark
                     key={ index }
                     index={ index }

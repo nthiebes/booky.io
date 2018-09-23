@@ -78,6 +78,7 @@ class Toolbar extends Component {
           icon="tree"
           title={ intl.formatMessage({ id: 'structure.title' }) }
           onClick={ () => { router.push('/structure'); } }
+          tabIndex="0"
         />
         <H3 className="toolbar__headline">{ dashboard.name }</H3>
         <Search className="booky--hide-mobile-tablet" />

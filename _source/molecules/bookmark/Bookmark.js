@@ -16,7 +16,9 @@ class Bookmark extends Component {
           <div>
             <div { ...provided.draggableProps } ref={ provided.innerRef }>
               <li className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }>
-                <a className="bookmark__link" href={ url } target={ target }>{ name }</a>
+                <a className="bookmark__link" href={ url } target={ target }>
+                  { name }
+                </a>
                 <Icon
                   className="bookmark__icon"
                   icon="edit"
@@ -27,6 +29,7 @@ class Bookmark extends Component {
                     name,
                     categoryId
                   }); } }
+                  tabIndex={ editMode ? '0' : '-1' }
                 />
                 <Icon
                   className="bookmark__icon"
@@ -38,12 +41,14 @@ class Bookmark extends Component {
                     name,
                     categoryId
                   }); } }
+                  tabIndex={ editMode ? '0' : '-1' }
                 />
                 <Icon
                   className="bookmark__icon bookmark__icon--drag"
                   icon="drag"
                   title={ intl.formatMessage({ id: 'bookmark.drag' }) }
                   dragHandleProps={ provided.dragHandleProps }
+                  tabIndex={ editMode ? '0' : '-1' }
                 />
               </li>
             </div>

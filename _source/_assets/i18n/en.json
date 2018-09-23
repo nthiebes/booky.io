@@ -7,11 +7,12 @@
   "menu.contact": "Contact",
   "menu.privacy": "Privacy Policy",
   "menu.legal": "Legal Notice",
-  "menu.customize": "Customize",
+  "menu.customize": "Customize booky",
   "menu.logout": "Sign out",
   "menu.navigation": "Navigation",
   "menu.login": "Sign in",
   "menu.register": "Join booky",
+  "menu.close": "Hide menu",
 
   "footer.scroll": "<b>Back</b> to <b>top</b>",
   "footer.copy": "All Rights Reserved.",
@@ -59,7 +60,7 @@
   "bookmark.delete": "Delete bookmark",
   "bookmark.drag": "Drag bookmark",
 
-  "modal.close": "Close",
+  "modal.close": "Close window",
   "modal.url": "URL:",
   "modal.name": "Name:",
   "modal.color": "Color:",
@@ -80,6 +81,7 @@
   "modal.deleteBookmarkLabel": "This bookmark will be deleted:",
   "modal.deleteAll": "Delete all",
   "modal.moveTo": "Move to",
+  "modal.tabAnchor": "You are in a window, press tab to focus the first element",
 
   "footer.people": "Booky members.",
   "footer.bookmarks": "Bookmarks saved.",
