@@ -101,7 +101,7 @@
   list-style: none;
   padding: 0 calc(3vw + 6px);
   user-select: none;
-  transition: none;
+  transition: background-color 0.2s linear, color 0.2s linear;
   cursor: pointer;
   text-decoration: none;
 
@@ -144,6 +144,10 @@
 .dashboards__button {
   margin: 1rem calc(3vw + 6px);
   display: flex;
+
+  @include desktop {
+    margin: 1rem 36px;
+  }
 }
 
 .dashboards__hr {
@@ -151,4 +155,15 @@
   background-color: rgba(0,0,0,0.15);
   width: 100%;
   margin-bottom: 1rem;
+}
+
+.dashboard__empty {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  padding: 0 calc(3vw + 6px);
+  list-style: none;
+
+  @include desktop {
+    padding: 0 36px;
+  }
 }
