@@ -98,6 +98,11 @@ class Dashboards extends Component {
               />
             </li>
           )) }
+          { dashboards.length === 0 && (
+            <li className="dashboard__empty">
+              <i><FormattedMessage id="dashboard.empty" /></i>
+            </li>
+          ) }
           <ButtonSmallPrimary
             icon="add"
             className="dashboards__button"

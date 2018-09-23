@@ -80,7 +80,7 @@ class Toolbar extends Component {
           onClick={ () => { router.push('/structure'); } }
           tabIndex="0"
         />
-        <H3 className="toolbar__headline">{ dashboard.name }</H3>
+        <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
         <Search className="booky--hide-mobile-tablet" />
       </section>
     );
@@ -97,7 +97,7 @@ Toolbar.propTypes = {
   headerSticky: PropTypes.bool,
   sticky: PropTypes.bool,
   currentlySticky: PropTypes.bool,
-  dashboards: PropTypes.object,
+  dashboards: PropTypes.object.isRequired,
   dashboard: PropTypes.object,
   openModal: PropTypes.func.isRequired,
   router: PropTypes.object.isRequired,
@@ -109,5 +109,5 @@ Toolbar.defaultProps = {
   headerSticky: true,
   sticky: true,
   currentlySticky: true,
-  dashboards: {}
+  dashboard: {}
 };

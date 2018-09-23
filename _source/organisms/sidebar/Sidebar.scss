@@ -106,7 +106,7 @@
   list-style: none;
   padding: 0 calc(3vw + 6px) 0 3vw;
   user-select: none;
-  transition: none;
+  transition: background-color 0.2s linear, color 0.2s linear;
   cursor: pointer;
 
   .icon {

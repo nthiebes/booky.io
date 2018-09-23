@@ -172,14 +172,7 @@ export default {
     'position': 2,
     'color': 3,
     'expanded': false,
-    bookmarks: [{
-      'id': 15,
-      'category': 0,
-      'name': 'booky.io',
-      'url': 'https://booky.io',
-      'favicon': 'base64',
-      'position': 0
-    }]
+    bookmarks: []
   }, {
     'id': 76,
     'name': 'Category 4 Привет, как дела 4',

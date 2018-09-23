@@ -49,3 +49,8 @@
 .categories__button--bottom {
   margin-top: 1rem;
 }
+
+.categories__empty {
+  margin: 1rem calc(3vw + 6px);
+  list-style: none;
+}

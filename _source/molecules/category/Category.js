@@ -96,6 +96,11 @@ class Category extends Component {
                     url={ bookmark.url }
                   />
                 )) }
+                { open && bookmarks.length === 0 && (
+                  <li className="category__empty">
+                    <i><FormattedHTMLMessage id="bookmark.empty" /></i>
+                  </li>
+                ) }
                 { provided.placeholder }
               </div>
             ) }

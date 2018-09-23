@@ -22,7 +22,7 @@ export default class Categories extends Component {
         {categories.map((category) =>
           <Category key={ category.id } { ...category } />
         )}
-        { categories.length && (
+        { categories.length ? (
           <ButtonSmallPrimary
             icon="add"
             className="categories__button categories__button--bottom"
@@ -30,6 +30,10 @@ export default class Categories extends Component {
           >
             <FormattedHTMLMessage id="category.add" />
           </ButtonSmallPrimary>
+        ) : (
+          <section className="categories__empty">
+            <i><FormattedHTMLMessage id="category.empty" /></i>
+          </section>
         ) }
       </div>
     );

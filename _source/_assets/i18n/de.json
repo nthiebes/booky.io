@@ -45,6 +45,7 @@
   "dashboard.drag": "Sammlung verschieben",
   "dashboard.expand": "Sammlungen anzeigen",
   "dashboard.reduce": "Sammlungen ausblenden",
+  "dashboard.empty": "Noch keine Sammlungen.",
 
   "category.add": "<b>Kategorie</b>",
   "category.reduce": "Kategorie reduzieren",
@@ -54,11 +55,13 @@
   "category.editMode": "Editiermodus",
   "category.editModeQuit": "Editiermodus beenden",
   "category.drag": "Kategorie verschieben",
+  "category.empty": "Noch keine Kategorien.",
 
   "bookmark.add": "<b>Lesezeichen</b>",
   "bookmark.edit": "Lesezeichen bearbeiten",
   "bookmark.delete": "Lesezeichen löschen",
   "bookmark.drag": "Lesezeichen verschieben",
+  "bookmark.empty": "Noch keine Lesezeichen.",
 
   "modal.close": "Fenster schließen",
   "modal.url": "URL:",

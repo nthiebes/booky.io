@@ -45,6 +45,7 @@
   "dashboard.drag": "Drag collection",
   "dashboard.expand": "Show collections",
   "dashboard.reduce": "Hide collections",
+  "dashboard.empty": "No collections yet.",
 
   "category.add": "<b>Category</b>",
   "category.reduce": "Collapse category",
@@ -54,11 +55,13 @@
   "category.editMode": "Edit mode",
   "category.editModeQuit": "Quit edit mode",
   "category.drag": "Drag category",
+  "category.empty": "No categories yet.",
 
   "bookmark.add": "<b>Bookmark</b>",
   "bookmark.edit": "Edit bookmark",
   "bookmark.delete": "Delete bookmark",
   "bookmark.drag": "Drag bookmark",
+  "bookmark.empty": "No bookmarks yet.",
 
   "modal.close": "Close window",
   "modal.url": "URL:",
