@@ -9,9 +9,6 @@ export default class Checkbox extends Component {
     super(props);
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.state = {
-      checked: this.props.checked
-    };
   }
 
   handleInputChange(event) {
@@ -24,8 +21,7 @@ export default class Checkbox extends Component {
   }
 
   render() {
-    const { label, className, id, name, value } = this.props;
-    const { checked } = this.state;
+    const { label, className, id, name, value, checked } = this.props;
 
     return (
       <div className={ classNames('checkbox', className && classNames) }>

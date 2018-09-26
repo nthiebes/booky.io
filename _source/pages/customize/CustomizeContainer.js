@@ -5,7 +5,8 @@ import { updateUser } from '../../_state/user/actions';
 
 export const mapStateToProps = function(state) {
   return {
-    headerColor: state.user.headerColor
+    navColor: state.user.navColor,
+    newtab: state.user.newtab
   };
 };
 
