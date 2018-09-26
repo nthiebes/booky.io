@@ -8,6 +8,7 @@ import scrolling from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 import Search from '../../molecules/search';
+import { TabBar, Tab } from '../../molecules/tab-bar';
 
 class Toolbar extends Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, router, intl, className } = this.props;
+    const { dashboard, router, intl, className, sidebar, dashboards, changeDashboard } = this.props;
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), className && className) }>
@@ -80,13 +81,26 @@ class Toolbar extends Component {
           onClick={ () => { router.push('/structure'); } }
           tabIndex="0"
         />
-        <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
+        { sidebar ? (
+          <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
+        ) : (
+          <TabBar className="toolbar__tabs">
+            { dashboards.items.map((tab, index) => (
+              <Tab
+                key={ index }
+                tabId={ index }
+                active={ tab.id === dashboards.active }
+                name={ tab.name }
+                onClick={ () => { changeDashboard(tab.id); } }
+              />
+            )) }
+          </TabBar>
+        ) }
         <Search className="booky--hide-mobile-tablet" />
       </section>
     );
 
     // <div className="toolbar__gradient" />
-    // <TabBar tabs={ dashboards } />
   }
 }
 
@@ -102,7 +116,9 @@ Toolbar.propTypes = {
   openModal: PropTypes.func.isRequired,
   router: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  sidebar: PropTypes.bool.isRequired,
+  changeDashboard: PropTypes.func.isRequired
 };
 
 Toolbar.defaultProps = {
