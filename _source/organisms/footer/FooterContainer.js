@@ -3,7 +3,7 @@ import Component from './Footer';
 
 export const mapStateToProps = function(state) {
   return {
-    dashboardsOpen: state.dashboards.open,
+    dashboardsOpen: state.user.pinned,
     hasSidebar: state.dashboards.sidebar,
     loggedIn: state.user.loggedIn
   };

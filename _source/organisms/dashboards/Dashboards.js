@@ -38,7 +38,9 @@ class Dashboards extends Component {
   }
 
   toggleOpen() {
-    this.props.toggleDashboardOpen();
+    const { open, toggleDashboardOpen } = this.props;
+
+    toggleDashboardOpen(!open);
   }
 
   render() {

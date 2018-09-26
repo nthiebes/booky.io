@@ -2,28 +2,27 @@ import { connect } from 'react-redux';
 import Component from './Dashboards';
 import { actions as modalActions } from '../../_state/modal';
 import { actions as dashboardsActions } from '../../_state/dashboards';
+import { updateUser } from '../../_state/user/actions';
 
-export const mapStateToProps = function(state) {
-  return {
-    dashboards: state.dashboards.items,
-    activeId: state.dashboards.active,
-    open: state.dashboards.open
-  };
-};
+export const mapStateToProps = (state) => ({
+  dashboards: state.dashboards.items,
+  activeId: state.dashboards.active,
+  open: state.user.pinned
+});
 
-export const mapDispatchToProps = function(dispatch) {
-  return {
-    openModal: (modal, data) => {
-      dispatch(modalActions.openModal(modal, data));
-    },
-    changeDashboard: (id) => {
-      dispatch(dashboardsActions.changeDashboard(id));
-    },
-    toggleDashboardOpen: () => {
-      dispatch(dashboardsActions.toggleDashboardOpen());
-    }
-  };
-};
+export const mapDispatchToProps = (dispatch) => ({
+  openModal: (modal, data) => {
+    dispatch(modalActions.openModal(modal, data));
+  },
+  changeDashboard: (id) => {
+    dispatch(dashboardsActions.changeDashboard(id));
+  },
+  toggleDashboardOpen: (open) => {
+    dispatch(updateUser({
+      pinned: open
+    }));
+  }
+});
 
 const Container = connect(
   mapStateToProps,
