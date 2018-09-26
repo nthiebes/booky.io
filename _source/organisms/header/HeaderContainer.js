@@ -8,7 +8,7 @@ export const mapStateToProps = function(state) {
     sticky: state.sidebar.stickyHeader,
     loggedIn: state.user.loggedIn,
     sidebarOpen: state.sidebar.open,
-    color: state.user.headerColor
+    color: state.user.navColor
   };
 };
 

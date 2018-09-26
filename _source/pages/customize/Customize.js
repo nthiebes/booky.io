@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import Page from '../../templates/page';
@@ -8,22 +8,30 @@ import Label from '../../atoms/label';
 // import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import ColorPicker from '../../molecules/color-picker';
+import Checkbox from '../../atoms/checkbox';
 
-export default class Customize extends Component {
+class Customize extends Component {
   constructor(props) {
     super(props);
 
     this.handleColorChange = this.handleColorChange.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
   handleColorChange(value) {
     this.props.updateUser({
-      headerColor: value
+      navColor: value
+    });
+  }
+
+  handleCheckboxChange({ name, checked }) {
+    this.props.updateUser({
+      [name]: checked
     });
   }
 
   render() {
-    const { headerColor } = this.props;
+    const { intl, navColor, newtab } = this.props;
 
     return (
       <Page>
@@ -35,9 +43,9 @@ export default class Customize extends Component {
             { 'Styling' }
           </H2>
           <Label>
-            { 'Header color' }
+            <FormattedMessage id="customize.navColor" />
           </Label>
-          <ColorPicker value={ headerColor } onChange={ this.handleColorChange } />
+          <ColorPicker value={ navColor } onChange={ this.handleColorChange } />
           <H2>
             { 'Layout' }
           </H2>
@@ -47,6 +55,13 @@ export default class Customize extends Component {
           <H2>
             { 'Preferences' }
           </H2>
+          <Checkbox
+            label={ intl.formatMessage({ id: 'customize.newTab'}) }
+            id="newtab"
+            name="newtab"
+            onChange={ this.handleCheckboxChange }
+            checked={ newtab }
+          />
         </Section>
       </Page>
     );
@@ -54,6 +69,10 @@ export default class Customize extends Component {
 }
 
 Customize.propTypes = {
-  headerColor: PropTypes.number.isRequired,
-  updateUser: PropTypes.func.isRequired
+  updateUser: PropTypes.func.isRequired,
+  intl: PropTypes.object.isRequired,
+  navColor: PropTypes.number.isRequired,
+  newtab: PropTypes.bool.isRequired
 };
+
+export default injectIntl(Customize);
