@@ -95,7 +95,7 @@ body {
 
 .booky__loader {
   position: absolute;
-  color: #657786;
+  color: $color__font--medium;
   cursor: default;
   left: calc(50% - 18px);
   top: calc(50% - 18px);

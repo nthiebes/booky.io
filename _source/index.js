@@ -47,6 +47,7 @@ fetch(`/_assets/i18n/${language}.json`)
         const store = configureStore({
           ...initialState,
           user: {
+            ...initialState.user,
             loggedIn: typeof data.user === 'object',
             ...data
           },
@@ -64,7 +65,8 @@ fetch(`/_assets/i18n/${language}.json`)
         const store = configureStore({
           ...initialState,
           user: {
-            loggedIn: false,
+            ...initialState.user,
+            loggedIn: true, // false
             error
           },
           intl: {

@@ -6,9 +6,9 @@ import { actions as modalActions } from '../../_state/modal';
 export const mapStateToProps = function(state) {
   return {
     sticky: state.sidebar.stickyHeader,
-    color: state.sidebar.headerColor,
     loggedIn: state.user.loggedIn,
-    sidebarOpen: state.sidebar.open
+    sidebarOpen: state.sidebar.open,
+    color: state.user.headerColor
   };
 };
 

@@ -10,6 +10,18 @@ import Section from '../../molecules/section';
 import ColorPicker from '../../molecules/color-picker';
 
 export default class Customize extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleColorChange = this.handleColorChange.bind(this);
+  }
+
+  handleColorChange(value) {
+    this.props.updateUser({
+      headerColor: value
+    });
+  }
+
   render() {
     const { headerColor } = this.props;
 
@@ -25,7 +37,7 @@ export default class Customize extends Component {
           <Label>
             { 'Header color' }
           </Label>
-          <ColorPicker value={ headerColor } onChange={ this.onColorChange } />
+          <ColorPicker value={ headerColor } onChange={ this.handleColorChange } />
           <H2>
             { 'Layout' }
           </H2>
@@ -42,5 +54,6 @@ export default class Customize extends Component {
 }
 
 Customize.propTypes = {
-  headerColor: PropTypes.number.isRequired
+  headerColor: PropTypes.number.isRequired,
+  updateUser: PropTypes.func.isRequired
 };

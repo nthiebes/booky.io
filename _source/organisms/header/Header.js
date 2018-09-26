@@ -121,7 +121,7 @@ class Header extends Component {
 
 
 Header.propTypes = {
-  color: PropTypes.number,
+  color: PropTypes.number.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   onHeaderClick: PropTypes.func.isRequired,
   onMenuClick: PropTypes.func.isRequired,
