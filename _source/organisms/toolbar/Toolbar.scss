@@ -4,7 +4,7 @@
   justify-content: center;
   padding: 0 calc(3% + 6px) 0 3%;
   position: absolute;
-  top: 3rem;
+  top: calc(3rem + 2px);
   width: 100%;
   z-index: 1;
   height: 42px;
@@ -12,27 +12,27 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 
   @include tablet {
-    top: 4.4rem;
+    top: calc(4.4rem + 2px);
   }
 
   @include desktop {
     background-color: rgba($color__background--white, 0.95);
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     height: 62px;
-    top: 6.2rem;
+    top: calc(6.2rem + 2px);
     padding: 0 36px 0 30px;
   }
 
   &.toolbar--sticky {
     position: fixed;
-    top: 3rem;
+    top: calc(3rem + 2px);
 
     @include tablet {
-      top: 4.4rem;
+      top: calc(4.4rem + 2px);
     }
 
     @include desktop {
-      top: 6.2rem;
+      top: calc(6.2rem + 2px);
     }
   }
 
