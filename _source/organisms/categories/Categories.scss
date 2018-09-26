@@ -8,7 +8,6 @@
 
 .categories--sidebar {
   @include desktop {
-    // transition: transform 0.3s ease, width 0.3s ease;
     width: calc(100% - 36px);
     transform: translate3d(36px,0,0);
   }
@@ -21,13 +20,17 @@
   }
 }
 
+.categories--max-width {
+  @include desktop {
+    &.categories--shifted {
+      // width: calc(1000px - 36px - 36px - (300px - (100% - 1000px + 36px + 36px) / 2));
+    }
+  }
+}
+
 .categories__button {
   width: calc(94vw - 12px);
   margin: 0 calc(3vw + 6px);
-
-  @include desktop {
-    // transition: width 0.3s ease;
-  }
 }
 
 .categories--sidebar {

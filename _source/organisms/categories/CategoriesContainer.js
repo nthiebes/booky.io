@@ -5,7 +5,7 @@ import { actions } from '../../_state/modal';
 export const mapStateToProps = function(state) {
   return {
     categories: state.categories,
-    maxWidth: state.sidebar.maxWidth,
+    maxWidth: state.user.maxWidth,
     dashboardsOpen: state.user.pinned,
     hasSidebar: state.dashboards.sidebar
   };

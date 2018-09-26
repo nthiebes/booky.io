@@ -31,7 +31,7 @@ class Customize extends Component {
   }
 
   render() {
-    const { intl, navColor, newtab } = this.props;
+    const { intl, navColor, newtab, maxWidth } = this.props;
 
     return (
       <Page>
@@ -49,6 +49,13 @@ class Customize extends Component {
           <H2>
             { 'Layout' }
           </H2>
+          <Checkbox
+            label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
+            id="maxWidth"
+            name="maxWidth"
+            onChange={ this.handleCheckboxChange }
+            checked={ maxWidth }
+          />
           <H2>
             { 'Dashboards' }
           </H2>
@@ -72,7 +79,8 @@ Customize.propTypes = {
   updateUser: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
   navColor: PropTypes.number.isRequired,
-  newtab: PropTypes.bool.isRequired
+  newtab: PropTypes.bool.isRequired,
+  maxWidth: PropTypes.bool.isRequired
 };
 
 export default injectIntl(Customize);

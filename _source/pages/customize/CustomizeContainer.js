@@ -5,7 +5,8 @@ import { updateUser } from '../../_state/user/actions';
 
 export const mapStateToProps = (state) => ({
   navColor: state.user.navColor,
-  newtab: state.user.newtab
+  newtab: state.user.newtab,
+  maxWidth: state.user.maxWidth
 });
 
 export const mapDispatchToProps = {
