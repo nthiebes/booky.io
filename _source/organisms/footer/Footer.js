@@ -22,26 +22,28 @@ class Footer extends Component {
         hasSidebar && home && loggedIn && dashboardsOpen && 'footer--shifted',
         className && className
       ) }>
-        <section>
-          <ul className="footer__stats">
-            <li className="footer__stats-item">
-              <b>{ '19.512' }</b>
-              <FormattedMessage id="footer.people" />
-            </li>
-            <li className="footer__stats-item">
-              <b>{ '7.557.503' }</b>
-              <FormattedMessage id="footer.bookmarks" />
-            </li>
-            <li className="footer__stats-item">
-              <b>{ '636.803' }</b>
-              <FormattedMessage id="footer.categories" />
-            </li>
-            <li className="footer__stats-item">
-              <b>{ '35.209' }</b>
-              <FormattedMessage id="footer.dashboards" />
-            </li>
-          </ul>
-        </section>
+        { home && !loggedIn && (
+          <section>
+            <ul className="footer__stats">
+              <li className="footer__stats-item">
+                <b>{ '19.512' }</b>
+                <FormattedMessage id="footer.people" />
+              </li>
+              <li className="footer__stats-item">
+                <b>{ '7.557.503' }</b>
+                <FormattedMessage id="footer.bookmarks" />
+              </li>
+              <li className="footer__stats-item">
+                <b>{ '636.803' }</b>
+                <FormattedMessage id="footer.categories" />
+              </li>
+              <li className="footer__stats-item">
+                <b>{ '35.209' }</b>
+                <FormattedMessage id="footer.dashboards" />
+              </li>
+            </ul>
+          </section>
+        ) }
         <section className="footer__social">
           <a className="footer__social-item" target="_blank" href="https://twitter.com/intent/tweet?text=booky.io%20%7C%20Online%20Bookmark%20manager.%20Your%20bookmarks%20always%20available.">
             <Icon className="footer__icon" icon="twitter" color="light" />
