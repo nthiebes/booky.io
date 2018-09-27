@@ -20,6 +20,7 @@
   "misc.search": "Search...",
   "misc.validEmail": "Must be a valid email address.",
   "misc.validPassword": "Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.",
+  "misc.startpage": "start page",
 
   "header.login": "Sign <b>in</b>",
   "header.register": "<b>Join</b> booky",
@@ -176,6 +177,7 @@
   "privacy.34": "This policy is powered by Free Privacy Policy and Rhino Support ",
 
   "notFound.text": "This is not the web page you are looking for.",
+  "notFound.figureText": "Unfortunately we couldn't find anything here. You can go back to the {home} or write us an {mail} if you think this is an error.",
 
   "about.title": "About us",
 

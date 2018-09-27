@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Category from '../../molecules/category';
+import Empty from '../../molecules/empty';
 import { ButtonSmallPrimary } from '../../atoms/button';
 
 class Categories extends Component {
@@ -36,16 +37,9 @@ class Categories extends Component {
             <FormattedHTMLMessage id="category.add" />
           </ButtonSmallPrimary>
         ) : (
-          <section className="categories__empty">
-            <img
-              src="_assets/empty.svg"
-              alt={ intl.formatMessage({ id: 'category.emptyImage' }) }
-              width="150"
-              height="150"
-              className="categories__empty-image"
-            />
-            <i><FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } /></i>
-          </section>
+          <Empty imageAlt={ intl.formatMessage({ id: 'category.emptyImage' }) } imageUrl="_assets/empty.svg">
+            <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
+          </Empty>
         ) }
       </div>
     );

@@ -20,6 +20,7 @@
   "misc.search": "Suchen...",
   "misc.validEmail": "Muss eine valide E-Mail-Adresse sein.",
   "misc.validPassword": "Dein Passwort muss mindestens 6 Zeichen lang sein und zudem einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten.",
+  "misc.startpage": "Startseite",
   
   "header.login": "Anmelden",
   "header.register": "Booky <b>beitreten</b>",
@@ -152,6 +153,7 @@
   "privacy.9": "Quellen: ",
 
   "notFound.text": "Das ist nicht die Webseite, die ihr sucht.",
+  "notFound.figureText": "Leider haben wir hier nichts gefunden. Du kannst zur {home} zurück oder uns eine {mail} schreiben, wenn du denkst, dies sei ein Fehler.",
 
   "about.title": "Über uns",
 
