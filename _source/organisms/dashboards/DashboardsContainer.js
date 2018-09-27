@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Component from './Dashboards';
 import { actions as modalActions } from '../../_state/modal';
 import { actions as dashboardsActions } from '../../_state/dashboards';
+import { actions as sidebarActions } from '../../_state/sidebar';
 import { updateUser } from '../../_state/user/actions';
 
 export const mapStateToProps = (state) => ({
@@ -16,6 +17,7 @@ export const mapDispatchToProps = (dispatch) => ({
   },
   changeDashboard: (id) => {
     dispatch(dashboardsActions.changeDashboard(id));
+    dispatch(sidebarActions.closeSidebar());
   },
   toggleDashboardOpen: (open) => {
     dispatch(updateUser({
