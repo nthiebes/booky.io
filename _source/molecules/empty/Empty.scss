@@ -6,6 +6,10 @@
   align-items: center;
   max-width: 350px;
   text-align: center;
+
+  @include mobile {
+    padding: 0 calc(3% + 6px);
+  }
 }
 
 .empty__image {
