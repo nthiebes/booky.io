@@ -95,7 +95,7 @@ class Dashboards extends Component {
                 tabIndex={ useTabIndex && editMode ? '0' : '-1' }
               />
               <Icon
-                className="dashboards__icon"
+                className="dashboards__icon dashboards__icon--delete"
                 icon="delete"
                 title={ intl.formatMessage({ id: 'dashboard.delete' }) }
                 stopPropagation
