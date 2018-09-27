@@ -9,22 +9,14 @@
 .categories--sidebar {
   @include desktop {
     width: calc(100% - 36px);
-    transform: translate3d(36px,0,0);
+    margin-left: 36px;
   }
 }
 
 .categories--shifted {
   @include desktop {
     width: calc(100% - 300px);
-    transform: translate3d(300px,0,0);
-  }
-}
-
-.categories--max-width {
-  @include desktop {
-    &.categories--shifted {
-      // width: calc(1000px - 36px - 36px - (300px - (100% - 1000px + 36px + 36px) / 2));
-    }
+    margin-left: 300px;
   }
 }
 
@@ -54,6 +46,15 @@
 }
 
 .categories__empty {
-  margin: 1rem calc(3vw + 6px);
+  display: flex;
+  margin: 1rem auto;
   list-style: none;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
+  text-align: center;
+}
+
+.categories__empty-image {
+  margin: 2rem 0 1rem;
 }

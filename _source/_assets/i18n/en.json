@@ -55,7 +55,8 @@
   "category.editMode": "Edit mode",
   "category.editModeQuit": "Quit edit mode",
   "category.drag": "Drag category",
-  "category.empty": "No categories yet.",
+  "category.empty": "Your collection {collection} doesn't have any categories yet. Add your first category now!",
+  "category.emptyImage": "No categories yet",
 
   "bookmark.add": "<b>Bookmark</b>",
   "bookmark.edit": "Edit bookmark",
