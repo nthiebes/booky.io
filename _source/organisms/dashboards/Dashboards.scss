@@ -16,7 +16,9 @@
 }
 
 .dashboards--hide {
-  transform: translate3d(calc(-100% + 36px),0,0);
+  @include desktop {
+    transform: translate3d(calc(-100% + 36px),0,0);
+  }
 }
 
 .dashboards__header {
