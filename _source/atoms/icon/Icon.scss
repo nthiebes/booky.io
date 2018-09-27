@@ -9,7 +9,7 @@
   user-select: none;
 
   &::after {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.2);
     border-radius: 50%;
     content: " ";
     height: 36px;
@@ -22,12 +22,10 @@
   }
 
   &:focus {
-    outline: none;
-
     &::after {
-      opacity: 1;
-      transform: translateY(-50%) scale(1);
-      // animation: 0.4s linear 1 circle;
+      // opacity: 1;
+      // transform: translateY(-50%) scale(1);
+      animation: 0.4s linear 1 circle;
     }
   }
 }

@@ -14,6 +14,7 @@ class Dashboards extends Component {
 
     this.toggleEditMode = this.toggleEditMode.bind(this);
     this.toggleOpen = this.toggleOpen.bind(this);
+    this.onIconClick = this.onIconClick.bind(this);
     this.state = {
       editMode: false
     };
@@ -41,6 +42,15 @@ class Dashboards extends Component {
     const { open, toggleDashboardOpen } = this.props;
 
     toggleDashboardOpen(!open);
+  }
+
+  onIconClick(type, dashboard) {
+    const { openModal } = this.props;
+
+    openModal(type, {
+      id: dashboard.id,
+      name: dashboard.name
+    });
   }
 
   render() {
@@ -81,10 +91,7 @@ class Dashboards extends Component {
                 icon="edit"
                 title={ intl.formatMessage({ id: 'dashboard.edit' }) }
                 stopPropagation
-                onClick={ () => { openModal('EditDashboard', {
-                  id: dashboard.id,
-                  name: dashboard.name
-                }); } }
+                onClick={ () => this.onIconClick('EditDashboard', dashboard) }
                 tabIndex={ useTabIndex && editMode ? '0' : '-1' }
               />
               <Icon
@@ -92,10 +99,7 @@ class Dashboards extends Component {
                 icon="delete"
                 title={ intl.formatMessage({ id: 'dashboard.delete' }) }
                 stopPropagation
-                onClick={ () => { openModal('DeleteDashboard', {
-                  id: dashboard.id,
-                  name: dashboard.name
-                }); } }
+                onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
                 tabIndex={ useTabIndex && editMode ? '0' : '-1' }
               />
             </li>
