@@ -85,6 +85,7 @@ class Header extends Component {
                 className="booky--hide-mobile-tablet"
                 icon="logout"
                 color="light"
+                onClick={ () => { router.push('/logout'); } }
                 title={ intl.formatMessage({ id: 'menu.logout' }) }
                 tabIndex="0"
               />

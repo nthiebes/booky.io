@@ -89,24 +89,46 @@ class Sidebar extends Component {
                 </Link>
               </Fragment>
             ) }
-            { loggedIn && [
-              <Link key="0" className="sidebar__item" to="/account" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' }>
-                <Icon icon="account"/>
-                <label className="sidebar__label"><FormattedMessage id="menu.account" /></label>
-              </Link>,
-              <Link key="1" className="sidebar__item" to="/next" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' }>
-                <Icon icon="next" />
-                <label className="sidebar__label"><FormattedMessage id="menu.next" /></label>
-              </Link>,
-              <Link key="2" className="sidebar__item booky--hide-desktop" to="" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' }>
-                <Icon icon="settings" />
-                <label className="sidebar__label"><FormattedMessage id="menu.customize" /></label>
-              </Link>,
-              <Link key="3" className="sidebar__item booky--hide-desktop" to="/logout" onClick={ closeMenu } tabIndex={ open ? '0' : '-1' }>
-                <Icon icon="logout" />
-                <label className="sidebar__label"><FormattedMessage id="menu.logout" /></label>
-              </Link>
-            ] }
+            { loggedIn && (
+              <Fragment>
+                <Link
+                  className={ classNames('sidebar__item', pathname === '/account' && 'sidebar__item--active') }
+                  to="/account"
+                  onClick={ closeMenu }
+                  tabIndex={ open ? '0' : '-1' }
+                >
+                  <Icon icon="account"/>
+                  <label className="sidebar__label"><FormattedMessage id="menu.account" /></label>
+                </Link>
+                <Link
+                  className={ classNames('sidebar__item', pathname === '/next' && 'sidebar__item--active') }
+                  to="/next"
+                  onClick={ closeMenu }
+                  tabIndex={ open ? '0' : '-1' }
+                >
+                  <Icon icon="next" />
+                  <label className="sidebar__label"><FormattedMessage id="menu.next" /></label>
+                </Link>
+                <Link
+                  className={ classNames('sidebar__item', 'booky--hide-desktop', pathname === '/customize' && 'sidebar__item--active') }
+                  to="/customize"
+                  onClick={ closeMenu }
+                  tabIndex={ open ? '0' : '-1' }
+                >
+                  <Icon icon="settings" />
+                  <label className="sidebar__label"><FormattedMessage id="menu.customize" /></label>
+                </Link>
+                <Link
+                  className={ classNames('sidebar__item', 'booky--hide-desktop', pathname === '/logout' && 'sidebar__item--active') }
+                  to="/logout"
+                  onClick={ closeMenu }
+                  tabIndex={ open ? '0' : '-1' }
+                >
+                  <Icon icon="logout" />
+                  <label className="sidebar__label"><FormattedMessage id="menu.logout" /></label>
+                </Link>
+              </Fragment>
+            ) }
           </nav>
         </div>
       </aside>
