@@ -46,7 +46,6 @@ class Account extends Component {
           <H1>
             <FormattedMessage id="account.title" />
           </H1>
-          <br />
           <TabBar>
             { this.tabs.map((tab, index) => (
               <Tab
@@ -61,15 +60,14 @@ class Account extends Component {
           { activeTab === 0 && (
             <Form>
               <Input
-                value="Gscheid"
                 name="username"
                 id="username"
                 label={ intl.formatMessage({ id: 'login.username' }) }
                 maxLength="50"
                 required
+                autoComplete="username"
               />
               <Input
-                value="gscheid@is.awesome"
                 name="email"
                 id="email"
                 label={ intl.formatMessage({ id: 'login.email' }) }
@@ -77,6 +75,7 @@ class Account extends Component {
                 required
                 type="email"
                 requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
+                autoComplete="email"
               />
               <Input
                 name="password"
