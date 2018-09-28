@@ -7,9 +7,11 @@ export default class TabBar extends Component {
     const { className } = this.props;
 
     return (
-      <div className={ classNames('tab-bar', className && className) }>
-        { this.props.children }
-      </div>
+      <nav className={ classNames('tab-bar', className && className) }>
+        <ul className="tab-bar__scroll-container">
+          { this.props.children }
+        </ul>
+      </nav>
     );
   }
 }

@@ -99,8 +99,6 @@ class Toolbar extends Component {
         <Search className="booky--hide-mobile-tablet" />
       </section>
     );
-
-    // <div className="toolbar__gradient" />
   }
 }
 
