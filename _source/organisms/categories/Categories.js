@@ -9,14 +9,15 @@ import { ButtonSmallPrimary } from '../../atoms/button';
 
 class Categories extends Component {
   render() {
-    const { categories, openModal, dashboardsOpen, hasSidebar, maxWidth, intl, dashboard } = this.props;
+    const { categories, openModal, dashboardsOpen, hasSidebar, maxWidth, intl, dashboard, className } = this.props;
 
     return (
       <div className={ classNames(
         'categories',
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
-        maxWidth && 'categories--max-width'
+        maxWidth && 'categories--max-width',
+        className && className
       ) }>
         <ButtonSmallPrimary
           icon="add"
@@ -53,7 +54,8 @@ Categories.propTypes = {
   hasSidebar: PropTypes.bool.isRequired,
   maxWidth: PropTypes.bool.isRequired,
   intl: PropTypes.object.isRequired,
-  dashboard: PropTypes.object
+  dashboard: PropTypes.object,
+  className: PropTypes.string
 };
 
 export default injectIntl(Categories);

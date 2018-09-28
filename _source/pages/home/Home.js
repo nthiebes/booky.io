@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import classNames from 'classnames';
 
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
@@ -14,12 +15,12 @@ import Testimonials from '../../molecules/testimonials';
 
 class Home extends Component {
   render() {
-    const { loggedIn } = this.props;
+    const { loggedIn, blurContent } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
-        <Dashboards className="dashboards--sidebar" />
-        <Categories />
+        <Dashboards isSidebar className={ classNames(blurContent && 'page--blur') } />
+        <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
       <Page className="home" home>
@@ -129,5 +130,6 @@ class Home extends Component {
 export default Home;
 
 Home.propTypes = {
-  loggedIn: PropTypes.bool.isRequired
+  loggedIn: PropTypes.bool.isRequired,
+  blurContent: PropTypes.bool.isRequired
 };

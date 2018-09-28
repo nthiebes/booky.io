@@ -54,70 +54,79 @@ class Dashboards extends Component {
   }
 
   render() {
-    const { dashboards, openModal, changeDashboard, className, intl, activeId, open, useTabIndex } = this.props;
+    const { dashboards, openModal, changeDashboard, className, intl, activeId, open, useTabIndex, isSidebar } = this.props;
     const { editMode } = this.state;
 
     return (
-      <aside className={ classNames('dashboards', className && className, !open && 'dashboards--hide') }>
-        <header className="dashboards__header booky--hide-mobile-tablet">
-          <Icon
-            icon={ open ? 'back' : 'forward' }
-            onClick={ this.toggleOpen }
-            title={ open ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
-            tabIndex={ useTabIndex ? '0' : '-1' }
-          />
-        </header>
-        <hr className="dashboards__hr booky--hide-mobile-tablet" />
-        <div className="dashboards__headline-wrapper">
-          <H3 className="dashboards__headline"><FormattedMessage id="dashboard.title" /></H3>
-          <Icon
-            icon={ editMode ? 'close' : 'more-horiz' }
-            title={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
-            onClick={ this.toggleEditMode }
-            tabIndex={ useTabIndex ? '0' : '-1' }
-          />
-        </div>
-        <ul className={ classNames('dashboards__list', editMode && 'dashboards__list--edit-mode') }>
-          { dashboards.map((dashboard, index) => (
-            <li
-              key={ index }
-              className={ classNames('dashboards__item', dashboard.id === activeId && 'dashboards__item--active') }
-              onClick={ () => { !editMode && changeDashboard(dashboard.id); } }
-              tabIndex={ useTabIndex && !editMode ? '0' : '-1' }
+      <aside className={ classNames(
+        'dashboards',
+        isSidebar && 'dashboards--sidebar',
+        !open && 'dashboards--hide',
+        className && className
+      ) }>
+        { isSidebar && (
+          <header className="dashboards__header booky--hide-mobile-tablet">
+            <ButtonSmallPrimary
+              icon="add"
+              className="dashboards__button"
+              onClick={ () => { openModal('AddDashboard'); } }
+              tabIndex={ useTabIndex ? '0' : '-1' }
             >
-              <label className="dashboards__label">{ dashboard.name }</label>
-              <Icon
-                className="dashboards__icon"
-                icon="edit"
-                title={ intl.formatMessage({ id: 'dashboard.edit' }) }
-                stopPropagation
-                onClick={ () => this.onIconClick('EditDashboard', dashboard) }
-                tabIndex={ useTabIndex && editMode ? '0' : '-1' }
-              />
-              <Icon
-                className="dashboards__icon dashboards__icon--delete"
-                icon="delete"
-                title={ intl.formatMessage({ id: 'dashboard.delete' }) }
-                stopPropagation
-                onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
-                tabIndex={ useTabIndex && editMode ? '0' : '-1' }
-              />
-            </li>
-          )) }
-          { dashboards.length === 0 && (
-            <li className="dashboard__empty">
-              <i><FormattedMessage id="dashboard.empty" /></i>
-            </li>
-          ) }
-          <ButtonSmallPrimary
-            icon="add"
-            className="dashboards__button"
-            onClick={ () => { openModal('AddDashboard'); } }
-            tabIndex={ useTabIndex ? '0' : '-1' }
-          >
-            <FormattedHTMLMessage id="dashboard.add" />
-          </ButtonSmallPrimary>
-        </ul>
+              <FormattedHTMLMessage id="dashboard.add" />
+            </ButtonSmallPrimary>
+            <Icon
+              icon={ open ? 'back' : 'forward' }
+              onClick={ this.toggleOpen }
+              title={ open ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
+              tabIndex={ useTabIndex ? '0' : '-1' }
+            />
+          </header>
+        )}
+        <hr className="dashboards__hr booky--hide-mobile-tablet" />
+        <div className="dashboards__scroll-wrapper">
+          <div className="dashboards__headline-wrapper">
+            <H3 className="dashboards__headline"><FormattedMessage id="dashboard.title" /></H3>
+            <Icon
+              icon={ editMode ? 'close' : 'more-horiz' }
+              title={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
+              onClick={ this.toggleEditMode }
+              tabIndex={ useTabIndex ? '0' : '-1' }
+            />
+          </div>
+          <ul className={ classNames('dashboards__list', editMode && 'dashboards__list--edit-mode') }>
+            { dashboards.map((dashboard, index) => (
+              <li
+                key={ index }
+                className={ classNames('dashboards__item', dashboard.id === activeId && 'dashboards__item--active') }
+                onClick={ () => { !editMode && changeDashboard(dashboard.id); } }
+                tabIndex={ useTabIndex && !editMode ? '0' : '-1' }
+              >
+                <label className="dashboards__label">{ dashboard.name }</label>
+                <Icon
+                  className="dashboards__icon"
+                  icon="edit"
+                  title={ intl.formatMessage({ id: 'dashboard.edit' }) }
+                  stopPropagation
+                  onClick={ () => this.onIconClick('EditDashboard', dashboard) }
+                  tabIndex={ useTabIndex && editMode ? '0' : '-1' }
+                />
+                <Icon
+                  className="dashboards__icon dashboards__icon--delete"
+                  icon="delete"
+                  title={ intl.formatMessage({ id: 'dashboard.delete' }) }
+                  stopPropagation
+                  onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
+                  tabIndex={ useTabIndex && editMode ? '0' : '-1' }
+                />
+              </li>
+            )) }
+            { dashboards.length === 0 && (
+              <li className="dashboard__empty">
+                <i><FormattedMessage id="dashboard.empty" /></i>
+              </li>
+            ) }
+          </ul>
+        </div>
       </aside>
     );
   }
@@ -134,7 +143,8 @@ Dashboards.propTypes = {
   open: PropTypes.bool,
   activeId: PropTypes.number,
   toggleDashboardOpen: PropTypes.func.isRequired,
-  useTabIndex: PropTypes.bool
+  useTabIndex: PropTypes.bool,
+  isSidebar: PropTypes.bool
 };
 
 Dashboards.defaultProps = {

@@ -23,7 +23,8 @@
 
 .dashboards__header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .dashboards__headline-wrapper {
@@ -33,6 +34,39 @@
 
   @include desktop {
     padding: 0 30px 0 36px;
+  }
+}
+
+.dashboards__scroll-wrapper {
+  @include desktop {
+    position: absolute;
+    top: calc(3rem + 4px);
+    bottom: 0;
+    padding-top: 1rem;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &::before,
+    &::after {
+      position: fixed;
+      content: " ";
+      height: 30px;
+      z-index: 1;
+      right: 36px;
+      left: 0;
+    }
+
+    &::before {
+      background: linear-gradient(to bottom, #fff, rgba(255,0,255,0));
+      top: 52px;
+    }
+
+    &::after {
+      background: linear-gradient(to top, #fff, rgba(255,0,255,0));
+      bottom: 0;
+    }
   }
 }
 
@@ -152,7 +186,7 @@
   display: flex;
 
   @include desktop {
-    margin: 1rem 36px;
+    margin: 0.5rem 0 0.5rem 36px;
   }
 }
 

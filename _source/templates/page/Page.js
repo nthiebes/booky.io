@@ -48,7 +48,6 @@ export default class Page extends Component {
         />
         <main className={ classNames(
           'page',
-          blurContent && 'page--blur',
           'page--hidden',
           show && 'page--show',
           className && className
