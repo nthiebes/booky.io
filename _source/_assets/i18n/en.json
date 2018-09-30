@@ -196,7 +196,16 @@
   "account.exportText": "Export all your bookmarks as <b>.html</b> file.",
   "account.importText": "Import bookmarks.",
 
-  "customize.title:": "Customize booky",
+  "customize.title": "Customize booky",
+  "customize.style": "Design",
+  "customize.navColor": "Header color",
+  "customize.maxWidth": "Limit width (2 columns)",
+  "customize.sidebar": "Show as sidebar",
+  "customize.tabs": "Show as tab bar",
+  "customize.dropdown": "Show as dropdown",
+  "dashboard.preferences": "Preferences",
+  "customize.newTab": "Open bookmarks in a new tab",
+  "customize.preserveEditMode": "Keep edit mode active after editing",
 
   "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
   "error.email": "email",

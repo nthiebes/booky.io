@@ -71,7 +71,7 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, router, intl, className, sidebar, dashboards, changeDashboard } = this.props;
+    const { dashboard, router, intl, className, dashboardsPosition, dashboards, changeDashboard } = this.props;
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), className && className) }>
@@ -81,9 +81,10 @@ class Toolbar extends Component {
           onClick={ () => { router.push('/structure'); } }
           tabIndex="0"
         />
-        { sidebar ? (
+        { dashboardsPosition === 'sidebar' && (
           <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
-        ) : (
+        ) }
+        { dashboardsPosition === 'tabs' && (
           <TabBar className="toolbar__tabs">
             { dashboards.items.map((tab, index) => (
               <Tab
@@ -115,7 +116,7 @@ Toolbar.propTypes = {
   router: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
   className: PropTypes.string,
-  sidebar: PropTypes.bool.isRequired,
+  dashboardsPosition: PropTypes.string.isRequired,
   changeDashboard: PropTypes.func.isRequired
 };
 

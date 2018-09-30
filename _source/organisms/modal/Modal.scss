@@ -82,10 +82,7 @@
 .modal__content {
   position: relative;
   width: 100%;
-
-  &.modal__content--padding {
-    padding: 0 1rem;
-  }
+  padding: 0 1rem 0.5rem 1rem;
 }
 
 .modal__footer {

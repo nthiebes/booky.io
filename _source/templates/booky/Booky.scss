@@ -12,6 +12,7 @@
 @import "../../atoms/paragraph/Paragraph";
 @import "../../atoms/loader/styles/a-loader";
 @import "../../atoms/error-message/ErrorMessage";
+@import "../../atoms/radio/Radio";
 
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
@@ -37,6 +38,7 @@
 @import "../../templates/page/Page";
 
 @import "../../pages/home/Home";
+@import "../../pages/customize/Customize";
 
 html {
   font-size: calc(14px + 0.2vw);

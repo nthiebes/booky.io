@@ -1,0 +1,18 @@
+.radio {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.radio__input {
+  &:focus {
+    outline: 2px dashed $color--primary;
+  }
+}
+
+.radio__label {
+  user-select: none;
+  margin: 0;
+  padding: 0 0 0 0.5rem;
+}

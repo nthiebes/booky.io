@@ -29,7 +29,7 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noPadding, noCancel, intl, pending, hasAnchor } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, hasAnchor } = this.props;
 
     return (
       <Form className="modal__inner" onSubmit={ this.onSubmit } onClick={ (e) => { e.stopPropagation(); } }>
@@ -45,7 +45,7 @@ class Modal extends Component {
           { headline && <H3 className="modal__headline">{ headline }</H3> }
           <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
         </header>
-        <div className={ classNames(['modal__content', !noPadding && 'modal__content--padding']) }>
+        <div className="modal__content">
           { children }
         </div>
         <footer className="modal__footer">
@@ -74,7 +74,6 @@ Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   headline: PropTypes.string,
-  noPadding: PropTypes.bool,
   noCancel: PropTypes.bool,
   intl: PropTypes.object.isRequired,
   pending: PropTypes.bool.isRequired,
@@ -84,7 +83,6 @@ Modal.propTypes = {
 Modal.defaultProps = {
   toolbar: false,
   className: '',
-  noPadding: false,
   noCancel: false,
   valid: true
 };

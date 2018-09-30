@@ -173,6 +173,15 @@
   "account.importText": "Importiere Lesezeichen.",
 
   "customize.title": "Booky anpassen",
+  "customize.style": "Design",
+  "customize.navColor": "Kopfzeilen Farbe",
+  "customize.maxWidth": "Breite limitieren (2 Spalten)",
+  "customize.sidebar": "Als Seitenleiste anzeigen",
+  "customize.tabs": "Als Tab-Leiste anzeigen",
+  "customize.dropdown": "Als Dropdown-Liste anzeigen",
+  "dashboard.preferences": "Vorlieben",
+  "customize.newTab": "Lesezeichen in einem neuen Tab öffnen",
+  "customize.preserveEditMode": "Editiermodus nach dem Editieren aktiv lassen",
 
   "error.default": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
   "error.email": "E-Mail",

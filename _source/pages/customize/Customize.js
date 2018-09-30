@@ -9,6 +9,7 @@ import Label from '../../atoms/label';
 import Section from '../../molecules/section';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
+import Radio from '../../atoms/radio';
 
 class Customize extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Customize extends Component {
 
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    this.handleRadioChange = this.handleRadioChange.bind(this);
   }
 
   handleColorChange(value) {
@@ -30,8 +32,14 @@ class Customize extends Component {
     });
   }
 
+  handleRadioChange({ name, value }) {
+    this.props.updateUser({
+      [name]: value
+    });
+  }
+
   render() {
-    const { intl, navColor, newtab, maxWidth } = this.props;
+    const { intl, navColor, newtab, maxWidth, preserveEditMode, dashboards } = this.props;
 
     return (
       <Page>
@@ -40,15 +48,39 @@ class Customize extends Component {
             <FormattedMessage id="customize.title" />
           </H1>
           <H2>
-            { 'Styling' }
+            <FormattedMessage id="customize.style" />
           </H2>
           <Label>
             <FormattedMessage id="customize.navColor" />
           </Label>
-          <ColorPicker value={ navColor } onChange={ this.handleColorChange } />
+          <ColorPicker value={ navColor } onChange={ this.handleColorChange } className="customize__color-picker" />
           <H2>
-            { 'Layout' }
+            <FormattedMessage id="dashboard.title" />
           </H2>
+          <Radio
+            label={ intl.formatMessage({ id: 'customize.sidebar'}) }
+            id="dashboards-sidebar"
+            name="dashboards"
+            onChange={ this.handleRadioChange }
+            value="sidebar"
+            defaultChecked={ dashboards === 'sidebar' }
+          />
+          <Radio
+            label={ intl.formatMessage({ id: 'customize.dropdown'}) }
+            id="dashboards-dropdown"
+            name="dashboards"
+            onChange={ this.handleRadioChange }
+            value="dropdown"
+            defaultChecked={ dashboards === 'dropdown' }
+          />
+          <Radio
+            label={ intl.formatMessage({ id: 'customize.tabs'}) }
+            id="dashboards-tabs"
+            name="dashboards"
+            onChange={ this.handleRadioChange }
+            value="tabs"
+            defaultChecked={ dashboards === 'tabs' }
+          />
           <Checkbox
             label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
             id="maxWidth"
@@ -57,10 +89,7 @@ class Customize extends Component {
             checked={ maxWidth }
           />
           <H2>
-            { 'Dashboards' }
-          </H2>
-          <H2>
-            { 'Preferences' }
+            <FormattedMessage id="dashboard.preferences" />
           </H2>
           <Checkbox
             label={ intl.formatMessage({ id: 'customize.newTab'}) }
@@ -68,6 +97,13 @@ class Customize extends Component {
             name="newtab"
             onChange={ this.handleCheckboxChange }
             checked={ newtab }
+          />
+          <Checkbox
+            label={ intl.formatMessage({ id: 'customize.preserveEditMode'}) }
+            id="preserveEditMode"
+            name="preserveEditMode"
+            onChange={ this.handleCheckboxChange }
+            checked={ preserveEditMode }
           />
         </Section>
       </Page>
@@ -80,7 +116,9 @@ Customize.propTypes = {
   intl: PropTypes.object.isRequired,
   navColor: PropTypes.number.isRequired,
   newtab: PropTypes.bool.isRequired,
-  maxWidth: PropTypes.bool.isRequired
+  maxWidth: PropTypes.bool.isRequired,
+  preserveEditMode: PropTypes.bool.isRequired,
+  dashboards: PropTypes.string.isRequired
 };
 
 export default injectIntl(Customize);
