@@ -10,7 +10,7 @@ export default class Link extends Component {
     const CustomTag = this.props.href ? 'a' : internalType;
 
     return (
-      <CustomTag { ...props } className={ classNames('link', className && className, color && `link--${color}`) }>
+      <CustomTag { ...props } className={ classNames('link', color && `link--${color}`, className && className) }>
         { children }
       </CustomTag>
     );
@@ -33,7 +33,5 @@ Link.propTypes = {
 };
 
 Link.defaultProps = {
-  className: '',
-  title: '',
   color: 'primary'
 };

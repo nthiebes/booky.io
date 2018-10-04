@@ -1,15 +1,59 @@
 .footer {
-  font-size: $size--small;
+  font-size: $font-size--small;
   text-align: center;
+}
+
+.footer--sidebar {
+  @include desktop {
+    width: calc(100% - 36px);
+    // transition: transform 0.3s ease, width 0.3s ease;
+    transform: translate3d(36px,0,0);
+  }
+}
+
+.footer--shifted {
+  @include desktop {
+    width: calc(100% - 300px);
+    transform: translate3d(300px,0,0);
+  }
+}
+
+.footer__stats {
+  background-color: $color--primary;
+  border-top: 2px solid rgba(255,255,255,0.2);
+  padding: 1rem calc(3vw + 6px);
+  color: $color__font--white;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @include desktop {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+}
+
+.footer__stats-item {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  height: 4.5rem;
+  justify-content: space-between;
 }
 
 .footer__social {
   background-color: $color__background--medium;
   border-top: 2px solid rgba(255,255,255,0.2);
   border-bottom: 2px solid rgba(255,255,255,0.03);
-  padding: calc(2rem - 4px) calc(3% + 6px) calc(2rem + 2px) calc(3% + 6px);
+  padding: calc(2rem - 4px) calc(3vw + 6px) calc(2rem + 2px) calc(3vw + 6px);
   display: flex;
   justify-content: center;
+
+  @include desktop {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
 }
 
 .footer__social-item {
@@ -21,7 +65,8 @@
   text-decoration: none;
 
   @include mobile-tablet {
-    &:active {
+    &:active,
+    &:focus {
       .footer__icon,
       .footer__label {
         color: $color__font--primary;
@@ -30,7 +75,8 @@
   }
 
   @include desktop {
-    &:hover {
+    &:hover,
+    &:focus {
       .footer__icon,
       .footer__label {
         color: $color__font--primary;
@@ -47,10 +93,13 @@
 
 .footer__content {
   background-color: $color__background--dark;
-  padding: 2rem calc(3% + 6px);
+  padding: 2rem calc(3vw + 6px);
+  display: flex;
+  flex-direction: column;
 
-  @include hd {
-    padding: 2rem calc(38px + 6px);
+  @include desktop {
+    padding-left: 36px;
+    padding-right: 36px;
   }
 }
 
@@ -59,34 +108,34 @@
   flex-wrap: wrap;
   list-style: none;
   justify-content: center;
+  align-items: center;
 }
 
 .footer__menu-item {
-  font-size: $size--small;
+  font-size: $font-size--small;
   padding: 0 0.5rem;
-  color: $color__font--white;
   line-height: 1.5rem;
+}
 
-  @include mobile-tablet {
-    &:active {
-      color: $color__font--primary;
-    }
-  }
-
-  @include desktop() {
-    &:hover {
-      color: $color__font--primary;
-    }
-  }
+.footer__language {
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .footer__logo {
   color: $color__font--white;
   margin-top: 2rem;
+  font-size: $font-size--small;
+  align-self: center;
+
+  &:focus {
+    outline: 1px dashed $color__font--white;
+  }
 }
 
 .footer__button {
   margin-top: 2rem;
+  align-self: center;
 }
 
 .footer__copy {
@@ -95,19 +144,7 @@
 }
 
 .footer__copy-link {
-  font-size: $size--small;
+  font-size: $font-size--small;
   color: $color__font--white;
   padding: 0 0.3rem;
-
-  @include mobile-tablet {
-    &:active {
-      color: $color__font--primary;
-    }
-  }
-
-  @include desktop() {
-    &:hover {
-      color: $color__font--primary;
-    }
-  }
 }

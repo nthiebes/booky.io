@@ -1,6 +1,9 @@
 export default {
-  'booky': {
-    'loggedIn': true
+  user: {
+    loggedIn: false
+  },
+  booky: {
+    headerColor: 0
   },
   'dashboards': {
     'items': [{
@@ -38,7 +41,8 @@ export default {
     }],
     active: 567,
     offset: 3,
-    structureOpen: false
+    open: true,
+    sidebar: true
   },
   'categories': [{
     'id': 123,
@@ -168,14 +172,7 @@ export default {
     'position': 2,
     'color': 3,
     'expanded': false,
-    bookmarks: [{
-      'id': 15,
-      'category': 0,
-      'name': 'booky.io',
-      'url': 'https://booky.io',
-      'favicon': 'base64',
-      'position': 0
-    }]
+    bookmarks: []
   }, {
     'id': 76,
     'name': 'Category 4 Привет, как дела 4',
@@ -207,28 +204,17 @@ export default {
       'position': 0
     }]
   }],
-  'header': {
-    'menuOpen': false
+  sidebar: {
+    open: false
   },
   'toolbar': {
     'sticky': true,
     'currentlySticky': true
   },
-  'sidebar': {
-    'open': false,
-    'notes': true,
-    'autofill': true,
-    'newtab': true,
-    'stickyHeader': true,
-    'stickyToolbar': true,
-    'globalColor': 0,
-    'headerColor': 0,
-    'maxWidth': true,
-    'dashboard': 1
-  },
   modal: {
-    modal: 'AddBookmark',
+    modal: null,
     open: false,
-    data: {}
+    data: {},
+    pending: false
   }
 };

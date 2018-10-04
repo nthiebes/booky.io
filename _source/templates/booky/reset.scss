@@ -1,6 +1,6 @@
 * {
   -webkit-tap-highlight-color: transparent;
-  border: 0 none;
+  border-color: transparent;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -11,10 +11,10 @@ select,
 textarea,
 button,
 a,
-a:focus,
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-  outline: none;
+*:focus {
+  outline: 1px solid transparent;
+}
+
+b {
+  font-weight: 700; /* Was still 400 in Firefox */
 }

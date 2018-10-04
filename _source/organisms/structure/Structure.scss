@@ -37,11 +37,6 @@
   position: relative;
 }
 
-.structure__button {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-
-  @include mobile-tablet() {
-    // display: flex;
-  }
+.structure__headline {
+  margin-right: 1rem;
 }

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Component from './Toolbar';
 import { actions as toolbarActions } from '../../_state/toolbar';
 import { actions as modalActions } from '../../_state/modal';
+import { actions as dashboardsActions } from '../../_state/dashboards';
 
 export const mapStateToProps = function(state) {
   return {
@@ -9,7 +10,8 @@ export const mapStateToProps = function(state) {
     headerSticky: state.sidebar.stickyHeader,
     sticky: state.sidebar.stickyToolbar,
     dashboards: state.dashboards,
-    dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active)
+    dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active),
+    dashboardsPosition: state.user.dashboards
   };
 };
 
@@ -26,6 +28,9 @@ export const mapDispatchToProps = function(dispatch) {
     },
     openModal: (modal, data) => {
       dispatch(modalActions.openModal(modal, data));
+    },
+    changeDashboard: (id) => {
+      dispatch(dashboardsActions.changeDashboard(id));
     }
   };
 };

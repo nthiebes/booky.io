@@ -1,31 +1,25 @@
 .page {
-  margin: 0 auto;
-  padding: 3rem 0 6rem 0;
-  max-width: calc(94% - 12px);
-  min-height: 100%;
+  min-height: 100vh;
+  padding: 4rem 0 6rem 0;
 
   @include tablet {
-    padding: 5rem 0 10rem 0;
+    padding: 6rem 0 10rem 0;
   }
 
   @include desktop {
-    max-width: 860px;
-    padding: 7rem 0 14rem 0;
+    padding: 10rem 0 14rem 0;
   }
+}
 
-  &.page--full-width {
-    max-width: inherit;
-  }
+.page--blur {
+  filter: blur(3px) grayscale(100%);
+}
 
-  // &.page--no-toolbar {
-  //   padding: 4rem 6px 4rem 6px;
+.page--hidden {
+  // transition: opacity 0.5s ease;
+  opacity: 0;
+}
 
-  //   @include tablet {
-  //     padding: 6rem 6px 6rem 6px;
-  //   }
-
-  //   @include desktop {
-  //     padding: 8rem 6px 8rem 6px;
-  //   }
-  // }
+.page--show {
+  opacity: 1;
 }

@@ -4,7 +4,7 @@ import { injectIntl } from 'react-intl';
 
 import Base from '../Base';
 import Input from '../../../atoms/input';
-import Dropdown from '../../../molecules/dropdown';
+import Select from '../../../atoms/select';
 
 class AddBookmark extends Component {
   constructor(props) {
@@ -16,57 +16,82 @@ class AddBookmark extends Component {
     this.state = {
       name: '',
       url: '',
-      categoryId: props.data.source === 'header' ? props.data.categories[0].id : props.data.categoryId,
-      value: 0,
-      valid: false
+      categoryId: props.data.source === 'header' ? props.data.categories[0].id : props.data.categoryId
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      name: '',
-      url: '',
-      categoryId: nextProps.data.source === 'header' ? nextProps.data.categories[0].id : nextProps.data.categoryId,
-      value: 0,
-      valid: false
-    });
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({
+  //     name: '',
+  //     url: '',
+  //     categoryId: nextProps.data.source === 'header' ? nextProps.data.categories[0].id : nextProps.data.categoryId,
+  //     value: 0
+  //   });
+  // }
 
   onNameChange(value) {
     this.setState({
-      name: value,
-      valid: Boolean(value && this.state.url)
+      name: value
     });
   }
 
   onUrlChange(value) {
     this.setState({
-      url: value,
-      valid: Boolean(value && this.state.name)
+      url: value
     });
   }
 
-  onCategoryChange(index) {
+  onCategoryChange(id) {
     this.setState({
-      categoryId: this.props.data.categories[index].id,
-      value: index
+      categoryId: id
     });
   }
 
   render() {
-    const { onClose, onSave, data, intl } = this.props;
-    const { name, url, valid } = this.state;
+    const { onClose, onSave, data, intl, pending } = this.props;
+    const { name, url } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }>
-        <Input id="bookmark-url" value={ url } onChange={ this.onUrlChange } required maxLength="2000" label={ intl.formatMessage({ id: 'modal.url' }) } />
-        <Input id="bookmark-name" value={ name } onChange={ this.onNameChange } required maxLength="80" label={ intl.formatMessage({ id: 'modal.name' }) } />
-        { data.source === 'header' && (
-          <Dropdown
-            options={ data.categories }
+      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }>
+        <Input
+          id="bookmark-url"
+          name="url"
+          value={ url }
+          onChange={ this.onUrlChange }
+          required
+          maxLength="2000"
+          label={ intl.formatMessage({ id: 'modal.url' }) }
+          disabled={ pending }
+          autoFocus
+        />
+        <Input
+          id="bookmark-name"
+          name="name"
+          value={ name }
+          onChange={ this.onNameChange }
+          required
+          maxLength="80"
+          label={ intl.formatMessage({ id: 'modal.name' }) }
+          disabled={ pending }
+        />
+        { data.source === 'header' ? (
+          <Select
+            id="bookmark-category"
+            name="categoryId"
+            options={ data.categories.map(({ id, name: categoryName }) => ({
+              text: categoryName,
+              value: id
+            })) }
             onChange={ this.onCategoryChange }
-            value={ this.state.value }
+            selected="0"
             label={ intl.formatMessage({ id: 'modal.category' }) }
+            disabled={ pending }
+          />
+        ) : (
+          <Input
+            name="categoryId"
+            value={ data.categoryId.toString() }
+            type="hidden"
           />
         ) }
       </Base>
@@ -80,9 +105,6 @@ AddBookmark.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object,
-  intl: PropTypes.object.isRequired
-};
-
-AddBookmark.defaultProps = {
-  data: {}
+  intl: PropTypes.object.isRequired,
+  pending: PropTypes.bool
 };

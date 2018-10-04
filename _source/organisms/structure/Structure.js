@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
-import { ButtonSmallPrimary } from '../../atoms/button';
 import Icon from '../../atoms/icon';
 import Categories from './Categories';
 
@@ -13,9 +12,6 @@ class Structure extends Component {
 
     return (
       <Fragment>
-        <ButtonSmallPrimary className="structure__button" to="/">
-          <FormattedMessage id="button.done" />
-        </ButtonSmallPrimary>
         <Droppable droppableId="structure" type="dashboard">
           { (provided) => (
             <div ref={ provided.innerRef } { ...provided.droppableProps }>

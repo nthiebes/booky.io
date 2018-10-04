@@ -7,11 +7,11 @@ export default class Tab extends Component {
     const { name, active, tabId, onClick } = this.props;
 
     return (
-      <div
+      <li
         className={ classNames('tab-bar__tab', active && 'tab-bar__tab--active') }
         onClick={ () => { onClick(tabId); } }>
         { name }
-      </div>
+      </li>
     );
   }
 }

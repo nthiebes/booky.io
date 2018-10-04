@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { withRouter } from 'react-router';
 import { FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Menu from '../../molecules/menu';
@@ -14,6 +15,7 @@ class Header extends Component {
     super(props);
 
     this.onBookmarkModalToggle = this.onBookmarkModalToggle.bind(this);
+    this.onMenuClick = this.onMenuClick.bind(this);
     this.state = {
       bookmarkModalOpen: false
     };
@@ -25,96 +27,118 @@ class Header extends Component {
     });
   }
 
+  onMenuClick(event) {
+    event.stopPropagation();
+
+    this.props.onMenuClick();
+  }
+
   render() {
     const {
       onHeaderClick,
-      onMenuClick,
       loggedIn,
-      sticky,
-      menuOpen,
-      sidebarOpen,
       color,
       openModal,
-      search,
-      dashboards,
-      intl
+      intl,
+      sidebarOpen,
+      home,
+      className,
+      router
     } = this.props;
-    const STICKY_CLASS = sticky ? 'header--sticky' : '';
-    const OVERLAY_MENU_CLASS = menuOpen ? 'header--overlay-menu' : '';
-    const OVERLAY_SIDEBAR_CLASS = sidebarOpen ? 'header--overlay-sidebar' : '';
-    const HEADER_CLASS = classNames(
-      `header header--color-${color}`,
-      STICKY_CLASS,
-      OVERLAY_MENU_CLASS,
-      OVERLAY_SIDEBAR_CLASS
-    );
 
     return (
-      <header className={ HEADER_CLASS } onClick={ onHeaderClick }>
-        <Icon
-          icon="menu"
-          color="light"
-          onClick={ onMenuClick }
-          stopPropagation={ true }
-          className="booky--hide-desktop"
-        />
-        <Link
-          className="header__logo header__logo--large booky--hide-mobile-tablet"
-          color="light"
-          to="/"
-          title={ intl.formatMessage({ id: 'menu.home' }) }
-        />
-        <Menu menuOpen={ menuOpen } dashboards={ dashboards } />
-        { loggedIn && search && <Search className="booky--hide-desktop" /> }
-        { !search && (
-          <Link className="header__logo header__logo--small booky--hide-desktop" color="light" to="/" title={ intl.formatMessage({ id: 'menu.home' }) }>
-            <Icon icon="heart" color="light" />
-          </Link>) }
-        { loggedIn && (
-          <Icon
-            className="booky--hide-desktop"
-            icon="add"
-            color="light"
-            onClick={ () => { openModal('AddBookmark', {
-              source: 'header'
-            }); } }
-          />
-        ) }
-        { !loggedIn && (
-          <Fragment>
-            <Icon icon="login" color="light" className="header__login-icon booky--hide-desktop" />
-            <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join">
-              <FormattedHTMLMessage id="header.register" />
-            </ButtonSmallLight>
-            <ButtonSmallLight className="booky--hide-mobile-tablet header__login" to="/login">
-              <FormattedHTMLMessage id="header.login" />
-            </ButtonSmallLight>
-          </Fragment>
-        ) }
+      <header className={ classNames(`header header--color-${color}`, sidebarOpen && 'header--overlay', className && className) } onClick={ onHeaderClick }>
+        <div className="header__wrapper">
+          { loggedIn && home && (
+            <Fragment>
+              <Icon
+                className="booky--hide-desktop header__add-icon"
+                icon="add"
+                color="light"
+                onClick={ () => { openModal('AddBookmark', {
+                  source: 'header'
+                }); } }
+                tabIndex="0"
+              />
+              <Search className="booky--hide-desktop" />
+            </Fragment>
+          ) }
+          <Link
+            to="/"
+            title={ intl.formatMessage({ id: 'menu.home' }) }
+            className={ classNames('header__logo', loggedIn && home && 'booky--hide-mobile-tablet') }
+          >
+            <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
+          </Link>
+          <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
+          { loggedIn && (
+            <Fragment>
+              <Icon
+                className="booky--hide-mobile-tablet"
+                icon="settings"
+                color="light"
+                onClick={ () => { router.push('/customize'); } }
+                title={ intl.formatMessage({ id: 'menu.customize' }) }
+                tabIndex="0"
+              />
+              <Icon
+                className="booky--hide-mobile-tablet"
+                icon="logout"
+                color="light"
+                onClick={ () => { router.push('/logout'); } }
+                title={ intl.formatMessage({ id: 'menu.logout' }) }
+                tabIndex="0"
+              />
+              <ButtonSmallLight
+                className="header__add booky--hide-mobile-tablet"
+                onClick={ () => { openModal('AddBookmark', {
+                  source: 'header'
+                }); } }
+                icon="add"
+                solid
+              >
+                <FormattedHTMLMessage id="bookmark.add" />
+              </ButtonSmallLight>
+            </Fragment>
+          ) }
+          { !loggedIn && (
+            <Fragment>
+              <ButtonSmallLight className="booky--hide-mobile-tablet header__login" to="/login">
+                <FormattedHTMLMessage id="header.login" />
+              </ButtonSmallLight>
+              <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join" icon="join" solid>
+                <FormattedHTMLMessage id="header.register" />
+              </ButtonSmallLight>
+            </Fragment>
+          ) }
+          <ButtonSmallLight className="booky--hide-desktop" onClick={ this.onMenuClick }>
+            <FormattedHTMLMessage id="header.menu" />
+          </ButtonSmallLight>
+        </div>
       </header>
     );
   }
 }
 
-export default injectIntl(Header);
 
 Header.propTypes = {
-  'color': PropTypes.number,
-  'loggedIn': PropTypes.bool.isRequired,
-  'menuOpen': PropTypes.bool.isRequired,
-  'onDashboardsClick': PropTypes.func.isRequired,
-  'onHeaderClick': PropTypes.func.isRequired,
-  'onMenuClick': PropTypes.func.isRequired,
-  'onSidebarClick': PropTypes.func.isRequired,
-  'sidebarOpen': PropTypes.bool.isRequired,
-  'sticky': PropTypes.bool,
+  color: PropTypes.string.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  onHeaderClick: PropTypes.func.isRequired,
+  onMenuClick: PropTypes.func.isRequired,
+  sticky: PropTypes.bool,
   openModal: PropTypes.func.isRequired,
-  search: PropTypes.bool,
   dashboards: PropTypes.bool,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  sidebarOpen: PropTypes.bool,
+  home: PropTypes.bool,
+  className: PropTypes.string,
+  router: PropTypes.object.isRequired
 };
 
 Header.defaultProps = {
-  'color': 0,
-  'sticky': true
+  sticky: true
 };
+
+export default injectIntl(withRouter(Header));

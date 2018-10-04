@@ -8,108 +8,151 @@
   transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s linear;
   user-select: none;
 
-  // &:after {
-  //   background-color: rgba(0,0,0,0.1);
-  //   border-radius: 50%;
-  //   content: " ";
-  //   height: 36px;
-  //   left: 0;
-  //   position: absolute;
-  //   top: 50%;
-  //   transform: translateY(-50%) scale(0);
-  //   transition: height 0.3s linear, width 0.3s linear, opacity 0.3s linear;
-  //   width: 36px;
-  // }
-
-  // &:active {
-  //   &:after {
-  //     animation: 0.3s linear 1 circle;
-  //   }
-  // }
-
-  &.icon--primary {
-    color: $color__font--primary;
-    border-color: $color__font--primary;
-
-    @include mobile-tablet {
-      &:active {
-        color: $color__font--dark;
-      }   
-    }
-
-    @include desktop {
-      &:hover {
-        color: $color__font--dark;
-      }   
-    }
+  &::after {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 50%;
+    content: " ";
+    height: 36px;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 36px;
+    transition: transform 0.2s ease;
   }
 
-  &.icon--dark {
+  &:focus {
+    &::after {
+      // opacity: 1;
+      // transform: translateY(-50%) scale(1);
+      animation: 0.4s linear 1 circle;
+    }
+  }
+}
+
+.icon--primary {
+  color: $color__font--primary;
+  border-color: $color__font--primary;
+
+  @include mobile-tablet {
+    &:active {
+      color: $color__font--dark;
+    }   
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--dark;
+    }   
+  }
+
+  &:focus {
     color: $color__font--dark;
-    border-color: $color__font--dark;
+  }
+}
 
-    @include mobile-tablet {
-      &:active {
-        color: $color__font--primary;
-      }   
-    }
+.icon--dark {
+  color: $color__font--dark;
+  border-color: $color__font--dark;
 
-    @include desktop {
-      &:hover {
-        color: $color__font--primary;
-      }   
-    }
+  @include mobile-tablet {
+    &:active {
+      color: $color__font--primary;
+    }   
   }
 
-  &.icon--medium {
-    color: $color__font--medium;
-    border-color: $color__font--medium;
-
-    @include mobile-tablet {
-      &:active {
-        color: $color__font--primary;
-      }   
-    }
-
-    @include desktop {
-      &:hover {
-        color: $color__font--primary;
-      }   
-    }
+  @include desktop {
+    &:hover {
+      color: $color__font--primary;
+    }   
   }
 
-  &.icon--light {
-    color: $color__font--white;
-    border-color: $color__font--white;
+  &:focus {
+    color: $color__font--primary;
+  }
+}
 
-    @include mobile-tablet {
-      &:active {
-        color: $color__font--dark;
-      }   
-    }
+.icon--medium {
+  color: $color__font--medium;
+  border-color: $color__font--medium;
 
-    @include desktop {
-      &:hover {
-        color: $color__font--dark;
-      }   
-    }
+  @include mobile-tablet {
+    &:active {
+      color: $color__font--primary;
+    }   
   }
 
-  &.icon--green {
-    color: $color--green;
-    border-color: $color--green;
+  @include desktop {
+    &:hover {
+      color: $color__font--primary;
+    }   
+  }
 
-    @include mobile-tablet {
-      &:active {
-        color: $color__font--dark;
-      }   
-    }
+  &:focus {
+    color: $color__font--primary;
+  }
+}
 
-    @include desktop {
-      &:hover {
-        color: $color__font--dark;
-      }   
-    }
+.icon--light {
+  color: $color__font--white;
+  border-color: $color__font--white;
+
+  @include mobile-tablet {
+    &:active {
+      color: $color__font--dark;
+    }   
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--dark;
+    }   
+  }
+
+  &:focus {
+    color: $color__font--dark;
+  }
+}
+
+.icon--green {
+  color: $color--green;
+  border-color: $color--green;
+
+  @include mobile-tablet {
+    &:active {
+      color: $color__font--dark;
+    }   
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--dark;
+    }   
+  }
+
+  &:focus {
+    color: $color__font--dark;
+  }
+}
+
+.icon--orange {
+  color: $color--3;
+  border-color: $color--3;
+
+  @include mobile-tablet {
+    &:active {
+      color: $color__font--dark;
+    }   
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--dark;
+    }   
+  }
+
+  &:focus {
+    color: $color__font--dark;
   }
 }
 
@@ -120,8 +163,11 @@
   position: relative;
   stroke-width: 0;
   stroke: currentColor;
-  // transition: transform 0.2s linear;
   width: 36px;
+}
+
+.icon__svg--spinner {
+  animation: 1s linear infinite rotate;
 }
 
 .icon__label {
@@ -132,18 +178,28 @@
   margin-left: 4px;
 }
 
-// @keyframes circle {
-//   0% {
-//     transform: translateY(-50%) scale(0);
-//     opacity: 0;
-//   }
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
 
-//   50% {
-//     opacity: 1;
-//   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-//   100% {
-//     transform: translateY(-50%) scale(1);
-//     opacity: 0;
-//   }
-// }
+@keyframes circle {
+  0% {
+    transform: translateY(-50%) scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0;
+  }
+}

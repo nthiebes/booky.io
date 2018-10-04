@@ -5,6 +5,7 @@ export const DELETE_DASHBOARD = 'DELETE_DASHBOARD';
 export const UPDATE_OFFSET = 'UPDATE_OFFSET';
 export const DRAG_DASHBOARD = 'DRAG_DASHBOARD';
 export const DRAG_CATEGORY = 'DRAG_CATEGORY';
+export const TOGGLE_DASHBOARD_OPEN = 'TOGGLE_DASHBOARD_OPEN';
 
 export function changeDashboard(id) {
   return {
@@ -52,5 +53,11 @@ export function dragCategory(data) {
   return {
     type: DRAG_CATEGORY,
     data
+  };
+}
+
+export function toggleDashboardOpen() {
+  return {
+    type: TOGGLE_DASHBOARD_OPEN
   };
 }

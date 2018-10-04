@@ -11,41 +11,44 @@ class EditDashboard extends Component {
 
     this.onNameChange = this.onNameChange.bind(this);
     this.state = {
-      id: props.data.id,
-      name: props.data.name,
-      valid: true
+      name: props.data.name
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      id: nextProps.data.id,
-      name: nextProps.data.name,
-      valid: true
-    });
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({
+  //     id: nextProps.data.id,
+  //     name: nextProps.data.name,
+  //     valid: true
+  //   });
+  // }
 
   onNameChange(value) {
     this.setState({
-      name: value,
-      valid: Boolean(value)
+      name: value
     });
   }
 
   render() {
-    const { onClose, onSave, intl } = this.props;
-    const { name, valid } = this.state;
+    const { onClose, onSave, intl, data, pending } = this.props;
+    const { name } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) }>
+      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) } hasAnchor>
         <Input
           id="dashboard-name"
+          name="name"
           color="primary"
           value={ name }
           onChange={ this.onNameChange }
           required
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
+        />
+        <Input
+          name="id"
+          value={ data.id.toString() }
+          type="hidden"
         />
       </Base>
     );
@@ -58,5 +61,6 @@ EditDashboard.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  pending: PropTypes.bool
 };

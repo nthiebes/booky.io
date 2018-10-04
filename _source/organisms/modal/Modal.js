@@ -15,7 +15,8 @@ export default class Modal extends Component {
   constructor(props) {
     super(props);
 
-    this.saveModal = this.saveModal.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
     this.modalMap = {
       AddBookmark: {
         modal: AddBookmark,
@@ -56,39 +57,46 @@ export default class Modal extends Component {
     };
   }
 
-  saveModal(modalData) {
-    const { modal, data } = this.props;
+  handleSave(modalData) {
+    const { modal, data, closeModal } = this.props;
 
     this.modalMap[modal].action({
       ...modalData,
       dashboard: data.activeDashboard
     });
+    closeModal();
+  }
+
+  handleKeyUp(event) {
+    if (event.key === 'Escape') {
+      this.props.closeModal();
+    }
   }
 
   render() {
-    const { modal, open, closeModal, data } = this.props;
-    const CustomTag = this.modalMap[modal].modal;
-    const body = document.getElementsByTagName('body')[0];
+    const { modal, open, data, pending, closeModal } = this.props;
+    let CustomTag;
 
-    if (open) {  
-      body.classList.add('booky--no-scrolling');
+    if (open) {
+      CustomTag = this.modalMap[modal] && this.modalMap[modal].modal;
     } else {
-      body.classList.remove('booky--no-scrolling');
+      CustomTag = null;
     }
 
     return (
-      <div className={ classNames(['modal', open && 'modal--open']) } onClick={ closeModal }>
-        <CustomTag onClose={ closeModal } onSave={ this.saveModal } data={ data } />
+      <div className={ classNames(['modal', open && 'modal--open']) } onClick={ closeModal } onKeyUp={ this.handleKeyUp }>
+        { CustomTag && <CustomTag onClose={ closeModal } onSave={ this.handleSave } data={ data } pending={ pending } /> }
       </div>
     );
   }
 }
 
 Modal.propTypes = {
-  modal: PropTypes.string.isRequired,
+  modal: PropTypes.string,
   open: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   data: PropTypes.object,
+  pending: PropTypes.bool,
   addBookmark: PropTypes.func.isRequired,
   editBookmark: PropTypes.func.isRequired,
   deleteBookmark: PropTypes.func.isRequired,

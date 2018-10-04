@@ -1,0 +1,54 @@
+.section {
+  position: relative;
+  margin-bottom: 3rem;
+  border-top: 1px solid transparent;
+
+  @include tablet {
+    margin-bottom: 4rem;
+  }
+
+  @include desktop {
+    margin-bottom: 7rem;
+  }
+}
+
+.section--full-width .section__content {
+  margin: 0;
+  max-width: none;
+}
+
+.section--compact .section__content {
+  width: 480px;
+  max-width: 100%;
+
+  @include tablet-desktop {
+    padding: 0 22px;
+  }
+}
+
+.section--primary {
+  background-color: $color--primary;
+
+  .headline,
+  .paragraph {
+    color: $color__font--white;
+  }
+}
+
+.section--light {
+  background-color: $color__background--ligth;
+}
+
+.section__content {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 0 calc(3% + 6px);
+
+  @include desktop {
+    padding: 0 36px;
+  }
+}
+
+.section__content--noPadding {
+  padding: 0;
+}

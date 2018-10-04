@@ -1,3 +1,3 @@
-import component from './Join';
+import container from './JoinContainer';
 
-export default component;
+export default container;

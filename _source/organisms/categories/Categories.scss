@@ -1,14 +1,46 @@
 .categories {
-  margin-top: 6rem;
+  margin-top: 4rem;
+
+  @include desktop {
+    margin-top: calc(3rem + 6px);
+  }
 }
 
-@include desktop {
-  .categories--dashboards {
+.categories--sidebar {
+  @include desktop {
+    width: calc(100% - 36px);
+    margin-left: 36px;
+  }
+}
+
+.categories--shifted {
+  @include desktop {
+    width: calc(100% - 300px);
     margin-left: 300px;
   }
 }
 
 .categories__button {
-  width: calc(94% - 12px);
-  margin: 0 calc(3% + 6px);
+  width: calc(94vw - 12px);
+  margin: 0 calc(3vw + 6px);
+}
+
+.categories--sidebar {
+  .categories__button {
+    @include desktop {
+      width: calc(94vw - 48px);
+    }
+  }
+}
+
+.categories--shifted {
+  .categories__button {
+    @include desktop {
+      width: calc(94vw - 312px);
+    }
+  }
+}
+
+.categories__button--bottom {
+  margin-top: 1rem;
 }

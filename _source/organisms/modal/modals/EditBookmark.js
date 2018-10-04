@@ -15,43 +15,40 @@ class EditBookmark extends Component {
       id: props.data.id,
       name: props.data.name,
       url: props.data.url,
-      categoryId: props.data.categoryId,
-      valid: true
+      categoryId: props.data.categoryId
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      id: nextProps.data.id,
-      name: nextProps.data.name,
-      url: nextProps.data.url,
-      categoryId: nextProps.data.categoryId,
-      valid: true
-    });
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({
+  //     id: nextProps.data.id,
+  //     name: nextProps.data.name,
+  //     url: nextProps.data.url,
+  //     categoryId: nextProps.data.categoryId
+  //   });
+  // }
 
   onNameChange(value) {
     this.setState({
-      name: value,
-      valid: Boolean(value && this.state.url)
+      name: value
     });
   }
 
   onUrlChange(value) {
     this.setState({
-      url: value,
-      valid: Boolean(value && this.state.name)
+      url: value
     });
   }
 
   render() {
-    const { onClose, onSave, intl } = this.props;
-    const { name, url, valid } = this.state;
+    const { onClose, onSave, intl, pending, data } = this.props;
+    const { name, url } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline={ intl.formatMessage({ id: 'modal.editBookmark' }) }>
+      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editBookmark' }) } hasAnchor>
         <Input
           id="bookmark-url"
+          name="url"
           color="primary"
           value={ url }
           onChange={ this.onUrlChange }
@@ -59,15 +56,28 @@ class EditBookmark extends Component {
           required
           maxLength="2000"
           label={ intl.formatMessage({ id: 'modal.url' }) }
+          disabled={ pending }
         />
         <Input
           id="bookmark-name"
+          name="name"
           color="primary"
           value={ name }
           onChange={ this.onNameChange }
           required
           maxLength="80"
           label={ intl.formatMessage({ id: 'modal.name' }) }
+          disabled={ pending }
+        />
+        <Input
+          name="id"
+          value={ data.id.toString() }
+          type="hidden"
+        />
+        <Input
+          name="categoryId"
+          value={ data.categoryId.toString() }
+          type="hidden"
         />
       </Base>
     );
@@ -80,5 +90,6 @@ EditBookmark.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  pending: PropTypes.bool
 };

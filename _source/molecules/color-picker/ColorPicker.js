@@ -1,32 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../../atoms/icon';
+import classNames from 'classnames';
+
+import Color from './Color';
 
 export default class ColorPicker extends Component {
   constructor(props) {
     super(props);
     
-    this.getColor = this.getColor.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.getColors = this.getColors.bind(this);
     this.colors = [];
   }
 
   onChange(key) {
     this.props.onChange(key);
-  }
-
-  getColor(color) {
-    const activeClass = this.props.value === color.key ? 'color-picker__color--active' : '';
-    const className = `color-picker__color color-picker__color--${color.key} ${activeClass}`;
-
-    /* eslint-disable react/jsx-no-bind */
-    return (
-      <span key={ color.key } className={ className } onClick={ this.onChange.bind(this, color.key) }>
-        { this.props.value === color.key && <Icon icon="check" color="dark" className="color-picker__icon" /> }
-      </span>
-    );
-    
-    /* eslint-enable react/jsx-no-bind */
   }
 
   getColors() {
@@ -35,17 +23,19 @@ export default class ColorPicker extends Component {
     let index = 0;
 
     for (index; index <= count; index++) {
-      colors.push({'key': index});
+      colors.push({'key': index.toString()});
     }
     return colors;
   }
 
   render() {
-    const { className } = this.props;
-    const colors = this.getColors().map(this.getColor);
+    const { className, value } = this.props;
+    const colors = this.getColors().map(((color, index) => (
+      <Color key={ index } color={ color } value={ value } onChange={ this.onChange } />
+    )));
 
     return (
-      <div className={ `color-picker ${className}` }>
+      <div className={ classNames('color-picker', className && className) }>
         { colors }
       </div>
     );
@@ -53,12 +43,11 @@ export default class ColorPicker extends Component {
 }
 
 ColorPicker.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired
 };
 
 ColorPicker.defaultProps = {
-  className: '',
-  value: 0
+  value: '0'
 };

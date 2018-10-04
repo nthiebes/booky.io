@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 
-import Label from '../../atoms/label';
+import Label from '../label';
 import Icon from '../icon';
+import ErrorMessage from '../error-message';
 
 export default class Input extends Component {
   constructor(props) {
@@ -13,39 +13,49 @@ export default class Input extends Component {
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
-    this.state = {
-      errorColor: 'medium'
-    };
-  }
-
-  componentDidMount() {
-    if (this.props.focus) {
-      findDOMNode(this.refs.inputField).focus();
-    }
   }
 
   onChange(event) {
-    this.props.onChange(event.target.value);
+    this.props.onChange(event.target.value, this.props.name);
   }
 
   onFocus() {
-    this.setState({
-      errorColor: 'primary'
-    });
     this.props.onFocus && this.props.onFocus();
   }
 
   onBlur() {
-    this.setState({
-      errorColor: 'medium'
-    });
     this.props.onBlur && this.props.onBlur();
   }
 
   render() {
-    const { className, placeholder, type, color, name, id, required, value, maxLength, label } = this.props;
+    const {
+      className,
+      placeholder,
+      type,
+      color,
+      name,
+      id,
+      required,
+      value,
+      maxLength,
+      label,
+      autoComplete,
+      pattern,
+      requirements,
+      disabled,
+      validation,
+      autoFocus,
+      icon,
+      error
+    } = this.props;
     const inputProps = {
-      className: classNames('input__field', className && className, color && `input__field--color-${color}`),
+      className: classNames(
+        'input__field',
+        className && className,
+        color && `input__field--color-${color}`,
+        !validation && 'input__field--no-validation',
+        icon && 'input__field--icon'
+      ),
       onBlur: this.onBlur,
       onFocus: this.onFocus,
       onChange: this.onChange,
@@ -55,17 +65,35 @@ export default class Input extends Component {
       name,
       id,
       required,
-      maxLength
+      maxLength,
+      autoComplete,
+      pattern,
+      requirements,
+      disabled,
+      autoFocus
     };
 
     return (
       <Fragment>
         { label && <Label htmlFor={ id }>{ label }</Label> }
-        <div className={ `input ${className}` }>
-          <input ref="inputField" { ...inputProps } />
-          { required && value && <Icon icon="check" color="green" className="input__icon" /> }
-          { required && !value && <Icon icon="error" color={ this.state.errorColor } className="input__icon" /> }
-        </div>
+        <span className={ classNames('input', className && className) }>
+          <input { ...inputProps } />
+          { validation && (
+            <Fragment>
+              <Icon icon="check" color="green" className="input__icon input__icon--valid" />
+              <Icon icon="error" color="orange" className="input__icon input__icon--invalid" />
+            </Fragment>
+          ) }
+          { icon && <Icon icon={ icon } className="input__icon input__icon--visible" /> }
+          { requirements && (
+            <div className="input__requirements">
+              { requirements }
+            </div>
+          ) }
+          { error && (
+            <ErrorMessage id={ error } />
+          ) }
+        </span>
       </Fragment>
     );
   }
@@ -73,7 +101,7 @@ export default class Input extends Component {
 
 Input.propTypes = {
   className: PropTypes.string,
-  focus: PropTypes.bool,
+  autoFocus: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   onChange: PropTypes.func,
@@ -85,19 +113,19 @@ Input.propTypes = {
   required: PropTypes.bool,
   value: PropTypes.string,
   maxLength: PropTypes.string,
-  label: PropTypes.string
+  label: PropTypes.string,
+  autoComplete: PropTypes.string,
+  pattern: PropTypes.string,
+  requirements: PropTypes.string,
+  disabled: PropTypes.bool,
+  validation: PropTypes.bool,
+  icon: PropTypes.string,
+  error: PropTypes.string
 };
 
 Input.defaultProps = {
-  className: '',
-  focus: false,
-  placeholder: '',
   type: 'text',
   color: '',
-  name: '',
-  id: '',
-  required: false,
   value: '',
-  maxlength: '',
-  label: ''
+  validation: true
 };

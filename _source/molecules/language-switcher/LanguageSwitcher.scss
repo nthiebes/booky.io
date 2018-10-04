@@ -1,0 +1,22 @@
+.language-switcher {
+  display: flex;
+  align-items: center;
+}
+
+.language-switcher__icon {
+  width: 24px;
+  height: 24px;
+  cursor: default;
+
+  .icon__svg {
+    padding: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $color__font--white;
+  }
+}

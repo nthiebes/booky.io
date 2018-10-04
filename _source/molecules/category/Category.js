@@ -7,7 +7,7 @@ import { FormattedHTMLMessage, injectIntl } from 'react-intl';
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
 import { H2 } from '../../atoms/headline';
-import { ButtonSmallMedium } from '../../atoms/button';
+import { ButtonSmallPrimary } from '../../atoms/button';
 
 class Category extends Component {
   constructor(props) {
@@ -50,6 +50,7 @@ class Category extends Component {
             icon="expand"
             title={ open ? intl.formatMessage({ id: 'category.reduce' }) : intl.formatMessage({ id: 'category.expand' }) }
             onClick={ this.toggleCategory }
+            tabIndex="0"
           />
           <H2 className="category__name" onClick={ this.toggleCategory }>{ name }</H2>
           <Icon
@@ -61,6 +62,7 @@ class Category extends Component {
               id,
               color
             }); } }
+            tabIndex={ editMode ? '0' : '-1' }
           />
           <Icon
             className="category__icon"
@@ -70,25 +72,20 @@ class Category extends Component {
               name,
               id
             }); } }
+            tabIndex={ editMode ? '0' : '-1' }
           />
           <Icon
-            className={ editMode ? '' : 'category__edit-icon--hide' }
-            icon="close"
-            title={ intl.formatMessage({ id: 'category.editModeQuit' }) }
+            icon={ editMode ? 'close' : 'more-horiz' }
+            title={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
             onClick={ this.toggleEditMode }
-          />
-          <Icon
-            className={ editMode ? 'category__edit-icon--hide' : '' }
-            icon="more-horiz"
-            title={ intl.formatMessage({ id: 'category.editMode' }) }
-            onClick={ this.toggleEditMode }
+            tabIndex="0"
           />
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
           <Droppable droppableId={ id.toString() } type="bookmark">
             { (provided) => (
               <div className="category__bookmark-drag-wrapper" ref={ provided.innerRef } { ...provided.droppableProps }>
-                { bookmarks.map((bookmark, index) => (
+                { open && bookmarks.map((bookmark, index) => (
                   <Bookmark
                     key={ index }
                     index={ index }
@@ -99,18 +96,27 @@ class Category extends Component {
                     url={ bookmark.url }
                   />
                 )) }
+                { open && bookmarks.length === 0 && (
+                  <li className="category__empty">
+                    <i><FormattedHTMLMessage id="bookmark.empty" /></i>
+                  </li>
+                ) }
                 { provided.placeholder }
               </div>
             ) }
           </Droppable>
         </ul>
-        { editMode && <ButtonSmallMedium
-          className="category__button"
-          onClick={ () => { openModal('AddBookmark', {
-            categoryId: id
-          }); } }>
-          <FormattedHTMLMessage id="bookmark.add" />
-        </ButtonSmallMedium> }
+        { open && (
+          <ButtonSmallPrimary
+            icon="add"
+            className="category__button"
+            onClick={ () => { openModal('AddBookmark', {
+              categoryId: id
+            }); } }
+          >
+            <FormattedHTMLMessage id="bookmark.add" />
+          </ButtonSmallPrimary>
+        ) }
       </section>
     );
   }
@@ -120,7 +126,7 @@ export default injectIntl(Category);
 
 Category.propTypes = {
   name: PropTypes.string.isRequired,
-  color: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
   open: PropTypes.bool,
   id: PropTypes.number.isRequired,
   bookmarks: PropTypes.array,

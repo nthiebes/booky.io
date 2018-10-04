@@ -1,212 +1,58 @@
 .menu {
-  @include mobile-tablet {
-    top: 0;
-    background-color: $color__background--white;
-    bottom: 0;
-    border-right: 2px solid rgba(0,0,0,0.15);
-    left: 0;
-    max-width: 300px;
-    min-width: 200px;
-    padding-bottom: 1rem;
-    position: fixed;
-    transform: translate3d(-100%,0,0);
-    transition: transform 0.3s ease;
-    width: 80%;
-    z-index: 2;
-    overflow: hidden;
-
-    &.menu--open {
-      transform: translate3d(0,0,0);
-    }
-  }
-
-  @include desktop {
-    padding: 0;
-    flex-grow: 1;
-
-    .menu__headline,
-    .menu__header,
-    .menu__headline-wrapper,
-    .dashboards__headline-wrapper,
-    .dashboards__list,
-    .menu__hr {
-      display: none;
-    }
-  }
-}
-
-.menu__header {
   display: flex;
-  height: 3rem;
-  align-items: center;
-  position: relative;
-  z-index: 3;
-  padding: 0 3vw;
-
-  @include tablet {
-    height: 4.4rem;
-  }
-}
-
-.menu__scroll-wrapper {
-  @include mobile-tablet {
-    position: absolute;
-    top: 3rem;
-    margin-top: 1px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  @include tablet {
-    top: 4.4rem;
-  }
-
-  @include desktop {
-    display: flex;
-  }
-}
-
-.menu__headline {
-  padding: 0 calc(3vw + 6px) !important;
-  margin: 0 !important;
-  line-height: 36px !important;
-}
-
-.menu__logo {
-  margin-left: 1rem;
-  color: $color__font--primary;
-}
-
-.menu__icon {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-}
-
-.menu__edit-icon--hide {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-}
-
-.menu__nav {
-  display: flex;
+  flex-grow: 1;
   justify-content: flex-start;
-
-  @include mobile-tablet {
-    align-items: center;
-    flex-direction: column;
-  }
-
-  @include desktop {
-    display: inline-flex;
-    flex-direction: row;
-    flex-grow: 1;
-    margin-left: 1rem;
-  }
+  margin-right: 0.5rem;
 }
 
 .menu__item {
-  @include mobile-tablet {
-    color: $color__font--dark;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    width: 100%;
-    list-style: none;
-    padding: 0 calc(3vw + 6px) 0 3vw;
-    user-select: none;
-    transition: none;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  position: relative;
+  white-space: nowrap;
 
-    .icon {
-      transition: none;
-    }
-
-    &:active, &:focus {
-      background-color: $color__background--ligth;
-      color: $color__font--primary;
-
-      .menu__label {
-        color: $color__font--primary;
-      }
-
-      .icon {
-        color: $color__font--primary;
-      }
-    }
+  &::after {
+    position: absolute;
+    content: " ";
+    height: 2px;
+    left: 36px;
+    right: 0;
+    bottom: 2px;
+    background-color: transparent;
+    transition: background-color 0.2s linear;
   }
 
-  &.menu__item--active {
-    font-weight: 700;
+  &:active,
+  &:focus {
+    color: $color__font--dark;
+
+    .icon {
+      color: $color__font--dark;
+    }
   }
 
   @include desktop {
-    display: inline-flex;
-    color: $color__font--white;
-    font-weight: bold;
-    margin: 0 0.5rem;
-    position: relative;
-    transition: color 0.2s linear;
-    align-items: center;
-
-    &:hover, &:focus {
+    &:hover {
       color: $color__font--dark;
 
-      .menu__label {
+      .icon {
         color: $color__font--dark;
       }
-
-      &:hover .icon, &:focus .icon {
-        color: $color__font--dark;
-      }
-    }
-
-    &:first-child  {
-      &:before {
-        display: none;
-      }
-    }
-
-    &:last-child  {
-      margin: 0;
-    }
-
-    .icon {
-      color: $color__font--white;
     }
   }
 }
 
-.menu__label {
-  color: $color__font--dark;
-  font-family: $font__family--text;
-  font-size: 1rem;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  flex-grow: 1;
-  cursor: pointer;
-  text-decoration: none;
-
-  @include desktop {
-    transition: color 0.2s linear;
-    color: $color__font--white;
+.menu__item--active {
+  &::after {
+    background-color: $color__font--white;
   }
-}
 
-.menu__hr {
-  height: 1px;
-  position: relative;
-  background-color: rgba(0,0,0,0.15);
-  width: 140%;
-  left: -20%;
-  margin-bottom: 1rem;
+  &:active,
+  &:focus,
+  &:hover {
+    &::after {
+      background-color: $color__font--dark;
+    }
+  }
 }

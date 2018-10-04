@@ -1,18 +1,24 @@
 .search {
-  align-items: center;
-  display: flex;
+  margin: 0 calc(1rem + 6px) 0 1rem;
   flex-grow: 1;
-  margin: 0 1rem;
+
+  @include mobile {
+    .icon {
+      top: 0;
+    }
+  }
 
   @include desktop {
-    max-width: 200px;
-    height: 80%;
+    flex-grow: 0;
+    margin: 0 0 0 1rem;
   }
 }
 
 .search__input {
-  height: 2.429rem;
-  line-height: 2.429rem;
+  @include mobile {
+    height: 2.4rem;
+    line-height: 2.4rem;
+  }
 
   @include tablet {
     height: 3rem;
@@ -20,15 +26,6 @@
   }
 
   @include desktop {
-    height: 100%;
-    line-height: 100%;
-  }
-}
-
-.search__input .input__field {
-  background-color: $color__background--white;
-
-  @include desktop {
-    background-color: #fafafa;
+    width: 250px;
   }
 }

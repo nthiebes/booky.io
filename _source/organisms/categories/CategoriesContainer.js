@@ -5,8 +5,10 @@ import { actions } from '../../_state/modal';
 export const mapStateToProps = function(state) {
   return {
     categories: state.categories,
-    maxWidth: state.sidebar.maxWidth,
-    dashboardsPosition: state.sidebar.dashboard
+    maxWidth: state.user.maxWidth,
+    dashboardsOpen: state.user.pinned,
+    hasSidebar: state.dashboards.sidebar,
+    dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active)
   };
 };
 

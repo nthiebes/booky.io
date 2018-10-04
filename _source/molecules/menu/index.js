@@ -1,3 +1,3 @@
-import container from './MenuContainer';
+import component from './Menu';
 
-export default container;
+export default component;

@@ -1,0 +1,17 @@
+.empty {
+  display: flex;
+  margin: 1rem auto;
+  list-style: none;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
+  text-align: center;
+
+  @include mobile {
+    padding: 0 calc(3% + 6px);
+  }
+}
+
+.empty__image {
+  margin: 2rem 0 1rem;
+}

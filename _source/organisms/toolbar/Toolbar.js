@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import scrolling from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 import Search from '../../molecules/search';
+import { TabBar, Tab } from '../../molecules/tab-bar';
 
 class Toolbar extends Component {
   constructor(props) {
@@ -69,25 +71,35 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, router, intl } = this.props;
+    const { dashboard, router, intl, className, dashboardsPosition, dashboards, changeDashboard } = this.props;
 
     return (
-      <div className={ `toolbar ${this.getStickyClass()}` }>
-        <H3 className="toolbar__headline">{ dashboard.name }</H3>
+      <section className={ classNames('toolbar', this.getStickyClass(), className && className) }>
+        <Icon
+          icon="tree"
+          title={ intl.formatMessage({ id: 'structure.title' }) }
+          onClick={ () => { router.push('/structure'); } }
+          tabIndex="0"
+        />
+        { dashboardsPosition === 'sidebar' && (
+          <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
+        ) }
+        { dashboardsPosition === 'tabs' && (
+          <TabBar className="toolbar__tabs">
+            { dashboards.items.map((tab, index) => (
+              <Tab
+                key={ index }
+                tabId={ index }
+                active={ tab.id === dashboards.active }
+                name={ tab.name }
+                onClick={ () => { changeDashboard(tab.id); } }
+              />
+            )) }
+          </TabBar>
+        ) }
         <Search className="booky--hide-mobile-tablet" />
-        <Icon icon="tree" title={ intl.formatMessage({ id: 'structure.title' }) } onClick={ () => { router.push('/structure'); } } />
-      </div>
+      </section>
     );
-    // <Icon
-    //   icon="edit"
-    //   title="Edit dashboard"
-    //   onClick={ () => { openModal('EditDashboard', {
-    //     id: dashboard.id,
-    //     name: dashboard.name
-    //   }); } }
-    // />
-    // <div className="toolbar__gradient" />
-    // <TabBar tabs={ dashboards } />
   }
 }
 
@@ -98,16 +110,19 @@ Toolbar.propTypes = {
   headerSticky: PropTypes.bool,
   sticky: PropTypes.bool,
   currentlySticky: PropTypes.bool,
-  dashboards: PropTypes.object,
+  dashboards: PropTypes.object.isRequired,
   dashboard: PropTypes.object,
   openModal: PropTypes.func.isRequired,
   router: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  className: PropTypes.string,
+  dashboardsPosition: PropTypes.string.isRequired,
+  changeDashboard: PropTypes.func.isRequired
 };
 
 Toolbar.defaultProps = {
   headerSticky: true,
   sticky: true,
   currentlySticky: true,
-  dashboards: {}
+  dashboard: {}
 };

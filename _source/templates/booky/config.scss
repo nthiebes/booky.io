@@ -25,28 +25,21 @@ $color--3: #e19d29;
 $color--4: #eb65a0;
 $color--5: #9b539c;
 $color--6: #29aba4;
-$color--7: #aaa;
-$color--8: #777;
-
-/**
- * Size
- */
-$size--small: 12px;
-$size--phone: 14px;
-$size--tablet: 14px;
-$size--desktop: 16px;
+$color--7: #657786;
+$color--8: #555;
 
 /**
  * Fonts
  */
 $font__family--heading: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 $font__family--text: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+$font-size--small: 0.8571rem;
 
 /**
  * Breakpoints
  */
-$width--mobile: 480px;
-$width--tablet: 920px;
+$width--mobile: 600px;
+$width--tablet: 1000px;
 $width--hd: 1280px;
 $width--fullhd: 1920px;
 

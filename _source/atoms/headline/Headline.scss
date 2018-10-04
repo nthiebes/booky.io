@@ -2,31 +2,65 @@
   color: $color__font--dark;
   font-family: $font__family--heading;
   overflow: hidden;
+  position: relative;
+}
 
-  &.headline--h1 {
-    font-size: 2.3rem;
-    line-height: 2.6rem;
-    font-weight: 100;
-    margin-top: 2rem;
-    padding-bottom: 1rem;
-  }
+.headline--h1 {
+  font-size: 2.5rem;
+  font-weight: 100;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
 
-  &.headline--h2 {
-    font-size: 1.5rem;
-    line-height: 1.8rem;
-    font-weight: 400;
-    margin-top: 1rem;
-    padding-bottom: 0.5rem;
-    color: $color__font--medium;
-  }
-
-  &.headline--h3 {
-    font-size: 1rem;
-    line-height: 1rem;
+  &.headline--display {
+    font-size: 3rem;
     font-weight: 700;
-    margin-top: 1rem;
-    padding-bottom: 0.5rem;
-    color: $color__font--medium;
-    text-transform: uppercase;
+
+    @include tablet {
+      font-size: 3.5rem;
+    }
+
+    @include desktop {
+      font-size: 4rem;
+    }
   }
+}
+
+.headline--h2 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  color: $color__font--medium;
+
+  &.headline--display {
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
+
+    @include desktop {
+      font-size: 3rem;
+    }
+  }
+}
+
+.headline--h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  color: $color__font--medium;
+  text-transform: uppercase;
+}
+
+.headline.headline--no-margin {
+  margin-top: 0;
+}
+
+.headline--color-light {
+  color: $color__font--white;
 }

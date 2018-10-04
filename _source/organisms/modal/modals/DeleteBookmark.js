@@ -7,15 +7,21 @@ import Label from '../../../atoms/label';
 
 class DeleteBookmark extends Component {
   render() {
-    const { data, onClose, onSave, intl } = this.props;
+    const { data, onClose, onSave, intl, pending } = this.props;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave({
-        id: data.id,
-        categoryId: data.categoryId
-      }); } } headline={ intl.formatMessage({ id: 'modal.deleteBookmark' }) }>
+      <Base
+        onClose={ onClose }
+        onSave={ () => { onSave({
+          id: data.id,
+          categoryId: data.categoryId
+        }); } }
+        pending={ pending }
+        headline={ intl.formatMessage({ id: 'modal.deleteBookmark' }) }
+        hasAnchor
+      >
         <Label>
-          <div><FormattedMessage id="modal.deleteBookmarkLabel" /></div>
+          <FormattedMessage id="modal.deleteBookmarkLabel" /><br />
           <b>{ data.name }</b>
         </Label>
       </Base>
@@ -29,5 +35,6 @@ DeleteBookmark.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  pending: PropTypes.bool
 };

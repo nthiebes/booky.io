@@ -1,33 +1,82 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import * as Cookies from 'es-cookie';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { addLocaleData, IntlProvider } from 'react-intl';
+import { addLocaleData } from 'react-intl';
+import { Provider } from 'react-intl-redux';
 import deLocaleData from 'react-intl/locale-data/de';
-import 'whatwg-fetch';
 
+import fetcher from './_utils/fetcher';
 import router from './router';
 import configureStore from './configureStore';
 import initialState from './initialState';
 
-const store = configureStore(initialState);
-const history = syncHistoryWithStore(browserHistory, store);
-let locale = navigator.language || navigator.userLanguage;
+const supportedLanguages = ['en', 'de'];
+const cookieLanguage = Cookies.get('lang');
+let locale = cookieLanguage || navigator.language || navigator.userLanguage;
 
-locale = (locale || 'en').slice(0, 2);
-// locale = 'en';
+locale = locale.slice(0, 2);
 
-fetch(`/_assets/i18n/${locale}.json`)
-  .then((response) => response.json()).then((messages) => {
-    addLocaleData(deLocaleData);
+const language = supportedLanguages.indexOf(locale) === -1 ? 'en' : locale;
 
-    render(
-      <Provider store={ store }>
-        <IntlProvider locale={ locale } messages={ messages }>
-          <Router history={ history } routes={ router } onUpdate={ () => window.scrollTo(0, 0) } />
-        </IntlProvider>
-      </Provider>,
-      document.getElementById('root')
-    );
-  }).catch();
+Cookies.set('lang', language, { expires: 365 });
+document.documentElement.setAttribute('lang', language);
+
+function loadingDone(store) {
+  const history = syncHistoryWithStore(browserHistory, store);
+
+  addLocaleData(deLocaleData);
+
+  render(
+    <Provider store={ store }>
+      <Router history={ history } routes={ router } onUpdate={ () => window.scrollTo(0, 0) } />
+    </Provider>,
+    document.getElementById('root')
+  );
+}
+
+fetch(`/_assets/i18n/${language}.json`)
+  .then((response) => response.json())
+  .then((messages) => {
+    fetcher({
+      url: '/user',
+      onSuccess: (data) => {
+        // console.log('user', data);
+
+        const store = configureStore({
+          ...initialState,
+          user: {
+            ...initialState.user,
+            loggedIn: typeof data.user === 'object',
+            ...data
+          },
+          intl: {
+            locale: language,
+            messages
+          }
+        });
+        
+        loadingDone(store);
+      },
+      onError: (error) => {
+        // console.log('error:', error);
+
+        const store = configureStore({
+          ...initialState,
+          user: {
+            ...initialState.user,
+            loggedIn: true, // false
+            error
+          },
+          intl: {
+            locale: language,
+            messages
+          }
+        });
+
+        loadingDone(store);
+      }
+    });
+  })
+  .catch();

@@ -12,274 +12,19 @@
   overflow: hidden;
   padding: 0 1.2rem;
   position: relative;
-  text-transform: uppercase;
   transition: color 0.2s linear, background-color 0.2s linear;
   user-select: none;
   white-space: nowrap;
   justify-content: center;
 
-  &.button--disabled {
-    pointer-events: none;
+  &:disabled {
     opacity: 0.5;
-  }
-
-  &.button--small-light {
-    background-color: transparent;
-    border-color: $color__font--white;
-    color: $color__font--white;
-
-    @include mobile-tablet() {
-      &:active {
-        background-color: $color__font--white;
-        color: $color__font--primary;
-      }
-      &:active .icon {
-        color: $color__font--primary;
-      }
-    }
-
-    @include desktop() {
-      &:hover, &:focus {
-        background-color: $color__font--white;
-        color: $color__font--primary;
-      }
-      &:hover .icon, &:focus .icon {
-        color: $color__font--primary;
-      }
-    }
-  }
-
-  &.button--small-primary {
-    background-color: transparent;
-    border-color: $color__font--primary;
-    color: $color__font--primary;
-
-    @include mobile-tablet() {
-      &:active {
-        background-color: $color__font--primary;
-        color: $color__font--white;
-      }
-      &:active .icon {
-        color: $color__font--white;
-      }
-    }
-
-    @include desktop() {
-      &:hover, &:focus {
-        background-color: $color__font--primary;
-        color: $color__font--white;
-      }
-      &:hover .icon, &:focus .icon {
-        color: $color__font--white;
-      }
-    }
-  }
-
-  &.button--small-dark {
-    background-color: transparent;
-    border-color: $color__font--dark;
-    color: $color__font--dark;
-
-    @include mobile-tablet() {
-      &:active {
-        background-color: $color__font--dark;
-        color: $color__font--white;
-      }
-      &:active .icon {
-        color: $color__font--white;
-      }
-    }
-
-    @include desktop() {
-      &:hover, &:focus {
-        background-color: $color__font--dark;
-        color: $color__font--white;
-      }
-      &:hover .icon, &:focus .icon {
-        color: $color__font--white;
-      }
-    }
-  }
-
-  &.button--small-medium {
-    background-color: transparent;
-    border-color: $color__font--medium;
-    color: $color__font--medium;
-
-    @include mobile-tablet() {
-      &:active {
-        background-color: $color__font--medium;
-        color: $color__font--white;
-      }
-      &:active .icon {
-        color: $color__font--white;
-      }
-    }
-
-    @include desktop() {
-      &:hover, &:focus {
-        background-color: $color__font--medium;
-        color: $color__font--white;
-      }
-      &:hover .icon, &:focus .icon {
-        color: $color__font--white;
-      }
-    }
-  }
-
-  &.button--large {
-    justify-content: center;
-
-    @include mobile-tablet() {
-      height: 40px;
-      width: 100%;
-
-      .button__icon {
-        display: none;
-      }
-    }
-
-    @include desktop() {
-      height: 60px;
-      width: 200px;
-
-      &:hover, &:focus {
-        .icon,
-        .icon__svg {
-          color: $color__font--dark;
-        }
-
-        .button__icon {
-          transform: translateX(10px);
-        }
-
-        .button__text {
-          transform: translateX(20px);
-        }
-      }
-
-      .button__icon {
-        display: inline-block;
-        left: 0;
-        position: absolute;
-        transform: translateX(-100%);
-        transition: color 0.2s linear, transform 0.2s ease;
-
-        &:hover, &:focus {
-          .icon__svg {
-            transform: none;
-          }
-        }
-      }
-    }
-  }
-
-  &.button--large-primary {
-    background-color: rgba($color__background--primary, 0.9);
-    color: $color__font--white;
-
-    @include mobile-tablet() {
-      &:active {
-        background-color: $color__background--primary;
-      }
-    }
-
-    @include desktop() {
-      &:hover, &:focus {
-        background-color: $color__background--primary;
-
-        .icon,
-        .icon__svg {
-          color: $color__font--white;
-        }
-      }
-    }
-  }
-
-  &.button--large-green {
-    background-color: rgba($color--green, 0.9);
-    color: $color__font--white;
-
-    @include mobile-tablet() {
-      &:active {
-        background-color: $color--green;
-      }
-    }
-
-    @include desktop() {
-      &:hover, &:focus {
-        background-color: $color--green;
-
-        .icon,
-        .icon__svg {
-          color: $color__font--white;
-        }
-      }
-    }
-  }
-
-  &.button--large-blue {
-    background-color: rgba($color--blue, 0.9);
-    color: $color__font--white;
-
-    @include mobile-tablet() {
-      &:active {
-        background-color: $color--blue;
-      }
-    }
-
-    @include desktop() {
-      &:hover, &:focus {
-        background-color: $color--blue;
-
-        .icon,
-        .icon__svg {
-          color: $color__font--white;
-        }
-      }
-    }
-  }
-
-  &.button--large-dark {
-    background-color: rgba($color__background--dark, 0.9);
-    color: $color__font--white;
-
-    @include mobile-tablet() {
-      &:active {
-        background-color: $color__background--dark;
-      }
-    }
-
-    @include desktop() {
-      &:hover, &:focus {
-        background-color: $color__background--dark;
-      }
-    }
-  }
-
-  &.button--large-light {
-    background-color: rgba(0,0,0,0.1);
-
-    @include mobile-tablet() {
-      &:active {
-        background-color: rgba(0,0,0,0.15);
-      }
-    }
-
-    @include desktop() {
-      &:hover, &:focus {
-        background-color: rgba(0,0,0,0.15);
-      }
-    }
+    pointer-events: none;
   }
 }
 
-.button__text {
-  display: inline-block;
-  font-size: 1rem;
-  transition: transform 0.2s ease;
-  height: 2rem;
-  line-height: 2rem;
+.button--content-before {
+  margin-top: 2rem;
 }
 
 .button--small {
@@ -294,4 +39,348 @@
     height: 24px;
     width: 24px;
   }
+}
+
+.button--small-light {
+  background-color: transparent;
+  border-color: $color__font--white;
+  color: $color__font--white;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color__font--white;
+      color: $color__font--primary;
+    }
+    &:active .icon,
+    &:focus .icon {
+      color: $color__font--primary;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus {
+      background-color: $color__font--white;
+      color: $color__font--primary;
+    }
+    &:hover .icon,
+    &:focus .icon {
+      color: $color__font--primary;
+    }
+  }
+
+  &.button--solid {
+    background-color: $color__font--white;
+    color: $color__font--primary;
+
+    .icon {
+      color: $color__font--primary;
+    }
+
+    @include mobile-tablet() {
+      &:active,
+      &:focus {
+        color: $color__font--dark;
+      }
+      &:active .icon,
+      &:focus .icon {
+        color: $color__font--dark;
+      }
+    }
+
+    @include desktop() {
+      &:hover,
+      &:focus {
+        color: $color__font--dark;
+      }
+      &:hover .icon,
+      &:focus .icon {
+        color: $color__font--dark;
+      }
+    }
+  }
+}
+
+.button--small-primary {
+  background-color: transparent;
+  border-color: $color__font--primary;
+  color: $color__font--primary;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color__font--primary;
+      color: $color__font--white;
+    }
+    &:active .icon,
+    &:focus .icon {
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus {
+      background-color: $color__font--primary;
+      color: $color__font--white;
+    }
+    &:hover .icon,
+    &:focus .icon {
+      color: $color__font--white;
+    }
+  }
+}
+
+.button--small-dark {
+  background-color: transparent;
+  border-color: $color__font--dark;
+  color: $color__font--dark;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color__font--dark;
+      color: $color__font--white;
+    }
+    &:active .icon,
+    &:focus .icon {
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus {
+      background-color: $color__font--dark;
+      color: $color__font--white;
+    }
+    &:hover .icon,
+    &:focus .icon {
+      color: $color__font--white;
+    }
+  }
+}
+
+.button--small-medium {
+  background-color: transparent;
+  border-color: $color__font--medium;
+  color: $color__font--medium;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color__font--medium;
+      color: $color__font--white;
+    }
+    &:active .icon,
+    &:focus .icon {
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus {
+      background-color: $color__font--medium;
+      color: $color__font--white;
+    }
+    &:hover .icon,
+    &:focus .icon {
+      color: $color__font--white;
+    }
+  }
+}
+
+.button--large {
+  justify-content: center;
+
+  @include mobile-tablet() {
+    height: 40px;
+    width: 100%;
+
+    .button__icon {
+      display: none;
+    }
+  }
+
+  @include tablet() {
+    height: 50px;
+    width: 200px;
+  }
+
+  @include desktop() {
+    height: 60px;
+    width: 200px;
+
+    &:hover,
+    &:focus,
+    &.button--pending {
+      .icon,
+      .icon__svg {
+        color: $color__font--dark;
+      }
+
+      .button__icon {
+        transform: translateX(10px);
+      }
+
+      .button__text {
+        transform: translateX(20px);
+      }
+    }
+
+    .button__icon {
+      display: inline-block;
+      left: 0;
+      position: absolute;
+      transform: translateX(-100%);
+      transition: color 0.2s linear, transform 0.2s ease;
+
+      &:hover,
+      &:focus {
+        .icon__svg {
+          transform: none;
+        }
+      }
+    }
+  }
+}
+
+.button--large-primary {
+  background-color: rgba($color__background--primary, 0.9);
+  color: $color__font--white;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color__background--primary;
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: $color__background--primary;
+      color: $color__font--white;
+
+      .icon,
+      .icon__svg {
+        color: $color__font--white;
+      }
+    }
+  }
+}
+
+.button--large-green {
+  background-color: rgba($color--green, 0.9);
+  color: $color__font--white;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color--green;
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: $color--green;
+      color: $color__font--white;
+
+      .icon,
+      .icon__svg {
+        color: $color__font--white;
+      }
+    }
+  }
+}
+
+.button--large-blue {
+  background-color: rgba($color--blue, 0.9);
+  color: $color__font--white;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color--blue;
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: $color--blue;
+      color: $color__font--white;
+
+      .icon,
+      .icon__svg {
+        color: $color__font--white;
+      }
+    }
+  }
+}
+
+.button--large-dark {
+  background-color: rgba($color__background--dark, 0.9);
+  color: $color__font--white;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color__background--dark;
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: $color__background--dark;
+      color: $color__font--white;
+
+      .icon,
+      .icon__svg {
+        color: $color__font--white;
+      }
+    }
+  }
+}
+
+.button--large-light {
+  background-color: $color__background--ligth;
+  color: $color__font--dark;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: rgba($color__background--ligth, 0.9);
+      color: $color__font--dark;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: rgba($color__background--ligth, 0.9);
+      color: $color__font--dark;
+    }
+  }
+}
+
+.button__text {
+  display: inline-block;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+  height: 2rem;
+  line-height: 2rem;
 }

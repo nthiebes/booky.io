@@ -1,15 +1,18 @@
 @import "reset";
 @import "config";
 
+@import "../../atoms/label/Label";
 @import "../../atoms/icon/Icon";
 @import "../../atoms/link/Link";
-// @import "../../atoms/button/Button";
+@import "../../atoms/button/Button";
 @import "../../atoms/input/Input";
-@import "../../atoms/checkbox/styles/a-checkbox";
+@import "../../atoms/select/Select";
+@import "../../atoms/checkbox/Checkbox";
 @import "../../atoms/headline/Headline";
 @import "../../atoms/paragraph/Paragraph";
 @import "../../atoms/loader/styles/a-loader";
-@import "../../atoms/label/Label";
+@import "../../atoms/error-message/ErrorMessage";
+@import "../../atoms/radio/Radio";
 
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
@@ -18,46 +21,53 @@
 @import "../../molecules/color-picker/ColorPicker";
 @import "../../molecules/dropdown/Dropdown";
 @import "../../molecules/tab-bar/TabBar";
+@import "../../molecules/language-switcher/LanguageSwitcher";
+@import "../../molecules/section/Section";
+@import "../../molecules/testimonials/Testimonials";
+@import "../../molecules/empty/Empty";
 
 @import "../../organisms/categories/Categories";
 @import "../../organisms/header/Header";
 @import "../../organisms/footer/Footer";
 @import "../../organisms/toolbar/Toolbar";
 @import "../../organisms/structure/Structure";
-@import "../../organisms/sidebar/styles/o-sidebar";
+@import "../../organisms/sidebar/Sidebar";
 @import "../../organisms/modal/Modal";
 @import "../../organisms/dashboards/Dashboards";
 
 @import "../../templates/page/Page";
 
-html,
+@import "../../pages/home/Home";
+@import "../../pages/customize/Customize";
+
+html {
+  font-size: calc(14px + 0.2vw);
+
+  @include desktop {
+    font-size: 16px;
+  }
+}
+
 body {
-  -webkit-text-size-adjust: none; /** Prevent font scaling in landscape */
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $color__background--white;
   font-family: $font__family--text;
-  font-size: $size--phone;
-  font-weight: 100;
   height: 100%;
+  color: $color__font--dark;
+}
 
-  @include tablet {
-    font-size: $size--tablet;
-  }
+.booky--no-scrolling {
+  overflow: hidden;
+}
 
-  @include desktop {
-    font-size: $size--desktop;
-  }
+.booky--no-animation {
+  transition: none !important;
+}
 
-  &.booky--no-animation {
-    transition: none !important;
-  }
-
-  &.booky--no-scrolling {
-    // position: fixed; // temp fix for iOs input fields
-    // overflow: hidden;
-    // width: 100%;
-  }
+.booky--hide {
+  display: none;
 }
 
 .booky--hide-mobile {
@@ -88,6 +98,14 @@ body {
   @include desktop {
     display: none;
   }
+}
+
+.booky__loader {
+  position: absolute;
+  color: $color__font--medium;
+  cursor: default;
+  left: calc(50% - 18px);
+  top: calc(50% - 18px);
 }
 
 ::-moz-selection {

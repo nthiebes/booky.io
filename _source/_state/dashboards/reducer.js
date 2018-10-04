@@ -5,7 +5,8 @@ import {
   CHANGE_DASHBOARD,
   UPDATE_OFFSET,
   DRAG_DASHBOARD,
-  DRAG_CATEGORY
+  DRAG_CATEGORY,
+  TOGGLE_DASHBOARD_OPEN
 } from './actions';
 import { arrayMove } from '../../_utils/array';
 
@@ -19,9 +20,11 @@ const dashboards = (state = {}, action) => {
           ...state.items,
           {
             id: 123456789,
-            name: action.payload.name
+            name: action.payload.name,
+            categories: []
           }
-        ]
+        ],
+        active: state.items.length ? state.active : 123456789
       };
 
     case EDIT_DASHBOARD: {
@@ -30,7 +33,7 @@ const dashboards = (state = {}, action) => {
       return {
         ...state,
         items: state.items.map((dashboard) => {
-          if (dashboard.id !== id) {
+          if (dashboard.id !== parseInt(id, 10)) {
             return dashboard;
           }
           
@@ -46,11 +49,11 @@ const dashboards = (state = {}, action) => {
       const { id, newId } = action.payload;
       const newDashboards = state.items.slice();
       let activeId = state.active;
-      
+
       newDashboards.map((dashboard, index) => {
         if (dashboard.id === id) {
           newDashboards.splice(index, 1);
-          activeId = newId || newDashboards[0].id;
+          activeId = newId || (newDashboards.length ? newDashboards[0].id : null);
         }
       });
 
@@ -123,6 +126,12 @@ const dashboards = (state = {}, action) => {
         })
       };
     }
+
+    case TOGGLE_DASHBOARD_OPEN:
+      return {
+        ...state,
+        open: !state.open
+      };
 
     default:
       return state;

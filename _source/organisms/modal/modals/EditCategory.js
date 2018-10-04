@@ -16,40 +16,36 @@ class EditCategory extends Component {
     this.state = {
       id: props.data.id,
       name: props.data.name,
-      color: props.data.color,
-      valid: true
+      color: props.data.color
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      id: nextProps.data.id,
-      name: nextProps.data.name,
-      color: nextProps.data.color,
-      valid: true
-    });
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({
+  //     id: nextProps.data.id,
+  //     name: nextProps.data.name,
+  //     color: nextProps.data.color
+  //   });
+  // }
 
   onNameChange(value) {
     this.setState({
-      name: value,
-      valid: Boolean(value)
+      name: value
     });
   }
 
   onColorChange(value) {
     this.setState({
-      color: value,
-      valid: Boolean(value)
+      color: value
     });
   }
 
   render() {
-    const { onClose, onSave, intl } = this.props;
-    const { name, color, valid } = this.state;
+    const { onClose, onSave, intl, pending } = this.props;
+    const { name, color } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } valid={ valid } headline={ intl.formatMessage({ id: 'modal.editCategory' }) }>
+      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editCategory' }) } hasAnchor>
         <Input
           id="category-name"
           color="primary"
@@ -58,9 +54,10 @@ class EditCategory extends Component {
           required
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
+          disabled={ pending }
         />
         <Label><FormattedMessage id="modal.color" /></Label>
-        <ColorPicker value={ color } onChange={ this.onColorChange } />
+        <ColorPicker value={ color } onChange={ this.onColorChange } disabled={ pending } />
       </Base>
     );
   }
@@ -72,5 +69,6 @@ EditCategory.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  pending: PropTypes.bool
 };
