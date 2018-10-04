@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
-import fetcher from '../../_utils/fetcher';
+// import fetcher from '../../_utils/fetcher';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
@@ -20,17 +20,17 @@ class Dashboards extends Component {
     };
   }
 
-  componentDidMount() {
-    fetcher({
-      url: '/dashboards',
-      onSuccess: (data) => {
-        console.log('success', data);
-      },
-      onError: (error) => {
-        console.log('error:', error);
-      }
-    });
-  }
+  // componentDidMount() {
+  //   fetcher({
+  //     url: '/dashboards',
+  //     onSuccess: (data) => {
+  //       console.log('success', data);
+  //     },
+  //     onError: (error) => {
+  //       console.log('error:', error);
+  //     }
+  //   });
+  // }
 
   toggleEditMode() {
     this.setState({
@@ -99,6 +99,7 @@ class Dashboards extends Component {
                 key={ index }
                 className={ classNames('dashboards__item', dashboard.id === activeId && 'dashboards__item--active') }
                 onClick={ () => { !editMode && changeDashboard(dashboard.id); } }
+                onKeyPress={ (event) => { !editMode && event.key === 'Enter' && changeDashboard(dashboard.id); } }
                 tabIndex={ useTabIndex && !editMode ? '0' : '-1' }
               >
                 <label className="dashboards__label">{ dashboard.name }</label>

@@ -6,16 +6,25 @@ export default class Icon extends Component {
   constructor(props) {
     super(props);
 
-    this.onClick = this.onClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  onClick(event) {
-    if (this.props.stopPropagation) {
+  handleClick(event) {
+    const { stopPropagation, onClick } = this.props;
+
+    if (stopPropagation) {
       event.stopPropagation();
     }
 
-    if (this.props.onClick) {
-      this.props.onClick();
+    if (onClick) {
+      onClick();
+    }
+  }
+
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      this.handleClick(event);
     }
   }
 
@@ -27,7 +36,8 @@ export default class Icon extends Component {
       <span
         className={ classNames('icon', `icon--${color}`, className && className) }
         title={ title }
-        onClick={ this.onClick }
+        onClick={ this.handleClick }
+        onKeyPress={ this.handleKeyPress }
         tabIndex={ tabIndex }
         { ...dragHandleProps }
       >
