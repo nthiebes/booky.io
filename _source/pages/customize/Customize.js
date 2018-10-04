@@ -114,7 +114,7 @@ class Customize extends Component {
 Customize.propTypes = {
   updateUser: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
-  navColor: PropTypes.number.isRequired,
+  navColor: PropTypes.string.isRequired,
   newtab: PropTypes.bool.isRequired,
   maxWidth: PropTypes.bool.isRequired,
   preserveEditMode: PropTypes.bool.isRequired,

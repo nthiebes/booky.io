@@ -23,7 +23,7 @@ export default class ColorPicker extends Component {
     let index = 0;
 
     for (index; index <= count; index++) {
-      colors.push({'key': index});
+      colors.push({'key': index.toString()});
     }
     return colors;
   }
@@ -43,11 +43,11 @@ export default class ColorPicker extends Component {
 }
 
 ColorPicker.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired
 };
 
 ColorPicker.defaultProps = {
-  value: 0
+  value: '0'
 };

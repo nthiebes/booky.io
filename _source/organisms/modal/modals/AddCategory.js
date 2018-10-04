@@ -15,7 +15,7 @@ class AddCategory extends Component {
     this.onColorChange = this.onColorChange.bind(this);
     this.state = {
       name: '',
-      color: 0
+      color: '0'
     };
   }
 
@@ -43,7 +43,7 @@ class AddCategory extends Component {
     const { name, color } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addCategory' }) }>
+      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addCategory' }) }>
         <Input
           id="category-name"
           name="name"

@@ -21,10 +21,10 @@ export default class Checkbox extends Component {
   }
 
   render() {
-    const { label, className, id, name, value, checked } = this.props;
+    const { label, className, id, name, value, checked, tabIndex } = this.props;
 
     return (
-      <div className={ classNames('checkbox', className && classNames) }>
+      <div className={ classNames('checkbox', className && className) }>
         <input
           type="checkbox"
           id={ id }
@@ -33,6 +33,7 @@ export default class Checkbox extends Component {
           value={ value }
           checked={ checked }
           onChange={ this.handleInputChange }
+          tabIndex={ tabIndex }
         />
         { label && <Label htmlFor={ id } className="checkbox__label">{ label }</Label> }
       </div>
@@ -47,5 +48,6 @@ Checkbox.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
   className: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  tabIndex: PropTypes.string
 };

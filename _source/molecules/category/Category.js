@@ -126,7 +126,7 @@ export default injectIntl(Category);
 
 Category.propTypes = {
   name: PropTypes.string.isRequired,
-  color: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
   open: PropTypes.bool,
   id: PropTypes.number.isRequired,
   bookmarks: PropTypes.array,

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import Icon from '../../atoms/icon';
+import Checkbox from '../../atoms/checkbox';
 
 export default class Color extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ export default class Color extends Component {
 
   onKeyPress(event) {
     if (event.charCode === 32) {
+      event.preventDefault();
       this.props.onChange(this.props.color.key);
     }
   }
@@ -38,13 +41,20 @@ export default class Color extends Component {
             'color-picker__icon',
             value === color.key && 'color-picker__icon--active') }
         />
+        <Checkbox
+          className="color-picker__checkbox"
+          checked={ value === color.key }
+          value={ value }
+          name="color"
+          tabIndex="-1"
+        />
       </span>
     );
   }
 }
 
 Color.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
   color: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired
 };

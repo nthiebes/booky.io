@@ -45,7 +45,7 @@ class EditCategory extends Component {
     const { name, color } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ () => { onSave(this.state); } } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editCategory' }) } hasAnchor>
+      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editCategory' }) } hasAnchor>
         <Input
           id="category-name"
           color="primary"
