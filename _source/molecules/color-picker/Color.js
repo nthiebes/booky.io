@@ -1,0 +1,50 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Icon from '../../atoms/icon';
+
+export default class Color extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onClick = this.onClick.bind(this);
+    this.onKeyPress = this.onKeyPress.bind(this);
+  }
+
+  onKeyPress(event) {
+    if (event.charCode === 32) {
+      this.props.onChange(this.props.color.key);
+    }
+  }
+
+  onClick() {
+    this.props.onChange(this.props.color.key);
+  }
+
+  render() {
+    const { color, value } = this.props;
+    const className = classNames(
+      'color-picker__color',
+      `color-picker__color--${color.key}`,
+      value === color.key && 'color-picker__color--active'
+    );
+
+    return (
+      <span className={ className } onClick={ this.onClick } onKeyPress={ this.onKeyPress } tabIndex="0">
+        <Icon
+          icon="check"
+          color={ value === color.key ? 'light' : 'dark' }
+          className={ classNames(
+            'color-picker__icon',
+            value === color.key && 'color-picker__icon--active') }
+        />
+      </span>
+    );
+  }
+}
+
+Color.propTypes = {
+  value: PropTypes.number.isRequired,
+  color: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired
+};

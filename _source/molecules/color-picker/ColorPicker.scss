@@ -11,12 +11,16 @@
   display: inline-block;
   margin-right: 6px;
 
+  .icon {
+    opacity: 0;
+  }
+
   &:active,
   &:focus {
     border-color: #000;
 
     .icon {
-      color: #fff;
+      opacity: 1;
     }
   }
 
@@ -29,13 +33,14 @@
       border-color: #000;
 
       .icon {
-        color: #fff;
+        color: #000;
+        opacity: 1;
       }
     }
   }
 
-  &.color-picker__color--active {
-    border-color: #000;
+  .color-picker__icon--active {
+    opacity: 1;
   }
 
   &.color-picker__color--0 {
@@ -72,6 +77,16 @@
 
   &.color-picker__color--8 {
     background-color: $color--8;
+  }
+}
+
+.color-picker__color--active {
+  border-color: #000;
+
+  @include desktop {
+    .icon:hover {
+      color: #fff;
+    }
   }
 }
 
