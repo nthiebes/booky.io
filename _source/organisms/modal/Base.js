@@ -13,6 +13,7 @@ class Modal extends Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -33,11 +34,15 @@ class Modal extends Component {
     this.props.onSave(data);
   }
 
+  handleClick(event) {
+    event.stopPropagation();
+  }
+
   render() {
     const { children, onClose, headline, noCancel, intl, pending, hasAnchor } = this.props;
 
     return (
-      <Form className="modal__inner" onSubmit={ this.onSubmit } onClick={ (e) => { e.stopPropagation(); } }>
+      <Form className="modal__inner" onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
           { hasAnchor && (
             <a
