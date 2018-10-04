@@ -58,6 +58,10 @@ body {
   color: $color__font--dark;
 }
 
+.booky--no-scrolling {
+  overflow: hidden;
+}
+
 .booky--no-animation {
   transition: none !important;
 }

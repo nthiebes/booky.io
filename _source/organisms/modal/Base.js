@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Icon from '../../atoms/icon';
@@ -18,6 +17,12 @@ class Modal extends Component {
 
   componentDidMount() {
     this.props.hasAnchor && this.anchor.focus();
+
+    document.body.classList.add('booky--no-scrolling');
+  }
+
+  componentWillUnmount() {
+    document.body.classList.remove('booky--no-scrolling');
   }
 
   onCancel() {
