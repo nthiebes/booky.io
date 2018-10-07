@@ -22,7 +22,7 @@
 
 .categories__button {
   width: calc(94vw - 12px);
-  margin: 0 calc(3vw + 6px);
+  margin: 0 calc(3vw + 6px) 1rem;
 }
 
 .categories--sidebar {
@@ -39,8 +39,4 @@
       width: calc(94vw - 312px);
     }
   }
-}
-
-.categories__button--bottom {
-  margin-top: 1rem;
 }

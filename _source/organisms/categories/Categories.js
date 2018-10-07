@@ -29,15 +29,7 @@ class Categories extends Component {
         {categories.map((category) =>
           <Category key={ category.id } { ...category } />
         )}
-        { categories.length ? (
-          <ButtonSmallPrimary
-            icon="add"
-            className="categories__button categories__button--bottom"
-            onClick={ () => { openModal('AddCategory'); } }
-          >
-            <FormattedHTMLMessage id="category.add" />
-          </ButtonSmallPrimary>
-        ) : (
+        { !categories.length && (
           <Empty imageAlt={ intl.formatMessage({ id: 'category.emptyImage' }) } imageUrl="_assets/empty.svg">
             <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
           </Empty>
