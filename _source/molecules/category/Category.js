@@ -94,6 +94,7 @@ class Category extends Component {
                     editMode={ editMode }
                     name={ bookmark.name }
                     url={ bookmark.url }
+                    favicon={ bookmark.favicon }
                   />
                 )) }
                 { open && bookmarks.length === 0 && (
