@@ -128,7 +128,7 @@ Category.propTypes = {
   name: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   open: PropTypes.bool,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   bookmarks: PropTypes.array,
   openModal: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired

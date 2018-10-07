@@ -12,21 +12,10 @@ class EditBookmark extends Component {
     this.onNameChange = this.onNameChange.bind(this);
     this.onUrlChange = this.onUrlChange.bind(this);
     this.state = {
-      id: props.data.id,
       name: props.data.name,
-      url: props.data.url,
-      categoryId: props.data.categoryId
+      url: props.data.url
     };
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     id: nextProps.data.id,
-  //     name: nextProps.data.name,
-  //     url: nextProps.data.url,
-  //     categoryId: nextProps.data.categoryId
-  //   });
-  // }
 
   onNameChange(value) {
     this.setState({
@@ -71,12 +60,12 @@ class EditBookmark extends Component {
         />
         <Input
           name="id"
-          value={ data.id.toString() }
+          value={ data.id }
           type="hidden"
         />
         <Input
           name="categoryId"
-          value={ data.categoryId.toString() }
+          value={ data.categoryId }
           type="hidden"
         />
       </Base>

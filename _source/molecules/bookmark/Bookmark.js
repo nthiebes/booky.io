@@ -67,9 +67,9 @@ Bookmark.propTypes = {
   url: PropTypes.string.isRequired,
   editMode: PropTypes.bool.isRequired,
   target: PropTypes.string,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   openModal: PropTypes.func.isRequired,
-  categoryId: PropTypes.number.isRequired,
+  categoryId: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   intl: PropTypes.object.isRequired,
   newtab: PropTypes.bool.isRequired

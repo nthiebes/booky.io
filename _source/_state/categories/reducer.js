@@ -39,14 +39,14 @@ const categories = (state = [], action) => {
       const { id, url, name, categoryId } = action.payload;
 
       return state.map((category) => {
-        if (category.id !== parseInt(categoryId, 10)) {
+        if (category.id !== categoryId) {
           return category;
         }
         
         return {
           ...category,
           bookmarks: category.bookmarks.map((bookmark) => {
-            if (bookmark.id !== parseInt(id, 10)) {
+            if (bookmark.id !== id) {
               return bookmark;
             }
             

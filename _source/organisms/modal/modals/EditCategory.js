@@ -14,19 +14,10 @@ class EditCategory extends Component {
     this.onNameChange = this.onNameChange.bind(this);
     this.onColorChange = this.onColorChange.bind(this);
     this.state = {
-      id: props.data.id,
       name: props.data.name,
       color: props.data.color
     };
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     id: nextProps.data.id,
-  //     name: nextProps.data.name,
-  //     color: nextProps.data.color
-  //   });
-  // }
 
   onNameChange(value) {
     this.setState({
@@ -41,13 +32,14 @@ class EditCategory extends Component {
   }
 
   render() {
-    const { onClose, onSave, intl, pending } = this.props;
+    const { onClose, onSave, intl, pending, data } = this.props;
     const { name, color } = this.state;
 
     return (
       <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editCategory' }) } hasAnchor>
         <Input
           id="category-name"
+          name="name"
           color="primary"
           value={ name }
           onChange={ this.onNameChange }
@@ -58,6 +50,11 @@ class EditCategory extends Component {
         />
         <Label><FormattedMessage id="modal.color" /></Label>
         <ColorPicker value={ color } onChange={ this.onColorChange } disabled={ pending } />
+        <Input
+          name="id"
+          value={ data.id }
+          type="hidden"
+        />
       </Base>
     );
   }

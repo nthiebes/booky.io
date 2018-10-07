@@ -9,12 +9,23 @@ export default {
     preserveEditMode: true
   },
   dashboards: {
-    items: [{id: 1234, name: 'Meine Rezepte', categories: []}, {id: 90454, name: 'Deutsche Filme', categories: []}, {id: 789, name: 'Deutsche Filme', categories: []}, {id: 567, name: 'Deutsche Filme', categories: []}, {id: 45345, name: 'Deutsche Filme', categories: []}],
+    items: [{id: 1234, name: 'Meine Rezepte', categories: []}],
     active: 1234,
     offset: 3,
     sidebar: true
   },
-  categories: [],
+  categories: [{
+    id: '666',
+    name: 'Banana',
+    color: '0',
+    bookmarks: [{
+      id: '111',
+      name: 'Awesome website',
+      url: 'https://booky.io',
+      favicon: 'https://booky.io/favicon.ico',
+      note: 'username: gscheid'
+    }]
+  }],
   sidebar: {
     open: false
   },
