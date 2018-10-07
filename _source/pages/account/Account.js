@@ -15,7 +15,7 @@ class Account extends Component {
   constructor(props) {
     super(props);
 
-    this.onTabClick = this.onTabClick.bind(this);
+    this.handleTabClick = this.handleTabClick.bind(this);
     this.state = {
       activeTab: 0
     };
@@ -30,7 +30,7 @@ class Account extends Component {
     }];
   }
 
-  onTabClick(tabId) {
+  handleTabClick(tabId) {
     this.setState({
       activeTab: tabId
     });
@@ -53,12 +53,12 @@ class Account extends Component {
                 tabId={ index }
                 active={ activeTab === index }
                 name={ tab.name }
-                onClick={ this.onTabClick }
+                onClick={ this.handleTabClick }
               />
             )) }
           </TabBar>
           { activeTab === 0 && (
-            <Form>
+            <Form className="account__form">
               <Input
                 name="username"
                 id="username"
@@ -96,11 +96,7 @@ class Account extends Component {
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                 requirements={ intl.formatMessage({ id: 'misc.validPassword' }) }
               />
-              <ButtonLargeBlue 
-                icon="save"
-                className="account__button"
-                contentBefore
-              >
+              <ButtonLargeBlue icon="save" contentBefore>
                 <FormattedMessage id="button.save" />
               </ButtonLargeBlue>
             </Form>
