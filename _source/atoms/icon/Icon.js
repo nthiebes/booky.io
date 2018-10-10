@@ -7,7 +7,7 @@ export default class Icon extends Component {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleClick(event) {
@@ -22,7 +22,7 @@ export default class Icon extends Component {
     }
   }
 
-  handleKeyPress(event) {
+  handleKeyDown(event) {
     if (event.key === 'Enter') {
       this.handleClick(event);
     }
@@ -37,7 +37,7 @@ export default class Icon extends Component {
         className={ classNames('icon', `icon--${color}`, className && className) }
         title={ title }
         onClick={ this.handleClick }
-        onKeyPress={ this.handleKeyPress }
+        onKeyDown={ this.handleKeyDown }
         tabIndex={ tabIndex }
         { ...dragHandleProps }
       >

@@ -10,10 +10,10 @@ export default class Color extends Component {
     super(props);
 
     this.onClick = this.onClick.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  handleKeyPress(event) {
+  handleKeyDown(event) {
     if (event.charCode === 32) {
       event.preventDefault();
       this.props.onChange(this.props.color.key);
@@ -33,7 +33,7 @@ export default class Color extends Component {
     );
 
     return (
-      <span className={ className } onClick={ this.onClick } onKeyPress={ this.handleKeyPress } tabIndex="0">
+      <span className={ className } onClick={ this.onClick } onKeyDown={ this.handleKeyDown } tabIndex="0">
         <Icon
           icon="check"
           color={ value === color.key ? 'light' : 'dark' }

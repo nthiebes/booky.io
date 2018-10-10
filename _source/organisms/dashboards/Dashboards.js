@@ -99,7 +99,7 @@ class Dashboards extends Component {
                 key={ index }
                 className={ classNames('dashboards__item', dashboard.id === activeId && 'dashboards__item--active') }
                 onClick={ () => { !editMode && changeDashboard(dashboard.id); } }
-                onKeyPress={ (event) => { !editMode && event.key === 'Enter' && changeDashboard(dashboard.id); } }
+                onKeyDown={ (event) => { !editMode && event.key === 'Enter' && changeDashboard(dashboard.id); } }
                 tabIndex={ useTabIndex && !editMode ? '0' : '-1' }
               >
                 <label className="dashboards__label">{ dashboard.name }</label>
