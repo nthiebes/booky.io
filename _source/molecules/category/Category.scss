@@ -1,59 +1,19 @@
 .category {
-  width: 94vw;
+  width: 94%;
   position: relative;
   float: left;
-  margin: 1rem 3vw;
+  margin: 1rem 3%;
 
   @include tablet {
-    width: 44vw;
+    width: 44%;
   }
 
   @include desktop {
-    width: 27.33vw;
-  }
-
-  @include hd {
-    width: 19vw;
-  }
-}
-
-.categories--sidebar {
-  @include desktop {
-    .category {
-      width: calc(44vw - 18px);
-    }
-  }
-
-  @include hd {
-    .category {
-      width: calc(27.33vw - 12px);
-    }
+    width: 27.33%;
   }
 
   @include fullhd {
-    .category {
-      width: calc(19vw - 9px);
-    }
-  }
-}
-
-.categories--shifted {
-  @include desktop {
-    .category {
-      width: calc(44vw - 150px);
-    }
-  }
-
-  @include hd {
-    .category {
-      width: calc(27.33vw - 100px);
-    }
-  }
-
-  @include fullhd {
-    .category {
-      width: calc(19vw - 75px);
-    }
+    width: 19%;
   }
 }
 

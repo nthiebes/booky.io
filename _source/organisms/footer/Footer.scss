@@ -1,12 +1,12 @@
 .footer {
   font-size: $font-size--small;
   text-align: center;
+  width: 100%;
 }
 
 .footer--sidebar {
   @include desktop {
     width: calc(100% - 36px);
-    // transition: transform 0.3s ease, width 0.3s ease;
     transform: translate3d(36px,0,0);
   }
 }
