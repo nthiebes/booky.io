@@ -15,6 +15,10 @@ a,
   outline: 1px solid transparent;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+}
+
 b {
   font-weight: 700; /* Was still 400 in Firefox */
 }
