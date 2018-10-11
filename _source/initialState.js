@@ -6,7 +6,8 @@ export default {
     pinned: true,
     dashboards: 'sidebar',
     maxWidth: true,
-    preserveEditMode: true
+    preserveEditMode: true,
+    blurEffect: true
   },
   dashboards: {
     items: [{id: 1234, name: 'Meine Rezepte', categories: []}],

@@ -39,7 +39,7 @@ class Customize extends Component {
   }
 
   render() {
-    const { intl, navColor, newtab, maxWidth, preserveEditMode, dashboards } = this.props;
+    const { intl, navColor, newtab, maxWidth, preserveEditMode, dashboards, blurEffect } = this.props;
 
     return (
       <Page>
@@ -54,6 +54,13 @@ class Customize extends Component {
             <FormattedMessage id="customize.navColor" />
           </Label>
           <ColorPicker value={ navColor } onChange={ this.handleColorChange } className="customize__color-picker" />
+          <Checkbox
+            label={ intl.formatMessage({ id: 'customize.blurEffect'}) }
+            id="blurEffect"
+            name="blurEffect"
+            onChange={ this.handleCheckboxChange }
+            checked={ blurEffect }
+          />
           <H2>
             <FormattedMessage id="dashboard.title" />
           </H2>
@@ -118,7 +125,8 @@ Customize.propTypes = {
   newtab: PropTypes.bool.isRequired,
   maxWidth: PropTypes.bool.isRequired,
   preserveEditMode: PropTypes.bool.isRequired,
-  dashboards: PropTypes.string.isRequired
+  dashboards: PropTypes.string.isRequired,
+  blurEffect: PropTypes.bool.isRequired
 };
 
 export default injectIntl(Customize);

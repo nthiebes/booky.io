@@ -182,6 +182,7 @@
   "dashboard.preferences": "Vorlieben",
   "customize.newTab": "Lesezeichen in einem neuen Tab öffnen",
   "customize.preserveEditMode": "Editiermodus nach dem Editieren aktiv lassen",
+  "customize.blurEffect": "Fenster mit einem Verwisch- und Graustufen-Hintergrundeffekt öffnen",
 
   "error.default": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
   "error.email": "E-Mail",

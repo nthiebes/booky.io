@@ -8,7 +8,8 @@ export const mapStateToProps = (state) => ({
   newtab: state.user.newtab,
   maxWidth: state.user.maxWidth,
   preserveEditMode: state.user.preserveEditMode,
-  dashboards: state.user.dashboards
+  dashboards: state.user.dashboards,
+  blurEffect: state.user.blurEffect
 });
 
 export const mapDispatchToProps = {
