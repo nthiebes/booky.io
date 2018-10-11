@@ -6,7 +6,8 @@ import { actions as modalActions } from '../../_state/modal';
 export const mapStateToProps = function(state) {
   return {
     loggedIn: state.user.loggedIn,
-    open: state.sidebar.open
+    open: state.sidebar.open,
+    dashboardsSidebar: state.user.dashboards === 'sidebar'
   };
 };
 

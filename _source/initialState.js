@@ -11,8 +11,7 @@ export default {
   dashboards: {
     items: [{id: 1234, name: 'Meine Rezepte', categories: []}],
     active: 1234,
-    offset: 3,
-    sidebar: true
+    offset: 3
   },
   categories: [{
     id: '666',

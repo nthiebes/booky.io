@@ -36,7 +36,6 @@ export default class Page extends Component {
       <Fragment>
         <Header
           className={ classNames(blurContent && 'page--blur', 'page--hidden', show && 'page--show') }
-          dashboards={ dashboards }
           home={ home }
         />
         { toolbar && (

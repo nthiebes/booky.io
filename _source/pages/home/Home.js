@@ -15,11 +15,11 @@ import Testimonials from '../../molecules/testimonials';
 
 class Home extends Component {
   render() {
-    const { loggedIn, blurContent } = this.props;
+    const { loggedIn, blurContent, hasSidebar } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
-        <Dashboards isSidebar className={ classNames(blurContent && 'page--blur') } />
+        { hasSidebar && <Dashboards isSidebar className={ classNames(blurContent && 'page--blur') } /> }
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
@@ -131,5 +131,6 @@ export default Home;
 
 Home.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  blurContent: PropTypes.bool.isRequired
+  blurContent: PropTypes.bool.isRequired,
+  hasSidebar: PropTypes.bool.isRequired
 };

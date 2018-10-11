@@ -4,7 +4,7 @@ import Component from './Footer';
 export const mapStateToProps = function(state) {
   return {
     dashboardsOpen: state.user.pinned,
-    hasSidebar: state.dashboards.sidebar,
+    hasSidebar: state.user.dashboards === 'sidebar',
     loggedIn: state.user.loggedIn
   };
 };

@@ -60,7 +60,7 @@
 }
 
 .sidebar__headline {
-  padding: 1rem calc(3vw + 6px) 0;
+  padding: 0 calc(3vw + 6px);
   margin: 0;
   line-height: 36px;
 }
@@ -178,4 +178,5 @@
   background-color: rgba(0,0,0,0.15);
   width: 140%;
   left: -20%;
+  margin-bottom: 1rem;
 }

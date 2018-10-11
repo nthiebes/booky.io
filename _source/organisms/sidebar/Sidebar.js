@@ -21,7 +21,7 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { loggedIn, open, closeMenu, dashboards, intl, direction, location, className } = this.props;
+    const { loggedIn, open, closeMenu, dashboards, intl, direction, location, className, dashboardsSidebar } = this.props;
     const { pathname } = location;
 
     return (
@@ -45,8 +45,8 @@ class Sidebar extends Component {
         </header>
         <hr className="sidebar__hr" />
         <div className="sidebar__scroll-wrapper">
-          { dashboards && <Dashboards useTabIndex={ open } /> }
-          { dashboards && <hr className="sidebar__hr" /> }
+          { dashboards && dashboardsSidebar && <Dashboards useTabIndex={ open } /> }
+          { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
           <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
           <nav className="sidebar__nav">
             <Link
