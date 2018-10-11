@@ -53,6 +53,13 @@ class Dashboards extends Component {
     });
   }
 
+  handleKeyDown(event, dashboardId) {
+    const { changeDashboard } = this.props;
+    const { editMode } = this.state;
+
+    !editMode && event.key === 'Enter' && changeDashboard(dashboardId);
+  }
+
   render() {
     const { dashboards, openModal, changeDashboard, className, intl, activeId, open, useTabIndex, isSidebar } = this.props;
     const { editMode } = this.state;
@@ -99,7 +106,7 @@ class Dashboards extends Component {
                 key={ index }
                 className={ classNames('dashboards__item', dashboard.id === activeId && 'dashboards__item--active') }
                 onClick={ () => { !editMode && changeDashboard(dashboard.id); } }
-                onKeyDown={ (event) => { !editMode && event.key === 'Enter' && changeDashboard(dashboard.id); } }
+                onKeyDown={ (event) => { this.handleKeyDown(event, dashboard.id); } }
                 tabIndex={ useTabIndex && !editMode ? '0' : '-1' }
               >
                 <label className="dashboards__label">{ dashboard.name }</label>

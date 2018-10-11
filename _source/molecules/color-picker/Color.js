@@ -14,7 +14,7 @@ export default class Color extends Component {
   }
 
   handleKeyDown(event) {
-    if (event.charCode === 32) {
+    if (event.keyCode === 32) {
       event.preventDefault();
       this.props.onChange(this.props.color.key);
     }
