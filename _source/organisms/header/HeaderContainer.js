@@ -5,10 +5,10 @@ import { actions as modalActions } from '../../_state/modal';
 
 export const mapStateToProps = function(state) {
   return {
-    sticky: state.sidebar.stickyHeader,
     loggedIn: state.user.loggedIn,
     sidebarOpen: state.sidebar.open,
-    color: state.user.navColor
+    color: state.user.navColor,
+    sticky: state.user.stickyHeader
   };
 };
 

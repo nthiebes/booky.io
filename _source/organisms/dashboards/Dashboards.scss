@@ -2,17 +2,33 @@
   width: 300px;
   background-color: #fff;
   border-right: 2px solid rgba(0,0,0, 0.15);
-  top: calc(10rem + 3px);
   z-index: 2;
-  position: fixed;
-  bottom: 0;
   padding-bottom: 1rem;
   transition: transform 0.3s ease;
   transform: translate3d(0,0,0);
+  position: absolute;
+  bottom: 0;
+  top: calc(4rem - 2px);
 
   @include mobile-tablet {
     display: none;
   }
+}
+
+.dashboards--sticky {
+  top: calc(10rem + 3px);
+  position: fixed;
+  height: auto;
+}
+
+.dashboards--sticky-header {
+  top: calc(10rem + 3px);
+}
+
+.dashboards--sticky-one-and-only {
+  position: fixed;
+  top: calc(4rem - 2px);
+  height: auto;
 }
 
 .dashboards--hide {
@@ -57,6 +73,7 @@
       z-index: 1;
       right: 36px;
       left: 0;
+      pointer-events: none;
     }
 
     &::before {

@@ -207,6 +207,8 @@
   "customize.newTab": "Open bookmarks in a new tab",
   "customize.preserveEditMode": "Keep edit mode active after editing",
   "customize.blurEffect": "Open windows with a blur and grayscale background effect",
+  "customize.stickyHeader": "Fixed header position",
+  "customize.stickyToolbar": "Fixed toolbar position",
 
   "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
   "error.email": "email",

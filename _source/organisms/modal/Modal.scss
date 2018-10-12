@@ -5,7 +5,7 @@
   width: 0;
   right: 0;
   top: 0;
-  z-index: 5;
+  z-index: 6;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -32,7 +32,7 @@
       opacity: 1;
       transition: opacity 0.2s linear;
       width: 100%;
-      z-index: 5;
+      z-index: 6;
     }
   }
 }

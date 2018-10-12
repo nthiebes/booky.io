@@ -39,7 +39,7 @@ class Customize extends Component {
   }
 
   render() {
-    const { intl, navColor, newtab, maxWidth, preserveEditMode, dashboards, blurEffect } = this.props;
+    const { intl, navColor, newtab, maxWidth, preserveEditMode, dashboards, blurEffect, stickyHeader, stickyToolbar } = this.props;
 
     return (
       <Page>
@@ -60,6 +60,20 @@ class Customize extends Component {
             name="blurEffect"
             onChange={ this.handleCheckboxChange }
             checked={ blurEffect }
+          />
+          <Checkbox
+            label={ intl.formatMessage({ id: 'customize.stickyHeader'}) }
+            id="stickyHeader"
+            name="stickyHeader"
+            onChange={ this.handleCheckboxChange }
+            checked={ stickyHeader }
+          />
+          <Checkbox
+            label={ intl.formatMessage({ id: 'customize.stickyToolbar'}) }
+            id="stickyToolbar"
+            name="stickyToolbar"
+            onChange={ this.handleCheckboxChange }
+            checked={ stickyToolbar }
           />
           <H2>
             <FormattedMessage id="dashboard.title" />
@@ -126,7 +140,9 @@ Customize.propTypes = {
   maxWidth: PropTypes.bool.isRequired,
   preserveEditMode: PropTypes.bool.isRequired,
   dashboards: PropTypes.string.isRequired,
-  blurEffect: PropTypes.bool.isRequired
+  blurEffect: PropTypes.bool.isRequired,
+  stickyHeader: PropTypes.bool.isRequired,
+  stickyToolbar: PropTypes.bool.isRequired
 };
 
 export default injectIntl(Customize);

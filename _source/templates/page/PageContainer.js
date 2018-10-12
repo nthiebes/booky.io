@@ -3,7 +3,8 @@ import Component from './Page';
 
 export const mapStateToProps = function(state) {
   return {
-    blurContent: state.modal.open && state.user.blurEffect
+    blurContent: state.modal.open && state.user.blurEffect,
+    headerSticky: state.user.stickyHeader
   };
 };
 

@@ -7,7 +7,9 @@ export default {
     dashboards: 'sidebar',
     maxWidth: true,
     preserveEditMode: true,
-    blurEffect: true
+    blurEffect: true,
+    stickyHeader: true,
+    stickyToolbar: true
   },
   dashboards: {
     items: [{id: 1234, name: 'Meine Rezepte', categories: []}],
@@ -30,7 +32,6 @@ export default {
     open: false
   },
   toolbar: {
-    sticky: true,
     currentlySticky: true
   },
   modal: {

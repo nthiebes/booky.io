@@ -43,11 +43,20 @@ class Header extends Component {
       sidebarOpen,
       home,
       className,
-      router
+      router,
+      sticky
     } = this.props;
 
     return (
-      <header className={ classNames(`header header--color-${color}`, sidebarOpen && 'header--overlay', className && className) } onClick={ onHeaderClick }>
+      <header
+        className={ classNames(
+          `header header--color-${color}`,
+          sidebarOpen && 'header--overlay',
+          sticky && 'header--sticky',
+          className && className
+        ) }
+        onClick={ onHeaderClick }
+      >
         <div className="header__wrapper">
           { loggedIn && home && (
             <Fragment>
@@ -126,7 +135,7 @@ Header.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   onHeaderClick: PropTypes.func.isRequired,
   onMenuClick: PropTypes.func.isRequired,
-  sticky: PropTypes.bool,
+  sticky: PropTypes.bool.isRequired,
   openModal: PropTypes.func.isRequired,
   dashboards: PropTypes.bool,
   intl: PropTypes.object.isRequired,
@@ -135,10 +144,6 @@ Header.propTypes = {
   home: PropTypes.bool,
   className: PropTypes.string,
   router: PropTypes.object.isRequired
-};
-
-Header.defaultProps = {
-  sticky: true
 };
 
 export default injectIntl(withRouter(Header));

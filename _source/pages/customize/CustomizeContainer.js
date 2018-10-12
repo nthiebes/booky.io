@@ -9,7 +9,9 @@ export const mapStateToProps = (state) => ({
   maxWidth: state.user.maxWidth,
   preserveEditMode: state.user.preserveEditMode,
   dashboards: state.user.dashboards,
-  blurEffect: state.user.blurEffect
+  blurEffect: state.user.blurEffect,
+  stickyHeader: state.user.stickyHeader,
+  stickyToolbar: state.user.stickyToolbar
 });
 
 export const mapDispatchToProps = {

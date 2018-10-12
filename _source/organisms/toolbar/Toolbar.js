@@ -17,6 +17,7 @@ class Toolbar extends Component {
     this.nextProps = {};
     this.isAboveActions = this.isAboveActions.bind(this);
     this.isBelowActions = this.isBelowActions.bind(this);
+    this.getStickyClass = this.getStickyClass.bind(this);
     this.state = {
       dashboardModalOpen: false
     };
@@ -24,12 +25,12 @@ class Toolbar extends Component {
 
   componentDidMount() {
     scrolling.registerAction('toolbar', {
-      offset: 85,
+      offset: 100,
       scope: this,
-      isAbove: function() {
+      isAbove: () => {
         this.isAboveActions();
       },
-      isBelow: function() {
+      isBelow: () => {
         this.isBelowActions();
       }
     });
@@ -107,9 +108,9 @@ export default withRouter(injectIntl(Toolbar));
 
 Toolbar.propTypes = {
   updateCurrentlySticky: PropTypes.func.isRequired,
-  headerSticky: PropTypes.bool,
-  sticky: PropTypes.bool,
-  currentlySticky: PropTypes.bool,
+  headerSticky: PropTypes.bool.isRequired,
+  sticky: PropTypes.bool.isRequired,
+  currentlySticky: PropTypes.bool.isRequired,
   dashboards: PropTypes.object.isRequired,
   dashboard: PropTypes.object,
   openModal: PropTypes.func.isRequired,
@@ -121,8 +122,5 @@ Toolbar.propTypes = {
 };
 
 Toolbar.defaultProps = {
-  headerSticky: true,
-  sticky: true,
-  currentlySticky: true,
   dashboard: {}
 };

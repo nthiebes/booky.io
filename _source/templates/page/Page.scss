@@ -1,4 +1,5 @@
 .page {
+  position: relative;
   min-height: 100vh;
   padding: 4rem 0 6rem 0;
 
@@ -6,6 +7,12 @@
     padding: 6rem 0 10rem 0;
   }
 
+  @include desktop {
+    padding: calc(10rem - 101px) 0 14rem 0;
+  }
+}
+
+.page--sticky-header {
   @include desktop {
     padding: 10rem 0 14rem 0;
   }

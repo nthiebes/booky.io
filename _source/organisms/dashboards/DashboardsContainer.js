@@ -8,7 +8,10 @@ import { updateUser } from '../../_state/user/actions';
 export const mapStateToProps = (state) => ({
   dashboards: state.dashboards.items,
   activeId: state.dashboards.active,
-  open: state.user.pinned
+  open: state.user.pinned,
+  currentlySticky: state.toolbar.currentlySticky,
+  headerSticky: state.user.stickyHeader,
+  toolbarSticky: state.user.stickyToolbar
 });
 
 export const mapDispatchToProps = (dispatch) => ({

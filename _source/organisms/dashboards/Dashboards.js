@@ -15,6 +15,7 @@ class Dashboards extends Component {
     this.toggleEditMode = this.toggleEditMode.bind(this);
     this.toggleOpen = this.toggleOpen.bind(this);
     this.onIconClick = this.onIconClick.bind(this);
+    this.getStickyClass = this.getStickyClass.bind(this);
     this.state = {
       editMode: false
     };
@@ -60,6 +61,24 @@ class Dashboards extends Component {
     !editMode && event.key === 'Enter' && changeDashboard(dashboardId);
   }
 
+  getStickyClass() {
+    const { toolbarSticky, headerSticky, currentlySticky, isSidebar } = this.props;
+
+    if (isSidebar && toolbarSticky && headerSticky) {
+      return 'dashboards--sticky';
+    }
+
+    if (isSidebar && !toolbarSticky && headerSticky) {
+      return 'dashboards--sticky-header';
+    }
+
+    if (isSidebar && toolbarSticky && !headerSticky && currentlySticky) {
+      return 'dashboards--sticky-one-and-only';
+    }
+
+    return '';
+  }
+
   render() {
     const { dashboards, openModal, changeDashboard, className, intl, activeId, open, useTabIndex, isSidebar } = this.props;
     const { editMode } = this.state;
@@ -69,6 +88,7 @@ class Dashboards extends Component {
         'dashboards',
         isSidebar && 'dashboards--sidebar',
         !open && 'dashboards--hide',
+        this.getStickyClass(),
         className && className
       ) }>
         { isSidebar && (
@@ -152,7 +172,10 @@ Dashboards.propTypes = {
   activeId: PropTypes.number,
   toggleDashboardOpen: PropTypes.func.isRequired,
   useTabIndex: PropTypes.bool,
-  isSidebar: PropTypes.bool
+  isSidebar: PropTypes.bool,
+  headerSticky: PropTypes.bool.isRequired,
+  toolbarSticky: PropTypes.bool.isRequired,
+  currentlySticky: PropTypes.bool.isRequired
 };
 
 Dashboards.defaultProps = {

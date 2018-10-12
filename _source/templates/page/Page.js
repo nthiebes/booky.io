@@ -29,13 +29,17 @@ export default class Page extends Component {
   }
 
   render() {
-    const { children, className, dashboards, home, toolbar, blurContent } = this.props;
+    const { children, className, dashboards, home, toolbar, blurContent, headerSticky } = this.props;
     const { show } = this.state;
 
     return (
       <Fragment>
         <Header
-          className={ classNames(blurContent && 'page--blur', 'page--hidden', show && 'page--show') }
+          className={ classNames(
+            blurContent && 'page--blur',
+            'page--hidden',
+            show && 'page--show'
+          ) }
           home={ home }
         />
         { toolbar && (
@@ -49,6 +53,7 @@ export default class Page extends Component {
           'page',
           'page--hidden',
           show && 'page--show',
+          headerSticky && 'page--sticky-header',
           className && className
         ) }>
           { children }
@@ -73,5 +78,6 @@ Page.propTypes = {
   className: PropTypes.string,
   dashboards: PropTypes.bool,
   home: PropTypes.bool,
-  blurContent: PropTypes.bool
+  blurContent: PropTypes.bool,
+  headerSticky: PropTypes.bool.isRequired
 };

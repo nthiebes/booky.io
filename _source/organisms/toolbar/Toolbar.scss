@@ -22,27 +22,27 @@
     top: calc(6.2rem + 2px);
     padding: 0 36px 0 30px;
   }
+}
 
-  &.toolbar--sticky {
-    position: fixed;
-    top: calc(3rem + 2px);
+.toolbar--sticky {
+  position: fixed;
+  top: calc(3rem + 2px);
 
-    @include tablet {
-      top: calc(4.4rem + 2px);
-    }
-
-    @include desktop {
-      top: calc(6.2rem + 2px);
-    }
+  @include tablet {
+    top: calc(4.4rem + 2px);
   }
 
-  &.toolbar--sticky-one-and-only {
-    position: fixed;
-    top: 0;
+  @include desktop {
+    top: calc(6.2rem + 2px);
+  }
+}
 
-    @include tablet-desktop {
-      top: 0;
-    }
+.toolbar--sticky-one-and-only {
+  position: fixed;
+  top: 0;
+
+  @include tablet-desktop {
+    top: 0;
   }
 }
 

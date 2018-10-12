@@ -7,8 +7,8 @@ import { actions as dashboardsActions } from '../../_state/dashboards';
 export const mapStateToProps = function(state) {
   return {
     currentlySticky: state.toolbar.currentlySticky,
-    headerSticky: state.sidebar.stickyHeader,
-    sticky: state.sidebar.stickyToolbar,
+    headerSticky: state.user.stickyHeader,
+    sticky: state.user.stickyToolbar,
     dashboards: state.dashboards,
     dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active),
     dashboardsPosition: state.user.dashboards

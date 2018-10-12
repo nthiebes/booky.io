@@ -146,7 +146,8 @@ Sidebar.propTypes = {
   intl: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   direction: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  dashboardsSidebar: PropTypes.bool.isRequired
 };
 
 Sidebar.defaultProps = {
