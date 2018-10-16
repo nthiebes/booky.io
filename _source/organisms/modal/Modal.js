@@ -10,6 +10,7 @@ import DeleteCategory from './modals/DeleteCategory';
 import AddDashboard from './modals/AddDashboard';
 import EditDashboard from './modals/EditDashboard';
 import DeleteDashboard from './modals/DeleteDashboard';
+import EditStructure from './modals/EditStructure';
 
 export default class Modal extends Component {
   constructor(props) {
@@ -53,6 +54,9 @@ export default class Modal extends Component {
       DeleteDashboard: {
         modal: DeleteDashboard,
         action: props.deleteDashboard
+      },
+      EditStructure: {
+        modal: EditStructure
       }
     };
   }
@@ -60,7 +64,7 @@ export default class Modal extends Component {
   handleSave(modalData) {
     const { modal, data, closeModal } = this.props;
 
-    this.modalMap[modal].action({
+    this.modalMap[modal].action && this.modalMap[modal].action({
       ...modalData,
       dashboard: data.activeDashboard
     });

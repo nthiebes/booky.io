@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
@@ -58,7 +59,7 @@ class Modal extends Component {
         <div className="modal__content">
           { children }
         </div>
-        <footer className="modal__footer">
+        <footer className={ classNames('modal__footer', noCancel && 'modal__footer--one-button') }>
           { !noCancel && (
             <ButtonLargeLight className="modal__button modal__button--cancel" icon="close" onClick={ this.onCancel } type="button">
               <FormattedMessage id="button.cancel" />
@@ -88,11 +89,4 @@ Modal.propTypes = {
   intl: PropTypes.object.isRequired,
   pending: PropTypes.bool.isRequired,
   hasAnchor: PropTypes.bool
-};
-
-Modal.defaultProps = {
-  toolbar: false,
-  className: '',
-  noCancel: false,
-  valid: true
 };

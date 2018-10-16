@@ -97,6 +97,10 @@
   }
 }
 
+.modal__footer--one-button {
+  justify-content: flex-end;
+}
+
 .modal__button {
   @include tablet-desktop() {
     margin-left: 0.5rem;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -18,6 +17,7 @@ class Toolbar extends Component {
     this.isAboveActions = this.isAboveActions.bind(this);
     this.isBelowActions = this.isBelowActions.bind(this);
     this.getStickyClass = this.getStickyClass.bind(this);
+    this.onIconClick = this.onIconClick.bind(this);
     this.state = {
       dashboardModalOpen: false
     };
@@ -71,15 +71,19 @@ class Toolbar extends Component {
     return '';
   }
 
+  onIconClick() {
+    this.props.openModal('EditStructure');
+  }
+
   render() {
-    const { dashboard, router, intl, className, dashboardsPosition, dashboards, changeDashboard } = this.props;
+    const { dashboard, intl, className, dashboardsPosition, dashboards, changeDashboard } = this.props;
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), className && className) }>
         <Icon
           icon="tree"
           title={ intl.formatMessage({ id: 'structure.title' }) }
-          onClick={ () => { router.push('/structure'); } }
+          onClick={ this.onIconClick }
           tabIndex="0"
         />
         { dashboardsPosition === 'sidebar' && (
@@ -104,7 +108,7 @@ class Toolbar extends Component {
   }
 }
 
-export default withRouter(injectIntl(Toolbar));
+export default injectIntl(Toolbar);
 
 Toolbar.propTypes = {
   updateCurrentlySticky: PropTypes.func.isRequired,
@@ -114,7 +118,6 @@ Toolbar.propTypes = {
   dashboards: PropTypes.object.isRequired,
   dashboard: PropTypes.object,
   openModal: PropTypes.func.isRequired,
-  router: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
   className: PropTypes.string,
   dashboardsPosition: PropTypes.string.isRequired,
