@@ -39,27 +39,47 @@ class Customize extends Component {
   }
 
   render() {
-    const { intl, navColor, newtab, maxWidth, preserveEditMode, dashboards, blurEffect, stickyHeader, stickyToolbar } = this.props;
+    const {
+      intl,
+      navColor,
+      newtab,
+      maxWidth,
+      preserveEditMode,
+      dashboards,
+      blurEffect,
+      stickyHeader,
+      stickyToolbar,
+      darkMode
+    } = this.props;
 
     return (
       <Page>
         <Section>
-          <H1>
+          <H1 darkMode={ darkMode }>
             <FormattedMessage id="customize.title" />
           </H1>
-          <H2>
+          <H2 darkMode={ darkMode }>
             <FormattedMessage id="customize.style" />
           </H2>
-          <Label>
+          <Label darkMode={ darkMode }>
             <FormattedMessage id="customize.navColor" />
           </Label>
           <ColorPicker value={ navColor } onChange={ this.handleColorChange } className="customize__color-picker" />
+          <Checkbox
+            label={ intl.formatMessage({ id: 'customize.darkMode'}) }
+            id="darkMode"
+            name="darkMode"
+            onChange={ this.handleCheckboxChange }
+            checked={ darkMode }
+            darkMode={ darkMode }
+          />
           <Checkbox
             label={ intl.formatMessage({ id: 'customize.blurEffect'}) }
             id="blurEffect"
             name="blurEffect"
             onChange={ this.handleCheckboxChange }
             checked={ blurEffect }
+            darkMode={ darkMode }
           />
           <Checkbox
             label={ intl.formatMessage({ id: 'customize.stickyHeader'}) }
@@ -67,6 +87,7 @@ class Customize extends Component {
             name="stickyHeader"
             onChange={ this.handleCheckboxChange }
             checked={ stickyHeader }
+            darkMode={ darkMode }
           />
           <Checkbox
             label={ intl.formatMessage({ id: 'customize.stickyToolbar'}) }
@@ -74,8 +95,9 @@ class Customize extends Component {
             name="stickyToolbar"
             onChange={ this.handleCheckboxChange }
             checked={ stickyToolbar }
+            darkMode={ darkMode }
           />
-          <H2>
+          <H2 darkMode={ darkMode }>
             <FormattedMessage id="dashboard.title" />
           </H2>
           <Radio
@@ -85,6 +107,7 @@ class Customize extends Component {
             onChange={ this.handleRadioChange }
             value="sidebar"
             defaultChecked={ dashboards === 'sidebar' }
+            darkMode={ darkMode }
           />
           <Radio
             label={ intl.formatMessage({ id: 'customize.dropdown'}) }
@@ -93,6 +116,7 @@ class Customize extends Component {
             onChange={ this.handleRadioChange }
             value="dropdown"
             defaultChecked={ dashboards === 'dropdown' }
+            darkMode={ darkMode }
           />
           <Radio
             label={ intl.formatMessage({ id: 'customize.tabs'}) }
@@ -101,6 +125,7 @@ class Customize extends Component {
             onChange={ this.handleRadioChange }
             value="tabs"
             defaultChecked={ dashboards === 'tabs' }
+            darkMode={ darkMode }
           />
           <Checkbox
             label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
@@ -108,8 +133,9 @@ class Customize extends Component {
             name="maxWidth"
             onChange={ this.handleCheckboxChange }
             checked={ maxWidth }
+            darkMode={ darkMode }
           />
-          <H2>
+          <H2 darkMode={ darkMode }>
             <FormattedMessage id="dashboard.preferences" />
           </H2>
           <Checkbox
@@ -118,6 +144,7 @@ class Customize extends Component {
             name="newtab"
             onChange={ this.handleCheckboxChange }
             checked={ newtab }
+            darkMode={ darkMode }
           />
           <Checkbox
             label={ intl.formatMessage({ id: 'customize.preserveEditMode'}) }
@@ -125,6 +152,7 @@ class Customize extends Component {
             name="preserveEditMode"
             onChange={ this.handleCheckboxChange }
             checked={ preserveEditMode }
+            darkMode={ darkMode }
           />
         </Section>
       </Page>
@@ -142,7 +170,8 @@ Customize.propTypes = {
   dashboards: PropTypes.string.isRequired,
   blurEffect: PropTypes.bool.isRequired,
   stickyHeader: PropTypes.bool.isRequired,
-  stickyToolbar: PropTypes.bool.isRequired
+  stickyToolbar: PropTypes.bool.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 export default injectIntl(Customize);
