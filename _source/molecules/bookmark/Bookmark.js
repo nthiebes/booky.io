@@ -8,7 +8,7 @@ import Icon from '../../atoms/icon';
 
 class Bookmark extends Component {
   render() {
-    const { url, name, editMode, id, openModal, categoryId, index, intl, newtab, favicon } = this.props;
+    const { url, name, editMode, id, openModal, categoryId, index, intl, newtab, favicon, darkMode } = this.props;
 
     return (
       <Draggable index={ index } draggableId={ `bookmark-${id}` }>
@@ -17,7 +17,7 @@ class Bookmark extends Component {
             <div { ...provided.draggableProps } ref={ provided.innerRef }>
               <li className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }>
                 <img src={ favicon || '_assets/no-favicon.png' } height="16" width="16" />
-                <a className="bookmark__link" href={ url } target={ newtab ? '_blank' : '_self' }>
+                <a className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') } href={ url } target={ newtab ? '_blank' : '_self' }>
                   { name }
                 </a>
                 <Icon
@@ -31,6 +31,7 @@ class Bookmark extends Component {
                     categoryId
                   }); } }
                   tabIndex={ editMode ? '0' : '-1' }
+                  darkMode={ darkMode }
                 />
                 <Icon
                   className="bookmark__icon"
@@ -43,6 +44,7 @@ class Bookmark extends Component {
                     categoryId
                   }); } }
                   tabIndex={ editMode ? '0' : '-1' }
+                  darkMode={ darkMode }
                 />
                 <Icon
                   className="bookmark__icon bookmark__icon--drag"
@@ -50,6 +52,7 @@ class Bookmark extends Component {
                   title={ intl.formatMessage({ id: 'bookmark.drag' }) }
                   dragHandleProps={ provided.dragHandleProps }
                   tabIndex={ editMode ? '0' : '-1' }
+                  darkMode={ darkMode }
                 />
               </li>
             </div>
@@ -74,5 +77,6 @@ Bookmark.propTypes = {
   index: PropTypes.number.isRequired,
   intl: PropTypes.object.isRequired,
   newtab: PropTypes.bool.isRequired,
-  favicon: PropTypes.string
+  favicon: PropTypes.string,
+  darkMode: PropTypes.bool.isRequired
 };

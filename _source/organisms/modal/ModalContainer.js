@@ -9,6 +9,7 @@ export const mapStateToProps = function(state) {
     modal: state.modal.modal,
     open: state.modal.open,
     pending: state.modal.pending,
+    darkMode: state.user.darkMode,
     data: {
       ...state.modal.data,
       categories: state.categories.filter(({id}) => id !== state.modal.data.id),

@@ -3,7 +3,8 @@ import Component from './Bookmark';
 import { actions } from '../../_state/modal';
 
 export const mapStateToProps = (state) => ({
-  newtab: state.user.newtab
+  newtab: state.user.newtab,
+  darkMode: state.user.darkMode
 });
 
 export const mapDispatchToProps = (dispatch) => ({

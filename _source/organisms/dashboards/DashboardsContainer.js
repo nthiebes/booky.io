@@ -11,7 +11,8 @@ export const mapStateToProps = (state) => ({
   open: state.user.pinned,
   currentlySticky: state.toolbar.currentlySticky,
   headerSticky: state.user.stickyHeader,
-  toolbarSticky: state.user.stickyToolbar
+  toolbarSticky: state.user.stickyToolbar,
+  darkMode: state.user.darkMode
 });
 
 export const mapDispatchToProps = (dispatch) => ({

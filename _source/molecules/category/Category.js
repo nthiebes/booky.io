@@ -34,7 +34,7 @@ class Category extends Component {
   }
 
   render() {
-    const { name, id, color, bookmarks, openModal, intl } = this.props;
+    const { name, id, color, bookmarks, openModal, intl, darkMode } = this.props;
     const { open, editMode } = this.state;
     const headerClassName = classNames(
       'category__header',
@@ -51,8 +51,9 @@ class Category extends Component {
             title={ open ? intl.formatMessage({ id: 'category.reduce' }) : intl.formatMessage({ id: 'category.expand' }) }
             onClick={ this.toggleCategory }
             tabIndex="0"
+            darkMode={ darkMode }
           />
-          <H2 className="category__name" onClick={ this.toggleCategory }>{ name }</H2>
+          <H2 className="category__name" onClick={ this.toggleCategory } darkMode={ darkMode }>{ name }</H2>
           <Icon
             className="category__icon"
             icon="edit"
@@ -63,6 +64,7 @@ class Category extends Component {
               color
             }); } }
             tabIndex={ editMode ? '0' : '-1' }
+            darkMode={ darkMode }
           />
           <Icon
             className="category__icon"
@@ -73,12 +75,14 @@ class Category extends Component {
               id
             }); } }
             tabIndex={ editMode ? '0' : '-1' }
+            darkMode={ darkMode }
           />
           <Icon
             icon={ editMode ? 'close' : 'more-horiz' }
             title={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
             onClick={ this.toggleEditMode }
             tabIndex="0"
+            darkMode={ darkMode }
           />
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
@@ -132,7 +136,8 @@ Category.propTypes = {
   id: PropTypes.string.isRequired,
   bookmarks: PropTypes.array,
   openModal: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 Category.defaultProps = {

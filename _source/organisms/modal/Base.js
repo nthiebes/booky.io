@@ -40,10 +40,10 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, hasAnchor } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, hasAnchor, darkMode } = this.props;
 
     return (
-      <Form className="modal__inner" onSubmit={ this.onSubmit } onClick={ this.handleClick }>
+      <Form className={ classNames('modal__inner', darkMode && 'modal__inner--dark') } onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
           { hasAnchor && (
             <a
@@ -53,8 +53,8 @@ class Modal extends Component {
               ref={ (anchor) => { this.anchor = anchor; } }
             />
           ) }
-          { headline && <H3 className="modal__headline">{ headline }</H3> }
-          <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
+          { headline && <H3 className="modal__headline" darkMode={ darkMode }>{ headline }</H3> }
+          <Icon icon="close" onClick={ onClose } darkMode={ darkMode } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
         </header>
         <div className="modal__content">
           { children }
@@ -88,5 +88,6 @@ Modal.propTypes = {
   noCancel: PropTypes.bool,
   intl: PropTypes.object.isRequired,
   pending: PropTypes.bool.isRequired,
-  hasAnchor: PropTypes.bool
+  hasAnchor: PropTypes.bool,
+  darkMode: PropTypes.bool.isRequired
 };

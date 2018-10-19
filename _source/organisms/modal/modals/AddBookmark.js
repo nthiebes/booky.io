@@ -48,11 +48,11 @@ class AddBookmark extends Component {
   }
 
   render() {
-    const { onClose, onSave, data, intl, pending } = this.props;
+    const { data, intl, darkMode, pending, ...props } = this.props;
     const { name, url } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }>
+      <Base { ...props } pending={ pending } darkMode={ darkMode } headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }>
         <Input
           id="bookmark-url"
           name="url"
@@ -63,6 +63,7 @@ class AddBookmark extends Component {
           label={ intl.formatMessage({ id: 'modal.url' }) }
           disabled={ pending }
           autoFocus
+          darkMode={ darkMode }
         />
         <Input
           id="bookmark-name"
@@ -73,6 +74,7 @@ class AddBookmark extends Component {
           maxLength="80"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
+          darkMode={ darkMode }
         />
         { data.source === 'header' ? (
           <Select
@@ -86,6 +88,7 @@ class AddBookmark extends Component {
             selected="0"
             label={ intl.formatMessage({ id: 'modal.category' }) }
             disabled={ pending }
+            darkMode={ darkMode }
           />
         ) : (
           <Input
@@ -106,5 +109,6 @@ AddBookmark.propTypes = {
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };

@@ -76,18 +76,19 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, intl, className, dashboardsPosition, dashboards, changeDashboard } = this.props;
+    const { dashboard, intl, className, dashboardsPosition, dashboards, changeDashboard, darkMode } = this.props;
 
     return (
-      <section className={ classNames('toolbar', this.getStickyClass(), className && className) }>
+      <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark', className && className) }>
         <Icon
           icon="tree"
           title={ intl.formatMessage({ id: 'structure.title' }) }
           onClick={ this.onIconClick }
           tabIndex="0"
+          darkMode={ darkMode }
         />
         { dashboardsPosition === 'sidebar' && (
-          <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
+          <H3 className="toolbar__headline" darkMode={ darkMode }>{ dashboard.name || '' }</H3>
         ) }
         { dashboardsPosition === 'tabs' && (
           <TabBar className="toolbar__tabs">
@@ -121,7 +122,8 @@ Toolbar.propTypes = {
   intl: PropTypes.object.isRequired,
   className: PropTypes.string,
   dashboardsPosition: PropTypes.string.isRequired,
-  changeDashboard: PropTypes.func.isRequired
+  changeDashboard: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 Toolbar.defaultProps = {

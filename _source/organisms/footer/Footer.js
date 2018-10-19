@@ -13,7 +13,7 @@ import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends Component {
   render() {
-    const { intl, dashboardsOpen, hasSidebar, className, home, loggedIn, toolbarSticky } = this.props;
+    const { intl, dashboardsOpen, hasSidebar, className, home, loggedIn, toolbarSticky, darkMode } = this.props;
 
     return (
       <footer className={ classNames(
@@ -44,7 +44,7 @@ class Footer extends Component {
             </ul>
           </section>
         ) }
-        <section className="footer__social">
+        <section className={ classNames('footer__social', darkMode && 'footer__social--dark-mode') }>
           <a className="footer__social-item" target="_blank" href="https://twitter.com/intent/tweet?text=booky.io%20%7C%20Online%20Bookmark%20manager.%20Your%20bookmarks%20always%20available.">
             <Icon className="footer__icon" icon="twitter" color="light" />
             <label className="footer__label">{ 'Twitter' }</label>
@@ -102,7 +102,8 @@ Footer.propTypes = {
   className: PropTypes.string,
   home: PropTypes.bool,
   loggedIn: PropTypes.bool.isRequired,
-  toolbarSticky: PropTypes.bool.isRequired
+  toolbarSticky: PropTypes.bool.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 export default injectIntl(Footer);

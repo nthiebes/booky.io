@@ -22,6 +22,10 @@
     pointer-events: none;
   }
 
+  &.icon--dark-mode::after {
+    background-color: rgba(255,255,255,0.1);
+  }
+
   &:focus {
     &::after {
       opacity: 1;
@@ -33,7 +37,6 @@
 
 .icon--primary {
   color: $color__font--primary;
-  border-color: $color__font--primary;
 
   @include mobile-tablet {
     &:active {
@@ -54,7 +57,6 @@
 
 .icon--dark {
   color: $color__font--dark;
-  border-color: $color__font--dark;
 
   @include mobile-tablet {
     &:active {
@@ -75,7 +77,6 @@
 
 .icon--medium {
   color: $color__font--medium;
-  border-color: $color__font--medium;
 
   @include mobile-tablet {
     &:active {
@@ -96,11 +97,14 @@
 
 .icon--light {
   color: $color__font--white;
-  border-color: $color__font--white;
 
   @include mobile-tablet {
     &:active {
       color: $color__font--dark;
+    }
+
+    &.icon--dark-mode:active {
+      color: $color--primary;
     }
   }
 
@@ -108,16 +112,23 @@
     &:hover {
       color: $color__font--dark;
     }
+
+    &.icon--dark-mode:hover {
+      color: $color--primary;
+    }
   }
 
   &:focus {
     color: $color__font--dark;
   }
+
+  &.icon--dark-mode:focus {
+    color: $color--primary;
+  }
 }
 
 .icon--green {
   color: $color--green;
-  border-color: $color--green;
 
   @include mobile-tablet {
     &:active {
@@ -138,7 +149,6 @@
 
 .icon--orange {
   color: $color--3;
-  border-color: $color--3;
 
   @include mobile-tablet {
     &:active {

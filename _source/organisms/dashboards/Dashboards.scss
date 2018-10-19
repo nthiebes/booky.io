@@ -15,6 +15,10 @@
   }
 }
 
+.dashboards--dark {
+  background-color: $color__background--medium;
+}
+
 .dashboards--sticky {
   top: calc(10rem + 3px);
   position: fixed;
@@ -77,14 +81,24 @@
     }
 
     &::before {
-      background: linear-gradient(to bottom, #fff, rgba(255,0,255,0));
+      background: linear-gradient(to bottom, #fff, rgba(255,255,255,0));
       top: 52px;
     }
 
     &::after {
-      background: linear-gradient(to top, #fff, rgba(255,0,255,0));
+      background: linear-gradient(to top, #fff, rgba(255,255,255,0));
       bottom: 0;
     }
+  }
+}
+
+.dashboards--dark .dashboards__scroll-wrapper {
+  &::before {
+    background: linear-gradient(to bottom, $color__background--medium, rgba(255,255,255,0));
+  }
+
+  &::after {
+    background: linear-gradient(to top, $color__background--medium, rgba(255,255,255,0));
   }
 }
 
@@ -170,7 +184,10 @@
   &:active,
   &:focus {
     background-color: $color__background--ligth;
-    color: $color__font--primary;
+
+    &.dashboards__item--dark-mode {
+      background-color: $color__background--dark;
+    }
 
     .dashboards__label {
       color: $color__font--primary;
@@ -184,6 +201,14 @@
   @include desktop {
     &:hover {
       background-color: $color__background--ligth;
+
+      &.dashboards__item--dark-mode {
+        background-color: $color__background--dark;
+      }
+
+      .dashboards__label {
+        color: $color__font--primary;
+      }
     }
   }
 }
@@ -197,6 +222,11 @@
   overflow: hidden;
   flex-grow: 1;
   cursor: pointer;
+  transition: color 0.2s linear;
+}
+
+.dashboards__label--dark-mode {
+  color: #fff;
 }
 
 .dashboards__button {

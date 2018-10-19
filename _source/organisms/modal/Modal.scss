@@ -54,6 +54,10 @@
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
+.modal__inner--dark {
+  background-color: $color__background--dark-mode;
+}
+
 .modal--open {
   .modal__inner {
     opacity: 1;

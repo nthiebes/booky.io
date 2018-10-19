@@ -9,7 +9,8 @@ export default {
     preserveEditMode: true,
     blurEffect: true,
     stickyHeader: true,
-    stickyToolbar: true
+    stickyToolbar: true,
+    darkMode: true
   },
   dashboards: {
     items: [{id: 1234, name: 'Meine Rezepte', categories: []}],

@@ -4,10 +4,10 @@ import classNames from 'classnames';
 
 export default class Label extends Component {
   render() {
-    const { children, htmlFor, className } = this.props;
+    const { children, htmlFor, className, darkMode } = this.props;
 
     return (
-      <label className={ classNames('label', className && className) } htmlFor={ htmlFor }>
+      <label className={ classNames('label', darkMode && 'label--dark', className && className) } htmlFor={ htmlFor }>
         { children }
       </label>
     );
@@ -21,5 +21,6 @@ Label.propTypes = {
     PropTypes.array
   ]).isRequired,
   htmlFor: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  darkMode: PropTypes.bool
 };
