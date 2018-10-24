@@ -1,0 +1,15 @@
+.expandable__headline {
+  cursor: pointer;
+  user-select: none;
+}
+
+.expandable__content {
+  opacity: 0;
+  height: 0;
+  transition: opacity 0.2s ease;
+}
+
+.expandable__content--open {
+  opacity: 1;
+  height: auto;
+}
