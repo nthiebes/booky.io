@@ -11,20 +11,13 @@ class DeleteCategory extends Component {
     super(props);
 
     this.onChange = this.onChange.bind(this);
+    this.handleSave = this.handleSave.bind(this);
     this.state = {
       id: props.data.id,
       newId: null,
       value: 0
     };
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     id: nextProps.data.id,
-  //     newId: null,
-  //     value: 0
-  //   });
-  // }
 
   onChange(value) {
     this.setState({
@@ -33,8 +26,12 @@ class DeleteCategory extends Component {
     });
   }
 
+  handleSave() {
+    this.props.onSave(this.state);
+  }
+
   render() {
-    const { data, onClose, onSave, intl, pending } = this.props;
+    const { data, intl, pending, ...props } = this.props;
     const options = [
       {
         text: intl.formatMessage({ id: 'modal.deleteAll' }),
@@ -48,8 +45,8 @@ class DeleteCategory extends Component {
 
     return (
       <Base
-        onClose={ onClose }
-        onSave={ () => { onSave(this.state); } }
+        { ...props }
+        onSave={ this.handleSave }
         pending={ pending }
         headline={ intl.formatMessage({ id: 'modal.deleteCategory' }) }
         hasAnchor
@@ -64,6 +61,7 @@ class DeleteCategory extends Component {
           options={ options }
           onChange={ this.onChange }
           selected="0"
+          disabled={ pending }
         />
       </Base>
     );
@@ -77,5 +75,6 @@ DeleteCategory.propTypes = {
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };

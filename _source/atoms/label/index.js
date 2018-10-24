@@ -1,3 +1,3 @@
-import component from './Label';
+import component from './LabelContainer';
 
 export default component;

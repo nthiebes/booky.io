@@ -89,7 +89,7 @@ class Dashboards extends Component {
         isSidebar && 'dashboards--sidebar',
         !open && 'dashboards--hide',
         this.getStickyClass(),
-        darkMode && 'dashboards--dark',
+        darkMode && 'dashboards--dark-mode',
         className && className
       ) }>
         { isSidebar && (
@@ -107,20 +107,18 @@ class Dashboards extends Component {
               onClick={ this.toggleOpen }
               title={ open ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
               tabIndex={ useTabIndex ? '0' : '-1' }
-              darkMode={ darkMode }
             />
           </header>
         )}
         <hr className="dashboards__hr booky--hide-mobile-tablet" />
         <div className="dashboards__scroll-wrapper">
           <div className="dashboards__headline-wrapper">
-            <H3 className="dashboards__headline" darkMode={ darkMode }><FormattedMessage id="dashboard.title" /></H3>
+            <H3 className="dashboards__headline"><FormattedMessage id="dashboard.title" /></H3>
             <Icon
               icon={ editMode ? 'close' : 'more-horiz' }
               title={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
               onClick={ this.toggleEditMode }
               tabIndex={ useTabIndex ? '0' : '-1' }
-              darkMode={ darkMode }
             />
           </div>
           <ul className={ classNames('dashboards__list', editMode && 'dashboards__list--edit-mode') }>
@@ -146,7 +144,6 @@ class Dashboards extends Component {
                   stopPropagation
                   onClick={ () => this.onIconClick('EditDashboard', dashboard) }
                   tabIndex={ useTabIndex && editMode ? '0' : '-1' }
-                  darkMode={ darkMode }
                 />
                 <Icon
                   className="dashboards__icon dashboards__icon--delete"
@@ -155,12 +152,11 @@ class Dashboards extends Component {
                   stopPropagation
                   onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
                   tabIndex={ useTabIndex && editMode ? '0' : '-1' }
-                  darkMode={ darkMode }
                 />
               </li>
             )) }
             { dashboards.length === 0 && (
-              <li className="dashboard__empty">
+              <li className={ classNames('dashboard__empty', darkMode && 'dashboard__empty--dark-mode') }>
                 <i><FormattedMessage id="dashboard.empty" /></i>
               </li>
             ) }

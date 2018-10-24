@@ -15,7 +15,7 @@
   }
 }
 
-.dashboards--dark {
+.dashboards--dark-mode {
   background-color: $color__background--medium;
 }
 
@@ -92,7 +92,7 @@
   }
 }
 
-.dashboards--dark .dashboards__scroll-wrapper {
+.dashboards--dark-mode .dashboards__scroll-wrapper {
   &::before {
     background: linear-gradient(to bottom, $color__background--medium, rgba(255,255,255,0));
   }
@@ -132,6 +132,14 @@
         color: inherit;
         cursor: default;
       }
+
+      &.dashboards__item--dark-mode {
+        background-color: inherit;
+
+        .dashboards__label {
+          color: #fff;
+        }
+      }
     }
 
     @include desktop {
@@ -145,6 +153,14 @@
         .dashboards__label {
           color: inherit;
           cursor: default;
+        }
+
+        &.dashboards__item--dark-mode {
+          background-color: inherit;
+
+          .dashboards__label {
+            color: #fff;
+          }
         }
       }
     }
@@ -254,4 +270,8 @@
   @include desktop {
     padding: 0 36px;
   }
+}
+
+.dashboard__empty--dark-mode {
+  color: #fff;
 }

@@ -53,8 +53,8 @@ class Modal extends Component {
               ref={ (anchor) => { this.anchor = anchor; } }
             />
           ) }
-          { headline && <H3 className="modal__headline" darkMode={ darkMode }>{ headline }</H3> }
-          <Icon icon="close" onClick={ onClose } darkMode={ darkMode } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
+          { headline && <H3 className="modal__headline">{ headline }</H3> }
+          <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
         </header>
         <div className="modal__content">
           { children }

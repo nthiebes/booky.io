@@ -1,3 +1,3 @@
-import component from './Paragraph';
+import component from './ParagraphContainer';
 
 export default component;

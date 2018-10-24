@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 
 class Categories extends Component {
   render() {
-    const { dashboard, intl } = this.props;
+    const { dashboard, intl, darkMode } = this.props;
 
     return (
       <Droppable droppableId={ `dashboard-${dashboard.id}` } type="category">
@@ -19,7 +20,9 @@ class Categories extends Component {
                   { (providedInner) => (
                     <div { ...providedInner.draggableProps } ref={ providedInner.innerRef }>
                       <div key={ index } className="structure__category">
-                        <label className="structure__label">{ category.name }</label>
+                        <label className={ classNames('structure__label', darkMode && 'structure__label--dark-mode') }>
+                          { category.name }
+                        </label>
                         <Icon
                           className="structure__icon"
                           icon="drag"
@@ -45,5 +48,6 @@ export default injectIntl(Categories);
 
 Categories.propTypes = {
   dashboard: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  darkMode: PropTypes.bool
 };

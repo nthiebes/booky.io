@@ -7,16 +7,14 @@ import StructureComponent from '../../../organisms/structure';
 
 class EditStructure extends Component {
   render() {
-    const { onClose, onSave, intl, pending } = this.props;
+    const { intl, ...props } = this.props;
 
     return (
       <Base
-        onClose={ onClose }
-        onSave={ onSave }
-        pending={ pending }
         headline={ intl.formatMessage({ id: 'structure.title' }) }
         hasAnchor
         noCancel
+        { ...props }
       >
         <StructureComponent />
       </Base>
@@ -30,5 +28,6 @@ EditStructure.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };

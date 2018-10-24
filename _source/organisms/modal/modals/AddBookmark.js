@@ -20,15 +20,6 @@ class AddBookmark extends Component {
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     name: '',
-  //     url: '',
-  //     categoryId: nextProps.data.source === 'header' ? nextProps.data.categories[0].id : nextProps.data.categoryId,
-  //     value: 0
-  //   });
-  // }
-
   onNameChange(value) {
     this.setState({
       name: value
@@ -48,11 +39,11 @@ class AddBookmark extends Component {
   }
 
   render() {
-    const { data, intl, darkMode, pending, ...props } = this.props;
+    const { data, intl, pending, ...props } = this.props;
     const { name, url } = this.state;
 
     return (
-      <Base { ...props } pending={ pending } darkMode={ darkMode } headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }>
         <Input
           id="bookmark-url"
           name="url"
@@ -63,7 +54,6 @@ class AddBookmark extends Component {
           label={ intl.formatMessage({ id: 'modal.url' }) }
           disabled={ pending }
           autoFocus
-          darkMode={ darkMode }
         />
         <Input
           id="bookmark-name"
@@ -74,7 +64,6 @@ class AddBookmark extends Component {
           maxLength="80"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
-          darkMode={ darkMode }
         />
         { data.source === 'header' ? (
           <Select
@@ -88,7 +77,6 @@ class AddBookmark extends Component {
             selected="0"
             label={ intl.formatMessage({ id: 'modal.category' }) }
             disabled={ pending }
-            darkMode={ darkMode }
           />
         ) : (
           <Input

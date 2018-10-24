@@ -20,7 +20,8 @@ class NotFound extends Component {
               values={ {
                 mail: <Link href="mailto:hello@booky.io"><FormattedMessage id="error.email" /></Link>,
                 home: <Link to="/"><FormattedMessage id="misc.startpage" /></Link>
-              } } />
+              } }
+            />
           </Empty>
         </Section>
       </Page>

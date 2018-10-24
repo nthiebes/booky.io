@@ -19,13 +19,6 @@ class AddCategory extends Component {
     };
   }
 
-  // componentWillReceiveProps() {
-  //   this.setState({
-  //     name: '',
-  //     color: 0
-  //   });
-  // }
-
   onNameChange(value) {
     this.setState({
       name: value
@@ -39,11 +32,11 @@ class AddCategory extends Component {
   }
 
   render() {
-    const { onClose, onSave, intl, pending } = this.props;
+    const { intl, pending, ...props } = this.props;
     const { name, color } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addCategory' }) }>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addCategory' }) }>
         <Input
           id="category-name"
           name="name"
@@ -56,7 +49,9 @@ class AddCategory extends Component {
           disabled={ pending }
           autoFocus
         />
-        <Label><FormattedMessage id="modal.color" /></Label>
+        <Label>
+          <FormattedMessage id="modal.color" />
+        </Label>
         <ColorPicker value={ color } onChange={ this.onColorChange } />
       </Base>
     );
@@ -69,5 +64,6 @@ AddCategory.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };

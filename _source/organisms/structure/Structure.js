@@ -2,13 +2,14 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import Categories from './Categories';
 
 class Structure extends Component {
   render() {
-    const { dashboards, intl } = this.props;
+    const { dashboards, intl, darkMode } = this.props;
 
     return (
       <Fragment>
@@ -21,7 +22,9 @@ class Structure extends Component {
                     <div>
                       <div { ...providedInner.draggableProps } ref={ providedInner.innerRef }>
                         <div className="structure__dashboard">
-                          <label className="structure__label">{ dashboard.name }</label>
+                          <label className={ classNames('structure__label', darkMode && 'structure__label--dark-mode') }>
+                            { dashboard.name }
+                          </label>
                           <Icon
                             className="structure__icon"
                             icon="drag"
@@ -49,5 +52,6 @@ export default injectIntl(Structure);
 
 Structure.propTypes = {
   dashboards: PropTypes.array.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };

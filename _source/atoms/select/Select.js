@@ -16,7 +16,7 @@ export default class Select extends Component {
   }
 
   render() {
-    const { options, className, label, id, name, required, compact, selected } = this.props;
+    const { options, className, label, id, name, required, compact, selected, disabled } = this.props;
 
     return (
       <Fragment>
@@ -27,6 +27,7 @@ export default class Select extends Component {
           required={ required }
           onChange={ this.onChange }
           defaultValue={ selected }
+          disabled={ disabled }
           className={ classNames('select', compact ? 'select--compact' : 'select--large', className && className) }>
           { options.map(({ text, value }, index) => (
             <option key={ index } value={ value }>
@@ -48,5 +49,6 @@ Select.propTypes = {
   name: PropTypes.string,
   required: PropTypes.bool,
   compact: PropTypes.bool,
-  selected: PropTypes.string
+  selected: PropTypes.string,
+  disabled: PropTypes.bool
 };

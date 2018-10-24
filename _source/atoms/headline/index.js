@@ -1,5 +1,5 @@
 import React from 'react';
-import Headline from './Headline';
+import Headline from './HeadlineContainer';
 
 export function Display1(props) {
   return <Headline { ...props } type="1" display />;

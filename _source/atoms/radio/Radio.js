@@ -21,7 +21,7 @@ export default class Radio extends Component {
   }
 
   render() {
-    const { label, className, id, name, value, defaultChecked, darkMode } = this.props;
+    const { label, className, id, name, value, defaultChecked } = this.props;
 
     return (
       <div className={ classNames('radio', className && classNames) }>
@@ -34,7 +34,7 @@ export default class Radio extends Component {
           onChange={ this.handleInputChange }
           defaultChecked={ defaultChecked }
         />
-        { label && <Label htmlFor={ id } className="radio__label" darkMode={ darkMode }>{ label }</Label> }
+        { label && <Label htmlFor={ id } className="radio__label">{ label }</Label> }
       </div>
     );
   }
@@ -47,6 +47,5 @@ Radio.propTypes = {
   value: PropTypes.string.isRequired,
   className: PropTypes.string,
   onChange: PropTypes.func,
-  defaultChecked: PropTypes.bool,
-  darkMode: PropTypes.bool
+  defaultChecked: PropTypes.bool
 };

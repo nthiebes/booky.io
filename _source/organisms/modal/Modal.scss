@@ -12,7 +12,7 @@
   align-items: center;
   transition: width 0s 0.2s linear;
 
-  &:before {
+  &::before {
     background-color: rgba(0, 0, 0, 0.3);
     bottom: 0;
     content: " ";
@@ -23,17 +23,17 @@
     top: 0;
     transition: opacity 0.2s linear, width 0s 0.2s linear;
   }
+}
 
-  &.modal--open {
+.modal--open {
+  width: 100%;
+  transition: none;
+
+  &::before {
+    opacity: 1;
+    transition: opacity 0.2s linear;
     width: 100%;
-    transition: none;
-
-    &:before {
-      opacity: 1;
-      transition: opacity 0.2s linear;
-      width: 100%;
-      z-index: 6;
-    }
+    z-index: 6;
   }
 }
 

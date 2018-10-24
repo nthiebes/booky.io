@@ -46,8 +46,7 @@ export default class Input extends Component {
       validation,
       autoFocus,
       icon,
-      error,
-      darkMode
+      error
     } = this.props;
     const inputProps = {
       className: classNames(
@@ -76,7 +75,7 @@ export default class Input extends Component {
 
     return (
       <Fragment>
-        { label && <Label htmlFor={ id } darkMode={ darkMode }>{ label }</Label> }
+        { label && <Label htmlFor={ id }>{ label }</Label> }
         <span className={ classNames('input', className && className) }>
           <input { ...inputProps } />
           { validation && (
@@ -121,8 +120,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   validation: PropTypes.bool,
   icon: PropTypes.string,
-  error: PropTypes.string,
-  darkMode: PropTypes.bool
+  error: PropTypes.string
 };
 
 Input.defaultProps = {

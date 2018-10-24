@@ -8,7 +8,8 @@ export const mapStateToProps = function(state) {
     maxWidth: state.user.maxWidth,
     dashboardsOpen: state.user.pinned,
     hasSidebar: state.user.dashboards === 'sidebar',
-    dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active)
+    dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active),
+    darkMode: state.user.darkMode
   };
 };
 

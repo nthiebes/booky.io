@@ -51,9 +51,8 @@ class Category extends Component {
             title={ open ? intl.formatMessage({ id: 'category.reduce' }) : intl.formatMessage({ id: 'category.expand' }) }
             onClick={ this.toggleCategory }
             tabIndex="0"
-            darkMode={ darkMode }
           />
-          <H2 className="category__name" onClick={ this.toggleCategory } darkMode={ darkMode }>{ name }</H2>
+          <H2 className="category__name" onClick={ this.toggleCategory }>{ name }</H2>
           <Icon
             className="category__icon"
             icon="edit"
@@ -64,7 +63,6 @@ class Category extends Component {
               color
             }); } }
             tabIndex={ editMode ? '0' : '-1' }
-            darkMode={ darkMode }
           />
           <Icon
             className="category__icon"
@@ -75,14 +73,12 @@ class Category extends Component {
               id
             }); } }
             tabIndex={ editMode ? '0' : '-1' }
-            darkMode={ darkMode }
           />
           <Icon
             icon={ editMode ? 'close' : 'more-horiz' }
             title={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
             onClick={ this.toggleEditMode }
             tabIndex="0"
-            darkMode={ darkMode }
           />
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
@@ -102,7 +98,7 @@ class Category extends Component {
                   />
                 )) }
                 { open && bookmarks.length === 0 && (
-                  <li className="category__empty">
+                  <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
                     <i><FormattedHTMLMessage id="bookmark.empty" /></i>
                   </li>
                 ) }

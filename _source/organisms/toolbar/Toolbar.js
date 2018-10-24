@@ -85,10 +85,9 @@ class Toolbar extends Component {
           title={ intl.formatMessage({ id: 'structure.title' }) }
           onClick={ this.onIconClick }
           tabIndex="0"
-          darkMode={ darkMode }
         />
         { dashboardsPosition === 'sidebar' && (
-          <H3 className="toolbar__headline" darkMode={ darkMode }>{ dashboard.name || '' }</H3>
+          <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
         ) }
         { dashboardsPosition === 'tabs' && (
           <TabBar className="toolbar__tabs">
