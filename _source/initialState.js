@@ -5,12 +5,12 @@ export default {
     newtab: true,
     pinned: true,
     dashboards: 'sidebar',
-    maxWidth: true,
+    maxWidth: false,
     preserveEditMode: true,
     blurEffect: true,
     stickyHeader: true,
     stickyToolbar: true,
-    darkMode: true
+    darkMode: false
   },
   dashboards: {
     items: [{id: 1234, name: 'Meine Rezepte', categories: []}],

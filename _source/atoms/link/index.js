@@ -1,3 +1,3 @@
-import component from './Link';
+import component from './LinkContainer';
 
 export default component;
