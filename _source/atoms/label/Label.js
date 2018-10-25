@@ -7,7 +7,7 @@ export default class Label extends Component {
     const { children, htmlFor, className, darkMode } = this.props;
 
     return (
-      <label className={ classNames('label', darkMode && 'label--dark', className && className) } htmlFor={ htmlFor }>
+      <label className={ classNames('label', darkMode && 'label--dark-mode', className && className) } htmlFor={ htmlFor }>
         { children }
       </label>
     );

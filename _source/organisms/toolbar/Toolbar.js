@@ -79,7 +79,7 @@ class Toolbar extends Component {
     const { dashboard, intl, className, dashboardsPosition, dashboards, changeDashboard, darkMode } = this.props;
 
     return (
-      <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark', className && className) }>
+      <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className && className) }>
         <Icon
           icon="tree"
           title={ intl.formatMessage({ id: 'structure.title' }) }
