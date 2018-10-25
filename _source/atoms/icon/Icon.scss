@@ -22,10 +22,6 @@
     pointer-events: none;
   }
 
-  &.icon--dark-mode::after {
-    background-color: rgba(255,255,255,0.1);
-  }
-
   &:focus {
     &::after {
       opacity: 1;
@@ -33,6 +29,10 @@
       // animation: 0.4s linear 1 circle;
     }
   }
+}
+
+.icon--dark-mode::after {
+  background-color: rgba(255,255,255,0.1);
 }
 
 .icon--primary {

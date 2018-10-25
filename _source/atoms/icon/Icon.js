@@ -29,15 +29,15 @@ export default class Icon extends Component {
   }
 
   render() {
-    const { icon, className, label, color, title, dragHandleProps, tabIndex, darkMode } = this.props;
+    const { icon, className, label, color, title, dragHandleProps, tabIndex, darkMode, ignoreDarkMode } = this.props;
     const link = '_assets/symbol-defs.svg#icon-' + icon;
 
     return (
       <span
         className={ classNames(
           'icon',
-          darkMode ? 'icon--light' : `icon--${color}`,
-          darkMode && 'icon--dark-mode',
+          darkMode && !ignoreDarkMode ? 'icon--light' : `icon--${color}`,
+          darkMode && !ignoreDarkMode && 'icon--dark-mode',
           className && className
         ) }
         title={ title }
@@ -65,7 +65,8 @@ Icon.propTypes = {
   color: PropTypes.string,
   dragHandleProps: PropTypes.object,
   tabIndex: PropTypes.string,
-  darkMode: PropTypes.bool
+  darkMode: PropTypes.bool,
+  ignoreDarkMode: PropTypes.bool
 };
 
 Icon.defaultProps = {
