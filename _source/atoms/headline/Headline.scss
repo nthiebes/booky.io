@@ -11,6 +11,10 @@
   margin-top: 2rem;
   padding-bottom: 1rem;
 
+  &.headline--dark-mode {
+    color: #fff;
+  }
+
   &.headline--display {
     font-size: 3rem;
     font-weight: 700;
@@ -31,6 +35,10 @@
   margin-top: 1rem;
   padding-bottom: 0.5rem;
   color: $color__font--medium;
+
+  &.headline--dark-mode {
+    color: $color__font--light;
+  }
 
   &.headline--display {
     margin-top: 2rem;
@@ -55,6 +63,10 @@
   padding-bottom: 0.5rem;
   color: $color__font--medium;
   text-transform: uppercase;
+
+  &.headline--dark-mode {
+    color: $color__font--light;
+  }
 }
 
 .headline.headline--no-margin {

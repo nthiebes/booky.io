@@ -8,9 +8,10 @@ $color--dark: #3e3e3e;
 
 $color__background--primary: $color--primary;
 $color__background--dark: #2d2c2c;
-$color__background--medium: #3e3e3e;
+$color__background--medium: $color--dark;
 $color__background--ligth: #f5f5f5;
 $color__background--white: #fff;
+$color__background--dark-mode: #444;
 
 $color__font--primary: $color--primary;
 $color__font--dark: #14171a;
@@ -26,7 +27,7 @@ $color--4: #eb65a0;
 $color--5: #9b539c;
 $color--6: #29aba4;
 $color--7: #657786;
-$color--8: #555;
+$color--8: $color--dark;
 
 /**
  * Fonts

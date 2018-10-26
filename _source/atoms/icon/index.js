@@ -1,3 +1,3 @@
-import component from './Icon';
+import component from './IconContainer';
 
 export default component;

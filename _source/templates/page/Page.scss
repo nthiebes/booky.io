@@ -1,4 +1,5 @@
 .page {
+  background-color: $color__background--white;
   position: relative;
   min-height: 100vh;
   padding: 4rem 0 6rem 0;
@@ -29,4 +30,8 @@
 
 .page--show {
   opacity: 1;
+}
+
+.page--dark {
+  background-color: $color__background--dark-mode;
 }

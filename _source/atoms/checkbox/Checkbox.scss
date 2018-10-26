@@ -6,6 +6,8 @@
 }
 
 .checkbox__input {
+  flex-shrink: 0;
+
   &:focus {
     outline: 2px dashed $color--primary;
   }

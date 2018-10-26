@@ -6,17 +6,28 @@ import Base from '../Base';
 import Label from '../../../atoms/label';
 
 class DeleteBookmark extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSave = this.handleSave.bind(this);
+  }
+
+  handleSave() {
+    const { data, onSave } = this.props;
+
+    onSave({
+      id: data.id,
+      categoryId: data.categoryId
+    });
+  }
+
   render() {
-    const { data, onClose, onSave, intl, pending } = this.props;
+    const { data, intl, ...props } = this.props;
 
     return (
       <Base
-        onClose={ onClose }
-        onSave={ () => { onSave({
-          id: data.id,
-          categoryId: data.categoryId
-        }); } }
-        pending={ pending }
+        { ...props }
+        onSave={ this.handleSave }
         headline={ intl.formatMessage({ id: 'modal.deleteBookmark' }) }
         hasAnchor
       >
@@ -36,5 +47,6 @@ DeleteBookmark.propTypes = {
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };

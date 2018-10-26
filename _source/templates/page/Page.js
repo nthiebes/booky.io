@@ -29,7 +29,7 @@ export default class Page extends Component {
   }
 
   render() {
-    const { children, className, dashboards, home, toolbar, blurContent, headerSticky } = this.props;
+    const { children, className, dashboards, home, toolbar, blurContent, headerSticky, darkMode } = this.props;
     const { show } = this.state;
 
     return (
@@ -43,10 +43,18 @@ export default class Page extends Component {
           home={ home }
         />
         { toolbar && (
-          <Toolbar className={ classNames(blurContent && 'page--blur', 'page--hidden', show && 'page--show') } />
+          <Toolbar className={ classNames(
+            blurContent && 'page--blur',
+            'page--hidden',
+            show && 'page--show'
+          ) } />
         ) }
         <Sidebar
-          className={ classNames(blurContent && 'page--blur', 'page--hidden', show && 'page--show') }
+          className={ classNames(
+            blurContent && 'page--blur',
+            'page--hidden',
+            show && 'page--show'
+          ) }
           dashboards={ dashboards }
         />
         <main className={ classNames(
@@ -54,12 +62,17 @@ export default class Page extends Component {
           'page--hidden',
           show && 'page--show',
           headerSticky && 'page--sticky-header',
+          darkMode && 'page--dark',
           className && className
         ) }>
           { children }
         </main>
         <Footer
-          className={ classNames(blurContent && 'page--blur', 'page--hidden', show && 'page--show') }
+          className={ classNames(
+            blurContent && 'page--blur',
+            'page--hidden',
+            show && 'page--show'
+          ) }
           home={ home }
         />
         <Modal />
@@ -79,5 +92,6 @@ Page.propTypes = {
   dashboards: PropTypes.bool,
   home: PropTypes.bool,
   blurContent: PropTypes.bool,
-  headerSticky: PropTypes.bool.isRequired
+  headerSticky: PropTypes.bool.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };

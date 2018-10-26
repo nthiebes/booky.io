@@ -209,6 +209,7 @@
   "customize.blurEffect": "Open windows with a blur and grayscale background effect",
   "customize.stickyHeader": "Fixed header position",
   "customize.stickyToolbar": "Fixed toolbar position",
+  "customize.darkMode": "Dark mode",
 
   "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
   "error.email": "email",

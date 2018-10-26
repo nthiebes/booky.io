@@ -39,7 +39,18 @@ class Customize extends Component {
   }
 
   render() {
-    const { intl, navColor, newtab, maxWidth, preserveEditMode, dashboards, blurEffect, stickyHeader, stickyToolbar } = this.props;
+    const {
+      intl,
+      navColor,
+      newtab,
+      maxWidth,
+      preserveEditMode,
+      dashboards,
+      blurEffect,
+      stickyHeader,
+      stickyToolbar,
+      darkMode
+    } = this.props;
 
     return (
       <Page>
@@ -53,7 +64,18 @@ class Customize extends Component {
           <Label>
             <FormattedMessage id="customize.navColor" />
           </Label>
-          <ColorPicker value={ navColor } onChange={ this.handleColorChange } className="customize__color-picker" />
+          <ColorPicker
+            value={ navColor }
+            onChange={ this.handleColorChange }
+            className="customize__color-picker"
+          />
+          <Checkbox
+            label={ intl.formatMessage({ id: 'customize.darkMode'}) }
+            id="darkMode"
+            name="darkMode"
+            onChange={ this.handleCheckboxChange }
+            checked={ darkMode }
+          />
           <Checkbox
             label={ intl.formatMessage({ id: 'customize.blurEffect'}) }
             id="blurEffect"
@@ -142,7 +164,8 @@ Customize.propTypes = {
   dashboards: PropTypes.string.isRequired,
   blurEffect: PropTypes.bool.isRequired,
   stickyHeader: PropTypes.bool.isRequired,
-  stickyToolbar: PropTypes.bool.isRequired
+  stickyToolbar: PropTypes.bool.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 export default injectIntl(Customize);

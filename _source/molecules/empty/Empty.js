@@ -5,7 +5,7 @@ import 'whatwg-fetch';
 
 class Empty extends Component {
   render() {
-    const { children, imageUrl, imageAlt, className } = this.props;
+    const { children, imageUrl, imageAlt, className, darkMode } = this.props;
 
     return (
       <figure className={ classNames('empty', className && className) }>
@@ -14,9 +14,9 @@ class Empty extends Component {
           alt={ imageAlt }
           width="150"
           height="150"
-          className="empty__image"
+          className={ classNames('empty__image', darkMode && 'empty__image--dark-mode') }
         />
-        <figcaption>
+        <figcaption className={ classNames(darkMode && 'empty--dark-mode') }>
           <i>{ children }</i>
         </figcaption>
       </figure>
@@ -32,7 +32,8 @@ Empty.propTypes = {
   ]).isRequired,
   imageUrl: PropTypes.string.isRequired,
   imageAlt: PropTypes.string.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  darkMode: PropTypes.bool
 };
 
 export default Empty;

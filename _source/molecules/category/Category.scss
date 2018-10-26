@@ -91,7 +91,7 @@
 }
 
 .category__toggle-icon {
-  transition: transform 0.2s linear;
+  transition: transform 0.2s linear, color 0.2s linear;
 
   &.category__toggle-icon--rotate {
     transform: rotate(-90deg);
@@ -136,4 +136,8 @@
   height: 36px;
   line-height: 36px;
   list-style: none;
+}
+
+.category__empty--dark-mode {
+  color: #fff;
 }

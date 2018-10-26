@@ -6,7 +6,8 @@ export const mapStateToProps = function(state) {
     dashboardsOpen: state.user.pinned,
     hasSidebar: state.user.dashboards === 'sidebar',
     loggedIn: state.user.loggedIn,
-    toolbarSticky: state.user.stickyToolbar
+    toolbarSticky: state.user.stickyToolbar,
+    darkMode: state.user.darkMode
   };
 };
 

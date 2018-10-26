@@ -21,6 +21,7 @@
 
     .icon {
       opacity: 1;
+      color: #fff;
     }
   }
 
@@ -33,8 +34,8 @@
       border-color: #000;
 
       .icon {
-        color: #000;
         opacity: 1;
+        color: #fff;
       }
     }
   }
@@ -80,13 +81,24 @@
   }
 }
 
+.color-picker__color--dark-mode {
+  &:active,
+  &:focus {
+    border-color: #fff;
+  }
+
+  @include desktop {
+    &:hover {
+      border-color: #fff;
+    }
+  }
+}
+
 .color-picker__color--active {
   border-color: #000;
 
-  @include desktop {
-    .icon:hover {
-      color: #fff;
-    }
+  &.color-picker__color--dark-mode {
+    border-color: #fff;
   }
 }
 
@@ -100,4 +112,5 @@
 .color-picker__checkbox {
   opacity: 0;
   position: absolute;
+  pointer-events: none;
 }

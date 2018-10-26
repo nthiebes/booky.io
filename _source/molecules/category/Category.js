@@ -34,7 +34,7 @@ class Category extends Component {
   }
 
   render() {
-    const { name, id, color, bookmarks, openModal, intl } = this.props;
+    const { name, id, color, bookmarks, openModal, intl, darkMode } = this.props;
     const { open, editMode } = this.state;
     const headerClassName = classNames(
       'category__header',
@@ -98,7 +98,7 @@ class Category extends Component {
                   />
                 )) }
                 { open && bookmarks.length === 0 && (
-                  <li className="category__empty">
+                  <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
                     <i><FormattedHTMLMessage id="bookmark.empty" /></i>
                   </li>
                 ) }
@@ -132,7 +132,8 @@ Category.propTypes = {
   id: PropTypes.string.isRequired,
   bookmarks: PropTypes.array,
   openModal: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 Category.defaultProps = {

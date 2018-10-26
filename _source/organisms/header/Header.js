@@ -68,6 +68,7 @@ class Header extends Component {
                   source: 'header'
                 }); } }
                 tabIndex="0"
+                ignoreDarkMode
               />
               <Search className="booky--hide-desktop" />
             </Fragment>
@@ -89,6 +90,7 @@ class Header extends Component {
                 onClick={ () => { router.push('/customize'); } }
                 title={ intl.formatMessage({ id: 'menu.customize' }) }
                 tabIndex="0"
+                ignoreDarkMode
               />
               <Icon
                 className="booky--hide-mobile-tablet"
@@ -97,6 +99,7 @@ class Header extends Component {
                 onClick={ () => { router.push('/logout'); } }
                 title={ intl.formatMessage({ id: 'menu.logout' }) }
                 tabIndex="0"
+                ignoreDarkMode
               />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"

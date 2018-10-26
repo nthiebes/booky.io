@@ -15,14 +15,6 @@ class EditDashboard extends Component {
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     id: nextProps.data.id,
-  //     name: nextProps.data.name,
-  //     valid: true
-  //   });
-  // }
-
   onNameChange(value) {
     this.setState({
       name: value
@@ -30,11 +22,11 @@ class EditDashboard extends Component {
   }
 
   render() {
-    const { onClose, onSave, intl, data, pending } = this.props;
+    const { intl, data, pending, ...props } = this.props;
     const { name } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) } hasAnchor>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) } hasAnchor>
         <Input
           id="dashboard-name"
           name="name"
@@ -62,5 +54,6 @@ EditDashboard.propTypes = {
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };

@@ -20,15 +20,6 @@ class AddBookmark extends Component {
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     name: '',
-  //     url: '',
-  //     categoryId: nextProps.data.source === 'header' ? nextProps.data.categories[0].id : nextProps.data.categoryId,
-  //     value: 0
-  //   });
-  // }
-
   onNameChange(value) {
     this.setState({
       name: value
@@ -48,11 +39,11 @@ class AddBookmark extends Component {
   }
 
   render() {
-    const { onClose, onSave, data, intl, pending } = this.props;
+    const { data, intl, pending, ...props } = this.props;
     const { name, url } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }>
         <Input
           id="bookmark-url"
           name="url"
@@ -106,5 +97,6 @@ AddBookmark.propTypes = {
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };

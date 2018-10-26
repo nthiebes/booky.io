@@ -30,11 +30,11 @@ class EditBookmark extends Component {
   }
 
   render() {
-    const { onClose, onSave, intl, pending, data } = this.props;
+    const { intl, pending, data, ...props } = this.props;
     const { name, url } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editBookmark' }) } hasAnchor>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editBookmark' }) } hasAnchor>
         <Input
           id="bookmark-url"
           name="url"
@@ -80,5 +80,6 @@ EditBookmark.propTypes = {
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };

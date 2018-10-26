@@ -11,7 +11,8 @@ export const mapStateToProps = (state) => ({
   dashboards: state.user.dashboards,
   blurEffect: state.user.blurEffect,
   stickyHeader: state.user.stickyHeader,
-  stickyToolbar: state.user.stickyToolbar
+  stickyToolbar: state.user.stickyToolbar,
+  darkMode: state.user.darkMode
 });
 
 export const mapDispatchToProps = {
