@@ -80,7 +80,18 @@ class Dashboards extends Component {
   }
 
   render() {
-    const { dashboards, openModal, changeDashboard, className, intl, activeId, open, useTabIndex, isSidebar, darkMode } = this.props;
+    const {
+      dashboards,
+      openModal,
+      changeDashboard,
+      className,
+      intl,
+      activeId,
+      open,
+      useTabIndex,
+      isSidebar,
+      darkMode
+    } = this.props;
     const { editMode } = this.state;
 
     return (

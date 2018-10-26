@@ -12,6 +12,10 @@
   z-index: 5;
 }
 
+.sidebar--dark-mode {
+  background-color: $color__background--medium;
+}
+
 .sidebar--left {
   border-right: 2px solid rgba(0,0,0,0.15);
   left: 0;
@@ -119,6 +123,10 @@
     background-color: $color__background--ligth;
     color: $color__font--primary;
 
+    &.sidebar__item--dark-mode {
+      background-color: $color__background--dark;
+    }
+
     .sidebar__label {
       color: $color__font--primary;
     }
@@ -155,10 +163,20 @@
   }
 }
 
+.sidebar__label--dark-mode {
+  color: #fff;
+}
+
 .sidebar__item--active {
   .sidebar__label {
     &::after {
       background-color: $color__font--dark;
+    }
+  }
+
+  .sidebar__label--dark-mode {
+    &::after {
+      background-color: #fff;
     }
   }
 
