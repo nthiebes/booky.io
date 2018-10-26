@@ -164,7 +164,7 @@
 }
 
 .sidebar__label--dark-mode {
-  color: #fff;
+  color: $color__font--white;
 }
 
 .sidebar__item--active {
@@ -176,7 +176,7 @@
 
   .sidebar__label--dark-mode {
     &::after {
-      background-color: #fff;
+      background-color: $color__font--white;
     }
   }
 

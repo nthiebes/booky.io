@@ -14,12 +14,12 @@
   // }
 
   // &::before {
-  //   background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+  //   background: linear-gradient(to right, $color__background--white, rgba(255,255,255,0));
   //   left: 0;
   // }
 
   // &::after {
-  //   background: linear-gradient(to left, #fff, rgba(255,255,255,0));
+  //   background: linear-gradient(to left, $color__background--white, rgba(255,255,255,0));
   //   right: 0;
   // }
 }

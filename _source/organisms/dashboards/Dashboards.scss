@@ -1,6 +1,6 @@
 .dashboards--sidebar {
   width: 300px;
-  background-color: #fff;
+  background-color: $color__font--white;
   border-right: 2px solid rgba(0,0,0, 0.15);
   z-index: 2;
   padding-bottom: 1rem;
@@ -81,12 +81,12 @@
     }
 
     &::before {
-      background: linear-gradient(to bottom, #fff, rgba(255,255,255,0));
+      background: linear-gradient(to bottom, $color__background--white, rgba(255,255,255,0));
       top: 52px;
     }
 
     &::after {
-      background: linear-gradient(to top, #fff, rgba(255,255,255,0));
+      background: linear-gradient(to top, $color__background--white, rgba(255,255,255,0));
       bottom: 0;
     }
   }
@@ -137,7 +137,7 @@
         background-color: inherit;
 
         .dashboards__label {
-          color: #fff;
+          color: $color__font--white;
         }
       }
     }
@@ -159,7 +159,7 @@
           background-color: inherit;
 
           .dashboards__label {
-            color: #fff;
+            color: $color__font--white;
           }
         }
       }
@@ -242,7 +242,7 @@
 }
 
 .dashboards__label--dark-mode {
-  color: #fff;
+  color: $color__font--white;
 }
 
 .dashboards__button {
@@ -273,5 +273,5 @@
 }
 
 .dashboard__empty--dark-mode {
-  color: #fff;
+  color: $color__font--white;
 }

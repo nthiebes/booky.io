@@ -17,11 +17,11 @@
 
   &:active,
   &:focus {
-    border-color: #000;
+    border-color: $color--black;
 
     .icon {
       opacity: 1;
-      color: #fff;
+      color: $color__font--white;
     }
   }
 
@@ -31,11 +31,11 @@
 
   @include desktop() {
     &:hover {
-      border-color: #000;
+      border-color: $color--black;
 
       .icon {
         opacity: 1;
-        color: #fff;
+        color: $color__font--white;
       }
     }
   }
@@ -84,21 +84,21 @@
 .color-picker__color--dark-mode {
   &:active,
   &:focus {
-    border-color: #fff;
+    border-color: $color__font--white;
   }
 
   @include desktop {
     &:hover {
-      border-color: #fff;
+      border-color: $color__font--white;
     }
   }
 }
 
 .color-picker__color--active {
-  border-color: #000;
+  border-color: $color--black;
 
   &.color-picker__color--dark-mode {
-    border-color: #fff;
+    border-color: $color__font--white;
   }
 }
 
