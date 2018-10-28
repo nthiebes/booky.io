@@ -7,7 +7,7 @@ export default class Logo extends Component {
     const { className, src, alt, height, width } = this.props;
     
     return (
-        <img src={ src } alt={ alt } className={ className } />
+        <img src={ src } alt={ alt } height={ height } width={ width } className={ className } />
       )
   }
 }
