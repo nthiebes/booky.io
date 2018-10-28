@@ -181,8 +181,10 @@
 
   "about.title": "About us",
 
-  "help.title": "Help page",
-  "help.intro": "This. that. Pineapple.",
+  "help.title": "Help section",
+  "help.intro1": "This is the help section. Find all answers to common questions on this page.",
+  "help.intro2": "Your question is still not answered? Write us an {mail}!",
+  "help.email": "e-mail",
 
   "next.title": "Next features",
 

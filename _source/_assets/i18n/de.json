@@ -158,7 +158,9 @@
   "about.title": "Über uns",
 
   "help.title": "Hilfeseite",
-  "help.intro": "Dies, das, Ananas.",
+  "help.intro1": "Dies ist die Hilfeseite. Hier findest du Antworten auf häufig gestellte Fragen.",
+  "help.intro2": "Sollte noch eine Frage offen geblieben sein, schreibe uns gerne eine {mail}!",
+  "help.email": "E-Mail",
 
   "next.title": "Kommende Funktionen",
 
