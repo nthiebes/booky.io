@@ -5,13 +5,17 @@ import classNames from 'classnames';
 
 export default class Link extends Component {
   render() {
-    const { color, children, className, darkMode, ...props } = this.props;
-    const internalType = this.props.to === '/' ? IndexLink : RegularLink;
-    const CustomTag = this.props.href ? 'a' : internalType;
+    const { color, children, className, darkMode, to, href, title, onClick, target } = this.props;
+    const internalType = to === '/' ? IndexLink : RegularLink;
+    const CustomTag = href ? 'a' : internalType;
 
     return (
       <CustomTag
-        { ...props }
+        href={ href }
+        to={ to }
+        title={ title }
+        onClick={ onClick }
+        target={ target }
         className={ classNames(
           'link',
           color && `link--${color}`,
