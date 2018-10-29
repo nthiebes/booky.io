@@ -6,7 +6,7 @@
 .language-switcher__icon {
   width: 24px;
   height: 24px;
-  cursor: default;
+  pointer-events: none;
 
   .icon__svg {
     padding: 0;

@@ -49,6 +49,7 @@
   padding: calc(2rem - 4px) calc(3vw + 6px) calc(2rem + 2px) calc(3vw + 6px);
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 
   @include desktop {
     padding-left: 36px;
@@ -67,6 +68,7 @@
   padding: 0 1rem;
   user-select: none;
   text-decoration: none;
+  margin-bottom: 1rem;
 
   @include mobile-tablet {
     &:active,
@@ -121,9 +123,18 @@
   line-height: 1.5rem;
 }
 
+.footer__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .footer__language {
   justify-content: center;
   margin-top: 2rem;
+
+  @include tablet-desktop {
+    margin-right: 1rem;
+  }
 }
 
 .footer__logo {
