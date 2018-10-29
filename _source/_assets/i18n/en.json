@@ -185,6 +185,16 @@
   "help.intro1": "This is the help section. Find all answers to common questions on this page.",
   "help.intro2": "Your question is still not answered? Write us an {mail}!",
   "help.email": "e-mail",
+  "help.section1": "How can I add a bookmark?",
+  "help.section2": "How can I modify a bookmark?",
+  "help.section3": "How can I create a category?",
+  "help.section4": "How can I modify a category?",
+  "help.section5": "How can I add a dashboard?",
+  "help.section6": "How can I modify a dashboard?",
+  "help.section7": "I forgot my password, what can I do?",
+  "help.section8": "How can I customize my booky.io look & feel?",
+  "help.section9": "How can I cancel my supporter subscription?",
+  "help.section10": "How can I delete my account?",
 
   "next.title": "Next features",
 

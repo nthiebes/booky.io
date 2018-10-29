@@ -161,6 +161,16 @@
   "help.intro1": "Dies ist die Hilfeseite. Hier findest du Antworten auf häufig gestellte Fragen.",
   "help.intro2": "Sollte noch eine Frage offen geblieben sein, schreibe uns gerne eine {mail}!",
   "help.email": "E-Mail",
+  "help.section1": "Wie kann ich ein Lesezeichen hinzufügen?",
+  "help.section2": "Wie kann ich ein Lesezeichen bearbeiten?",
+  "help.section3": "Wie kann ich eine Kategorie hinzufügen?",
+  "help.section4": "Wie kann ich eine Kategorie bearbeiten?",
+  "help.section5": "Wie kann ich ein Dashboard hinzufügen?",
+  "help.section6": "Wie kann ich ein Dashboard bearbeiten?",
+  "help.section7": "Ich habe mein Passwort vergessen. Was kann ich nun tun?",
+  "help.section8": "Wie kann ich das Design von booky.io verändern?",
+  "help.section9": "Wie kann ich meine Supporter Mitgliedschaft stornieren?",
+  "help.section10": "Wie kann ich meinen Account löschen?",
 
   "next.title": "Kommende Funktionen",
 

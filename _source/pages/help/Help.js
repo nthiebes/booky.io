@@ -15,7 +15,7 @@ export default class Help extends Component {
       <Page>
         <Section>
 
-          <section>
+          <section className="help-intro">
             <H1>
               <FormattedMessage id="help.title"  />
             </H1>
@@ -34,19 +34,54 @@ export default class Help extends Component {
             </P>
           </section>
 
-          <section className="help__section">
-            <div>
-              <Expandable headline="Wie kann ich dies das Ananas?">
+          <section className="help-container">
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section1"  /> }>
                 { 'I love Sami' }
               </Expandable>
             </div>
-            <div>
-              <Expandable headline="Wie kann ich dies das Ananas?">
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section2"  /> }>
                 { 'I love Nico' }
               </Expandable>
             </div>
-            <div>
-              <Expandable headline="Wie kann ich dies das Ananas?">
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section3"  /> }>
+                { 'We are stupid' }
+              </Expandable>
+            </div>
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section4"  /> }>
+                { 'We are stupid' }
+              </Expandable>
+            </div>
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section5"  /> }>
+                { 'I love Sami' }
+              </Expandable>
+            </div>
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section6"  /> }>
+                { 'I love Nico' }
+              </Expandable>
+            </div>
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section7"  /> }>
+                { 'We are stupid' }
+              </Expandable>
+            </div>
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section8"  /> }>
+                { 'We are stupid' }
+              </Expandable>
+            </div>
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section9"  /> }>
+                { 'We are stupid' }
+              </Expandable>
+            </div>
+            <div className="help-container__item">
+              <Expandable headline={ <FormattedMessage id="help.section10"  /> }>
                 { 'We are stupid' }
               </Expandable>
             </div>
