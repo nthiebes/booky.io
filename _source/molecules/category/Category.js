@@ -15,6 +15,9 @@ class Category extends Component {
 
     this.toggleCategory = this.toggleCategory.bind(this);
     this.toggleEditMode = this.toggleEditMode.bind(this);
+    this.onEditClick = this.onEditClick.bind(this);
+    this.onDeleteClick = this.onDeleteClick.bind(this);
+    this.onAddClick = this.onAddClick.bind(this);
     this.state = {
       open: props.open,
       editMode: false
@@ -33,8 +36,35 @@ class Category extends Component {
     });
   }
 
+  onEditClick() {
+    const { name, id, openModal, color } = this.props;
+
+    openModal('EditCategory', {
+      name,
+      id,
+      color
+    });
+  }
+
+  onDeleteClick() {
+    const { name, id, openModal } = this.props;
+
+    openModal('DeleteCategory', {
+      name,
+      id
+    });
+  }
+
+  onAddClick() {
+    const { id, openModal } = this.props;
+
+    openModal('AddBookmark', {
+      categoryId: id
+    });
+  }
+
   render() {
-    const { name, id, color, bookmarks, openModal, intl, darkMode } = this.props;
+    const { name, id, color, bookmarks, intl, darkMode } = this.props;
     const { open, editMode } = this.state;
     const headerClassName = classNames(
       'category__header',
@@ -57,21 +87,14 @@ class Category extends Component {
             className="category__icon"
             icon="edit"
             title={ intl.formatMessage({ id: 'category.edit' }) }
-            onClick={ () => { openModal('EditCategory', {
-              name,
-              id,
-              color
-            }); } }
+            onClick={ this.onEditClick }
             tabIndex={ editMode ? '0' : '-1' }
           />
           <Icon
             className="category__icon"
             icon="delete"
             title={ intl.formatMessage({ id: 'category.delete' }) }
-            onClick={ () => { openModal('DeleteCategory', {
-              name,
-              id
-            }); } }
+            onClick={ this.onDeleteClick }
             tabIndex={ editMode ? '0' : '-1' }
           />
           <Icon
@@ -108,13 +131,7 @@ class Category extends Component {
           </Droppable>
         </ul>
         { open && (
-          <ButtonSmallPrimary
-            icon="add"
-            className="category__button"
-            onClick={ () => { openModal('AddBookmark', {
-              categoryId: id
-            }); } }
-          >
+          <ButtonSmallPrimary icon="add" className="category__button" onClick={ this.onAddClick }>
             <FormattedHTMLMessage id="bookmark.add" />
           </ButtonSmallPrimary>
         ) }

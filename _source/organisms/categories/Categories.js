@@ -8,8 +8,18 @@ import Empty from '../../molecules/empty';
 import { ButtonSmallPrimary } from '../../atoms/button';
 
 class Categories extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onAddClick = this.onAddClick.bind(this);
+  }
+
+  onAddClick() {
+    this.props.openModal('AddCategory');
+  }
+
   render() {
-    const { categories, openModal, dashboardsOpen, hasSidebar, maxWidth, intl, dashboard, className } = this.props;
+    const { categories, dashboardsOpen, hasSidebar, maxWidth, intl, dashboard, className } = this.props;
 
     return (
       <div className={ classNames(
@@ -22,7 +32,7 @@ class Categories extends Component {
         <ButtonSmallPrimary
           icon="add"
           className="categories__button"
-          onClick={ () => { openModal('AddCategory'); } }
+          onClick={ this.onAddClick }
         >
           <FormattedHTMLMessage id="category.add" />
         </ButtonSmallPrimary>

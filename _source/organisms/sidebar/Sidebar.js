@@ -14,10 +14,15 @@ class Sidebar extends Component {
     super(props);
 
     this.onMenuClick = this.onMenuClick.bind(this);
+    this.onCustomizeClick = this.onCustomizeClick.bind(this);
   }
 
   onMenuClick(e) {
     e.stopPropagation();
+  }
+
+  onCustomizeClick() {
+    this.props.openModal('Customize');
   }
 
   render() {
@@ -31,8 +36,7 @@ class Sidebar extends Component {
       location,
       className,
       dashboardsSidebar,
-      darkMode,
-      openModal
+      darkMode
     } = this.props;
     const { pathname } = location;
 
@@ -172,7 +176,7 @@ class Sidebar extends Component {
                     pathname === '/customize' && 'sidebar__item--active',
                     darkMode && 'sidebar__item--dark-mode'
                   ) }
-                  onClick={ () => { openModal('Customize'); } }
+                  onClick={ this.onCustomizeClick }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="settings" />

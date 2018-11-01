@@ -7,8 +7,37 @@ import classNames from 'classnames';
 import Icon from '../../atoms/icon';
 
 class Bookmark extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onEditClick = this.onEditClick.bind(this);
+    this.onDeleteClick = this.onDeleteClick.bind(this);
+  }
+
+  onEditClick() {
+    const { url, name, id, openModal, categoryId } = this.props;
+
+    openModal('EditBookmark', {
+      id,
+      url,
+      name,
+      categoryId
+    });
+  }
+
+  onDeleteClick() {
+    const { url, name, id, openModal, categoryId } = this.props;
+
+    openModal('DeleteBookmark', {
+      id,
+      url,
+      name,
+      categoryId
+    });
+  }
+
   render() {
-    const { url, name, editMode, id, openModal, categoryId, index, intl, newtab, favicon, darkMode } = this.props;
+    const { url, name, editMode, id, index, intl, newtab, favicon, darkMode } = this.props;
 
     return (
       <Draggable index={ index } draggableId={ `bookmark-${id}` }>
@@ -24,24 +53,14 @@ class Bookmark extends Component {
                   className="bookmark__icon"
                   icon="edit"
                   title={ intl.formatMessage({ id: 'bookmark.edit' }) }
-                  onClick={ () => { openModal('EditBookmark', {
-                    id,
-                    url,
-                    name,
-                    categoryId
-                  }); } }
+                  onClick={ this.onEditClick }
                   tabIndex={ editMode ? '0' : '-1' }
                 />
                 <Icon
                   className="bookmark__icon"
                   icon="delete"
                   title={ intl.formatMessage({ id: 'bookmark.delete' }) }
-                  onClick={ () => { openModal('DeleteBookmark', {
-                    id,
-                    url,
-                    name,
-                    categoryId
-                  }); } }
+                  onClick={ this.onDeleteClick }
                   tabIndex={ editMode ? '0' : '-1' }
                 />
                 <Icon
