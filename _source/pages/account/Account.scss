@@ -2,3 +2,9 @@
   width: 480px;
   max-width: 100%;
 }
+
+.account__tab-bar {
+  width: calc(100% + 12px);
+  margin-left: -6px;
+  margin-right: -6px;
+}

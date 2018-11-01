@@ -6,13 +6,20 @@ export default class Tab extends Component {
   constructor(props) {
     super(props);
 
-    this.onTabClick = this.onTabClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  onTabClick() {
+  handleClick() {
     const { tabId, onClick } = this.props;
 
     onClick(tabId);
+  }
+
+  handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      this.handleClick();
+    }
   }
 
   render() {
@@ -21,7 +28,10 @@ export default class Tab extends Component {
     return (
       <li
         className={ classNames('tab-bar__tab', active && 'tab-bar__tab--active') }
-        onClick={ this.onTabClick }>
+        onClick={ this.handleClick }
+        onKeyDown={ this.handleKeyDown }
+        tabIndex="0"
+      >
         { name }
       </li>
     );
