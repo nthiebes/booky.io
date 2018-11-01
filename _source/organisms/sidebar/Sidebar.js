@@ -31,7 +31,8 @@ class Sidebar extends Component {
       location,
       className,
       dashboardsSidebar,
-      darkMode
+      darkMode,
+      openModal
     } = this.props;
     const { pathname } = location;
 
@@ -171,8 +172,7 @@ class Sidebar extends Component {
                     pathname === '/customize' && 'sidebar__item--active',
                     darkMode && 'sidebar__item--dark-mode'
                   ) }
-                  to="/customize"
-                  onClick={ closeMenu }
+                  onClick={ () => { openModal('Customize'); } }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="settings" />
@@ -217,7 +217,8 @@ Sidebar.propTypes = {
   direction: PropTypes.string,
   className: PropTypes.string,
   dashboardsSidebar: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired
+  darkMode: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired
 };
 
 Sidebar.defaultProps = {

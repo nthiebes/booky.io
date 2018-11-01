@@ -65,8 +65,14 @@ class Modal extends Component {
               <FormattedMessage id="button.cancel" />
             </ButtonLargeLight>
           ) }
-          <ButtonLargeBlue pending={ pending } disabled={ pending } className="modal__button" icon="save" type="submit">
-            <FormattedMessage id="button.confirm" />
+          <ButtonLargeBlue
+            pending={ pending }
+            disabled={ pending }
+            className="modal__button"
+            icon={ noCancel ? 'close' : 'save' }
+            type="submit"
+          >
+            <FormattedMessage id={ noCancel ? 'button.close' : 'button.confirm' } />
           </ButtonLargeBlue>
         </footer>
       </Form>

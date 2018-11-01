@@ -11,6 +11,7 @@ import AddDashboard from './modals/AddDashboard';
 import EditDashboard from './modals/EditDashboard';
 import DeleteDashboard from './modals/DeleteDashboard';
 import EditStructure from './modals/EditStructure';
+import Customize from './modals/Customize';
 
 export default class Modal extends Component {
   constructor(props) {
@@ -57,6 +58,9 @@ export default class Modal extends Component {
       },
       EditStructure: {
         modal: EditStructure
+      },
+      Customize: {
+        modal: Customize
       }
     };
   }

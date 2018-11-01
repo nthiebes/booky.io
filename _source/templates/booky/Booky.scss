@@ -33,12 +33,12 @@
 @import "../../organisms/sidebar/Sidebar";
 @import "../../organisms/modal/Modal";
 @import "../../organisms/dashboards/Dashboards";
+@import "../../organisms/customize/Customize";
 
 @import "../../templates/page/Page";
 
 @import "../../pages/home/Home";
 @import "../../pages/account/Account";
-@import "../../pages/customize/Customize";
 
 html {
   font-size: calc(14px + 0.2vw);

@@ -87,7 +87,7 @@ class Header extends Component {
                 className="booky--hide-mobile-tablet"
                 icon="settings"
                 color="light"
-                onClick={ () => { router.push('/customize'); } }
+                onClick={ () => { openModal('Customize'); } }
                 title={ intl.formatMessage({ id: 'menu.customize' }) }
                 tabIndex="0"
                 ignoreDarkMode

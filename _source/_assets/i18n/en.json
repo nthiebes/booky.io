@@ -36,6 +36,7 @@
   "button.cancel": "Cancel",
   "button.confirm": "Confirm",
   "button.save": "Save",
+  "button.close": "Close",
 
   "dashboard.title": "Collections",
   "dashboard.add": "<b>Collection</b>",
