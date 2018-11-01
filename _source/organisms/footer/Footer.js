@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
-import 'whatwg-fetch';
 import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
