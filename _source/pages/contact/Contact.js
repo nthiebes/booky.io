@@ -6,30 +6,26 @@ import fetcher from '../../_utils/fetcher';
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-import Link from '../../atoms/link';
 import Input from '../../atoms/input';
-import { ErrorMessage } from '../../atoms/messages';
+import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
-import Checkbox from '../../atoms/checkbox';
+import Textarea from '../../atoms/textarea';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 
-import './Join.scss';
-
-class Join extends Component {
+class Contact extends Component {
   constructor(props) {
     super(props);
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      username: '',
-      email: '',
-      password: '',
+      username: props.username,
+      email: props.email,
+      message: '',
       pending: false,
-      showPassword: false,
-      error: null
+      error: null,
+      success: false
     };
   }
 
@@ -40,12 +36,6 @@ class Join extends Component {
     });
   }
 
-  handleCheckboxChange({ checked }) {
-    this.setState({
-      showPassword: checked
-    });
-  }
-
   handleSubmit(params) {
     this.setState({
       pending: true,
@@ -53,7 +43,7 @@ class Join extends Component {
     });
 
     fetcher({
-      url: '/join',
+      url: '/contact',
       type: 'POST',
       params,
       onSuccess: (data) => {
@@ -62,11 +52,10 @@ class Join extends Component {
         window.setTimeout(() => {
           this.setState({
             pending: false,
-            error: data.error
+            error: data.error,
+            success: true
           });
         }, 300);
-
-        !data.error && this.props.updateUser(data.user);
       },
       onError: () => {
         window.setTimeout(() => {
@@ -81,15 +70,18 @@ class Join extends Component {
 
   render() {
     const { intl } = this.props;
-    const { username, email, password, pending, showPassword, error } = this.state;
+    const { username, email, message, pending, error, success } = this.state;
 
     return (
       <Page>
         <Section compact>
           <Form onSubmit={ this.handleSubmit }>
             <H1>
-              <FormattedMessage id="join.headline" />
+              <FormattedMessage id="contact.headline" />
             </H1>
+            <P first>
+              <FormattedMessage id="contact.text" />
+            </P>
             <Input
               value={ username }
               name="username"
@@ -114,42 +106,28 @@ class Join extends Component {
               requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
               disabled={ pending }
             />
-            <Input
-              value={ password }
-              name="password"
-              id="password"
-              autoComplete="current-password"
-              label={ intl.formatMessage({ id: 'login.password' }) }
+            <Textarea
+              value={ message }
+              name="message"
+              id="message"
+              label={ intl.formatMessage({ id: 'contact.message' }) }
               onChange={ this.handleInputChange }
-              maxLength="225"
+              maxLength="5000"
               required
-              type={ showPassword ? 'text' : 'password' }
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-              requirements={ intl.formatMessage({ id: 'misc.validPassword' }) }
               disabled={ pending }
+              rows={ 5 }
             />
-            <Checkbox
-              label={ intl.formatMessage({ id: 'login.showPassword'}) }
-              id="show-password"
-              onChange={ this.handleCheckboxChange }
-            />
-            { error && <ErrorMessage hasIcon /> }
+            { error && <ErrorMessage message={ error } hasIcon /> }
+            { success && <SuccessMessage message={ 'contact.success' } hasIcon /> }
             <ButtonLargeBlue
-              icon="join"
+              icon="message"
               type="submit"
               pending={ pending }
               disabled={ pending }
               contentBefore
             >
-              <FormattedHTMLMessage id="join.joinNow" />
+              <FormattedHTMLMessage id="button.send" />
             </ButtonLargeBlue>
-            <P className="join__login">
-              <FormattedMessage id="join.registered" />
-              { ' ' }
-              <Link to="/login">
-                <FormattedMessage id="join.login" />
-              </Link>
-            </P>
           </Form>
         </Section>
       </Page>
@@ -157,9 +135,10 @@ class Join extends Component {
   }
 }
 
-Join.propTypes = {
+Contact.propTypes = {
   intl: PropTypes.object.isRequired,
-  updateUser: PropTypes.func.isRequired
+  username: PropTypes.string,
+  email: PropTypes.string
 };
 
-export default injectIntl(Join);
+export default injectIntl(Contact);

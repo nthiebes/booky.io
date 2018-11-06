@@ -6,7 +6,7 @@ import Label from '../label';
 import Icon from '../icon';
 import { ErrorMessage } from '../messages';
 
-export default class Input extends Component {
+export default class Textarea extends Component {
   constructor(props) {
     super(props);
 
@@ -31,7 +31,6 @@ export default class Input extends Component {
     const {
       className,
       placeholder,
-      type,
       color,
       name,
       id,
@@ -40,55 +39,46 @@ export default class Input extends Component {
       maxLength,
       label,
       autoComplete,
-      pattern,
-      requirements,
       disabled,
       validation,
       autoFocus,
-      icon,
-      error
+      error,
+      cols,
+      rows
     } = this.props;
-    const inputProps = {
+    const textareaProps = {
       className: classNames(
-        'input__field',
-        className && className,
-        color && `input__field--color-${color}`,
-        !validation && 'input__field--no-validation',
-        icon && 'input__field--icon'
+        'textarea__field',
+        color && `textarea__field--color-${color}`,
+        !validation && 'textarea__field--no-validation',
+        className && className
       ),
       onBlur: this.onBlur,
       onFocus: this.onFocus,
       onChange: this.onChange,
       value,
       placeholder,
-      type,
       name,
       id,
       required,
       maxLength,
       autoComplete,
-      pattern,
-      requirements,
       disabled,
-      autoFocus
+      autoFocus,
+      cols,
+      rows
     };
 
     return (
       <Fragment>
         { label && <Label htmlFor={ id }>{ label }</Label> }
-        <span className={ classNames('input', className && className) }>
-          <input { ...inputProps } />
+        <span className={ classNames('textarea', className && className) }>
+          <textarea { ...textareaProps } />
           { validation && (
             <Fragment>
-              <Icon icon="check" color="green" className="input__icon input__icon--valid" />
-              <Icon icon="error" color="orange" className="input__icon input__icon--invalid" />
+              <Icon icon="check" color="green" className="textarea__icon textarea__icon--valid" />
+              <Icon icon="error" color="orange" className="textarea__icon textarea__icon--invalid" />
             </Fragment>
-          ) }
-          { icon && <Icon icon={ icon } className="input__icon input__icon--visible" /> }
-          { requirements && (
-            <div className="input__requirements">
-              { requirements }
-            </div>
           ) }
           { error && (
             <ErrorMessage id={ error } />
@@ -99,14 +89,13 @@ export default class Input extends Component {
   }
 }
 
-Input.propTypes = {
+Textarea.propTypes = {
   className: PropTypes.string,
   autoFocus: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
-  type: PropTypes.string,
   color: PropTypes.string,
   name: PropTypes.string,
   id: PropTypes.string,
@@ -115,16 +104,14 @@ Input.propTypes = {
   maxLength: PropTypes.string,
   label: PropTypes.string,
   autoComplete: PropTypes.string,
-  pattern: PropTypes.string,
-  requirements: PropTypes.string,
   disabled: PropTypes.bool,
   validation: PropTypes.bool,
-  icon: PropTypes.string,
-  error: PropTypes.string
+  error: PropTypes.string,
+  cols: PropTypes.number,
+  rows: PropTypes.number
 };
 
-Input.defaultProps = {
-  type: 'text',
+Textarea.defaultProps = {
   color: '',
   value: '',
   validation: true
