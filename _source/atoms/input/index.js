@@ -1,3 +1,3 @@
-import component from './Input';
+import component from './InputContainer';
 
 export default component;
