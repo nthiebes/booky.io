@@ -32,6 +32,7 @@ class Contact extends Component {
   handleInputChange(value, name) {
     this.setState({
       [name]: value,
+      success: false,
       pending: false
     });
   }
