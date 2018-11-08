@@ -8,6 +8,7 @@ import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
+import Logo from '../../atoms/logo';
 import { ButtonSmallLight } from '../../atoms/button';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
@@ -81,7 +82,7 @@ class Footer extends Component {
             <FormattedHTMLMessage id="footer.scroll" />
           </ButtonSmallLight>
           <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
-            <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
+            <Logo />
           </Link>
           <div className="footer__copy">
             { '© 2014-2018' }

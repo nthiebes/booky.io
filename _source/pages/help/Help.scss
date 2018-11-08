@@ -1,4 +1,14 @@
-.help {
+.help-intro {
+  margin-bottom: 32px;
+}
+
+.help-container {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.help-container__item {
+  width: 45%;
+  margin-bottom: 24px;
 }
