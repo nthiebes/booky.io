@@ -19,22 +19,19 @@ class Structure extends Component {
               { dashboards.map((dashboard, index) => (
                 <Draggable draggableId={ `dashboard-${dashboard.id}` } key={ index } index={ index }>
                   { (providedInner) => (
-                    <div>
-                      <div { ...providedInner.draggableProps } ref={ providedInner.innerRef }>
-                        <div className="structure__dashboard">
-                          <label className={ classNames('structure__label', darkMode && 'structure__label--dark-mode') }>
-                            { dashboard.name }
-                          </label>
-                          <Icon
-                            className="structure__icon"
-                            icon="drag"
-                            title={ intl.formatMessage({ id: 'dashboard.drag' }) }
-                            dragHandleProps={ providedInner.dragHandleProps }
-                          />
-                        </div>
-                        <Categories dashboard={ dashboard } />
+                    <div { ...providedInner.draggableProps } ref={ providedInner.innerRef }>
+                      <div className="structure__dashboard">
+                        <label className={ classNames('structure__label', darkMode && 'structure__label--dark-mode') }>
+                          { dashboard.name }
+                        </label>
+                        <Icon
+                          className="structure__icon"
+                          icon="drag"
+                          title={ intl.formatMessage({ id: 'dashboard.drag' }) }
+                          dragHandleProps={ providedInner.dragHandleProps }
+                        />
                       </div>
-                      {providedInner.placeholder}
+                      <Categories dashboard={ dashboard } />
                     </div>
                   ) }
                 </Draggable>

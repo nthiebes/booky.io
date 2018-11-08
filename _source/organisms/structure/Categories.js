@@ -18,19 +18,21 @@ class Categories extends Component {
               { dashboard.categories.map((category, index) => (
                 <Draggable draggableId={ `category-${category.id}` } key={ index } index={ index }>
                   { (providedInner) => (
-                    <div { ...providedInner.draggableProps } ref={ providedInner.innerRef }>
-                      <div key={ index } className="structure__category">
-                        <label className={ classNames('structure__label', darkMode && 'structure__label--dark-mode') }>
-                          { category.name }
-                        </label>
-                        <Icon
-                          className="structure__icon"
-                          icon="drag"
-                          title={ intl.formatMessage({ id: 'category.drag' }) }
-                          dragHandleProps={ providedInner.dragHandleProps }
-                        />
-                      </div>
-                      { providedInner.placeholder }
+                    <div
+                      key={ index }
+                      className="structure__category"
+                      { ...providedInner.draggableProps }
+                      ref={ providedInner.innerRef }
+                    >
+                      <label className={ classNames('structure__label', darkMode && 'structure__label--dark-mode') }>
+                        { category.name }
+                      </label>
+                      <Icon
+                        className="structure__icon"
+                        icon="drag"
+                        title={ intl.formatMessage({ id: 'category.drag' }) }
+                        dragHandleProps={ providedInner.dragHandleProps }
+                      />
                     </div>
                   ) }
                 </Draggable>

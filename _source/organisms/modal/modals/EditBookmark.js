@@ -60,12 +60,12 @@ class EditBookmark extends Component {
         />
         <Input
           name="id"
-          value={ data.id }
+          value={ data.id.toString() }
           type="hidden"
         />
         <Input
           name="categoryId"
-          value={ data.categoryId }
+          value={ data.categoryId.toString() }
           type="hidden"
         />
       </Base>
