@@ -213,6 +213,8 @@
   "customize.stickyToolbar": "Fixed toolbar position",
   "customize.darkMode": "Dark mode",
 
+  "success.default": "Success!",
+
   "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
   "error.email": "email",
   "error.failedLogin": "The username and password do not match.",

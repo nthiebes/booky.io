@@ -1,5 +1,5 @@
-import ErrorMessage from './error/ErrorMessage';
-import SuccessMessage from './success/SuccessMessage';
+import ErrorMessage from './error/ErrorMessageContainer';
+import SuccessMessage from './success/SuccessMessageContainer';
 
 export {
   ErrorMessage,

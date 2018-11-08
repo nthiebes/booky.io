@@ -189,6 +189,8 @@
   "customize.stickyToolbar": "Feste Funktionsleisten-Position",
   "customize.darkMode": "Dunkles Design",
 
+  "success.default": "Erfolg!",
+
   "error.default": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
   "error.email": "E-Mail",
   "error.failedLogin": "Der Benutzername und das Passwort stimmen nicht überein.",
