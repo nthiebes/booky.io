@@ -37,6 +37,7 @@
   "button.confirm": "Confirm",
   "button.save": "Save",
   "button.close": "Close",
+  "button.send": "Send",
 
   "dashboard.title": "Collections",
   "dashboard.add": "<b>Collection</b>",
@@ -212,11 +213,18 @@
   "customize.stickyToolbar": "Fixed toolbar position",
   "customize.darkMode": "Dark mode",
 
+  "success.default": "Success!",
+
   "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
   "error.email": "email",
   "error.failedLogin": "The username and password do not match.",
   "error.usernameInUse": "The username is already in use.",
   "error.emailInUse": "The email address is already in use.",
   "error.invalidEmail": "Please enter a valid email address.",
-  "error.invalidPassword": "Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number."
+  "error.invalidPassword": "Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.",
+
+  "contact.headline": "Write us!",
+  "contact.text": "We're constantly looking for new ways to improve the site and expand its features, so if you have a great idea for a new feature, have found a bug or have some general feedback, we'd love to hear from you!",
+  "contact.message": "Your message",
+  "contact.success": "Your message has been sent successfully!"
 }

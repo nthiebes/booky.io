@@ -11,6 +11,7 @@ import Join from './pages/join';
 import Next from './pages/next';
 import Privacy from './pages/privacy';
 import Legal from './pages/legal';
+import Contact from './pages/contact';
 import NotFound from './pages/not-found';
 
 export default (
@@ -24,6 +25,7 @@ export default (
     <Route path="next" component={ Next } />
     <Route path="privacy" component={ Privacy } />
     <Route path="legal" component={ Legal } />
+    <Route path="contact" component={ Contact } />
     <Route path="*" component={ NotFound } />
   </Route>
 );

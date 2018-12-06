@@ -11,8 +11,10 @@
 @import "../../atoms/headline/Headline";
 @import "../../atoms/paragraph/Paragraph";
 @import "../../atoms/loader/styles/a-loader";
-@import "../../atoms/error-message/ErrorMessage";
+@import "../../atoms/messages/error/ErrorMessage";
+@import "../../atoms/messages/success/SuccessMessage";
 @import "../../atoms/radio/Radio";
+@import "../../atoms/textarea/Textarea";
 
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
