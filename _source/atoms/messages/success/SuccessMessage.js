@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
-import P from '../paragraph';
-import Link from '../link';
-import Icon from '../icon';
+import P from '../../paragraph';
+import Icon from '../../icon';
 
-export default class ErrorMessage extends Component {
+export default class SuccessMessage extends Component {
   constructor(props) {
     super(props);
 
@@ -32,24 +31,21 @@ export default class ErrorMessage extends Component {
     const { animate } = this.state;
 
     return (
-      <P className={ classNames('error', animate && 'error--animate', className && classNames) }>
-        { hasIcon && <Icon icon="error" color="orange" className="error__icon" /> }
-        <FormattedMessage
-          id={ message }
-          values={ { mail: <Link href="mailto:hello@booky.io" color="dark">{ <FormattedMessage id="error.email" /> }</Link> } }
-        />
+      <P className={ classNames('success', animate && 'success--animate', className && className) }>
+        { hasIcon && <Icon icon="check" color="green" className="success__icon" /> }
+        <FormattedMessage id={ message } />
       </P>
     );
   }
 }
 
-ErrorMessage.propTypes = {
+SuccessMessage.propTypes = {
   message: PropTypes.string,
   className: PropTypes.string,
   hasIcon: PropTypes.bool
 };
 
 
-ErrorMessage.defaultProps = {
-  message: 'error.default'
+SuccessMessage.defaultProps = {
+  message: 'success.default'
 };

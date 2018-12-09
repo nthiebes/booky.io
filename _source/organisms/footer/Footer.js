@@ -67,7 +67,7 @@ class Footer extends Component {
             <Link className="footer__menu-item" color="light" to="/help">
               <FormattedMessage id="menu.help" />
             </Link>
-            <Link className="footer__menu-item" color="light" href="mailto:hello@booky.io">
+            <Link className="footer__menu-item" color="light" to="/contact">
               <FormattedMessage id="menu.contact" />
             </Link>
             <Link className="footer__menu-item" color="light" to="/privacy">

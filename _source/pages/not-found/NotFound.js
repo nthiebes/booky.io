@@ -18,7 +18,7 @@ class NotFound extends Component {
             <FormattedMessage
               id="notFound.figureText"
               values={ {
-                mail: <Link href="mailto:hello@booky.io"><FormattedMessage id="error.email" /></Link>,
+                mail: <Link to="/contact"><FormattedMessage id="error.email" /></Link>,
                 home: <Link to="/"><FormattedMessage id="misc.startpage" /></Link>
               } }
             />

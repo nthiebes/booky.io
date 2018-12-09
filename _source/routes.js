@@ -11,6 +11,7 @@ import Join from './pages/join';
 import Next from './pages/next';
 import Privacy from './pages/privacy';
 import Legal from './pages/legal';
+import Contact from './pages/contact';
 import NotFound from './pages/not-found';
 
 export default class Routes extends Component {
@@ -30,6 +31,7 @@ export default class Routes extends Component {
         <Route path="/next" component={ restricted(Next) } />
         <Route path="/privacy" component={ Privacy } />
         <Route path="/legal" component={ Legal } />
+        <Route path="/contact" component={ Contact } />
         <Route path="*" component={ NotFound } />
       </Switch>
     );

@@ -1,11 +1,11 @@
-.input {
+.textarea {
   display: block;
   flex-grow: 1;
   position: relative;
   overflow: hidden;
 }
 
-.input__field {
+.textarea__field {
   background-color: $color__background--ligth;
   box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
   border: 1px solid transparent;
@@ -15,31 +15,32 @@
   color: $color__font--dark;
   font-family: $font__family--text;
   font-size: 1rem;
-  height: 3rem;
-  line-height: 3rem;
-  padding: 0 10px;
+  line-height: 1.556rem;
+  padding: 10px;
   transition: background-color 0.3s, border-color 0.3s linear, box-shadow 0.3s linear;
-  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 3rem;
 
   &:disabled {
     pointer-events: none;
   }
 
   &:valid {
-    padding: 0 36px 0 10px;
+    padding: 10px 36px 10px 10px;
   }
 
-  &:valid ~.input__icon--valid {
+  &:valid ~.textarea__icon--valid {
     opacity: 1;
     transform: none;
   }
 
-  &.input__field--no-validation:focus:valid {
+  &.textarea__field--no-validation:focus:valid {
     border-bottom-color: $color--blue;
   }
 
   &:focus {
-    padding: 0 36px 0 10px;
+    padding: 10px 36px 10px 10px;
     background-color: $color__font--white;
 
     &:valid {
@@ -50,25 +51,20 @@
       border-bottom-color: $color--3;
     }
 
-    &:valid ~.input__icon--valid {
+    &:valid ~.textarea__icon--valid {
       color: $color--green;
     }
 
-    &:invalid ~.input__icon--invalid {
+    &:invalid ~.textarea__icon--invalid {
       opacity: 1;
       transform: none;
       color: $color--3;
     }
-
-    ~.input__requirements {
-      max-height: 5rem;
-      opacity: 1;
-    }
   }
 
   @include desktop {
-    &.input__field--no-validation:hover:valid,
-    &.input__field--no-validation:hover:focus:valid {
+    &.textarea__field--no-validation:hover:valid,
+    &.textarea__field--no-validation:hover:focus:valid {
       border-bottom-color: $color--blue;
     }
 
@@ -89,11 +85,7 @@
   }
 }
 
-.input__field--icon {
-  padding: 0 36px 0 10px;
-}
-
-.input__icon {
+.textarea__icon {
   position: absolute;
   right: 0;
   top: 6px;
@@ -104,19 +96,7 @@
   color: $color__font--medium;
 }
 
-.input__icon--visible {
+.textarea__icon--visible {
   transform: translateX(0);
   opacity: 1;
-}
-
-.input__requirements {
-  max-height: 0;
-  transition: opacity 0.2s linear, max-height 0.3s linear;
-  color: $color__font--medium;
-  margin-top: 0.5rem;
-  opacity: 0;
-}
-
-.input__requirements--dark-mode {
-  color: $color__font--light;
 }
