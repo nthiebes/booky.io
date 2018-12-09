@@ -42,38 +42,37 @@ class Bookmark extends Component {
     return (
       <Draggable index={ index } draggableId={ `bookmark-${id}` }>
         { (provided) => (
-          <div>
-            <div { ...provided.draggableProps } ref={ provided.innerRef }>
-              <li className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }>
-                <img src={ favicon || '_assets/no-favicon.png' } height="16" width="16" />
-                <a className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') } href={ url } target={ newtab ? '_blank' : '_self' }>
-                  { name }
-                </a>
-                <Icon
-                  className="bookmark__icon"
-                  icon="edit"
-                  title={ intl.formatMessage({ id: 'bookmark.edit' }) }
-                  onClick={ this.onEditClick }
-                  tabIndex={ editMode ? '0' : '-1' }
-                />
-                <Icon
-                  className="bookmark__icon"
-                  icon="delete"
-                  title={ intl.formatMessage({ id: 'bookmark.delete' }) }
-                  onClick={ this.onDeleteClick }
-                  tabIndex={ editMode ? '0' : '-1' }
-                />
-                <Icon
-                  className="bookmark__icon bookmark__icon--drag"
-                  icon="drag"
-                  title={ intl.formatMessage({ id: 'bookmark.drag' }) }
-                  dragHandleProps={ provided.dragHandleProps }
-                  tabIndex={ editMode ? '0' : '-1' }
-                />
-              </li>
-            </div>
-            {provided.placeholder}
-          </div>
+          <li
+            className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }
+            { ...provided.draggableProps }
+            ref={ provided.innerRef }
+          >
+            <img src={ favicon || '_assets/no-favicon.png' } height="16" width="16" />
+            <a className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') } href={ url } target={ newtab ? '_blank' : '_self' }>
+              { name }
+            </a>
+            <Icon
+              className="bookmark__icon"
+              icon="edit"
+              title={ intl.formatMessage({ id: 'bookmark.edit' }) }
+              onClick={ this.onEditClick }
+              tabIndex={ editMode ? '0' : '-1' }
+            />
+            <Icon
+              className="bookmark__icon"
+              icon="delete"
+              title={ intl.formatMessage({ id: 'bookmark.delete' }) }
+              onClick={ this.onDeleteClick }
+              tabIndex={ editMode ? '0' : '-1' }
+            />
+            <Icon
+              className="bookmark__icon bookmark__icon--drag"
+              icon="drag"
+              title={ intl.formatMessage({ id: 'bookmark.drag' }) }
+              dragHandleProps={ provided.dragHandleProps }
+              tabIndex={ editMode ? '0' : '-1' }
+            />
+          </li>
         ) }
       </Draggable>
     );
@@ -87,7 +86,7 @@ Bookmark.propTypes = {
   url: PropTypes.string.isRequired,
   editMode: PropTypes.bool.isRequired,
   target: PropTypes.string,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   openModal: PropTypes.func.isRequired,
   categoryId: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,

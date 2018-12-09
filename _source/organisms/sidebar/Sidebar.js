@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -169,7 +169,7 @@ class Sidebar extends Component {
                     <FormattedMessage id="menu.next" />
                   </label>
                 </Link>
-                <Link
+                <span
                   className={ classNames(
                     'sidebar__item',
                     'booky--hide-desktop',
@@ -183,7 +183,7 @@ class Sidebar extends Component {
                   <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                     <FormattedMessage id="menu.customize" />
                   </label>
-                </Link>
+                </span>
                 <Link
                   className={ classNames(
                     'sidebar__item',

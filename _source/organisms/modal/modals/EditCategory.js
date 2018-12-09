@@ -54,7 +54,7 @@ class EditCategory extends Component {
         <ColorPicker value={ color } onChange={ this.onColorChange } disabled={ pending } />
         <Input
           name="id"
-          value={ data.id }
+          value={ data.id.toString() }
           type="hidden"
         />
       </Base>

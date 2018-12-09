@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link as RegularLink, IndexLink } from 'react-router';
+import { Link as RegularLink, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 export default class Link extends Component {
@@ -17,9 +17,27 @@ export default class Link extends Component {
   }
 
   render() {
-    const { color, children, className, darkMode, to, href, title, onClick, target, tabIndex } = this.props;
-    const internalType = to === '/' ? IndexLink : RegularLink;
-    const CustomTag = href ? 'a' : internalType;
+    const {
+      color,
+      children,
+      className,
+      darkMode,
+      to,
+      href,
+      title,
+      onClick,
+      target,
+      tabIndex,
+      isNavLink,
+      activeClassName
+    } = this.props;
+    const LinkComponent = isNavLink ? NavLink : RegularLink;
+    const CustomTag = href ? 'a' : LinkComponent;
+    const navLinkProps = {};
+
+    if (isNavLink) {
+      navLinkProps.activeClassName = activeClassName;
+    }
 
     return (
       <CustomTag
@@ -36,6 +54,7 @@ export default class Link extends Component {
           darkMode && 'link--dark-mode',
           className && className
         ) }
+        { ...navLinkProps }
       >
         { children }
       </CustomTag>
@@ -51,13 +70,15 @@ Link.propTypes = {
     PropTypes.string,
     PropTypes.element,
     PropTypes.array
-  ]),
+  ]).isRequired,
   title: PropTypes.string,
   color: PropTypes.string,
   onClick: PropTypes.func,
   target: PropTypes.string,
   darkMode: PropTypes.bool,
-  tabIndex: PropTypes.string
+  tabIndex: PropTypes.string,
+  isNavLink: PropTypes.bool,
+  activeClassName: PropTypes.string
 };
 
 Link.defaultProps = {
