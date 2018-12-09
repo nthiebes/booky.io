@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Menu from '../../molecules/menu';
@@ -47,7 +47,7 @@ class Header extends Component {
   }
 
   onLogoutClick() {
-    this.props.router.push('/logout');
+    this.props.history.replace({ pathname: '/logout' });
   }
 
   render() {
@@ -157,7 +157,7 @@ Header.propTypes = {
   sidebarOpen: PropTypes.bool,
   home: PropTypes.bool,
   className: PropTypes.string,
-  router: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired
 };
 
 export default injectIntl(withRouter(Header));

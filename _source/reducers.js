@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
 import { intlReducer } from 'react-intl-redux';
 
 import user from './_state/user';
@@ -10,7 +9,6 @@ import sidebar from './_state/sidebar';
 import modal from './_state/modal';
 
 const reducers = combineReducers({
-  routing: routerReducer,
   intl: intlReducer,
   user,
   toolbar,
