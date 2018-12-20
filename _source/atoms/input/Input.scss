@@ -20,6 +20,7 @@
   padding: 0 10px;
   transition: background-color 0.3s, border-color 0.3s linear, box-shadow 0.3s linear;
   width: 100%;
+  margin-bottom: 0.5rem;
 
   &:disabled {
     pointer-events: none;
@@ -111,9 +112,8 @@
 
 .input__requirements {
   max-height: 0;
-  transition: opacity 0.2s linear, max-height 0.3s linear;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
   color: $color__font--medium;
-  margin-top: 0.5rem;
   opacity: 0;
 }
 

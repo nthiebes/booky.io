@@ -1,12 +1,11 @@
 .success {
   color: $color--2;
-  transition: opacity 0.2s ease, max-height 0.3s ease;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
   max-height: 0;
   opacity: 0;
   position: relative;
   display: flex;
   padding-bottom: 0;
-  padding-top: 0.5rem;
 }
 
 .success--animate {
