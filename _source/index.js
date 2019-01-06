@@ -38,14 +38,14 @@ fetch(`/_assets/i18n/${language}.json`)
     fetcher({
       url: '/user',
       onSuccess: (data) => {
-        // console.log('user', data);
+        console.log('user success', data);
 
         const store = configureStore({
           ...initialState,
           user: {
             ...initialState.user,
-            loggedIn: typeof data.user === 'object',
-            ...data
+            loggedIn: true,
+            ...data.settings
           },
           intl: {
             locale: language,
@@ -56,14 +56,13 @@ fetch(`/_assets/i18n/${language}.json`)
         loadingDone(store);
       },
       onError: (error) => {
-        // console.log('error:', error);
+        console.log('user error:', error);
 
         const store = configureStore({
           ...initialState,
           user: {
             ...initialState.user,
-            loggedIn: true, // false
-            error
+            loggedIn: false
           },
           intl: {
             locale: language,

@@ -56,7 +56,12 @@ class Login extends Component {
       type: 'POST',
       params,
       onSuccess: (data) => {
-        // console.log('success:', data);
+        console.log('login success:', data);
+
+        this.props.updateUser({
+          loggedIn: true,
+          ...data
+        });
 
         window.setTimeout(() => {
           this.setState({
@@ -67,7 +72,9 @@ class Login extends Component {
 
         !data.error && this.props.updateUser(data.user);
       },
-      onError: () => {
+      onError: (error) => {
+        console.log('login error:', error);
+
         window.setTimeout(() => {
           this.setState({
             pending: false,
