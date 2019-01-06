@@ -84,7 +84,7 @@ class Footer extends Component {
             </ButtonSmallLight>
           </div>
           <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
-            <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
+            <img src="../../_assets/booky_3.svg" alt="Logo" height="36" />
           </Link>
           <div className="footer__copy">
             { '© 2014-2018' }
