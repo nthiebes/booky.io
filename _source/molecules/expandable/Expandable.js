@@ -45,5 +45,5 @@ Expandable.propTypes = {
     PropTypes.element,
     PropTypes.string
   ]).isRequired,
-  headline: PropTypes.string.isRequired
+  headline: PropTypes.node.isRequired
 };
