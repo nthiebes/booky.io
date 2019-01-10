@@ -9,7 +9,13 @@ export default class Logo extends Component {
     const { className, src, alt, height, width, colorInverted } = this.props;
     
     return (
-      <img src={ src } alt={ alt } height={ height } width={ width } className={ classNames(colorInverted && 'logo--inverted', className && className )} />
+      <img 
+        src={ src } 
+        alt={ alt } 
+        height={ height } 
+        width={ width } 
+        className={ classNames(colorInverted && 'logo--inverted', className && className )} 
+      />
     )
   }
 }
