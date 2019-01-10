@@ -22,23 +22,24 @@ export default class Expandable extends Component {
   }
 
   render() {
-    const { headline, children } = this.props;
+    const { className, headline, children } = this.props;
     const { open } = this.state;
 
     return (
-      <Fragment>
+      <section className={className}>
         <H2 className="expandable__headline" onClick={ this.handleClick }>
           { headline }
         </H2>
         <div className={ classNames('expandable__content', open && 'expandable__content--open') }>
           { children }
         </div>
-      </Fragment>
+      </section>
     );
   }
 }
 
 Expandable.propTypes = {
+  className: PropTypes.String,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,

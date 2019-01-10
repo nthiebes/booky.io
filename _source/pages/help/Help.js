@@ -35,56 +35,36 @@ export default class Help extends Component {
           </section>
 
           <section className="help-container">
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section1"  /> }>
-                { 'I love Sami' }
-              </Expandable>
-            </div>
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section2"  /> }>
-                { 'I love Nico' }
-              </Expandable>
-            </div>
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section3"  /> }>
-                { 'We are stupid' }
-              </Expandable>
-            </div>
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section4"  /> }>
-                { 'We are stupid' }
-              </Expandable>
-            </div>
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section5"  /> }>
-                { 'I love Sami' }
-              </Expandable>
-            </div>
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section6"  /> }>
-                { 'I love Nico' }
-              </Expandable>
-            </div>
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section7"  /> }>
-                { 'We are stupid' }
-              </Expandable>
-            </div>
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section8"  /> }>
-                { 'We are stupid' }
-              </Expandable>
-            </div>
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section9"  /> }>
-                { 'We are stupid' }
-              </Expandable>
-            </div>
-            <div className="help-container__item">
-              <Expandable headline={ <FormattedMessage id="help.section10"  /> }>
-                { 'We are stupid' }
-              </Expandable>
-            </div>
+            <Expandable headline={ <FormattedMessage id="help.section1"  /> } className="help-container__item">
+              { 'I love Sami' }
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.section2"  /> } className="help-container__item">
+              { 'I love Nico' }
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.section3"  /> } className="help-container__item">
+              { 'We are stupid' }
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.section4"  /> } className="help-container__item">
+              { 'We are stupid' }
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.section5"  /> } className="help-container__item">
+              { 'I love Sami' }
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.section6"  /> } className="help-container__item">
+              { 'I love Nico' }
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.section7"  /> } className="help-container__item">
+              { 'We are stupid' }
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.section8"  /> } className="help-container__item">
+              { 'We are stupid' }
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.section9"  /> } className="help-container__item">
+              { 'We are stupid' }
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.section10"  /> } className="help-container__item">
+              { 'We are stupid' }
+            </Expandable>
           </section>
 
         </Section>
