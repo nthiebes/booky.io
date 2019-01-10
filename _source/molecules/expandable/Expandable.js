@@ -39,7 +39,7 @@ export default class Expandable extends Component {
 }
 
 Expandable.propTypes = {
-  className: PropTypes.String,
+  className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,

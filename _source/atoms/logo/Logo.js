@@ -24,7 +24,7 @@ Logo.propTypes = {
   className: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
-  colorInverted: PropTypes.boolean,
+  colorInverted: PropTypes.bool,
   height: PropTypes.string,
   width: PropTypes.string 
 }
