@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
+import { BrowserRouter } from 'react-router-dom';
+
+import Routes from '../../routes';
 import './Booky.scss';
 
 export default class Booky extends Component {
@@ -48,14 +51,15 @@ export default class Booky extends Component {
   render() {
     return (
       <DragDropContext onDragStart={ this.onDragStart } onDragEnd={ this.onDragEnd }>
-        { this.props.children }
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
       </DragDropContext>
     );
   }
 }
 
 Booky.propTypes = {
-  children: PropTypes.element.isRequired,
   dragBookmark: PropTypes.func.isRequired,
   dragCategory: PropTypes.func.isRequired,
   dragDashboard: PropTypes.func.isRequired

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 export default class Headline extends Component {
   render() {
-    const { className, children, type, onClick, noMargin, id, display, color } = this.props;
+    const { className, children, type, onClick, noMargin, id, display, color, darkMode } = this.props;
     const CustomTag = `h${type}`;
 
     return (
@@ -14,6 +14,7 @@ export default class Headline extends Component {
           display && 'headline--display',
           noMargin && 'headline--no-margin',
           color && `headline--color-${color}`,
+          darkMode && 'headline--dark-mode',
           className && className
         ) }
         onClick={ onClick && onClick }
@@ -37,5 +38,6 @@ Headline.propTypes = {
   noMargin: PropTypes.bool,
   id: PropTypes.string,
   display: PropTypes.bool,
-  color: PropTypes.string
+  color: PropTypes.string,
+  darkMode: PropTypes.bool
 };

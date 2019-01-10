@@ -46,6 +46,10 @@
   }
 }
 
+.toolbar--dark-mode {
+  background-color: $color__background--medium;
+}
+
 .toolbar__headline {
   margin: 0 0 0 1rem;
   padding: 0;

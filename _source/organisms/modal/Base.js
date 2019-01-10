@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
@@ -39,10 +40,10 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, hasAnchor } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, hasAnchor, darkMode } = this.props;
 
     return (
-      <Form className="modal__inner" onSubmit={ this.onSubmit } onClick={ this.handleClick }>
+      <Form className={ classNames('modal__inner', darkMode && 'modal__inner--dark') } onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
           { hasAnchor && (
             <a
@@ -58,14 +59,20 @@ class Modal extends Component {
         <div className="modal__content">
           { children }
         </div>
-        <footer className="modal__footer">
+        <footer className={ classNames('modal__footer', noCancel && 'modal__footer--one-button') }>
           { !noCancel && (
             <ButtonLargeLight className="modal__button modal__button--cancel" icon="close" onClick={ this.onCancel } type="button">
               <FormattedMessage id="button.cancel" />
             </ButtonLargeLight>
           ) }
-          <ButtonLargeBlue pending={ pending } disabled={ pending } className="modal__button" icon="save" type="submit">
-            <FormattedMessage id="button.confirm" />
+          <ButtonLargeBlue
+            pending={ pending }
+            disabled={ pending }
+            className="modal__button"
+            icon={ noCancel ? 'close' : 'save' }
+            type="submit"
+          >
+            <FormattedMessage id={ noCancel ? 'button.close' : 'button.confirm' } />
           </ButtonLargeBlue>
         </footer>
       </Form>
@@ -87,12 +94,6 @@ Modal.propTypes = {
   noCancel: PropTypes.bool,
   intl: PropTypes.object.isRequired,
   pending: PropTypes.bool.isRequired,
-  hasAnchor: PropTypes.bool
-};
-
-Modal.defaultProps = {
-  toolbar: false,
-  className: '',
-  noCancel: false,
-  valid: true
+  hasAnchor: PropTypes.bool,
+  darkMode: PropTypes.bool.isRequired
 };

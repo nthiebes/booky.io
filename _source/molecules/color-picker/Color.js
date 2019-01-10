@@ -25,18 +25,19 @@ export default class Color extends Component {
   }
 
   render() {
-    const { color, value } = this.props;
+    const { color, value, darkMode } = this.props;
     const className = classNames(
       'color-picker__color',
       `color-picker__color--${color.key}`,
-      value === color.key && 'color-picker__color--active'
+      value === color.key && 'color-picker__color--active',
+      darkMode && 'color-picker__color--dark-mode'
     );
 
     return (
       <span className={ className } onClick={ this.onClick } onKeyDown={ this.handleKeyDown } tabIndex="0">
         <Icon
           icon="check"
-          color={ value === color.key ? 'light' : 'dark' }
+          color="light"
           className={ classNames(
             'color-picker__icon',
             value === color.key && 'color-picker__icon--active') }
@@ -56,5 +57,6 @@ export default class Color extends Component {
 Color.propTypes = {
   value: PropTypes.string.isRequired,
   color: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool
 };

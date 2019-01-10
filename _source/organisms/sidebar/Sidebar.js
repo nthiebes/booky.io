@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -14,18 +14,41 @@ class Sidebar extends Component {
     super(props);
 
     this.onMenuClick = this.onMenuClick.bind(this);
+    this.onCustomizeClick = this.onCustomizeClick.bind(this);
   }
 
   onMenuClick(e) {
     e.stopPropagation();
   }
 
+  onCustomizeClick() {
+    this.props.openModal('Customize');
+  }
+
   render() {
-    const { loggedIn, open, closeMenu, dashboards, intl, direction, location, className, dashboardsSidebar } = this.props;
+    const {
+      loggedIn,
+      open,
+      closeMenu,
+      dashboards,
+      intl,
+      direction,
+      location,
+      className,
+      dashboardsSidebar,
+      darkMode
+    } = this.props;
     const { pathname } = location;
 
     return (
-      <aside className={ classNames('sidebar', open && 'sidebar--open', `sidebar--${direction}`, 'booky--hide-desktop', className && className) }>
+      <aside className={ classNames(
+        'sidebar',
+        open && 'sidebar--open',
+        `sidebar--${direction}`,
+        darkMode && 'sidebar--dark-mode',
+        'booky--hide-desktop',
+        className && className
+      ) }>
         <header className="sidebar__header">
           <Link
             to="/"
@@ -50,82 +73,132 @@ class Sidebar extends Component {
           <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
           <nav className="sidebar__nav">
             <Link
-              className={ classNames('sidebar__item', pathname === '/about' && 'sidebar__item--active') }
+              className={ classNames(
+                'sidebar__item',
+                pathname === '/about' && 'sidebar__item--active',
+                darkMode && 'sidebar__item--dark-mode'
+              ) }
               to="/about"
               onClick={ closeMenu }
               tabIndex={ open ? '0' : '-1' }
             >
               <Icon icon="about" />
-              <label className="sidebar__label"><FormattedMessage id="menu.about" /></label>
+              <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                <FormattedMessage id="menu.about" />
+              </label>
             </Link>
             <Link
-              className={ classNames('sidebar__item', pathname === '/help' && 'sidebar__item--active') }
+              className={ classNames(
+                'sidebar__item',
+                pathname === '/help' && 'sidebar__item--active',
+                darkMode && 'sidebar__item--dark-mode'
+              ) }
               to="/help"
               onClick={ closeMenu }
               tabIndex={ open ? '0' : '-1' }
             >
               <Icon icon="help" />
-              <label className="sidebar__label"><FormattedMessage id="menu.help" /></label>
+              <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                <FormattedMessage id="menu.help" />
+              </label>
             </Link>
             { !loggedIn && (
               <Fragment>
                 <Link
-                  className={ classNames('sidebar__item', pathname === '/login' && 'sidebar__item--active') }
+                  className={ classNames(
+                    'sidebar__item',
+                    pathname === '/login' && 'sidebar__item--active',
+                    darkMode && 'sidebar__item--dark-mode'
+                  ) }
                   to="/login"
                   onClick={ closeMenu }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="account" />
-                  <label className="sidebar__label"><FormattedMessage id="menu.login" /></label>
+                  <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                    <FormattedMessage id="menu.login" />
+                  </label>
                 </Link>
                 <Link
-                  className={ classNames('sidebar__item sidebar__item--highlighted', pathname === '/join' && 'sidebar__item--active') }
+                  className={ classNames(
+                    'sidebar__item',
+                    'sidebar__item--highlighted',
+                    pathname === '/join' && 'sidebar__item--active',
+                    darkMode && 'sidebar__item--dark-mode'
+                  ) }
                   to="/join"
                   onClick={ closeMenu }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="join" />
-                  <label className="sidebar__label"><FormattedMessage id="menu.register" /></label>
+                  <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                    <FormattedMessage id="menu.register" />
+                  </label>
                 </Link>
               </Fragment>
             ) }
             { loggedIn && (
               <Fragment>
                 <Link
-                  className={ classNames('sidebar__item', pathname === '/account' && 'sidebar__item--active') }
+                  className={ classNames(
+                    'sidebar__item',
+                    pathname === '/account' && 'sidebar__item--active',
+                    darkMode && 'sidebar__item--dark-mode'
+                  ) }
                   to="/account"
                   onClick={ closeMenu }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="account"/>
-                  <label className="sidebar__label"><FormattedMessage id="menu.account" /></label>
+                  <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                    <FormattedMessage id="menu.account" />
+                  </label>
                 </Link>
                 <Link
-                  className={ classNames('sidebar__item', pathname === '/next' && 'sidebar__item--active') }
+                  className={ classNames(
+                    'sidebar__item',
+                    pathname === '/next' && 'sidebar__item--active',
+                    darkMode && 'sidebar__item--dark-mode'
+                  ) }
                   to="/next"
                   onClick={ closeMenu }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="next" />
-                  <label className="sidebar__label"><FormattedMessage id="menu.next" /></label>
+                  <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                    <FormattedMessage id="menu.next" />
+                  </label>
                 </Link>
-                <Link
-                  className={ classNames('sidebar__item', 'booky--hide-desktop', pathname === '/customize' && 'sidebar__item--active') }
-                  to="/customize"
-                  onClick={ closeMenu }
+                <span
+                  className={ classNames(
+                    'sidebar__item',
+                    'booky--hide-desktop',
+                    pathname === '/customize' && 'sidebar__item--active',
+                    darkMode && 'sidebar__item--dark-mode'
+                  ) }
+                  onClick={ this.onCustomizeClick }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="settings" />
-                  <label className="sidebar__label"><FormattedMessage id="menu.customize" /></label>
-                </Link>
+                  <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                    <FormattedMessage id="menu.customize" />
+                  </label>
+                </span>
                 <Link
-                  className={ classNames('sidebar__item', 'booky--hide-desktop', pathname === '/logout' && 'sidebar__item--active') }
+                  className={ classNames(
+                    'sidebar__item',
+                    'booky--hide-desktop',
+                    pathname === '/logout' && 'sidebar__item--active',
+                    darkMode && 'sidebar__item--dark-mode'
+                  ) }
                   to="/logout"
                   onClick={ closeMenu }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="logout" />
-                  <label className="sidebar__label"><FormattedMessage id="menu.logout" /></label>
+                  <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                    <FormattedMessage id="menu.logout" />
+                  </label>
                 </Link>
               </Fragment>
             ) }
@@ -147,7 +220,9 @@ Sidebar.propTypes = {
   location: PropTypes.object.isRequired,
   direction: PropTypes.string,
   className: PropTypes.string,
-  dashboardsSidebar: PropTypes.bool.isRequired
+  dashboardsSidebar: PropTypes.bool.isRequired,
+  darkMode: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired
 };
 
 Sidebar.defaultProps = {

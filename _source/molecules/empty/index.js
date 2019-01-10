@@ -1,3 +1,3 @@
-import component from './Empty';
+import component from './EmptyContainer';
 
 export default component;

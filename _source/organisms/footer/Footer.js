@@ -1,9 +1,6 @@
-/* eslint-disable max-len */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
-import 'whatwg-fetch';
 import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
@@ -14,7 +11,7 @@ import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends Component {
   render() {
-    const { intl, dashboardsOpen, hasSidebar, className, home, loggedIn, toolbarSticky } = this.props;
+    const { intl, dashboardsOpen, hasSidebar, className, home, loggedIn, toolbarSticky, darkMode } = this.props;
 
     return (
       <footer className={ classNames(
@@ -45,16 +42,20 @@ class Footer extends Component {
             </ul>
           </section>
         ) }
-        <section className="footer__social">
-          <a className="footer__social-item" target="_blank" href="https://twitter.com/intent/tweet?text=booky.io%20%7C%20Online%20Bookmark%20manager.%20Your%20bookmarks%20always%20available.">
+        <section className={ classNames('footer__social', darkMode && 'footer__social--dark-mode') }>
+          <a
+            className="footer__social-item"
+            target="_blank"
+            href="https://twitter.com/intent/tweet?text=booky.io%20%7C%20Online%20Bookmark%20manager.%20Your%20bookmarks%20always%20available."
+          >
             <Icon className="footer__icon" icon="twitter" color="light" />
             <label className="footer__label">{ 'Twitter' }</label>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fbooky.io">
-            <Icon className="footer__icon" icon="google-plus" color="light" />
-            <label className="footer__label">{ 'Google+' }</label>
+          <a className="footer__social-item" target="_blank" href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io">
+            <Icon className="footer__icon" icon="xing" color="light" />
+            <label className="footer__label">{ 'XING' }</label>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbooky.io">
+          <a className="footer__social-item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io">
             <Icon className="footer__icon" icon="facebook" color="light" />
             <label className="footer__label">{ 'Facebook' }</label>
           </a>
@@ -67,7 +68,7 @@ class Footer extends Component {
             <Link className="footer__menu-item" color="light" to="/help">
               <FormattedMessage id="menu.help" />
             </Link>
-            <Link className="footer__menu-item" color="light" href="mailto:hello@booky.io">
+            <Link className="footer__menu-item" color="light" to="/contact">
               <FormattedMessage id="menu.contact" />
             </Link>
             <Link className="footer__menu-item" color="light" to="/privacy">
@@ -77,10 +78,12 @@ class Footer extends Component {
               <FormattedMessage id="menu.legal" />
             </Link>
           </nav>
-          <LanguageSwitcher className="footer__language" />
-          <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
-            <FormattedHTMLMessage id="footer.scroll" />
-          </ButtonSmallLight>
+          <div className="footer__wrapper">
+            <LanguageSwitcher className="footer__language" />
+            <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
+              <FormattedHTMLMessage id="footer.scroll" />
+            </ButtonSmallLight>
+          </div>
           <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
             <Logo />
           </Link>
@@ -103,7 +106,8 @@ Footer.propTypes = {
   className: PropTypes.string,
   home: PropTypes.bool,
   loggedIn: PropTypes.bool.isRequired,
-  toolbarSticky: PropTypes.bool.isRequired
+  toolbarSticky: PropTypes.bool.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 export default injectIntl(Footer);

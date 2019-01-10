@@ -3,7 +3,8 @@ import Component from './Structure';
 
 export const mapStateToProps = function(state) {
   return {
-    dashboards: state.dashboards.items
+    dashboards: state.dashboards.items,
+    darkMode: state.user.darkMode
   };
 };
 

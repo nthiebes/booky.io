@@ -8,7 +8,7 @@ import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
-import ErrorMessage from '../../atoms/error-message';
+import { ErrorMessage } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';

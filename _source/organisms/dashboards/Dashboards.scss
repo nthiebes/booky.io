@@ -1,6 +1,6 @@
 .dashboards--sidebar {
   width: 300px;
-  background-color: #fff;
+  background-color: $color__font--white;
   border-right: 2px solid rgba(0,0,0, 0.15);
   z-index: 2;
   padding-bottom: 1rem;
@@ -13,6 +13,10 @@
   @include mobile-tablet {
     display: none;
   }
+}
+
+.dashboards--dark-mode {
+  background-color: $color__background--medium;
 }
 
 .dashboards--sticky {
@@ -77,14 +81,24 @@
     }
 
     &::before {
-      background: linear-gradient(to bottom, #fff, rgba(255,0,255,0));
+      background: linear-gradient(to bottom, $color__background--white, rgba(255,255,255,0));
       top: 52px;
     }
 
     &::after {
-      background: linear-gradient(to top, #fff, rgba(255,0,255,0));
+      background: linear-gradient(to top, $color__background--white, rgba(255,255,255,0));
       bottom: 0;
     }
+  }
+}
+
+.dashboards--dark-mode .dashboards__scroll-wrapper {
+  &::before {
+    background: linear-gradient(to bottom, $color__background--medium, rgba(255,255,255,0));
+  }
+
+  &::after {
+    background: linear-gradient(to top, $color__background--medium, rgba(255,255,255,0));
   }
 }
 
@@ -118,6 +132,14 @@
         color: inherit;
         cursor: default;
       }
+
+      &.dashboards__item--dark-mode {
+        background-color: inherit;
+
+        .dashboards__label {
+          color: $color__font--white;
+        }
+      }
     }
 
     @include desktop {
@@ -131,6 +153,14 @@
         .dashboards__label {
           color: inherit;
           cursor: default;
+        }
+
+        &.dashboards__item--dark-mode {
+          background-color: inherit;
+
+          .dashboards__label {
+            color: $color__font--white;
+          }
         }
       }
     }
@@ -170,7 +200,10 @@
   &:active,
   &:focus {
     background-color: $color__background--ligth;
-    color: $color__font--primary;
+
+    &.dashboards__item--dark-mode {
+      background-color: $color__background--dark;
+    }
 
     .dashboards__label {
       color: $color__font--primary;
@@ -184,6 +217,14 @@
   @include desktop {
     &:hover {
       background-color: $color__background--ligth;
+
+      &.dashboards__item--dark-mode {
+        background-color: $color__background--dark;
+      }
+
+      .dashboards__label {
+        color: $color__font--primary;
+      }
     }
   }
 }
@@ -197,6 +238,11 @@
   overflow: hidden;
   flex-grow: 1;
   cursor: pointer;
+  transition: color 0.2s linear;
+}
+
+.dashboards__label--dark-mode {
+  color: $color__font--white;
 }
 
 .dashboards__button {
@@ -224,4 +270,8 @@
   @include desktop {
     padding: 0 36px;
   }
+}
+
+.dashboard__empty--dark-mode {
+  color: $color__font--white;
 }

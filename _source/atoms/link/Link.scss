@@ -15,9 +15,22 @@
     color: $color__font--medium;
   }
 
+  &.link--dark-mode {
+    &:active,
+    &:focus {
+      color: $color__font--light;
+    }
+  }
+
   @include desktop {
     &:hover {
       color: $color__font--medium;
+    }
+
+    &.link--dark-mode {
+      &:hover {
+        color: $color__font--light;
+      }
     }
   }
 }

@@ -32,11 +32,11 @@ class EditCategory extends Component {
   }
 
   render() {
-    const { onClose, onSave, intl, pending, data } = this.props;
+    const { intl, pending, data, ...props } = this.props;
     const { name, color } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editCategory' }) } hasAnchor>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editCategory' }) } hasAnchor>
         <Input
           id="category-name"
           name="name"
@@ -48,11 +48,13 @@ class EditCategory extends Component {
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
         />
-        <Label><FormattedMessage id="modal.color" /></Label>
+        <Label>
+          <FormattedMessage id="modal.color" />
+        </Label>
         <ColorPicker value={ color } onChange={ this.onColorChange } disabled={ pending } />
         <Input
           name="id"
-          value={ data.id }
+          value={ data.id.toString() }
           type="hidden"
         />
       </Base>
@@ -67,5 +69,6 @@ EditCategory.propTypes = {
   onSave: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };

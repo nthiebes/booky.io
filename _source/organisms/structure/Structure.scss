@@ -25,6 +25,10 @@
   flex-grow: 1;
 }
 
+.structure__label--dark-mode {
+  color: $color__font--white;
+}
+
 .structure__icon {
   cursor: move;
   position: relative;

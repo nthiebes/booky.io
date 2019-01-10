@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Menu from '../../molecules/menu';
@@ -17,6 +17,9 @@ class Header extends Component {
 
     this.onBookmarkModalToggle = this.onBookmarkModalToggle.bind(this);
     this.onMenuClick = this.onMenuClick.bind(this);
+    this.onCustomizeClick = this.onCustomizeClick.bind(this);
+    this.onAddBookmarkClick = this.onAddBookmarkClick.bind(this);
+    this.onLogoutClick = this.onLogoutClick.bind(this);
     this.state = {
       bookmarkModalOpen: false
     };
@@ -34,17 +37,29 @@ class Header extends Component {
     this.props.onMenuClick();
   }
 
+  onCustomizeClick() {
+    this.props.openModal('Customize');
+  }
+
+  onAddBookmarkClick() {
+    this.props.openModal('AddBookmark', {
+      source: 'header'
+    });
+  }
+
+  onLogoutClick() {
+    this.props.history.replace({ pathname: '/logout' });
+  }
+
   render() {
     const {
       onHeaderClick,
       loggedIn,
       color,
-      openModal,
       intl,
       sidebarOpen,
       home,
       className,
-      router,
       sticky
     } = this.props;
 
@@ -65,10 +80,9 @@ class Header extends Component {
                 className="booky--hide-desktop header__add-icon"
                 icon="add"
                 color="light"
-                onClick={ () => { openModal('AddBookmark', {
-                  source: 'header'
-                }); } }
+                onClick={ this.onAddBookmarkClick }
                 tabIndex="0"
+                ignoreDarkMode
               />
               <Search className="booky--hide-desktop" />
             </Fragment>
@@ -87,23 +101,23 @@ class Header extends Component {
                 className="booky--hide-mobile-tablet"
                 icon="settings"
                 color="light"
-                onClick={ () => { router.push('/customize'); } }
+                onClick={ this.onCustomizeClick }
                 title={ intl.formatMessage({ id: 'menu.customize' }) }
                 tabIndex="0"
+                ignoreDarkMode
               />
               <Icon
                 className="booky--hide-mobile-tablet"
                 icon="logout"
                 color="light"
-                onClick={ () => { router.push('/logout'); } }
+                onClick={ this.onLogoutClick }
                 title={ intl.formatMessage({ id: 'menu.logout' }) }
                 tabIndex="0"
+                ignoreDarkMode
               />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"
-                onClick={ () => { openModal('AddBookmark', {
-                  source: 'header'
-                }); } }
+                onClick={ this.onAddBookmarkClick }
                 icon="add"
                 solid
               >
@@ -144,7 +158,7 @@ Header.propTypes = {
   sidebarOpen: PropTypes.bool,
   home: PropTypes.bool,
   className: PropTypes.string,
-  router: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired
 };
 
 export default injectIntl(withRouter(Header));

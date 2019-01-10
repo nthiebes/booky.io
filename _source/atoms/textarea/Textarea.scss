@@ -1,0 +1,102 @@
+.textarea {
+  display: block;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.textarea__field {
+  background-color: $color__background--ligth;
+  box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
+  border: 1px solid transparent;
+  border-right: 1px solid rgba($color--black, 0.15);
+  border-bottom: 2px solid $color__font--medium;
+  border-radius: 0;
+  color: $color__font--dark;
+  font-family: $font__family--text;
+  font-size: 1rem;
+  line-height: 1.556rem;
+  padding: 10px;
+  transition: background-color 0.3s, border-color 0.3s linear, box-shadow 0.3s linear;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 3rem;
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &:valid {
+    padding: 10px 36px 10px 10px;
+  }
+
+  &:valid ~.textarea__icon--valid {
+    opacity: 1;
+    transform: none;
+  }
+
+  &.textarea__field--no-validation:focus:valid {
+    border-bottom-color: $color--blue;
+  }
+
+  &:focus {
+    padding: 10px 36px 10px 10px;
+    background-color: $color__font--white;
+
+    &:valid {
+      border-bottom-color: $color--green;
+    }
+
+    &:invalid {
+      border-bottom-color: $color--3;
+    }
+
+    &:valid ~.textarea__icon--valid {
+      color: $color--green;
+    }
+
+    &:invalid ~.textarea__icon--invalid {
+      opacity: 1;
+      transform: none;
+      color: $color--3;
+    }
+  }
+
+  @include desktop {
+    &.textarea__field--no-validation:hover:valid,
+    &.textarea__field--no-validation:hover:focus:valid {
+      border-bottom-color: $color--blue;
+    }
+
+    &:hover {
+      border-bottom-color: $color--blue;
+      background-color: $color__font--white;
+    }
+
+    &:hover:focus {
+      &:valid {
+        border-bottom-color: $color--green;
+      }
+
+      &:invalid {
+        border-bottom-color: $color--3;
+      }
+    }
+  }
+}
+
+.textarea__icon {
+  position: absolute;
+  right: 0;
+  top: 6px;
+  transform: translateX(100%);
+  pointer-events: none;
+  transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s ease;
+  opacity: 0;
+  color: $color__font--medium;
+}
+
+.textarea__icon--visible {
+  transform: translateX(0);
+  opacity: 1;
+}

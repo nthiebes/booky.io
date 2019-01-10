@@ -3,7 +3,7 @@ import 'whatwg-fetch';
 // eslint-disable-next-line
 const baseUrl = window.___browserSync___ ? `http://${document.location.hostname}:8001/api` : '/api';
 const defaultOptions = {
-  credentials: 'same-origin'
+  // credentials: 'same-origin'
 };
 // window.___browserSync___ ? 'include' : 'same-origin'
 

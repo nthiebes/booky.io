@@ -46,7 +46,7 @@ class Account extends Component {
           <H1>
             <FormattedMessage id="account.title" />
           </H1>
-          <TabBar>
+          <TabBar className="account__tab-bar">
             { this.tabs.map((tab, index) => (
               <Tab
                 key={ index }

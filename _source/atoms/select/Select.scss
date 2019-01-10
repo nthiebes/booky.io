@@ -6,8 +6,8 @@
 .select--large {
   color: $color__font--dark;
   border-radius: 0;
-  background-color: #fafafa;
-  border: 1px solid rgba(#000, 0.15);
+  background-color: $color__background--ligth;
+  border: 1px solid rgba($color--black, 0.15);
   border-bottom: 2px solid $color__font--medium;
   height: 3rem;
   line-height: 3rem;
@@ -19,12 +19,12 @@
   &:active,
   &:focus {
     border-bottom-color: $color--blue;
-    background-color: #fff;
+    background-color: $color__font--white;
   }
 
   @include desktop {
     &:hover {
-      background-color: #fff;
+      background-color: $color__font--white;
       border-bottom-color: $color--blue;
     }
   }

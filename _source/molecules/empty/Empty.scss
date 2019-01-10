@@ -6,12 +6,21 @@
   align-items: center;
   max-width: 350px;
   text-align: center;
+  color: $color__font--dark;
 
   @include mobile {
     padding: 0 calc(3% + 6px);
   }
 }
 
+.empty--dark-mode {
+  color: $color__font--white;
+}
+
 .empty__image {
   margin: 2rem 0 1rem;
+}
+
+.empty__image--dark-mode {
+  filter: invert(100);
 }

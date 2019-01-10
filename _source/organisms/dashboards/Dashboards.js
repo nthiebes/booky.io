@@ -80,7 +80,18 @@ class Dashboards extends Component {
   }
 
   render() {
-    const { dashboards, openModal, changeDashboard, className, intl, activeId, open, useTabIndex, isSidebar } = this.props;
+    const {
+      dashboards,
+      openModal,
+      changeDashboard,
+      className,
+      intl,
+      activeId,
+      open,
+      useTabIndex,
+      isSidebar,
+      darkMode
+    } = this.props;
     const { editMode } = this.state;
 
     return (
@@ -89,6 +100,7 @@ class Dashboards extends Component {
         isSidebar && 'dashboards--sidebar',
         !open && 'dashboards--hide',
         this.getStickyClass(),
+        darkMode && 'dashboards--dark-mode',
         className && className
       ) }>
         { isSidebar && (
@@ -124,12 +136,18 @@ class Dashboards extends Component {
             { dashboards.map((dashboard, index) => (
               <li
                 key={ index }
-                className={ classNames('dashboards__item', dashboard.id === activeId && 'dashboards__item--active') }
+                className={ classNames(
+                  'dashboards__item',
+                  dashboard.id === activeId && 'dashboards__item--active',
+                  darkMode && 'dashboards__item--dark-mode'
+                ) }
                 onClick={ () => { !editMode && changeDashboard(dashboard.id); } }
                 onKeyDown={ (event) => { this.handleKeyDown(event, dashboard.id); } }
                 tabIndex={ useTabIndex && !editMode ? '0' : '-1' }
               >
-                <label className="dashboards__label">{ dashboard.name }</label>
+                <label className={ classNames('dashboards__label', darkMode && 'dashboards__label--dark-mode') }>
+                  { dashboard.name }
+                </label>
                 <Icon
                   className="dashboards__icon"
                   icon="edit"
@@ -149,7 +167,7 @@ class Dashboards extends Component {
               </li>
             )) }
             { dashboards.length === 0 && (
-              <li className="dashboard__empty">
+              <li className={ classNames('dashboard__empty', darkMode && 'dashboard__empty--dark-mode') }>
                 <i><FormattedMessage id="dashboard.empty" /></i>
               </li>
             ) }
@@ -175,7 +193,8 @@ Dashboards.propTypes = {
   isSidebar: PropTypes.bool,
   headerSticky: PropTypes.bool.isRequired,
   toolbarSticky: PropTypes.bool.isRequired,
-  currentlySticky: PropTypes.bool.isRequired
+  currentlySticky: PropTypes.bool.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 Dashboards.defaultProps = {

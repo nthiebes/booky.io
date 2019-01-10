@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import Label from '../label';
 import Icon from '../icon';
-import ErrorMessage from '../error-message';
+import { ErrorMessage } from '../messages';
 
 export default class Input extends Component {
   constructor(props) {
@@ -46,7 +46,8 @@ export default class Input extends Component {
       validation,
       autoFocus,
       icon,
-      error
+      error,
+      darkMode
     } = this.props;
     const inputProps = {
       className: classNames(
@@ -86,7 +87,7 @@ export default class Input extends Component {
           ) }
           { icon && <Icon icon={ icon } className="input__icon input__icon--visible" /> }
           { requirements && (
-            <div className="input__requirements">
+            <div className={ classNames('input__requirements', darkMode && 'input__requirements--dark-mode') }>
               { requirements }
             </div>
           ) }
@@ -120,7 +121,8 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   validation: PropTypes.bool,
   icon: PropTypes.string,
-  error: PropTypes.string
+  error: PropTypes.string,
+  darkMode: PropTypes.bool
 };
 
 Input.defaultProps = {

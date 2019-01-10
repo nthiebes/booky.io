@@ -11,15 +11,16 @@
 @import "../../atoms/headline/Headline";
 @import "../../atoms/paragraph/Paragraph";
 @import "../../atoms/loader/styles/a-loader";
-@import "../../atoms/error-message/ErrorMessage";
+@import "../../atoms/messages/error/ErrorMessage";
+@import "../../atoms/messages/success/SuccessMessage";
 @import "../../atoms/radio/Radio";
+@import "../../atoms/textarea/Textarea";
 
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
 @import "../../molecules/category/Category";
 @import "../../molecules/search/Search";
 @import "../../molecules/color-picker/ColorPicker";
-@import "../../molecules/dropdown/Dropdown";
 @import "../../molecules/tab-bar/TabBar";
 @import "../../molecules/language-switcher/LanguageSwitcher";
 @import "../../molecules/section/Section";
@@ -34,12 +35,12 @@
 @import "../../organisms/sidebar/Sidebar";
 @import "../../organisms/modal/Modal";
 @import "../../organisms/dashboards/Dashboards";
+@import "../../organisms/customize/Customize";
 
 @import "../../templates/page/Page";
 
 @import "../../pages/home/Home";
 @import "../../pages/account/Account";
-@import "../../pages/customize/Customize";
 
 html {
   font-size: calc(14px + 0.2vw);
@@ -53,7 +54,6 @@ body {
   -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $color__background--white;
   font-family: $font__family--text;
   height: 100%;
   color: $color__font--dark;

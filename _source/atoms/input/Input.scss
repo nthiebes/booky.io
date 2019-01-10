@@ -6,10 +6,10 @@
 }
 
 .input__field {
-  background-color: #fafafa;
+  background-color: $color__background--ligth;
   box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
   border: 1px solid transparent;
-  border-right: 1px solid rgba(#000, 0.15);
+  border-right: 1px solid rgba($color--black, 0.15);
   border-bottom: 2px solid $color__font--medium;
   border-radius: 0;
   color: $color__font--dark;
@@ -40,7 +40,7 @@
 
   &:focus {
     padding: 0 36px 0 10px;
-    background-color: #fff;
+    background-color: $color__font--white;
 
     &:valid {
       border-bottom-color: $color--green;
@@ -74,7 +74,7 @@
 
     &:hover {
       border-bottom-color: $color--blue;
-      background-color: #fff;
+      background-color: $color__font--white;
     }
 
     &:hover:focus {
@@ -115,4 +115,8 @@
   color: $color__font--medium;
   margin-top: 0.5rem;
   opacity: 0;
+}
+
+.input__requirements--dark-mode {
+  color: $color__font--light;
 }

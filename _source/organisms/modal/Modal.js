@@ -10,6 +10,8 @@ import DeleteCategory from './modals/DeleteCategory';
 import AddDashboard from './modals/AddDashboard';
 import EditDashboard from './modals/EditDashboard';
 import DeleteDashboard from './modals/DeleteDashboard';
+import EditStructure from './modals/EditStructure';
+import Customize from './modals/Customize';
 
 export default class Modal extends Component {
   constructor(props) {
@@ -53,6 +55,12 @@ export default class Modal extends Component {
       DeleteDashboard: {
         modal: DeleteDashboard,
         action: props.deleteDashboard
+      },
+      EditStructure: {
+        modal: EditStructure
+      },
+      Customize: {
+        modal: Customize
       }
     };
   }
@@ -60,7 +68,7 @@ export default class Modal extends Component {
   handleSave(modalData) {
     const { modal, data, closeModal } = this.props;
 
-    this.modalMap[modal].action({
+    this.modalMap[modal].action && this.modalMap[modal].action({
       ...modalData,
       dashboard: data.activeDashboard
     });
@@ -74,7 +82,7 @@ export default class Modal extends Component {
   }
 
   render() {
-    const { modal, open, data, pending, closeModal } = this.props;
+    const { modal, open, data, pending, closeModal, darkMode } = this.props;
     let CustomTag;
 
     if (open) {
@@ -84,8 +92,23 @@ export default class Modal extends Component {
     }
 
     return (
-      <div className={ classNames(['modal', open && 'modal--open']) } onClick={ closeModal } onKeyUp={ this.handleKeyUp }>
-        { CustomTag && <CustomTag onClose={ closeModal } onSave={ this.handleSave } data={ data } pending={ pending } /> }
+      <div
+        className={ classNames(
+          'modal',
+          open && 'modal--open'
+        ) }
+        onClick={ closeModal }
+        onKeyUp={ this.handleKeyUp }
+      >
+        { CustomTag && (
+          <CustomTag
+            onClose={ closeModal }
+            onSave={ this.handleSave }
+            data={ data }
+            pending={ pending }
+            darkMode={ darkMode }
+          />
+        ) }
       </div>
     );
   }
@@ -96,7 +119,7 @@ Modal.propTypes = {
   open: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   data: PropTypes.object,
-  pending: PropTypes.bool,
+  pending: PropTypes.bool.isRequired,
   addBookmark: PropTypes.func.isRequired,
   editBookmark: PropTypes.func.isRequired,
   deleteBookmark: PropTypes.func.isRequired,
@@ -105,7 +128,8 @@ Modal.propTypes = {
   deleteCategory: PropTypes.func.isRequired,
   addDashboard: PropTypes.func.isRequired,
   editDashboard: PropTypes.func.isRequired,
-  deleteDashboard: PropTypes.func.isRequired
+  deleteDashboard: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 Modal.defaultProps = {

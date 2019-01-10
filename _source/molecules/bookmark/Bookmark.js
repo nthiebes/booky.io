@@ -7,54 +7,72 @@ import classNames from 'classnames';
 import Icon from '../../atoms/icon';
 
 class Bookmark extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onEditClick = this.onEditClick.bind(this);
+    this.onDeleteClick = this.onDeleteClick.bind(this);
+  }
+
+  onEditClick() {
+    const { url, name, id, openModal, categoryId } = this.props;
+
+    openModal('EditBookmark', {
+      id,
+      url,
+      name,
+      categoryId
+    });
+  }
+
+  onDeleteClick() {
+    const { url, name, id, openModal, categoryId } = this.props;
+
+    openModal('DeleteBookmark', {
+      id,
+      url,
+      name,
+      categoryId
+    });
+  }
+
   render() {
-    const { url, name, editMode, id, openModal, categoryId, index, intl, newtab, favicon } = this.props;
+    const { url, name, editMode, id, index, intl, newtab, favicon, darkMode } = this.props;
 
     return (
       <Draggable index={ index } draggableId={ `bookmark-${id}` }>
         { (provided) => (
-          <div>
-            <div { ...provided.draggableProps } ref={ provided.innerRef }>
-              <li className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }>
-                <img src={ favicon || '_assets/no-favicon.png' } height="16" width="16" />
-                <a className="bookmark__link" href={ url } target={ newtab ? '_blank' : '_self' }>
-                  { name }
-                </a>
-                <Icon
-                  className="bookmark__icon"
-                  icon="edit"
-                  title={ intl.formatMessage({ id: 'bookmark.edit' }) }
-                  onClick={ () => { openModal('EditBookmark', {
-                    id,
-                    url,
-                    name,
-                    categoryId
-                  }); } }
-                  tabIndex={ editMode ? '0' : '-1' }
-                />
-                <Icon
-                  className="bookmark__icon"
-                  icon="delete"
-                  title={ intl.formatMessage({ id: 'bookmark.delete' }) }
-                  onClick={ () => { openModal('DeleteBookmark', {
-                    id,
-                    url,
-                    name,
-                    categoryId
-                  }); } }
-                  tabIndex={ editMode ? '0' : '-1' }
-                />
-                <Icon
-                  className="bookmark__icon bookmark__icon--drag"
-                  icon="drag"
-                  title={ intl.formatMessage({ id: 'bookmark.drag' }) }
-                  dragHandleProps={ provided.dragHandleProps }
-                  tabIndex={ editMode ? '0' : '-1' }
-                />
-              </li>
-            </div>
-            {provided.placeholder}
-          </div>
+          <li
+            className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }
+            { ...provided.draggableProps }
+            ref={ provided.innerRef }
+          >
+            <img src={ favicon || '_assets/no-favicon.png' } height="16" width="16" />
+            <a className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') } href={ url } target={ newtab ? '_blank' : '_self' }>
+              { name }
+            </a>
+            <Icon
+              className="bookmark__icon"
+              icon="edit"
+              title={ intl.formatMessage({ id: 'bookmark.edit' }) }
+              onClick={ this.onEditClick }
+              tabIndex={ editMode ? '0' : '-1' }
+            />
+            <Icon
+              className="bookmark__icon"
+              icon="delete"
+              title={ intl.formatMessage({ id: 'bookmark.delete' }) }
+              onClick={ this.onDeleteClick }
+              tabIndex={ editMode ? '0' : '-1' }
+            />
+            <Icon
+              className="bookmark__icon bookmark__icon--drag"
+              icon="drag"
+              title={ intl.formatMessage({ id: 'bookmark.drag' }) }
+              dragHandleProps={ provided.dragHandleProps }
+              tabIndex={ editMode ? '0' : '-1' }
+            />
+          </li>
         ) }
       </Draggable>
     );
@@ -68,11 +86,12 @@ Bookmark.propTypes = {
   url: PropTypes.string.isRequired,
   editMode: PropTypes.bool.isRequired,
   target: PropTypes.string,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   openModal: PropTypes.func.isRequired,
   categoryId: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   intl: PropTypes.object.isRequired,
   newtab: PropTypes.bool.isRequired,
-  favicon: PropTypes.string
+  favicon: PropTypes.string,
+  darkMode: PropTypes.bool.isRequired
 };

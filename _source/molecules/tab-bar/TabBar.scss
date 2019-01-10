@@ -14,12 +14,12 @@
   // }
 
   // &::before {
-  //   background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+  //   background: linear-gradient(to right, $color__background--white, rgba(255,255,255,0));
   //   left: 0;
   // }
 
   // &::after {
-  //   background: linear-gradient(to left, #fff, rgba(255,255,255,0));
+  //   background: linear-gradient(to left, $color__background--white, rgba(255,255,255,0));
   //   right: 0;
   // }
 }
@@ -42,31 +42,44 @@
   padding: 6px;
   flex: 0 0 auto;
   cursor: pointer;
-  transition: color 0.2s, border-bottom-color 0.2s;
+  transition: color 0.2s linear, border-bottom-color 0.2s;
   margin-right: 1rem;
   list-style: none;
+  border-bottom: 2px solid transparent;
 
   &:last-child {
     margin-right: 0;
   }
-}
 
-.tab-bar__tab:active {
-  color: $color__font--dark;
-}
-
-@include desktop {
-  .tab-bar__tab:hover {
+  &:active,
+  &:focus {
     color: $color__font--dark;
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--dark;
+    }
   }
 }
 
 .tab-bar__tab--active {
   cursor: default;
   color: $color--primary;
-  border-bottom: 2px solid $color--primary;
-  
-  &:hover {
-    color: $color--primary;
+  border-bottom-color: $color--primary;
+
+  &:focus {
+    color: $color__font--dark;
+    border-bottom-color: $color__font--dark;
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color--primary;
+    }
+
+    &:hover:focus {
+      color: $color__font--dark;
+    }
   }
 }

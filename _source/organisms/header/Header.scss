@@ -5,10 +5,6 @@
   width: 100%;
   z-index: 3;
 
-  &.header--sticky {
-    position: fixed;
-  }
-
   @include mobile-tablet {
     &::after {
       background-color: rgba(0, 0, 0, 0.3);
@@ -35,40 +31,44 @@
   }
 }
 
+.header--sticky {
+  position: fixed;
+}
+
 .header--color-0 {
-  background-color: rgba($color--0, 0.97);
+  background-color: $color--0;
 }
 
 .header--color-1 {
-  background-color: rgba($color--1, 0.97);
+  background-color: $color--1;
 }
 
 .header--color-2 {
-  background-color: rgba($color--2, 0.97);
+  background-color: $color--2;
 }
 
 .header--color-3 {
-  background-color: rgba($color--3, 0.97);
+  background-color: $color--3;
 }
 
 .header--color-4 {
-  background-color: rgba($color--4, 0.97);
+  background-color: $color--4;
 }
 
 .header--color-5 {
-  background-color: rgba($color--5, 0.97);
+  background-color: $color--5;
 }
 
 .header--color-6 {
-  background-color: rgba($color--6, 0.97);
+  background-color: $color--6;
 }
 
 .header--color-7 {
-  background-color: rgba($color--7, 0.97);
+  background-color: $color--7;
 }
 
 .header--color-8 {
-  background-color: rgba($color--8, 0.97);
+  background-color: $color--8;
 }
 
 .header__wrapper {
@@ -95,7 +95,7 @@
   margin-right: 1.5rem;
   
   &:focus {
-    outline: 1px dashed #fff;
+    outline: 1px dashed $color__font--white;
   }
 }
 

@@ -11,7 +11,7 @@
     &::before {
       content: " ";
       position: absolute;
-      background-color: #eb8174;
+      background-color: $color--primary-lighter;
       left: 0;
       right: 0;
       top: 0;

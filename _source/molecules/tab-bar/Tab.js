@@ -3,13 +3,35 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default class Tab extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  handleClick() {
+    const { tabId, onClick } = this.props;
+
+    onClick(tabId);
+  }
+
+  handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      this.handleClick();
+    }
+  }
+
   render() {
-    const { name, active, tabId, onClick } = this.props;
+    const { name, active } = this.props;
 
     return (
       <li
         className={ classNames('tab-bar__tab', active && 'tab-bar__tab--active') }
-        onClick={ () => { onClick(tabId); } }>
+        onClick={ this.handleClick }
+        onKeyDown={ this.handleKeyDown }
+        tabIndex="0"
+      >
         { name }
       </li>
     );

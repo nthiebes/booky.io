@@ -1,10 +1,11 @@
 .page {
+  background-color: $color__background--white;
   position: relative;
   min-height: 100vh;
-  padding: 4rem 0 6rem 0;
+  padding: calc(4rem - 47px) 0 6rem 0;
 
   @include tablet {
-    padding: 6rem 0 10rem 0;
+    padding: calc(6rem - 71px) 0 10rem 0;
   }
 
   @include desktop {
@@ -13,6 +14,12 @@
 }
 
 .page--sticky-header {
+  padding: 4rem 0 6rem 0;
+
+  @include tablet {
+    padding: 6rem 0 10rem 0;
+  }
+
   @include desktop {
     padding: 10rem 0 14rem 0;
   }
@@ -29,4 +36,8 @@
 
 .page--show {
   opacity: 1;
+}
+
+.page--dark {
+  background-color: $color__background--dark-mode;
 }

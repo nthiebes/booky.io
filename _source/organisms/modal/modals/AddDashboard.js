@@ -15,12 +15,6 @@ class AddDashboard extends Component {
     };
   }
 
-  // componentWillReceiveProps() {
-  //   this.setState({
-  //     name: ''
-  //   });
-  // }
-
   onNameChange(value) {
     this.setState({
       name: value
@@ -28,11 +22,11 @@ class AddDashboard extends Component {
   }
 
   render() {
-    const { onClose, onSave, pending, intl } = this.props;
+    const { pending, intl, ...props } = this.props;
     const { name } = this.state;
 
     return (
-      <Base onClose={ onClose } onSave={ onSave } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addDashboard' }) }>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addDashboard' }) }>
         <Input
           id="dashboard-name"
           name="name"
@@ -56,5 +50,6 @@ AddDashboard.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool
+  pending: PropTypes.bool,
+  darkMode: PropTypes.bool
 };
