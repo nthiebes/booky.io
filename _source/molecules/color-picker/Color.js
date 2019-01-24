@@ -55,7 +55,7 @@ export default class Color extends Component {
 }
 
 Color.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
   color: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   darkMode: PropTypes.bool

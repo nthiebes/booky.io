@@ -43,12 +43,12 @@ export default class ColorPicker extends Component {
 }
 
 ColorPicker.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.number,
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   darkMode: PropTypes.bool
 };
 
 ColorPicker.defaultProps = {
-  value: '0'
+  value: 0
 };

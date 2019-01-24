@@ -1,8 +1,16 @@
 export const UPDATE_USER = 'UPDATE_USER';
+export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
 
-export function updateUser(user) {
+export function updateUser(userData) {
   return {
     type: UPDATE_USER,
-    user
+    userData
+  };
+}
+
+export function updateSettings(userSettings) {
+  return {
+    type: UPDATE_SETTINGS,
+    userSettings
   };
 }

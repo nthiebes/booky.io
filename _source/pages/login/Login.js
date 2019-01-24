@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom'
 
 import fetcher from '../../_utils/fetcher';
 import Page from '../../templates/page';
@@ -46,6 +47,8 @@ class Login extends Component {
   }
 
   handleSubmit(params) {
+    const { updateUser, updateSettings, history } = this.props;
+
     this.setState({
       pending: true,
       error: false
@@ -56,29 +59,24 @@ class Login extends Component {
       type: 'POST',
       params,
       onSuccess: (data) => {
-        console.log('login success:', data);
+        // console.log('login success:', data);
+        const { settings, ...userData } = data;
 
-        this.props.updateUser({
+        updateUser({
           loggedIn: true,
-          ...data
+          ...userData
         });
+        updateSettings(settings);
 
-        window.setTimeout(() => {
-          this.setState({
-            pending: false,
-            error: data.error
-          });
-        }, 300);
-
-        !data.error && this.props.updateUser(data.user);
+        history.push('/');
       },
       onError: (error) => {
-        console.log('login error:', error);
+        // console.log('login error:', error);
 
         window.setTimeout(() => {
           this.setState({
             pending: false,
-            error: 'error.default'
+            error: error || 'error.default'
           });
         }, 300);
       }
@@ -153,7 +151,9 @@ class Login extends Component {
 
 Login.propTypes = {
   intl: PropTypes.object.isRequired,
-  updateUser: PropTypes.func.isRequired
+  history: PropTypes.object.isRequired,
+  updateUser: PropTypes.func.isRequired,
+  updateSettings: PropTypes.func.isRequired
 };
 
-export default injectIntl(Login);
+export default injectIntl(withRouter(Login));

@@ -3,16 +3,16 @@ import Component from './Dashboards';
 import { actions as modalActions } from '../../_state/modal';
 import { actions as dashboardsActions } from '../../_state/dashboards';
 import { actions as sidebarActions } from '../../_state/sidebar';
-import { updateUser } from '../../_state/user/actions';
+import { updateSettings } from '../../_state/user/actions';
 
 export const mapStateToProps = (state) => ({
   dashboards: state.dashboards.items,
   activeId: state.dashboards.active,
-  open: state.user.pinned,
+  open: state.user.settings.pinned,
   currentlySticky: state.toolbar.currentlySticky,
-  headerSticky: state.user.stickyHeader,
-  toolbarSticky: state.user.stickyToolbar,
-  darkMode: state.user.darkMode
+  headerSticky: state.user.settings.stickyHeader,
+  toolbarSticky: state.user.settings.stickyToolbar,
+  darkMode: state.user.settings.darkMode
 });
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -24,7 +24,7 @@ export const mapDispatchToProps = (dispatch) => ({
     dispatch(sidebarActions.closeSidebar());
   },
   toggleDashboardOpen: (open) => {
-    dispatch(updateUser({
+    dispatch(updateSettings({
       pinned: open
     }));
   }

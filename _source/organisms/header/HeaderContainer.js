@@ -7,8 +7,8 @@ export const mapStateToProps = function(state) {
   return {
     loggedIn: state.user.loggedIn,
     sidebarOpen: state.sidebar.open,
-    color: state.user.navColor,
-    sticky: state.user.stickyHeader
+    color: state.user.settings.navigationBarColor,
+    sticky: state.user.settings.stickyHeader
   };
 };
 

@@ -23,7 +23,7 @@ export default function restricted(BaseComponent) {
       const { history, loggedIn } = params;
 
       if (!loggedIn) {
-        history.replace({ pathname: '/' });
+        history.replace({ pathname: '/login' });
       }
     }
 

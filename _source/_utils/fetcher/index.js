@@ -6,13 +6,18 @@ const defaultOptions = {
   credentials: 'include'
 };
 
-function checkStatus(response) {
+const checkStatus = (response) => {
   if (response.status >= 200 && response.status < 300) {
-    return Promise.resolve(response);
+    return {
+      data: response
+    };
   }
 
-  return Promise.reject(new Error(response.statusText));
-}
+  return {
+    data: response,
+    error: response.message || response.statusText
+  };
+};
 
 const fetcher = function({ params, type = 'GET', url, onSuccess, onError, options = {} }) {
   if (type === 'GET') {
@@ -20,10 +25,15 @@ const fetcher = function({ params, type = 'GET', url, onSuccess, onError, option
       ...defaultOptions,
       ...options
     })
-      .then(checkStatus)
       .then((response) => response.json())
-      .then((data) => {
-        onSuccess(data);
+      .then((response) => {
+        const { data, error } = checkStatus(response);
+
+        if (error) {
+          onError(error);
+        } else {
+          onSuccess(data);
+        }
       })
       .catch((error) => {
         onError(error);
@@ -40,10 +50,15 @@ const fetcher = function({ params, type = 'GET', url, onSuccess, onError, option
       },
       body: JSON.stringify(params)
     })
-      .then(checkStatus)
       .then((response) => response.json())
-      .then((data) => {
-        onSuccess(data);
+      .then((response) => {
+        const { data, error } = checkStatus(response);
+
+        if (error) {
+          onError(error);
+        } else {
+          onSuccess(data);
+        }
       })
       .catch((error) => {
         onError(error);

@@ -1,11 +1,26 @@
-import { UPDATE_USER } from './actions';
+import { UPDATE_USER, UPDATE_SETTINGS } from './actions';
 
 const user = (state = {}, action) => {
-  switch (action.type) {
+  const { type, userData, userSettings } = action;
+
+  switch (type) {
     case UPDATE_USER:
       return {
         ...state,
-        ...action.user
+        ...userData,
+        settings: {
+          ...state.settings,
+          ...userData.settings
+        }
+      };
+
+    case UPDATE_SETTINGS:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          ...userSettings
+        }
       };
 
     default:
