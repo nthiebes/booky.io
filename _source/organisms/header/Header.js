@@ -9,6 +9,7 @@ import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Search from '../../molecules/search';
 import { ButtonSmallLight } from '../../atoms/button';
+import fetcher from '../../_utils/fetcher';
 
 class Header extends Component {
   constructor(props) {
@@ -47,7 +48,19 @@ class Header extends Component {
   }
 
   onLogoutClick() {
-    this.props.history.replace({ pathname: '/logout' });
+    fetcher({
+      url: '/logout',
+      type: 'GET',
+      onSuccess: (data) => {
+        // console.log('logout success:', data);
+        
+        // update loggedIn state
+        this.props.history.replace({ pathname: '/' });
+      },
+      onError: (error) => {
+        // console.log('logout error:', error);
+      }
+    });
   }
 
   render() {
@@ -91,7 +104,7 @@ class Header extends Component {
             title={ intl.formatMessage({ id: 'menu.home' }) }
             className={ classNames('header__logo', loggedIn && home && 'booky--hide-mobile-tablet') }
           >
-            <img src="../../_assets/booky_3.svg" alt="Logo" height="36" />
+            <img src="../../_assets/logo.svg" alt="Logo" height="36" />
           </Link>
           <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (
@@ -145,7 +158,7 @@ class Header extends Component {
 
 
 Header.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.number.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   onHeaderClick: PropTypes.func.isRequired,
   onMenuClick: PropTypes.func.isRequired,

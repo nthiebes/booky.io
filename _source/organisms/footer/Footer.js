@@ -84,10 +84,10 @@ class Footer extends Component {
             </ButtonSmallLight>
           </div>
           <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
-            <img src="../../_assets/booky_3.svg" alt="Logo" height="36" />
+            <img src="../../_assets/logo_l.svg" alt="Logo" height="36" />
           </Link>
           <div className="footer__copy">
-            { '© 2014-2018' }
+            { '© 2014-2019' }
             <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
             { '| ' }
             <FormattedMessage id="footer.copy" />
