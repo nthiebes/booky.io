@@ -19,7 +19,7 @@ class Customize extends Component {
 
   handleColorChange(value) {
     this.props.updateSettings({
-      navColor: value
+      navigationBarColor: value
     });
   }
 
