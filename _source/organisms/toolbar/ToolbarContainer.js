@@ -7,12 +7,12 @@ import { actions as dashboardsActions } from '../../_state/dashboards';
 export const mapStateToProps = function(state) {
   return {
     currentlySticky: state.toolbar.currentlySticky,
-    headerSticky: state.user.stickyHeader,
-    sticky: state.user.stickyToolbar,
+    headerSticky: state.user.settings.stickyHeader,
+    sticky: state.user.settings.stickyToolbar,
     dashboards: state.dashboards,
     dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active),
-    dashboardsPosition: state.user.dashboards,
-    darkMode: state.user.darkMode
+    dashboardsPosition: state.user.settings.dashboards,
+    darkMode: state.user.settings.darkMode
   };
 };
 

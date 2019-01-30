@@ -3,7 +3,7 @@ import Component from './Category';
 import { actions } from '../../_state/modal';
 
 export const mapStateToProps = (state) => ({
-  darkMode: state.user.darkMode
+  darkMode: state.user.settings.darkMode
 });
 
 export const mapDispatchToProps = (dispatch) => ({

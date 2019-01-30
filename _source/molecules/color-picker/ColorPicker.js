@@ -13,8 +13,8 @@ export default class ColorPicker extends Component {
     this.colors = [];
   }
 
-  onChange(key) {
-    this.props.onChange(key);
+  onChange(value) {
+    this.props.onChange(parseInt(value, 10));
   }
 
   getColors() {
@@ -31,7 +31,7 @@ export default class ColorPicker extends Component {
   render() {
     const { className, value, darkMode} = this.props;
     const colors = this.getColors().map(((color, index) => (
-      <Color key={ index } color={ color } value={ value } darkMode={ darkMode } onChange={ this.onChange } />
+      <Color key={ index } color={ color } value={ value.toString() } darkMode={ darkMode } onChange={ this.onChange } />
     )));
 
     return (
@@ -43,12 +43,12 @@ export default class ColorPicker extends Component {
 }
 
 ColorPicker.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.number,
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   darkMode: PropTypes.bool
 };
 
 ColorPicker.defaultProps = {
-  value: '0'
+  value: 0
 };

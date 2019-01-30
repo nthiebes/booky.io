@@ -29,14 +29,15 @@ class Sidebar extends Component {
     const {
       loggedIn,
       open,
-      closeMenu,
+      closeSidebar,
       dashboards,
       intl,
       direction,
       location,
       className,
       dashboardsSidebar,
-      darkMode
+      darkMode,
+      logout
     } = this.props;
     const { pathname } = location;
 
@@ -54,14 +55,14 @@ class Sidebar extends Component {
             to="/"
             title={ intl.formatMessage({ id: 'menu.home' }) }
             className="sidebar__logo"
-            onClick={ closeMenu }
+            onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
           >
-            <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
+            <img src="../../_assets/logo_d.svg" alt="Logo" height="36" />
           </Link>
           <Icon
             icon={ direction === 'left' ? 'back' : 'forward' }
-            onClick={ closeMenu }
+            onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
             title={ intl.formatMessage({ id: 'menu.close' }) }
           />
@@ -79,7 +80,7 @@ class Sidebar extends Component {
                 darkMode && 'sidebar__item--dark-mode'
               ) }
               to="/about"
-              onClick={ closeMenu }
+              onClick={ closeSidebar }
               tabIndex={ open ? '0' : '-1' }
             >
               <Icon icon="about" />
@@ -94,7 +95,7 @@ class Sidebar extends Component {
                 darkMode && 'sidebar__item--dark-mode'
               ) }
               to="/help"
-              onClick={ closeMenu }
+              onClick={ closeSidebar }
               tabIndex={ open ? '0' : '-1' }
             >
               <Icon icon="help" />
@@ -111,7 +112,7 @@ class Sidebar extends Component {
                     darkMode && 'sidebar__item--dark-mode'
                   ) }
                   to="/login"
-                  onClick={ closeMenu }
+                  onClick={ closeSidebar }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="account" />
@@ -127,7 +128,7 @@ class Sidebar extends Component {
                     darkMode && 'sidebar__item--dark-mode'
                   ) }
                   to="/join"
-                  onClick={ closeMenu }
+                  onClick={ closeSidebar }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="join" />
@@ -146,7 +147,7 @@ class Sidebar extends Component {
                     darkMode && 'sidebar__item--dark-mode'
                   ) }
                   to="/account"
-                  onClick={ closeMenu }
+                  onClick={ closeSidebar }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="account"/>
@@ -161,7 +162,7 @@ class Sidebar extends Component {
                     darkMode && 'sidebar__item--dark-mode'
                   ) }
                   to="/next"
-                  onClick={ closeMenu }
+                  onClick={ closeSidebar }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="next" />
@@ -184,22 +185,20 @@ class Sidebar extends Component {
                     <FormattedMessage id="menu.customize" />
                   </label>
                 </span>
-                <Link
+                <span
                   className={ classNames(
                     'sidebar__item',
                     'booky--hide-desktop',
-                    pathname === '/logout' && 'sidebar__item--active',
                     darkMode && 'sidebar__item--dark-mode'
                   ) }
-                  to="/logout"
-                  onClick={ closeMenu }
+                  onClick={ logout }
                   tabIndex={ open ? '0' : '-1' }
                 >
                   <Icon icon="logout" />
                   <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                     <FormattedMessage id="menu.logout" />
                   </label>
-                </Link>
+                </span>
               </Fragment>
             ) }
           </nav>
@@ -214,7 +213,7 @@ export default injectIntl(withRouter(Sidebar));
 Sidebar.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   open: PropTypes.bool.isRequired,
-  closeMenu: PropTypes.func.isRequired,
+  closeSidebar: PropTypes.func.isRequired,
   dashboards: PropTypes.bool,
   intl: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
@@ -222,7 +221,8 @@ Sidebar.propTypes = {
   className: PropTypes.string,
   dashboardsSidebar: PropTypes.bool.isRequired,
   darkMode: PropTypes.bool.isRequired,
-  openModal: PropTypes.func.isRequired
+  openModal: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 Sidebar.defaultProps = {

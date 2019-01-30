@@ -18,19 +18,19 @@ class Customize extends Component {
   }
 
   handleColorChange(value) {
-    this.props.updateUser({
-      navColor: value
+    this.props.updateSettings({
+      navigationBarColor: value
     });
   }
 
   handleCheckboxChange({ name, checked }) {
-    this.props.updateUser({
+    this.props.updateSettings({
       [name]: checked
     });
   }
 
   handleRadioChange({ name, value }) {
-    this.props.updateUser({
+    this.props.updateSettings({
       [name]: value
     });
   }
@@ -150,9 +150,9 @@ class Customize extends Component {
 }
 
 Customize.propTypes = {
-  updateUser: PropTypes.func.isRequired,
+  updateSettings: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
-  navColor: PropTypes.string.isRequired,
+  navColor: PropTypes.number.isRequired,
   newtab: PropTypes.bool.isRequired,
   maxWidth: PropTypes.bool.isRequired,
   preserveEditMode: PropTypes.bool.isRequired,
