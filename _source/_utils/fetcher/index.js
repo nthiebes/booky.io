@@ -19,13 +19,12 @@ const checkStatus = (response) => {
   };
 };
 
-const fetcher = function({ params, type = 'GET', url, onSuccess, onError, options = {} }) {
+const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }) => {
   if (type === 'GET') {
     fetch(`${baseUrl}${url}`, {
       ...defaultOptions,
       ...options
     })
-      .then((response) => response.json())
       .then((response) => {
         const { data, error } = checkStatus(response);
 
@@ -50,7 +49,6 @@ const fetcher = function({ params, type = 'GET', url, onSuccess, onError, option
       },
       body: JSON.stringify(params)
     })
-      .then((response) => response.json())
       .then((response) => {
         const { data, error } = checkStatus(response);
 

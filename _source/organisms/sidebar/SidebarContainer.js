@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import Component from './Sidebar';
-import { actions as sidebarActions } from '../../_state/sidebar';
-import { actions as modalActions } from '../../_state/modal';
+import { closeSidebar } from '../../_state/sidebar/actions';
+import { openModal } from '../../_state/modal/actions';
+import { logout } from '../../_state/user/actions';
 
 export const mapStateToProps = function(state) {
   return {
@@ -12,15 +13,10 @@ export const mapStateToProps = function(state) {
   };
 };
 
-export const mapDispatchToProps = function(dispatch) {
-  return {
-    closeMenu: () => {
-      dispatch(sidebarActions.closeSidebar());
-    },
-    openModal: (modal, data) => {
-      dispatch(modalActions.openModal(modal, data));
-    }
-  };
+export const mapDispatchToProps = {
+  closeSidebar,
+  openModal,
+  logout
 };
 
 const Container = connect(

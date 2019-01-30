@@ -1,4 +1,5 @@
-import { UPDATE_USER, UPDATE_SETTINGS } from './actions';
+import initialState from '../../initialState';
+import { UPDATE_USER, UPDATE_SETTINGS, RESET_USER_STATE } from './actions';
 
 const user = (state = {}, action) => {
   const { type, userData, userSettings } = action;
@@ -21,6 +22,11 @@ const user = (state = {}, action) => {
           ...state.settings,
           ...userSettings
         }
+      };
+
+    case RESET_USER_STATE:
+      return {
+        ...initialState.user
       };
 
     default:
