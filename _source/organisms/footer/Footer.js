@@ -87,7 +87,7 @@ class Footer extends Component {
             <img src="../../_assets/logo_l.svg" alt="Logo" height="36" />
           </Link>
           <div className="footer__copy">
-            { '© 2014-2019' }
+            { `© 2014-${new Date().getFullYear()}` }
             <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
             { '| ' }
             <FormattedMessage id="footer.copy" />
