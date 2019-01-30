@@ -1,16 +1,27 @@
 export default {
   user: {
     loggedIn: false,
-    navColor: '0',
-    newtab: true,
-    pinned: true,
-    dashboards: 'sidebar',
-    maxWidth: false,
-    preserveEditMode: true,
-    blurEffect: true,
-    stickyHeader: true,
-    stickyToolbar: true,
-    darkMode: false
+    name: '',
+    email: '',
+    title: '',
+    new: true,
+    premium: false,
+    settings: {
+      blurEffect: true,
+      darkMode: false,
+      dashboards: 'sidebar',
+      maxWidth: false,
+      navigationBarColor: 0,
+      openLinksInNewTab: true,
+      pinned: true,
+      preserveEditMode: true,
+      stickyHeader: true,
+      stickyToolbar: true,
+      autofillBookmarkNames: true,
+      colorScheme: 3,
+      defaultDashboardId: -1,
+      enableNotes: true
+    }
   },
   dashboards: {
     items: [{id: 1234, name: 'Meine Rezepte', categories: []}],

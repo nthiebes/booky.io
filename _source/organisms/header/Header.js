@@ -33,7 +33,7 @@ class Header extends Component {
   onMenuClick(event) {
     event.stopPropagation();
 
-    this.props.onMenuClick();
+    this.props.toggleSidebar();
   }
 
   onCustomizeClick() {
@@ -47,12 +47,18 @@ class Header extends Component {
   }
 
   onLogoutClick() {
-    this.props.history.replace({ pathname: '/logout' });
+    const { history, logout } = this.props;
+
+    logout({
+      onSuccess: () => {
+        history.push('/');
+      }
+    });
   }
 
   render() {
     const {
-      onHeaderClick,
+      closeSidebar,
       loggedIn,
       color,
       intl,
@@ -70,7 +76,7 @@ class Header extends Component {
           sticky && 'header--sticky',
           className && className
         ) }
-        onClick={ onHeaderClick }
+        onClick={ closeSidebar }
       >
         <div className="header__wrapper">
           { loggedIn && home && (
@@ -91,7 +97,7 @@ class Header extends Component {
             title={ intl.formatMessage({ id: 'menu.home' }) }
             className={ classNames('header__logo', loggedIn && home && 'booky--hide-mobile-tablet') }
           >
-            <img src="../../_assets/logo-primary.png" alt="Logo" height="36" />
+            <img src="../../_assets/logo.svg" alt="Logo" height="36" />
           </Link>
           <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (
@@ -145,10 +151,10 @@ class Header extends Component {
 
 
 Header.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.number.isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  onHeaderClick: PropTypes.func.isRequired,
-  onMenuClick: PropTypes.func.isRequired,
+  closeSidebar: PropTypes.func.isRequired,
+  toggleSidebar: PropTypes.func.isRequired,
   sticky: PropTypes.bool.isRequired,
   openModal: PropTypes.func.isRequired,
   dashboards: PropTypes.bool,
@@ -157,7 +163,8 @@ Header.propTypes = {
   sidebarOpen: PropTypes.bool,
   home: PropTypes.bool,
   className: PropTypes.string,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 export default injectIntl(withRouter(Header));

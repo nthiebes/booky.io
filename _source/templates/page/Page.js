@@ -10,7 +10,7 @@ import Toolbar from '../../organisms/toolbar';
 
 export default class Page extends Component {
   render() {
-    const { children, className, dashboards, home, toolbar, blurContent, headerSticky, darkMode } = this.props;
+    const { children, className, dashboards, home, toolbar, blurContent, stickyHeader, darkMode } = this.props;
 
     return (
       <Fragment>
@@ -33,7 +33,7 @@ export default class Page extends Component {
         />
         <main className={ classNames(
           'page',
-          headerSticky && 'page--sticky-header',
+          stickyHeader && 'page--sticky-header',
           darkMode && 'page--dark',
           className && className
         ) }>
@@ -62,6 +62,6 @@ Page.propTypes = {
   dashboards: PropTypes.bool,
   home: PropTypes.bool,
   blurContent: PropTypes.bool,
-  headerSticky: PropTypes.bool.isRequired,
+  stickyHeader: PropTypes.bool.isRequired,
   darkMode: PropTypes.bool.isRequired
 };

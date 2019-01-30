@@ -10,14 +10,13 @@ import fetcher from './_utils/fetcher';
 import configureStore from './configureStore';
 import initialState from './initialState';
 
+// Language detection
 const supportedLanguages = ['en', 'de'];
 const cookieLanguage = Cookies.get('lang');
-let locale = cookieLanguage || navigator.language || navigator.userLanguage;
-
-locale = locale.slice(0, 2);
-
+const locale = (cookieLanguage || navigator.language || navigator.userLanguage).slice(0, 2);
 const language = supportedLanguages.indexOf(locale) === -1 ? 'en' : locale;
 
+// Store language
 Cookies.set('lang', language, { expires: 365 });
 document.documentElement.setAttribute('lang', language);
 
@@ -38,14 +37,17 @@ fetch(`/_assets/i18n/${language}.json`)
     fetcher({
       url: '/user',
       onSuccess: (data) => {
-        // console.log('user', data);
+        // console.log('user success', data);
 
         const store = configureStore({
           ...initialState,
           user: {
             ...initialState.user,
-            loggedIn: typeof data.user === 'object',
-            ...data
+            loggedIn: true,
+            settings: {
+              ...initialState.user.settings,
+              ...data.settings
+            }
           },
           intl: {
             locale: language,
@@ -56,14 +58,13 @@ fetch(`/_assets/i18n/${language}.json`)
         loadingDone(store);
       },
       onError: (error) => {
-        // console.log('error:', error);
+        // console.log('user error:', error);
 
         const store = configureStore({
           ...initialState,
           user: {
             ...initialState.user,
-            loggedIn: true, // false
-            error
+            loggedIn: false
           },
           intl: {
             locale: language,
