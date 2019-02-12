@@ -203,5 +203,6 @@
     "contact.text": "We're constantly looking for new ways to improve the site and expand its features, so if you have a great idea for a new feature, have found a bug or have some general feedback, we'd love to hear from you!",
     "contact.message": "Your message",
     "contact.success": "Your message has been sent successfully!",
-    "help.intro1": ""
+    "help.intro1": "",
+    "error.unauthorized": "The username and password that you entered did not match our records. Please double-check and try again."
 }

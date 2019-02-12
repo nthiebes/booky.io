@@ -200,8 +200,9 @@
     "error.invalidEmail": "Bitte gib eine valide E-Mail-Adresse ein.",
     "error.invalidPassword": "Dein Passwort muss mindestens 6 Zeichen lang sein und zudem einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten.",
     "contact.headline": "Schreib uns!",
-    "contact.text": "We're constantly looking for new ways to improve the site and expand its features, so if you have a great idea for a new feature, have found a bug or have some general feedback, we'd love to hear from you!",
+    "contact.text": "Wir sind ständig auf der Suche nach neuen Möglichkeiten, wie wir booky besser machen oder erweitern können. Wenn du eine tolle Idee hast, generell Feedback geben möchtest oder einen Fehler auf der Seite entdeckt hast, teile es uns gerne mit!",
     "contact.message": "Deine Nachricht",
     "contact.success": "Deine Nachricht wurde erfolgreich verschickt!",
-    "help.intro1": "Dies ist die Hilfeseite. Hier findest du Antworten auf häufig gestellte Fragen."
+    "help.intro1": "Dies ist die Hilfeseite. Hier findest du Antworten auf häufig gestellte Fragen.",
+    "error.unauthorized": "Der Benutzername und das Passwort stimmen nicht überein. Bitte überprüfe deine Angaben und versuche es erneut."
 }
