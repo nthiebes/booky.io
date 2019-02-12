@@ -7,17 +7,21 @@ const defaultOptions = {
 };
 
 const checkStatus = (response) => {
-  if (response.status >= 200 && response.status < 300) {
-    return {
-      data: response
-    };
-  }
+  // if (response.status >= 200 && response.status < 300) {
+  //   return response;
+  // }
+  
+  // const error = new Error(response.statusText);
+
+  // error.response = response;
+  // throw error;
 
   return {
     data: response,
-    error: response.message || response.statusText
+    error: response.message
   };
 };
+
 
 const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }) => {
   if (type === 'GET') {
@@ -25,8 +29,11 @@ const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }
       ...defaultOptions,
       ...options
     })
+      .then((response) => response.json())
+      .then(checkStatus)
       .then((response) => {
-        const { data, error } = checkStatus(response);
+        // console.log('success', response);
+        const { data, error } = response;
 
         if (error) {
           onError(error);
@@ -35,6 +42,7 @@ const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }
         }
       })
       .catch((error) => {
+        // console.log('error', error);
         onError(error);
       });
   }
@@ -49,8 +57,11 @@ const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }
       },
       body: JSON.stringify(params)
     })
+      .then((response) => response.json())
+      .then(checkStatus)
       .then((response) => {
-        const { data, error } = checkStatus(response);
+        // console.log('response', response);
+        const { data, error } = response;
 
         if (error) {
           onError(error);
@@ -59,6 +70,7 @@ const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }
         }
       })
       .catch((error) => {
+        // console.log('error', error);
         onError(error);
       });
   }

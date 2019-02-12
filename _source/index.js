@@ -37,8 +37,6 @@ fetch(`/_assets/i18n/${language}.json`)
     fetcher({
       url: '/user',
       onSuccess: (data) => {
-        // console.log('user success', data);
-
         const store = configureStore({
           ...initialState,
           user: {
@@ -57,9 +55,7 @@ fetch(`/_assets/i18n/${language}.json`)
         
         loadingDone(store);
       },
-      onError: (error) => {
-        // console.log('user error:', error);
-
+      onError: () => {
         const store = configureStore({
           ...initialState,
           user: {
