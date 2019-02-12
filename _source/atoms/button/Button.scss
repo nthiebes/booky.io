@@ -199,8 +199,25 @@
     height: 40px;
     width: 100%;
 
+    &.button--pending {
+      .button__icon {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .button__text {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    }
+
     .button__icon {
-      display: none;
+      display: inline-block;
+      left: calc(50% - 18px);
+      position: absolute;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: color 0.2s linear, transform 0.2s ease, opacity 0.2s ease;
     }
   }
 
@@ -380,7 +397,7 @@
 .button__text {
   display: inline-block;
   font-size: 1rem;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
   height: 2rem;
   line-height: 2rem;
 }

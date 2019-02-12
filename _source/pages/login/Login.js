@@ -104,7 +104,6 @@ class Login extends Component {
               id="show-password"
               onChange={ this.handleCheckboxChange }
             />
-            { error && <ErrorMessage message={ error } hasIcon /> }
             <ButtonLargeBlue
               icon="account"
               type="submit"
@@ -114,6 +113,7 @@ class Login extends Component {
             >
               <FormattedHTMLMessage id="header.login" />
             </ButtonLargeBlue>
+            { error && <ErrorMessage message={ error } hasIcon /> }
             <Link className="login__forgot" to="/forgot">
               <FormattedMessage id="login.forgot" />
             </Link>
