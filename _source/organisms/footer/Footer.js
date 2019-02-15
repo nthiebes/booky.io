@@ -9,6 +9,17 @@ import { ButtonSmallLight } from '../../atoms/button';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.scrollToTop = this.scrollToTop.bind(this);
+  }
+  
+  scrollToTop() {
+    window.scrollTo(0, 0);
+    document.getElementById('root').focus();
+  }
+
   render() {
     const { intl, dashboardsOpen, hasSidebar, className, home, loggedIn, toolbarSticky, darkMode } = this.props;
 
@@ -79,7 +90,7 @@ class Footer extends Component {
           </nav>
           <div className="footer__wrapper">
             <LanguageSwitcher className="footer__language" />
-            <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
+            <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
               <FormattedHTMLMessage id="footer.scroll" />
             </ButtonSmallLight>
           </div>
