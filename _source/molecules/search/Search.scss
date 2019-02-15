@@ -17,12 +17,12 @@
 .search__input {
   @include mobile {
     height: 2.4rem;
-    line-height: 2.4rem;
+    line-height: 2.4;
   }
 
   @include tablet {
     height: 3rem;
-    line-height: 3rem;
+    line-height: 3;
   }
 
   @include desktop {
