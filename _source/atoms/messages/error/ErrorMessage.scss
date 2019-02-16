@@ -9,9 +9,13 @@
 }
 
 .error--animate {
-  max-height: 6rem;
+  max-height: 8rem;
   opacity: 1;
   padding: 1rem 0;
+
+  @include tablet-desktop() {
+    max-height: 6rem;
+  }
 }
 
 .error__icon {
