@@ -204,5 +204,7 @@
     "contact.message": "Your message",
     "contact.success": "Your message has been sent successfully!",
     "help.intro1": "",
-    "error.unauthorized": "The username and password that you entered did not match our records. Please double-check and try again."
+    "error.unauthorized": "The username and password that you entered did not match our records. Please double-check and try again.",
+    "legal.11": "",
+    "legal.12": ""
 }
