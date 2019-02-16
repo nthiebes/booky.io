@@ -1,22 +1,13 @@
 .language-switcher {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.language-switcher__icon {
-  width: 24px;
-  height: 24px;
-  pointer-events: none;
+.language-switcher__item {
+  margin: 0 0.5rem;
+}
 
-  .icon__svg {
-    padding: 0;
-    width: 24px;
-    height: 24px;
-  }
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: $color__font--white;
-  }
+.language-switcher__item--active {
+  text-decoration: underline;
 }

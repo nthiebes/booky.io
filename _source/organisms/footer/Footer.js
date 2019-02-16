@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
+import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
@@ -71,38 +72,40 @@ class Footer extends Component {
           </a>
         </section>
         <section className="footer__content">
-          <nav className="footer__menu">
-            <Link className="footer__menu-item" color="light" to="/about">
-              <FormattedMessage id="menu.about" />
-            </Link>
-            <Link className="footer__menu-item" color="light" to="/help">
-              <FormattedMessage id="menu.help" />
-            </Link>
-            <Link className="footer__menu-item" color="light" to="/contact">
-              <FormattedMessage id="menu.contact" />
-            </Link>
-            <Link className="footer__menu-item" color="light" to="/privacy">
-              <FormattedMessage id="menu.privacy" />
-            </Link>
-            <Link className="footer__menu-item" color="light" to="/legal">
-              <FormattedMessage id="menu.legal" />
-            </Link>
-          </nav>
           <div className="footer__wrapper">
-            <LanguageSwitcher className="footer__language" />
+            <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
+              <img src="../../_assets/logo_l.svg" alt="Logo" height="36" />
+            </Link>
             <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
               <FormattedHTMLMessage id="footer.scroll" />
             </ButtonSmallLight>
           </div>
-          <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
-            <img src="../../_assets/logo_l.svg" alt="Logo" height="36" />
-          </Link>
-          <div className="footer__copy">
+          <div className="footer__languages">
+            <LanguageSwitcher />
+          </div>
+          <nav className="footer__menu">
+            <Link className="footer__menu-item" color="light" to="/about" noUnderline>
+              <FormattedMessage id="menu.about" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/help" noUnderline>
+              <FormattedMessage id="menu.help" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/contact" noUnderline>
+              <FormattedMessage id="menu.contact" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/privacy" noUnderline>
+              <FormattedMessage id="menu.privacy" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/legal" noUnderline>
+              <FormattedMessage id="menu.legal" />
+            </Link>
+          </nav>
+          <P className="footer__copy" noPadding>
             { `© 2014-${new Date().getFullYear()}` }
             <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
             { '| ' }
             <FormattedMessage id="footer.copy" />
-          </div>
+          </P>
         </section>
       </footer>
     );
