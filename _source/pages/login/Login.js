@@ -59,7 +59,7 @@ class Login extends Component {
       onError: (error) => {
         this.setState({
           pending: false,
-          error: error || 'error.default'
+          error
         });
       }
     });

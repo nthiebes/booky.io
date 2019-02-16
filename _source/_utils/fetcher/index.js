@@ -43,7 +43,7 @@ const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }
       })
       .catch((error) => {
         // console.log('error', error);
-        onError(error);
+        onError(error.statusText || 'error.default');
       });
   }
 
@@ -71,7 +71,7 @@ const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }
       })
       .catch((error) => {
         // console.log('error', error);
-        onError(error);
+        onError(error.statusText || 'error.default');
       });
   }
 };
