@@ -43,6 +43,7 @@ class Menu extends Component {
             to={ route }
             color="light"
             isNavLink
+            noUnderline
           >
             <Icon icon={ name } color="light" />
             <FormattedMessage id={ `menu.${name}` } />

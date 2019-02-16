@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import Page from '../../templates/page';
 import { H1, H2, H3 } from '../../atoms/headline';
@@ -22,7 +22,9 @@ export default class Legal extends Component {
             <FormattedMessage id="legal.1" />
           </P>
           <P>
-            <FormattedHTMLMessage id="legal.2" />
+            { 'Nico Thiebes' }<br />
+            { 'Wilseder Ring 43' }<br />
+            { '21079 Hamburg' }
           </P>
           <H2>
             <FormattedMessage id="legal.3" />
@@ -53,6 +55,12 @@ export default class Legal extends Component {
           <P>
             <FormattedMessage id="legal.10" />
           </P>
+          { locale === 'en' && (
+            <P>
+              <i><FormattedMessage id="legal.13" /></i>
+              <Link href="http://www.twigg.de" target="_blank">{ 'http://www.twigg.de' }</Link>
+            </P>
+          ) }
           { locale === 'de' && (
             <Fragment>
               <H3>
@@ -61,21 +69,13 @@ export default class Legal extends Component {
               <P>
                 <FormattedMessage id="legal.12" />
               </P>
+              <P>
+                <i><FormattedMessage id="legal.13" /></i>
+                <Link href="https://www.e-recht24.de" target="_blank">{ 'https://www.e-recht24.de' }</Link>{ ', ' }
+                <Link href="https://www.e-recht24.de/muster-disclaimer.html" target="_blank">{ 'Disclaimer eRecht24' }</Link>{ ', ' }
+                <Link href="https://www.e-recht24.de/muster-disclaimer.html" target="_blank">{ 'eRecht24 Disclaimer' }</Link>
+              </P>
             </Fragment>
-          ) }
-          { locale === 'en' && (
-            <P>
-              <i><FormattedMessage id="legal.13" /></i>
-              <Link href="http://www.twigg.de" target="_blank">{ 'http://www.twigg.de' }</Link>
-            </P>
-          ) }
-          { locale === 'de' && (
-            <P>
-              <i><FormattedMessage id="legal.13" /></i>
-              <Link href="https://www.e-recht24.de" target="_blank">{ 'https://www.e-recht24.de' }</Link>{ ', ' }
-              <Link href="https://www.e-recht24.de/muster-disclaimer.html" target="_blank">{ 'Disclaimer eRecht24' }</Link>{ ', ' }
-              <Link href="https://www.e-recht24.de/muster-disclaimer.html" target="_blank">{ 'eRecht24 Disclaimer' }</Link>
-            </P>
           ) }
         </Section>
       </Page>

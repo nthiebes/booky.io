@@ -29,15 +29,6 @@
   filter: blur(3px) grayscale(100%);
 }
 
-.page--hidden {
-  // transition: opacity 0.5s ease;
-  opacity: 0;
-}
-
-.page--show {
-  opacity: 1;
-}
-
 .page--dark {
   background-color: $color__background--dark-mode;
 }

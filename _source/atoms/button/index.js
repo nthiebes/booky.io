@@ -1,6 +1,11 @@
 import React from 'react';
 import Button from './Button';
 
+export function ButtonTextLight(props) {
+  return <Button { ...props } size="text" color="light" />;
+}
+ButtonTextLight.displayName = 'ButtonTextLight';
+
 export function ButtonSmallPrimary(props) {
   return <Button { ...props } size="small" color="primary" />;
 }

@@ -1,7 +1,7 @@
 .paragraph {
   color: $color__font--dark;
   font-family: $font__family--text;
-  line-height: 1.556rem;
+  line-height: 1.5;
   padding-bottom: 1rem;
 }
 
@@ -11,4 +11,8 @@
 
 .paragraph--dark-mode {
   color: $color__font--white;
+}
+
+.paragraph--no-padding {
+  padding: 0;
 }

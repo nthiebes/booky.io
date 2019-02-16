@@ -4,13 +4,14 @@ import classNames from 'classnames';
 
 export default class Paragraph extends Component {
   render() {
-    const { children, className, first, darkMode } = this.props;
+    const { children, className, first, darkMode, noPadding } = this.props;
 
     return (
       <p className={ classNames(
         'paragraph',
         first && 'paragraph--first',
         darkMode && 'paragraph--dark-mode',
+        noPadding && 'paragraph--no-padding',
         className && className
       ) }>
         { children }
@@ -27,5 +28,6 @@ Paragraph.propTypes = {
     PropTypes.array
   ]).isRequired,
   first: PropTypes.bool,
-  darkMode: PropTypes.bool
+  darkMode: PropTypes.bool,
+  noPadding: PropTypes.bool
 };

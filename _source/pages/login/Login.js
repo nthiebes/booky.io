@@ -14,8 +14,6 @@ import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 
-import './Login.scss';
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +59,7 @@ class Login extends Component {
       onError: (error) => {
         this.setState({
           pending: false,
-          error: error || 'error.default'
+          error
         });
       }
     });
@@ -106,7 +104,6 @@ class Login extends Component {
               id="show-password"
               onChange={ this.handleCheckboxChange }
             />
-            { error && <ErrorMessage message={ error } hasIcon /> }
             <ButtonLargeBlue
               icon="account"
               type="submit"
@@ -116,6 +113,7 @@ class Login extends Component {
             >
               <FormattedHTMLMessage id="header.login" />
             </ButtonLargeBlue>
+            { error && <ErrorMessage message={ error } hasIcon /> }
             <Link className="login__forgot" to="/forgot">
               <FormattedMessage id="login.forgot" />
             </Link>

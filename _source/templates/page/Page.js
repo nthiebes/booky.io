@@ -9,58 +9,30 @@ import Modal from '../../organisms/modal';
 import Toolbar from '../../organisms/toolbar';
 
 export default class Page extends Component {
-  constructor(props) {
-    super(props);
-
-    this.show = this.show.bind(this);
-    this.state = {
-      show: false
-    };
-  }
-
-  componentDidMount() {
-    window.setTimeout(this.show, 100);
-  }
-
-  show() {
-    this.setState({
-      show: true
-    });
-  }
-
   render() {
     const { children, className, dashboards, home, toolbar, blurContent, stickyHeader, darkMode } = this.props;
-    const { show } = this.state;
 
     return (
       <Fragment>
         <Header
           className={ classNames(
-            blurContent && 'page--blur',
-            'page--hidden',
-            show && 'page--show'
+            blurContent && 'page--blur'
           ) }
           home={ home }
         />
         { toolbar && (
           <Toolbar className={ classNames(
-            blurContent && 'page--blur',
-            'page--hidden',
-            show && 'page--show'
+            blurContent && 'page--blur'
           ) } />
         ) }
         <Sidebar
           className={ classNames(
-            blurContent && 'page--blur',
-            'page--hidden',
-            show && 'page--show'
+            blurContent && 'page--blur'
           ) }
           dashboards={ dashboards }
         />
         <main className={ classNames(
           'page',
-          'page--hidden',
-          show && 'page--show',
           stickyHeader && 'page--sticky-header',
           darkMode && 'page--dark',
           className && className
@@ -69,9 +41,7 @@ export default class Page extends Component {
         </main>
         <Footer
           className={ classNames(
-            blurContent && 'page--blur',
-            'page--hidden',
-            show && 'page--show'
+            blurContent && 'page--blur'
           ) }
           home={ home }
         />

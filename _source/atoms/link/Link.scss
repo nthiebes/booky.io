@@ -1,10 +1,14 @@
 .link {
   font-size: 1rem;
   position: relative;
-  text-decoration: none;
+  text-decoration: underline;
   transition: color 0.2s linear;
   display: inline-flex;
   cursor: pointer;
+}
+
+.link--noUnderline {
+  text-decoration: none;
 }
 
 .link--primary {

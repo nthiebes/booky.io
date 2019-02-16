@@ -115,12 +115,19 @@
   list-style: none;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .footer__menu-item {
   font-size: $font-size--small;
   padding: 0 0.5rem;
-  line-height: 1.5rem;
+  line-height: 1.5;
+}
+
+.footer__languages {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 .footer__wrapper {
@@ -128,29 +135,14 @@
   justify-content: center;
 }
 
-.footer__language {
-  justify-content: center;
-  margin-top: 2rem;
-
-  @include tablet-desktop {
-    margin-right: 1rem;
-  }
-}
-
 .footer__logo {
   color: $color__font--white;
-  margin-top: 2rem;
   font-size: $font-size--small;
-  align-self: center;
+  margin-right: 2rem;
 
   &:focus {
     outline: 1px dashed $color__font--white;
   }
-}
-
-.footer__button {
-  margin-top: 2rem;
-  align-self: center;
 }
 
 .footer__copy {

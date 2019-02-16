@@ -133,7 +133,6 @@ class Join extends Component {
               id="show-password"
               onChange={ this.handleCheckboxChange }
             />
-            { error && <ErrorMessage hasIcon /> }
             <ButtonLargeBlue
               icon="join"
               type="submit"
@@ -143,6 +142,7 @@ class Join extends Component {
             >
               <FormattedHTMLMessage id="join.joinNow" />
             </ButtonLargeBlue>
+            { error && <ErrorMessage hasIcon /> }
             <P className="join__login">
               <FormattedMessage id="join.registered" />
               { ' ' }
