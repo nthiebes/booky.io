@@ -31,7 +31,7 @@ export default {
   categories: [{
     id: '666',
     name: 'Banana',
-    color: '0',
+    color: 0,
     bookmarks: [{
       id: 111,
       name: 'Awesome website',

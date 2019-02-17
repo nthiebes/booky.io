@@ -185,7 +185,6 @@ class Sidebar extends Component {
                   ) }
                   onClick={ this.onCustomizeClick }
                   tabIndex={ open ? '0' : '-1' }
-                  noUnderline
                 >
                   <Icon icon="settings" />
                   <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
@@ -200,7 +199,6 @@ class Sidebar extends Component {
                   ) }
                   onClick={ logout }
                   tabIndex={ open ? '0' : '-1' }
-                  noUnderline
                 >
                   <Icon icon="logout" />
                   <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
