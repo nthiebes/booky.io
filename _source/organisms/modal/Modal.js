@@ -68,6 +68,10 @@ export default class Modal extends Component {
   handleSave(modalData) {
     const { modal, data, closeModal } = this.props;
 
+    if (modalData.color) {
+      modalData.color = parseInt(modalData.color, 10);
+    }
+
     this.modalMap[modal].action && this.modalMap[modal].action({
       ...modalData,
       dashboard: data.activeDashboard
