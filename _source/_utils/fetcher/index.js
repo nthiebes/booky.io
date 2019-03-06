@@ -47,11 +47,11 @@ const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }
       });
   }
 
-  if (type === 'POST') {
+  if (type === 'POST' || type === 'DELETE' || type === 'PUT') {
     fetch(`${baseUrl}${url}`, {
       ...defaultOptions,
       ...options,
-      method: 'POST',
+      method: type,
       headers: {
         'Content-Type': 'application/json'
       },

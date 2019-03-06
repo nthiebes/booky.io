@@ -16,6 +16,7 @@ class Account extends Component {
     super(props);
 
     this.handleTabClick = this.handleTabClick.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.state = {
       activeTab: 0
     };
@@ -36,8 +37,12 @@ class Account extends Component {
     });
   }
 
+  handleDeleteClick() {
+    this.props.openModal('DeleteAccount');
+  }
+
   render() {
-    const { intl } = this.props;
+    const { intl, openModal } = this.props;
     const { activeTab } = this.state;
 
     return (
@@ -121,7 +126,7 @@ class Account extends Component {
               <P first>
                 <FormattedMessage id="account.deleteText" />
               </P>
-              <ButtonLargeBlue icon="delete">
+              <ButtonLargeBlue icon="delete" onClick={ this.handleDeleteClick }>
                 <FormattedHTMLMessage id="account.deleteButton" />
               </ButtonLargeBlue>
             </Fragment>
@@ -133,7 +138,8 @@ class Account extends Component {
 }
 
 Account.propTypes = {
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  openModal: PropTypes.func.isRequired
 };
 
 export default injectIntl(Account);

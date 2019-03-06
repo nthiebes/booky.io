@@ -3,6 +3,7 @@ import Component from './Modal';
 import { actions as modalActions } from '../../_state/modal';
 import { actions as categoriesActions } from '../../_state/categories';
 import { actions as dashboardsActions } from '../../_state/dashboards';
+import { deleteAccount } from '../../_state/user/actions';
 
 export const mapStateToProps = function(state) {
   return {
@@ -50,6 +51,9 @@ export const mapDispatchToProps = function(dispatch) {
     },
     deleteDashboard: (data) => {
       dispatch(dashboardsActions.deleteDashboard(data));
+    },
+    deleteAccount: (data) => {
+      dispatch(deleteAccount(data));
     }
   };
 };

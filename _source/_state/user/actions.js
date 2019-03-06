@@ -74,3 +74,18 @@ export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
     }
   });
 });
+
+export const deleteAccount = () => ((dispatch) => {
+  fetcher({
+    url: '/user',
+    type: 'DELETE',
+    onSuccess: () => {
+      dispatch(updateUser({
+        loggedIn: false
+      }));
+    },
+    onError: (error) => {
+      console.log('onError', error);
+    }
+  });
+});

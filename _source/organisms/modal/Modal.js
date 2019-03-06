@@ -13,6 +13,7 @@ import EditDashboard from './modals/EditDashboard';
 import DeleteDashboard from './modals/DeleteDashboard';
 import EditStructure from './modals/EditStructure';
 import Customize from './modals/Customize';
+import DeleteAccount from './modals/DeleteAccount';
 
 export default class Modal extends Component {
   constructor(props) {
@@ -62,6 +63,10 @@ export default class Modal extends Component {
       },
       Customize: {
         type: Customize
+      },
+      DeleteAccount: {
+        type: DeleteAccount,
+        action: props.deleteAccount
       }
     };
   }
@@ -134,7 +139,8 @@ Modal.propTypes = {
   addDashboard: PropTypes.func.isRequired,
   editDashboard: PropTypes.func.isRequired,
   deleteDashboard: PropTypes.func.isRequired,
-  darkMode: PropTypes.bool.isRequired
+  darkMode: PropTypes.bool.isRequired,
+  deleteAccount: PropTypes.func.isRequired
 };
 
 Modal.defaultProps = {
