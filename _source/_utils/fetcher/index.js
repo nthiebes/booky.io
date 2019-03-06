@@ -23,8 +23,8 @@ const checkStatus = (response) => {
 };
 
 
-const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }) => {
-  if (type === 'GET') {
+const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {} }) => {
+  if (method === 'GET') {
     fetch(`${baseUrl}${url}`, {
       ...defaultOptions,
       ...options
@@ -47,11 +47,11 @@ const fetcher = ({ params, type = 'GET', url, onSuccess, onError, options = {} }
       });
   }
 
-  if (type === 'POST' || type === 'DELETE' || type === 'PUT') {
+  if (method === 'POST' || method === 'DELETE' || method === 'PUT') {
     fetch(`${baseUrl}${url}`, {
       ...defaultOptions,
       ...options,
-      method: type,
+      method: method,
       headers: {
         'Content-Type': 'application/json'
       },

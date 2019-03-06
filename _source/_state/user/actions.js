@@ -21,7 +21,7 @@ export const resetUserState = () => ({
 export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
   fetcher({
     url: '/login',
-    type: 'POST',
+    method: 'POST',
     params,
     onSuccess: (data) => {
       const { settings, ...userData } = data;
@@ -57,7 +57,7 @@ export const logout = ({ onSuccess, onError }) => ((dispatch) => {
 export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
   fetcher({
     url: '/join',
-    type: 'POST',
+    method: 'POST',
     params,
     onSuccess: (data) => {
       const { settings, ...userData } = data;
@@ -78,7 +78,7 @@ export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
 export const deleteAccount = () => ((dispatch) => {
   fetcher({
     url: '/user',
-    type: 'DELETE',
+    method: 'DELETE',
     onSuccess: () => {
       dispatch(updateUser({
         loggedIn: false
