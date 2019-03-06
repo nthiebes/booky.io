@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import AddBookmark from './modals/AddBookmark';
 import EditBookmark from './modals/EditBookmark';
 import DeleteBookmark from './modals/DeleteBookmark';
@@ -21,46 +22,46 @@ export default class Modal extends Component {
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.modalMap = {
       AddBookmark: {
-        modal: AddBookmark,
+        type: AddBookmark,
         action: props.addBookmark
       },
       EditBookmark: {
-        modal: EditBookmark,
+        type: EditBookmark,
         action: props.editBookmark
       },
       DeleteBookmark: {
-        modal: DeleteBookmark,
+        type: DeleteBookmark,
         action: props.deleteBookmark
       },
       AddCategory: {
-        modal: AddCategory,
+        type: AddCategory,
         action: props.addCategory
       },
       EditCategory: {
-        modal: EditCategory,
+        type: EditCategory,
         action: props.editCategory
       },
       DeleteCategory: {
-        modal: DeleteCategory,
+        type: DeleteCategory,
         action: props.deleteCategory
       },
       AddDashboard: {
-        modal: AddDashboard,
+        type: AddDashboard,
         action: props.addDashboard
       },
       EditDashboard: {
-        modal: EditDashboard,
+        type: EditDashboard,
         action: props.editDashboard
       },
       DeleteDashboard: {
-        modal: DeleteDashboard,
+        type: DeleteDashboard,
         action: props.deleteDashboard
       },
       EditStructure: {
-        modal: EditStructure
+        type: EditStructure
       },
       Customize: {
-        modal: Customize
+        type: Customize
       }
     };
   }
@@ -90,7 +91,7 @@ export default class Modal extends Component {
     let CustomTag;
 
     if (open) {
-      CustomTag = this.modalMap[modal] && this.modalMap[modal].modal;
+      CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
     } else {
       CustomTag = null;
     }
