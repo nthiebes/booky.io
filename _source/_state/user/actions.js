@@ -53,3 +53,24 @@ export const logout = ({ onSuccess, onError }) => ((dispatch) => {
     }
   });
 });
+
+export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
+  fetcher({
+    url: '/join',
+    type: 'POST',
+    params,
+    onSuccess: (data) => {
+      const { settings, ...userData } = data;
+
+      dispatch(updateUser({
+        ...userData
+      }));
+      dispatch(updateSettings(settings));
+
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
