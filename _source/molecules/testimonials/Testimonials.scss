@@ -41,10 +41,6 @@
   }
 }
 
-.testimonials__content {
-  margin-top: 7px;
-}
-
 .testimonials__image {
   margin-right: 0.5rem;
   flex-shrink: 0;
@@ -52,15 +48,14 @@
   border: 2px solid rgba(0,0,0,0.1);
 }
 
-.testimonials__link {
+.testimonials__header {
   font-size: $font-size--small;
   display: flex;
 }
 
-.testimonials__name {
-  color: black;
-  font-weight: 700;
-  margin-right: 0.5rem;
+.testimonials__link {
+  font-size: $font-size--small;
+  margin-left: 0.5rem;
   white-space: nowrap;
 }
 

@@ -1,27 +1,32 @@
 import React from 'react';
 import Headline from './HeadlineContainer';
 
-export function Display1(props) {
+export const Display1 = (props) => {
   return <Headline { ...props } type="1" display />;
 }
 Display1.displayName = 'Display1';
 
-export function Display2(props) {
+export const Display2 = (props) => {
   return <Headline { ...props } type="2" display />;
 }
 Display2.displayName = 'Display2';
 
-export function H1(props) {
+export const H1 = (props) => {
   return <Headline { ...props } type="1" />;
 }
 H1.displayName = 'H1';
 
-export function H2(props) {
+export const H2 = (props) => {
   return <Headline { ...props } type="2" />;
 }
 H2.displayName = 'H2';
 
-export function H3(props) {
+export const H3 = (props) => {
   return <Headline { ...props } type="3" />;
 }
 H3.displayName = 'H3';
+
+export const H4 = (props) => {
+  return <Headline { ...props } type="4" />;
+}
+H3.displayName = 'H4';
