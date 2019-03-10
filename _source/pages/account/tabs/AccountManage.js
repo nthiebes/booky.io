@@ -24,7 +24,7 @@ class AccountManage extends Component {
         <P first>
           <FormattedMessage id="account.deleteText" />
         </P>
-        <ButtonLargeBlue icon="delete" onClick={ this.handleClick }>
+        <ButtonLargeBlue icon="delete" contentBefore onClick={ this.handleClick }>
           <FormattedHTMLMessage id="account.deleteButton" />
         </ButtonLargeBlue>
       </Fragment>

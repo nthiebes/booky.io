@@ -1,17 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import P from '../../../atoms/paragraph';
+import { ButtonLargeBlue } from '../../../atoms/button';
+import FileUpload from '../../../atoms/file-upload';
 
 class AccountImport extends Component {
   render() {
     const { intl } = this.props;
 
     return (
-      <P first>
-        <FormattedMessage id="account.importText" />
-      </P>
+      <Fragment>
+        <P first>
+          <FormattedMessage id="account.importText" />
+        </P>
+        <FileUpload />
+        <ButtonLargeBlue icon="upload" contentBefore>
+          <FormattedMessage id="account.startImport" />
+        </ButtonLargeBlue>
+      </Fragment>
     );
   }
 }

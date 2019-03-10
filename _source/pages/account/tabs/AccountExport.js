@@ -14,7 +14,9 @@ class AccountExport extends Component {
         <P first>
           <FormattedHTMLMessage id="account.exportText" />
         </P>
-        <ButtonLargeBlue icon="download">{ 'Download' }</ButtonLargeBlue>
+        <ButtonLargeBlue icon="download" contentBefore>
+          <FormattedHTMLMessage id="account.startDownload" />
+        </ButtonLargeBlue>
       </Fragment>
     );
   }
