@@ -8,7 +8,7 @@ import Form from '../../../molecules/form';
 
 class AccountData extends Component {
   render() {
-    const { intl } = this.props;
+    const { intl, name, email, updateUser } = this.props;
 
     return (
       <Form className="account__form">
@@ -18,7 +18,7 @@ class AccountData extends Component {
           label={ intl.formatMessage({ id: 'login.username' }) }
           maxLength="50"
           required
-          autoComplete="username"
+          value={ name }
         />
         <Input
           name="email"
@@ -28,7 +28,7 @@ class AccountData extends Component {
           required
           type="email"
           requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
-          autoComplete="email"
+          value={ email }
         />
         <Input
           name="password"
@@ -58,7 +58,10 @@ class AccountData extends Component {
 }
 
 AccountData.propTypes = {
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  updateUser: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired
 };
 
 export default injectIntl(AccountData);

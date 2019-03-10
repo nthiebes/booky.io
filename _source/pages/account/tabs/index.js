@@ -1,4 +1,4 @@
-import AccountData from './AccountData';
+import AccountData from './AccountDataContainer';
 import AccountImport from './AccountImport';
 import AccountExport from './AccountExport';
 import AccountManage from './AccountManageContainer';
