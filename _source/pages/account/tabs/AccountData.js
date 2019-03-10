@@ -50,7 +50,7 @@ class AccountData extends Component {
           requirements={ intl.formatMessage({ id: 'misc.validPassword' }) }
         />
         <ButtonLargeBlue icon="save" contentBefore>
-          <FormattedMessage id="button.save" />
+          <FormattedMessage id="button.update" />
         </ButtonLargeBlue>
       </Form>
     );
