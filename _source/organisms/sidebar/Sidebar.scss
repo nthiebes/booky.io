@@ -192,9 +192,11 @@
 
 .sidebar__hr {
   height: 2px;
-  position: relative;
   background-color: rgba(0,0,0,0.15);
-  width: 140%;
-  left: -20%;
   margin-bottom: 1rem;
+}
+
+.sidebar__button {
+  margin: 1rem calc(3vw + 6px);
+  width: calc(100% - 6vw - 12px);
 }
