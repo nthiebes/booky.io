@@ -1,3 +1,3 @@
-import component from './AccountContainer';
+import component from './Account';
 
 export default component;
