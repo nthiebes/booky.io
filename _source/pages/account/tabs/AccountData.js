@@ -8,7 +8,7 @@ import Form from '../../../molecules/form';
 
 class AccountData extends Component {
   render() {
-    const { intl, name, email, updateUser } = this.props;
+    const { intl, name, email } = this.props;
 
     return (
       <Form className="account__form">

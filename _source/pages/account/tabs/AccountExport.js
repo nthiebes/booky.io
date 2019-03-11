@@ -7,7 +7,7 @@ import { ButtonLargeBlue } from '../../../atoms/button';
 
 class AccountExport extends Component {
   render() {
-    const { intl } = this.props;
+    // const { intl } = this.props;
 
     return (
       <Fragment>

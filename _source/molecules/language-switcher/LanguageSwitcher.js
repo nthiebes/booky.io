@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import 'whatwg-fetch';
 
 import { ButtonTextLight } from '../../atoms/button';
-import Icon from '../../atoms/icon';
 
 class LanguageSwitcher extends Component {
   constructor(props) {

@@ -87,7 +87,6 @@ class Dashboards extends Component {
   render() {
     const {
       dashboards,
-      openModal,
       changeDashboard,
       className,
       intl,

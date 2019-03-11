@@ -8,7 +8,7 @@ import FileUpload from '../../../atoms/file-upload';
 
 class AccountImport extends Component {
   render() {
-    const { intl } = this.props;
+    // const { intl } = this.props;
 
     return (
       <Fragment>

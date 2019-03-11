@@ -17,7 +17,7 @@ class AccountManage extends Component {
   }
 
   render() {
-    const { intl, onDeleteClick } = this.props;
+    // const { intl } = this.props;
 
     return (
       <Fragment>
