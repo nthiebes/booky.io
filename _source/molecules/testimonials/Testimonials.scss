@@ -20,7 +20,7 @@
 
 .testimonials__testimonial {
   display: flex;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem 2.5rem;
   position: relative;
   background-color: $color__font--white;
   border-radius: 5px;
@@ -35,7 +35,7 @@
   }
 
   @include desktop {
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 2.5rem;
     width: 33%;
     margin: 0 18px;
   }
@@ -51,12 +51,19 @@
 .testimonials__header {
   font-size: $font-size--small;
   display: flex;
+
+  @include mobile-tablet {
+    flex-direction: column;
+  }
 }
 
 .testimonials__link {
   font-size: $font-size--small;
-  margin-left: 0.5rem;
   white-space: nowrap;
+
+  @include desktop {
+    margin-left: 0.5rem;
+  }
 }
 
 .testimonials__text {
@@ -69,12 +76,8 @@
   pointer-events: none;
   opacity: 0.3;
   bottom: -12px;
-  right: -7px;
-  height: 64px;
-  width: 64px;
-
-  .icon__svg {
-    height: 64px;
-    width: 64px;
-  }
+  // To create a fake margin/padding because the margin and padding
+  // of the testimonial for the right side of the last element get ignored in a scroll container
+  right: calc(-1rem - 1.5vw);
+  padding-right: calc(1rem + 1.5vw);
 }

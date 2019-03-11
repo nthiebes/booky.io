@@ -23,7 +23,7 @@ class Testimonial extends Component {
           </H4>
           <P className="testimonials__text">{ text }</P>
         </div>
-        <Icon icon="quote" color="medium" className="testimonials__icon" />
+        <Icon icon="quote" size="medium" color="medium" className="testimonials__icon" />
       </blockquote>
     );
   }
