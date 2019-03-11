@@ -48,19 +48,19 @@ class Home extends Component {
         <Section noPadding>
           <nav className="home__navigation">
             <a className="home__nav-item" href="#private">
-              <Icon icon="lock" />
+              <Icon icon="lock" size="medium" />
               <FormattedMessage id="home.private" />
             </a>
             <a className="home__nav-item" href="#customizable">
-              <Icon icon="settings" />
+              <Icon icon="settings" size="medium" />
               <FormattedMessage id="home.customizable" />
             </a>
             <a className="home__nav-item" href="#mobile">
-              <Icon icon="phone" />
+              <Icon icon="phone" size="medium" />
               <FormattedMessage id="home.mobile" />
             </a>
             <a className="home__nav-item" href="#performant">
-              <Icon icon="performance" />
+              <Icon icon="performance" size="medium" />
               <FormattedMessage id="home.performant" />
             </a>
           </nav>
@@ -83,7 +83,7 @@ class Home extends Component {
           </P>
         </Section>
         <Section color="primary" className="home__bookmarklet">
-          <Icon icon="extension" color="light" className="home__bookmarklet-icon" />
+          <Icon icon="extension" size="medium" color="light" className="home__bookmarklet-icon" />
           <H2 noMargin className="home__bookmarklet-headline">
             { 'Quickly add links to booky with our bookmarklet or Chrome extension.' }
           </H2>

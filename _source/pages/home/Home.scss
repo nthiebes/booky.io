@@ -124,8 +124,6 @@
   .icon__svg {
     transition: color 0.2s;
     margin-bottom: 0.3rem;
-    width: 4rem;
-    height: 4rem;
   }
 }
 
@@ -152,12 +150,6 @@
   flex-shrink: 0;
   margin-right: 1rem;
   pointer-events: none;
-
-  &.icon,
-  .icon__svg {
-    width: 64px;
-    height: 64px;
-  }
 }
 
 .home__bookmarklet-headline {

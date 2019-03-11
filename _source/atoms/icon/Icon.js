@@ -29,13 +29,25 @@ export default class Icon extends Component {
   }
 
   render() {
-    const { icon, className, label, color, title, dragHandleProps, tabIndex, darkMode, ignoreDarkMode } = this.props;
+    const {
+      icon,
+      className,
+      label,
+      color,
+      title,
+      dragHandleProps,
+      tabIndex,
+      darkMode,
+      ignoreDarkMode,
+      size
+    } = this.props;
     const link = '_assets/symbol-defs.svg#icon-' + icon;
 
     return (
       <span
         className={ classNames(
           'icon',
+          `icon--size-${size}`,
           darkMode && !ignoreDarkMode ? 'icon--light' : `icon--${color}`,
           darkMode && !ignoreDarkMode && 'icon--dark-mode',
           className && className
@@ -46,7 +58,11 @@ export default class Icon extends Component {
         tabIndex={ tabIndex }
         { ...dragHandleProps }
       >
-        <svg className={ classNames('icon__svg', icon === 'spinner' && 'icon__svg--spinner') }>
+        <svg className={ classNames(
+          'icon__svg',
+          `icon__svg--size-${size}`,
+          icon === 'spinner' && 'icon__svg--spinner'
+        ) }>
           <use xlinkHref={ link } />
         </svg>
         { label && <label className="icon__label">{ label }</label> }
@@ -66,9 +82,11 @@ Icon.propTypes = {
   dragHandleProps: PropTypes.object,
   tabIndex: PropTypes.string,
   darkMode: PropTypes.bool,
-  ignoreDarkMode: PropTypes.bool
+  ignoreDarkMode: PropTypes.bool,
+  size: PropTypes.string
 };
 
 Icon.defaultProps = {
-  color: 'medium'
+  color: 'medium',
+  size: 'small'
 };
