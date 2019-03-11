@@ -3,6 +3,8 @@
   font-family: $font__family--heading;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .headline--h1 {
