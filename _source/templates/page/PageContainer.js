@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Component from './Page';
 
-export const mapStateToProps = function(state) {
+export const mapStateToProps = (state) => {
   return {
     blurContent: state.modal.open && state.user.settings.blurEffect,
     stickyHeader: state.user.settings.stickyHeader,

@@ -3,7 +3,7 @@ import Component from './Booky';
 import { actions as dashboardsActions } from '../../_state/dashboards';
 import { actions as categoriesActions } from '../../_state/categories';
 
-export const mapDispatchToProps = function(dispatch) {
+export const mapDispatchToProps = (dispatch) => {
   return {
     dragDashboard: (data) => {
       dispatch(dashboardsActions.dragDashboard(data));
