@@ -70,12 +70,14 @@ class Home extends Component {
         </Section>
         <Section>
           <H2 id="private">
+            <Icon icon="lock" />
             <FormattedMessage id="home.privateHeadline" />
           </H2>
           <P>
             <FormattedMessage id="home.privateText" />
           </P>
           <H2 id="performant">
+            <Icon icon="performance" />
             <FormattedMessage id="home.performantHeadline" />
           </H2>
           <P>
@@ -93,12 +95,14 @@ class Home extends Component {
         </Section>
         <Section>
           <H2 id="mobile">
+            <Icon icon="phone" />
             <FormattedMessage id="home.mobileHeadline" />
           </H2>
           <P>
             <FormattedMessage id="home.mobileText" />
           </P>
           <H2 id="customizable">
+            <Icon icon="settings" />
             <FormattedMessage id="home.customizableHeadline" />
           </H2>
           <P>
@@ -109,7 +113,7 @@ class Home extends Component {
           { 'muh' }
         </Section>
         <Section className="home__not-a-member">
-          <Display2>
+          <Display2 centered>
             <FormattedMessage id="home.notAMember" />
           </Display2>
           <P>
