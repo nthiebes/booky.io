@@ -2,17 +2,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BrowserRouter } from 'react-router-dom';
+import { injectIntl } from 'react-intl';
 
 import Routes from '../../routes';
 import './Booky.scss';
 
-export default class Booky extends Component {
+class Booky extends Component {
   constructor(props) {
     super(props);
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
   }
+
+  // componentDidMount() {
+  //   const { loggedIn, intl } = this.props;
+
+  //   if (!loggedIn) {
+  //     document.title = intl.formatMessage({ id: 'booky.title' });
+  //   }
+  // }
 
   onDragStart() {
     // console.log('onDragStart', initial);
@@ -59,8 +68,12 @@ export default class Booky extends Component {
   }
 }
 
+export default injectIntl(Booky);
+
 Booky.propTypes = {
   dragBookmark: PropTypes.func.isRequired,
   dragCategory: PropTypes.func.isRequired,
-  dragDashboard: PropTypes.func.isRequired
+  dragDashboard: PropTypes.func.isRequired,
+  intl: PropTypes.object.isRequired,
+  loggedIn: PropTypes.bool
 };

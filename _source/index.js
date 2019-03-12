@@ -37,6 +37,8 @@ fetch(`/_assets/i18n/${language}.json`)
     fetcher({
       url: '/user',
       onSuccess: (data) => {
+        document.title = 'booky.io';
+
         const store = configureStore({
           ...initialState,
           user: {
