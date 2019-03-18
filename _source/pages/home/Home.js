@@ -35,12 +35,12 @@ class Home extends Component {
             <H2 color="light">
               <FormattedMessage id="home.display2" />
             </H2>
-            <ButtonLargeLight icon="about" contentBefore className="header__learn-more" to="/about">
-              <FormattedHTMLMessage id="header.learnMore" />
-            </ButtonLargeLight>
-            <ButtonLargeBlue icon="join" to="/join">
+            <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
               <FormattedHTMLMessage id="header.register" />
             </ButtonLargeBlue>
+            <ButtonLargeLight icon="about" to="/about">
+              <FormattedHTMLMessage id="header.learnMore" />
+            </ButtonLargeLight>
             <img className="home__header-image--desktop booky--hide-mobile-tablet" src="../../_assets/desktop.svg" />
             <img className="home__header-image--mobile booky--hide-mobile-tablet" src="../../_assets/mobile.svg" />
           </div>
@@ -119,12 +119,12 @@ class Home extends Component {
           <P>
             <FormattedMessage id="home.promoText" />
           </P>
-          <ButtonLargeLight icon="about" contentBefore className="header__learn-more" to="/about">
-            <FormattedHTMLMessage id="header.learnMore" />
-          </ButtonLargeLight>
-          <ButtonLargeBlue icon="join" to="/join">
+          <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
             <FormattedHTMLMessage id="header.register" />
           </ButtonLargeBlue>
+          <ButtonLargeLight icon="about" to="/about">
+            <FormattedHTMLMessage id="header.learnMore" />
+          </ButtonLargeLight>
         </Section>
       </Page>
     );
