@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BrowserRouter } from 'react-router-dom';
-import { injectIntl } from 'react-intl';
 
 import Routes from '../../routes';
 import './Booky.scss';
 
-class Booky extends Component {
+export default class Booky extends Component {
   constructor(props) {
     super(props);
 
@@ -15,13 +14,13 @@ class Booky extends Component {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
-  // componentDidMount() {
-  //   const { loggedIn, intl } = this.props;
+  componentDidMount() {
+    const { loggedIn } = this.props;
 
-  //   if (!loggedIn) {
-  //     document.title = intl.formatMessage({ id: 'booky.title' });
-  //   }
-  // }
+    if (loggedIn) {
+      document.title = 'booky.io';
+    }
+  }
 
   onDragStart() {
     // console.log('onDragStart', initial);
@@ -68,12 +67,9 @@ class Booky extends Component {
   }
 }
 
-export default injectIntl(Booky);
-
 Booky.propTypes = {
   dragBookmark: PropTypes.func.isRequired,
   dragCategory: PropTypes.func.isRequired,
   dragDashboard: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
   loggedIn: PropTypes.bool
 };
