@@ -9,7 +9,7 @@ export default {
     settings: {
       blurEffect: true,
       darkMode: false,
-      dashboards: 'sidebar',
+      dashboardsStyle: 'sidebar',
       maxWidth: false,
       navigationBarColor: 0,
       openLinksInNewTab: true,

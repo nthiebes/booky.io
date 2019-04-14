@@ -42,7 +42,7 @@ class Customize extends Component {
       newtab,
       maxWidth,
       preserveEditMode,
-      dashboards,
+      dashboardsStyle,
       blurEffect,
       stickyHeader,
       stickyToolbar,
@@ -102,7 +102,7 @@ class Customize extends Component {
           name="dashboards"
           onChange={ this.handleRadioChange }
           value="sidebar"
-          defaultChecked={ dashboards === 'sidebar' }
+          defaultChecked={ dashboardsStyle === 'sidebar' }
         />
         <Radio
           label={ intl.formatMessage({ id: 'customize.dropdown'}) }
@@ -110,7 +110,7 @@ class Customize extends Component {
           name="dashboards"
           onChange={ this.handleRadioChange }
           value="dropdown"
-          defaultChecked={ dashboards === 'dropdown' }
+          defaultChecked={ dashboardsStyle === 'dropdown' }
         />
         <Radio
           label={ intl.formatMessage({ id: 'customize.tabs'}) }
@@ -118,7 +118,7 @@ class Customize extends Component {
           name="dashboards"
           onChange={ this.handleRadioChange }
           value="tabs"
-          defaultChecked={ dashboards === 'tabs' }
+          defaultChecked={ dashboardsStyle === 'tabs' }
         />
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
@@ -156,7 +156,7 @@ Customize.propTypes = {
   newtab: PropTypes.bool.isRequired,
   maxWidth: PropTypes.bool.isRequired,
   preserveEditMode: PropTypes.bool.isRequired,
-  dashboards: PropTypes.string.isRequired,
+  dashboardsStyle: PropTypes.string.isRequired,
   blurEffect: PropTypes.bool.isRequired,
   stickyHeader: PropTypes.bool.isRequired,
   stickyToolbar: PropTypes.bool.isRequired,
