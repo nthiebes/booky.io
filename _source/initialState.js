@@ -24,9 +24,8 @@ export default {
     }
   },
   dashboards: {
-    items: [{id: 1234, name: 'Meine Rezepte', categories: []}],
-    active: 1234,
-    offset: 3
+    items: [],
+    active: null
   },
   categories: [{
     id: '666',

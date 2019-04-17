@@ -22,18 +22,6 @@ class Dashboards extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   fetcher({
-  //     url: '/dashboards',
-  //     onSuccess: (data) => {
-  //       console.log('success', data);
-  //     },
-  //     onError: (error) => {
-  //       console.log('error:', error);
-  //     }
-  //   });
-  // }
-
   toggleEditMode() {
     this.setState({
       editMode: !this.state.editMode
