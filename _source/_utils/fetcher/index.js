@@ -23,13 +23,13 @@ const checkStatus = (response) => {
 };
 
 
-const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {} }) => {
+const fetcher = ({ params, method = 'GET', url, onSuccess, onError, noResponse, options = {} }) => {
   if (method === 'GET') {
     fetch(`${baseUrl}${url}`, {
       ...defaultOptions,
       ...options
     })
-      .then((response) => response.json())
+      .then((response) => noResponse ? response : response.json())
       .then(checkStatus)
       .then((response) => {
         // console.log('success', response);
