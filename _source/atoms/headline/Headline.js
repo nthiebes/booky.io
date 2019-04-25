@@ -14,7 +14,8 @@ export default class Headline extends Component {
       display,
       color,
       darkMode,
-      centered
+      centered,
+      title
     } = this.props;
     const CustomTag = `h${type}`;
 
@@ -31,6 +32,7 @@ export default class Headline extends Component {
         ) }
         onClick={ onClick && onClick }
         id={ id }
+        title={ title }
       >
         { children }
       </CustomTag>
@@ -52,5 +54,6 @@ Headline.propTypes = {
   display: PropTypes.bool,
   color: PropTypes.string,
   darkMode: PropTypes.bool,
-  centered: PropTypes.bool
+  centered: PropTypes.bool,
+  title: PropTypes.string
 };

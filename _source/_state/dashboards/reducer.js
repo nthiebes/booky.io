@@ -7,7 +7,7 @@ import {
   DRAG_DASHBOARD,
   DRAG_CATEGORY,
   TOGGLE_DASHBOARD_OPEN,
-  SET_DASHBOARDS
+  UPDATE_DASHBOARDS_DATA
 } from './actions';
 import { arrayMove } from '../../_utils/array';
 
@@ -134,11 +134,10 @@ const dashboards = (state = {}, action) => {
         open: !state.open
       };
 
-    case SET_DASHBOARDS:
+    case UPDATE_DASHBOARDS_DATA:
       return {
         ...state,
-        active: action.items[0].id,
-        items: action.items
+        ...action.data
       };
 
     default:

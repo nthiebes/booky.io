@@ -82,7 +82,9 @@ class Category extends Component {
             onClick={ this.toggleCategory }
             tabIndex="0"
           />
-          <H2 className="category__name" onClick={ this.toggleCategory }>{ name }</H2>
+          <H2 className="category__name" onClick={ this.toggleCategory } title={ name }>
+            { name }
+          </H2>
           <Icon
             className="category__icon"
             icon="edit"
@@ -144,9 +146,9 @@ export default injectIntl(Category);
 
 Category.propTypes = {
   name: PropTypes.string.isRequired,
-  color: PropTypes.number.isRequired,
+  color: PropTypes.number,
   open: PropTypes.bool,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   bookmarks: PropTypes.array,
   openModal: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
@@ -155,5 +157,6 @@ Category.propTypes = {
 
 Category.defaultProps = {
   open: true,
-  bookmarks: []
+  bookmarks: [],
+  color: 0
 };

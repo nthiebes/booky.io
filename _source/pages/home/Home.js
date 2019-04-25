@@ -14,41 +14,19 @@ import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      dashboardsPending: true,
-      error: null
-    };
-  }
-
   componentDidMount() {
     const { loggedIn, getDashboards } = this.props;
 
-    loggedIn && getDashboards({
-      onSuccess: () => {
-        this.setState({
-          dashboardsPending: false
-        });
-      },
-      onError: (error) => {
-        this.setState({
-          dashboardsPending: false,
-          error
-        });
-      }
-    });
+    loggedIn && getDashboards();
   }
 
   render() {
     const { loggedIn, blurContent, hasSidebar } = this.props;
-    const { dashboardsPending } = this.state;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
         { hasSidebar && <Dashboards isSidebar className={ classNames(blurContent && 'page--blur') } /> }
-        { dashboardsPending ? 'pending' : <Categories className={ classNames(blurContent && 'page--blur') } /> }
+        <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
       <Page className="home" home>

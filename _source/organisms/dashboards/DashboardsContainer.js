@@ -4,6 +4,7 @@ import { actions as modalActions } from '../../_state/modal';
 import { actions as dashboardsActions } from '../../_state/dashboards';
 import { actions as sidebarActions } from '../../_state/sidebar';
 import { updateSettings } from '../../_state/user/actions';
+import { getCategories } from '../../_state/categories/actions';
 
 export const mapStateToProps = (state) => ({
   dashboards: state.dashboards.items,
@@ -22,6 +23,7 @@ export const mapDispatchToProps = (dispatch) => ({
   changeDashboard: (id) => {
     dispatch(dashboardsActions.changeDashboard(id));
     dispatch(sidebarActions.closeSidebar());
+    dispatch(getCategories());
   },
   toggleDashboardOpen: (open) => {
     dispatch(updateSettings({

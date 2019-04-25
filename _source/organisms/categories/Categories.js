@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
@@ -6,6 +6,7 @@ import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 import Category from '../../molecules/category';
 import Empty from '../../molecules/empty';
 import { ButtonSmallPrimary } from '../../atoms/button';
+import Icon from '../../atoms/icon';
 
 class Categories extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Categories extends Component {
   }
 
   render() {
-    const { categories, dashboardsOpen, hasSidebar, maxWidth, intl, dashboard, className } = this.props;
+    const { categories, dashboardsOpen, hasSidebar, maxWidth, intl, dashboard, className, pending } = this.props;
 
     return (
       <div className={ classNames(
@@ -29,20 +30,26 @@ class Categories extends Component {
         maxWidth && 'categories--max-width',
         className && className
       ) }>
-        <ButtonSmallPrimary
-          icon="add"
-          className="categories__button"
-          onClick={ this.onAddClick }
-        >
-          <FormattedHTMLMessage id="category.add" />
-        </ButtonSmallPrimary>
-        {categories.map((category) =>
-          <Category key={ category.id } { ...category } />
-        )}
-        { !categories.length && (
-          <Empty imageAlt={ intl.formatMessage({ id: 'category.emptyImage' }) } imageUrl="_assets/empty.svg">
-            <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
-          </Empty>
+        { pending ? (
+          <Icon icon="spinner" className="categories__spinner" />
+        ) : (
+          <Fragment>
+            <ButtonSmallPrimary
+              icon="add"
+              className="categories__button"
+              onClick={ this.onAddClick }
+            >
+              <FormattedHTMLMessage id="category.add" />
+            </ButtonSmallPrimary>
+            { categories.map((category) =>
+              <Category key={ category.id } { ...category } />
+            ) }
+            { !categories.length && (
+              <Empty imageAlt={ intl.formatMessage({ id: 'category.emptyImage' }) } imageUrl="_assets/empty.svg">
+                <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
+              </Empty>
+            ) }
+          </Fragment>
         ) }
       </div>
     );
@@ -57,7 +64,8 @@ Categories.propTypes = {
   maxWidth: PropTypes.bool.isRequired,
   intl: PropTypes.object.isRequired,
   dashboard: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
+  pending: PropTypes.bool
 };
 
 export default injectIntl(Categories);

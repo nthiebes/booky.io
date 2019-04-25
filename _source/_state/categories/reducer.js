@@ -6,7 +6,8 @@ import {
   ADD_CATEGORY,
   EDIT_CATEGORY,
   DELETE_CATEGORY,
-  TOGGLE_CATEGORY
+  TOGGLE_CATEGORY,
+  SET_CATEGORIES
 } from './actions';
 import { arrayMove } from '../../_utils/array';
 
@@ -186,6 +187,9 @@ const categories = (state = [], action) => {
         return category;
       });
     }
+
+    case SET_CATEGORIES:
+      return action.categories;
       
     default:
       return state;
