@@ -54,6 +54,7 @@ class Login extends Component {
     login({
       params,
       onSuccess: () => {
+        document.title = 'booky.io';
         history.push('/');
       },
       onError: (error) => {
