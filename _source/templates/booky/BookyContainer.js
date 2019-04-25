@@ -3,10 +3,6 @@ import Component from './Booky';
 import { dragDashboard, dragCategory } from '../../_state/dashboards/actions';
 import { dragBookmark } from '../../_state/categories/actions';
 
-export const mapStateToProps = (state) => ({
-  loggedIn: state.user.loggedIn
-});
-
 export const mapDispatchToProps = (dispatch) => ({
   dragDashboard,
   dragCategory,
@@ -14,7 +10,7 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 const Container = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Component);
 

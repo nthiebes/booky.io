@@ -15,11 +15,11 @@ export default class Booky extends Component {
   }
 
   componentDidMount() {
-    const { loggedIn } = this.props;
-
-    if (loggedIn) {
-      document.title = 'booky.io';
-    }
+    const loader = document.getElementById('loader');
+    const loaderSpinner = document.getElementById('loader__spinner');
+    
+    loader.classList.add('loader--hide');
+    loaderSpinner.classList.add('loader__spinner--hide');
   }
 
   onDragStart() {
@@ -70,6 +70,5 @@ export default class Booky extends Component {
 Booky.propTypes = {
   dragBookmark: PropTypes.func.isRequired,
   dragCategory: PropTypes.func.isRequired,
-  dragDashboard: PropTypes.func.isRequired,
-  loggedIn: PropTypes.bool
+  dragDashboard: PropTypes.func.isRequired
 };
