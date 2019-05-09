@@ -45,7 +45,7 @@ class Categories extends Component {
               <Category key={ category.id } { ...category } />
             ) }
             { !categories.length && (
-              <Empty imageAlt={ intl.formatMessage({ id: 'category.emptyImage' }) } imageUrl="_assets/empty.svg">
+              <Empty alt={ intl.formatMessage({ id: 'category.emptyImage' }) } illustration="write-paper-ink">
                 <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
               </Empty>
             ) }

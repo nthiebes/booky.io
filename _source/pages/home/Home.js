@@ -10,6 +10,7 @@ import { H2, Display1, Display2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
 import { ButtonLargeLight, ButtonLargeBlue, ButtonSmallLight } from '../../atoms/button';
+import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
 
@@ -47,12 +48,7 @@ class Home extends Component {
             <ButtonLargeLight icon="about" to="/about">
               <FormattedHTMLMessage id="header.learnMore" />
             </ButtonLargeLight>
-            <img
-              width="300"
-              height="300"
-              className="home__header-image booky--hide-mobile-tablet"
-              src="../../_assets/illustrations/monitor-window.svg"
-            />
+            <Illustration name="monitor-window" height="300" width="300" className="home__header-illustration" />
           </div>
         </section>
         <Section noPadding>
