@@ -18,12 +18,13 @@ export default class Booky extends Component {
   }
 
   componentDidMount() {  
-    loader.addEventListener('transitionend', this.transitionEndCallback);
+    loaderSpinner.addEventListener('transitionend', this.transitionEndCallback);
     loader.classList.add('loader--hide');
     loaderSpinner.classList.add('loader__spinner--hide');
   }
 
   transitionEndCallback() {
+    loaderSpinner.removeEventListener('transitionend', this.transitionEndCallback);
     loader.parentNode.removeChild(loader);
   }
 
