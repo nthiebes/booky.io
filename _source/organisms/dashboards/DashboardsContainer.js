@@ -23,7 +23,7 @@ export const mapDispatchToProps = (dispatch) => ({
   changeDashboard: (id) => {
     dispatch(dashboardsActions.changeDashboard(id));
     dispatch(sidebarActions.closeSidebar());
-    dispatch(getCategories());
+    dispatch(getCategories(id));
   },
   toggleDashboardOpen: (open) => {
     dispatch(updateSettings({

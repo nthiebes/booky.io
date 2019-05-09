@@ -68,7 +68,8 @@ const dashboards = (state = {}, action) => {
     case CHANGE_DASHBOARD:
       return {
         ...state,
-        active: action.id
+        active: action.id,
+        pending: true
       };
 
     case UPDATE_OFFSET:

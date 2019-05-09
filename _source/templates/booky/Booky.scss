@@ -128,6 +128,7 @@ body {
 .loader--hide {
   transition: opacity 0.4s linear;
   opacity: 0;
+  pointer-events: none;
 }
 
 .loader__spinner {

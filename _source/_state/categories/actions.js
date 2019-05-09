@@ -71,13 +71,11 @@ export const setCategories = (categories) => ({
   categories
 });
 
-export const getCategories = () => ((dispatch) => {
+export const getCategories = (id) => ((dispatch) => {
   fetcher({
-    url: '/categories',
+    url: `/dashboard/${id}/categories`,
     onSuccess: (data) => {
-      console.log('categories', data);
-
-      // onSuccess && onSuccess(data);
+      setCategories(data);
     },
     onError: (error) => {
       console.log('error', error);

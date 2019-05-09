@@ -6,6 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from '../../routes';
 import './Booky.scss';
 
+const loader = document.getElementById('loader');
+const loaderSpinner = document.getElementById('loader__spinner');
+
 export default class Booky extends Component {
   constructor(props) {
     super(props);
@@ -14,12 +17,14 @@ export default class Booky extends Component {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
-  componentDidMount() {
-    const loader = document.getElementById('loader');
-    const loaderSpinner = document.getElementById('loader__spinner');
-    
+  componentDidMount() {  
+    loader.addEventListener('transitionend', this.transitionEndCallback);
     loader.classList.add('loader--hide');
     loaderSpinner.classList.add('loader__spinner--hide');
+  }
+
+  transitionEndCallback() {
+    loader.parentNode.removeChild(loader);
   }
 
   onDragStart() {
