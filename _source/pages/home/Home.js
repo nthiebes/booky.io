@@ -47,8 +47,12 @@ class Home extends Component {
             <ButtonLargeLight icon="about" to="/about">
               <FormattedHTMLMessage id="header.learnMore" />
             </ButtonLargeLight>
-            <img className="home__header-image--desktop booky--hide-mobile-tablet" src="../../_assets/desktop.svg" />
-            <img className="home__header-image--mobile booky--hide-mobile-tablet" src="../../_assets/mobile.svg" />
+            <img
+              width="300"
+              height="300"
+              className="home__header-image booky--hide-mobile-tablet"
+              src="../../_assets/illustrations/monitor-window.svg"
+            />
           </div>
         </section>
         <Section noPadding>
