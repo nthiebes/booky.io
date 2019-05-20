@@ -13,6 +13,7 @@ import { ButtonLargeLight, ButtonLargeBlue, ButtonSmallLight } from '../../atoms
 import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
+import Feature from '../../molecules/feature';
 
 class Home extends Component {
   componentDidMount() {
@@ -31,48 +32,23 @@ class Home extends Component {
       </Page>
     ) : (
       <Page className="home" home>
-        <section className="home__header">
-          <div className="home__image-wrapper">
-            <img className="home__image" src="../../_assets/header.svg" />
-          </div>
-          <div className="home__header-content">
-            <Display1 color="light" noMargin>
-              <FormattedMessage id="home.display" />
-            </Display1>
-            <H2 color="light">
-              <FormattedMessage id="home.display2" />
-            </H2>
-            <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
-              <FormattedHTMLMessage id="header.register" />
-            </ButtonLargeBlue>
-            <ButtonLargeLight icon="about" to="/about">
-              <FormattedHTMLMessage id="header.learnMore" />
-            </ButtonLargeLight>
-            <Illustration name="monitor-window" height="300" width="300" className="home__header-illustration" />
-          </div>
-        </section>
-        <Section noPadding>
-          <nav className="home__navigation">
-            <a className="home__nav-item" href="#private">
-              <Icon icon="lock" size="medium" />
-              <FormattedMessage id="home.private" />
-            </a>
-            <a className="home__nav-item" href="#customizable">
-              <Icon icon="settings" size="medium" />
-              <FormattedMessage id="home.customizable" />
-            </a>
-            <a className="home__nav-item" href="#mobile">
-              <Icon icon="phone" size="medium" />
-              <FormattedMessage id="home.mobile" />
-            </a>
-            <a className="home__nav-item" href="#performant">
-              <Icon icon="performance" size="medium" />
-              <FormattedMessage id="home.performant" />
-            </a>
-          </nav>
+        <Section className="home__header">
+          <Display1 color="medium" noMargin>
+            <FormattedMessage id="home.display" />
+          </Display1>
+          <H2>
+            <FormattedMessage id="home.display2" />
+          </H2>
+          <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
+            <FormattedHTMLMessage id="header.register" />
+          </ButtonLargeBlue>
+          <ButtonLargeLight icon="about" to="/about">
+            <FormattedHTMLMessage id="header.learnMore" />
+          </ButtonLargeLight>
+          <Illustration name="monitor-window" height="300" width="300" className="home__header-illustration" />
         </Section>
-        <Section color="light" noPadding>
-          <Testimonials />
+        <Section color="light">
+          <Feature />
         </Section>
         <Section>
           <H2 id="private">
@@ -93,7 +69,7 @@ class Home extends Component {
         <Section color="primary" className="home__bookmarklet">
           <Icon icon="extension" size="medium" color="light" className="home__bookmarklet-icon" />
           <H2 noMargin className="home__bookmarklet-headline">
-            { 'Quickly add links to booky with our bookmarklet or Chrome extension.' }
+            Quickly add links to booky with our bookmarklet or Chrome extension.
           </H2>
           <ButtonSmallLight className="home__bookmarklet-button" to="/about">
             <FormattedHTMLMessage id="home.bookmarkletButton" />
@@ -117,6 +93,9 @@ class Home extends Component {
         </Section>
         <Section color="light" className="home__not-a-member">
           { 'muh' }
+        </Section>
+        <Section color="light" noPadding>
+          <Testimonials />
         </Section>
         <Section className="home__not-a-member">
           <Display2 centered>
