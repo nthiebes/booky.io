@@ -198,5 +198,6 @@
     ]
   },
   "globals": {
+    "chrome": true
   }
 }
