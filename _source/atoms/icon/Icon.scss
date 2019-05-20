@@ -3,7 +3,6 @@
   cursor: pointer;
   display: inline-flex;
   font-size: 1rem;
-  height: 36px;
   position: relative;
   transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s linear;
   user-select: none;
@@ -28,6 +27,33 @@
       transform: translateY(-50%) scale(1);
       // animation: 0.4s linear 1 circle;
     }
+  }
+}
+
+.icon--size-small {
+  height: 36px;
+
+  &::after {
+    height: 36px;
+    width: 36px;
+  }
+}
+
+.icon--size-medium {
+  height: 64px;
+
+  &::after {
+    height: 64px;
+    width: 64px;
+  }
+}
+
+.icon--size-large {
+  height: 92px;
+
+  &::after {
+    height: 92px;
+    width: 92px;
   }
 }
 
@@ -169,12 +195,25 @@
 
 .icon__svg {
   fill: currentColor;
-  height: 36px;
   padding: 6px;
   position: relative;
   stroke-width: 0;
   stroke: currentColor;
+}
+
+.icon__svg--size-small {
+  height: 36px;
   width: 36px;
+}
+
+.icon__svg--size-medium {
+  height: 64px;
+  width: 64px;
+}
+
+.icon__svg--size-large {
+  height: 92px;
+  width: 92px;
 }
 
 .icon__svg--spinner {

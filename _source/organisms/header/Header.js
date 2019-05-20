@@ -77,6 +77,7 @@ class Header extends Component {
           className && className
         ) }
         onClick={ closeSidebar }
+        tabIndex="-1"
       >
         <div className="header__wrapper">
           { loggedIn && home && (

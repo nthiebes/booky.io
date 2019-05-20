@@ -21,7 +21,7 @@ export const resetUserState = () => ({
 export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
   fetcher({
     url: '/login',
-    type: 'POST',
+    method: 'POST',
     params,
     onSuccess: (data) => {
       const { settings, ...userData } = data;
@@ -43,6 +43,7 @@ export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
 export const logout = ({ onSuccess, onError }) => ((dispatch) => {
   fetcher({
     url: '/logout',
+    noResponse: true,
     onSuccess: () => {
       dispatch(resetUserState());
 
@@ -50,6 +51,42 @@ export const logout = ({ onSuccess, onError }) => ((dispatch) => {
     },
     onError: (error) => {
       onError && onError(error);
+    }
+  });
+});
+
+export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
+  fetcher({
+    url: '/join',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
+      const { settings, ...userData } = data;
+
+      dispatch(updateUser({
+        ...userData
+      }));
+      dispatch(updateSettings(settings));
+
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
+export const deleteAccount = () => ((dispatch) => {
+  fetcher({
+    url: '/user',
+    method: 'DELETE',
+    onSuccess: () => {
+      dispatch(updateUser({
+        loggedIn: false
+      }));
+    },
+    onError: (error) => {
+      console.log('onError', error);
     }
   });
 });

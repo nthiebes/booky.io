@@ -1,57 +1,46 @@
 import { connect } from 'react-redux';
 import Component from './Modal';
-import { actions as modalActions } from '../../_state/modal';
-import { actions as categoriesActions } from '../../_state/categories';
-import { actions as dashboardsActions } from '../../_state/dashboards';
+import { closeModal } from '../../_state/modal/actions';
+import {
+  addBookmark,
+  editBookmark,
+  deleteBookmark,
+  addCategory,
+  editCategory,
+  deleteCategory
+} from '../../_state/categories/actions';
+import {
+  addDashboard,
+  editDashboard,
+  deleteDashboard
+} from '../../_state/dashboards/actions';
+import { deleteAccount } from '../../_state/user/actions';
 
-export const mapStateToProps = function(state) {
-  return {
-    modal: state.modal.modal,
-    open: state.modal.open,
-    pending: state.modal.pending,
-    darkMode: state.user.settings.darkMode,
-    data: {
-      ...state.modal.data,
-      categories: state.categories.filter(({id}) => id !== state.modal.data.id),
-      dashboards: state.dashboards.items.filter(({id}) => id !== state.modal.data.id),
-      activeDashboard: state.dashboards.active
-    }
-  };
-};
+export const mapStateToProps = (state) => ({
+  modal: state.modal.modal,
+  open: state.modal.open,
+  pending: state.modal.pending,
+  darkMode: state.user.settings.darkMode,
+  data: {
+    ...state.modal.data,
+    categories: state.categories.filter(({id}) => id !== state.modal.data.id),
+    dashboards: state.dashboards.items.filter(({id}) => id !== state.modal.data.id),
+    activeDashboard: state.dashboards.active
+  }
+});
 
-export const mapDispatchToProps = function(dispatch) {
-  return {
-    closeModal: () => {
-      dispatch(modalActions.closeModal());
-    },
-    addBookmark: (data) => {
-      dispatch(categoriesActions.addBookmark(data));
-    },
-    editBookmark: (data) => {
-      dispatch(categoriesActions.editBookmark(data));
-    },
-    deleteBookmark: (data) => {
-      dispatch(categoriesActions.deleteBookmark(data));
-    },
-    addCategory: (data) => {
-      dispatch(categoriesActions.addCategory(data));
-    },
-    editCategory: (data) => {
-      dispatch(categoriesActions.editCategory(data));
-    },
-    deleteCategory: (data) => {
-      dispatch(categoriesActions.deleteCategory(data));
-    },
-    addDashboard: (data) => {
-      dispatch(dashboardsActions.addDashboard(data));
-    },
-    editDashboard: (data) => {
-      dispatch(dashboardsActions.editDashboard(data));
-    },
-    deleteDashboard: (data) => {
-      dispatch(dashboardsActions.deleteDashboard(data));
-    }
-  };
+export const mapDispatchToProps = {
+  closeModal,
+  addBookmark,
+  editBookmark,
+  deleteBookmark,
+  addCategory,
+  editCategory,
+  deleteCategory,
+  addDashboard,
+  editDashboard,
+  deleteDashboard,
+  deleteAccount
 };
 
 const Container = connect(

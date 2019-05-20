@@ -18,7 +18,7 @@ class Footer extends Component {
   
   scrollToTop() {
     window.scrollTo(0, 0);
-    document.getElementById('root').focus();
+    document.getElementsByTagName('header')[0].focus();
   }
 
   render() {

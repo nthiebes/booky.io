@@ -10,10 +10,18 @@ import { H2, Display1, Display2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
 import { ButtonLargeLight, ButtonLargeBlue, ButtonSmallLight } from '../../atoms/button';
+import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
+import Feature from '../../molecules/feature';
 
 class Home extends Component {
+  componentDidMount() {
+    const { loggedIn, getDashboards } = this.props;
+
+    loggedIn && getDashboards();
+  }
+
   render() {
     const { loggedIn, blurContent, hasSidebar } = this.props;
 
@@ -24,58 +32,34 @@ class Home extends Component {
       </Page>
     ) : (
       <Page className="home" home>
-        <section className="home__header">
-          <div className="home__image-wrapper">
-            <img className="home__image" src="../../_assets/header.svg" />
-          </div>
-          <div className="home__header-content">
-            <Display1 color="light" noMargin>
-              <FormattedMessage id="home.display" />
-            </Display1>
-            <H2 color="light">
-              <FormattedMessage id="home.display2" />
-            </H2>
-            <ButtonLargeLight icon="about" contentBefore className="header__learn-more" to="/about">
-              <FormattedHTMLMessage id="header.learnMore" />
-            </ButtonLargeLight>
-            <ButtonLargeBlue icon="join" to="/join">
-              <FormattedHTMLMessage id="header.register" />
-            </ButtonLargeBlue>
-            <img className="home__header-image--desktop booky--hide-mobile-tablet" src="../../_assets/desktop.svg" />
-            <img className="home__header-image--mobile booky--hide-mobile-tablet" src="../../_assets/mobile.svg" />
-          </div>
-        </section>
-        <Section noPadding>
-          <nav className="home__navigation">
-            <a className="home__nav-item" href="#private">
-              <Icon icon="lock" />
-              <FormattedMessage id="home.private" />
-            </a>
-            <a className="home__nav-item" href="#customizable">
-              <Icon icon="settings" />
-              <FormattedMessage id="home.customizable" />
-            </a>
-            <a className="home__nav-item" href="#mobile">
-              <Icon icon="phone" />
-              <FormattedMessage id="home.mobile" />
-            </a>
-            <a className="home__nav-item" href="#performant">
-              <Icon icon="performance" />
-              <FormattedMessage id="home.performant" />
-            </a>
-          </nav>
+        <Section className="home__header">
+          <Display1 color="medium" noMargin>
+            <FormattedMessage id="home.display" />
+          </Display1>
+          <H2>
+            <FormattedMessage id="home.display2" />
+          </H2>
+          <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
+            <FormattedHTMLMessage id="header.register" />
+          </ButtonLargeBlue>
+          <ButtonLargeLight icon="about" to="/about">
+            <FormattedHTMLMessage id="header.learnMore" />
+          </ButtonLargeLight>
+          <Illustration name="monitor-window" height="300" width="300" className="home__header-illustration" />
         </Section>
-        <Section color="light" noPadding>
-          <Testimonials />
+        <Section color="light">
+          <Feature />
         </Section>
         <Section>
           <H2 id="private">
+            <Icon icon="lock" />
             <FormattedMessage id="home.privateHeadline" />
           </H2>
           <P>
             <FormattedMessage id="home.privateText" />
           </P>
           <H2 id="performant">
+            <Icon icon="performance" />
             <FormattedMessage id="home.performantHeadline" />
           </H2>
           <P>
@@ -83,9 +67,9 @@ class Home extends Component {
           </P>
         </Section>
         <Section color="primary" className="home__bookmarklet">
-          <Icon icon="extension" color="light" className="home__bookmarklet-icon" />
+          <Icon icon="extension" size="medium" color="light" className="home__bookmarklet-icon" />
           <H2 noMargin className="home__bookmarklet-headline">
-            { 'Quickly add links to booky with our bookmarklet or Chrome extension.' }
+            Quickly add links to booky with our bookmarklet or Chrome extension.
           </H2>
           <ButtonSmallLight className="home__bookmarklet-button" to="/about">
             <FormattedHTMLMessage id="home.bookmarkletButton" />
@@ -93,12 +77,14 @@ class Home extends Component {
         </Section>
         <Section>
           <H2 id="mobile">
+            <Icon icon="phone" />
             <FormattedMessage id="home.mobileHeadline" />
           </H2>
           <P>
             <FormattedMessage id="home.mobileText" />
           </P>
           <H2 id="customizable">
+            <Icon icon="settings" />
             <FormattedMessage id="home.customizableHeadline" />
           </H2>
           <P>
@@ -108,19 +94,22 @@ class Home extends Component {
         <Section color="light" className="home__not-a-member">
           { 'muh' }
         </Section>
+        <Section color="light" noPadding>
+          <Testimonials />
+        </Section>
         <Section className="home__not-a-member">
-          <Display2>
+          <Display2 centered>
             <FormattedMessage id="home.notAMember" />
           </Display2>
           <P>
             <FormattedMessage id="home.promoText" />
           </P>
-          <ButtonLargeLight icon="about" contentBefore className="header__learn-more" to="/about">
-            <FormattedHTMLMessage id="header.learnMore" />
-          </ButtonLargeLight>
-          <ButtonLargeBlue icon="join" to="/join">
+          <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
             <FormattedHTMLMessage id="header.register" />
           </ButtonLargeBlue>
+          <ButtonLargeLight icon="about" to="/about">
+            <FormattedHTMLMessage id="header.learnMore" />
+          </ButtonLargeLight>
         </Section>
       </Page>
     );
@@ -132,5 +121,6 @@ export default Home;
 Home.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   blurContent: PropTypes.bool.isRequired,
-  hasSidebar: PropTypes.bool.isRequired
+  hasSidebar: PropTypes.bool.isRequired,
+  getDashboards: PropTypes.func.isRequired
 };

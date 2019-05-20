@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import Illustration from '../../atoms/illustration';
+
 class Empty extends Component {
   render() {
-    const { children, imageUrl, imageAlt, className, darkMode } = this.props;
+    const { children, illustration, alt, className, darkMode } = this.props;
 
     return (
       <figure className={ classNames('empty', className && className) }>
-        <img
-          src={ imageUrl }
-          alt={ imageAlt }
-          width="150"
+        <Illustration
+          name={ illustration }
+          alt={ alt }
           height="150"
+          width="150"
           className={ classNames('empty__image', darkMode && 'empty__image--dark-mode') }
         />
         <figcaption className={ classNames(darkMode && 'empty--dark-mode') }>
@@ -29,8 +31,8 @@ Empty.propTypes = {
     PropTypes.element,
     PropTypes.string
   ]).isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string.isRequired,
+  illustration: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
   className: PropTypes.string,
   darkMode: PropTypes.bool
 };

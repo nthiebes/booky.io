@@ -45,7 +45,7 @@ class Contact extends Component {
 
     fetcher({
       url: '/contact',
-      type: 'POST',
+      method: 'POST',
       params,
       onSuccess: (data) => {
         // console.log('success:', data);

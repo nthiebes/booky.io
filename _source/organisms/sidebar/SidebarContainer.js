@@ -8,7 +8,7 @@ export const mapStateToProps = function(state) {
   return {
     loggedIn: state.user.loggedIn,
     open: state.sidebar.open,
-    dashboardsSidebar: state.user.settings.dashboards === 'sidebar',
+    dashboardsSidebar: state.user.settings.dashboardsStyle === 'sidebar',
     darkMode: state.user.settings.darkMode
   };
 };

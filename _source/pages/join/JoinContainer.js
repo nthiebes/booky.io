@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
 import Component from './Join';
-import { updateUser } from '../../_state/user/actions';
+import { join } from '../../_state/user/actions';
 
 export const mapDispatchToProps = {
-  updateUser
+  join
 };
 
 const JoinContainer = connect(

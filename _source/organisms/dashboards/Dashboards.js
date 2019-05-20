@@ -16,22 +16,11 @@ class Dashboards extends Component {
     this.toggleOpen = this.toggleOpen.bind(this);
     this.onIconClick = this.onIconClick.bind(this);
     this.getStickyClass = this.getStickyClass.bind(this);
+    this.addDashboard = this.addDashboard.bind(this);
     this.state = {
       editMode: false
     };
   }
-
-  // componentDidMount() {
-  //   fetcher({
-  //     url: '/dashboards',
-  //     onSuccess: (data) => {
-  //       console.log('success', data);
-  //     },
-  //     onError: (error) => {
-  //       console.log('error:', error);
-  //     }
-  //   });
-  // }
 
   toggleEditMode() {
     this.setState({
@@ -79,10 +68,13 @@ class Dashboards extends Component {
     return '';
   }
 
+  addDashboard() {
+    this.props.openModal('AddDashboard');
+  }
+
   render() {
     const {
       dashboards,
-      openModal,
       changeDashboard,
       className,
       intl,
@@ -108,7 +100,7 @@ class Dashboards extends Component {
             <ButtonSmallPrimary
               icon="add"
               className="dashboards__button"
-              onClick={ () => { openModal('AddDashboard'); } }
+              onClick={ this.addDashboard }
               tabIndex={ useTabIndex ? '0' : '-1' }
             >
               <FormattedHTMLMessage id="dashboard.add" />

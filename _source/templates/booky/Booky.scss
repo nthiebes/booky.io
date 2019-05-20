@@ -10,11 +10,11 @@
 @import "../../atoms/checkbox/Checkbox";
 @import "../../atoms/headline/Headline";
 @import "../../atoms/paragraph/Paragraph";
-@import "../../atoms/loader/styles/a-loader";
 @import "../../atoms/messages/error/ErrorMessage";
 @import "../../atoms/messages/success/SuccessMessage";
 @import "../../atoms/radio/Radio";
 @import "../../atoms/textarea/Textarea";
+@import "../../atoms/file-upload/FileUpload";
 
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
@@ -26,6 +26,7 @@
 @import "../../molecules/section/Section";
 @import "../../molecules/testimonials/Testimonials";
 @import "../../molecules/empty/Empty";
+@import "../../molecules/feature/Feature";
 
 @import "../../organisms/categories/Categories";
 @import "../../organisms/header/Header";
@@ -42,6 +43,7 @@
 @import "../../pages/home/Home";
 @import "../../pages/account/Account";
 @import "../../pages/login/Login";
+@import "../../pages/join/Join";
 
 html {
   font-size: calc(14px + 0.2vw);
@@ -58,6 +60,15 @@ body {
   font-family: $font__family--text;
   height: 100%;
   color: $color__font--dark;
+}
+
+::-moz-selection {
+  color: $color__font--white;
+  background-color: $color__font--primary;
+}
+::selection {
+  color: $color__font--white;
+  background-color: $color__font--primary;
 }
 
 .booky--no-scrolling {
@@ -102,19 +113,35 @@ body {
   }
 }
 
-.booky__loader {
+/*
+ * App loading screen
+ */
+.loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $color__background--white;
+  z-index: 10;
+}
+
+.loader--hide {
+  transition: opacity 0.4s linear;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader__spinner {
   position: absolute;
   color: $color__font--medium;
   cursor: default;
-  left: calc(50% - 18px);
-  top: calc(50% - 18px);
+  left: calc(50vw - 18px);
+  top: calc(50vh - 18px);
 }
 
-::-moz-selection {
-  color: $color__font--white;
-  background-color: $color__font--primary;
-}
-::selection {
-  color: $color__font--white;
-  background-color: $color__font--primary;
+.loader__spinner--hide {
+  transition: opacity 0.4s linear, transform 0.5s ease-in;
+  transform: translateY(-3rem);
+  opacity: 0;
 }
