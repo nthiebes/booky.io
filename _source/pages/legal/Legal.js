@@ -31,7 +31,10 @@ export default class Legal extends Component {
           </H2>
           <P>
             <FormattedMessage id="legal.4" />
-            <Link href="mailto:hello@booky.io">{ 'hello@booky.io' }</Link>
+            <Link href="mailto:hello@booky.io">{ 'hello@booky.io' }</Link><br />
+            <Link to="/contact">
+              <FormattedMessage id="legal.contactForm" />
+            </Link>
           </P>
           <H2>
             <FormattedMessage id="legal.5" />

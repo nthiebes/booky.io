@@ -19,6 +19,7 @@ button::-moz-focus-inner {
   border-color: transparent;
 }
 
-b {
+b,
+strong {
   font-weight: 700; /* Was still 400 in Firefox */
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import AddBookmark from './modals/AddBookmark';
 import EditBookmark from './modals/EditBookmark';
 import DeleteBookmark from './modals/DeleteBookmark';
@@ -12,6 +13,7 @@ import EditDashboard from './modals/EditDashboard';
 import DeleteDashboard from './modals/DeleteDashboard';
 import EditStructure from './modals/EditStructure';
 import Customize from './modals/Customize';
+import DeleteAccount from './modals/DeleteAccount';
 
 export default class Modal extends Component {
   constructor(props) {
@@ -21,52 +23,60 @@ export default class Modal extends Component {
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.modalMap = {
       AddBookmark: {
-        modal: AddBookmark,
+        type: AddBookmark,
         action: props.addBookmark
       },
       EditBookmark: {
-        modal: EditBookmark,
+        type: EditBookmark,
         action: props.editBookmark
       },
       DeleteBookmark: {
-        modal: DeleteBookmark,
+        type: DeleteBookmark,
         action: props.deleteBookmark
       },
       AddCategory: {
-        modal: AddCategory,
+        type: AddCategory,
         action: props.addCategory
       },
       EditCategory: {
-        modal: EditCategory,
+        type: EditCategory,
         action: props.editCategory
       },
       DeleteCategory: {
-        modal: DeleteCategory,
+        type: DeleteCategory,
         action: props.deleteCategory
       },
       AddDashboard: {
-        modal: AddDashboard,
+        type: AddDashboard,
         action: props.addDashboard
       },
       EditDashboard: {
-        modal: EditDashboard,
+        type: EditDashboard,
         action: props.editDashboard
       },
       DeleteDashboard: {
-        modal: DeleteDashboard,
+        type: DeleteDashboard,
         action: props.deleteDashboard
       },
       EditStructure: {
-        modal: EditStructure
+        type: EditStructure
       },
       Customize: {
-        modal: Customize
+        type: Customize
+      },
+      DeleteAccount: {
+        type: DeleteAccount,
+        action: props.deleteAccount
       }
     };
   }
 
   handleSave(modalData) {
     const { modal, data, closeModal } = this.props;
+
+    if (modalData.color) {
+      modalData.color = parseInt(modalData.color, 10);
+    }
 
     this.modalMap[modal].action && this.modalMap[modal].action({
       ...modalData,
@@ -86,7 +96,7 @@ export default class Modal extends Component {
     let CustomTag;
 
     if (open) {
-      CustomTag = this.modalMap[modal] && this.modalMap[modal].modal;
+      CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
     } else {
       CustomTag = null;
     }
@@ -129,7 +139,8 @@ Modal.propTypes = {
   addDashboard: PropTypes.func.isRequired,
   editDashboard: PropTypes.func.isRequired,
   deleteDashboard: PropTypes.func.isRequired,
-  darkMode: PropTypes.bool.isRequired
+  darkMode: PropTypes.bool.isRequired,
+  deleteAccount: PropTypes.func.isRequired
 };
 
 Modal.defaultProps = {

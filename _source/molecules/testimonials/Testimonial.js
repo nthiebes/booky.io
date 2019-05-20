@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import Link from '../../atoms/link';
 import P from '../../atoms/paragraph';
+import { H4 } from '../../atoms/headline';
 import Icon from '../../atoms/icon';
 
 class Testimonial extends Component {
@@ -13,14 +14,16 @@ class Testimonial extends Component {
     return (
       <blockquote className={ classNames('testimonials__testimonial', className && className) }>
         <img src={ image } width="50" height="50" className="testimonials__image" />
-        <div className="testimonials__content">
-          <Link href={ url } className="testimonials__link">
-            <div className="testimonials__name">{ name }</div>
-            { twitter && <div>{ `@${twitter}` }</div> }
-          </Link>
+        <div>
+          <H4 className="testimonials__header">
+            { name }
+            <Link href={ url } className="testimonials__link">
+              { twitter && `@${twitter}` }
+            </Link>
+          </H4>
           <P className="testimonials__text">{ text }</P>
         </div>
-        <Icon icon="quote" color="medium" className="testimonials__icon" />
+        <Icon icon="quote" size="medium" color="medium" className="testimonials__icon" />
       </blockquote>
     );
   }

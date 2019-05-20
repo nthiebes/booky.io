@@ -9,7 +9,7 @@ class Testimonials extends Component {
       <div className="testimonials">
         <Testimonial
           name="Siddharth"
-          twitter="_gscheid"
+          twitter="Samira ♥️ Stein"
           url="https://twitter.com/_gscheid"
           image="_assets/_gscheid.jpg"
           text="My portal to the Web."

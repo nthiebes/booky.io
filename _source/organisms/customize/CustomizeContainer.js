@@ -8,7 +8,7 @@ export const mapStateToProps = (state) => ({
   newtab: state.user.settings.openLinksInNewTab,
   maxWidth: state.user.settings.maxWidth,
   preserveEditMode: state.user.settings.preserveEditMode,
-  dashboards: state.user.settings.dashboards,
+  dashboardsStyle: state.user.settings.dashboardsStyle,
   blurEffect: state.user.settings.blurEffect,
   stickyHeader: state.user.settings.stickyHeader,
   stickyToolbar: state.user.settings.stickyToolbar,

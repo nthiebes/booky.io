@@ -11,7 +11,7 @@ export const mapStateToProps = function(state) {
     sticky: state.user.settings.stickyToolbar,
     dashboards: state.dashboards,
     dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active),
-    dashboardsPosition: state.user.settings.dashboards,
+    dashboardsStyle: state.user.settings.dashboardsStyle,
     darkMode: state.user.settings.darkMode
   };
 };

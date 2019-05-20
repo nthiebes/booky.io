@@ -2,11 +2,12 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
+import { ButtonSmallPrimary } from '../../atoms/button';
 import Dashboards from '../../organisms/dashboards';
 
 class Sidebar extends Component {
@@ -15,6 +16,7 @@ class Sidebar extends Component {
 
     this.onMenuClick = this.onMenuClick.bind(this);
     this.onCustomizeClick = this.onCustomizeClick.bind(this);
+    this.addDashboard = this.addDashboard.bind(this);
   }
 
   onMenuClick(e) {
@@ -23,6 +25,10 @@ class Sidebar extends Component {
 
   onCustomizeClick() {
     this.props.openModal('Customize');
+  }
+
+  addDashboard() {
+    this.props.openModal('AddDashboard');
   }
 
   render() {
@@ -69,7 +75,18 @@ class Sidebar extends Component {
         </header>
         <hr className="sidebar__hr" />
         <div className="sidebar__scroll-wrapper">
-          { dashboards && dashboardsSidebar && <Dashboards useTabIndex={ open } /> }
+          { dashboards && dashboardsSidebar && (
+            <Fragment>
+              <ButtonSmallPrimary
+                icon="add"
+                className="sidebar__button"
+                onClick={ this.addDashboard }
+              >
+                <FormattedHTMLMessage id="dashboard.add" />
+              </ButtonSmallPrimary>
+              <Dashboards useTabIndex={ open } />
+            </Fragment>
+          ) }
           { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
           <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
           <nav className="sidebar__nav">
@@ -185,7 +202,6 @@ class Sidebar extends Component {
                   ) }
                   onClick={ this.onCustomizeClick }
                   tabIndex={ open ? '0' : '-1' }
-                  noUnderline
                 >
                   <Icon icon="settings" />
                   <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
@@ -200,7 +216,6 @@ class Sidebar extends Component {
                   ) }
                   onClick={ logout }
                   tabIndex={ open ? '0' : '-1' }
-                  noUnderline
                 >
                   <Icon icon="logout" />
                   <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
