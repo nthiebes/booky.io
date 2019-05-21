@@ -67,6 +67,7 @@
   padding: 0 calc(3vw + 6px);
   margin: 0;
   line-height: 2;
+  width: 100%;
 }
 
 .sidebar__logo {
@@ -98,6 +99,11 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+}
+
+.sidebar__list {
+  list-style: none;
+  width: 100%;
 }
 
 .sidebar__item {
