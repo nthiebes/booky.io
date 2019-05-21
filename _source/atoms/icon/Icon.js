@@ -39,7 +39,8 @@ export default class Icon extends Component {
       tabIndex,
       darkMode,
       ignoreDarkMode,
-      size
+      size,
+      ariaHidden
     } = this.props;
     const link = '_assets/symbol-defs.svg#icon-' + icon;
 
@@ -56,6 +57,8 @@ export default class Icon extends Component {
         onClick={ this.handleClick }
         onKeyDown={ this.handleKeyDown }
         tabIndex={ tabIndex }
+        role="img"
+        aria-hidden={ ariaHidden }
         { ...dragHandleProps }
       >
         <svg className={ classNames(
@@ -83,7 +86,8 @@ Icon.propTypes = {
   tabIndex: PropTypes.string,
   darkMode: PropTypes.bool,
   ignoreDarkMode: PropTypes.bool,
-  size: PropTypes.string
+  size: PropTypes.string,
+  ariaHidden: PropTypes.bool
 };
 
 Icon.defaultProps = {
