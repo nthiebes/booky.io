@@ -41,5 +41,13 @@ export default {
     open: false,
     data: {},
     pending: false
+  },
+  extension: {
+    page: {
+      description: '',
+      url: '',
+      title: '',
+      favicon: null
+    }
   }
 };
