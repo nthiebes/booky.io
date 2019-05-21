@@ -1,6 +1,18 @@
 #!/bin/bash
 
 browser="$1"
+version="$2"
+
+if [ "$browser" == "chrome" ]
+then
+  cp -r _source/ _public/chrome/tmp
+fi
+
+if [ "$browser" == "firefox" ]
+then
+  cp -r _source/ _public/firefox/tmp
+fi
+
 
 applications=""
 persistent="
@@ -22,7 +34,7 @@ fi
 
 manifest="{
   \"name\": \"booky.io Extension\",
-  \"version\": \"2.0\",
+  \"version\": \"${version}\",
   \"author\": \"Nico Thiebes\",
   \"description\": \"Add new links to booky.io and browse your existing bookmarks.\",
   \"permissions\": [\"activeTab\", \"storage\"],${applications}
@@ -54,13 +66,17 @@ manifest="{
   \"manifest_version\": 2
 }"
 
-if [ "$browser" == "firefox" ]
-then
-  echo "$manifest" > "_public/firefox/manifest.json"
-fi
-
 if [ "$browser" == "chrome" ]
 then
-  echo "$manifest" > "_public/chrome/manifest.json"
+  echo "$manifest" > "_public/chrome/tmp/manifest.json"
   echo "$manifest" > "_source/manifest.json"
+  zip _public/chrome/chrome_$version.zip -r _public/chrome/tmp
+  rm -r _public/chrome/tmp
+fi
+
+if [ "$browser" == "firefox" ]
+then
+  echo "$manifest" > "_public/firefox/tmp/manifest.json"
+  zip _public/firefox/firefox_$version.zip -r _public/firefox/tmp
+  rm -r _public/firefox/tmp
 fi

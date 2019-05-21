@@ -27,7 +27,7 @@
     "qa": "npm-run-all test lint",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
     "storybook": "start-storybook -p 666 -c storybook -s ./_public",
-    "extension": "cd extension && ./manifest.sh firefox && ./manifest.sh chrome"
+    "extension": "cd extension && ./manifest.sh firefox $npm_package_version && ./manifest.sh chrome $npm_package_version"
   },
   "proxy": "http://localhost:8001/",
   "author": "Nico Thiebes",
