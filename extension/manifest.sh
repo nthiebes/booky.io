@@ -1,5 +1,7 @@
 #!/bin/bash
 
+browser="$1"
+
 applications=""
 persistent="
     \"persistent\": false,"
@@ -7,13 +9,10 @@ persistent="
 firefox_applications="
   \"applications\": {
     \"gecko\": {
-      \"id\": \"nico.thiebes@gmail.com\"
+      \"id\": \"hello@booky.io\"
     }
   },"
 firefox_persistent=""
-
-echo "Browser:"
-read browser
 
 if [ "$browser" == "firefox" ]
 then
@@ -22,16 +21,16 @@ then
 fi
 
 manifest="{
-  \"name\": \"CSS filter playground\",
-  \"version\": \"1.0\",
+  \"name\": \"booky.io Extension\",
+  \"version\": \"2.0\",
   \"author\": \"Nico Thiebes\",
-  \"description\": \"Apply CSS filters to the current website.\",
+  \"description\": \"Add new links to booky.io and browse your existing bookmarks.\",
   \"permissions\": [\"activeTab\", \"storage\"],${applications}
   \"background\": {${persistent}
     \"scripts\": [\"background.js\"]
   },
   \"browser_action\": {
-    \"default_title\": \"CSS filter playground\",
+    \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
     \"default_icon\": {
       \"16\": \"images/get_started16.png\",
@@ -55,4 +54,13 @@ manifest="{
   \"manifest_version\": 2
 }"
 
-echo "$manifest" > "_source/manifest.json"
+if [ "$browser" == "firefox" ]
+then
+  echo "$manifest" > "_public/firefox/manifest.json"
+fi
+
+if [ "$browser" == "chrome" ]
+then
+  echo "$manifest" > "_public/chrome/manifest.json"
+  echo "$manifest" > "_source/manifest.json"
+fi

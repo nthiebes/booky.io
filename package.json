@@ -26,7 +26,8 @@
     "test:cover": "jest --config jest.config.json --no-cache --coverage",
     "qa": "npm-run-all test lint",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
-    "storybook": "start-storybook -p 666 -c storybook -s ./_public"
+    "storybook": "start-storybook -p 666 -c storybook -s ./_public",
+    "extension": "cd extension && ./manifest.sh firefox && ./manifest.sh chrome"
   },
   "proxy": "http://localhost:8001/",
   "author": "Nico Thiebes",
