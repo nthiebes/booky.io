@@ -1,0 +1,22 @@
+.extension {
+  background-color: $color__background--white;
+  position: relative;
+  min-height: 100vh;
+  padding: calc(4rem - 47px) 0 6rem 0;
+
+  @include tablet {
+    padding: calc(6rem - 71px) 0 10rem 0;
+  }
+
+  @include desktop {
+    padding: calc(10rem - 101px) 0 14rem 0;
+  }
+}
+
+.extension--blur {
+  filter: blur(3px) grayscale(100%);
+}
+
+.extension--dark {
+  background-color: $color__background--dark-mode;
+}
