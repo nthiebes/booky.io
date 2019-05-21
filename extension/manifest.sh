@@ -70,13 +70,15 @@ if [ "$browser" == "chrome" ]
 then
   echo "$manifest" > "_public/chrome/tmp/manifest.json"
   echo "$manifest" > "_source/manifest.json"
-  zip _public/chrome/chrome_$version.zip -r _public/chrome/tmp
-  rm -r _public/chrome/tmp
+  cd _public/chrome/tmp
+  zip -r ../chrome_$version.zip ./*
+  rm -r ../tmp
 fi
 
 if [ "$browser" == "firefox" ]
 then
   echo "$manifest" > "_public/firefox/tmp/manifest.json"
-  zip _public/firefox/firefox_$version.zip -r _public/firefox/tmp
-  rm -r _public/firefox/tmp
+  cd _public/firefox/tmp
+  zip -r ../firefox_$version.zip ./*
+  rm -r ../tmp
 fi
