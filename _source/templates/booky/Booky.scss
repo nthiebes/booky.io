@@ -39,11 +39,13 @@
 @import "../../organisms/customize/Customize";
 
 @import "../../templates/page/Page";
+@import "../../templates/extension/Extension";
 
 @import "../../pages/home/Home";
 @import "../../pages/account/Account";
 @import "../../pages/login/Login";
 @import "../../pages/join/Join";
+@import "../../pages/add/Add";
 
 html {
   font-size: calc(14px + 0.2vw);
