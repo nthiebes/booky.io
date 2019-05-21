@@ -4,6 +4,7 @@ import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
 import Page from '../../templates/page';
+import ExtensionPage from '../../templates/extension';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
@@ -67,11 +68,12 @@ class Login extends Component {
   }
 
   render() {
-    const { intl } = this.props;
+    const { intl, isExtension } = this.props;
     const { username, password, pending, showPassword, error } = this.state;
+    const TemplateComponent = isExtension ? ExtensionPage : Page;
 
     return (
-      <Page>
+      <TemplateComponent>
         <Section compact>
           <Form onSubmit={ this.handleSubmit }>
             <H1>
@@ -127,7 +129,7 @@ class Login extends Component {
             </P>
           </Form>
         </Section>
-      </Page>
+      </TemplateComponent>
     );
   }
 }
@@ -135,7 +137,8 @@ class Login extends Component {
 Login.propTypes = {
   intl: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  isExtension: PropTypes.bool
 };
 
 export default injectIntl(withRouter(Login));

@@ -1,15 +1,27 @@
+import React from 'react';
 import { connect } from 'react-redux';
 
 import Component from './Login';
 import { login } from '../../_state/user/actions';
 
-export const mapDispatchToProps = {
+const mapDispatchToProps = {
   login
 };
 
-const LoginContainer = connect(
+const PageLogin = (props) => (<Component { ...props } />);
+const ExtensionLogin = (props) => (<Component { ...props } isExtension />);
+
+const PageLoginContainer = connect(
   null,
   mapDispatchToProps
-)(Component);
+)(PageLogin);
 
-export default LoginContainer;
+const ExtensionLoginContainer = connect(
+  null,
+  mapDispatchToProps
+)(ExtensionLogin);
+
+export {
+  PageLoginContainer,
+  ExtensionLoginContainer
+};

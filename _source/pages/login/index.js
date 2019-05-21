@@ -1,3 +1,9 @@
-import container from './LoginContainer';
+import {
+  PageLoginContainer as PageLogin,
+  ExtensionLoginContainer as ExtensionLogin
+} from './LoginContainer';
 
-export default container;
+export {
+  PageLogin,
+  ExtensionLogin
+};
