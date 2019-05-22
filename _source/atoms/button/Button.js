@@ -55,7 +55,7 @@ export default class Button extends Component {
             ariaHidden
           />
         ) }
-        <span className="button__text">{ children }</span>
+        <span className="button__text" role="text">{ children }</span>
       </CustomTag>
     );
   }
