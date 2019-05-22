@@ -64,7 +64,7 @@ class Sidebar extends Component {
             onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
           >
-            <img src="../../_assets/logo_d.svg" alt="Logo" height="36" />
+            <img src="../../_assets/logo_d.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
           </Link>
           <Icon
             icon={ direction === 'left' ? 'back' : 'forward' }
