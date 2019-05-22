@@ -207,5 +207,7 @@
     "error.unauthorized": "The username and password that you entered did not match our records. Please double-check and try again.",
     "legal.11": "",
     "legal.12": "",
-    "misc.logo": "booky logo"
+    "misc.logo": "booky logo",
+    "header.jumpToMain": "Jump to main content",
+    "header.jumpToLanguage": "Choose language"
 }
