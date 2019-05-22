@@ -1,32 +1,35 @@
 /* eslint-disable no-var */
 var iframe = document.getElementById('booky'),
-  pageData = {};
+  devHost = 'http://localhost:3000',
+  prodHost = 'https://booky.io',
+  host = prodHost,
+  pageData = {},
+  environment = 'production',
+  id;
+
+chrome.management.getSelf(function(extensionInfo) {
+  if (extensionInfo.installType === 'development') {
+    environment = 'development';
+    host = devHost;
+  }
+  id = extensionInfo.id;
+});
 
 function sendToIframe(data) {
   var receiver = iframe.contentWindow;
   
-  receiver.postMessage(data, 'http://localhost:3000'); // https://booky.io
+  receiver.postMessage(data, host);
 }
 
-/*
- * Update the filter css on the website
- */
-// function updateFilter() {
-//   let values = Object.keys(filters)
-//     .filter((key) => filters[key].checked)
-//     .map((key) => `${key}(${filters[key].value}${filters[key].unit})`);
-
-//   chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-//     chrome.tabs.executeScript(
-//       tabs[0].id,
-//       {code: `document.body.style.filter = "${ values.join(' ') }";`}
-//     );
-//   });
-// }
-
-// Load the content script
 document.addEventListener('DOMContentLoaded', function() {
+  // Load the content script
   chrome.tabs.executeScript(null, { file: 'content.js' });
+
+  // chrome.bookmarks.getTree(
+  //   function(bookmarkTreeNodes) {
+  //     console.log(bookmarkTreeNodes);
+  //   }
+  // );
 });
 
 // Connect to the current tab
@@ -47,7 +50,7 @@ chrome.runtime.onConnect.addListener(function(port) {
 window.addEventListener('message', function(event) {
   var message = event.data;
   
-  if (event.origin === 'http://localhost:3000') { // https://booky.io
+  if (event.origin === host) {
     if (message === 'ready') {
       sendToIframe(pageData);
     }

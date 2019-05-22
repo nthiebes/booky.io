@@ -37,9 +37,14 @@ manifest="{
   \"version\": \"${version}\",
   \"author\": \"Nico Thiebes\",
   \"description\": \"Add new links to booky.io and browse your existing bookmarks.\",
-  \"permissions\": [\"activeTab\", \"storage\"],${applications}
+  \"permissions\": [\"activeTab\", \"bookmarks\"],${applications}
   \"background\": {${persistent}
     \"scripts\": [\"background.js\"]
+  },
+  \"externally_connectable\": {
+    \"matches\": [
+      \"https://booky.io/*\"
+    ]
   },
   \"browser_action\": {
     \"default_title\": \"booky.io Extension\",
