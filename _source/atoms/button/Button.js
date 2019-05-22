@@ -21,7 +21,8 @@ export default class Button extends Component {
       type,
       contentBefore,
       pending,
-      value
+      value,
+      id
     } = this.props;
     const CustomTag = href || to ? Link : 'button';
 
@@ -43,6 +44,7 @@ export default class Button extends Component {
         type={ type }
         disabled={ disabled }
         value={ value }
+        id={ id }
       >
         { icon && (
           <Icon
@@ -78,7 +80,8 @@ Button.propTypes = {
   type: PropTypes.string,
   contentBefore: PropTypes.bool,
   pending: PropTypes.bool,
-  value: PropTypes.string
+  value: PropTypes.string,
+  id: PropTypes.string
 };
 
 Button.defaultProps = {

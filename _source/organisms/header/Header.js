@@ -80,6 +80,12 @@ class Header extends Component {
         tabIndex="-1"
       >
         <div className="header__wrapper">
+          <Link className="header__skip-link" href="#main">
+            <FormattedHTMLMessage id="header.jumpToMain" />
+          </Link>
+          <Link className="header__skip-link" href="#language">
+            <FormattedHTMLMessage id="header.jumpToLanguage" />
+          </Link>
           { loggedIn && home && (
             <Fragment>
               <Icon

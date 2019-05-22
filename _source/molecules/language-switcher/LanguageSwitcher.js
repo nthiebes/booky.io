@@ -39,6 +39,7 @@ class LanguageSwitcher extends Component {
           className={ classNames('language-switcher__item', locale === 'en' && 'language-switcher__item--active') }
           value="en"
           onClick={ this.handleClick }
+          id="language"
         >
           { 'English' }
         </ButtonTextLight>

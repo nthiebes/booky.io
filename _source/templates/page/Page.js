@@ -31,7 +31,7 @@ export default class Page extends Component {
           ) }
           dashboards={ dashboards }
         />
-        <main className={ classNames(
+        <main id="main" className={ classNames(
           'page',
           stickyHeader && 'page--sticky-header',
           darkMode && 'page--dark',
