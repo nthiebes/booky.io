@@ -4,9 +4,9 @@ import classNames from 'classnames';
 
 export default class Extension extends Component {
   componentDidMount() {
-    // Tell the extension that the page is ready
     const extension = window.parent;
     
+    // Tell the extension that the page is ready to receive messages
     extension.postMessage('ready', 'chrome-extension://bfbbnjmbdhohklfbfeoonobkkdjhilkj');
 
     // Messages from the popup
