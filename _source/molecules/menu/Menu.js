@@ -45,7 +45,7 @@ class Menu extends Component {
             isNavLink
             noUnderline
           >
-            <Icon icon={ name } color="light" />
+            <Icon icon={ name } color="light" ariaHidden />
             <FormattedMessage id={ `menu.${name}` } />
           </Link>  
         )) }

@@ -4,16 +4,19 @@ import classNames from 'classnames';
 
 export default class Paragraph extends Component {
   render() {
-    const { children, className, first, darkMode, noPadding } = this.props;
+    const { children, className, first, darkMode, noPadding, role } = this.props;
 
     return (
-      <p className={ classNames(
-        'paragraph',
-        first && 'paragraph--first',
-        darkMode && 'paragraph--dark-mode',
-        noPadding && 'paragraph--no-padding',
-        className && className
-      ) }>
+      <p
+        className={ classNames(
+          'paragraph',
+          first && 'paragraph--first',
+          darkMode && 'paragraph--dark-mode',
+          noPadding && 'paragraph--no-padding',
+          className && className
+        ) }
+        role={ role }
+      >
         { children }
       </p>
     );
@@ -29,5 +32,6 @@ Paragraph.propTypes = {
   ]).isRequired,
   first: PropTypes.bool,
   darkMode: PropTypes.bool,
-  noPadding: PropTypes.bool
+  noPadding: PropTypes.bool,
+  role: PropTypes.string
 };

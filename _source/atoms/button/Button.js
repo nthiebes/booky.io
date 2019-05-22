@@ -50,6 +50,7 @@ export default class Button extends Component {
             color={ size === 'small' ? color : 'light' }
             className="button__icon"
             ignoreDarkMode
+            ariaHidden
           />
         ) }
         <span className="button__text">{ children }</span>
