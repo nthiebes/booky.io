@@ -32,8 +32,8 @@ export default class ErrorMessage extends Component {
     const { animate } = this.state;
 
     return (
-      <P className={ classNames('error', animate && 'error--animate', className && className) }>
-        { hasIcon && <Icon icon="error" color="orange" className="error__icon" /> }
+      <P className={ classNames('error', animate && 'error--animate', className && className) } role="alert">
+        { hasIcon && <Icon icon="error" color="orange" className="error__icon" ariaHidden /> }
         <FormattedMessage
           id={ message }
           values={ { mail: <Link to="/contact" color="dark">{ <FormattedMessage id="error.email" /> }</Link> } }

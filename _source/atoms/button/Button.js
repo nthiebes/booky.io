@@ -21,7 +21,8 @@ export default class Button extends Component {
       type,
       contentBefore,
       pending,
-      value
+      value,
+      id
     } = this.props;
     const CustomTag = href || to ? Link : 'button';
 
@@ -43,6 +44,7 @@ export default class Button extends Component {
         type={ type }
         disabled={ disabled }
         value={ value }
+        id={ id }
       >
         { icon && (
           <Icon
@@ -50,9 +52,10 @@ export default class Button extends Component {
             color={ size === 'small' ? color : 'light' }
             className="button__icon"
             ignoreDarkMode
+            ariaHidden
           />
         ) }
-        <span className="button__text">{ children }</span>
+        <span className="button__text" role="text">{ children }</span>
       </CustomTag>
     );
   }
@@ -77,7 +80,8 @@ Button.propTypes = {
   type: PropTypes.string,
   contentBefore: PropTypes.bool,
   pending: PropTypes.bool,
-  value: PropTypes.string
+  value: PropTypes.string,
+  id: PropTypes.string
 };
 
 Button.defaultProps = {

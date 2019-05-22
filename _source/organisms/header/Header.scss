@@ -91,6 +91,36 @@
   }
 }
 
+.header__skip-link {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+  white-space: nowrap;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.header__skip-link:focus {
+  clip: auto;
+  height: auto;
+  overflow: auto;
+  width: auto;
+  background-color: $color__background--ligth;
+  top: 0;
+  left: 50%;
+  padding: 0.5rem;
+  transform: translateX(-50%);
+  transition: none;
+  border-radius: 0 0 3px 3px;
+  max-width: 14rem;
+  white-space: normal;
+  text-align: center;
+
+  @include tablet-desktop {
+    padding: 1rem;
+  }
+}
+
 .header__logo {
   margin-right: 1.5rem;
   
