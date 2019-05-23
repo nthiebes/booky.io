@@ -33,19 +33,19 @@ class Home extends Component {
     ) : (
       <Page className="home" home>
         <Section className="home__header">
-          <Display1 color="medium" noMargin>
+          <Display1 color="medium" noMargin className="home__headline">
             <FormattedMessage id="home.display" />
           </Display1>
           <H2>
             <FormattedMessage id="home.display2" />
           </H2>
-          <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
+          <ButtonLargeBlue icon="join" to="/join" className="home__join">
             <FormattedHTMLMessage id="header.register" />
           </ButtonLargeBlue>
           <ButtonLargeLight icon="about" to="/about">
             <FormattedHTMLMessage id="header.learnMore" />
           </ButtonLargeLight>
-          <Illustration name="monitor-window" height="300" width="300" className="home__header-illustration" />
+          <Illustration name="monitor-window" height="200" width="200" className="home__header-illustration" />
         </Section>
         <Section color="light">
           <Feature />

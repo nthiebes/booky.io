@@ -3,14 +3,53 @@
 }
 
 .home__header {
-  padding-top: 10rem;
-  min-height: 100vh;
+  position: relative;
+
+  @include mobile {
+    padding-top: 6rem;
+  }
+  
+  @include tablet {
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+  }
+
+  @include desktop {
+    padding-top: 10rem;
+  }
+}
+
+.home__headline {
+  @include tablet {
+    width: 60%;
+  }
 }
 
 .home__header-illustration {
-  // position: absolute;
-  // left: 600px;
-  // margin-top: -20px;
+  max-width: 300px;
+  max-height: 300px;
+  
+  @include mobile {
+    position: relative;
+    width: 75%;
+    height: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2rem;
+  }
+  
+  @include tablet-desktop {
+    position: absolute;
+    right: 2vw;
+    top: 9rem;
+    width: 40vw;
+    height: 40vw;
+  }
+
+  @include desktop {
+    right: 36px;
+    top: 18rem;
+  }
 }
 
 .home__join {
@@ -18,8 +57,16 @@
     margin-bottom: 1rem;
   }
 
+  @include mobile-tablet {
+    margin-top: 3rem;
+  }
+
   @include tablet-desktop {
     margin-right: 1rem;
+  }
+
+  @include desktop {
+    margin-top: 5rem;
   }
 }
 
