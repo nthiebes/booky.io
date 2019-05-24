@@ -210,5 +210,6 @@
     "misc.logo": "booky Logo",
     "header.jumpToMain": "Zum Hauptinhalt springen",
     "header.jumpToLanguage": "Sprache auswählen",
-    "testimonials.headline": "In den Worten unserer Nutzer"
+    "testimonials.headline": "In den Worten unserer Nutzer",
+    "home.bookmarkletText": "Füge schnell Links hinzu mit unserem Bookmarklet oder der booky Browser-Erweiterung."
 }
