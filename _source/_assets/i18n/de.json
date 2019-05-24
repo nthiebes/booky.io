@@ -112,7 +112,7 @@
     "home.performantText": "We take great pride in providing you with an accessible site that's both fast and easy to use. Organize your bookmarks in collections and categories.",
     "home.mobileText": "At home or on the go? No problem with our mobile web app! Your bookmarks can be accessed and managed from anywhere on desktop or mobile.",
     "home.customizableText": "Customize booky to your needs.",
-    "home.bookmarkletButton": "Mehr <b>Funktionen</b>",
+    "home.extensionButton": "Jetzt <em>hinzufügen</em>",
     "home.notAMember": "Noch kein Mitglied? Jetzt beitreten!",
     "home.promoText": "Keine Werbung, kein Spam, keine versteckten Kosten.",
     "legal.title": "Impressum",
@@ -211,5 +211,5 @@
     "header.jumpToMain": "Zum Hauptinhalt springen",
     "header.jumpToLanguage": "Sprache auswählen",
     "testimonials.headline": "In den Worten unserer Nutzer",
-    "home.bookmarkletText": "Füge schnell Links hinzu mit unserem Bookmarklet oder der booky Browser-Erweiterung."
+    "home.extensionText": "Verwalte deine Lesezeichen mit der booky Browser-Erweiterung."
 }
