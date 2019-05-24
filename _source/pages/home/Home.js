@@ -68,7 +68,7 @@ class Home extends Component {
           />
         </Section>
         <Section color="primary" className="home__bookmarklet">
-          <Display2 noMargin className="home__bookmarklet-headline">
+          <Display2 noMargin centered className="home__bookmarklet-headline">
             <FormattedMessage id="home.extensionText" />
           </Display2>
           <ButtonLargeLight icon="extension" to="/about" contentBefore>
@@ -99,7 +99,7 @@ class Home extends Component {
             height="300"
             width="300"
           />
-          <Display2 centered>
+          <Display2 centered noMargin>
             <FormattedMessage id="home.notAMember" />
           </Display2>
           <P>
