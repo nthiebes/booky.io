@@ -1,7 +1,22 @@
+.testimonials-headline {
+  justify-content: center;
+
+  @include tablet {
+    padding: 1rem 36px 0;
+  }
+
+  @include desktop {
+    padding: 3rem 36px 0;
+  }
+}
+
 .testimonials {
   display: flex;
-  padding: 3rem 1.5%;
   width: 100%;
+
+  @include mobile {
+    padding: 0.5rem 1.5% 3rem;
+  }
 
   @include mobile-tablet {
     overflow-x: scroll;
@@ -10,11 +25,11 @@
   }
 
   @include tablet {
-    padding: 4rem 1.5%;
+    padding: 1rem 1.5% 4rem;
   }
 
   @include desktop {
-    padding: 6rem 18px;
+    padding: 1rem 18px 6rem;
   }
 }
 

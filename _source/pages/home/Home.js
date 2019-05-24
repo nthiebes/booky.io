@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Page from '../../templates/page';
@@ -23,7 +23,7 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedIn, blurContent, hasSidebar } = this.props;
+    const { loggedIn, blurContent, hasSidebar, intl } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
@@ -45,26 +45,28 @@ class Home extends Component {
           <ButtonLargeLight icon="about" to="/about">
             <FormattedHTMLMessage id="header.learnMore" />
           </ButtonLargeLight>
-          <Illustration name="monitor-window" height="200" width="200" className="home__header-illustration" />
+          <Illustration
+            name="monitor-window"
+            className="home__header-illustration"
+          />
         </Section>
-        <Section color="light">
-          <Feature />
+        <Section color="light" noPadding>
+          <Testimonials />
         </Section>
         <Section>
-          <H2 id="private">
-            <Icon icon="lock" />
-            <FormattedMessage id="home.privateHeadline" />
-          </H2>
-          <P>
-            <FormattedMessage id="home.privateText" />
-          </P>
-          <H2 id="performant">
-            <Icon icon="performance" />
-            <FormattedMessage id="home.performantHeadline" />
-          </H2>
-          <P>
-            <FormattedMessage id="home.performantText" />
-          </P>
+          <Feature
+            headline={ intl.formatMessage({ id: 'home.privateHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.privateText' }) }
+            illustration="stamp-document"
+          />
+        </Section>
+        <Section>
+          <Feature
+            headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.performantText' }) }
+            illustration="monitor-loading-progress"
+            direction="right"
+          />
         </Section>
         <Section color="primary" className="home__bookmarklet">
           <Icon icon="extension" size="medium" color="light" className="home__bookmarklet-icon" />
@@ -76,28 +78,30 @@ class Home extends Component {
           </ButtonSmallLight>
         </Section>
         <Section>
-          <H2 id="mobile">
-            <Icon icon="phone" />
-            <FormattedMessage id="home.mobileHeadline" />
-          </H2>
-          <P>
-            <FormattedMessage id="home.mobileText" />
-          </P>
-          <H2 id="customizable">
-            <Icon icon="settings" />
-            <FormattedMessage id="home.customizableHeadline" />
-          </H2>
-          <P>
-            <FormattedMessage id="home.customizableText" />
-          </P>
+          <Feature
+            headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.mobileText' }) }
+            illustration="android-phone"
+          />
+        </Section>
+        <Section>
+          <Feature
+            headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.customizableText' }) }
+            illustration="color-palette"
+            direction="right"
+          />
         </Section>
         <Section color="light" className="home__not-a-member">
           { 'muh' }
         </Section>
-        <Section color="light" noPadding>
-          <Testimonials />
-        </Section>
         <Section className="home__not-a-member">
+          <Illustration
+            name="ecology-globe"
+            className=""
+            height="300"
+            width="300"
+          />
           <Display2 centered>
             <FormattedMessage id="home.notAMember" />
           </Display2>
@@ -116,11 +120,12 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default injectIntl(Home);
 
 Home.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   blurContent: PropTypes.bool.isRequired,
   hasSidebar: PropTypes.bool.isRequired,
-  getDashboards: PropTypes.func.isRequired
+  getDashboards: PropTypes.func.isRequired,
+  intl: PropTypes.object.isRequired
 };

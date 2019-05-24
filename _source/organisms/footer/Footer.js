@@ -35,19 +35,19 @@ class Footer extends Component {
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{ '19.512' }</b>
+                <b>{ '27.349' }</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '7.557.503' }</b>
+                <b>{ '10.504.196' }</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '636.803' }</b>
+                <b>{ '893.091' }</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '35.209' }</b>
+                <b>{ '49.697' }</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>

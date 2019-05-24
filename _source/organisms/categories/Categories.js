@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 import Category from '../../molecules/category';
 import Empty from '../../molecules/empty';
@@ -20,7 +20,7 @@ class Categories extends Component {
   }
 
   render() {
-    const { categories, dashboardsOpen, hasSidebar, maxWidth, intl, dashboard, className, pending } = this.props;
+    const { categories, dashboardsOpen, hasSidebar, maxWidth, dashboard, className, pending } = this.props;
 
     return (
       <div className={ classNames(
@@ -45,7 +45,7 @@ class Categories extends Component {
               <Category key={ category.id } { ...category } />
             ) }
             { !categories.length && (
-              <Empty alt={ intl.formatMessage({ id: 'category.emptyImage' }) } illustration="write-paper-ink">
+              <Empty illustration="write-paper-ink">
                 <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
               </Empty>
             ) }
@@ -68,4 +68,4 @@ Categories.propTypes = {
   pending: PropTypes.bool
 };
 
-export default injectIntl(Categories);
+export default Categories;

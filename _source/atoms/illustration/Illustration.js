@@ -28,7 +28,7 @@ Illustration.propTypes = {
 };
 
 Illustration.defaultProps = {
-  height: 'auto',
-  width: 'auto',
+  height: '200',
+  width: '200',
   ariaHidden: true
 };

@@ -14,7 +14,7 @@ class NotFound extends Component {
     return (
       <Page>
         <Section>
-          <Empty alt={ intl.formatMessage({ id: 'category.emptyImage' }) } illustration="chip-head">
+          <Empty illustration="chip-head">
             <FormattedMessage
               id="notFound.figureText"
               values={ {
