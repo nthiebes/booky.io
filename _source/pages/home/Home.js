@@ -8,8 +8,7 @@ import Categories from '../../organisms/categories';
 import Dashboards from '../../organisms/dashboards';
 import { H2, Display1, Display2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-import Icon from '../../atoms/icon';
-import { ButtonLargeLight, ButtonLargeBlue, ButtonSmallLight } from '../../atoms/button';
+import { ButtonLargeLight, ButtonLargeBlue } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
@@ -69,13 +68,12 @@ class Home extends Component {
           />
         </Section>
         <Section color="primary" className="home__bookmarklet">
-          <Icon icon="extension" size="medium" color="light" className="home__bookmarklet-icon" />
-          <H2 noMargin className="home__bookmarklet-headline">
-            Quickly add links to booky with our bookmarklet or Chrome extension.
-          </H2>
-          <ButtonSmallLight className="home__bookmarklet-button" to="/about">
-            <FormattedHTMLMessage id="home.bookmarkletButton" />
-          </ButtonSmallLight>
+          <Display2 noMargin className="home__bookmarklet-headline">
+            <FormattedMessage id="home.extensionText" />
+          </Display2>
+          <ButtonLargeLight icon="extension" to="/about" contentBefore>
+            <FormattedHTMLMessage id="home.extensionButton" />
+          </ButtonLargeLight>
         </Section>
         <Section>
           <Feature
@@ -98,7 +96,6 @@ class Home extends Component {
         <Section className="home__not-a-member">
           <Illustration
             name="ecology-globe"
-            className=""
             height="300"
             width="300"
           />

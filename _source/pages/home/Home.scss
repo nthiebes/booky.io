@@ -119,8 +119,9 @@
   display: flex;
   padding-top: 3rem;
   padding-bottom: 3rem;
+  text-align: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   @include tablet {
     padding-top: 4rem;
@@ -128,38 +129,13 @@
   }
 
   @include desktop {
-    flex-wrap: nowrap;
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
 }
 
-.home__bookmarklet-icon {
-  flex-shrink: 0;
-  margin-right: 1rem;
-  pointer-events: none;
-}
-
 .home__bookmarklet-headline {
-  flex-grow: 1;
   padding: 0;
-
-  @include mobile-tablet {
-    max-width: calc(100% - 64px - 1rem);
-  }
-
-  @include desktop {
-    margin-right: 1rem;
-  }
-}
-
-.home__bookmarklet-button {
-  flex-shrink: 0;
-
-  @include mobile-tablet {
-    margin-top: 1rem;
-    margin-left: calc(64px + 1rem);
-  }
 }
 
 .home__not-a-member {
