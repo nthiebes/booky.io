@@ -68,6 +68,36 @@ class Home extends Component {
           />
         </Section>
         <Section color="blue" className="home__bookmarklet">
+          <div>
+            <img
+              width="50"
+              height="50"
+              alt="Chrome browser extension"
+              className="home__bookmarklet-icon"
+              src="../../_assets/browsers/chrome.svg"
+            />
+            <img
+              width="50"
+              height="50"
+              alt="Firefox browser extension"
+              className="home__bookmarklet-icon"
+              src="../../_assets/browsers/firefox.svg"
+            />
+            <img
+              width="50"
+              height="50"
+              alt="Opera browser extension"
+              className="home__bookmarklet-icon"
+              src="../../_assets/browsers/opera.svg"
+            />
+            <img
+              width="50"
+              height="50"
+              alt="Edge browser extension"
+              className="home__bookmarklet-icon"
+              src="../../_assets/browsers/edge.svg"
+            />
+          </div>
           <H2 noMargin centered className="home__bookmarklet-headline">
             <FormattedMessage id="home.extensionText" />
           </H2>
