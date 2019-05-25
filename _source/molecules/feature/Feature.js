@@ -13,8 +13,8 @@ export default class Feature extends Component {
     return (
       <div className={ classNames('feature__wrapper', className) }>
         <header className={ classNames(direction === 'right' && 'feature__header--right', 'feature__header') }>
-          <Display2>{ headline }</Display2>
-          <P>{ text }</P>
+          <Display2 noMargin>{ headline }</Display2>
+          <P noPadding>{ text }</P>
         </header>
         <Illustration
           width="300"
