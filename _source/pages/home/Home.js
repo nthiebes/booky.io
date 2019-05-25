@@ -8,7 +8,7 @@ import Categories from '../../organisms/categories';
 import Dashboards from '../../organisms/dashboards';
 import { H2, Display1, Display2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-import { ButtonLargeLight, ButtonLargeBlue } from '../../atoms/button';
+import { ButtonLargeLight, ButtonLargeBlue, ButtonSmallLight } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
@@ -67,13 +67,13 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="primary" className="home__bookmarklet">
-          <Display2 noMargin centered className="home__bookmarklet-headline">
+        <Section color="blue" className="home__bookmarklet">
+          <H2 noMargin centered className="home__bookmarklet-headline">
             <FormattedMessage id="home.extensionText" />
-          </Display2>
-          <ButtonLargeLight icon="extension" to="/about" contentBefore>
+          </H2>
+          <ButtonSmallLight icon="extension" to="/about" contentBefore>
             <FormattedHTMLMessage id="home.extensionButton" />
-          </ButtonLargeLight>
+          </ButtonSmallLight>
         </Section>
         <Section>
           <Feature

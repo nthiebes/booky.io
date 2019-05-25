@@ -26,17 +26,29 @@
   }
 }
 
-.section--primary {
-  background-color: $color--primary;
-
+.section--primary,
+.section--blue,
+.section--green {
   .headline,
   .paragraph {
     color: $color__font--white;
   }
 }
 
+.section--primary {
+  background-color: $color--primary;
+}
+
 .section--light {
   background-color: $color__background--ligth;
+}
+
+.section--blue {
+  background-color: $color--blue;
+}
+
+.section--green {
+  background-color: $color--green;
 }
 
 .section__content {
