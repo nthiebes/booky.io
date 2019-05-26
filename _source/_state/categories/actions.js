@@ -83,3 +83,20 @@ export const getCategories = (id) => ((dispatch) => {
     }
   });
 });
+
+// export const addCategory = (payload) => ((dispatch) => {
+//   console.log('payload', payload);
+//   fetcher({
+//     url: `/dashboard/${payload.dashboard}/category`,
+//     method: 'POST',
+//     params: payload,
+//     onSuccess: (data) => {
+//       console.log('data', data);
+//       // setCategories(data);
+//     },
+//     onError: (error) => {
+//       console.log('error', error);
+//       // onError && onError(error);
+//     }
+//   });
+// });
