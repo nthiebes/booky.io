@@ -45,7 +45,7 @@ export default class Color extends Component {
         <Checkbox
           className="color-picker__checkbox"
           checked={ value === color.key }
-          value={ value }
+          value={ `color${value}` }
           name="color"
           tabIndex="-1"
         />

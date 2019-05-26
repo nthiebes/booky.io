@@ -62,7 +62,6 @@ Categories.propTypes = {
   dashboardsOpen: PropTypes.bool.isRequired,
   hasSidebar: PropTypes.bool.isRequired,
   maxWidth: PropTypes.bool.isRequired,
-  intl: PropTypes.object.isRequired,
   dashboard: PropTypes.object,
   className: PropTypes.string,
   pending: PropTypes.bool

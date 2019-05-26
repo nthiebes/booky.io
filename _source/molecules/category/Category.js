@@ -68,7 +68,7 @@ class Category extends Component {
     const { open, editMode } = this.state;
     const headerClassName = classNames(
       'category__header',
-      `category__header--color${color}`,
+      `category__header--${color}`,
       editMode && 'category__header--edit-mode'
     );
 
@@ -146,7 +146,7 @@ export default injectIntl(Category);
 
 Category.propTypes = {
   name: PropTypes.string.isRequired,
-  color: PropTypes.number,
+  color: PropTypes.string,
   open: PropTypes.bool,
   id: PropTypes.number.isRequired,
   bookmarks: PropTypes.array,
@@ -158,5 +158,5 @@ Category.propTypes = {
 Category.defaultProps = {
   open: true,
   bookmarks: [],
-  color: 0
+  color: 'color0'
 };

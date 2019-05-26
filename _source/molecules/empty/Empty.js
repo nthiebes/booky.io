@@ -31,7 +31,7 @@ Empty.propTypes = {
     PropTypes.string
   ]).isRequired,
   illustration: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  alt: PropTypes.string,
   className: PropTypes.string,
   darkMode: PropTypes.bool,
   ariaHidden: PropTypes.bool
