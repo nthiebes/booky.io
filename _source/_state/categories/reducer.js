@@ -88,7 +88,7 @@ const categories = (state = [], action) => {
       return [
         ...state,
         {
-          id: '123456789',
+          id: 123456789,
           name: action.payload.name,
           color: action.payload.color,
           dashboard: action.payload.dashboard,
