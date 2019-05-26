@@ -13,6 +13,7 @@ import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
+import Illustration from '../../atoms/illustration';
 
 class Join extends Component {
   constructor(props) {
@@ -72,8 +73,8 @@ class Join extends Component {
 
     return (
       <Page>
-        <Section compact>
-          <Form onSubmit={ this.handleSubmit }>
+        <Section className="join">
+          <Form onSubmit={ this.handleSubmit } className="join__form">
             <H1>
               <FormattedMessage id="join.headline" />
             </H1>
@@ -138,6 +139,12 @@ class Join extends Component {
               </Link>
             </P>
           </Form>
+          <Illustration
+            name="monitor-window"
+            width="300"
+            height="300"
+            className="join__illustration"
+          />
         </Section>
       </Page>
     );

@@ -1,3 +1,29 @@
+.join {
+  @include tablet {
+    max-width: 40rem;
+  }
+
+  @include desktop {
+    display: flex;
+    max-width: 50rem;
+    justify-content: center;
+  }
+}
+
+.join__form {
+  @include desktop {
+    margin-right: 2rem;
+  }
+}
+
+.join__illustration {
+  flex-shrink: 0;
+
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
 .join__login {
   display: block;
   margin-top: 1rem;
