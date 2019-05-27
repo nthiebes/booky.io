@@ -115,6 +115,7 @@
   max-width: 14rem;
   white-space: normal;
   text-align: center;
+  z-index: 1;
 
   @include tablet-desktop {
     padding: 1rem;

@@ -92,6 +92,11 @@
   }
 }
 
+.dashboards__scroll-wrapper--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .dashboards--dark-mode .dashboards__scroll-wrapper {
   &::before {
     background: linear-gradient(to bottom, $color__background--medium, rgba(255,255,255,0));

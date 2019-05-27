@@ -9,7 +9,7 @@ import { getCategories } from '../../_state/categories/actions';
 export const mapStateToProps = (state) => ({
   dashboards: state.dashboards.items,
   activeId: state.dashboards.active,
-  open: state.user.settings.pinned,
+  pinned: state.user.settings.pinned,
   currentlySticky: state.toolbar.currentlySticky,
   headerSticky: state.user.settings.stickyHeader,
   toolbarSticky: state.user.settings.stickyToolbar,
@@ -25,9 +25,9 @@ export const mapDispatchToProps = (dispatch) => ({
     dispatch(sidebarActions.closeSidebar());
     dispatch(getCategories(id));
   },
-  toggleDashboardOpen: (open) => {
+  toggleDashboardPinned: (pinned) => {
     dispatch(updateSettings({
-      pinned: open
+      pinned
     }));
   }
 });
