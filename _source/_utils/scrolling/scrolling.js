@@ -1,3 +1,5 @@
+// import { throttle } from '../throttle';
+
 export class Scrolling {
   constructor() {
     this.actions = {};
@@ -5,7 +7,6 @@ export class Scrolling {
 
     this.registerAction = this.registerAction.bind(this);
     this.onPageScroll = this.onPageScroll.bind(this);
-    this.handleInterval = this.handleInterval.bind(this);
   }
 
   onPageScroll() {
@@ -37,7 +38,7 @@ export class Scrolling {
 
   registerAction(actionName, actionConfig) {
     if (this.count === 0) {
-      this.intervalID = setInterval(this.handleInterval, 500);
+      window.addEventListener('scroll', this.onPageScroll);
     }
 
     this.count++;
@@ -49,11 +50,7 @@ export class Scrolling {
     this.count--;
 
     if (this.count === 0) {
-      // Remove and reset interval/animationFrame
-      clearInterval(this.intervalID);
-      cancelAnimationFrame(this.requestID);
-      this.requestID = null;
-      this.intervalID = null;
+      window.removeEventListener('scroll', this.onPageScroll);
     }
   }
 
@@ -68,12 +65,6 @@ export class Scrolling {
       ACTION.active = false;
       ACTION.isAbove.call(ACTION.scope);
     }
-  }
-
-  handleInterval() {
-    // Interval is only used to throttle animation frame
-    cancelAnimationFrame(this.requestID);
-    this.requestID = requestAnimationFrame(this.onPageScroll);
   }
 }
 
