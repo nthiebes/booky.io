@@ -25,7 +25,7 @@ class Toolbar extends Component {
 
   componentDidMount() {
     scrolling.registerAction('toolbar', {
-      offset: 100,
+      offset: 90,
       scope: this,
       isAbove: () => {
         this.isAboveActions();
@@ -76,7 +76,15 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, intl, className, dashboardsStyle, dashboards, changeDashboard, darkMode } = this.props;
+    const {
+      dashboard,
+      intl,
+      className,
+      dashboardsStyle,
+      dashboards,
+      changeDashboard,
+      darkMode
+    } = this.props;
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className && className) }>

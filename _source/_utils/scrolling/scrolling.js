@@ -1,21 +1,15 @@
-/**
- * Scrolling helper
- *
- * @namespace _utils/Scrolling
- * @classdesc _utils/Scrolling
- */
 export class Scrolling {
-  constructor(config) {
-    this.config = config;
+  constructor() {
     this.actions = {};
     this.count = 0;
 
     this.registerAction = this.registerAction.bind(this);
     this.onPageScroll = this.onPageScroll.bind(this);
+    this.handleInterval = this.handleInterval.bind(this);
   }
 
   onPageScroll() {
-    const TOP = this.config.window.pageYOffset || this.config.document.documentElement.scrollTop,
+    const TOP = window.pageYOffset || document.documentElement.scrollTop,
       ACTIONS = this.actions;
 
     let item;
@@ -41,50 +35,30 @@ export class Scrolling {
     }
   }
 
-  /**
-   * @memberof _utils/Scrolling
-   *
-   * @param {string} actionName
-   * @param {object} actionConfig
-   * @param {object} actionConfig.offset
-   * @param {object} actionConfig.scope
-   * @param {object} actionConfig.isAbove
-   * @param {object} actionConfig.isBelow
-   */
   registerAction(actionName, actionConfig) {
-    const lengthNoActions = 0;
-
-    if (this.count === lengthNoActions) {
-      this.config.window.addEventListener('scroll', this.onPageScroll);
+    if (this.count === 0) {
+      this.intervalID = setInterval(this.handleInterval, 500);
     }
 
     this.count++;
     this.actions[actionName] = actionConfig;
   }
 
-  /**
-   * @memberof _utils/Scrolling
-   *
-   * @param {string} actionName
-   */
   removeAction(actionName) {
-    const lengthNoActions = 0;
-    
     delete this.actions[actionName];
     this.count--;
 
-    if (this.count === lengthNoActions) {
-      this.config.window.removeEventListener('scroll', this.onPageScroll);
+    if (this.count === 0) {
+      // Remove and reset interval/animationFrame
+      clearInterval(this.intervalID);
+      cancelAnimationFrame(this.requestID);
+      this.requestID = null;
+      this.intervalID = null;
     }
   }
 
-  /**
-   * @memberof _utils/Scrolling
-   *
-   * @param {string} actionName
-   */
   updateStatus(actionName) {
-    const TOP = this.config.window.pageYOffset || this.config.document.documentElement.scrollTop,
+    const TOP = window.pageYOffset || document.documentElement.scrollTop,
       ACTION = this.actions[actionName];
 
     if (TOP >= ACTION.offset) {
@@ -95,9 +69,12 @@ export class Scrolling {
       ACTION.isAbove.call(ACTION.scope);
     }
   }
+
+  handleInterval() {
+    // Interval is only used to throttle animation frame
+    cancelAnimationFrame(this.requestID);
+    this.requestID = requestAnimationFrame(this.onPageScroll);
+  }
 }
 
-export const scrolling = new Scrolling({
-  'window': window,
-  'document': document
-});
+export const scrolling = new Scrolling();
