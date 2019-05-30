@@ -92,16 +92,16 @@
 }
 
 .input__field--dark-mode {
-  background-color: $color--dark;
+  background-color: $color__background--dark;
   color: $color__font--white;
 
   &:focus {
-    background-color: $color__background--dark;
+    background-color: $color--dark;
   }
 
   @include desktop {
     &:hover {
-      background-color: $color__background--dark;
+      background-color: $color--dark;
     }
   }
 }
