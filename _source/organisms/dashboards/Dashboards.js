@@ -28,9 +28,11 @@ class Dashboards extends Component {
   }
 
   togglePinned() {
-    const { pinned, toggleDashboardPinned } = this.props;
+    const { pinned, updateSettings } = this.props;
 
-    toggleDashboardPinned(!pinned);
+    updateSettings({
+      pinned: !pinned
+    });
   }
 
   onIconClick(type, dashboard) {
@@ -179,7 +181,7 @@ Dashboards.propTypes = {
   intl: PropTypes.object.isRequired,
   pinned: PropTypes.bool,
   activeId: PropTypes.number,
-  toggleDashboardPinned: PropTypes.func.isRequired,
+  updateSettings: PropTypes.func.isRequired,
   useTabIndex: PropTypes.bool,
   isSidebar: PropTypes.bool,
   headerSticky: PropTypes.bool.isRequired,

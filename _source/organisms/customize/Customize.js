@@ -19,7 +19,7 @@ class Customize extends Component {
 
   handleColorChange(value) {
     this.props.updateSettings({
-      navigationBarColor: value
+      navigationBarColor: parseInt(value.replace(/color/g, ''), 10)
     });
   }
 
@@ -30,6 +30,7 @@ class Customize extends Component {
   }
 
   handleRadioChange({ name, value }) {
+    console.log(name, value);
     this.props.updateSettings({
       [name]: value
     });
@@ -61,7 +62,7 @@ class Customize extends Component {
           <FormattedMessage id="customize.navColor" />
         </Label>
         <ColorPicker
-          value={ navColor }
+          value={ navColor.toString() }
           onChange={ this.handleColorChange }
           className="customize__color-picker"
         />
@@ -99,7 +100,7 @@ class Customize extends Component {
         <Radio
           label={ intl.formatMessage({ id: 'customize.sidebar'}) }
           id="dashboards-sidebar"
-          name="dashboards"
+          name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="sidebar"
           defaultChecked={ dashboardsStyle === 'sidebar' }
@@ -107,7 +108,7 @@ class Customize extends Component {
         <Radio
           label={ intl.formatMessage({ id: 'customize.dropdown'}) }
           id="dashboards-dropdown"
-          name="dashboards"
+          name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="dropdown"
           defaultChecked={ dashboardsStyle === 'dropdown' }
@@ -115,7 +116,7 @@ class Customize extends Component {
         <Radio
           label={ intl.formatMessage({ id: 'customize.tabs'}) }
           id="dashboards-tabs"
-          name="dashboards"
+          name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="tabs"
           defaultChecked={ dashboardsStyle === 'tabs' }

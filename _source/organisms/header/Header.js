@@ -71,7 +71,7 @@ class Header extends Component {
     return (
       <header
         className={ classNames(
-          `header header--color-${color}`,
+          `header header--color${color}`,
           sidebarOpen && 'header--overlay',
           sticky && 'header--sticky',
           className && className

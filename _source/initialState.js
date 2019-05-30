@@ -18,7 +18,7 @@ export default {
       stickyHeader: true,
       stickyToolbar: true,
       autofillBookmarkNames: true,
-      colorScheme: 1,
+      colorScheme: 0,
       defaultDashboardId: -1,
       enableNotes: true
     }

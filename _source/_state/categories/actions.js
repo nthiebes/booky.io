@@ -1,4 +1,5 @@
 import fetcher from '../../_utils/fetcher';
+import { updateDashboardsData } from '../dashboards/actions';
 
 export const ADD_BOOKMARK = 'ADD_BOOKMARK';
 export const EDIT_BOOKMARK = 'EDIT_BOOKMARK';
@@ -75,7 +76,10 @@ export const getCategories = (id) => ((dispatch) => {
   fetcher({
     url: `/dashboard/${id}/categories`,
     onSuccess: (data) => {
-      setCategories(data);
+      dispatch(setCategories(data));
+      dispatch(updateDashboardsData({
+        pending: false
+      }));
     },
     onError: (error) => {
       console.log('error', error);

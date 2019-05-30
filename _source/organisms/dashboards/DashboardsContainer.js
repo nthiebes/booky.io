@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
 import Component from './Dashboards';
-import { actions as modalActions } from '../../_state/modal';
-import { actions as dashboardsActions } from '../../_state/dashboards';
-import { actions as sidebarActions } from '../../_state/sidebar';
+import { openModal } from '../../_state/modal/actions';
+import { changeDashboard } from '../../_state/dashboards/actions';
 import { updateSettings } from '../../_state/user/actions';
-import { getCategories } from '../../_state/categories/actions';
 
 export const mapStateToProps = (state) => ({
   dashboards: state.dashboards.items,
@@ -16,21 +14,11 @@ export const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode
 });
 
-export const mapDispatchToProps = (dispatch) => ({
-  openModal: (modal, data) => {
-    dispatch(modalActions.openModal(modal, data));
-  },
-  changeDashboard: (id) => {
-    dispatch(dashboardsActions.changeDashboard(id));
-    dispatch(sidebarActions.closeSidebar());
-    dispatch(getCategories(id));
-  },
-  toggleDashboardPinned: (pinned) => {
-    dispatch(updateSettings({
-      pinned
-    }));
-  }
-});
+export const mapDispatchToProps = {
+  openModal,
+  changeDashboard,
+  updateSettings
+};
 
 const Container = connect(
   mapStateToProps,

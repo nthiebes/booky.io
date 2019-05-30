@@ -1,6 +1,7 @@
 import fetcher from '../../_utils/fetcher';
 
-import { setCategories } from '../categories/actions';
+import { setCategories, getCategories } from '../categories/actions';
+import { closeSidebar } from '../sidebar/actions';
 
 export const CHANGE_DASHBOARD = 'CHANGE_DASHBOARD';
 export const ADD_DASHBOARD = 'ADD_DASHBOARD';
@@ -11,13 +12,6 @@ export const DRAG_DASHBOARD = 'DRAG_DASHBOARD';
 export const DRAG_CATEGORY = 'DRAG_CATEGORY';
 export const TOGGLE_DASHBOARD_OPEN = 'TOGGLE_DASHBOARD_OPEN';
 export const UPDATE_DASHBOARDS_DATA = 'UPDATE_DASHBOARDS_DATA';
-
-export function changeDashboard(id) {
-  return {
-    type: CHANGE_DASHBOARD,
-    id
-  };
-}
 
 export function editDashboard(payload) {
   return {
@@ -70,6 +64,16 @@ export function toggleDashboardOpen() {
 export const updateDashboardsData = (data) => ({
   type: UPDATE_DASHBOARDS_DATA,
   data
+});
+
+export const changeDashboard = (id) => ((dispatch) => {
+  dispatch(updateDashboardsData({
+    pending: true,
+    active: id
+  }));
+
+  dispatch(closeSidebar());
+  dispatch(getCategories(id));
 });
 
 export const getDashboards = () => ((dispatch) => {

@@ -64,7 +64,6 @@
 }
 
 .tab-bar__tab--active {
-  cursor: default;
   color: $color--primary;
   border-bottom-color: $color--primary;
 
@@ -75,11 +74,8 @@
 
   @include desktop {
     &:hover {
-      color: $color--primary;
-    }
-
-    &:hover:focus {
       color: $color__font--dark;
+      border-bottom-color: $color__font--dark;
     }
   }
 }
