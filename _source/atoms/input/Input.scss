@@ -91,6 +91,21 @@
   }
 }
 
+.input__field--dark-mode {
+  background-color: $color--dark;
+  color: $color__font--white;
+
+  &:focus {
+    background-color: $color__background--dark;
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: $color__background--dark;
+    }
+  }
+}
+
 .input__field--icon {
   padding: 0 36px 0 10px;
 }

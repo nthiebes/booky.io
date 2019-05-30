@@ -55,7 +55,8 @@ export default class Input extends Component {
         className && className,
         color && `input__field--color-${color}`,
         !validation && 'input__field--no-validation',
-        icon && 'input__field--icon'
+        icon && 'input__field--icon',
+        darkMode && 'input__field--dark-mode'
       ),
       onBlur: this.onBlur,
       onFocus: this.onFocus,
@@ -77,7 +78,7 @@ export default class Input extends Component {
     return (
       <Fragment>
         { label && <Label htmlFor={ id }>{ label }</Label> }
-        <span className={ classNames('input', className && className) }>
+        <span className={ classNames('input', className) }>
           <input { ...inputProps } />
           { validation && (
             <Fragment>
