@@ -63,6 +63,21 @@
   }
 }
 
+.tab-bar__tab--dark-mode {
+  color: $color__font--light;
+
+  &:active,
+  &:focus {
+    color: $color__font--white;
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--white;
+    }
+  }
+}
+
 .tab-bar__tab--active {
   color: $color--primary;
   border-bottom-color: $color--primary;
@@ -76,6 +91,20 @@
     &:hover {
       color: $color__font--dark;
       border-bottom-color: $color__font--dark;
+    }
+  }
+
+  &.tab-bar__tab--dark-mode {
+    &:focus {
+      color: $color__font--white;
+      border-bottom-color: $color__font--white;
+    }
+
+    @include desktop {
+      &:hover {
+        color: $color__font--white;
+        border-bottom-color: $color__font--white;
+      }
     }
   }
 }

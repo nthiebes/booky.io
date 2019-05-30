@@ -23,11 +23,11 @@ export default class Tab extends Component {
   }
 
   render() {
-    const { name, active } = this.props;
+    const { name, active, darkMode } = this.props;
 
     return (
       <li
-        className={ classNames('tab-bar__tab', active && 'tab-bar__tab--active') }
+        className={ classNames('tab-bar__tab', active && 'tab-bar__tab--active', darkMode && 'tab-bar__tab--dark-mode') }
         onClick={ this.handleClick }
         onKeyDown={ this.handleKeyDown }
         tabIndex="0"
@@ -42,5 +42,6 @@ Tab.propTypes = {
   name: PropTypes.string.isRequired,
   tabId: PropTypes.number.isRequired,
   active: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool
 };
