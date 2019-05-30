@@ -4,6 +4,8 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Input from '../../../atoms/input';
 import { ButtonLargeBlue } from '../../../atoms/button';
+import P from '../../../atoms/paragraph';
+import Label from '../../../atoms/label';
 import Form from '../../../molecules/form';
 
 class AccountData extends Component {
@@ -12,6 +14,12 @@ class AccountData extends Component {
 
     return (
       <Form className="account__form">
+        <Label>
+          { 'Deine E-Mail Adresse:' }
+        </Label>
+        <P noPadding className="account__email">
+          { email }
+        </P>
         <Input
           name="username"
           id="username"
@@ -19,16 +27,6 @@ class AccountData extends Component {
           maxLength="50"
           required
           value={ name }
-        />
-        <Input
-          name="email"
-          id="email"
-          label={ intl.formatMessage({ id: 'login.email' }) }
-          maxLength="150"
-          required
-          type="email"
-          requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
-          value={ email }
         />
         <Input
           name="password"

@@ -43,6 +43,7 @@ fetch(`/_assets/i18n/${language}.json`)
           ...initialState,
           user: {
             ...initialState.user,
+            ...data,
             loggedIn: true,
             settings: {
               ...initialState.user.settings,
