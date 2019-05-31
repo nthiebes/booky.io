@@ -211,5 +211,6 @@
     "header.jumpToMain": "Zum Hauptinhalt springen",
     "header.jumpToLanguage": "Sprache auswählen",
     "testimonials.headline": "In den Worten unserer Nutzer",
-    "home.extensionText": "Verwalte deine Lesezeichen mit der booky Browser-Erweiterung."
+    "home.extensionText": "Verwalte deine Lesezeichen mit der booky Browser-Erweiterung.",
+    "misc.searchLabel": "Nach Lesezeichen suchen"
 }
