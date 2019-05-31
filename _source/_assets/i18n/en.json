@@ -211,5 +211,6 @@
     "header.jumpToMain": "Jump to main content",
     "header.jumpToLanguage": "Choose language",
     "testimonials.headline": "In the words of our users",
-    "home.extensionText": "Manage your bookmarks with the booky browser extension."
+    "home.extensionText": "Manage your bookmarks with the booky browser extension.",
+    "misc.searchLabel": "Search for bookmarks"
 }
