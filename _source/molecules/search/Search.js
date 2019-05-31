@@ -29,7 +29,7 @@ class Search extends Component {
     return (
       <div className={ classNames('search', className) }>
         <Label htmlFor="search" className="search__label">
-          <FormattedMessage id="misc.search" />
+          <FormattedMessage id="misc.searchLabel" />
         </Label>
         <Input
           placeholder={ intl.formatMessage({ id: 'misc.search' }) }
