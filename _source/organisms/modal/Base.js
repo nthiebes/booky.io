@@ -40,10 +40,10 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, hasAnchor, darkMode } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, hasAnchor } = this.props;
 
     return (
-      <Form className={ classNames('modal__inner', darkMode && 'modal__inner--dark') } onSubmit={ this.onSubmit } onClick={ this.handleClick }>
+      <Form onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
           { hasAnchor && (
             <a

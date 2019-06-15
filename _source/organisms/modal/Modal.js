@@ -91,13 +91,7 @@ export default class Modal extends Component {
 
   render() {
     const { modal, open, data, pending, closeModal, darkMode } = this.props;
-    let CustomTag;
-
-    if (open) {
-      CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
-    } else {
-      CustomTag = null;
-    }
+    const CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
 
     return (
       <div
@@ -108,15 +102,16 @@ export default class Modal extends Component {
         onClick={ closeModal }
         onKeyUp={ this.handleKeyUp }
       >
-        { CustomTag && (
-          <CustomTag
-            onClose={ closeModal }
-            onSave={ this.handleSave }
-            data={ data }
-            pending={ pending }
-            darkMode={ darkMode }
-          />
-        ) }
+        <div className={ classNames('modal__inner', darkMode && 'modal__inner--dark') }>
+          { CustomTag && (
+            <CustomTag
+              onClose={ closeModal }
+              onSave={ this.handleSave }
+              data={ data }
+              pending={ pending }
+            />
+          ) }
+        </div>
       </div>
     );
   }
