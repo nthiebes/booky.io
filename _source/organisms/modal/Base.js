@@ -13,7 +13,6 @@ class Modal extends Component {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.onCancel = this.onCancel.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -21,14 +20,6 @@ class Modal extends Component {
     this.props.hasAnchor && this.anchor.focus();
 
     document.body.classList.add('booky--no-scrolling');
-  }
-
-  componentWillUnmount() {
-    document.body.classList.remove('booky--no-scrolling');
-  }
-
-  onCancel() {
-    this.props.onClose();
   }
 
   onSubmit(data) {
@@ -61,7 +52,12 @@ class Modal extends Component {
         </div>
         <footer className={ classNames('modal__footer', noCancel && 'modal__footer--one-button') }>
           { !noCancel && (
-            <ButtonLargeLight className="modal__button modal__button--cancel" icon="close" onClick={ this.onCancel } type="button">
+            <ButtonLargeLight
+              className="modal__button modal__button--cancel"
+              icon="close"
+              onClick={ onClose }
+              type="button"
+            >
               <FormattedMessage id="button.cancel" />
             </ButtonLargeLight>
           ) }

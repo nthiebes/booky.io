@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
+import Skeleton from '../../atoms/skeleton';
 import Search from '../../molecules/search';
 import { TabBar, Tab } from '../../molecules/tab-bar';
 
@@ -95,7 +96,7 @@ class Toolbar extends Component {
           tabIndex="0"
         />
         { dashboardsStyle === 'sidebar' && (
-          <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
+          <H3 className="toolbar__headline">{ dashboard.name || <Skeleton /> }</H3>
         ) }
         { dashboardsStyle === 'tabs' && (
           <TabBar className="toolbar__tabs">

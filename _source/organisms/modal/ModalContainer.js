@@ -19,7 +19,6 @@ import { deleteAccount } from '../../_state/user/actions';
 export const mapStateToProps = (state) => ({
   modal: state.modal.modal,
   open: state.modal.open,
-  pending: state.modal.pending,
   darkMode: state.user.settings.darkMode,
   data: {
     ...state.modal.data,

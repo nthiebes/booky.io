@@ -39,7 +39,6 @@ export default {
   modal: {
     modal: null,
     open: false,
-    data: {},
-    pending: false
+    data: {}
   }
 };

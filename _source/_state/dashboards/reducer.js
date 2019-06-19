@@ -1,6 +1,6 @@
 import {
   ADD_DASHBOARD,
-  EDIT_DASHBOARD,
+  UPDATE_DASHBOARD,
   DELETE_DASHBOARD,
   CHANGE_DASHBOARD,
   UPDATE_OFFSET,
@@ -15,21 +15,23 @@ const dashboards = (state = {}, action) => {
 
   switch (action.type) {
     case ADD_DASHBOARD:
+      const { name, id } = action.payload;
+      
       return {
         ...state,
         items: [
           ...state.items,
           {
-            id: 123456789,
-            name: action.payload.name,
+            id,
+            name,
             categories: []
           }
         ],
-        active: state.items.length ? state.active : 123456789
+        active: state.items.length ? state.active : id
       };
 
-    case EDIT_DASHBOARD: {
-      const { name, id } = action.payload;
+    case UPDATE_DASHBOARD: {
+      const { name, id } = action.data;
 
       return {
         ...state,

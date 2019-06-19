@@ -198,5 +198,6 @@
     ]
   },
   "globals": {
+    "AbortController": true
   }
 }

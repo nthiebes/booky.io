@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { abortFetch } from '../../_utils/fetcher';
 
 import AddBookmark from './modals/AddBookmark';
 import EditBookmark from './modals/EditBookmark';
@@ -19,8 +20,12 @@ export default class Modal extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      pending: false
+    };
     this.handleSave = this.handleSave.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.modalMap = {
       AddBookmark: {
         type: AddBookmark,
@@ -72,15 +77,39 @@ export default class Modal extends Component {
   }
 
   handleSave(modalData) {
-    const { modal, data, closeModal } = this.props;
+    const { modal, data } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
 
-    this.modalMap[modal].action && this.modalMap[modal].action({
-      ...modalData,
-      dashboard: data.activeDashboard
+    if (this.modalMap[modal].action) {
+      this.setState({
+        pending: true
+      });
+
+      this.modalMap[modal].action({
+        ...modalData,
+        dashboard: data.activeDashboard,
+        onSuccess: () => {
+          this.closeModal();
+        },
+        onError: () => {
+          this.closeModal();
+        }
+      });
+    } else {
+      this.closeModal();
+    }
+  }
+
+  closeModal() {
+    const { closeModal } = this.props;
+
+    this.setState({
+      pending: false
     });
+    abortFetch();
     closeModal();
+    document.body.classList.remove('booky--no-scrolling');
   }
 
   handleKeyUp(event) {
@@ -90,7 +119,8 @@ export default class Modal extends Component {
   }
 
   render() {
-    const { modal, open, data, pending, closeModal, darkMode } = this.props;
+    const { modal, open, data, darkMode } = this.props;
+    const { pending } = this.state;
     const CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
 
     return (
@@ -99,16 +129,17 @@ export default class Modal extends Component {
           'modal',
           open && 'modal--open'
         ) }
-        onClick={ closeModal }
+        onClick={ this.closeModal }
         onKeyUp={ this.handleKeyUp }
       >
         <div className={ classNames('modal__inner', darkMode && 'modal__inner--dark') }>
           { CustomTag && (
             <CustomTag
-              onClose={ closeModal }
+              onClose={ this.closeModal }
               onSave={ this.handleSave }
               data={ data }
               pending={ pending }
+              darkMode={ darkMode }
             />
           ) }
         </div>
@@ -122,7 +153,6 @@ Modal.propTypes = {
   open: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   data: PropTypes.object,
-  pending: PropTypes.bool.isRequired,
   addBookmark: PropTypes.func.isRequired,
   editBookmark: PropTypes.func.isRequired,
   deleteBookmark: PropTypes.func.isRequired,
