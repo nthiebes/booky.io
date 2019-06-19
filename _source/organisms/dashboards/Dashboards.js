@@ -6,6 +6,7 @@ import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
+import Skeleton from '../../atoms/skeleton';
 
 class Dashboards extends Component {
   constructor(props) {
@@ -160,8 +161,8 @@ class Dashboards extends Component {
               </li>
             )) }
             { dashboards.length === 0 && (
-              <li className={ classNames('dashboard__empty', darkMode && 'dashboard__empty--dark-mode') }>
-                <i><FormattedMessage id="dashboard.empty" /></i>
+              <li className={ classNames('dashboards__item', darkMode && 'dashboards__item--dark-mode') }>
+                <Skeleton />
               </li>
             ) }
           </ul>
