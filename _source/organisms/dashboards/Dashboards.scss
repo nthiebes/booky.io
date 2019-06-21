@@ -1,9 +1,39 @@
+.dashboards {
+  @include desktop {
+    padding: 1rem 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    &::before,
+    &::after {
+      position: fixed;
+      content: " ";
+      height: 30px;
+      z-index: 1;
+      right: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    &::before {
+      background: linear-gradient(to bottom, $color__background--white, rgba(255,255,255,0));
+      top: 52px;
+    }
+
+    &::after {
+      background: linear-gradient(to top, $color__background--white, rgba(255,255,255,0));
+      bottom: 0;
+    }
+  }
+}
+
 .dashboards--sidebar {
   width: 300px;
   background-color: $color__font--white;
   border-right: 2px solid rgba(0,0,0, 0.15);
   z-index: 2;
-  padding-bottom: 1rem;
   transition: transform 0.3s ease;
   transform: translate3d(0,0,0);
   position: absolute;
@@ -17,6 +47,14 @@
 
 .dashboards--dark-mode {
   background-color: $color__background--medium;
+
+  &::before {
+    background: linear-gradient(to bottom, $color__background--medium, rgba(255,255,255,0));
+  }
+
+  &::after {
+    background: linear-gradient(to top, $color__background--medium, rgba(255,255,255,0));
+  }
 }
 
 .dashboards--sticky {
@@ -37,74 +75,24 @@
 
 .dashboards--hide {
   @include desktop {
-    transform: translate3d(calc(-100% + 36px),0,0);
+    transform: translate3d(calc(-100% + 50px),0,0);
   }
-}
-
-.dashboards__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .dashboards__headline-wrapper {
   display: flex;
   align-items: center;
   padding: 0 3vw 0 calc(3vw + 6px);
+  transition: opacity 0.3s linear;
 
   @include desktop {
     padding: 0 30px 0 36px;
   }
 }
 
-.dashboards__scroll-wrapper {
-  @include desktop {
-    position: absolute;
-    top: calc(3rem + 4px);
-    bottom: 0;
-    padding-top: 1rem;
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-
-    &::before,
-    &::after {
-      position: fixed;
-      content: " ";
-      height: 30px;
-      z-index: 1;
-      right: 36px;
-      left: 0;
-      pointer-events: none;
-    }
-
-    &::before {
-      background: linear-gradient(to bottom, $color__background--white, rgba(255,255,255,0));
-      top: 52px;
-    }
-
-    &::after {
-      background: linear-gradient(to top, $color__background--white, rgba(255,255,255,0));
-      bottom: 0;
-    }
-  }
-}
-
-.dashboards__scroll-wrapper--hidden {
+.dashboards__headline-wrapper--hidden {
   opacity: 0;
   pointer-events: none;
-}
-
-.dashboards--dark-mode .dashboards__scroll-wrapper {
-  &::before {
-    background: linear-gradient(to bottom, $color__background--medium, rgba(255,255,255,0));
-  }
-
-  &::after {
-    background: linear-gradient(to top, $color__background--medium, rgba(255,255,255,0));
-  }
 }
 
 .dashboards__headline {
@@ -113,14 +101,14 @@
   padding: 0 !important;
 }
 
-.dashboards__list {
-  padding-bottom: 1rem;
-}
-
 .dashboards__icon {
   opacity: 0;
   width: 0;
   overflow: hidden;
+}
+
+.dashboards__list {
+  transition: opacity 0.3s linear;
 }
 
 .dashboards__list--edit-mode {
@@ -181,6 +169,11 @@
   .dashboards__item:first-child:last-of-type .dashboards__icon--delete {
     display: none;
   }
+}
+
+.dashboards__list--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .dashboards__item {
@@ -251,17 +244,18 @@
 }
 
 .dashboards__button {
-  margin: 1rem calc(3vw + 6px);
-  display: flex;
+  margin: 1rem 0 1.5rem calc(3vw + 6px);
 
   @include desktop {
-    margin: 0.5rem 0 0.5rem 36px;
+    margin: 1rem 0 0.5rem 36px;
   }
 }
 
-.dashboards__hr {
-  height: 2px;
-  background-color: rgba(0,0,0,0.15);
-  width: 100%;
-  margin-bottom: 1rem;
+.dashboards__toggle {
+  background-color: transparent;
+  border: 0 none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
 }

@@ -76,16 +76,7 @@ class Sidebar extends Component {
         <hr className="sidebar__hr" />
         <div className="sidebar__scroll-wrapper">
           { dashboards && dashboardsSidebar && (
-            <Fragment>
-              <ButtonSmallPrimary
-                icon="add"
-                className="sidebar__button"
-                onClick={ this.addDashboard }
-              >
-                <FormattedHTMLMessage id="dashboard.add" />
-              </ButtonSmallPrimary>
-              <Dashboards useTabIndex={ open } />
-            </Fragment>
+            <Dashboards useTabIndex={ open } />
           ) }
           { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
           <nav className="sidebar__nav">

@@ -19,7 +19,7 @@ class Modal extends Component {
   componentDidMount() {
     this.props.hasAnchor && this.anchor.focus();
 
-    document.body.classList.add('booky--no-scrolling');
+    // document.body.classList.add('booky--no-scrolling');
   }
 
   onSubmit(data) {

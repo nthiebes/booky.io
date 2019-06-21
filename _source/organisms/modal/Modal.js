@@ -109,7 +109,7 @@ export default class Modal extends Component {
     });
     abortFetch();
     closeModal();
-    document.body.classList.remove('booky--no-scrolling');
+    // document.body.classList.remove('booky--no-scrolling');
   }
 
   handleKeyUp(event) {
