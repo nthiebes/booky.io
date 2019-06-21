@@ -20,7 +20,8 @@ class Header extends Component {
     this.onAddBookmarkClick = this.onAddBookmarkClick.bind(this);
     this.onLogoutClick = this.onLogoutClick.bind(this);
     this.state = {
-      bookmarkModalOpen: false
+      bookmarkModalOpen: false,
+      logoutPending: false
     };
   }
 
@@ -49,6 +50,10 @@ class Header extends Component {
   onLogoutClick() {
     const { history, logout } = this.props;
 
+    this.setState({
+      logoutPending: true
+    });
+
     logout({
       onSuccess: () => {
         history.push('/');
@@ -67,6 +72,7 @@ class Header extends Component {
       className,
       sticky
     } = this.props;
+    const { logoutPending } = this.state;
 
     return (
       <header
@@ -120,12 +126,13 @@ class Header extends Component {
               />
               <Icon
                 className="booky--hide-mobile-tablet"
-                icon="logout"
+                icon={ logoutPending ? 'spinner' : 'logout' }
                 color="light"
                 onClick={ this.onLogoutClick }
                 title={ intl.formatMessage({ id: 'menu.logout' }) }
                 tabIndex="0"
                 ignoreDarkMode
+                pending={ logoutPending }
               />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"
