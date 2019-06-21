@@ -106,6 +106,7 @@ class Dashboards extends Component {
             title={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
             onClick={ this.toggleEditMode }
             tabIndex={ useTabIndex || pinned ? '0' : '-1' }
+            isButton
           />
         </div>
         <ul className={ classNames(
@@ -135,6 +136,7 @@ class Dashboards extends Component {
                 stopPropagation
                 onClick={ () => this.onIconClick('EditDashboard', dashboard) }
                 tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
+                isButton
               />
               <Icon
                 className="dashboards__icon dashboards__icon--delete"
@@ -143,6 +145,7 @@ class Dashboards extends Component {
                 stopPropagation
                 onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
                 tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
+                isButton
               />
             </li>
           )) }
@@ -161,13 +164,13 @@ class Dashboards extends Component {
           <FormattedHTMLMessage id="dashboard.add" />
         </ButtonSmallPrimary>
         { isSidebar && (
-          <button className="dashboards__toggle" tabIndex="-1" onClick={ this.togglePinned }>
-            <Icon
-              icon={ pinned ? 'back' : 'forward' }
-              title={ pinned ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
-              tabIndex="0"
-            />
-          </button>
+          <Icon
+            onClick={ this.togglePinned }
+            className="dashboards__toggle"
+            icon={ pinned ? 'back' : 'forward' }
+            title={ pinned ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
+            isButton
+          />
         ) }
       </aside>
     );

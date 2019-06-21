@@ -99,8 +99,8 @@ class Header extends Component {
                 icon="add"
                 color="light"
                 onClick={ this.onAddBookmarkClick }
-                tabIndex="0"
                 ignoreDarkMode
+                isButton
               />
               <Search className="booky--hide-desktop" />
             </Fragment>
@@ -121,8 +121,8 @@ class Header extends Component {
                 color="light"
                 onClick={ this.onCustomizeClick }
                 title={ intl.formatMessage({ id: 'menu.customize' }) }
-                tabIndex="0"
                 ignoreDarkMode
+                isButton
               />
               <Icon
                 className="booky--hide-mobile-tablet"
@@ -130,9 +130,9 @@ class Header extends Component {
                 color="light"
                 onClick={ this.onLogoutClick }
                 title={ intl.formatMessage({ id: 'menu.logout' }) }
-                tabIndex="0"
                 ignoreDarkMode
                 pending={ logoutPending }
+                isButton
               />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"

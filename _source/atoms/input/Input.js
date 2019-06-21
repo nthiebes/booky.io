@@ -82,11 +82,11 @@ export default class Input extends Component {
           <input { ...inputProps } />
           { validation && (
             <Fragment>
-              <Icon icon="check" color="green" className="input__icon input__icon--valid" ariaHidden />
-              <Icon icon="error" color="orange" className="input__icon input__icon--invalid" ariaHidden />
+              <Icon icon="check" color="green" className="input__icon input__icon--valid" />
+              <Icon icon="error" color="orange" className="input__icon input__icon--invalid" />
             </Fragment>
           ) }
-          { icon && <Icon icon={ icon } className="input__icon input__icon--visible" ariaHidden /> }
+          { icon && <Icon icon={ icon } className="input__icon input__icon--visible" /> }
           { requirements && (
             <div className={ classNames('input__requirements', darkMode && 'input__requirements--dark-mode') }>
               { requirements }
