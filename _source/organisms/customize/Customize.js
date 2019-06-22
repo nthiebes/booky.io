@@ -94,6 +94,13 @@ class Customize extends Component {
           onChange={ this.handleCheckboxChange }
           checked={ stickyToolbar }
         />
+        <Checkbox
+          label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
+          id="maxWidth"
+          name="maxWidth"
+          onChange={ this.handleCheckboxChange }
+          checked={ maxWidth }
+        />
         <H2>
           <FormattedMessage id="dashboard.title" />
         </H2>
@@ -120,13 +127,6 @@ class Customize extends Component {
           onChange={ this.handleRadioChange }
           value="tabs"
           defaultChecked={ dashboardsStyle === 'tabs' }
-        />
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
-          id="maxWidth"
-          name="maxWidth"
-          onChange={ this.handleCheckboxChange }
-          checked={ maxWidth }
         />
         <H2>
           <FormattedMessage id="dashboard.preferences" />

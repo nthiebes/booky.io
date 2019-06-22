@@ -37,12 +37,9 @@ class Modal extends Component {
       <Form onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
           { hasAnchor && (
-            <a
-              tabIndex="0"
-              title={ this.props.intl.formatMessage({ id: 'modal.tabAnchor' }) }
-              className="modal__tab-index-link"
-              ref={ (anchor) => { this.anchor = anchor; } }
-            />
+            <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
+              <FormattedMessage id="modal.tabAnchor" />
+            </span>
           ) }
           { headline && <H3 className="modal__headline">{ headline }</H3> }
           <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />

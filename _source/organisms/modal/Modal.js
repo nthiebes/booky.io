@@ -76,6 +76,14 @@ export default class Modal extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (!prevProps.open && this.props.open) {
+      this.setState({
+        showModal: true
+      });
+    }
+  }
+
   handleSave(modalData) {
     const { modal, data } = this.props;
 
@@ -109,6 +117,12 @@ export default class Modal extends Component {
     });
     abortFetch();
     closeModal();
+
+    window.setTimeout(() => {
+      this.setState({
+        showModal: false
+      });
+    }, 500);
     // document.body.classList.remove('booky--no-scrolling');
   }
 
@@ -120,7 +134,7 @@ export default class Modal extends Component {
 
   render() {
     const { modal, open, data, darkMode } = this.props;
-    const { pending } = this.state;
+    const { pending, showModal } = this.state;
     const CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
 
     return (
@@ -133,7 +147,7 @@ export default class Modal extends Component {
         onKeyUp={ this.handleKeyUp }
       >
         <div className={ classNames('modal__inner', darkMode && 'modal__inner--dark') }>
-          { CustomTag && (
+          { CustomTag && showModal && (
             <CustomTag
               onClose={ this.closeModal }
               onSave={ this.handleSave }
