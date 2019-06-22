@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
-import Dashboards from '../../organisms/dashboards';
+import { DashboardsSidebar } from '../../organisms/dashboards';
 import { H2, Display1, Display2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import { ButtonLargeLight, ButtonLargeBlue, ButtonSmallPrimary } from '../../atoms/button';
@@ -26,7 +26,7 @@ class Home extends Component {
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
-        { hasSidebar && <Dashboards isSidebar className={ classNames(blurContent && 'page--blur') } /> }
+        { hasSidebar && <DashboardsSidebar className={ classNames(blurContent && 'page--blur') } /> }
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (

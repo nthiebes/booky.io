@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
-import Icon from '../../atoms/icon';
-import { H3 } from '../../atoms/headline';
-import { ButtonSmallPrimary } from '../../atoms/button';
-import Skeleton from '../../atoms/skeleton';
+import Icon from '../../../atoms/icon';
+import { H3 } from '../../../atoms/headline';
+import { ButtonSmallPrimary } from '../../../atoms/button';
+import Skeleton from '../../../atoms/skeleton';
 
-class Dashboards extends Component {
+class DashboardsSidebar extends Component {
   constructor(props) {
     super(props);
 
     this.toggleEditMode = this.toggleEditMode.bind(this);
-    this.togglePinned = this.togglePinned.bind(this);
     this.onIconClick = this.onIconClick.bind(this);
-    this.getStickyClass = this.getStickyClass.bind(this);
     this.addDashboard = this.addDashboard.bind(this);
     this.state = {
       editMode: false
@@ -25,14 +23,6 @@ class Dashboards extends Component {
   toggleEditMode() {
     this.setState({
       editMode: !this.state.editMode
-    });
-  }
-
-  togglePinned() {
-    const { pinned, updateSettings } = this.props;
-
-    updateSettings({
-      pinned: !pinned
     });
   }
 
@@ -52,24 +42,6 @@ class Dashboards extends Component {
     !editMode && event.key === 'Enter' && changeDashboard(dashboardId);
   }
 
-  getStickyClass() {
-    const { toolbarSticky, headerSticky, currentlySticky, isSidebar } = this.props;
-
-    if (isSidebar && toolbarSticky && headerSticky) {
-      return 'dashboards--sticky';
-    }
-
-    if (isSidebar && !toolbarSticky && headerSticky) {
-      return 'dashboards--sticky-header';
-    }
-
-    if (isSidebar && toolbarSticky && !headerSticky && currentlySticky) {
-      return 'dashboards--sticky-one-and-only';
-    }
-
-    return '';
-  }
-
   addDashboard() {
     this.props.openModal('AddDashboard');
   }
@@ -83,20 +55,12 @@ class Dashboards extends Component {
       activeId,
       pinned,
       useTabIndex,
-      isSidebar,
       darkMode
     } = this.props;
     const { editMode } = this.state;
 
     return (
-      <aside className={ classNames(
-        'dashboards',
-        isSidebar && 'dashboards--sidebar',
-        !pinned && 'dashboards--hide',
-        this.getStickyClass(),
-        darkMode && 'dashboards--dark-mode',
-        className && className
-      ) }>
+      <Fragment>
         <div className={ classNames('dashboards__headline-wrapper', !pinned && 'dashboards__headline-wrapper--hidden') }>
           <H3 className="dashboards__headline">
             <FormattedMessage id="dashboard.title" />
@@ -163,23 +127,14 @@ class Dashboards extends Component {
         >
           <FormattedHTMLMessage id="dashboard.add" />
         </ButtonSmallPrimary>
-        { isSidebar && (
-          <Icon
-            onClick={ this.togglePinned }
-            className="dashboards__toggle"
-            icon={ pinned ? 'back' : 'forward' }
-            title={ pinned ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
-            isButton
-          />
-        ) }
-      </aside>
+      </Fragment>
     );
   }
 }
 
-export default injectIntl(Dashboards);
+export default injectIntl(DashboardsSidebar);
 
-Dashboards.propTypes = {
+DashboardsSidebar.propTypes = {
   openModal: PropTypes.func.isRequired,
   changeDashboard: PropTypes.func.isRequired,
   dashboards: PropTypes.array,
@@ -187,16 +142,11 @@ Dashboards.propTypes = {
   intl: PropTypes.object.isRequired,
   pinned: PropTypes.bool,
   activeId: PropTypes.number,
-  updateSettings: PropTypes.func.isRequired,
   useTabIndex: PropTypes.bool,
-  isSidebar: PropTypes.bool,
-  headerSticky: PropTypes.bool.isRequired,
-  toolbarSticky: PropTypes.bool.isRequired,
-  currentlySticky: PropTypes.bool.isRequired,
   darkMode: PropTypes.bool.isRequired
 };
 
-Dashboards.defaultProps = {
+DashboardsSidebar.defaultProps = {
   dashboards: [],
   useTabIndex: false
 };

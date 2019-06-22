@@ -8,7 +8,7 @@ import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
-import Dashboards from '../../organisms/dashboards';
+import { DashboardsList } from '../../organisms/dashboards';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -76,7 +76,7 @@ class Sidebar extends Component {
         <hr className="sidebar__hr" />
         <div className="sidebar__scroll-wrapper">
           { dashboards && dashboardsSidebar && (
-            <Dashboards useTabIndex={ open } />
+            <DashboardsList useTabIndex={ open } />
           ) }
           { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
           <nav className="sidebar__nav">
