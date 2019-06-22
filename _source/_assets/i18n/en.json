@@ -176,7 +176,7 @@
     "account.deleteText": "Permanently delete your account",
     "account.deleteButton": "<b>Delete</b> account",
     "account.exportText": "Export all your bookmarks as <b>.html</b> file.",
-    "account.importText": "Import bookmarks.",
+    "account.importStep1": "Export your browser bookmarks as <strong>.html</strong> file",
     "customize.title": "Customize booky",
     "customize.style": "Design",
     "customize.navColor": "Header color",
@@ -212,5 +212,9 @@
     "header.jumpToLanguage": "Choose language",
     "testimonials.headline": "In the words of our users",
     "home.extensionText": "Manage your bookmarks with the booky browser extension.",
-    "misc.searchLabel": "Search for bookmarks"
+    "misc.searchLabel": "Search for bookmarks",
+    "account.startExport": "<b>Start<b> export",
+    "account.startImport": "Import",
+    "account.importStep2": "Select your file or drag it into the browser",
+    "account.importStep3": "Import your bookmarks"
 }
