@@ -1,7 +1,8 @@
 .file-upload {
   font-size: 1rem;
-  margin-bottom: 1rem;
   width: 100%;
+  color: $color__font--dark;
+  margin-top: 0.5rem;
 }
 
 .file-upload--dark-mode {
