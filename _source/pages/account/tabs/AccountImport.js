@@ -25,7 +25,7 @@ class AccountImport extends Component {
           </li>
         </ol>
         <ButtonLargeBlue icon="upload" contentBefore disabled>
-          <FormattedMessage id="account.startImport" />
+          <FormattedMessage id="account.import" />
         </ButtonLargeBlue>
       </Fragment>
     );

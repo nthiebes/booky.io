@@ -74,7 +74,7 @@ class Footer extends Component {
         <section className="footer__content">
           <div className="footer__wrapper">
             <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
-              <img src="../../_assets/logo_l.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
+              <img src="../../_assets/logo.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
             </Link>
             <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
               <FormattedHTMLMessage id="footer.scroll" />

@@ -51,6 +51,7 @@ class DashboardsSidebar extends Component {
     return (
       <aside className={ classNames(
         'dashboards-sidebar',
+        'booky--hide-mobile-tablet',
         !pinned && 'dashboards-sidebar--hide',
         this.getStickyClass(),
         darkMode && 'dashboards-sidebar--dark-mode',
