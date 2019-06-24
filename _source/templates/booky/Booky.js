@@ -7,6 +7,7 @@ import Routes from '../../routes';
 import './Booky.scss';
 
 const loader = document.getElementById('loader');
+const loaderLogo = document.getElementById('loader__logo');
 const loaderSpinner = document.getElementById('loader__spinner');
 
 export default class Booky extends Component {
@@ -20,6 +21,7 @@ export default class Booky extends Component {
   componentDidMount() {  
     loaderSpinner.addEventListener('transitionend', this.transitionEndCallback);
     loader.classList.add('loader--hide');
+    loaderLogo.classList.add('loader__logo--hide');
     loaderSpinner.classList.add('loader__spinner--hide');
   }
 

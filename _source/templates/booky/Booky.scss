@@ -126,12 +126,27 @@ body {
   right: 0;
   background-color: $color__background--white;
   z-index: 10;
+  pointer-events: none;
 }
 
 .loader--hide {
-  transition: opacity 0.4s linear;
+  transition: opacity 0.3s linear;
   opacity: 0;
   pointer-events: none;
+}
+
+.loader__logo {
+  position: absolute;
+  height: 36px;
+  width: 24px;
+  left: calc(50vw - 12px);
+  top: calc(50vh - 38px);
+}
+
+.loader__logo--hide {
+  transition: opacity 0.3s linear, transform 0.4s ease-in;
+  transform: translateY(-3rem);
+  opacity: 0;
 }
 
 .loader__spinner {
@@ -139,11 +154,11 @@ body {
   color: $color__font--medium;
   cursor: default;
   left: calc(50vw - 18px);
-  top: calc(50vh - 18px);
+  top: calc(50vh);
 }
 
 .loader__spinner--hide {
-  transition: opacity 0.4s linear, transform 0.5s ease-in;
-  transform: translateY(-3rem);
+  transition: opacity 0.3s linear, transform 0.4s ease-in;
+  transform: translateY(3rem);
   opacity: 0;
 }
