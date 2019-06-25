@@ -4,10 +4,12 @@
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   "plugins": [
-    "react"
+    "react",
+    "jsx-a11y"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
