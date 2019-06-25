@@ -1,13 +1,17 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json'],
+    // To support react-hot-loader
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
-  // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
   entry: [
     // must be first entry to properly set public path
     './_source/webpack-public-path',
@@ -16,20 +20,17 @@ export default {
     path.resolve(__dirname, '_source/index.js') // Defining path seems necessary for this to work consistently on Windows machines.
   ],
   target: 'web',
+  mode: 'development',
   output: {
     path: path.resolve(__dirname, '_public'), // Note: Physical files are only output by the production build task `npm run build`.
     publicPath: '/',
     filename: 'bundle.js'
   },
   plugins: [
-    new webpack.DefinePlugin({
-      // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
-      'process.env.NODE_ENV': JSON.stringify('development'),
-      __DEV__: true
-    }),
+    new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({ // Create HTML file that includes references to bundled CSS and JS.
+    new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
       template: '_source/index.ejs',
       minify: {
         removeComments: true,
@@ -116,7 +117,7 @@ export default {
           }, {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(__dirname, '_source', 'scss')],
+              includePaths: [path.resolve(__dirname, '_source')],
               sourceMap: true
             }
           }
