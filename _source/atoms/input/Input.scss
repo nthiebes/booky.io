@@ -23,6 +23,7 @@
   margin-bottom: 0.5rem;
 
   &:disabled {
+    opacity: 0.5;
     pointer-events: none;
   }
 
@@ -86,6 +87,21 @@
       &:invalid {
         border-bottom-color: $color--3;
       }
+    }
+  }
+}
+
+.input__field--dark-mode {
+  background-color: $color--dark;
+  color: $color__font--white;
+
+  &:focus {
+    background-color: $color--dark;
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: $color--dark;
     }
   }
 }

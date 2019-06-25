@@ -14,6 +14,13 @@
   }
 }
 
+.search__label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
 .search__input {
   margin: 0;
   
@@ -28,6 +35,20 @@
   }
 
   @include desktop {
-    width: 250px;
+    width: 300px;
+  }
+}
+
+.search__input--dark-mode {
+  background-color: $color__background--dark;
+
+  &:focus {
+    background-color: $color__background--dark;
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: $color__background--dark;
+    }
   }
 }

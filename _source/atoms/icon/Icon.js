@@ -40,12 +40,17 @@ export default class Icon extends Component {
       darkMode,
       ignoreDarkMode,
       size,
-      ariaHidden
+      isButton
     } = this.props;
     const link = '_assets/symbol-defs.svg#icon-' + icon;
+    const CustomTag = isButton ? 'button' : 'span';
+    const additionalProps = {
+      'aria-hidden': isButton ? undefined : true,
+      'aria-label': isButton ? title : undefined
+    };
 
     return (
-      <span
+      <CustomTag
         className={ classNames(
           'icon',
           `icon--size-${size}`,
@@ -57,8 +62,7 @@ export default class Icon extends Component {
         onClick={ this.handleClick }
         onKeyDown={ this.handleKeyDown }
         tabIndex={ tabIndex }
-        role="img"
-        aria-hidden={ ariaHidden }
+        { ...additionalProps }
         { ...dragHandleProps }
       >
         <svg className={ classNames(
@@ -69,7 +73,7 @@ export default class Icon extends Component {
           <use xlinkHref={ link } />
         </svg>
         { label && <label className="icon__label">{ label }</label> }
-      </span>
+      </CustomTag>
     );
   }
 }
@@ -87,7 +91,7 @@ Icon.propTypes = {
   darkMode: PropTypes.bool,
   ignoreDarkMode: PropTypes.bool,
   size: PropTypes.string,
-  ariaHidden: PropTypes.bool
+  isButton: PropTypes.bool
 };
 
 Icon.defaultProps = {

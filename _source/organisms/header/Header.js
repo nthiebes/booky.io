@@ -20,7 +20,8 @@ class Header extends Component {
     this.onAddBookmarkClick = this.onAddBookmarkClick.bind(this);
     this.onLogoutClick = this.onLogoutClick.bind(this);
     this.state = {
-      bookmarkModalOpen: false
+      bookmarkModalOpen: false,
+      logoutPending: false
     };
   }
 
@@ -49,6 +50,10 @@ class Header extends Component {
   onLogoutClick() {
     const { history, logout } = this.props;
 
+    this.setState({
+      logoutPending: true
+    });
+
     logout({
       onSuccess: () => {
         history.push('/');
@@ -67,6 +72,7 @@ class Header extends Component {
       className,
       sticky
     } = this.props;
+    const { logoutPending } = this.state;
 
     return (
       <header
@@ -93,8 +99,8 @@ class Header extends Component {
                 icon="add"
                 color="light"
                 onClick={ this.onAddBookmarkClick }
-                tabIndex="0"
                 ignoreDarkMode
+                isButton
               />
               <Search className="booky--hide-desktop" />
             </Fragment>
@@ -104,7 +110,7 @@ class Header extends Component {
             title={ intl.formatMessage({ id: 'menu.home' }) }
             className={ classNames('header__logo', loggedIn && home && 'booky--hide-mobile-tablet') }
           >
-            <img src="../../_assets/logo.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
+            <img src="../../_assets/logo_l.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
           </Link>
           <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (
@@ -115,17 +121,18 @@ class Header extends Component {
                 color="light"
                 onClick={ this.onCustomizeClick }
                 title={ intl.formatMessage({ id: 'menu.customize' }) }
-                tabIndex="0"
                 ignoreDarkMode
+                isButton
               />
               <Icon
                 className="booky--hide-mobile-tablet"
-                icon="logout"
+                icon={ logoutPending ? 'spinner' : 'logout' }
                 color="light"
                 onClick={ this.onLogoutClick }
                 title={ intl.formatMessage({ id: 'menu.logout' }) }
-                tabIndex="0"
                 ignoreDarkMode
+                pending={ logoutPending }
+                isButton
               />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"

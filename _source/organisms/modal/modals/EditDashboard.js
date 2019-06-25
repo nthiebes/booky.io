@@ -36,6 +36,7 @@ class EditDashboard extends Component {
           required
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
+          disabled={ pending }
         />
         <Input
           name="id"

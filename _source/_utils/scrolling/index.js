@@ -1,3 +1,3 @@
 import { scrolling } from './scrolling';
 
-export default scrolling;
+export { scrolling };

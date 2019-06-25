@@ -60,7 +60,7 @@
   text-transform: none;
 
   @include desktop {
-    max-width: 618px;
+    // max-width: 618px;
   }
 }
 
@@ -69,6 +69,6 @@
   margin-left: 1rem;
 
   @include desktop {
-    max-width: 618px;
+    // max-width: 618px;
   }
 }

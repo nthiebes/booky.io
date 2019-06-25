@@ -196,5 +196,7 @@
     "react/jsx-uses-vars": 1,
     "react/jsx-wrap-multilines": 1
   },
-  "globals": {}
+  "globals": {
+    "AbortController": true
+  }
 }

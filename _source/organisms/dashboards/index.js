@@ -1,3 +1,7 @@
-import container from './DashboardsContainer';
+import DashboardsList from './dashboards-list/DashboardsListContainer';
+import DashboardsSidebar from './dashboards-sidebar/DashboardsSidebarContainer';
 
-export default container;
+export {
+  DashboardsList,
+  DashboardsSidebar
+};

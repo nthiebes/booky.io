@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
-import scrolling from '../../_utils/scrolling';
+import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
+import Skeleton from '../../atoms/skeleton';
 import Search from '../../molecules/search';
 import { TabBar, Tab } from '../../molecules/tab-bar';
 
@@ -92,10 +93,10 @@ class Toolbar extends Component {
           icon="tree"
           title={ intl.formatMessage({ id: 'structure.title' }) }
           onClick={ this.onIconClick }
-          tabIndex="0"
+          isButton
         />
         { dashboardsStyle === 'sidebar' && (
-          <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
+          <H3 className="toolbar__headline">{ dashboard.name || <Skeleton /> }</H3>
         ) }
         { dashboardsStyle === 'tabs' && (
           <TabBar className="toolbar__tabs">

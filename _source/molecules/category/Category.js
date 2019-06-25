@@ -80,7 +80,7 @@ class Category extends Component {
             icon="expand"
             title={ open ? intl.formatMessage({ id: 'category.reduce' }) : intl.formatMessage({ id: 'category.expand' }) }
             onClick={ this.toggleCategory }
-            tabIndex="0"
+            isButton
           />
           <H2 className="category__name" onClick={ this.toggleCategory } title={ name }>
             { name }
@@ -91,6 +91,7 @@ class Category extends Component {
             title={ intl.formatMessage({ id: 'category.edit' }) }
             onClick={ this.onEditClick }
             tabIndex={ editMode ? '0' : '-1' }
+            isButton
           />
           <Icon
             className="category__icon"
@@ -98,12 +99,13 @@ class Category extends Component {
             title={ intl.formatMessage({ id: 'category.delete' }) }
             onClick={ this.onDeleteClick }
             tabIndex={ editMode ? '0' : '-1' }
+            isButton
           />
           <Icon
             icon={ editMode ? 'close' : 'more-horiz' }
             title={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
             onClick={ this.toggleEditMode }
-            tabIndex="0"
+            isButton
           />
         </header>
         <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>

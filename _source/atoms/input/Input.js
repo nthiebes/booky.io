@@ -55,7 +55,8 @@ export default class Input extends Component {
         className && className,
         color && `input__field--color-${color}`,
         !validation && 'input__field--no-validation',
-        icon && 'input__field--icon'
+        icon && 'input__field--icon',
+        darkMode && 'input__field--dark-mode'
       ),
       onBlur: this.onBlur,
       onFocus: this.onFocus,
@@ -77,15 +78,15 @@ export default class Input extends Component {
     return (
       <Fragment>
         { label && <Label htmlFor={ id }>{ label }</Label> }
-        <span className={ classNames('input', className && className) }>
+        <span className={ classNames('input', className) }>
           <input { ...inputProps } />
           { validation && (
             <Fragment>
-              <Icon icon="check" color="green" className="input__icon input__icon--valid" ariaHidden />
-              <Icon icon="error" color="orange" className="input__icon input__icon--invalid" ariaHidden />
+              <Icon icon="check" color="green" className="input__icon input__icon--valid" />
+              <Icon icon="error" color="orange" className="input__icon input__icon--invalid" />
             </Fragment>
           ) }
-          { icon && <Icon icon={ icon } className="input__icon input__icon--visible" ariaHidden /> }
+          { icon && <Icon icon={ icon } className="input__icon input__icon--visible" /> }
           { requirements && (
             <div className={ classNames('input__requirements', darkMode && 'input__requirements--dark-mode') }>
               { requirements }

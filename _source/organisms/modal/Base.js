@@ -13,22 +13,13 @@ class Modal extends Component {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.onCancel = this.onCancel.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.props.hasAnchor && this.anchor.focus();
 
-    document.body.classList.add('booky--no-scrolling');
-  }
-
-  componentWillUnmount() {
-    document.body.classList.remove('booky--no-scrolling');
-  }
-
-  onCancel() {
-    this.props.onClose();
+    // document.body.classList.add('booky--no-scrolling');
   }
 
   onSubmit(data) {
@@ -40,18 +31,15 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, hasAnchor, darkMode } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, hasAnchor } = this.props;
 
     return (
-      <Form className={ classNames('modal__inner', darkMode && 'modal__inner--dark') } onSubmit={ this.onSubmit } onClick={ this.handleClick }>
+      <Form onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
           { hasAnchor && (
-            <a
-              tabIndex="0"
-              title={ this.props.intl.formatMessage({ id: 'modal.tabAnchor' }) }
-              className="modal__tab-index-link"
-              ref={ (anchor) => { this.anchor = anchor; } }
-            />
+            <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
+              <FormattedMessage id="modal.tabAnchor" />
+            </span>
           ) }
           { headline && <H3 className="modal__headline">{ headline }</H3> }
           <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
@@ -61,7 +49,12 @@ class Modal extends Component {
         </div>
         <footer className={ classNames('modal__footer', noCancel && 'modal__footer--one-button') }>
           { !noCancel && (
-            <ButtonLargeLight className="modal__button modal__button--cancel" icon="close" onClick={ this.onCancel } type="button">
+            <ButtonLargeLight
+              className="modal__button modal__button--cancel"
+              icon="close"
+              onClick={ onClose }
+              type="button"
+            >
               <FormattedMessage id="button.cancel" />
             </ButtonLargeLight>
           ) }
