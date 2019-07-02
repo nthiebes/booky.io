@@ -9,7 +9,7 @@ const defaultOptions = {
 };
 let controller;
 
-const checkStatus = (response) => {
+const formatResponse = (response) => {
   // if (response.status >= 200 && response.status < 300) {
   //   return response;
   // }
@@ -25,11 +25,19 @@ const checkStatus = (response) => {
   };
 };
 
+const checkEmptyResponse = (response) => {
+  if (response.statusText === 'No Content') {
+    return {};
+  }
+
+  return response.json();
+};
+
 const abortFetch = () => {
   controller && controller.abort();
 };
 
-const fetcher = ({ params, method = 'GET', url, onSuccess, onError, noResponse, options = {} }) => {
+const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {} }) => {
   controller = new AbortController();
 
   if (method === 'GET') {
@@ -38,8 +46,8 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, noResponse, 
       ...options,
       signal: controller.signal
     })
-      .then((response) => noResponse ? response : response.json())
-      .then(checkStatus)
+      .then((response) => checkEmptyResponse(response))
+      .then(formatResponse)
       .then((response) => {
         // console.log('success', response);
         const { data, error } = response;
@@ -67,8 +75,8 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, noResponse, 
       body: JSON.stringify(params),
       signal: controller.signal
     })
-      .then((response) => response.json())
-      .then(checkStatus)
+      .then((response) => checkEmptyResponse(response))
+      .then(formatResponse)
       .then((response) => {
         // console.log('response', response);
         const { data, error } = response;
@@ -80,7 +88,7 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, noResponse, 
         }
       })
       .catch((error) => {
-        // console.log('error', error);
+        // console.log('catchy error', error);
         onError(error.statusText || 'error.default');
       });
   }

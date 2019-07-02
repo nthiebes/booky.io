@@ -43,7 +43,6 @@ export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
 export const logout = ({ onSuccess, onError }) => ((dispatch) => {
   fetcher({
     url: '/logout',
-    noResponse: true,
     onSuccess: () => {
       dispatch(resetUserState());
 
