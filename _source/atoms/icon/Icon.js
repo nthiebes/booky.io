@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import Skeleton from '../skeleton';
+
 export default class Icon extends Component {
   constructor(props) {
     super(props);
@@ -40,40 +42,48 @@ export default class Icon extends Component {
       darkMode,
       ignoreDarkMode,
       size,
-      isButton
+      isButton,
+      useSkeleton
     } = this.props;
     const link = '_assets/symbol-defs.svg#icon-' + icon;
-    const CustomTag = isButton ? 'button' : 'span';
-    const additionalProps = {
-      'aria-hidden': isButton ? undefined : true,
-      'aria-label': isButton ? title : undefined
-    };
+    const additionalProps = {};
+    let CustomTag = 'button';
+    
+    if (!isButton) {
+      CustomTag = 'span';
+      additionalProps['aria-hidden'] = true;
+      additionalProps['aria-label'] = true;
+    }
 
     return (
-      <CustomTag
-        className={ classNames(
-          'icon',
-          `icon--size-${size}`,
-          darkMode && !ignoreDarkMode ? 'icon--light' : `icon--${color}`,
-          darkMode && !ignoreDarkMode && 'icon--dark-mode',
-          className && className
-        ) }
-        title={ title }
-        onClick={ this.handleClick }
-        onKeyDown={ this.handleKeyDown }
-        tabIndex={ tabIndex }
-        { ...additionalProps }
-        { ...dragHandleProps }
-      >
-        <svg className={ classNames(
-          'icon__svg',
-          `icon__svg--size-${size}`,
-          icon === 'spinner' && 'icon__svg--spinner'
-        ) }>
-          <use xlinkHref={ link } />
-        </svg>
-        { label && <label className="icon__label">{ label }</label> }
-      </CustomTag>
+      useSkeleton ? (
+        <Skeleton className={ classNames('icon--skeleton', className) } />
+      ) : (
+        <CustomTag
+          className={ classNames(
+            'icon',
+            `icon--size-${size}`,
+            darkMode && !ignoreDarkMode ? 'icon--light' : `icon--${color}`,
+            darkMode && !ignoreDarkMode && 'icon--dark-mode',
+            className && className
+          ) }
+          title={ title }
+          onClick={ this.handleClick }
+          onKeyDown={ this.handleKeyDown }
+          tabIndex={ tabIndex }
+          { ...additionalProps }
+          { ...dragHandleProps }
+        >
+          <svg className={ classNames(
+            'icon__svg',
+            `icon__svg--size-${size}`,
+            icon === 'spinner' && 'icon__svg--spinner'
+          ) }>
+            <use xlinkHref={ link } />
+          </svg>
+          { label && <label className="icon__label">{ label }</label> }
+        </CustomTag>
+      )
     );
   }
 }
@@ -91,7 +101,8 @@ Icon.propTypes = {
   darkMode: PropTypes.bool,
   ignoreDarkMode: PropTypes.bool,
   size: PropTypes.string,
-  isButton: PropTypes.bool
+  isButton: PropTypes.bool,
+  useSkeleton: PropTypes.bool
 };
 
 Icon.defaultProps = {

@@ -50,7 +50,6 @@ class DashboardsSidebar extends Component {
     const {
       dashboards,
       changeDashboard,
-      className,
       intl,
       activeId,
       pinned,
@@ -58,6 +57,7 @@ class DashboardsSidebar extends Component {
       darkMode
     } = this.props;
     const { editMode } = this.state;
+    const noDashboards = dashboards.length === 0;
 
     return (
       <Fragment>
@@ -71,6 +71,7 @@ class DashboardsSidebar extends Component {
             onClick={ this.toggleEditMode }
             tabIndex={ useTabIndex || pinned ? '0' : '-1' }
             isButton
+            useSkeleton={ noDashboards }
           />
         </div>
         <ul className={ classNames(
@@ -113,10 +114,18 @@ class DashboardsSidebar extends Component {
               />
             </li>
           )) }
-          { dashboards.length === 0 && (
-            <li className={ classNames('dashboards__item', darkMode && 'dashboards__item--dark-mode') }>
-              <Skeleton />
-            </li>
+          { noDashboards && (
+            <Fragment>
+              <li className={ classNames('dashboards__item', darkMode && 'dashboards__item--dark-mode') }>
+                <Skeleton />
+              </li>
+              <li className={ classNames('dashboards__item', darkMode && 'dashboards__item--dark-mode') }>
+                <Skeleton />
+              </li>
+              <li className={ classNames('dashboards__item', darkMode && 'dashboards__item--dark-mode') }>
+                <Skeleton />
+              </li>
+            </Fragment>
           ) }
         </ul>
         <ButtonSmallPrimary
@@ -124,6 +133,7 @@ class DashboardsSidebar extends Component {
           className="dashboards__button"
           onClick={ this.addDashboard }
           tabIndex={ useTabIndex || pinned ? '0' : '-1' }
+          useSkeleton={ noDashboards }
         >
           <FormattedHTMLMessage id="dashboard.add" />
         </ButtonSmallPrimary>
@@ -138,7 +148,6 @@ DashboardsSidebar.propTypes = {
   openModal: PropTypes.func.isRequired,
   changeDashboard: PropTypes.func.isRequired,
   dashboards: PropTypes.array,
-  className: PropTypes.string,
   intl: PropTypes.object.isRequired,
   pinned: PropTypes.bool,
   activeId: PropTypes.number,

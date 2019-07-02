@@ -63,7 +63,10 @@
     "max-statements": 1,
     "new-cap": 1,
     "new-parens": 1,
-    "newline-after-var": 1,
+    "padding-line-between-statements": [
+        "error",
+        { blankLine: "always", prev: "var", next: "return" }
+    ],
     "no-alert": 1,
     "no-array-constructor": 1,
     "no-bitwise": 1,

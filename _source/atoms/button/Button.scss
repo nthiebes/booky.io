@@ -43,3 +43,9 @@
 .button__icon {
   pointer-events: none;
 }
+
+.button--skeleton {
+  position: relative;
+  height: 2rem;
+  width: 12rem !important;
+}
