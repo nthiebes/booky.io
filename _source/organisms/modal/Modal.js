@@ -21,7 +21,9 @@ export default class Modal extends Component {
     super(props);
 
     this.state = {
-      pending: false
+      pending: false,
+      error: null,
+      showModal: false
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
@@ -92,7 +94,8 @@ export default class Modal extends Component {
 
     if (this.modalMap[modal].action) {
       this.setState({
-        pending: true
+        pending: true,
+        error: null
       });
 
       this.modalMap[modal].action({
@@ -101,8 +104,11 @@ export default class Modal extends Component {
         onSuccess: () => {
           this.closeModal();
         },
-        onError: () => {
-          this.closeModal();
+        onError: (error) => {
+          this.setState({
+            pending: false,
+            error
+          });
         }
       });
     } else {
@@ -135,7 +141,7 @@ export default class Modal extends Component {
 
   render() {
     const { modal, open, data, darkMode } = this.props;
-    const { pending, showModal } = this.state;
+    const { pending, showModal, error } = this.state;
     const CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
 
     return (
@@ -155,6 +161,7 @@ export default class Modal extends Component {
               data={ data }
               pending={ pending }
               darkMode={ darkMode }
+              error={ error }
             />
           ) }
         </div>

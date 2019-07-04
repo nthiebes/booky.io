@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
+import { ErrorMessage } from '../../atoms/messages';
 import { H3 } from '../../atoms/headline';
 import Form from '../../molecules/form';
 
@@ -31,7 +32,7 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, hasAnchor } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, hasAnchor, error } = this.props;
 
     return (
       <Form onSubmit={ this.onSubmit } onClick={ this.handleClick }>
@@ -47,6 +48,7 @@ class Modal extends Component {
         <div className="modal__content">
           { children }
         </div>
+        { error && <ErrorMessage message={ error } hasIcon className="modal__error" /> }
         <footer className={ classNames('modal__footer', noCancel && 'modal__footer--one-button') }>
           { !noCancel && (
             <ButtonLargeLight
