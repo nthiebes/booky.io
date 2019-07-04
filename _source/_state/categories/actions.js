@@ -32,20 +32,6 @@ export function deleteBookmark(payload) {
   };
 }
 
-export function addCategory(payload) {
-  return {
-    type: ADD_CATEGORY,
-    payload
-  };
-}
-
-export function editCategory(payload) {
-  return {
-    type: EDIT_CATEGORY,
-    payload
-  };
-}
-
 export function deleteCategory(payload) {
   return {
     type: DELETE_CATEGORY,
@@ -88,19 +74,57 @@ export const getCategories = (id) => ((dispatch) => {
   });
 });
 
-// export const addCategory = (payload) => ((dispatch) => {
-//   console.log('payload', payload);
-//   fetcher({
-//     url: `/dashboard/${payload.dashboard}/category`,
-//     method: 'POST',
-//     params: payload,
-//     onSuccess: (data) => {
-//       console.log('data', data);
-//       // setCategories(data);
-//     },
-//     onError: (error) => {
-//       console.log('error', error);
-//       // onError && onError(error);
-//     }
-//   });
-// });
+export const addCategory = ({ dashboard, color, name, hidden, position, onError, onSuccess }) => ((dispatch) => {
+  fetcher({
+    url: `/dashboard/${dashboard}/categories`,
+    method: 'POST',
+    params: {
+      color,
+      name,
+      dashboard,
+      position: 50
+    },
+    onSuccess: ({ id }) => {
+      dispatch({
+        type: ADD_CATEGORY,
+        color,
+        name,
+        dashboard,
+        id
+      })
+      onSuccess && onSuccess();
+    },
+    onError: (error) => {
+      // console.log('error', error);
+      onError && onError(error);
+    }
+  });
+});
+
+export const editCategory = ({ id, color, name, position, dashboard, onError, onSuccess }) => ((dispatch) => {
+  fetcher({
+    url: `/categories/${dashboard}`,
+    method: 'PUT',
+    params: {
+      color,
+      name,
+      position,
+      dashboard
+    },
+    onSuccess: () => {
+      dispatch({
+        type: EDIT_CATEGORY,
+        color,
+        name,
+        dashboard,
+        position,
+        id
+      })
+      onSuccess && onSuccess();
+    },
+    onError: (error) => {
+      // console.log('error', error);
+      onError && onError(error);
+    }
+  });
+});

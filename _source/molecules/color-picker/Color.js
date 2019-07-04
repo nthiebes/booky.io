@@ -40,7 +40,8 @@ export default class Color extends Component {
           color="light"
           className={ classNames(
             'color-picker__icon',
-            value === color.key && 'color-picker__icon--active') }
+            value === color.key && 'color-picker__icon--active'
+          ) }
         />
         <Checkbox
           className="color-picker__checkbox"

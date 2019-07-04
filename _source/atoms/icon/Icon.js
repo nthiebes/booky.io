@@ -52,7 +52,7 @@ export default class Icon extends Component {
     if (!isButton) {
       CustomTag = 'span';
       additionalProps['aria-hidden'] = true;
-      additionalProps['aria-label'] = true;
+      additionalProps['aria-label'] = title;
     }
 
     return (

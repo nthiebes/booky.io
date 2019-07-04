@@ -12,6 +12,8 @@ import {
 import { arrayMove } from '../../_utils/array';
 
 const categories = (state = [], action) => {
+  const { name, color, dashboard, id, position } = action;
+
   switch (action.type) {
     case ADD_BOOKMARK: {
       const { categoryId, url, name } = action.payload;
@@ -88,28 +90,27 @@ const categories = (state = [], action) => {
       return [
         ...state,
         {
-          id: 123456789,
-          name: action.payload.name,
-          color: action.payload.color,
-          dashboard: action.payload.dashboard,
-          position: state.length,
+          id,
+          name,
+          color,
+          dashboard,
+          position,
           expanded: true,
           bookmarks: []
         }
       ];
 
     case EDIT_CATEGORY: {
-      const { color, name } = action.payload;
-
       return state.map((category) => {
-        if (category.id !== action.payload.id) {
+        if (category.id !== id) {
           return category;
         }
         
         return {
           ...category,
           color,
-          name
+          name,
+          position
         };
       });
     }
