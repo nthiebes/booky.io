@@ -85,7 +85,7 @@ class Header extends Component {
         onClick={ closeSidebar }
         tabIndex="-1"
       >
-        <div className="header__wrapper">
+        <div className={ classNames('header__wrapper', loggedIn && 'header__wrapper--full-width') }>
           <Link className="header__skip-link" href="#main">
             <FormattedHTMLMessage id="header.jumpToMain" />
           </Link>
