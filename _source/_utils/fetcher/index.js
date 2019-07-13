@@ -64,7 +64,7 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {}
       });
   }
 
-  if (method === 'POST' || method === 'DELETE' || method === 'PUT') {
+  if (method === 'POST' || method === 'DELETE' || method === 'PUT' || method === 'PATCH') {
     abortableFetch(`${baseUrl}${url}`, {
       ...defaultOptions,
       ...options,

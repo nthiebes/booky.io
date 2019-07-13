@@ -6,13 +6,14 @@ import {
   ADD_CATEGORY,
   EDIT_CATEGORY,
   DELETE_CATEGORY,
-  TOGGLE_CATEGORY,
   SET_CATEGORIES
 } from './actions';
 import { arrayMove } from '../../_utils/array';
+import { removeUndefined } from '../../_utils/object';
 
+// eslint-disable-next-line max-statements
 const categories = (state = [], action) => {
-  const { name, color, dashboard, id, position } = action;
+  const { name, color, id, position, newId, dashboard, hidden } = action;
 
   switch (action.type) {
     case ADD_BOOKMARK: {
@@ -93,9 +94,8 @@ const categories = (state = [], action) => {
           id,
           name,
           color,
-          dashboard,
           position,
-          expanded: true,
+          hidden: false,
           bookmarks: []
         }
       ];
@@ -105,18 +105,23 @@ const categories = (state = [], action) => {
         if (category.id !== id) {
           return category;
         }
+
+        const data = removeUndefined({
+          color,
+          name,
+          dashboard,
+          id,
+          hidden
+        });
         
         return {
           ...category,
-          color,
-          name,
-          position
+          ...data
         };
       });
     }
 
     case DELETE_CATEGORY: {
-      const { id, newId } = action.payload;
       let newState = state.slice();
       const bookmarks = newState.find((category) => category.id === id).bookmarks;
 
@@ -141,17 +146,6 @@ const categories = (state = [], action) => {
 
       return newState;
     }
-
-    case TOGGLE_CATEGORY:
-      return state.map((category) => {
-        if (category.id === action.id) {
-          return {
-            ...category,
-            expanded: !category.expanded
-          };
-        }
-        return category;
-      });
 
     case DRAG_BOOKMARK: {
       const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = action.data;

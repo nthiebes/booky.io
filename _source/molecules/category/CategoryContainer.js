@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
+
 import Component from './Category';
-import { actions } from '../../_state/modal';
+import { openModal } from '../../_state/modal/actions';
+import { toggleCategory } from '../../_state/categories/actions';
 
 export const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode
 });
 
-export const mapDispatchToProps = (dispatch) => ({
-  openModal: (modal, data) => {
-    dispatch(actions.openModal(modal, data));
-  }
-});
+export const mapDispatchToProps = {
+  openModal,
+  toggleCategory
+};
 
 const Container = connect(
   mapStateToProps,

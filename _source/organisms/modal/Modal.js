@@ -100,6 +100,7 @@ export default class Modal extends Component {
 
       this.modalMap[modal].action({
         ...modalData,
+        position: data.categories.length,
         dashboard: data.activeDashboard,
         onSuccess: () => {
           this.closeModal();
@@ -120,7 +121,8 @@ export default class Modal extends Component {
     const { closeModal } = this.props;
 
     this.setState({
-      pending: false
+      pending: false,
+      error: null
     });
     abortFetch();
     closeModal();

@@ -10,33 +10,42 @@ import { H2 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
 
 class Category extends Component {
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    hidden: PropTypes.bool.isRequired,
+    id: PropTypes.number.isRequired,
+    bookmarks: PropTypes.array,
+    openModal: PropTypes.func.isRequired,
+    intl: PropTypes.object.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+    toggleCategory: PropTypes.func.isRequired
+  };
+  
+  static defaultProps = {
+    bookmarks: []
+  };
 
-    this.toggleCategory = this.toggleCategory.bind(this);
-    this.toggleEditMode = this.toggleEditMode.bind(this);
-    this.onEditClick = this.onEditClick.bind(this);
-    this.onDeleteClick = this.onDeleteClick.bind(this);
-    this.onAddClick = this.onAddClick.bind(this);
-    this.state = {
-      open: props.open,
-      editMode: false
-    };
-  }
+  state = {
+    editMode: false
+  };
 
-  toggleCategory() {
-    this.setState({
-      open: !this.state.open
+  toggleCategory = () => {
+    const { toggleCategory, hidden, id } = this.props;
+
+    toggleCategory({
+      id,
+      hidden: !hidden
     });
   }
 
-  toggleEditMode() {
+  toggleEditMode = () => {
     this.setState({
       editMode: !this.state.editMode
     });
   }
 
-  onEditClick() {
+  onEditClick = () => {
     const { name, id, openModal, color } = this.props;
 
     openModal('EditCategory', {
@@ -46,7 +55,7 @@ class Category extends Component {
     });
   }
 
-  onDeleteClick() {
+  onDeleteClick = () => {
     const { name, id, openModal } = this.props;
 
     openModal('DeleteCategory', {
@@ -55,7 +64,7 @@ class Category extends Component {
     });
   }
 
-  onAddClick() {
+  onAddClick = () => {
     const { id, openModal } = this.props;
 
     openModal('AddBookmark', {
@@ -64,8 +73,8 @@ class Category extends Component {
   }
 
   render() {
-    const { name, id, color, bookmarks, intl, darkMode } = this.props;
-    const { open, editMode } = this.state;
+    const { name, id, color, bookmarks, intl, darkMode, hidden } = this.props;
+    const { editMode } = this.state;
     const headerClassName = classNames(
       'category__header',
       `category__header--${color}`,
@@ -76,9 +85,9 @@ class Category extends Component {
       <section className="category">
         <header className={ headerClassName }>
           <Icon
-            className={ classNames('category__toggle-icon', !open && 'category__toggle-icon--rotate') }
+            className={ classNames('category__toggle-icon', hidden && 'category__toggle-icon--rotate') }
             icon="expand"
-            title={ open ? intl.formatMessage({ id: 'category.reduce' }) : intl.formatMessage({ id: 'category.expand' }) }
+            title={ hidden ? intl.formatMessage({ id: 'category.expand' }) : intl.formatMessage({ id: 'category.reduce' }) }
             onClick={ this.toggleCategory }
             isButton
           />
@@ -108,11 +117,11 @@ class Category extends Component {
             isButton
           />
         </header>
-        <ul className={ classNames('category__bookmarks', !open && 'category__bookmarks--hidden') }>
+        <ul className={ classNames('category__bookmarks', hidden && 'category__bookmarks--hidden') }>
           <Droppable droppableId={ id.toString() } type="bookmark">
             { (provided) => (
               <div className="category__bookmark-drag-wrapper" ref={ provided.innerRef } { ...provided.droppableProps }>
-                { open && bookmarks.map((bookmark, index) => (
+                { !hidden && bookmarks.map((bookmark, index) => (
                   <Bookmark
                     key={ index }
                     index={ index }
@@ -124,7 +133,7 @@ class Category extends Component {
                     favicon={ bookmark.favicon }
                   />
                 )) }
-                { open && bookmarks.length === 0 && (
+                { !hidden && bookmarks.length === 0 && (
                   <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
                     <i><FormattedHTMLMessage id="bookmark.empty" /></i>
                   </li>
@@ -134,7 +143,7 @@ class Category extends Component {
             ) }
           </Droppable>
         </ul>
-        { open && (
+        { !hidden && (
           <ButtonSmallPrimary icon="add" className="category__button" onClick={ this.onAddClick }>
             <FormattedHTMLMessage id="bookmark.add" />
           </ButtonSmallPrimary>
@@ -145,20 +154,3 @@ class Category extends Component {
 }
 
 export default injectIntl(Category);
-
-Category.propTypes = {
-  name: PropTypes.string.isRequired,
-  color: PropTypes.string,
-  open: PropTypes.bool,
-  id: PropTypes.number.isRequired,
-  bookmarks: PropTypes.array,
-  openModal: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
-  darkMode: PropTypes.bool.isRequired
-};
-
-Category.defaultProps = {
-  open: true,
-  bookmarks: [],
-  color: 'color0'
-};

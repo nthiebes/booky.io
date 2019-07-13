@@ -91,7 +91,7 @@
     "no-implicit-coercion": 1,
     "no-implicit-globals": 1,
     "no-implied-eval": 1,
-    "no-invalid-this": 1,
+    "no-invalid-this": 0,
     "no-label-var": 1,
     "no-labels": 1,
     "no-lone-blocks": 1,
