@@ -1,42 +1,11 @@
 import fetcher from '../../_utils/fetcher';
 import { updateDashboardsData } from '../dashboards/actions';
+import { getBookmarks, setBookmarks, setBookmarksPending } from '../bookmarks/actions';
 
-export const ADD_BOOKMARK = 'ADD_BOOKMARK';
-export const EDIT_BOOKMARK = 'EDIT_BOOKMARK';
-export const DELETE_BOOKMARK = 'DELETE_BOOKMARK';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const EDIT_CATEGORY = 'EDIT_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
-export const DRAG_BOOKMARK = 'DRAG_BOOKMARK';
 export const SET_CATEGORIES = 'SET_CATEGORIES';
-
-export function addBookmark(payload) {
-  return {
-    type: ADD_BOOKMARK,
-    payload
-  };
-}
-
-export function editBookmark(payload) {
-  return {
-    type: EDIT_BOOKMARK,
-    payload
-  };
-}
-
-export function deleteBookmark(payload) {
-  return {
-    type: DELETE_BOOKMARK,
-    payload
-  };
-}
-
-export function dragBookmark(data) {
-  return {
-    type: DRAG_BOOKMARK,
-    data
-  };
-}
 
 export const setCategories = (categories) => ({
   type: SET_CATEGORIES,
@@ -45,7 +14,7 @@ export const setCategories = (categories) => ({
 
 export const getCategories = (id) => ((dispatch) => {
   fetcher({
-    url: `/dashboard/${id}/categories`,
+    url: `/dashboards/${id}/categories`,
     onSuccess: (data) => {
       dispatch(setCategories(data));
       dispatch(updateDashboardsData({
@@ -120,6 +89,18 @@ export const toggleCategory = ({ id, hidden }) => ((dispatch) => {
     id,
     hidden
   });
+  if (hidden) {
+    dispatch(setBookmarks({
+      id,
+      bookmarks: []
+    }));
+  } else {
+    dispatch(getBookmarks(id));
+    dispatch(setBookmarksPending({
+      id,
+      pending: true
+    }));
+  }
 
   fetcher({
     url: `/categories/${id}`,

@@ -2,13 +2,15 @@ import { connect } from 'react-redux';
 import Component from './Modal';
 import { closeModal } from '../../_state/modal/actions';
 import {
-  addBookmark,
-  editBookmark,
-  deleteBookmark,
   addCategory,
   editCategory,
   deleteCategory
 } from '../../_state/categories/actions';
+import {
+  addBookmark,
+  editBookmark,
+  deleteBookmark
+} from '../../_state/bookmarks/actions';
 import {
   addDashboard,
   editDashboard,

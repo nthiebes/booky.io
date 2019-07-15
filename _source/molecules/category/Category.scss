@@ -143,3 +143,8 @@
 .category__empty--dark-mode {
   color: $color__font--white;
 }
+
+.category__spinner {
+  position: relative;
+  left: calc(50% - 16px);
+}

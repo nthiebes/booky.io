@@ -13,7 +13,7 @@ import { removeUndefined } from '../../_utils/object';
 
 // eslint-disable-next-line max-statements
 const categories = (state = [], action) => {
-  const { name, color, id, position, newId, dashboard, hidden } = action;
+  const { name, color, id, position, newId, dashboard, hidden, bookmarks, pending } = action;
 
   switch (action.type) {
     case ADD_BOOKMARK: {
@@ -123,7 +123,7 @@ const categories = (state = [], action) => {
 
     case DELETE_CATEGORY: {
       let newState = state.slice();
-      const bookmarks = newState.find((category) => category.id === id).bookmarks;
+      const oldBookmarks = newState.find((category) => category.id === id).bookmarks;
 
       // Move bookmarks
       newState = newState.map((category) => {
@@ -133,7 +133,7 @@ const categories = (state = [], action) => {
 
         return {
           ...category,
-          bookmarks: category.bookmarks.concat(bookmarks)
+          bookmarks: category.bookmarks.concat(oldBookmarks)
         };
       });
 
@@ -151,21 +151,21 @@ const categories = (state = [], action) => {
       const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = action.data;
 
       return state.map((category) => {
-        const bookmarks = [...category.bookmarks];
+        const oldBookmarks = [...category.bookmarks];
         
         if (category.id === sourceCategoryId) {
 
           // Same category - move bookmark
           if (category.id === destinationCategoryId) {
-            arrayMove(bookmarks, sourceIndex, destinationIndex);
+            arrayMove(oldBookmarks, sourceIndex, destinationIndex);
           // Different category - remove bookmark
           } else {
-            bookmarks.splice(sourceIndex, 1);
+            oldBookmarks.splice(sourceIndex, 1);
           }
 
           return {
             ...category,
-            bookmarks: [...bookmarks]
+            bookmarks: [...oldBookmarks]
           };
         // Insert bookmark in new category
         } else if (category.id === destinationCategoryId) {
@@ -185,6 +185,32 @@ const categories = (state = [], action) => {
 
     case SET_CATEGORIES:
       return action.categories;
+    
+    case 'SET_BOOKMARKS': {
+      return state.map((category) => {
+        if (category.id !== id) {
+          return category;
+        }
+        
+        return {
+          ...category,
+          bookmarks
+        };
+      });
+    }
+
+    case 'SET_BOOKMARKS_PENDING': {
+      return state.map((category) => {
+        if (category.id !== id) {
+          return category;
+        }
+        
+        return {
+          ...category,
+          pending
+        };
+      });
+    }
       
     default:
       return state;

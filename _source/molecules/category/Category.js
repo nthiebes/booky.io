@@ -19,7 +19,8 @@ class Category extends Component {
     openModal: PropTypes.func.isRequired,
     intl: PropTypes.object.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    toggleCategory: PropTypes.func.isRequired
+    toggleCategory: PropTypes.func.isRequired,
+    pending: PropTypes.bool
   };
   
   static defaultProps = {
@@ -73,7 +74,7 @@ class Category extends Component {
   }
 
   render() {
-    const { name, id, color, bookmarks, intl, darkMode, hidden } = this.props;
+    const { name, id, color, bookmarks, intl, darkMode, hidden, pending } = this.props;
     const { editMode } = this.state;
     const headerClassName = classNames(
       'category__header',
@@ -133,7 +134,7 @@ class Category extends Component {
                     favicon={ bookmark.favicon }
                   />
                 )) }
-                { !hidden && bookmarks.length === 0 && (
+                { !hidden && !pending && bookmarks.length === 0 && (
                   <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
                     <i><FormattedHTMLMessage id="bookmark.empty" /></i>
                   </li>
@@ -143,6 +144,9 @@ class Category extends Component {
             ) }
           </Droppable>
         </ul>
+        { !hidden && pending && (
+          <Icon icon="spinner" className="category__spinner" />
+        ) }
         { !hidden && (
           <ButtonSmallPrimary icon="add" className="category__button" onClick={ this.onAddClick }>
             <FormattedHTMLMessage id="bookmark.add" />
