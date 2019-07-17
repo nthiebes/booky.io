@@ -11,6 +11,11 @@
     "react",
     "jsx-a11y"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
@@ -64,8 +69,9 @@
     "new-cap": 1,
     "new-parens": 1,
     "padding-line-between-statements": [
-        "error",
-        { blankLine: "always", prev: "var", next: "return" }
+      1,
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      { "blankLine": "never", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] }
     ],
     "no-alert": 1,
     "no-array-constructor": 1,
@@ -129,7 +135,7 @@
     "no-unmodified-loop-condition": 1,
     "no-unneeded-ternary": 1,
     "no-unsafe-negation": 2,
-    "no-unused-expressions": [1, {allowShortCircuit: true}],
+    "no-unused-expressions": [1, {"allowShortCircuit": true}],
     "no-use-before-define": 1,
     "no-useless-call": 1,
     "no-useless-computed-key": 1,

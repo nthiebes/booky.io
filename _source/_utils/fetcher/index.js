@@ -8,23 +8,21 @@ const defaultOptions = {
   credentials: process.env.NODE_ENV === 'development' ? 'include' : 'same-origin'
 };
 let controller;
-
-const formatResponse = (response) => {
-  // if (response.status >= 200 && response.status < 300) {
-  //   return response;
-  // }
+const formatResponse = (response) => 
+// if (response.status >= 200 && response.status < 300) {
+//   return response;
+// }
   
-  // const error = new Error(response.statusText);
+// const error = new Error(response.statusText);
 
-  // error.response = response;
-  // throw error;
+// error.response = response;
+// throw error;
 
-  return {
+  ({
     data: response,
     error: response.message
-  };
-};
-
+  })
+;
 const checkEmptyResponse = (response) => {
   if (response.statusText === 'No Content') {
     return {};
@@ -32,11 +30,9 @@ const checkEmptyResponse = (response) => {
 
   return response.json();
 };
-
 const abortFetch = () => {
   controller && controller.abort();
 };
-
 const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {} }) => {
   controller = new AbortController();
 

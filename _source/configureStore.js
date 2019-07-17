@@ -15,8 +15,7 @@ const configureStoreProd = (initialState) => {
   return createStore(reducers, initialState, compose(
     applyMiddleware(...middlewares)
   ));
-}
-
+};
 const configureStoreDev = (initialState) => {
   const middlewares = [
     // Add other middleware on this line...
@@ -28,7 +27,6 @@ const configureStoreDev = (initialState) => {
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
     thunk
   ];
-
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
   const store = createStore(reducers, initialState, composeEnhancers(
@@ -47,8 +45,7 @@ const configureStoreDev = (initialState) => {
   }
 
   return store;
-}
-
+};
 const configureStore = process.env.NODE_ENV === 'production' ? configureStoreProd : configureStoreDev;
 
 export default configureStore;

@@ -13,7 +13,7 @@ class Testimonial extends Component {
 
     return (
       <blockquote className={ classNames('testimonials__testimonial', className && className) }>
-        <img src={ image } width="50" height="50" className="testimonials__image" aria-hidden="true" />
+        <img src={ image } width="50" height="50" className="testimonials__image" alt="" aria-hidden="true" />
         <div>
           <H4 className="testimonials__header">
             { name }

@@ -1,5 +1,6 @@
 // For info about this file refer to webpack and webpack-hot-middleware documentation
-// For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
+// For info on how we're generating bundles with hashed filenames for cache busting:
+// https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -56,7 +57,7 @@ export default {
       // Note that you can add custom options here if you need to handle other custom logic in index.html
       // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
       trackJSToken: ''
-    }),
+    })
 
   ],
   module: {
@@ -141,7 +142,7 @@ export default {
             options: {
               plugins: () => [
                 require('cssnano'),
-                require('autoprefixer'),
+                require('autoprefixer')
               ],
               sourceMap: true
             }

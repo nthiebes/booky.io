@@ -8,7 +8,7 @@ export default class Skeleton extends Component {
 
     return (
       <span className={ classNames('skeleton', className) }>
-        &zwnj;
+        { '&zwnj;' }
       </span>
     );
   }

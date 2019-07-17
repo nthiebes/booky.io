@@ -94,7 +94,7 @@ export const addDashboard = ({ name, onSuccess, onError }) => ((dispatch) => {
       });
       onSuccess();
     },
-    onError: (error) => {
+    onError: () => {
       // console.log('error', error);
       onError();
     }
@@ -116,7 +116,7 @@ export const editDashboard = ({ name, id, onSuccess, onError }) => ((dispatch) =
       });
       onSuccess();
     },
-    onError: (error) => {
+    onError: () => {
       // console.log('error', error);
       onError();
     }
@@ -135,7 +135,7 @@ export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch
       });
       onSuccess();
     },
-    onError: (error) => {
+    onError: () => {
       // console.log('error', error);
       onError();
     }

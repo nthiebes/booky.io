@@ -25,7 +25,6 @@ xdescribe('scrolling', function() {
       }
       windowMock.addEventListener.mock.calls[firstCall][secondArgument]();
     };
-
   let instance;
 
   beforeEach(function() {

@@ -90,5 +90,6 @@ Modal.propTypes = {
   intl: PropTypes.object.isRequired,
   pending: PropTypes.bool.isRequired,
   hasAnchor: PropTypes.bool,
-  darkMode: PropTypes.bool.isRequired
+  darkMode: PropTypes.bool.isRequired,
+  error: PropTypes.string
 };

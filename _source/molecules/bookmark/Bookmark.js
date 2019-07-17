@@ -47,7 +47,7 @@ class Bookmark extends Component {
             { ...provided.draggableProps }
             ref={ provided.innerRef }
           >
-            <img src={ favicon || '_assets/no-favicon.png' } height="16" width="16" aria-hidden="true" />
+            <img src={ favicon || '_assets/no-favicon.png' } height="16" width="16" alt="" aria-hidden="true" />
             <a className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') } href={ url } target={ newtab ? '_blank' : '_self' }>
               { name }
             </a>

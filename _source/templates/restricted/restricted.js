@@ -41,6 +41,6 @@ const restricted = (BaseComponent) => {
   return connect(mapStateToProps)(
     withRouter(Restricted)
   );
-}
+};
 
 export default restricted;

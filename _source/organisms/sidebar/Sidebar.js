@@ -2,12 +2,11 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
-import { ButtonSmallPrimary } from '../../atoms/button';
 import { DashboardsList } from '../../organisms/dashboards';
 
 class Sidebar extends Component {
@@ -31,6 +30,7 @@ class Sidebar extends Component {
     this.props.openModal('AddDashboard');
   }
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       loggedIn,

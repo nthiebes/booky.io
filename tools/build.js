@@ -9,21 +9,22 @@ process.env.NODE_ENV = 'production'; // this assures React is built in prod mode
 
 console.log(chalkProcessing('Generating minified bundle. This will take a moment...'));
 
-webpack(config).run((error, stats) => {
-  if (error) { // so a fatal error occurred. Stop here.
-    console.log(chalkError(error));
+// eslint-disable-next-line max-statements
+webpack(config).run((buildError, stats) => {
+  if (buildError) { // so a fatal error occurred. Stop here.
+    console.log(chalkError(buildError));
     return 1;
   }
 
   const jsonStats = stats.toJson();
 
   if (jsonStats.hasErrors) {
-    return jsonStats.errors.map(error => console.log(chalkError(error)));
+    return jsonStats.errors.map((error) => console.log(chalkError(error)));
   }
 
   if (jsonStats.hasWarnings) {
     console.log(chalkWarning('Webpack generated the following warnings: '));
-    jsonStats.warnings.map(warning => console.log(chalkWarning(warning)));
+    jsonStats.warnings.map((warning) => console.log(chalkWarning(warning)));
   }
 
   console.log(`Webpack stats: ${stats}`);
