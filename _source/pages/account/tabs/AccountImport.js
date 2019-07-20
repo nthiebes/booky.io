@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
-import P from '../../../atoms/paragraph';
 import { ButtonLargeBlue } from '../../../atoms/button';
 import FileUpload from '../../../atoms/file-upload';
 

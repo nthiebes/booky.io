@@ -37,7 +37,8 @@ export default {
       filename: '[name].[contenthash].css'
     }),
 
-    // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
+    // Generate HTML file that contains references to generated bundles. See here for how this works:
+    // https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
       template: '_source/index.ejs',
       favicon: '_source/_assets/icons/favicon.ico',

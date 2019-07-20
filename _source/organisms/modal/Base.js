@@ -38,6 +38,8 @@ class Modal extends Component {
       <Form onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
           { hasAnchor && (
+            
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
             <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
               <FormattedMessage id="modal.tabAnchor" />
             </span>

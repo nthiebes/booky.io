@@ -9,8 +9,6 @@ import Link from '../../atoms/link';
 
 class NotFound extends Component {
   render() {
-    const { intl } = this.props;
-
     return (
       <Page>
         <Section>

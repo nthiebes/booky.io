@@ -154,6 +154,7 @@ export default class Modal extends Component {
         ) }
         onClick={ this.closeModal }
         onKeyUp={ this.handleKeyUp }
+        role="presentation"
       >
         <div className={ classNames('modal__inner', darkMode && 'modal__inner--dark') }>
           { CustomTag && showModal && (
