@@ -91,6 +91,7 @@ export default class Modal extends Component {
     const { modal, data } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
+    modalData.categoryId = parseInt(modalData.categoryId, 10);
 
     if (this.modalMap[modal].action) {
       this.setState({

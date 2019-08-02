@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
 import { ErrorMessage } from '../../atoms/messages';
-import { H3 } from '../../atoms/headline';
+import { H2 } from '../../atoms/headline';
 import Form from '../../molecules/form';
 
 class Modal extends Component {
@@ -44,7 +44,7 @@ class Modal extends Component {
               <FormattedMessage id="modal.tabAnchor" />
             </span>
           ) }
-          { headline && <H3 className="modal__headline">{ headline }</H3> }
+          { headline && <H2 className="modal__headline">{ headline }</H2> }
           <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
         </header>
         <div className="modal__content">

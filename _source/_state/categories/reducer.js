@@ -1,24 +1,24 @@
-import {
-  ADD_BOOKMARK,
-  EDIT_BOOKMARK,
-  DELETE_BOOKMARK,
-  DRAG_BOOKMARK,
-  ADD_CATEGORY,
-  EDIT_CATEGORY,
-  DELETE_CATEGORY,
-  SET_CATEGORIES
-} from './actions';
 import { arrayMove } from '../../_utils/array';
 import { removeUndefined } from '../../_utils/object';
 
 // eslint-disable-next-line max-statements
 const categories = (state = [], action) => {
-  const { name, color, id, position, newId, dashboard, hidden, bookmarks, pending } = action;
+  const {
+    name,
+    color,
+    id,
+    position,
+    newId,
+    dashboard,
+    hidden,
+    bookmarks,
+    pending,
+    categoryId,
+    url
+  } = action;
 
   switch (action.type) {
-    case ADD_BOOKMARK: {
-      const { categoryId, url, name } = action.payload;
-
+    case 'ADD_BOOKMARK': {
       return state.map((category) => {
         if (category.id !== categoryId) {
           return category;
@@ -29,7 +29,7 @@ const categories = (state = [], action) => {
           bookmarks: [
             ...category.bookmarks,
             {
-              id: '123456789',
+              id,
               name,
               url,
               categoryId
@@ -39,9 +39,7 @@ const categories = (state = [], action) => {
       });
     }
 
-    case EDIT_BOOKMARK: {
-      const { id, url, name, categoryId } = action.payload;
-
+    case 'EDIT_BOOKMARK': {
       return state.map((category) => {
         if (category.id !== categoryId) {
           return category;
@@ -64,9 +62,7 @@ const categories = (state = [], action) => {
       });
     }
 
-    case DELETE_BOOKMARK: {
-      const { id, categoryId } = action.payload;
-
+    case 'DELETE_BOOKMARK': {
       return state.map((category) => {
         if (category.id !== categoryId) {
           return category;
@@ -87,7 +83,7 @@ const categories = (state = [], action) => {
       });
     }
 
-    case ADD_CATEGORY:
+    case 'ADD_CATEGORY':
       return [
         ...state,
         {
@@ -100,7 +96,7 @@ const categories = (state = [], action) => {
         }
       ];
 
-    case EDIT_CATEGORY: {
+    case 'EDIT_CATEGORY': {
       return state.map((category) => {
         if (category.id !== id) {
           return category;
@@ -121,7 +117,7 @@ const categories = (state = [], action) => {
       });
     }
 
-    case DELETE_CATEGORY: {
+    case 'DELETE_CATEGORY': {
       let newState = state.slice();
       const oldBookmarks = newState.find((category) => category.id === id).bookmarks;
 
@@ -147,7 +143,7 @@ const categories = (state = [], action) => {
       return newState;
     }
 
-    case DRAG_BOOKMARK: {
+    case 'DRAG_BOOKMARK': {
       const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = action.data;
 
       return state.map((category) => {
@@ -183,7 +179,7 @@ const categories = (state = [], action) => {
       });
     }
 
-    case SET_CATEGORIES:
+    case 'SET_CATEGORIES':
       return action.categories;
     
     case 'SET_BOOKMARKS': {
@@ -194,7 +190,8 @@ const categories = (state = [], action) => {
         
         return {
           ...category,
-          bookmarks
+          bookmarks,
+          pending: false
         };
       });
     }

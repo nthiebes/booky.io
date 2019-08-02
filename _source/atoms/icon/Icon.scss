@@ -36,6 +36,15 @@
   }
 }
 
+.icon--size-tiny {
+  height: 16px;
+
+  &::after {
+    height: 16px;
+    width: 16px;
+  }
+}
+
 .icon--size-small {
   height: 36px;
 
@@ -211,6 +220,12 @@
   position: relative;
   stroke-width: 0;
   stroke: currentColor;
+}
+
+.icon__svg--size-tiny {
+  height: 16px;
+  width: 16px;
+  padding: 0;
 }
 
 .icon__svg--size-small {

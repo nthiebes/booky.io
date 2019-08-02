@@ -1,42 +1,9 @@
 import fetcher from '../../_utils/fetcher';
-import { updateDashboardsData } from '../dashboards/actions';
 
-export const ADD_BOOKMARK = 'ADD_BOOKMARK';
-export const EDIT_BOOKMARK = 'EDIT_BOOKMARK';
-export const DELETE_BOOKMARK = 'DELETE_BOOKMARK';
-export const ADD_CATEGORY = 'ADD_CATEGORY';
-export const EDIT_CATEGORY = 'EDIT_CATEGORY';
-export const DELETE_CATEGORY = 'DELETE_CATEGORY';
-export const DRAG_BOOKMARK = 'DRAG_BOOKMARK';
-export const SET_BOOKMARKS = 'SET_BOOKMARKS';
-
-export function addBookmark(payload) {
-  return {
-    type: ADD_BOOKMARK,
-    payload
-  };
-}
-
-export function editBookmark(payload) {
-  return {
-    type: EDIT_BOOKMARK,
-    payload
-  };
-}
-
-export function deleteBookmark(payload) {
-  return {
-    type: DELETE_BOOKMARK,
-    payload
-  };
-}
-
-export function dragBookmark(data) {
-  return {
-    type: DRAG_BOOKMARK,
-    data
-  };
-}
+export const dragBookmark = (data) => ({
+  type: 'DRAG_BOOKMARK',
+  data
+});
 
 export const setBookmarks = ({bookmarks, id}) => ({
   type: 'SET_BOOKMARKS',
@@ -51,70 +18,42 @@ export const setBookmarksPending = ({pending, id}) => ({
 });
 
 export const getBookmarks = (id) => ((dispatch) => {
+  dispatch(setBookmarksPending({
+    id,
+    pending: true
+  }));
+
   fetcher({
     url: `/categories/${id}/bookmarks`,
     onSuccess: (bookmarks) => {
-      // dispatch(setBookmarksPending({
-      //   id,
-      //   pending: false
-      // }));
       dispatch(setBookmarks({
         id,
         bookmarks
       }));
     },
-    onError: (error) => {
-      console.log('error', error);
+    onError: () => {
+      // console.log('error', error);
       // onError && onError(error);
     }
   });
 });
 
-export const addCategory = ({ dashboard, color, name, position, onError, onSuccess }) => ((dispatch) => {
+export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((dispatch) => {
   fetcher({
-    url: `/dashboards/${dashboard}/categories`,
+    url: `/categories/${categoryId}/bookmarks`,
     method: 'POST',
     params: {
-      color,
       name,
-      dashboard,
-      position
+      url
     },
-    onSuccess: ({ id }) => {
+    onSuccess: ({ id, favicon }) => {
       dispatch({
-        type: ADD_CATEGORY,
-        color,
+        type: 'ADD_BOOKMARK',
+        categoryId,
         name,
-        position,
-        id
-      });
-      onSuccess && onSuccess();
-    },
-    onError: (error) => {
-      // console.log('error', error);
-      onError && onError(error);
-    }
-  });
-});
-
-export const editCategory = ({ id, color, name, hidden, dashboard, onError, onSuccess }) => ((dispatch) => {
-  fetcher({
-    url: `/categories/${id}`,
-    method: 'PATCH',
-    params: {
-      color,
-      name,
-      dashboard,
-      hidden
-    },
-    onSuccess: () => {
-      dispatch({
-        type: EDIT_CATEGORY,
-        color,
-        name,
-        dashboard,
+        url,
         id,
-        hidden
+        favicon
       });
       onSuccess && onSuccess();
     },
@@ -125,37 +64,41 @@ export const editCategory = ({ id, color, name, hidden, dashboard, onError, onSu
   });
 });
 
-export const toggleCategory = ({ id, hidden }) => ((dispatch) => {
-  dispatch({
-    type: EDIT_CATEGORY,
-    id,
-    hidden
-  });
-
+export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id }) => ((dispatch) => {
   fetcher({
-    url: `/categories/${id}`,
-    method: 'PATCH',
+    url: `/bookmarks/${id}`,
+    method: 'PUT',
     params: {
-      hidden
+      name,
+      url
     },
-    onError: () => {
+    onSuccess: ({ favicon }) => {
+      dispatch({
+        type: 'EDIT_BOOKMARK',
+        name,
+        url,
+        favicon,
+        id,
+        categoryId
+      });
+      onSuccess && onSuccess();
+    },
+    onError: (error) => {
       // console.log('error', error);
+      onError && onError(error);
     }
   });
 });
 
-export const deleteCategory = ({ id, newId, onError, onSuccess }) => ((dispatch) => {
+export const deleteBookmark = ({ categoryId, id, onError, onSuccess }) => ((dispatch) => {
   fetcher({
-    url: `/categories/${id}`,
+    url: `/bookmarks/${id}`,
     method: 'DELETE',
-    params: {
-      id
-    },
     onSuccess: () => {
       dispatch({
-        type: DELETE_CATEGORY,
+        type: 'DELETE_BOOKMARK',
         id,
-        newId
+        categoryId
       });
       onSuccess && onSuccess();
     },

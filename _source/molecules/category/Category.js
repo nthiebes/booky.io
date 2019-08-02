@@ -20,7 +20,8 @@ class Category extends Component {
     intl: PropTypes.object.isRequired,
     darkMode: PropTypes.bool.isRequired,
     toggleCategory: PropTypes.func.isRequired,
-    pending: PropTypes.bool
+    pending: PropTypes.bool,
+    getBookmarks: PropTypes.func.isRequired
   };
   
   static defaultProps = {
@@ -30,6 +31,14 @@ class Category extends Component {
   state = {
     editMode: false
   };
+
+  componentDidMount() {
+    const { hidden, id, getBookmarks } = this.props;
+
+    if (!hidden) {
+      getBookmarks(id);
+    }
+  }
 
   toggleCategory = () => {
     const { toggleCategory, hidden, id } = this.props;
@@ -122,18 +131,24 @@ class Category extends Component {
           <Droppable droppableId={ id.toString() } type="bookmark">
             { (provided) => (
               <div className="category__bookmark-drag-wrapper" ref={ provided.innerRef } { ...provided.droppableProps }>
-                { !hidden && bookmarks.map((bookmark, index) => (
-                  <Bookmark
-                    key={ index }
-                    index={ index }
-                    id={ bookmark.id }
-                    categoryId={ id }
-                    editMode={ editMode }
-                    name={ bookmark.name }
-                    url={ bookmark.url }
-                    favicon={ bookmark.favicon }
-                  />
-                )) }
+                { !hidden && (
+                  pending ? (
+                    <Icon icon="spinner" className="category__spinner" />
+                  ) : (
+                    bookmarks.map((bookmark, index) => (
+                      <Bookmark
+                        key={ index }
+                        index={ index }
+                        id={ bookmark.id }
+                        categoryId={ id }
+                        editMode={ editMode }
+                        name={ bookmark.name }
+                        url={ bookmark.url }
+                        favicon={ bookmark.favicon }
+                      />
+                    ))
+                  )
+                ) }
                 { !hidden && !pending && bookmarks.length === 0 && (
                   <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
                     <i><FormattedHTMLMessage id="bookmark.empty" /></i>
@@ -144,9 +159,6 @@ class Category extends Component {
             ) }
           </Droppable>
         </ul>
-        { !hidden && pending && (
-          <Icon icon="spinner" className="category__spinner" />
-        ) }
         { !hidden && (
           <ButtonSmallPrimary icon="add" className="category__button" onClick={ this.onAddClick }>
             <FormattedHTMLMessage id="bookmark.add" />

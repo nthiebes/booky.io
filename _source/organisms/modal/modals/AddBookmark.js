@@ -47,13 +47,14 @@ class AddBookmark extends Component {
         <Input
           id="bookmark-url"
           name="url"
+          type="url"
           value={ url }
           onChange={ this.onUrlChange }
           required
           maxLength="2000"
           label={ intl.formatMessage({ id: 'modal.url' }) }
           disabled={ pending }
-          autoFocus
+          requirements={ intl.formatMessage({ id: 'misc.validUrl' }) }
         />
         <Input
           id="bookmark-name"

@@ -1,6 +1,6 @@
 import fetcher from '../../_utils/fetcher';
 import { updateDashboardsData } from '../dashboards/actions';
-import { getBookmarks, setBookmarks, setBookmarksPending } from '../bookmarks/actions';
+import { getBookmarks, setBookmarks } from '../bookmarks/actions';
 
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const EDIT_CATEGORY = 'EDIT_CATEGORY';
@@ -96,10 +96,6 @@ export const toggleCategory = ({ id, hidden }) => ((dispatch) => {
     }));
   } else {
     dispatch(getBookmarks(id));
-    dispatch(setBookmarksPending({
-      id,
-      pending: true
-    }));
   }
 
   fetcher({

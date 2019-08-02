@@ -7,8 +7,9 @@ export default class Skeleton extends Component {
     const { className } = this.props;
 
     return (
+      // eslint-disable-next-line react/jsx-no-literals
       <span className={ classNames('skeleton', className) }>
-        { '&zwnj;' }
+        &zwnj;
       </span>
     );
   }
