@@ -168,7 +168,7 @@
     "help.title": "Help page",
     "next.title": "Next features",
     "account.title": "Your account",
-    "account.userData": "Access data",
+    "account.userData": "Login data",
     "account.import": "Import",
     "account.export": "Export",
     "account.account": "Account",
@@ -213,8 +213,8 @@
     "testimonials.headline": "In the words of our users",
     "home.extensionText": "Manage your bookmarks with the booky browser extension.",
     "misc.searchLabel": "Search for bookmarks",
-    "account.startExport": "<b>Start<b> export",
-    "account.startImport": "Import",
     "account.importStep2": "Select your file or drag it into the browser",
-    "account.importStep3": "Import your bookmarks"
+    "account.importStep3": "Import your bookmarks",
+    "button.update": "Update",
+    "misc.comingSoon": "Not yet available in beta"
 }
