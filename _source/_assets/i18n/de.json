@@ -3,7 +3,6 @@
     "menu.about": "Über uns",
     "menu.help": "Hilfe",
     "menu.account": "Account",
-    "menu.next": "Kommend",
     "menu.contact": "Kontakt",
     "menu.privacy": "Datenschutzerklärung",
     "menu.legal": "Impressum",
@@ -166,7 +165,7 @@
     "notFound.figureText": "Leider haben wir hier nichts gefunden. Du kannst zur {home} zurück oder uns eine {mail} schreiben, wenn du denkst, dies sei ein Fehler.",
     "about.title": "Über uns",
     "help.title": "Hilfeseite",
-    "next.title": "Kommende Funktionen",
+    "feedback.title": "Kommende Funktionen",
     "account.title": "Dein Account",
     "account.userData": "Zugangsdaten",
     "account.import": "Importieren",
@@ -216,5 +215,7 @@
     "account.importStep2": "Wähle deine Datei aus oder ziehe sie in den Browser",
     "account.importStep3": "Importiere deine Lesezeichen",
     "button.update": "Aktualisieren",
-    "misc.comingSoon": "In der Beta noch nicht verfügbar"
+    "misc.comingSoon": "In der Beta noch nicht verfügbar.",
+    "account.yourEmail": "Deine E-Mail Adresse:",
+    "menu.feedback": "Feedback"
 }
