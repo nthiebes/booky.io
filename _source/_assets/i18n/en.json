@@ -3,7 +3,6 @@
     "menu.about": "About",
     "menu.help": "Help",
     "menu.account": "Account",
-    "menu.next": "Next",
     "menu.contact": "Contact",
     "menu.privacy": "Privacy Policy",
     "menu.legal": "Legal Notice",
@@ -166,7 +165,7 @@
     "notFound.figureText": "Unfortunately we couldn't find anything here. You can go back to the {home} or write us an {mail} if you think this is an error.",
     "about.title": "About us",
     "help.title": "Help page",
-    "next.title": "Next features",
+    "feedback.title": "Next features",
     "account.title": "Your account",
     "account.userData": "Login data",
     "account.import": "Import",
@@ -216,5 +215,7 @@
     "account.importStep2": "Select your file or drag it into the browser",
     "account.importStep3": "Import your bookmarks",
     "button.update": "Update",
-    "misc.comingSoon": "Not yet available in beta"
+    "misc.comingSoon": "Not yet available in beta.",
+    "account.yourEmail": "Your email address:",
+    "menu.feedback": "Feedback"
 }
