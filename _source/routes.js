@@ -8,7 +8,7 @@ import Help from './pages/help';
 import Account from './pages/account';
 import Login from './pages/login';
 import Join from './pages/join';
-import Next from './pages/next';
+import Feedback from './pages/feedback';
 import Privacy from './pages/privacy';
 import Legal from './pages/legal';
 import Contact from './pages/contact';
@@ -28,7 +28,7 @@ export default class Routes extends Component {
         <Route path="/account" component={ restricted(Account) } />
         <Route path="/login" component={ Login } />
         <Route path="/join" component={ Join } />
-        <Route path="/next" component={ restricted(Next) } />
+        <Route path="/feedback" component={ restricted(Feedback) } />
         <Route path="/privacy" component={ Privacy } />
         <Route path="/legal" component={ Legal } />
         <Route path="/contact" component={ Contact } />

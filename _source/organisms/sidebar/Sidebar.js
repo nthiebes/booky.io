@@ -183,17 +183,17 @@ class Sidebar extends Component {
                     <Link
                       className={ classNames(
                         'sidebar__item',
-                        pathname === '/next' && 'sidebar__item--active',
+                        pathname === '/feedback' && 'sidebar__item--active',
                         darkMode && 'sidebar__item--dark-mode'
                       ) }
-                      to="/next"
+                      to="/feedback"
                       onClick={ closeSidebar }
                       tabIndex={ open ? '0' : '-1' }
                       noUnderline
                     >
-                      <Icon icon="next" />
+                      <Icon icon="feedback" />
                       <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
-                        <FormattedMessage id="menu.next" />
+                        <FormattedMessage id="menu.feedback" />
                       </label>
                     </Link>
                   </li>

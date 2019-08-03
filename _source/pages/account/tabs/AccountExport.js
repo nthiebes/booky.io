@@ -1,23 +1,19 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-import P from '../../../atoms/paragraph';
-import { ButtonLargeBlue } from '../../../atoms/button';
+// import P from '../../../atoms/paragraph';
+// import { ButtonLargeBlue } from '../../../atoms/button';
+import Empty from '../../../molecules/empty';
 
 class AccountExport extends Component {
   render() {
     // const { intl } = this.props;
 
     return (
-      <Fragment>
-        <P first>
-          <FormattedHTMLMessage id="account.exportText" />
-        </P>
-        <ButtonLargeBlue icon="download" contentBefore>
-          <FormattedHTMLMessage id="account.export" />
-        </ButtonLargeBlue>
-      </Fragment>
+      <Empty illustration="monitor-window">
+        <FormattedMessage id="misc.comingSoon" />
+      </Empty>
     );
   }
 }
@@ -27,3 +23,14 @@ AccountExport.propTypes = {
 };
 
 export default injectIntl(AccountExport);
+
+/*
+<Fragment>
+  <P first>
+    <FormattedHTMLMessage id="account.exportText" />
+  </P>
+  <ButtonLargeBlue icon="download" contentBefore>
+    <FormattedHTMLMessage id="account.export" />
+  </ButtonLargeBlue>
+</Fragment>
+*/

@@ -23,8 +23,8 @@ const menuItemsLoggedIn = [
     route: '/account'
   },
   {
-    name: 'next',
-    route: '/next'
+    name: 'feedback',
+    route: '/feedback'
   }
 ];
 
