@@ -165,7 +165,7 @@
     "notFound.figureText": "Unfortunately we couldn't find anything here. You can go back to the {home} or write us an {mail} if you think this is an error.",
     "about.title": "About us",
     "help.title": "Help page",
-    "feedback.title": "Next features",
+    "feedback.title": "Beta feedback",
     "account.title": "Your account",
     "account.userData": "Login data",
     "account.import": "Import",
@@ -217,5 +217,6 @@
     "button.update": "Update",
     "misc.comingSoon": "Not yet available in beta.",
     "account.yourEmail": "Your email address:",
-    "menu.feedback": "Feedback"
+    "menu.feedback": "Feedback",
+    "feedback.text": "Please leave your feedback in the discussion below."
 }
