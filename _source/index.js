@@ -20,8 +20,48 @@ const language = supportedLanguages.indexOf(locale) === -1 ? 'en' : locale;
 Cookies.set('lang', language, { expires: 365 });
 document.documentElement.setAttribute('lang', language);
 
-const loadingDone = (store) => {
-  addLocaleData(deLocaleData);
+let counter = 0;
+let error = false;
+let messages;
+let userData;
+let store;
+const loadingDone = () => {
+  document.title = 'booky.io';
+
+  if (error) {
+    store = configureStore({
+      ...initialState,
+      user: {
+        ...initialState.user,
+        loggedIn: false
+      },
+      intl: {
+        locale: language,
+        messages
+      }
+    });
+  } else {
+    store = configureStore({
+      ...initialState,
+      user: {
+        ...initialState.user,
+        ...userData,
+        loggedIn: true,
+        settings: {
+          ...initialState.user.settings,
+          ...userData.settings
+        }
+      },
+      intl: {
+        locale: language,
+        messages
+      }
+    });
+  }
+
+  if (language === 'de') {
+    addLocaleData(deLocaleData);
+  }
 
   render(
     <Provider store={ store }>
@@ -31,48 +71,36 @@ const loadingDone = (store) => {
   );
 };
 
+// Fetch translations
 fetch(`/_assets/i18n/${language}.json`)
   .then((response) => response.json())
-  .then((messages) => {
-    fetcher({
-      url: '/user',
-      onSuccess: (data) => {
-        document.title = 'booky.io';
-
-        const store = configureStore({
-          ...initialState,
-          user: {
-            ...initialState.user,
-            ...data,
-            loggedIn: true,
-            settings: {
-              ...initialState.user.settings,
-              ...data.settings
-            }
-          },
-          intl: {
-            locale: language,
-            messages
-          }
-        });
-        
-        loadingDone(store);
-      },
-      onError: () => {
-        const store = configureStore({
-          ...initialState,
-          user: {
-            ...initialState.user,
-            loggedIn: false
-          },
-          intl: {
-            locale: language,
-            messages
-          }
-        });
-
-        loadingDone(store);
-      }
-    });
+  .then((data) => {
+    messages = data;
+    counter++;
+  
+    if (counter === 2) {
+      loadingDone();
+    }
   })
   .catch();
+
+// Fetch user data
+fetcher({
+  url: '/user',
+  onSuccess: (data) => {
+    userData = data;
+    counter++;
+  
+    if (counter === 2) {
+      loadingDone();
+    }
+  },
+  onError: () => {
+    error = true;
+    counter++;
+  
+    if (counter === 2) {
+      loadingDone();
+    }
+  }
+});
