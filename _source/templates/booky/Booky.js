@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { Provider } from 'react-intl-redux';
 
 import Routes from '../../routes';
 import './Booky.scss';
@@ -63,12 +65,18 @@ export default class Booky extends Component {
   }
 
   render() {
+    const { store, history } = this.props;
+
     return (
-      <DragDropContext onDragStart={ this.onDragStart } onDragEnd={ this.onDragEnd }>
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
-      </DragDropContext>
+      <Provider store={ store }>
+        <DragDropContext onDragStart={ this.onDragStart } onDragEnd={ this.onDragEnd }>
+          <ConnectedRouter history={ history }>
+            <BrowserRouter>
+              <Routes />
+            </BrowserRouter>
+          </ConnectedRouter>
+        </DragDropContext>
+      </Provider>
     );
   }
 }
@@ -76,5 +84,7 @@ export default class Booky extends Component {
 Booky.propTypes = {
   dragBookmark: PropTypes.func.isRequired,
   dragCategory: PropTypes.func.isRequired,
-  dragDashboard: PropTypes.func.isRequired
+  dragDashboard: PropTypes.func.isRequired,
+  store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };

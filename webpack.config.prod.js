@@ -4,6 +4,9 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from 'copy-webpack-plugin';
 import path from 'path';
 
 const GLOBALS = {
@@ -29,6 +32,24 @@ export default {
     filename: '[name].[contenthash].js'
   },
   plugins: [
+    // Remove _public folder before build
+    new CleanWebpackPlugin(),
+
+    // Analyze the bundle sizes
+    // new BundleAnalyzerPlugin(),
+
+    // Copy translation files
+    new CopyPlugin([
+      {
+        from: '_source/_assets/i18n',
+        to: '_assets/i18n'
+      },
+      {
+        from: '_source/_assets/icons',
+        to: '_assets/icons'
+      }
+    ]),
+
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin(GLOBALS),
 
@@ -67,43 +88,6 @@ export default {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-      },
-      {
-        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/font-woff',
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/octet-stream',
-              name: '[name].[ext]'
-            }
-          }
-        ]
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,

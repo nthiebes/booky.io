@@ -142,7 +142,7 @@ body {
 .loading__spinner {
   position: absolute;
   color: $color__font--medium;
-  cursor: default;
+  pointer-events: none;
   left: calc(50vw - 18px);
   top: calc(50vh);
   z-index: 10;

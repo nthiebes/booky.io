@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 
 import { restricted } from './templates/restricted';
 import Home from './pages/home';
@@ -14,7 +15,7 @@ import Legal from './pages/legal';
 import Contact from './pages/contact';
 import NotFound from './pages/not-found';
 
-export default class Routes extends Component {
+class Routes extends Component {
   componentDidUpdate() {
     window.scrollTo(0, 0);
   }
@@ -37,3 +38,5 @@ export default class Routes extends Component {
     );
   }
 }
+
+export default hot(module)(Routes);

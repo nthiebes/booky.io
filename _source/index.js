@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import * as Cookies from 'es-cookie';
 import { addLocaleData } from 'react-intl';
-import { Provider } from 'react-intl-redux';
+import { AppContainer } from 'react-hot-loader';
 import deLocaleData from 'react-intl/locale-data/de';
 
 import Booky from './templates/booky';
 import fetcher from './_utils/fetcher';
-import configureStore from './configureStore';
+import configureStore, { history } from './configureStore';
 import initialState from './initialState';
 
 // Language detection
@@ -24,8 +24,9 @@ let counter = 0;
 let error = false;
 let messages;
 let userData;
-let store;
 const loadingDone = () => {
+  let store;
+
   document.title = 'booky.io';
 
   if (error) {
@@ -64,9 +65,9 @@ const loadingDone = () => {
   }
 
   render(
-    <Provider store={ store }>
-      <Booky />
-    </Provider>,
+    <AppContainer>
+      <Booky store={ store } history={ history } />
+    </AppContainer>,
     document.getElementById('root')
   );
 };

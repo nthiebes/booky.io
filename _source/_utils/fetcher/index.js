@@ -3,7 +3,9 @@ import { fetch } from 'whatwg-fetch';
 
 // Use native browser implementation if it supports aborting
 const abortableFetch = ('signal' in new Request('')) ? window.fetch : fetch;
-const baseUrl = process.env.NODE_ENV === 'development' ? `http://${document.location.hostname}:8001/api` : '/api';
+const baseUrl = process.env.NODE_ENV === 'development'
+  ? `http://${document.location.hostname}:8001/api`
+  : 'https://api.booky.io';
 const defaultOptions = {
   credentials: process.env.NODE_ENV === 'development' ? 'include' : 'same-origin'
 };
