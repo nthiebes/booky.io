@@ -40,7 +40,7 @@ class Bookmark extends Component {
     const { url, name, editMode, id, index, intl, newtab, favicon, darkMode } = this.props;
 
     return (
-      <Draggable index={ index } draggableId={ `bookmark-${id}` }>
+      <Draggable index={ index } draggableId={ `bookmark-${id}` } key={ `bookmark-${id}` } disableInteractiveElementBlocking>
         { (provided) => (
           <li
             className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }

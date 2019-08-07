@@ -14,7 +14,8 @@ const categories = (state = [], action) => {
     bookmarks,
     pending,
     categoryId,
-    url
+    url,
+    dragData
   } = action;
 
   switch (action.type) {
@@ -144,34 +145,34 @@ const categories = (state = [], action) => {
     }
 
     case 'DRAG_BOOKMARK': {
-      const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = action.data;
+      const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = dragData;
 
       return state.map((category) => {
-        const oldBookmarks = [...category.bookmarks];
+        const newBookmarks = [...category.bookmarks];
         
         if (category.id === sourceCategoryId) {
 
           // Same category - move bookmark
           if (category.id === destinationCategoryId) {
-            arrayMove(oldBookmarks, sourceIndex, destinationIndex);
+            arrayMove(newBookmarks, sourceIndex, destinationIndex);
           // Different category - remove bookmark
           } else {
-            oldBookmarks.splice(sourceIndex, 1);
+            newBookmarks.splice(sourceIndex, 1);
           }
 
           return {
             ...category,
-            bookmarks: [...oldBookmarks]
+            bookmarks: [...newBookmarks]
           };
         // Insert bookmark in new category
         } else if (category.id === destinationCategoryId) {
           const bookmark = state.find((item) => item.id === sourceCategoryId).bookmarks[sourceIndex];
           
-          bookmarks.splice(destinationIndex, 0, bookmark);
+          newBookmarks.splice(destinationIndex, 0, bookmark);
 
           return {
             ...category,
-            bookmarks: [...bookmarks]
+            bookmarks: [...newBookmarks]
           };
         }
 
@@ -180,7 +181,10 @@ const categories = (state = [], action) => {
     }
 
     case 'SET_CATEGORIES':
-      return action.categories;
+      return action.categories.map((category) => ({
+        ...category,
+        bookmarks: category.bookmarks ? category.bookmarks : []
+      }));
     
     case 'SET_BOOKMARKS': {
       return state.map((category) => {

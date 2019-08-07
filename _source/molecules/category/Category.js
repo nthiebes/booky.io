@@ -127,38 +127,40 @@ class Category extends Component {
             isButton
           />
         </header>
-        <ul className={ classNames('category__bookmarks', hidden && 'category__bookmarks--hidden') }>
-          <Droppable droppableId={ id.toString() } type="bookmark">
-            { (provided) => (
-              <div className="category__bookmark-drag-wrapper" ref={ provided.innerRef } { ...provided.droppableProps }>
-                { !hidden && (
-                  pending ? (
-                    <Icon icon="spinner" className="category__spinner" />
-                  ) : (
-                    bookmarks.map((bookmark, index) => (
-                      <Bookmark
-                        key={ index }
-                        index={ index }
-                        id={ bookmark.id }
-                        categoryId={ id }
-                        editMode={ editMode }
-                        name={ bookmark.name }
-                        url={ bookmark.url }
-                        favicon={ bookmark.favicon }
-                      />
-                    ))
-                  )
-                ) }
-                { !hidden && !pending && bookmarks.length === 0 && (
-                  <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
-                    <i><FormattedHTMLMessage id="bookmark.empty" /></i>
-                  </li>
-                ) }
-                { provided.placeholder }
-              </div>
-            ) }
-          </Droppable>
-        </ul>
+        <Droppable droppableId={ id.toString() } type="bookmark">
+          { (provided) => (
+            <ul
+              className={ classNames('category__bookmarks', hidden && 'category__bookmarks--hidden') }
+              ref={ provided.innerRef }
+              { ...provided.droppableProps }
+            >
+              { !hidden && (
+                pending ? (
+                  <Icon icon="spinner" className="category__spinner" />
+                ) : (
+                  bookmarks.map((bookmark, index) => (
+                    <Bookmark
+                      key={ index }
+                      index={ index }
+                      id={ bookmark.id }
+                      categoryId={ id }
+                      editMode={ editMode }
+                      name={ bookmark.name }
+                      url={ bookmark.url }
+                      favicon={ bookmark.favicon }
+                    />
+                  ))
+                )
+              ) }
+              { !hidden && !pending && bookmarks.length === 0 && (
+                <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
+                  <i><FormattedHTMLMessage id="bookmark.empty" /></i>
+                </li>
+              ) }
+              { provided.placeholder }
+            </ul>
+          ) }
+        </Droppable>
         { !hidden && (
           <ButtonSmallPrimary icon="add" className="category__button" onClick={ this.onAddClick }>
             <FormattedHTMLMessage id="bookmark.add" />

@@ -1,8 +1,8 @@
 import fetcher from '../../_utils/fetcher';
 
-export const dragBookmark = (data) => ({
+export const dragBookmark = (dragData) => ({
   type: 'DRAG_BOOKMARK',
-  data
+  dragData
 });
 
 export const setBookmarks = ({bookmarks, id}) => ({

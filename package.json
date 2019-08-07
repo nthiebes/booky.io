@@ -38,7 +38,7 @@
     "es-cookie": "1.2.0",
     "object-assign": "4.1.1",
     "react": "16.8.6",
-    "react-beautiful-dnd": "11.0.4",
+    "react-beautiful-dnd": "11.0.5",
     "react-dom": "16.8.6",
     "react-intl": "2.9.0",
     "react-intl-redux": "2.1.1",
