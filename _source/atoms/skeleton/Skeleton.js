@@ -4,11 +4,11 @@ import classNames from 'classnames';
 
 export default class Skeleton extends Component {
   render() {
-    const { className } = this.props;
+    const { className, darkMode } = this.props;
 
     return (
       // eslint-disable-next-line react/jsx-no-literals
-      <span className={ classNames('skeleton', className) }>
+      <span className={ classNames('skeleton', darkMode && 'skeleton--darkMode', className) }>
         &zwnj;
       </span>
     );
@@ -16,5 +16,6 @@ export default class Skeleton extends Component {
 }
 
 Skeleton.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  darkMode: PropTypes.bool
 };
