@@ -1,29 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import Category from '../../molecules/category';
 import Empty from '../../molecules/empty';
-import { ButtonSmallPrimary } from '../../atoms/button';
 import Icon from '../../atoms/icon';
 
 class Categories extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onAddClick = this.onAddClick.bind(this);
-  }
-
-  onAddClick() {
-    this.props.openModal('AddCategory');
-  }
-
   render() {
     const { categories, dashboardsOpen, hasSidebar, maxWidth, dashboard, className, pending } = this.props;
 
     return (
-      <div className={ classNames(
+      <ul className={ classNames(
         'categories',
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
@@ -34,13 +23,6 @@ class Categories extends Component {
           <Icon icon="spinner" className="categories__spinner" />
         ) : (
           <Fragment>
-            <ButtonSmallPrimary
-              icon="add"
-              className="categories__button"
-              onClick={ this.onAddClick }
-            >
-              <FormattedHTMLMessage id="category.add" />
-            </ButtonSmallPrimary>
             { categories.map((category) =>
               <Category key={ category.id } { ...category } />
             ) }
@@ -51,14 +33,13 @@ class Categories extends Component {
             ) }
           </Fragment>
         ) }
-      </div>
+      </ul>
     );
   }
 }
 
 Categories.propTypes = {
   categories: PropTypes.array.isRequired,
-  openModal: PropTypes.func.isRequired,
   dashboardsOpen: PropTypes.bool.isRequired,
   hasSidebar: PropTypes.bool.isRequired,
   maxWidth: PropTypes.bool.isRequired,

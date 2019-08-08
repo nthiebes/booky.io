@@ -1,10 +1,4 @@
 .categories {
-  margin-top: 4rem;
-
-  @include desktop {
-    margin-top: calc(3rem + 6px);
-  }
-
   &::after{
     content: "";
     clear: both;
@@ -24,11 +18,6 @@
     width: calc(100% - 300px);
     margin-left: 300px;
   }
-}
-
-.categories__button {
-  width: calc(94% - 12px);
-  margin: 0 calc(3% + 6px) 1rem;
 }
 
 .categories__spinner {

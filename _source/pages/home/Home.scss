@@ -143,3 +143,15 @@
 .home__not-a-member {
   text-align: center;
 }
+
+.home__add-category {
+  margin-left: calc(3% + 6px);
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+
+  @include desktop {
+    margin-left: calc(300px + 3%);
+    margin-top: calc(3rem + 6px);
+    margin-bottom: 2rem;
+  }
+}

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import Component from './Home';
 import { getDashboards } from '../../_state/dashboards/actions';
+import { openModal } from '../../_state/modal/actions';
 
 export const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn,
@@ -10,7 +11,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = {
-  getDashboards
+  getDashboards,
+  openModal
 };
 
 const HomeContainer = connect(

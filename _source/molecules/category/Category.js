@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
@@ -8,6 +8,7 @@ import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
 import { H2 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
+import Skeleton from '../../atoms/skeleton';
 
 class Category extends Component {
   static propTypes = {
@@ -21,7 +22,8 @@ class Category extends Component {
     darkMode: PropTypes.bool.isRequired,
     toggleCategory: PropTypes.func.isRequired,
     pending: PropTypes.bool,
-    getBookmarks: PropTypes.func.isRequired
+    getBookmarks: PropTypes.func.isRequired,
+    noFetch: PropTypes.bool
   };
   
   static defaultProps = {
@@ -33,9 +35,9 @@ class Category extends Component {
   };
 
   componentDidMount() {
-    const { hidden, id, getBookmarks } = this.props;
+    const { hidden, id, getBookmarks, noFetch } = this.props;
 
-    if (!hidden) {
+    if (!hidden && !noFetch) {
       getBookmarks(id);
     }
   }
@@ -92,7 +94,7 @@ class Category extends Component {
     );
 
     return (
-      <section className="category">
+      <li className="category">
         <header className={ headerClassName }>
           <Icon
             className={ classNames('category__toggle-icon', hidden && 'category__toggle-icon--rotate') }
@@ -136,7 +138,11 @@ class Category extends Component {
             >
               { !hidden && (
                 pending ? (
-                  <Icon icon="spinner" className="category__spinner" />
+                  <Fragment>
+                    <Skeleton className="category__skeleton" />
+                    <Skeleton className="category__skeleton" />
+                    <Skeleton className="category__skeleton" />
+                  </Fragment>
                 ) : (
                   bookmarks.map((bookmark, index) => (
                     <Bookmark
@@ -166,7 +172,7 @@ class Category extends Component {
             <FormattedHTMLMessage id="bookmark.add" />
           </ButtonSmallPrimary>
         ) }
-      </section>
+      </li>
     );
   }
 }

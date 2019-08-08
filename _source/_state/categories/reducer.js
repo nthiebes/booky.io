@@ -93,6 +93,7 @@ const categories = (state = [], action) => {
           color,
           position,
           hidden: false,
+          noFetch: true,
           bookmarks: []
         }
       ];

@@ -3,6 +3,7 @@
   position: relative;
   float: left;
   margin: 1rem 3%;
+  list-style: none;
 
   @include tablet {
     width: 44%;
@@ -148,4 +149,18 @@
 .category__spinner {
   position: relative;
   left: calc(50% - 16px);
+}
+
+.category__skeleton {
+  width: calc(100% - 12px);
+  margin-bottom: 20px;
+  margin-left: 6px;
+}
+
+.category__skeleton:first-child {
+  margin-top: 10px;
+}
+
+.category__skeleton:last-child {
+  margin-bottom: 10px;
 }

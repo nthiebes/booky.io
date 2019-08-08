@@ -15,10 +15,29 @@ import Testimonials from '../../molecules/testimonials';
 import Feature from '../../molecules/feature';
 
 class Home extends Component {
+  static propTypes = {
+    loggedIn: PropTypes.bool.isRequired,
+    blurContent: PropTypes.bool.isRequired,
+    hasSidebar: PropTypes.bool.isRequired,
+    getDashboards: PropTypes.func.isRequired,
+    intl: PropTypes.object.isRequired,
+    openModal: PropTypes.func.isRequired
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.onAddClick = this.onAddClick.bind(this);
+  }
+
   componentDidMount() {
     const { loggedIn, getDashboards } = this.props;
 
     loggedIn && getDashboards();
+  }
+
+  onAddClick() {
+    this.props.openModal('AddCategory');
   }
 
   render() {
@@ -27,6 +46,13 @@ class Home extends Component {
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
         { hasSidebar && <DashboardsSidebar className={ classNames(blurContent && 'page--blur') } /> }
+        <ButtonSmallPrimary
+          icon="add"
+          className="home__add-category"
+          onClick={ this.onAddClick }
+        >
+          <FormattedHTMLMessage id="category.add" />
+        </ButtonSmallPrimary>
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
@@ -148,11 +174,3 @@ class Home extends Component {
 }
 
 export default injectIntl(Home);
-
-Home.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
-  blurContent: PropTypes.bool.isRequired,
-  hasSidebar: PropTypes.bool.isRequired,
-  getDashboards: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired
-};
