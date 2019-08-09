@@ -21,7 +21,9 @@ class Home extends Component {
     hasSidebar: PropTypes.bool.isRequired,
     getDashboards: PropTypes.func.isRequired,
     intl: PropTypes.object.isRequired,
-    openModal: PropTypes.func.isRequired
+    openModal: PropTypes.func.isRequired,
+    categoriesPending: PropTypes.bool,
+    hasCategories: PropTypes.bool
   };
 
   constructor(props) {
@@ -41,18 +43,20 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedIn, blurContent, hasSidebar, intl } = this.props;
+    const { loggedIn, blurContent, hasSidebar, intl, categoriesPending, hasCategories } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
         { hasSidebar && <DashboardsSidebar className={ classNames(blurContent && 'page--blur') } /> }
-        <ButtonSmallPrimary
-          icon="add"
-          className="home__add-category"
-          onClick={ this.onAddClick }
-        >
-          <FormattedHTMLMessage id="category.add" />
-        </ButtonSmallPrimary>
+        { !categoriesPending && hasCategories && (
+          <ButtonSmallPrimary
+            icon="add"
+            className="home__add-category"
+            onClick={ this.onAddClick }
+          >
+            <FormattedHTMLMessage id="category.add" />
+          </ButtonSmallPrimary>
+        ) }
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (

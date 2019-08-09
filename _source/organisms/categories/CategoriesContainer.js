@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+
+import { openModal } from '../../_state/modal/actions';
 import Component from './Categories';
 
 export const mapStateToProps = (state) => ({
@@ -11,8 +13,13 @@ export const mapStateToProps = (state) => ({
   pending: state.dashboards.pending
 });
 
+export const mapDispatchToProps = {
+  openModal
+};
+
 const Container = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Component);
 
 export default Container;

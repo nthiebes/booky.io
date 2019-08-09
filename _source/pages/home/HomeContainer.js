@@ -7,7 +7,9 @@ import { openModal } from '../../_state/modal/actions';
 export const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn,
   blurContent: state.modal.open && state.user.settings.blurEffect,
-  hasSidebar: state.user.settings.dashboardsStyle === 'sidebar'
+  hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
+  categoriesPending: state.dashboards.pending,
+  hasCategories: state.categories.length > 0
 });
 
 export const mapDispatchToProps = {

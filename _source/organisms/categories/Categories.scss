@@ -21,5 +21,10 @@
 }
 
 .categories__spinner {
+  margin-top: calc(3rem + 6px);
   left: calc(50% - 18px);
+}
+
+.categories__button {
+  margin-top: 2rem;
 }
