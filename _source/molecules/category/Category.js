@@ -9,6 +9,7 @@ import Icon from '../../atoms/icon';
 import { H2 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Skeleton from '../../atoms/skeleton';
+import { ErrorMessage } from '../../atoms/messages';
 
 class Category extends Component {
   static propTypes = {
@@ -23,7 +24,8 @@ class Category extends Component {
     toggleCategory: PropTypes.func.isRequired,
     pending: PropTypes.bool,
     getBookmarks: PropTypes.func.isRequired,
-    noFetch: PropTypes.bool
+    noFetch: PropTypes.bool,
+    error: PropTypes.string
   };
   
   static defaultProps = {
@@ -85,7 +87,7 @@ class Category extends Component {
   }
 
   render() {
-    const { name, id, color, bookmarks, intl, darkMode, hidden, pending } = this.props;
+    const { name, id, color, bookmarks, intl, darkMode, hidden, pending, error } = this.props;
     const { editMode } = this.state;
     const headerClassName = classNames(
       'category__header',
@@ -144,21 +146,24 @@ class Category extends Component {
                     <Skeleton className="category__skeleton" />
                   </Fragment>
                 ) : (
-                  bookmarks.map((bookmark, index) => (
-                    <Bookmark
-                      key={ index }
-                      index={ index }
-                      id={ bookmark.id }
-                      categoryId={ id }
-                      editMode={ editMode }
-                      name={ bookmark.name }
-                      url={ bookmark.url }
-                      favicon={ bookmark.favicon }
-                    />
-                  ))
+                  <Fragment>
+                    { bookmarks.map((bookmark, index) => (
+                      <Bookmark
+                        key={ index }
+                        index={ index }
+                        id={ bookmark.id }
+                        categoryId={ id }
+                        editMode={ editMode }
+                        name={ bookmark.name }
+                        url={ bookmark.url }
+                        favicon={ bookmark.favicon }
+                      />
+                    )) }
+                    { error && <ErrorMessage message={ error } className="category__error" noAnimation /> }
+                  </Fragment>
                 )
               ) }
-              { !hidden && !pending && bookmarks.length === 0 && (
+              { !hidden && !pending && bookmarks.length === 0 && !error && (
                 <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
                   <i><FormattedHTMLMessage id="bookmark.empty" /></i>
                 </li>
@@ -167,7 +172,7 @@ class Category extends Component {
             </ul>
           ) }
         </Droppable>
-        { !hidden && (
+        { !hidden && !error && !pending && (
           <ButtonSmallPrimary icon="add" className="category__button" onClick={ this.onAddClick }>
             <FormattedHTMLMessage id="bookmark.add" />
           </ButtonSmallPrimary>

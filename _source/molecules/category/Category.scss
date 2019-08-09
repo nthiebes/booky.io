@@ -146,11 +146,6 @@
   color: $color__font--white;
 }
 
-.category__spinner {
-  position: relative;
-  left: calc(50% - 16px);
-}
-
 .category__skeleton {
   width: calc(100% - 12px);
   margin-bottom: 20px;
@@ -163,4 +158,8 @@
 
 .category__skeleton:last-child {
   margin-bottom: 10px;
+}
+
+.category__error {
+  padding: 10px 6px 0;
 }

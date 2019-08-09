@@ -15,7 +15,9 @@ const categories = (state = [], action) => {
     pending,
     categoryId,
     url,
-    dragData
+    dragData,
+    error,
+    favicon
   } = action;
 
   switch (action.type) {
@@ -33,7 +35,8 @@ const categories = (state = [], action) => {
               id,
               name,
               url,
-              categoryId
+              categoryId,
+              favicon
             }
           ]
         };    
@@ -196,7 +199,8 @@ const categories = (state = [], action) => {
         return {
           ...category,
           bookmarks,
-          pending: false
+          pending: false,
+          error
         };
       });
     }

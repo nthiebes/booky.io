@@ -28,11 +28,16 @@ export default class ErrorMessage extends Component {
   }
 
   render() {
-    const { message, className, hasIcon } = this.props;
+    const { message, className, hasIcon, noAnimation } = this.props;
     const { animate } = this.state;
 
     return (
-      <P className={ classNames('error', animate && 'error--animate', className && className) } role="alert">
+      <P className={ classNames(
+        'error',
+        animate && !noAnimation && 'error--animate',
+        noAnimation && 'error--show',
+        className && className
+      ) } role="alert">
         { hasIcon && <Icon icon="error" color="orange" className="error__icon" /> }
         <FormattedMessage
           id={ message }
@@ -46,7 +51,8 @@ export default class ErrorMessage extends Component {
 ErrorMessage.propTypes = {
   message: PropTypes.string,
   className: PropTypes.string,
-  hasIcon: PropTypes.bool
+  hasIcon: PropTypes.bool,
+  noAnimation: PropTypes.bool
 };
 
 

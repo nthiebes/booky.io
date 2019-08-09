@@ -5,10 +5,11 @@ export const dragBookmark = (dragData) => ({
   dragData
 });
 
-export const setBookmarks = ({bookmarks, id}) => ({
+export const setBookmarks = ({bookmarks, id, error}) => ({
   type: 'SET_BOOKMARKS',
   bookmarks,
-  id
+  id,
+  error
 });
 
 export const setBookmarksPending = ({pending, id}) => ({
@@ -28,12 +29,17 @@ export const getBookmarks = (id) => ((dispatch) => {
     onSuccess: (bookmarks) => {
       dispatch(setBookmarks({
         id,
-        bookmarks
+        bookmarks,
+        error: null
       }));
     },
-    onError: () => {
-      // console.log('error', error);
-      // onError && onError(error);
+    onError: (error) => {
+      // console.log(error);
+      dispatch(setBookmarks({
+        id,
+        bookmarks: [],
+        error
+      }));
     }
   });
 });
