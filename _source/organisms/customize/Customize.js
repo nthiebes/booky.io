@@ -30,7 +30,6 @@ class Customize extends Component {
   }
 
   handleRadioChange({ name, value }) {
-    console.log(name, value);
     this.props.updateSettings({
       [name]: value
     });
@@ -94,14 +93,14 @@ class Customize extends Component {
           onChange={ this.handleCheckboxChange }
           checked={ stickyToolbar }
         />
-        <Checkbox
+        {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
           id="maxWidth"
           name="maxWidth"
           onChange={ this.handleCheckboxChange }
           checked={ maxWidth }
-        />
-        <H2>
+        /> */}
+        {/* <H2>
           <FormattedMessage id="dashboard.title" />
         </H2>
         <Radio
@@ -127,7 +126,7 @@ class Customize extends Component {
           onChange={ this.handleRadioChange }
           value="tabs"
           defaultChecked={ dashboardsStyle === 'tabs' }
-        />
+        /> */}
         <H2>
           <FormattedMessage id="dashboard.preferences" />
         </H2>
@@ -138,13 +137,13 @@ class Customize extends Component {
           onChange={ this.handleCheckboxChange }
           checked={ newtab }
         />
-        <Checkbox
+        {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.preserveEditMode'}) }
           id="preserveEditMode"
           name="preserveEditMode"
           onChange={ this.handleCheckboxChange }
           checked={ preserveEditMode }
-        />
+        /> */}
       </Fragment>
     );
   }
