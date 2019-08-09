@@ -13,6 +13,7 @@ import Feedback from './pages/feedback';
 import Privacy from './pages/privacy';
 import Legal from './pages/legal';
 import Contact from './pages/contact';
+import Forgot from './pages/forgot';
 import NotFound from './pages/not-found';
 
 class Routes extends Component {
@@ -33,6 +34,7 @@ class Routes extends Component {
         <Route path="/privacy" component={ Privacy } />
         <Route path="/legal" component={ Legal } />
         <Route path="/contact" component={ Contact } />
+        <Route path="/forgot" component={ Forgot } />
         <Route path="*" component={ NotFound } />
       </Switch>
     );
