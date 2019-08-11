@@ -53,6 +53,10 @@ const loadingDone = () => {
           ...userData.settings
         }
       },
+      dashboards: {
+        ...initialState.dashboards,
+        active: userData.settings.defaultDashboardId
+      },
       intl: {
         locale: language,
         messages

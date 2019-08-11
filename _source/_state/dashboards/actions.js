@@ -65,7 +65,6 @@ export const getDashboards = () => ((dispatch) => {
     onSuccess: ({ dashboards, activeCategories }) => {
       dispatch(updateDashboardsData({
         items: dashboards,
-        active: dashboards[0].id,
         pending: false
       }));
       dispatch(setCategories(activeCategories));
