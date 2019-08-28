@@ -92,9 +92,9 @@ class Toolbar extends Component {
         <Icon
           icon="tree"
           title={ intl.formatMessage({ id: 'structure.title' }) }
-          onClick={ this.onIconClick }
-          isButton
         />
+        {/** onClick={ this.onIconClick }
+          isButton */}
         { dashboardsStyle === 'sidebar' && (
           <H3 className="toolbar__headline">{ dashboard.name || <Skeleton /> }</H3>
         ) }
