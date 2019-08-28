@@ -57,16 +57,27 @@ class Footer extends Component {
           <a
             className="footer__social-item"
             target="_blank"
+            rel="noopener noreferrer"
             href="https://twitter.com/intent/tweet?text=booky.io%20%7C%20Online%20Bookmark%20manager.%20Your%20bookmarks%20always%20available."
           >
             <Icon className="footer__icon" icon="twitter" color="light" />
             <label className="footer__label">{ 'Twitter' }</label>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io">
+          <a
+            className="footer__social-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io"
+          >
             <Icon className="footer__icon" icon="xing" color="light" />
             <label className="footer__label">{ 'XING' }</label>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io">
+          <a
+            className="footer__social-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io"
+          >
             <Icon className="footer__icon" icon="facebook" color="light" />
             <label className="footer__label">{ 'Facebook' }</label>
           </a>

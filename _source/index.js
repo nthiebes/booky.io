@@ -20,6 +20,9 @@ const language = supportedLanguages.indexOf(locale) === -1 ? 'en' : locale;
 Cookies.set('lang', language, { expires: 365 });
 document.documentElement.setAttribute('lang', language);
 
+// Activate the :active pseudo class on mobile
+document.addEventListener('touchstart', () => { /* Do nothing */ }, {passive: true});
+
 let counter = 0;
 let error = false;
 let messages;
