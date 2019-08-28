@@ -8,7 +8,7 @@ import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
 import { H2, Display1, Display2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-import { ButtonLargeLight, ButtonLargeBlue, ButtonSmallPrimary } from '../../atoms/button';
+import { ButtonLargeLight, ButtonLargeBlue, ButtonLargePrimary } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
@@ -100,29 +100,29 @@ class Home extends Component {
         <Section color="light" className="home__bookmarklet">
           <div>
             <img
-              width="50"
-              height="50"
+              width="75"
+              height="75"
               alt="Chrome browser extension"
               className="home__bookmarklet-icon"
               src="../../_assets/browsers/chrome.svg"
             />
             <img
-              width="50"
-              height="50"
+              width="75"
+              height="75"
               alt="Firefox browser extension"
               className="home__bookmarklet-icon"
               src="../../_assets/browsers/firefox.svg"
             />
             <img
-              width="50"
-              height="50"
+              width="75"
+              height="75"
               alt="Opera browser extension"
               className="home__bookmarklet-icon"
               src="../../_assets/browsers/opera.svg"
             />
             <img
-              width="50"
-              height="50"
+              width="75"
+              height="75"
               alt="Edge browser extension"
               className="home__bookmarklet-icon"
               src="../../_assets/browsers/edge.svg"
@@ -131,9 +131,9 @@ class Home extends Component {
           <H2 noMargin centered className="home__bookmarklet-headline">
             <FormattedMessage id="home.extensionText" />
           </H2>
-          <ButtonSmallPrimary icon="extension" to="/about" contentBefore>
+          <ButtonLargePrimary icon="extension" to="/about" contentBefore>
             <FormattedHTMLMessage id="home.extensionButton" />
-          </ButtonSmallPrimary>
+          </ButtonLargePrimary>
         </Section>
         <Section>
           <Feature
@@ -151,7 +151,7 @@ class Home extends Component {
           />
         </Section>
         <Section color="light" className="home__not-a-member">
-          { 'muh' }
+          { 'Placeholder' }
         </Section>
         <Section className="home__not-a-member">
           <Illustration
