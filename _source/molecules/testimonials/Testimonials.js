@@ -14,23 +14,23 @@ class Testimonials extends Component {
         </Display2>
         <div className="testimonials">
           <Testimonial
-            name="Siddharth"
-            twitter="Samira ♥️ Stein"
-            url="https://twitter.com/_gscheid"
+            name="Placeholder"
+            twitter="twittername"
+            url="https://twitter.com/booky_io"
             image="_assets/_gscheid.jpg"
             text="My portal to the Web."
           />
           <Testimonial
-            name="Clausailgoa"
+            name="Placeholder"
             twitter="twittername"
-            url="https://twitter.com/_gscheid"
+            url="https://twitter.com/booky_io"
             image="_assets/_gscheid.jpg"
             text="Thank you for this incredible project."
           />
           <Testimonial
-            name="Aniket Mohite"
-            twitter="_gscheid"
-            url="https://twitter.com/_gscheid"
+            name="Placeholder"
+            twitter="twittername"
+            url="https://twitter.com/booky_io"
             image="_assets/_gscheid.jpg"
             text="This is so amazing, just what I needed."
           />
