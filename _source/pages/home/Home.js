@@ -8,7 +8,7 @@ import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
 import { H2, Display1, Display2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-import { ButtonLargeLight, ButtonLargeBlue, ButtonLargePrimary } from '../../atoms/button';
+import { ButtonLargeLight, ButtonLargeBlue, ButtonLargePrimary, ButtonSmallPrimary } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
