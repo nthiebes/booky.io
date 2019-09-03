@@ -36,7 +36,9 @@ export default {
     new CleanWebpackPlugin(),
 
     // Analyze the bundle sizes
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false
+    }),
 
     // Copy translation files
     new CopyPlugin([
