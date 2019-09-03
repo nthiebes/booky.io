@@ -79,7 +79,7 @@
     "modal.deleteAll": "Delete all",
     "modal.moveTo": "Move to",
     "modal.tabAnchor": "You are in a window, press tab to focus the first element",
-    "footer.people": "Booky members.",
+    "footer.people": "booky members.",
     "footer.bookmarks": "Bookmarks saved.",
     "footer.categories": "Categories created.",
     "footer.dashboards": "Dashboards in use.",
@@ -218,5 +218,6 @@
     "misc.comingSoon": "Not yet available in beta.",
     "account.yourEmail": "Your email address:",
     "menu.feedback": "Feedback",
-    "feedback.text": "Please leave your feedback in the discussion below."
+    "feedback.text": "Please leave your feedback in the discussion below.",
+    "legal.contactForm": "Contact form"
 }
