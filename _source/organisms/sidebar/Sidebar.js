@@ -118,6 +118,24 @@ class Sidebar extends Component {
                   </label>
                 </Link>
               </li>
+              <li>
+                <Link
+                  className={ classNames(
+                    'sidebar__item',
+                    pathname === '/feedback' && 'sidebar__item--active',
+                    darkMode && 'sidebar__item--dark-mode'
+                  ) }
+                  to="/feedback"
+                  onClick={ closeSidebar }
+                  tabIndex={ open ? '0' : '-1' }
+                  noUnderline
+                >
+                  <Icon icon="feedback" />
+                  <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                    <FormattedMessage id="menu.feedback" />
+                  </label>
+                </Link>
+              </li>
               { !loggedIn && (
                 <Fragment>
                   <li>
@@ -176,24 +194,6 @@ class Sidebar extends Component {
                       <Icon icon="account"/>
                       <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                         <FormattedMessage id="menu.account" />
-                      </label>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={ classNames(
-                        'sidebar__item',
-                        pathname === '/feedback' && 'sidebar__item--active',
-                        darkMode && 'sidebar__item--dark-mode'
-                      ) }
-                      to="/feedback"
-                      onClick={ closeSidebar }
-                      tabIndex={ open ? '0' : '-1' }
-                      noUnderline
-                    >
-                      <Icon icon="feedback" />
-                      <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
-                        <FormattedMessage id="menu.feedback" />
                       </label>
                     </Link>
                   </li>

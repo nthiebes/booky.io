@@ -14,6 +14,10 @@ const menuItemsLoggedOut = [
   {
     name: 'help',
     route: '/help'
+  },
+  {
+    name: 'feedback',
+    route: '/feedback'
   }
 ];
 const menuItemsLoggedIn = [
@@ -21,10 +25,6 @@ const menuItemsLoggedIn = [
   {
     name: 'account',
     route: '/account'
-  },
-  {
-    name: 'feedback',
-    route: '/feedback'
   }
 ];
 
