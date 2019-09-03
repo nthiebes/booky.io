@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
 import { restricted } from './templates/restricted';
-// import Home from './pages/home';
+import Home from './pages/home';
 import About from './pages/about';
 import Help from './pages/help';
 import Account from './pages/account';
@@ -35,7 +35,7 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={ Login } />
+        <Route exact path="/" component={ Home } />
         <Route path="/about" component={ About }/>
         <Route path="/help" component={ Help } />
         <Route path="/account" component={ restricted(Account) } />
