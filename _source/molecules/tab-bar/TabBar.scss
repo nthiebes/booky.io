@@ -63,8 +63,22 @@
   }
 }
 
+.tab-bar__tab--dark-mode {
+  color: $color__font--light;
+
+  &:active,
+  &:focus {
+    color: $color__font--white;
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color__font--white;
+    }
+  }
+}
+
 .tab-bar__tab--active {
-  cursor: default;
   color: $color--primary;
   border-bottom-color: $color--primary;
 
@@ -75,11 +89,22 @@
 
   @include desktop {
     &:hover {
-      color: $color--primary;
+      color: $color__font--dark;
+      border-bottom-color: $color__font--dark;
+    }
+  }
+
+  &.tab-bar__tab--dark-mode {
+    &:focus {
+      color: $color__font--white;
+      border-bottom-color: $color__font--white;
     }
 
-    &:hover:focus {
-      color: $color__font--dark;
+    @include desktop {
+      &:hover {
+        color: $color__font--white;
+        border-bottom-color: $color__font--white;
+      }
     }
   }
 }

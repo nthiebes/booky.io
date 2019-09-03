@@ -21,7 +21,8 @@ class Header extends Component {
     this.onAddBookmarkClick = this.onAddBookmarkClick.bind(this);
     this.onLogoutClick = this.onLogoutClick.bind(this);
     this.state = {
-      bookmarkModalOpen: false
+      bookmarkModalOpen: false,
+      logoutPending: false
     };
   }
 
@@ -34,7 +35,7 @@ class Header extends Component {
   onMenuClick(event) {
     event.stopPropagation();
 
-    this.props.onMenuClick();
+    this.props.toggleSidebar();
   }
 
   onCustomizeClick() {
@@ -48,12 +49,22 @@ class Header extends Component {
   }
 
   onLogoutClick() {
-    this.props.history.replace({ pathname: '/logout' });
+    const { history, logout } = this.props;
+
+    this.setState({
+      logoutPending: true
+    });
+
+    logout({
+      onSuccess: () => {
+        history.push('/');
+      }
+    });
   }
 
   render() {
     const {
-      onHeaderClick,
+      closeSidebar,
       loggedIn,
       color,
       intl,
@@ -62,18 +73,26 @@ class Header extends Component {
       className,
       sticky
     } = this.props;
+    const { logoutPending } = this.state;
 
     return (
       <header
         className={ classNames(
-          `header header--color-${color}`,
+          `header header--color${color}`,
           sidebarOpen && 'header--overlay',
           sticky && 'header--sticky',
           className && className
         ) }
-        onClick={ onHeaderClick }
+        onClick={ closeSidebar }
+        tabIndex="-1"
       >
-        <div className="header__wrapper">
+        <div className={ classNames('header__wrapper', loggedIn && 'header__wrapper--full-width') }>
+          <Link className="header__skip-link" href="#main">
+            <FormattedHTMLMessage id="header.jumpToMain" />
+          </Link>
+          <Link className="header__skip-link" href="#language">
+            <FormattedHTMLMessage id="header.jumpToLanguage" />
+          </Link>
           { loggedIn && home && (
             <Fragment>
               <Icon
@@ -81,8 +100,8 @@ class Header extends Component {
                 icon="add"
                 color="light"
                 onClick={ this.onAddBookmarkClick }
-                tabIndex="0"
                 ignoreDarkMode
+                isButton
               />
               <Search className="booky--hide-desktop" />
             </Fragment>
@@ -92,7 +111,7 @@ class Header extends Component {
             title={ intl.formatMessage({ id: 'menu.home' }) }
             className={ classNames('header__logo', loggedIn && home && 'booky--hide-mobile-tablet') }
           >
-            <Logo />
+            <Logo src="../../_assets/logo_l.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } />
           </Link>
           <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (
@@ -103,17 +122,18 @@ class Header extends Component {
                 color="light"
                 onClick={ this.onCustomizeClick }
                 title={ intl.formatMessage({ id: 'menu.customize' }) }
-                tabIndex="0"
                 ignoreDarkMode
+                isButton
               />
               <Icon
                 className="booky--hide-mobile-tablet"
-                icon="logout"
+                icon={ logoutPending ? 'spinner' : 'logout' }
                 color="light"
                 onClick={ this.onLogoutClick }
                 title={ intl.formatMessage({ id: 'menu.logout' }) }
-                tabIndex="0"
                 ignoreDarkMode
+                pending={ logoutPending }
+                isButton
               />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"
@@ -146,10 +166,10 @@ class Header extends Component {
 
 
 Header.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.number.isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  onHeaderClick: PropTypes.func.isRequired,
-  onMenuClick: PropTypes.func.isRequired,
+  closeSidebar: PropTypes.func.isRequired,
+  toggleSidebar: PropTypes.func.isRequired,
   sticky: PropTypes.bool.isRequired,
   openModal: PropTypes.func.isRequired,
   dashboards: PropTypes.bool,
@@ -158,7 +178,8 @@ Header.propTypes = {
   sidebarOpen: PropTypes.bool,
   home: PropTypes.bool,
   className: PropTypes.string,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 export default injectIntl(withRouter(Header));

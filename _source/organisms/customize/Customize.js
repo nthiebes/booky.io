@@ -18,19 +18,19 @@ class Customize extends Component {
   }
 
   handleColorChange(value) {
-    this.props.updateUser({
-      navColor: value
+    this.props.updateSettings({
+      navigationBarColor: parseInt(value.replace(/color/g, ''), 10)
     });
   }
 
   handleCheckboxChange({ name, checked }) {
-    this.props.updateUser({
+    this.props.updateSettings({
       [name]: checked
     });
   }
 
   handleRadioChange({ name, value }) {
-    this.props.updateUser({
+    this.props.updateSettings({
       [name]: value
     });
   }
@@ -42,7 +42,7 @@ class Customize extends Component {
       newtab,
       maxWidth,
       preserveEditMode,
-      dashboards,
+      dashboardsStyle,
       blurEffect,
       stickyHeader,
       stickyToolbar,
@@ -61,7 +61,7 @@ class Customize extends Component {
           <FormattedMessage id="customize.navColor" />
         </Label>
         <ColorPicker
-          value={ navColor }
+          value={ navColor.toString() }
           onChange={ this.handleColorChange }
           className="customize__color-picker"
         />
@@ -93,40 +93,40 @@ class Customize extends Component {
           onChange={ this.handleCheckboxChange }
           checked={ stickyToolbar }
         />
-        <H2>
-          <FormattedMessage id="dashboard.title" />
-        </H2>
-        <Radio
-          label={ intl.formatMessage({ id: 'customize.sidebar'}) }
-          id="dashboards-sidebar"
-          name="dashboards"
-          onChange={ this.handleRadioChange }
-          value="sidebar"
-          defaultChecked={ dashboards === 'sidebar' }
-        />
-        <Radio
-          label={ intl.formatMessage({ id: 'customize.dropdown'}) }
-          id="dashboards-dropdown"
-          name="dashboards"
-          onChange={ this.handleRadioChange }
-          value="dropdown"
-          defaultChecked={ dashboards === 'dropdown' }
-        />
-        <Radio
-          label={ intl.formatMessage({ id: 'customize.tabs'}) }
-          id="dashboards-tabs"
-          name="dashboards"
-          onChange={ this.handleRadioChange }
-          value="tabs"
-          defaultChecked={ dashboards === 'tabs' }
-        />
-        <Checkbox
+        {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
           id="maxWidth"
           name="maxWidth"
           onChange={ this.handleCheckboxChange }
           checked={ maxWidth }
+        /> */}
+        {/* <H2>
+          <FormattedMessage id="dashboard.title" />
+        </H2>
+        <Radio
+          label={ intl.formatMessage({ id: 'customize.sidebar'}) }
+          id="dashboards-sidebar"
+          name="dashboardsStyle"
+          onChange={ this.handleRadioChange }
+          value="sidebar"
+          defaultChecked={ dashboardsStyle === 'sidebar' }
         />
+        <Radio
+          label={ intl.formatMessage({ id: 'customize.dropdown'}) }
+          id="dashboards-dropdown"
+          name="dashboardsStyle"
+          onChange={ this.handleRadioChange }
+          value="dropdown"
+          defaultChecked={ dashboardsStyle === 'dropdown' }
+        />
+        <Radio
+          label={ intl.formatMessage({ id: 'customize.tabs'}) }
+          id="dashboards-tabs"
+          name="dashboardsStyle"
+          onChange={ this.handleRadioChange }
+          value="tabs"
+          defaultChecked={ dashboardsStyle === 'tabs' }
+        /> */}
         <H2>
           <FormattedMessage id="dashboard.preferences" />
         </H2>
@@ -137,26 +137,26 @@ class Customize extends Component {
           onChange={ this.handleCheckboxChange }
           checked={ newtab }
         />
-        <Checkbox
+        {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.preserveEditMode'}) }
           id="preserveEditMode"
           name="preserveEditMode"
           onChange={ this.handleCheckboxChange }
           checked={ preserveEditMode }
-        />
+        /> */}
       </Fragment>
     );
   }
 }
 
 Customize.propTypes = {
-  updateUser: PropTypes.func.isRequired,
+  updateSettings: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
-  navColor: PropTypes.string.isRequired,
+  navColor: PropTypes.number.isRequired,
   newtab: PropTypes.bool.isRequired,
   maxWidth: PropTypes.bool.isRequired,
   preserveEditMode: PropTypes.bool.isRequired,
-  dashboards: PropTypes.string.isRequired,
+  dashboardsStyle: PropTypes.string.isRequired,
   blurEffect: PropTypes.bool.isRequired,
   stickyHeader: PropTypes.bool.isRequired,
   stickyToolbar: PropTypes.bool.isRequired,

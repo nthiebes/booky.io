@@ -6,10 +6,22 @@ import classNames from 'classnames';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Logo from '../../atoms/logo';
+import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.scrollToTop = this.scrollToTop.bind(this);
+  }
+  
+  scrollToTop() {
+    window.scrollTo(0, 0);
+    document.getElementsByTagName('header')[0].focus();
+  }
+
   render() {
     const { intl, dashboardsOpen, hasSidebar, className, home, loggedIn, toolbarSticky, darkMode } = this.props;
 
@@ -24,19 +36,19 @@ class Footer extends Component {
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{ '19.512' }</b>
+                <b>{ '27.349' }</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '7.557.503' }</b>
+                <b>{ '10.504.196' }</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '636.803' }</b>
+                <b>{ '893.091' }</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '35.209' }</b>
+                <b>{ '49.697' }</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
@@ -46,53 +58,66 @@ class Footer extends Component {
           <a
             className="footer__social-item"
             target="_blank"
+            rel="noopener noreferrer"
             href="https://twitter.com/intent/tweet?text=booky.io%20%7C%20Online%20Bookmark%20manager.%20Your%20bookmarks%20always%20available."
           >
             <Icon className="footer__icon" icon="twitter" color="light" />
             <label className="footer__label">{ 'Twitter' }</label>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io">
+          <a
+            className="footer__social-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io"
+          >
             <Icon className="footer__icon" icon="xing" color="light" />
             <label className="footer__label">{ 'XING' }</label>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io">
+          <a
+            className="footer__social-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io"
+          >
             <Icon className="footer__icon" icon="facebook" color="light" />
             <label className="footer__label">{ 'Facebook' }</label>
           </a>
         </section>
         <section className="footer__content">
-          <nav className="footer__menu">
-            <Link className="footer__menu-item" color="light" to="/about">
-              <FormattedMessage id="menu.about" />
-            </Link>
-            <Link className="footer__menu-item" color="light" to="/help">
-              <FormattedMessage id="menu.help" />
-            </Link>
-            <Link className="footer__menu-item" color="light" to="/contact">
-              <FormattedMessage id="menu.contact" />
-            </Link>
-            <Link className="footer__menu-item" color="light" to="/privacy">
-              <FormattedMessage id="menu.privacy" />
-            </Link>
-            <Link className="footer__menu-item" color="light" to="/legal">
-              <FormattedMessage id="menu.legal" />
-            </Link>
-          </nav>
           <div className="footer__wrapper">
-            <LanguageSwitcher className="footer__language" />
-            <ButtonSmallLight className="footer__button" onClick={ () => window.scrollTo(0, 0) }>
+            <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
+              <Logo alt={ intl.formatMessage({ id: 'misc.logo' }) } />
+            </Link>
+            <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
               <FormattedHTMLMessage id="footer.scroll" />
             </ButtonSmallLight>
           </div>
-          <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
-            <Logo />
-          </Link>
-          <div className="footer__copy">
-            { '© 2014-2018' }
+          <div className="footer__languages">
+            <LanguageSwitcher />
+          </div>
+          <nav className="footer__menu">
+            <Link className="footer__menu-item" color="light" to="/about" noUnderline>
+              <FormattedMessage id="menu.about" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/help" noUnderline>
+              <FormattedMessage id="menu.help" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/contact" noUnderline>
+              <FormattedMessage id="menu.contact" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/privacy" noUnderline>
+              <FormattedMessage id="menu.privacy" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/legal" noUnderline>
+              <FormattedMessage id="menu.legal" />
+            </Link>
+          </nav>
+          <P className="footer__copy" noPadding>
+            { `© 2014-${new Date().getFullYear()}` }
             <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
             { '| ' }
             <FormattedMessage id="footer.copy" />
-          </div>
+          </P>
         </section>
       </footer>
     );

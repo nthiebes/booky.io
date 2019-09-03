@@ -29,7 +29,8 @@ export default class Link extends Component {
       target,
       tabIndex,
       isNavLink,
-      activeClassName
+      activeClassName,
+      noUnderline
     } = this.props;
     const LinkComponent = isNavLink ? NavLink : RegularLink;
     const CustomTag = href ? 'a' : LinkComponent;
@@ -46,12 +47,14 @@ export default class Link extends Component {
         title={ title }
         onClick={ onClick }
         target={ target }
+        rel={ target === '_blank' ? 'noopener noreferrer' : null }
         tabIndex={ tabIndex }
         onKeyDown={ this.handleKeyDown }
         className={ classNames(
           'link',
           color && `link--${color}`,
           darkMode && 'link--dark-mode',
+          noUnderline && 'link--noUnderline',
           className && className
         ) }
         { ...navLinkProps }
@@ -78,7 +81,8 @@ Link.propTypes = {
   darkMode: PropTypes.bool,
   tabIndex: PropTypes.string,
   isNavLink: PropTypes.bool,
-  activeClassName: PropTypes.string
+  activeClassName: PropTypes.string,
+  noUnderline: PropTypes.bool
 };
 
 Link.defaultProps = {

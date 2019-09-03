@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
-import scrolling from '../../_utils/scrolling';
+import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
+import Skeleton from '../../atoms/skeleton';
 import Search from '../../molecules/search';
 import { TabBar, Tab } from '../../molecules/tab-bar';
 
@@ -25,7 +26,7 @@ class Toolbar extends Component {
 
   componentDidMount() {
     scrolling.registerAction('toolbar', {
-      offset: 100,
+      offset: 90,
       scope: this,
       isAbove: () => {
         this.isAboveActions();
@@ -76,20 +77,28 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { dashboard, intl, className, dashboardsPosition, dashboards, changeDashboard, darkMode } = this.props;
+    const {
+      dashboard,
+      intl,
+      className,
+      dashboardsStyle,
+      dashboards,
+      changeDashboard,
+      darkMode
+    } = this.props;
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className && className) }>
         <Icon
           icon="tree"
           title={ intl.formatMessage({ id: 'structure.title' }) }
-          onClick={ this.onIconClick }
-          tabIndex="0"
         />
-        { dashboardsPosition === 'sidebar' && (
-          <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
+        {/** onClick={ this.onIconClick }
+          isButton */}
+        { dashboardsStyle === 'sidebar' && (
+          <H3 className="toolbar__headline">{ dashboard.name || <Skeleton /> }</H3>
         ) }
-        { dashboardsPosition === 'tabs' && (
+        { dashboardsStyle === 'tabs' && (
           <TabBar className="toolbar__tabs">
             { dashboards.items.map((tab, index) => (
               <Tab
@@ -120,7 +129,7 @@ Toolbar.propTypes = {
   openModal: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
   className: PropTypes.string,
-  dashboardsPosition: PropTypes.string.isRequired,
+  dashboardsStyle: PropTypes.string.isRequired,
   changeDashboard: PropTypes.func.isRequired,
   darkMode: PropTypes.bool.isRequired
 };

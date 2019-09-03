@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import 'whatwg-fetch';
 
-import Icon from '../../atoms/icon';
-import Select from '../../atoms/select';
+import { ButtonTextLight } from '../../atoms/button';
 
 class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
 
-    this.onChange = this.onChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  onChange(locale) {
+  handleClick(event) {
     const { updateIntl } = this.props;
+    const locale = event.currentTarget.value;
 
     fetch(`/_assets/i18n/${locale}.json`)
       .then((response) => response.json())
@@ -24,36 +24,39 @@ class LanguageSwitcher extends Component {
           messages
         });
       })
-      .catch((error) => {
-        console.log('error', error);
+      .catch(() => {
+        // console.log('error', error);
       });
   }
 
   render() {
-    const { className, locale } = this.props;
+    const { locale } = this.props;
 
     return (
-      <div className={ classNames('language-switcher', className && className) }>
-        <Icon icon="language" color="light" className="language-switcher__icon" />
-        <Select
-          compact
-          selected={ locale }
-          onChange={ this.onChange }
-          options={ [{
-            text: 'English',
-            value: 'en'
-          }, {
-            text: 'Deutsch',
-            value: 'de'
-          }] }
-        />
-      </div>
+      <Fragment>
+        <ButtonTextLight
+          icon="usa"
+          className={ classNames('language-switcher__item', locale === 'en' && 'language-switcher__item--active') }
+          value="en"
+          onClick={ this.handleClick }
+          id="language"
+        >
+          { 'English' }
+        </ButtonTextLight>
+        <ButtonTextLight
+          icon="germany"
+          className={ classNames('language-switcher__item', locale === 'de' && 'language-switcher__item--active') }
+          value="de"
+          onClick={ this.handleClick }
+        >
+          { 'Deutsch' }
+        </ButtonTextLight>
+      </Fragment>
     );
   }
 }
 
 LanguageSwitcher.propTypes = {
-  className: PropTypes.string,
   updateIntl: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired
 };

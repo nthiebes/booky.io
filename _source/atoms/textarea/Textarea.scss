@@ -15,12 +15,13 @@
   color: $color__font--dark;
   font-family: $font__family--text;
   font-size: 1rem;
-  line-height: 1.556rem;
+  line-height: 1.5;
   padding: 10px;
   transition: background-color 0.3s, border-color 0.3s linear, box-shadow 0.3s linear;
   min-width: 100%;
   max-width: 100%;
   min-height: 3rem;
+  margin-bottom: 0.5rem;
 
   &:disabled {
     pointer-events: none;

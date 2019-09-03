@@ -6,30 +6,30 @@ import {
   UPDATE_OFFSET,
   DRAG_DASHBOARD,
   DRAG_CATEGORY,
-  TOGGLE_DASHBOARD_OPEN
+  TOGGLE_DASHBOARD_OPEN,
+  UPDATE_DASHBOARDS_DATA
 } from './actions';
 import { arrayMove } from '../../_utils/array';
 
+// eslint-disable-next-line max-statements
 const dashboards = (state = {}, action) => {
+  const { name, id, newId, type } = action;
 
-  switch (action.type) {
+  switch (type) {
     case ADD_DASHBOARD:
+      
       return {
         ...state,
         items: [
           ...state.items,
           {
-            id: 123456789,
-            name: action.payload.name,
-            categories: []
+            id,
+            name
           }
-        ],
-        active: state.items.length ? state.active : 123456789
+        ]
       };
 
     case EDIT_DASHBOARD: {
-      const { name, id } = action.payload;
-
       return {
         ...state,
         items: state.items.map((dashboard) => {
@@ -46,7 +46,6 @@ const dashboards = (state = {}, action) => {
     }
 
     case DELETE_DASHBOARD: {
-      const { id, newId } = action.payload;
       const newDashboards = state.items.slice();
       let activeId = state.active;
 
@@ -67,7 +66,8 @@ const dashboards = (state = {}, action) => {
     case CHANGE_DASHBOARD:
       return {
         ...state,
-        active: action.id
+        active: action.id,
+        pending: true
       };
 
     case UPDATE_OFFSET:
@@ -131,6 +131,12 @@ const dashboards = (state = {}, action) => {
       return {
         ...state,
         open: !state.open
+      };
+
+    case UPDATE_DASHBOARDS_DATA:
+      return {
+        ...state,
+        ...action.data
       };
 
     default:

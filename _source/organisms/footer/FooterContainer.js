@@ -3,11 +3,11 @@ import Component from './Footer';
 
 export const mapStateToProps = function(state) {
   return {
-    dashboardsOpen: state.user.pinned,
-    hasSidebar: state.user.dashboards === 'sidebar',
+    dashboardsOpen: state.user.settings.pinned,
+    hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
     loggedIn: state.user.loggedIn,
-    toolbarSticky: state.user.stickyToolbar,
-    darkMode: state.user.darkMode
+    toolbarSticky: state.user.settings.stickyToolbar,
+    darkMode: state.user.settings.darkMode
   };
 };
 

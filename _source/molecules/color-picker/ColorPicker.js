@@ -13,14 +13,14 @@ export default class ColorPicker extends Component {
     this.colors = [];
   }
 
-  onChange(key) {
-    this.props.onChange(key);
+  onChange(value) {
+    this.props.onChange(`color${value}`);
   }
 
   getColors() {
-    const count = 8,
+    const count = 9,
       colors = [];
-    let index = 0;
+    let index = 1;
 
     for (index; index <= count; index++) {
       colors.push({'key': index.toString()});
@@ -31,7 +31,7 @@ export default class ColorPicker extends Component {
   render() {
     const { className, value, darkMode} = this.props;
     const colors = this.getColors().map(((color, index) => (
-      <Color key={ index } color={ color } value={ value } darkMode={ darkMode } onChange={ this.onChange } />
+      <Color key={ index } color={ color } value={ value.replace(/color/g, '') } darkMode={ darkMode } onChange={ this.onChange } />
     )));
 
     return (
@@ -50,5 +50,5 @@ ColorPicker.propTypes = {
 };
 
 ColorPicker.defaultProps = {
-  value: '0'
+  value: 'color0'
 };

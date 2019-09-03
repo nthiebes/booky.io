@@ -53,7 +53,6 @@ class AddBookmark extends Component {
           maxLength="2000"
           label={ intl.formatMessage({ id: 'modal.url' }) }
           disabled={ pending }
-          autoFocus
         />
         <Input
           id="bookmark-name"

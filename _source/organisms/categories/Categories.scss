@@ -1,10 +1,4 @@
 .categories {
-  margin-top: 4rem;
-
-  @include desktop {
-    margin-top: calc(3rem + 6px);
-  }
-
   &::after{
     content: "";
     clear: both;
@@ -14,8 +8,8 @@
 
 .categories--sidebar {
   @include desktop {
-    width: calc(100% - 36px);
-    margin-left: 36px;
+    width: calc(100% - 50px);
+    margin-left: 50px;
   }
 }
 
@@ -26,7 +20,11 @@
   }
 }
 
+.categories__spinner {
+  margin-top: calc(3rem + 6px);
+  left: calc(50% - 18px);
+}
+
 .categories__button {
-  width: calc(94% - 12px);
-  margin: 0 calc(3% + 6px) 1rem;
+  margin-top: 2rem;
 }

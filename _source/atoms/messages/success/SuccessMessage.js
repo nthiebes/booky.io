@@ -31,7 +31,7 @@ export default class SuccessMessage extends Component {
     const { animate } = this.state;
 
     return (
-      <P className={ classNames('success', animate && 'success--animate', className && className) }>
+      <P className={ classNames('success', animate && 'success--animate', className && className) } role="alert">
         { hasIcon && <Icon icon="check" color="green" className="success__icon" /> }
         <FormattedMessage id={ message } />
       </P>

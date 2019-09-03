@@ -9,69 +9,40 @@ import Modal from '../../organisms/modal';
 import Toolbar from '../../organisms/toolbar';
 
 export default class Page extends Component {
-  constructor(props) {
-    super(props);
-
-    this.show = this.show.bind(this);
-    this.state = {
-      show: false
-    };
-  }
-
-  componentDidMount() {
-    window.setTimeout(this.show, 100);
-  }
-
-  show() {
-    this.setState({
-      show: true
-    });
-  }
-
   render() {
-    const { children, className, dashboards, home, toolbar, blurContent, headerSticky, darkMode } = this.props;
-    const { show } = this.state;
+    const { children, className, dashboards, home, toolbar, blurContent, stickyHeader, darkMode } = this.props;
 
     return (
       <Fragment>
         <Header
           className={ classNames(
-            blurContent && 'page--blur',
-            'page--hidden',
-            show && 'page--show'
+            blurContent && 'page--blur'
           ) }
           home={ home }
         />
         { toolbar && (
           <Toolbar className={ classNames(
-            blurContent && 'page--blur',
-            'page--hidden',
-            show && 'page--show'
+            blurContent && 'page--blur'
           ) } />
         ) }
         <Sidebar
           className={ classNames(
-            blurContent && 'page--blur',
-            'page--hidden',
-            show && 'page--show'
+            blurContent && 'page--blur'
           ) }
           dashboards={ dashboards }
         />
-        <main className={ classNames(
+        <main id="main" className={ classNames(
           'page',
-          'page--hidden',
-          show && 'page--show',
-          headerSticky && 'page--sticky-header',
+          stickyHeader && 'page--sticky-header',
           darkMode && 'page--dark',
+          blurContent && 'page--blur',
           className && className
         ) }>
           { children }
         </main>
         <Footer
           className={ classNames(
-            blurContent && 'page--blur',
-            'page--hidden',
-            show && 'page--show'
+            blurContent && 'page--blur'
           ) }
           home={ home }
         />
@@ -92,6 +63,6 @@ Page.propTypes = {
   dashboards: PropTypes.bool,
   home: PropTypes.bool,
   blurContent: PropTypes.bool,
-  headerSticky: PropTypes.bool.isRequired,
+  stickyHeader: PropTypes.bool.isRequired,
   darkMode: PropTypes.bool.isRequired
 };

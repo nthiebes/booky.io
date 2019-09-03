@@ -10,11 +10,12 @@
 @import "../../atoms/checkbox/Checkbox";
 @import "../../atoms/headline/Headline";
 @import "../../atoms/paragraph/Paragraph";
-@import "../../atoms/loader/styles/a-loader";
 @import "../../atoms/messages/error/ErrorMessage";
 @import "../../atoms/messages/success/SuccessMessage";
 @import "../../atoms/radio/Radio";
 @import "../../atoms/textarea/Textarea";
+@import "../../atoms/file-upload/FileUpload";
+@import "../../atoms/skeleton/Skeleton";
 
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
@@ -26,6 +27,7 @@
 @import "../../molecules/section/Section";
 @import "../../molecules/testimonials/Testimonials";
 @import "../../molecules/empty/Empty";
+@import "../../molecules/feature/Feature";
 
 @import "../../organisms/categories/Categories";
 @import "../../organisms/header/Header";
@@ -34,13 +36,16 @@
 @import "../../organisms/structure/Structure";
 @import "../../organisms/sidebar/Sidebar";
 @import "../../organisms/modal/Modal";
-@import "../../organisms/dashboards/Dashboards";
+@import "../../organisms/dashboards/dashboards-list/DashboardsList";
+@import "../../organisms/dashboards/dashboards-sidebar/DashboardsSidebar";
 @import "../../organisms/customize/Customize";
 
 @import "../../templates/page/Page";
 
 @import "../../pages/home/Home";
 @import "../../pages/account/Account";
+@import "../../pages/login/Login";
+@import "../../pages/join/Join";
 
 html {
   font-size: calc(14px + 0.2vw);
@@ -57,6 +62,15 @@ body {
   font-family: $font__family--text;
   height: 100%;
   color: $color__font--dark;
+}
+
+::-moz-selection {
+  color: $color__font--white;
+  background-color: $color__font--primary;
+}
+::selection {
+  color: $color__font--white;
+  background-color: $color__font--primary;
 }
 
 .booky--no-scrolling {
@@ -101,19 +115,41 @@ body {
   }
 }
 
-.booky__loader {
-  position: absolute;
-  color: $color__font--medium;
-  cursor: default;
-  left: calc(50% - 18px);
-  top: calc(50% - 18px);
+/*
+ * App loading screen
+ */
+.loading__logo {
+  margin-right: 1.5rem;
+  height: 36px;
+  width: 102px;
 }
 
-::-moz-selection {
-  color: $color__font--white;
-  background-color: $color__font--primary;
+.loading__nav {
+  flex-grow: 1;
 }
-::selection {
-  color: $color__font--white;
-  background-color: $color__font--primary;
+
+.loading__link {
+  width: 7rem;
+  margin-right: 1rem;
+}
+
+.loading__button {
+  line-height: 2;
+  margin-left: 1rem;
+  width: 5rem;
+}
+
+.loading__spinner {
+  position: absolute;
+  color: $color__font--medium;
+  pointer-events: none;
+  left: calc(50vw - 18px);
+  top: calc(50vh);
+  z-index: 10;
+}
+
+.loading__spinner--hide {
+  transition: opacity 0.3s linear, transform 0.4s ease-in;
+  transform: translateY(-3rem);
+  opacity: 0;
 }

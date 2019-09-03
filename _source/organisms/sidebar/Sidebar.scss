@@ -66,7 +66,8 @@
 .sidebar__headline {
   padding: 0 calc(3vw + 6px);
   margin: 0;
-  line-height: 36px;
+  line-height: 2;
+  width: 100%;
 }
 
 .sidebar__logo {
@@ -100,13 +101,19 @@
   flex-direction: column;
 }
 
+.sidebar__list {
+  list-style: none;
+  width: 100%;
+}
+
 .sidebar__item {
   color: $color__font--dark;
+  background-color: $color__background--white;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   height: 2.5rem;
-  line-height: 2.5rem;
+  line-height: 2.5;
   width: 100%;
   list-style: none;
   padding: 0 calc(3vw + 6px) 0 3vw;
@@ -192,9 +199,11 @@
 
 .sidebar__hr {
   height: 2px;
-  position: relative;
   background-color: rgba(0,0,0,0.15);
-  width: 140%;
-  left: -20%;
   margin-bottom: 1rem;
+}
+
+.sidebar__button {
+  margin: 1rem calc(3vw + 6px);
+  width: calc(100% - 6vw - 12px);
 }

@@ -45,7 +45,7 @@ class Contact extends Component {
 
     fetcher({
       url: '/contact',
-      type: 'POST',
+      method: 'POST',
       params,
       onSuccess: (data) => {
         // console.log('success:', data);
@@ -119,7 +119,7 @@ class Contact extends Component {
               rows={ 5 }
             />
             { error && <ErrorMessage message={ error } hasIcon /> }
-            { success && <SuccessMessage message={ 'contact.success' } hasIcon /> }
+            { success && <SuccessMessage message="contact.success" hasIcon /> }
             <ButtonLargeBlue
               icon="message"
               type="submit"

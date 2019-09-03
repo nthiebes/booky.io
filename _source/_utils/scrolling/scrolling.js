@@ -1,12 +1,7 @@
-/**
- * Scrolling helper
- *
- * @namespace _utils/Scrolling
- * @classdesc _utils/Scrolling
- */
+// import { throttle } from '../throttle';
+
 export class Scrolling {
-  constructor(config) {
-    this.config = config;
+  constructor() {
     this.actions = {};
     this.count = 0;
 
@@ -15,10 +10,8 @@ export class Scrolling {
   }
 
   onPageScroll() {
-    const TOP = this.config.window.pageYOffset || this.config.document.documentElement.scrollTop,
-      ACTIONS = this.actions;
-
-    let item;
+    const TOP = window.pageYOffset || document.documentElement.scrollTop,
+      ACTIONS = this.actions;    let item;
 
     for (item in ACTIONS) {
       if (ACTIONS.hasOwnProperty(item)) {
@@ -41,50 +34,26 @@ export class Scrolling {
     }
   }
 
-  /**
-   * @memberof _utils/Scrolling
-   *
-   * @param {string} actionName
-   * @param {object} actionConfig
-   * @param {object} actionConfig.offset
-   * @param {object} actionConfig.scope
-   * @param {object} actionConfig.isAbove
-   * @param {object} actionConfig.isBelow
-   */
   registerAction(actionName, actionConfig) {
-    const lengthNoActions = 0;
-
-    if (this.count === lengthNoActions) {
-      this.config.window.addEventListener('scroll', this.onPageScroll);
+    if (this.count === 0) {
+      window.addEventListener('scroll', this.onPageScroll);
     }
 
     this.count++;
     this.actions[actionName] = actionConfig;
   }
 
-  /**
-   * @memberof _utils/Scrolling
-   *
-   * @param {string} actionName
-   */
   removeAction(actionName) {
-    const lengthNoActions = 0;
-    
     delete this.actions[actionName];
     this.count--;
 
-    if (this.count === lengthNoActions) {
-      this.config.window.removeEventListener('scroll', this.onPageScroll);
+    if (this.count === 0) {
+      window.removeEventListener('scroll', this.onPageScroll);
     }
   }
 
-  /**
-   * @memberof _utils/Scrolling
-   *
-   * @param {string} actionName
-   */
   updateStatus(actionName) {
-    const TOP = this.config.window.pageYOffset || this.config.document.documentElement.scrollTop,
+    const TOP = window.pageYOffset || document.documentElement.scrollTop,
       ACTION = this.actions[actionName];
 
     if (TOP >= ACTION.offset) {
@@ -97,7 +66,4 @@ export class Scrolling {
   }
 }
 
-export const scrolling = new Scrolling({
-  'window': window,
-  'document': document
-});
+export const scrolling = new Scrolling();

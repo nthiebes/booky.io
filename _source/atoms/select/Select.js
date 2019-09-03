@@ -5,13 +5,20 @@ import classNames from 'classnames';
 import Label from '../../atoms/label';
 
 export default class Select extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
+  static propTypes = {
+    options: PropTypes.array.isRequired,
+    className: PropTypes.string,
+    onChange: PropTypes.func,
+    label: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    required: PropTypes.bool,
+    compact: PropTypes.bool,
+    selected: PropTypes.string,
+    disabled: PropTypes.bool
   }
 
-  onChange(event) {
+  onBlur = (event) => {
     this.props.onChange(event.target.value);
   }
 
@@ -25,7 +32,7 @@ export default class Select extends Component {
           id={ id }
           name={ name }
           required={ required }
-          onChange={ this.onChange }
+          onBlur={ this.onBlur }
           defaultValue={ selected }
           disabled={ disabled }
           className={ classNames('select', compact ? 'select--compact' : 'select--large', className && className) }>
@@ -39,16 +46,3 @@ export default class Select extends Component {
     );
   }
 }
-
-Select.propTypes = {
-  options: PropTypes.array.isRequired,
-  className: PropTypes.string,
-  onChange: PropTypes.func,
-  label: PropTypes.string,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  required: PropTypes.bool,
-  compact: PropTypes.bool,
-  selected: PropTypes.string,
-  disabled: PropTypes.bool
-};

@@ -1,0 +1,206 @@
+.button--large {
+  justify-content: center;
+
+  @include mobile-tablet() {
+    height: 40px;
+    width: 100%;
+
+    &.button--pending {
+      .button__icon {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .button__text {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    }
+
+    .button__icon {
+      display: inline-block;
+      left: calc(50% - 18px);
+      position: absolute;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: color 0.2s linear, transform 0.2s ease, opacity 0.2s ease;
+    }
+  }
+
+  @include tablet() {
+    height: 50px;
+    width: 200px;
+  }
+
+  @include desktop() {
+    height: 60px;
+    width: 200px;
+
+    &:hover,
+    &:focus,
+    &.button--pending {
+      .icon,
+      .icon__svg {
+        color: $color__font--dark;
+      }
+
+      .button__icon {
+        transform: translateX(10px);
+      }
+
+      .button__text {
+        transform: translateX(20px);
+      }
+    }
+
+    .button__icon {
+      display: inline-block;
+      left: 0;
+      position: absolute;
+      transform: translateX(-100%);
+      transition: color 0.2s linear, transform 0.2s ease;
+
+      &:hover,
+      &:focus {
+        .icon__svg {
+          transform: none;
+        }
+      }
+    }
+  }
+}
+
+.button--large-primary {
+  background-color: $color__background--primary;
+  color: $color__font--white;
+  border-bottom: 2px solid darken($color--primary, 10%);
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: lighten($color__background--primary, 5%);
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: lighten($color__background--primary, 5%);
+      color: $color__font--white;
+
+      .icon,
+      .icon__svg {
+        color: $color__font--white;
+      }
+    }
+  }
+}
+
+.button--large-green {
+  background-color: $color--green;
+  color: $color__font--white;
+  border-bottom: 2px solid darken($color--green, 10%);
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: lighten($color--green, 5%);
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: lighten($color--green, 5%);
+      color: $color__font--white;
+
+      .icon,
+      .icon__svg {
+        color: $color__font--white;
+      }
+    }
+  }
+}
+
+.button--large-blue {
+  background-color: $color--blue;
+  color: $color__font--white;
+  border-bottom: 2px solid darken($color--blue, 10%);
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: lighten($color--blue, 5%);
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: lighten($color--blue, 5%);
+      color: $color__font--white;
+
+      .icon,
+      .icon__svg {
+        color: $color__font--white;
+      }
+    }
+  }
+}
+
+.button--large-dark {
+  background-color: $color__background--dark;
+  color: $color__font--white;
+  border-bottom: 2px solid darken($color__background--dark, 10%);
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: lighten($color__background--dark, 5%);
+      color: $color__font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: lighten($color__background--dark, 5%);
+      color: $color__font--white;
+
+      .icon,
+      .icon__svg {
+        color: $color__font--white;
+      }
+    }
+  }
+}
+
+.button--large-light {
+  background-color: $color__background--ligth;
+  color: $color__font--dark;
+  border-bottom: 2px solid darken($color__background--ligth, 15%);
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: darken($color__background--ligth, 5%);
+      color: $color__font--dark;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus,
+    &.button--pending {
+      background-color: darken($color__background--ligth, 5%);
+      color: $color__font--dark;
+    }
+  }
+}

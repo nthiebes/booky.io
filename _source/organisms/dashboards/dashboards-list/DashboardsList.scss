@@ -1,0 +1,171 @@
+.dashboards__headline-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 3vw 0 calc(3vw + 6px);
+  transition: opacity 0.3s linear;
+
+  @include desktop {
+    padding: 0 30px 0 36px;
+  }
+}
+
+.dashboards__headline-wrapper--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dashboards__headline {
+  flex-grow: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.dashboards__icon {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.dashboards__list {
+  transition: opacity 0.3s linear;
+}
+
+.dashboards__list--edit-mode {
+  .dashboards__item {
+    padding: 0 3vw 0 calc(3vw + 6px);
+
+    &:active,
+    &:focus {
+      color: inherit;
+      background-color: inherit;
+      cursor: default;
+
+      .dashboards__label {
+        color: inherit;
+        cursor: default;
+      }
+
+      &.dashboards__item--dark-mode {
+        background-color: inherit;
+
+        .dashboards__label {
+          color: $color__font--white;
+        }
+      }
+    }
+
+    @include desktop {
+      padding: 0 30px 0 36px;
+
+      &:hover {
+        color: inherit;
+        background-color: inherit;
+        cursor: default;
+
+        .dashboards__label {
+          color: inherit;
+          cursor: default;
+        }
+
+        &.dashboards__item--dark-mode {
+          background-color: inherit;
+
+          .dashboards__label {
+            color: $color__font--white;
+          }
+        }
+      }
+    }
+  }
+  
+  .dashboards__icon {
+    opacity: 1;
+    transition: color 0.2s linear, opacity 0.2s linear;
+    width: auto;
+    overflow: inherit;
+  }
+
+  .dashboards__item:first-child:last-of-type .dashboards__icon--delete {
+    display: none;
+  }
+}
+
+.dashboards__list--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dashboards__item {
+  color: $color__font--dark;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  line-height: 2.5;
+  width: 100%;
+  list-style: none;
+  padding: 0 calc(3vw + 6px);
+  user-select: none;
+  transition: background-color 0.2s linear, color 0.2s linear;
+  cursor: pointer;
+  text-decoration: none;
+
+  @include desktop {
+    padding: 0 36px;
+  }
+
+  &:active,
+  &:focus {
+    background-color: $color__background--ligth;
+
+    &.dashboards__item--dark-mode {
+      background-color: $color__background--dark;
+    }
+
+    .dashboards__label {
+      color: $color__font--primary;
+    }
+  }
+
+  &.dashboards__item--active {
+    font-weight: 700;
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: $color__background--ligth;
+
+      &.dashboards__item--dark-mode {
+        background-color: $color__background--dark;
+      }
+
+      .dashboards__label {
+        color: $color__font--primary;
+      }
+    }
+  }
+}
+
+.dashboards__label {
+  color: $color__font--dark;
+  font-family: $font__family--text;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-grow: 1;
+  cursor: pointer;
+  transition: color 0.2s linear;
+}
+
+.dashboards__label--dark-mode {
+  color: $color__font--white;
+}
+
+.dashboards__button {
+  margin: 1rem 0 1.5rem calc(3vw + 6px);
+
+  @include desktop {
+    margin: 1rem 0 0.5rem 36px;
+  }
+}

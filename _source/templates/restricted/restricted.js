@@ -7,7 +7,7 @@ export const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn
 });
 
-export default function restricted(BaseComponent) {
+const restricted = (BaseComponent) => {
   class Restricted extends Component {
     componentWillMount() {
       this.checkAuthentication(this.props);
@@ -23,7 +23,7 @@ export default function restricted(BaseComponent) {
       const { history, loggedIn } = params;
 
       if (!loggedIn) {
-        history.replace({ pathname: '/' });
+        history.replace({ pathname: '/login' });
       }
     }
 
@@ -41,4 +41,6 @@ export default function restricted(BaseComponent) {
   return connect(mapStateToProps)(
     withRouter(Restricted)
   );
-}
+};
+
+export default restricted;

@@ -40,14 +40,18 @@ class Bookmark extends Component {
     const { url, name, editMode, id, index, intl, newtab, favicon, darkMode } = this.props;
 
     return (
-      <Draggable index={ index } draggableId={ `bookmark-${id}` }>
+      <Draggable index={ index } draggableId={ `bookmark-${id}` } key={ `bookmark-${id}` } disableInteractiveElementBlocking>
         { (provided) => (
           <li
             className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }
             { ...provided.draggableProps }
             ref={ provided.innerRef }
           >
-            <img src={ favicon || '_assets/no-favicon.png' } height="16" width="16" />
+            { !favicon || favicon === 'default' ? (
+              <Icon icon="earth" size="tiny" className="bookmark__favicon" />
+            ) : (
+              <img src={ favicon } height="16" width="16" alt="" />
+            ) }
             <a className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') } href={ url } target={ newtab ? '_blank' : '_self' }>
               { name }
             </a>
@@ -57,6 +61,7 @@ class Bookmark extends Component {
               title={ intl.formatMessage({ id: 'bookmark.edit' }) }
               onClick={ this.onEditClick }
               tabIndex={ editMode ? '0' : '-1' }
+              isButton
             />
             <Icon
               className="bookmark__icon"
@@ -64,6 +69,7 @@ class Bookmark extends Component {
               title={ intl.formatMessage({ id: 'bookmark.delete' }) }
               onClick={ this.onDeleteClick }
               tabIndex={ editMode ? '0' : '-1' }
+              isButton
             />
             <Icon
               className="bookmark__icon bookmark__icon--drag"
@@ -71,6 +77,7 @@ class Bookmark extends Component {
               title={ intl.formatMessage({ id: 'bookmark.drag' }) }
               dragHandleProps={ provided.dragHandleProps }
               tabIndex={ editMode ? '0' : '-1' }
+              isButton
             />
           </li>
         ) }
@@ -88,7 +95,7 @@ Bookmark.propTypes = {
   target: PropTypes.string,
   id: PropTypes.number.isRequired,
   openModal: PropTypes.func.isRequired,
-  categoryId: PropTypes.string.isRequired,
+  categoryId: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   intl: PropTypes.object.isRequired,
   newtab: PropTypes.bool.isRequired,

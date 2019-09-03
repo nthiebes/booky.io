@@ -14,6 +14,10 @@ const menuItemsLoggedOut = [
   {
     name: 'help',
     route: '/help'
+  },
+  {
+    name: 'feedback',
+    route: '/feedback'
   }
 ];
 const menuItemsLoggedIn = [
@@ -21,10 +25,6 @@ const menuItemsLoggedIn = [
   {
     name: 'account',
     route: '/account'
-  },
-  {
-    name: 'next',
-    route: '/next'
   }
 ];
 
@@ -43,8 +43,9 @@ class Menu extends Component {
             to={ route }
             color="light"
             isNavLink
+            noUnderline
           >
-            <Icon icon={ name } color="light" />
+            <Icon className="menu__icon" icon={ name } color="light" />
             <FormattedMessage id={ `menu.${name}` } />
           </Link>  
         )) }

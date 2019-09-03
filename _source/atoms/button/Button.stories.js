@@ -13,7 +13,7 @@ import {
 } from './index';
 
 function getButton(Component, props = {}) {
-  return <Component icon="heart" { ...props }>{ 'I ' } <b>{ 'love' }</b>{ ' booky' }</Component>;
+  return <Component icon="heart" { ...props }>{ 'I ' } <b>{ 'love' }</b>{ ' Sami' }</Component>;
 }
 
 storiesOf('Button')

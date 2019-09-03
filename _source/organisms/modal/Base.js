@@ -5,7 +5,8 @@ import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
-import { H3 } from '../../atoms/headline';
+import { ErrorMessage } from '../../atoms/messages';
+import { H2 } from '../../atoms/headline';
 import Form from '../../molecules/form';
 
 class Modal extends Component {
@@ -13,22 +14,13 @@ class Modal extends Component {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.onCancel = this.onCancel.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.props.hasAnchor && this.anchor.focus();
 
-    document.body.classList.add('booky--no-scrolling');
-  }
-
-  componentWillUnmount() {
-    document.body.classList.remove('booky--no-scrolling');
-  }
-
-  onCancel() {
-    this.props.onClose();
+    // document.body.classList.add('booky--no-scrolling');
   }
 
   onSubmit(data) {
@@ -40,28 +32,33 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, hasAnchor, darkMode } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, hasAnchor, error } = this.props;
 
     return (
-      <Form className={ classNames('modal__inner', darkMode && 'modal__inner--dark') } onSubmit={ this.onSubmit } onClick={ this.handleClick }>
+      <Form onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
           { hasAnchor && (
-            <a
-              tabIndex="0"
-              title={ this.props.intl.formatMessage({ id: 'modal.tabAnchor' }) }
-              className="modal__tab-index-link"
-              ref={ (anchor) => { this.anchor = anchor; } }
-            />
+            
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+            <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
+              <FormattedMessage id="modal.tabAnchor" />
+            </span>
           ) }
-          { headline && <H3 className="modal__headline">{ headline }</H3> }
+          { headline && <H2 className="modal__headline">{ headline }</H2> }
           <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
         </header>
         <div className="modal__content">
           { children }
         </div>
+        { error && <ErrorMessage message={ error } hasIcon className="modal__error" /> }
         <footer className={ classNames('modal__footer', noCancel && 'modal__footer--one-button') }>
           { !noCancel && (
-            <ButtonLargeLight className="modal__button modal__button--cancel" icon="close" onClick={ this.onCancel } type="button">
+            <ButtonLargeLight
+              className="modal__button modal__button--cancel"
+              icon="close"
+              onClick={ onClose }
+              type="button"
+            >
               <FormattedMessage id="button.cancel" />
             </ButtonLargeLight>
           ) }
@@ -95,5 +92,6 @@ Modal.propTypes = {
   intl: PropTypes.object.isRequired,
   pending: PropTypes.bool.isRequired,
   hasAnchor: PropTypes.bool,
-  darkMode: PropTypes.bool.isRequired
+  darkMode: PropTypes.bool.isRequired,
+  error: PropTypes.string
 };
