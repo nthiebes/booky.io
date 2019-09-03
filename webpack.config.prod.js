@@ -41,12 +41,8 @@ export default {
     // Copy translation files
     new CopyPlugin([
       {
-        from: '_source/_assets/i18n',
-        to: '_assets/i18n'
-      },
-      {
-        from: '_source/_assets/icons',
-        to: '_assets/icons'
+        from: '_source/_assets',
+        to: '_assets'
       }
     ]),
 
