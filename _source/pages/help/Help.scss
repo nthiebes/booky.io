@@ -6,9 +6,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding-top: 1rem;
 }
 
 .help-container__item {
-  width: 48%;
-  margin-bottom: 24px;
+  width: 100%;
+
+  @include tablet-desktop() {
+    width: 50%;
+    padding: 0 3% 0 0;
+  }
+}
+
+.help-container__item:nth-child(2n) {
+  @include tablet-desktop() {
+    padding: 0 0 0 3%;
+  }
 }

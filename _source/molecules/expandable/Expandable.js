@@ -1,39 +1,22 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { H2 } from '../../atoms/headline';
-import './Expandable.scss';
+import P from '../../atoms/paragraph';
 
 export default class Expandable extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-    this.state = {
-      open: false
-    };
-  }
-
-  handleClick() {
-    this.setState({
-      open: !this.state.open
-    });
-  }
-
   render() {
     const { className, headline, children } = this.props;
-    const { open } = this.state;
 
     return (
-      <section className={className}>
-        <H2 className="expandable__headline" onClick={ this.handleClick }>
+      <details className={ classNames('expandable', className) }>
+        <summary className="expandable__summary">
           { headline }
-        </H2>
-        <div className={ classNames('expandable__content', open && 'expandable__content--open') }>
+        </summary>
+        <P noPadding>
           { children }
-        </div>
-      </section>
+        </P>
+      </details>
     );
   }
 }

@@ -1,15 +1,16 @@
-.expandable__headline {
+.expandable {
+  margin-bottom: 1rem;
+}
+
+.expandable__summary {
   cursor: pointer;
   user-select: none;
-}
+  font-size: 1rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  color: $color__font--medium;
 
-.expandable__content {
-  opacity: 0;
-  height: 0;
-  transition: opacity 0.2s ease;
-}
-
-.expandable__content--open {
-  opacity: 1;
-  height: auto;
+  &:focus {
+    outline: 1px dashed $color__font--medium;
+  }
 }
