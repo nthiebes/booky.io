@@ -111,7 +111,7 @@ class Header extends Component {
             title={ intl.formatMessage({ id: 'menu.home' }) }
             className={ classNames('header__logo', loggedIn && home && 'booky--hide-mobile-tablet') }
           >
-            <Logo src="../../_assets/logo_l.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } />
+            <Logo color="light" />
           </Link>
           <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (

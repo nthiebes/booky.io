@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+const colors = {
+  light: '../../_assets/logo_l.svg',
+  dark: '../../_assets/logo_d.svg',
+  normal: '../../_assets/logo.svg'
+};
+
 export default class Logo extends Component {
   render() {
-    const { className, src, alt, height, width, colorInverted } = this.props;
+    const { className, alt, height, width, color, colorInverted } = this.props;
+    const src = colors[color];
     
     return (
       <img 
@@ -12,7 +19,7 @@ export default class Logo extends Component {
         alt={ alt } 
         height={ height } 
         width={ width } 
-        className={ classNames(colorInverted && 'logo--inverted', className && className) } 
+        className={ classNames(colorInverted && 'logo--inverted', className) } 
       />
     );
   }
@@ -24,12 +31,12 @@ Logo.propTypes = {
   alt: PropTypes.string,
   colorInverted: PropTypes.bool,
   height: PropTypes.string,
-  width: PropTypes.string 
+  width: PropTypes.string,
+  color: PropTypes.string
 };
 
 Logo.defaultProps = {
-  src: '../../_assets/logo.svg',
   alt: '',
   height: '36',
-  colorInverted: false
+  color: 'normal'
 };
