@@ -7,6 +7,7 @@ import { FormattedHTMLMessage, injectIntl } from 'react-intl';
 import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
+import Logo from '../../atoms/logo';
 import Search from '../../molecules/search';
 import { ButtonSmallLight } from '../../atoms/button';
 
@@ -110,7 +111,7 @@ class Header extends Component {
             title={ intl.formatMessage({ id: 'menu.home' }) }
             className={ classNames('header__logo', loggedIn && home && 'booky--hide-mobile-tablet') }
           >
-            <img src="../../_assets/logo_l.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
+            <Logo color="light" />
           </Link>
           <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (

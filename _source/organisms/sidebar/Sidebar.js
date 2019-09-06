@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+import Logo from '../../atoms/logo';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
@@ -64,7 +65,7 @@ class Sidebar extends Component {
             onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
           >
-            <img src="../../_assets/logo_d.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
+            <Logo color="dark" />
           </Link>
           <Icon
             icon={ direction === 'left' ? 'back' : 'forward' }

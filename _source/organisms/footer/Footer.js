@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
+import Logo from '../../atoms/logo';
 import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
 import LanguageSwitcher from '../../molecules/language-switcher';
@@ -85,7 +86,7 @@ class Footer extends Component {
         <section className="footer__content">
           <div className="footer__wrapper">
             <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
-              <img src="../../_assets/logo.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
+              <Logo />
             </Link>
             <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
               <FormattedHTMLMessage id="footer.scroll" />

@@ -32,6 +32,7 @@ const loadingDone = () => {
 
   document.title = 'booky.io';
 
+  // Not logged in
   if (error) {
     store = configureStore({
       ...initialState,
@@ -44,6 +45,7 @@ const loadingDone = () => {
         messages
       }
     });
+  // Logged in
   } else {
     store = configureStore({
       ...initialState,
