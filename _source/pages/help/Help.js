@@ -2,26 +2,37 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import Page from '../../templates/page';
-import { H1, H2 } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
+// import { H1, H2 } from '../../atoms/headline';
+// import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
-import Link from '../../atoms/link';
-import Expandable from '../../molecules/expandable';
-// import Empty from '../../molecules/empty';
+// import Link from '../../atoms/link';
+// import Expandable from '../../molecules/expandable';
+import Empty from '../../molecules/empty';
 
 export default class Help extends Component {
   render() {
-    const values = {
-      email: 
-        <Link to="/contact">
-          <FormattedMessage id="help.email" />
-        </Link> 
-    };
+    // const values = {
+    //   email: (
+    //     <Link to="/contact">
+    //       <FormattedMessage id="help.email" />
+    //     </Link>
+    //   )
+    // };
 
     return (
       <Page>
         <Section>
-          <H1>
+          <Empty illustration="monitor-window">
+            <FormattedMessage id="misc.comingSoon" />
+          </Empty>
+        </Section>
+      </Page>
+    );
+  }
+}
+
+/*
+<H1>
             <FormattedMessage id="help.title" />
           </H1>
           <P>
@@ -66,14 +77,4 @@ export default class Help extends Component {
               { 'We are stupid' }
             </Expandable>
           </div>
-        </Section>
-      </Page>
-    );
-  }
-}
-
-/*
-<H1>
-  <FormattedMessage id="help.title" />
-</H1>
  */
