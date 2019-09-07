@@ -96,19 +96,19 @@ class Footer extends Component {
             <LanguageSwitcher />
           </div>
           <nav className="footer__menu">
-            <Link className="footer__menu-item" color="light" to="/about" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/about">
               <FormattedMessage id="menu.about" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/help" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/help">
               <FormattedMessage id="menu.help" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/contact" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/contact">
               <FormattedMessage id="menu.contact" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/privacy" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/privacy">
               <FormattedMessage id="menu.privacy" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/legal" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/legal">
               <FormattedMessage id="menu.legal" />
             </Link>
           </nav>

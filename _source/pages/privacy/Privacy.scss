@@ -1,0 +1,13 @@
+.privacy-list__item {
+  list-style: none;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.privacy-list__item::before {
+  content: "»";
+  position: absolute;
+  left: 0;
+}
