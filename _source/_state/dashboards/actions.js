@@ -1,6 +1,7 @@
 import fetcher from '../../_utils/fetcher';
 
 import { setCategories, getCategories } from '../categories/actions';
+import { updateSettings } from '../user/actions';
 import { closeSidebar } from '../sidebar/actions';
 
 export const CHANGE_DASHBOARD = 'CHANGE_DASHBOARD';
@@ -47,8 +48,10 @@ export const updateDashboardsData = (data) => ({
 
 export const changeDashboard = (id) => ((dispatch) => {
   dispatch(updateDashboardsData({
-    pending: true,
-    active: id
+    pending: true
+  }));
+  dispatch(updateSettings({
+    defaultDashboardId: id
   }));
 
   dispatch(closeSidebar());
@@ -122,7 +125,10 @@ export const editDashboard = ({ name, id, onSuccess, onError }) => ((dispatch) =
   });
 });
 
-export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch) => {
+export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch, getState) => {
+  const dashboards = getState().dashboards.items;
+  const defaultDashboardId = newId || (dashboards.length ? dashboards[0].id : null);
+
   fetcher({
     url: `/dashboards/${id}`,
     method: 'DELETE',
@@ -132,6 +138,10 @@ export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch
         newId,
         id
       });
+      dispatch(updateSettings({
+        defaultDashboardId
+      }));
+
       onSuccess();
     },
     onError: () => {

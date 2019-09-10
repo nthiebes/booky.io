@@ -47,18 +47,15 @@ const dashboards = (state = {}, action) => {
 
     case DELETE_DASHBOARD: {
       const newDashboards = state.items.slice();
-      let activeId = state.active;
 
       newDashboards.map((dashboard, index) => {
         if (dashboard.id === id) {
           newDashboards.splice(index, 1);
-          activeId = newId || (newDashboards.length ? newDashboards[0].id : null);
         }
       });
 
       return {
         ...state,
-        active: activeId,
         items: newDashboards
       };
     }

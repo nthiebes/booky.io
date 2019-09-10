@@ -25,7 +25,6 @@ export default {
   },
   dashboards: {
     items: [],
-    active: null,
     pending: false,
     error: null
   },

@@ -9,7 +9,7 @@ export const mapStateToProps = (state) => ({
   headerSticky: state.user.settings.stickyHeader,
   sticky: state.user.settings.stickyToolbar,
   dashboards: state.dashboards,
-  dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active),
+  activeDashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.user.settings.defaultDashboardId),
   dashboardsStyle: state.user.settings.dashboardsStyle,
   darkMode: state.user.settings.darkMode
 });

@@ -6,7 +6,7 @@ import { changeDashboard } from '../../../_state/dashboards/actions';
 
 export const mapStateToProps = (state) => ({
   dashboards: state.dashboards.items,
-  activeId: state.dashboards.active,
+  activeId: state.user.settings.defaultDashboardId,
   pinned: state.user.settings.pinned,
   darkMode: state.user.settings.darkMode
 });
