@@ -80,6 +80,7 @@ class DashboardsSidebar extends Component {
           !pinned && 'dashboards__list--hidden'
         ) }>
           { dashboards.map((dashboard, index) => (
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
             <li
               key={ index }
               className={ classNames(

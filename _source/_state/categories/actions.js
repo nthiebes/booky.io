@@ -21,8 +21,8 @@ export const getCategories = (id) => ((dispatch) => {
         pending: false
       }));
     },
-    onError: (error) => {
-      console.log('error', error);
+    onError: () => {
+      // console.log('error', error);
       // onError && onError(error);
     }
   });

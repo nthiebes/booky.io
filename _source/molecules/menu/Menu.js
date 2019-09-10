@@ -30,11 +30,11 @@ const menuItemsLoggedIn = [
 
 class Menu extends Component {
   render() {
-    const { className, loggedIn } = this.props;
+    const { className, loggedIn, intl } = this.props;
     const menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     return (
-      <nav className={ classNames('menu', className && className) }>
+      <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className && className) }>
         { menuItems.map(({ name, route }, index) => (
           <Link
             key={ index }

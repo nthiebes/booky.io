@@ -80,7 +80,7 @@ class Sidebar extends Component {
             <DashboardsList useTabIndex={ open } />
           ) }
           { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
-          <nav className="sidebar__nav">
+          <nav title={ intl.formatMessage({ id: 'menu.title' }) } className="sidebar__nav">
             <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
             <ul className="sidebar__list">
               <li>

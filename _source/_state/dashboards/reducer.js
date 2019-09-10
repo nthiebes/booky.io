@@ -13,7 +13,7 @@ import { arrayMove } from '../../_utils/array';
 
 // eslint-disable-next-line max-statements
 const dashboards = (state = {}, action) => {
-  const { name, id, newId, type } = action;
+  const { name, id, type } = action;
 
   switch (type) {
     case ADD_DASHBOARD:

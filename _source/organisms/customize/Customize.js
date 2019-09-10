@@ -6,7 +6,7 @@ import { H1, H2 } from '../../atoms/headline';
 import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
-import Radio from '../../atoms/radio';
+// import Radio from '../../atoms/radio';
 
 class Customize extends Component {
   constructor(props) {
@@ -40,9 +40,9 @@ class Customize extends Component {
       intl,
       navColor,
       newtab,
-      maxWidth,
-      preserveEditMode,
-      dashboardsStyle,
+      // maxWidth,
+      // preserveEditMode,
+      // dashboardsStyle,
       blurEffect,
       stickyHeader,
       stickyToolbar,

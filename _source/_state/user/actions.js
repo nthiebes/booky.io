@@ -84,8 +84,8 @@ export const deleteAccount = () => ((dispatch) => {
         loggedIn: false
       }));
     },
-    onError: (error) => {
-      console.log('onError', error);
+    onError: () => {
+      // console.log('onError', error);
     }
   });
 });

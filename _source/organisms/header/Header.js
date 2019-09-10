@@ -76,6 +76,7 @@ class Header extends Component {
     const { logoutPending } = this.state;
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
       <header
         className={ classNames(
           `header header--color${color}`,

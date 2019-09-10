@@ -12,7 +12,7 @@ export default class FileUpload extends Component {
   handleOnChange(event) {
     const { name, onChange } = this.props;
     
-    console.log(event.target.value, name);
+    // console.log(event.target.value, name);
     
     onChange && onChange(event.target.value, name);
   }
