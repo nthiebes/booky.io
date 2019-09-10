@@ -18,7 +18,7 @@ class Modal extends Component {
   }
 
   componentDidMount() {
-    this.props.hasAnchor && this.anchor.focus();
+    this.anchor.focus();
 
     // document.body.classList.add('booky--no-scrolling');
   }
@@ -32,18 +32,15 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, hasAnchor, error } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, error } = this.props;
 
     return (
       <Form onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
-          { hasAnchor && (
-            
-            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-            <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
-              <FormattedMessage id="modal.tabAnchor" />
-            </span>
-          ) }
+          { /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */ }
+          <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
+            <FormattedMessage id="modal.tabAnchor" />
+          </span>
           { headline && <H2 className="modal__headline">{ headline }</H2> }
           <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
         </header>
@@ -91,7 +88,6 @@ Modal.propTypes = {
   noCancel: PropTypes.bool,
   intl: PropTypes.object.isRequired,
   pending: PropTypes.bool.isRequired,
-  hasAnchor: PropTypes.bool,
   darkMode: PropTypes.bool.isRequired,
   error: PropTypes.string
 };

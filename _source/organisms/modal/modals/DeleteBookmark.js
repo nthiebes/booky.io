@@ -29,7 +29,6 @@ class DeleteBookmark extends Component {
         { ...props }
         onSave={ this.handleSave }
         headline={ intl.formatMessage({ id: 'modal.deleteBookmark' }) }
-        hasAnchor
       >
         <Label>
           <FormattedMessage id="modal.deleteBookmarkLabel" /><br />

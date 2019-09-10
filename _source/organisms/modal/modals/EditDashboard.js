@@ -26,7 +26,7 @@ class EditDashboard extends Component {
     const { name } = this.state;
 
     return (
-      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) } hasAnchor>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) }>
         <Input
           id="dashboard-name"
           name="name"
