@@ -206,7 +206,6 @@
     "error.unauthorized": "The username and password that you entered did not match our records. Please double-check and try again.",
     "legal.11": "",
     "legal.12": "",
-    "misc.logo": "booky logo",
     "header.jumpToMain": "Jump to main content",
     "header.jumpToLanguage": "Choose language",
     "testimonials.headline": "In the words of our users",
@@ -229,5 +228,8 @@
     "help.question7": "I forgot my password, what can I do?",
     "help.question8": "How can I customize my booky.io look & feel?",
     "help.question9": "How can I cancel my supporter subscription?",
-    "help.question10": "Wie kann ich meinen Account löschen?"
+    "help.question10": "Wie kann ich meinen Account löschen?",
+    "help.faq": "Frequently asked questions",
+    "menu.title": "Main navigation",
+    "account.navigation": "Account navigation"
 }
