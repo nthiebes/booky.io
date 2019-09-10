@@ -95,6 +95,17 @@
   pointer-events: none;
 }
 
+.dashboards__item--pending {
+  line-height: 2.5;
+  width: 100%;
+  list-style: none;
+  padding: 0 calc(3vw + 6px);
+
+  @include desktop {
+    padding: 0 36px;
+  }
+}
+
 .dashboards__item {
   color: $color__font--dark;
   flex-shrink: 0;

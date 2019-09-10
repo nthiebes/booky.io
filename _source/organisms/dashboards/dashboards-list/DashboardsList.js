@@ -116,13 +116,13 @@ class DashboardsSidebar extends Component {
           )) }
           { noDashboards && (
             <Fragment>
-              <li className={ classNames('dashboards__item', darkMode && 'dashboards__item--dark-mode') }>
+              <li className="dashboards__item--pending">
                 <Skeleton />
               </li>
-              <li className={ classNames('dashboards__item', darkMode && 'dashboards__item--dark-mode') }>
+              <li className="dashboards__item--pending">
                 <Skeleton />
               </li>
-              <li className={ classNames('dashboards__item', darkMode && 'dashboards__item--dark-mode') }>
+              <li className="dashboards__item--pending">
                 <Skeleton />
               </li>
             </Fragment>
