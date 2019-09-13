@@ -1,9 +1,5 @@
 import fetcher from '../../_utils/fetcher';
-
-export const dragBookmark = (dragData) => ({
-  type: 'DRAG_BOOKMARK',
-  dragData
-});
+import { addCategory } from '../categories/actions';
 
 export const setBookmarks = ({bookmarks, id, error}) => ({
   type: 'SET_BOOKMARKS',
@@ -113,4 +109,39 @@ export const deleteBookmark = ({ categoryId, id, onError, onSuccess }) => ((disp
       onError && onError(error);
     }
   });
+});
+
+export const dragBookmark = (dragData) => ((dispatch, getState) => {
+  const { sourceCategoryId, destinationCategoryId } = dragData;
+  const bookmarksSameCategory = getState().categories
+    .find((category) => category.id === sourceCategoryId).bookmarks
+    .map((bookmark) => bookmark.id);
+
+  dispatch({
+    type: 'DRAG_BOOKMARK',
+    dragData
+  });
+
+  fetcher({
+    url: `/categories/${sourceCategoryId}/layout`,
+    method: 'PUT',
+    params: bookmarksSameCategory,
+    onSuccess: () => {
+      // onSuccess && onSuccess();
+    },
+    onError: () => {
+      // console.log('error', error);
+      // onError && onError(error);
+    }
+  });
+
+  if (sourceCategoryId !== destinationCategoryId) {
+    // const bookmarkToMove = getState().categories
+    //   .find((category) => category.id === destinationCategoryId).bookmarks
+    //   .find((bookmark) => bookmark.id);
+    
+    // console.log(bookmarkToMove);
+
+    // addCategory(bookmarkToMove);
+  }
 });
