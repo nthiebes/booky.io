@@ -150,8 +150,19 @@
   margin-bottom: 1rem;
 
   @include desktop {
-    margin-left: calc(300px + 3%);
     margin-top: calc(3rem + 6px);
     margin-bottom: 2rem;
+  }
+}
+
+.home__add-category--sidebar {
+  @include desktop {
+    margin-left: calc(50px + 3% - 6px);
+  }
+}
+
+.home__add-category--shifted {
+  @include desktop {
+    margin-left: calc(300px + 3% - 6px);
   }
 }

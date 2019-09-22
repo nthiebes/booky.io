@@ -23,7 +23,8 @@ class Home extends Component {
     intl: PropTypes.object.isRequired,
     openModal: PropTypes.func.isRequired,
     categoriesPending: PropTypes.bool,
-    hasCategories: PropTypes.bool
+    hasCategories: PropTypes.bool,
+    dashboardsOpen: PropTypes.bool
   };
 
   constructor(props) {
@@ -43,7 +44,7 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedIn, blurContent, hasSidebar, intl, categoriesPending, hasCategories } = this.props;
+    const { loggedIn, blurContent, hasSidebar, intl, categoriesPending, hasCategories, dashboardsOpen } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
@@ -51,7 +52,11 @@ class Home extends Component {
         { !categoriesPending && hasCategories && (
           <ButtonSmallPrimary
             icon="add"
-            className="home__add-category"
+            className={ classNames(
+              'home__add-category',
+              hasSidebar && 'home__add-category--sidebar',
+              hasSidebar && dashboardsOpen && 'home__add-category--shifted',
+            ) }
             onClick={ this.onAddClick }
           >
             <FormattedHTMLMessage id="category.add" />

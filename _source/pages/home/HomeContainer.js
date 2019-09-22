@@ -9,7 +9,8 @@ export const mapStateToProps = (state) => ({
   blurContent: state.modal.open && state.user.settings.blurEffect,
   hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
   categoriesPending: state.dashboards.pending,
-  hasCategories: state.categories.length > 0
+  hasCategories: state.categories.length > 0,
+  dashboardsOpen: state.user.settings.pinned
 });
 
 export const mapDispatchToProps = {
