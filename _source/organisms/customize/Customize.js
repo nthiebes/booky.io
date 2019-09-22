@@ -19,7 +19,7 @@ class Customize extends Component {
 
   handleColorChange(value) {
     this.props.updateSettings({
-      navigationBarColor: parseInt(value.replace(/color/g, ''), 10)
+      navigationBarColor: parseInt(value.replace(/color/g, ''), 10) - 1
     });
   }
 
@@ -61,7 +61,7 @@ class Customize extends Component {
           <FormattedMessage id="customize.navColor" />
         </Label>
         <ColorPicker
-          value={ navColor.toString() }
+          value={ (navColor + 1).toString() }
           onChange={ this.handleColorChange }
           className="customize__color-picker"
         />
@@ -132,8 +132,8 @@ class Customize extends Component {
         </H2>
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.newTab'}) }
-          id="newtab"
-          name="newtab"
+          id="openLinksInNewTab"
+          name="openLinksInNewTab"
           onChange={ this.handleCheckboxChange }
           checked={ newtab }
         />
