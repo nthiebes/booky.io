@@ -71,14 +71,14 @@ class Bookmark extends Component {
               tabIndex={ editMode ? '0' : '-1' }
               isButton
             />
-            <Icon
+            {/* <Icon
               className="bookmark__icon bookmark__icon--drag"
               icon="drag"
               title={ intl.formatMessage({ id: 'bookmark.drag' }) }
               dragHandleProps={ provided.dragHandleProps }
               tabIndex={ editMode ? '0' : '-1' }
               isButton
-            />
+            /> */}
           </li>
         ) }
       </Draggable>
