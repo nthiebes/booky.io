@@ -91,7 +91,7 @@ class Header extends Component {
           <Link className="header__skip-link" href="#main">
             <FormattedHTMLMessage id="header.jumpToMain" />
           </Link>
-          <Link className="header__skip-link" href="#language">
+          <Link className="header__skip-link" href="#language-switcher-en">
             <FormattedHTMLMessage id="header.jumpToLanguage" />
           </Link>
           { loggedIn && home && (

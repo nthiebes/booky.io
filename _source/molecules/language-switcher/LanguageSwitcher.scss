@@ -1,13 +1,12 @@
-.language-switcher {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .language-switcher__item {
   margin: 0 0.5rem;
+  padding: 0;
 }
 
-.language-switcher__item--active {
-  text-decoration: underline;
+.language-switcher__icon {
+  pointer-events: none;
+}
+
+.language-switcher__item .label {
+  color: $color__font--white;
 }

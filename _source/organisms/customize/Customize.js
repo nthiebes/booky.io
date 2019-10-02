@@ -104,29 +104,32 @@ class Customize extends Component {
           <FormattedMessage id="dashboard.title" />
         </H2>
         <Radio
-          label={ intl.formatMessage({ id: 'customize.sidebar'}) }
           id="dashboards-sidebar"
           name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="sidebar"
-          defaultChecked={ dashboardsStyle === 'sidebar' }
-        />
+          checked={ dashboardsStyle === 'sidebar' }
+        >
+          <FormattedMessage id="customize.sidebar" />
+        </Radio>
         <Radio
-          label={ intl.formatMessage({ id: 'customize.dropdown'}) }
           id="dashboards-dropdown"
           name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="dropdown"
-          defaultChecked={ dashboardsStyle === 'dropdown' }
-        />
+          checked={ dashboardsStyle === 'dropdown' }
+        >
+          <FormattedMessage id="customize.dropdown" />
+        </Radio>
         <Radio
-          label={ intl.formatMessage({ id: 'customize.tabs'}) }
           id="dashboards-tabs"
           name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="tabs"
-          defaultChecked={ dashboardsStyle === 'tabs' }
-        /> */}
+          checked={ dashboardsStyle === 'tabs' }
+        >
+          <FormattedMessage id="customize.tabs" />
+        </Radio> */}
         <H2>
           <FormattedMessage id="dashboard.preferences" />
         </H2>
