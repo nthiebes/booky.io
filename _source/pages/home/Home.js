@@ -6,13 +6,14 @@ import classNames from 'classnames';
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
-import { H2, Display1, Display2 } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
-import { ButtonLargeLight, ButtonLargeBlue, ButtonLargePrimary, ButtonSmallPrimary } from '../../atoms/button';
-import Illustration from '../../atoms/illustration';
+// import { H2, Display1, Display2 } from '../../atoms/headline';
+// import P from '../../atoms/paragraph';
+import { ButtonSmallPrimary } from '../../atoms/button';
+// import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
-import Testimonials from '../../molecules/testimonials';
-import Feature from '../../molecules/feature';
+// import Testimonials from '../../molecules/testimonials';
+// import Feature from '../../molecules/feature';
+import Empty from '../../molecules/empty';
 
 class Home extends Component {
   static propTypes = {
@@ -44,7 +45,7 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedIn, blurContent, hasSidebar, intl, categoriesPending, hasCategories, dashboardsOpen } = this.props;
+    const { loggedIn, blurContent, hasSidebar, categoriesPending, hasCategories, dashboardsOpen } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
@@ -65,8 +66,13 @@ class Home extends Component {
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
-      <Page className="home" home>
-        <Section className="home__header">
+      <Page home> {/* className="home" */}
+        <Section>
+          <Empty illustration="monitor-window">
+            <FormattedMessage id="misc.comingSoon" />
+          </Empty>
+        </Section>
+        {/* <Section className="home__header">
           <Display1 color="medium" noMargin className="home__headline">
             <FormattedMessage id="home.display" />
           </Display1>
@@ -176,7 +182,7 @@ class Home extends Component {
           <ButtonLargeLight icon="about" to="/about">
             <FormattedHTMLMessage id="header.learnMore" />
           </ButtonLargeLight>
-        </Section>
+        </Section> */}
       </Page>
     );
   }
