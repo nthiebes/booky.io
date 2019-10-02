@@ -10,8 +10,10 @@
 }
 
 .dashboards__headline-wrapper--hidden {
-  opacity: 0;
-  pointer-events: none;
+  @include desktop {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .dashboards__headline {
@@ -90,9 +92,12 @@
   }
 }
 
+
 .dashboards__list--hidden {
-  opacity: 0;
-  pointer-events: none;
+  @include desktop {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .dashboards__item--pending {
