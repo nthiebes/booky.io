@@ -125,6 +125,10 @@
     transition: none;
   }
 
+  &.sidebar__item--dark-mode {
+    background-color: $color__background--medium;
+  }
+
   &:active,
   &:focus {
     background-color: $color__background--ligth;
