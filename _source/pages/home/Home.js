@@ -8,7 +8,7 @@ import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
 // import { H2, Display1, Display2 } from '../../atoms/headline';
 // import P from '../../atoms/paragraph';
-import { ButtonSmallPrimary } from '../../atoms/button';
+import { ButtonSmallPrimary, ButtonLargeBlue } from '../../atoms/button';
 // import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 // import Testimonials from '../../molecules/testimonials';
@@ -71,6 +71,9 @@ class Home extends Component {
           <Empty illustration="monitor-window">
             <FormattedMessage id="misc.comingSoon" />
           </Empty>
+          <ButtonLargeBlue icon="account" to="/login" className="home__login-button">
+            <FormattedHTMLMessage id="header.login" />
+          </ButtonLargeBlue>
         </Section>
         {/* <Section className="home__header">
           <Display1 color="medium" noMargin className="home__headline">

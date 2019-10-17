@@ -166,3 +166,10 @@
     margin-left: calc(300px + 3% - 6px);
   }
 }
+
+.home__login-button {
+  margin-top: 2rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

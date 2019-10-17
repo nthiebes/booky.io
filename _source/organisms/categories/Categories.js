@@ -43,8 +43,10 @@ class Categories extends Component {
               <Category key={ category.id } { ...category } />
             ) }
             { !categories.length && (
-              <Empty illustration="write-paper-ink">
-                <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
+              <Fragment>
+                <Empty illustration="write-paper-ink">
+                  <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
+                </Empty>
                 <ButtonSmallPrimary
                   icon="add"
                   className="categories__button"
@@ -52,7 +54,7 @@ class Categories extends Component {
                 >
                   <FormattedHTMLMessage id="category.add" />
                 </ButtonSmallPrimary>
-              </Empty>
+              </Fragment>
             ) }
           </Fragment>
         ) }
