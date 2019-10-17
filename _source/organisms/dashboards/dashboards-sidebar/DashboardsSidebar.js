@@ -62,7 +62,7 @@ class DashboardsSidebar extends Component {
           onClick={ this.togglePinned }
           className="dashboards-sidebar__toggle"
           icon={ pinned ? 'back' : 'forward' }
-          title={ pinned ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
+          label={ pinned ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
           isButton
         />
       </aside>

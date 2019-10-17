@@ -71,7 +71,7 @@ class Sidebar extends Component {
             icon={ direction === 'left' ? 'back' : 'forward' }
             onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
-            title={ intl.formatMessage({ id: 'menu.close' }) }
+            label={ intl.formatMessage({ id: 'menu.close' }) }
           />
         </header>
         <hr className="sidebar__hr" />

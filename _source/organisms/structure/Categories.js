@@ -30,7 +30,7 @@ class Categories extends Component {
                       <Icon
                         className="structure__icon"
                         icon="drag"
-                        title={ intl.formatMessage({ id: 'category.drag' }) }
+                        label={ intl.formatMessage({ id: 'category.drag' }) }
                         dragHandleProps={ providedInner.dragHandleProps }
                       />
                     </div>

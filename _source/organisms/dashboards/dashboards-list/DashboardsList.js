@@ -67,7 +67,7 @@ class DashboardsSidebar extends Component {
           </H3>
           <Icon
             icon={ editMode ? 'close' : 'more-horiz' }
-            title={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
+            label={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
             onClick={ this.toggleEditMode }
             tabIndex={ useTabIndex || pinned ? '0' : '-1' }
             isButton
@@ -98,7 +98,7 @@ class DashboardsSidebar extends Component {
               <Icon
                 className="dashboards__icon"
                 icon="edit"
-                title={ intl.formatMessage({ id: 'dashboard.edit' }) }
+                label={ intl.formatMessage({ id: 'dashboard.edit' }) }
                 stopPropagation
                 onClick={ () => this.onIconClick('EditDashboard', dashboard) }
                 tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
@@ -107,7 +107,7 @@ class DashboardsSidebar extends Component {
               <Icon
                 className="dashboards__icon dashboards__icon--delete"
                 icon="delete"
-                title={ intl.formatMessage({ id: 'dashboard.delete' }) }
+                label={ intl.formatMessage({ id: 'dashboard.delete' }) }
                 stopPropagation
                 onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
                 tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }

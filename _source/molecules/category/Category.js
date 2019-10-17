@@ -101,7 +101,7 @@ class Category extends Component {
           <Icon
             className={ classNames('category__toggle-icon', hidden && 'category__toggle-icon--rotate') }
             icon="expand"
-            title={ hidden ? intl.formatMessage({ id: 'category.expand' }) : intl.formatMessage({ id: 'category.reduce' }) }
+            label={ hidden ? intl.formatMessage({ id: 'category.expand' }) : intl.formatMessage({ id: 'category.reduce' }) }
             onClick={ this.toggleCategory }
             isButton
           />
@@ -111,7 +111,7 @@ class Category extends Component {
           <Icon
             className="category__icon"
             icon="edit"
-            title={ intl.formatMessage({ id: 'category.edit' }) }
+            label={ intl.formatMessage({ id: 'category.edit' }) }
             onClick={ this.onEditClick }
             tabIndex={ editMode ? '0' : '-1' }
             isButton
@@ -119,14 +119,14 @@ class Category extends Component {
           <Icon
             className="category__icon"
             icon="delete"
-            title={ intl.formatMessage({ id: 'category.delete' }) }
+            label={ intl.formatMessage({ id: 'category.delete' }) }
             onClick={ this.onDeleteClick }
             tabIndex={ editMode ? '0' : '-1' }
             isButton
           />
           <Icon
             icon={ editMode ? 'close' : 'more-horiz' }
-            title={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
+            label={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
             onClick={ this.toggleEditMode }
             isButton
           />

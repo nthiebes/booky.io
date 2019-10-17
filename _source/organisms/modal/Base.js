@@ -42,7 +42,7 @@ class Modal extends Component {
             <FormattedMessage id="modal.tabAnchor" />
           </span>
           { headline && <H2 className="modal__headline">{ headline }</H2> }
-          <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
+          <Icon icon="close" onClick={ onClose } label={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
         </header>
         <div className="modal__content">
           { children }

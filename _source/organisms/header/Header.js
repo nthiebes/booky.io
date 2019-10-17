@@ -101,6 +101,7 @@ class Header extends Component {
                 icon="add"
                 color="light"
                 onClick={ this.onAddBookmarkClick }
+                label={ intl.formatMessage({ id: 'bookmark.add' }) }
                 ignoreDarkMode
                 isButton
               />
@@ -122,7 +123,7 @@ class Header extends Component {
                 icon="settings"
                 color="light"
                 onClick={ this.onCustomizeClick }
-                title={ intl.formatMessage({ id: 'menu.customize' }) }
+                label={ intl.formatMessage({ id: 'menu.customize' }) }
                 ignoreDarkMode
                 isButton
               />
@@ -131,7 +132,7 @@ class Header extends Component {
                 icon={ logoutPending ? 'spinner' : 'logout' }
                 color="light"
                 onClick={ this.onLogoutClick }
-                title={ intl.formatMessage({ id: 'menu.logout' }) }
+                label={ intl.formatMessage({ id: 'menu.logout' }) }
                 ignoreDarkMode
                 pending={ logoutPending }
                 isButton

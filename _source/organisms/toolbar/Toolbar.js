@@ -91,7 +91,7 @@ class Toolbar extends Component {
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className && className) }>
         <Icon
           icon="tree"
-          title={ intl.formatMessage({ id: 'structure.title' }) }
+          label={ intl.formatMessage({ id: 'structure.title' }) }
           className="toolbar__icon"
         />
         {/** onClick={ this.onIconClick }

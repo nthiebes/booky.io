@@ -58,7 +58,7 @@ class Bookmark extends Component {
             <Icon
               className="bookmark__icon"
               icon="edit"
-              title={ intl.formatMessage({ id: 'bookmark.edit' }) }
+              label={ intl.formatMessage({ id: 'bookmark.edit' }) }
               onClick={ this.onEditClick }
               tabIndex={ editMode ? '0' : '-1' }
               isButton
@@ -66,7 +66,7 @@ class Bookmark extends Component {
             <Icon
               className="bookmark__icon"
               icon="delete"
-              title={ intl.formatMessage({ id: 'bookmark.delete' }) }
+              label={ intl.formatMessage({ id: 'bookmark.delete' }) }
               onClick={ this.onDeleteClick }
               tabIndex={ editMode ? '0' : '-1' }
               isButton
@@ -74,7 +74,7 @@ class Bookmark extends Component {
             <Icon
               className="bookmark__icon bookmark__icon--drag"
               icon="drag"
-              title={ intl.formatMessage({ id: 'bookmark.drag' }) }
+              label={ intl.formatMessage({ id: 'bookmark.drag' }) }
               dragHandleProps={ provided.dragHandleProps }
               tabIndex={ editMode ? '0' : '-1' }
               isButton

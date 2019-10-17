@@ -36,7 +36,6 @@ export default class Icon extends Component {
       className,
       label,
       color,
-      title,
       dragHandleProps,
       tabIndex,
       darkMode,
@@ -49,10 +48,11 @@ export default class Icon extends Component {
     const additionalProps = {};
     let CustomTag = 'button';
     
-    if (!isButton) {
+    if (isButton) {
+      additionalProps['aria-label'] = label;
+    } else {
       CustomTag = 'span';
       additionalProps['aria-hidden'] = true;
-      additionalProps['aria-label'] = title;
     }
 
     return (
@@ -67,21 +67,22 @@ export default class Icon extends Component {
             darkMode && !ignoreDarkMode && 'icon--dark-mode',
             className && className
           ) }
-          title={ title }
+          title={ label }
           onClick={ this.handleClick }
           onKeyDown={ this.handleKeyDown }
           tabIndex={ tabIndex }
           { ...additionalProps }
           { ...dragHandleProps }
         >
-          <svg className={ classNames(
-            'icon__svg',
-            `icon__svg--size-${size}`,
-            icon === 'spinner' && 'icon__svg--spinner'
-          ) }>
+          <svg
+            focusable="false"
+            className={ classNames(
+              'icon__svg',
+              `icon__svg--size-${size}`,
+              icon === 'spinner' && 'icon__svg--spinner'
+            ) }>
             <use xlinkHref={ link } />
           </svg>
-          { label && <label className="icon__label">{ label }</label> }
         </CustomTag>
       )
     );
@@ -93,7 +94,6 @@ Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   label: PropTypes.string,
   onClick: PropTypes.func,
-  title: PropTypes.string,
   stopPropagation: PropTypes.bool,
   color: PropTypes.string,
   dragHandleProps: PropTypes.object,

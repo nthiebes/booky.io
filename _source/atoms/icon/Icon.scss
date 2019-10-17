@@ -247,14 +247,6 @@
   animation: 1s linear infinite rotate;
 }
 
-.icon__label {
-  cursor: pointer;
-  font-family: $font__family--heading;
-  font-size: 1rem;
-  font-weight: 400;
-  margin-left: 4px;
-}
-
 @keyframes rotate {
   0% {
     transform: rotate(0);
