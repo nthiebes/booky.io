@@ -66,13 +66,15 @@ export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((
   });
 });
 
-export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id }) => ((dispatch) => {
+export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, position }) => ((dispatch) => {
   fetcher({
     url: `/bookmarks/${id}`,
     method: 'PUT',
     params: {
       name,
-      url
+      url,
+      category: categoryId,
+      position
     },
     onSuccess: ({ favicon }) => {
       dispatch({
@@ -86,7 +88,7 @@ export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id }) 
       onSuccess && onSuccess();
     },
     onError: (error) => {
-      // console.log('error', error);
+      console.log('error', error);
       onError && onError(error);
     }
   });
@@ -111,29 +113,37 @@ export const deleteBookmark = ({ categoryId, id, onError, onSuccess }) => ((disp
   });
 });
 
-export const dragBookmark = (dragData) => ((dispatch, getState) => {
-  const { sourceCategoryId, destinationCategoryId } = dragData;
-  const bookmarksSameCategory = getState().categories
-    .find((category) => category.id === sourceCategoryId).bookmarks
-    .map((bookmark) => bookmark.id);
+export const dragBookmark = (dragData) => ((dispatch) => {
+  const { sourceCategoryId, destinationCategoryId, bookmarkId, destinationIndex } = dragData;
+  // const bookmarksSameCategory = getState().categories
+  //   .find((category) => category.id === sourceCategoryId).bookmarks
+  //   .map((bookmark) => bookmark.id);
 
   dispatch({
     type: 'DRAG_BOOKMARK',
     dragData
   });
 
-  fetcher({
-    url: `/categories/${sourceCategoryId}/layout`,
-    method: 'PUT',
-    params: bookmarksSameCategory,
-    onSuccess: () => {
-      // onSuccess && onSuccess();
-    },
-    onError: () => {
-      // console.log('error', error);
-      // onError && onError(error);
-    }
-  });
+  dispatch(editBookmark({
+    id: bookmarkId,
+    categoryId: sourceCategoryId,
+    position: destinationIndex,
+    name: 'name',
+    url: 'url'
+  }));
+
+  // fetcher({
+  //   url: `/categories/${sourceCategoryId}/layout`,
+  //   method: 'PUT',
+  //   params: bookmarksSameCategory,
+  //   onSuccess: () => {
+  //     // onSuccess && onSuccess();
+  //   },
+  //   onError: () => {
+  //     // console.log('error', error);
+  //     // onError && onError(error);
+  //   }
+  // });
 
   if (sourceCategoryId !== destinationCategoryId) {
     // const bookmarkToMove = getState().categories

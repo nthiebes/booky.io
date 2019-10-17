@@ -101,7 +101,6 @@ export default class Modal extends Component {
 
       this.modalMap[modal].action({
         ...modalData,
-        position: data.categories.length,
         dashboard: data.activeDashboard,
         onSuccess: () => {
           this.closeModal();
