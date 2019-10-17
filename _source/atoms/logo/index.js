@@ -1,3 +1,3 @@
-import component from './Logo';
+import component from './LogoContainer';
 
 export default component;

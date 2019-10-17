@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 const colors = {
   light: '../../_assets/logo_l.svg',
@@ -10,8 +9,12 @@ const colors = {
 
 export default class Logo extends Component {
   render() {
-    const { className, alt, height, width, color, colorInverted } = this.props;
-    const src = colors[color];
+    const { className, alt, height, width, color, darkMode } = this.props;
+    let src = colors[color];
+
+    if (darkMode && color === 'dark') {
+      src = colors.normal;
+    }
     
     return (
       <img 
@@ -19,7 +22,7 @@ export default class Logo extends Component {
         alt={ alt } 
         height={ height } 
         width={ width } 
-        className={ classNames(colorInverted && 'logo--inverted', className) } 
+        className={ className } 
       />
     );
   }
@@ -29,10 +32,10 @@ Logo.propTypes = {
   className: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
-  colorInverted: PropTypes.bool,
   height: PropTypes.string,
   width: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
+  darkMode: PropTypes.bool
 };
 
 Logo.defaultProps = {
