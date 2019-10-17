@@ -18,11 +18,11 @@ export const updateUser = (userData) => ((dispatch) => {
     url: '/user',
     method: 'PUT',
     params: userData,
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: () => {
+      // console.log(data);
     },
-    onError: (error) => {
-      console.log(error);
+    onError: () => {
+      // console.log(error);
     }
   });
 });
@@ -37,11 +37,11 @@ export const updateSettings = (userSettings) => ((dispatch) => {
     url: '/user/settings',
     method: 'PATCH',
     params: userSettings,
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: () => {
+      // console.log(data);
     },
-    onError: (error) => {
-      console.log(error);
+    onError: () => {
+      // console.log(error);
     }
   });
 });
