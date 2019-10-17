@@ -18,7 +18,7 @@ class Header extends Component {
     this.onBookmarkModalToggle = this.onBookmarkModalToggle.bind(this);
     this.onMenuClick = this.onMenuClick.bind(this);
     this.onCustomizeClick = this.onCustomizeClick.bind(this);
-    this.onAddBookmarkClick = this.onAddBookmarkClick.bind(this);
+    this.onAddButtonClick = this.onAddButtonClick.bind(this);
     this.onLogoutClick = this.onLogoutClick.bind(this);
     this.state = {
       bookmarkModalOpen: false,
@@ -42,8 +42,11 @@ class Header extends Component {
     this.props.openModal('Customize');
   }
 
-  onAddBookmarkClick() {
-    this.props.openModal('AddBookmark', {
+  onAddButtonClick() {
+    const { hasCategories, openModal } = this.props;
+    const modalType = hasCategories ? 'AddBookmark' : 'AddCategory';
+
+    openModal(modalType, {
       source: 'header'
     });
   }
@@ -71,7 +74,8 @@ class Header extends Component {
       sidebarOpen,
       home,
       className,
-      sticky
+      sticky,
+      hasCategories
     } = this.props;
     const { logoutPending } = this.state;
 
@@ -100,8 +104,8 @@ class Header extends Component {
                 className="booky--hide-desktop header__add-icon"
                 icon="add"
                 color="light"
-                onClick={ this.onAddBookmarkClick }
-                label={ intl.formatMessage({ id: 'bookmark.add' }) }
+                onClick={ this.onAddButtonClick }
+                label={ intl.formatMessage({ id: hasCategories ? 'bookmark.add' : 'category.add' }) }
                 ignoreDarkMode
                 isButton
               />
@@ -139,11 +143,11 @@ class Header extends Component {
               />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"
-                onClick={ this.onAddBookmarkClick }
+                onClick={ this.onAddButtonClick }
                 icon="add"
                 solid
               >
-                <FormattedHTMLMessage id="bookmark.add" />
+                <FormattedHTMLMessage id={ hasCategories ? 'bookmark.add' : 'category.add' } />
               </ButtonSmallLight>
             </Fragment>
           ) }
@@ -181,7 +185,8 @@ Header.propTypes = {
   home: PropTypes.bool,
   className: PropTypes.string,
   history: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  hasCategories: PropTypes.bool
 };
 
 export default injectIntl(withRouter(Header));

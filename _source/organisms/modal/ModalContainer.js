@@ -26,7 +26,7 @@ export const mapStateToProps = (state) => ({
     ...state.modal.data,
     categories: state.categories.filter(({id}) => id !== state.modal.data.id),
     dashboards: state.dashboards.items.filter(({id}) => id !== state.modal.data.id),
-    activeDashboard: state.dashboards.active
+    activeDashboard: state.user.settings.defaultDashboardId
   }
 });
 

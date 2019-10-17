@@ -4,14 +4,13 @@ import { logout } from '../../_state/user/actions';
 import { toggleSidebar, closeSidebar } from '../../_state/sidebar/actions';
 import { openModal } from '../../_state/modal/actions';
 
-export const mapStateToProps = function(state) {
-  return {
-    loggedIn: state.user.loggedIn,
-    sidebarOpen: state.sidebar.open,
-    color: state.user.settings.navigationBarColor,
-    sticky: state.user.settings.stickyHeader
-  };
-};
+export const mapStateToProps = (state) => ({
+  loggedIn: state.user.loggedIn,
+  sidebarOpen: state.sidebar.open,
+  color: state.user.settings.navigationBarColor,
+  sticky: state.user.settings.stickyHeader,
+  hasCategories: state.categories.length > 0
+});
 
 export const mapDispatchToProps = {
   toggleSidebar,
