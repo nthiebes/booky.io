@@ -41,7 +41,6 @@ class EditBookmark extends Component {
           color="primary"
           value={ url }
           onChange={ this.onUrlChange }
-          type="url"
           required
           maxLength="2000"
           label={ intl.formatMessage({ id: 'modal.url' }) }
