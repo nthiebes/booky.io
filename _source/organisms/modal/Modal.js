@@ -82,7 +82,8 @@ export default class Modal extends Component {
     if (!prevProps.open && this.props.open) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
-        showModal: true
+        showModal: true,
+        error: null
       });
     }
   }
