@@ -73,7 +73,7 @@ export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, po
     params: {
       name,
       url,
-      category: categoryId,
+      categoryId,
       position
     },
     onSuccess: ({ favicon }) => {
@@ -88,7 +88,7 @@ export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, po
       onSuccess && onSuccess();
     },
     onError: (error) => {
-      console.log('error', error);
+      // console.log('error', error);
       onError && onError(error);
     }
   });
