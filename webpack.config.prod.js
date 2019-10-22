@@ -1,8 +1,12 @@
 // For info about this file refer to webpack and webpack-hot-middleware documentation
-// For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
+// For info on how we're generating bundles with hashed filenames for cache busting:
+// https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from 'copy-webpack-plugin';
 import path from 'path';
 
 const GLOBALS = {
@@ -28,6 +32,22 @@ export default {
     filename: '[name].[contenthash].js'
   },
   plugins: [
+    // Remove _public folder before build
+    new CleanWebpackPlugin(),
+
+    // Analyze the bundle sizes
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false
+    }),
+
+    // Copy translation files
+    new CopyPlugin([
+      {
+        from: '_source/_assets',
+        to: '_assets'
+      }
+    ]),
+
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin(GLOBALS),
 
@@ -36,7 +56,8 @@ export default {
       filename: '[name].[contenthash].css'
     }),
 
-    // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
+    // Generate HTML file that contains references to generated bundles. See here for how this works:
+    // https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
       template: '_source/index.ejs',
       favicon: '_source/_assets/icons/favicon.ico',
@@ -56,7 +77,7 @@ export default {
       // Note that you can add custom options here if you need to handle other custom logic in index.html
       // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
       trackJSToken: ''
-    }),
+    })
 
   ],
   module: {
@@ -65,43 +86,6 @@ export default {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-      },
-      {
-        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/font-woff',
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/octet-stream',
-              name: '[name].[ext]'
-            }
-          }
-        ]
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
@@ -141,7 +125,7 @@ export default {
             options: {
               plugins: () => [
                 require('cssnano'),
-                require('autoprefixer'),
+                require('autoprefixer')
               ],
               sourceMap: true
             }

@@ -36,6 +36,15 @@
   }
 }
 
+.icon--size-tiny {
+  height: 16px;
+
+  &::after {
+    height: 16px;
+    width: 16px;
+  }
+}
+
 .icon--size-small {
   height: 36px;
 
@@ -199,12 +208,24 @@
   }
 }
 
+.icon--skeleton {
+  width: 24px !important;
+  height: 24px;
+  margin: 6px;
+}
+
 .icon__svg {
   fill: currentColor;
   padding: 6px;
   position: relative;
   stroke-width: 0;
   stroke: currentColor;
+}
+
+.icon__svg--size-tiny {
+  height: 16px;
+  width: 16px;
+  padding: 0;
 }
 
 .icon__svg--size-small {
@@ -224,14 +245,6 @@
 
 .icon__svg--spinner {
   animation: 1s linear infinite rotate;
-}
-
-.icon__label {
-  cursor: pointer;
-  font-family: $font__family--heading;
-  font-size: 1rem;
-  font-weight: 400;
-  margin-left: 4px;
 }
 
 @keyframes rotate {

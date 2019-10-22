@@ -1,24 +1,18 @@
 import fetcher from '../../_utils/fetcher';
 
 import { setCategories, getCategories } from '../categories/actions';
+import { updateSettings } from '../user/actions';
 import { closeSidebar } from '../sidebar/actions';
 
 export const CHANGE_DASHBOARD = 'CHANGE_DASHBOARD';
 export const ADD_DASHBOARD = 'ADD_DASHBOARD';
-export const UPDATE_DASHBOARD = 'UPDATE_DASHBOARD';
+export const EDIT_DASHBOARD = 'EDIT_DASHBOARD';
 export const DELETE_DASHBOARD = 'DELETE_DASHBOARD';
 export const UPDATE_OFFSET = 'UPDATE_OFFSET';
 export const DRAG_DASHBOARD = 'DRAG_DASHBOARD';
 export const DRAG_CATEGORY = 'DRAG_CATEGORY';
 export const TOGGLE_DASHBOARD_OPEN = 'TOGGLE_DASHBOARD_OPEN';
 export const UPDATE_DASHBOARDS_DATA = 'UPDATE_DASHBOARDS_DATA';
-
-export function deleteDashboard(payload) {
-  return {
-    type: DELETE_DASHBOARD,
-    payload
-  };
-}
 
 export function updateOffset(offset) {
   return {
@@ -54,17 +48,14 @@ export const updateDashboardsData = (data) => ({
 
 export const changeDashboard = (id) => ((dispatch) => {
   dispatch(updateDashboardsData({
-    pending: true,
-    active: id
+    pending: true
+  }));
+  dispatch(updateSettings({
+    defaultDashboardId: id
   }));
 
   dispatch(closeSidebar());
   dispatch(getCategories(id));
-});
-
-export const updateDashboard = (data) => ({
-  type: UPDATE_DASHBOARD,
-  data
 });
 
 export const getDashboards = () => ((dispatch) => {
@@ -77,7 +68,6 @@ export const getDashboards = () => ((dispatch) => {
     onSuccess: ({ dashboards, activeCategories }) => {
       dispatch(updateDashboardsData({
         items: dashboards,
-        active: dashboards[0].id,
         pending: false
       }));
       dispatch(setCategories(activeCategories));
@@ -91,7 +81,7 @@ export const getDashboards = () => ((dispatch) => {
   });
 });
 
-export const addDashboard = ({ name }) => ((dispatch) => {
+export const addDashboard = ({ name, onSuccess, onError }) => ((dispatch) => {
   fetcher({
     url: '/dashboards',
     method: 'POST',
@@ -99,15 +89,16 @@ export const addDashboard = ({ name }) => ((dispatch) => {
       name
     },
     onSuccess: ({ id }) => {
-      console.log('id', id);
       dispatch({
         type: ADD_DASHBOARD,
         name,
         id
       });
+      onSuccess();
     },
-    onError: (error) => {
-      console.log('error', error);
+    onError: () => {
+      // console.log('error', error);
+      onError();
     }
   });
 });
@@ -120,14 +111,41 @@ export const editDashboard = ({ name, id, onSuccess, onError }) => ((dispatch) =
       name
     },
     onSuccess: () => {
-      dispatch(updateDashboard({
+      dispatch({
+        type: EDIT_DASHBOARD,
         name,
         id
-      }));
+      });
       onSuccess();
     },
-    onError: (error) => {
-      console.log('error', error);
+    onError: () => {
+      // console.log('error', error);
+      onError();
+    }
+  });
+});
+
+export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch, getState) => {
+  const dashboards = getState().dashboards.items;
+  const defaultDashboardId = newId || (dashboards.length ? dashboards[0].id : null);
+
+  fetcher({
+    url: `/dashboards/${id}`,
+    method: 'DELETE',
+    onSuccess: () => {
+      dispatch({
+        type: DELETE_DASHBOARD,
+        newId,
+        id
+      });
+      dispatch(updateSettings({
+        defaultDashboardId
+      }));
+
+      onSuccess();
+    },
+    onError: () => {
+      // console.log('error', error);
       onError();
     }
   });

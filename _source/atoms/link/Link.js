@@ -47,6 +47,7 @@ export default class Link extends Component {
         title={ title }
         onClick={ onClick }
         target={ target }
+        rel={ target === '_blank' ? 'noopener noreferrer' : null }
         tabIndex={ tabIndex }
         onKeyDown={ this.handleKeyDown }
         className={ classNames(

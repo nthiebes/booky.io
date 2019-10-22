@@ -11,7 +11,9 @@ export default {
       'react-dom': '@hot-loader/react-dom'
     }
   },
-  devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
+  // more info: https://webpack.js.org/guides/development/#using-source-maps
+  // and https://webpack.js.org/configuration/devtool/
+  devtool: 'cheap-module-eval-source-map',
   entry: [
     // must be first entry to properly set public path
     './_source/webpack-public-path',
@@ -30,7 +32,7 @@ export default {
     new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
+    new HtmlWebpackPlugin({ // Create HTML file that includes references to bundled CSS and JS.
       template: '_source/index.ejs',
       minify: {
         removeComments: true,

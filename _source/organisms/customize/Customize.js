@@ -6,7 +6,7 @@ import { H1, H2 } from '../../atoms/headline';
 import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
-import Radio from '../../atoms/radio';
+// import Radio from '../../atoms/radio';
 
 class Customize extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Customize extends Component {
 
   handleColorChange(value) {
     this.props.updateSettings({
-      navigationBarColor: parseInt(value.replace(/color/g, ''), 10)
+      navigationBarColor: parseInt(value.replace(/color/g, ''), 10) - 1
     });
   }
 
@@ -30,7 +30,6 @@ class Customize extends Component {
   }
 
   handleRadioChange({ name, value }) {
-    console.log(name, value);
     this.props.updateSettings({
       [name]: value
     });
@@ -41,9 +40,9 @@ class Customize extends Component {
       intl,
       navColor,
       newtab,
-      maxWidth,
-      preserveEditMode,
-      dashboardsStyle,
+      // maxWidth,
+      // preserveEditMode,
+      // dashboardsStyle,
       blurEffect,
       stickyHeader,
       stickyToolbar,
@@ -62,7 +61,7 @@ class Customize extends Component {
           <FormattedMessage id="customize.navColor" />
         </Label>
         <ColorPicker
-          value={ navColor.toString() }
+          value={ (navColor + 1).toString() }
           onChange={ this.handleColorChange }
           className="customize__color-picker"
         />
@@ -94,57 +93,60 @@ class Customize extends Component {
           onChange={ this.handleCheckboxChange }
           checked={ stickyToolbar }
         />
-        <Checkbox
+        {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
           id="maxWidth"
           name="maxWidth"
           onChange={ this.handleCheckboxChange }
           checked={ maxWidth }
-        />
-        <H2>
+        /> */}
+        {/* <H2>
           <FormattedMessage id="dashboard.title" />
         </H2>
         <Radio
-          label={ intl.formatMessage({ id: 'customize.sidebar'}) }
           id="dashboards-sidebar"
           name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="sidebar"
-          defaultChecked={ dashboardsStyle === 'sidebar' }
-        />
+          checked={ dashboardsStyle === 'sidebar' }
+        >
+          <FormattedMessage id="customize.sidebar" />
+        </Radio>
         <Radio
-          label={ intl.formatMessage({ id: 'customize.dropdown'}) }
           id="dashboards-dropdown"
           name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="dropdown"
-          defaultChecked={ dashboardsStyle === 'dropdown' }
-        />
+          checked={ dashboardsStyle === 'dropdown' }
+        >
+          <FormattedMessage id="customize.dropdown" />
+        </Radio>
         <Radio
-          label={ intl.formatMessage({ id: 'customize.tabs'}) }
           id="dashboards-tabs"
           name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="tabs"
-          defaultChecked={ dashboardsStyle === 'tabs' }
-        />
+          checked={ dashboardsStyle === 'tabs' }
+        >
+          <FormattedMessage id="customize.tabs" />
+        </Radio> */}
         <H2>
           <FormattedMessage id="dashboard.preferences" />
         </H2>
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.newTab'}) }
-          id="newtab"
-          name="newtab"
+          id="openLinksInNewTab"
+          name="openLinksInNewTab"
           onChange={ this.handleCheckboxChange }
           checked={ newtab }
         />
-        <Checkbox
+        {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.preserveEditMode'}) }
           id="preserveEditMode"
           name="preserveEditMode"
           onChange={ this.handleCheckboxChange }
           checked={ preserveEditMode }
-        />
+        /> */}
       </Fragment>
     );
   }

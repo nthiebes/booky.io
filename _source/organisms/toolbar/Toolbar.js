@@ -78,7 +78,7 @@ class Toolbar extends Component {
 
   render() {
     const {
-      dashboard,
+      activeDashboard,
       intl,
       className,
       dashboardsStyle,
@@ -91,12 +91,13 @@ class Toolbar extends Component {
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className && className) }>
         <Icon
           icon="tree"
-          title={ intl.formatMessage({ id: 'structure.title' }) }
-          onClick={ this.onIconClick }
-          isButton
+          label={ intl.formatMessage({ id: 'structure.title' }) }
+          className="toolbar__icon"
         />
+        {/** onClick={ this.onIconClick }
+          isButton */}
         { dashboardsStyle === 'sidebar' && (
-          <H3 className="toolbar__headline">{ dashboard.name || <Skeleton /> }</H3>
+          <H3 className="toolbar__headline">{ activeDashboard.name || <Skeleton /> }</H3>
         ) }
         { dashboardsStyle === 'tabs' && (
           <TabBar className="toolbar__tabs">
@@ -125,7 +126,7 @@ Toolbar.propTypes = {
   sticky: PropTypes.bool.isRequired,
   currentlySticky: PropTypes.bool.isRequired,
   dashboards: PropTypes.object.isRequired,
-  dashboard: PropTypes.object,
+  activeDashboard: PropTypes.object,
   openModal: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
   className: PropTypes.string,
@@ -135,5 +136,5 @@ Toolbar.propTypes = {
 };
 
 Toolbar.defaultProps = {
-  dashboard: {}
+  activeDashboard: {}
 };

@@ -1,0 +1,16 @@
+.expandable {
+  margin-bottom: 1rem;
+}
+
+.expandable__summary {
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  color: $color__font--medium;
+
+  &:focus {
+    outline: 1px dashed $color__font--medium;
+  }
+}

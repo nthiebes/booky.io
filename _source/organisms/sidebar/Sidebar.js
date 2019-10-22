@@ -2,12 +2,12 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
+import Logo from '../../atoms/logo';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
-import { ButtonSmallPrimary } from '../../atoms/button';
 import { DashboardsList } from '../../organisms/dashboards';
 
 class Sidebar extends Component {
@@ -31,6 +31,7 @@ class Sidebar extends Component {
     this.props.openModal('AddDashboard');
   }
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       loggedIn,
@@ -64,13 +65,13 @@ class Sidebar extends Component {
             onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
           >
-            <img src="../../_assets/logo_d.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
+            <Logo color="dark" />
           </Link>
           <Icon
             icon={ direction === 'left' ? 'back' : 'forward' }
             onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
-            title={ intl.formatMessage({ id: 'menu.close' }) }
+            label={ intl.formatMessage({ id: 'menu.close' }) }
           />
         </header>
         <hr className="sidebar__hr" />
@@ -79,7 +80,7 @@ class Sidebar extends Component {
             <DashboardsList useTabIndex={ open } />
           ) }
           { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
-          <nav className="sidebar__nav">
+          <nav title={ intl.formatMessage({ id: 'menu.title' }) } className="sidebar__nav">
             <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
             <ul className="sidebar__list">
               <li>
@@ -95,9 +96,9 @@ class Sidebar extends Component {
                   noUnderline
                 >
                   <Icon icon="about" />
-                  <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                  <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                     <FormattedMessage id="menu.about" />
-                  </label>
+                  </span>
                 </Link>
               </li>
               <li>
@@ -113,9 +114,27 @@ class Sidebar extends Component {
                   noUnderline
                 >
                   <Icon icon="help" />
-                  <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                  <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                     <FormattedMessage id="menu.help" />
-                  </label>
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={ classNames(
+                    'sidebar__item',
+                    pathname === '/feedback' && 'sidebar__item--active',
+                    darkMode && 'sidebar__item--dark-mode'
+                  ) }
+                  to="/feedback"
+                  onClick={ closeSidebar }
+                  tabIndex={ open ? '0' : '-1' }
+                  noUnderline
+                >
+                  <Icon icon="feedback" />
+                  <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                    <FormattedMessage id="menu.feedback" />
+                  </span>
                 </Link>
               </li>
               { !loggedIn && (
@@ -133,9 +152,9 @@ class Sidebar extends Component {
                       noUnderline
                     >
                       <Icon icon="account" />
-                      <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                      <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                         <FormattedMessage id="menu.login" />
-                      </label>
+                      </span>
                     </Link>
                   </li>
                   <li>
@@ -152,9 +171,9 @@ class Sidebar extends Component {
                       noUnderline
                     >
                       <Icon icon="join" />
-                      <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                      <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                         <FormattedMessage id="menu.register" />
-                      </label>
+                      </span>
                     </Link>
                   </li>
                 </Fragment>
@@ -174,31 +193,13 @@ class Sidebar extends Component {
                       noUnderline
                     >
                       <Icon icon="account"/>
-                      <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                      <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                         <FormattedMessage id="menu.account" />
-                      </label>
+                      </span>
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      className={ classNames(
-                        'sidebar__item',
-                        pathname === '/next' && 'sidebar__item--active',
-                        darkMode && 'sidebar__item--dark-mode'
-                      ) }
-                      to="/next"
-                      onClick={ closeSidebar }
-                      tabIndex={ open ? '0' : '-1' }
-                      noUnderline
-                    >
-                      <Icon icon="next" />
-                      <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
-                        <FormattedMessage id="menu.next" />
-                      </label>
-                    </Link>
-                  </li>
-                  <li>
-                    <span
+                    <button
                       className={ classNames(
                         'sidebar__item',
                         'booky--hide-desktop',
@@ -209,13 +210,13 @@ class Sidebar extends Component {
                       tabIndex={ open ? '0' : '-1' }
                     >
                       <Icon icon="settings" />
-                      <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                      <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                         <FormattedMessage id="menu.customize" />
-                      </label>
-                    </span>
+                      </span>
+                    </button>
                   </li>
                   <li>
-                    <span
+                    <button
                       className={ classNames(
                         'sidebar__item',
                         'booky--hide-desktop',
@@ -225,10 +226,10 @@ class Sidebar extends Component {
                       tabIndex={ open ? '0' : '-1' }
                     >
                       <Icon icon="logout" />
-                      <label className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                      <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                         <FormattedMessage id="menu.logout" />
-                      </label>
-                    </span>
+                      </span>
+                    </button>
                   </li>
                 </Fragment>
               ) }

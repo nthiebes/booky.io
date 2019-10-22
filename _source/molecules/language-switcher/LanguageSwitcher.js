@@ -1,26 +1,25 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import 'whatwg-fetch';
 
-import { ButtonTextLight } from '../../atoms/button';
+import Radio from '../../atoms/radio';
+import Icon from '../../atoms/icon';
 
 class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleClick(event) {
+  handleChange({ value }) {
     const { updateIntl } = this.props;
-    const locale = event.currentTarget.value;
 
-    fetch(`/_assets/i18n/${locale}.json`)
+    fetch(`/_assets/i18n/${value}.json`)
       .then((response) => response.json())
       .then((messages) => {
         updateIntl({
-          locale,
+          locale: value,
           messages
         });
       })
@@ -34,7 +33,29 @@ class LanguageSwitcher extends Component {
 
     return (
       <Fragment>
-        <ButtonTextLight
+        <Radio
+          className="language-switcher__item"
+          id="language-switcher-en"
+          name="language"
+          value="en"
+          onChange={ this.handleChange }
+          checked={ locale === 'en' }
+        >
+          <Icon className="language-switcher__icon" icon="usa" />
+          { 'English' }
+        </Radio>
+        <Radio
+          className="language-switcher__item"
+          id="language-switcher-de"
+          name="language"
+          value="de"
+          onChange={ this.handleChange }
+          checked={ locale === 'de' }
+        >
+          <Icon className="language-switcher__icon" icon="germany" />
+          { 'Deutsch' }
+        </Radio>
+        {/* <ButtonTextLight
           icon="usa"
           className={ classNames('language-switcher__item', locale === 'en' && 'language-switcher__item--active') }
           value="en"
@@ -50,7 +71,7 @@ class LanguageSwitcher extends Component {
           onClick={ this.handleClick }
         >
           { 'Deutsch' }
-        </ButtonTextLight>
+        </ButtonTextLight> */}
       </Fragment>
     );
   }

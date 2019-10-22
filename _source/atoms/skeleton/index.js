@@ -1,3 +1,3 @@
-import component from './Skeleton';
+import component from './SkeletonContainer';
 
 export default component;

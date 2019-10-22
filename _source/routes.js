@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 
 import { restricted } from './templates/restricted';
 import Home from './pages/home';
@@ -8,14 +10,25 @@ import Help from './pages/help';
 import Account from './pages/account';
 import Login from './pages/login';
 import Join from './pages/join';
-import Next from './pages/next';
+import Feedback from './pages/feedback';
 import Privacy from './pages/privacy';
 import Legal from './pages/legal';
 import Contact from './pages/contact';
+import Forgot from './pages/forgot';
 import NotFound from './pages/not-found';
 
-export default class Routes extends Component {
-  componentDidUpdate() {
+class Routes extends Component {
+  static propTypes = {
+    location: PropTypes.object
+  };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.onRouteChanged();
+    }
+  }
+
+  onRouteChanged() {
     window.scrollTo(0, 0);
   }
 
@@ -28,12 +41,15 @@ export default class Routes extends Component {
         <Route path="/account" component={ restricted(Account) } />
         <Route path="/login" component={ Login } />
         <Route path="/join" component={ Join } />
-        <Route path="/next" component={ restricted(Next) } />
+        <Route path="/feedback" component={ Feedback } />
         <Route path="/privacy" component={ Privacy } />
         <Route path="/legal" component={ Legal } />
         <Route path="/contact" component={ Contact } />
+        <Route path="/forgot" component={ Forgot } />
         <Route path="*" component={ NotFound } />
       </Switch>
     );
   }
 }
+
+export default hot(module)(withRouter(Routes));

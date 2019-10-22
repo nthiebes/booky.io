@@ -2,13 +2,15 @@ import { connect } from 'react-redux';
 import Component from './Modal';
 import { closeModal } from '../../_state/modal/actions';
 import {
-  addBookmark,
-  editBookmark,
-  deleteBookmark,
   addCategory,
   editCategory,
   deleteCategory
 } from '../../_state/categories/actions';
+import {
+  addBookmark,
+  editBookmark,
+  deleteBookmark
+} from '../../_state/bookmarks/actions';
 import {
   addDashboard,
   editDashboard,
@@ -24,7 +26,7 @@ export const mapStateToProps = (state) => ({
     ...state.modal.data,
     categories: state.categories.filter(({id}) => id !== state.modal.data.id),
     dashboards: state.dashboards.items.filter(({id}) => id !== state.modal.data.id),
-    activeDashboard: state.dashboards.active
+    activeDashboard: state.user.settings.defaultDashboardId
   }
 });
 

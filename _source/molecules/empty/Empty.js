@@ -16,7 +16,7 @@ class Empty extends Component {
           className={ classNames('empty__image', darkMode && 'empty__image--dark-mode') }
           ariaHidden={ ariaHidden }
         />
-        <figcaption className={ classNames(darkMode && 'empty--dark-mode') }>
+        <figcaption className={ classNames('empty__text', darkMode && 'empty--dark-mode') }>
           <i>{ children }</i>
         </figcaption>
       </figure>

@@ -27,7 +27,7 @@ class Structure extends Component {
                         <Icon
                           className="structure__icon"
                           icon="drag"
-                          title={ intl.formatMessage({ id: 'dashboard.drag' }) }
+                          label={ intl.formatMessage({ id: 'dashboard.drag' }) }
                           dragHandleProps={ providedInner.dragHandleProps }
                         />
                       </div>

@@ -16,6 +16,7 @@
 @import "../../atoms/textarea/Textarea";
 @import "../../atoms/file-upload/FileUpload";
 @import "../../atoms/skeleton/Skeleton";
+@import "../../atoms/logo/logo";
 
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
@@ -28,6 +29,7 @@
 @import "../../molecules/testimonials/Testimonials";
 @import "../../molecules/empty/Empty";
 @import "../../molecules/feature/Feature";
+@import "../../molecules/expandable/Expandable";
 
 @import "../../organisms/categories/Categories";
 @import "../../organisms/header/Header";
@@ -46,6 +48,8 @@
 @import "../../pages/account/Account";
 @import "../../pages/login/Login";
 @import "../../pages/join/Join";
+@import "../../pages/help/Help";
+@import "../../pages/privacy/Privacy";
 
 html {
   font-size: calc(14px + 0.2vw);
@@ -118,47 +122,38 @@ body {
 /*
  * App loading screen
  */
-.loader {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: $color__background--white;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.loader--hide {
-  transition: opacity 0.3s linear;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.loader__logo {
-  position: absolute;
+.loading__logo {
+  margin-right: 1.5rem;
   height: 36px;
-  width: 24px;
-  left: calc(50vw - 12px);
-  top: calc(50vh - 38px);
+  width: 102px;
 }
 
-.loader__logo--hide {
-  transition: opacity 0.3s linear, transform 0.4s ease-in;
-  transform: translateY(-3rem);
-  opacity: 0;
+.loading__nav {
+  flex-grow: 1;
 }
 
-.loader__spinner {
+.loading__link {
+  width: 7rem;
+  margin-right: 1rem;
+}
+
+.loading__button {
+  line-height: 2;
+  margin-left: 1rem;
+  width: 5rem;
+}
+
+.loading__spinner {
   position: absolute;
   color: $color__font--medium;
-  cursor: default;
+  pointer-events: none;
   left: calc(50vw - 18px);
   top: calc(50vh);
+  z-index: 10;
 }
 
-.loader__spinner--hide {
+.loading__spinner--hide {
   transition: opacity 0.3s linear, transform 0.4s ease-in;
-  transform: translateY(3rem);
+  transform: translateY(-3rem);
   opacity: 0;
 }

@@ -5,7 +5,8 @@ import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
-import { H3 } from '../../atoms/headline';
+import { ErrorMessage } from '../../atoms/messages';
+import { H2 } from '../../atoms/headline';
 import Form from '../../molecules/form';
 
 class Modal extends Component {
@@ -17,7 +18,7 @@ class Modal extends Component {
   }
 
   componentDidMount() {
-    this.props.hasAnchor && this.anchor.focus();
+    this.anchor.focus();
 
     // document.body.classList.add('booky--no-scrolling');
   }
@@ -31,22 +32,22 @@ class Modal extends Component {
   }
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, hasAnchor } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, error } = this.props;
 
     return (
       <Form onSubmit={ this.onSubmit } onClick={ this.handleClick }>
         <header className="modal__header">
-          { hasAnchor && (
-            <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
-              <FormattedMessage id="modal.tabAnchor" />
-            </span>
-          ) }
-          { headline && <H3 className="modal__headline">{ headline }</H3> }
-          <Icon icon="close" onClick={ onClose } title={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
+          { /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */ }
+          <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
+            <FormattedMessage id="modal.tabAnchor" />
+          </span>
+          { headline && <H2 className="modal__headline">{ headline }</H2> }
+          <Icon icon="close" onClick={ onClose } label={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
         </header>
         <div className="modal__content">
           { children }
         </div>
+        { error && <ErrorMessage message={ error } hasIcon className="modal__error" /> }
         <footer className={ classNames('modal__footer', noCancel && 'modal__footer--one-button') }>
           { !noCancel && (
             <ButtonLargeLight
@@ -87,6 +88,6 @@ Modal.propTypes = {
   noCancel: PropTypes.bool,
   intl: PropTypes.object.isRequired,
   pending: PropTypes.bool.isRequired,
-  hasAnchor: PropTypes.bool,
-  darkMode: PropTypes.bool.isRequired
+  darkMode: PropTypes.bool.isRequired,
+  error: PropTypes.string
 };

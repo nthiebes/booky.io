@@ -15,7 +15,7 @@ class AddCategory extends Component {
     this.onColorChange = this.onColorChange.bind(this);
     this.state = {
       name: '',
-      color: 'color0'
+      color: 'color1'
     };
   }
 
@@ -47,7 +47,6 @@ class AddCategory extends Component {
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
-          autoFocus
         />
         <Label>
           <FormattedMessage id="modal.color" />

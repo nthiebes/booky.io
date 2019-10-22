@@ -21,7 +21,9 @@ export default class Modal extends Component {
     super(props);
 
     this.state = {
-      pending: false
+      pending: false,
+      error: null,
+      showModal: false
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
@@ -78,8 +80,10 @@ export default class Modal extends Component {
 
   componentDidUpdate(prevProps) {
     if (!prevProps.open && this.props.open) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
-        showModal: true
+        showModal: true,
+        error: null
       });
     }
   }
@@ -88,10 +92,12 @@ export default class Modal extends Component {
     const { modal, data } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
+    modalData.categoryId = parseInt(modalData.categoryId, 10);
 
     if (this.modalMap[modal].action) {
       this.setState({
-        pending: true
+        pending: true,
+        error: null
       });
 
       this.modalMap[modal].action({
@@ -100,8 +106,11 @@ export default class Modal extends Component {
         onSuccess: () => {
           this.closeModal();
         },
-        onError: () => {
-          this.closeModal();
+        onError: (error) => {
+          this.setState({
+            pending: false,
+            error
+          });
         }
       });
     } else {
@@ -113,7 +122,8 @@ export default class Modal extends Component {
     const { closeModal } = this.props;
 
     this.setState({
-      pending: false
+      pending: false,
+      error: null
     });
     abortFetch();
     closeModal();
@@ -134,7 +144,7 @@ export default class Modal extends Component {
 
   render() {
     const { modal, open, data, darkMode } = this.props;
-    const { pending, showModal } = this.state;
+    const { pending, showModal, error } = this.state;
     const CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
 
     return (
@@ -145,6 +155,7 @@ export default class Modal extends Component {
         ) }
         onClick={ this.closeModal }
         onKeyUp={ this.handleKeyUp }
+        role="presentation"
       >
         <div className={ classNames('modal__inner', darkMode && 'modal__inner--dark') }>
           { CustomTag && showModal && (
@@ -154,6 +165,7 @@ export default class Modal extends Component {
               data={ data }
               pending={ pending }
               darkMode={ darkMode }
+              error={ error }
             />
           ) }
         </div>

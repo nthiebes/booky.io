@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import * as Cookies from 'es-cookie';
 import { addLocaleData } from 'react-intl';
-import { Provider } from 'react-intl-redux';
+import { AppContainer } from 'react-hot-loader';
 import deLocaleData from 'react-intl/locale-data/de';
 
 import Booky from './templates/booky';
 import fetcher from './_utils/fetcher';
-import configureStore from './configureStore';
+import configureStore, { history } from './configureStore';
 import initialState from './initialState';
 
 // Language detection
@@ -20,59 +20,93 @@ const language = supportedLanguages.indexOf(locale) === -1 ? 'en' : locale;
 Cookies.set('lang', language, { expires: 365 });
 document.documentElement.setAttribute('lang', language);
 
-const loadingDone = (store) => {
-  addLocaleData(deLocaleData);
+// Activate the :active pseudo class on mobile
+document.addEventListener('touchstart', () => { /* Do nothing */ }, {passive: true});
+
+let counter = 0;
+let error = false;
+let messages;
+let userData;
+const loadingDone = () => {
+  let store;
+
+  document.title = 'booky.io';
+
+  // Not logged in
+  if (error) {
+    store = configureStore({
+      ...initialState,
+      user: {
+        ...initialState.user,
+        loggedIn: false
+      },
+      intl: {
+        locale: language,
+        messages
+      }
+    });
+  // Logged in
+  } else {
+    store = configureStore({
+      ...initialState,
+      user: {
+        ...initialState.user,
+        ...userData,
+        loggedIn: true,
+        settings: {
+          ...initialState.user.settings,
+          ...userData.settings
+        }
+      },
+      intl: {
+        locale: language,
+        messages
+      }
+    });
+  }
+
+  if (language === 'de') {
+    addLocaleData(deLocaleData);
+  }
 
   render(
-    <Provider store={ store }>
-      <Booky />
-    </Provider>,
+    <AppContainer>
+      <Booky store={ store } history={ history } />
+    </AppContainer>,
     document.getElementById('root')
   );
 };
 
+// Fetch translations
 fetch(`/_assets/i18n/${language}.json`)
   .then((response) => response.json())
-  .then((messages) => {
-    fetcher({
-      url: '/user',
-      onSuccess: (data) => {
-        document.title = 'booky.io';
-
-        const store = configureStore({
-          ...initialState,
-          user: {
-            ...initialState.user,
-            ...data,
-            loggedIn: true,
-            settings: {
-              ...initialState.user.settings,
-              ...data.settings
-            }
-          },
-          intl: {
-            locale: language,
-            messages
-          }
-        });
-        
-        loadingDone(store);
-      },
-      onError: () => {
-        const store = configureStore({
-          ...initialState,
-          user: {
-            ...initialState.user,
-            loggedIn: false
-          },
-          intl: {
-            locale: language,
-            messages
-          }
-        });
-
-        loadingDone(store);
-      }
-    });
+  .then((data) => {
+    messages = data;
+    counter++;
+  
+    if (counter === 2) {
+      loadingDone();
+    }
   })
   .catch();
+
+// Fetch user data
+fetcher({
+  url: '/user',
+  onSuccess: (data) => {
+    userData = data;
+    counter++;
+  
+    if (counter === 2) {
+      loadingDone();
+    }
+  },
+  onError: () => {
+    error = true;
+    counter++;
+  
+    if (counter === 2) {
+      loadingDone();
+    }
+  }
+});

@@ -19,13 +19,12 @@ export default {
       stickyToolbar: true,
       autofillBookmarkNames: true,
       colorScheme: 0,
-      defaultDashboardId: -1,
+      defaultDashboardId: null,
       enableNotes: true
     }
   },
   dashboards: {
     items: [],
-    active: null,
     pending: false,
     error: null
   },

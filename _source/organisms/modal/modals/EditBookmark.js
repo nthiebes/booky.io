@@ -34,14 +34,13 @@ class EditBookmark extends Component {
     const { name, url } = this.state;
 
     return (
-      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editBookmark' }) } hasAnchor>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editBookmark' }) }>
         <Input
           id="bookmark-url"
           name="url"
           color="primary"
           value={ url }
           onChange={ this.onUrlChange }
-          type="url"
           required
           maxLength="2000"
           label={ intl.formatMessage({ id: 'modal.url' }) }

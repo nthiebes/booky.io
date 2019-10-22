@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
 import Component from './Page';
 
-export const mapStateToProps = (state) => {
-  return {
-    blurContent: state.modal.open && state.user.settings.blurEffect,
-    stickyHeader: state.user.settings.stickyHeader,
-    darkMode: state.user.settings.darkMode
-  };
-};
+export const mapStateToProps = (state) => ({
+  blurContent: state.modal.open && state.user.settings.blurEffect,
+  stickyHeader: state.user.settings.stickyHeader,
+  darkMode: state.user.settings.darkMode
+});
 
 const Container = connect(
   mapStateToProps

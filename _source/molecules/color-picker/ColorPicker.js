@@ -18,9 +18,9 @@ export default class ColorPicker extends Component {
   }
 
   getColors() {
-    const count = 8,
+    const count = 9,
       colors = [];
-    let index = 0;
+    let index = 1;
 
     for (index; index <= count; index++) {
       colors.push({'key': index.toString()});

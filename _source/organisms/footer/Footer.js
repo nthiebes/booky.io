@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
+import Logo from '../../atoms/logo';
 import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
 import LanguageSwitcher from '../../molecules/language-switcher';
@@ -57,24 +58,35 @@ class Footer extends Component {
           <a
             className="footer__social-item"
             target="_blank"
+            rel="noopener noreferrer"
             href="https://twitter.com/intent/tweet?text=booky.io%20%7C%20Online%20Bookmark%20manager.%20Your%20bookmarks%20always%20available."
           >
             <Icon className="footer__icon" icon="twitter" color="light" />
-            <label className="footer__label">{ 'Twitter' }</label>
+            <span className="footer__label">{ 'Twitter' }</span>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io">
+          <a
+            className="footer__social-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io"
+          >
             <Icon className="footer__icon" icon="xing" color="light" />
-            <label className="footer__label">{ 'XING' }</label>
+            <span className="footer__label">{ 'XING' }</span>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io">
+          <a
+            className="footer__social-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io"
+          >
             <Icon className="footer__icon" icon="facebook" color="light" />
-            <label className="footer__label">{ 'Facebook' }</label>
+            <span className="footer__label">{ 'Facebook' }</span>
           </a>
         </section>
         <section className="footer__content">
           <div className="footer__wrapper">
             <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
-              <img src="../../_assets/logo.svg" alt={ intl.formatMessage({ id: 'misc.logo' }) } height="36" />
+              <Logo />
             </Link>
             <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
               <FormattedHTMLMessage id="footer.scroll" />
@@ -84,19 +96,19 @@ class Footer extends Component {
             <LanguageSwitcher />
           </div>
           <nav className="footer__menu">
-            <Link className="footer__menu-item" color="light" to="/about" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/about">
               <FormattedMessage id="menu.about" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/help" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/help">
               <FormattedMessage id="menu.help" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/contact" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/contact">
               <FormattedMessage id="menu.contact" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/privacy" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/privacy">
               <FormattedMessage id="menu.privacy" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/legal" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/legal">
               <FormattedMessage id="menu.legal" />
             </Link>
           </nav>

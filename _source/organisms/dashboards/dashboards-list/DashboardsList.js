@@ -50,7 +50,6 @@ class DashboardsSidebar extends Component {
     const {
       dashboards,
       changeDashboard,
-      className,
       intl,
       activeId,
       pinned,
@@ -58,6 +57,7 @@ class DashboardsSidebar extends Component {
       darkMode
     } = this.props;
     const { editMode } = this.state;
+    const noDashboards = dashboards.length === 0;
 
     return (
       <Fragment>
@@ -67,10 +67,11 @@ class DashboardsSidebar extends Component {
           </H3>
           <Icon
             icon={ editMode ? 'close' : 'more-horiz' }
-            title={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
+            label={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
             onClick={ this.toggleEditMode }
             tabIndex={ useTabIndex || pinned ? '0' : '-1' }
             isButton
+            useSkeleton={ noDashboards }
           />
         </div>
         <ul className={ classNames(
@@ -79,6 +80,7 @@ class DashboardsSidebar extends Component {
           !pinned && 'dashboards__list--hidden'
         ) }>
           { dashboards.map((dashboard, index) => (
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
             <li
               key={ index }
               className={ classNames(
@@ -96,7 +98,7 @@ class DashboardsSidebar extends Component {
               <Icon
                 className="dashboards__icon"
                 icon="edit"
-                title={ intl.formatMessage({ id: 'dashboard.edit' }) }
+                label={ intl.formatMessage({ id: 'dashboard.edit' }) }
                 stopPropagation
                 onClick={ () => this.onIconClick('EditDashboard', dashboard) }
                 tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
@@ -105,7 +107,7 @@ class DashboardsSidebar extends Component {
               <Icon
                 className="dashboards__icon dashboards__icon--delete"
                 icon="delete"
-                title={ intl.formatMessage({ id: 'dashboard.delete' }) }
+                label={ intl.formatMessage({ id: 'dashboard.delete' }) }
                 stopPropagation
                 onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
                 tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
@@ -113,10 +115,18 @@ class DashboardsSidebar extends Component {
               />
             </li>
           )) }
-          { dashboards.length === 0 && (
-            <li className={ classNames('dashboards__item', darkMode && 'dashboards__item--dark-mode') }>
-              <Skeleton />
-            </li>
+          { noDashboards && (
+            <Fragment>
+              <li className="dashboards__item--pending">
+                <Skeleton />
+              </li>
+              <li className="dashboards__item--pending">
+                <Skeleton />
+              </li>
+              <li className="dashboards__item--pending">
+                <Skeleton />
+              </li>
+            </Fragment>
           ) }
         </ul>
         <ButtonSmallPrimary
@@ -124,6 +134,7 @@ class DashboardsSidebar extends Component {
           className="dashboards__button"
           onClick={ this.addDashboard }
           tabIndex={ useTabIndex || pinned ? '0' : '-1' }
+          useSkeleton={ noDashboards }
         >
           <FormattedHTMLMessage id="dashboard.add" />
         </ButtonSmallPrimary>
@@ -138,7 +149,6 @@ DashboardsSidebar.propTypes = {
   openModal: PropTypes.func.isRequired,
   changeDashboard: PropTypes.func.isRequired,
   dashboards: PropTypes.array,
-  className: PropTypes.string,
   intl: PropTypes.object.isRequired,
   pinned: PropTypes.bool,
   activeId: PropTypes.number,

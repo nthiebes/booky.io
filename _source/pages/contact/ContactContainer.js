@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Component from './Contact';
 
 export const mapStateToProps = (state) => ({
-  username: state.user.username,
+  username: state.user.name,
   email: state.user.email
 });
 

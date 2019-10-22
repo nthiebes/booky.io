@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import Icon from '../icon';
 import Link from '../link';
+import Skeleton from '../skeleton';
 
 export default class Button extends Component {
   render() {
@@ -22,40 +24,45 @@ export default class Button extends Component {
       contentBefore,
       pending,
       value,
-      id
+      id,
+      useSkeleton
     } = this.props;
     const CustomTag = href || to ? Link : 'button';
 
     return (
-      <CustomTag
-        className={ classNames(
-          'button',
-          `button--${size}`,
-          `button--${size}-${color}`,
-          solid && 'button--solid',
-          pending && 'button--pending',
-          contentBefore && 'button--content-before',
-          className && className)
-        }
-        onClick={ onClick }
-        href={ href }
-        to={ to }
-        tabIndex={ tabIndex }
-        type={ type }
-        disabled={ disabled }
-        value={ value }
-        id={ id }
-      >
-        { icon && (
-          <Icon
-            icon={ pending ? 'spinner' : icon }
-            color={ size === 'small' ? color : 'light' }
-            className="button__icon"
-            ignoreDarkMode
-          />
-        ) }
-        <span className="button__text" role="text">{ children }</span>
-      </CustomTag>
+      useSkeleton ? (
+        <Skeleton className={ classNames('button--skeleton', className) } />
+      ) : (
+        <CustomTag
+          className={ classNames(
+            'button',
+            `button--${size}`,
+            `button--${size}-${color}`,
+            solid && 'button--solid',
+            pending && 'button--pending',
+            contentBefore && 'button--content-before',
+            className && className)
+          }
+          onClick={ onClick }
+          href={ href }
+          to={ to }
+          tabIndex={ tabIndex }
+          type={ type }
+          disabled={ disabled }
+          value={ value }
+          id={ id }
+        >
+          { icon && (
+            <Icon
+              icon={ pending ? 'spinner' : icon }
+              color={ size === 'small' ? color : 'light' }
+              className="button__icon"
+              ignoreDarkMode
+            />
+          ) }
+          <span className="button__text">{ children }</span>
+        </CustomTag>
+      )
     );
   }
 }
@@ -80,7 +87,8 @@ Button.propTypes = {
   contentBefore: PropTypes.bool,
   pending: PropTypes.bool,
   value: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.string,
+  useSkeleton: PropTypes.bool
 };
 
 Button.defaultProps = {

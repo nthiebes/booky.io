@@ -10,8 +10,10 @@
 }
 
 .dashboards__headline-wrapper--hidden {
-  opacity: 0;
-  pointer-events: none;
+  @include desktop {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .dashboards__headline {
@@ -90,9 +92,23 @@
   }
 }
 
+
 .dashboards__list--hidden {
-  opacity: 0;
-  pointer-events: none;
+  @include desktop {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.dashboards__item--pending {
+  line-height: 2.5;
+  width: 100%;
+  list-style: none;
+  padding: 0 calc(3vw + 6px);
+
+  @include desktop {
+    padding: 0 36px;
+  }
 }
 
 .dashboards__item {

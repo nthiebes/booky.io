@@ -32,7 +32,7 @@ export default class SuccessMessage extends Component {
 
     return (
       <P className={ classNames('success', animate && 'success--animate', className && className) } role="alert">
-        { hasIcon && <Icon icon="check" color="green" className="success__icon" /> }
+        { hasIcon && <Icon icon="check" color="green" ignoreDarkMode className="success__icon" /> }
         <FormattedMessage id={ message } />
       </P>
     );

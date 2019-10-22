@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { injectIntl } from 'react-intl';
 
-export default class TabBar extends Component {
+class TabBar extends Component {
   render() {
-    const { className } = this.props;
+    const { className, title, intl } = this.props;
 
     return (
-      <nav className={ classNames('tab-bar', className) }>
+      <nav aria-label={ intl.formatMessage({ id: title }) } className={ classNames('tab-bar', className) }>
         <ul className="tab-bar__scroll-container">
           { this.props.children }
         </ul>
@@ -18,5 +19,9 @@ export default class TabBar extends Component {
 
 TabBar.propTypes = {
   children: PropTypes.array.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  intl: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired
 };
+
+export default injectIntl(TabBar);

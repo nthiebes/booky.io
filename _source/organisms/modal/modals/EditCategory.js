@@ -36,7 +36,7 @@ class EditCategory extends Component {
     const { name, color } = this.state;
 
     return (
-      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editCategory' }) } hasAnchor>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editCategory' }) }>
         <Input
           id="category-name"
           name="name"

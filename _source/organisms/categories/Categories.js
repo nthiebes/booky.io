@@ -9,21 +9,26 @@ import { ButtonSmallPrimary } from '../../atoms/button';
 import Icon from '../../atoms/icon';
 
 class Categories extends Component {
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    categories: PropTypes.array.isRequired,
+    dashboardsOpen: PropTypes.bool.isRequired,
+    hasSidebar: PropTypes.bool.isRequired,
+    maxWidth: PropTypes.bool.isRequired,
+    dashboard: PropTypes.object,
+    className: PropTypes.string,
+    pending: PropTypes.bool,
+    openModal: PropTypes.func.isRequired
+  };
 
-    this.onAddClick = this.onAddClick.bind(this);
-  }
-
-  onAddClick() {
+  onAddClick = () => {
     this.props.openModal('AddCategory');
-  }
+  };
 
   render() {
     const { categories, dashboardsOpen, hasSidebar, maxWidth, dashboard, className, pending } = this.props;
 
     return (
-      <div className={ classNames(
+      <ul className={ classNames(
         'categories',
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
@@ -34,37 +39,28 @@ class Categories extends Component {
           <Icon icon="spinner" className="categories__spinner" />
         ) : (
           <Fragment>
-            <ButtonSmallPrimary
-              icon="add"
-              className="categories__button"
-              onClick={ this.onAddClick }
-            >
-              <FormattedHTMLMessage id="category.add" />
-            </ButtonSmallPrimary>
             { categories.map((category) =>
               <Category key={ category.id } { ...category } />
             ) }
             { !categories.length && (
-              <Empty illustration="write-paper-ink">
-                <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
-              </Empty>
+              <Fragment>
+                <Empty illustration="write-paper-ink">
+                  <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
+                </Empty>
+                <ButtonSmallPrimary
+                  icon="add"
+                  className="categories__button"
+                  onClick={ this.onAddClick }
+                >
+                  <FormattedHTMLMessage id="category.add" />
+                </ButtonSmallPrimary>
+              </Fragment>
             ) }
           </Fragment>
         ) }
-      </div>
+      </ul>
     );
   }
 }
-
-Categories.propTypes = {
-  categories: PropTypes.array.isRequired,
-  openModal: PropTypes.func.isRequired,
-  dashboardsOpen: PropTypes.bool.isRequired,
-  hasSidebar: PropTypes.bool.isRequired,
-  maxWidth: PropTypes.bool.isRequired,
-  dashboard: PropTypes.object,
-  className: PropTypes.string,
-  pending: PropTypes.bool
-};
 
 export default Categories;

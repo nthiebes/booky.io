@@ -11,9 +11,7 @@ export class Scrolling {
 
   onPageScroll() {
     const TOP = window.pageYOffset || document.documentElement.scrollTop,
-      ACTIONS = this.actions;
-
-    let item;
+      ACTIONS = this.actions;    let item;
 
     for (item in ACTIONS) {
       if (ACTIONS.hasOwnProperty(item)) {

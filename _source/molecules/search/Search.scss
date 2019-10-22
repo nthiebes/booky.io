@@ -40,14 +40,11 @@
 }
 
 .search__input--dark-mode {
-  background-color: $color__background--dark;
-
-  &:focus {
-    background-color: $color__background--dark;
-  }
-
   @include desktop {
-    &:hover {
+    background-color: $color__background--dark;
+
+    &:hover,
+    &:focus {
       background-color: $color__background--dark;
     }
   }

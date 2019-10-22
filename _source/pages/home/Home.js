@@ -6,32 +6,76 @@ import classNames from 'classnames';
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
-import { H2, Display1, Display2 } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
-import { ButtonLargeLight, ButtonLargeBlue, ButtonSmallPrimary } from '../../atoms/button';
-import Illustration from '../../atoms/illustration';
+// import { H2, Display1, Display2 } from '../../atoms/headline';
+// import P from '../../atoms/paragraph';
+import { ButtonSmallPrimary, ButtonLargeBlue } from '../../atoms/button';
+// import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
-import Testimonials from '../../molecules/testimonials';
-import Feature from '../../molecules/feature';
+// import Testimonials from '../../molecules/testimonials';
+// import Feature from '../../molecules/feature';
+import Empty from '../../molecules/empty';
 
 class Home extends Component {
+  static propTypes = {
+    loggedIn: PropTypes.bool.isRequired,
+    blurContent: PropTypes.bool.isRequired,
+    hasSidebar: PropTypes.bool.isRequired,
+    getDashboards: PropTypes.func.isRequired,
+    intl: PropTypes.object.isRequired,
+    openModal: PropTypes.func.isRequired,
+    categoriesPending: PropTypes.bool,
+    hasCategories: PropTypes.bool,
+    dashboardsOpen: PropTypes.bool
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.onAddClick = this.onAddClick.bind(this);
+  }
+
   componentDidMount() {
     const { loggedIn, getDashboards } = this.props;
 
     loggedIn && getDashboards();
   }
 
+  onAddClick() {
+    this.props.openModal('AddCategory');
+  }
+
   render() {
-    const { loggedIn, blurContent, hasSidebar, intl } = this.props;
+    const { loggedIn, blurContent, hasSidebar, categoriesPending, hasCategories, dashboardsOpen } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
         { hasSidebar && <DashboardsSidebar className={ classNames(blurContent && 'page--blur') } /> }
+        { !categoriesPending && hasCategories && (
+          <ButtonSmallPrimary
+            icon="add"
+            className={ classNames(
+              'home__add-category',
+              hasSidebar && 'home__add-category--sidebar',
+              hasSidebar && dashboardsOpen && 'home__add-category--shifted',
+            ) }
+            onClick={ this.onAddClick }
+          >
+            <FormattedHTMLMessage id="category.add" />
+          </ButtonSmallPrimary>
+        ) }
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
-      <Page className="home" home>
-        <Section className="home__header">
+      <Page home> {/* className="home" */}
+        <Section>
+          <Empty illustration="monitor-window">
+            <FormattedMessage id="misc.comingSoon" />
+          </Empty>
+          <ButtonLargeBlue icon="account" to="/login" className="home__login-button">
+            <FormattedHTMLMessage id="header.login" />
+          </ButtonLargeBlue>
+        </Section>
+        {/* <Section className="home__header">
           <Display1 color="medium" noMargin className="home__headline">
             <FormattedMessage id="home.display" />
           </Display1>
@@ -70,29 +114,29 @@ class Home extends Component {
         <Section color="light" className="home__bookmarklet">
           <div>
             <img
-              width="50"
-              height="50"
+              width="75"
+              height="75"
               alt="Chrome browser extension"
               className="home__bookmarklet-icon"
               src="../../_assets/browsers/chrome.svg"
             />
             <img
-              width="50"
-              height="50"
+              width="75"
+              height="75"
               alt="Firefox browser extension"
               className="home__bookmarklet-icon"
               src="../../_assets/browsers/firefox.svg"
             />
             <img
-              width="50"
-              height="50"
+              width="75"
+              height="75"
               alt="Opera browser extension"
               className="home__bookmarklet-icon"
               src="../../_assets/browsers/opera.svg"
             />
             <img
-              width="50"
-              height="50"
+              width="75"
+              height="75"
               alt="Edge browser extension"
               className="home__bookmarklet-icon"
               src="../../_assets/browsers/edge.svg"
@@ -101,9 +145,9 @@ class Home extends Component {
           <H2 noMargin centered className="home__bookmarklet-headline">
             <FormattedMessage id="home.extensionText" />
           </H2>
-          <ButtonSmallPrimary icon="extension" to="/about" contentBefore>
+          <ButtonLargePrimary icon="extension" to="/about" contentBefore>
             <FormattedHTMLMessage id="home.extensionButton" />
-          </ButtonSmallPrimary>
+          </ButtonLargePrimary>
         </Section>
         <Section>
           <Feature
@@ -121,7 +165,7 @@ class Home extends Component {
           />
         </Section>
         <Section color="light" className="home__not-a-member">
-          { 'muh' }
+          { 'Placeholder' }
         </Section>
         <Section className="home__not-a-member">
           <Illustration
@@ -141,18 +185,10 @@ class Home extends Component {
           <ButtonLargeLight icon="about" to="/about">
             <FormattedHTMLMessage id="header.learnMore" />
           </ButtonLargeLight>
-        </Section>
+        </Section> */}
       </Page>
     );
   }
 }
 
 export default injectIntl(Home);
-
-Home.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
-  blurContent: PropTypes.bool.isRequired,
-  hasSidebar: PropTypes.bool.isRequired,
-  getDashboards: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired
-};

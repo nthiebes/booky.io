@@ -12,7 +12,6 @@ class EditStructure extends Component {
     return (
       <Base
         headline={ intl.formatMessage({ id: 'structure.title' }) }
-        hasAnchor
         noCancel
         { ...props }
       >

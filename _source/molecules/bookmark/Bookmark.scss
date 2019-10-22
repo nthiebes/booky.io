@@ -30,11 +30,13 @@
   &:focus,
   &:active {
     color: $color__font--primary;
+    text-decoration: underline;
   }
 
   @include desktop {
     &:hover {
       color: $color__font--primary;
+      text-decoration: underline;
     }
   }
 }
@@ -51,4 +53,8 @@
   &.bookmark__icon--drag {
     cursor: move;
   }
+}
+
+.bookmark__favicon {
+  pointer-events: none;
 }

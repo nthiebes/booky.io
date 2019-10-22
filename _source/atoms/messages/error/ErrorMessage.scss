@@ -18,6 +18,12 @@
   }
 }
 
+.error--show {
+  max-height: 6rem;
+  opacity: 1;
+  padding: 1rem 0;
+}
+
 .error__icon {
   pointer-events: none;
   margin-left: -6px;

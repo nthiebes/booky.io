@@ -50,6 +50,10 @@
   background-color: $color__background--medium;
 }
 
+.toolbar__icon {
+  pointer-events: none;
+}
+
 .toolbar__headline {
   margin: 0 0 0 1rem;
   padding: 0;

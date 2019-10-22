@@ -1,6 +1,6 @@
 import {
   ADD_DASHBOARD,
-  UPDATE_DASHBOARD,
+  EDIT_DASHBOARD,
   DELETE_DASHBOARD,
   CHANGE_DASHBOARD,
   UPDATE_OFFSET,
@@ -11,11 +11,12 @@ import {
 } from './actions';
 import { arrayMove } from '../../_utils/array';
 
+// eslint-disable-next-line max-statements
 const dashboards = (state = {}, action) => {
+  const { name, id, type } = action;
 
-  switch (action.type) {
+  switch (type) {
     case ADD_DASHBOARD:
-      const { name, id } = action.payload;
       
       return {
         ...state,
@@ -23,16 +24,12 @@ const dashboards = (state = {}, action) => {
           ...state.items,
           {
             id,
-            name,
-            categories: []
+            name
           }
-        ],
-        active: state.items.length ? state.active : id
+        ]
       };
 
-    case UPDATE_DASHBOARD: {
-      const { name, id } = action.data;
-
+    case EDIT_DASHBOARD: {
       return {
         ...state,
         items: state.items.map((dashboard) => {
@@ -49,20 +46,16 @@ const dashboards = (state = {}, action) => {
     }
 
     case DELETE_DASHBOARD: {
-      const { id, newId } = action.payload;
       const newDashboards = state.items.slice();
-      let activeId = state.active;
 
       newDashboards.map((dashboard, index) => {
         if (dashboard.id === id) {
           newDashboards.splice(index, 1);
-          activeId = newId || (newDashboards.length ? newDashboards[0].id : null);
         }
       });
 
       return {
         ...state,
-        active: activeId,
         items: newDashboards
       };
     }

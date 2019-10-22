@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-import P from '../../../atoms/paragraph';
-import { ButtonLargeBlue } from '../../../atoms/button';
+// import P from '../../../atoms/paragraph';
+// import { ButtonLargeBlue } from '../../../atoms/button';
+import Empty from '../../../molecules/empty';
 
 class AccountManage extends Component {
   constructor(props) {
@@ -20,14 +21,9 @@ class AccountManage extends Component {
     // const { intl } = this.props;
 
     return (
-      <Fragment>
-        <P first>
-          <FormattedMessage id="account.deleteText" />
-        </P>
-        <ButtonLargeBlue icon="delete" contentBefore onClick={ this.handleClick }>
-          <FormattedHTMLMessage id="account.deleteButton" />
-        </ButtonLargeBlue>
-      </Fragment>
+      <Empty illustration="monitor-window">
+        <FormattedMessage id="misc.comingSoon" />
+      </Empty>
     );
   }
 }
@@ -38,3 +34,14 @@ AccountManage.propTypes = {
 };
 
 export default injectIntl(AccountManage);
+
+/*
+<Fragment>
+  <P first>
+    <FormattedMessage id="account.deleteText" />
+  </P>
+  <ButtonLargeBlue icon="delete" contentBefore onClick={ this.handleClick }>
+    <FormattedHTMLMessage id="account.deleteButton" />
+  </ButtonLargeBlue>
+</Fragment>
+*/
