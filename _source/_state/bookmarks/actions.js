@@ -1,5 +1,4 @@
 import fetcher from '../../_utils/fetcher';
-import { addCategory } from '../categories/actions';
 
 export const setBookmarks = ({bookmarks, id, error}) => ({
   type: 'SET_BOOKMARKS',
@@ -66,10 +65,10 @@ export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((
   });
 });
 
-export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, position }) => ((dispatch) => {
+export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, position, shouldUpdate = true }) => ((dispatch) => {
   fetcher({
     url: `/bookmarks/${id}`,
-    method: 'PUT',
+    method: 'PATCH',
     params: {
       name,
       url,
@@ -77,14 +76,16 @@ export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, po
       position
     },
     onSuccess: ({ favicon }) => {
-      dispatch({
-        type: 'EDIT_BOOKMARK',
-        name,
-        url,
-        favicon,
-        id,
-        categoryId
-      });
+      if (shouldUpdate) {
+        dispatch({
+          type: 'EDIT_BOOKMARK',
+          name,
+          url,
+          favicon,
+          id,
+          categoryId
+        });
+      }
       onSuccess && onSuccess();
     },
     onError: (error) => {
@@ -114,10 +115,7 @@ export const deleteBookmark = ({ categoryId, id, onError, onSuccess }) => ((disp
 });
 
 export const dragBookmark = (dragData) => ((dispatch) => {
-  const { sourceCategoryId, destinationCategoryId, bookmarkId, destinationIndex } = dragData;
-  // const bookmarksSameCategory = getState().categories
-  //   .find((category) => category.id === sourceCategoryId).bookmarks
-  //   .map((bookmark) => bookmark.id);
+  const { destinationCategoryId, bookmarkId, destinationIndex } = dragData;
 
   dispatch({
     type: 'DRAG_BOOKMARK',
@@ -126,32 +124,8 @@ export const dragBookmark = (dragData) => ((dispatch) => {
 
   dispatch(editBookmark({
     id: bookmarkId,
-    categoryId: sourceCategoryId,
+    categoryId: destinationCategoryId,
     position: destinationIndex,
-    name: 'name',
-    url: 'url'
+    shouldUpdate: false
   }));
-
-  // fetcher({
-  //   url: `/categories/${sourceCategoryId}/layout`,
-  //   method: 'PUT',
-  //   params: bookmarksSameCategory,
-  //   onSuccess: () => {
-  //     // onSuccess && onSuccess();
-  //   },
-  //   onError: () => {
-  //     // console.log('error', error);
-  //     // onError && onError(error);
-  //   }
-  // });
-
-  if (sourceCategoryId !== destinationCategoryId) {
-    // const bookmarkToMove = getState().categories
-    //   .find((category) => category.id === destinationCategoryId).bookmarks
-    //   .find((bookmark) => bookmark.id);
-    
-    // console.log(bookmarkToMove);
-
-    // addCategory(bookmarkToMove);
-  }
 });
