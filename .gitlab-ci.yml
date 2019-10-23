@@ -2,8 +2,8 @@ image: node:10
 
 stages:
   - install
-  - build
   - quality
+  - build
 
 cache:
   paths:
@@ -20,6 +20,17 @@ install:
     paths:
       - node_modules/
 
+quality:lint:
+  stage: quality
+  script:
+    -  npm run lint
+
+quality:unit:
+  stage: quality
+  script:
+    -  npm run test:cover
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+
 build:
   stage: build
   script:
@@ -30,16 +41,3 @@ build:
     expire_in: 30 mins
   dependencies:
     - install
-
-quality:lint:
-  stage: quality
-  script:
-    -  npm run lint
-
-quality:unit:
-  stage: quality
-  script:
-    -  npm run test:cover
-  dependencies:
-    - install
-  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
