@@ -34,6 +34,7 @@ export default class Color extends Component {
     );
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex, jsx-a11y/no-static-element-interactions
       <span className={ className } onClick={ this.onClick } onKeyDown={ this.handleKeyDown } tabIndex="0">
         <Icon
           icon="check"

@@ -2,6 +2,7 @@ image: node:10
 
 stages:
   - build
+  - lint
   - test
 
 cache:
@@ -16,6 +17,10 @@ install_dependencies:
     paths:
       - node_modules/
 
-qa:
+link:
+  stage: lint
+  script: npm run lint
+
+test:
   stage: test
-  script: npm run qa
+  script: npm run test
