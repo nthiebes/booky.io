@@ -1,26 +1,45 @@
 image: node:10
 
 stages:
+  - install
   - build
-  - lint
-  - test
+  - quality
 
 cache:
   paths:
     - node_modules/
 
-install_dependencies:
-  stage: build
+install:
+  stage: install
   script:
     - npm install
   artifacts:
+    name: "artifacts"
+    untracked: true
+    expire_in: 30 mins
     paths:
       - node_modules/
 
-lint:
-  stage: lint
-  script: npm run lint
+build:
+  stage: build
+  script:
+    - CI=false npm run build
+  artifacts:
+    paths:
+      - build
+    expire_in: 30 mins
+  dependencies:
+    - install
 
-test:
-  stage: test
-  script: npm run test
+quality:lint:
+  stage: quality
+  script:
+    -  npm run lint
+
+quality:unit:
+  stage: quality
+  script:
+    -  npm run test:cover
+  dependencies:
+    - install
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
