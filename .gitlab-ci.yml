@@ -17,7 +17,7 @@ install_dependencies:
     paths:
       - node_modules/
 
-link:
+lint:
   stage: lint
   script: npm run lint
 
