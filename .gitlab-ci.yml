@@ -3,7 +3,7 @@ image: node:10
 stages:
   - install
   - quality
-  - build
+  # - build
 
 cache:
   paths:
@@ -31,13 +31,13 @@ quality:unit:
     -  npm run test:cover
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
 
-build:
-  stage: build
-  script:
-    - CI=false npm run build
-  artifacts:
-    paths:
-      - build
-    expire_in: 30 mins
-  dependencies:
-    - install
+# build:
+#   stage: build
+#   script:
+#     - CI=false npm run build
+#   artifacts:
+#     paths:
+#       - build
+#     expire_in: 30 mins
+#   dependencies:
+#     - install

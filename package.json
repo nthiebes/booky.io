@@ -20,7 +20,6 @@
     "build": "babel-node tools/build.js",
     "test": "jest",
     "test:cover": "npm run test -- --coverage ",
-    "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watchAll",
     "qa": "npm-run-all test lint",
     "storybook": "start-storybook -p 666 -c storybook -s ./_public"
