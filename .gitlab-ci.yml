@@ -18,4 +18,4 @@ install_dependencies:
 
 qa:
   stage: test
-  script: npm qa
+  script: npm run qa
