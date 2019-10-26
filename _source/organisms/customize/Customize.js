@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { H1, H2 } from '../../atoms/headline';
+import { H2 } from '../../atoms/headline';
 import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
@@ -19,7 +19,7 @@ class Customize extends Component {
 
   handleColorChange(value) {
     this.props.updateSettings({
-      navigationBarColor: parseInt(value.replace(/color/g, ''), 10) - 1
+      navigationBarColor: parseInt(value.replace(/color/g, ''), 10)
     });
   }
 
@@ -51,9 +51,6 @@ class Customize extends Component {
 
     return (
       <Fragment>
-        <H1>
-          <FormattedMessage id="customize.title" />
-        </H1>
         <H2>
           <FormattedMessage id="customize.style" />
         </H2>
@@ -61,7 +58,7 @@ class Customize extends Component {
           <FormattedMessage id="customize.navColor" />
         </Label>
         <ColorPicker
-          value={ (navColor + 1).toString() }
+          value={ (navColor).toString() }
           onChange={ this.handleColorChange }
           className="customize__color-picker"
         />

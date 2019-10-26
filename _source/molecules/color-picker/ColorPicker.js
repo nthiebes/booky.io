@@ -18,24 +18,48 @@ export default class ColorPicker extends Component {
   }
 
   getColors() {
-    const count = 9,
-      colors = [];
-    let index = 1;
+    const { isLegacy } = this.props;
+    const count = 8;
+    let colors = [];
+    let index = 0;
 
-    for (index; index <= count; index++) {
-      colors.push({'key': index.toString()});
+    if (isLegacy) {
+      colors = [
+        { key: '1' },
+        { key: '2' },
+        { key: '3' },
+        { key: '4' },
+        { key: '8' },
+        { key: '7' },
+        { key: '9' },
+        { key: '5' },
+        { key: '6' }
+      ];
+    } else {
+      for (index; index <= count; index++) {
+        colors.push({ key: index.toString() });
+      }
     }
+
     return colors;
   }
 
   render() {
-    const { className, value, darkMode} = this.props;
-    const colors = this.getColors().map(((color, index) => (
-      <Color key={ index } color={ color } value={ value.replace(/color/g, '') } darkMode={ darkMode } onChange={ this.onChange } />
+    const { className, value, darkMode, isLegacy } = this.props;
+    const colors = this.getColors().map(((color) => (
+      <Color
+        key={ color.key }
+        color={ color }
+        value={ value.replace(/color/g, '') }
+        darkMode={ darkMode }
+        onChange={ this.onChange }
+      />
     )));
 
+    console.log(this.getColors(), value);
+
     return (
-      <div className={ classNames('color-picker', className && className) }>
+      <div className={ classNames('color-picker', isLegacy && 'colar-picker__legacy', className) }>
         { colors }
       </div>
     );
@@ -46,7 +70,8 @@ ColorPicker.propTypes = {
   value: PropTypes.string,
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  darkMode: PropTypes.bool
+  darkMode: PropTypes.bool,
+  isLegacy: PropTypes.bool
 };
 
 ColorPicker.defaultProps = {

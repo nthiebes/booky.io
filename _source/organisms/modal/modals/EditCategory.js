@@ -51,7 +51,12 @@ class EditCategory extends Component {
         <Label>
           <FormattedMessage id="modal.color" />
         </Label>
-        <ColorPicker value={ color } onChange={ this.onColorChange } disabled={ pending } />
+        <ColorPicker
+          value={ color }
+          onChange={ this.onColorChange }
+          disabled={ pending }
+          isLegacy
+        />
         <Input
           name="id"
           value={ data.id.toString() }
