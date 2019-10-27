@@ -10,7 +10,6 @@ import Link from '../../atoms/link';
 import Logo from '../../atoms/logo';
 import Search from '../../molecules/search';
 import { ButtonSmallLight } from '../../atoms/button';
-import Skeleton from '../../atoms/skeleton';
 
 class Header extends Component {
   constructor(props) {
@@ -189,7 +188,8 @@ Header.propTypes = {
   className: PropTypes.string,
   history: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequired,
-  hasCategories: PropTypes.bool
+  hasCategories: PropTypes.bool,
+  dashboardsPending: PropTypes.bool
 };
 
 export default injectIntl(withRouter(Header));

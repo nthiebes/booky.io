@@ -56,8 +56,6 @@ export default class ColorPicker extends Component {
       />
     )));
 
-    console.log(this.getColors(), value);
-
     return (
       <div className={ classNames('color-picker', isLegacy && 'colar-picker__legacy', className) }>
         { colors }
