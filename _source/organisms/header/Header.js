@@ -10,6 +10,7 @@ import Link from '../../atoms/link';
 import Logo from '../../atoms/logo';
 import Search from '../../molecules/search';
 import { ButtonSmallLight } from '../../atoms/button';
+import Skeleton from '../../atoms/skeleton';
 
 class Header extends Component {
   constructor(props) {
@@ -75,7 +76,8 @@ class Header extends Component {
       home,
       className,
       sticky,
-      hasCategories
+      hasCategories,
+      dashboardsPending
     } = this.props;
     const { logoutPending } = this.state;
 
@@ -146,6 +148,7 @@ class Header extends Component {
                 onClick={ this.onAddButtonClick }
                 icon="add"
                 solid
+                useSkeleton={ dashboardsPending }
               >
                 <FormattedHTMLMessage id={ hasCategories ? 'bookmark.add' : 'category.add' } />
               </ButtonSmallLight>
