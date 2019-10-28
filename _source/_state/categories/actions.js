@@ -2,13 +2,8 @@ import fetcher from '../../_utils/fetcher';
 import { updateDashboardsData } from '../dashboards/actions';
 import { getBookmarks, setBookmarks } from '../bookmarks/actions';
 
-export const ADD_CATEGORY = 'ADD_CATEGORY';
-export const EDIT_CATEGORY = 'EDIT_CATEGORY';
-export const DELETE_CATEGORY = 'DELETE_CATEGORY';
-export const SET_CATEGORIES = 'SET_CATEGORIES';
-
 export const setCategories = (categories) => ({
-  type: SET_CATEGORIES,
+  type: 'SET_CATEGORIES',
   categories
 });
 
@@ -40,7 +35,7 @@ export const addCategory = ({ dashboard, color, name, position, onError, onSucce
     },
     onSuccess: ({ id }) => {
       dispatch({
-        type: ADD_CATEGORY,
+        type: 'ADD_CATEGORY',
         color,
         name,
         position,
@@ -67,7 +62,7 @@ export const editCategory = ({ id, color, name, hidden, dashboard, onError, onSu
     },
     onSuccess: () => {
       dispatch({
-        type: EDIT_CATEGORY,
+        type: 'EDIT_CATEGORY',
         color,
         name,
         dashboard,
@@ -85,7 +80,7 @@ export const editCategory = ({ id, color, name, hidden, dashboard, onError, onSu
 
 export const toggleCategory = ({ id, hidden }) => ((dispatch) => {
   dispatch({
-    type: EDIT_CATEGORY,
+    type: 'EDIT_CATEGORY',
     id,
     hidden
   });
@@ -111,15 +106,17 @@ export const toggleCategory = ({ id, hidden }) => ((dispatch) => {
 });
 
 export const deleteCategory = ({ id, newId, onError, onSuccess }) => ((dispatch) => {
+  const url = newId ? `/categories/${id}?moveBookmarksTo=${newId}` : `/categories/${id}`;
+
   fetcher({
-    url: `/categories/${id}`,
+    url,
     method: 'DELETE',
     params: {
       id
     },
     onSuccess: () => {
       dispatch({
-        type: DELETE_CATEGORY,
+        type: 'DELETE_CATEGORY',
         id,
         newId
       });

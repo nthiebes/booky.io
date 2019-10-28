@@ -4,45 +4,27 @@ import { setCategories, getCategories } from '../categories/actions';
 import { updateSettings } from '../user/actions';
 import { closeSidebar } from '../sidebar/actions';
 
-export const CHANGE_DASHBOARD = 'CHANGE_DASHBOARD';
-export const ADD_DASHBOARD = 'ADD_DASHBOARD';
-export const EDIT_DASHBOARD = 'EDIT_DASHBOARD';
-export const DELETE_DASHBOARD = 'DELETE_DASHBOARD';
-export const UPDATE_OFFSET = 'UPDATE_OFFSET';
-export const DRAG_DASHBOARD = 'DRAG_DASHBOARD';
-export const DRAG_CATEGORY = 'DRAG_CATEGORY';
-export const TOGGLE_DASHBOARD_OPEN = 'TOGGLE_DASHBOARD_OPEN';
-export const UPDATE_DASHBOARDS_DATA = 'UPDATE_DASHBOARDS_DATA';
+export const updateOffset = (offset) => ({
+  type: 'UPDATE_OFFSET',
+  offset
+});
 
-export function updateOffset(offset) {
-  return {
-    type: UPDATE_OFFSET,
-    offset
-  };
-}
+export const dragDashboard = (data) => ({
+  type: 'DRAG_DASHBOARD',
+  data
+});
 
-export function dragDashboard(data) {
-  return {
-    type: DRAG_DASHBOARD,
-    data
-  };
-}
+export const dragCategory = (data) => ({
+  type: 'DRAG_CATEGORY',
+  data
+});
 
-export function dragCategory(data) {
-  return {
-    type: DRAG_CATEGORY,
-    data
-  };
-}
-
-export function toggleDashboardOpen() {
-  return {
-    type: TOGGLE_DASHBOARD_OPEN
-  };
-}
+export const toggleDashboardOpen = () => ({
+  type: 'TOGGLE_DASHBOARD_OPEN'
+});
 
 export const updateDashboardsData = (data) => ({
-  type: UPDATE_DASHBOARDS_DATA,
+  type: 'UPDATE_DASHBOARDS_DATA',
   data
 });
 
@@ -90,7 +72,7 @@ export const addDashboard = ({ name, onSuccess, onError }) => ((dispatch) => {
     },
     onSuccess: ({ id }) => {
       dispatch({
-        type: ADD_DASHBOARD,
+        type: 'ADD_DASHBOARD',
         name,
         id
       });
@@ -112,7 +94,7 @@ export const editDashboard = ({ name, id, onSuccess, onError }) => ((dispatch) =
     },
     onSuccess: () => {
       dispatch({
-        type: EDIT_DASHBOARD,
+        type: 'EDIT_DASHBOARD',
         name,
         id
       });
@@ -128,21 +110,21 @@ export const editDashboard = ({ name, id, onSuccess, onError }) => ((dispatch) =
 export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch, getState) => {
   const dashboards = getState().dashboards.items;
   const defaultDashboardId = newId || (dashboards.length ? dashboards[0].id : null);
+  const url = newId ? `/dashboards/${id}?moveCategoriesTo=${newId}` : `/dashboards/${id}`;
 
   fetcher({
-    url: `/dashboards/${id}`,
+    url,
     method: 'DELETE',
     onSuccess: () => {
+      // The order is important since in the onSuccess callback "abortFetch" is called
+      onSuccess();
+
       dispatch({
-        type: DELETE_DASHBOARD,
+        type: 'DELETE_DASHBOARD',
         newId,
         id
       });
-      dispatch(updateSettings({
-        defaultDashboardId
-      }));
-
-      onSuccess();
+      dispatch(changeDashboard(defaultDashboardId));
     },
     onError: () => {
       // console.log('error', error);
