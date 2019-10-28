@@ -101,13 +101,13 @@ class Toolbar extends Component {
         ) }
         { dashboardsStyle === 'tabs' && (
           <TabBar className="toolbar__tabs">
-            { dashboards.items.map((tab, index) => (
+            { dashboards.items.map((tab) => (
               <Tab
-                key={ index }
-                tabId={ index }
+                key={ tab.id }
+                tabId={ tab.id }
                 active={ tab.id === dashboards.active }
                 name={ tab.name }
-                onClick={ () => { changeDashboard(tab.id); } }
+                onClick={ changeDashboard }
               />
             )) }
           </TabBar>

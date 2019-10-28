@@ -16,10 +16,10 @@ class Categories extends Component {
           <div ref={ provided.innerRef } { ...provided.droppableProps }>
             <div className="structure__categories">
               { dashboard.categories.map((category, index) => (
-                <Draggable draggableId={ `category-${category.id}` } key={ index } index={ index }>
+                <Draggable draggableId={ `category-${category.id}` } key={ category.id } index={ index }>
                   { (providedInner) => (
                     <div
-                      key={ index }
+                      key={ category.id }
                       className="structure__category"
                       { ...providedInner.draggableProps }
                       ref={ providedInner.innerRef }

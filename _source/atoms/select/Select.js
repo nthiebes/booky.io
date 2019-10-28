@@ -36,8 +36,8 @@ export default class Select extends Component {
           defaultValue={ selected }
           disabled={ disabled }
           className={ classNames('select', compact ? 'select--compact' : 'select--large', className && className) }>
-          { options.map(({ text, value }, index) => (
-            <option key={ index } value={ value }>
+          { options.map(({ text, value }) => (
+            <option key={ value } value={ value }>
               { text }
             </option>
           )) }

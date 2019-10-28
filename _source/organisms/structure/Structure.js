@@ -17,7 +17,7 @@ class Structure extends Component {
           { (provided) => (
             <div ref={ provided.innerRef } { ...provided.droppableProps }>
               { dashboards.map((dashboard, index) => (
-                <Draggable draggableId={ `dashboard-${dashboard.id}` } key={ index } index={ index }>
+                <Draggable draggableId={ `dashboard-${dashboard.id}` } key={ dashboard.id } index={ index }>
                   { (providedInner) => (
                     <div { ...providedInner.draggableProps } ref={ providedInner.innerRef }>
                       <div className="structure__dashboard">

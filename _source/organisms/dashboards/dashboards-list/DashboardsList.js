@@ -79,10 +79,10 @@ class DashboardsSidebar extends Component {
           editMode && 'dashboards__list--edit-mode',
           !pinned && 'dashboards__list--hidden'
         ) }>
-          { dashboards.map((dashboard, index) => (
+          { dashboards.map((dashboard) => (
             // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
             <li
-              key={ index }
+              key={ dashboard.id }
               className={ classNames(
                 'dashboards__item',
                 dashboard.id === activeId && 'dashboards__item--active',
