@@ -1,4 +1,4 @@
-import fetcher from '../../_utils/fetcher';
+import fetcher, { abortFetch } from '../../_utils/fetcher';
 
 import { setCategories, getCategories } from '../categories/actions';
 import { updateSettings } from '../user/actions';
@@ -32,6 +32,7 @@ export const changeDashboard = (id) => ((dispatch) => {
   dispatch(updateDashboardsData({
     pending: true
   }));
+  abortFetch();
   dispatch(updateSettings({
     defaultDashboardId: id
   }));
