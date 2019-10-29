@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
@@ -10,24 +10,35 @@ import Icon from '../../atoms/icon';
 import { H3 } from '../../atoms/headline';
 import { DashboardsList } from '../../organisms/dashboards';
 
-class Sidebar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onMenuClick = this.onMenuClick.bind(this);
-    this.onCustomizeClick = this.onCustomizeClick.bind(this);
-    this.addDashboard = this.addDashboard.bind(this);
+class Sidebar extends PureComponent {
+  static propTypes = {
+    loggedIn: PropTypes.bool.isRequired,
+    open: PropTypes.bool.isRequired,
+    closeSidebar: PropTypes.func.isRequired,
+    dashboards: PropTypes.bool,
+    intl: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    direction: PropTypes.string,
+    className: PropTypes.string,
+    dashboardsSidebar: PropTypes.bool.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+    openModal: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired
+  }
+  
+  static defaultProps = {
+    direction: 'right'
   }
 
   onMenuClick(e) {
     e.stopPropagation();
   }
 
-  onCustomizeClick() {
+  onCustomizeClick = () => {
     this.props.openModal('Customize');
   }
 
-  addDashboard() {
+  addDashboard = () => {
     this.props.openModal('AddDashboard');
   }
 
@@ -55,7 +66,7 @@ class Sidebar extends Component {
         `sidebar--${direction}`,
         darkMode && 'sidebar--dark-mode',
         'booky--hide-desktop',
-        className && className
+        className
       ) }>
         <header className="sidebar__header">
           <Link
@@ -242,22 +253,3 @@ class Sidebar extends Component {
 }
 
 export default injectIntl(withRouter(Sidebar));
-
-Sidebar.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
-  open: PropTypes.bool.isRequired,
-  closeSidebar: PropTypes.func.isRequired,
-  dashboards: PropTypes.bool,
-  intl: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  direction: PropTypes.string,
-  className: PropTypes.string,
-  dashboardsSidebar: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired,
-  openModal: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired
-};
-
-Sidebar.defaultProps = {
-  direction: 'right'
-};

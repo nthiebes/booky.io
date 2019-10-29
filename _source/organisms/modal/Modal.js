@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { abortFetch } from '../../_utils/fetcher';
@@ -16,66 +16,29 @@ import EditStructure from './modals/EditStructure';
 import Customize from './modals/Customize';
 import DeleteAccount from './modals/DeleteAccount';
 
-export default class Modal extends Component {
-  constructor(props) {
-    super(props);
+export default class Modal extends PureComponent {
+  static propTypes = {
+    modal: PropTypes.string,
+    open: PropTypes.bool.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    data: PropTypes.object,
+    addBookmark: PropTypes.func.isRequired,
+    editBookmark: PropTypes.func.isRequired,
+    deleteBookmark: PropTypes.func.isRequired,
+    addCategory: PropTypes.func.isRequired,
+    editCategory: PropTypes.func.isRequired,
+    deleteCategory: PropTypes.func.isRequired,
+    addDashboard: PropTypes.func.isRequired,
+    editDashboard: PropTypes.func.isRequired,
+    deleteDashboard: PropTypes.func.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+    deleteAccount: PropTypes.func.isRequired
+  }
 
-    this.state = {
-      pending: false,
-      error: null,
-      showModal: false
-    };
-    this.handleSave = this.handleSave.bind(this);
-    this.handleKeyUp = this.handleKeyUp.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.modalMap = {
-      AddBookmark: {
-        type: AddBookmark,
-        action: props.addBookmark
-      },
-      EditBookmark: {
-        type: EditBookmark,
-        action: props.editBookmark
-      },
-      DeleteBookmark: {
-        type: DeleteBookmark,
-        action: props.deleteBookmark
-      },
-      AddCategory: {
-        type: AddCategory,
-        action: props.addCategory
-      },
-      EditCategory: {
-        type: EditCategory,
-        action: props.editCategory
-      },
-      DeleteCategory: {
-        type: DeleteCategory,
-        action: props.deleteCategory
-      },
-      AddDashboard: {
-        type: AddDashboard,
-        action: props.addDashboard
-      },
-      EditDashboard: {
-        type: EditDashboard,
-        action: props.editDashboard
-      },
-      DeleteDashboard: {
-        type: DeleteDashboard,
-        action: props.deleteDashboard
-      },
-      EditStructure: {
-        type: EditStructure
-      },
-      Customize: {
-        type: Customize
-      },
-      DeleteAccount: {
-        type: DeleteAccount,
-        action: props.deleteAccount
-      }
-    };
+  state = {
+    pending: false,
+    error: null,
+    showModal: false
   }
 
   componentDidUpdate(prevProps) {
@@ -88,7 +51,56 @@ export default class Modal extends Component {
     }
   }
 
-  handleSave(modalData) {
+  modalMap = {
+    AddBookmark: {
+      type: AddBookmark,
+      action: this.props.addBookmark
+    },
+    EditBookmark: {
+      type: EditBookmark,
+      action: this.props.editBookmark
+    },
+    DeleteBookmark: {
+      type: DeleteBookmark,
+      action: this.props.deleteBookmark
+    },
+    AddCategory: {
+      type: AddCategory,
+      action: this.props.addCategory
+    },
+    EditCategory: {
+      type: EditCategory,
+      action: this.props.editCategory
+    },
+    DeleteCategory: {
+      type: DeleteCategory,
+      action: this.props.deleteCategory
+    },
+    AddDashboard: {
+      type: AddDashboard,
+      action: this.props.addDashboard
+    },
+    EditDashboard: {
+      type: EditDashboard,
+      action: this.props.editDashboard
+    },
+    DeleteDashboard: {
+      type: DeleteDashboard,
+      action: this.props.deleteDashboard
+    },
+    EditStructure: {
+      type: EditStructure
+    },
+    Customize: {
+      type: Customize
+    },
+    DeleteAccount: {
+      type: DeleteAccount,
+      action: this.props.deleteAccount
+    }
+  }
+
+  handleSave = (modalData) => {
     const { modal, data } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
@@ -118,7 +130,7 @@ export default class Modal extends Component {
     }
   }
 
-  closeModal() {
+  closeModal = () => {
     const { closeModal } = this.props;
 
     this.setState({
@@ -136,7 +148,7 @@ export default class Modal extends Component {
     // document.body.classList.remove('booky--no-scrolling');
   }
 
-  handleKeyUp(event) {
+  handleKeyUp = (event) => {
     if (event.key === 'Escape') {
       this.props.closeModal();
     }
@@ -173,25 +185,3 @@ export default class Modal extends Component {
     );
   }
 }
-
-Modal.propTypes = {
-  modal: PropTypes.string,
-  open: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  data: PropTypes.object,
-  addBookmark: PropTypes.func.isRequired,
-  editBookmark: PropTypes.func.isRequired,
-  deleteBookmark: PropTypes.func.isRequired,
-  addCategory: PropTypes.func.isRequired,
-  editCategory: PropTypes.func.isRequired,
-  deleteCategory: PropTypes.func.isRequired,
-  addDashboard: PropTypes.func.isRequired,
-  editDashboard: PropTypes.func.isRequired,
-  deleteDashboard: PropTypes.func.isRequired,
-  darkMode: PropTypes.bool.isRequired,
-  deleteAccount: PropTypes.func.isRequired
-};
-
-Modal.defaultProps = {
-  data: {}
-};

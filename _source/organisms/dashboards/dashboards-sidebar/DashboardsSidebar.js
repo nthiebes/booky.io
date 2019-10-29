@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { injectIntl } from 'react-intl';
@@ -6,15 +6,19 @@ import { injectIntl } from 'react-intl';
 import Icon from '../../../atoms/icon';
 import { DashboardsList } from '../index';
 
-class DashboardsSidebar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.togglePinned = this.togglePinned.bind(this);
-    this.getStickyClass = this.getStickyClass.bind(this);
+class DashboardsSidebar extends PureComponent {
+  static propTypes = {
+    className: PropTypes.string,
+    intl: PropTypes.object.isRequired,
+    pinned: PropTypes.bool,
+    updateSettings: PropTypes.func.isRequired,
+    headerSticky: PropTypes.bool.isRequired,
+    toolbarSticky: PropTypes.bool.isRequired,
+    currentlySticky: PropTypes.bool.isRequired,
+    darkMode: PropTypes.bool.isRequired
   }
 
-  togglePinned() {
+  togglePinned = () => {
     const { pinned, updateSettings } = this.props;
 
     updateSettings({
@@ -22,7 +26,7 @@ class DashboardsSidebar extends Component {
     });
   }
 
-  getStickyClass() {
+  getStickyClass = () => {
     const { toolbarSticky, headerSticky, currentlySticky } = this.props;
 
     if (toolbarSticky && headerSticky) {
@@ -71,14 +75,3 @@ class DashboardsSidebar extends Component {
 }
 
 export default injectIntl(DashboardsSidebar);
-
-DashboardsSidebar.propTypes = {
-  className: PropTypes.string,
-  intl: PropTypes.object.isRequired,
-  pinned: PropTypes.bool,
-  updateSettings: PropTypes.func.isRequired,
-  headerSticky: PropTypes.bool.isRequired,
-  toolbarSticky: PropTypes.bool.isRequired,
-  currentlySticky: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired
-};

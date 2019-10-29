@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
@@ -7,7 +7,13 @@ import classNames from 'classnames';
 import Icon from '../../atoms/icon';
 import Categories from './Categories';
 
-class Structure extends Component {
+class Structure extends PureComponent {
+  static propTypes = {
+    dashboards: PropTypes.array.isRequired,
+    intl: PropTypes.object.isRequired,
+    darkMode: PropTypes.bool.isRequired
+  }
+
   render() {
     const { dashboards, intl, darkMode } = this.props;
 
@@ -46,9 +52,3 @@ class Structure extends Component {
 }
 
 export default injectIntl(Structure);
-
-Structure.propTypes = {
-  dashboards: PropTypes.array.isRequired,
-  intl: PropTypes.object.isRequired,
-  darkMode: PropTypes.bool.isRequired
-};

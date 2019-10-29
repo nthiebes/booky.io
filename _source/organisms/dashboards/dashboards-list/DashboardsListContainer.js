@@ -5,7 +5,7 @@ import { openModal } from '../../../_state/modal/actions';
 import { changeDashboard } from '../../../_state/dashboards/actions';
 
 export const mapStateToProps = (state) => ({
-  dashboards: state.dashboards.items,
+  dashboards: state.dashboards.items || [],
   activeId: state.user.settings.defaultDashboardId,
   pinned: state.user.settings.pinned,
   darkMode: state.user.settings.darkMode
