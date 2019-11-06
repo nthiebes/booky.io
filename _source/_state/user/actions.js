@@ -16,7 +16,7 @@ export const updateUser = (userData) => ((dispatch) => {
 
   fetcher({
     url: '/user',
-    method: 'PUT',
+    method: 'PATCH',
     params: userData,
     onSuccess: () => {
       // console.log(data);
