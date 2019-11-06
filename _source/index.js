@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import * as Sentry from '@sentry/browser';
 import * as Cookies from 'es-cookie';
 import { addLocaleData } from 'react-intl';
 import { AppContainer } from 'react-hot-loader';
@@ -22,6 +23,12 @@ document.documentElement.setAttribute('lang', language);
 
 // Activate the :active pseudo class on mobile
 document.addEventListener('touchstart', () => { /* Do nothing */ }, {passive: true});
+
+// Initialize Sentry error tracking
+Sentry.init({
+  dsn: 'https://3b30e08ee0164a03816c765e2a29a2c2@sentry.io/1792556',
+  environment: process.env.NODE_ENV
+});
 
 let counter = 0;
 let error = false;
