@@ -1,5 +1,6 @@
 import { arrayMove } from '../../_utils/array';
 import { removeUndefined } from '../../_utils/object';
+import initialState from '../../initialState';
 
 // eslint-disable-next-line max-statements
 const categories = (state = [], action) => {
@@ -216,6 +217,10 @@ const categories = (state = [], action) => {
           pending
         };
       });
+    }
+
+    case 'RESET_USER_STATE': {
+      return initialState.categories;
     }
       
     default:

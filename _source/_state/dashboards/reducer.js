@@ -1,4 +1,5 @@
 import { arrayMove } from '../../_utils/array';
+import initialState from '../../initialState';
 
 // eslint-disable-next-line max-statements
 const dashboards = (state = {}, action) => {
@@ -124,6 +125,10 @@ const dashboards = (state = {}, action) => {
         ...state,
         ...action.data
       };
+    
+    case 'RESET_USER_STATE': {
+      return initialState.dashboards;
+    }
 
     default:
       return state;
