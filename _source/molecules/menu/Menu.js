@@ -35,9 +35,9 @@ class Menu extends Component {
 
     return (
       <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className && className) }>
-        { menuItems.map(({ name, route }, index) => (
+        { menuItems.map(({ name, route }) => (
           <Link
-            key={ index }
+            key={ name }
             className="menu__item"
             activeClassName="menu__item--active"
             to={ route }

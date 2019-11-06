@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
@@ -8,25 +8,33 @@ import { H3 } from '../../../atoms/headline';
 import { ButtonSmallPrimary } from '../../../atoms/button';
 import Skeleton from '../../../atoms/skeleton';
 
-class DashboardsSidebar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.toggleEditMode = this.toggleEditMode.bind(this);
-    this.onIconClick = this.onIconClick.bind(this);
-    this.addDashboard = this.addDashboard.bind(this);
-    this.state = {
-      editMode: false
-    };
+class DashboardsList extends PureComponent {
+  static propTypes = {
+    openModal: PropTypes.func.isRequired,
+    changeDashboard: PropTypes.func.isRequired,
+    dashboards: PropTypes.array,
+    intl: PropTypes.object.isRequired,
+    pinned: PropTypes.bool,
+    activeId: PropTypes.number,
+    useTabIndex: PropTypes.bool,
+    darkMode: PropTypes.bool.isRequired
+  }
+  
+  static defaultProps = {
+    useTabIndex: false
   }
 
-  toggleEditMode() {
+  state = {
+    editMode: false
+  }
+
+  toggleEditMode = () => {
     this.setState({
       editMode: !this.state.editMode
     });
   }
 
-  onIconClick(type, dashboard) {
+  onIconClick = (type, dashboard) => {
     const { openModal } = this.props;
 
     openModal(type, {
@@ -35,14 +43,14 @@ class DashboardsSidebar extends Component {
     });
   }
 
-  handleKeyDown(event, dashboardId) {
+  handleKeyDown = (event, dashboardId) => {
     const { changeDashboard } = this.props;
     const { editMode } = this.state;
 
     !editMode && event.key === 'Enter' && changeDashboard(dashboardId);
   }
 
-  addDashboard() {
+  addDashboard = () => {
     this.props.openModal('AddDashboard');
   }
 
@@ -79,10 +87,10 @@ class DashboardsSidebar extends Component {
           editMode && 'dashboards__list--edit-mode',
           !pinned && 'dashboards__list--hidden'
         ) }>
-          { dashboards.map((dashboard, index) => (
+          { dashboards.map((dashboard) => (
             // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
             <li
-              key={ index }
+              key={ dashboard.id }
               className={ classNames(
                 'dashboards__item',
                 dashboard.id === activeId && 'dashboards__item--active',
@@ -143,20 +151,4 @@ class DashboardsSidebar extends Component {
   }
 }
 
-export default injectIntl(DashboardsSidebar);
-
-DashboardsSidebar.propTypes = {
-  openModal: PropTypes.func.isRequired,
-  changeDashboard: PropTypes.func.isRequired,
-  dashboards: PropTypes.array,
-  intl: PropTypes.object.isRequired,
-  pinned: PropTypes.bool,
-  activeId: PropTypes.number,
-  useTabIndex: PropTypes.bool,
-  darkMode: PropTypes.bool.isRequired
-};
-
-DashboardsSidebar.defaultProps = {
-  dashboards: [],
-  useTabIndex: false
-};
+export default injectIntl(DashboardsList);

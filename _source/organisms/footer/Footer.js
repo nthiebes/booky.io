@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
@@ -10,20 +10,23 @@ import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
-class Footer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.scrollToTop = this.scrollToTop.bind(this);
-  }
-  
+class Footer extends PureComponent {
   scrollToTop() {
     window.scrollTo(0, 0);
     document.getElementsByTagName('header')[0].focus();
   }
 
   render() {
-    const { intl, dashboardsOpen, hasSidebar, className, home, loggedIn, toolbarSticky, darkMode } = this.props;
+    const {
+      intl,
+      dashboardsOpen,
+      hasSidebar,
+      className,
+      home,
+      loggedIn,
+      toolbarSticky,
+      darkMode
+    } = this.props;
 
     return (
       <footer className={ classNames(
@@ -136,5 +139,3 @@ Footer.propTypes = {
 };
 
 export default injectIntl(Footer);
-
-/* eslint-disable max-len */

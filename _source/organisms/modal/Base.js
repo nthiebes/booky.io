@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
@@ -9,12 +9,21 @@ import { ErrorMessage } from '../../atoms/messages';
 import { H2 } from '../../atoms/headline';
 import Form from '../../molecules/form';
 
-class Modal extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+class Modal extends PureComponent {
+  static propTypes = {
+    children: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.element,
+      PropTypes.string
+    ]).isRequired,
+    onClose: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
+    headline: PropTypes.string,
+    noCancel: PropTypes.bool,
+    intl: PropTypes.object.isRequired,
+    pending: PropTypes.bool.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+    error: PropTypes.string
   }
 
   componentDidMount() {
@@ -23,7 +32,7 @@ class Modal extends Component {
     // document.body.classList.add('booky--no-scrolling');
   }
 
-  onSubmit(data) {
+  onSubmit = (data) => {
     this.props.onSave(data);
   }
 
@@ -75,19 +84,3 @@ class Modal extends Component {
 }
 
 export default injectIntl(Modal);
-
-Modal.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string
-  ]).isRequired,
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  headline: PropTypes.string,
-  noCancel: PropTypes.bool,
-  intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired,
-  error: PropTypes.string
-};

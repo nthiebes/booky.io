@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
-import Label from '../../../atoms/label';
-// import Select from '../../../atoms/select';
+import P from '../../../atoms/paragraph';
+import Select from '../../../atoms/select';
 
 class DeleteCategory extends Component {
   constructor(props) {
@@ -32,16 +32,16 @@ class DeleteCategory extends Component {
 
   render() {
     const { data, intl, pending, ...props } = this.props;
-    // const options = [
-    //   {
-    //     text: intl.formatMessage({ id: 'modal.deleteAll' }),
-    //     value: '0'
-    //   },
-    //   ...data.categories.map(({name}, index) => ({
-    //     text: `${intl.formatMessage({ id: 'modal.moveTo' })}: ${name}`,
-    //     value: index + 1
-    //   }))
-    // ];
+    const options = [
+      {
+        text: intl.formatMessage({ id: 'modal.deleteAll' }),
+        value: '0'
+      },
+      ...data.categories.map(({name}, index) => ({
+        text: `${intl.formatMessage({ id: 'modal.moveTo' })}: ${name}`,
+        value: index + 1
+      }))
+    ];
 
     return (
       <Base
@@ -50,18 +50,18 @@ class DeleteCategory extends Component {
         pending={ pending }
         headline={ intl.formatMessage({ id: 'modal.deleteCategory' }) }
       >
-        <Label>
+        <P>
           <FormattedMessage id="modal.deleteCategoryLabel" /><br />
           <b>{ data.name }</b>
-        </Label>
-        {/* <Select
+        </P>
+        <Select
           id="category-delete"
           label={ intl.formatMessage({ id: 'modal.deleteCategoryFuture' }) }
           options={ options }
           onChange={ this.onChange }
           selected="0"
           disabled={ pending }
-        /> */}
+        />
       </Base>
     );
   }

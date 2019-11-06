@@ -13,7 +13,6 @@ export default class Select extends Component {
     id: PropTypes.string,
     name: PropTypes.string,
     required: PropTypes.bool,
-    compact: PropTypes.bool,
     selected: PropTypes.string,
     disabled: PropTypes.bool
   }
@@ -23,7 +22,7 @@ export default class Select extends Component {
   }
 
   render() {
-    const { options, className, label, id, name, required, compact, selected, disabled } = this.props;
+    const { options, className, label, id, name, required, selected, disabled } = this.props;
 
     return (
       <Fragment>
@@ -35,9 +34,9 @@ export default class Select extends Component {
           onBlur={ this.onBlur }
           defaultValue={ selected }
           disabled={ disabled }
-          className={ classNames('select', compact ? 'select--compact' : 'select--large', className && className) }>
-          { options.map(({ text, value }, index) => (
-            <option key={ index } value={ value }>
+          className={ classNames('select', className) }>
+          { options.map(({ text, value }) => (
+            <option key={ value } value={ value }>
               { text }
             </option>
           )) }

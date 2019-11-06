@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
@@ -10,18 +10,24 @@ import Skeleton from '../../atoms/skeleton';
 import Search from '../../molecules/search';
 import { TabBar, Tab } from '../../molecules/tab-bar';
 
-class Toolbar extends Component {
-  constructor(props) {
-    super(props);
+class Toolbar extends PureComponent {
+  static propTypes = {
+    updateCurrentlySticky: PropTypes.func.isRequired,
+    headerSticky: PropTypes.bool.isRequired,
+    sticky: PropTypes.bool.isRequired,
+    currentlySticky: PropTypes.bool.isRequired,
+    dashboards: PropTypes.object.isRequired,
+    activeDashboardName: PropTypes.string,
+    openModal: PropTypes.func.isRequired,
+    intl: PropTypes.object.isRequired,
+    className: PropTypes.string,
+    dashboardsStyle: PropTypes.string.isRequired,
+    changeDashboard: PropTypes.func.isRequired,
+    darkMode: PropTypes.bool.isRequired
+  }
 
-    this.nextProps = {};
-    this.isAboveActions = this.isAboveActions.bind(this);
-    this.isBelowActions = this.isBelowActions.bind(this);
-    this.getStickyClass = this.getStickyClass.bind(this);
-    this.onIconClick = this.onIconClick.bind(this);
-    this.state = {
-      dashboardModalOpen: false
-    };
+  state = {
+    dashboardModalOpen: false
   }
 
   componentDidMount() {
@@ -46,19 +52,21 @@ class Toolbar extends Component {
     scrolling.removeAction('toolbar');
   }
 
-  isAboveActions() {
+  nextProps = {};
+
+  isAboveActions = () => {
     if (this.nextProps.sticky && !this.nextProps.headerSticky) {
       this.props.updateCurrentlySticky(false);
     }
   }
 
-  isBelowActions() {
+  isBelowActions = () => {
     if (this.nextProps.sticky && !this.nextProps.headerSticky) {
       this.props.updateCurrentlySticky(true);
     }
   }
 
-  getStickyClass() {
+  getStickyClass = () => {
     const { sticky, headerSticky, currentlySticky } = this.props;
 
     if (sticky && headerSticky) {
@@ -72,13 +80,13 @@ class Toolbar extends Component {
     return '';
   }
 
-  onIconClick() {
+  onIconClick = () => {
     this.props.openModal('EditStructure');
   }
 
   render() {
     const {
-      activeDashboard,
+      activeDashboardName,
       intl,
       className,
       dashboardsStyle,
@@ -88,7 +96,7 @@ class Toolbar extends Component {
     } = this.props;
 
     return (
-      <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className && className) }>
+      <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
         <Icon
           icon="tree"
           label={ intl.formatMessage({ id: 'structure.title' }) }
@@ -97,17 +105,19 @@ class Toolbar extends Component {
         {/** onClick={ this.onIconClick }
           isButton */}
         { dashboardsStyle === 'sidebar' && (
-          <H3 className="toolbar__headline">{ activeDashboard.name || <Skeleton /> }</H3>
+          <H3 className="toolbar__headline">
+            { activeDashboardName || <Skeleton /> }
+          </H3>
         ) }
         { dashboardsStyle === 'tabs' && (
           <TabBar className="toolbar__tabs">
-            { dashboards.items.map((tab, index) => (
+            { dashboards.items.map((tab) => (
               <Tab
-                key={ index }
-                tabId={ index }
+                key={ tab.id }
+                tabId={ tab.id }
                 active={ tab.id === dashboards.active }
                 name={ tab.name }
-                onClick={ () => { changeDashboard(tab.id); } }
+                onClick={ changeDashboard }
               />
             )) }
           </TabBar>
@@ -119,22 +129,3 @@ class Toolbar extends Component {
 }
 
 export default injectIntl(Toolbar);
-
-Toolbar.propTypes = {
-  updateCurrentlySticky: PropTypes.func.isRequired,
-  headerSticky: PropTypes.bool.isRequired,
-  sticky: PropTypes.bool.isRequired,
-  currentlySticky: PropTypes.bool.isRequired,
-  dashboards: PropTypes.object.isRequired,
-  activeDashboard: PropTypes.object,
-  openModal: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
-  className: PropTypes.string,
-  dashboardsStyle: PropTypes.string.isRequired,
-  changeDashboard: PropTypes.func.isRequired,
-  darkMode: PropTypes.bool.isRequired
-};
-
-Toolbar.defaultProps = {
-  activeDashboard: {}
-};

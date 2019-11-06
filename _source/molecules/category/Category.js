@@ -149,7 +149,7 @@ class Category extends Component {
                   <Fragment>
                     { bookmarks.map((bookmark, index) => (
                       <Bookmark
-                        key={ index }
+                        key={ bookmark.id }
                         index={ index }
                         id={ bookmark.id }
                         categoryId={ id }
