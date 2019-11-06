@@ -54,11 +54,17 @@ export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
     onSuccess: (data) => {
       const { settings, ...userData } = data;
 
-      dispatch(updateUser({
-        loggedIn: true,
-        ...userData
-      }));
-      dispatch(updateSettings(settings));
+      dispatch({
+        type: UPDATE_USER,
+        userData: {
+          loggedIn: true,
+          ...userData
+        }
+      });
+      dispatch({
+        type: UPDATE_SETTINGS,
+        userSettings: settings
+      });
 
       onSuccess && onSuccess(data);
     },
