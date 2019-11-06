@@ -51,7 +51,11 @@ class AddCategory extends Component {
         <Label>
           <FormattedMessage id="modal.color" />
         </Label>
-        <ColorPicker value={ color } onChange={ this.onColorChange } />
+        <ColorPicker
+          value={ color }
+          onChange={ this.onColorChange }
+          isLegacy
+        />
       </Base>
     );
   }

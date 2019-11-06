@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
@@ -11,38 +11,48 @@ import Logo from '../../atoms/logo';
 import Search from '../../molecules/search';
 import { ButtonSmallLight } from '../../atoms/button';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onBookmarkModalToggle = this.onBookmarkModalToggle.bind(this);
-    this.onMenuClick = this.onMenuClick.bind(this);
-    this.onCustomizeClick = this.onCustomizeClick.bind(this);
-    this.onAddButtonClick = this.onAddButtonClick.bind(this);
-    this.onLogoutClick = this.onLogoutClick.bind(this);
-    this.state = {
-      bookmarkModalOpen: false,
-      logoutPending: false
-    };
+class Header extends PureComponent {
+  static propTypes = {
+    color: PropTypes.number.isRequired,
+    loggedIn: PropTypes.bool.isRequired,
+    closeSidebar: PropTypes.func.isRequired,
+    toggleSidebar: PropTypes.func.isRequired,
+    sticky: PropTypes.bool.isRequired,
+    openModal: PropTypes.func.isRequired,
+    dashboards: PropTypes.bool,
+    intl: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    sidebarOpen: PropTypes.bool,
+    home: PropTypes.bool,
+    className: PropTypes.string,
+    history: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired,
+    hasCategories: PropTypes.bool,
+    dashboardsPending: PropTypes.bool
   }
 
-  onBookmarkModalToggle() {
+  state = {
+    bookmarkModalOpen: false,
+    logoutPending: false
+  }
+
+  onBookmarkModalToggle = () => {
     this.setState({
       bookmarkModalOpen: !this.state.bookmarkModalOpen
     });
   }
 
-  onMenuClick(event) {
+  onMenuClick = (event) => {
     event.stopPropagation();
 
     this.props.toggleSidebar();
   }
 
-  onCustomizeClick() {
+  onCustomizeClick = () => {
     this.props.openModal('Customize');
   }
 
-  onAddButtonClick() {
+  onAddButtonClick = () => {
     const { hasCategories, openModal } = this.props;
     const modalType = hasCategories ? 'AddBookmark' : 'AddCategory';
 
@@ -51,7 +61,7 @@ class Header extends Component {
     });
   }
 
-  onLogoutClick() {
+  onLogoutClick = () => {
     const { history, logout } = this.props;
 
     this.setState({
@@ -75,7 +85,8 @@ class Header extends Component {
       home,
       className,
       sticky,
-      hasCategories
+      hasCategories,
+      dashboardsPending
     } = this.props;
     const { logoutPending } = this.state;
 
@@ -86,7 +97,7 @@ class Header extends Component {
           `header header--color${color}`,
           sidebarOpen && 'header--overlay',
           sticky && 'header--sticky',
-          className && className
+          className
         ) }
         onClick={ closeSidebar }
         tabIndex="-1"
@@ -146,6 +157,7 @@ class Header extends Component {
                 onClick={ this.onAddButtonClick }
                 icon="add"
                 solid
+                useSkeleton={ dashboardsPending }
               >
                 <FormattedHTMLMessage id={ hasCategories ? 'bookmark.add' : 'category.add' } />
               </ButtonSmallLight>
@@ -169,24 +181,5 @@ class Header extends Component {
     );
   }
 }
-
-
-Header.propTypes = {
-  color: PropTypes.number.isRequired,
-  loggedIn: PropTypes.bool.isRequired,
-  closeSidebar: PropTypes.func.isRequired,
-  toggleSidebar: PropTypes.func.isRequired,
-  sticky: PropTypes.bool.isRequired,
-  openModal: PropTypes.func.isRequired,
-  dashboards: PropTypes.bool,
-  intl: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  sidebarOpen: PropTypes.bool,
-  home: PropTypes.bool,
-  className: PropTypes.string,
-  history: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired,
-  hasCategories: PropTypes.bool
-};
 
 export default injectIntl(withRouter(Header));

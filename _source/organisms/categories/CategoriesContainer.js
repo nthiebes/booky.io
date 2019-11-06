@@ -8,7 +8,7 @@ export const mapStateToProps = (state) => ({
   maxWidth: state.user.settings.maxWidth,
   dashboardsOpen: state.user.settings.pinned,
   hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
-  dashboard: state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active),
+  dashboardName: (state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active) || {}).name,
   darkMode: state.user.settings.darkMode,
   pending: state.dashboards.pending
 });

@@ -1,35 +1,41 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { H1, H2 } from '../../atoms/headline';
+import { H2 } from '../../atoms/headline';
 import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
 // import Radio from '../../atoms/radio';
 
-class Customize extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleColorChange = this.handleColorChange.bind(this);
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
-    this.handleRadioChange = this.handleRadioChange.bind(this);
+class Customize extends PureComponent {
+  static propTypes = {
+    updateSettings: PropTypes.func.isRequired,
+    intl: PropTypes.object.isRequired,
+    navColor: PropTypes.number.isRequired,
+    newtab: PropTypes.bool.isRequired,
+    maxWidth: PropTypes.bool.isRequired,
+    preserveEditMode: PropTypes.bool.isRequired,
+    dashboardsStyle: PropTypes.string.isRequired,
+    blurEffect: PropTypes.bool.isRequired,
+    stickyHeader: PropTypes.bool.isRequired,
+    stickyToolbar: PropTypes.bool.isRequired,
+    darkMode: PropTypes.bool.isRequired
   }
 
-  handleColorChange(value) {
+  handleColorChange = (value) => {
     this.props.updateSettings({
-      navigationBarColor: parseInt(value.replace(/color/g, ''), 10) - 1
+      navigationBarColor: parseInt(value.replace(/color/g, ''), 10)
     });
   }
 
-  handleCheckboxChange({ name, checked }) {
+  handleCheckboxChange = ({ name, checked }) => {
     this.props.updateSettings({
       [name]: checked
     });
   }
 
-  handleRadioChange({ name, value }) {
+  handleRadioChange = ({ name, value }) => {
     this.props.updateSettings({
       [name]: value
     });
@@ -51,9 +57,6 @@ class Customize extends Component {
 
     return (
       <Fragment>
-        <H1>
-          <FormattedMessage id="customize.title" />
-        </H1>
         <H2>
           <FormattedMessage id="customize.style" />
         </H2>
@@ -61,7 +64,7 @@ class Customize extends Component {
           <FormattedMessage id="customize.navColor" />
         </Label>
         <ColorPicker
-          value={ (navColor + 1).toString() }
+          value={ (navColor).toString() }
           onChange={ this.handleColorChange }
           className="customize__color-picker"
         />
@@ -151,19 +154,5 @@ class Customize extends Component {
     );
   }
 }
-
-Customize.propTypes = {
-  updateSettings: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
-  navColor: PropTypes.number.isRequired,
-  newtab: PropTypes.bool.isRequired,
-  maxWidth: PropTypes.bool.isRequired,
-  preserveEditMode: PropTypes.bool.isRequired,
-  dashboardsStyle: PropTypes.string.isRequired,
-  blurEffect: PropTypes.bool.isRequired,
-  stickyHeader: PropTypes.bool.isRequired,
-  stickyToolbar: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired
-};
 
 export default injectIntl(Customize);

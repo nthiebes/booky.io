@@ -9,7 +9,8 @@ export const mapStateToProps = (state) => ({
   sidebarOpen: state.sidebar.open,
   color: state.user.settings.navigationBarColor,
   sticky: state.user.settings.stickyHeader,
-  hasCategories: state.categories.length > 0
+  hasCategories: state.categories.length > 0,
+  dashboardsPending: state.dashboards.pending
 });
 
 export const mapDispatchToProps = {

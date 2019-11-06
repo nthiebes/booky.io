@@ -50,7 +50,7 @@ class Account extends Component {
           <TabBar title="account.navigation" className="account__tab-bar">
             { this.tabs.map((tab, index) => (
               <Tab
-                key={ index }
+                key={ tab.name }
                 tabId={ index }
                 active={ activeTab === index }
                 name={ tab.name }

@@ -1,9 +1,6 @@
 .select {
   font-family: $font__family--text;
-  transition: color 0.2s linear;
-}
-
-.select--large {
+  font-size: 16px;
   color: $color__font--dark;
   border-radius: 0;
   background-color: $color__background--ligth;
@@ -14,7 +11,6 @@
   padding: 0 9px;
   transition: background-color 0.3s, border-color 0.3s linear;
   width: 100%;
-  font-size: 1rem;
 
   &:active,
   &:focus {
@@ -26,24 +22,6 @@
     &:hover {
       background-color: $color__font--white;
       border-bottom-color: $color--blue;
-    }
-  }
-}
-
-.select--compact {
-  cursor: pointer;
-  color: $color__font--white;
-  font-size: 0.8571rem;
-  background-color: transparent;
-
-  &:active,
-  &:focus {
-    color: $color__font--primary;
-  }
-
-  @include desktop {
-    &:hover {
-      color: $color__font--primary;
     }
   }
 }

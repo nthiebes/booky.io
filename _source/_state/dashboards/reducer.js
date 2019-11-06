@@ -1,22 +1,12 @@
-import {
-  ADD_DASHBOARD,
-  EDIT_DASHBOARD,
-  DELETE_DASHBOARD,
-  CHANGE_DASHBOARD,
-  UPDATE_OFFSET,
-  DRAG_DASHBOARD,
-  DRAG_CATEGORY,
-  TOGGLE_DASHBOARD_OPEN,
-  UPDATE_DASHBOARDS_DATA
-} from './actions';
 import { arrayMove } from '../../_utils/array';
+import initialState from '../../initialState';
 
 // eslint-disable-next-line max-statements
 const dashboards = (state = {}, action) => {
   const { name, id, type } = action;
 
   switch (type) {
-    case ADD_DASHBOARD:
+    case 'ADD_DASHBOARD':
       
       return {
         ...state,
@@ -29,7 +19,7 @@ const dashboards = (state = {}, action) => {
         ]
       };
 
-    case EDIT_DASHBOARD: {
+    case 'EDIT_DASHBOARD': {
       return {
         ...state,
         items: state.items.map((dashboard) => {
@@ -45,7 +35,7 @@ const dashboards = (state = {}, action) => {
       };
     }
 
-    case DELETE_DASHBOARD: {
+    case 'DELETE_DASHBOARD': {
       const newDashboards = state.items.slice();
 
       newDashboards.map((dashboard, index) => {
@@ -60,20 +50,20 @@ const dashboards = (state = {}, action) => {
       };
     }
 
-    case CHANGE_DASHBOARD:
+    case 'CHANGE_DASHBOARD':
       return {
         ...state,
         active: action.id,
         pending: true
       };
 
-    case UPDATE_OFFSET:
+    case 'UPDATE_OFFSET':
       return {
         ...state,
         offset: action.offset
       };
 
-    case DRAG_DASHBOARD: {
+    case 'DRAG_DASHBOARD': {
       const { destinationIndex, sourceIndex } = action.data;
       const items = [...state.items];
 
@@ -85,7 +75,7 @@ const dashboards = (state = {}, action) => {
       };
     }
 
-    case DRAG_CATEGORY: {
+    case 'DRAG_CATEGORY': {
       const { destinationIndex, sourceIndex, sourceDashboardId, destinationDashboardId } = action.data;
 
       return {
@@ -124,17 +114,21 @@ const dashboards = (state = {}, action) => {
       };
     }
 
-    case TOGGLE_DASHBOARD_OPEN:
+    case 'TOGGLE_DASHBOARD_OPEN':
       return {
         ...state,
         open: !state.open
       };
 
-    case UPDATE_DASHBOARDS_DATA:
+    case 'UPDATE_DASHBOARDS_DATA':
       return {
         ...state,
         ...action.data
       };
+    
+    case 'RESET_USER_STATE': {
+      return initialState.dashboards;
+    }
 
     default:
       return state;
