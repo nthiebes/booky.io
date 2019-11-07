@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Icon from '../../../atoms/icon';
-import { H3 } from '../../../atoms/headline';
+import { H2 } from '../../../atoms/headline';
 import { ButtonSmallPrimary } from '../../../atoms/button';
 import Skeleton from '../../../atoms/skeleton';
 
@@ -70,9 +70,9 @@ class DashboardsList extends PureComponent {
     return (
       <Fragment>
         <div className={ classNames('dashboards__headline-wrapper', !pinned && 'dashboards__headline-wrapper--hidden') }>
-          <H3 className="dashboards__headline">
+          <H2 style="h3" className="dashboards__headline">
             <FormattedMessage id="dashboard.title" />
-          </H3>
+          </H2>
           <Icon
             icon={ editMode ? 'close' : 'more-horiz' }
             label={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
