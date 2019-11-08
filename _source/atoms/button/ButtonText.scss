@@ -5,22 +5,22 @@
   @include mobile-tablet() {
     &:active,
     &:focus {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
     &:active .icon,
     &:focus .icon {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
   }
 
   @include desktop() {
     &:hover,
     &:focus {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
     &:hover .icon,
     &:focus .icon {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
   }
 
@@ -43,5 +43,5 @@
 }
 
 .button--text-light {
-  color: $color__font--white;
+  color: $color-font--white;
 }

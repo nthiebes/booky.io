@@ -63,18 +63,18 @@ body {
   -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: $font__family--text;
+  font-family: $font-family--text;
   height: 100%;
-  color: $color__font--dark;
+  color: $color-font--dark;
 }
 
 ::-moz-selection {
-  color: $color__font--white;
-  background-color: $color__font--primary;
+  color: $color-font--white;
+  background-color: $color-font--primary;
 }
 ::selection {
-  color: $color__font--white;
-  background-color: $color__font--primary;
+  color: $color-font--white;
+  background-color: $color-font--primary;
 }
 
 .booky--no-scrolling {
@@ -145,7 +145,7 @@ body {
 
 .loading__spinner {
   position: absolute;
-  color: $color__font--medium;
+  color: $color-font--medium;
   pointer-events: none;
   left: calc(50vw - 18px);
   top: calc(50vh);

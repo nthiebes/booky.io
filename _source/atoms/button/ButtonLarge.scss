@@ -41,7 +41,7 @@
     &.button--pending {
       .icon,
       .icon__svg {
-        color: $color__font--dark;
+        color: $color-font--dark;
       }
 
       .button__icon {
@@ -71,15 +71,15 @@
 }
 
 .button--large-primary {
-  background-color: $color__background--primary;
-  color: $color__font--white;
+  background-color: $color-background--primary;
+  color: $color-font--white;
   border-bottom: 2px solid darken($color--primary, 10%);
 
   @include mobile-tablet() {
     &:active,
     &:focus {
-      background-color: lighten($color__background--primary, 5%);
-      color: $color__font--white;
+      background-color: lighten($color-background--primary, 5%);
+      color: $color-font--white;
     }
   }
 
@@ -87,12 +87,12 @@
     &:hover,
     &:focus,
     &.button--pending {
-      background-color: lighten($color__background--primary, 5%);
-      color: $color__font--white;
+      background-color: lighten($color-background--primary, 5%);
+      color: $color-font--white;
 
       .icon,
       .icon__svg {
-        color: $color__font--white;
+        color: $color-font--white;
       }
     }
   }
@@ -100,14 +100,14 @@
 
 .button--large-green {
   background-color: $color--green;
-  color: $color__font--white;
+  color: $color-font--white;
   border-bottom: 2px solid darken($color--green, 10%);
 
   @include mobile-tablet() {
     &:active,
     &:focus {
       background-color: lighten($color--green, 5%);
-      color: $color__font--white;
+      color: $color-font--white;
     }
   }
 
@@ -116,11 +116,11 @@
     &:focus,
     &.button--pending {
       background-color: lighten($color--green, 5%);
-      color: $color__font--white;
+      color: $color-font--white;
 
       .icon,
       .icon__svg {
-        color: $color__font--white;
+        color: $color-font--white;
       }
     }
   }
@@ -128,14 +128,14 @@
 
 .button--large-blue {
   background-color: $color--blue;
-  color: $color__font--white;
+  color: $color-font--white;
   border-bottom: 2px solid darken($color--blue, 10%);
 
   @include mobile-tablet() {
     &:active,
     &:focus {
       background-color: lighten($color--blue, 5%);
-      color: $color__font--white;
+      color: $color-font--white;
     }
   }
 
@@ -144,26 +144,26 @@
     &:focus,
     &.button--pending {
       background-color: lighten($color--blue, 5%);
-      color: $color__font--white;
+      color: $color-font--white;
 
       .icon,
       .icon__svg {
-        color: $color__font--white;
+        color: $color-font--white;
       }
     }
   }
 }
 
 .button--large-dark {
-  background-color: $color__background--dark;
-  color: $color__font--white;
-  border-bottom: 2px solid darken($color__background--dark, 10%);
+  background-color: $color-background--dark;
+  color: $color-font--white;
+  border-bottom: 2px solid darken($color-background--dark, 10%);
 
   @include mobile-tablet() {
     &:active,
     &:focus {
-      background-color: lighten($color__background--dark, 5%);
-      color: $color__font--white;
+      background-color: lighten($color-background--dark, 5%);
+      color: $color-font--white;
     }
   }
 
@@ -171,27 +171,27 @@
     &:hover,
     &:focus,
     &.button--pending {
-      background-color: lighten($color__background--dark, 5%);
-      color: $color__font--white;
+      background-color: lighten($color-background--dark, 5%);
+      color: $color-font--white;
 
       .icon,
       .icon__svg {
-        color: $color__font--white;
+        color: $color-font--white;
       }
     }
   }
 }
 
 .button--large-light {
-  background-color: $color__background--ligth;
-  color: $color__font--dark;
-  border-bottom: 2px solid darken($color__background--ligth, 15%);
+  background-color: $color-background--ligth;
+  color: $color-font--dark;
+  border-bottom: 2px solid darken($color-background--ligth, 15%);
 
   @include mobile-tablet() {
     &:active,
     &:focus {
-      background-color: darken($color__background--ligth, 5%);
-      color: $color__font--dark;
+      background-color: darken($color-background--ligth, 5%);
+      color: $color-font--dark;
     }
   }
 
@@ -199,8 +199,8 @@
     &:hover,
     &:focus,
     &.button--pending {
-      background-color: darken($color__background--ligth, 5%);
-      color: $color__font--dark;
+      background-color: darken($color-background--ligth, 5%);
+      color: $color-font--dark;
     }
   }
 }

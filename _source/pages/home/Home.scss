@@ -86,13 +86,13 @@
   flex-direction: column;
   width: 25%;
   transition: color 0.2s;
-  color: $color__font--medium;
+  color: $color-font--medium;
   text-decoration: none;
   font-weight: 700;
 
   &:active,
   &:focus {
-    color: $color__font--dark;
+    color: $color-font--dark;
 
     .icon__svg {
       color: $color--primary;
@@ -101,7 +101,7 @@
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
+      color: $color-font--dark;
 
       .icon__svg {
         color: $color--primary;

@@ -1,6 +1,6 @@
 .headline {
-  color: $color__font--dark;
-  font-family: $font__family--heading;
+  color: $color-font--dark;
+  font-family: $font-family--heading;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -19,7 +19,7 @@
   padding-bottom: 1rem;
 
   &.headline--dark-mode {
-    color: $color__font--white;
+    color: $color-font--white;
   }
 
   &.headline--display {
@@ -44,10 +44,10 @@
   font-weight: 400;
   margin-top: 1rem;
   padding-bottom: 0.5rem;
-  color: $color__font--medium;
+  color: $color-font--medium;
 
   &.headline--dark-mode {
-    color: $color__font--light;
+    color: $color-font--light;
   }
 
   &.headline--display {
@@ -74,11 +74,11 @@
   font-weight: 700;
   margin-top: 1rem;
   padding-bottom: 0.5rem;
-  color: $color__font--medium;
+  color: $color-font--medium;
   text-transform: uppercase;
 
   &.headline--dark-mode {
-    color: $color__font--light;
+    color: $color-font--light;
   }
 }
 
@@ -87,10 +87,10 @@
   font-weight: 700;
   margin-top: 0.5rem;
   padding-bottom: 0.3rem;
-  color: $color__font--dark;
+  color: $color-font--dark;
 
   &.headline--dark-mode {
-    color: $color__font--light;
+    color: $color-font--light;
   }
 }
 
@@ -99,9 +99,9 @@
 }
 
 .headline--color-light {
-  color: $color__font--white;
+  color: $color-font--white;
 }
 
 .headline--color-medium {
-  color: $color__font--medium;
+  color: $color-font--medium;
 }

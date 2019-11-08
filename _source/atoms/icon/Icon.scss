@@ -77,71 +77,71 @@
 }
 
 .icon--primary {
-  color: $color__font--primary;
+  color: $color-font--primary;
 
   @include mobile-tablet {
     &:active {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
   }
 
   &:focus {
-    color: $color__font--dark;
+    color: $color-font--dark;
   }
 }
 
 .icon--dark {
-  color: $color__font--dark;
+  color: $color-font--dark;
 
   @include mobile-tablet {
     &:active {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
   }
 
   &:focus {
-    color: $color__font--primary;
+    color: $color-font--primary;
   }
 }
 
 .icon--medium {
-  color: $color__font--medium;
+  color: $color-font--medium;
 
   @include mobile-tablet {
     &:active {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
   }
 
   &:focus {
-    color: $color__font--primary;
+    color: $color-font--primary;
   }
 }
 
 .icon--light {
-  color: $color__font--white;
+  color: $color-font--white;
 
   @include mobile-tablet {
     &:active {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
 
     &.icon--dark-mode:active {
@@ -151,7 +151,7 @@
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
 
     &.icon--dark-mode:hover {
@@ -160,7 +160,7 @@
   }
 
   &:focus {
-    color: $color__font--dark;
+    color: $color-font--dark;
   }
 
   &.icon--dark-mode:focus {
@@ -173,18 +173,18 @@
 
   @include mobile-tablet {
     &:active {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
   }
 
   &:focus {
-    color: $color__font--dark;
+    color: $color-font--dark;
   }
 }
 
@@ -193,18 +193,18 @@
 
   @include mobile-tablet {
     &:active {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
   }
 
   &:focus {
-    color: $color__font--dark;
+    color: $color-font--dark;
   }
 }
 

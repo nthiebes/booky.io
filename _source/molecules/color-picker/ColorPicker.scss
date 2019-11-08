@@ -21,7 +21,7 @@
 
     .icon {
       opacity: 1;
-      color: $color__font--white;
+      color: $color-font--white;
     }
   }
 
@@ -35,7 +35,7 @@
 
       .icon {
         opacity: 1;
-        color: $color__font--white;
+        color: $color-font--white;
       }
     }
   }
@@ -122,12 +122,12 @@
 .color-picker__color--dark-mode {
   &:active,
   &:focus {
-    border-color: $color__font--white;
+    border-color: $color-font--white;
   }
 
   @include desktop {
     &:hover {
-      border-color: $color__font--white;
+      border-color: $color-font--white;
     }
   }
 }
@@ -136,7 +136,7 @@
   border-color: $color--black;
 
   &.color-picker__color--dark-mode {
-    border-color: $color__font--white;
+    border-color: $color-font--white;
   }
 }
 

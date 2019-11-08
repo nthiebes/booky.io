@@ -44,7 +44,7 @@
   z-index: 6;
   width: 94vw;
   max-height: 94%;
-  background-color: $color__background--white;
+  background-color: $color-background--white;
   border: 2px solid rgba(0,0,0,0.15);
   max-width: $width--mobile;
   position: relative;
@@ -55,7 +55,7 @@
 }
 
 .modal__inner--dark {
-  background-color: $color__background--dark-mode;
+  background-color: $color-background--dark-mode;
 }
 
 .modal--open {

@@ -35,11 +35,11 @@
 
 .search__input--dark-mode {
   @include desktop {
-    background-color: $color__background--dark;
+    background-color: $color-background--dark;
 
     &:hover,
     &:focus {
-      background-color: $color__background--dark;
+      background-color: $color-background--dark;
     }
   }
 }
