@@ -193,9 +193,7 @@
     "success.default": "Success!",
     "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
     "error.email": "email",
-    "error.failedLogin": "The username and password do not match.",
-    "error.usernameInUse": "The username is already in use.",
-    "error.emailInUse": "The email address is already in use.",
+    "error.failedLogin": "Your login details do not match. Please double-check and try again.",
     "error.invalidEmail": "Please enter a valid email address.",
     "error.invalidPassword": "Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.",
     "contact.headline": "Write us!",
@@ -203,7 +201,7 @@
     "contact.message": "Your message",
     "contact.success": "Your message has been sent successfully!",
     "help.intro1": "This is the help section. Find all answers to common questions on this page.",
-    "error.unauthorized": "The username and password that you entered did not match our records. Please double-check and try again.",
+    "error.unauthorized": "Unauthorized",
     "legal.11": "",
     "legal.12": "",
     "header.jumpToMain": "Jump to main content",
@@ -217,7 +215,7 @@
     "misc.comingSoon": "Unfortunately, there is nothing here in the beta. We're working on it!",
     "account.yourEmail": "Your email address:",
     "menu.feedback": "Feedback",
-    "feedback.text": "Please leave your feedback in the discussion below.",
+    "feedback.text": "Please leave your feedback on the beta in the discussion below.",
     "legal.contactForm": "Contact form",
     "help.intro2": "Your question is still not answered? Write us an {email}!",
     "help.email": "email",
@@ -231,5 +229,6 @@
     "help.question10": "Wie kann ich meinen Account löschen?",
     "help.faq": "Frequently asked questions",
     "menu.title": "Main navigation",
-    "account.navigation": "Account navigation"
+    "account.navigation": "Account navigation",
+    "error.executionLogic": "Oops! Something went wrong on our end. Please try again or write us an {mail}."
 }
