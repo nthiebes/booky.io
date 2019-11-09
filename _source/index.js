@@ -25,10 +25,12 @@ document.documentElement.setAttribute('lang', language);
 document.addEventListener('touchstart', () => { /* Do nothing */ }, {passive: true});
 
 // Initialize Sentry error tracking
-Sentry.init({
-  dsn: 'https://3b30e08ee0164a03816c765e2a29a2c2@sentry.io/1792556',
-  environment: process.env.NODE_ENV
-});
+if (process.env.NODE_ENV !== 'development') {
+  Sentry.init({
+    dsn: 'https://3b30e08ee0164a03816c765e2a29a2c2@sentry.io/1792556',
+    environment: process.env.NODE_ENV
+  });
+}
 
 let counter = 0;
 let error = false;
