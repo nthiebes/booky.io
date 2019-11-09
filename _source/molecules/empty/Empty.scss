@@ -10,7 +10,7 @@
   align-items: center;
   max-width: 350px;
   text-align: center;
-  color: $color__font--dark;
+  color: $color-font--dark;
 
   @include mobile {
     padding: 0 calc(3% + 6px);
@@ -18,7 +18,7 @@
 }
 
 .empty--dark-mode {
-  color: $color__font--white;
+  color: $color-font--white;
 }
 
 .empty__image {

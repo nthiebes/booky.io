@@ -23,11 +23,16 @@ class Sidebar extends PureComponent {
     dashboardsSidebar: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
     openModal: PropTypes.func.isRequired,
-    logout: PropTypes.func.isRequired
+    logout: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
   }
   
   static defaultProps = {
     direction: 'right'
+  }
+
+  state = {
+    logoutPending: false
   }
 
   onMenuClick(e) {
@@ -42,6 +47,20 @@ class Sidebar extends PureComponent {
     this.props.openModal('AddDashboard');
   }
 
+  handleLogout = () => {
+    const { history, logout } = this.props;
+
+    this.setState({
+      logoutPending: true
+    });
+
+    logout({
+      onSuccess: () => {
+        history.push('/');
+      }
+    });
+  }
+
   // eslint-disable-next-line complexity
   render() {
     const {
@@ -54,10 +73,10 @@ class Sidebar extends PureComponent {
       location,
       className,
       dashboardsSidebar,
-      darkMode,
-      logout
+      darkMode
     } = this.props;
     const { pathname } = location;
+    const { logoutPending } = this.state;
 
     return (
       <aside className={ classNames(
@@ -233,10 +252,10 @@ class Sidebar extends PureComponent {
                         'booky--hide-desktop',
                         darkMode && 'sidebar__item--dark-mode'
                       ) }
-                      onClick={ logout }
+                      onClick={ this.handleLogout }
                       tabIndex={ open ? '0' : '-1' }
                     >
-                      <Icon icon="logout" />
+                      <Icon icon="logout" pending={ logoutPending } />
                       <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                         <FormattedMessage id="menu.logout" />
                       </span>

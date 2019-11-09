@@ -1,11 +1,11 @@
 .select {
-  font-family: $font__family--text;
+  font-family: $font-family--text;
   font-size: 16px;
-  color: $color__font--dark;
+  color: $color-font--dark;
   border-radius: 0;
-  background-color: $color__background--ligth;
+  background-color: $color-background--ligth;
   border: 1px solid rgba($color--black, 0.15);
-  border-bottom: 2px solid $color__font--medium;
+  border-bottom: 2px solid $color-font--medium;
   height: 3rem;
   line-height: 3;
   padding: 0 9px;
@@ -15,12 +15,12 @@
   &:active,
   &:focus {
     border-bottom-color: $color--blue;
-    background-color: $color__font--white;
+    background-color: $color-font--white;
   }
 
   @include desktop {
     &:hover {
-      background-color: $color__font--white;
+      background-color: $color-font--white;
       border-bottom-color: $color--blue;
     }
   }

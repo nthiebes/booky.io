@@ -15,7 +15,7 @@ class AddCategory extends Component {
     this.onColorChange = this.onColorChange.bind(this);
     this.state = {
       name: '',
-      color: 'color1'
+      color: 'color9'
     };
   }
 

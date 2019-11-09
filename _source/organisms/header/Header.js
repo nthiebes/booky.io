@@ -61,7 +61,7 @@ class Header extends PureComponent {
     });
   }
 
-  onLogoutClick = () => {
+  handleLogout = () => {
     const { history, logout } = this.props;
 
     this.setState({
@@ -144,9 +144,9 @@ class Header extends PureComponent {
               />
               <Icon
                 className="booky--hide-mobile-tablet"
-                icon={ logoutPending ? 'spinner' : 'logout' }
+                icon="logout"
                 color="light"
-                onClick={ this.onLogoutClick }
+                onClick={ this.handleLogout }
                 label={ intl.formatMessage({ id: 'menu.logout' }) }
                 ignoreDarkMode
                 pending={ logoutPending }

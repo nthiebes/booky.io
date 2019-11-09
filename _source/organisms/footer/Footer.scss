@@ -22,7 +22,7 @@
   background-color: $color--primary;
   border-top: 2px solid rgba(255,255,255,0.2);
   padding: 1rem calc(3vw + 6px);
-  color: $color__font--white;
+  color: $color-font--white;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -49,7 +49,7 @@
 }
 
 .footer__social {
-  background-color: $color__background--medium;
+  background-color: $color-background--medium;
   border-top: 2px solid rgba(255,255,255,0.2);
   border-bottom: 2px solid rgba(255,255,255,0.03);
   padding: calc(2rem - 4px) calc(3vw + 6px) calc(2rem + 2px) calc(3vw + 6px);
@@ -80,7 +80,7 @@
     &:focus {
       .footer__icon,
       .footer__label {
-        color: $color__font--primary;
+        color: $color-font--primary;
       }
     }
   }
@@ -90,7 +90,7 @@
     &:focus {
       .footer__icon,
       .footer__label {
-        color: $color__font--primary;
+        color: $color-font--primary;
       }
     }
   }
@@ -98,11 +98,11 @@
 
 .footer__label {
   transition: color 0.2s linear;
-  color: $color__font--white;
+  color: $color-font--white;
 }
 
 .footer__content {
-  background-color: $color__background--dark;
+  background-color: $color-background--dark;
   padding: 2rem calc(3vw + 6px);
   display: flex;
   flex-direction: column;
@@ -140,22 +140,22 @@
 }
 
 .footer__logo {
-  color: $color__font--white;
+  color: $color-font--white;
   font-size: $font-size--small;
   margin-right: 2rem;
 
   &:focus {
-    outline: 1px dashed $color__font--white;
+    outline: 1px dashed $color-font--white;
   }
 }
 
 .footer__copy {
-  color: $color__font--light;
+  color: $color-font--light;
   margin-top: 2rem;
 }
 
 .footer__copy-link {
   font-size: $font-size--small;
-  color: $color__font--white;
+  color: $color-font--white;
   padding: 0 0.3rem;
 }
