@@ -37,8 +37,6 @@ let userData;
 const loadingDone = () => {
   let store;
 
-  document.title = 'booky.io';
-
   // Not logged in
   if (error) {
     store = configureStore({
