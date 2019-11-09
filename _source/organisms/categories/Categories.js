@@ -32,6 +32,7 @@ class Categories extends PureComponent {
         'categories',
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
+        !pending && categories.length && 'categories--grid',
         maxWidth && 'categories--max-width',
         className
       ) }>

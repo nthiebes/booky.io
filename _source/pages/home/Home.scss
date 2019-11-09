@@ -157,13 +157,13 @@
 
 .home__add-category--sidebar {
   @include desktop {
-    margin-left: calc(50px + 3%);
+    margin-left: calc(56px + 3%);
   }
 }
 
 .home__add-category--shifted {
   @include desktop {
-    margin-left: calc(300px + 3% - 6px);
+    margin-left: calc(306px + 3%);
   }
 }
 
