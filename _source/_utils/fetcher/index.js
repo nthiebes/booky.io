@@ -26,7 +26,7 @@ const formatResponse = (response) =>
   })
 ;
 const checkEmptyResponse = (response) => {
-  if (response.statusText === 'No Content') {
+  if (response.statusText === 'No Content' || response.status === 204) {
     return {};
   }
 
