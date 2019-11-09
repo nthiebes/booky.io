@@ -14,12 +14,12 @@
   // }
 
   // &::before {
-  //   background: linear-gradient(to right, $color__background--white, rgba(255,255,255,0));
+  //   background: linear-gradient(to right, $color-background--white, rgba(255,255,255,0));
   //   left: 0;
   // }
 
   // &::after {
-  //   background: linear-gradient(to left, $color__background--white, rgba(255,255,255,0));
+  //   background: linear-gradient(to left, $color-background--white, rgba(255,255,255,0));
   //   right: 0;
   // }
 }
@@ -36,7 +36,7 @@
 
 .tab-bar__tab {
   user-select: none;
-  color: $color__font--medium;
+  color: $color-font--medium;
   font-weight: bold;
   white-space: nowrap;
   padding: 6px;
@@ -53,27 +53,27 @@
 
   &:active,
   &:focus {
-    color: $color__font--dark;
+    color: $color-font--dark;
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
   }
 }
 
 .tab-bar__tab--dark-mode {
-  color: $color__font--light;
+  color: $color-font--light;
 
   &:active,
   &:focus {
-    color: $color__font--white;
+    color: $color-font--white;
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--white;
+      color: $color-font--white;
     }
   }
 }
@@ -83,27 +83,27 @@
   border-bottom-color: $color--primary;
 
   &:focus {
-    color: $color__font--dark;
-    border-bottom-color: $color__font--dark;
+    color: $color-font--dark;
+    border-bottom-color: $color-font--dark;
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
-      border-bottom-color: $color__font--dark;
+      color: $color-font--dark;
+      border-bottom-color: $color-font--dark;
     }
   }
 
   &.tab-bar__tab--dark-mode {
     &:focus {
-      color: $color__font--white;
-      border-bottom-color: $color__font--white;
+      color: $color-font--white;
+      border-bottom-color: $color-font--white;
     }
 
     @include desktop {
       &:hover {
-        color: $color__font--white;
-        border-bottom-color: $color__font--white;
+        color: $color-font--white;
+        border-bottom-color: $color-font--white;
       }
     }
   }

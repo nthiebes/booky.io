@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
-import { H3 } from '../../atoms/headline';
+import { H1 } from '../../atoms/headline';
 import Skeleton from '../../atoms/skeleton';
 import Search from '../../molecules/search';
 import { TabBar, Tab } from '../../molecules/tab-bar';
@@ -105,9 +105,9 @@ class Toolbar extends PureComponent {
         {/** onClick={ this.onIconClick }
           isButton */}
         { dashboardsStyle === 'sidebar' && (
-          <H3 className="toolbar__headline">
+          <H1 style="h3" className="toolbar__headline">
             { activeDashboardName || <Skeleton /> }
-          </H3>
+          </H1>
         ) }
         { dashboardsStyle === 'tabs' && (
           <TabBar className="toolbar__tabs">

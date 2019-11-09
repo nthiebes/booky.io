@@ -57,7 +57,7 @@ export default class ColorPicker extends Component {
     )));
 
     return (
-      <div className={ classNames('color-picker', isLegacy && 'colar-picker__legacy', className) }>
+      <div className={ classNames('color-picker', isLegacy && 'color-picker__legacy', className) }>
         { colors }
       </div>
     );

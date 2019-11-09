@@ -5,14 +5,29 @@ import classNames from 'classnames';
 import Skeleton from '../skeleton';
 
 export default class Icon extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+  static propTypes = {
+    className: PropTypes.string,
+    icon: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    onClick: PropTypes.func,
+    stopPropagation: PropTypes.bool,
+    color: PropTypes.string,
+    dragHandleProps: PropTypes.object,
+    tabIndex: PropTypes.string,
+    darkMode: PropTypes.bool,
+    ignoreDarkMode: PropTypes.bool,
+    size: PropTypes.string,
+    isButton: PropTypes.bool,
+    useSkeleton: PropTypes.bool,
+    pending: PropTypes.bool
+  }
+  
+  static defaultProps = {
+    color: 'medium',
+    size: 'small'
   }
 
-  handleClick(event) {
+  handleClick = (event) => {
     const { stopPropagation, onClick } = this.props;
 
     if (stopPropagation) {
@@ -24,7 +39,7 @@ export default class Icon extends Component {
     }
   }
 
-  handleKeyDown(event) {
+  handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       this.handleClick(event);
     }
@@ -32,7 +47,6 @@ export default class Icon extends Component {
 
   render() {
     const {
-      icon,
       className,
       label,
       color,
@@ -42,8 +56,10 @@ export default class Icon extends Component {
       ignoreDarkMode,
       size,
       isButton,
-      useSkeleton
+      useSkeleton,
+      pending
     } = this.props;
+    const icon = pending ? 'spinner' : this.props.icon;
     const link = '_assets/symbol-defs.svg#icon-' + icon;
     const additionalProps = {};
     let CustomTag = 'button';
@@ -65,7 +81,7 @@ export default class Icon extends Component {
             `icon--size-${size}`,
             darkMode && !ignoreDarkMode ? 'icon--light' : `icon--${color}`,
             darkMode && !ignoreDarkMode && 'icon--dark-mode',
-            className && className
+            className
           ) }
           title={ label }
           onClick={ this.handleClick }
@@ -88,24 +104,3 @@ export default class Icon extends Component {
     );
   }
 }
-
-Icon.propTypes = {
-  className: PropTypes.string,
-  icon: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  onClick: PropTypes.func,
-  stopPropagation: PropTypes.bool,
-  color: PropTypes.string,
-  dragHandleProps: PropTypes.object,
-  tabIndex: PropTypes.string,
-  darkMode: PropTypes.bool,
-  ignoreDarkMode: PropTypes.bool,
-  size: PropTypes.string,
-  isButton: PropTypes.bool,
-  useSkeleton: PropTypes.bool
-};
-
-Icon.defaultProps = {
-  color: 'medium',
-  size: 'small'
-};

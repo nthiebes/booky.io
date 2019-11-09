@@ -13,74 +13,74 @@
 }
 
 .link--primary {
-  color: $color__font--primary;
+  color: $color-font--primary;
 
   &:active,
   &:focus {
-    color: $color__font--medium;
+    color: $color-font--medium;
   }
 
   &.link--dark-mode {
     &:active,
     &:focus {
-      color: $color__font--light;
+      color: $color-font--light;
     }
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--medium;
+      color: $color-font--medium;
     }
 
     &.link--dark-mode {
       &:hover {
-        color: $color__font--light;
+        color: $color-font--light;
       }
     }
   }
 }
 
 .link--medium {
-  color: $color__font--medium;
+  color: $color-font--medium;
 
   &:active,
   &:focus {
-    color: $color__font--dark;
+    color: $color-font--dark;
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
   }
 }
 
 .link--dark {
-  color: $color__font--dark;
+  color: $color-font--dark;
 
   &:active,
   &:focus {
-    color: $color__font--medium;
+    color: $color-font--medium;
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--medium;
+      color: $color-font--medium;
     }
   }
 }
 
 .link--light {
-  color: $color__font--white;
+  color: $color-font--white;
 
   &:active,
   &:focus {
-    color: $color__font--primary;
+    color: $color-font--primary;
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
   }
 }

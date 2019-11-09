@@ -5,7 +5,7 @@ import { fetch } from 'whatwg-fetch';
 const abortableFetch = ('signal' in new Request('')) ? window.fetch : fetch;
 const baseUrl = process.env.NODE_ENV === 'development'
   ? `http://${document.location.hostname}:8001/api`
-  : 'https://api.booky.io';
+  : '/api';
 const defaultOptions = {
   credentials: process.env.NODE_ENV === 'development' ? 'include' : 'same-origin'
 };
@@ -22,7 +22,7 @@ const formatResponse = (response) =>
 
   ({
     data: response,
-    error: response.message
+    error: response.message || response.error
   })
 ;
 const checkEmptyResponse = (response) => {

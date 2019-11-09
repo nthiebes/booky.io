@@ -1,10 +1,10 @@
 .file-upload {
   font-size: 1rem;
   width: 100%;
-  color: $color__font--dark;
+  color: $color-font--dark;
   margin-top: 0.5rem;
 }
 
 .file-upload--dark-mode {
-  color: $color__font--white;
+  color: $color-font--white;
 }

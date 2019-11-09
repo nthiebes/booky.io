@@ -1,5 +1,5 @@
 .page {
-  background-color: $color__background--white;
+  background-color: $color-background--white;
   position: relative;
   min-height: 100vh;
   padding: calc(4rem - 47px) 0 6rem 0;
@@ -30,5 +30,5 @@
 }
 
 .page--dark {
-  background-color: $color__background--dark-mode;
+  background-color: $color-background--dark-mode;
 }

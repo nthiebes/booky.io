@@ -16,7 +16,7 @@
 }
 
 .bookmark__link {
-  color: $color__font--dark;
+  color: $color-font--dark;
   flex-grow: 1;
   font-size: 1rem;
   overflow: hidden;
@@ -29,20 +29,20 @@
 
   &:focus,
   &:active {
-    color: $color__font--primary;
+    color: $color-font--primary;
     text-decoration: underline;
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--primary;
+      color: $color-font--primary;
       text-decoration: underline;
     }
   }
 }
 
 .bookmark__link--dark {
-  color: $color__font--white;
+  color: $color-font--white;
 }
 
 .bookmark__icon {

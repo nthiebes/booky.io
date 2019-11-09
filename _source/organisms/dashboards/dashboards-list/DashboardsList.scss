@@ -51,7 +51,7 @@
         background-color: inherit;
 
         .dashboards__label {
-          color: $color__font--white;
+          color: $color-font--white;
         }
       }
     }
@@ -73,7 +73,7 @@
           background-color: inherit;
 
           .dashboards__label {
-            color: $color__font--white;
+            color: $color-font--white;
           }
         }
       }
@@ -112,7 +112,7 @@
 }
 
 .dashboards__item {
-  color: $color__font--dark;
+  color: $color-font--dark;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -132,14 +132,14 @@
 
   &:active,
   &:focus {
-    background-color: $color__background--ligth;
+    background-color: $color-background--ligth;
 
     &.dashboards__item--dark-mode {
-      background-color: $color__background--dark;
+      background-color: $color-background--dark;
     }
 
     .dashboards__label {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
   }
 
@@ -149,22 +149,22 @@
 
   @include desktop {
     &:hover {
-      background-color: $color__background--ligth;
+      background-color: $color-background--ligth;
 
       &.dashboards__item--dark-mode {
-        background-color: $color__background--dark;
+        background-color: $color-background--dark;
       }
 
       .dashboards__label {
-        color: $color__font--primary;
+        color: $color-font--primary;
       }
     }
   }
 }
 
 .dashboards__label {
-  color: $color__font--dark;
-  font-family: $font__family--text;
+  color: $color-font--dark;
+  font-family: $font-family--text;
   font-size: 1rem;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -175,7 +175,7 @@
 }
 
 .dashboards__label--dark-mode {
-  color: $color__font--white;
+  color: $color-font--white;
 }
 
 .dashboards__button {

@@ -1,6 +1,6 @@
 .sidebar {
   top: 0;
-  background-color: $color__background--white;
+  background-color: $color-background--white;
   bottom: 0;
   max-width: 300px;
   min-width: 200px;
@@ -13,7 +13,7 @@
 }
 
 .sidebar--dark-mode {
-  background-color: $color__background--medium;
+  background-color: $color-background--medium;
 }
 
 .sidebar--left {
@@ -71,10 +71,10 @@
 }
 
 .sidebar__logo {
-  color: $color__font--primary;
+  color: $color-font--primary;
 
   &:focus {
-    outline: 1px dashed $color__font--medium;
+    outline: 1px dashed $color-font--medium;
   }
 }
 
@@ -107,8 +107,8 @@
 }
 
 .sidebar__item {
-  color: $color__font--dark;
-  background-color: $color__background--white;
+  color: $color-font--dark;
+  background-color: $color-background--white;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -126,24 +126,24 @@
   }
 
   &.sidebar__item--dark-mode {
-    background-color: $color__background--medium;
+    background-color: $color-background--medium;
   }
 
   &:active,
   &:focus {
-    background-color: $color__background--ligth;
-    color: $color__font--primary;
+    background-color: $color-background--ligth;
+    color: $color-font--primary;
 
     &.sidebar__item--dark-mode {
-      background-color: $color__background--dark;
+      background-color: $color-background--dark;
     }
 
     .sidebar__label {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
 
     .icon {
-      color: $color__font--primary;
+      color: $color-font--primary;
     }
   }
 }
@@ -153,8 +153,8 @@
 }
 
 .sidebar__label {
-  color: $color__font--dark;
-  font-family: $font__family--text;
+  color: $color-font--dark;
+  font-family: $font-family--text;
   font-size: 1rem;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -175,19 +175,19 @@
 }
 
 .sidebar__label--dark-mode {
-  color: $color__font--white;
+  color: $color-font--white;
 }
 
 .sidebar__item--active {
   .sidebar__label {
     &::after {
-      background-color: $color__font--dark;
+      background-color: $color-font--dark;
     }
   }
 
   .sidebar__label--dark-mode {
     &::after {
-      background-color: $color__font--white;
+      background-color: $color-font--white;
     }
   }
 
@@ -195,7 +195,7 @@
   &:focus {
     .sidebar__label {
       &::after {
-        background-color: $color__font--primary;
+        background-color: $color-font--primary;
       }
     }
   }
