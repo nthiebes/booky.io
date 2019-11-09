@@ -87,7 +87,9 @@ export default class Privacy extends Component {
               </H2>
               <P>
                 <FormattedMessage id="privacy.22" />
-                <Link target="_blank" href="https://tools.google.com/dlpage/gaoptout?hl=en">{ 'https://tools.google.com/dlpage/gaoptout?hl=en' }</Link>
+                <Link target="_blank" href="https://tools.google.com/dlpage/gaoptout?hl=en">
+                  { 'https://tools.google.com/dlpage/gaoptout?hl=en' }
+                </Link>
                 { '.' }
               </P>
               <P>
