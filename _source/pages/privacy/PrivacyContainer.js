@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 import Component from './Privacy';
 
-export const mapStateToProps = function(state) {
-  return {
-    locale: state.intl.locale
-  };
-};
+export const mapStateToProps = (state) => ({
+  locale: state.intl.locale,
+  darkMode: state.user.settings.darkMode
+});
 
 const Container = connect(
   mapStateToProps
