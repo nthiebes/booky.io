@@ -230,5 +230,6 @@
     "help.faq": "Frequently asked questions",
     "menu.title": "Main navigation",
     "account.navigation": "Account navigation",
-    "error.executionLogic": "Oops! Something went wrong on our end. Please try again or write us an {mail}."
+    "error.executionLogic": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
+    "error. unexpected": "Oops! Something went wrong on our end. Please try again or write us an {mail}."
 }
