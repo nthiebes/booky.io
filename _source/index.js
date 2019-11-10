@@ -84,40 +84,59 @@ const loadingDone = () => {
     document.getElementById('root')
   );
 };
-
-loadPolyfills().then(() => {
-// Fetch translations
-  fetch(`/_assets/i18n/${language}.json`)
-    .then((response) => response.json())
-    .then((data) => {
-      messages = data;
-      counter++;
-  
-      if (counter === 2) {
-        loadingDone();
+const init = () => {
+  loadPolyfills().then(() => {
+    // Fetch translations
+    fetch(`/_assets/i18n/${language}.json`)
+      .then((response) => response.json())
+      .then((data) => {
+        messages = data;
+        counter++;
+      
+        if (counter === 2) {
+          loadingDone();
+        }
+      })
+      .catch();
+    
+    // Fetch user data
+    fetcher({
+      url: '/user',
+      onSuccess: (data) => {
+        userData = data;
+        counter++;
+      
+        if (counter === 2) {
+          loadingDone();
+        }
+      },
+      onError: () => {
+        error = true;
+        counter++;
+      
+        if (counter === 2) {
+          loadingDone();
+        }
       }
-    })
-    .catch();
+    });
+    
+  });    
+};
+const loadScript = (src, done) => {
+  const js = document.createElement('script');
 
-  // Fetch user data
-  fetcher({
-    url: '/user',
-    onSuccess: (data) => {
-      userData = data;
-      counter++;
-  
-      if (counter === 2) {
-        loadingDone();
-      }
-    },
-    onError: () => {
-      error = true;
-      counter++;
-  
-      if (counter === 2) {
-        loadingDone();
-      }
-    }
-  });
+  js.src = src;
+  js.onload = function() {
+    done();
+  };
+  js.onerror = function() {
+    done(new Error('Failed to load script ' + src));
+  };
+  document.head.appendChild(js);
+};
 
-});
+if (window.Promise) {
+  init();
+} else {
+  loadScript('/_assets/promise-polyfill.js', init);
+}

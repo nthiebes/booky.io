@@ -1,6 +1,4 @@
 /* eslint-disable consistent-return */
-import 'core-js/features/promise';
-
 export const loadPolyfills = () => {
   const fillFetch = () => new Promise((resolve) => {
     if ('fetch' in window) { return resolve(); }
@@ -18,7 +16,7 @@ export const loadPolyfills = () => {
       require('abortcontroller-polyfill/dist/abortcontroller-polyfill-only');
 
       resolve();
-    }, 'fetch');
+    }, 'abort');
   });
   const fillCoreJs = () => new Promise((resolve) => {
     if (
