@@ -1,3 +1,5 @@
+import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
+
 const baseUrl = process.env.NODE_ENV === 'development'
   ? `http://${document.location.hostname}:8001/api`
   : '/api';

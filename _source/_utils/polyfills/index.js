@@ -9,15 +9,6 @@ export const loadPolyfills = () => {
       resolve();
     }, 'fetch');
   });
-  const fillAbort = () => new Promise((resolve) => {
-    if ('signal' in new Request('')) { return resolve(); }
-
-    require.ensure([], () => {
-      require('abortcontroller-polyfill/dist/abortcontroller-polyfill-only');
-
-      resolve();
-    }, 'abort');
-  });
   const fillCoreJs = () => new Promise((resolve) => {
     if (
       'from' in Array &&
@@ -34,7 +25,6 @@ export const loadPolyfills = () => {
 
   return Promise.all([
     fillFetch(),
-    fillAbort(),
     fillCoreJs()
   ]);
 };
