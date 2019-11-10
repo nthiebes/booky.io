@@ -19,7 +19,7 @@ export default class Booky extends Component {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
-  componentDidMount() {  
+  componentDidMount() {
     loadingSpinner.addEventListener('transitionend', this.transitionEndCallback);
     loadingSpinner.classList.add('loading__spinner--hide');
   }
