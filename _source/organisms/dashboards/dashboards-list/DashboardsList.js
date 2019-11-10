@@ -47,17 +47,31 @@ class DashboardsList extends PureComponent {
     const { changeDashboard } = this.props;
     const { editMode } = this.state;
 
-    !editMode && event.key === 'Enter' && changeDashboard(dashboardId);
+    if (!editMode && event.key === 'Enter') {
+      window.scrollTo(0, 0);
+      changeDashboard(dashboardId);
+    }
   }
 
   addDashboard = () => {
     this.props.openModal('AddDashboard');
   }
 
+  handleDashboardClick = (dashboardId) => {
+    const { changeDashboard } = this.props;
+    const { editMode } = this.state;
+
+    return () => {
+      if (!editMode) {
+        window.scrollTo(0, 0);
+        changeDashboard(dashboardId);
+      }
+    };
+  }
+
   render() {
     const {
       dashboards,
-      changeDashboard,
       intl,
       activeId,
       pinned,
@@ -96,7 +110,7 @@ class DashboardsList extends PureComponent {
                 dashboard.id === activeId && 'dashboards__item--active',
                 darkMode && 'dashboards__item--dark-mode'
               ) }
-              onClick={ () => { !editMode && changeDashboard(dashboard.id); } }
+              onClick={ this.handleDashboardClick(dashboard.id) }
               onKeyDown={ (event) => { this.handleKeyDown(event, dashboard.id); } }
               tabIndex={ (useTabIndex || pinned) && !editMode ? '0' : '-1' }
             >
