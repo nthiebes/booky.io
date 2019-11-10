@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import 'core-js/features/promise';
 import * as Sentry from '@sentry/browser';
 import * as Cookies from 'es-cookie';
 import { addLocaleData } from 'react-intl';
@@ -9,6 +8,7 @@ import deLocaleData from 'react-intl/locale-data/de';
 
 import Booky from './templates/booky';
 import fetcher from './_utils/fetcher';
+import { loadPolyfills } from './_utils/polyfills';
 import configureStore, { history } from './configureStore';
 import initialState from './initialState';
 
@@ -85,36 +85,39 @@ const loadingDone = () => {
   );
 };
 
+loadPolyfills().then(() => {
 // Fetch translations
-fetch(`/_assets/i18n/${language}.json`)
-  .then((response) => response.json())
-  .then((data) => {
-    messages = data;
-    counter++;
+  fetch(`/_assets/i18n/${language}.json`)
+    .then((response) => response.json())
+    .then((data) => {
+      messages = data;
+      counter++;
   
-    if (counter === 2) {
-      loadingDone();
-    }
-  })
-  .catch();
+      if (counter === 2) {
+        loadingDone();
+      }
+    })
+    .catch();
 
-// Fetch user data
-fetcher({
-  url: '/user',
-  onSuccess: (data) => {
-    userData = data;
-    counter++;
+  // Fetch user data
+  fetcher({
+    url: '/user',
+    onSuccess: (data) => {
+      userData = data;
+      counter++;
   
-    if (counter === 2) {
-      loadingDone();
-    }
-  },
-  onError: () => {
-    error = true;
-    counter++;
+      if (counter === 2) {
+        loadingDone();
+      }
+    },
+    onError: () => {
+      error = true;
+      counter++;
   
-    if (counter === 2) {
-      loadingDone();
+      if (counter === 2) {
+        loadingDone();
+      }
     }
-  }
+  });
+
 });

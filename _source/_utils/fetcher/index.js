@@ -1,8 +1,3 @@
-import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
-import { fetch } from 'whatwg-fetch';
-
-// Use native browser implementation if it supports aborting
-const abortableFetch = ('signal' in new Request('')) ? window.fetch : fetch;
 const baseUrl = process.env.NODE_ENV === 'development'
   ? `http://${document.location.hostname}:8001/api`
   : '/api';
@@ -39,7 +34,7 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {}
   controller = new AbortController();
 
   if (method === 'GET') {
-    abortableFetch(`${baseUrl}${url}`, {
+    fetch(`${baseUrl}${url}`, {
       ...defaultOptions,
       ...options,
       signal: controller.signal
@@ -63,7 +58,7 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {}
   }
 
   if (method === 'POST' || method === 'DELETE' || method === 'PUT' || method === 'PATCH') {
-    abortableFetch(`${baseUrl}${url}`, {
+    fetch(`${baseUrl}${url}`, {
       ...defaultOptions,
       ...options,
       method: method,

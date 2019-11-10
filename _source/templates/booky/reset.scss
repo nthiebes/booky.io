@@ -23,3 +23,12 @@ b,
 strong {
   font-weight: 700; /* Was still 400 in Firefox */
 }
+
+main,
+header,
+footer,
+section,
+nav,
+aside {
+  display: block;
+}
