@@ -1,8 +1,22 @@
 .categories {
-  &::after{
-    content: "";
-    clear: both;
-    display: block;
+  padding: 0 3%;
+}
+
+.categories--grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: 3vw;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include fullhd {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

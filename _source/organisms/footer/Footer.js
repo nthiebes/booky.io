@@ -11,6 +11,18 @@ import { ButtonSmallLight } from '../../atoms/button';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends PureComponent {
+  static propTypes = {
+    intl: PropTypes.object.isRequired,
+    dashboardsOpen: PropTypes.bool,
+    hasSidebar: PropTypes.bool,
+    className: PropTypes.string,
+    home: PropTypes.bool,
+    loggedIn: PropTypes.bool.isRequired,
+    toolbarSticky: PropTypes.bool.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+    locale: PropTypes.string
+  }
+
   scrollToTop() {
     window.scrollTo(0, 0);
     document.getElementsByTagName('header')[0].focus();
@@ -25,8 +37,19 @@ class Footer extends PureComponent {
       home,
       loggedIn,
       toolbarSticky,
-      darkMode
+      darkMode,
+      locale
     } = this.props;
+    let thousandsSeparator;
+
+    switch (locale) {
+      case 'de':
+        thousandsSeparator = '.';
+        break;
+
+      default:
+        thousandsSeparator = ',';
+    }
 
     return (
       <footer className={ classNames(
@@ -39,19 +62,19 @@ class Footer extends PureComponent {
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{ '27.349' }</b>
+                <b>{ `30${thousandsSeparator}834` }</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '10.504.196' }</b>
+                <b>{ `11${thousandsSeparator}698${thousandsSeparator}752` }</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '893.091' }</b>
+                <b>{ `986${thousandsSeparator}745` }</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '49.697' }</b>
+                <b>{ `56${thousandsSeparator}215` }</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
@@ -126,16 +149,5 @@ class Footer extends PureComponent {
     );
   }
 }
-
-Footer.propTypes = {
-  intl: PropTypes.object.isRequired,
-  dashboardsOpen: PropTypes.bool,
-  hasSidebar: PropTypes.bool,
-  className: PropTypes.string,
-  home: PropTypes.bool,
-  loggedIn: PropTypes.bool.isRequired,
-  toolbarSticky: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired
-};
 
 export default injectIntl(Footer);

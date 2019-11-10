@@ -1,21 +1,8 @@
 .category {
-  width: 94%;
   position: relative;
-  float: left;
-  margin: 1rem 3%;
   list-style: none;
-
-  @include tablet {
-    width: 44%;
-  }
-
-  @include desktop {
-    width: 27.33%;
-  }
-
-  @include fullhd {
-    width: 19%;
-  }
+  min-width: 0;
+  padding-bottom: 3vw;
 }
 
 .category__bookmarks {

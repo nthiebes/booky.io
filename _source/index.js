@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import 'core-js/features/promise';
 import * as Sentry from '@sentry/browser';
 import * as Cookies from 'es-cookie';
 import { addLocaleData } from 'react-intl';

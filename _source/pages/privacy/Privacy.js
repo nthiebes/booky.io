@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-no-literals */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 import Page from '../../templates/page';
@@ -11,8 +12,13 @@ import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 
 export default class Privacy extends Component {
+  static propTypes = {
+    locale: PropTypes.string.isRequired,
+    darkMode: PropTypes.bool
+  }
+
   render() {
-    const { locale } = this.props;
+    const { locale, darkMode } = this.props;
 
     return (
       <Page>
@@ -87,7 +93,9 @@ export default class Privacy extends Component {
               </H2>
               <P>
                 <FormattedMessage id="privacy.22" />
-                <Link target="_blank" href="https://tools.google.com/dlpage/gaoptout?hl=en">{ 'https://tools.google.com/dlpage/gaoptout?hl=en' }</Link>
+                <Link target="_blank" href="https://tools.google.com/dlpage/gaoptout?hl=en">
+                  { 'https://tools.google.com/dlpage/gaoptout?hl=en' }
+                </Link>
                 { '.' }
               </P>
               <P>
@@ -195,13 +203,12 @@ export default class Privacy extends Component {
               
               <H3>Recht auf Einschränkung der Verarbeitung</H3>
               <P>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Hierzu können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden. Das Recht auf Einschränkung der Verarbeitung besteht in folgenden Fällen:</P>
-              <ul>
+              <ul className={ classNames('privacy-list', darkMode && 'privacy-list--darkMode') }>
                 <li className="privacy-list__item">Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten, benötigen wir in der Regel Zeit, um dies zu überprüfen. Für die Dauer der Prüfung haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
                 <li className="privacy-list__item">Wenn die Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig geschah/geschieht, können Sie statt der Löschung die Einschränkung der Datenverarbeitung verlangen.</li>
                 <li className="privacy-list__item">Wenn wir Ihre personenbezogenen Daten nicht mehr benötigen, Sie sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von Rechtsansprüchen benötigen, haben Sie das Recht, statt der Löschung die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li> 
                 <li className="privacy-list__item">Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt haben, muss eine Abwägung zwischen Ihren und unseren Interessen vorgenommen werden. Solange noch nicht feststeht, wessen Interessen überwiegen, haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
               </ul>
-              <br />
               <P>Wenn Sie die Verarbeitung Ihrer personenbezogenen Daten eingeschränkt haben, dürfen diese Daten - von ihrer Speicherung abgesehen - nur mit Ihrer Einwilligung oder zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder juristischen Person oder aus Gründen eines wichtigen öffentlichen Interesses der Europäischen Union oder eines Mitgliedstaats verarbeitet werden.</P>
               
               <H2>4. Datenerfassung auf dieser Website</H2>
@@ -228,7 +235,3 @@ export default class Privacy extends Component {
     );
   }
 }
-
-Privacy.propTypes = {
-  locale: PropTypes.string.isRequired
-};
