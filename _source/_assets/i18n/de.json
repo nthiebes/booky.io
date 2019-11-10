@@ -230,5 +230,6 @@
     "help.faq": "Häufige Fragen",
     "menu.title": "Hauptnavigation",
     "account.navigation": "Accountnavigation",
-    "error.executionLogic": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}."
+    "error.executionLogic": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
+    "error. unexpected": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}."
 }
