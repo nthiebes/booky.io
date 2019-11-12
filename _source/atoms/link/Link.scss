@@ -63,6 +63,10 @@
     color: $color-font--medium;
   }
 
+  &.link--dark-mode {
+    color: $color-font--light;
+  }
+
   @include desktop {
     &:hover {
       color: $color-font--medium;
