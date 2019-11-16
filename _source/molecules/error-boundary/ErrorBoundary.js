@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import Page from '../../templates/page';
-import Section from '../../molecules/section';
+import { ErrorMessage } from '../../atoms/messages';
+import Section from '../section/Section';
 
-export default class ErrorBoundary extends Component {
+export default class ErrorBoundary extends PureComponent {
   static getDerivedStateFromError() {
     return {
       hasError: true
@@ -30,13 +30,10 @@ export default class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
       return (
-        <Page>
-          <Section>
-            <p>{'wrong'}</p>
-          </Section>
-        </Page>
+        <Section>
+          <ErrorMessage hasIcon />
+        </Section>
       );
     }
 
