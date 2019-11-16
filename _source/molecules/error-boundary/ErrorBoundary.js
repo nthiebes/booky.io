@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import * as Sentry from '@sentry/browser';
 
 import { ErrorMessage } from '../../atoms/messages';
 import Section from '../section/Section';
@@ -16,27 +17,33 @@ export default class ErrorBoundary extends PureComponent {
       PropTypes.array,
       PropTypes.element,
       PropTypes.string
-    ]).isRequired
+    ]).isRequired,
+    dashboardsError: PropTypes.string
   }
 
   state = {
     hasError: false
   }
 
-  // componentDidCatch(error, errorInfo) {
-  // You can also log the error to an error reporting service
-  // logErrorToMyService(error, errorInfo);
-  // }
+  componentDidCatch(error, errorInfo) {
+    Sentry.withScope((scope) => {
+      scope.setExtras(errorInfo);
+      Sentry.captureException(error);
+    });
+  }
 
   render() {
-    if (this.state.hasError) {
+    const { dashboardsError, children } = this.props;
+    const { hasError } = this.state;
+
+    if (hasError || dashboardsError) {
       return (
         <Section>
-          <ErrorMessage hasIcon />
+          <ErrorMessage hasIcon className="error-boundary" />
         </Section>
       );
     }
 
-    return this.props.children; 
+    return children; 
   }
 }
