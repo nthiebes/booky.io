@@ -154,6 +154,12 @@ export default class Modal extends PureComponent {
     }
   }
 
+  handleMouseDown = (event) => {
+    if (event.target.classList.contains('modal')) {
+      this.closeModal();
+    }
+  }
+
   render() {
     const { modal, open, data, darkMode } = this.props;
     const { pending, showModal, error } = this.state;
@@ -165,7 +171,7 @@ export default class Modal extends PureComponent {
           'modal',
           open && 'modal--open'
         ) }
-        onClick={ this.closeModal }
+        onMouseDown={ this.handleMouseDown }
         onKeyUp={ this.handleKeyUp }
         role="presentation"
       >

@@ -36,15 +36,11 @@ class Modal extends PureComponent {
     this.props.onSave(data);
   }
 
-  handleClick(event) {
-    event.stopPropagation();
-  }
-
   render() {
     const { children, onClose, headline, noCancel, intl, pending, error } = this.props;
 
     return (
-      <Form onSubmit={ this.onSubmit } onClick={ this.handleClick }>
+      <Form onSubmit={ this.onSubmit }>
         <header className="modal__header">
           { /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */ }
           <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
