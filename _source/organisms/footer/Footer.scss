@@ -96,6 +96,10 @@
   }
 }
 
+.footer__icon {
+  pointer-events: none;
+}
+
 .footer__label {
   transition: color 0.2s linear;
   color: $color-font--white;
