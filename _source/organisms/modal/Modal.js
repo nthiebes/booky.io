@@ -154,20 +154,26 @@ export default class Modal extends PureComponent {
     }
   }
 
+  handleMouseDown = (event) => {
+    if (event.target.classList.contains('modal')) {
+      this.closeModal();
+    }
+  }
+
   render() {
     const { modal, open, data, darkMode } = this.props;
     const { pending, showModal, error } = this.state;
     const CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div
         className={ classNames(
           'modal',
           open && 'modal--open'
         ) }
-        onClick={ this.closeModal }
+        onMouseDown={ this.handleMouseDown }
         onKeyUp={ this.handleKeyUp }
-        role="presentation"
       >
         <div className={ classNames('modal__inner', darkMode && 'modal__inner--dark') }>
           { CustomTag && showModal && (

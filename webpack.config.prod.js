@@ -37,7 +37,7 @@ export default {
 
     // Analyze the bundle sizes
     new BundleAnalyzerPlugin({
-      openAnalyzer: false
+      openAnalyzer: true
     }),
 
     // Copy translation files

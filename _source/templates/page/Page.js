@@ -7,6 +7,7 @@ import Sidebar from '../../organisms/sidebar';
 import Footer from '../../organisms/footer';
 import Modal from '../../organisms/modal';
 import Toolbar from '../../organisms/toolbar';
+import ErrorBoundary from '../../molecules/error-boundary';
 
 export default class Page extends Component {
   render() {
@@ -38,7 +39,9 @@ export default class Page extends Component {
           blurContent && 'page--blur',
           className && className
         ) }>
-          { children }
+          <ErrorBoundary>
+            { children }
+          </ErrorBoundary>
         </main>
         <Footer
           className={ classNames(

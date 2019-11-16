@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import 'whatwg-fetch';
 
 import Radio from '../../atoms/radio';
 import Icon from '../../atoms/icon';

@@ -16,9 +16,11 @@ export const getCategories = (id) => ((dispatch) => {
         pending: false
       }));
     },
-    onError: () => {
-      // console.log('error', error);
-      // onError && onError(error);
+    onError: (error) => {
+      dispatch(updateDashboardsData({
+        error,
+        pending: false
+      }));
     }
   });
 });
