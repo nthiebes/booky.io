@@ -166,6 +166,7 @@ export default class Modal extends PureComponent {
     const CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div
         className={ classNames(
           'modal',
