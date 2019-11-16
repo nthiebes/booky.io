@@ -39,7 +39,7 @@ export default class ErrorBoundary extends PureComponent {
     if (hasError || dashboardsError) {
       return (
         <Section>
-          <ErrorMessage hasIcon className="error-boundary" />
+          <ErrorMessage hasIcon noAnimation className="error-boundary" />
         </Section>
       );
     }
