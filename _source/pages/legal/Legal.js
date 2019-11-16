@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-no-literals */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 
 import Page from '../../templates/page';
 import { H1, H2, H3 } from '../../atoms/headline';
