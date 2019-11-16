@@ -76,6 +76,7 @@
   padding-bottom: 0.5rem;
   color: $color-font--medium;
   text-transform: uppercase;
+  line-height: 1.5;
 
   &.headline--dark-mode {
     color: $color-font--light;
@@ -88,6 +89,7 @@
   margin-top: 0.5rem;
   padding-bottom: 0.3rem;
   color: $color-font--dark;
+  line-height: 1.5;
 
   &.headline--dark-mode {
     color: $color-font--light;
