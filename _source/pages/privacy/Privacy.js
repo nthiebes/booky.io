@@ -3,22 +3,26 @@
 /* eslint-disable react/jsx-no-literals */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
+import * as Cookies from 'es-cookie';
 import Page from '../../templates/page';
 import { H1, H2, H3, H4 } from '../../atoms/headline';
 import Link from '../../atoms/link';
 import P from '../../atoms/paragraph';
+import { List, ListItem } from '../../atoms/list';
 import Section from '../../molecules/section';
 
 export default class Privacy extends Component {
   static propTypes = {
-    locale: PropTypes.string.isRequired,
-    darkMode: PropTypes.bool
+    locale: PropTypes.string.isRequired
+  }
+
+  handleClick = () => {
+    Cookies.set('gaDisabled', 'true', { expires: 18250 });
   }
 
   render() {
-    const { locale, darkMode } = this.props;
+    const { locale } = this.props;
 
     return (
       <Page>
@@ -101,12 +105,12 @@ export default class Privacy extends Component {
 
               <H3>Right to demand processing restrictions</H3>
               <P>You have the right to demand the imposition of restrictions as far as the processing of your personal data is concerned. To do so, you may contact us at any time at the address provided in section „Information Required by Law.“ The right to demand restriction of processing applies in the following cases:</P>
-              <ul className={ classNames('privacy-list', darkMode && 'privacy-list--darkMode') }>
-                <li className="privacy-list__item">In the event that you should dispute the correctness of your data archived by us, we will usually need some time to verify this claim. During the time that this investigation is ongoing, you have the right to demand that we restrict the processing of your personal data.</li>
-                <li className="privacy-list__item">If the processing of your personal data was/is conducted in an unlawful manner, you have the option to demand the restriction of the processing of your data in lieu of demanding the eradication of this data.</li>
-                <li className="privacy-list__item">If we do not need your personal data any longer and you need it to exercise, defend or claim legal entitlements, you have the right to demand the restriction of the processing of your personal data instead of its eradication.</li>
-                <li className="privacy-list__item">If you have raised an objection pursuant to Art. 21 Sect. 1 GDPR, your rights and our rights will have to be weighed against each other. As long as it has not been determined whose interests prevail, you have the right to demand a restriction of the processing of your personal data.</li>
-              </ul>
+              <List>
+                <ListItem>In the event that you should dispute the correctness of your data archived by us, we will usually need some time to verify this claim. During the time that this investigation is ongoing, you have the right to demand that we restrict the processing of your personal data.</ListItem>
+                <ListItem>If the processing of your personal data was/is conducted in an unlawful manner, you have the option to demand the restriction of the processing of your data in lieu of demanding the eradication of this data.</ListItem>
+                <ListItem>If we do not need your personal data any longer and you need it to exercise, defend or claim legal entitlements, you have the right to demand the restriction of the processing of your personal data instead of its eradication.</ListItem>
+                <ListItem>If you have raised an objection pursuant to Art. 21 Sect. 1 GDPR, your rights and our rights will have to be weighed against each other. As long as it has not been determined whose interests prevail, you have the right to demand a restriction of the processing of your personal data.</ListItem>
+              </List>
               <P>If you have restricted the processing of your personal data, these data – with the exception of their archiving – may be processed only subject to your consent or to claim, exercise or defend legal entitlements or to protect the rights of other natural persons or legal entities or for important public interest reasons cited by the European Union or a member state of the EU.</P>
 
               <H2>4. Recording of data on this website</H2>
@@ -115,7 +119,7 @@ export default class Privacy extends Component {
               <P>In some instances, our website and its pages use so-called cookies. Cookies do not cause any damage to your computer and do not contain viruses. The purpose of cookies is to make our website more user friendly, effective and more secure. Cookies are small text files that are placed on your computer and stored by your browser.</P>
               <P>Most of the cookies we use are so-called „session cookies.“ They are automatically deleted after your leave our site. Other cookies will remain archived on your device until you delete them. These cookies enable us to recognise your browser the next time you visit our website.</P>
               <P>You can adjust the settings of your browser to make sure that you are notified every time cookies are placed and to enable you to accept cookies only in specific cases or to exclude the acceptance of cookies for specific situations or in general and to activate the automatic deletion of cookies when you close your browser. If you deactivate cookies, the functions of this website may be limited.</P>
-              <P>Cookies that are required for the performance of the electronic communications transaction or to provide certain functions you want to use (e.g. the shopping cart function), are stored on the basis of Art. 6 Sect. 1 lit. f GDPR. The website operator has a legitimate interest in storing cookies to ensure the technically error free and optimised provision of the operator’s services. If a corresponding agreement has been requested (e.g. an agreement to the storage of cookies), the processing takes place exclusively on the basis of Art. 6 para. 1 lit. a GDPR; the agreement can be revoked at any time.</P>
+              <P>Cookies that are required for the performance of the electronic communications transaction or to provide certain functions you want to use (e.g. language preference), are stored on the basis of Art. 6 Sect. 1 lit. f GDPR. The website operator has a legitimate interest in storing cookies to ensure the technically error free and optimised provision of the operator’s services. If a corresponding agreement has been requested (e.g. an agreement to the storage of cookies), the processing takes place exclusively on the basis of Art. 6 para. 1 lit. a GDPR; the agreement can be revoked at any time.</P>
               <P>If other cookies (e.g. cookies for the analysis of your browsing patterns) should be stored, they are addressed separately in this Data Protection Declaration.</P>
 
               <H3>Contact form</H3>
@@ -148,7 +152,7 @@ export default class Privacy extends Component {
               <P>You do have the option to prevent the archiving of cookies by making pertinent changes to the settings of your browser software. However, we have to point out that in this case you may not be able to use all of the functions of this website to their fullest extent. Moreover, you have the option prevent the recording of the data generated by the cookie and affiliated with your use of the website (including your IP address) by Google as well as the processing of this data by Google by downloading and installing the browser plug-in available under the following link: <Link href="https://tools.google.com/dlpage/gaoptout?hl=en" target="_blank">https://tools.google.com/dlpage/gaoptout?hl=en</Link>.</P>
               
               <H4>Objection to the recording of data</H4>
-              <P>You have the option to prevent the recording of your data by Google Analytics by clicking on the following link. This will result in the placement of an opt out cookie, which prevents the recording of your data during future visits to this website: <Link href="javascript:gaOptout();">Google Analytics deactivation</Link>.</P>
+              <P>You have the option to prevent the recording of your data by Google Analytics by clicking on the following link. This will result in the placement of an opt out cookie, which prevents the recording of your data during future visits to this website: <Link role="button" href="#" onClick={ this.handleClick }>Google Analytics deactivation</Link>.</P>
               <P>For more information about the handling of user data by Google Analytics, please consult Google’s Data Privacy Declaration at: <Link href="https://support.google.com/analytics/answer/6004245?hl=en" target="_blank">https://support.google.com/analytics/answer/6004245?hl=en</Link>.</P>
               
               <H4>Contract data processing</H4>
@@ -236,12 +240,12 @@ export default class Privacy extends Component {
               
               <H3>Recht auf Einschränkung der Verarbeitung</H3>
               <P>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Hierzu können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden. Das Recht auf Einschränkung der Verarbeitung besteht in folgenden Fällen:</P>
-              <ul className={ classNames('privacy-list', darkMode && 'privacy-list--darkMode') }>
-                <li className="privacy-list__item">Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten, benötigen wir in der Regel Zeit, um dies zu überprüfen. Für die Dauer der Prüfung haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
-                <li className="privacy-list__item">Wenn die Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig geschah/geschieht, können Sie statt der Löschung die Einschränkung der Datenverarbeitung verlangen.</li>
-                <li className="privacy-list__item">Wenn wir Ihre personenbezogenen Daten nicht mehr benötigen, Sie sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von Rechtsansprüchen benötigen, haben Sie das Recht, statt der Löschung die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
-                <li className="privacy-list__item">Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt haben, muss eine Abwägung zwischen Ihren und unseren Interessen vorgenommen werden. Solange noch nicht feststeht, wessen Interessen überwiegen, haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
-              </ul>
+              <List>
+                <ListItem>Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten, benötigen wir in der Regel Zeit, um dies zu überprüfen. Für die Dauer der Prüfung haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</ListItem>
+                <ListItem>Wenn die Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig geschah/geschieht, können Sie statt der Löschung die Einschränkung der Datenverarbeitung verlangen.</ListItem>
+                <ListItem>Wenn wir Ihre personenbezogenen Daten nicht mehr benötigen, Sie sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von Rechtsansprüchen benötigen, haben Sie das Recht, statt der Löschung die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</ListItem>
+                <ListItem>Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt haben, muss eine Abwägung zwischen Ihren und unseren Interessen vorgenommen werden. Solange noch nicht feststeht, wessen Interessen überwiegen, haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</ListItem>
+              </List>
               <P>Wenn Sie die Verarbeitung Ihrer personenbezogenen Daten eingeschränkt haben, dürfen diese Daten – von ihrer Speicherung abgesehen – nur mit Ihrer Einwilligung oder zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder juristischen Person oder aus Gründen eines wichtigen öffentlichen Interesses der Europäischen Union oder eines Mitgliedstaats verarbeitet werden.</P>
               
               <H2>4. Datenerfassung auf dieser Website</H2>
@@ -250,7 +254,7 @@ export default class Privacy extends Component {
               <P>Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.</P>
               <P>Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies“. Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.</P>
               <P>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</P>
-              <P>Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs oder zur Bereitstellung bestimmter, von Ihnen erwünschter Funktionen (z. B. Warenkorbfunktion) erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Der Websitebetreiber hat ein berechtigtes Interesse an der Speicherung von Cookies zur technisch fehlerfreien und optimierten Bereitstellung seiner Dienste. Sofern eine entsprechende Einwilligung abgefragt wurde (z. B. eine Einwilligung zur Speicherung von Cookies), erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</P>
+              <P>Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs oder zur Bereitstellung bestimmter, von Ihnen erwünschter Funktionen (z. B. Spracheinstellung) erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Der Websitebetreiber hat ein berechtigtes Interesse an der Speicherung von Cookies zur technisch fehlerfreien und optimierten Bereitstellung seiner Dienste. Sofern eine entsprechende Einwilligung abgefragt wurde (z. B. eine Einwilligung zur Speicherung von Cookies), erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</P>
               <P>Soweit andere Cookies (z. B. Cookies zur Analyse Ihres Surfverhaltens) gespeichert werden, werden diese in dieser Datenschutzerklärung gesondert behandelt.</P>
               
               <H3>Kontaktformular</H3>
@@ -283,7 +287,7 @@ export default class Privacy extends Component {
               <P>Sie können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können. Sie können darüber hinaus die Erfassung der durch den Cookie erzeugten und auf Ihre Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem Sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren: <Link href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank">https://tools.google.com/dlpage/gaoptout?hl=de</Link>.</P>
               
               <H4>Widerspruch gegen Datenerfassung</H4>
-              <P>Sie können die Erfassung Ihrer Daten durch Google Analytics verhindern, indem Sie auf folgenden Link klicken. Es wird ein Opt-Out-Cookie gesetzt, der die Erfassung Ihrer Daten bei zukünftigen Besuchen dieser Website verhindert: <Link href="javascript:gaOptout();">Google Analytics deaktivieren</Link>.</P>
+              <P>Sie können die Erfassung Ihrer Daten durch Google Analytics verhindern, indem Sie auf folgenden Link klicken. Es wird ein Opt-Out-Cookie gesetzt, der die Erfassung Ihrer Daten bei zukünftigen Besuchen dieser Website verhindert: <Link role="button" href="#" onClick={ this.handleClick }>Google Analytics deaktivieren</Link>.</P>
               <P>Mehr Informationen zum Umgang mit Nutzerdaten bei Google Analytics finden Sie in der Datenschutzerklärung von Google: <Link href="https://support.google.com/analytics/answer/6004245?hl=de" target="_blank">https://support.google.com/analytics/answer/6004245?hl=de</Link>.</P>
               
               <H4>Auftragsverarbeitung</H4>
