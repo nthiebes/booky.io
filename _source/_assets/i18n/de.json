@@ -181,5 +181,9 @@
     "menu.title": "Hauptnavigation",
     "account.navigation": "Accountnavigation",
     "error.executionLogic": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
-    "error. unexpected": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}."
+    "error. unexpected": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
+    "cookie.text": "Deine Privatsphäre ist uns wichtig, und wir würden gerne die folgenden Cookies dazu verwendet, deine Nutzerfahrung zu verbessern:",
+    "cookie.item1": "Damit du angemeldet bleibst (erforderlich)",
+    "cookie.item2": "Spracheinstellung",
+    "cookie.item3": "Google Analytics"
 }
