@@ -45,6 +45,7 @@
 
   &.button--solid {
     background-color: $color-font--white;
+    border-color: darken($color-font--white, 10%);
     color: $color-font--primary;
 
     .icon {
@@ -101,6 +102,38 @@
     &:hover .icon,
     &:focus .icon {
       color: $color-font--white;
+    }
+  }
+
+  &.button--solid {
+    background-color: $color-background--primary;
+    border-color: darken($color-background--primary, 10%);
+    color: $color-font--white;
+
+    .icon {
+      color: $color-font--white;
+    }
+
+    @include mobile-tablet() {
+      &:active,
+      &:focus {
+        color: $color-font--dark;
+      }
+      &:active .icon,
+      &:focus .icon {
+        color: $color-font--dark;
+      }
+    }
+
+    @include desktop() {
+      &:hover,
+      &:focus {
+        color: $color-font--dark;
+      }
+      &:hover .icon,
+      &:focus .icon {
+        color: $color-font--dark;
+      }
     }
   }
 }
