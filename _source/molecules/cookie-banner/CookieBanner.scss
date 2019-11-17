@@ -1,0 +1,38 @@
+.cookie-banner {
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  background-color: $color-background--white;
+  position: fixed;
+  padding: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  transform: translateY(1rem);
+  opacity: 0;
+  border-radius: 3px;
+  max-width: 300px;
+  width: calc(94% - 12px);
+  max-height: calc(94% - 12px);
+  overflow-y: auto;
+  animation: 0.3s ease forwards fadeIn;
+  z-index: 5;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cookie-banner__button {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.cookie-banner__button:last-child {
+  margin-top: 1rem;
+}
