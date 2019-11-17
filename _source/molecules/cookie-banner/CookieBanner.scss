@@ -16,6 +16,10 @@
   z-index: 5;
 }
 
+.cookie-banner--darkMode {
+  background-color: $color-background--dark;
+}
+
 @keyframes fadeIn {
   0% {
     transform: translateY(1rem);

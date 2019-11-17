@@ -45,7 +45,7 @@
 
   &.button--solid {
     background-color: $color-font--white;
-    border-color: darken($color-font--white, 10%);
+    border-bottom-color: darken($color-font--white, 10%);
     color: $color-font--primary;
 
     .icon {
@@ -107,7 +107,7 @@
 
   &.button--solid {
     background-color: $color-background--primary;
-    border-color: darken($color-background--primary, 10%);
+    border-bottom-color: darken($color-background--primary, 10%);
     color: $color-font--white;
 
     .icon {

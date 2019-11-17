@@ -2,17 +2,19 @@ import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import * as Cookies from 'es-cookie';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { setLanguage } from '../../_utils/language';
 import { loadGoogleAnalytics } from '../../_utils/script';
 import { List, ListItem } from '../../atoms/list';
-import { ButtonSmallPrimary, ButtonSmallMedium } from '../../atoms/button';
+import { ButtonSmallPrimary, ButtonSmallMedium, ButtonSmallLight } from '../../atoms/button';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 
 export default class CookieBanner extends PureComponent {
   static propTypes = {
-    language: PropTypes.string.isRequired
+    language: PropTypes.string.isRequired,
+    darkMode: PropTypes.bool
   }
 
   state = {
@@ -38,11 +40,13 @@ export default class CookieBanner extends PureComponent {
   }
 
   render() {
+    const { darkMode } = this.props;
     const { cookieConsent } = this.state;
+    const DeclineButton = darkMode ? ButtonSmallLight : ButtonSmallMedium;
 
     return (
       cookieConsent ? null : (
-        <aside className="cookie-banner">
+        <aside className={ classNames('cookie-banner', darkMode && 'cookie-banner--darkMode') }>
           <P>
             <FormattedMessage id="cookie.text" />
           </P>
@@ -63,9 +67,9 @@ export default class CookieBanner extends PureComponent {
           <ButtonSmallPrimary className="cookie-banner__button" solid onClick={ this.handleAccept }>
             <FormattedMessage id="button.okay" />{ ' 🍪' }
           </ButtonSmallPrimary>
-          <ButtonSmallMedium className="cookie-banner__button" onClick={ this.handleDecline }>
+          <DeclineButton className="cookie-banner__button" onClick={ this.handleDecline }>
             <FormattedMessage id="button.no" />
-          </ButtonSmallMedium>
+          </DeclineButton>
         </aside>
       )
     );
