@@ -2,13 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import * as Sentry from '@sentry/browser';
 import * as Cookies from 'es-cookie';
-import { addLocaleData } from 'react-intl';
 import { AppContainer } from 'react-hot-loader';
-import deLocaleData from 'react-intl/locale-data/de';
 
 import Booky from './templates/booky';
 import fetcher from './_utils/fetcher';
+import { setLanguage, addLocaleData } from './_utils/language';
 import { loadPolyfills } from './_utils/polyfills';
+import { loadScript, loadGoogleAnalytics } from './_utils/script';
 import configureStore, { history } from './configureStore';
 import initialState from './initialState';
 
@@ -19,8 +19,7 @@ const locale = (cookieLanguage || navigator.language || navigator.userLanguage).
 const language = supportedLanguages.indexOf(locale) === -1 ? 'en' : locale;
 
 // Store language
-Cookies.set('lang', language, { expires: 365 });
-document.documentElement.setAttribute('lang', language);
+setLanguage(language);
 
 // Activate the :active pseudo class on mobile
 document.addEventListener('touchstart', () => { /* Do nothing */ }, {passive: true});
@@ -74,9 +73,8 @@ const loadingDone = () => {
     });
   }
 
-  if (language === 'de') {
-    addLocaleData(deLocaleData);
-  }
+  addLocaleData(language);
+  loadGoogleAnalytics();
 
   render(
     <AppContainer>
@@ -122,18 +120,6 @@ const init = () => {
     });
     
   });    
-};
-const loadScript = (src, done) => {
-  const js = document.createElement('script');
-
-  js.src = src;
-  js.onload = function() {
-    done();
-  };
-  js.onerror = function() {
-    done(new Error('Failed to load script ' + src));
-  };
-  document.head.appendChild(js);
 };
 
 if (window.Promise) {

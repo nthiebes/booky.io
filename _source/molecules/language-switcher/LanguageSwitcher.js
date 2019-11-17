@@ -1,24 +1,26 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import { setLanguage, addLocaleData } from '../../_utils/language';
 import Radio from '../../atoms/radio';
 import Icon from '../../atoms/icon';
 
-class LanguageSwitcher extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
+export default class LanguageSwitcher extends Component {
+  static propTypes = {
+    updateIntl: PropTypes.func.isRequired,
+    language: PropTypes.string.isRequired
   }
 
-  handleChange({ value }) {
+  handleChange = ({ value: language }) => {
     const { updateIntl } = this.props;
 
-    fetch(`/_assets/i18n/${value}.json`)
+    fetch(`/_assets/i18n/${language}.json`)
       .then((response) => response.json())
       .then((messages) => {
+        addLocaleData(language);
+        setLanguage(language);
         updateIntl({
-          locale: value,
+          locale: language,
           messages
         });
       })
@@ -28,7 +30,7 @@ class LanguageSwitcher extends Component {
   }
 
   render() {
-    const { locale } = this.props;
+    const { language } = this.props;
 
     return (
       <Fragment>
@@ -38,7 +40,7 @@ class LanguageSwitcher extends Component {
           name="language"
           value="en"
           onChange={ this.handleChange }
-          checked={ locale === 'en' }
+          checked={ language === 'en' }
         >
           <Icon className="language-switcher__icon" icon="usa" />
           { 'English' }
@@ -49,36 +51,12 @@ class LanguageSwitcher extends Component {
           name="language"
           value="de"
           onChange={ this.handleChange }
-          checked={ locale === 'de' }
+          checked={ language === 'de' }
         >
           <Icon className="language-switcher__icon" icon="germany" />
           { 'Deutsch' }
         </Radio>
-        {/* <ButtonTextLight
-          icon="usa"
-          className={ classNames('language-switcher__item', locale === 'en' && 'language-switcher__item--active') }
-          value="en"
-          onClick={ this.handleClick }
-          id="language"
-        >
-          { 'English' }
-        </ButtonTextLight>
-        <ButtonTextLight
-          icon="germany"
-          className={ classNames('language-switcher__item', locale === 'de' && 'language-switcher__item--active') }
-          value="de"
-          onClick={ this.handleClick }
-        >
-          { 'Deutsch' }
-        </ButtonTextLight> */}
       </Fragment>
     );
   }
 }
-
-LanguageSwitcher.propTypes = {
-  updateIntl: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired
-};
-
-export default LanguageSwitcher;
