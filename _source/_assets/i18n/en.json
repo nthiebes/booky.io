@@ -183,7 +183,9 @@
     "error.executionLogic": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
     "error. unexpected": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
     "cookie.text": "We care about your data, and we'd love to use the following cookies to make your experience better:",
-    "cookie.item1": "To keep you logged in (required)",
+    "cookie.item1": "Login (required)",
     "cookie.item2": "Language preference",
-    "cookie.item3": "Google Analytics"
+    "cookie.item3": "Google Analytics",
+    "button.okay": "Okay!",
+    "button.no": "No, thanks."
 }
