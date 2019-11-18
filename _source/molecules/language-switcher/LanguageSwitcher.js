@@ -42,7 +42,7 @@ export default class LanguageSwitcher extends Component {
           onChange={ this.handleChange }
           checked={ language === 'en' }
         >
-          <Icon className="language-switcher__icon" icon="usa" />
+          <Icon icon="usa" />
           { 'English' }
         </Radio>
         <Radio
@@ -53,7 +53,7 @@ export default class LanguageSwitcher extends Component {
           onChange={ this.handleChange }
           checked={ language === 'de' }
         >
-          <Icon className="language-switcher__icon" icon="germany" />
+          <Icon icon="germany" />
           { 'Deutsch' }
         </Radio>
       </Fragment>

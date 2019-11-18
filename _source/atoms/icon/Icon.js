@@ -79,7 +79,8 @@ export default class Icon extends Component {
           className={ classNames(
             'icon',
             `icon--size-${size}`,
-            darkMode && !ignoreDarkMode ? 'icon--light' : `icon--${color}`,
+            `icon--${color}`,
+            !isButton && 'icon--decorative',
             darkMode && !ignoreDarkMode && 'icon--dark-mode',
             className
           ) }

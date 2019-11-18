@@ -114,7 +114,6 @@
   right: 0;
   top: 6px;
   transform: translateX(100%);
-  pointer-events: none;
   transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s ease;
   opacity: 0;
   color: $color-font--medium;

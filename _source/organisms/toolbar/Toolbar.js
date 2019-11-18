@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import { scrolling } from '../../_utils/scrolling';
@@ -87,7 +86,6 @@ class Toolbar extends PureComponent {
   render() {
     const {
       activeDashboardName,
-      intl,
       className,
       dashboardsStyle,
       dashboards,
@@ -97,15 +95,11 @@ class Toolbar extends PureComponent {
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
-        <Icon
-          icon="tree"
-          label={ intl.formatMessage({ id: 'structure.title' }) }
-          className="toolbar__icon"
-        />
         {/** onClick={ this.onIconClick }
           isButton */}
         { dashboardsStyle === 'sidebar' && (
           <H1 style="h3" className="toolbar__headline">
+            <Icon icon="collection" color="grey" />
             { activeDashboardName || <Skeleton /> }
           </H1>
         ) }
@@ -128,4 +122,4 @@ class Toolbar extends PureComponent {
   }
 }
 
-export default injectIntl(Toolbar);
+export default Toolbar;
