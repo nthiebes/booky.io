@@ -18,7 +18,6 @@ class Toolbar extends PureComponent {
     dashboards: PropTypes.object.isRequired,
     activeDashboardName: PropTypes.string,
     openModal: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired,
     className: PropTypes.string,
     dashboardsStyle: PropTypes.string.isRequired,
     changeDashboard: PropTypes.func.isRequired,
@@ -42,8 +41,8 @@ class Toolbar extends PureComponent {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.nextProps = nextProps;
+  componentDidUpdate(prevProps) {
+    this.nextProps = prevProps;
     scrolling.updateStatus('toolbar');
   }
 
