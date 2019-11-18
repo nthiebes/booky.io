@@ -17,19 +17,19 @@
 }
 
 .sidebar--left {
-  border-right: 2px solid rgba(0,0,0,0.15);
+  border-right: 2px solid rgba(0, 0, 0, 0.15);
   left: 0;
-  transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%, 0, 0);
 }
 
 .sidebar--right {
-  border-left: 2px solid rgba(0,0,0,0.15);
+  border-left: 2px solid rgba(0, 0, 0, 0.15);
   right: 0;
-  transform: translate3d(100%,0,0);
+  transform: translate3d(100%, 0, 0);
 }
 
 .sidebar--open {
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
 }
 
 .sidebar__header {
@@ -203,7 +203,7 @@
 
 .sidebar__hr {
   height: 2px;
-  background-color: rgba(0,0,0,0.15);
+  background-color: rgba(0, 0, 0, 0.15);
   margin-bottom: 1rem;
 }
 

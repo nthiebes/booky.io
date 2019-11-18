@@ -1,10 +1,10 @@
 .dashboards-sidebar {
   width: 300px;
   background-color: $color-font--white;
-  border-right: 2px solid rgba(0,0,0, 0.15);
+  border-right: 2px solid rgba(0, 0, 0, 0.15);
   z-index: 2;
   transition: transform 0.3s ease;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   position: absolute;
   bottom: 0;
   top: calc(4rem - 2px);
@@ -65,7 +65,7 @@
 }
 
 .dashboards-sidebar--hide {
-  transform: translate3d(calc(-100% + 50px),0,0);
+  transform: translate3d(calc(-100% + 50px), 0, 0);
 }
 
 .dashboards-sidebar__toggle {

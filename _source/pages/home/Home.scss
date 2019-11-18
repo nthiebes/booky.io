@@ -8,7 +8,7 @@
   @include mobile {
     padding-top: 6rem;
   }
-  
+
   @include tablet {
     padding-top: 8rem;
     padding-bottom: 2rem;
@@ -29,7 +29,7 @@
 .home__header-illustration {
   max-width: 300px;
   max-height: 300px;
-  
+
   @include mobile {
     position: relative;
     width: 75%;
@@ -38,7 +38,7 @@
     transform: translateX(-50%);
     margin-top: 2rem;
   }
-  
+
   @include tablet-desktop {
     position: absolute;
     right: 2vw;

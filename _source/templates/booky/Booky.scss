@@ -1,6 +1,5 @@
 @import "reset";
 @import "config";
-
 @import "../../atoms/label/Label";
 @import "../../atoms/icon/Icon";
 @import "../../atoms/link/Link";
@@ -18,7 +17,6 @@
 @import "../../atoms/skeleton/Skeleton";
 @import "../../atoms/logo/Logo";
 @import "../../atoms/list/List";
-
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
 @import "../../molecules/category/Category";
@@ -33,7 +31,6 @@
 @import "../../molecules/expandable/Expandable";
 @import "../../molecules/error-boundary/ErrorBoundary";
 @import "../../molecules/cookie-banner/CookieBanner";
-
 @import "../../organisms/categories/Categories";
 @import "../../organisms/header/Header";
 @import "../../organisms/footer/Footer";
@@ -44,9 +41,7 @@
 @import "../../organisms/dashboards/dashboards-list/DashboardsList";
 @import "../../organisms/dashboards/dashboards-sidebar/DashboardsSidebar";
 @import "../../organisms/customize/Customize";
-
 @import "../../templates/page/Page";
-
 @import "../../pages/home/Home";
 @import "../../pages/account/Account";
 @import "../../pages/login/Login";
@@ -74,6 +69,7 @@ body {
   color: $color-font--white;
   background-color: $color-font--primary;
 }
+
 ::selection {
   color: $color-font--white;
   background-color: $color-font--primary;

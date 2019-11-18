@@ -7,7 +7,7 @@
 
 .input__field {
   background-color: $color-background--ligth;
-  box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
+  box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.3) inset;
   border: 1px solid transparent;
   border-right: 1px solid rgba($color--black, 0.15);
   border-bottom: 2px solid $color-font--medium;
@@ -30,7 +30,7 @@
     padding: 0 36px 0 10px;
   }
 
-  &:valid ~.input__icon--valid {
+  &:valid ~ .input__icon--valid {
     opacity: 1;
     transform: none;
   }
@@ -51,17 +51,17 @@
       border-bottom-color: $color--3;
     }
 
-    &:valid ~.input__icon--valid {
+    &:valid ~ .input__icon--valid {
       color: $color--green;
     }
 
-    &:invalid ~.input__icon--invalid {
+    &:invalid ~ .input__icon--invalid {
       opacity: 1;
       transform: none;
       color: $color--3;
     }
 
-    ~.input__requirements {
+    ~ .input__requirements {
       max-height: 5rem;
       opacity: 1;
     }

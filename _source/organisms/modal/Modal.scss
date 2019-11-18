@@ -35,6 +35,12 @@
     width: 100%;
     z-index: 6;
   }
+
+  .modal__inner {
+    transition: opacity 0.2s linear, transform 0.2s;
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .modal__inner {
@@ -45,7 +51,7 @@
   width: 94vw;
   max-height: 94%;
   background-color: $color-background--white;
-  border: 2px solid rgba(0,0,0,0.15);
+  border: 2px solid rgba(0, 0, 0, 0.15);
   max-width: $width--mobile;
   position: relative;
   overflow-x: hidden;
@@ -56,14 +62,6 @@
 
 .modal__inner--dark {
   background-color: $color-background--dark-mode;
-}
-
-.modal--open {
-  .modal__inner {
-    transition: opacity 0.2s linear, transform 0.2s;
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 .modal__header {
