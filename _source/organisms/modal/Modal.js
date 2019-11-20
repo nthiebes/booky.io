@@ -174,7 +174,7 @@ export default class Modal extends PureComponent {
         ) }
         onMouseDown={ this.handleMouseDown }
         onKeyUp={ this.handleKeyUp }
-        ariaHidden={ open ? 'false' : 'true' }
+        aria-hidden={ open ? 'false' : 'true' }
       >
         <div className={ classNames('modal__inner', darkMode && 'modal__inner--dark') }>
           { CustomTag && showModal && (
