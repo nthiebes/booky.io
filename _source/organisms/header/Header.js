@@ -94,7 +94,8 @@ class Header extends PureComponent {
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
       <header
         className={ classNames(
-          `header header--color${color}`,
+          'header',
+          `header--color${color}`,
           sidebarOpen && 'header--overlay',
           sticky && 'header--sticky',
           className

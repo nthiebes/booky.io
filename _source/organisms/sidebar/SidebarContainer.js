@@ -4,14 +4,13 @@ import { closeSidebar } from '../../_state/sidebar/actions';
 import { openModal } from '../../_state/modal/actions';
 import { logout } from '../../_state/user/actions';
 
-export const mapStateToProps = function(state) {
-  return {
-    loggedIn: state.user.loggedIn,
-    open: state.sidebar.open,
-    dashboardsSidebar: state.user.settings.dashboardsStyle === 'sidebar',
-    darkMode: state.user.settings.darkMode
-  };
-};
+export const mapStateToProps = (state) => ({
+  loggedIn: state.user.loggedIn,
+  open: state.sidebar.open,
+  dashboardsSidebar: state.user.settings.dashboardsStyle === 'sidebar',
+  darkMode: state.user.settings.darkMode,
+  color: state.user.settings.navigationBarColor
+});
 
 export const mapDispatchToProps = {
   closeSidebar,
