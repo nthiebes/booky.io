@@ -17,6 +17,7 @@ export default class Page extends Component {
     return (
       <Fragment>
         <CookieBanner />
+        <Modal />
         <Header
           className={ classNames(
             blurContent && 'page--blur'
@@ -51,7 +52,6 @@ export default class Page extends Component {
           ) }
           home={ home }
         />
-        <Modal />
       </Fragment>
     );
   }
