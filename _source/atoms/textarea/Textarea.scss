@@ -7,7 +7,7 @@
 
 .textarea__field {
   background-color: $color-background--ligth;
-  box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
+  box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.3) inset;
   border: 1px solid transparent;
   border-right: 1px solid rgba($color--black, 0.15);
   border-bottom: 2px solid $color-font--medium;
@@ -31,7 +31,7 @@
     padding: 10px 36px 10px 10px;
   }
 
-  &:valid ~.textarea__icon--valid {
+  &:valid ~ .textarea__icon--valid {
     opacity: 1;
     transform: none;
   }
@@ -52,11 +52,11 @@
       border-bottom-color: $color--3;
     }
 
-    &:valid ~.textarea__icon--valid {
+    &:valid ~ .textarea__icon--valid {
       color: $color--green;
     }
 
-    &:invalid ~.textarea__icon--invalid {
+    &:invalid ~ .textarea__icon--invalid {
       opacity: 1;
       transform: none;
       color: $color--3;
@@ -91,7 +91,6 @@
   right: 0;
   top: 6px;
   transform: translateX(100%);
-  pointer-events: none;
   transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s ease;
   opacity: 0;
   color: $color-font--medium;

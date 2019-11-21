@@ -48,7 +48,7 @@ class Bookmark extends Component {
             ref={ provided.innerRef }
           >
             { !favicon || favicon === 'default' ? (
-              <Icon icon="earth" size="tiny" className="bookmark__favicon" />
+              <Icon icon="earth" size="tiny" />
             ) : (
               <img src={ favicon } height="16" width="16" alt="" />
             ) }

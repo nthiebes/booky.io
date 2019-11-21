@@ -51,31 +51,37 @@ $width--fullhd: 1920px;
     @content;
   }
 }
+
 @mixin mobile-tablet {
   @media (max-width: #{$width--tablet}) {
     @content;
   }
 }
+
 @mixin tablet {
   @media (min-width: #{$width--mobile + 1px}) and (max-width: #{$width--tablet}) {
     @content;
   }
 }
+
 @mixin tablet-desktop {
   @media (min-width: #{$width--mobile + 1px}) {
     @content;
   }
 }
+
 @mixin desktop {
   @media (min-width: #{$width--tablet + 1px}) {
     @content;
   }
 }
+
 @mixin hd {
   @media (min-width: #{$width--hd}) {
     @content;
   }
 }
+
 @mixin fullhd {
   @media (min-width: #{$width--fullhd}) {
     @content;

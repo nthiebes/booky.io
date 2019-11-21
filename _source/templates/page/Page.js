@@ -8,6 +8,7 @@ import Footer from '../../organisms/footer';
 import Modal from '../../organisms/modal';
 import Toolbar from '../../organisms/toolbar';
 import ErrorBoundary from '../../molecules/error-boundary';
+import CookieBanner from '../../molecules/cookie-banner';
 
 export default class Page extends Component {
   render() {
@@ -15,6 +16,8 @@ export default class Page extends Component {
 
     return (
       <Fragment>
+        <CookieBanner />
+        <Modal />
         <Header
           className={ classNames(
             blurContent && 'page--blur'
@@ -49,7 +52,6 @@ export default class Page extends Component {
           ) }
           home={ home }
         />
-        <Modal />
       </Fragment>
     );
   }

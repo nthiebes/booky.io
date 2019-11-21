@@ -17,32 +17,51 @@
 }
 
 .sidebar--left {
-  border-right: 2px solid rgba(0,0,0,0.15);
   left: 0;
-  transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%, 0, 0);
+
+  .sidebar__logo {
+    margin-left: 1rem;
+  }
+
+  .sidebar__header {
+    border-right: 2px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar__scroll-wrapper {
+    border-right: 2px solid rgba(0, 0, 0, 0.15);
+  }
 }
 
 .sidebar--right {
-  border-left: 2px solid rgba(0,0,0,0.15);
   right: 0;
-  transform: translate3d(100%,0,0);
+  transform: translate3d(100%, 0, 0);
+
+  .sidebar__header {
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar__scroll-wrapper {
+    border-left: 2px solid rgba(0, 0, 0, 0.15);
+  }
 }
 
 .sidebar--open {
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
 }
 
 .sidebar__header {
   display: flex;
-  height: 3rem;
+  height: calc(3rem + 2px);
   align-items: center;
   justify-content: space-between;
   position: relative;
   z-index: 3;
   padding: 0 3vw;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 
   @include tablet {
-    height: 4.4rem;
+    height: calc(4.4rem + 2px);
   }
 }
 
@@ -71,15 +90,9 @@
 }
 
 .sidebar__logo {
-  color: $color-font--primary;
-
   &:focus {
-    outline: 1px dashed $color-font--medium;
+    outline: 1px dashed $color-font--white;
   }
-}
-
-.sidebar--left .sidebar__logo {
-  margin-left: 1rem;
 }
 
 .sidebar__icon {
@@ -203,7 +216,7 @@
 
 .sidebar__hr {
   height: 2px;
-  background-color: rgba(0,0,0,0.15);
+  background-color: rgba(0, 0, 0, 0.15);
   margin-bottom: 1rem;
 }
 

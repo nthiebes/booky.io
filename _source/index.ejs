@@ -51,7 +51,7 @@
   </span>
   <noscript>
     <h1 class="headline headline--h1">Please activate JavaScript</h1>
-    <p class="paragraph">Ooops! To use booky you have to activate JavaScript. Only then can we provide you with all the features.</p>
+    <p class="paragraph">Ooops! Please activate JavaScript to use booky. Only then can we provide you with all our features.</p>
     <img src="/_assets/illustrations/monitor-window.svg" width="250" height="250">
     <style>
       .loading__spinner {
@@ -59,24 +59,5 @@
       }
     </style>
   </noscript>
-  <script>
-    var gaProperty = 'UA-45004279-5';
-    var disableStr = 'ga-disable-' + gaProperty;
-    if (document.cookie.indexOf(disableStr + '=true') > -1) {
-      window[disableStr] = true;
-    }
-    function gaOptout() {
-      document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-      window[disableStr] = true;
-      alert('Das Tracking durch Google Analytics wurde in Ihrem Browser für diese Website deaktiviert.');
-    }
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45004279-5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-45004279-5', { 'anonymize_ip': true });
-  </script>
 </body>
 </html>

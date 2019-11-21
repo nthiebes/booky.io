@@ -5,7 +5,7 @@
 
   &.bookmark--edit-mode {
     padding-right: 0;
-    
+
     .bookmark__icon {
       opacity: 1;
       transition: color 0.2s linear, opacity 0.2s linear;
@@ -53,8 +53,4 @@
   &.bookmark__icon--drag {
     cursor: move;
   }
-}
-
-.bookmark__favicon {
-  pointer-events: none;
 }

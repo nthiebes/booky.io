@@ -24,7 +24,8 @@ class Sidebar extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     openModal: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    color: PropTypes.number.isRequired
   }
   
   static defaultProps = {
@@ -73,7 +74,8 @@ class Sidebar extends PureComponent {
       location,
       className,
       dashboardsSidebar,
-      darkMode
+      darkMode,
+      color
     } = this.props;
     const { pathname } = location;
     const { logoutPending } = this.state;
@@ -95,16 +97,16 @@ class Sidebar extends PureComponent {
             onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
           >
-            <Logo color="dark" />
+            <Logo color={ darkMode ? 'normal' : 'dark' } />
           </Link>
           <Icon
             icon={ direction === 'left' ? 'back' : 'forward' }
             onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
             label={ intl.formatMessage({ id: 'menu.close' }) }
+            isButton
           />
         </header>
-        <hr className="sidebar__hr" />
         <div className="sidebar__scroll-wrapper">
           { dashboards && dashboardsSidebar && (
             <DashboardsList useTabIndex={ open } />

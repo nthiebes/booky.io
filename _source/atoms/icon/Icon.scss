@@ -10,7 +10,7 @@
   user-select: none;
 
   &::after {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     content: " ";
     height: 36px;
@@ -73,7 +73,7 @@
 }
 
 .icon--dark-mode::after {
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .icon--primary {
@@ -83,16 +83,28 @@
     &:active {
       color: $color-font--dark;
     }
+
+    &.icon--dark-mode:active {
+      color: $color-font--white;
+    }
   }
 
   @include desktop {
     &:hover {
       color: $color-font--dark;
     }
+
+    &.icon--dark-mode:hover {
+      color: $color-font--white;
+    }
   }
 
   &:focus {
     color: $color-font--dark;
+  }
+
+  &.icon--dark-mode:focus {
+    color: $color-font--white;
   }
 }
 
@@ -116,8 +128,8 @@
   }
 }
 
-.icon--medium {
-  color: $color-font--medium;
+.icon--grey {
+  color: $color-font--light;
 
   @include mobile-tablet {
     &:active {
@@ -132,6 +144,42 @@
   }
 
   &:focus {
+    color: $color-font--primary;
+  }
+}
+
+.icon--medium {
+  color: $color-font--medium;
+
+  &.icon--dark-mode {
+    color: $color-font--white;
+  }
+
+  @include mobile-tablet {
+    &:active {
+      color: $color-font--primary;
+    }
+
+    &.icon--dark-mode:active {
+      color: $color-font--primary;
+    }
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color-font--primary;
+    }
+
+    &.icon--dark-mode:hover {
+      color: $color-font--primary;
+    }
+  }
+
+  &:focus {
+    color: $color-font--primary;
+  }
+
+  &.icon--dark-mode:focus {
     color: $color-font--primary;
   }
 }
@@ -206,6 +254,10 @@
   &:focus {
     color: $color-font--dark;
   }
+}
+
+.icon--decorative {
+  pointer-events: none;
 }
 
 .icon--skeleton {

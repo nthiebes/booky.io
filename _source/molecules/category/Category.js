@@ -6,7 +6,7 @@ import { FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
-import { H3 } from '../../atoms/headline';
+import { H2 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Skeleton from '../../atoms/skeleton';
 import { ErrorMessage } from '../../atoms/messages';
@@ -105,9 +105,9 @@ class Category extends Component {
             onClick={ this.toggleCategory }
             isButton
           />
-          <H3 style="h2" className="category__name" onClick={ this.toggleCategory } title={ name }>
+          <H2 className="category__name" onClick={ this.toggleCategory } title={ name }>
             { name }
-          </H3>
+          </H2>
           <Icon
             className="category__icon"
             icon="edit"

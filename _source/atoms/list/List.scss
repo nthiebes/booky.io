@@ -1,12 +1,12 @@
-.privacy-list {
+.list {
   margin-bottom: 1rem;
 }
 
-.privacy-list--darkMode {
+.list--darkMode {
   color: $color-font--white;
 }
 
-.privacy-list__item {
+.list__item {
   list-style: none;
   padding-left: 1rem;
   margin-bottom: 0.5rem;
@@ -14,7 +14,7 @@
   position: relative;
 }
 
-.privacy-list__item::before {
+.list__item::before {
   content: "»";
   position: absolute;
   left: 0;
