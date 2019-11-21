@@ -187,5 +187,7 @@
     "cookie.item2": "Language preference",
     "cookie.item3": "Google Analytics",
     "button.okay": "Okay!",
-    "button.no": "No, thanks."
+    "button.no": "No, thanks.",
+    "bookmarklet.error": "To use the bookmarklet, drag it into the bookmarks bar of your browser.",
+    "bookmarklet.text": "<b>Add</b> to booky"
 }
