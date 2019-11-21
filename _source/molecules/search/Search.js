@@ -27,7 +27,7 @@ class Search extends Component {
     const { value } = this.state;
 
     return (
-      <div className={ classNames('search', className) }>
+      <div role="search" className={ classNames('search', className) }>
         <Label htmlFor="search" className="search__label">
           <FormattedMessage id="misc.searchLabel" />
         </Label>

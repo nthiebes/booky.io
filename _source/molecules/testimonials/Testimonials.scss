@@ -57,7 +57,7 @@
   margin-right: 0.5rem;
   flex-shrink: 0;
   border-radius: 50%;
-  border: 2px solid rgba(0,0,0,0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .testimonials__header {
@@ -85,7 +85,6 @@
 
 .testimonials__icon {
   position: absolute;
-  pointer-events: none;
   opacity: 0.3;
   bottom: -12px;
   // To create a fake margin/padding because the margin and padding

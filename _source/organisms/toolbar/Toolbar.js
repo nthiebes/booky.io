@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import { scrolling } from '../../_utils/scrolling';
@@ -19,7 +18,6 @@ class Toolbar extends PureComponent {
     dashboards: PropTypes.object.isRequired,
     activeDashboardName: PropTypes.string,
     openModal: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired,
     className: PropTypes.string,
     dashboardsStyle: PropTypes.string.isRequired,
     changeDashboard: PropTypes.func.isRequired,
@@ -43,8 +41,8 @@ class Toolbar extends PureComponent {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.nextProps = nextProps;
+  componentDidUpdate(prevProps) {
+    this.nextProps = prevProps;
     scrolling.updateStatus('toolbar');
   }
 
@@ -87,7 +85,6 @@ class Toolbar extends PureComponent {
   render() {
     const {
       activeDashboardName,
-      intl,
       className,
       dashboardsStyle,
       dashboards,
@@ -97,15 +94,11 @@ class Toolbar extends PureComponent {
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
-        <Icon
-          icon="tree"
-          label={ intl.formatMessage({ id: 'structure.title' }) }
-          className="toolbar__icon"
-        />
         {/** onClick={ this.onIconClick }
           isButton */}
         { dashboardsStyle === 'sidebar' && (
           <H1 style="h3" className="toolbar__headline">
+            <Icon icon="collection" color="grey" />
             { activeDashboardName || <Skeleton /> }
           </H1>
         ) }
@@ -128,4 +121,4 @@ class Toolbar extends PureComponent {
   }
 }
 
-export default injectIntl(Toolbar);
+export default Toolbar;

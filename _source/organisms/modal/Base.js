@@ -47,7 +47,7 @@ class Modal extends PureComponent {
             <FormattedMessage id="modal.tabAnchor" />
           </span>
           { headline && <H2 className="modal__headline">{ headline }</H2> }
-          <Icon icon="close" onClick={ onClose } label={ intl.formatMessage({ id: 'modal.close' }) } tabIndex="0" />
+          <Icon isButton icon="close" onClick={ onClose } label={ intl.formatMessage({ id: 'modal.close' }) } />
         </header>
         <div className="modal__content">
           { children }

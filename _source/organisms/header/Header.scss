@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 2px solid rgba(0,0,0,0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   position: relative;
   top: 0;
   width: 100%;
@@ -128,7 +128,7 @@
 
 .header__logo {
   margin-right: 1.5rem;
-  
+
   &:focus {
     outline: 1px dashed $color-font--white;
   }

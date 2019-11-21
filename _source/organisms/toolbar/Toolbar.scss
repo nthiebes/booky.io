@@ -50,12 +50,8 @@
   background-color: $color-background--medium;
 }
 
-.toolbar__icon {
-  pointer-events: none;
-}
-
 .toolbar__headline {
-  margin: 0 0 0 1rem;
+  margin: 0;
   padding: 0;
   flex-grow: 1;
   white-space: nowrap;

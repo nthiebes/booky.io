@@ -9,20 +9,16 @@ const colors = {
 
 export default class Logo extends Component {
   render() {
-    const { className, alt, height, width, color, darkMode } = this.props;
-    let src = colors[color];
-
-    if (darkMode && color === 'dark') {
-      src = colors.normal;
-    }
+    const { className, alt, height, width, color } = this.props;
+    const src = colors[color];
     
     return (
-      <img 
+      <img
+        className={ className } 
         src={ src } 
         alt={ alt } 
         height={ height } 
         width={ width } 
-        className={ className } 
       />
     );
   }
@@ -34,8 +30,7 @@ Logo.propTypes = {
   alt: PropTypes.string,
   height: PropTypes.string,
   width: PropTypes.string,
-  color: PropTypes.string,
-  darkMode: PropTypes.bool
+  color: PropTypes.string
 };
 
 Logo.defaultProps = {

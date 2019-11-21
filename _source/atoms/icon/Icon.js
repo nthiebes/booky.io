@@ -60,7 +60,7 @@ export default class Icon extends Component {
       pending
     } = this.props;
     const icon = pending ? 'spinner' : this.props.icon;
-    const link = '_assets/symbol-defs.svg#icon-' + icon;
+    const link = `_assets/symbol-defs.svg?=${process.env.VERSION}#icon-${icon}`;
     const additionalProps = {};
     let CustomTag = 'button';
     
@@ -79,7 +79,8 @@ export default class Icon extends Component {
           className={ classNames(
             'icon',
             `icon--size-${size}`,
-            darkMode && !ignoreDarkMode ? 'icon--light' : `icon--${color}`,
+            `icon--${color}`,
+            !isButton && 'icon--decorative',
             darkMode && !ignoreDarkMode && 'icon--dark-mode',
             className
           ) }

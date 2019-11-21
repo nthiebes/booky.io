@@ -6,7 +6,6 @@
   border: 1px solid transparent;
   cursor: pointer;
   display: inline-flex;
-  align-items: center;
   font-family: $font-family--text;
   font-size: 1rem;
   overflow: hidden;
@@ -28,7 +27,6 @@
   margin-top: 2rem;
 }
 
-@import "./ButtonText";
 @import "./ButtonSmall";
 @import "./ButtonLarge";
 

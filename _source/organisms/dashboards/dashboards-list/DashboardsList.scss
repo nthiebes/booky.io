@@ -79,7 +79,7 @@
       }
     }
   }
-  
+
   .dashboards__icon {
     opacity: 1;
     transition: color 0.2s linear, opacity 0.2s linear;
@@ -91,7 +91,6 @@
     display: none;
   }
 }
-
 
 .dashboards__list--hidden {
   @include desktop {
