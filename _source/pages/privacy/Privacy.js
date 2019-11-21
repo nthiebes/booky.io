@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable no-script-url */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-literals */
