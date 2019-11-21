@@ -8,9 +8,10 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import CopyPlugin from 'copy-webpack-plugin';
 import path from 'path';
-
+const version = require('./package.json').version;
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
+  'process.env.VERSION': JSON.stringify(version),
   __DEV__: false
 };
 
@@ -76,7 +77,6 @@ export default {
       inject: true
       // Note that you can add custom options here if you need to handle other custom logic in index.html
     })
-
   ],
   module: {
     rules: [
