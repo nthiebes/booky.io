@@ -32,8 +32,6 @@ export default {
     filename: '[name].[contenthash].js'
   },
   plugins: [
-    new webpack.ExtendedAPIPlugin(),
-    
     // Remove _public folder before build
     new CleanWebpackPlugin(),
 

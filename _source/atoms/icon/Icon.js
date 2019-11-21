@@ -60,8 +60,7 @@ export default class Icon extends Component {
       pending
     } = this.props;
     const icon = pending ? 'spinner' : this.props.icon;
-    // eslint-disable-next-line no-underscore-dangle
-    const link = `_assets/symbol-defs.svg?=${window.__webpack_hash__}#icon-${icon}`;
+    const link = '_assets/symbol-defs.svg#icon-' + icon;
     const additionalProps = {};
     let CustomTag = 'button';
     
