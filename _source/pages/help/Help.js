@@ -7,6 +7,7 @@ import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import Link from '../../atoms/link';
 import Expandable from '../../molecules/expandable';
+import Bookmarklet from '../../molecules/bookmarklet';
 
 export default class Help extends Component {
   render() {
@@ -61,6 +62,7 @@ export default class Help extends Component {
           <P>
             <FormattedMessage id="help.bookmarklet.text" />
           </P>
+          <Bookmarklet />
           <H3>
             <FormattedMessage id="help.customizations" />
           </H3>
