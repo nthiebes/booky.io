@@ -14,7 +14,7 @@ export default class LanguageSwitcher extends Component {
   handleChange = ({ value: language }) => {
     const { updateIntl } = this.props;
 
-    fetch(`/_assets/i18n/${language}.json`)
+    fetch(`/_assets/i18n/${language}.json?=${process.env.VERSION}`)
       .then((response) => response.json())
       .then((messages) => {
         addLocaleData(language);

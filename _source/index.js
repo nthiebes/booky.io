@@ -86,7 +86,7 @@ const loadingDone = () => {
 const init = () => {
   loadPolyfills().then(() => {
     // Fetch translations
-    fetch(`/_assets/i18n/${language}.json`)
+    fetch(`/_assets/i18n/${language}.json?=${process.env.VERSION}`)
       .then((response) => response.json())
       .then((data) => {
         messages = data;
@@ -125,5 +125,5 @@ const init = () => {
 if (window.Promise) {
   init();
 } else {
-  loadScript('/_assets/promise-polyfill.js', init);
+  loadScript(`/_assets/promise-polyfill.js?=${process.env.VERSION}`, init);
 }
