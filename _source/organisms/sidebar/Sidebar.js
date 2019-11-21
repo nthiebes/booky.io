@@ -89,7 +89,7 @@ class Sidebar extends PureComponent {
         'booky--hide-desktop',
         className
       ) }>
-        <header className={ classNames('sidebar__header', `sidebar__header--color${color}`) }>
+        <header className="sidebar__header">
           <Link
             to="/"
             title={ intl.formatMessage({ id: 'menu.home' }) }
@@ -97,7 +97,7 @@ class Sidebar extends PureComponent {
             onClick={ closeSidebar }
             tabIndex={ open ? '0' : '-1' }
           >
-            <Logo color="light" />
+            <Logo color={ darkMode ? 'normal' : 'dark' } />
           </Link>
           <Icon
             icon={ direction === 'left' ? 'back' : 'forward' }
@@ -105,7 +105,6 @@ class Sidebar extends PureComponent {
             tabIndex={ open ? '0' : '-1' }
             label={ intl.formatMessage({ id: 'menu.close' }) }
             isButton
-            color="light"
           />
         </header>
         <div className="sidebar__scroll-wrapper">
