@@ -74,8 +74,7 @@ class Sidebar extends PureComponent {
       location,
       className,
       dashboardsSidebar,
-      darkMode,
-      color
+      darkMode
     } = this.props;
     const { pathname } = location;
     const { logoutPending } = this.state;
