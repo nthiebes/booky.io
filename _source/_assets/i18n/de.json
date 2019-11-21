@@ -187,5 +187,7 @@
     "cookie.item2": "Spracheinstellung",
     "cookie.item3": "Google Analytics",
     "button.okay": "Okay!",
-    "button.no": "Nein, danke."
+    "button.no": "Nein, danke.",
+    "bookmarklet.error": "Um das Bookmarklet zu nutzen, ziehe es in die Lesezeichenleiste deines Browsers.",
+    "bookmarklet.text": "Zu booky <b>hinzufügen</b>"
 }
