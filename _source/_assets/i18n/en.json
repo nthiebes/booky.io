@@ -188,6 +188,10 @@
     "cookie.item3": "Google Analytics",
     "button.okay": "Okay!",
     "button.no": "No, thanks.",
-    "bookmarklet.error": "To use the bookmarklet, drag it into the bookmarks bar of your browser.",
-    "bookmarklet.text": "<b>Add</b> to booky"
+    "bookmarklet.error": "To use our bookmarklet, drag it into the bookmarks bar of your browser.",
+    "bookmarklet.text": "<b>Add</b> to booky",
+    "help.bookmarklet": "Bookmarklet",
+    "help.bookmarklet.text": "You can use our bookmarklet to quickly add a website to booky. Simply drag the following link into the bookmarks bar of your browser:",
+    "help.extensions": "Browser extensions",
+    "help.general": "General"
 }

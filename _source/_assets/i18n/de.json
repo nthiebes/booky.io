@@ -188,6 +188,10 @@
     "cookie.item3": "Google Analytics",
     "button.okay": "Okay!",
     "button.no": "Nein, danke.",
-    "bookmarklet.error": "Um das Bookmarklet zu nutzen, ziehe es in die Lesezeichenleiste deines Browsers.",
-    "bookmarklet.text": "Zu booky <b>hinzufügen</b>"
+    "bookmarklet.error": "Um unser Bookmarklet zu nutzen, ziehe es in die Lesezeichenleiste deines Browsers.",
+    "bookmarklet.text": "Zu booky <b>hinzufügen</b>",
+    "help.bookmarklet": "Bookmarklet",
+    "help.bookmarklet.text": "Du kannst unser Bookmarklet nutzen um schnell eine Webseite bei booky zu speichern. Ziehe dafür einfach den nachfolgenden Link in die Lesezeichenleiste deines Browsers:",
+    "help.extensions": "Browser-Erweiterungen",
+    "help.general": "Allgemeines"
 }
