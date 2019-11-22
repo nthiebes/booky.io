@@ -1,3 +1,1 @@
-import component from './Expandable';
-
-export default component;
+export { default } from './ExpandableContainer';

@@ -33,7 +33,7 @@ class Bookmarklet extends PureComponent {
     return (
       <Fragment>
         <a
-          className="bookmarklet button button--large button--large-primary"
+          className="bookmarklet button button--small button--small-primary button--solid"
           href={ `javascript:${updatedJavascript}` }
           onClick={ this.handleBookmarkletClick }
         >

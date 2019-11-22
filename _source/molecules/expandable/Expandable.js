@@ -4,9 +4,9 @@ import classNames from 'classnames';
 
 import P from '../../atoms/paragraph';
 
-const Expandable = ({ className, headline, children }) => (
+const Expandable = ({ className, headline, children, darkMode }) => (
   <details className={ classNames('expandable', className) }>
-    <summary className="expandable__summary">
+    <summary className={ classNames('expandable__summary', darkMode && 'expandable__summary--dark-mode') }>
       { headline }
     </summary>
     <P noPadding>
@@ -24,5 +24,6 @@ Expandable.propTypes = {
     PropTypes.element,
     PropTypes.string
   ]).isRequired,
-  headline: PropTypes.node.isRequired
+  headline: PropTypes.node.isRequired,
+  darkMode: PropTypes.bool
 };

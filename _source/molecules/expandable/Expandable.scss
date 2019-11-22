@@ -14,3 +14,11 @@
     outline: 1px dashed $color-font--medium;
   }
 }
+
+.expandable__summary--dark-mode {
+  color: $color-font--white;
+
+  &:focus {
+    outline-color: $color-font--white;
+  }
+}
