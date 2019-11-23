@@ -132,8 +132,20 @@
   }
 }
 
-.home__bookmarklet-icon {
-  margin: 1rem 0.5rem;
+.home__extension {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.home__extension-icon {
+  margin: 0 0.5rem;
+
+  @include mobile {
+    width: 19vw;
+    height: 19vw;
+  }
 }
 
 .home__not-a-member {
@@ -168,4 +180,8 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.home__globe {
+  max-width: 100%;
 }

@@ -106,33 +106,33 @@ class Home extends Component {
           <H2 style="h1" noMargin centered>
             <FormattedMessage id="home.extensionText" />
           </H2>
-          <div>
+          <div className="home__extension">
             <img
               width="75"
               height="75"
               alt="Chrome browser extension"
-              className="home__bookmarklet-icon"
+              className="home__extension-icon"
               src="../../_assets/browsers/chrome.svg"
             />
             <img
               width="75"
               height="75"
               alt="Firefox browser extension"
-              className="home__bookmarklet-icon"
+              className="home__extension-icon"
               src="../../_assets/browsers/firefox.svg"
             />
             <img
               width="75"
               height="75"
               alt="Opera browser extension"
-              className="home__bookmarklet-icon"
+              className="home__extension-icon"
               src="../../_assets/browsers/opera.svg"
             />
             <img
               width="75"
               height="75"
               alt="Edge browser extension"
-              className="home__bookmarklet-icon"
+              className="home__extension-icon"
               src="../../_assets/browsers/edge.svg"
             />
           </div>
@@ -155,11 +155,12 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="light" className="home__not-a-member">
+        <Section color="light">
           { 'Placeholder' }
         </Section>
         <Section className="home__not-a-member">
           <Illustration
+            className="home__globe"
             name="ecology-globe"
             height="300"
             width="300"
