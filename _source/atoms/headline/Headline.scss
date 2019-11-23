@@ -13,13 +13,25 @@
 }
 
 .headline--h1 {
-  font-size: 2.5rem;
-  font-weight: 100;
+  color: $color-font--medium;
   margin-top: 2rem;
   padding-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.5rem;
 
   &.headline--dark-mode {
     color: $color-font--white;
+  }
+
+  @include tablet {
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+  }
+
+  @include desktop {
+    font-size: 3rem;
+    line-height: 3.2rem;
   }
 
   &.headline--display {
@@ -48,24 +60,6 @@
 
   &.headline--dark-mode {
     color: $color-font--light;
-  }
-
-  &.headline--display {
-    margin-top: 2rem;
-    font-size: 2rem;
-    font-weight: 700;
-    padding-bottom: 1rem;
-    line-height: 2.5rem;
-
-    @include tablet {
-      font-size: 2.5rem;
-      line-height: 2.7rem;
-    }
-
-    @include desktop {
-      font-size: 3rem;
-      line-height: 3.2rem;
-    }
   }
 }
 

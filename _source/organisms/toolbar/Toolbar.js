@@ -97,7 +97,7 @@ class Toolbar extends PureComponent {
         {/** onClick={ this.onIconClick }
           isButton */}
         { dashboardsStyle === 'sidebar' && (
-          <H1 style="h2" className="toolbar__headline">
+          <H1 style="h3" className="toolbar__headline">
             <Icon icon="collection" color="grey" />
             { activeDashboardName || <Skeleton /> }
           </H1>

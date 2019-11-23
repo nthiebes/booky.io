@@ -6,14 +6,13 @@ import classNames from 'classnames';
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
-// import { H2, Display1, Display2 } from '../../atoms/headline';
-// import P from '../../atoms/paragraph';
-import { ButtonSmallPrimary, ButtonLargeBlue } from '../../atoms/button';
-// import Illustration from '../../atoms/illustration';
+import { H2, Display } from '../../atoms/headline';
+import P from '../../atoms/paragraph';
+import { ButtonSmallPrimary, ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
+import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
-// import Testimonials from '../../molecules/testimonials';
-// import Feature from '../../molecules/feature';
-import Empty from '../../molecules/empty';
+import Testimonials from '../../molecules/testimonials';
+import Feature from '../../molecules/feature';
 
 class Home extends Component {
   static propTypes = {
@@ -45,7 +44,7 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedIn, blurContent, hasSidebar, categoriesPending, hasCategories, dashboardsOpen } = this.props;
+    const { loggedIn, blurContent, hasSidebar, categoriesPending, hasCategories, dashboardsOpen, intl } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
@@ -66,22 +65,14 @@ class Home extends Component {
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
-      <Page home> {/* className="home" */}
-        <Section>
-          <Empty illustration="monitor-window">
-            <FormattedMessage id="misc.comingSoon" />
-          </Empty>
-          <ButtonLargeBlue icon="account" to="/login" className="home__login-button">
-            <FormattedHTMLMessage id="header.login" />
-          </ButtonLargeBlue>
-        </Section>
-        {/* <Section className="home__header">
-          <Display1 color="medium" noMargin className="home__headline">
+      <Page home className="home">
+        <Section className="home__header">
+          <Display noMargin className="home__headline">
             <FormattedMessage id="home.display" />
-          </Display1>
-          <H2>
+          </Display>
+          <P>
             <FormattedMessage id="home.display2" />
-          </H2>
+          </P>
           <ButtonLargeBlue icon="join" to="/join" className="home__join">
             <FormattedHTMLMessage id="header.register" />
           </ButtonLargeBlue>
@@ -112,6 +103,9 @@ class Home extends Component {
           />
         </Section>
         <Section color="light" className="home__bookmarklet">
+          <H2 style="h1" noMargin centered>
+            <FormattedMessage id="home.extensionText" />
+          </H2>
           <div>
             <img
               width="75"
@@ -142,12 +136,9 @@ class Home extends Component {
               src="../../_assets/browsers/edge.svg"
             />
           </div>
-          <H2 noMargin centered className="home__bookmarklet-headline">
-            <FormattedMessage id="home.extensionText" />
-          </H2>
-          <ButtonLargePrimary icon="extension" to="/about" contentBefore>
+          <ButtonLargeBlue icon="extension" to="/about" contentBefore>
             <FormattedHTMLMessage id="home.extensionButton" />
-          </ButtonLargePrimary>
+          </ButtonLargeBlue>
         </Section>
         <Section>
           <Feature
@@ -173,9 +164,9 @@ class Home extends Component {
             height="300"
             width="300"
           />
-          <Display2 centered noMargin>
+          <H2 style="h1" centered noMargin>
             <FormattedMessage id="home.notAMember" />
-          </Display2>
+          </H2>
           <P>
             <FormattedMessage id="home.promoText" />
           </P>
@@ -185,7 +176,7 @@ class Home extends Component {
           <ButtonLargeLight icon="about" to="/about">
             <FormattedHTMLMessage id="header.learnMore" />
           </ButtonLargeLight>
-        </Section> */}
+        </Section>
       </Page>
     );
   }

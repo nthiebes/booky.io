@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { Display2 } from '../../atoms/headline';
+import { H2 } from '../../atoms/headline';
 
 import Testimonial from './Testimonial';
 
@@ -9,9 +9,9 @@ class Testimonials extends Component {
   render() {
     return (
       <Fragment>
-        <Display2 className="testimonials-headline">
+        <H2 style="h1" className="testimonials-headline">
           <FormattedMessage id="testimonials.headline" />
-        </Display2>
+        </H2>
         <div className="testimonials">
           <Testimonial
             name="Dummy user"

@@ -1,11 +1,8 @@
 import React from 'react';
 import Headline from './HeadlineContainer';
 
-export const Display1 = (props) => <Headline { ...props } type="1" display />;
-Display1.displayName = 'Display1';
-
-export const Display2 = (props) => <Headline { ...props } type="2" display />;
-Display2.displayName = 'Display2';
+export const Display = (props) => <Headline { ...props } type="1" display />;
+Display.displayName = 'Display';
 
 export const H1 = (props) => <Headline { ...props } type="1" />;
 H1.displayName = 'H1';
