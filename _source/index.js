@@ -28,7 +28,8 @@ document.addEventListener('touchstart', () => { /* Do nothing */ }, {passive: tr
 if (process.env.NODE_ENV !== 'development') {
   Sentry.init({
     dsn: 'https://3b30e08ee0164a03816c765e2a29a2c2@sentry.io/1792556',
-    environment: process.env.NODE_ENV
+    environment: process.env.NODE_ENV,
+    release: `booky@${process.env.VERSION}`
   });
 }
 
