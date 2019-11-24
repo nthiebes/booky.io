@@ -195,7 +195,7 @@
     "help.beta.question1": "Wo ist die Funktion X/Y/Z und wann ist die Beta-Phase abgeschlossen?",
     "help.beta.question2": "Ist die Beta mit meinem regulären booky Account verbunden?",
     "help.beta.answer1": "Alle bisherigen Funktionen von booky werden wir nach und nach hinzufügen, ebenso wie neue Funktionen. Die Beta kann während der gesamten Zeit genutzt werden. Ein offizielles Erscheinungsdatum gibt es nicht.",
-    "help.beta.answer2": "Ja, du kannst dich direkt anmelden und loslegen. Sollten noch Funktionen fehlen, kannst du diese auch auf der regulären Seite verwenden. Wir empfehlen, deine Lesezeichen zu sichern, bevor du die Beta-Version verwendest: https://booky.io/settings",
+    "help.beta.answer2": "Ja, du kannst dich direkt anmelden und loslegen. Sollten noch Funktionen fehlen, kannst du diese auch auf der regulären Seite verwenden. Wir empfehlen, deine Lesezeichen zu sichern, bevor du die Beta-Version verwendest: {link}",
     "help.customizations": "booky anpassen",
     "help.categories": "Kategorien",
     "help.bookmarks": "Lesezeichen",
