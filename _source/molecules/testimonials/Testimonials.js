@@ -21,18 +21,20 @@ class Testimonials extends Component {
             text="My portal to the Web."
           />
           <Testimonial
-            name="Dummy user"
+            // Arun Kumarr B
+            name="Anonymous"
             twitter="twittername"
             url="https://twitter.com/booky_io"
             image="_assets/illustrations/customer-service-man.svg"
-            text="Thank you for this incredible project."
+            text="Love at first sight. Kudos to the people who built booky and have kept it simple."
           />
           <Testimonial
-            name="Dummy user"
+            // Ricardo Sebastián
+            name="Anonymous"
             twitter="twittername"
             url="https://twitter.com/booky_io"
             image="_assets/illustrations/customer-service-woman.svg"
-            text="This is so amazing, just what I needed."
+            text="A simple, lightweight and powerful application to save my bookmarks in the cloud."
           />
         </div>
       </Fragment>
