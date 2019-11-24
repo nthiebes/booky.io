@@ -45,3 +45,20 @@ export default class About extends Component {
   <FormattedMessage id="about.historyText" />
 </P>
 */
+
+/**
+ * Online bookmark manager with a focus on privacy, customizability, simplicity, and speed.
+ * 
+ * 
+ * Key features
+ * 
+ * All features
+ * 
+ * The team
+ * 
+ * A few words on...
+ * - privacy
+ * - the project
+ * 
+ * Update history
+ */
