@@ -195,7 +195,7 @@
     "help.beta.question1": "Where is feature X/Y/Z and when is the beta phase completed?",
     "help.beta.question2": "Is the beta connected to my regular booky account?",
     "help.beta.answer1": "We will gradually add all previous features of booky, as well as new features. The beta can be used during the whole time. There is no official release date.",
-    "help.beta.answer2": "Yes, you can register directly and get started. If any features are missing, you can also use them on the regular page. We recommend backing up your bookmarks before using the beta version: https://booky.io/settings",
+    "help.beta.answer2": "Yes, you can log in directly and get started. If any features are missing, you can also use them on the regular page. We recommend backing up your bookmarks before using the beta version: {link}",
     "help.customizations": "Customize booky",
     "help.categories": "Categories",
     "help.bookmarks": "Bookmarks",
