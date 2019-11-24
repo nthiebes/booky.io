@@ -1,5 +1,24 @@
+.help-headline,
 .help-intro {
-  margin-bottom: 32px;
+  width: calc(70% - 12px);
+
+  @include tablet-desktop {
+    width: calc(100% - 220px);
+  }
+}
+
+.help-illustration {
+  position: absolute;
+  top: 0;
+  width: 30vw;
+  height: 30vw;
+  right: 3%;
+
+  @include tablet-desktop {
+    width: 200px;
+    height: 200px;
+    right: 36px;
+  }
 }
 
 .help-container {

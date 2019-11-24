@@ -2,19 +2,27 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import Page from '../../templates/page';
-import { H1, H2, H3 } from '../../atoms/headline';
+import { H1, H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import Link from '../../atoms/link';
 import Expandable from '../../molecules/expandable';
 import Bookmarklet from '../../molecules/bookmarklet';
+import Illustration from '../../atoms/illustration';
 
 export default class Help extends Component {
   render() {
-    const values = {
+    const introValues = {
       email: (
         <Link to="/contact">
           <FormattedMessage id="help.email" />
+        </Link>
+      )
+    };
+    const betaValues = {
+      link: (
+        <Link href="https://booky.io/settings">
+          { 'https://booky.io/settings' }
         </Link>
       )
     };
@@ -22,15 +30,16 @@ export default class Help extends Component {
     return (
       <Page>
         <Section>
-          <H1>
+          <H1 className="help-headline">
             <FormattedMessage id="help.title" />
           </H1>
-          <P>
+          <P className="help-intro">
             <FormattedMessage id="help.intro1" />
           </P>
-          <P>
-            <FormattedMessage id="help.intro2" values={ values } />
+          <P className="help-intro">
+            <FormattedMessage id="help.intro2" values={ introValues } />
           </P>
+          <Illustration name="customer-service-man" className="help-illustration" />
 
           <H2>
             <FormattedMessage id="help.beta" />
@@ -40,95 +49,91 @@ export default class Help extends Component {
               <FormattedMessage id="help.beta.answer1" />
             </Expandable>
             <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
-              <FormattedMessage id="help.beta.answer2" />
-            </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.beta.question3" /> } className="help-container__item">
-              <FormattedMessage id="help.beta.answer3" />
+              <FormattedMessage id="help.beta.answer2" values={ betaValues } />
             </Expandable>
           </div>
 
           <H2>
-            <FormattedMessage id="help.general" />
-          </H2>
-          <H3>
             <FormattedMessage id="help.extensions" />
-          </H3>
+          </H2>
           <P>
-            <FormattedMessage id="help.extensions.text" />
+            {/* <FormattedMessage id="help.extensions.text" /> */}
+            { '-' }
           </P>
-          <H3>
+          <H2>
             <FormattedMessage id="help.bookmarklet" />
-          </H3>
+          </H2>
           <P>
             <FormattedMessage id="help.bookmarklet.text" />
           </P>
           <Bookmarklet />
-          <H3>
+          <H2>
             <FormattedMessage id="help.customizations" />
-          </H3>
+          </H2>
           <P>
-            <FormattedMessage id="help.customizations.text" />
+            {/* <FormattedMessage id="help.customizations.text" /> */}
+            { '-' }
           </P>
 
           <H2>
             <FormattedMessage id="help.collections" />
           </H2>
-          <div className="help-container">
+          <P>
+            { '-' }
+          </P>
+          {/* <div className="help-container">
             <Expandable headline={ <FormattedMessage id="help.collections.question1" /> } className="help-container__item">
               <FormattedMessage id="help.collections.answer1" />
             </Expandable>
             <Expandable headline={ <FormattedMessage id="help.collections.question2" /> } className="help-container__item">
               <FormattedMessage id="help.collections.answer2" />
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.collections.question3" /> } className="help-container__item">
-              <FormattedMessage id="help.collections.answer3" />
-            </Expandable>
-          </div>
+          </div> */}
 
           <H2>
             <FormattedMessage id="help.categories" />
           </H2>
-          <div className="help-container">
+          <P>
+            { '-' }
+          </P>
+          {/* <div className="help-container">
             <Expandable headline={ <FormattedMessage id="help.categories.question1" /> } className="help-container__item">
               <FormattedMessage id="help.categories.answer1" />
             </Expandable>
             <Expandable headline={ <FormattedMessage id="help.categories.question2" /> } className="help-container__item">
               <FormattedMessage id="help.categories.answer2" />
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.categories.question3" /> } className="help-container__item">
-              <FormattedMessage id="help.categories.answer3" />
-            </Expandable>
-          </div>
+          </div> */}
 
           <H2>
             <FormattedMessage id="help.bookmarks" />
           </H2>
-          <div className="help-container">
+          <P>
+            { '-' }
+          </P>
+          {/* <div className="help-container">
             <Expandable headline={ <FormattedMessage id="help.bookmarks.question1" /> } className="help-container__item">
               <FormattedMessage id="help.bookmarks.answer1" />
             </Expandable>
             <Expandable headline={ <FormattedMessage id="help.bookmarks.question2" /> } className="help-container__item">
               <FormattedMessage id="help.bookmarks.answer2" />
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.bookmarks.question3" /> } className="help-container__item">
-              <FormattedMessage id="help.bookmarks.answer3" />
-            </Expandable>
-          </div>
+          </div> */}
 
           <H2>
             <FormattedMessage id="help.account" />
           </H2>
-          <div className="help-container">
+          <P>
+            { '-' }
+          </P>
+          {/* <div className="help-container">
             <Expandable headline={ <FormattedMessage id="help.account.question1" /> } className="help-container__item">
               <FormattedMessage id="help.account.answer1" />
             </Expandable>
             <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
               <FormattedMessage id="help.account.answer2" />
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.account.question3" /> } className="help-container__item">
-              <FormattedMessage id="help.account.answer3" />
-            </Expandable>
-          </div>
+          </div> */}
         </Section>
       </Page>
     );
