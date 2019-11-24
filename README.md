@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/nthiebes/booky.io.svg)](https://david-dm.org/nthiebes/booky.io)
 
 ## What is booky.io?
-booky.io is an online bookmarking service with high focus on performance, mobile support and customizability.
+booky.io is an online bookmark manager with a focus on privacy, customizability, simplicity, and speed.
 
 [Learn more about booky.io](https://booky.io/about)
 
