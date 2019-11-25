@@ -80,7 +80,7 @@
     "no-caller": 1,
     "no-case-declarations": 1,
     "no-catch-shadow": 1,
-    "no-confusing-arrow": 1,
+    "no-confusing-arrow": 0,
     "no-console": 1,
     "no-continue": 1,
     "no-debugger": 1,
