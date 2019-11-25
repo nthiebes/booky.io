@@ -45,7 +45,7 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedIn, blurContent, hasSidebar, categoriesPending, hasCategories, dashboardsOpen, intl } = this.props;
+    const { loggedIn, blurContent, hasSidebar, categoriesPending, hasCategories, dashboardsOpen } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
