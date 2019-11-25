@@ -5,8 +5,8 @@ import { hot } from 'react-hot-loader';
 
 import { restricted } from './templates/restricted';
 import Loading from './pages/loading';
+import Home from './pages/home';
 
-const Home = lazy(() => import('./pages/home'));
 const About = lazy(() => import('./pages/about'));
 const Help = lazy(() => import('./pages/help'));
 const Account = lazy(() => import('./pages/account'));
