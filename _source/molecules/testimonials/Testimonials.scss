@@ -1,6 +1,9 @@
 .testimonials-headline {
-  justify-content: center;
   padding: 1rem calc(3% + 6px);
+
+  @include tablet-desktop {
+    justify-content: center;
+  }
 
   @include desktop {
     padding: 3rem 36px 0;
@@ -26,7 +29,7 @@
   }
 
   @include desktop {
-    padding: 1rem 18px 6rem;
+    padding: 1.5rem 18px 6rem;
   }
 }
 

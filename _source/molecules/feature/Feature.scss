@@ -1,6 +1,6 @@
 .feature__wrapper {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 
   @include mobile {
@@ -8,7 +8,7 @@
   }
 
   @include tablet {
-    padding: 0 10%;
+    padding: 0 5%;
   }
 
   @include desktop {
@@ -29,6 +29,11 @@
 }
 
 .feature__illustration {
+  @include mobile {
+    max-width: 250px;
+    max-height: 250px;
+  }
+
   @include tablet {
     min-width: 40vw;
     max-width: 300px;

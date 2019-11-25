@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Display2 } from '../../atoms/headline';
+import { H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Illustration from '../../atoms/illustration';
 
@@ -13,7 +13,7 @@ export default class Feature extends Component {
     return (
       <div className={ classNames('feature__wrapper', className) }>
         <header className={ classNames(direction === 'right' && 'feature__header--right', 'feature__header') }>
-          <Display2 noMargin>{ headline }</Display2>
+          <H2 style="h1" noMargin>{ headline }</H2>
           <P noPadding>{ text }</P>
         </header>
         <Illustration

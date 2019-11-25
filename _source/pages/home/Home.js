@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
-// import { H2, Display1, Display2 } from '../../atoms/headline';
+// import { H2, Display } from '../../atoms/headline';
 // import P from '../../atoms/paragraph';
 import { ButtonSmallPrimary, ButtonLargeBlue } from '../../atoms/button';
 // import Illustration from '../../atoms/illustration';
@@ -76,12 +76,12 @@ class Home extends Component {
           </ButtonLargeBlue>
         </Section>
         {/* <Section className="home__header">
-          <Display1 color="medium" noMargin className="home__headline">
+          <Display noMargin className="home__headline">
             <FormattedMessage id="home.display" />
-          </Display1>
-          <H2>
+          </Display>
+          <P>
             <FormattedMessage id="home.display2" />
-          </H2>
+          </P>
           <ButtonLargeBlue icon="join" to="/join" className="home__join">
             <FormattedHTMLMessage id="header.register" />
           </ButtonLargeBlue>
@@ -112,42 +112,42 @@ class Home extends Component {
           />
         </Section>
         <Section color="light" className="home__bookmarklet">
-          <div>
+          <H2 style="h1" noMargin centered>
+            <FormattedMessage id="home.extensionText" />
+          </H2>
+          <div className="home__extension">
             <img
               width="75"
               height="75"
               alt="Chrome browser extension"
-              className="home__bookmarklet-icon"
+              className="home__extension-icon"
               src="../../_assets/browsers/chrome.svg"
             />
             <img
               width="75"
               height="75"
               alt="Firefox browser extension"
-              className="home__bookmarklet-icon"
+              className="home__extension-icon"
               src="../../_assets/browsers/firefox.svg"
             />
             <img
               width="75"
               height="75"
               alt="Opera browser extension"
-              className="home__bookmarklet-icon"
+              className="home__extension-icon"
               src="../../_assets/browsers/opera.svg"
             />
             <img
               width="75"
               height="75"
               alt="Edge browser extension"
-              className="home__bookmarklet-icon"
+              className="home__extension-icon"
               src="../../_assets/browsers/edge.svg"
             />
           </div>
-          <H2 noMargin centered className="home__bookmarklet-headline">
-            <FormattedMessage id="home.extensionText" />
-          </H2>
-          <ButtonLargePrimary icon="extension" to="/about" contentBefore>
+          <ButtonLargeBlue icon="extension" to="/about" contentBefore>
             <FormattedHTMLMessage id="home.extensionButton" />
-          </ButtonLargePrimary>
+          </ButtonLargeBlue>
         </Section>
         <Section>
           <Feature
@@ -164,18 +164,19 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="light" className="home__not-a-member">
+        <Section color="light">
           { 'Placeholder' }
         </Section>
         <Section className="home__not-a-member">
           <Illustration
+            className="home__globe"
             name="ecology-globe"
             height="300"
             width="300"
           />
-          <Display2 centered noMargin>
+          <H2 style="h1" centered noMargin>
             <FormattedMessage id="home.notAMember" />
-          </Display2>
+          </H2>
           <P>
             <FormattedMessage id="home.promoText" />
           </P>

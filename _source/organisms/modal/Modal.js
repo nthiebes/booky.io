@@ -100,11 +100,18 @@ export default class Modal extends PureComponent {
     }
   }
 
+  parseBookmarkUrl = (url) => (
+    url.match(/^([a-z]+:+)\/\/|^\/\//i) ? url : `//${url}`
+  )
+
   handleSave = (modalData) => {
     const { modal, data } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
     modalData.categoryId = parseInt(modalData.categoryId, 10);
+    if (modalData.url) {
+      modalData.url = this.parseBookmarkUrl(modalData.url);
+    }
 
     if (this.modalMap[modal].action) {
       this.setState({

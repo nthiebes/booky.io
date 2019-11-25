@@ -55,6 +55,7 @@
   margin: 0 auto;
   max-width: 1000px;
   padding: 0 calc(3% + 6px);
+  position: relative;
 
   @include desktop {
     padding: 0 36px;
