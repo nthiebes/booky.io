@@ -97,7 +97,7 @@
     "join.login": "Sign in now",
     "join.joinNow": "<b>Join</b> now",
     "home.display": "Store your favorite bookmarks online.",
-    "home.display2": "Simple. Private. Customizable. Fast.",
+    "home.display2": "Simple. Customizable. Private. Fast.",
     "home.performant": "Fast",
     "home.mobile": "Mobile",
     "home.private": "Private",
@@ -166,7 +166,7 @@
     "account.yourEmail": "Your email address:",
     "menu.feedback": "Feedback",
     "feedback.text": "Please leave your feedback on the beta in the discussion below.",
-    "help.intro2": "Your question is still not answered? Write us an {email}!",
+    "help.intro2": "Your question is still not answered? Write us an {email} or leave a comment in the discussion below.",
     "help.email": "email",
     "help.question1": "How can I add a bookmark?",
     "help.question2": "How can I modify a bookmark?",
@@ -191,7 +191,7 @@
     "help.bookmarklet": "Bookmarklet",
     "help.bookmarklet.text": "You can use our bookmarklet to quickly add a website to booky. Simply drag the following link into the bookmarks bar of your browser:",
     "help.extensions": "Browser extensions",
-    "help.beta": "Beta",
+    "help.beta": "Beta phase",
     "help.beta.question1": "Where is feature X/Y/Z and when is the beta phase completed?",
     "help.beta.question2": "Is the beta connected to my regular booky account?",
     "help.beta.answer1": "We will gradually add all previous features of booky, as well as new features. The beta can be used during the whole time. There is no official release date.",
@@ -199,5 +199,6 @@
     "help.customizations": "Customize booky",
     "help.categories": "Categories",
     "help.bookmarks": "Bookmarks",
-    "help.collections": "Collections"
+    "help.collections": "Collections",
+    "help.account": "Account"
 }
