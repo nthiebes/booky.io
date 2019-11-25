@@ -37,7 +37,7 @@ export default class ErrorMessage extends Component {
           'error',
           animate && !noAnimation && 'error--animate',
           noAnimation && 'error--show',
-          className && className
+          className
         ) }
         role="alert"
       >
@@ -46,7 +46,7 @@ export default class ErrorMessage extends Component {
         ) }
         <FormattedMessage
           id={ message }
-          values={ { mail: <Link to="/contact" color="dark">{ <FormattedMessage id="error.email" /> }</Link> } }
+          values={ { mail: <Link href="mailto:hello@booky.io" color="dark">{ <FormattedMessage id="error.email" /> }</Link> } }
         />
       </P>
     );
@@ -59,7 +59,6 @@ ErrorMessage.propTypes = {
   hasIcon: PropTypes.bool,
   noAnimation: PropTypes.bool
 };
-
 
 ErrorMessage.defaultProps = {
   message: 'error.default'
