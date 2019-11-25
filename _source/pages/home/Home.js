@@ -6,13 +6,14 @@ import classNames from 'classnames';
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
-import { H2, Display } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
-import { ButtonSmallPrimary, ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
-import Illustration from '../../atoms/illustration';
+// import { H2, Display } from '../../atoms/headline';
+// import P from '../../atoms/paragraph';
+import { ButtonSmallPrimary, ButtonLargeBlue } from '../../atoms/button';
+// import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
-import Testimonials from '../../molecules/testimonials';
-import Feature from '../../molecules/feature';
+// import Testimonials from '../../molecules/testimonials';
+// import Feature from '../../molecules/feature';
+import Empty from '../../molecules/empty';
 
 class Home extends Component {
   static propTypes = {
@@ -65,8 +66,16 @@ class Home extends Component {
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
-      <Page home className="home">
-        <Section className="home__header">
+      <Page home> {/* className="home" */}
+        <Section>
+          <Empty illustration="monitor-window">
+            <FormattedMessage id="misc.comingSoon" />
+          </Empty>
+          <ButtonLargeBlue icon="account" to="/login" className="home__login-button">
+            <FormattedHTMLMessage id="header.login" />
+          </ButtonLargeBlue>
+        </Section>
+        {/* <Section className="home__header">
           <Display noMargin className="home__headline">
             <FormattedMessage id="home.display" />
           </Display>
@@ -177,7 +186,7 @@ class Home extends Component {
           <ButtonLargeLight icon="about" to="/about">
             <FormattedHTMLMessage id="header.learnMore" />
           </ButtonLargeLight>
-        </Section>
+        </Section> */}
       </Page>
     );
   }
