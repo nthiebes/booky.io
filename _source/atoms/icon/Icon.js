@@ -62,12 +62,12 @@ export default class Icon extends Component {
     const icon = pending ? 'spinner' : this.props.icon;
     const link = `_assets/symbol-defs.svg?=${process.env.VERSION}#icon-${icon}`;
     const additionalProps = {};
-    let CustomTag = 'button';
+    const CustomTag = isButton ? 'button' : 'span';
     
     if (isButton) {
       additionalProps['aria-label'] = label;
+      additionalProps.type = 'button';
     } else {
-      CustomTag = 'span';
       additionalProps['aria-hidden'] = true;
     }
 

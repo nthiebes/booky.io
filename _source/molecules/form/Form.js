@@ -33,7 +33,12 @@ export default class Form extends Component {
 
     return (
       // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
-      <form ref={ (form) => { this.form = form; } } onSubmit={ this.handleSubmit } className={ className } onClick={ onClick }>
+      <form
+        ref={ (form) => { this.form = form; } }
+        onSubmit={ this.handleSubmit }
+        className={ className }
+        onClick={ onClick }
+      >
         { children }
       </form>
     );

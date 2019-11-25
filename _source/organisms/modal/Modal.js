@@ -115,7 +115,9 @@ export default class Modal extends PureComponent {
 
     modalData.id = parseInt(modalData.id, 10);
     modalData.categoryId = parseInt(modalData.categoryId, 10);
-    modalData.url = this.parseBookmarkUrl(modalData.url);
+    if (modalData.url) {
+      modalData.url = this.parseBookmarkUrl(modalData.url);
+    }
 
     if (this.modalMap[modal].action) {
       this.setState({
