@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import Component from './Toolbar';
 import { updateCurrentlySticky } from '../../_state/toolbar/actions';
-import { openModal } from '../../_state/modal/actions';
 import { changeDashboard } from '../../_state/dashboards/actions';
+import { openModal } from '../../_state/modal/actions';
 
 export const mapStateToProps = (state) => ({
   currentlySticky: state.toolbar.currentlySticky,
@@ -11,13 +11,15 @@ export const mapStateToProps = (state) => ({
   dashboards: state.dashboards,
   activeDashboardName: (state.dashboards.items.find((dashboard) => dashboard.id === state.user.settings.defaultDashboardId) || {}).name,
   dashboardsStyle: state.user.settings.dashboardsStyle,
-  darkMode: state.user.settings.darkMode
+  darkMode: state.user.settings.darkMode,
+  categoriesPending: state.dashboards.pending,
+  hasCategories: state.categories.length > 0
 });
 
 export const mapDispatchToProps = {
   updateCurrentlySticky,
-  openModal,
-  changeDashboard
+  changeDashboard,
+  openModal
 };
 
 const Container = connect(

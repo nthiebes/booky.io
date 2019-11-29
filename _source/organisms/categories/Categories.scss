@@ -1,5 +1,11 @@
 .categories {
+  margin-top: 3rem;
   padding: 0 3%;
+
+  @include desktop {
+    margin-top: 30px;
+    padding: 0 30px;
+  }
 }
 
 .categories--grid {
@@ -13,6 +19,7 @@
 
   @include desktop {
     grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 36px;
   }
 
   @include fullhd {

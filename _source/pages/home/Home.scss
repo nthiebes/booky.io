@@ -152,29 +152,6 @@
   text-align: center;
 }
 
-.home__add-category {
-  margin-left: calc(3% + 6px);
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-
-  @include desktop {
-    margin-top: calc(3rem + 6px);
-    margin-bottom: 2rem;
-  }
-}
-
-.home__add-category--sidebar {
-  @include desktop {
-    margin-left: calc(56px + 3%);
-  }
-}
-
-.home__add-category--shifted {
-  @include desktop {
-    margin-left: calc(306px + 3%);
-  }
-}
-
 .home__login-button {
   margin-top: 2rem;
   position: relative;
