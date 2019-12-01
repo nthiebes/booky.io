@@ -8,7 +8,7 @@ import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
 // import { H2, Display } from '../../atoms/headline';
 // import P from '../../atoms/paragraph';
-import { ButtonSmallPrimary, ButtonLargeBlue } from '../../atoms/button';
+import { ButtonLargeBlue } from '../../atoms/button';
 // import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 // import Testimonials from '../../molecules/testimonials';
@@ -22,17 +22,10 @@ class Home extends Component {
     hasSidebar: PropTypes.bool.isRequired,
     getDashboards: PropTypes.func.isRequired,
     intl: PropTypes.object.isRequired,
-    openModal: PropTypes.func.isRequired,
     categoriesPending: PropTypes.bool,
     hasCategories: PropTypes.bool,
     dashboardsOpen: PropTypes.bool
   };
-
-  constructor(props) {
-    super(props);
-
-    this.onAddClick = this.onAddClick.bind(this);
-  }
 
   componentDidMount() {
     const { loggedIn, getDashboards } = this.props;
@@ -40,28 +33,13 @@ class Home extends Component {
     loggedIn && getDashboards();
   }
 
-  onAddClick() {
-    this.props.openModal('AddCategory');
-  }
-
   render() {
-    const { loggedIn, blurContent, hasSidebar, categoriesPending, hasCategories, dashboardsOpen } = this.props;
+    const { loggedIn, blurContent, hasSidebar } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
-        { hasSidebar && <DashboardsSidebar className={ classNames(blurContent && 'page--blur') } /> }
-        { !categoriesPending && hasCategories && (
-          <ButtonSmallPrimary
-            icon="add"
-            className={ classNames(
-              'home__add-category',
-              hasSidebar && 'home__add-category--sidebar',
-              hasSidebar && dashboardsOpen && 'home__add-category--shifted',
-            ) }
-            onClick={ this.onAddClick }
-          >
-            <FormattedHTMLMessage id="category.add" />
-          </ButtonSmallPrimary>
+        { hasSidebar && (
+          <DashboardsSidebar className={ classNames(blurContent && 'page--blur') } />
         ) }
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>

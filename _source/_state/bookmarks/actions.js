@@ -125,7 +125,7 @@ export const dragBookmark = (dragData) => ((dispatch) => {
   dispatch(editBookmark({
     id: bookmarkId,
     categoryId: destinationCategoryId,
-    position: destinationIndex,
+    position: destinationIndex + 1,
     shouldUpdate: false
   }));
 });

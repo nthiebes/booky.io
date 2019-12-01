@@ -1,6 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FormattedHTMLMessage } from 'react-intl';
 
 import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
@@ -8,6 +9,7 @@ import { H1 } from '../../atoms/headline';
 import Skeleton from '../../atoms/skeleton';
 import Search from '../../molecules/search';
 import { TabBar, Tab } from '../../molecules/tab-bar';
+import { ButtonSmallPrimary } from '../../atoms/button';
 
 class Toolbar extends PureComponent {
   static propTypes = {
@@ -17,11 +19,13 @@ class Toolbar extends PureComponent {
     currentlySticky: PropTypes.bool.isRequired,
     dashboards: PropTypes.object.isRequired,
     activeDashboardName: PropTypes.string,
-    openModal: PropTypes.func.isRequired,
     className: PropTypes.string,
     dashboardsStyle: PropTypes.string.isRequired,
     changeDashboard: PropTypes.func.isRequired,
-    darkMode: PropTypes.bool.isRequired
+    darkMode: PropTypes.bool.isRequired,
+    categoriesPending: PropTypes.bool,
+    hasCategories: PropTypes.bool,
+    openModal: PropTypes.func.isRequired
   }
 
   state = {
@@ -78,8 +82,8 @@ class Toolbar extends PureComponent {
     return '';
   }
 
-  onIconClick = () => {
-    this.props.openModal('EditStructure');
+  onAddClick = () => {
+    this.props.openModal('AddCategory');
   }
 
   render() {
@@ -89,18 +93,20 @@ class Toolbar extends PureComponent {
       dashboardsStyle,
       dashboards,
       changeDashboard,
-      darkMode
+      darkMode,
+      categoriesPending,
+      hasCategories
     } = this.props;
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
-        {/** onClick={ this.onIconClick }
-          isButton */}
         { dashboardsStyle === 'sidebar' && (
-          <H1 style="h3" className="toolbar__headline">
+          <Fragment>
             <Icon icon="collection" color="grey" />
-            { activeDashboardName || <Skeleton /> }
-          </H1>
+            <H1 style="h3" className="toolbar__headline" noMargin>
+              { activeDashboardName || <Skeleton /> }
+            </H1>
+          </Fragment>
         ) }
         { dashboardsStyle === 'tabs' && (
           <TabBar className="toolbar__tabs">
@@ -114,6 +120,16 @@ class Toolbar extends PureComponent {
               />
             )) }
           </TabBar>
+        ) }
+        { hasCategories && (
+          <ButtonSmallPrimary
+            icon="add"
+            className="toolbar__add-category"
+            onClick={ this.onAddClick }
+            useSkeleton={ categoriesPending }
+          >
+            <FormattedHTMLMessage id="category.add" />
+          </ButtonSmallPrimary>
         ) }
         <Search className="booky--hide-mobile-tablet" />
       </section>
