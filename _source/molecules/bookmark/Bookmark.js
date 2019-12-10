@@ -77,7 +77,7 @@ class Bookmark extends Component {
               isButton
             />
             <Icon
-              className="bookmark__icon bookmark__icon--drag"
+              className="bookmark__icon"
               icon="drag"
               label={ intl.formatMessage({ id: 'bookmark.drag' }) }
               dragHandleProps={ provided.dragHandleProps }

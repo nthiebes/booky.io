@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 import Icon from '../../../atoms/icon';
 import { H2 } from '../../../atoms/headline';
@@ -96,61 +97,89 @@ class DashboardsList extends PureComponent {
             useSkeleton={ noDashboards }
           />
         </div>
-        <ul className={ classNames(
-          'dashboards__list',
-          editMode && 'dashboards__list--edit-mode',
-          !pinned && 'dashboards__list--hidden'
-        ) }>
-          { dashboards.map((dashboard) => (
-            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-            <li
-              key={ dashboard.id }
+        <Droppable droppableId="dashboards" type="dashboard">
+          { (providedDroppable) => (
+            <ul
               className={ classNames(
-                'dashboards__item',
-                dashboard.id === activeId && 'dashboards__item--active',
-                darkMode && 'dashboards__item--dark-mode'
+                'dashboards__list',
+                editMode && 'dashboards__list--edit-mode',
+                !pinned && 'dashboards__list--hidden'
               ) }
-              onClick={ this.handleDashboardClick(dashboard.id) }
-              onKeyDown={ (event) => { this.handleKeyDown(event, dashboard.id); } }
-              tabIndex={ (useTabIndex || pinned) && !editMode ? '0' : '-1' }
+              ref={ providedDroppable.innerRef }
+              { ...providedDroppable.droppableProps }
             >
-              <label className={ classNames('dashboards__label', darkMode && 'dashboards__label--dark-mode') }>
-                { dashboard.name }
-              </label>
-              <Icon
-                className="dashboards__icon"
-                icon="edit"
-                label={ intl.formatMessage({ id: 'dashboard.edit' }) }
-                stopPropagation
-                onClick={ () => this.onIconClick('EditDashboard', dashboard) }
-                tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
-                isButton
-              />
-              <Icon
-                className="dashboards__icon dashboards__icon--delete"
-                icon="delete"
-                label={ intl.formatMessage({ id: 'dashboard.delete' }) }
-                stopPropagation
-                onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
-                tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
-                isButton
-              />
-            </li>
-          )) }
-          { noDashboards && (
-            <Fragment>
-              <li className="dashboards__item--pending">
-                <Skeleton />
-              </li>
-              <li className="dashboards__item--pending">
-                <Skeleton />
-              </li>
-              <li className="dashboards__item--pending">
-                <Skeleton />
-              </li>
-            </Fragment>
+              { dashboards.map((dashboard, index) => (
+                <Draggable
+                  index={ index }
+                  draggableId={ `dashboard-${dashboard.id}` }
+                  key={ `dashboard-${dashboard.id}` }
+                  disableInteractiveElementBlocking
+                >
+                  { (provided) => (
+                    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+                    <li
+                      key={ dashboard.id }
+                      className={ classNames(
+                        'dashboards__item',
+                        dashboard.id === activeId && 'dashboards__item--active',
+                        darkMode && 'dashboards__item--dark-mode'
+                      ) }
+                      onClick={ this.handleDashboardClick(dashboard.id) }
+                      onKeyDown={ (event) => { this.handleKeyDown(event, dashboard.id); } }
+                      tabIndex={ (useTabIndex || pinned) && !editMode ? '0' : '-1' }
+                      { ...provided.draggableProps }
+                      ref={ provided.innerRef }
+                    >
+                      <label className={ classNames('dashboards__label', darkMode && 'dashboards__label--dark-mode') }>
+                        { dashboard.name }
+                      </label>
+                      <Icon
+                        className="dashboards__icon"
+                        icon="edit"
+                        label={ intl.formatMessage({ id: 'dashboard.edit' }) }
+                        stopPropagation
+                        onClick={ () => this.onIconClick('EditDashboard', dashboard) }
+                        tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
+                        isButton
+                      />
+                      <Icon
+                        className="dashboards__icon dashboards__icon--delete"
+                        icon="delete"
+                        label={ intl.formatMessage({ id: 'dashboard.delete' }) }
+                        stopPropagation
+                        onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
+                        tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
+                        isButton
+                      />
+                      <Icon
+                        className="dashboards__icon"
+                        icon="drag"
+                        label={ intl.formatMessage({ id: 'dashboard.drag' }) }
+                        dragHandleProps={ provided.dragHandleProps }
+                        tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
+                        isButton
+                      />
+                    </li>
+                  ) }
+                </Draggable>
+              )) }
+              { noDashboards && (
+                <Fragment>
+                  <li className="dashboards__item--pending">
+                    <Skeleton />
+                  </li>
+                  <li className="dashboards__item--pending">
+                    <Skeleton />
+                  </li>
+                  <li className="dashboards__item--pending">
+                    <Skeleton />
+                  </li>
+                </Fragment>
+              ) }
+              { providedDroppable.placeholder }
+            </ul>
           ) }
-        </ul>
+        </Droppable>
         <ButtonSmallPrimary
           icon="add"
           className="dashboards__button"

@@ -12,13 +12,6 @@ const loadingSpinner = document.getElementById('loading__spinner');
 const loadingHeader = document.getElementById('loading__header');
 
 export default class Booky extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onDragStart = this.onDragStart.bind(this);
-    this.onDragEnd = this.onDragEnd.bind(this);
-  }
-
   componentDidMount() {
     loadingSpinner.addEventListener('transitionend', this.transitionEndCallback);
     loadingSpinner.classList.add('loading__spinner--hide');
@@ -30,18 +23,18 @@ export default class Booky extends Component {
     loadingHeader.parentNode.removeChild(loadingHeader);
   }
 
-  onDragStart() {
+  onDragStart = () => {
     // console.log('onDragStart', initial);
   }
 
-  onDragEnd(result) {
+  onDragEnd = (result) => {
     // console.log('onDragEnd', result);
     if (result.destination) {
       if (result.type === 'dashboard') {
         this.props.dragDashboard({
           destinationIndex: result.destination.index,
           sourceIndex: result.source.index,
-          dashboardId: parseInt(result.draggableId, 10)
+          dashboardId: parseInt(result.draggableId.replace('dashboard-', ''), 10)
         });
       }
       if (result.type === 'category') {

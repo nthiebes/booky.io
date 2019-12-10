@@ -9,11 +9,6 @@ export const updateOffset = (offset) => ({
   offset
 });
 
-export const dragDashboard = (data) => ({
-  type: 'DRAG_DASHBOARD',
-  data
-});
-
 export const dragCategory = (data) => ({
   type: 'DRAG_CATEGORY',
   data
@@ -86,24 +81,27 @@ export const addDashboard = ({ name, onSuccess, onError }) => ((dispatch) => {
   });
 });
 
-export const editDashboard = ({ name, id, onSuccess, onError }) => ((dispatch) => {
+export const editDashboard = ({ name, position, id, onSuccess, onError, shouldUpdate = true }) => ((dispatch) => {
   fetcher({
     url: `/dashboards/${id}`,
-    method: 'PUT',
+    method: 'PATCH',
     params: {
-      name
+      name,
+      position
     },
     onSuccess: () => {
-      dispatch({
-        type: 'EDIT_DASHBOARD',
-        name,
-        id
-      });
-      onSuccess();
+      if (shouldUpdate) {
+        dispatch({
+          type: 'EDIT_DASHBOARD',
+          name,
+          id
+        });
+      }
+      onSuccess && onSuccess();
     },
     onError: () => {
       // console.log('error', error);
-      onError();
+      onError && onError();
     }
   });
 });
@@ -132,4 +130,19 @@ export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch
       onError();
     }
   });
+});
+
+export const dragDashboard = (dragData) => ((dispatch) => {
+  const { destinationIndex, dashboardId } = dragData;
+
+  dispatch({
+    type: 'DRAG_DASHBOARD',
+    dragData
+  });
+
+  dispatch(editDashboard({
+    id: dashboardId,
+    position: destinationIndex + 1,
+    shouldUpdate: false
+  }));
 });

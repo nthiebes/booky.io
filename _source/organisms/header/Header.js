@@ -174,7 +174,7 @@ class Header extends PureComponent {
               </ButtonSmallLight>
             </Fragment>
           ) }
-          <ButtonSmallLight className="booky--hide-desktop" onClick={ this.onMenuClick }>
+          <ButtonSmallLight className="booky--hide-desktop header__menu" onClick={ this.onMenuClick }>
             <FormattedHTMLMessage id="header.menu" />
           </ButtonSmallLight>
         </div>
