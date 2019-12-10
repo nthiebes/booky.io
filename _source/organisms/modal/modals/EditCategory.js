@@ -5,38 +5,50 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Base from '../Base';
 import Input from '../../../atoms/input';
 import Label from '../../../atoms/label';
+import Select from '../../../atoms/select';
 import ColorPicker from '../../../molecules/color-picker';
 
 class EditCategory extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onNameChange = this.onNameChange.bind(this);
-    this.onColorChange = this.onColorChange.bind(this);
-    this.state = {
-      name: props.data.name,
-      color: props.data.color
-    };
+  state = {
+    name: this.props.data.name,
+    color: this.props.data.color,
+    dashboardId: this.props.data.activeDashboard
   }
 
-  onNameChange(value) {
+  onNameChange = (value) => {
     this.setState({
       name: value
     });
   }
 
-  onColorChange(value) {
+  onColorChange = (value) => {
     this.setState({
       color: value
+    });
+  }
+
+  onDashboardChange = (value) => {
+    this.setState({
+      dashboardId: value
     });
   }
 
   render() {
     const { intl, pending, data, ...props } = this.props;
     const { name, color } = this.state;
+    const options = [
+      ...data.dashboards.map(({ id, name: dashboardName }) => ({
+        text: dashboardName,
+        value: id
+      }))
+    ];
 
     return (
-      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editCategory' }) }>
+      <Base
+        { ...props }
+        pending={ pending }
+        headline={ intl.formatMessage({ id: 'modal.editCategory' }) }
+      >
         <Input
           id="category-name"
           name="name"
@@ -56,6 +68,15 @@ class EditCategory extends Component {
           onChange={ this.onColorChange }
           disabled={ pending }
           isLegacy
+        />
+        <Select
+          id="category-dashboard"
+          label={ intl.formatMessage({ id: 'modal.editCategoryDashboard' }) }
+          options={ options }
+          onChange={ this.onDashboardChange }
+          selected={ data.activeDashboard.toString() }
+          disabled={ pending }
+          name="dashboardId"
         />
         <Input
           name="id"

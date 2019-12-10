@@ -66,7 +66,6 @@ class Customize extends PureComponent {
         <ColorPicker
           value={ (navColor).toString() }
           onChange={ this.handleColorChange }
-          className="customize__color-picker"
         />
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.darkMode'}) }

@@ -25,14 +25,13 @@ export const getCategories = (id) => ((dispatch) => {
   });
 });
 
-export const addCategory = ({ dashboard, color, name, position, onError, onSuccess }) => ((dispatch) => {
+export const addCategory = ({ dashboardId, color, name, position, onError, onSuccess }) => ((dispatch) => {
   fetcher({
-    url: `/dashboards/${dashboard}/categories`,
+    url: `/dashboards/${dashboardId}/categories`,
     method: 'POST',
     params: {
       color,
       name,
-      dashboard,
       position
     },
     onSuccess: ({ id }) => {
@@ -52,14 +51,14 @@ export const addCategory = ({ dashboard, color, name, position, onError, onSucce
   });
 });
 
-export const editCategory = ({ id, color, name, hidden, dashboard, onError, onSuccess }) => ((dispatch) => {
+export const editCategory = ({ id, color, name, hidden, dashboardId, onError, onSuccess }) => ((dispatch) => {
   fetcher({
     url: `/categories/${id}`,
     method: 'PATCH',
     params: {
       color,
       name,
-      dashboard,
+      dashboardId,
       hidden
     },
     onSuccess: () => {
@@ -67,7 +66,7 @@ export const editCategory = ({ id, color, name, hidden, dashboard, onError, onSu
         type: 'EDIT_CATEGORY',
         color,
         name,
-        dashboard,
+        dashboardId,
         id,
         hidden
       });

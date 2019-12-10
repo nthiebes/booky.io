@@ -105,10 +105,11 @@ export default class Modal extends PureComponent {
   )
 
   handleSave = (modalData) => {
-    const { modal, data } = this.props;
+    const { modal } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
     modalData.categoryId = parseInt(modalData.categoryId, 10);
+    modalData.dashboardId = parseInt(modalData.dashboardId, 10);
     if (modalData.url) {
       modalData.url = this.parseBookmarkUrl(modalData.url);
     }
@@ -121,7 +122,6 @@ export default class Modal extends PureComponent {
 
       this.modalMap[modal].action({
         ...modalData,
-        dashboard: data.activeDashboard,
         onSuccess: () => {
           this.closeModal();
         },
