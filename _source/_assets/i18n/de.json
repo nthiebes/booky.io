@@ -200,5 +200,6 @@
     "help.categories": "Kategorien",
     "help.bookmarks": "Lesezeichen",
     "help.collections": "Sammlungen",
-    "help.account": "Account"
+    "help.account": "Account",
+    "modal.editCategoryDashboard": "Sammlung:"
 }

@@ -200,5 +200,6 @@
     "help.categories": "Categories",
     "help.bookmarks": "Bookmarks",
     "help.collections": "Collections",
-    "help.account": "Account"
+    "help.account": "Account",
+    "modal.editCategoryDashboard": "Collection:"
 }
