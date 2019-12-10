@@ -25,3 +25,18 @@
     }
   }
 }
+
+.select--dark-mode {
+  background-color: $color--dark;
+  color: $color-font--white;
+
+  &:focus {
+    background-color: $color--dark;
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: $color--dark;
+    }
+  }
+}

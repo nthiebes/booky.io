@@ -1,3 +1,3 @@
-import component from './Select';
+import component from './SelectContainer';
 
 export default component;
