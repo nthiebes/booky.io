@@ -201,5 +201,6 @@
     "help.bookmarks": "Bookmarks",
     "help.collections": "Collections",
     "help.account": "Account",
-    "modal.editCategoryDashboard": "Collection:"
+    "modal.editCategoryDashboard": "Collection:",
+    "customize.autofill": "Automatically fill bookmark title"
 }

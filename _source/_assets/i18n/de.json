@@ -201,5 +201,6 @@
     "help.bookmarks": "Lesezeichen",
     "help.collections": "Sammlungen",
     "help.account": "Account",
-    "modal.editCategoryDashboard": "Sammlung:"
+    "modal.editCategoryDashboard": "Sammlung:",
+    "customize.autofill": "Lesezeichen-Titel automatisch ausfüllen"
 }
