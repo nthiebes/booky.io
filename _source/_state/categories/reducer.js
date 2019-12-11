@@ -104,7 +104,7 @@ const categories = (state = [], action) => {
 
     case 'EDIT_CATEGORY': {
       return state.filter((category) => {
-        if (category.id !== id) {
+        if (category.id !== id || !dashboardId) {
           return true;
         }
 
