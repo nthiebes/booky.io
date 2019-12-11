@@ -3,7 +3,7 @@ import initialState from '../../initialState';
 
 // eslint-disable-next-line max-statements
 const dashboards = (state = {}, action) => {
-  const { name, id, type } = action;
+  const { name, id, type, dragData } = action;
 
   switch (type) {
     case 'ADD_DASHBOARD':
@@ -64,7 +64,7 @@ const dashboards = (state = {}, action) => {
       };
 
     case 'DRAG_DASHBOARD': {
-      const { destinationIndex, sourceIndex } = action.data;
+      const { destinationIndex, sourceIndex } = dragData;
       const items = [...state.items];
 
       arrayMove(items, sourceIndex, destinationIndex);

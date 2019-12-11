@@ -14,7 +14,8 @@ export default class Select extends Component {
     name: PropTypes.string,
     required: PropTypes.bool,
     selected: PropTypes.string,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    darkMode: PropTypes.bool
   }
 
   onBlur = (event) => {
@@ -22,7 +23,7 @@ export default class Select extends Component {
   }
 
   render() {
-    const { options, className, label, id, name, required, selected, disabled } = this.props;
+    const { options, className, label, id, name, required, selected, disabled, darkMode } = this.props;
 
     return (
       <Fragment>
@@ -34,7 +35,11 @@ export default class Select extends Component {
           onBlur={ this.onBlur }
           defaultValue={ selected }
           disabled={ disabled }
-          className={ classNames('select', className) }>
+          className={ classNames(
+            'select',
+            darkMode && 'select--dark-mode',
+            className
+          ) }>
           { options.map(({ text, value }) => (
             <option key={ value } value={ value }>
               { text }

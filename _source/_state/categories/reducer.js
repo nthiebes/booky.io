@@ -10,7 +10,7 @@ const categories = (state = [], action) => {
     id,
     position,
     newId,
-    dashboard,
+    dashboardId,
     hidden,
     bookmarks,
     pending,
@@ -103,7 +103,13 @@ const categories = (state = [], action) => {
       ];
 
     case 'EDIT_CATEGORY': {
-      return state.map((category) => {
+      return state.filter((category) => {
+        if (category.id !== id || !dashboardId) {
+          return true;
+        }
+
+        return category.dashboardId === dashboardId;
+      }).map((category) => {
         if (category.id !== id) {
           return category;
         }
@@ -111,11 +117,11 @@ const categories = (state = [], action) => {
         const data = removeUndefined({
           color,
           name,
-          dashboard,
+          dashboardId,
           id,
           hidden
         });
-        
+          
         return {
           ...category,
           ...data

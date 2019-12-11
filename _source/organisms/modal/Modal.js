@@ -109,6 +109,7 @@ export default class Modal extends PureComponent {
 
     modalData.id = parseInt(modalData.id, 10);
     modalData.categoryId = parseInt(modalData.categoryId, 10);
+    modalData.dashboardId = parseInt(modalData.dashboardId, 10);
     if (modalData.url) {
       modalData.url = this.parseBookmarkUrl(modalData.url);
     }
@@ -121,7 +122,7 @@ export default class Modal extends PureComponent {
 
       this.modalMap[modal].action({
         ...modalData,
-        dashboard: data.activeDashboard,
+        dashboardId: modalData.dashboardId || data.activeDashboard,
         onSuccess: () => {
           this.closeModal();
         },
