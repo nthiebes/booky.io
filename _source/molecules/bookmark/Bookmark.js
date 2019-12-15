@@ -48,9 +48,22 @@ class Bookmark extends Component {
             ref={ provided.innerRef }
           >
             { !favicon || favicon === 'default' ? (
-              <Icon icon="earth" size="tiny" className="bookmark__favicon" />
+              <Icon
+                icon="earth"
+                size="tiny"
+                className={ classNames('bookmark__favicon', darkMode && 'bookmark__favicon--dark-mode') }
+                dragHandleProps={ provided.dragHandleProps }
+              />
             ) : (
-              <img src={ favicon } height="16" width="16" alt="" className="bookmark__favicon" />
+              <img
+                src={ favicon }
+                height="16"
+                width="16"
+                alt=""
+                className="bookmark__favicon"
+                { ...provided.dragHandleProps }
+                tabIndex="-1"
+              />
             ) }
             <a
               className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') }

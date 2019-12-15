@@ -87,9 +87,9 @@ export default class Icon extends Component {
           title={ label }
           onClick={ this.handleClick }
           onKeyDown={ this.handleKeyDown }
-          tabIndex={ tabIndex }
           { ...additionalProps }
           { ...dragHandleProps }
+          tabIndex={ tabIndex }
         >
           <svg
             focusable="false"
