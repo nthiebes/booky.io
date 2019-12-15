@@ -20,7 +20,8 @@ class Customize extends PureComponent {
     blurEffect: PropTypes.bool.isRequired,
     stickyHeader: PropTypes.bool.isRequired,
     stickyToolbar: PropTypes.bool.isRequired,
-    darkMode: PropTypes.bool.isRequired
+    darkMode: PropTypes.bool.isRequired,
+    autofillBookmarkNames: PropTypes.bool
   }
 
   handleColorChange = (value) => {
@@ -52,7 +53,8 @@ class Customize extends PureComponent {
       blurEffect,
       stickyHeader,
       stickyToolbar,
-      darkMode
+      darkMode,
+      autofillBookmarkNames
     } = this.props;
 
     return (
@@ -141,6 +143,13 @@ class Customize extends PureComponent {
           name="openLinksInNewTab"
           onChange={ this.handleCheckboxChange }
           checked={ newtab }
+        />
+        <Checkbox
+          label={ intl.formatMessage({ id: 'customize.autofill'}) }
+          id="autofillBookmarkNames"
+          name="autofillBookmarkNames"
+          onChange={ this.handleCheckboxChange }
+          checked={ autofillBookmarkNames }
         />
         {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.preserveEditMode'}) }

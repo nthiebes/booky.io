@@ -60,7 +60,8 @@ const categories = (state = [], action) => {
             return {
               ...bookmark,
               url,
-              name
+              name,
+              favicon
             };
           })
         };

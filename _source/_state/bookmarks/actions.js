@@ -129,3 +129,11 @@ export const dragBookmark = (dragData) => ((dispatch) => {
     shouldUpdate: false
   }));
 });
+
+export const getTitle = ({ url, onSuccess, onError }) => (() => {
+  fetcher({
+    url: `/helpers/page-title/?url=${url}`,
+    onSuccess: ({ title }) => { onSuccess(title); },
+    onError
+  });
+});

@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { abortFetch } from '../../_utils/fetcher';
+import { parseBookmarkUrl } from '../../_utils/url';
 
-import AddBookmark from './modals/AddBookmark';
-import EditBookmark from './modals/EditBookmark';
+import AddBookmark from './modals/AddBookmarkContainer';
+import EditBookmark from './modals/EditBookmarkContainer';
 import DeleteBookmark from './modals/DeleteBookmark';
 import AddCategory from './modals/AddCategory';
 import EditCategory from './modals/EditCategory';
@@ -100,10 +101,6 @@ export default class Modal extends PureComponent {
     }
   }
 
-  parseBookmarkUrl = (url) => (
-    url.match(/^([a-z]+:+)\/\/|^\/\//i) ? url : `//${url}`
-  )
-
   handleSave = (modalData) => {
     const { modal, data } = this.props;
 
@@ -111,7 +108,7 @@ export default class Modal extends PureComponent {
     modalData.categoryId = parseInt(modalData.categoryId, 10);
     modalData.dashboardId = parseInt(modalData.dashboardId, 10);
     if (modalData.url) {
-      modalData.url = this.parseBookmarkUrl(modalData.url);
+      modalData.url = parseBookmarkUrl(modalData.url);
     }
 
     if (this.modalMap[modal].action) {
