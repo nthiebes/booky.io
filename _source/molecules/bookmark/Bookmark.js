@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
@@ -6,15 +6,23 @@ import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 import Icon from '../../atoms/icon';
 
-class Bookmark extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onEditClick = this.onEditClick.bind(this);
-    this.onDeleteClick = this.onDeleteClick.bind(this);
+class Bookmark extends PureComponent {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    editMode: PropTypes.bool.isRequired,
+    target: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    openModal: PropTypes.func.isRequired,
+    categoryId: PropTypes.number.isRequired,
+    index: PropTypes.number.isRequired,
+    intl: PropTypes.object.isRequired,
+    newtab: PropTypes.bool.isRequired,
+    favicon: PropTypes.string,
+    darkMode: PropTypes.bool.isRequired
   }
 
-  onEditClick() {
+  onEditClick = () => {
     const { url, name, id, openModal, categoryId } = this.props;
 
     openModal('EditBookmark', {
@@ -25,7 +33,7 @@ class Bookmark extends Component {
     });
   }
 
-  onDeleteClick() {
+  onDeleteClick = () => {
     const { url, name, id, openModal, categoryId } = this.props;
 
     openModal('DeleteBookmark', {
@@ -105,18 +113,3 @@ class Bookmark extends Component {
 }
 
 export default injectIntl(Bookmark);
-
-Bookmark.propTypes = {
-  name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  editMode: PropTypes.bool.isRequired,
-  target: PropTypes.string,
-  id: PropTypes.number.isRequired,
-  openModal: PropTypes.func.isRequired,
-  categoryId: PropTypes.number.isRequired,
-  index: PropTypes.number.isRequired,
-  intl: PropTypes.object.isRequired,
-  newtab: PropTypes.bool.isRequired,
-  favicon: PropTypes.string,
-  darkMode: PropTypes.bool.isRequired
-};

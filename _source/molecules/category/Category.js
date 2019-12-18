@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
@@ -11,7 +11,7 @@ import { ButtonSmallPrimary } from '../../atoms/button';
 import Skeleton from '../../atoms/skeleton';
 import { ErrorMessage } from '../../atoms/messages';
 
-class Category extends Component {
+class Category extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
