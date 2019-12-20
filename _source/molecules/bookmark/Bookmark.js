@@ -48,7 +48,7 @@ class Bookmark extends PureComponent {
     const { url, name, editMode, id, index, intl, newtab, favicon, darkMode } = this.props;
 
     return (
-      <Draggable index={ index } draggableId={ `bookmark-${id}` } key={ `bookmark-${id}` } disableInteractiveElementBlocking>
+      <Draggable index={ index } draggableId={ `bookmark-${id}` } key={ `bookmark-${id}` }>
         { (provided) => (
           <li
             className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }

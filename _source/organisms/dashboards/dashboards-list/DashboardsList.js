@@ -113,7 +113,6 @@ class DashboardsList extends PureComponent {
                   index={ index }
                   draggableId={ `dashboard-${dashboard.id}` }
                   key={ `dashboard-${dashboard.id}` }
-                  disableInteractiveElementBlocking
                 >
                   { (provided) => (
                     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
