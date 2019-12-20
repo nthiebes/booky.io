@@ -44,7 +44,6 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {}
       .then((response) => checkEmptyResponse(response))
       .then(formatResponse)
       .then((response) => {
-        // console.log('success', response);
         const { data, error } = response;
 
         if (error) {
@@ -54,8 +53,11 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {}
         }
       })
       .catch((error) => {
-        // console.log('error', error);
-        onError(error.statusText || 'error.default');
+        if (error.statusText) {
+          onError(error.statusText);
+        } else if (error.message.search(/abort/i) === -1) {
+          onError('error.default');
+        }
       });
   }
 

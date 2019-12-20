@@ -13,7 +13,8 @@ export const getCategories = (id) => ((dispatch) => {
     onSuccess: (data) => {
       dispatch(setCategories(data));
       dispatch(updateDashboardsData({
-        pending: false
+        pending: false,
+        error: null
       }));
     },
     onError: (error) => {
