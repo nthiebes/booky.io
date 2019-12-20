@@ -53,4 +53,19 @@
 
 .bookmark__favicon {
   flex-shrink: 0;
+  pointer-events: initial;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $color-font--medium;
+  }
+}
+
+.bookmark__favicon.bookmark__favicon--dark-mode {
+  &:hover,
+  &:active,
+  &:focus {
+    color: $color-font--white;
+  }
 }

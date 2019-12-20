@@ -30,11 +30,15 @@ export default class Booky extends Component {
   onDragEnd = (result) => {
     // console.log('onDragEnd', result);
     if (result.destination) {
-      if (result.type === 'dashboard') {
+      if (result.type === 'dashboard-mobile' || result.type === 'dashboard-sidebar') {
         this.props.dragDashboard({
           destinationIndex: result.destination.index,
           sourceIndex: result.source.index,
-          dashboardId: parseInt(result.draggableId.replace('dashboard-', ''), 10)
+          dashboardId: parseInt(
+            result.draggableId
+              .replace('dashboard-mobile-', '')
+              .replace('dashboard-sidebar-', '')
+            , 10)
         });
       }
       if (result.type === 'category') {

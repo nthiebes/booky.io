@@ -61,7 +61,7 @@ class DashboardsSidebar extends PureComponent {
         darkMode && 'dashboards-sidebar--dark-mode',
         className
       ) }>
-        <DashboardsList />
+        <DashboardsList droppableIdSuffix="sidebar" />
         <Icon
           onClick={ this.togglePinned }
           className="dashboards-sidebar__toggle"
