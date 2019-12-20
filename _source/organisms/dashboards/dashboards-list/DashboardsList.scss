@@ -22,12 +22,6 @@
   padding: 0 !important;
 }
 
-.dashboards__icon {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-}
-
 .dashboards__list {
   transition: opacity 0.3s linear;
 }
@@ -80,13 +74,6 @@
     }
   }
 
-  .dashboards__icon {
-    opacity: 1;
-    transition: color 0.2s linear, opacity 0.2s linear;
-    width: auto;
-    overflow: inherit;
-  }
-
   .dashboards__item:first-child:last-of-type .dashboards__icon--delete {
     display: none;
   }
@@ -100,7 +87,8 @@
 }
 
 .dashboards__item--pending {
-  line-height: 2.5;
+  height: 36px;
+  line-height: 36px;
   width: 100%;
   list-style: none;
   padding: 0 calc(3vw + 6px);
@@ -115,8 +103,8 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  height: 2.5rem;
-  line-height: 2.5;
+  height: 36px;
+  line-height: 36px;
   width: 100%;
   list-style: none;
   padding: 0 calc(3vw + 6px);

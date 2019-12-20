@@ -115,6 +115,8 @@ class DashboardsList extends PureComponent {
                   index={ index }
                   draggableId={ `dashboard-${droppableIdSuffix}-${dashboard.id}` }
                   key={ `dashboard-${droppableIdSuffix}-${dashboard.id}` }
+                  disableInteractiveElementBlocking
+                  isDragDisabled={ !editMode }
                 >
                   { (provided) => {
                     const style = {
@@ -139,35 +141,37 @@ class DashboardsList extends PureComponent {
                         ref={ provided.innerRef }
                         style={ style }
                       >
-                        <label className={ classNames('dashboards__label', darkMode && 'dashboards__label--dark-mode') }>
+                        <span className={ classNames('dashboards__label', darkMode && 'dashboards__label--dark-mode') }>
                           { dashboard.name }
-                        </label>
-                        <Icon
-                          className="dashboards__icon"
-                          icon="edit"
-                          label={ intl.formatMessage({ id: 'dashboard.edit' }) }
-                          stopPropagation
-                          onClick={ () => this.onIconClick('EditDashboard', dashboard) }
-                          tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
-                          isButton
-                        />
-                        <Icon
-                          className="dashboards__icon dashboards__icon--delete"
-                          icon="delete"
-                          label={ intl.formatMessage({ id: 'dashboard.delete' }) }
-                          stopPropagation
-                          onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
-                          tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
-                          isButton
-                        />
-                        <Icon
-                          className="dashboards__icon"
-                          icon="drag"
-                          label={ intl.formatMessage({ id: 'dashboard.drag' }) }
-                          dragHandleProps={ provided.dragHandleProps }
-                          tabIndex={ (useTabIndex || pinned) && editMode ? '0' : '-1' }
-                          isButton
-                        />
+                        </span>
+                        { editMode && (
+                          <Fragment>
+                            <Icon
+                              icon="edit"
+                              label={ intl.formatMessage({ id: 'dashboard.edit' }) }
+                              stopPropagation
+                              onClick={ () => this.onIconClick('EditDashboard', dashboard) }
+                              tabIndex={ (useTabIndex || pinned) ? '0' : '-1' }
+                              isButton
+                            />
+                            <Icon
+                              className="dashboards__icon--delete"
+                              icon="delete"
+                              label={ intl.formatMessage({ id: 'dashboard.delete' }) }
+                              stopPropagation
+                              onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
+                              tabIndex={ (useTabIndex || pinned) ? '0' : '-1' }
+                              isButton
+                            />
+                            <Icon
+                              icon="drag"
+                              label={ intl.formatMessage({ id: 'dashboard.drag' }) }
+                              dragHandleProps={ provided.dragHandleProps }
+                              tabIndex={ (useTabIndex || pinned) ? '0' : '-1' }
+                              isButton
+                            />
+                          </Fragment>
+                        ) }
                       </li>
                     );
                   } }

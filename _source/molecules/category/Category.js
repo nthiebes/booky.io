@@ -108,22 +108,22 @@ class Category extends PureComponent {
           <H2 className="category__name" onClick={ this.toggleCategory } title={ name }>
             { name }
           </H2>
-          <Icon
-            className="category__icon"
-            icon="edit"
-            label={ intl.formatMessage({ id: 'category.edit' }) }
-            onClick={ this.onEditClick }
-            tabIndex={ editMode ? '0' : '-1' }
-            isButton
-          />
-          <Icon
-            className="category__icon"
-            icon="delete"
-            label={ intl.formatMessage({ id: 'category.delete' }) }
-            onClick={ this.onDeleteClick }
-            tabIndex={ editMode ? '0' : '-1' }
-            isButton
-          />
+          { editMode && (
+            <Fragment>
+              <Icon
+                icon="edit"
+                label={ intl.formatMessage({ id: 'category.edit' }) }
+                onClick={ this.onEditClick }
+                isButton
+              />
+              <Icon
+                icon="delete"
+                label={ intl.formatMessage({ id: 'category.delete' }) }
+                onClick={ this.onDeleteClick }
+                isButton
+              />
+            </Fragment>
+          ) }
           <Icon
             icon={ editMode ? 'close' : 'more-horiz' }
             label={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
