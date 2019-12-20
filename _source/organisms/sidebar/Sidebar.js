@@ -108,7 +108,7 @@ class Sidebar extends PureComponent {
         </header>
         <div className="sidebar__scroll-wrapper">
           { dashboards && dashboardsSidebar && (
-            <DashboardsList useTabIndex={ open } />
+            <DashboardsList useTabIndex={ open } droppableIdSuffix="mobile" />
           ) }
           { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
           <nav title={ intl.formatMessage({ id: 'menu.title' }) } className="sidebar__nav">
