@@ -5,13 +5,21 @@ import classNames from 'classnames';
 import Label from '../label';
 
 export default class Radio extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleInputChange = this.handleInputChange.bind(this);
+  static propTypes = {
+    id: PropTypes.string,
+    children: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.element,
+      PropTypes.string
+    ]).isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    onChange: PropTypes.func,
+    checked: PropTypes.bool
   }
 
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     const { onChange } = this.props;
 
     onChange && onChange({
@@ -41,17 +49,3 @@ export default class Radio extends Component {
     );
   }
 }
-
-Radio.propTypes = {
-  id: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string
-  ]).isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  onChange: PropTypes.func,
-  checked: PropTypes.bool
-};

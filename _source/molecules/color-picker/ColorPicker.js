@@ -5,19 +5,25 @@ import classNames from 'classnames';
 import Color from './Color';
 
 export default class ColorPicker extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.onChange = this.onChange.bind(this);
-    this.getColors = this.getColors.bind(this);
-    this.colors = [];
+  static propTypes = {
+    value: PropTypes.string,
+    className: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    darkMode: PropTypes.bool,
+    isLegacy: PropTypes.bool
+  }
+  
+  static defaultProps = {
+    value: 'color0'
   }
 
-  onChange(value) {
+  colors = [];
+
+  onChange = (value) => {
     this.props.onChange(`color${value}`);
   }
 
-  getColors() {
+  getColors = () => {
     const { isLegacy } = this.props;
     const count = 8;
     let colors = [];
@@ -63,15 +69,3 @@ export default class ColorPicker extends Component {
     );
   }
 }
-
-ColorPicker.propTypes = {
-  value: PropTypes.string,
-  className: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  darkMode: PropTypes.bool,
-  isLegacy: PropTypes.bool
-};
-
-ColorPicker.defaultProps = {
-  value: 'color0'
-};
