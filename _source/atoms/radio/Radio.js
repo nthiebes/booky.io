@@ -16,7 +16,9 @@ export default class Radio extends Component {
     value: PropTypes.string.isRequired,
     className: PropTypes.string,
     onChange: PropTypes.func,
-    checked: PropTypes.bool
+    checked: PropTypes.bool,
+    inputClassName: PropTypes.string,
+    labelClassName: PropTypes.string
   }
 
   handleInputChange = (event) => {
@@ -29,7 +31,7 @@ export default class Radio extends Component {
   }
 
   render() {
-    const { children, className, id, name, value, checked } = this.props;
+    const { children, className, id, name, value, checked, inputClassName, labelClassName } = this.props;
 
     return (
       <div className={ classNames('radio', className) }>
@@ -37,12 +39,12 @@ export default class Radio extends Component {
           type="radio"
           id={ id }
           name={ name }
-          className="radio__input"
+          className={ classNames('radio__input', inputClassName) }
           value={ value }
           onChange={ this.handleInputChange }
           defaultChecked={ checked }
         />
-        <Label htmlFor={ id } className="radio__label">
+        <Label htmlFor={ id } className={ classNames('radio__label', labelClassName) }>
           { children }
         </Label>
       </div>

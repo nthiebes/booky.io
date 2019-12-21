@@ -3,39 +3,36 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
-import Checkbox from '../../atoms/checkbox';
+import Radio from '../../atoms/radio';
 
 export default class Color extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onClick = this.onClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+  static propTypes = {
+    value: PropTypes.string.isRequired,
+    color: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired
   }
 
-  handleKeyDown(event) {
-    if (event.keyCode === 32) {
-      event.preventDefault();
-      this.props.onChange(this.props.color.key);
-    }
-  }
-
-  onClick() {
+  handleChange = () => {
     this.props.onChange(this.props.color.key);
   }
 
   render() {
-    const { color, value, darkMode } = this.props;
-    const className = classNames(
-      'color-picker__color',
-      `color-picker__color--${color.key}`,
-      value === color.key && 'color-picker__color--active',
-      darkMode && 'color-picker__color--dark-mode'
-    );
+    const { color, value } = this.props;
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex, jsx-a11y/no-static-element-interactions
-      <span className={ className } onClick={ this.onClick } onKeyDown={ this.handleKeyDown } tabIndex="0">
+      <Radio
+        className="color-picker__color"
+        inputClassName="color-picker__input"
+        labelClassName={ classNames(
+          'color-picker__label',
+          `color-picker__label--${color.key}`
+        ) }
+        id={ `color${color.key}` }
+        name="color"
+        value={ `color${value}` }
+        onChange={ this.handleChange }
+        checked={ value === color.key }
+      >
         <Icon
           icon="check"
           color="light"
@@ -44,21 +41,7 @@ export default class Color extends Component {
             value === color.key && 'color-picker__icon--active'
           ) }
         />
-        <Checkbox
-          className="color-picker__checkbox"
-          checked={ value === color.key }
-          value={ `color${value}` }
-          name="color"
-          tabIndex="-1"
-        />
-      </span>
+      </Radio>
     );
   }
 }
-
-Color.propTypes = {
-  value: PropTypes.string.isRequired,
-  color: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired,
-  darkMode: PropTypes.bool
-};
