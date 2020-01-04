@@ -121,7 +121,7 @@ class Header extends PureComponent {
                 ignoreDarkMode
                 isButton
               />
-              <Search className="booky--hide-desktop" />
+              <Search className="booky--hide-desktop" id="search-mobile" />
             </Fragment>
           ) }
           <Link
