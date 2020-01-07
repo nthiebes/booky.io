@@ -1,3 +1,1 @@
-import component from './ColorPickerContainer';
-
-export default component;
+export { default } from './ColorPicker';

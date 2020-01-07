@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
@@ -48,7 +48,13 @@ class Bookmark extends PureComponent {
     const { url, name, editMode, id, index, intl, newtab, favicon, darkMode } = this.props;
 
     return (
-      <Draggable index={ index } draggableId={ `bookmark-${id}` } key={ `bookmark-${id}` }>
+      <Draggable
+        index={ index }
+        draggableId={ `bookmark-${id}` }
+        key={ `bookmark-${id}` }
+        disableInteractiveElementBlocking
+        isDragDisabled={ !editMode }
+      >
         { (provided) => (
           <li
             className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }
@@ -81,30 +87,28 @@ class Bookmark extends PureComponent {
             >
               { name }
             </a>
-            <Icon
-              className="bookmark__icon"
-              icon="edit"
-              label={ intl.formatMessage({ id: 'bookmark.edit' }) }
-              onClick={ this.onEditClick }
-              tabIndex={ editMode ? '0' : '-1' }
-              isButton
-            />
-            <Icon
-              className="bookmark__icon"
-              icon="delete"
-              label={ intl.formatMessage({ id: 'bookmark.delete' }) }
-              onClick={ this.onDeleteClick }
-              tabIndex={ editMode ? '0' : '-1' }
-              isButton
-            />
-            <Icon
-              className="bookmark__icon"
-              icon="drag"
-              label={ intl.formatMessage({ id: 'bookmark.drag' }) }
-              dragHandleProps={ provided.dragHandleProps }
-              tabIndex={ editMode ? '0' : '-1' }
-              isButton
-            />
+            { editMode && (
+              <Fragment>
+                <Icon
+                  icon="edit"
+                  label={ intl.formatMessage({ id: 'bookmark.edit' }) }
+                  onClick={ this.onEditClick }
+                  isButton
+                />
+                <Icon
+                  icon="delete"
+                  label={ intl.formatMessage({ id: 'bookmark.delete' }) }
+                  onClick={ this.onDeleteClick }
+                  isButton
+                />
+                <Icon
+                  icon="drag"
+                  label={ intl.formatMessage({ id: 'bookmark.drag' }) }
+                  dragHandleProps={ provided.dragHandleProps }
+                  isButton
+                />
+              </Fragment>
+            ) }
           </li>
         ) }
       </Draggable>

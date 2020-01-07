@@ -1,144 +1,101 @@
 .color-picker {
   display: flex;
-  padding-bottom: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .color-picker__color {
-  border: 2px solid rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  height: 2rem;
-  transition: border-color 0.2s linear;
-  width: 2rem;
   display: inline-block;
   margin-right: 6px;
-
-  .icon {
-    opacity: 0;
-  }
-
-  &:active,
-  &:focus {
-    border-color: $color--black;
-
-    .icon {
-      opacity: 1;
-      color: $color-font--white;
-    }
-  }
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  position: relative;
 
   &:last-child {
     margin-right: 0;
   }
-
-  @include desktop() {
-    &:hover {
-      border-color: $color--black;
-
-      .icon {
-        opacity: 1;
-        color: $color-font--white;
-      }
-    }
-  }
-
-  .color-picker__icon--active {
-    opacity: 1;
-  }
 }
 
-.color-picker__color--0 {
+.color-picker__label--0 {
   background-color: $color--0;
 }
 
-.color-picker__color--1 {
+.color-picker__label--1 {
   background-color: $color--1;
 }
 
-.color-picker__color--2 {
+.color-picker__label--2 {
   background-color: $color--2;
 }
 
-.color-picker__color--3 {
+.color-picker__label--3 {
   background-color: $color--3;
 }
 
-.color-picker__color--4 {
+.color-picker__label--4 {
   background-color: $color--4;
 }
 
-.color-picker__color--5 {
+.color-picker__label--5 {
   background-color: $color--5;
 }
 
-.color-picker__color--6 {
+.color-picker__label--6 {
   background-color: $color--6;
 }
 
-.color-picker__color--7 {
+.color-picker__label--7 {
   background-color: $color--7;
 }
 
-.color-picker__color--8 {
+.color-picker__label--8 {
   background-color: $color--8;
 }
 
 .color-picker__legacy {
-  .color-picker__color--1 {
+  .color-picker__label--1 {
     background-color: $color--7;
   }
 
-  .color-picker__color--2 {
+  .color-picker__label--2 {
     background-color: $color--8;
   }
 
-  .color-picker__color--3 {
+  .color-picker__label--3 {
     background-color: $color--3;
   }
 
-  .color-picker__color--4 {
+  .color-picker__label--4 {
     background-color: $color--1;
   }
 
-  .color-picker__color--5 {
+  .color-picker__label--5 {
     background-color: $color--5;
   }
 
-  .color-picker__color--6 {
+  .color-picker__label--6 {
     background-color: $color--4;
   }
 
-  .color-picker__color--7 {
+  .color-picker__label--7 {
     background-color: $color--2;
   }
 
-  .color-picker__color--8 {
+  .color-picker__label--8 {
     background-color: $color--6;
   }
 
-  .color-picker__color--9 {
+  .color-picker__label--9 {
     background-color: $color--0;
   }
 }
 
-.color-picker__color--dark-mode {
-  &:active,
-  &:focus {
-    border-color: $color-font--white;
-  }
-
-  @include desktop {
-    &:hover {
-      border-color: $color-font--white;
-    }
-  }
+.color-picker__icon {
+  opacity: 0;
 }
 
-.color-picker__color--active {
-  border-color: $color--black;
-
-  &.color-picker__color--dark-mode {
-    border-color: $color-font--white;
-  }
+.color-picker__icon--active {
+  opacity: 1;
 }
 
 .color-picker__icon,
@@ -148,8 +105,29 @@
   width: 100%;
 }
 
-.color-picker__checkbox {
+.color-picker__input {
   opacity: 0;
   position: absolute;
-  pointer-events: none;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  &:focus ~ .color-picker__label {
+    outline: 2px dashed $color--primary;
+  }
+
+  @include desktop {
+    &:hover ~ .color-picker__label > .color-picker__icon {
+      opacity: 1;
+    }
+  }
+}
+
+.color-picker__label {
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  transition: border-color 0.2s linear;
 }

@@ -7,23 +7,25 @@ import Input from '../../atoms/input';
 import Label from '../../atoms/label';
 
 class Search extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: ''
-    };
-    this.onChange = this.onChange.bind(this);
+  static propTypes = {
+    className: PropTypes.string,
+    intl: PropTypes.object.isRequired,
+    darkMode: PropTypes.bool,
+    id: PropTypes.string.isRequired
   }
 
-  onChange(value) {
+  state = {
+    value: ''
+  }
+  
+  onChange = (value) => {
     this.setState({
       value
     });
   }
 
   render() {
-    const { className, intl, darkMode } = this.props;
+    const { className, intl, darkMode, id } = this.props;
     const { value } = this.state;
 
     return (
@@ -38,7 +40,7 @@ class Search extends Component {
           onChange={ this.onChange }
           validation={ false }
           icon="search"
-          id="search"
+          id={ id }
         />
       </div>
     );
@@ -46,9 +48,3 @@ class Search extends Component {
 }
 
 export default injectIntl(Search);
-
-Search.propTypes = {
-  className: PropTypes.string,
-  intl: PropTypes.object.isRequired,
-  darkMode: PropTypes.bool
-};

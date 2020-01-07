@@ -131,7 +131,7 @@ class Toolbar extends PureComponent {
             <FormattedHTMLMessage id="category.add" />
           </ButtonSmallPrimary>
         ) }
-        <Search className="booky--hide-mobile-tablet" />
+        <Search className="booky--hide-mobile-tablet" id="search-desktop" />
       </section>
     );
   }

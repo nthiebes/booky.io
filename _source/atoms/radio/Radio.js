@@ -5,13 +5,23 @@ import classNames from 'classnames';
 import Label from '../label';
 
 export default class Radio extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleInputChange = this.handleInputChange.bind(this);
+  static propTypes = {
+    id: PropTypes.string,
+    children: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.element,
+      PropTypes.string
+    ]).isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    onChange: PropTypes.func,
+    checked: PropTypes.bool,
+    inputClassName: PropTypes.string,
+    labelClassName: PropTypes.string
   }
 
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     const { onChange } = this.props;
 
     onChange && onChange({
@@ -21,7 +31,7 @@ export default class Radio extends Component {
   }
 
   render() {
-    const { children, className, id, name, value, checked } = this.props;
+    const { children, className, id, name, value, checked, inputClassName, labelClassName } = this.props;
 
     return (
       <div className={ classNames('radio', className) }>
@@ -29,29 +39,15 @@ export default class Radio extends Component {
           type="radio"
           id={ id }
           name={ name }
-          className="radio__input"
+          className={ classNames('radio__input', inputClassName) }
           value={ value }
           onChange={ this.handleInputChange }
           defaultChecked={ checked }
         />
-        <Label htmlFor={ id } className="radio__label">
+        <Label htmlFor={ id } className={ classNames('radio__label', labelClassName) }>
           { children }
         </Label>
       </div>
     );
   }
 }
-
-Radio.propTypes = {
-  id: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string
-  ]).isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  onChange: PropTypes.func,
-  checked: PropTypes.bool
-};

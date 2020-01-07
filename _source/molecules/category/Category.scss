@@ -2,7 +2,7 @@
   position: relative;
   list-style: none;
   min-width: 0;
-  padding-bottom: 3vw;
+  padding-bottom: 2rem;
 }
 
 .category__bookmarks {
@@ -24,13 +24,6 @@
   align-items: center;
   display: flex;
   flex-wrap: nowrap;
-
-  &.category__header--edit-mode .category__icon {
-    opacity: 1;
-    transition: color 0.2s linear, opacity 0.2s linear;
-    width: auto;
-    overflow: inherit;
-  }
 
   &::after {
     top: 2.5rem;
@@ -84,18 +77,6 @@
   &.category__toggle-icon--rotate {
     transform: rotate(-90deg);
   }
-}
-
-.category__icon {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-}
-
-.category__edit-icon--hide {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
 }
 
 .category__name {
