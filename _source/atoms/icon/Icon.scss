@@ -12,7 +12,7 @@
   &::after {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
-    content: " ";
+    content: "";
     height: 36px;
     left: 0;
     position: absolute;
@@ -260,11 +260,13 @@
   pointer-events: none;
 }
 
+/* stylelint-disable declaration-no-important */
 .icon--skeleton {
   width: 24px !important;
   height: 24px;
   margin: 6px;
 }
+/* stylelint-enable */
 
 .icon__svg {
   fill: currentColor;

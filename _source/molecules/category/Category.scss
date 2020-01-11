@@ -27,7 +27,7 @@
 
   &::after {
     top: 2.5rem;
-    content: " ";
+    content: "";
     height: 2px;
     left: 6px;
     position: absolute;
@@ -79,6 +79,7 @@
   }
 }
 
+/* stylelint-disable declaration-no-important */
 .category__name {
   display: block;
   cursor: default;
@@ -95,6 +96,7 @@
     color: $color-font--primary;
   }
 }
+/* stylelint-enable */
 
 .category__button {
   margin: 10px 6px 0 6px;

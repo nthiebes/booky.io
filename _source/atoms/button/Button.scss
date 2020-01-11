@@ -44,8 +44,10 @@
   pointer-events: none;
 }
 
+/* stylelint-disable declaration-no-important */
 .button--skeleton {
   position: relative;
   height: 2rem;
   width: 12rem !important;
 }
+/* stylelint-enable */

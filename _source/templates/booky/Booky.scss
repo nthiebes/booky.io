@@ -55,6 +55,7 @@ html {
   }
 }
 
+/* stylelint-disable property-no-vendor-prefix */
 body {
   -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
   -webkit-font-smoothing: antialiased;
@@ -63,6 +64,7 @@ body {
   height: 100%;
   color: $color-font--dark;
 }
+/* stylelint-enable */
 
 ::-moz-selection {
   color: $color-font--white;
@@ -78,9 +80,11 @@ body {
   overflow: hidden;
 }
 
+/* stylelint-disable declaration-no-important */
 .booky--no-animation {
   transition: none !important;
 }
+/* stylelint-enable */
 
 .booky--hide {
   display: none;
@@ -163,3 +167,13 @@ noscript {
   align-items: center;
   padding: 0 3%;
 }
+
+/* stylelint-disable declaration-no-important */
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+/* stylelint-enable */
