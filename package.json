@@ -54,13 +54,13 @@
     "whatwg-fetch": "3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.8.3",
-    "@babel/core": "7.8.3",
-    "@babel/node": "7.8.3",
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.8.4",
+    "@babel/node": "7.8.4",
     "@babel/plugin-proposal-class-properties": "7.8.3",
     "@babel/plugin-transform-react-constant-elements": "7.8.3",
     "@babel/polyfill": "7.8.3",
-    "@babel/preset-env": "7.8.3",
+    "@babel/preset-env": "7.8.4",
     "@babel/preset-react": "7.8.3",
     "@storybook/addon-viewport": "3.4.10",
     "@storybook/react": "3.4.10",
