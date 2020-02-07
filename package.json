@@ -97,7 +97,7 @@
     "jest-cli": "24.8.0",
     "json-loader": "0.5.7",
     "mini-css-extract-plugin": "0.9.0",
-    "mockdate": "2.0.2",
+    "mockdate": "2.0.5",
     "node-sass": "4.12.0",
     "opn-cli": "4.1.0",
     "postcss-loader": "3.0.0",
