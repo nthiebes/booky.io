@@ -82,7 +82,7 @@
     "css-loader": "2.1.1",
     "cssnano": "4.1.10",
     "enzyme": "3.9.0",
-    "enzyme-adapter-react-16": "1.13.0",
+    "enzyme-adapter-react-16": "1.15.2",
     "eslint": "5.16.0",
     "eslint-plugin-import": "2.20.1",
     "eslint-plugin-jsx-a11y": "6.2.1",
