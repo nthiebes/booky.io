@@ -110,7 +110,7 @@
     "redux-immutable-state-invariant": "2.1.0",
     "redux-mock-store": "1.5.4",
     "replace": "1.1.5",
-    "rimraf": "2.6.3",
+    "rimraf": "2.7.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
     "stylelint": "12.0.1",
