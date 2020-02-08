@@ -36,5 +36,6 @@ Logo.propTypes = {
 Logo.defaultProps = {
   alt: '',
   height: '28',
+  width: '84',
   color: 'normal'
 };

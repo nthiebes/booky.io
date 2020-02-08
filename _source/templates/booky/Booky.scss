@@ -127,9 +127,9 @@ body {
  * App loading screen
  */
 .loading__logo {
-  margin-right: 1.5rem;
-  height: 36px;
-  width: 102px;
+  margin-right: calc(1.5rem + 6px);
+  height: 28px;
+  width: 84px;
 }
 
 .loading__nav {
