@@ -90,6 +90,8 @@
 }
 
 .sidebar__logo {
+  margin: 0 6px;
+
   &:focus {
     outline: 1px dashed $color-font--white;
   }
