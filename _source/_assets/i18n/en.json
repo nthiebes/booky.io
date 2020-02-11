@@ -156,7 +156,7 @@
     "error.unauthorized": "No access. Are you logged in?",
     "header.jumpToMain": "Jump to main content",
     "header.jumpToLanguage": "Choose language",
-    "testimonials.headline": "In the words of our users",
+    "testimonials.headline": "In the words of our users:",
     "home.extensionText": "Manage your bookmarks with the booky browser extension.",
     "misc.searchLabel": "Search for bookmarks",
     "account.importStep2": "Select your file or drag it into the browser",
@@ -202,5 +202,12 @@
     "help.collections": "Collections",
     "help.account": "Account",
     "modal.editCategoryDashboard": "Collection:",
-    "customize.autofill": "Automatically fill bookmark title"
+    "customize.autofill": "Automatically fill bookmark title",
+    "home.features": "All features at a glance:",
+    "home.feature1": "Browser extension Chrome, Firefox, Opera and Edge",
+    "home.feature2": "Cross-browser bookmarklet",
+    "home.feature3": "Bookmark import/export",
+    "home.feature4": "Search for bookmarks",
+    "home.feature5": "Customizable design",
+    "home.feature6": "Collections/categories"
 }

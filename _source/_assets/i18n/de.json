@@ -156,7 +156,7 @@
     "error.unauthorized": "Kein Zugriff. Bist du eingeloggt?",
     "header.jumpToMain": "Zum Hauptinhalt springen",
     "header.jumpToLanguage": "Sprache auswählen",
-    "testimonials.headline": "In den Worten unserer Nutzer",
+    "testimonials.headline": "In den Worten unserer Nutzer:",
     "home.extensionText": "Verwalte deine Lesezeichen mit der booky Browser-Erweiterung.",
     "misc.searchLabel": "Nach Lesezeichen suchen",
     "account.importStep2": "Wähle deine Datei aus oder ziehe sie in den Browser",
@@ -202,5 +202,12 @@
     "help.collections": "Sammlungen",
     "help.account": "Account",
     "modal.editCategoryDashboard": "Sammlung:",
-    "customize.autofill": "Lesezeichen-Titel automatisch ausfüllen"
+    "customize.autofill": "Lesezeichen-Titel automatisch ausfüllen",
+    "home.features": "Alle Funktionen auf einen Blick:",
+    "home.feature1": "Browser-Erweiterung für Chrome, Firefox, Opera und Edge",
+    "home.feature2": "Browserübergreifendes Bookmarklet",
+    "home.feature3": "Lesezeichen Import/Export",
+    "home.feature4": "Lesezeichen suchen",
+    "home.feature5": "Anpassbares Design",
+    "home.feature6": "Sammlungen/Kategorien"
 }
