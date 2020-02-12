@@ -15,6 +15,10 @@ a,
   outline: 1px solid transparent;
 }
 
+ul {
+  list-style: none;
+}
+
 button::-moz-focus-inner {
   border-color: transparent;
 }
@@ -31,6 +35,8 @@ section,
 nav,
 aside,
 details,
-summary {
+summary,
+article,
+time {
   display: block;
 }
