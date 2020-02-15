@@ -7,14 +7,14 @@ import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
 import { H2, Display } from '../../atoms/headline';
-import Icon from '../../atoms/icon';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
-import { ButtonLargeBlue, ButtonLargeLight, ButtonSmallMedium, ButtonSmallDark } from '../../atoms/button';
+import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
 import Feature from '../../molecules/feature';
+import Features from '../../molecules/features';
 
 class Home extends Component {
   static propTypes = {
@@ -146,34 +146,9 @@ class Home extends Component {
         </Section>
         <Section color="light" contentClassName="home__features">
           <H2 style="h1" noMargin centered>
-            <FormattedMessage id="home.features" />
+            <FormattedMessage id="misc.features" />
           </H2>
-          <ul className="home__features-list">
-            <li className="home__feature">
-              <Icon icon="close" />
-              <FormattedMessage id="home.feature1" />
-            </li>
-            <li className="home__feature">
-              <Icon icon="close" />
-              <FormattedMessage id="home.feature2" />
-            </li>
-            <li className="home__feature">
-              <Icon icon="close" />
-              <FormattedMessage id="home.feature3" />
-            </li>
-            <li className="home__feature">
-              <Icon icon="close" />
-              <FormattedMessage id="home.feature4" />
-            </li>
-            <li className="home__feature">
-              <Icon icon="close" />
-              <FormattedMessage id="home.feature5" />
-            </li>
-            <li className="home__feature">
-              <Icon icon="close" />
-              <FormattedMessage id="home.feature6" />
-            </li>
-          </ul>
+          <Features />
         </Section>
         <Section className="home__not-a-member">
           <Illustration

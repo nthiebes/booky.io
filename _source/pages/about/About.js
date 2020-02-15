@@ -1,14 +1,21 @@
 import React, { Component, Fragment } from 'react';
-import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { format } from 'date-fns';
 
 import Page from '../../templates/page';
 import { H1, H2, H3 } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
+// import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import { List, ListItem } from '../../atoms/list';
+import Features from '../../molecules/features';
+import Feature from '../../molecules/feature';
 
-export default class About extends Component {
+class About extends Component {
+  static propTypes = {
+    intl: PropTypes.object.isRequired
+  };
+
   state = {
     releases: []
   }
@@ -23,6 +30,7 @@ export default class About extends Component {
   }
 
   render() {
+    const { intl } = this.props;
     const { releases } = this.state;
 
     return (
@@ -31,15 +39,55 @@ export default class About extends Component {
           <H1>
             <FormattedMessage id="about.title" />
           </H1>
-          <P first>
-            <FormattedMessage id="misc.comingSoon" />
-          </P>
+          {'this that top features'}
+        </Section>
+        <Section>
+          <Feature
+            headline={ intl.formatMessage({ id: 'home.privateHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.privateText' }) }
+            illustration="stamp-document"
+          />
+        </Section>
+        <Section>
+          <Feature
+            headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.performantText' }) }
+            illustration="monitor-loading-progress"
+            direction="right"
+          />
+        </Section>
+        <Section color="light">
+          <H2 style="h1">
+            <FormattedMessage id="misc.features" />
+          </H2>
+          <Features />
+        </Section>
+        <Section>
           <H2>
             <FormattedMessage id="about.betaUpdates" />
           </H2>
           { /* eslint-disable-next-line camelcase */ }
           { releases.map(({ id, name, body, published_at }) => {
             const lines = body.split('\n');
+
+            // eslint-disable-next-line no-lone-blocks
+            { /* return (
+              <Expandable key={ id } headline={
+                <>
+                  <span>{ `${name} -` }</span>
+                  <time className="about__date">{ format(new Date(published_at), 'MM/dd/yyyy') }</time>
+                </>
+              }>  
+                <List>
+                  { lines.map((line, index) => (
+                    <ListItem key={ index }>
+                      { line.replace(/- /g, '') }
+                      { index < lines.length - 1 && <br /> }
+                    </ListItem>
+                  )) }
+                </List>
+              </Expandable>
+            ); */ }
             
             return (
               <Fragment key={ id }>
@@ -63,6 +111,8 @@ export default class About extends Component {
     );
   }
 }
+
+export default injectIntl(About);
 
 /*
 <H1>
@@ -94,14 +144,27 @@ export default class About extends Component {
  * 
  * 
  * Key features
+ * - Private bookmarks.
+ * - Fast and easy to use.
+ * - Available everywhere.
+ * - Customize booky.
+ * - extension / bookmarklet
+ * - private project
+ * - your support
  * 
  * All features
  * 
  * The team
+ * - Nico, founder, fe dev
+ * - Mariano, be dev
  * 
  * A few words on...
  * - privacy
+ * -- data handling
  * - the project
+ * -- private
+ * -- support
+ * -- feedback
  * 
  * Update history
  */
