@@ -141,12 +141,18 @@
 }
 
 .home__extension-icon {
-  margin: 0 0.5rem;
+  margin: 0 0.5rem 0.5rem;
 
   @include mobile {
     width: 19vw;
     height: 19vw;
   }
+}
+
+.home__extension-browser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .home__features,

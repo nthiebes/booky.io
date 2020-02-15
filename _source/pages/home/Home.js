@@ -9,7 +9,8 @@ import { DashboardsSidebar } from '../../organisms/dashboards';
 import { H2, Display } from '../../atoms/headline';
 import Icon from '../../atoms/icon';
 import P from '../../atoms/paragraph';
-import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
+import Link from '../../atoms/link';
+import { ButtonLargeBlue, ButtonLargeLight, ButtonSmallMedium, ButtonSmallDark } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
@@ -85,39 +86,48 @@ class Home extends Component {
           <H2 style="h1" noMargin centered>
             <FormattedMessage id="home.extensionText" />
           </H2>
-          <div className="home__extension">
-            <img
-              width="75"
-              height="75"
-              alt="Chrome browser extension"
-              className="home__extension-icon"
-              src="../../_assets/browsers/chrome.svg"
-            />
-            <img
-              width="75"
-              height="75"
-              alt="Firefox browser extension"
-              className="home__extension-icon"
-              src="../../_assets/browsers/firefox.svg"
-            />
-            <img
-              width="75"
-              height="75"
-              alt="Opera browser extension"
-              className="home__extension-icon"
-              src="../../_assets/browsers/opera.svg"
-            />
-            <img
-              width="75"
-              height="75"
-              alt="Edge browser extension"
-              className="home__extension-icon"
-              src="../../_assets/browsers/edge.svg"
-            />
-          </div>
-          <ButtonLargeBlue icon="extension" to="/about" contentBefore>
-            <FormattedHTMLMessage id="home.extensionButton" />
-          </ButtonLargeBlue>
+          <nav className="home__extension">
+            <Link to="/about" className="home__extension-browser">
+              <img
+                width="75"
+                height="75"
+                alt="Chrome browser extension"
+                className="home__extension-icon"
+                src="../../_assets/browsers/chrome.svg"
+              />
+              { 'Chrome' }
+            </Link>
+            <Link to="/about" className="home__extension-browser">
+              <img
+                width="75"
+                height="75"
+                alt="Firefox browser extension"
+                className="home__extension-icon"
+                src="../../_assets/browsers/firefox.svg"
+              />
+              { 'Firefox' }
+            </Link>
+            <Link to="/about" className="home__extension-browser">
+              <img
+                width="75"
+                height="75"
+                alt="Opera browser extension"
+                className="home__extension-icon"
+                src="../../_assets/browsers/opera.svg"
+              />
+              { 'Opera' }
+            </Link>
+            <Link to="/about" className="home__extension-browser">
+              <img
+                width="75"
+                height="75"
+                alt="Edge browser extension"
+                className="home__extension-icon"
+                src="../../_assets/browsers/edge.svg"
+              />
+              { 'Edge' }
+            </Link>
+          </nav>
         </Section>
         <Section>
           <Feature
