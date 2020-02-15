@@ -9,7 +9,7 @@ class Testimonials extends Component {
   render() {
     return (
       <Fragment>
-        <H2 style="h1" className="testimonials-headline">
+        <H2 style="h1" className="testimonials-headline" noMargin>
           <FormattedMessage id="testimonials.headline" />
         </H2>
         <div className="testimonials">

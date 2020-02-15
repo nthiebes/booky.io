@@ -90,7 +90,7 @@ export default class About extends Component {
 */
 
 /**
- * Online bookmark manager with a focus on privacy, customizability, simplicity, and speed.
+ * Online bookmark manager with a focus on simplicity, customizability, privacy, and speed.
  * 
  * 
  * Key features

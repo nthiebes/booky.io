@@ -1,7 +1,6 @@
 .section {
   position: relative;
   margin-bottom: 3rem;
-  border-top: 1px solid transparent;
 
   @include tablet {
     margin-bottom: 4rem;
@@ -10,6 +9,10 @@
   @include desktop {
     margin-bottom: 6rem;
   }
+}
+
+.section--noMargin {
+  margin-bottom: 0;
 }
 
 .section--full-width .section__content {
