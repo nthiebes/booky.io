@@ -6,14 +6,14 @@ import classNames from 'classnames';
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
-// import { H2, Display } from '../../atoms/headline';
-// import P from '../../atoms/paragraph';
-import { ButtonLargeBlue } from '../../atoms/button';
-// import Illustration from '../../atoms/illustration';
+import { H2, Display } from '../../atoms/headline';
+import Icon from '../../atoms/icon';
+import P from '../../atoms/paragraph';
+import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
+import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
-// import Testimonials from '../../molecules/testimonials';
-// import Feature from '../../molecules/feature';
-import Empty from '../../molecules/empty';
+import Testimonials from '../../molecules/testimonials';
+import Feature from '../../molecules/feature';
 
 class Home extends Component {
   static propTypes = {
@@ -34,7 +34,7 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedIn, blurContent, hasSidebar } = this.props;
+    const { loggedIn, blurContent, hasSidebar, intl } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
@@ -44,22 +44,14 @@ class Home extends Component {
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
-      <Page home> {/* className="home" */}
-        <Section>
-          <Empty illustration="monitor-window">
-            <FormattedMessage id="misc.comingSoon" />
-          </Empty>
-          <ButtonLargeBlue icon="account" to="/login" className="home__login-button">
-            <FormattedHTMLMessage id="header.login" />
-          </ButtonLargeBlue>
-        </Section>
-        {/* <Section className="home__header">
+      <Page home className="home">
+        <Section noMargin className="home__header">
           <Display noMargin className="home__headline">
             <FormattedMessage id="home.display" />
           </Display>
-          <P>
+          <H2 noMargin>
             <FormattedMessage id="home.display2" />
-          </P>
+          </H2>
           <ButtonLargeBlue icon="join" to="/join" className="home__join">
             <FormattedHTMLMessage id="header.register" />
           </ButtonLargeBlue>
@@ -71,7 +63,7 @@ class Home extends Component {
             className="home__header-illustration"
           />
         </Section>
-        <Section color="light" noPadding>
+        <Section color="light" noPadding contentClassName="home__testimonials">
           <Testimonials />
         </Section>
         <Section>
@@ -89,7 +81,7 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="light" className="home__bookmarklet">
+        <Section color="light" contentClassName="home__bookmarklet">
           <H2 style="h1" noMargin centered>
             <FormattedMessage id="home.extensionText" />
           </H2>
@@ -142,13 +134,41 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="light">
-          { 'Placeholder' }
+        <Section color="light" contentClassName="home__features">
+          <H2 style="h1" noMargin centered>
+            <FormattedMessage id="home.features" />
+          </H2>
+          <ul className="home__features-list">
+            <li className="home__feature">
+              <Icon icon="close" />
+              <FormattedMessage id="home.feature1" />
+            </li>
+            <li className="home__feature">
+              <Icon icon="close" />
+              <FormattedMessage id="home.feature2" />
+            </li>
+            <li className="home__feature">
+              <Icon icon="close" />
+              <FormattedMessage id="home.feature3" />
+            </li>
+            <li className="home__feature">
+              <Icon icon="close" />
+              <FormattedMessage id="home.feature4" />
+            </li>
+            <li className="home__feature">
+              <Icon icon="close" />
+              <FormattedMessage id="home.feature5" />
+            </li>
+            <li className="home__feature">
+              <Icon icon="close" />
+              <FormattedMessage id="home.feature6" />
+            </li>
+          </ul>
         </Section>
         <Section className="home__not-a-member">
           <Illustration
             className="home__globe"
-            name="ecology-globe"
+            name="monitor-window"
             height="300"
             width="300"
           />
@@ -164,7 +184,7 @@ class Home extends Component {
           <ButtonLargeLight icon="about" to="/about">
             <FormattedHTMLMessage id="header.learnMore" />
           </ButtonLargeLight>
-        </Section> */}
+        </Section>
       </Page>
     );
   }
