@@ -9,9 +9,7 @@ const Expandable = ({ className, headline, children, darkMode }) => (
     <summary className={ classNames('expandable__summary', darkMode && 'expandable__summary--dark-mode') }>
       { headline }
     </summary>
-    <P noPadding>
-      { children }
-    </P>
+    { children }
   </details>
 );
 
@@ -19,11 +17,7 @@ export default Expandable;
 
 Expandable.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
   headline: PropTypes.node.isRequired,
   darkMode: PropTypes.bool
 };
