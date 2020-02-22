@@ -136,7 +136,7 @@ class Header extends PureComponent {
             <Fragment>
               <Icon
                 className="booky--hide-mobile-tablet"
-                icon="settings"
+                icon="customize"
                 color="light"
                 onClick={ this.onCustomizeClick }
                 label={ intl.formatMessage({ id: 'menu.customize' }) }

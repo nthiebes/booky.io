@@ -18,7 +18,7 @@ const Features = () => (
     </li>
     <li className="features__feature">
       <H3 className="features__feature-name">
-        <Icon icon="settings" />
+        <Icon icon="customize" />
         <FormattedMessage id="misc.feature5" />
       </H3>
       <P>
