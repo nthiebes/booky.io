@@ -73,10 +73,10 @@ class Modal extends PureComponent {
             pending={ pending }
             disabled={ pending }
             className="modal__button"
-            icon={ noCancel ? 'close' : 'save' }
+            icon={ noCancel ? 'check' : 'save' }
             type="submit"
           >
-            <FormattedMessage id={ noCancel ? 'button.close' : 'button.confirm' } />
+            <FormattedMessage id={ noCancel ? 'button.done' : 'button.confirm' } />
           </ButtonLargeBlue>
         </footer>
       </Form>
