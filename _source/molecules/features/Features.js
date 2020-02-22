@@ -36,7 +36,7 @@ const Features = () => (
     </li>
     <li className="features__feature">
       <H3 className="features__feature-name">
-        <Icon icon="dashboard" />
+        <Icon icon="collection" />
         <FormattedMessage id="misc.feature6" />
       </H3>
       <P>
@@ -62,7 +62,7 @@ const Features = () => (
       </P>
     </li>
     <li className="features__feature">
-      <H3>
+      <H3 className="features__feature-name">
         <Icon icon="tags" />
         <FormattedMessage id="misc.feature10" />
       </H3>
