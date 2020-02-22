@@ -102,7 +102,7 @@ class Toolbar extends PureComponent {
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
         { dashboardsStyle === 'sidebar' && (
           <Fragment>
-            <Icon icon="collection" color="grey" />
+            <Icon icon="collection" color={ darkMode ? 'grey' : 'medium' } />
             <H1 style="h3" className="toolbar__headline" noMargin>
               { activeDashboardName || <Skeleton /> }
             </H1>
