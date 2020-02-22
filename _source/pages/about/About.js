@@ -1,15 +1,16 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { format } from 'date-fns';
 
 import Page from '../../templates/page';
-import { H1, H2, H3 } from '../../atoms/headline';
-// import P from '../../atoms/paragraph';
+import { H1, H2 } from '../../atoms/headline';
+import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import { List, ListItem } from '../../atoms/list';
-import Features from '../../molecules/features';
-import Feature from '../../molecules/feature';
+// import Features from '../../molecules/features';
+// import Feature from '../../molecules/feature';
+import Expandable from '../../molecules/expandable';
 
 class About extends Component {
   static propTypes = {
@@ -30,7 +31,7 @@ class About extends Component {
   }
 
   render() {
-    const { intl } = this.props;
+    // const { intl } = this.props;
     const { releases } = this.state;
 
     return (
@@ -39,9 +40,11 @@ class About extends Component {
           <H1>
             <FormattedMessage id="about.title" />
           </H1>
-          {'this that top features'}
+          <P>
+            <FormattedMessage id="misc.comingSoon" />
+          </P>
         </Section>
-        <Section>
+        {/* <Section>
           <Feature
             headline={ intl.formatMessage({ id: 'home.privateHeadline' }) }
             text={ intl.formatMessage({ id: 'home.privateText' }) }
@@ -61,9 +64,9 @@ class About extends Component {
             <FormattedMessage id="misc.features" />
           </H2>
           <Features />
-        </Section>
+        </Section> */}
         <Section>
-          <H2>
+          <H2 className="about__updates">
             <FormattedMessage id="about.betaUpdates" />
           </H2>
           { /* eslint-disable-next-line camelcase */ }
@@ -71,7 +74,7 @@ class About extends Component {
             const lines = body.split('\n');
 
             // eslint-disable-next-line no-lone-blocks
-            { /* return (
+            return (
               <Expandable key={ id } headline={
                 <>
                   <span>{ `${name} -` }</span>
@@ -87,23 +90,6 @@ class About extends Component {
                   )) }
                 </List>
               </Expandable>
-            ); */ }
-            
-            return (
-              <Fragment key={ id }>
-                <H3 style="h4">
-                  <span>{ `${name} -` }</span>
-                  <time className="about__date">{ format(new Date(published_at), 'MM/dd/yyyy') }</time>
-                </H3>
-                <List>
-                  { lines.map((line, index) => (
-                    <ListItem key={ index }>
-                      { line.replace(/- /g, '') }
-                      { index < lines.length - 1 && <br /> }
-                    </ListItem>
-                  )) }
-                </List>
-              </Fragment>
             );
           }) }
         </Section>
@@ -137,6 +123,26 @@ export default injectIntl(About);
 <P>
   <FormattedMessage id="about.historyText" />
 </P>
+
+
+return (
+              <Fragment key={ id }>
+                <H3 style="h4">
+                  <span>{ `${name} -` }</span>
+                  <time className="about__date">{ format(new Date(published_at), 'MM/dd/yyyy') }</time>
+                </H3>
+                <List>
+                  { lines.map((line, index) => (
+                    <ListItem key={ index }>
+                      { line.replace(/- /g, '') }
+                      { index < lines.length - 1 && <br /> }
+                    </ListItem>
+                  )) }
+                </List>
+              </Fragment>
+            );
+
+
 */
 
 /**
