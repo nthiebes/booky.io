@@ -6,8 +6,7 @@ import classNames from 'classnames';
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
-import { H2, Display } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
+import { H2, H3, Display } from '../../atoms/headline';
 import Link from '../../atoms/link';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
@@ -160,9 +159,9 @@ class Home extends Component {
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="home.notAMember" />
           </H2>
-          <P>
+          <H3 style="h2" noMargin centered>
             <FormattedMessage id="home.promoText" />
-          </P>
+          </H3>
           <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
             <FormattedHTMLMessage id="header.register" />
           </ButtonLargeBlue>
