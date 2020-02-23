@@ -144,33 +144,3 @@ return (
 
 
 */
-
-/**
- * Online bookmark manager with a focus on simplicity, customizability, privacy, and speed.
- * 
- * 
- * Key features
- * - Private bookmarks.
- * - Fast and easy to use.
- * - Available everywhere.
- * - Customize booky.
- * - extension / bookmarklet
- * - private project
- * - your support
- * 
- * All features
- * 
- * The team
- * - Nico, founder, fe dev
- * - Mariano, be dev
- * 
- * A few words on...
- * - privacy
- * -- data handling
- * - the project
- * -- private
- * -- support
- * -- feedback
- * 
- * Update history
- */
