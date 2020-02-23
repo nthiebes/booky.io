@@ -210,18 +210,9 @@
     "misc.feature5": "Customizable design",
     "misc.feature6": "Collections and categories",
     "about.betaUpdates": "Our latest beta updates",
-    "misc.feature7": "Available on mobile",
+    "misc.feature7": "Mobile support plus web app",
     "misc.feature8": "Private bookmarks page",
     "misc.feature9": "Bookmark notes",
     "misc.feature10": "Bookmark tagging",
-    "misc.feature8text": "Private bookmark page, only accessible to you.",
-    "misc.feature5text": "Customize booky to your needs.",
-    "misc.feature7text": "Access your bookmarks from anywhere.",
-    "misc.feature6text": "Organize your bookmarks in collections and categories.",
-    "misc.feature1text": "Available for Chrome, Firefox, Opera and Edge.",
-    "misc.feature2text": "Quickly add links to booky with our bookmarklet.",
-    "misc.feature10text": "Add tags to your bookmarks.",
-    "misc.feature4text": "Search all your bookmarks and tags.",
-    "misc.feature3text": "Import or backup your existing browser bookmarks.",
-    "misc.feature11text": ""
+    "misc.feature11": "Fast, accessible and simple"
 }
