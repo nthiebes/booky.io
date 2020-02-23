@@ -82,7 +82,7 @@ class Home extends Component {
           />
         </Section>
         <Section color="light" contentClassName="home__bookmarklet">
-          <H2 style="h1" noMargin centered>
+          <H2 style="h1" noMargin centered className="home__bookmarklet-headline">
             <FormattedMessage id="home.extensionText" />
           </H2>
           <nav className="home__extension">
@@ -144,7 +144,7 @@ class Home extends Component {
           />
         </Section>
         <Section color="light" contentClassName="home__features">
-          <H2 style="h1" noMargin centered>
+          <H2 style="h1" noMargin centered className="home__features-headline">
             <FormattedMessage id="misc.features" />
           </H2>
           <Features />

@@ -133,6 +133,13 @@
   flex-direction: column;
 }
 
+.home__bookmarklet-headline {
+  @include mobile {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
 .home__extension {
   display: flex;
   width: 100%;
@@ -166,6 +173,14 @@
   @include desktop {
     padding-top: 4rem;
     padding-bottom: 5rem;
+  }
+}
+
+.home__features-headline {
+  @include mobile {
+    justify-content: flex-start;
+    text-align: left;
+    padding-bottom: 0;
   }
 }
 
