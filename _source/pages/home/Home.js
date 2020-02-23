@@ -130,16 +130,16 @@ class Home extends Component {
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
-            text={ intl.formatMessage({ id: 'home.mobileText' }) }
-            illustration="android-phone"
+            headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.customizableText' }) }
+            illustration="color-palette"
           />
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
-            text={ intl.formatMessage({ id: 'home.customizableText' }) }
-            illustration="color-palette"
+            headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.mobileText' }) }
+            illustration="android-phone"
             direction="right"
           />
         </Section>
