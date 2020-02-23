@@ -17,7 +17,7 @@ class Testimonial extends Component {
         <div>
           <H4 className="testimonials__header">
             { name }
-            <Link href={ url } className="testimonials__link">
+            <Link href={ url } target="_blank" className="testimonials__link">
               { twitter && `@${twitter}` }
             </Link>
           </H4>

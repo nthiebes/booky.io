@@ -14,11 +14,19 @@ class Testimonials extends Component {
         </H2>
         <div className="testimonials">
           <Testimonial
-            name="Dummy user"
+            name="David Lafond"
+            twitter="kronozio"
+            url="https://twitter.com/Kronozio"
+            image="_assets/illustrations/hacker.svg"
+            text="My portal to the web. I tried many bookmark manager, and this is the best one."
+          />
+          <Testimonial
+            // Ricardo Sebastián
+            name="Anonymous"
             twitter="twittername"
             url="https://twitter.com/booky_io"
-            image="_assets/illustrations/hacker.svg"
-            text="My portal to the Web."
+            image="_assets/illustrations/customer-service-woman.svg"
+            text="A simple, lightweight, yet powerful application to store my bookmarks in the cloud."
           />
           <Testimonial
             // Arun Kumarr B
@@ -27,14 +35,6 @@ class Testimonials extends Component {
             url="https://twitter.com/booky_io"
             image="_assets/illustrations/customer-service-man.svg"
             text="Love at first sight. Kudos to the people who built booky and have kept it simple."
-          />
-          <Testimonial
-            // Ricardo Sebastián
-            name="Anonymous"
-            twitter="twittername"
-            url="https://twitter.com/booky_io"
-            image="_assets/illustrations/customer-service-woman.svg"
-            text="A simple, lightweight and powerful application to save my bookmarks in the cloud."
           />
         </div>
       </Fragment>
