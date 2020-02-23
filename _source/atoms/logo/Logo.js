@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const colors = {
-  light: '../../_assets/logo_l.svg',
-  dark: '../../_assets/logo_d.svg',
-  normal: '../../_assets/logo.svg'
+  light: `../../_assets/logo_l.svg?=${process.env.VERSION}`,
+  dark: `../../_assets/logo_d.svg?=${process.env.VERSION}`,
+  normal: `../../_assets/logo.svg?=${process.env.VERSION}`
 };
 
 export default class Logo extends Component {
