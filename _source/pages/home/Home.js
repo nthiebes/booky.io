@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
+import Search from '../../organisms/search';
 import { DashboardsSidebar } from '../../organisms/dashboards';
 import { H2, H3, Display } from '../../atoms/headline';
 import Link from '../../atoms/link';
@@ -24,7 +25,8 @@ class Home extends Component {
     intl: PropTypes.object.isRequired,
     categoriesPending: PropTypes.bool,
     hasCategories: PropTypes.bool,
-    dashboardsOpen: PropTypes.bool
+    dashboardsOpen: PropTypes.bool,
+    keywordExists: PropTypes.bool
   };
 
   componentDidMount() {
@@ -34,14 +36,18 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedIn, blurContent, hasSidebar, intl } = this.props;
+    const { loggedIn, blurContent, hasSidebar, intl, keywordExists } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
         { hasSidebar && (
           <DashboardsSidebar className={ classNames(blurContent && 'page--blur') } />
         ) }
-        <Categories className={ classNames(blurContent && 'page--blur') } />
+        { keywordExists ? (
+          <Search />
+        ) : (
+          <Categories className={ classNames(blurContent && 'page--blur') } />
+        ) }
       </Page>
     ) : (
       <Page home className="home">

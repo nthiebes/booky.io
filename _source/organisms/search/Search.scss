@@ -1,0 +1,28 @@
+.search-results {
+  margin-top: 3rem;
+  padding: 0 3%;
+
+  @include desktop {
+    margin-top: 30px;
+    padding: 0 30px;
+  }
+}
+
+.search-results--sidebar {
+  @include desktop {
+    width: calc(100% - 50px);
+    margin-left: 50px;
+  }
+}
+
+.search-results--shifted {
+  @include desktop {
+    width: calc(100% - 300px);
+    margin-left: 300px;
+  }
+}
+
+// .search-results__spinner {
+//   margin-top: calc(3rem + 6px);
+//   left: calc(50% - 18px);
+// }

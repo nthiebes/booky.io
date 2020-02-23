@@ -11,32 +11,27 @@ class Search extends Component {
     className: PropTypes.string,
     intl: PropTypes.object.isRequired,
     darkMode: PropTypes.bool,
-    id: PropTypes.string.isRequired
-  }
-
-  state = {
-    value: ''
+    id: PropTypes.string.isRequired,
+    setSearchKeyword: PropTypes.func.isRequired,
+    keyword: PropTypes.string
   }
   
   onChange = (value) => {
-    this.setState({
-      value
-    });
+    this.props.setSearchKeyword(value);
   }
 
   render() {
-    const { className, intl, darkMode, id } = this.props;
-    const { value } = this.state;
+    const { className, intl, darkMode, id, keyword } = this.props;
 
     return (
-      <div role="search" className={ classNames('search', className) }>
-        <Label htmlFor="search" className="search__label">
+      <div role="search" className={ classNames('search-field', className) }>
+        <Label htmlFor="search" className="search-field__label">
           <FormattedMessage id="misc.searchLabel" />
         </Label>
         <Input
           placeholder={ intl.formatMessage({ id: 'misc.search' }) }
-          className={ classNames('search__input', darkMode && 'search__input--dark-mode') }
-          value={ value }
+          className={ classNames('search-field__input', darkMode && 'search-field__input--dark-mode') }
+          value={ keyword }
           onChange={ this.onChange }
           validation={ false }
           icon="search"

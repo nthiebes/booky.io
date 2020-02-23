@@ -1,4 +1,4 @@
-.search {
+.search-field {
   margin: 0 calc(1rem + 6px) 0 1rem;
   flex-grow: 1;
 
@@ -14,14 +14,14 @@
   }
 }
 
-.search__label {
+.search-field__label {
   position: absolute;
   height: 1px;
   width: 1px;
   overflow: hidden;
 }
 
-.search__input {
+.search-field__input {
   margin: 0;
 
   @include mobile {
@@ -33,7 +33,7 @@
   }
 }
 
-.search__input--dark-mode {
+.search-field__input--dark-mode {
   @include desktop {
     background-color: $color-background--dark;
 

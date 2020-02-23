@@ -6,7 +6,8 @@ import { getDashboards } from '../../_state/dashboards/actions';
 export const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn,
   blurContent: state.modal.open && state.user.settings.blurEffect,
-  hasSidebar: state.user.settings.dashboardsStyle === 'sidebar'
+  hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
+  keywordExists: Boolean(state.search.keyword)
 });
 
 export const mapDispatchToProps = {

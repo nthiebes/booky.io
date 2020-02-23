@@ -13,7 +13,6 @@ class Categories extends PureComponent {
     categories: PropTypes.array.isRequired,
     dashboardsOpen: PropTypes.bool.isRequired,
     hasSidebar: PropTypes.bool.isRequired,
-    maxWidth: PropTypes.bool.isRequired,
     dashboardName: PropTypes.string,
     className: PropTypes.string,
     pending: PropTypes.bool,
@@ -25,7 +24,7 @@ class Categories extends PureComponent {
   }
 
   render() {
-    const { categories, dashboardsOpen, hasSidebar, maxWidth, dashboardName, className, pending } = this.props;
+    const { categories, dashboardsOpen, hasSidebar, dashboardName, className, pending } = this.props;
 
     return (
       <ul className={ classNames(
@@ -33,7 +32,6 @@ class Categories extends PureComponent {
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
         !pending && categories.length && 'categories--grid',
-        maxWidth && 'categories--max-width',
         className
       ) }>
         { pending ? (
