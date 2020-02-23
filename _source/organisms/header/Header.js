@@ -85,8 +85,8 @@ class Header extends PureComponent {
       home,
       className,
       sticky,
-      hasCategories,
-      dashboardsPending
+      hasCategories
+      // dashboardsPending
     } = this.props;
     const { logoutPending } = this.state;
 
@@ -134,7 +134,7 @@ class Header extends PureComponent {
           <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (
             <Fragment>
-              <Icon
+              {/* <Icon
                 className="booky--hide-mobile-tablet"
                 icon="customize"
                 color="light"
@@ -142,7 +142,7 @@ class Header extends PureComponent {
                 label={ intl.formatMessage({ id: 'menu.customize' }) }
                 ignoreDarkMode
                 isButton
-              />
+              /> */}
               <Icon
                 className="booky--hide-mobile-tablet"
                 icon="logout"
@@ -155,13 +155,20 @@ class Header extends PureComponent {
               />
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"
+                onClick={ this.onCustomizeClick }
+                icon="customize"
+              >
+                <FormattedHTMLMessage id="menu.customize" />
+              </ButtonSmallLight>
+              {/* <ButtonSmallLight
+                className="header__add booky--hide-mobile-tablet"
                 onClick={ this.onAddButtonClick }
                 icon="add"
                 solid
                 useSkeleton={ dashboardsPending }
               >
                 <FormattedHTMLMessage id={ hasCategories ? 'bookmark.add' : 'category.add' } />
-              </ButtonSmallLight>
+              </ButtonSmallLight> */}
             </Fragment>
           ) }
           { !loggedIn && (
