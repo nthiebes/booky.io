@@ -81,12 +81,12 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="light" contentClassName="home__bookmarklet">
-          <H2 style="h1" noMargin centered className="home__bookmarklet-headline">
+        <Section color="dark" contentClassName="home__bookmarklet">
+          <H2 style="h1" color="light" noMargin centered className="home__bookmarklet-headline">
             <FormattedMessage id="home.extensionText" />
           </H2>
           <nav className="home__extension">
-            <Link to="/about" className="home__extension-browser">
+            <Link to="/about" color="light" className="home__extension-browser">
               <img
                 width="75"
                 height="75"
@@ -96,7 +96,7 @@ class Home extends Component {
               />
               { 'Chrome' }
             </Link>
-            <Link to="/about" className="home__extension-browser">
+            <Link to="/about" color="light" className="home__extension-browser">
               <img
                 width="75"
                 height="75"
@@ -106,7 +106,7 @@ class Home extends Component {
               />
               { 'Firefox' }
             </Link>
-            <Link to="/about" className="home__extension-browser">
+            <Link to="/about" color="light" className="home__extension-browser">
               <img
                 width="75"
                 height="75"
@@ -116,7 +116,7 @@ class Home extends Component {
               />
               { 'Opera' }
             </Link>
-            <Link to="/about" className="home__extension-browser">
+            <Link to="/about" color="light" className="home__extension-browser">
               <img
                 width="75"
                 height="75"
