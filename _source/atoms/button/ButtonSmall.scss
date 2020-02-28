@@ -1,6 +1,4 @@
 .button--small {
-  border-bottom-width: 2px;
-
   .icon {
     height: 2rem;
     width: 24px;
@@ -49,6 +47,7 @@
     background-color: $color-font--white;
     border-bottom-color: darken($color-font--white, 10%);
     color: $color-font--primary;
+    border-bottom-width: 2px;
 
     .icon {
       color: $color-font--primary;
