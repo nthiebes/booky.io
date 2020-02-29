@@ -63,9 +63,11 @@
 
       &:hover,
       &:focus {
+        /* stylelint-disable max-nesting-depth */
         .icon__svg {
           transform: none;
         }
+        /* stylelint-enable */
       }
     }
   }

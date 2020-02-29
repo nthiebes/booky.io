@@ -14,8 +14,10 @@
   position: relative;
 }
 
+/* stylelint-disable a11y/content-property-no-static-value */
 .list__item::before {
   content: "»";
   position: absolute;
   left: 0;
 }
+/* stylelint-enable */

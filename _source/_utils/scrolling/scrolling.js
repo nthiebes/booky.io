@@ -11,15 +11,13 @@ export class Scrolling {
 
   onPageScroll() {
     const TOP = window.pageYOffset || document.documentElement.scrollTop,
-      ACTIONS = this.actions;    let item;
+      ACTIONS = this.actions;
 
-    for (item in ACTIONS) {
-      if (ACTIONS.hasOwnProperty(item)) {
-        const action = ACTIONS[item];
+    Object.keys(ACTIONS).map((item) => {
+      const action = ACTIONS[item];
 
-        this.checkAndTriggerAction(TOP, action);
-      }
-    }
+      this.checkAndTriggerAction(TOP, action);
+    });
   }
 
   checkAndTriggerAction(TOP, action) {

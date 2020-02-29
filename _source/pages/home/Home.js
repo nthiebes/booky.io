@@ -6,14 +6,14 @@ import classNames from 'classnames';
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
 import { DashboardsSidebar } from '../../organisms/dashboards';
-// import { H2, Display } from '../../atoms/headline';
-// import P from '../../atoms/paragraph';
-import { ButtonLargeBlue } from '../../atoms/button';
-// import Illustration from '../../atoms/illustration';
+import { H2, H3, Display } from '../../atoms/headline';
+import Link from '../../atoms/link';
+import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
+import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
-// import Testimonials from '../../molecules/testimonials';
-// import Feature from '../../molecules/feature';
-import Empty from '../../molecules/empty';
+import Testimonials from '../../molecules/testimonials';
+import Feature from '../../molecules/feature';
+import Features from '../../molecules/features';
 
 class Home extends Component {
   static propTypes = {
@@ -34,7 +34,7 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedIn, blurContent, hasSidebar } = this.props;
+    const { loggedIn, blurContent, hasSidebar, intl } = this.props;
 
     return loggedIn ? (
       <Page toolbar={ loggedIn } dashboards home>
@@ -44,22 +44,14 @@ class Home extends Component {
         <Categories className={ classNames(blurContent && 'page--blur') } />
       </Page>
     ) : (
-      <Page home> {/* className="home" */}
-        <Section>
-          <Empty illustration="monitor-window">
-            <FormattedMessage id="misc.comingSoon" />
-          </Empty>
-          <ButtonLargeBlue icon="account" to="/login" className="home__login-button">
-            <FormattedHTMLMessage id="header.login" />
-          </ButtonLargeBlue>
-        </Section>
-        {/* <Section className="home__header">
+      <Page home className="home">
+        <Section noMargin className="home__header">
           <Display noMargin className="home__headline">
             <FormattedMessage id="home.display" />
           </Display>
-          <P>
+          <H2 noMargin>
             <FormattedMessage id="home.display2" />
-          </P>
+          </H2>
           <ButtonLargeBlue icon="join" to="/join" className="home__join">
             <FormattedHTMLMessage id="header.register" />
           </ButtonLargeBlue>
@@ -71,7 +63,7 @@ class Home extends Component {
             className="home__header-illustration"
           />
         </Section>
-        <Section color="light" noPadding>
+        <Section color="light" noPadding contentClassName="home__testimonials">
           <Testimonials />
         </Section>
         <Section>
@@ -89,82 +81,94 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="light" className="home__bookmarklet">
-          <H2 style="h1" noMargin centered>
+        <Section color="dark" contentClassName="home__bookmarklet">
+          <H2 style="h1" color="light" noMargin centered className="home__bookmarklet-headline">
             <FormattedMessage id="home.extensionText" />
           </H2>
-          <div className="home__extension">
-            <img
-              width="75"
-              height="75"
-              alt="Chrome browser extension"
-              className="home__extension-icon"
-              src="../../_assets/browsers/chrome.svg"
-            />
-            <img
-              width="75"
-              height="75"
-              alt="Firefox browser extension"
-              className="home__extension-icon"
-              src="../../_assets/browsers/firefox.svg"
-            />
-            <img
-              width="75"
-              height="75"
-              alt="Opera browser extension"
-              className="home__extension-icon"
-              src="../../_assets/browsers/opera.svg"
-            />
-            <img
-              width="75"
-              height="75"
-              alt="Edge browser extension"
-              className="home__extension-icon"
-              src="../../_assets/browsers/edge.svg"
-            />
-          </div>
-          <ButtonLargeBlue icon="extension" to="/about" contentBefore>
-            <FormattedHTMLMessage id="home.extensionButton" />
-          </ButtonLargeBlue>
-        </Section>
-        <Section>
-          <Feature
-            headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
-            text={ intl.formatMessage({ id: 'home.mobileText' }) }
-            illustration="android-phone"
-          />
+          <nav className="home__extension">
+            <Link to="/about" color="light" className="home__extension-browser">
+              <img
+                width="75"
+                height="75"
+                alt="Chrome browser extension"
+                className="home__extension-icon"
+                src="../../_assets/browsers/chrome.svg"
+              />
+              { 'Chrome' }
+            </Link>
+            <Link to="/about" color="light" className="home__extension-browser">
+              <img
+                width="75"
+                height="75"
+                alt="Firefox browser extension"
+                className="home__extension-icon"
+                src="../../_assets/browsers/firefox.svg"
+              />
+              { 'Firefox' }
+            </Link>
+            <Link to="/about" color="light" className="home__extension-browser">
+              <img
+                width="75"
+                height="75"
+                alt="Opera browser extension"
+                className="home__extension-icon"
+                src="../../_assets/browsers/opera.svg"
+              />
+              { 'Opera' }
+            </Link>
+            <Link to="/about" color="light" className="home__extension-browser">
+              <img
+                width="75"
+                height="75"
+                alt="Edge browser extension"
+                className="home__extension-icon"
+                src="../../_assets/browsers/edge.svg"
+              />
+              { 'Edge' }
+            </Link>
+          </nav>
         </Section>
         <Section>
           <Feature
             headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
             text={ intl.formatMessage({ id: 'home.customizableText' }) }
             illustration="color-palette"
+          />
+        </Section>
+        <Section>
+          <Feature
+            headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.mobileText' }) }
+            illustration="android-phone"
             direction="right"
           />
         </Section>
-        <Section color="light">
-          { 'Placeholder' }
+        <Section color="light" contentClassName="home__features">
+          <H2 style="h1" noMargin centered className="home__features-headline">
+            <FormattedMessage id="misc.features" />
+          </H2>
+          <Features />
         </Section>
         <Section className="home__not-a-member">
           <Illustration
             className="home__globe"
-            name="ecology-globe"
+            name="monitor-window"
             height="300"
             width="300"
           />
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="home.notAMember" />
           </H2>
-          <P>
+          <H3 style="h2" noMargin centered>
             <FormattedMessage id="home.promoText" />
-          </P>
+          </H3>
           <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
             <FormattedHTMLMessage id="header.register" />
           </ButtonLargeBlue>
           <ButtonLargeLight icon="about" to="/about">
             <FormattedHTMLMessage id="header.learnMore" />
           </ButtonLargeLight>
-        </Section> */}
+        </Section>
       </Page>
     );
   }

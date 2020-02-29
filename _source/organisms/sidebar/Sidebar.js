@@ -240,7 +240,7 @@ class Sidebar extends PureComponent {
                       onClick={ this.onCustomizeClick }
                       tabIndex={ open ? '0' : '-1' }
                     >
-                      <Icon icon="settings" />
+                      <Icon icon="customize" />
                       <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                         <FormattedMessage id="menu.customize" />
                       </span>
