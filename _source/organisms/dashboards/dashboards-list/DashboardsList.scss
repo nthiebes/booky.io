@@ -120,6 +120,7 @@
   transition: background-color 0.2s linear, color 0.2s linear;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
 
   @include desktop {
     padding: 0 36px;
@@ -140,6 +141,25 @@
 
   &.dashboards__item--active {
     font-weight: 700;
+
+    /* stylelint-disable a11y/content-property-no-static-value */
+    &::before {
+      content: "»";
+      font-weight: 500;
+      position: absolute;
+      left: calc(3vw + 6px - 13px);
+    }
+
+    @include desktop {
+      &::before {
+        left: calc(36px - 1rem);
+      }
+    }
+    /* stylelint-enable */
+
+    &.dashboards__item--dark-mode {
+      color: $color-font--white;
+    }
   }
 
   @include desktop {

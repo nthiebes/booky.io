@@ -6,7 +6,7 @@ import { AppContainer } from 'react-hot-loader';
 
 import Booky from './templates/booky';
 import fetcher from './_utils/fetcher';
-import { setLanguage, addLocaleData } from './_utils/language';
+import { setLanguage } from './_utils/language';
 import { loadPolyfills } from './_utils/polyfills';
 import { loadScript, loadGoogleAnalytics } from './_utils/script';
 import configureStore, { history } from './configureStore';
@@ -74,7 +74,6 @@ const loadingDone = () => {
     });
   }
 
-  addLocaleData(language);
   loadGoogleAnalytics();
 
   render(
