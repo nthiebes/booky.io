@@ -14,7 +14,7 @@
     "menu.close": "Hide menu",
     "footer.scroll": "<b>Back</b> to <b>top</b>",
     "footer.copy": "All Rights Reserved.",
-    "misc.search": "Search bookmarks...",
+    "search.placeholder": "Search bookmarks...",
     "misc.validEmail": "Must be a valid email address.",
     "misc.validPassword": "Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.",
     "misc.startpage": "start page",
@@ -156,7 +156,7 @@
     "header.jumpToLanguage": "Choose language",
     "testimonials.headline": "In the words of our users:",
     "home.extensionText": "Manage your bookmarks with the booky browser extension.",
-    "misc.searchLabel": "Search for bookmarks",
+    "search.label": "Search for bookmarks",
     "account.importStep2": "Select your file or drag it into the browser",
     "account.importStep3": "Import your bookmarks",
     "button.update": "Update",
@@ -214,5 +214,7 @@
     "misc.feature9": "Bookmark notes",
     "misc.feature10": "Bookmark tagging",
     "misc.feature11": "Fast, accessible and simple",
-    "account.statistics": "Statistics"
+    "account.statistics": "Statistics",
+    "search.empty": "Your search for {keyword} returned no results.",
+    "search.results": "We found {total} bookmarks for your search of {keyword}!"
 }
