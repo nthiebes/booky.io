@@ -16,6 +16,8 @@ import Section from '../../molecules/section';
 // import Illustration from '../../atoms/illustration';
 import Empty from '../../molecules/empty';
 
+import './Join.scss';
+
 class Join extends Component {
   constructor(props) {
     super(props);
