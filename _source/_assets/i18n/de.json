@@ -14,7 +14,7 @@
     "menu.close": "Menü ausblenden",
     "footer.scroll": "Nach <b>oben</b>",
     "footer.copy": "Alle Rechte vorbehalten.",
-    "misc.search": "Lesezeichen suchen...",
+    "search.placeholder": "Lesezeichen suchen...",
     "misc.validEmail": "Muss eine valide E-Mail-Adresse sein.",
     "misc.validPassword": "Dein Passwort muss mindestens 6 Zeichen lang sein und zudem einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten.",
     "misc.startpage": "Startseite",
@@ -156,7 +156,7 @@
     "header.jumpToLanguage": "Sprache auswählen",
     "testimonials.headline": "In den Worten unserer Nutzer:",
     "home.extensionText": "Verwalte deine Lesezeichen mit der booky Browser-Erweiterung.",
-    "misc.searchLabel": "Nach Lesezeichen suchen",
+    "search.label": "Nach Lesezeichen suchen",
     "account.importStep2": "Wähle deine Datei aus oder ziehe sie in den Browser",
     "account.importStep3": "Importiere deine Lesezeichen",
     "button.update": "Aktualisieren",
@@ -164,7 +164,7 @@
     "account.yourEmail": "Deine E-Mail Adresse:",
     "menu.feedback": "Feedback",
     "feedback.text": "Bitte hinterlasst euer Feedback zur Beta in der untenstehenden Diskussion.",
-    "help.intro2": "Dein Frage ist noch nicht beantwortet? Schreib uns gerne eine {email} oder hinterlassen einen Kommentar in der unten stehenden Diskussion.",
+    "help.intro2": "Deine Frage ist noch nicht beantwortet? Schreib uns gerne eine {email} oder hinterlassen einen Kommentar in der unten stehenden Diskussion.",
     "help.email": "E-Mail",
     "help.question1": "Wie kann ich ein Lesezeichen hinzufügen?",
     "help.question2": "Wie kann ich ein Lesezeichen bearbeiten?",
@@ -214,5 +214,7 @@
     "misc.feature9": "Lesezeichen Notizen",
     "misc.feature10": "Lesezeichen-Tagging",
     "misc.feature11": "Schnell, barrierefrei und einfach",
-    "account.statistics": "Statistiken"
+    "account.statistics": "Statistiken",
+    "search.empty": "Deine Suche nach {keyword} ergab leider keine Ergebnisse.",
+    "search.results": "Für deine Suche nach {keyword} konnten wir {total} Lesezeichen für dich finden!"
 }
