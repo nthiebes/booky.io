@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { setSearchKeyword } from '../../_state/search/actions';
+import { searchBookmarks } from '../../_state/search/actions';
 import Component from './Search';
 
 export const mapStateToProps = (state) => ({
@@ -9,7 +9,7 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = {
-  setSearchKeyword
+  searchBookmarks
 };
 
 const Container = connect(

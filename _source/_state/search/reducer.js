@@ -1,11 +1,19 @@
+import initialState from '../../initialState';
+
 const search = (state = {}, action) => {
-  const { type, keyword } = action;
+  const { type, data } = action;
 
   switch (type) {
-    case 'SET_SEARCH_KEYWORD': {
+    case 'UPDATE_SEARCH_DATA': {
       return {
         ...state,
-        keyword
+        ...data
+      };
+    }
+
+    case 'RESET_SEARCH': {
+      return {
+        ...initialState.search
       };
     }
 

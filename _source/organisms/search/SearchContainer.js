@@ -4,6 +4,8 @@ import Component from './Search';
 export const mapStateToProps = (state) => ({
   results: state.search.results,
   keyword: state.search.keyword,
+  pending: state.search.pending,
+  error: state.search.error,
   hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
   dashboardsOpen: state.user.settings.pinned,
   newtab: state.user.settings.openLinksInNewTab,

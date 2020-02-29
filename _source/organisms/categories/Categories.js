@@ -25,9 +25,10 @@ class Categories extends PureComponent {
 
   render() {
     const { categories, dashboardsOpen, hasSidebar, dashboardName, className, pending } = this.props;
+    const Element = pending || !categories.length ? 'section' : 'ul';
 
     return (
-      <ul className={ classNames(
+      <Element className={ classNames(
         'categories',
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
@@ -57,7 +58,7 @@ class Categories extends PureComponent {
             ) }
           </Fragment>
         ) }
-      </ul>
+      </Element>
     );
   }
 }

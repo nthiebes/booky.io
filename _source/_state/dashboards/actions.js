@@ -3,6 +3,7 @@ import fetcher, { abortFetch } from '../../_utils/fetcher';
 import { setCategories, getCategories } from '../categories/actions';
 import { updateSettings } from '../user/actions';
 import { closeSidebar } from '../sidebar/actions';
+import { resetSearch } from '../search/actions';
 
 export const updateOffset = (offset) => ({
   type: 'UPDATE_OFFSET',
@@ -34,12 +35,14 @@ export const changeDashboard = (id) => ((dispatch) => {
 
   dispatch(closeSidebar());
   dispatch(getCategories(id));
+  dispatch(resetSearch());
 });
 
 export const getDashboards = () => ((dispatch) => {
   dispatch(updateDashboardsData({
     pending: true
   }));
+  dispatch(resetSearch());
 
   fetcher({
     url: '/dashboards',

@@ -12,12 +12,12 @@ class Search extends Component {
     intl: PropTypes.object.isRequired,
     darkMode: PropTypes.bool,
     id: PropTypes.string.isRequired,
-    setSearchKeyword: PropTypes.func.isRequired,
+    searchBookmarks: PropTypes.func.isRequired,
     keyword: PropTypes.string
   }
   
   onChange = (value) => {
-    this.props.setSearchKeyword(value);
+    this.props.searchBookmarks(value);
   }
 
   render() {
@@ -26,10 +26,10 @@ class Search extends Component {
     return (
       <div role="search" className={ classNames('search-field', className) }>
         <Label htmlFor="search" className="search-field__label">
-          <FormattedMessage id="misc.searchLabel" />
+          <FormattedMessage id="search.label" />
         </Label>
         <Input
-          placeholder={ intl.formatMessage({ id: 'misc.search' }) }
+          placeholder={ intl.formatMessage({ id: 'search.placeholder' }) }
           className={ classNames('search-field__input', darkMode && 'search-field__input--dark-mode') }
           value={ keyword }
           onChange={ this.onChange }
