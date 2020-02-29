@@ -31,6 +31,7 @@
 @import "../../molecules/error-boundary/ErrorBoundary";
 @import "../../molecules/cookie-banner/CookieBanner";
 @import "../../molecules/bookmarklet/Bookmarklet";
+@import "../../molecules/features/Features";
 @import "../../organisms/categories/Categories";
 @import "../../organisms/header/Header";
 @import "../../organisms/footer/Footer";
@@ -46,6 +47,7 @@
 @import "../../pages/login/Login";
 @import "../../pages/join/Join";
 @import "../../pages/help/Help";
+@import "../../pages/about/About";
 
 html {
   font-size: calc(14px + 0.2vw);
@@ -55,14 +57,19 @@ html {
   }
 }
 
+/* stylelint-disable property-no-vendor-prefix */
 body {
   -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+  -moz-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+  -ms-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+  text-size-adjust: 100%; /* Prevent font scaling in landscape */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: $font-family--text;
   height: 100%;
   color: $color-font--dark;
 }
+/* stylelint-enable */
 
 ::-moz-selection {
   color: $color-font--white;
@@ -78,9 +85,11 @@ body {
   overflow: hidden;
 }
 
+/* stylelint-disable declaration-no-important */
 .booky--no-animation {
   transition: none !important;
 }
+/* stylelint-enable */
 
 .booky--hide {
   display: none;
@@ -120,9 +129,9 @@ body {
  * App loading screen
  */
 .loading__logo {
-  margin-right: 1.5rem;
-  height: 36px;
-  width: 102px;
+  margin-right: calc(1.5rem + 6px);
+  height: 28px;
+  width: 84px;
 }
 
 .loading__nav {
@@ -163,3 +172,13 @@ noscript {
   align-items: center;
   padding: 0 3%;
 }
+
+/* stylelint-disable declaration-no-important */
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+/* stylelint-enable */

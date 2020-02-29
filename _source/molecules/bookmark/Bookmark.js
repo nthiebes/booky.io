@@ -53,7 +53,6 @@ class Bookmark extends PureComponent {
         draggableId={ `bookmark-${id}` }
         key={ `bookmark-${id}` }
         disableInteractiveElementBlocking
-        isDragDisabled={ !editMode }
       >
         { (provided) => (
           <li

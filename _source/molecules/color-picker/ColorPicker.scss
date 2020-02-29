@@ -117,11 +117,13 @@
     outline: 2px dashed $color--primary;
   }
 
+  /* stylelint-disable selector-max-compound-selectors */
   @include desktop {
     &:hover ~ .color-picker__label > .color-picker__icon {
       opacity: 1;
     }
   }
+  /* stylelint-enable selector-max-compound-selectors */
 }
 
 .color-picker__label {
