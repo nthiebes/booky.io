@@ -51,7 +51,6 @@
     "category.editModeQuit": "Quit edit mode",
     "category.drag": "Drag category",
     "category.empty": "Your collection {collection} doesn't have any categories yet. Add your first category now!",
-    "category.emptyImage": "No categories yet",
     "bookmark.add": "New <b>bookmark</b>",
     "bookmark.edit": "Edit bookmark",
     "bookmark.delete": "Delete bookmark",
@@ -214,5 +213,6 @@
     "misc.feature8": "Private bookmarks page",
     "misc.feature9": "Bookmark notes",
     "misc.feature10": "Bookmark tagging",
-    "misc.feature11": "Fast, accessible and simple"
+    "misc.feature11": "Fast, accessible and simple",
+    "account.statistics": "Statistics"
 }
