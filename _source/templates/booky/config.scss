@@ -34,11 +34,13 @@ $color--8: $color--dark;
 /**
  * Fonts
  */
-$font-family--heading: -apple-system,blinkmacsystemfont,"Segoe UI",roboto,
-  oxygen-sans,ubuntu,cantarell,"Helvetica Neue",sans-serif;
-$font-family--text: -apple-system,blinkmacsystemfont,"Segoe UI",roboto,
-  oxygen-sans,ubuntu,cantarell,"Helvetica Neue",sans-serif;
+/* stylelint-disable value-keyword-case */
+$font-family--heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$font-family--text: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $font-size--small: 0.857rem;
+/* stylelint-enable */
 
 /**
  * Breakpoints
