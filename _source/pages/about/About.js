@@ -12,6 +12,8 @@ import { List, ListItem } from '../../atoms/list';
 // import Feature from '../../molecules/feature';
 import Expandable from '../../molecules/expandable';
 
+import './About.scss';
+
 class About extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired

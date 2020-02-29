@@ -14,6 +14,8 @@ import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 
+import './Login.scss';
+
 class Login extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,

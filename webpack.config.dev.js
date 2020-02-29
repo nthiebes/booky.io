@@ -106,7 +106,8 @@ export default {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
+              sourceMap: true,
+              modules: 'global'
             }
           }, {
             loader: 'postcss-loader',
@@ -119,8 +120,9 @@ export default {
           }, {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(__dirname, '_source')],
-              sourceMap: true
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, '_source')]
+              }
             }
           }
         ]
