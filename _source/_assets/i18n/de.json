@@ -51,7 +51,6 @@
     "category.editModeQuit": "Editiermodus beenden",
     "category.drag": "Kategorie verschieben",
     "category.empty": "Deine Sammlung {collection} hat noch keine Kategorien. Füge jetzt eine erste hinzu!",
-    "category.emptyImage": "Noch keine Kategorien",
     "bookmark.add": "Neues <b>Lesezeichen</b>",
     "bookmark.edit": "Lesezeichen bearbeiten",
     "bookmark.delete": "Lesezeichen löschen",
@@ -214,5 +213,6 @@
     "misc.feature8": "Private Lesezeichenseite",
     "misc.feature9": "Lesezeichen Notizen",
     "misc.feature10": "Lesezeichen-Tagging",
-    "misc.feature11": "Schnell, barrierefrei und einfach"
+    "misc.feature11": "Schnell, barrierefrei und einfach",
+    "account.statistics": "Statistiken"
 }
