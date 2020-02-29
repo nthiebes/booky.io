@@ -157,7 +157,6 @@ class Header extends PureComponent {
                 className="header__add booky--hide-mobile-tablet"
                 onClick={ this.onCustomizeClick }
                 icon="customize"
-                solid
               >
                 <FormattedHTMLMessage id="menu.customize" />
               </ButtonSmallLight>
