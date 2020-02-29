@@ -133,6 +133,7 @@
 
     &.dashboards__item--dark-mode {
       background-color: $color-background--dark;
+      color: $color-font--primary;
     }
 
     .dashboards__label {
@@ -147,6 +148,7 @@
 
       &.dashboards__item--dark-mode {
         background-color: $color-background--dark;
+        color: $color-font--primary;
       }
 
       .dashboards__label {
@@ -172,10 +174,10 @@
       }
     }
     /* stylelint-enable */
+  }
 
-    &.dashboards__item--dark-mode {
-      color: $color-font--white;
-    }
+  &.dashboards__item--dark-mode {
+    color: $color-font--white;
   }
 }
 
