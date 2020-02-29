@@ -1,12 +1,55 @@
 {
-  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-a11y"
+  ],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-standard",
+    "stylelint-a11y/recommended"
+  ],
   "rules": {
-    "at-rule-no-unknown": [ true, {
-      "ignoreAtRules": [
-        "include",
-        "mixin"
-      ]
-    }],
-    "no-descending-specificity": null
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "include",
+          "mixin"
+        ]
+      }
+    ],
+    "a11y/content-property-no-static-value": true,
+    "a11y/font-size-is-readable": true,
+    "a11y/no-obsolete-attribute": true,
+    "a11y/no-obsolete-element": true,
+    "a11y/media-prefers-reduced-motion": null,
+    "a11y/selector-pseudo-class-focus": null,
+    "declaration-no-important": true,
+    "font-family-name-quotes": "always-where-required",
+    "function-url-quotes": "always",
+    "length-zero-no-unit": true,
+    "no-descending-specificity": null,
+    "media-feature-name-no-vendor-prefix": true,
+    "max-nesting-depth": 3,
+    "number-max-precision": 3,
+    "property-no-vendor-prefix": true,
+    "selector-max-compound-selectors": 3,
+    "selector-max-specificity": [
+      "0,3,0",
+      {
+        "ignoreSelectors": [
+          ":focus",
+          ":hover",
+          ":active",
+          ":valid",
+          ":invalid"
+        ]
+      }
+    ],
+    "selector-max-id": 0,
+    "selector-no-qualifying-type": true,
+    "selector-max-type": 1,
+    "selector-max-universal": 1,
+    "string-quotes": "double",
+    "value-no-vendor-prefix": true
   }
 }
