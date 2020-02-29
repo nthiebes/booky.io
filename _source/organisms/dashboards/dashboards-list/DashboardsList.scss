@@ -156,6 +156,10 @@
       }
     }
     /* stylelint-enable */
+
+    &.dashboards__item--dark-mode {
+      color: $color-font--white;
+    }
   }
 
   @include desktop {
