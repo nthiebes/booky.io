@@ -129,6 +129,7 @@
   &:active,
   &:focus {
     background-color: $color-background--ligth;
+    color: $color-font--primary;
 
     &.dashboards__item--dark-mode {
       background-color: $color-background--dark;
@@ -136,6 +137,21 @@
 
     .dashboards__label {
       color: $color-font--primary;
+    }
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: $color-background--ligth;
+      color: $color-font--primary;
+
+      &.dashboards__item--dark-mode {
+        background-color: $color-background--dark;
+      }
+
+      .dashboards__label {
+        color: $color-font--primary;
+      }
     }
   }
 
@@ -159,20 +175,6 @@
 
     &.dashboards__item--dark-mode {
       color: $color-font--white;
-    }
-  }
-
-  @include desktop {
-    &:hover {
-      background-color: $color-background--ligth;
-
-      &.dashboards__item--dark-mode {
-        background-color: $color-background--dark;
-      }
-
-      .dashboards__label {
-        color: $color-font--primary;
-      }
     }
   }
 }
