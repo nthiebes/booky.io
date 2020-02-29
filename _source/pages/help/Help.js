@@ -10,6 +10,8 @@ import Expandable from '../../molecules/expandable';
 // import Bookmarklet from '../../molecules/bookmarklet';
 import Illustration from '../../atoms/illustration';
 
+import './Help.scss';
+
 export default class Help extends Component {
   render() {
     const introValues = {

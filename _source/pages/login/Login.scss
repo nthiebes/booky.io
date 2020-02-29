@@ -1,28 +1,3 @@
-.login {
-  @include tablet {
-    max-width: 40rem;
-  }
-
-  @include desktop {
-    display: flex;
-    max-width: 50rem;
-    justify-content: center;
-  }
-}
-
-.login__form {
-  @include desktop {
-    flex-grow: 1;
-    margin-right: 2rem;
-  }
-}
-
-.login__illustration {
-  @include mobile-tablet {
-    display: none;
-  }
-}
-
 .login__forgot {
   display: block;
   margin-top: 1rem;
