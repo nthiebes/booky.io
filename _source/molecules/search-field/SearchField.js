@@ -12,16 +12,40 @@ class Search extends Component {
     intl: PropTypes.object.isRequired,
     darkMode: PropTypes.bool,
     id: PropTypes.string.isRequired,
-    searchBookmarks: PropTypes.func.isRequired,
-    keyword: PropTypes.string
+    searchBookmarks: PropTypes.func.isRequired
   }
+
+  state = {
+    keyword: ''
+  }
+
+  fetchTimeout;
   
-  onChange = (value) => {
-    this.props.searchBookmarks(value);
+  onChange = (keyword) => {
+    const { searchBookmarks } = this.props;
+
+    this.setState({
+      keyword
+    });
+
+    const searchBookmarksByValue = () => {
+      searchBookmarks(keyword);
+    };
+
+    clearTimeout(this.fetchTimeout);
+
+    if (keyword === '') {
+      searchBookmarksByValue(keyword);
+    } else {
+      this.fetchTimeout = setTimeout(() => {
+        searchBookmarksByValue();
+      }, 500);
+    }
   }
 
   render() {
-    const { className, intl, darkMode, id, keyword } = this.props;
+    const { className, intl, darkMode, id } = this.props;
+    const { keyword } = this.state;
 
     return (
       <div role="search" className={ classNames('search-field', className) }>
@@ -30,7 +54,10 @@ class Search extends Component {
         </Label>
         <Input
           placeholder={ intl.formatMessage({ id: 'search.placeholder' }) }
-          className={ classNames('search-field__input', darkMode && 'search-field__input--dark-mode') }
+          className={ classNames(
+            'search-field__input',
+            darkMode && 'search-field__input--dark-mode'
+          ) }
           value={ keyword }
           onChange={ this.onChange }
           validation={ false }

@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 
 import { searchBookmarks } from '../../_state/search/actions';
-import Component from './Search';
+import Component from './SearchField';
 
 export const mapStateToProps = (state) => ({
-  darkMode: state.user.settings.darkMode,
-  keyword: state.search.keyword
+  darkMode: state.user.settings.darkMode
 });
 
 export const mapDispatchToProps = {
