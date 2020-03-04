@@ -55,7 +55,7 @@ const loadingDone = () => {
     });
   // Logged in
   } else {
-    document.title = 'booky.io';
+    document.title = 'booky';
     store = configureStore({
       ...initialState,
       user: {
