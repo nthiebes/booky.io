@@ -173,7 +173,7 @@ class Category extends PureComponent {
           ) }
         </Droppable>
         { !hidden && !error && !pending && (
-          <ButtonSmallPrimary icon="add" className="category__button" onClick={ this.onAddClick }>
+          <ButtonSmallPrimary icon="add-link" className="category__button" onClick={ this.onAddClick }>
             <FormattedHTMLMessage id="bookmark.add" />
           </ButtonSmallPrimary>
         ) }
