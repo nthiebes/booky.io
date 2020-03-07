@@ -75,16 +75,19 @@ class Home extends Component {
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
-            text={ intl.formatMessage({ id: 'home.performantText' }) }
-            illustration="monitor-loading-progress"
+            headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.customizableText' }) }
+            illustration="color-palette"
             direction="right"
           />
         </Section>
         <Section color="dark" contentClassName="home__bookmarklet">
-          <H2 style="h1" color="light" noMargin centered className="home__bookmarklet-headline">
-            <FormattedMessage id="home.extensionText" />
+          <H2 style="h1" color="light" noMargin centered>
+            <FormattedMessage id="misc.feature1" />
           </H2>
+          <H3 style="h2" color="light" noMargin centered>
+            <FormattedMessage id="home.extensionText" />
+          </H3>
           <nav className="home__extension">
             <Link to="/about" color="light" className="home__extension-browser">
               <img
@@ -130,9 +133,9 @@ class Home extends Component {
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
-            text={ intl.formatMessage({ id: 'home.customizableText' }) }
-            illustration="color-palette"
+            headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
+            text={ intl.formatMessage({ id: 'home.performantText' }) }
+            illustration="monitor-loading-progress"
           />
         </Section>
         <Section>
