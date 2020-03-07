@@ -22,11 +22,44 @@
   }
 }
 
-.search-results__spinner {
-  margin-top: calc(3rem + 6px);
-  left: calc(50% - 18px);
-}
-
 .search-results__keyword {
   font-size: 1.5rem;
+}
+
+.search__bookmark {
+  padding: 0;
+}
+
+.search-skeleton__text {
+  width: 100%;
+  margin-top: 1rem;
+
+  @include tablet-desktop {
+    width: 70%;
+  }
+}
+
+.search-skeleton__collection {
+  width: 60%;
+  margin-bottom: 0.5rem;
+}
+
+.search-skeleton__icon {
+  margin-left: 0;
+  height: 16px;
+  /* stylelint-disable */
+  width: 16px !important;
+  /* stylelint-enable */
+}
+
+.search-skeleton__link1 {
+  width: 80%;
+}
+
+.search-skeleton__link2 {
+  width: 60%;
+}
+
+.search-skeleton__link3 {
+  width: 70%;
 }

@@ -8,6 +8,7 @@ import Icon from '../../atoms/icon';
 import { H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Empty from '../../molecules/empty';
+import SearchSkeleton from './SearchSkeleton';
 
 class Search extends PureComponent {
   static propTypes = {
@@ -59,7 +60,7 @@ class Search extends PureComponent {
 
     if (pending) {
       return this.getWrapper(
-        <Icon icon="spinner" className="search-results__spinner" />
+        <SearchSkeleton />
       );
     }
 
@@ -78,7 +79,8 @@ class Search extends PureComponent {
         <P>
           <FormattedMessage id="search.results" values={ {
             keyword: <b className="search-results__keyword">{ keyword }</b>,
-            total: <b className="search-results__keyword">{ total }</b>
+            results: <b className="search-results__keyword">{ total }</b>,
+            count: total
           } } />
         </P>
         <ul>
@@ -89,7 +91,7 @@ class Search extends PureComponent {
                 <ul key={ categoryId }>
                   <H3>{ categoryName }</H3>
                   { bookmarks.map(({ id: bookmarkId, name: bookmarkName, url, favicon }) => (
-                    <li key={ bookmarkId } className="bookmark">
+                    <li key={ bookmarkId } className="bookmark search__bookmark">
                       { !favicon || favicon === 'default' ? (
                         <Icon
                           icon="earth"
