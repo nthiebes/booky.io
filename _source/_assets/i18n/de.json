@@ -216,5 +216,6 @@
     "misc.feature11": "Schnell, barrierefrei und einfach",
     "account.statistics": "Statistiken",
     "search.empty": "Deine Suche nach {keyword} ergab leider keine Ergebnisse.",
-    "search.results": "Für deine Suche nach {keyword} konnten wir {results} Lesezeichen für dich finden!"
+    "search.results": "Für deine Suche nach {keyword} konnten wir {results} Lesezeichen für dich finden!",
+    "search.loadMore": "<b>Mehr</b> laden"
 }
