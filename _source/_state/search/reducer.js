@@ -5,6 +5,13 @@ const search = (state = {}, action) => {
 
   switch (type) {
     case 'UPDATE_SEARCH_DATA': {
+      if (data.dashboards) {
+        return {
+          ...state,
+          ...data,
+          dashboards: [...state.dashboards, ...data.dashboards]
+        };
+      }
       return {
         ...state,
         ...data

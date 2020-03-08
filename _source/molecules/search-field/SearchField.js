@@ -35,9 +35,11 @@ class Search extends Component {
     clearTimeout(this.fetchTimeout);
 
     if (keyword === '') {
-      searchBookmarksByValue(keyword);
+      window.scrollTo(0, 0);
+      searchBookmarksByValue();
     } else {
       this.fetchTimeout = setTimeout(() => {
+        window.scrollTo(0, 0);
         searchBookmarksByValue();
       }, 500);
     }

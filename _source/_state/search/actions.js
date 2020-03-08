@@ -1,12 +1,4 @@
 import fetcher, { abortFetch } from '../../_utils/fetcher';
-import resultsMock from './resultsMock.json';
-
-// const emptyResultsMock = {
-//   total: 0,
-//   offset: 0,
-//   limit: 50,
-//   dashboards: []
-// };
 
 export const resetSearch = () => ({
   type: 'RESET_SEARCH'
@@ -17,31 +9,28 @@ export const updateSearchData = (data) => ({
   data
 });
 
-export const searchBookmarks = (keyword) => ((dispatch) => {
+export const searchBookmarks = (keyword, { limit = 30, offset = 0 } = {}) => ((dispatch) => {
   dispatch(updateSearchData({
     pending: true,
     error: null,
+    offset,
     keyword
   }));
   abortFetch();
 
   fetcher({
-    url: '/search',
-    onSuccess: ({ results }) => {
+    url: `/bookmarks/search?searchTerm=${keyword}&limit=${limit}&offset=${offset}`,
+    onSuccess: (results) => {
       dispatch(updateSearchData({
-        results,
+        ...results,
         pending: false
       }));
     },
-    onError: () => {
+    onError: (error) => {
       dispatch(updateSearchData({
-        results: resultsMock,
+        error,
         pending: false
       }));
-      // dispatch(updateSearchData({
-      //   error,
-      //   pending: false
-      // }));
     }
   });
 });

@@ -1,7 +1,7 @@
 {
-  "total": 30,
+  "total": 32,
   "offset": 0,
-  "limit": 50,
+  "limit": 30,
   "dashboards": [
     {
       "id": 324234234,

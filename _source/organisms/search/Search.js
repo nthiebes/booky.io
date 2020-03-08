@@ -1,10 +1,11 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import classNames from 'classnames';
 
 import { ErrorMessage } from '../../atoms/messages';
 import Icon from '../../atoms/icon';
+import { ButtonSmallMedium } from '../../atoms/button';
 import { H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Empty from '../../molecules/empty';
@@ -13,18 +14,17 @@ import SearchSkeleton from './SearchSkeleton';
 class Search extends PureComponent {
   static propTypes = {
     keyword: PropTypes.string,
-    results: PropTypes.shape({
-      dashboards: PropTypes.array.isRequired,
-      total: PropTypes.number.isRequired,
-      offset: PropTypes.number.isRequired,
-      limit: PropTypes.number.isRequired
-    }),
+    dashboards: PropTypes.array.isRequired,
+    total: PropTypes.number.isRequired,
+    offset: PropTypes.number.isRequired,
+    limit: PropTypes.number.isRequired,
     hasSidebar: PropTypes.bool,
     dashboardsOpen: PropTypes.bool,
     darkMode: PropTypes.bool,
     newtab: PropTypes.bool,
     pending: PropTypes.bool,
-    error: PropTypes.string
+    error: PropTypes.string,
+    searchBookmarks: PropTypes.func.isRequired
   }
 
   getWrapper = (content) => {
@@ -32,25 +32,32 @@ class Search extends PureComponent {
 
     return (
       <section className={ classNames(
-        'search-results',
-        hasSidebar && 'search-results--sidebar',
-        hasSidebar && dashboardsOpen && 'search-results--shifted'
+        'search',
+        hasSidebar && 'search--sidebar',
+        hasSidebar && dashboardsOpen && 'search--shifted'
       ) }>
         { content }
       </section>
     );
   }
 
+  handleLoadMore = () => {
+    const { searchBookmarks, keyword, offset } = this.props;
+    
+    searchBookmarks(keyword, { offset: offset + 30 });
+  }
+
   render() {
     const {
-      results,
+      dashboards,
+      total,
       darkMode,
       newtab,
       keyword,
       pending,
-      error
+      error,
+      offset
     } = this.props;
-    const { dashboards, total } = results;
 
     if (error) {
       return this.getWrapper(
@@ -58,13 +65,13 @@ class Search extends PureComponent {
       );
     }
 
-    if (pending) {
+    if (pending && offset === 0) {
       return this.getWrapper(
         <SearchSkeleton />
       );
     }
 
-    if (!results.dashboards.length) {
+    if (!dashboards.length) {
       return this.getWrapper(
         <Empty illustration="chip-head">
           <FormattedMessage id="search.empty" values={ {
@@ -78,8 +85,8 @@ class Search extends PureComponent {
       <Fragment>
         <P>
           <FormattedMessage id="search.results" values={ {
-            keyword: <b className="search-results__keyword">{ keyword }</b>,
-            results: <b className="search-results__keyword">{ total }</b>,
+            keyword: <b className="search__keyword">{ keyword }</b>,
+            results: <b className="search__keyword">{ total }</b>,
             count: total
           } } />
         </P>
@@ -122,6 +129,14 @@ class Search extends PureComponent {
             </li>
           )) }
         </ul>
+        { pending && offset >= 30 && (
+          <Icon icon="spinner" className="search__spinner" />
+        ) }
+        { total > offset && !pending && (
+          <ButtonSmallMedium className="search__load-more" onClick={ this.handleLoadMore }>
+            <FormattedHTMLMessage id="search.loadMore" />
+          </ButtonSmallMedium>
+        ) }
       </Fragment>
     );
   }

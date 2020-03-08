@@ -11,15 +11,15 @@ export default class SearchSkeleton extends PureComponent {
       <ul>
         <H3><Skeleton /></H3>
         <li className="bookmark search__bookmark">
-          <Icon useSkeleton className="search-skeleton__icon" />
+          <Icon icon="search" useSkeleton className="search-skeleton__icon" />
           <Skeleton className="search-skeleton__link1" />
         </li>
         <li className="bookmark search__bookmark">
-          <Icon useSkeleton className="search-skeleton__icon" />
+          <Icon icon="search" useSkeleton className="search-skeleton__icon" />
           <Skeleton className="search-skeleton__link2" />
         </li>
         <li className="bookmark search__bookmark">
-          <Icon useSkeleton className="search-skeleton__icon" />
+          <Icon icon="search" useSkeleton className="search-skeleton__icon" />
           <Skeleton className="search-skeleton__link3" />
         </li>
       </ul>

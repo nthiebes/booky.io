@@ -44,11 +44,9 @@ export default {
     keyword: '',
     pending: false,
     error: null,
-    results: {
-      total: 0,
-      offset: 0,
-      limit: 50,
-      dashboards: []
-    }
+    total: 0,
+    offset: 0,
+    limit: 30,
+    dashboards: []
   }
 };
