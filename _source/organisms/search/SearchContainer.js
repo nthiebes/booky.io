@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Component from './Search';
 
-import { searchBookmarks } from '../../_state/search/actions';
+import { searchBookmarks, loadMoreBookmarks } from '../../_state/search/actions';
 
 const mapStateToProps = (state) => ({
   dashboards: state.search.dashboards,
@@ -17,7 +17,8 @@ const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode
 });
 const mapDispatchToProps = {
-  searchBookmarks
+  searchBookmarks,
+  loadMoreBookmarks
 };
 const Container = connect(
   mapStateToProps,

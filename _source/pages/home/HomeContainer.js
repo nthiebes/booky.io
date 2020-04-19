@@ -7,7 +7,7 @@ export const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn,
   blurContent: state.modal.open && state.user.settings.blurEffect,
   hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
-  keywordExists: Boolean(state.search.keyword)
+  keywordExists: state.search.total !== null || state.search.pending
 });
 
 export const mapDispatchToProps = {

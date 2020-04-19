@@ -15,7 +15,7 @@ class Search extends PureComponent {
   static propTypes = {
     keyword: PropTypes.string,
     dashboards: PropTypes.array.isRequired,
-    total: PropTypes.number.isRequired,
+    total: PropTypes.number,
     offset: PropTypes.number.isRequired,
     limit: PropTypes.number.isRequired,
     hasSidebar: PropTypes.bool,
@@ -24,7 +24,8 @@ class Search extends PureComponent {
     newtab: PropTypes.bool,
     pending: PropTypes.bool,
     error: PropTypes.string,
-    searchBookmarks: PropTypes.func.isRequired
+    searchBookmarks: PropTypes.func.isRequired,
+    loadMoreBookmarks: PropTypes.func.isRequired
   }
 
   getWrapper = (content) => {
@@ -42,9 +43,9 @@ class Search extends PureComponent {
   }
 
   handleLoadMore = () => {
-    const { searchBookmarks, keyword, offset } = this.props;
+    const { loadMoreBookmarks, keyword, offset } = this.props;
     
-    searchBookmarks(keyword, { offset: offset + 30 });
+    loadMoreBookmarks(keyword, { offset: offset + 30 });
   }
 
   render() {
@@ -56,10 +57,12 @@ class Search extends PureComponent {
       keyword,
       pending,
       error,
-      offset
+      offset,
+      limit
     } = this.props;
 
     if (error) {
+      window.scrollTo(0, 0);
       return this.getWrapper(
         <ErrorMessage hasIcon noAnimation />
       );
@@ -71,7 +74,7 @@ class Search extends PureComponent {
       );
     }
 
-    if (!dashboards.length) {
+    if (!total) {
       return this.getWrapper(
         <Empty illustration="chip-head">
           <FormattedMessage id="search.empty" values={ {
@@ -129,14 +132,16 @@ class Search extends PureComponent {
             </li>
           )) }
         </ul>
-        { pending && offset >= 30 && (
-          <Icon icon="spinner" className="search__spinner" />
-        ) }
-        { total > offset && !pending && (
-          <ButtonSmallMedium className="search__load-more" onClick={ this.handleLoadMore }>
-            <FormattedHTMLMessage id="search.loadMore" />
-          </ButtonSmallMedium>
-        ) }
+        <div className="search__load-more-wrapper">
+          { pending && offset >= 30 && (
+            <Icon icon="spinner" className="search__spinner" />
+          ) }
+          { total > (limit + offset) && !pending && (
+            <ButtonSmallMedium className="search__load-more" onClick={ this.handleLoadMore }>
+              <FormattedHTMLMessage id="search.loadMore" />
+            </ButtonSmallMedium>
+          ) }
+        </div>
       </Fragment>
     );
   }

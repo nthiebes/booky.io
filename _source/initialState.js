@@ -44,7 +44,7 @@ export default {
     keyword: '',
     pending: false,
     error: null,
-    total: 0,
+    total: null,
     offset: 0,
     limit: 30,
     dashboards: []

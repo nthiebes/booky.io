@@ -30,15 +30,12 @@
   padding: 0;
 }
 
-.search__load-more {
+.search__load-more-wrapper {
   margin-top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.search__spinner {
-  margin-top: 2rem;
-  left: calc(50% - 18px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
 }
 
 .search-skeleton__text {

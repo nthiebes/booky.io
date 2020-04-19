@@ -1,14 +1,18 @@
 import { connect } from 'react-redux';
 
-import { searchBookmarks } from '../../_state/search/actions';
+import { searchBookmarks, resetSearch, updateSearchData } from '../../_state/search/actions';
 import Component from './SearchField';
 
 export const mapStateToProps = (state) => ({
-  darkMode: state.user.settings.darkMode
+  darkMode: state.user.settings.darkMode,
+  keyword: state.search.keyword,
+  dashboardsPending: state.dashboards.pending
 });
 
 export const mapDispatchToProps = {
-  searchBookmarks
+  searchBookmarks,
+  resetSearch,
+  updateSearchData
 };
 
 const Container = connect(

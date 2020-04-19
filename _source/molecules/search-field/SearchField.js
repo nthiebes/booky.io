@@ -12,19 +12,19 @@ class Search extends Component {
     intl: PropTypes.object.isRequired,
     darkMode: PropTypes.bool,
     id: PropTypes.string.isRequired,
-    searchBookmarks: PropTypes.func.isRequired
-  }
-
-  state = {
-    keyword: ''
+    searchBookmarks: PropTypes.func.isRequired,
+    resetSearch: PropTypes.func.isRequired,
+    updateSearchData: PropTypes.func.isRequired,
+    keyword: PropTypes.string,
+    dashboardsPending: PropTypes.bool
   }
 
   fetchTimeout;
   
-  onChange = (keyword) => {
-    const { searchBookmarks } = this.props;
+  handleChange = (keyword) => {
+    const { searchBookmarks, resetSearch, updateSearchData } = this.props;
 
-    this.setState({
+    updateSearchData({
       keyword
     });
 
@@ -36,7 +36,7 @@ class Search extends Component {
 
     if (keyword === '') {
       window.scrollTo(0, 0);
-      searchBookmarksByValue();
+      resetSearch();
     } else {
       this.fetchTimeout = setTimeout(() => {
         window.scrollTo(0, 0);
@@ -45,12 +45,19 @@ class Search extends Component {
     }
   }
 
+  handleSubmit = (event) => {
+    const { keyword } = this.props;
+
+    event.preventDefault();
+
+    this.handleChange(keyword);
+  }
+
   render() {
-    const { className, intl, darkMode, id } = this.props;
-    const { keyword } = this.state;
+    const { className, intl, darkMode, id, keyword, dashboardsPending } = this.props;
 
     return (
-      <div role="search" className={ classNames('search-field', className) }>
+      <form role="search" className={ classNames('search-field', className) } onSubmit={ this.handleSubmit }>
         <Label htmlFor="search" className="search-field__label">
           <FormattedMessage id="search.label" />
         </Label>
@@ -61,12 +68,13 @@ class Search extends Component {
             darkMode && 'search-field__input--dark-mode'
           ) }
           value={ keyword }
-          onChange={ this.onChange }
+          onChange={ this.handleChange }
           validation={ false }
           icon="search"
           id={ id }
+          disabled={ dashboardsPending }
         />
-      </div>
+      </form>
     );
   }
 }
