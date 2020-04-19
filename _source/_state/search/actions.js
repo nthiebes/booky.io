@@ -1,4 +1,5 @@
 import fetcher, { abortFetch } from '../../_utils/fetcher';
+import initialState from '../../initialState';
 
 export const resetSearch = () => ({
   type: 'RESET_SEARCH'
@@ -24,7 +25,7 @@ export const searchBookmarks = (keyword) => ((dispatch) => {
   abortFetch();
 
   fetcher({
-    url: `/bookmarks/search?searchTerm=${keyword}&limit=30&offset=0`,
+    url: `/bookmarks/search?searchTerm=${keyword}&limit=${initialState.search.limit}&offset=0`,
     onSuccess: ({ dashboards, total }) => {
       dispatch(updateSearchData({
         dashboards,
@@ -41,7 +42,10 @@ export const searchBookmarks = (keyword) => ((dispatch) => {
   });
 });
 
-export const loadMoreBookmarks = (keyword, { limit = 30, offset = 0 } = {}) => ((dispatch) => {
+export const loadMoreBookmarks = (
+  keyword,
+  { limit = initialState.search.limit, offset = 0 } = {}
+) => ((dispatch) => {
   dispatch(updateSearchData({
     pending: true,
     offset

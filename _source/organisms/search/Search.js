@@ -43,9 +43,9 @@ class Search extends PureComponent {
   }
 
   handleLoadMore = () => {
-    const { loadMoreBookmarks, keyword, offset } = this.props;
+    const { loadMoreBookmarks, keyword, offset, limit } = this.props;
     
-    loadMoreBookmarks(keyword, { offset: offset + 30 });
+    loadMoreBookmarks(keyword, { offset: offset + limit });
   }
 
   render() {
@@ -139,7 +139,7 @@ class Search extends PureComponent {
           )) }
         </ul>
         <div className="search__load-more-wrapper">
-          { pending && offset >= 30 && (
+          { pending && offset >= limit && (
             <Icon icon="spinner" className="search__spinner" />
           ) }
           { total > (limit + offset) && !pending && (
