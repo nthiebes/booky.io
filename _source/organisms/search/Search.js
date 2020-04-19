@@ -96,10 +96,16 @@ class Search extends PureComponent {
         <ul>
           { dashboards.map(({id: dashboardId, name: dashboardName, categories}) => (
             <li key={ dashboardId }>
-              <H2>{ dashboardName }</H2>
-              { categories.map(({ id: categoryId, name: categoryName, bookmarks }) => (
+              <H2 className="search__headline">
+                <Icon icon="collection" />
+                { dashboardName }
+              </H2>
+              { categories.map(({ id: categoryId, name: categoryName, bookmarks }, index) => (
                 <ul key={ categoryId }>
-                  <H3>{ categoryName }</H3>
+                  <H3 className="search__headline" noMargin={ index === 0 }>
+                    <Icon icon="category" />
+                    { categoryName }
+                  </H3>
                   { bookmarks.map(({ id: bookmarkId, name: bookmarkName, url, favicon }) => (
                     <li key={ bookmarkId } className="bookmark search__bookmark">
                       { !favicon || favicon === 'default' ? (
