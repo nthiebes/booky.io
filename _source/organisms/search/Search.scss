@@ -1,6 +1,6 @@
 .search {
   margin-top: 3rem;
-  padding: 0 3%;
+  padding: 0 calc(3% + 6px);
 
   @include desktop {
     margin-top: 30px;
@@ -22,7 +22,32 @@
   }
 }
 
+.search__dashboard {
+  cursor: pointer;
+  background-color: transparent;
+
+  &:active,
+  &:focus {
+    text-decoration: underline;
+
+    .search__headline {
+      color: $color-font--dark;
+    }
+  }
+
+  @include desktop {
+    &:hover {
+      text-decoration: underline;
+
+      .search__headline {
+        color: $color-font--dark;
+      }
+    }
+  }
+}
+
 .search__headline {
+  transition: color 0.2s linear;
   margin-left: -6px;
 }
 

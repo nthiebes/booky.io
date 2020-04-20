@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Component from './Search';
 
 import { searchBookmarks, loadMoreBookmarks } from '../../_state/search/actions';
+import { changeDashboard } from '../../_state/dashboards/actions';
 
 const mapStateToProps = (state) => ({
   dashboards: state.search.dashboards,
@@ -18,7 +19,8 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = {
   searchBookmarks,
-  loadMoreBookmarks
+  loadMoreBookmarks,
+  changeDashboard
 };
 const Container = connect(
   mapStateToProps,

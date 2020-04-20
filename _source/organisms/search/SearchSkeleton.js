@@ -6,10 +6,10 @@ import Icon from '../../atoms/icon';
 import Skeleton from './../../atoms/skeleton';
 
 export default class SearchSkeleton extends PureComponent {
-  getCategory() {
+  getCategory({ noMargin = false } = {}) {
     return (
       <ul>
-        <H3><Skeleton /></H3>
+        <H3 noMargin={ noMargin }><Skeleton /></H3>
         <li className="bookmark search__bookmark">
           <Icon icon="search" useSkeleton className="search-skeleton__icon" />
           <Skeleton className="search-skeleton__link1" />
@@ -35,7 +35,7 @@ export default class SearchSkeleton extends PureComponent {
         <ul>
           <li>
             <H2><Skeleton className="search-skeleton__collection" /></H2>
-            { this.getCategory() }
+            { this.getCategory({ noMargin: true }) }
             { this.getCategory() }
             { this.getCategory() }
           </li>

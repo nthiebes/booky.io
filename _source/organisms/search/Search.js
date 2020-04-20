@@ -25,7 +25,8 @@ class Search extends PureComponent {
     pending: PropTypes.bool,
     error: PropTypes.string,
     searchBookmarks: PropTypes.func.isRequired,
-    loadMoreBookmarks: PropTypes.func.isRequired
+    loadMoreBookmarks: PropTypes.func.isRequired,
+    changeDashboard: PropTypes.func.isRequired
   }
 
   getWrapper = (content) => {
@@ -46,6 +47,15 @@ class Search extends PureComponent {
     const { loadMoreBookmarks, keyword, offset, limit } = this.props;
     
     loadMoreBookmarks(keyword, { offset: offset + limit });
+  }
+
+  handleDashboardClick = (dashboardId) => {
+    const { changeDashboard } = this.props;
+
+    return () => {
+      window.scrollTo(0, 0);
+      changeDashboard(dashboardId);
+    };
   }
 
   render() {
@@ -94,15 +104,17 @@ class Search extends PureComponent {
           } } />
         </P>
         <ul>
-          { dashboards.map(({id: dashboardId, name: dashboardName, categories}) => (
-            <li key={ dashboardId }>
-              <H2 className="search__headline">
-                <Icon icon="collection" />
-                { dashboardName }
-              </H2>
-              { categories.map(({ id: categoryId, name: categoryName, bookmarks }, index) => (
-                <ul key={ categoryId }>
-                  <H3 className="search__headline" noMargin={ index === 0 }>
+          { dashboards.map(({id: dashboardId, name: dashboardName, categories}, dashboardIndex) => (
+            <li key={ `${dashboardId}-${dashboardIndex}` }>
+              <button className="search__dashboard" onClick={ this.handleDashboardClick(dashboardId) }>
+                <H2 className="search__headline">
+                  <Icon icon="collection" />
+                  { dashboardName }
+                </H2>
+              </button>
+              { categories.map(({ id: categoryId, name: categoryName, bookmarks }, categoryIndex) => (
+                <ul key={ `${categoryId}-${categoryIndex}` }>
+                  <H3 className="search__headline" noMargin={ categoryIndex === 0 }>
                     <Icon icon="category" />
                     { categoryName }
                   </H3>
