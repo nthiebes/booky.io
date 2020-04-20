@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Component from './Search';
 
-import { searchBookmarks, loadMoreBookmarks } from '../../_state/search/actions';
+import { loadMoreBookmarks } from '../../_state/search/actions';
 import { changeDashboard } from '../../_state/dashboards/actions';
 
 const mapStateToProps = (state) => ({
@@ -18,7 +18,6 @@ const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode
 });
 const mapDispatchToProps = {
-  searchBookmarks,
   loadMoreBookmarks,
   changeDashboard
 };

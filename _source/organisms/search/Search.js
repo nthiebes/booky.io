@@ -24,7 +24,6 @@ class Search extends PureComponent {
     newtab: PropTypes.bool,
     pending: PropTypes.bool,
     error: PropTypes.string,
-    searchBookmarks: PropTypes.func.isRequired,
     loadMoreBookmarks: PropTypes.func.isRequired,
     changeDashboard: PropTypes.func.isRequired
   }

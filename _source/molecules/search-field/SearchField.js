@@ -25,7 +25,10 @@ class Search extends Component {
     const { searchBookmarks, resetSearch, updateSearchData } = this.props;
 
     updateSearchData({
-      keyword
+      keyword,
+      pending: true,
+      error: null,
+      offset: 0
     });
 
     const searchBookmarksByValue = () => {

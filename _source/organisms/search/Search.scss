@@ -53,6 +53,7 @@
 
 .search__keyword {
   font-size: 1.5rem;
+  word-break: break-word;
 }
 
 .search__bookmark {
@@ -67,6 +68,10 @@
   height: 3rem;
 }
 
+.search-skeleton__wrapper {
+  max-width: 700px;
+}
+
 .search-skeleton__text {
   width: 100%;
   margin-top: 1rem;
@@ -79,6 +84,10 @@
 .search-skeleton__collection {
   width: 60%;
   margin-bottom: 0.5rem;
+}
+
+.search-skeleton__category {
+  width: 35%;
 }
 
 .search-skeleton__icon {

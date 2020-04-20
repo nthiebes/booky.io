@@ -16,12 +16,6 @@ export const appendSearchResults = (data) => ({
 });
 
 export const searchBookmarks = (keyword) => ((dispatch) => {
-  dispatch(updateSearchData({
-    pending: true,
-    error: null,
-    offset: 0,
-    keyword
-  }));
   abortFetch();
 
   fetcher({
