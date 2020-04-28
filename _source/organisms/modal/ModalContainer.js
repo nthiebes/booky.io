@@ -17,6 +17,7 @@ import {
   deleteDashboard
 } from '../../_state/dashboards/actions';
 import { deleteAccount } from '../../_state/user/actions';
+import { resetSearch } from '../../_state/search/actions';
 
 export const mapStateToProps = (state) => ({
   modal: state.modal.modal,
@@ -41,7 +42,8 @@ export const mapDispatchToProps = {
   addDashboard,
   editDashboard,
   deleteDashboard,
-  deleteAccount
+  deleteAccount,
+  resetSearch
 };
 
 const Container = connect(

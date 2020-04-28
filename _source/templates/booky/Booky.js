@@ -19,8 +19,8 @@ export default class Booky extends Component {
 
   transitionEndCallback() {
     loadingSpinner.removeEventListener('transitionend', this.transitionEndCallback);
-    loadingSpinner.parentNode.removeChild(loadingSpinner);
-    loadingHeader.parentNode.removeChild(loadingHeader);
+    loadingSpinner.parentNode && loadingSpinner.parentNode.removeChild(loadingSpinner);
+    loadingHeader.parentNode && loadingHeader.parentNode.removeChild(loadingHeader);
   }
 
   onDragStart = () => {

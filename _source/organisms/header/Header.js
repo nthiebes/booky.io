@@ -8,7 +8,7 @@ import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Logo from '../../atoms/logo';
-import Search from '../../molecules/search';
+import SearchField from '../../molecules/search-field';
 import { ButtonSmallLight } from '../../atoms/button';
 
 class Header extends PureComponent {
@@ -121,7 +121,7 @@ class Header extends PureComponent {
                 ignoreDarkMode
                 isButton
               />
-              <Search className="booky--hide-desktop" id="search-mobile" />
+              <SearchField className="booky--hide-desktop" id="search-mobile" />
             </Fragment>
           ) }
           <Link
