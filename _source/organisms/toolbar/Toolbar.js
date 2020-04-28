@@ -7,7 +7,7 @@ import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H1 } from '../../atoms/headline';
 import Skeleton from '../../atoms/skeleton';
-import Search from '../../molecules/search';
+import SearchField from '../../molecules/search-field';
 import { TabBar, Tab } from '../../molecules/tab-bar';
 import { ButtonSmallPrimary } from '../../atoms/button';
 
@@ -123,7 +123,7 @@ class Toolbar extends PureComponent {
         ) }
         { hasCategories && (
           <ButtonSmallPrimary
-            icon="add"
+            icon="add-category"
             className="toolbar__add-category"
             onClick={ this.onAddClick }
             useSkeleton={ categoriesPending }
@@ -131,7 +131,7 @@ class Toolbar extends PureComponent {
             <FormattedHTMLMessage id="category.add" />
           </ButtonSmallPrimary>
         ) }
-        <Search className="booky--hide-mobile-tablet" id="search-desktop" />
+        <SearchField className="booky--hide-mobile-tablet" id="search-desktop" />
       </section>
     );
   }

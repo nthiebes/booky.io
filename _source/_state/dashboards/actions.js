@@ -3,6 +3,7 @@ import fetcher, { abortFetch } from '../../_utils/fetcher';
 import { setCategories, getCategories } from '../categories/actions';
 import { updateSettings } from '../user/actions';
 import { closeSidebar } from '../sidebar/actions';
+import { resetSearch } from '../search/actions';
 
 export const updateOffset = (offset) => ({
   type: 'UPDATE_OFFSET',
@@ -34,12 +35,14 @@ export const changeDashboard = (id) => ((dispatch) => {
 
   dispatch(closeSidebar());
   dispatch(getCategories(id));
+  dispatch(resetSearch());
 });
 
 export const getDashboards = () => ((dispatch) => {
   dispatch(updateDashboardsData({
     pending: true
   }));
+  dispatch(resetSearch());
 
   fetcher({
     url: '/dashboards',
@@ -108,6 +111,7 @@ export const editDashboard = ({ name, position, id, onSuccess, onError, shouldUp
 
 export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch, getState) => {
   const dashboards = getState().dashboards.items;
+  const activeDashboardId = getState().user.settings.defaultDashboardId;
   const defaultDashboardId = newId || (dashboards.length ? dashboards[0].id : null);
   const url = newId ? `/dashboards/${id}?moveCategoriesTo=${newId}` : `/dashboards/${id}`;
 
@@ -123,10 +127,11 @@ export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch
         newId,
         id
       });
-      dispatch(changeDashboard(defaultDashboardId));
+      if (activeDashboardId === id) {
+        dispatch(changeDashboard(defaultDashboardId));
+      }
     },
     onError: () => {
-      // console.log('error', error);
       onError();
     }
   });

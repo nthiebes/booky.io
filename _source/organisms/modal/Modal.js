@@ -33,7 +33,8 @@ export default class Modal extends PureComponent {
     editDashboard: PropTypes.func.isRequired,
     deleteDashboard: PropTypes.func.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    deleteAccount: PropTypes.func.isRequired
+    deleteAccount: PropTypes.func.isRequired,
+    resetSearch: PropTypes.func.isRequired
   }
 
   state = {
@@ -102,7 +103,7 @@ export default class Modal extends PureComponent {
   }
 
   handleSave = (modalData) => {
-    const { modal, data } = this.props;
+    const { modal, data, resetSearch } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
     modalData.categoryId = parseInt(modalData.categoryId, 10);
@@ -122,6 +123,7 @@ export default class Modal extends PureComponent {
         dashboardId: modalData.dashboardId || data.activeDashboard,
         onSuccess: () => {
           this.closeModal();
+          resetSearch();
         },
         onError: (error) => {
           this.setState({

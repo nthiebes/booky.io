@@ -19,7 +19,7 @@
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
 @import "../../molecules/category/Category";
-@import "../../molecules/search/Search";
+@import "../../molecules/search-field/SearchField";
 @import "../../molecules/color-picker/ColorPicker";
 @import "../../molecules/tab-bar/TabBar";
 @import "../../molecules/language-switcher/LanguageSwitcher";
@@ -39,6 +39,7 @@
 @import "../../organisms/structure/Structure";
 @import "../../organisms/sidebar/Sidebar";
 @import "../../organisms/modal/Modal";
+@import "../../organisms/search/Search";
 @import "../../organisms/dashboards/dashboards-list/DashboardsList";
 @import "../../organisms/dashboards/dashboards-sidebar/DashboardsSidebar";
 @import "../../templates/page/Page";
