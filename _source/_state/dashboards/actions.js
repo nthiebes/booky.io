@@ -111,6 +111,7 @@ export const editDashboard = ({ name, position, id, onSuccess, onError, shouldUp
 
 export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch, getState) => {
   const dashboards = getState().dashboards.items;
+  const activeDashboardId = getState().user.settings.defaultDashboardId;
   const defaultDashboardId = newId || (dashboards.length ? dashboards[0].id : null);
   const url = newId ? `/dashboards/${id}?moveCategoriesTo=${newId}` : `/dashboards/${id}`;
 
@@ -126,10 +127,11 @@ export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch
         newId,
         id
       });
-      dispatch(changeDashboard(defaultDashboardId));
+      if (activeDashboardId === id) {
+        dispatch(changeDashboard(defaultDashboardId));
+      }
     },
     onError: () => {
-      // console.log('error', error);
       onError();
     }
   });

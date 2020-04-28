@@ -23,11 +23,18 @@ class Modal extends PureComponent {
     intl: PropTypes.object.isRequired,
     pending: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    error: PropTypes.string
+    error: PropTypes.string,
+    useAnchor: PropTypes.bool
+  }
+
+  static defaultProps = {
+    useAnchor: true
   }
 
   componentDidMount() {
-    this.anchor.focus();
+    if (this.props.useAnchor) {
+      this.anchor.focus();
+    }
 
     // document.body.classList.add('booky--no-scrolling');
   }
@@ -37,15 +44,17 @@ class Modal extends PureComponent {
   }
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, error } = this.props;
+    const { children, onClose, headline, noCancel, intl, pending, error, useAnchor } = this.props;
 
     return (
       <Form onSubmit={ this.onSubmit }>
         <header className="modal__header">
-          { /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */ }
-          <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
-            <FormattedMessage id="modal.tabAnchor" />
-          </span>
+          { useAnchor && (
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+            <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
+              <FormattedMessage id="modal.tabAnchor" />
+            </span>
+          ) }
           { headline && <H2 className="modal__headline">{ headline }</H2> }
           <Icon
             isButton

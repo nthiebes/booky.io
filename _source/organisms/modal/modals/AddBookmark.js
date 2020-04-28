@@ -88,6 +88,7 @@ class AddBookmark extends PureComponent {
         onClose={ this.handleClose }
         pending={ pending }
         headline={ intl.formatMessage({ id: 'modal.addBookmark' }) }
+        useAnchor={ false }
       >
         <Input
           id="bookmark-url"
@@ -99,6 +100,8 @@ class AddBookmark extends PureComponent {
           maxLength="2000"
           label={ intl.formatMessage({ id: 'modal.url' }) }
           disabled={ pending }
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus
         />
         <Input
           id="bookmark-name"

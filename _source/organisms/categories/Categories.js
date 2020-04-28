@@ -48,7 +48,7 @@ class Categories extends PureComponent {
                   <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboardName }</b> } } />
                 </Empty>
                 <ButtonSmallPrimary
-                  icon="add"
+                  icon="add-category"
                   className="categories__button"
                   onClick={ this.onAddClick }
                 >

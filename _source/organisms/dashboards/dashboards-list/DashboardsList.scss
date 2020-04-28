@@ -81,7 +81,8 @@
   }
 
   /* stylelint-disable selector-max-specificity */
-  .dashboards__item:first-child:last-of-type .dashboards__icon--delete {
+  .dashboards__item:first-child:last-of-type .dashboards__icon--delete,
+  .dashboards__item:first-child:last-of-type .dashboards__icon--drag {
     display: none;
   }
   /* stylelint-enable */

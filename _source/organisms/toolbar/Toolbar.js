@@ -123,7 +123,7 @@ class Toolbar extends PureComponent {
         ) }
         { hasCategories && (
           <ButtonSmallPrimary
-            icon="add"
+            icon="add-category"
             className="toolbar__add-category"
             onClick={ this.onAddClick }
             useSkeleton={ categoriesPending }

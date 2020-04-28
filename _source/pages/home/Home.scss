@@ -133,18 +133,15 @@
   flex-direction: column;
 }
 
-.home__bookmarklet-headline {
-  @include mobile {
-    justify-content: flex-start;
-    text-align: left;
-  }
-}
-
 .home__extension {
   display: flex;
   width: 100%;
   margin-top: 1rem;
   justify-content: center;
+
+  @include desktop {
+    margin-top: 2rem;
+  }
 }
 
 .home__extension-icon {
