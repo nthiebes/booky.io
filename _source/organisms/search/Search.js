@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import { ErrorMessage } from '../../atoms/messages';
 import Icon from '../../atoms/icon';
-import { ButtonSmallMedium } from '../../atoms/button';
+import { ButtonSmallMedium, ButtonSmallLight } from '../../atoms/button';
 import { H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Empty from '../../molecules/empty';
@@ -69,6 +69,7 @@ class Search extends PureComponent {
       offset,
       limit
     } = this.props;
+    const LoadMoreButton = darkMode ? ButtonSmallLight : ButtonSmallMedium;
 
     if (error) {
       window.scrollTo(0, 0);
@@ -107,7 +108,7 @@ class Search extends PureComponent {
             <li key={ `${dashboardId}-${dashboardIndex}` }>
               <button className="search__dashboard" onClick={ this.handleDashboardClick(dashboardId) }>
                 <H2 className="search__headline">
-                  <Icon icon="collection" />
+                  <Icon icon="collection" color={ darkMode ? 'grey' : '' } />
                   { dashboardName }
                 </H2>
               </button>
@@ -154,9 +155,9 @@ class Search extends PureComponent {
             <Icon icon="spinner" className="search__spinner" />
           ) }
           { total > (limit + offset) && !pending && (
-            <ButtonSmallMedium className="search__load-more" onClick={ this.handleLoadMore }>
+            <LoadMoreButton className="search__load-more" onClick={ this.handleLoadMore }>
               <FormattedHTMLMessage id="search.loadMore" />
-            </ButtonSmallMedium>
+            </LoadMoreButton>
           ) }
         </div>
       </Fragment>
