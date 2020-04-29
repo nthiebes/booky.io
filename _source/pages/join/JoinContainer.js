@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import Component from './Join';
 import { join } from '../../_state/user/actions';
 
-export const mapDispatchToProps = {
+const mapStateToProps = (state) => ({
+  language: state.intl.locale
+});
+const mapDispatchToProps = {
   join
 };
-
 const JoinContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Component);
 

@@ -90,16 +90,16 @@ export const logout = ({ onSuccess, onError }) => ((dispatch) => {
 
 export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
   fetcher({
-    url: '/join',
+    url: '/user/register',
     method: 'POST',
     params,
     onSuccess: (data) => {
-      const { settings, ...userData } = data;
+      // const { settings, ...userData } = data;
 
-      dispatch(updateUser({
-        ...userData
-      }));
-      dispatch(updateSettings(settings));
+      // dispatch(updateUser({
+      //   ...userData
+      // }));
+      // dispatch(updateSettings(settings));
 
       onSuccess && onSuccess(data);
     },
