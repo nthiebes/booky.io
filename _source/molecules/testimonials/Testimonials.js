@@ -22,9 +22,9 @@ class Testimonials extends Component {
           />
           <Testimonial
             // Ricardo Sebastián
-            name="Anonymous"
-            // twitter="twittername"
-            // url="https://twitter.com/booky_io"
+            name="Samira Stein"
+            twitter="frontend_cat"
+            url="https://twitter.com/frontend_cat"
             image="_assets/illustrations/customer-service-woman.svg"
             text="A simple, lightweight, yet powerful application to store my bookmarks in the cloud."
           />
