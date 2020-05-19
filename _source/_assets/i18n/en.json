@@ -217,5 +217,6 @@
     "account.statistics": "Statistics",
     "search.empty": "Your search for {keyword} returned no results.",
     "search.results": "We found {results} relevant {count, plural, one {bookmark} other {bookmarks}} for your search of {keyword}!",
-    "search.loadMore": "Load <b>more</b>"
+    "search.loadMore": "Load <b>more</b>",
+    "join.success": "Thank you for joining booky! You will soon receive an email to activate your account before logging in."
 }
