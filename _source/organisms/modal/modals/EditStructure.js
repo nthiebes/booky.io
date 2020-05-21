@@ -27,6 +27,5 @@ EditStructure.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool,
-  darkMode: PropTypes.bool
+  pending: PropTypes.bool
 };

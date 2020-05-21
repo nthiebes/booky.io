@@ -1,14 +1,10 @@
-.structure__dashboard,
-.structure__category {
-  color: $color-font--dark;
-  flex-shrink: 0;
+.structure {
+  position: relative;
+}
+
+.structure__dashboard {
   display: flex;
   align-items: center;
-  height: 2.5rem;
-  line-height: 2.5;
-  width: 100%;
-  list-style: none;
-  user-select: none;
   position: relative;
 }
 
@@ -16,16 +12,16 @@
   padding-left: 12px;
 }
 
-.structure__label {
-  font-family: $font-family--text;
-  font-size: 1rem;
+.structure__title {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   flex-grow: 1;
+  padding: 0;
+  display: block;
 }
 
-.structure__label--dark-mode {
+.headline.structure__title--dark-mode {
   color: $color-font--white;
 }
 

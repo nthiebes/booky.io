@@ -5,6 +5,7 @@ import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
+import { H2 } from '../../atoms/headline';
 import Categories from './Categories';
 
 class Structure extends PureComponent {
@@ -19,31 +20,47 @@ class Structure extends PureComponent {
 
     return (
       <Fragment>
-        <Droppable droppableId="structure" type="dashboard">
+        <Droppable droppableId="structure" type="dashboard" disableInteractiveElementBlocking>
           { (provided) => (
-            <div ref={ provided.innerRef } { ...provided.droppableProps }>
+            <ul ref={ provided.innerRef } { ...provided.droppableProps } className="structure">
               { dashboards.map((dashboard, index) => (
                 <Draggable draggableId={ `dashboard-${dashboard.id}` } key={ dashboard.id } index={ index }>
-                  { (providedInner) => (
-                    <div { ...providedInner.draggableProps } ref={ providedInner.innerRef }>
-                      <div className="structure__dashboard">
-                        <label className={ classNames('structure__label', darkMode && 'structure__label--dark-mode') }>
-                          { dashboard.name }
-                        </label>
-                        <Icon
-                          className="structure__icon"
-                          icon="drag"
-                          label={ intl.formatMessage({ id: 'dashboard.drag' }) }
-                          dragHandleProps={ providedInner.dragHandleProps }
-                        />
-                      </div>
-                      <Categories dashboard={ dashboard } />
-                    </div>
-                  ) }
+                  { (providedInner, snapshot) => {
+                    const style = {
+                      ...providedInner.draggableProps.style,
+                      top: 'auto',
+                      left: snapshot.isDragging ? '0' : 'auto',
+                      position: snapshot.isDragging ? 'absolute' : 'relative'
+                    };
+                    
+                    return (
+                      <li { ...providedInner.draggableProps } ref={ providedInner.innerRef } style={ style }>
+                        <div className="structure__dashboard">
+                          <H2
+                            style="h3"
+                            noMargin
+                            className={ classNames(
+                              'structure__title',
+                              darkMode && 'structure__title--dark-mode'
+                            ) }
+                          >
+                            { dashboard.name }
+                          </H2>
+                          <Icon
+                            className="structure__icon"
+                            icon="drag"
+                            label={ intl.formatMessage({ id: 'dashboard.drag' }) }
+                            isButton
+                            dragHandleProps={ providedInner.dragHandleProps }
+                          />
+                        </div>
+                        {/* <Categories dashboard={ dashboard } categories={ categories } /> */}
+                      </li>
+                    ); } }
                 </Draggable>
               )) }
               { provided.placeholder }
-            </div>
+            </ul>
           ) }
         </Droppable>
       </Fragment>
