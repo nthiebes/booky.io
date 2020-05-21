@@ -21,20 +21,18 @@ class Testimonials extends Component {
             text="My portal to the web. I tried many bookmark manager, and this is the best one."
           />
           <Testimonial
-            // Ricardo Sebastián
+            // Arun Kumarr B
             name="Samira Stein"
             twitter="frontend_cat"
             url="https://twitter.com/frontend_cat"
             image="_assets/illustrations/customer-service-woman.svg"
-            text="A simple, lightweight, yet powerful application to store my bookmarks in the cloud."
+            text="Love at first sight. Kudos to the people who built booky and have kept it simple."
           />
           <Testimonial
-            // Arun Kumarr B
+            // Ricardo Sebastián
             name="Anonymous"
-            // twitter="twittername"
-            // url="https://twitter.com/booky_io"
             image="_assets/illustrations/customer-service-man.svg"
-            text="Love at first sight. Kudos to the people who built booky and have kept it simple."
+            text="A simple, lightweight, yet powerful application to store my bookmarks in the cloud."
           />
         </div>
       </Fragment>
