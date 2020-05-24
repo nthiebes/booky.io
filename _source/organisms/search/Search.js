@@ -115,7 +115,7 @@ class Search extends PureComponent {
               { categories.map(({ id: categoryId, name: categoryName, bookmarks }, categoryIndex) => (
                 <ul key={ `${categoryId}-${categoryIndex}` }>
                   <H3 className="search__headline" noMargin={ categoryIndex === 0 }>
-                    <Icon icon="category" />
+                    <Icon icon="category" color={ darkMode ? 'grey' : '' } />
                     { categoryName }
                   </H3>
                   { bookmarks.map(({ id: bookmarkId, name: bookmarkName, url, favicon }) => (

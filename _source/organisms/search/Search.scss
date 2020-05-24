@@ -25,6 +25,7 @@
 .search__dashboard {
   cursor: pointer;
   background-color: transparent;
+  border: 0 none;
 
   &:active,
   &:focus {
@@ -54,7 +55,7 @@
 
 .search__headline {
   transition: color 0.2s linear;
-  margin-left: -6px;
+  margin-left: -9px;
 }
 
 .search__keyword {
