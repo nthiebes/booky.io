@@ -3,13 +3,14 @@ import Component from './Toolbar';
 import { updateCurrentlySticky } from '../../_state/toolbar/actions';
 import { changeDashboard } from '../../_state/dashboards/actions';
 import { openModal } from '../../_state/modal/actions';
+import { getActiveDashboardId } from '../../_state/dashboards/selectors';
 
 export const mapStateToProps = (state) => ({
   currentlySticky: state.toolbar.currentlySticky,
   headerSticky: state.user.settings.stickyHeader,
   sticky: state.user.settings.stickyToolbar,
   dashboards: state.dashboards,
-  activeDashboardName: (state.dashboards.items.find((dashboard) => dashboard.id === state.user.settings.defaultDashboardId) || {}).name,
+  activeDashboardName: (state.dashboards.items.find((dashboard) => dashboard.id === getActiveDashboardId(state)) || {}).name,
   dashboardsStyle: state.user.settings.dashboardsStyle,
   darkMode: state.user.settings.darkMode,
   categoriesPending: state.dashboards.pending,
