@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedHTMLMessage } from 'react-intl';
 
 import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
@@ -25,8 +25,7 @@ class Toolbar extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     categoriesPending: PropTypes.bool,
     hasCategories: PropTypes.bool,
-    openModal: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired
+    openModal: PropTypes.func.isRequired
   }
 
   state = {
@@ -100,21 +99,14 @@ class Toolbar extends PureComponent {
       changeDashboard,
       darkMode,
       categoriesPending,
-      hasCategories,
-      intl
+      hasCategories
     } = this.props;
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
         { dashboardsStyle === 'sidebar' && (
           <Fragment>
-            <Icon
-              icon="collection"
-              isButton
-              label={ intl.formatMessage({ id: 'structure.title' }) }
-              onClick={ this.onStructureClick }
-              useSkeleton={ categoriesPending }
-            />
+            <Icon icon="collection" color={ darkMode ? 'grey' : 'medium' } />
             <H1 style="h3" className="toolbar__headline" noMargin>
               { activeDashboardName || <Skeleton /> }
             </H1>
@@ -149,4 +141,4 @@ class Toolbar extends PureComponent {
   }
 }
 
-export default injectIntl(Toolbar);
+export default Toolbar;

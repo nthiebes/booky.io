@@ -13,7 +13,6 @@ import DeleteCategory from './modals/DeleteCategory';
 import AddDashboard from './modals/AddDashboard';
 import EditDashboard from './modals/EditDashboard';
 import DeleteDashboard from './modals/DeleteDashboard';
-import EditStructure from './modals/EditStructure';
 import Customize from './modals/Customize';
 import DeleteAccount from './modals/DeleteAccount';
 
@@ -89,9 +88,6 @@ export default class Modal extends PureComponent {
     DeleteDashboard: {
       type: DeleteDashboard,
       action: this.props.deleteDashboard
-    },
-    EditStructure: {
-      type: EditStructure
     },
     Customize: {
       type: Customize
