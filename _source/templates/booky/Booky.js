@@ -27,35 +27,34 @@ export default class Booky extends Component {
     // console.log('onDragStart', initial);
   }
 
-  onDragEnd = (result) => {
-    // console.log('onDragEnd', result);
-    if (result.destination) {
-      if (result.type === 'dashboard-mobile' || result.type === 'dashboard-sidebar') {
+  onDragEnd = ({ type, destination, source, draggableId }) => {
+    if (destination) {
+      if (type === 'dashboard-mobile' || type === 'dashboard-sidebar') {
         this.props.dragDashboard({
-          destinationIndex: result.destination.index,
-          sourceIndex: result.source.index,
+          destinationIndex: destination.index,
+          sourceIndex: source.index,
           dashboardId: parseInt(
-            result.draggableId
+            draggableId
               .replace('dashboard-mobile-', '')
               .replace('dashboard-sidebar-', '')
             , 10)
         });
       }
-      if (result.type === 'category') {
+      if (type === 'category') {
         this.props.dragCategory({
-          destinationIndex: result.destination.index,
-          sourceIndex: result.source.index,
-          sourceDashboardId: parseInt(result.source.droppableId.replace('dashboard-', ''), 10),
-          destinationDashboardId: parseInt(result.destination.droppableId.replace('dashboard-', ''), 10)
+          destinationIndex: destination.index,
+          sourceIndex: source.index,
+          sourceDashboardId: parseInt(source.droppableId.replace('dashboard-', ''), 10),
+          destinationDashboardId: parseInt(destination.droppableId.replace('dashboard-', ''), 10)
         });
       }
-      if (result.type === 'bookmark') {
+      if (type === 'bookmark') {
         this.props.dragBookmark({
-          destinationIndex: result.destination.index,
-          bookmarkId: parseInt(result.draggableId.replace(/bookmark-/g, ''), 10),
-          destinationCategoryId: parseInt(result.destination.droppableId, 10),
-          sourceCategoryId: parseInt(result.source.droppableId, 10),
-          sourceIndex: result.source.index
+          destinationIndex: destination.index,
+          bookmarkId: parseInt(draggableId.replace(/bookmark-/g, ''), 10),
+          destinationCategoryId: parseInt(destination.droppableId, 10),
+          sourceCategoryId: parseInt(source.droppableId, 10),
+          sourceIndex: source.index
         });
       }
     }

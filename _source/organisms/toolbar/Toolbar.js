@@ -10,7 +10,6 @@ import Skeleton from '../../atoms/skeleton';
 import SearchField from '../../molecules/search-field';
 import { TabBar, Tab } from '../../molecules/tab-bar';
 import { ButtonSmallPrimary } from '../../atoms/button';
-import { intlReducer } from 'react-intl-redux';
 
 class Toolbar extends PureComponent {
   static propTypes = {
