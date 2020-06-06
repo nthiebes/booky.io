@@ -86,10 +86,6 @@ class Toolbar extends PureComponent {
     this.props.openModal('AddCategory');
   }
 
-  onStructureClick = () => {
-    this.props.openModal('EditStructure');
-  }
-
   render() {
     const {
       activeDashboardName,
