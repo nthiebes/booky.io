@@ -6,49 +6,30 @@ import classNames from 'classnames';
 
 import Skeleton from '../../atoms/skeleton';
 import Label from '../../atoms/label';
-import fetcher from '../../_utils/fetcher';
 import Icon from '../../atoms/icon';
+import Paragraph from '../../atoms/paragraph';
+import { ErrorMessage } from '../../atoms/messages';
 
 class CategoriesSorting extends PureComponent {
   static propTypes = {
     dashboardId: PropTypes.number.isRequired,
     intl: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool
-  }
-
-  state = {
-    categories: [],
-    pending: true,
-    error: null
+    darkMode: PropTypes.bool,
+    categories: PropTypes.array.isRequired,
+    getCategories: PropTypes.func.isRequired,
+    pending: PropTypes.bool,
+    error: PropTypes.string,
+    dashboardName: PropTypes.string.isRequired
   }
 
   componentDidMount() {
-    const { dashboardId } = this.props;
+    const { dashboardId, getCategories } = this.props;
 
-    fetcher({
-      url: `/dashboards/${dashboardId}/categories`,
-      onSuccess: (data) => {
-        console.log('data', data);
-
-        this.setState({
-          categories: data,
-          pending: false
-        });
-      },
-      onError: (error) => {
-        console.log('error', error);
-
-        this.setState({
-          error,
-          pending: false
-        });
-      }
-    });
+    getCategories(dashboardId);
   }
 
   render() {
-    const { dashboardId, intl, darkMode } = this.props;
-    const { categories, pending, error } = this.state;
+    const { dashboardId, dashboardName, intl, darkMode, categories, pending, error } = this.props;
 
     return (
       <Fragment>
@@ -63,12 +44,14 @@ class CategoriesSorting extends PureComponent {
           </span>
         ) }
         { error && (
-          'error'
+          <ErrorMessage message={ error } className="categories-sorting__error" noAnimation />
         ) }
-        { !categories && (
-          'empty'
+        { !categories.length && !pending && !error && (
+          <Paragraph>
+            <i><FormattedMessage id="category.empty" values={ { collection: <b>{ dashboardName }</b> } } /></i>
+          </Paragraph>
         ) }
-        <Droppable droppableId={ `dashboard-${dashboardId}` } type="category2" disableInteractiveElementBlocking>
+        <Droppable droppableId={ `dashboard-${dashboardId}` } type="category" disableInteractiveElementBlocking>
           { (provided) => (
             <ul className="categories-sorting" ref={ provided.innerRef } { ...provided.droppableProps }>
               { categories.map((category, index) => (

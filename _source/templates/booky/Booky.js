@@ -45,7 +45,8 @@ export default class Booky extends Component {
           destinationIndex: destination.index,
           sourceIndex: source.index,
           sourceDashboardId: parseInt(source.droppableId.replace('dashboard-', ''), 10),
-          destinationDashboardId: parseInt(destination.droppableId.replace('dashboard-', ''), 10)
+          destinationDashboardId: parseInt(destination.droppableId.replace('dashboard-', ''), 10),
+          categoryId: parseInt(draggableId.replace(/category-/g, ''), 10)
         });
       }
       if (type === 'bookmark') {

@@ -29,6 +29,11 @@ export default {
     error: null
   },
   categories: [],
+  categoriesSorting: {
+    items: [],
+    pending: false,
+    error: null
+  },
   sidebar: {
     open: false
   },

@@ -48,7 +48,7 @@ class EditDashboard extends Component {
           value={ data.id.toString() }
           type="hidden"
         />
-        <CategoriesSorting dashboardId={ data.id } />
+        <CategoriesSorting dashboardId={ data.id } dashboardName={ name } />
       </Base>
     );
   }
