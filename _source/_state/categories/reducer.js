@@ -231,7 +231,9 @@ const categories = (state = [], action) => {
       const { destinationIndex, sourceIndex } = dragData;
       const newCategories = [...state];
 
-      arrayMove(newCategories, sourceIndex, destinationIndex);
+      if (state.length) {
+        arrayMove(newCategories, sourceIndex, destinationIndex);
+      }
 
       return newCategories;
     }

@@ -19,7 +19,7 @@ const categoriesSorting = (state = {}, action) => {
 
       return {
         ...state,
-        items: items
+        items
       };
     }
 
