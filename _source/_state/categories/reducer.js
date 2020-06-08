@@ -228,10 +228,11 @@ const categories = (state = [], action) => {
     }
 
     case 'DRAG_CATEGORY': {
-      const { destinationIndex, sourceIndex } = dragData;
+      const { destinationIndex, sourceIndex, categoryId: dragCategoryId } = dragData;
       const newCategories = [...state];
+      const categoryExists = Boolean(state.find((category) => category.id === dragCategoryId));
 
-      if (state.length) {
+      if (categoryExists) {
         arrayMove(newCategories, sourceIndex, destinationIndex);
       }
 
