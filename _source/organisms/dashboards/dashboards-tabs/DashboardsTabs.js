@@ -78,22 +78,6 @@ class DashboardsTabs extends PureComponent {
 
     return (
       <Fragment>
-        <Icon
-          icon="add-collection"
-          label={ intl.formatMessage({ id: 'modal.addDashboard' }) }
-          onClick={ this.addDashboard }
-          useSkeleton={ noDashboards }
-          isButton
-        >
-          <FormattedHTMLMessage id="dashboard.add" />
-        </Icon>
-        <Icon
-          icon={ editMode ? 'close' : 'more-horiz' }
-          label={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
-          onClick={ this.toggleEditMode }
-          isButton
-          useSkeleton={ noDashboards }
-        />
         <TabBar title="dashboard.title" className="dashboards-tabs">
           { dashboards.map((dashboard) => (
             <Tab
@@ -132,6 +116,22 @@ class DashboardsTabs extends PureComponent {
             </Tab>
           )) }
         </TabBar>
+        <Icon
+          icon={ editMode ? 'close' : 'more-horiz' }
+          label={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
+          onClick={ this.toggleEditMode }
+          isButton
+          useSkeleton={ noDashboards }
+        />
+        <Icon
+          icon="add-collection"
+          label={ intl.formatMessage({ id: 'modal.addDashboard' }) }
+          onClick={ this.addDashboard }
+          useSkeleton={ noDashboards }
+          isButton
+        >
+          <FormattedHTMLMessage id="dashboard.add" />
+        </Icon>
       </Fragment>
     );
   }

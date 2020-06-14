@@ -97,25 +97,35 @@ class Toolbar extends PureComponent {
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
         { dashboardsStyle === 'sidebar' && (
-          <Fragment>
-            <Icon icon="collection" color={ darkMode ? 'grey' : 'medium' } />
-            <H1 style="h3" className="toolbar__headline" noMargin>
-              { activeDashboardName || <Skeleton /> }
-            </H1>
-          </Fragment>
+          <H1 style="h3" className="toolbar__headline" noMargin>
+            { activeDashboardName || <Skeleton /> }
+          </H1>
         ) }
         { dashboardsStyle === 'tabs' && (
           <DashboardsTabs />
         ) }
         { hasCategories && (
-          <ButtonSmallPrimary
-            icon="add-category"
-            className="toolbar__add-category"
-            onClick={ this.onAddClick }
-            useSkeleton={ categoriesPending }
-          >
-            <FormattedHTMLMessage id="category.add" />
-          </ButtonSmallPrimary>
+          <Fragment>
+            { dashboardsStyle === 'tabs' ? (
+              <Icon
+                icon="add-category"
+                onClick={ this.onAddClick }
+                useSkeleton={ categoriesPending }
+                isButton
+              >
+                <FormattedHTMLMessage id="category.add" />
+              </Icon>
+            ) : (
+              <ButtonSmallPrimary
+                icon="add-category"
+                className="toolbar__add-category"
+                onClick={ this.onAddClick }
+                useSkeleton={ categoriesPending }
+              >
+                <FormattedHTMLMessage id="category.add" />
+              </ButtonSmallPrimary>
+            ) }
+          </Fragment>
         ) }
         <SearchField className="booky--hide-mobile-tablet" id="search-desktop" />
       </section>
