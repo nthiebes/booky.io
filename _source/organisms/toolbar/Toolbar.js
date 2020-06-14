@@ -8,8 +8,8 @@ import Icon from '../../atoms/icon';
 import { H1 } from '../../atoms/headline';
 import Skeleton from '../../atoms/skeleton';
 import SearchField from '../../molecules/search-field';
-import { TabBar, Tab } from '../../molecules/tab-bar';
 import { ButtonSmallPrimary } from '../../atoms/button';
+import { DashboardsTabs } from '../dashboards';
 
 class Toolbar extends PureComponent {
   static propTypes = {
@@ -17,11 +17,9 @@ class Toolbar extends PureComponent {
     headerSticky: PropTypes.bool.isRequired,
     sticky: PropTypes.bool.isRequired,
     currentlySticky: PropTypes.bool.isRequired,
-    dashboards: PropTypes.object.isRequired,
     activeDashboardName: PropTypes.string,
     className: PropTypes.string,
     dashboardsStyle: PropTypes.string.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
     darkMode: PropTypes.bool.isRequired,
     categoriesPending: PropTypes.bool,
     hasCategories: PropTypes.bool,
@@ -91,8 +89,6 @@ class Toolbar extends PureComponent {
       activeDashboardName,
       className,
       dashboardsStyle,
-      dashboards,
-      changeDashboard,
       darkMode,
       categoriesPending,
       hasCategories
@@ -109,17 +105,7 @@ class Toolbar extends PureComponent {
           </Fragment>
         ) }
         { dashboardsStyle === 'tabs' && (
-          <TabBar className="toolbar__tabs">
-            { dashboards.items.map((tab) => (
-              <Tab
-                key={ tab.id }
-                tabId={ tab.id }
-                active={ tab.id === dashboards.active }
-                name={ tab.name }
-                onClick={ changeDashboard }
-              />
-            )) }
-          </TabBar>
+          <DashboardsTabs />
         ) }
         { hasCategories && (
           <ButtonSmallPrimary

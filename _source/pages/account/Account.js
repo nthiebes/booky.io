@@ -58,9 +58,10 @@ class Account extends Component {
                 key={ tab.name }
                 tabId={ index }
                 active={ activeTab === index }
-                name={ tab.name }
                 onClick={ this.handleTabClick }
-              />
+              >
+                {tab.name}
+              </Tab>
             )) }
           </TabBar>
           { activeTab === 0 && (
