@@ -6,7 +6,7 @@ import { H3 } from '../../atoms/headline';
 import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
-// import Radio from '../../atoms/radio';
+import Radio from '../../atoms/radio';
 
 class Customize extends PureComponent {
   static propTypes = {
@@ -49,7 +49,7 @@ class Customize extends PureComponent {
       newtab,
       // maxWidth,
       // preserveEditMode,
-      // dashboardsStyle,
+      dashboardsStyle,
       blurEffect,
       stickyHeader,
       stickyToolbar,
@@ -62,7 +62,7 @@ class Customize extends PureComponent {
         <H3>
           <FormattedMessage id="customize.style" />
         </H3>
-        <Label>
+        <Label first>
           <FormattedMessage id="customize.navColor" />
         </Label>
         <ColorPicker
@@ -104,15 +104,16 @@ class Customize extends PureComponent {
           onChange={ this.handleCheckboxChange }
           checked={ maxWidth }
         /> */}
-        {/* <H2>
+        <H3>
           <FormattedMessage id="dashboard.title" />
-        </H2>
+        </H3>
         <Radio
           id="dashboards-sidebar"
           name="dashboardsStyle"
           onChange={ this.handleRadioChange }
           value="sidebar"
           checked={ dashboardsStyle === 'sidebar' }
+          first
         >
           <FormattedMessage id="customize.sidebar" />
         </Radio>
@@ -133,7 +134,7 @@ class Customize extends PureComponent {
           checked={ dashboardsStyle === 'tabs' }
         >
           <FormattedMessage id="customize.tabs" />
-        </Radio> */}
+        </Radio>
         <H3>
           <FormattedMessage id="dashboard.preferences" />
         </H3>
@@ -143,6 +144,7 @@ class Customize extends PureComponent {
           name="openLinksInNewTab"
           onChange={ this.handleCheckboxChange }
           checked={ newtab }
+          first
         />
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.autofill'}) }
