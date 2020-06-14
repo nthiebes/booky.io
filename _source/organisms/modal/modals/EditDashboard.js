@@ -4,18 +4,23 @@ import { injectIntl } from 'react-intl';
 
 import Base from '../Base';
 import Input from '../../../atoms/input';
+import CategoriesSorting from '../../categories-sorting';
 
 class EditDashboard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onNameChange = this.onNameChange.bind(this);
-    this.state = {
-      name: props.data.name
-    };
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    intl: PropTypes.object.isRequired,
+    pending: PropTypes.bool,
+    darkMode: PropTypes.bool
   }
 
-  onNameChange(value) {
+  state = {
+    name: this.props.data.name
+  }
+
+  onNameChange = (value) => {
     this.setState({
       name: value
     });
@@ -43,18 +48,10 @@ class EditDashboard extends Component {
           value={ data.id.toString() }
           type="hidden"
         />
+        <CategoriesSorting dashboardId={ data.id } dashboardName={ name } />
       </Base>
     );
   }
 }
 
 export default injectIntl(EditDashboard);
-
-EditDashboard.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool,
-  darkMode: PropTypes.bool
-};

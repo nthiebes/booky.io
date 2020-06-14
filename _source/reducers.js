@@ -9,6 +9,7 @@ import toolbar from './_state/toolbar';
 import sidebar from './_state/sidebar';
 import modal from './_state/modal';
 import search from './_state/search/reducer';
+import categoriesSorting from './_state/categories-sorting/reducer';
 
 const reducers = (history) => combineReducers({
   router: connectRouter(history),
@@ -19,6 +20,7 @@ const reducers = (history) => combineReducers({
   modal,
   dashboards,
   categories,
+  categoriesSorting,
   search
 });
 
