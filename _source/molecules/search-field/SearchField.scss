@@ -1,0 +1,46 @@
+.search-field {
+  margin: 0 calc(1rem + 6px) 0 1rem;
+  flex-grow: 1;
+  position: relative;
+
+  @include mobile {
+    .icon {
+      top: 0;
+    }
+  }
+
+  @include desktop {
+    flex-grow: 0;
+    margin: 0 0 0 1rem;
+  }
+}
+
+.search-field__label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.search-field__input {
+  margin: 0;
+
+  @include mobile {
+    height: 2.4rem;
+  }
+
+  @include desktop {
+    width: 300px;
+  }
+}
+
+.search-field__input--dark-mode {
+  @include desktop {
+    background-color: $color-background--dark;
+
+    &:hover,
+    &:focus {
+      background-color: $color-background--dark;
+    }
+  }
+}

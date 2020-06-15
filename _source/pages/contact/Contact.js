@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import fetcher from '../../_utils/fetcher';
 import Page from '../../templates/page';
-import { H1 } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
-import Input from '../../atoms/input';
-import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
-import { ButtonLargeBlue } from '../../atoms/button';
-import Textarea from '../../atoms/textarea';
-import Form from '../../molecules/form';
+// import { H1 } from '../../atoms/headline';
+// import P from '../../atoms/paragraph';
+// import Input from '../../atoms/input';
+// import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
+// import { ButtonLargeBlue } from '../../atoms/button';
+// import Textarea from '../../atoms/textarea';
+// import Form from '../../molecules/form';
 import Section from '../../molecules/section';
+import Empty from '../../molecules/empty';
 
 class Contact extends Component {
   constructor(props) {
@@ -70,12 +71,17 @@ class Contact extends Component {
   }
 
   render() {
-    const { intl } = this.props;
-    const { username, email, message, pending, error, success } = this.state;
+    // const { intl } = this.props;
+    // const { username, email, message, pending, error, success } = this.state;
 
     return (
       <Page>
-        <Section compact>
+        <Section>
+          <Empty illustration="monitor-window">
+            <FormattedMessage id="misc.comingSoon" />
+          </Empty>
+        </Section>
+        {/* <Section compact>
           <Form onSubmit={ this.handleSubmit }>
             <H1>
               <FormattedMessage id="contact.headline" />
@@ -130,7 +136,7 @@ class Contact extends Component {
               <FormattedHTMLMessage id="button.send" />
             </ButtonLargeBlue>
           </Form>
-        </Section>
+        </Section> */}
       </Page>
     );
   }

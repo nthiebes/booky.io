@@ -15,20 +15,21 @@ export default class Headline extends Component {
       color,
       darkMode,
       centered,
-      title
+      title,
+      style
     } = this.props;
     const CustomTag = `h${type}`;
 
     return (
       <CustomTag
         className={ classNames(
-          `headline headline--h${type}`,
+          style ? `headline headline--${style}` : `headline headline--h${type}`,
           display && 'headline--display',
           noMargin && 'headline--no-margin',
           color && `headline--color-${color}`,
           darkMode && 'headline--dark-mode',
           centered && 'headline--centered',
-          className && className
+          className
         ) }
         onClick={ onClick && onClick }
         id={ id }
@@ -55,5 +56,6 @@ Headline.propTypes = {
   color: PropTypes.string,
   darkMode: PropTypes.bool,
   centered: PropTypes.bool,
-  title: PropTypes.string
+  title: PropTypes.string,
+  style: PropTypes.string
 };

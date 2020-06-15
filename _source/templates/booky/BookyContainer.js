@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import Component from './Booky';
-import { dragDashboard, dragCategory } from '../../_state/dashboards/actions';
-import { dragBookmark } from '../../_state/categories/actions';
+import { dragDashboard } from '../../_state/dashboards/actions';
+import { dragCategory } from '../../_state/categories-sorting/actions';
+import { dragBookmark } from '../../_state/bookmarks/actions';
 
-export const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = {
   dragDashboard,
   dragCategory,
   dragBookmark
-});
+};
 
 const Container = connect(
   null,

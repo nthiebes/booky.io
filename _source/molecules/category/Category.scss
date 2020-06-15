@@ -1,20 +1,8 @@
 .category {
-  width: 94%;
   position: relative;
-  float: left;
-  margin: 1rem 3%;
-
-  @include tablet {
-    width: 44%;
-  }
-
-  @include desktop {
-    width: 27.33%;
-  }
-
-  @include fullhd {
-    width: 19%;
-  }
+  list-style: none;
+  min-width: 0;
+  padding-bottom: 2rem;
 }
 
 .category__bookmarks {
@@ -37,56 +25,49 @@
   display: flex;
   flex-wrap: nowrap;
 
-  &.category__header--edit-mode .category__icon {
-    opacity: 1;
-    transition: color 0.2s linear, opacity 0.2s linear;
-    width: auto;
-    overflow: inherit;
-  }
-
-  &:after {
-    top: 2.7rem;
-    content: " ";
+  &::after {
+    top: 2.5rem;
+    content: "";
     height: 2px;
     left: 6px;
     position: absolute;
     right: 6px;
   }
 
-  &.category__header--color0:after {
-    background-color: $color--0;
-  }
-
-  &.category__header--color1:after {
-    background-color: $color--1;
-  }
-
-  &.category__header--color2:after {
-    background-color: $color--2;
-  }
-
-  &.category__header--color3:after {
-    background-color: $color--3;
-  }
-
-  &.category__header--color4:after {
-    background-color: $color--4;
-  }
-
-  &.category__header--color5:after {
-    background-color: $color--5;
-  }
-
-  &.category__header--color6:after {
-    background-color: $color--6;
-  }
-
-  &.category__header--color7:after {
+  &.category__header--color1::after {
     background-color: $color--7;
   }
 
-  &.category__header--color8:after {
+  &.category__header--color2::after {
     background-color: $color--8;
+  }
+
+  &.category__header--color3::after {
+    background-color: $color--3;
+  }
+
+  &.category__header--color4::after {
+    background-color: $color--1;
+  }
+
+  &.category__header--color5::after {
+    background-color: $color--5;
+  }
+
+  &.category__header--color6::after {
+    background-color: $color--4;
+  }
+
+  &.category__header--color7::after {
+    background-color: $color--2;
+  }
+
+  &.category__header--color8::after {
+    background-color: $color--6;
+  }
+
+  &.category__header--color9::after {
+    background-color: $color--0;
   }
 }
 
@@ -98,18 +79,7 @@
   }
 }
 
-.category__icon {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-}
-
-.category__edit-icon--hide {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-}
-
+/* stylelint-disable declaration-no-important */
 .category__name {
   display: block;
   cursor: default;
@@ -123,13 +93,15 @@
   padding: 0 !important;
 
   &:active {
-    color: $color__font--primary;
+    color: $color-font--primary;
   }
 }
+/* stylelint-enable */
 
 .category__button {
-  margin: 6px 6px 0 6px;
+  margin: 10px 6px 0 6px;
   display: flex;
+  max-width: 100%;
 }
 
 .category__empty {
@@ -141,5 +113,23 @@
 }
 
 .category__empty--dark-mode {
-  color: $color__font--white;
+  color: $color-font--white;
+}
+
+.category__skeleton {
+  width: calc(100% - 12px);
+  margin-bottom: 20px;
+  margin-left: 6px;
+}
+
+.category__skeleton:first-child {
+  margin-top: 10px;
+}
+
+.category__skeleton:last-child {
+  margin-bottom: 10px;
+}
+
+.category__error {
+  padding: 10px 6px 0;
 }

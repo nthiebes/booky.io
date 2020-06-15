@@ -9,12 +9,10 @@ import Link from '../../atoms/link';
 
 class NotFound extends Component {
   render() {
-    const { intl } = this.props;
-
     return (
       <Page>
         <Section>
-          <Empty alt={ intl.formatMessage({ id: 'category.emptyImage' }) } illustration="chip-head">
+          <Empty illustration="chip-head">
             <FormattedMessage
               id="notFound.figureText"
               values={ {

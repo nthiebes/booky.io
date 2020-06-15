@@ -6,16 +6,19 @@ import Base from '../Base';
 import Input from '../../../atoms/input';
 
 class AddDashboard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onNameChange = this.onNameChange.bind(this);
-    this.state = {
-      name: ''
-    };
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
+    intl: PropTypes.object.isRequired,
+    pending: PropTypes.bool,
+    darkMode: PropTypes.bool
   }
 
-  onNameChange(value) {
+  state = {
+    name: ''
+  }
+
+  onNameChange = (value) => {
     this.setState({
       name: value
     });
@@ -26,7 +29,12 @@ class AddDashboard extends Component {
     const { name } = this.state;
 
     return (
-      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.addDashboard' }) }>
+      <Base
+        { ...props }
+        pending={ pending }
+        headline={ intl.formatMessage({ id: 'modal.addDashboard' }) }
+        useAnchor={ false }
+      >
         <Input
           id="dashboard-name"
           name="name"
@@ -37,6 +45,7 @@ class AddDashboard extends Component {
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
         />
       </Base>
@@ -45,11 +54,3 @@ class AddDashboard extends Component {
 }
 
 export default injectIntl(AddDashboard);
-
-AddDashboard.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool,
-  darkMode: PropTypes.bool
-};

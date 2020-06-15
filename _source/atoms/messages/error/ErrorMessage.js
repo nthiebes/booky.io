@@ -28,15 +28,26 @@ export default class ErrorMessage extends Component {
   }
 
   render() {
-    const { message, className, hasIcon } = this.props;
+    const { message, className, hasIcon, noAnimation } = this.props;
     const { animate } = this.state;
 
     return (
-      <P className={ classNames('error', animate && 'error--animate', className && className) }>
-        { hasIcon && <Icon icon="error" color="orange" className="error__icon" /> }
+      <P
+        className={ classNames(
+          'error',
+          animate && !noAnimation && 'error--animate',
+          noAnimation && 'error--show',
+          className
+        ) }
+        role="alert"
+      >
+        { hasIcon && (
+          <Icon icon="error" color="orange" ignoreDarkMode className="error__icon" />
+        ) }
         <FormattedMessage
+          tagName="span"
           id={ message }
-          values={ { mail: <Link to="/contact" color="dark">{ <FormattedMessage id="error.email" /> }</Link> } }
+          values={ { mail: <Link href="mailto:hello@booky.io" color="dark">{ <FormattedMessage id="error.email" /> }</Link> } }
         />
       </P>
     );
@@ -46,9 +57,9 @@ export default class ErrorMessage extends Component {
 ErrorMessage.propTypes = {
   message: PropTypes.string,
   className: PropTypes.string,
-  hasIcon: PropTypes.bool
+  hasIcon: PropTypes.bool,
+  noAnimation: PropTypes.bool
 };
-
 
 ErrorMessage.defaultProps = {
   message: 'error.default'

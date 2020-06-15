@@ -12,7 +12,6 @@ class Customize extends Component {
     return (
       <Base
         headline={ intl.formatMessage({ id: 'customize.title' }) }
-        hasAnchor
         noCancel
         { ...props }
       >

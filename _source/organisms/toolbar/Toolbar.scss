@@ -8,7 +8,7 @@
   width: 100%;
   z-index: 1;
   height: 42px;
-  background-color: rgba($color__background--white, 0.95);
+  background-color: rgba($color-background--white, 0.95);
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 
   @include tablet {
@@ -16,10 +16,10 @@
   }
 
   @include desktop {
-    background-color: rgba($color__background--white, 0.95);
+    background-color: rgba($color-background--white, 0.95);
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     height: 62px;
-    top: calc(6.2rem + 2px);
+    top: calc(5.5rem + 2px);
     padding: 0 36px 0 30px;
   }
 }
@@ -33,7 +33,7 @@
   }
 
   @include desktop {
-    top: calc(6.2rem + 2px);
+    top: calc(5.5rem + 2px);
   }
 }
 
@@ -47,20 +47,21 @@
 }
 
 .toolbar--dark-mode {
-  background-color: $color__background--medium;
+  background-color: $color-background--medium;
 }
 
 .toolbar__headline {
-  margin: 0 0 0 1rem;
+  margin: 0;
   padding: 0;
   flex-grow: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-transform: none;
+  display: block;
+  margin-right: 1rem;
 
   @include desktop {
-    max-width: 618px;
+    // max-width: 618px;
   }
 }
 
@@ -69,6 +70,10 @@
   margin-left: 1rem;
 
   @include desktop {
-    max-width: 618px;
+    // max-width: 618px;
   }
+}
+
+.toolbar__add-category {
+  flex-shrink: 0;
 }

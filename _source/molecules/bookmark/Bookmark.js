@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
@@ -6,15 +6,23 @@ import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 import Icon from '../../atoms/icon';
 
-class Bookmark extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onEditClick = this.onEditClick.bind(this);
-    this.onDeleteClick = this.onDeleteClick.bind(this);
+class Bookmark extends PureComponent {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    editMode: PropTypes.bool.isRequired,
+    target: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    openModal: PropTypes.func.isRequired,
+    categoryId: PropTypes.number.isRequired,
+    index: PropTypes.number.isRequired,
+    intl: PropTypes.object.isRequired,
+    newtab: PropTypes.bool.isRequired,
+    favicon: PropTypes.string,
+    darkMode: PropTypes.bool.isRequired
   }
 
-  onEditClick() {
+  onEditClick = () => {
     const { url, name, id, openModal, categoryId } = this.props;
 
     openModal('EditBookmark', {
@@ -25,7 +33,7 @@ class Bookmark extends Component {
     });
   }
 
-  onDeleteClick() {
+  onDeleteClick = () => {
     const { url, name, id, openModal, categoryId } = this.props;
 
     openModal('DeleteBookmark', {
@@ -40,38 +48,66 @@ class Bookmark extends Component {
     const { url, name, editMode, id, index, intl, newtab, favicon, darkMode } = this.props;
 
     return (
-      <Draggable index={ index } draggableId={ `bookmark-${id}` }>
+      <Draggable
+        index={ index }
+        draggableId={ `bookmark-${id}` }
+        key={ `bookmark-${id}` }
+        disableInteractiveElementBlocking
+      >
         { (provided) => (
           <li
             className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }
             { ...provided.draggableProps }
             ref={ provided.innerRef }
           >
-            <img src={ favicon || '_assets/no-favicon.png' } height="16" width="16" />
-            <a className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') } href={ url } target={ newtab ? '_blank' : '_self' }>
+            { !favicon || favicon === 'default' ? (
+              <Icon
+                icon="earth"
+                size="tiny"
+                className={ classNames('bookmark__favicon', darkMode && 'bookmark__favicon--dark-mode') }
+                dragHandleProps={ provided.dragHandleProps }
+              />
+            ) : (
+              <img
+                src={ favicon }
+                height="16"
+                width="16"
+                alt=""
+                className="bookmark__favicon"
+                { ...provided.dragHandleProps }
+                tabIndex="-1"
+              />
+            ) }
+            <a
+              className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') }
+              href={ url }
+              target={ newtab ? '_blank' : '_self' }
+              rel={ newtab ? 'noopener noreferrer' : null }
+            >
               { name }
             </a>
-            <Icon
-              className="bookmark__icon"
-              icon="edit"
-              title={ intl.formatMessage({ id: 'bookmark.edit' }) }
-              onClick={ this.onEditClick }
-              tabIndex={ editMode ? '0' : '-1' }
-            />
-            <Icon
-              className="bookmark__icon"
-              icon="delete"
-              title={ intl.formatMessage({ id: 'bookmark.delete' }) }
-              onClick={ this.onDeleteClick }
-              tabIndex={ editMode ? '0' : '-1' }
-            />
-            <Icon
-              className="bookmark__icon bookmark__icon--drag"
-              icon="drag"
-              title={ intl.formatMessage({ id: 'bookmark.drag' }) }
-              dragHandleProps={ provided.dragHandleProps }
-              tabIndex={ editMode ? '0' : '-1' }
-            />
+            { editMode && (
+              <Fragment>
+                <Icon
+                  icon="edit"
+                  label={ intl.formatMessage({ id: 'bookmark.edit' }) }
+                  onClick={ this.onEditClick }
+                  isButton
+                />
+                <Icon
+                  icon="delete"
+                  label={ intl.formatMessage({ id: 'bookmark.delete' }) }
+                  onClick={ this.onDeleteClick }
+                  isButton
+                />
+                <Icon
+                  icon="drag"
+                  label={ intl.formatMessage({ id: 'bookmark.drag' }) }
+                  dragHandleProps={ provided.dragHandleProps }
+                  isButton
+                />
+              </Fragment>
+            ) }
           </li>
         ) }
       </Draggable>
@@ -80,18 +116,3 @@ class Bookmark extends Component {
 }
 
 export default injectIntl(Bookmark);
-
-Bookmark.propTypes = {
-  name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  editMode: PropTypes.bool.isRequired,
-  target: PropTypes.string,
-  id: PropTypes.number.isRequired,
-  openModal: PropTypes.func.isRequired,
-  categoryId: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  intl: PropTypes.object.isRequired,
-  newtab: PropTypes.bool.isRequired,
-  favicon: PropTypes.string,
-  darkMode: PropTypes.bool.isRequired
-};

@@ -1,28 +1,55 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
+import Logo from '../../atoms/logo';
 import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
-class Footer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.scrollToTop = this.scrollToTop.bind(this);
+class Footer extends PureComponent {
+  static propTypes = {
+    intl: PropTypes.object.isRequired,
+    dashboardsOpen: PropTypes.bool,
+    hasSidebar: PropTypes.bool,
+    className: PropTypes.string,
+    home: PropTypes.bool,
+    loggedIn: PropTypes.bool.isRequired,
+    toolbarSticky: PropTypes.bool.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+    locale: PropTypes.string
   }
-  
+
   scrollToTop() {
     window.scrollTo(0, 0);
     document.getElementsByTagName('header')[0].focus();
   }
 
   render() {
-    const { intl, dashboardsOpen, hasSidebar, className, home, loggedIn, toolbarSticky, darkMode } = this.props;
+    const {
+      intl,
+      dashboardsOpen,
+      hasSidebar,
+      className,
+      home,
+      loggedIn,
+      toolbarSticky,
+      darkMode,
+      locale
+    } = this.props;
+    let thousandsSeparator;
+
+    switch (locale) {
+      case 'de':
+        thousandsSeparator = '.';
+        break;
+
+      default:
+        thousandsSeparator = ',';
+    }
 
     return (
       <footer className={ classNames(
@@ -35,19 +62,19 @@ class Footer extends Component {
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{ '19.512' }</b>
+                <b>{ `32${thousandsSeparator}841` }</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '7.557.503' }</b>
+                <b>{ `12${thousandsSeparator}491${thousandsSeparator}025` }</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '636.803' }</b>
+                <b>{ `1${thousandsSeparator}067${thousandsSeparator}167` }</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{ '35.209' }</b>
+                <b>{ `59${thousandsSeparator}713` }</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
@@ -57,24 +84,35 @@ class Footer extends Component {
           <a
             className="footer__social-item"
             target="_blank"
+            rel="noopener noreferrer"
             href="https://twitter.com/intent/tweet?text=booky.io%20%7C%20Online%20Bookmark%20manager.%20Your%20bookmarks%20always%20available."
           >
             <Icon className="footer__icon" icon="twitter" color="light" />
-            <label className="footer__label">{ 'Twitter' }</label>
+            <span className="footer__label">{ 'Twitter' }</span>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io">
+          <a
+            className="footer__social-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io"
+          >
             <Icon className="footer__icon" icon="xing" color="light" />
-            <label className="footer__label">{ 'XING' }</label>
+            <span className="footer__label">{ 'XING' }</span>
           </a>
-          <a className="footer__social-item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io">
+          <a
+            className="footer__social-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io"
+          >
             <Icon className="footer__icon" icon="facebook" color="light" />
-            <label className="footer__label">{ 'Facebook' }</label>
+            <span className="footer__label">{ 'Facebook' }</span>
           </a>
         </section>
         <section className="footer__content">
           <div className="footer__wrapper">
             <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
-              <img src="../../_assets/logo_l.svg" alt="Logo" height="36" />
+              <Logo />
             </Link>
             <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
               <FormattedHTMLMessage id="footer.scroll" />
@@ -84,19 +122,19 @@ class Footer extends Component {
             <LanguageSwitcher />
           </div>
           <nav className="footer__menu">
-            <Link className="footer__menu-item" color="light" to="/about" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/about">
               <FormattedMessage id="menu.about" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/help" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/help">
               <FormattedMessage id="menu.help" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/contact" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/contact">
               <FormattedMessage id="menu.contact" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/privacy" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/privacy">
               <FormattedMessage id="menu.privacy" />
             </Link>
-            <Link className="footer__menu-item" color="light" to="/legal" noUnderline>
+            <Link className="footer__menu-item" color="light" to="/legal">
               <FormattedMessage id="menu.legal" />
             </Link>
           </nav>
@@ -112,17 +150,4 @@ class Footer extends Component {
   }
 }
 
-Footer.propTypes = {
-  intl: PropTypes.object.isRequired,
-  dashboardsOpen: PropTypes.bool,
-  hasSidebar: PropTypes.bool,
-  className: PropTypes.string,
-  home: PropTypes.bool,
-  loggedIn: PropTypes.bool.isRequired,
-  toolbarSticky: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired
-};
-
 export default injectIntl(Footer);
-
-/* eslint-disable max-len */

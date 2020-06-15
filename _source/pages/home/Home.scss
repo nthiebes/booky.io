@@ -3,14 +3,65 @@
 }
 
 .home__header {
-  padding-top: 10rem;
-  min-height: 100vh;
+  position: relative;
+
+  @include mobile {
+    padding-top: 6rem;
+  }
+
+  @include tablet {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+  }
+
+  @include desktop {
+    padding-top: 11rem;
+    padding-bottom: 12rem;
+
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   left: calc(50% - 900px);
+    //   right: calc(50% - 900px);
+    //   top: 0;
+    //   bottom: 0;
+    //   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 0) 100%);
+    //   min-width: 1000px;
+    // }
+  }
+}
+
+.home__headline {
+  @include tablet {
+    width: 60%;
+  }
 }
 
 .home__header-illustration {
-  // position: absolute;
-  // left: 600px;
-  // margin-top: -20px;
+  max-width: 300px;
+  max-height: 300px;
+
+  @include mobile {
+    position: relative;
+    width: 75%;
+    height: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2rem;
+  }
+
+  @include tablet-desktop {
+    position: absolute;
+    right: 2vw;
+    top: 0;
+    width: 40vw;
+    height: 40vw;
+  }
+
+  @include desktop {
+    right: 36px;
+    top: 8rem;
+  }
 }
 
 .home__join {
@@ -18,8 +69,16 @@
     margin-bottom: 1rem;
   }
 
+  @include mobile-tablet {
+    margin-top: 1rem;
+  }
+
   @include tablet-desktop {
     margin-right: 1rem;
+  }
+
+  @include desktop {
+    margin-top: 2rem;
   }
 }
 
@@ -38,13 +97,13 @@
   flex-direction: column;
   width: 25%;
   transition: color 0.2s;
-  color: $color__font--medium;
+  color: $color-font--medium;
   text-decoration: none;
   font-weight: 700;
 
   &:active,
   &:focus {
-    color: $color__font--dark;
+    color: $color-font--dark;
 
     .icon__svg {
       color: $color--primary;
@@ -53,7 +112,7 @@
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
+      color: $color-font--dark;
 
       .icon__svg {
         color: $color--primary;
@@ -70,51 +129,69 @@
 
 .home__bookmarklet {
   display: flex;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
   align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+}
 
-  @include tablet {
+.home__extension {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: center;
+
+  @include desktop {
+    margin-top: 2rem;
+  }
+}
+
+.home__extension-icon {
+  margin: 0 0.5rem 0.5rem;
+
+  @include mobile {
+    width: 19vw;
+    height: 19vw;
+  }
+}
+
+.home__extension-browser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home__features,
+.home__testimonials,
+.home__bookmarklet {
+  @include mobile-tablet {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @include desktop {
     padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-
-  @include desktop {
-    flex-wrap: nowrap;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-bottom: 5rem;
   }
 }
 
-.home__bookmarklet-icon {
-  flex-shrink: 0;
-  margin-right: 1rem;
-  pointer-events: none;
-}
-
-.home__bookmarklet-headline {
-  flex-grow: 1;
-  padding: 0;
-
-  @include mobile-tablet {
-    max-width: calc(100% - 64px - 1rem);
-  }
-
-  @include desktop {
-    margin-right: 1rem;
-  }
-}
-
-.home__bookmarklet-button {
-  flex-shrink: 0;
-
-  @include mobile-tablet {
-    margin-top: 1rem;
-    margin-left: calc(64px + 1rem);
+.home__features-headline {
+  @include mobile {
+    justify-content: flex-start;
+    text-align: left;
+    padding-bottom: 0;
   }
 }
 
 .home__not-a-member {
   text-align: center;
+}
+
+.home__login-button {
+  margin-top: 2rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.home__globe {
+  max-width: 100%;
 }

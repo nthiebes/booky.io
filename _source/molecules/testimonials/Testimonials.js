@@ -1,34 +1,40 @@
-import React, { Component } from 'react';
-import 'whatwg-fetch';
+import React, { Component, Fragment } from 'react';
+import { FormattedMessage } from 'react-intl';
+
+import { H2 } from '../../atoms/headline';
 
 import Testimonial from './Testimonial';
 
 class Testimonials extends Component {
   render() {
     return (
-      <div className="testimonials">
-        <Testimonial
-          name="Siddharth"
-          twitter="Samira ♥️ Stein"
-          url="https://twitter.com/_gscheid"
-          image="_assets/_gscheid.jpg"
-          text="My portal to the Web."
-        />
-        <Testimonial
-          name="Clausailgoa"
-          twitter="twittername"
-          url="https://twitter.com/_gscheid"
-          image="_assets/_gscheid.jpg"
-          text="Thank you for this incredible project."
-        />
-        <Testimonial
-          name="Aniket Mohite"
-          twitter="_gscheid"
-          url="https://twitter.com/_gscheid"
-          image="_assets/_gscheid.jpg"
-          text="This is so amazing, just what I needed."
-        />
-      </div>
+      <Fragment>
+        <H2 style="h1" className="testimonials-headline" noMargin>
+          <FormattedMessage id="testimonials.headline" />
+        </H2>
+        <div className="testimonials">
+          <Testimonial
+            name="David Lafond"
+            twitter="kronozio"
+            url="https://twitter.com/Kronozio"
+            image="_assets/illustrations/hacker.svg"
+            text="My portal to the web. I tried many bookmark manager, and this is the best one."
+          />
+          <Testimonial
+            // Ricardo Sebastián
+            name="Anonymous"
+            image="_assets/illustrations/customer-service-man.svg"
+            text="A simple, lightweight, yet powerful application to store my bookmarks in the cloud."
+          />
+          <Testimonial
+            name="Samira Stein"
+            twitter="frontend_cat"
+            url="https://twitter.com/frontend_cat"
+            image="_assets/illustrations/customer-service-woman.svg"
+            text="I love the sleek and simple design! The focus lies on what's important: managing bookmarks."
+          />
+        </div>
+      </Fragment>
     );
   }
 }

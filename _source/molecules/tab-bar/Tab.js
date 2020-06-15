@@ -23,13 +23,15 @@ export default class Tab extends Component {
   }
 
   render() {
-    const { name, active } = this.props;
+    const { name, active, darkMode } = this.props;
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
       <li
-        className={ classNames('tab-bar__tab', active && 'tab-bar__tab--active') }
+        className={ classNames('tab-bar__tab', active && 'tab-bar__tab--active', darkMode && 'tab-bar__tab--dark-mode') }
         onClick={ this.handleClick }
         onKeyDown={ this.handleKeyDown }
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex="0"
       >
         { name }
@@ -42,5 +44,6 @@ Tab.propTypes = {
   name: PropTypes.string.isRequired,
   tabId: PropTypes.number.isRequired,
   active: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool
 };

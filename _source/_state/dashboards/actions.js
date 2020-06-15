@@ -1,88 +1,49 @@
-import fetcher from '../../_utils/fetcher';
+import fetcher, { abortFetch } from '../../_utils/fetcher';
 
-import { setCategories } from '../categories/actions';
+import { setCategories, getCategories } from '../categories/actions';
+import { updateSettings } from '../user/actions';
+import { closeSidebar } from '../sidebar/actions';
+import { resetSearch } from '../search/actions';
 
-export const CHANGE_DASHBOARD = 'CHANGE_DASHBOARD';
-export const ADD_DASHBOARD = 'ADD_DASHBOARD';
-export const EDIT_DASHBOARD = 'EDIT_DASHBOARD';
-export const DELETE_DASHBOARD = 'DELETE_DASHBOARD';
-export const UPDATE_OFFSET = 'UPDATE_OFFSET';
-export const DRAG_DASHBOARD = 'DRAG_DASHBOARD';
-export const DRAG_CATEGORY = 'DRAG_CATEGORY';
-export const TOGGLE_DASHBOARD_OPEN = 'TOGGLE_DASHBOARD_OPEN';
-export const UPDATE_DASHBOARDS_DATA = 'UPDATE_DASHBOARDS_DATA';
+export const updateOffset = (offset) => ({
+  type: 'UPDATE_OFFSET',
+  offset
+});
 
-export function changeDashboard(id) {
-  return {
-    type: CHANGE_DASHBOARD,
-    id
-  };
-}
-
-export function editDashboard(payload) {
-  return {
-    type: EDIT_DASHBOARD,
-    payload
-  };
-}
-
-export function deleteDashboard(payload) {
-  return {
-    type: DELETE_DASHBOARD,
-    payload
-  };
-}
-
-export function addDashboard(payload) {
-  return {
-    type: ADD_DASHBOARD,
-    payload
-  };
-}
-
-export function updateOffset(offset) {
-  return {
-    type: UPDATE_OFFSET,
-    offset
-  };
-}
-
-export function dragDashboard(data) {
-  return {
-    type: DRAG_DASHBOARD,
-    data
-  };
-}
-
-export function dragCategory(data) {
-  return {
-    type: DRAG_CATEGORY,
-    data
-  };
-}
-
-export function toggleDashboardOpen() {
-  return {
-    type: TOGGLE_DASHBOARD_OPEN
-  };
-}
+export const toggleDashboardOpen = () => ({
+  type: 'TOGGLE_DASHBOARD_OPEN'
+});
 
 export const updateDashboardsData = (data) => ({
-  type: UPDATE_DASHBOARDS_DATA,
+  type: 'UPDATE_DASHBOARDS_DATA',
   data
+});
+
+export const changeDashboard = (id) => ((dispatch) => {
+  dispatch(updateDashboardsData({
+    pending: true
+  }));
+  abortFetch();
+  dispatch(updateSettings({
+    defaultDashboardId: id
+  }));
+
+  dispatch(closeSidebar());
+  dispatch(getCategories(id));
+  dispatch(resetSearch());
 });
 
 export const getDashboards = () => ((dispatch) => {
   dispatch(updateDashboardsData({
     pending: true
   }));
+  dispatch(resetSearch());
 
   fetcher({
     url: '/dashboards',
     onSuccess: ({ dashboards, activeCategories }) => {
       dispatch(updateDashboardsData({
         items: dashboards,
-        active: dashboards[0].id,
         pending: false
       }));
       dispatch(setCategories(activeCategories));
@@ -94,4 +55,94 @@ export const getDashboards = () => ((dispatch) => {
       }));
     }
   });
+});
+
+export const addDashboard = ({ name, onSuccess, onError }) => ((dispatch) => {
+  fetcher({
+    url: '/dashboards',
+    method: 'POST',
+    params: {
+      name
+    },
+    onSuccess: ({ id }) => {
+      dispatch({
+        type: 'ADD_DASHBOARD',
+        name,
+        id
+      });
+      onSuccess();
+    },
+    onError: () => {
+      // console.log('error', error);
+      onError();
+    }
+  });
+});
+
+export const editDashboard = ({ name, position, id, onSuccess, onError, shouldUpdate = true }) => ((dispatch) => {
+  fetcher({
+    url: `/dashboards/${id}`,
+    method: 'PATCH',
+    params: {
+      name,
+      position
+    },
+    onSuccess: () => {
+      if (shouldUpdate) {
+        dispatch({
+          type: 'EDIT_DASHBOARD',
+          name,
+          id
+        });
+      }
+      onSuccess && onSuccess();
+    },
+    onError: () => {
+      // console.log('error', error);
+      onError && onError();
+    }
+  });
+});
+
+export const deleteDashboard = ({ id, newId, onSuccess, onError }) => ((dispatch, getState) => {
+  const dashboards = getState().dashboards.items;
+  const activeDashboardId = getState().user.settings.defaultDashboardId;
+  const defaultDashboardId = newId || (dashboards.length ? dashboards[0].id : null);
+  const url = newId ? `/dashboards/${id}?moveCategoriesTo=${newId}` : `/dashboards/${id}`;
+
+  fetcher({
+    url,
+    method: 'DELETE',
+    onSuccess: () => {
+      // The order is important since in the onSuccess callback "abortFetch" is called
+      onSuccess();
+
+      dispatch({
+        type: 'DELETE_DASHBOARD',
+        newId,
+        id
+      });
+      if (activeDashboardId === id) {
+        dispatch(changeDashboard(defaultDashboardId));
+      }
+    },
+    onError: () => {
+      onError();
+    }
+  });
+});
+
+export const dragDashboard = (dragData) => ((dispatch) => {
+  const { destinationIndex, dashboardId } = dragData;
+
+  dispatch({
+    type: 'DRAG_DASHBOARD',
+    dragData
+  });
+
+  dispatch(editDashboard({
+    id: dashboardId,
+    position: destinationIndex + 1,
+    shouldUpdate: false
+  }));
 });

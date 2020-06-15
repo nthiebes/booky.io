@@ -14,6 +14,10 @@ const menuItemsLoggedOut = [
   {
     name: 'help',
     route: '/help'
+  },
+  {
+    name: 'feedback',
+    route: '/feedback'
   }
 ];
 const menuItemsLoggedIn = [
@@ -21,23 +25,19 @@ const menuItemsLoggedIn = [
   {
     name: 'account',
     route: '/account'
-  },
-  {
-    name: 'next',
-    route: '/next'
   }
 ];
 
 class Menu extends Component {
   render() {
-    const { className, loggedIn } = this.props;
+    const { className, loggedIn, intl } = this.props;
     const menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     return (
-      <nav className={ classNames('menu', className && className) }>
-        { menuItems.map(({ name, route }, index) => (
+      <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className && className) }>
+        { menuItems.map(({ name, route }) => (
           <Link
-            key={ index }
+            key={ name }
             className="menu__item"
             activeClassName="menu__item--active"
             to={ route }

@@ -1,23 +1,34 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
-import reducers from './reducers';
+import { createBrowserHistory } from 'history';
+// 'routerMiddleware': the new way of storing route changes with redux middleware since rrV4.
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+import createRootReducer from './reducers';
 
-const configureStoreProd = (initialState) => {
+export const history = createBrowserHistory();
+const connectRouterHistory = connectRouter(history);
+
+function configureStoreProd(initialState) {
+  const reactRouterMiddleware = routerMiddleware(history);
   const middlewares = [
     // Add other middleware on this line...
 
     // thunk middleware can also accept an extra argument to be passed to each thunk action
-    // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
-    thunk
+    // https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument
+    thunk,
+    reactRouterMiddleware
   ];
 
-  return createStore(reducers, initialState, compose(
-    applyMiddleware(...middlewares)
-  ));
+  return createStore(
+    createRootReducer(history), // root reducer with router state
+    initialState,
+    compose(applyMiddleware(...middlewares))
+  );
 }
 
-const configureStoreDev = (initialState) => {
+function configureStoreDev(initialState) {
+  const reactRouterMiddleware = routerMiddleware(history);
   const middlewares = [
     // Add other middleware on this line...
 
@@ -25,24 +36,24 @@ const configureStoreDev = (initialState) => {
     reduxImmutableStateInvariant(),
 
     // thunk middleware can also accept an extra argument to be passed to each thunk action
-    // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
-    thunk
+    // https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument
+    thunk,
+    reactRouterMiddleware
   ];
-
-  /* eslint-disable no-underscore-dangle */
+  // eslint-disable-next-line no-underscore-dangle
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
-  const store = createStore(reducers, initialState, composeEnhancers(
-    applyMiddleware(...middlewares)
-  ));
-
-  /* eslint-enable no-underscore-dangle */
+  const store = createStore(
+    createRootReducer(history), // root reducer with router state
+    initialState,
+    composeEnhancers(applyMiddleware(...middlewares))
+  );
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('./reducers', () => {
-      const nextReducer = require('./reducers').default; // eslint-disable-line global-require
+      const nextRootReducer = require('./reducers').default; // eslint-disable-line global-require
 
-      store.replaceReducer(nextReducer);
+      store.replaceReducer(connectRouterHistory(nextRootReducer));
     });
   }
 

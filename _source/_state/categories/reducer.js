@@ -1,21 +1,28 @@
-import {
-  ADD_BOOKMARK,
-  EDIT_BOOKMARK,
-  DELETE_BOOKMARK,
-  DRAG_BOOKMARK,
-  ADD_CATEGORY,
-  EDIT_CATEGORY,
-  DELETE_CATEGORY,
-  TOGGLE_CATEGORY,
-  SET_CATEGORIES
-} from './actions';
 import { arrayMove } from '../../_utils/array';
+import { removeUndefined } from '../../_utils/object';
+import initialState from '../../initialState';
 
+// eslint-disable-next-line max-statements
 const categories = (state = [], action) => {
-  switch (action.type) {
-    case ADD_BOOKMARK: {
-      const { categoryId, url, name } = action.payload;
+  const {
+    name,
+    color,
+    id,
+    position,
+    newId,
+    dashboardId,
+    hidden,
+    bookmarks,
+    pending,
+    categoryId,
+    url,
+    dragData,
+    error,
+    favicon
+  } = action;
 
+  switch (action.type) {
+    case 'ADD_BOOKMARK': {
       return state.map((category) => {
         if (category.id !== categoryId) {
           return category;
@@ -26,19 +33,18 @@ const categories = (state = [], action) => {
           bookmarks: [
             ...category.bookmarks,
             {
-              id: '123456789',
+              id,
               name,
               url,
-              categoryId
+              categoryId,
+              favicon
             }
           ]
         };    
       });
     }
 
-    case EDIT_BOOKMARK: {
-      const { id, url, name, categoryId } = action.payload;
-
+    case 'EDIT_BOOKMARK': {
       return state.map((category) => {
         if (category.id !== categoryId) {
           return category;
@@ -54,16 +60,15 @@ const categories = (state = [], action) => {
             return {
               ...bookmark,
               url,
-              name
+              name,
+              favicon
             };
           })
         };
       });
     }
 
-    case DELETE_BOOKMARK: {
-      const { id, categoryId } = action.payload;
-
+    case 'DELETE_BOOKMARK': {
       return state.map((category) => {
         if (category.id !== categoryId) {
           return category;
@@ -84,40 +89,51 @@ const categories = (state = [], action) => {
       });
     }
 
-    case ADD_CATEGORY:
+    case 'ADD_CATEGORY':
       return [
         ...state,
         {
-          id: '123456789',
-          name: action.payload.name,
-          color: action.payload.color,
-          dashboard: action.payload.dashboard,
-          position: state.length,
-          expanded: true,
+          id,
+          name,
+          color,
+          position,
+          hidden: false,
+          noFetch: true,
           bookmarks: []
         }
       ];
 
-    case EDIT_CATEGORY: {
-      const { color, name } = action.payload;
+    case 'EDIT_CATEGORY': {
+      return state.filter((category) => {
+        if (category.id !== id || !dashboardId) {
+          return true;
+        }
 
-      return state.map((category) => {
-        if (category.id !== action.payload.id) {
+        return category.dashboardId === dashboardId;
+      }).map((category) => {
+        if (category.id !== id) {
           return category;
         }
-        
+
+        const data = removeUndefined({
+          color,
+          name,
+          dashboardId,
+          id,
+          hidden,
+          position
+        });
+          
         return {
           ...category,
-          color,
-          name
+          ...data
         };
       });
     }
 
-    case DELETE_CATEGORY: {
-      const { id, newId } = action.payload;
+    case 'DELETE_CATEGORY': {
       let newState = state.slice();
-      const bookmarks = newState.find((category) => category.id === id).bookmarks;
+      const oldBookmarks = newState.find((category) => category.id === id).bookmarks;
 
       // Move bookmarks
       newState = newState.map((category) => {
@@ -127,7 +143,7 @@ const categories = (state = [], action) => {
 
         return {
           ...category,
-          bookmarks: category.bookmarks.concat(bookmarks)
+          bookmarks: category.bookmarks.concat(oldBookmarks)
         };
       });
 
@@ -141,46 +157,35 @@ const categories = (state = [], action) => {
       return newState;
     }
 
-    case TOGGLE_CATEGORY:
-      return state.map((category) => {
-        if (category.id === action.id) {
-          return {
-            ...category,
-            expanded: !category.expanded
-          };
-        }
-        return category;
-      });
-
-    case DRAG_BOOKMARK: {
-      const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = action.data;
+    case 'DRAG_BOOKMARK': {
+      const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = dragData;
 
       return state.map((category) => {
-        const bookmarks = [...category.bookmarks];
+        const newBookmarks = [...category.bookmarks];
         
         if (category.id === sourceCategoryId) {
 
           // Same category - move bookmark
           if (category.id === destinationCategoryId) {
-            arrayMove(bookmarks, sourceIndex, destinationIndex);
+            arrayMove(newBookmarks, sourceIndex, destinationIndex);
           // Different category - remove bookmark
           } else {
-            bookmarks.splice(sourceIndex, 1);
+            newBookmarks.splice(sourceIndex, 1);
           }
 
           return {
             ...category,
-            bookmarks: [...bookmarks]
+            bookmarks: [...newBookmarks]
           };
         // Insert bookmark in new category
         } else if (category.id === destinationCategoryId) {
           const bookmark = state.find((item) => item.id === sourceCategoryId).bookmarks[sourceIndex];
           
-          bookmarks.splice(destinationIndex, 0, bookmark);
+          newBookmarks.splice(destinationIndex, 0, bookmark);
 
           return {
             ...category,
-            bookmarks: [...bookmarks]
+            bookmarks: [...newBookmarks]
           };
         }
 
@@ -188,8 +193,55 @@ const categories = (state = [], action) => {
       });
     }
 
-    case SET_CATEGORIES:
-      return action.categories;
+    case 'SET_CATEGORIES':
+      return action.categories.map((category) => ({
+        ...category,
+        bookmarks: category.bookmarks ? category.bookmarks : []
+      }));
+    
+    case 'SET_BOOKMARKS': {
+      return state.map((category) => {
+        if (category.id !== id) {
+          return category;
+        }
+        
+        return {
+          ...category,
+          bookmarks,
+          pending: false,
+          error
+        };
+      });
+    }
+
+    case 'SET_BOOKMARKS_PENDING': {
+      return state.map((category) => {
+        if (category.id !== id) {
+          return category;
+        }
+        
+        return {
+          ...category,
+          pending
+        };
+      });
+    }
+
+    case 'DRAG_CATEGORY': {
+      const { destinationIndex, sourceIndex, categoryId: dragCategoryId } = dragData;
+      const newCategories = [...state];
+      const categoryExists = Boolean(state.find((category) => category.id === dragCategoryId));
+
+      if (categoryExists) {
+        arrayMove(newCategories, sourceIndex, destinationIndex);
+      }
+
+      return newCategories;
+    }
+
+    case 'RESET_USER_STATE': {
+      return initialState.categories;
+    }
       
     default:
       return state;

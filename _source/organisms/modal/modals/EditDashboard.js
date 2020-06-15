@@ -4,18 +4,23 @@ import { injectIntl } from 'react-intl';
 
 import Base from '../Base';
 import Input from '../../../atoms/input';
+import CategoriesSorting from '../../categories-sorting';
 
 class EditDashboard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onNameChange = this.onNameChange.bind(this);
-    this.state = {
-      name: props.data.name
-    };
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    intl: PropTypes.object.isRequired,
+    pending: PropTypes.bool,
+    darkMode: PropTypes.bool
   }
 
-  onNameChange(value) {
+  state = {
+    name: this.props.data.name
+  }
+
+  onNameChange = (value) => {
     this.setState({
       name: value
     });
@@ -26,7 +31,7 @@ class EditDashboard extends Component {
     const { name } = this.state;
 
     return (
-      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) } hasAnchor>
+      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) }>
         <Input
           id="dashboard-name"
           name="name"
@@ -36,24 +41,17 @@ class EditDashboard extends Component {
           required
           maxLength="50"
           label={ intl.formatMessage({ id: 'modal.name' }) }
+          disabled={ pending }
         />
         <Input
           name="id"
           value={ data.id.toString() }
           type="hidden"
         />
+        <CategoriesSorting dashboardId={ data.id } dashboardName={ name } />
       </Base>
     );
   }
 }
 
 export default injectIntl(EditDashboard);
-
-EditDashboard.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool,
-  darkMode: PropTypes.bool
-};

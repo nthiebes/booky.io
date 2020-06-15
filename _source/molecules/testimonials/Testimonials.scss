@@ -1,7 +1,20 @@
+.testimonials-headline {
+  padding: 0 calc(3% + 6px) 1rem;
+
+  @include tablet-desktop {
+    padding: 0 calc(3% + 6px) 1rem;
+    justify-content: center;
+  }
+
+  @include desktop {
+    padding: 0 36px 0;
+  }
+}
+
 .testimonials {
   display: flex;
-  padding: 3rem 1.5%;
   width: 100%;
+  padding: 0.5rem 1.5% 1rem;
 
   @include mobile-tablet {
     overflow-x: scroll;
@@ -10,11 +23,11 @@
   }
 
   @include tablet {
-    padding: 4rem 1.5%;
+    padding: 1rem 1.5% 1rem;
   }
 
   @include desktop {
-    padding: 6rem 18px;
+    padding: 1.5rem 18px 1rem;
   }
 }
 
@@ -22,7 +35,7 @@
   display: flex;
   padding: 1.5rem 1rem 2.5rem;
   position: relative;
-  background-color: $color__font--white;
+  background-color: $color-font--white;
   border-radius: 5px;
   margin: 0 calc(1.5vw + 6px);
 
@@ -45,7 +58,7 @@
   margin-right: 0.5rem;
   flex-shrink: 0;
   border-radius: 50%;
-  border: 2px solid rgba(0,0,0,0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .testimonials__header {
@@ -73,7 +86,6 @@
 
 .testimonials__icon {
   position: absolute;
-  pointer-events: none;
   opacity: 0.3;
   bottom: -12px;
   // To create a fake margin/padding because the margin and padding

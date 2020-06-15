@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
-import Label from '../../../atoms/label';
+import P from '../../../atoms/paragraph';
 import Select from '../../../atoms/select';
 
 class DeleteCategory extends Component {
@@ -49,12 +49,11 @@ class DeleteCategory extends Component {
         onSave={ this.handleSave }
         pending={ pending }
         headline={ intl.formatMessage({ id: 'modal.deleteCategory' }) }
-        hasAnchor
       >
-        <Label>
+        <P>
           <FormattedMessage id="modal.deleteCategoryLabel" /><br />
           <b>{ data.name }</b>
-        </Label>
+        </P>
         <Select
           id="category-delete"
           label={ intl.formatMessage({ id: 'modal.deleteCategoryFuture' }) }

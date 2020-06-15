@@ -1,11 +1,10 @@
 import initialState from '../../initialState';
-import { UPDATE_USER, UPDATE_SETTINGS, RESET_USER_STATE } from './actions';
 
 const user = (state = {}, action) => {
   const { type, userData, userSettings } = action;
 
   switch (type) {
-    case UPDATE_USER:
+    case 'UPDATE_USER':
       return {
         ...state,
         ...userData,
@@ -15,7 +14,7 @@ const user = (state = {}, action) => {
         }
       };
 
-    case UPDATE_SETTINGS:
+    case 'UPDATE_SETTINGS':
       return {
         ...state,
         settings: {
@@ -24,10 +23,8 @@ const user = (state = {}, action) => {
         }
       };
 
-    case RESET_USER_STATE:
-      return {
-        ...initialState.user
-      };
+    case 'RESET_USER_STATE':
+      return initialState.user;
 
     default:
       return state;

@@ -1,3 +1,8 @@
+.empty__text {
+  line-height: 1.5;
+  word-break: break-word;
+}
+
 .empty {
   display: flex;
   margin: 1rem auto;
@@ -6,7 +11,7 @@
   align-items: center;
   max-width: 350px;
   text-align: center;
-  color: $color__font--dark;
+  color: $color-font--dark;
 
   @include mobile {
     padding: 0 calc(3% + 6px);
@@ -14,13 +19,13 @@
 }
 
 .empty--dark-mode {
-  color: $color__font--white;
+  color: $color-font--white;
 }
 
 .empty__image {
-  margin: 2rem 0 1rem;
+  margin: 2rem 0 0;
 }
 
 .empty__image--dark-mode {
-  filter: invert(100);
+  // filter: invert(100);
 }

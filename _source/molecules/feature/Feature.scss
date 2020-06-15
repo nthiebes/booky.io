@@ -1,0 +1,45 @@
+.feature__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mobile {
+    flex-wrap: wrap;
+  }
+
+  @include tablet {
+    padding: 0 5%;
+  }
+
+  @include desktop {
+    padding: 0 12%;
+  }
+}
+
+.feature__header {
+  margin-right: 1rem;
+}
+
+.feature__header--right {
+  @include tablet-desktop {
+    margin-left: 1rem;
+    margin-right: 0;
+    order: 1;
+  }
+}
+
+.feature__illustration {
+  @include mobile {
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  @include tablet {
+    min-width: 40vw;
+    max-width: 300px;
+  }
+
+  @include desktop {
+    flex-shrink: 0;
+  }
+}

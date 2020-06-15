@@ -6,18 +6,17 @@ import Illustration from '../../atoms/illustration';
 
 class Empty extends Component {
   render() {
-    const { children, illustration, alt, className, darkMode } = this.props;
+    const { children, illustration, alt, className, darkMode, ariaHidden } = this.props;
 
     return (
       <figure className={ classNames('empty', className && className) }>
         <Illustration
           name={ illustration }
           alt={ alt }
-          height="150"
-          width="150"
           className={ classNames('empty__image', darkMode && 'empty__image--dark-mode') }
+          ariaHidden={ ariaHidden }
         />
-        <figcaption className={ classNames(darkMode && 'empty--dark-mode') }>
+        <figcaption className={ classNames('empty__text', darkMode && 'empty--dark-mode') }>
           <i>{ children }</i>
         </figcaption>
       </figure>
@@ -32,9 +31,10 @@ Empty.propTypes = {
     PropTypes.string
   ]).isRequired,
   illustration: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  alt: PropTypes.string,
   className: PropTypes.string,
-  darkMode: PropTypes.bool
+  darkMode: PropTypes.bool,
+  ariaHidden: PropTypes.bool
 };
 
 export default Empty;

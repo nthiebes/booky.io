@@ -1,85 +1,134 @@
 import fetcher from '../../_utils/fetcher';
-
-export const ADD_BOOKMARK = 'ADD_BOOKMARK';
-export const EDIT_BOOKMARK = 'EDIT_BOOKMARK';
-export const DELETE_BOOKMARK = 'DELETE_BOOKMARK';
-export const ADD_CATEGORY = 'ADD_CATEGORY';
-export const EDIT_CATEGORY = 'EDIT_CATEGORY';
-export const DELETE_CATEGORY = 'DELETE_CATEGORY';
-export const TOGGLE_CATEGORY = 'TOGGLE_CATEGORY';
-export const DRAG_BOOKMARK = 'DRAG_BOOKMARK';
-export const SET_CATEGORIES = 'SET_CATEGORIES';
-
-export function addBookmark(payload) {
-  return {
-    type: ADD_BOOKMARK,
-    payload
-  };
-}
-
-export function editBookmark(payload) {
-  return {
-    type: EDIT_BOOKMARK,
-    payload
-  };
-}
-
-export function deleteBookmark(payload) {
-  return {
-    type: DELETE_BOOKMARK,
-    payload
-  };
-}
-
-export function addCategory(payload) {
-  return {
-    type: ADD_CATEGORY,
-    payload
-  };
-}
-
-export function editCategory(payload) {
-  return {
-    type: EDIT_CATEGORY,
-    payload
-  };
-}
-
-export function deleteCategory(payload) {
-  return {
-    type: DELETE_CATEGORY,
-    payload
-  };
-}
-
-export function toggleCategory(id) {
-  return {
-    type: TOGGLE_CATEGORY,
-    id
-  };
-}
-
-export function dragBookmark(data) {
-  return {
-    type: DRAG_BOOKMARK,
-    data
-  };
-}
+import { updateDashboardsData } from '../dashboards/actions';
+import { getBookmarks, setBookmarks } from '../bookmarks/actions';
 
 export const setCategories = (categories) => ({
-  type: SET_CATEGORIES,
+  type: 'SET_CATEGORIES',
   categories
 });
 
 export const getCategories = (id) => ((dispatch) => {
   fetcher({
-    url: `/dashboard/${id}/categories`,
+    url: `/dashboards/${id}/categories`,
     onSuccess: (data) => {
-      setCategories(data);
+      dispatch(setCategories(data));
+      dispatch(updateDashboardsData({
+        pending: false,
+        error: null
+      }));
     },
     onError: (error) => {
-      console.log('error', error);
-      // onError && onError(error);
+      dispatch(updateDashboardsData({
+        error,
+        pending: false
+      }));
+    }
+  });
+});
+
+export const addCategory = ({ dashboardId, color, name, position, onError, onSuccess }) => ((dispatch) => {
+  fetcher({
+    url: `/dashboards/${dashboardId}/categories`,
+    method: 'POST',
+    params: {
+      color,
+      name,
+      position
+    },
+    onSuccess: ({ id }) => {
+      dispatch({
+        type: 'ADD_CATEGORY',
+        color,
+        name,
+        position,
+        id
+      });
+      onSuccess && onSuccess();
+    },
+    onError: (error) => {
+      // console.log('error', error);
+      onError && onError(error);
+    }
+  });
+});
+
+export const editCategory = ({ id, color, name, hidden, position, dashboardId, onError, onSuccess }) => ((dispatch) => {
+  fetcher({
+    url: `/categories/${id}`,
+    method: 'PATCH',
+    params: {
+      color,
+      name,
+      dashboardId,
+      hidden,
+      position
+    },
+    onSuccess: () => {
+      dispatch({
+        type: 'EDIT_CATEGORY',
+        color,
+        name,
+        dashboardId,
+        id,
+        hidden,
+        position
+      });
+      onSuccess && onSuccess();
+    },
+    onError: (error) => {
+      // console.log('error', error);
+      onError && onError(error);
+    }
+  });
+});
+
+export const toggleCategory = ({ id, hidden }) => ((dispatch) => {
+  dispatch({
+    type: 'EDIT_CATEGORY',
+    id,
+    hidden
+  });
+  if (hidden) {
+    dispatch(setBookmarks({
+      id,
+      bookmarks: []
+    }));
+  } else {
+    dispatch(getBookmarks(id));
+  }
+
+  fetcher({
+    url: `/categories/${id}`,
+    method: 'PATCH',
+    params: {
+      hidden
+    },
+    onError: () => {
+      // console.log('error', error);
+    }
+  });
+});
+
+export const deleteCategory = ({ id, newId, onError, onSuccess }) => ((dispatch) => {
+  const url = newId ? `/categories/${id}?moveBookmarksTo=${newId}` : `/categories/${id}`;
+
+  fetcher({
+    url,
+    method: 'DELETE',
+    params: {
+      id
+    },
+    onSuccess: () => {
+      dispatch({
+        type: 'DELETE_CATEGORY',
+        id,
+        newId
+      });
+      onSuccess && onSuccess();
+    },
+    onError: (error) => {
+      // console.log('error', error);
+      onError && onError(error);
     }
   });
 });

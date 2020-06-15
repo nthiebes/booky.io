@@ -2,44 +2,66 @@
 // For info on how we're generating bundles with hashed filenames for cache busting:
 // https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
 import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from 'copy-webpack-plugin';
 import path from 'path';
-
+const version = require('./package.json').version;
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
+  'process.env.VERSION': JSON.stringify(version),
   __DEV__: false
 };
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json'],
+    // To support react-hot-loader
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
   entry: path.resolve(__dirname, '_source/index'),
   target: 'web',
+  mode: 'production',
   output: {
     path: path.resolve(__dirname, '_public'),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[contenthash].js'
   },
   plugins: [
-    // Hash the files using MD5 so that their names change when the content changes.
-    new WebpackMd5Hash(),
+    // Remove _public folder before build
+    new CleanWebpackPlugin(),
+
+    // Analyze the bundle sizes
+    new BundleAnalyzerPlugin({
+      openAnalyzer: true
+    }),
+
+    // Copy translation files
+    new CopyPlugin([
+      {
+        from: '_source/_assets',
+        to: '_assets'
+      }
+    ]),
 
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin(GLOBALS),
 
     // Generate an external css file with a hash in the filename
-    new ExtractTextPlugin('[name].[contenthash].css'),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    }),
 
-    // Generate HTML file that contains references to generated bundles.
-    // See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
+    // Generate HTML file that contains references to generated bundles. See here for how this works:
+    // https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
       template: '_source/index.ejs',
+      favicon: '_source/_assets/icons/favicon.ico',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -52,21 +74,9 @@ export default {
         minifyCSS: true,
         minifyURLs: true
       },
-      inject: true,
+      inject: true
       // Note that you can add custom options here if you need to handle other custom logic in index.html
-      // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
-      trackJSToken: ''
-    }),
-
-    // Minify JS
-    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
-
-    new CopyWebpackPlugin([
-      {
-        from: '_source/_assets',
-        to: '_assets'
-      }
-    ])
+    })
   ],
   module: {
     rules: [
@@ -74,43 +84,6 @@ export default {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-      },
-      {
-        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/font-woff',
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/octet-stream',
-              name: '[name].[ext]'
-            }
-          }
-        ]
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
@@ -138,31 +111,31 @@ export default {
       },
       {
         test: /(\.css|\.scss|\.sass)$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: true,
-                sourceMap: true
-              }
-            }, {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [
-                  require('autoprefixer')
-                ],
-                sourceMap: true
-              }
-            }, {
-              loader: 'sass-loader',
-              options: {
-                includePaths: [path.resolve(__dirname, '_source', 'scss')],
-                sourceMap: true
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('cssnano'),
+                require('autoprefixer')
+              ],
+              sourceMap: true
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, '_source')]
               }
             }
-          ]
-        })
+          }
+        ]
       }
     ]
   }

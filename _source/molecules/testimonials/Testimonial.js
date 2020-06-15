@@ -13,13 +13,15 @@ class Testimonial extends Component {
 
     return (
       <blockquote className={ classNames('testimonials__testimonial', className && className) }>
-        <img src={ image } width="50" height="50" className="testimonials__image" />
+        <img src={ image } width="50" height="50" className="testimonials__image" alt="" aria-hidden="true" />
         <div>
           <H4 className="testimonials__header">
             { name }
-            <Link href={ url } className="testimonials__link">
-              { twitter && `@${twitter}` }
-            </Link>
+            { url && (
+              <Link href={ url } target="_blank" className="testimonials__link">
+                { twitter && `@${twitter}` }
+              </Link>
+            ) }
           </H4>
           <P className="testimonials__text">{ text }</P>
         </div>

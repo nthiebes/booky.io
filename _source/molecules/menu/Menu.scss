@@ -14,7 +14,7 @@
 
   &::after {
     position: absolute;
-    content: " ";
+    content: "";
     height: 2px;
     left: 36px;
     right: 0;
@@ -25,19 +25,19 @@
 
   &:active,
   &:focus {
-    color: $color__font--dark;
+    color: $color-font--dark;
 
     .icon {
-      color: $color__font--dark;
+      color: $color-font--dark;
     }
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--dark;
+      color: $color-font--dark;
 
       .icon {
-        color: $color__font--dark;
+        color: $color-font--dark;
       }
     }
   }
@@ -45,14 +45,14 @@
 
 .menu__item--active {
   &::after {
-    background-color: $color__font--white;
+    background-color: $color-font--white;
   }
 
   &:active,
   &:focus,
   &:hover {
     &::after {
-      background-color: $color__font--dark;
+      background-color: $color-font--dark;
     }
   }
 }

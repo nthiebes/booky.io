@@ -1,38 +1,49 @@
-import 'whatwg-fetch';
+import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
 
-// eslint-disable-next-line
-const baseUrl = window.___browserSync___ ? `http://${document.location.hostname}:8001/api` : '/api';
+const baseUrl = process.env.NODE_ENV === 'development'
+  ? `http://${document.location.hostname}:8001/api`
+  : '/api';
 const defaultOptions = {
-  credentials: 'include'
+  credentials: process.env.NODE_ENV === 'development' ? 'include' : 'same-origin'
 };
-
-const checkStatus = (response) => {
-  // if (response.status >= 200 && response.status < 300) {
-  //   return response;
-  // }
+let controller;
+const formatResponse = (response) => 
+// if (response.status >= 200 && response.status < 300) {
+//   return response;
+// }
   
-  // const error = new Error(response.statusText);
+// const error = new Error(response.statusText);
 
-  // error.response = response;
-  // throw error;
+// error.response = response;
+// throw error;
 
-  return {
+  ({
     data: response,
-    error: response.message
-  };
+    error: response.message || response.error
+  })
+;
+const checkEmptyResponse = (response) => {
+  if (response.statusText === 'No Content' || response.status === 204) {
+    return {};
+  }
+
+  return response.json();
 };
+const abortFetch = () => {
+  controller && controller.abort();
+};
+const fetcher = ({ params, method = 'GET', url, onSuccess, onError, options = {} }) => {
+  controller = new AbortController();
 
-
-const fetcher = ({ params, method = 'GET', url, onSuccess, onError, noResponse, options = {} }) => {
   if (method === 'GET') {
     fetch(`${baseUrl}${url}`, {
       ...defaultOptions,
-      ...options
+      ...options,
+      signal: controller.signal
     })
-      .then((response) => noResponse ? response : response.json())
-      .then(checkStatus)
+      .then((response) => checkEmptyResponse(response))
+      .then(formatResponse)
       .then((response) => {
-        // console.log('success', response);
         const { data, error } = response;
 
         if (error) {
@@ -42,12 +53,13 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, noResponse, 
         }
       })
       .catch((error) => {
-        // console.log('error', error);
-        onError(error.statusText || 'error.default');
+        if (error.name !== 'AbortError') {
+          onError(error.statusText || 'error.default');
+        }
       });
   }
 
-  if (method === 'POST' || method === 'DELETE' || method === 'PUT') {
+  if (method === 'POST' || method === 'DELETE' || method === 'PUT' || method === 'PATCH') {
     fetch(`${baseUrl}${url}`, {
       ...defaultOptions,
       ...options,
@@ -55,12 +67,12 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, noResponse, 
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(params)
+      body: JSON.stringify(params),
+      signal: controller.signal
     })
-      .then((response) => response.json())
-      .then(checkStatus)
+      .then((response) => checkEmptyResponse(response))
+      .then(formatResponse)
       .then((response) => {
-        // console.log('response', response);
         const { data, error } = response;
 
         if (error) {
@@ -70,10 +82,13 @@ const fetcher = ({ params, method = 'GET', url, onSuccess, onError, noResponse, 
         }
       })
       .catch((error) => {
-        // console.log('error', error);
-        onError(error.statusText || 'error.default');
+        if (error.name !== 'AbortError') {
+          onError(error.statusText || 'error.default');
+        }
       });
   }
 };
+
+export { abortFetch };
 
 export default fetcher;

@@ -2,15 +2,32 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-export default class Icon extends Component {
-  constructor(props) {
-    super(props);
+import Skeleton from '../skeleton';
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+export default class Icon extends Component {
+  static propTypes = {
+    className: PropTypes.string,
+    icon: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    onClick: PropTypes.func,
+    stopPropagation: PropTypes.bool,
+    color: PropTypes.string,
+    dragHandleProps: PropTypes.object,
+    tabIndex: PropTypes.string,
+    darkMode: PropTypes.bool,
+    ignoreDarkMode: PropTypes.bool,
+    size: PropTypes.string,
+    isButton: PropTypes.bool,
+    useSkeleton: PropTypes.bool,
+    pending: PropTypes.bool
+  }
+  
+  static defaultProps = {
+    color: 'medium',
+    size: 'small'
   }
 
-  handleClick(event) {
+  handleClick = (event) => {
     const { stopPropagation, onClick } = this.props;
 
     if (stopPropagation) {
@@ -22,7 +39,7 @@ export default class Icon extends Component {
     }
   }
 
-  handleKeyDown(event) {
+  handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       this.handleClick(event);
     }
@@ -30,63 +47,61 @@ export default class Icon extends Component {
 
   render() {
     const {
-      icon,
       className,
       label,
       color,
-      title,
       dragHandleProps,
       tabIndex,
       darkMode,
       ignoreDarkMode,
-      size
+      size,
+      isButton,
+      useSkeleton,
+      pending
     } = this.props;
-    const link = '_assets/symbol-defs.svg#icon-' + icon;
+    const icon = pending ? 'spinner' : this.props.icon;
+    const link = `_assets/symbol-defs.svg?=${process.env.VERSION}#icon-${icon}`;
+    const additionalProps = {};
+    const CustomTag = isButton ? 'button' : 'span';
+    
+    if (isButton) {
+      additionalProps['aria-label'] = label;
+      additionalProps.type = 'button';
+    } else {
+      additionalProps['aria-hidden'] = true;
+    }
 
     return (
-      <span
-        className={ classNames(
-          'icon',
-          `icon--size-${size}`,
-          darkMode && !ignoreDarkMode ? 'icon--light' : `icon--${color}`,
-          darkMode && !ignoreDarkMode && 'icon--dark-mode',
-          className && className
-        ) }
-        title={ title }
-        onClick={ this.handleClick }
-        onKeyDown={ this.handleKeyDown }
-        tabIndex={ tabIndex }
-        { ...dragHandleProps }
-      >
-        <svg className={ classNames(
-          'icon__svg',
-          `icon__svg--size-${size}`,
-          icon === 'spinner' && 'icon__svg--spinner'
-        ) }>
-          <use xlinkHref={ link } />
-        </svg>
-        { label && <label className="icon__label">{ label }</label> }
-      </span>
+      useSkeleton ? (
+        <Skeleton className={ classNames('icon--skeleton', className) } />
+      ) : (
+        <CustomTag
+          className={ classNames(
+            'icon',
+            `icon--size-${size}`,
+            `icon--${color}`,
+            !isButton && 'icon--decorative',
+            darkMode && !ignoreDarkMode && 'icon--dark-mode',
+            className
+          ) }
+          title={ label }
+          onClick={ this.handleClick }
+          onKeyDown={ this.handleKeyDown }
+          { ...additionalProps }
+          { ...dragHandleProps }
+          tabIndex={ tabIndex }
+        >
+          <svg
+            focusable="false"
+            className={ classNames(
+              'icon__svg',
+              `icon__svg--size-${size}`,
+              icon === 'spinner' && 'icon__svg--spinner'
+            ) }>
+            <use xlinkHref={ link } />
+          </svg>
+        </CustomTag>
+      )
     );
   }
 }
-
-Icon.propTypes = {
-  className: PropTypes.string,
-  icon: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  onClick: PropTypes.func,
-  title: PropTypes.string,
-  stopPropagation: PropTypes.bool,
-  color: PropTypes.string,
-  dragHandleProps: PropTypes.object,
-  tabIndex: PropTypes.string,
-  darkMode: PropTypes.bool,
-  ignoreDarkMode: PropTypes.bool,
-  size: PropTypes.string
-};
-
-Icon.defaultProps = {
-  color: 'medium',
-  size: 'small'
-};

@@ -9,13 +9,15 @@ export const mapStateToProps = (state) => ({
 
 const restricted = (BaseComponent) => {
   class Restricted extends Component {
-    componentWillMount() {
+    componentDidMount() {
       this.checkAuthentication(this.props);
     }
 
-    componentWillReceiveProps(nextProps) {
-      if (nextProps.location !== this.props.location) {
-        this.checkAuthentication(nextProps);
+    componentDidUpdate(prevProps) {
+      const { location } = this.props;
+
+      if (prevProps.location !== location) {
+        this.checkAuthentication(location);
       }
     }
 

@@ -1,35 +1,42 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { H1, H2 } from '../../atoms/headline';
+import { H3 } from '../../atoms/headline';
 import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
-import Radio from '../../atoms/radio';
+// import Radio from '../../atoms/radio';
 
-class Customize extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleColorChange = this.handleColorChange.bind(this);
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
-    this.handleRadioChange = this.handleRadioChange.bind(this);
+class Customize extends PureComponent {
+  static propTypes = {
+    updateSettings: PropTypes.func.isRequired,
+    intl: PropTypes.object.isRequired,
+    navColor: PropTypes.number.isRequired,
+    newtab: PropTypes.bool.isRequired,
+    maxWidth: PropTypes.bool.isRequired,
+    preserveEditMode: PropTypes.bool.isRequired,
+    dashboardsStyle: PropTypes.string.isRequired,
+    blurEffect: PropTypes.bool.isRequired,
+    stickyHeader: PropTypes.bool.isRequired,
+    stickyToolbar: PropTypes.bool.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+    autofillBookmarkNames: PropTypes.bool
   }
 
-  handleColorChange(value) {
+  handleColorChange = (value) => {
     this.props.updateSettings({
-      navigationBarColor: value
+      navigationBarColor: parseInt(value.replace(/color/g, ''), 10)
     });
   }
 
-  handleCheckboxChange({ name, checked }) {
+  handleCheckboxChange = ({ name, checked }) => {
     this.props.updateSettings({
       [name]: checked
     });
   }
 
-  handleRadioChange({ name, value }) {
+  handleRadioChange = ({ name, value }) => {
     this.props.updateSettings({
       [name]: value
     });
@@ -40,30 +47,27 @@ class Customize extends Component {
       intl,
       navColor,
       newtab,
-      maxWidth,
-      preserveEditMode,
-      dashboardsStyle,
+      // maxWidth,
+      // preserveEditMode,
+      // dashboardsStyle,
       blurEffect,
       stickyHeader,
       stickyToolbar,
-      darkMode
+      darkMode,
+      autofillBookmarkNames
     } = this.props;
 
     return (
       <Fragment>
-        <H1>
-          <FormattedMessage id="customize.title" />
-        </H1>
-        <H2>
+        <H3>
           <FormattedMessage id="customize.style" />
-        </H2>
+        </H3>
         <Label>
           <FormattedMessage id="customize.navColor" />
         </Label>
         <ColorPicker
-          value={ navColor }
+          value={ (navColor).toString() }
           onChange={ this.handleColorChange }
-          className="customize__color-picker"
         />
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.darkMode'}) }
@@ -93,74 +97,70 @@ class Customize extends Component {
           onChange={ this.handleCheckboxChange }
           checked={ stickyToolbar }
         />
-        <H2>
-          <FormattedMessage id="dashboard.title" />
-        </H2>
-        <Radio
-          label={ intl.formatMessage({ id: 'customize.sidebar'}) }
-          id="dashboards-sidebar"
-          name="dashboards"
-          onChange={ this.handleRadioChange }
-          value="sidebar"
-          defaultChecked={ dashboardsStyle === 'sidebar' }
-        />
-        <Radio
-          label={ intl.formatMessage({ id: 'customize.dropdown'}) }
-          id="dashboards-dropdown"
-          name="dashboards"
-          onChange={ this.handleRadioChange }
-          value="dropdown"
-          defaultChecked={ dashboardsStyle === 'dropdown' }
-        />
-        <Radio
-          label={ intl.formatMessage({ id: 'customize.tabs'}) }
-          id="dashboards-tabs"
-          name="dashboards"
-          onChange={ this.handleRadioChange }
-          value="tabs"
-          defaultChecked={ dashboardsStyle === 'tabs' }
-        />
-        <Checkbox
+        {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
           id="maxWidth"
           name="maxWidth"
           onChange={ this.handleCheckboxChange }
           checked={ maxWidth }
-        />
-        <H2>
-          <FormattedMessage id="dashboard.preferences" />
+        /> */}
+        {/* <H2>
+          <FormattedMessage id="dashboard.title" />
         </H2>
+        <Radio
+          id="dashboards-sidebar"
+          name="dashboardsStyle"
+          onChange={ this.handleRadioChange }
+          value="sidebar"
+          checked={ dashboardsStyle === 'sidebar' }
+        >
+          <FormattedMessage id="customize.sidebar" />
+        </Radio>
+        <Radio
+          id="dashboards-dropdown"
+          name="dashboardsStyle"
+          onChange={ this.handleRadioChange }
+          value="dropdown"
+          checked={ dashboardsStyle === 'dropdown' }
+        >
+          <FormattedMessage id="customize.dropdown" />
+        </Radio>
+        <Radio
+          id="dashboards-tabs"
+          name="dashboardsStyle"
+          onChange={ this.handleRadioChange }
+          value="tabs"
+          checked={ dashboardsStyle === 'tabs' }
+        >
+          <FormattedMessage id="customize.tabs" />
+        </Radio> */}
+        <H3>
+          <FormattedMessage id="dashboard.preferences" />
+        </H3>
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.newTab'}) }
-          id="newtab"
-          name="newtab"
+          id="openLinksInNewTab"
+          name="openLinksInNewTab"
           onChange={ this.handleCheckboxChange }
           checked={ newtab }
         />
         <Checkbox
+          label={ intl.formatMessage({ id: 'customize.autofill'}) }
+          id="autofillBookmarkNames"
+          name="autofillBookmarkNames"
+          onChange={ this.handleCheckboxChange }
+          checked={ autofillBookmarkNames }
+        />
+        {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.preserveEditMode'}) }
           id="preserveEditMode"
           name="preserveEditMode"
           onChange={ this.handleCheckboxChange }
           checked={ preserveEditMode }
-        />
+        /> */}
       </Fragment>
     );
   }
 }
-
-Customize.propTypes = {
-  updateSettings: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
-  navColor: PropTypes.number.isRequired,
-  newtab: PropTypes.bool.isRequired,
-  maxWidth: PropTypes.bool.isRequired,
-  preserveEditMode: PropTypes.bool.isRequired,
-  dashboardsStyle: PropTypes.string.isRequired,
-  blurEffect: PropTypes.bool.isRequired,
-  stickyHeader: PropTypes.bool.isRequired,
-  stickyToolbar: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired
-};
 
 export default injectIntl(Customize);

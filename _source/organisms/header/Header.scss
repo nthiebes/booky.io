@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 2px solid rgba(0,0,0,0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   position: relative;
   top: 0;
   width: 100%;
@@ -9,7 +9,7 @@
     &::after {
       background-color: rgba(0, 0, 0, 0.3);
       bottom: 0;
-      content: " ";
+      content: "";
       left: 0;
       opacity: 0;
       position: fixed;
@@ -35,39 +35,39 @@
   position: fixed;
 }
 
-.header--color-0 {
+.header--color0 {
   background-color: $color--0;
 }
 
-.header--color-1 {
+.header--color1 {
   background-color: $color--1;
 }
 
-.header--color-2 {
+.header--color2 {
   background-color: $color--2;
 }
 
-.header--color-3 {
+.header--color3 {
   background-color: $color--3;
 }
 
-.header--color-4 {
+.header--color4 {
   background-color: $color--4;
 }
 
-.header--color-5 {
+.header--color5 {
   background-color: $color--5;
 }
 
-.header--color-6 {
+.header--color6 {
   background-color: $color--6;
 }
 
-.header--color-7 {
+.header--color7 {
   background-color: $color--7;
 }
 
-.header--color-8 {
+.header--color8 {
   background-color: $color--8;
 }
 
@@ -91,11 +91,46 @@
   }
 }
 
+.header__wrapper--full-width {
+  max-width: none;
+}
+
+.header__skip-link {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+  white-space: nowrap;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.header__skip-link:focus {
+  clip: auto;
+  height: auto;
+  overflow: auto;
+  width: auto;
+  background-color: $color-background--ligth;
+  top: 0;
+  left: 50%;
+  padding: 0.5rem;
+  transform: translateX(-50%);
+  transition: none;
+  border-radius: 0 0 3px 3px;
+  max-width: 14rem;
+  white-space: normal;
+  text-align: center;
+  z-index: 1;
+
+  @include tablet-desktop {
+    padding: 1rem;
+  }
+}
+
 .header__logo {
   margin-right: 1.5rem;
-  
+
   &:focus {
-    outline: 1px dashed $color__font--white;
+    outline: 1px dashed $color-font--white;
   }
 }
 
@@ -111,4 +146,8 @@
 
 .header__add-icon {
   margin-left: -6px;
+}
+
+.header__menu {
+  flex-shrink: 0;
 }

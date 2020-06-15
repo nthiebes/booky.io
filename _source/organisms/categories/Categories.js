@@ -1,71 +1,66 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 import Category from '../../molecules/category';
 import Empty from '../../molecules/empty';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Icon from '../../atoms/icon';
 
-class Categories extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onAddClick = this.onAddClick.bind(this);
+class Categories extends PureComponent {
+  static propTypes = {
+    categories: PropTypes.array.isRequired,
+    dashboardsOpen: PropTypes.bool.isRequired,
+    hasSidebar: PropTypes.bool.isRequired,
+    dashboardName: PropTypes.string,
+    className: PropTypes.string,
+    pending: PropTypes.bool,
+    openModal: PropTypes.func.isRequired
   }
 
-  onAddClick() {
+  onAddClick = () => {
     this.props.openModal('AddCategory');
   }
 
   render() {
-    const { categories, dashboardsOpen, hasSidebar, maxWidth, intl, dashboard, className, pending } = this.props;
+    const { categories, dashboardsOpen, hasSidebar, dashboardName, className, pending } = this.props;
+    const Element = pending || !categories.length ? 'section' : 'ul';
 
     return (
-      <div className={ classNames(
+      <Element className={ classNames(
         'categories',
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
-        maxWidth && 'categories--max-width',
-        className && className
+        !pending && categories.length && 'categories--grid',
+        className
       ) }>
         { pending ? (
           <Icon icon="spinner" className="categories__spinner" />
         ) : (
           <Fragment>
-            <ButtonSmallPrimary
-              icon="add"
-              className="categories__button"
-              onClick={ this.onAddClick }
-            >
-              <FormattedHTMLMessage id="category.add" />
-            </ButtonSmallPrimary>
             { categories.map((category) =>
               <Category key={ category.id } { ...category } />
             ) }
             { !categories.length && (
-              <Empty alt={ intl.formatMessage({ id: 'category.emptyImage' }) } illustration="write-paper-ink">
-                <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboard && dashboard.name }</b> } } />
-              </Empty>
+              <Fragment>
+                <Empty illustration="write-paper-ink">
+                  <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboardName }</b> } } />
+                </Empty>
+                <ButtonSmallPrimary
+                  icon="add-category"
+                  className="categories__button"
+                  onClick={ this.onAddClick }
+                >
+                  <FormattedHTMLMessage id="category.add" />
+                </ButtonSmallPrimary>
+              </Fragment>
             ) }
           </Fragment>
         ) }
-      </div>
+      </Element>
     );
   }
 }
 
-Categories.propTypes = {
-  categories: PropTypes.array.isRequired,
-  openModal: PropTypes.func.isRequired,
-  dashboardsOpen: PropTypes.bool.isRequired,
-  hasSidebar: PropTypes.bool.isRequired,
-  maxWidth: PropTypes.bool.isRequired,
-  intl: PropTypes.object.isRequired,
-  dashboard: PropTypes.object,
-  className: PropTypes.string,
-  pending: PropTypes.bool
-};
-
-export default injectIntl(Categories);
+export default Categories;

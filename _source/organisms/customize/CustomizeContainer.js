@@ -12,7 +12,8 @@ export const mapStateToProps = (state) => ({
   blurEffect: state.user.settings.blurEffect,
   stickyHeader: state.user.settings.stickyHeader,
   stickyToolbar: state.user.settings.stickyToolbar,
-  darkMode: state.user.settings.darkMode
+  darkMode: state.user.settings.darkMode,
+  autofillBookmarkNames: state.user.settings.autofillBookmarkNames
 });
 
 export const mapDispatchToProps = {

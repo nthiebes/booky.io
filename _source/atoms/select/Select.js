@@ -5,18 +5,25 @@ import classNames from 'classnames';
 import Label from '../../atoms/label';
 
 export default class Select extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
+  static propTypes = {
+    options: PropTypes.array.isRequired,
+    className: PropTypes.string,
+    onChange: PropTypes.func,
+    label: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    required: PropTypes.bool,
+    selected: PropTypes.string,
+    disabled: PropTypes.bool,
+    darkMode: PropTypes.bool
   }
 
-  onChange(event) {
+  onBlur = (event) => {
     this.props.onChange(event.target.value);
   }
 
   render() {
-    const { options, className, label, id, name, required, compact, selected, disabled } = this.props;
+    const { options, className, label, id, name, required, selected, disabled, darkMode } = this.props;
 
     return (
       <Fragment>
@@ -25,12 +32,16 @@ export default class Select extends Component {
           id={ id }
           name={ name }
           required={ required }
-          onChange={ this.onChange }
+          onBlur={ this.onBlur }
           defaultValue={ selected }
           disabled={ disabled }
-          className={ classNames('select', compact ? 'select--compact' : 'select--large', className && className) }>
-          { options.map(({ text, value }, index) => (
-            <option key={ index } value={ value }>
+          className={ classNames(
+            'select',
+            darkMode && 'select--dark-mode',
+            className
+          ) }>
+          { options.map(({ text, value }) => (
+            <option key={ value } value={ value }>
               { text }
             </option>
           )) }
@@ -39,16 +50,3 @@ export default class Select extends Component {
     );
   }
 }
-
-Select.propTypes = {
-  options: PropTypes.array.isRequired,
-  className: PropTypes.string,
-  onChange: PropTypes.func,
-  label: PropTypes.string,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  required: PropTypes.bool,
-  compact: PropTypes.bool,
-  selected: PropTypes.string,
-  disabled: PropTypes.bool
-};

@@ -1,49 +1,42 @@
 .select {
-  font-family: $font__family--text;
-  transition: color 0.2s linear;
-}
-
-.select--large {
-  color: $color__font--dark;
+  font-family: $font-family--text;
+  font-size: 16px;
+  color: $color-font--dark;
   border-radius: 0;
-  background-color: $color__background--ligth;
+  background-color: $color-background--ligth;
   border: 1px solid rgba($color--black, 0.15);
-  border-bottom: 2px solid $color__font--medium;
+  border-bottom: 2px solid $color-font--medium;
   height: 3rem;
   line-height: 3;
   padding: 0 9px;
   transition: background-color 0.3s, border-color 0.3s linear;
   width: 100%;
-  font-size: 1rem;
 
   &:active,
   &:focus {
     border-bottom-color: $color--blue;
-    background-color: $color__font--white;
+    background-color: $color-font--white;
   }
 
   @include desktop {
     &:hover {
-      background-color: $color__font--white;
+      background-color: $color-font--white;
       border-bottom-color: $color--blue;
     }
   }
 }
 
-.select--compact {
-  cursor: pointer;
-  color: $color__font--white;
-  font-size: 0.8571rem;
-  background-color: transparent;
+.select--dark-mode {
+  background-color: $color--dark;
+  color: $color-font--white;
 
-  &:active,
   &:focus {
-    color: $color__font--primary;
+    background-color: $color--dark;
   }
 
   @include desktop {
     &:hover {
-      color: $color__font--primary;
+      background-color: $color--dark;
     }
   }
 }

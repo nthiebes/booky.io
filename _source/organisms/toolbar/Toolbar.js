@@ -1,31 +1,40 @@
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
+import { FormattedHTMLMessage } from 'react-intl';
 
-import scrolling from '../../_utils/scrolling';
+import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
-import { H3 } from '../../atoms/headline';
-import Search from '../../molecules/search';
+import { H1 } from '../../atoms/headline';
+import Skeleton from '../../atoms/skeleton';
+import SearchField from '../../molecules/search-field';
 import { TabBar, Tab } from '../../molecules/tab-bar';
+import { ButtonSmallPrimary } from '../../atoms/button';
 
-class Toolbar extends Component {
-  constructor(props) {
-    super(props);
+class Toolbar extends PureComponent {
+  static propTypes = {
+    updateCurrentlySticky: PropTypes.func.isRequired,
+    headerSticky: PropTypes.bool.isRequired,
+    sticky: PropTypes.bool.isRequired,
+    currentlySticky: PropTypes.bool.isRequired,
+    dashboards: PropTypes.object.isRequired,
+    activeDashboardName: PropTypes.string,
+    className: PropTypes.string,
+    dashboardsStyle: PropTypes.string.isRequired,
+    changeDashboard: PropTypes.func.isRequired,
+    darkMode: PropTypes.bool.isRequired,
+    categoriesPending: PropTypes.bool,
+    hasCategories: PropTypes.bool,
+    openModal: PropTypes.func.isRequired
+  }
 
-    this.nextProps = {};
-    this.isAboveActions = this.isAboveActions.bind(this);
-    this.isBelowActions = this.isBelowActions.bind(this);
-    this.getStickyClass = this.getStickyClass.bind(this);
-    this.onIconClick = this.onIconClick.bind(this);
-    this.state = {
-      dashboardModalOpen: false
-    };
+  state = {
+    dashboardModalOpen: false
   }
 
   componentDidMount() {
     scrolling.registerAction('toolbar', {
-      offset: 100,
+      offset: 90,
       scope: this,
       isAbove: () => {
         this.isAboveActions();
@@ -36,8 +45,8 @@ class Toolbar extends Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.nextProps = nextProps;
+  componentDidUpdate(prevProps) {
+    this.nextProps = prevProps;
     scrolling.updateStatus('toolbar');
   }
 
@@ -45,19 +54,21 @@ class Toolbar extends Component {
     scrolling.removeAction('toolbar');
   }
 
-  isAboveActions() {
+  nextProps = {};
+
+  isAboveActions = () => {
     if (this.nextProps.sticky && !this.nextProps.headerSticky) {
       this.props.updateCurrentlySticky(false);
     }
   }
 
-  isBelowActions() {
+  isBelowActions = () => {
     if (this.nextProps.sticky && !this.nextProps.headerSticky) {
       this.props.updateCurrentlySticky(true);
     }
   }
 
-  getStickyClass() {
+  getStickyClass = () => {
     const { sticky, headerSticky, currentlySticky } = this.props;
 
     if (sticky && headerSticky) {
@@ -71,60 +82,59 @@ class Toolbar extends Component {
     return '';
   }
 
-  onIconClick() {
-    this.props.openModal('EditStructure');
+  onAddClick = () => {
+    this.props.openModal('AddCategory');
   }
 
   render() {
-    const { dashboard, intl, className, dashboardsStyle, dashboards, changeDashboard, darkMode } = this.props;
+    const {
+      activeDashboardName,
+      className,
+      dashboardsStyle,
+      dashboards,
+      changeDashboard,
+      darkMode,
+      categoriesPending,
+      hasCategories
+    } = this.props;
 
     return (
-      <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className && className) }>
-        <Icon
-          icon="tree"
-          title={ intl.formatMessage({ id: 'structure.title' }) }
-          onClick={ this.onIconClick }
-          tabIndex="0"
-        />
+      <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
         { dashboardsStyle === 'sidebar' && (
-          <H3 className="toolbar__headline">{ dashboard.name || '' }</H3>
+          <Fragment>
+            <Icon icon="collection" color={ darkMode ? 'grey' : 'medium' } />
+            <H1 style="h3" className="toolbar__headline" noMargin>
+              { activeDashboardName || <Skeleton /> }
+            </H1>
+          </Fragment>
         ) }
         { dashboardsStyle === 'tabs' && (
           <TabBar className="toolbar__tabs">
-            { dashboards.items.map((tab, index) => (
+            { dashboards.items.map((tab) => (
               <Tab
-                key={ index }
-                tabId={ index }
+                key={ tab.id }
+                tabId={ tab.id }
                 active={ tab.id === dashboards.active }
                 name={ tab.name }
-                onClick={ () => { changeDashboard(tab.id); } }
+                onClick={ changeDashboard }
               />
             )) }
           </TabBar>
         ) }
-        <Search className="booky--hide-mobile-tablet" />
+        { hasCategories && (
+          <ButtonSmallPrimary
+            icon="add-category"
+            className="toolbar__add-category"
+            onClick={ this.onAddClick }
+            useSkeleton={ categoriesPending }
+          >
+            <FormattedHTMLMessage id="category.add" />
+          </ButtonSmallPrimary>
+        ) }
+        <SearchField className="booky--hide-mobile-tablet" id="search-desktop" />
       </section>
     );
   }
 }
 
-export default injectIntl(Toolbar);
-
-Toolbar.propTypes = {
-  updateCurrentlySticky: PropTypes.func.isRequired,
-  headerSticky: PropTypes.bool.isRequired,
-  sticky: PropTypes.bool.isRequired,
-  currentlySticky: PropTypes.bool.isRequired,
-  dashboards: PropTypes.object.isRequired,
-  dashboard: PropTypes.object,
-  openModal: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
-  className: PropTypes.string,
-  dashboardsStyle: PropTypes.string.isRequired,
-  changeDashboard: PropTypes.func.isRequired,
-  darkMode: PropTypes.bool.isRequired
-};
-
-Toolbar.defaultProps = {
-  dashboard: {}
-};
+export default Toolbar;

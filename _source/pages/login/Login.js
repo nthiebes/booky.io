@@ -15,47 +15,49 @@ import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
+import './Login.scss';
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {
-      username: '',
-      password: '',
-      pending: false,
-      showPassword: false,
-      error: null
-    };
+class Login extends Component {
+  static propTypes = {
+    intl: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+    isExtension: PropTypes.bool
   }
 
-  handleInputChange(value, name) {
+  state = {
+    username: '',
+    password: '',
+    pending: false,
+    showPassword: false,
+    error: null
+  }
+
+  handleInputChange = (value, name) => {
     this.setState({
       [name]: value,
       pending: false
     });
   }
 
-  handleCheckboxChange({ checked }) {
+  handleCheckboxChange = ({ checked }) => {
     this.setState({
       showPassword: checked
     });
   }
 
-  handleSubmit(params) {
+  handleSubmit = (params) => {
     const { history, login } = this.props;
 
     this.setState({
       pending: true,
-      error: false
+      error: null
     });
 
     login({
       params,
       onSuccess: () => {
-        document.title = 'booky.io';
+        document.title = 'booky';
         history.push('/');
       },
       onError: (error) => {
@@ -133,12 +135,5 @@ class Login extends Component {
     );
   }
 }
-
-Login.propTypes = {
-  intl: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
-  isExtension: PropTypes.bool
-};
 
 export default injectIntl(withRouter(Login));

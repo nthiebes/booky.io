@@ -1,15 +1,18 @@
 .section {
   position: relative;
   margin-bottom: 3rem;
-  border-top: 1px solid transparent;
 
   @include tablet {
     margin-bottom: 4rem;
   }
 
   @include desktop {
-    margin-bottom: 7rem;
+    margin-bottom: 6rem;
   }
+}
+
+.section--noMargin {
+  margin-bottom: 0;
 }
 
 .section--full-width .section__content {
@@ -26,23 +29,40 @@
   }
 }
 
-.section--primary {
-  background-color: $color--primary;
-
+.section--primary,
+.section--blue,
+.section--green {
   .headline,
   .paragraph {
-    color: $color__font--white;
+    color: $color-font--white;
   }
 }
 
+.section--primary {
+  background-color: $color--primary;
+}
+
 .section--light {
-  background-color: $color__background--ligth;
+  background-color: $color-background--ligth;
+}
+
+.section--blue {
+  background-color: $color--blue;
+}
+
+.section--green {
+  background-color: $color--green;
+}
+
+.section--dark {
+  background-color: $color--dark;
 }
 
 .section__content {
   margin: 0 auto;
   max-width: 1000px;
   padding: 0 calc(3% + 6px);
+  position: relative;
 
   @include desktop {
     padding: 0 36px;

@@ -18,18 +18,22 @@ export default {
       stickyHeader: true,
       stickyToolbar: true,
       autofillBookmarkNames: true,
-      colorScheme: 1,
-      defaultDashboardId: -1,
+      colorScheme: 0,
+      defaultDashboardId: null,
       enableNotes: true
     }
   },
   dashboards: {
     items: [],
-    active: null,
     pending: false,
     error: null
   },
   categories: [],
+  categoriesSorting: {
+    items: [],
+    pending: false,
+    error: null
+  },
   sidebar: {
     open: false
   },
@@ -39,8 +43,7 @@ export default {
   modal: {
     modal: null,
     open: false,
-    data: {},
-    pending: false
+    data: {}
   },
   extension: {
     page: {
@@ -49,5 +52,14 @@ export default {
       title: '',
       favicon: null
     }
+  },
+  search: {
+    keyword: '',
+    pending: false,
+    error: null,
+    total: null,
+    offset: 0,
+    limit: 30,
+    dashboards: []
   }
 };

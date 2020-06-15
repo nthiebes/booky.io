@@ -1,0 +1,209 @@
+.dashboards__headline-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 3vw 0 calc(3vw + 6px);
+  transition: opacity 0.3s linear;
+
+  @include desktop {
+    padding: 0 30px 0 36px;
+  }
+}
+
+.dashboards__headline-wrapper--hidden {
+  @include desktop {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* stylelint-disable declaration-no-important */
+.dashboards__headline {
+  flex-grow: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* stylelint-enable */
+
+.dashboards__list {
+  transition: opacity 0.3s linear;
+}
+
+.dashboards__list--edit-mode {
+  .dashboards__item {
+    padding: 0 3vw 0 calc(3vw + 6px);
+
+    &:active,
+    &:focus {
+      color: inherit;
+      background-color: inherit;
+      cursor: default;
+
+      .dashboards__label {
+        color: inherit;
+        cursor: default;
+      }
+
+      &.dashboards__item--dark-mode {
+        background-color: inherit;
+        color: $color-font--white;
+
+        /* stylelint-disable selector-max-specificity, max-nesting-depth */
+        .dashboards__label {
+          color: $color-font--white;
+        }
+        /* stylelint-enable */
+      }
+    }
+
+    @include desktop {
+      padding: 0 30px 0 36px;
+
+      &:hover {
+        color: inherit;
+        background-color: inherit;
+        cursor: default;
+
+        /* stylelint-disable selector-max-specificity, max-nesting-depth */
+        .dashboards__label {
+          color: inherit;
+          cursor: default;
+        }
+
+        &.dashboards__item--dark-mode {
+          background-color: inherit;
+          color: $color-font--white;
+
+          .dashboards__label {
+            color: $color-font--white;
+          }
+        }
+        /* stylelint-enable */
+      }
+    }
+  }
+
+  /* stylelint-disable selector-max-specificity */
+  .dashboards__item:first-child:last-of-type .dashboards__icon--delete,
+  .dashboards__item:first-child:last-of-type .dashboards__icon--drag {
+    display: none;
+  }
+  /* stylelint-enable */
+}
+
+.dashboards__list--hidden {
+  @include desktop {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.dashboards__item--pending {
+  height: 36px;
+  line-height: 36px;
+  width: 100%;
+  list-style: none;
+  padding: 0 calc(3vw + 6px);
+
+  @include desktop {
+    padding: 0 36px;
+  }
+}
+
+.dashboards__item {
+  color: $color-font--dark;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  line-height: 36px;
+  width: 100%;
+  list-style: none;
+  padding: 0 calc(3vw + 6px);
+  user-select: none;
+  transition: background-color 0.2s linear, color 0.2s linear;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+
+  @include desktop {
+    padding: 0 36px;
+  }
+
+  &:active,
+  &:focus {
+    background-color: $color-background--ligth;
+    color: $color-font--primary;
+
+    &.dashboards__item--dark-mode {
+      background-color: $color-background--dark;
+      color: $color-font--primary;
+    }
+
+    .dashboards__label {
+      color: $color-font--primary;
+    }
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: $color-background--ligth;
+      color: $color-font--primary;
+
+      &.dashboards__item--dark-mode {
+        background-color: $color-background--dark;
+        color: $color-font--primary;
+      }
+
+      .dashboards__label {
+        color: $color-font--primary;
+      }
+    }
+  }
+
+  &.dashboards__item--active {
+    font-weight: 700;
+
+    /* stylelint-disable a11y/content-property-no-static-value */
+    &::before {
+      content: "»";
+      font-weight: 500;
+      position: absolute;
+      left: calc(3vw + 6px - 13px);
+    }
+
+    @include desktop {
+      &::before {
+        left: calc(36px - 1rem);
+      }
+    }
+    /* stylelint-enable */
+  }
+
+  &.dashboards__item--dark-mode {
+    color: $color-font--white;
+  }
+}
+
+.dashboards__label {
+  color: $color-font--dark;
+  font-family: $font-family--text;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-grow: 1;
+  cursor: pointer;
+  transition: color 0.2s linear;
+}
+
+.dashboards__label--dark-mode {
+  color: $color-font--white;
+}
+
+.dashboards__button {
+  margin: 1rem 0 1.5rem calc(3vw + 6px);
+
+  @include desktop {
+    margin: 1rem 0 0.5rem 36px;
+  }
+}

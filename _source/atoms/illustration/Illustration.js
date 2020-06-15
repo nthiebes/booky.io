@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 export default class Illustration extends Component {
   render() {
-    const { className, height, width, name, alt } = this.props;
+    const { className, height, width, name, alt, ariaHidden } = this.props;
 
     return (
       <img
@@ -12,7 +11,8 @@ export default class Illustration extends Component {
         height={ height }
         alt={ alt }
         className={ className }
-        src={ `../../_assets/illustrations/${name}.svg` }
+        src={ `../../_assets/illustrations/${name}.svg` }
+        aria-hidden={ ariaHidden }
       />
     );
   }
@@ -22,10 +22,13 @@ Illustration.propTypes = {
   className: PropTypes.string,
   name: PropTypes.string.isRequired,
   height: PropTypes.string,
-  width: PropTypes.string
+  width: PropTypes.string,
+  alt: PropTypes.string,
+  ariaHidden: PropTypes.bool
 };
 
 Illustration.defaultProps = {
-  height: 'auto',
-  width: 'auto'
+  height: '200',
+  width: '200',
+  ariaHidden: true
 };

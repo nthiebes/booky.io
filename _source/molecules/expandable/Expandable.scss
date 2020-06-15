@@ -1,0 +1,25 @@
+.expandable {
+  margin-bottom: 1rem;
+}
+
+.expandable__summary {
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  color: $color-font--medium;
+  line-height: 1.5;
+
+  &:focus {
+    outline: 1px dashed $color-font--medium;
+  }
+}
+
+.expandable__summary--dark-mode {
+  color: $color-font--white;
+
+  &:focus {
+    outline-color: $color-font--white;
+  }
+}

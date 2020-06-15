@@ -2,73 +2,78 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { Provider } from 'react-intl-redux';
 
 import Routes from '../../routes';
 import './Booky.scss';
 
-const loader = document.getElementById('loader');
-const loaderSpinner = document.getElementById('loader__spinner');
+const loadingSpinner = document.getElementById('loading__spinner');
+const loadingHeader = document.getElementById('loading__header');
 
 export default class Booky extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onDragStart = this.onDragStart.bind(this);
-    this.onDragEnd = this.onDragEnd.bind(this);
-  }
-
-  componentDidMount() {  
-    loaderSpinner.addEventListener('transitionend', this.transitionEndCallback);
-    loader.classList.add('loader--hide');
-    loaderSpinner.classList.add('loader__spinner--hide');
+  componentDidMount() {
+    loadingSpinner.addEventListener('transitionend', this.transitionEndCallback);
+    loadingSpinner.classList.add('loading__spinner--hide');
   }
 
   transitionEndCallback() {
-    loaderSpinner.removeEventListener('transitionend', this.transitionEndCallback);
-    loader.parentNode.removeChild(loader);
+    loadingSpinner.removeEventListener('transitionend', this.transitionEndCallback);
+    loadingSpinner.parentNode && loadingSpinner.parentNode.removeChild(loadingSpinner);
+    loadingHeader.parentNode && loadingHeader.parentNode.removeChild(loadingHeader);
   }
 
-  onDragStart() {
+  onDragStart = () => {
     // console.log('onDragStart', initial);
   }
 
-  onDragEnd(result) {
-    // console.log('onDragEnd', result);
-    if (result.destination) {
-      if (result.type === 'dashboard') {
+  onDragEnd = ({ type, destination, source, draggableId }) => {
+    if (destination) {
+      if (type === 'dashboard-mobile' || type === 'dashboard-sidebar') {
         this.props.dragDashboard({
-          destinationIndex: result.destination.index,
-          sourceIndex: result.source.index,
-          dashboardId: parseInt(result.draggableId, 10)
+          destinationIndex: destination.index,
+          sourceIndex: source.index,
+          dashboardId: parseInt(
+            draggableId
+              .replace('dashboard-mobile-', '')
+              .replace('dashboard-sidebar-', '')
+            , 10)
         });
       }
-      if (result.type === 'category') {
+      if (type === 'category') {
         this.props.dragCategory({
-          destinationIndex: result.destination.index,
-          sourceIndex: result.source.index,
-          sourceDashboardId: parseInt(result.source.droppableId.replace('dashboard-', ''), 10),
-          destinationDashboardId: parseInt(result.destination.droppableId.replace('dashboard-', ''), 10)
+          destinationIndex: destination.index,
+          sourceIndex: source.index,
+          sourceDashboardId: parseInt(source.droppableId.replace('dashboard-', ''), 10),
+          destinationDashboardId: parseInt(destination.droppableId.replace('dashboard-', ''), 10),
+          categoryId: parseInt(draggableId.replace(/category-/g, ''), 10)
         });
       }
-      if (result.type === 'bookmark') {
+      if (type === 'bookmark') {
         this.props.dragBookmark({
-          destinationIndex: result.destination.index,
-          bookmarkId: parseInt(result.draggableId, 10),
-          destinationCategoryId: parseInt(result.destination.droppableId, 10),
-          sourceCategoryId: parseInt(result.source.droppableId, 10),
-          sourceIndex: result.source.index
+          destinationIndex: destination.index,
+          bookmarkId: parseInt(draggableId.replace(/bookmark-/g, ''), 10),
+          destinationCategoryId: parseInt(destination.droppableId, 10),
+          sourceCategoryId: parseInt(source.droppableId, 10),
+          sourceIndex: source.index
         });
       }
     }
   }
 
   render() {
+    const { store, history } = this.props;
+
     return (
-      <DragDropContext onDragStart={ this.onDragStart } onDragEnd={ this.onDragEnd }>
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
-      </DragDropContext>
+      <Provider store={ store }>
+        <DragDropContext onDragStart={ this.onDragStart } onDragEnd={ this.onDragEnd }>
+          <ConnectedRouter history={ history }>
+            <BrowserRouter>
+              <Routes />
+            </BrowserRouter>
+          </ConnectedRouter>
+        </DragDropContext>
+      </Provider>
     );
   }
 }
@@ -76,5 +81,7 @@ export default class Booky extends Component {
 Booky.propTypes = {
   dragBookmark: PropTypes.func.isRequired,
   dragCategory: PropTypes.func.isRequired,
-  dragDashboard: PropTypes.func.isRequired
+  dragDashboard: PropTypes.func.isRequired,
+  store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };

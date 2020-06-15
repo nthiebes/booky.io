@@ -11,15 +11,20 @@
 .error--animate {
   max-height: 8rem;
   opacity: 1;
-  padding: 1rem 0;
+  padding: 1rem 0 0;
 
   @include tablet-desktop() {
     max-height: 6rem;
   }
 }
 
+.error--show {
+  max-height: 6rem;
+  opacity: 1;
+  padding: 1rem 0;
+}
+
 .error__icon {
-  pointer-events: none;
   margin-left: -6px;
   margin-top: -6px;
 }

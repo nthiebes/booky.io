@@ -4,18 +4,46 @@ export const UPDATE_USER = 'UPDATE_USER';
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
 export const RESET_USER_STATE = 'RESET_USER_STATE';
 
-export const updateUser = (userData) => ({
-  type: UPDATE_USER,
-  userData
-});
-
-export const updateSettings = (userSettings) => ({
-  type: UPDATE_SETTINGS,
-  userSettings
-});
-
 export const resetUserState = () => ({
   type: RESET_USER_STATE
+});
+
+export const updateUser = (userData) => ((dispatch) => {
+  dispatch({
+    type: UPDATE_USER,
+    userData
+  });
+
+  fetcher({
+    url: '/user',
+    method: 'PATCH',
+    params: userData,
+    onSuccess: () => {
+      // console.log(data);
+    },
+    onError: () => {
+      // console.log(error);
+    }
+  });
+});
+
+export const updateSettings = (userSettings) => ((dispatch) => {
+  dispatch({
+    type: UPDATE_SETTINGS,
+    userSettings
+  });
+
+  fetcher({
+    url: '/user/settings',
+    method: 'PATCH',
+    params: userSettings,
+    onSuccess: () => {
+      // console.log(data);
+    },
+    onError: () => {
+      // console.log(error);
+    }
+  });
 });
 
 export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
@@ -26,11 +54,17 @@ export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
     onSuccess: (data) => {
       const { settings, ...userData } = data;
 
-      dispatch(updateUser({
-        loggedIn: true,
-        ...userData
-      }));
-      dispatch(updateSettings(settings));
+      dispatch({
+        type: UPDATE_USER,
+        userData: {
+          loggedIn: true,
+          ...userData
+        }
+      });
+      dispatch({
+        type: UPDATE_SETTINGS,
+        userSettings: settings
+      });
 
       onSuccess && onSuccess(data);
     },
@@ -43,7 +77,6 @@ export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
 export const logout = ({ onSuccess, onError }) => ((dispatch) => {
   fetcher({
     url: '/logout',
-    noResponse: true,
     onSuccess: () => {
       dispatch(resetUserState());
 
@@ -76,17 +109,17 @@ export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
   });
 });
 
-export const deleteAccount = () => ((dispatch) => {
-  fetcher({
-    url: '/user',
-    method: 'DELETE',
-    onSuccess: () => {
-      dispatch(updateUser({
-        loggedIn: false
-      }));
-    },
-    onError: (error) => {
-      console.log('onError', error);
-    }
-  });
+export const deleteAccount = () => (() => {
+  // fetcher({
+  //   url: '/user',
+  //   method: 'DELETE',
+  //   onSuccess: () => {
+  //     dispatch(updateUser({
+  //       loggedIn: false
+  //     }));
+  //   },
+  //   onError: () => {
+  //     // console.log('onError', error);
+  //   }
+  // });
 });

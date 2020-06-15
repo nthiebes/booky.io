@@ -4,16 +4,31 @@ import classNames from 'classnames';
 
 export default class Section extends Component {
   render() {
-    const { className, color, children, fullWidth, compact, noPadding } = this.props;
+    const {
+      className,
+      color,
+      children,
+      fullWidth,
+      compact,
+      noPadding,
+      noMargin,
+      contentClassName
+    } = this.props;
 
     return (
       <section className={ classNames(
         'section',
         color && `section--${color}`,
         fullWidth && 'section--full-width',
-        compact && 'section--compact'
+        compact && 'section--compact',
+        noMargin && 'section--noMargin',
+        className
       ) }>
-        <div className={ classNames('section__content', noPadding && 'section__content--noPadding', className && className) }>
+        <div className={ classNames(
+          'section__content',
+          noPadding && 'section__content--noPadding',
+          contentClassName
+        ) }>
           { children }
         </div>
       </section>
@@ -27,33 +42,7 @@ Section.propTypes = {
   fullWidth: PropTypes.bool,
   compact: PropTypes.bool,
   noPadding: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string
-  ])
+  children: PropTypes.node,
+  noMargin: PropTypes.bool,
+  contentClassName: PropTypes.string
 };
-
-/*
-        <div className="section__wrapper">
-          <div>
-            { headline && (
-              <H2>
-                <FormattedMessage id={ headline } />
-              </H2>
-            )}
-            { paragraph && (
-              <P>
-                <FormattedMessage id={ paragraph } />
-              </P>
-            )}
-          </div>
-          { image && (
-            <img
-              className={ classNames('section__image', `section__image--${image.align}`) }
-              src={ image.url }
-              alt={ image.alt }
-            />
-          ) }
-        </div>
- */

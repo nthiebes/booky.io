@@ -6,8 +6,7 @@
   border: 1px solid transparent;
   cursor: pointer;
   display: inline-flex;
-  align-items: center;
-  font-family: $font__family--text;
+  font-family: $font-family--text;
   font-size: 1rem;
   overflow: hidden;
   padding: 0 1.2rem;
@@ -28,7 +27,6 @@
   margin-top: 2rem;
 }
 
-@import "./ButtonText";
 @import "./ButtonSmall";
 @import "./ButtonLarge";
 
@@ -38,4 +36,18 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
   height: 2rem;
   line-height: 2;
+  width: 100%;
+  text-align: center;
 }
+
+.button__icon {
+  pointer-events: none;
+}
+
+/* stylelint-disable declaration-no-important */
+.button--skeleton {
+  position: relative;
+  height: 2rem;
+  width: 12rem !important;
+}
+/* stylelint-enable */

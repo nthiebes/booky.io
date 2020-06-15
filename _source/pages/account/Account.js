@@ -10,8 +10,11 @@ import {
   AccountData,
   AccountImport,
   AccountExport,
-  AccountManage
+  AccountManage,
+  AccountStatistics
 } from './tabs';
+
+import './Account.scss';
 
 class Account extends Component {
   constructor(props) {
@@ -27,6 +30,8 @@ class Account extends Component {
       name: props.intl.formatMessage({ id: 'account.import' })
     }, {
       name: props.intl.formatMessage({ id: 'account.export' })
+    }, {
+      name: props.intl.formatMessage({ id: 'account.statistics' })
     }, {
       name: props.intl.formatMessage({ id: 'account.account' })
     }];
@@ -47,10 +52,10 @@ class Account extends Component {
           <H1>
             <FormattedMessage id="account.title" />
           </H1>
-          <TabBar className="account__tab-bar">
+          <TabBar title="account.navigation" className="account__tab-bar">
             { this.tabs.map((tab, index) => (
               <Tab
-                key={ index }
+                key={ tab.name }
                 tabId={ index }
                 active={ activeTab === index }
                 name={ tab.name }
@@ -68,6 +73,9 @@ class Account extends Component {
             <AccountExport />
           ) }
           { activeTab === 3 && (
+            <AccountStatistics />
+          ) }
+          { activeTab === 4 && (
             <AccountManage />
           ) }
         </Section>

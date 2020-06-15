@@ -15,6 +15,14 @@ a,
   outline: 1px solid transparent;
 }
 
+input::-ms-clear {
+  display: none;
+}
+
+ul {
+  list-style: none;
+}
+
 button::-moz-focus-inner {
   border-color: transparent;
 }
@@ -22,4 +30,17 @@ button::-moz-focus-inner {
 b,
 strong {
   font-weight: 700; /* Was still 400 in Firefox */
+}
+
+main,
+header,
+footer,
+section,
+nav,
+aside,
+details,
+summary,
+article,
+time {
+  display: block;
 }

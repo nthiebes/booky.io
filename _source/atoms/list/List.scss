@@ -1,0 +1,23 @@
+.list {
+  margin-bottom: 1rem;
+}
+
+.list--darkMode {
+  color: $color-font--white;
+}
+
+.list__item {
+  list-style: none;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+/* stylelint-disable a11y/content-property-no-static-value */
+.list__item::before {
+  content: "»";
+  position: absolute;
+  left: 0;
+}
+/* stylelint-enable */

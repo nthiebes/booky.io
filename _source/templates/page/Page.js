@@ -7,6 +7,8 @@ import Sidebar from '../../organisms/sidebar';
 import Footer from '../../organisms/footer';
 import Modal from '../../organisms/modal';
 import Toolbar from '../../organisms/toolbar';
+import ErrorBoundary from '../../molecules/error-boundary';
+import CookieBanner from '../../molecules/cookie-banner';
 
 export default class Page extends Component {
   render() {
@@ -14,6 +16,8 @@ export default class Page extends Component {
 
     return (
       <Fragment>
+        <CookieBanner />
+        <Modal />
         <Header
           className={ classNames(
             blurContent && 'page--blur'
@@ -31,14 +35,16 @@ export default class Page extends Component {
           ) }
           dashboards={ dashboards }
         />
-        <main className={ classNames(
+        <main id="main" className={ classNames(
           'page',
           stickyHeader && 'page--sticky-header',
           darkMode && 'page--dark',
           blurContent && 'page--blur',
           className && className
         ) }>
-          { children }
+          <ErrorBoundary>
+            { children }
+          </ErrorBoundary>
         </main>
         <Footer
           className={ classNames(
@@ -46,7 +52,6 @@ export default class Page extends Component {
           ) }
           home={ home }
         />
-        <Modal />
       </Fragment>
     );
   }

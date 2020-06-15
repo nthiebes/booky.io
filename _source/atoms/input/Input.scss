@@ -6,23 +6,23 @@
 }
 
 .input__field {
-  background-color: $color__background--ligth;
-  box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.3) inset;
+  background-color: $color-background--ligth;
+  box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.3) inset;
   border: 1px solid transparent;
   border-right: 1px solid rgba($color--black, 0.15);
-  border-bottom: 2px solid $color__font--medium;
+  border-bottom: 2px solid $color-font--medium;
   border-radius: 0;
-  color: $color__font--dark;
-  font-family: $font__family--text;
-  font-size: 1rem;
+  color: $color-font--dark;
+  font-family: $font-family--text;
+  font-size: 16px;
   height: 3rem;
-  line-height: 3;
   padding: 0 10px;
   transition: background-color 0.3s, border-color 0.3s linear, box-shadow 0.3s linear;
   width: 100%;
   margin-bottom: 0.5rem;
 
   &:disabled {
+    opacity: 0.5;
     pointer-events: none;
   }
 
@@ -30,7 +30,7 @@
     padding: 0 36px 0 10px;
   }
 
-  &:valid ~.input__icon--valid {
+  &:valid ~ .input__icon--valid {
     opacity: 1;
     transform: none;
   }
@@ -41,7 +41,7 @@
 
   &:focus {
     padding: 0 36px 0 10px;
-    background-color: $color__font--white;
+    background-color: $color-font--white;
 
     &:valid {
       border-bottom-color: $color--green;
@@ -51,17 +51,17 @@
       border-bottom-color: $color--3;
     }
 
-    &:valid ~.input__icon--valid {
+    &:valid ~ .input__icon--valid {
       color: $color--green;
     }
 
-    &:invalid ~.input__icon--invalid {
+    &:invalid ~ .input__icon--invalid {
       opacity: 1;
       transform: none;
       color: $color--3;
     }
 
-    ~.input__requirements {
+    ~ .input__requirements {
       max-height: 5rem;
       opacity: 1;
     }
@@ -75,7 +75,7 @@
 
     &:hover {
       border-bottom-color: $color--blue;
-      background-color: $color__font--white;
+      background-color: $color-font--white;
     }
 
     &:hover:focus {
@@ -90,6 +90,21 @@
   }
 }
 
+.input__field--dark-mode {
+  background-color: $color--dark;
+  color: $color-font--white;
+
+  &:focus {
+    background-color: $color--dark;
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: $color--dark;
+    }
+  }
+}
+
 .input__field--icon {
   padding: 0 36px 0 10px;
 }
@@ -99,24 +114,23 @@
   right: 0;
   top: 6px;
   transform: translateX(100%);
-  pointer-events: none;
   transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s ease;
   opacity: 0;
-  color: $color__font--medium;
+  color: $color-font--medium;
 }
 
 .input__icon--visible {
-  transform: translateX(0);
+  transform: none;
   opacity: 1;
 }
 
 .input__requirements {
   max-height: 0;
   transition: opacity 0.4s ease, max-height 0.4s ease;
-  color: $color__font--medium;
+  color: $color-font--medium;
   opacity: 0;
 }
 
 .input__requirements--dark-mode {
-  color: $color__font--light;
+  color: $color-font--light;
 }

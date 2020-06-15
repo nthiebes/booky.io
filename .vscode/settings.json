@@ -1,0 +1,17 @@
+{
+  "workbench.colorTheme": "Monokai ST3",
+  "eslint.autoFixOnSave": true,
+  "editor.tabSize": 2,
+  "workbench.tree.indent": 20,
+  "javascript.format.enable": false,
+  "javascript.validate.enable": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "git.ignoreMissingGitWarning": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
