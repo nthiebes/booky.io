@@ -219,5 +219,10 @@
     "search.results": "Für deine Suche nach {keyword} konnten wir {results} {count, plural, one {relevantes} other {relevante}} Lesezeichen für dich finden!",
     "search.loadMore": "<b>Mehr</b> laden",
     "join.success": "Danke, dass du booky beigetreten bist! In Kürze erhält du eine E-Mail, um dein Konto zu aktivieren. Danach kannst du dich anmelden.",
-    "category.sort": "Kategorien anordnen"
+    "category.sort": "Kategorien anordnen",
+    "resend.headline": "Neue Aktivierungsmail",
+    "resend.button": "E-Mail <b>anfordern<b>",
+    "resend.success": "In Kürze erhält du eine E-Mail, um dein Konto zu aktivieren. Danach kannst du dich anmelden.",
+    "help.registration.question1": "Wie kann ich eine neue Aktivierungsmail versenden?",
+    "help.registration.answer1": "Du kannst deine Aktivierungsmail hier neu anfordern: "
 }
