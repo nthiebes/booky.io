@@ -55,8 +55,8 @@ class Join extends Component {
 
     join({
       params,
-      onSuccess: (data) => {
-        console.log('success', data);
+      onSuccess: () => {
+        // console.log('success', data);
 
         window.scrollTo(0, 0);
         this.setState({
@@ -65,7 +65,7 @@ class Join extends Component {
         });
       },
       onError: (error) => {
-        console.log('error', error);
+        // console.log('error', error);
 
         // this.setState({
         //   pending: false,

@@ -4,8 +4,6 @@ import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
-import Link from '../../atoms/link';
 import Input from '../../atoms/input';
 import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
@@ -45,8 +43,8 @@ class Resend extends Component {
 
     resend({
       params,
-      onSuccess: (data) => {
-        console.log('success', data);
+      onSuccess: () => {
+        // console.log('success', data);
 
         window.scrollTo(0, 0);
         this.setState({
@@ -55,7 +53,7 @@ class Resend extends Component {
         });
       },
       onError: (error) => {
-        console.log('error', error);
+        // console.log('error', error);
 
         // this.setState({
         //   pending: false,
@@ -109,7 +107,7 @@ class Resend extends Component {
                   disabled={ pending }
                 />
                 <ButtonLargeBlue
-                  icon="resend"
+                  icon="send"
                   type="submit"
                   pending={ pending }
                   disabled={ pending }
@@ -120,7 +118,7 @@ class Resend extends Component {
                 { error && <ErrorMessage message={ error } hasIcon /> }
               </Form>
               <Illustration
-                name="monitor-window"
+                name="postman-receive-letter"
                 width="300"
                 height="300"
                 className="resend__illustration"

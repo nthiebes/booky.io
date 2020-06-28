@@ -88,7 +88,7 @@ export const logout = ({ onSuccess, onError }) => ((dispatch) => {
   });
 });
 
-export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
+export const join = ({ params, onSuccess, onError }) => (() => {
   fetcher({
     url: '/user/register',
     method: 'POST',
