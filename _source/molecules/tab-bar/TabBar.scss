@@ -1,8 +1,14 @@
 .tab-bar {
   display: flex;
   flex-grow: 1;
-  width: 100%;
   position: relative;
+  width: calc(106% + 12px);
+  margin: 0 calc(-3% - 6px);
+
+  @include desktop {
+    width: calc(100% + 72px);
+    margin: 0 -36px;
+  }
 
   &::before,
   &::after {
@@ -14,6 +20,16 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s linear;
+  }
+
+  &::before {
+    width: calc(3% + 6px);
+  }
+
+  @include desktop {
+    &::before {
+      width: 36px;
+    }
   }
 }
 
@@ -33,15 +49,35 @@
   }
 }
 
+.tab-bar--darkMode {
+  &.tab-bar--start {
+    &::before {
+      background: linear-gradient(to right, $color-background--dark-mode, rgba(68, 68, 68, 0));
+    }
+  }
+
+  &.tab-bar--end {
+    &::after {
+      background: linear-gradient(to left, $color-background--dark-mode, rgba(68, 68, 68, 0));
+    }
+  }
+}
+
 .tab-bar__scroll-container {
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.5rem 3%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   scroll-snap-type: x proximity;
+  scroll-padding: 0 3%;
+
+  @include desktop {
+    padding: 0.5rem 30px;
+    scroll-padding: 0 30px;
+  }
 }
 
 .tab-bar__tab {

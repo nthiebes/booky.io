@@ -78,7 +78,10 @@ class DashboardsTabs extends PureComponent {
 
     return (
       <Fragment>
-        <TabBar title="dashboard.title" className="dashboards-tabs">
+        <TabBar title="dashboard.title" className={ classNames(
+          'dashboards-tabs',
+          darkMode && 'dashboards-tabs--darkMode'
+        ) }>
           { dashboards.map((dashboard) => (
             <Tab
               key={ dashboard.id }

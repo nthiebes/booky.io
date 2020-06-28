@@ -14,8 +14,6 @@ import {
   AccountStatistics
 } from './tabs';
 
-import './Account.scss';
-
 class Account extends Component {
   constructor(props) {
     super(props);

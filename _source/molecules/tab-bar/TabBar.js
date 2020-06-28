@@ -38,7 +38,7 @@ class TabBar extends Component {
   }
 
   render() {
-    const { className, title, intl, children } = this.props;
+    const { className, title, intl, children, darkMode } = this.props;
     const { scrolledToStart, scrolledToEnd } = this.state;
 
     return (
@@ -46,6 +46,7 @@ class TabBar extends Component {
         aria-label={ intl.formatMessage({ id: title }) }
         className={ classNames(
           'tab-bar',
+          darkMode && 'tab-bar--darkMode',
           !scrolledToStart && 'tab-bar--start',
           !scrolledToEnd && 'tab-bar--end',
           className

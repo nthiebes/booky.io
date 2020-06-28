@@ -117,7 +117,7 @@ class Customize extends PureComponent {
         >
           <FormattedMessage id="customize.sidebar" />
         </Radio>
-        <Radio
+        {/* <Radio
           id="dashboards-dropdown"
           name="dashboardsStyle"
           onChange={ this.handleRadioChange }
@@ -125,7 +125,7 @@ class Customize extends PureComponent {
           checked={ dashboardsStyle === 'dropdown' }
         >
           <FormattedMessage id="customize.dropdown" />
-        </Radio>
+        </Radio> */}
         <Radio
           id="dashboards-tabs"
           name="dashboardsStyle"

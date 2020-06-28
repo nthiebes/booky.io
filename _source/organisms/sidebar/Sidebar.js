@@ -20,7 +20,7 @@ class Sidebar extends PureComponent {
     location: PropTypes.object.isRequired,
     direction: PropTypes.string,
     className: PropTypes.string,
-    dashboardsSidebar: PropTypes.bool.isRequired,
+    hasSidebar: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
     openModal: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
@@ -73,7 +73,7 @@ class Sidebar extends PureComponent {
       direction,
       location,
       className,
-      dashboardsSidebar,
+      hasSidebar,
       darkMode
     } = this.props;
     const { pathname } = location;
@@ -107,10 +107,10 @@ class Sidebar extends PureComponent {
           />
         </header>
         <div className="sidebar__scroll-wrapper">
-          { dashboards && dashboardsSidebar && (
+          { dashboards && hasSidebar && (
             <DashboardsList useTabIndex={ open } droppableIdSuffix="mobile" />
           ) }
-          { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
+          { dashboards && hasSidebar && <hr className="sidebar__hr" /> }
           <nav title={ intl.formatMessage({ id: 'menu.title' }) } className="sidebar__nav">
             <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
             <ul className="sidebar__list">
