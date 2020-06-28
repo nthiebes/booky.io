@@ -109,6 +109,20 @@ export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
   });
 });
 
+export const resend = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/user/activation/resend',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
 export const deleteAccount = () => (() => {
   // fetcher({
   //   url: '/user',

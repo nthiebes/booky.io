@@ -9,26 +9,22 @@ import Link from '../../atoms/link';
 import Input from '../../atoms/input';
 import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
-import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 import Illustration from '../../atoms/illustration';
 
-import './Join.scss';
+import './Resend.scss';
 
-class Join extends Component {
+class Resend extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    join: PropTypes.func.isRequired,
-    language: PropTypes.string.isRequired
+    resend: PropTypes.func.isRequired
   }
 
   state = {
     username: '',
     email: '',
-    password: '',
     pending: false,
-    showPassword: false,
     error: null
   }
 
@@ -39,21 +35,15 @@ class Join extends Component {
     });
   }
 
-  handleCheckboxChange = ({ checked }) => {
-    this.setState({
-      showPassword: checked
-    });
-  }
-
   handleSubmit = (params) => {
-    const { join } = this.props;
+    const { resend } = this.props;
 
     this.setState({
       pending: true,
       error: false
     });
 
-    join({
+    resend({
       params,
       onSuccess: (data) => {
         console.log('success', data);
@@ -80,19 +70,19 @@ class Join extends Component {
   }
 
   render() {
-    const { intl, language } = this.props;
-    const { username, email, password, pending, showPassword, error, success } = this.state;
+    const { intl } = this.props;
+    const { username, email, pending, error, success } = this.state;
 
     return (
       <Page>
-        <Section className="join">
+        <Section className="resend">
           { success ? (
-            <SuccessMessage message="join.success" hasIcon icon="smile" />
+            <SuccessMessage message="resend.success" hasIcon icon="smile" />
           ) : (
             <Fragment>
-              <Form onSubmit={ this.handleSubmit } className="join__form">
+              <Form onSubmit={ this.handleSubmit } className="resend__form">
                 <H1>
-                  <FormattedMessage id="join.headline" />
+                  <FormattedMessage id="resend.headline" />
                 </H1>
                 <Input
                   value={ username }
@@ -118,59 +108,22 @@ class Join extends Component {
                   requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
                   disabled={ pending }
                 />
-                <Input
-                  value={ password }
-                  name="password"
-                  id="password"
-                  autoComplete="current-password"
-                  label={ intl.formatMessage({ id: 'login.password' }) }
-                  onChange={ this.handleInputChange }
-                  maxLength="225"
-                  required
-                  type={ showPassword ? 'text' : 'password' }
-                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                  requirements={ intl.formatMessage({ id: 'misc.validPassword' }) }
-                  disabled={ pending }
-                />
-                <input
-                  value={ language }
-                  name="language"
-                  type="hidden"
-                />
-                <input
-                  className="join__website"
-                  name="website"
-                  autoComplete="off"
-                  tabIndex="-1"
-                />
-                <Checkbox
-                  label={ intl.formatMessage({ id: 'login.showPassword'}) }
-                  id="show-password"
-                  onChange={ this.handleCheckboxChange }
-                />
                 <ButtonLargeBlue
-                  icon="join"
+                  icon="resend"
                   type="submit"
                   pending={ pending }
                   disabled={ pending }
                   contentBefore
                 >
-                  <FormattedHTMLMessage id="join.joinNow" />
+                  <FormattedHTMLMessage id="resend.button" />
                 </ButtonLargeBlue>
                 { error && <ErrorMessage message={ error } hasIcon /> }
-                <P className="join__login">
-                  <FormattedMessage id="join.registered" />
-                  { ' ' }
-                  <Link to="/login">
-                    <FormattedMessage id="join.login" />
-                  </Link>
-                </P>
               </Form>
               <Illustration
                 name="monitor-window"
                 width="300"
                 height="300"
-                className="join__illustration"
+                className="resend__illustration"
               />
             </Fragment>
           )}
@@ -180,4 +133,4 @@ class Join extends Component {
   }
 }
 
-export default injectIntl(Join);
+export default injectIntl(Resend);

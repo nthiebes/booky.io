@@ -59,6 +59,17 @@ export default class Help extends Component {
             </Expandable>
           </div>
 
+          <H2>
+            <FormattedMessage id="help.registration" />
+          </H2>
+          <div className="help-container">
+            <Expandable headline={ <FormattedMessage id="help.registration.question1" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.registration.answer1" />
+              </P>
+            </Expandable>
+          </div>
+
           {/* <H2>
             <FormattedMessage id="help.extensions" />
           </H2>

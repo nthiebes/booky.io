@@ -17,6 +17,7 @@ const Privacy = lazy(() => import('./pages/privacy'));
 const Legal = lazy(() => import('./pages/legal'));
 const Contact = lazy(() => import('./pages/contact'));
 const Forgot = lazy(() => import('./pages/forgot'));
+const Resend = lazy(() => import('./pages/resend'));
 const NotFound = lazy(() => import('./pages/not-found'));
 
 class Routes extends Component {
@@ -49,6 +50,7 @@ class Routes extends Component {
           <Route path="/legal" component={ Legal } />
           <Route path="/contact" component={ Contact } />
           <Route path="/forgot" component={ Forgot } />
+          <Route path="/resend" component={ Resend } />
           <Route path="*" component={ NotFound } />
         </Switch>
       </Suspense>
