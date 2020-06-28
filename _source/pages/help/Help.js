@@ -66,6 +66,9 @@ export default class Help extends Component {
             <Expandable headline={ <FormattedMessage id="help.registration.question1" /> } className="help-container__item">
               <P noPadding>
                 <FormattedMessage id="help.registration.answer1" />
+                <Link to="/resend">
+                  {'booky.io/resend'}
+                </Link>
               </P>
             </Expandable>
           </div>
