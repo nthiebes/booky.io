@@ -28,6 +28,18 @@ export default class Help extends Component {
         </Link>
       )
     };
+    const deleteValues = {
+      link: (
+        <Link href="/account">
+          { 'booky.io/account' }
+        </Link>
+      ),
+      email: (
+        <Link to="/contact">
+          <FormattedMessage id="help.email" />
+        </Link>
+      )
+    };
 
     return (
       <Page>
@@ -55,6 +67,30 @@ export default class Help extends Component {
             <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
               <P noPadding>
                 <FormattedMessage id="help.beta.answer2" values={ betaValues } />
+              </P>
+            </Expandable>
+          </div>
+
+          <H2>
+            <FormattedMessage id="help.account" />
+          </H2>
+          <div className="help-container">
+            <Expandable headline={ <FormattedMessage id="help.account.question1" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer1" />
+                <Link to="/forgot">
+                  {'booky.io/forgot'}
+                </Link>
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.account.question3" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer3" values={ introValues } />
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer2" values={ deleteValues } />
               </P>
             </Expandable>
           </div>
