@@ -10,11 +10,6 @@ export const updateOffset = (offset) => ({
   offset
 });
 
-export const dragCategory = (data) => ({
-  type: 'DRAG_CATEGORY',
-  data
-});
-
 export const toggleDashboardOpen = () => ({
   type: 'TOGGLE_DASHBOARD_OPEN'
 });

@@ -25,22 +25,29 @@
 .search__dashboard {
   cursor: pointer;
   background-color: transparent;
+  border: 0 none;
 
   &:active,
   &:focus {
-    text-decoration: underline;
-
     .search__headline {
-      color: $color-font--dark;
+      text-decoration: underline;
+      color: $color-font--primary;
+    }
+
+    .icon {
+      color: $color-font--primary;
     }
   }
 
   @include desktop {
     &:hover {
-      text-decoration: underline;
-
       .search__headline {
-        color: $color-font--dark;
+        text-decoration: underline;
+        color: $color-font--primary;
+      }
+
+      .icon {
+        color: $color-font--primary;
       }
     }
   }
@@ -48,7 +55,8 @@
 
 .search__headline {
   transition: color 0.2s linear;
-  margin-left: -6px;
+  margin-left: -9px;
+  text-align: left;
 }
 
 .search__keyword {
