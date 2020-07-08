@@ -229,5 +229,8 @@
     "help.account.answer1": "You can reset your password here: ",
     "help.account.question3": "I forgot my username, what can I do?",
     "help.account.answer3": "Please write us an {email} from the email address you used to register with booky. We will give you your username and you can then reset your password.",
-    "help.account.answer2": "You can delete your account at {link} in the \"Account\" submenu. Alternatively, you can write us an {email}."
+    "help.account.answer2": "You can delete your account at {link} in the \"Account\" submenu. Alternatively, you can write us an {email}.",
+    "error.notFound.user": "Unfortunately, we could not find an account with your username and email address.",
+    "error.logic.user.already-registered.email": "This email address is already taken.",
+    "error.logic.user.already-registered.username": "This username is already taken."
 }
