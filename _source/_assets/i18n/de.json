@@ -229,5 +229,8 @@
     "help.account.answer1": "Do kannst hier dein Passwort zurücksetzen: ",
     "help.account.question3": "Ich habe meinen Benutzernamen vergessen. Was kann ich tun?",
     "help.account.answer3": "Bitte schreib uns eine {email} von deiner für die Registrierung bei booky genutzten E-Mail-Adresse. Wir nennen dir deinen Benutzernamen und du kannst anschließend dein Passwort zurücksetzen.",
-    "help.account.answer2": "Du kannst deinen Account unter {link} im Untermenü \"Account\" löschen. Alternativ kannst du uns auch eine {email} schreiben."
+    "help.account.answer2": "Du kannst deinen Account unter {link} im Untermenü \"Account\" löschen. Alternativ kannst du uns auch eine {email} schreiben.",
+    "error.notFound.user": "Für deinen Benutzernamen und E-Mail Adresse konnten wir leider keinen Account bei uns finden.",
+    "error.logic.user.already-registered.email": "Diese E-Mail Adresse ist bereits vergeben.",
+    "error.logic.user.already-registered.username": "Dieser Benutzername ist bereits vergeben."
 }
