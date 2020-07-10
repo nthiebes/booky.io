@@ -67,10 +67,6 @@ class Join extends Component {
       onError: (error) => {
         // console.log('error', error);
 
-        // this.setState({
-        //   pending: false,
-        //   success: true
-        // });
         this.setState({
           pending: false,
           error
