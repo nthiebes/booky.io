@@ -99,7 +99,8 @@ const categories = (state = [], action) => {
           position,
           hidden: false,
           noFetch: true,
-          bookmarks: []
+          bookmarks: [],
+          dashboardId
         }
       ];
 

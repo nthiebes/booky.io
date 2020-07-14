@@ -41,7 +41,8 @@ export const addCategory = ({ dashboardId, color, name, position, onError, onSuc
         color,
         name,
         position,
-        id
+        id,
+        dashboardId
       });
       onSuccess && onSuccess();
     },
