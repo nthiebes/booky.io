@@ -221,7 +221,7 @@
     "join.success": "Thank you for joining booky! You will soon receive an email to activate your account before logging in.",
     "category.sort": "Arrange categories",
     "resend.headline": "Resend activation email",
-    "resend.button": "Request <b>email</b>",
+    "resend.button": "<b>Request</b> email",
     "resend.success": "You will soon receive an email to activate your account before logging in.",
     "help.registration.question1": "How can I resend my activation email?",
     "help.registration.answer1": "You can resend your activation email here: ",
@@ -231,6 +231,9 @@
     "help.account.answer3": "Please write us an {email} from the email address you used to register with booky. We will give you your username and you can then reset your password.",
     "help.account.answer2": "You can delete your account at {link} in the \"Account\" submenu. Alternatively, you can write us an {email}.",
     "error.notFound.user": "Unfortunately, we could not find an account with your username and email address.",
-    "error.logic.user.already-registered.email": "This email address is already taken.",
-    "error.logic.user.already-registered.username": "This username is already taken."
+    "error.logic.user.alreadyRegistered.email": "This email address is already taken.",
+    "error.logic.user.alreadyRegistered.username": "This username is already taken.",
+    "forgot.headline": "Password forgotten",
+    "forgot.button": "<b>Request</b> password",
+    "forgot.success": "You will soon receive an email to reset your password."
 }
