@@ -123,6 +123,19 @@ export const resend = ({ params, onSuccess, onError }) => (() => {
   });
 });
 
+export const activate = ({ token, onSuccess, onError }) => (() => {
+  fetcher({
+    url: `/user/activate/${token}`,
+    method: 'POST',
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
 export const deleteAccount = () => (() => {
   // fetcher({
   //   url: '/user',
