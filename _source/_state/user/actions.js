@@ -136,6 +136,20 @@ export const activate = ({ token, onSuccess, onError }) => (() => {
   });
 });
 
+export const forgot = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/user/diesdasforgotten',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
 export const deleteAccount = () => (() => {
   // fetcher({
   //   url: '/user',
