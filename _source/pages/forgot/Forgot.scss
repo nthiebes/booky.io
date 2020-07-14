@@ -1,0 +1,25 @@
+.forgot .section__content {
+  @include tablet {
+    max-width: 40rem;
+  }
+
+  @include desktop {
+    display: flex;
+    max-width: 50rem;
+    justify-content: center;
+  }
+}
+
+.forgot__form {
+  @include desktop {
+    margin-right: 2rem;
+  }
+}
+
+.forgot__illustration {
+  flex-shrink: 0;
+
+  @include mobile-tablet {
+    display: none;
+  }
+}
