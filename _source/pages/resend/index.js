@@ -1,3 +1,1 @@
-import container from './ResendContainer';
-
-export default container;
+export { default } from './ResendContainer';

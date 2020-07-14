@@ -11,8 +11,6 @@ import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 import Illustration from '../../atoms/illustration';
 
-import './Resend.scss';
-
 class Resend extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
