@@ -35,7 +35,7 @@
     "@sentry/browser": "5.20.1",
     "abortcontroller-polyfill": "1.4.0",
     "classnames": "2.2.6",
-    "connected-react-router": "6.7.0",
+    "connected-react-router": "6.8.0",
     "core-js": "3.6.4",
     "date-fns": "2.15.0",
     "disqus-react": "1.0.7",
