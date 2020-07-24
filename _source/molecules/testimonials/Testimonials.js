@@ -23,18 +23,15 @@ class Testimonials extends Component {
           <Testimonial
             // Ricardo Sebastián
             name="Anonymous"
-            // twitter="twittername"
-            // url="https://twitter.com/booky_io"
-            image="_assets/illustrations/customer-service-woman.svg"
+            image="_assets/illustrations/customer-service-man.svg"
             text="A simple, lightweight, yet powerful application to store my bookmarks in the cloud."
           />
           <Testimonial
-            // Arun Kumarr B
-            name="Anonymous"
-            // twitter="twittername"
-            // url="https://twitter.com/booky_io"
-            image="_assets/illustrations/customer-service-man.svg"
-            text="Love at first sight. Kudos to the people who built booky and have kept it simple."
+            name="Samira Stein"
+            twitter="frontend_cat"
+            url="https://twitter.com/frontend_cat"
+            image="_assets/illustrations/customer-service-woman.svg"
+            text="I love the sleek and simple design! The focus lies on what's important: managing bookmarks."
           />
         </div>
       </Fragment>

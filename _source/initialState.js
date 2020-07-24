@@ -29,6 +29,11 @@ export default {
     error: null
   },
   categories: [],
+  categoriesSorting: {
+    items: [],
+    pending: false,
+    error: null
+  },
   sidebar: {
     open: false
   },
@@ -39,5 +44,14 @@ export default {
     modal: null,
     open: false,
     data: {}
+  },
+  search: {
+    keyword: '',
+    pending: false,
+    error: null,
+    total: null,
+    offset: 0,
+    limit: 30,
+    dashboards: []
   }
 };

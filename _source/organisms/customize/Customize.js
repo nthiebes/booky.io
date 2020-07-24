@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { H2 } from '../../atoms/headline';
+import { H3 } from '../../atoms/headline';
 import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
@@ -59,9 +59,9 @@ class Customize extends PureComponent {
 
     return (
       <Fragment>
-        <H2>
+        <H3>
           <FormattedMessage id="customize.style" />
-        </H2>
+        </H3>
         <Label>
           <FormattedMessage id="customize.navColor" />
         </Label>
@@ -134,9 +134,9 @@ class Customize extends PureComponent {
         >
           <FormattedMessage id="customize.tabs" />
         </Radio> */}
-        <H2>
+        <H3>
           <FormattedMessage id="dashboard.preferences" />
-        </H2>
+        </H3>
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.newTab'}) }
           id="openLinksInNewTab"

@@ -8,7 +8,7 @@ import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Logo from '../../atoms/logo';
-import Search from '../../molecules/search';
+import SearchField from '../../molecules/search-field';
 import { ButtonSmallLight } from '../../atoms/button';
 
 class Header extends PureComponent {
@@ -114,14 +114,14 @@ class Header extends PureComponent {
             <Fragment>
               <Icon
                 className="booky--hide-desktop header__add-icon"
-                icon="add"
+                icon={ hasCategories ? 'add-link' : 'add-category' }
                 color="light"
                 onClick={ this.onAddButtonClick }
                 label={ intl.formatMessage({ id: hasCategories ? 'bookmark.add' : 'category.add' }) }
                 ignoreDarkMode
                 isButton
               />
-              <Search className="booky--hide-desktop" id="search-mobile" />
+              <SearchField className="booky--hide-desktop" id="search-mobile" />
             </Fragment>
           ) }
           <Link
@@ -134,15 +134,6 @@ class Header extends PureComponent {
           <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
           { loggedIn && (
             <Fragment>
-              {/* <Icon
-                className="booky--hide-mobile-tablet"
-                icon="customize"
-                color="light"
-                onClick={ this.onCustomizeClick }
-                label={ intl.formatMessage({ id: 'menu.customize' }) }
-                ignoreDarkMode
-                isButton
-              /> */}
               <Icon
                 className="booky--hide-mobile-tablet"
                 icon="logout"
@@ -160,15 +151,6 @@ class Header extends PureComponent {
               >
                 <FormattedHTMLMessage id="menu.customize" />
               </ButtonSmallLight>
-              {/* <ButtonSmallLight
-                className="header__add booky--hide-mobile-tablet"
-                onClick={ this.onAddButtonClick }
-                icon="add"
-                solid
-                useSkeleton={ dashboardsPending }
-              >
-                <FormattedHTMLMessage id={ hasCategories ? 'bookmark.add' : 'category.add' } />
-              </ButtonSmallLight> */}
             </Fragment>
           ) }
           { !loggedIn && (

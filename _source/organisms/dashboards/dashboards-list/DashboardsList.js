@@ -164,6 +164,7 @@ class DashboardsList extends PureComponent {
                               isButton
                             />
                             <Icon
+                              className="dashboards__icon--drag"
                               icon="drag"
                               label={ intl.formatMessage({ id: 'dashboard.drag' }) }
                               dragHandleProps={ provided.dragHandleProps }
@@ -195,7 +196,7 @@ class DashboardsList extends PureComponent {
           ) }
         </Droppable>
         <ButtonSmallPrimary
-          icon="add"
+          icon="add-collection"
           className="dashboards__button"
           onClick={ this.addDashboard }
           tabIndex={ useTabIndex || pinned ? '0' : '-1' }

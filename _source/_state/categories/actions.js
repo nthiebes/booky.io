@@ -52,7 +52,7 @@ export const addCategory = ({ dashboardId, color, name, position, onError, onSuc
   });
 });
 
-export const editCategory = ({ id, color, name, hidden, dashboardId, onError, onSuccess }) => ((dispatch) => {
+export const editCategory = ({ id, color, name, hidden, position, dashboardId, onError, onSuccess }) => ((dispatch) => {
   fetcher({
     url: `/categories/${id}`,
     method: 'PATCH',
@@ -60,7 +60,8 @@ export const editCategory = ({ id, color, name, hidden, dashboardId, onError, on
       color,
       name,
       dashboardId,
-      hidden
+      hidden,
+      position
     },
     onSuccess: () => {
       dispatch({
@@ -69,7 +70,8 @@ export const editCategory = ({ id, color, name, hidden, dashboardId, onError, on
         name,
         dashboardId,
         id,
-        hidden
+        hidden,
+        position
       });
       onSuccess && onSuccess();
     },

@@ -13,7 +13,6 @@ import DeleteCategory from './modals/DeleteCategory';
 import AddDashboard from './modals/AddDashboard';
 import EditDashboard from './modals/EditDashboard';
 import DeleteDashboard from './modals/DeleteDashboard';
-import EditStructure from './modals/EditStructure';
 import Customize from './modals/Customize';
 import DeleteAccount from './modals/DeleteAccount';
 
@@ -33,7 +32,8 @@ export default class Modal extends PureComponent {
     editDashboard: PropTypes.func.isRequired,
     deleteDashboard: PropTypes.func.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    deleteAccount: PropTypes.func.isRequired
+    deleteAccount: PropTypes.func.isRequired,
+    resetSearch: PropTypes.func.isRequired
   }
 
   state = {
@@ -89,9 +89,6 @@ export default class Modal extends PureComponent {
       type: DeleteDashboard,
       action: this.props.deleteDashboard
     },
-    EditStructure: {
-      type: EditStructure
-    },
     Customize: {
       type: Customize
     },
@@ -102,7 +99,7 @@ export default class Modal extends PureComponent {
   }
 
   handleSave = (modalData) => {
-    const { modal, data } = this.props;
+    const { modal, data, resetSearch } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
     modalData.categoryId = parseInt(modalData.categoryId, 10);
@@ -122,6 +119,7 @@ export default class Modal extends PureComponent {
         dashboardId: modalData.dashboardId || data.activeDashboard,
         onSuccess: () => {
           this.closeModal();
+          resetSearch();
         },
         onError: (error) => {
           this.setState({

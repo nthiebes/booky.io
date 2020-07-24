@@ -45,6 +45,7 @@
 
       &.dashboards__item--dark-mode {
         background-color: inherit;
+        color: $color-font--white;
 
         /* stylelint-disable selector-max-specificity, max-nesting-depth */
         .dashboards__label {
@@ -70,6 +71,7 @@
 
         &.dashboards__item--dark-mode {
           background-color: inherit;
+          color: $color-font--white;
 
           .dashboards__label {
             color: $color-font--white;
@@ -81,7 +83,8 @@
   }
 
   /* stylelint-disable selector-max-specificity */
-  .dashboards__item:first-child:last-of-type .dashboards__icon--delete {
+  .dashboards__item:first-child:last-of-type .dashboards__icon--delete,
+  .dashboards__item:first-child:last-of-type .dashboards__icon--drag {
     display: none;
   }
   /* stylelint-enable */

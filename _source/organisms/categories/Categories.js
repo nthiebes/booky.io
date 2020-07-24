@@ -13,7 +13,6 @@ class Categories extends PureComponent {
     categories: PropTypes.array.isRequired,
     dashboardsOpen: PropTypes.bool.isRequired,
     hasSidebar: PropTypes.bool.isRequired,
-    maxWidth: PropTypes.bool.isRequired,
     dashboardName: PropTypes.string,
     className: PropTypes.string,
     pending: PropTypes.bool,
@@ -25,15 +24,15 @@ class Categories extends PureComponent {
   }
 
   render() {
-    const { categories, dashboardsOpen, hasSidebar, maxWidth, dashboardName, className, pending } = this.props;
+    const { categories, dashboardsOpen, hasSidebar, dashboardName, className, pending } = this.props;
+    const Element = pending || !categories.length ? 'section' : 'ul';
 
     return (
-      <ul className={ classNames(
+      <Element className={ classNames(
         'categories',
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
         !pending && categories.length && 'categories--grid',
-        maxWidth && 'categories--max-width',
         className
       ) }>
         { pending ? (
@@ -49,7 +48,7 @@ class Categories extends PureComponent {
                   <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboardName }</b> } } />
                 </Empty>
                 <ButtonSmallPrimary
-                  icon="add"
+                  icon="add-category"
                   className="categories__button"
                   onClick={ this.onAddClick }
                 >
@@ -59,7 +58,7 @@ class Categories extends PureComponent {
             ) }
           </Fragment>
         ) }
-      </ul>
+      </Element>
     );
   }
 }

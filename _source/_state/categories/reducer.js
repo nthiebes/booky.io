@@ -120,7 +120,8 @@ const categories = (state = [], action) => {
           name,
           dashboardId,
           id,
-          hidden
+          hidden,
+          position
         });
           
         return {
@@ -224,6 +225,18 @@ const categories = (state = [], action) => {
           pending
         };
       });
+    }
+
+    case 'DRAG_CATEGORY': {
+      const { destinationIndex, sourceIndex, categoryId: dragCategoryId } = dragData;
+      const newCategories = [...state];
+      const categoryExists = Boolean(state.find((category) => category.id === dragCategoryId));
+
+      if (categoryExists) {
+        arrayMove(newCategories, sourceIndex, destinationIndex);
+      }
+
+      return newCategories;
     }
 
     case 'RESET_USER_STATE': {
