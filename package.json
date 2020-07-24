@@ -67,7 +67,7 @@
     "@storybook/react": "5.3.19",
     "acorn": "7.3.1",
     "ajv": "6.12.3",
-    "autoprefixer": "9.7.4",
+    "autoprefixer": "9.8.5",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "25.1.0",
