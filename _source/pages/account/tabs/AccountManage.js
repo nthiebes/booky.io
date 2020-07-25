@@ -41,7 +41,7 @@ export default injectIntl(AccountManage);
     <FormattedMessage id="account.deleteText" />
   </P>
   <ButtonLargeBlue icon="delete" contentBefore onClick={ this.handleClick }>
-    <FormattedHTMLMessage id="account.deleteButton" />
+    <FormattedMessage id="account.deleteButton" />
   </ButtonLargeBlue>
 </Fragment>
 */

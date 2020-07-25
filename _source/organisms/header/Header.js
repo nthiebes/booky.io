@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
-import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
@@ -105,10 +105,10 @@ class Header extends PureComponent {
       >
         <div className={ classNames('header__wrapper', loggedIn && 'header__wrapper--full-width') }>
           <Link className="header__skip-link" href="#main">
-            <FormattedHTMLMessage id="header.jumpToMain" />
+            <FormattedMessage id="header.jumpToMain" />
           </Link>
           <Link className="header__skip-link" href="#language-switcher-en">
-            <FormattedHTMLMessage id="header.jumpToLanguage" />
+            <FormattedMessage id="header.jumpToLanguage" />
           </Link>
           { loggedIn && home && (
             <Fragment>
@@ -149,22 +149,22 @@ class Header extends PureComponent {
                 onClick={ this.onCustomizeClick }
                 icon="customize"
               >
-                <FormattedHTMLMessage id="menu.customize" />
+                <FormattedMessage id="menu.customize" />
               </ButtonSmallLight>
             </Fragment>
           ) }
           { !loggedIn && (
             <Fragment>
               <ButtonSmallLight className="booky--hide-mobile-tablet header__login" to="/login">
-                <FormattedHTMLMessage id="header.login" />
+                <FormattedMessage id="header.login" />
               </ButtonSmallLight>
               <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join" icon="join" solid>
-                <FormattedHTMLMessage id="header.register" />
+                <FormattedMessage id="header.register" />
               </ButtonSmallLight>
             </Fragment>
           ) }
           <ButtonSmallLight className="booky--hide-desktop header__menu" onClick={ this.onMenuClick }>
-            <FormattedHTMLMessage id="header.menu" />
+            <FormattedMessage id="header.menu" />
           </ButtonSmallLight>
         </div>
       </header>

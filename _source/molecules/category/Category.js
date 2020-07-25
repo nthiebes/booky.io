@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
-import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
@@ -165,7 +165,7 @@ class Category extends PureComponent {
               ) }
               { !hidden && !pending && bookmarks.length === 0 && !error && (
                 <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
-                  <i><FormattedHTMLMessage id="bookmark.empty" /></i>
+                  <i><FormattedMessage id="bookmark.empty" /></i>
                 </li>
               ) }
               { provided.placeholder }
@@ -174,7 +174,7 @@ class Category extends PureComponent {
         </Droppable>
         { !hidden && !error && !pending && (
           <ButtonSmallPrimary icon="add-link" className="category__button" onClick={ this.onAddClick }>
-            <FormattedHTMLMessage id="bookmark.add" />
+            <FormattedMessage id="bookmark.add" />
           </ButtonSmallPrimary>
         ) }
       </li>

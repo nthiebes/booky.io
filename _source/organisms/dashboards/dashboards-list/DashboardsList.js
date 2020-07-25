@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 import Icon from '../../../atoms/icon';
@@ -202,7 +202,7 @@ class DashboardsList extends PureComponent {
           tabIndex={ useTabIndex || pinned ? '0' : '-1' }
           useSkeleton={ noDashboards }
         >
-          <FormattedHTMLMessage id="dashboard.add" />
+          <FormattedMessage id="dashboard.add" />
         </ButtonSmallPrimary>
       </Fragment>
     );

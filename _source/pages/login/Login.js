@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
 import Page from '../../templates/page';
@@ -113,7 +113,7 @@ class Login extends Component {
               disabled={ pending }
               contentBefore
             >
-              <FormattedHTMLMessage id="header.login" />
+              <FormattedMessage id="header.login" />
             </ButtonLargeBlue>
             { error && <ErrorMessage message={ error } hasIcon /> }
             <Link className="login__forgot" to="/forgot">

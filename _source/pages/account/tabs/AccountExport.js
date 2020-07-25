@@ -27,10 +27,10 @@ export default injectIntl(AccountExport);
 /*
 <Fragment>
   <P first>
-    <FormattedHTMLMessage id="account.exportText" />
+    <FormattedMessage id="account.exportText" />
   </P>
   <ButtonLargeBlue icon="download" contentBefore>
-    <FormattedHTMLMessage id="account.export" />
+    <FormattedMessage id="account.export" />
   </ButtonLargeBlue>
 </Fragment>
 */

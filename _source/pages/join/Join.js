@@ -149,7 +149,7 @@ export default injectIntl(withRouter(Join));
     disabled={ pending }
     contentBefore
   >
-    <FormattedHTMLMessage id="join.joinNow" />
+    <FormattedMessage id="join.joinNow" />
   </ButtonLargeBlue>
   { error && <ErrorMessage hasIcon /> }
   <P className="join__login">
