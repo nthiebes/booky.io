@@ -115,7 +115,7 @@ class Footer extends PureComponent {
               <Logo />
             </Link>
             <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
-              <FormattedMessage id="footer.scroll" />
+              <FormattedMessage id="footer.scroll" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonSmallLight>
           </div>
           <div className="footer__languages">

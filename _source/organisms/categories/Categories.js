@@ -52,7 +52,7 @@ class Categories extends PureComponent {
                   className="categories__button"
                   onClick={ this.onAddClick }
                 >
-                  <FormattedMessage id="category.add" />
+                  <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
                 </ButtonSmallPrimary>
               </Fragment>
             ) }

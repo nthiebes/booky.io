@@ -37,7 +37,7 @@ class Bookmarklet extends PureComponent {
           href={ `javascript:${updatedJavascript}` }
           onClick={ this.handleBookmarkletClick }
         >
-          <FormattedMessage id="bookmarklet.text" />
+          <FormattedMessage id="bookmarklet.text" values={ { b: (msg) => <b>{msg}</b> } } />
         </a>
         { hasClicked && (
           <ErrorMessage

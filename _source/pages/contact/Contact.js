@@ -133,7 +133,7 @@ class Contact extends Component {
               disabled={ pending }
               contentBefore
             >
-              <FormattedMessage id="button.send" />
+              <FormattedMessage id="button.send" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonLargeBlue>
           </Form>
         </Section> */}

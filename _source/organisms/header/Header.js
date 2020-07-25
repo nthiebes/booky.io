@@ -105,10 +105,10 @@ class Header extends PureComponent {
       >
         <div className={ classNames('header__wrapper', loggedIn && 'header__wrapper--full-width') }>
           <Link className="header__skip-link" href="#main">
-            <FormattedMessage id="header.jumpToMain" />
+            <FormattedMessage id="header.jumpToMain" values={ { b: (msg) => <b>{msg}</b> } } />
           </Link>
           <Link className="header__skip-link" href="#language-switcher-en">
-            <FormattedMessage id="header.jumpToLanguage" />
+            <FormattedMessage id="header.jumpToLanguage" values={ { b: (msg) => <b>{msg}</b> } } />
           </Link>
           { loggedIn && home && (
             <Fragment>
@@ -149,22 +149,22 @@ class Header extends PureComponent {
                 onClick={ this.onCustomizeClick }
                 icon="customize"
               >
-                <FormattedMessage id="menu.customize" />
+                <FormattedMessage id="menu.customize" values={ { b: (msg) => <b>{msg}</b> } } />
               </ButtonSmallLight>
             </Fragment>
           ) }
           { !loggedIn && (
             <Fragment>
               <ButtonSmallLight className="booky--hide-mobile-tablet header__login" to="/login">
-                <FormattedMessage id="header.login" />
+                <FormattedMessage id="header.login" values={ { b: (msg) => <b>{msg}</b> } } />
               </ButtonSmallLight>
               <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join" icon="join" solid>
-                <FormattedMessage id="header.register" />
+                <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
               </ButtonSmallLight>
             </Fragment>
           ) }
           <ButtonSmallLight className="booky--hide-desktop header__menu" onClick={ this.onMenuClick }>
-            <FormattedMessage id="header.menu" />
+            <FormattedMessage id="header.menu" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonSmallLight>
         </div>
       </header>

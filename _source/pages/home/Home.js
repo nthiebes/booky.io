@@ -59,10 +59,10 @@ class Home extends Component {
             <FormattedMessage id="home.display2" />
           </H2>
           <ButtonLargeBlue icon="join" to="/join" className="home__join">
-            <FormattedMessage id="header.register" />
+            <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonLargeBlue>
           <ButtonLargeLight icon="about" to="/about">
-            <FormattedMessage id="header.learnMore" />
+            <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonLargeLight>
           <Illustration
             name="monitor-window"
@@ -172,10 +172,10 @@ class Home extends Component {
             <FormattedMessage id="home.promoText" />
           </H3>
           <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
-            <FormattedMessage id="header.register" />
+            <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonLargeBlue>
           <ButtonLargeLight icon="about" to="/about">
-            <FormattedMessage id="header.learnMore" />
+            <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonLargeLight>
         </Section>
       </Page>

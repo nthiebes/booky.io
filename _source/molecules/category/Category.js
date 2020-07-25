@@ -165,7 +165,7 @@ class Category extends PureComponent {
               ) }
               { !hidden && !pending && bookmarks.length === 0 && !error && (
                 <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
-                  <i><FormattedMessage id="bookmark.empty" /></i>
+                  <i><FormattedMessage id="bookmark.empty" values={ { b: (msg) => <b>{msg}</b> } } /></i>
                 </li>
               ) }
               { provided.placeholder }
@@ -174,7 +174,7 @@ class Category extends PureComponent {
         </Droppable>
         { !hidden && !error && !pending && (
           <ButtonSmallPrimary icon="add-link" className="category__button" onClick={ this.onAddClick }>
-            <FormattedMessage id="bookmark.add" />
+            <FormattedMessage id="bookmark.add" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonSmallPrimary>
         ) }
       </li>

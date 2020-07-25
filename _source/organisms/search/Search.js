@@ -156,7 +156,7 @@ class Search extends PureComponent {
           ) }
           { total > (limit + offset) && !pending && (
             <LoadMoreButton className="search__load-more" onClick={ this.handleLoadMore }>
-              <FormattedMessage id="search.loadMore" />
+              <FormattedMessage id="search.loadMore" values={ { b: (msg) => <b>{msg}</b> } } />
             </LoadMoreButton>
           ) }
         </div>

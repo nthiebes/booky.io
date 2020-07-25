@@ -113,7 +113,7 @@ class Login extends Component {
               disabled={ pending }
               contentBefore
             >
-              <FormattedMessage id="header.login" />
+              <FormattedMessage id="header.login" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonLargeBlue>
             { error && <ErrorMessage message={ error } hasIcon /> }
             <Link className="login__forgot" to="/forgot">

@@ -30,7 +30,7 @@ export default injectIntl(AccountExport);
     <FormattedMessage id="account.exportText" />
   </P>
   <ButtonLargeBlue icon="download" contentBefore>
-    <FormattedMessage id="account.export" />
+    <FormattedMessage id="account.export" values={ { b: (msg) => <b>{msg}</b> } } />
   </ButtonLargeBlue>
 </Fragment>
 */

@@ -202,7 +202,7 @@ class DashboardsList extends PureComponent {
           tabIndex={ useTabIndex || pinned ? '0' : '-1' }
           useSkeleton={ noDashboards }
         >
-          <FormattedMessage id="dashboard.add" />
+          <FormattedMessage id="dashboard.add" values={ { b: (msg) => <b>{msg}</b> } } />
         </ButtonSmallPrimary>
       </Fragment>
     );

@@ -128,7 +128,7 @@ class Toolbar extends PureComponent {
             onClick={ this.onAddClick }
             useSkeleton={ categoriesPending }
           >
-            <FormattedMessage id="category.add" />
+            <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonSmallPrimary>
         ) }
         <SearchField className="booky--hide-mobile-tablet" id="search-desktop" />
