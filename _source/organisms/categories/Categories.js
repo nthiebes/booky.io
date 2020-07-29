@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import Category from '../../molecules/category';
 import Empty from '../../molecules/empty';
@@ -52,7 +52,7 @@ class Categories extends PureComponent {
                   className="categories__button"
                   onClick={ this.onAddClick }
                 >
-                  <FormattedHTMLMessage id="category.add" />
+                  <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
                 </ButtonSmallPrimary>
               </Fragment>
             ) }

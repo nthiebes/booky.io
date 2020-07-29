@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
@@ -115,7 +115,7 @@ class Footer extends PureComponent {
               <Logo />
             </Link>
             <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
-              <FormattedHTMLMessage id="footer.scroll" />
+              <FormattedMessage id="footer.scroll" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonSmallLight>
           </div>
           <div className="footer__languages">
