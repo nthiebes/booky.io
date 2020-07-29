@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { ErrorMessage } from '../../atoms/messages';
 import javascript from './javascript';
@@ -37,7 +37,7 @@ class Bookmarklet extends PureComponent {
           href={ `javascript:${updatedJavascript}` }
           onClick={ this.handleBookmarkletClick }
         >
-          <FormattedHTMLMessage id="bookmarklet.text" />
+          <FormattedMessage id="bookmarklet.text" values={ { b: (msg) => <b>{msg}</b> } } />
         </a>
         { hasClicked && (
           <ErrorMessage

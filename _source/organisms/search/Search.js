@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 
 import { ErrorMessage } from '../../atoms/messages';
@@ -156,7 +156,7 @@ class Search extends PureComponent {
           ) }
           { total > (limit + offset) && !pending && (
             <LoadMoreButton className="search__load-more" onClick={ this.handleLoadMore }>
-              <FormattedHTMLMessage id="search.loadMore" />
+              <FormattedMessage id="search.loadMore" values={ { b: (msg) => <b>{msg}</b> } } />
             </LoadMoreButton>
           ) }
         </div>

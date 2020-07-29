@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
@@ -94,51 +94,51 @@ class Join extends Component {
             <SuccessMessage message="join.success" hasIcon icon="smile" />
           ) : (
             <Fragment>
-              <Form onSubmit={this.handleSubmit} className="join__form">
+              <Form onSubmit={ this.handleSubmit } className="join__form">
                 <H1>
                   <FormattedMessage id="join.headline" />
                 </H1>
                 <Input
-                  value={username}
+                  value={ username }
                   name="username"
                   id="username"
                   autoComplete="username"
-                  label={intl.formatMessage({ id: 'login.username' })}
-                  onChange={this.handleInputChange}
+                  label={ intl.formatMessage({ id: 'login.username' }) }
+                  onChange={ this.handleInputChange }
                   maxLength="50"
                   required
-                  disabled={pending}
+                  disabled={ pending }
                 />
                 <Input
-                  value={email}
+                  value={ email }
                   name="email"
                   id="email"
                   autoComplete="email"
-                  label={intl.formatMessage({ id: 'login.email' })}
-                  onChange={this.handleInputChange}
+                  label={ intl.formatMessage({ id: 'login.email' }) }
+                  onChange={ this.handleInputChange }
                   maxLength="150"
                   required
                   type="email"
-                  requirements={intl.formatMessage({ id: 'misc.validEmail' })}
-                  disabled={pending}
+                  requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
+                  disabled={ pending }
                 />
                 <Input
-                  value={password}
+                  value={ password }
                   name="password"
                   id="password"
                   autoComplete="new-password"
-                  label={intl.formatMessage({ id: 'login.password' })}
-                  onChange={this.handleInputChange}
+                  label={ intl.formatMessage({ id: 'login.password' }) }
+                  onChange={ this.handleInputChange }
                   maxLength="225"
                   required
-                  type={showPassword ? 'text' : 'password'}
+                  type={ showPassword ? 'text' : 'password' }
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                  requirements={intl.formatMessage({
+                  requirements={ intl.formatMessage({
                     id: 'misc.validPassword'
-                  })}
-                  disabled={pending}
+                  }) }
+                  disabled={ pending }
                 />
-                <input value={language} name="language" type="hidden" />
+                <input value={ language } name="language" type="hidden" />
                 <input
                   className="join__website"
                   name="website"
@@ -146,20 +146,20 @@ class Join extends Component {
                   tabIndex="-1"
                 />
                 <Checkbox
-                  label={intl.formatMessage({ id: 'login.showPassword' })}
+                  label={ intl.formatMessage({ id: 'login.showPassword' }) }
                   id="show-password"
-                  onChange={this.handleCheckboxChange}
+                  onChange={ this.handleCheckboxChange }
                 />
                 <ButtonLargeBlue
                   icon="join"
                   type="submit"
-                  pending={pending}
-                  disabled={pending}
+                  pending={ pending }
+                  disabled={ pending }
                   contentBefore
                 >
-                  <FormattedHTMLMessage id="join.joinNow" />
+                  <FormattedMessage id="join.joinNow" values={ { b: (msg) => <b>{msg}</b> } } />
                 </ButtonLargeBlue>
-                {error && <ErrorMessage message={error} hasIcon />}
+                {error && <ErrorMessage message={ error } hasIcon />}
                 <P className="join__login">
                   <FormattedMessage id="join.registered" />{' '}
                   <Link to="/login">
