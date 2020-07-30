@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
@@ -111,7 +111,7 @@ class Resend extends Component {
                   disabled={ pending }
                   contentBefore
                 >
-                  <FormattedHTMLMessage id="resend.button" />
+                  <FormattedMessage id="resend.button" values={ { b: (msg) => <b>{msg}</b> } } />
                 </ButtonLargeBlue>
                 { error && <ErrorMessage message={ error } hasIcon /> }
               </Form>
