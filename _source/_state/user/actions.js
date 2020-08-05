@@ -125,8 +125,11 @@ export const resend = ({ params, onSuccess, onError }) => (() => {
 
 export const activate = ({ token, onSuccess, onError }) => (() => {
   fetcher({
-    url: `/user/activate/${token}`,
+    url: '/activate',
     method: 'POST',
+    params: {
+      token
+    },
     onSuccess: (data) => {
       onSuccess && onSuccess(data);
     },
@@ -138,7 +141,35 @@ export const activate = ({ token, onSuccess, onError }) => (() => {
 
 export const forgot = ({ params, onSuccess, onError }) => (() => {
   fetcher({
-    url: '/user/diesdasforgotten',
+    url: '/password/recovery/confirmation',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
+export const confirm = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/password/recovery',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
+export const deny = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/password/recovery/deny',
     method: 'POST',
     params,
     onSuccess: (data) => {

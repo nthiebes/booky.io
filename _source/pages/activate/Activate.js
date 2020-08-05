@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Page from '../../templates/page';
-// import Link from '../../atoms/link';
 import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
 import Section from '../../molecules/section';
 import Icon from '../../atoms/icon';
 
-import './Activate.scss';
-
 class Activate extends Component {
   static propTypes = {
-    activate: PropTypes.func.isRequired
+    activate: PropTypes.func.isRequired,
+    match: PropTypes.object
   }
 
   state = {
@@ -51,7 +49,7 @@ class Activate extends Component {
 
     return (
       <Page>
-        <Section className="join">
+        <Section>
           { pending && (
             <Icon icon="spinner" className="categories__spinner" />
           ) }
@@ -59,7 +57,7 @@ class Activate extends Component {
             <ErrorMessage message={ error } hasIcon />
           ) }
           { success && (
-            <SuccessMessage message="join.success" hasIcon icon="smile" />
+            <SuccessMessage message="join.success.login" hasIcon icon="smile" />
           ) }
         </Section>
       </Page>

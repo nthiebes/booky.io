@@ -19,6 +19,7 @@ const Contact = lazy(() => import('./pages/contact'));
 const Forgot = lazy(() => import('./pages/forgot'));
 const Resend = lazy(() => import('./pages/resend'));
 const Activate = lazy(() => import('./pages/activate'));
+const Recovery = lazy(() => import('./pages/recovery'));
 const NotFound = lazy(() => import('./pages/not-found'));
 
 class Routes extends Component {
@@ -53,6 +54,7 @@ class Routes extends Component {
           <Route path="/forgot" component={ Forgot } />
           <Route path="/resend" component={ Resend } />
           <Route path="/activate/:token" component={ Activate } />
+          <Route path="/recovery/:action/:params" component={ Recovery } />
           <Route path="*" component={ NotFound } />
         </Switch>
       </Suspense>
