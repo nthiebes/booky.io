@@ -28,7 +28,7 @@ export default injectIntl(AccountImport);
 <Fragment>
   <ol className="account__import-steps">
     <li className="account__import-step">
-      <FormattedHTMLMessage id="account.importStep1" />
+      <FormattedMessage id="account.importStep1" values={ { b: (msg) => <b>{msg}</b> } } />
     </li>
     <li className="account__import-step">
       <FormattedMessage id="account.importStep2" />

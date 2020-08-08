@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
@@ -113,7 +113,7 @@ class Toolbar extends PureComponent {
                 useSkeleton={ categoriesPending }
                 isButton
               >
-                <FormattedHTMLMessage id="category.add" />
+                <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
               </Icon>
             ) : (
               <ButtonSmallPrimary
@@ -122,7 +122,7 @@ class Toolbar extends PureComponent {
                 onClick={ this.onAddClick }
                 useSkeleton={ categoriesPending }
               >
-                <FormattedHTMLMessage id="category.add" />
+                <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
               </ButtonSmallPrimary>
             ) }
           </Fragment>
