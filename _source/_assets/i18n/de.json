@@ -239,5 +239,8 @@
     "join.success.login": "Glückwunsch, dein booky Account wurde erfolgreich aktiviert!",
     "error.logic.user.alreadyActive": "Dein Account ist bereits aktiv! Du kannst dich hier anmelden: {login}",
     "error.logic.user.notActive": "Dein Account ist noch nicht aktiv! Überprüfe dein E-Mail Postfach nach unserer Aktivierungsmail oder fordere eine neue an: {resend}",
-    "error.badRequest.username.notAlphanumeric": ""
+    "error.badRequest.username.notAlphanumeric": "",
+    "error.logic.user.unrequestedPasswordRecovery": "Es gibt keine offene Passwort vergessen Anfrage für deinen Account. Du kannst hier eine neue anfordern: {forgot}",
+    "recovery.deny": "Du hast das Zurücksetzen deines Passwortes abgelehnt.",
+    "recovery.confirm": "Dein Passwort wurde erfolgreich zurückgesetzt. Wir senden dir gleich eine E-Mail mit deinem neuen Passwort."
 }
