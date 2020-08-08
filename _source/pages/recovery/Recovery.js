@@ -84,7 +84,7 @@ class Recovery extends Component {
           { error && (
             <ErrorMessage message={ error } hasIcon />
           ) }
-          { success && action === 'deny'(
+          { success && action === 'deny' && (
             <ErrorMessage message="recovery.deny" hasIcon />
           ) }
           { success && action === 'confirm' && (

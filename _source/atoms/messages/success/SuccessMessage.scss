@@ -9,9 +9,26 @@
 }
 
 .success__icon {
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  transform: translateY(-1rem);
+  transform: scale(0.7);
   opacity: 0;
+  animation: 0.7s ease-out forwards popIn;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  30% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .success__icon--animate {
@@ -20,8 +37,8 @@
 }
 
 .success__text {
-  transition: opacity 0.7s ease-out 0.2s, transform 0.7s ease-out 0.2s;
-  transform: translateY(-1rem);
+  transition: opacity 0.4s ease-out 0.3s, transform 0.4s ease-out 0.3s;
+  transform: translateY(-0.5rem);
   opacity: 0;
   text-align: center;
 }
