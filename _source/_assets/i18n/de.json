@@ -236,5 +236,6 @@
     "forgot.headline": "Passwort vergessen",
     "forgot.button": "Passwort <b>anfordern</b>",
     "forgot.success": "In Kürze erhält du eine E-Mail, um dein Passwort zurück zu setzen.",
-    "join.success.login": "Glückwunsch, dein booky Account wurde erfolgreich aktiviert!"
+    "join.success.login": "Glückwunsch, dein booky Account wurde erfolgreich aktiviert!",
+    "error.logic.user.alreadyActive": "Dein Account ist bereits aktiv! Du kannst dich hier anmelden: {login}"
 }
