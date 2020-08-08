@@ -94,7 +94,7 @@
     "join.headline": "Jetzt booky beitreten",
     "join.registered": "Schon dabei?",
     "join.login": "Jetzt anmelden",
-    "join.joinNow": "<b>Jetzt</b> beitreten",
+    "join.joinNow": "Beitreten",
     "home.display": "Speichere deine wichtigen Lesezeichen online.",
     "home.display2": "Einfach. Anpassbar. Privat. Schnell.",
     "home.performant": "Schnell",
@@ -221,7 +221,7 @@
     "join.success": "Danke, dass du booky beigetreten bist! In Kürze erhält du eine E-Mail, um dein Konto zu aktivieren. Danach kannst du dich anmelden.",
     "category.sort": "Kategorien anordnen",
     "resend.headline": "Neue Aktivierungsmail",
-    "resend.button": "E-Mail <b>anfordern<b>",
+    "resend.button": "E-Mail <b>anfordern</b>",
     "resend.success": "In Kürze erhält du eine E-Mail, um dein Konto zu aktivieren. Danach kannst du dich anmelden.",
     "help.registration.question1": "Wie kann ich eine neue Aktivierungsmail erhalten?",
     "help.registration.answer1": "Du kannst deine Aktivierungsmail hier neu anfordern: ",
@@ -235,5 +235,6 @@
     "error.logic.user.alreadyRegistered.username": "Dieser Benutzername ist bereits vergeben.",
     "forgot.headline": "Passwort vergessen",
     "forgot.button": "Passwort <b>anfordern</b>",
-    "forgot.success": "In Kürze erhält du eine E-Mail, um dein Passwort zurück zu setzen."
+    "forgot.success": "In Kürze erhält du eine E-Mail, um dein Passwort zurück zu setzen.",
+    "join.success.login": "Glückwunsch, dein booky Account wurde erfolgreich aktiviert!"
 }
