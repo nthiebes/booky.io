@@ -237,5 +237,7 @@
     "forgot.button": "Passwort <b>anfordern</b>",
     "forgot.success": "In Kürze erhält du eine E-Mail, um dein Passwort zurück zu setzen.",
     "join.success.login": "Glückwunsch, dein booky Account wurde erfolgreich aktiviert!",
-    "error.logic.user.alreadyActive": "Dein Account ist bereits aktiv! Du kannst dich hier anmelden: {login}"
+    "error.logic.user.alreadyActive": "Dein Account ist bereits aktiv! Du kannst dich hier anmelden: {login}",
+    "error.logic.user.notActive": "Dein Account ist noch nicht aktiv! Überprüfe dein E-Mail Postfach nach unserer Aktivierungsmail oder fordere eine neue an: {resend}",
+    "error.badRequest.username.notAlphanumeric": ""
 }
