@@ -8,11 +8,12 @@ import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
-import { ErrorMessage } from '../../atoms/messages';
+import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
+import Icon from '../../atoms/icon';
 
 import './Login.scss';
 
@@ -20,7 +21,9 @@ class Login extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    login: PropTypes.func.isRequired
+    match: PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+    activate: PropTypes.func.isRequired
   }
 
   state = {
@@ -28,7 +31,34 @@ class Login extends Component {
     password: '',
     pending: false,
     showPassword: false,
-    error: null
+    error: null,
+    activationPending: true,
+    activationError: null,
+    activationSuccess: false
+  }
+
+  componentDidMount() {
+    const { activate, match } = this.props;
+    const { token } = match.params;
+
+    if (token) {
+      activate({
+        token,
+        onSuccess: () => {
+          window.scrollTo(0, 0);
+          this.setState({
+            activationPending: false,
+            activationSuccess: true
+          });
+        },
+        onError: (activationError) => {
+          this.setState({
+            activationPending: false,
+            activationError
+          });
+        }
+      });
+    }
   }
 
   handleInputChange = (value, name) => {
@@ -68,65 +98,77 @@ class Login extends Component {
   }
 
   render() {
-    const { intl } = this.props;
-    const { username, password, pending, showPassword, error } = this.state;
+    const { intl, match } = this.props;
+    const { token } = match.params;
+    const { username, password, pending, showPassword, error, activationPending, activationSuccess, activationError } = this.state;
 
     return (
       <Page>
         <Section compact>
-          <Form onSubmit={ this.handleSubmit }>
-            <H1>
-              <FormattedMessage id="login.headline" />
-            </H1>
-            <Input
-              value={ username }
-              name="username"
-              id="username"
-              autoComplete="username"
-              label={ intl.formatMessage({ id: 'login.usernameEmail' }) }
-              onChange={ this.handleInputChange }
-              maxLength="50"
-              required
-              disabled={ pending }
-            />
-            <Input
-              value={ password }
-              name="password"
-              id="password"
-              autoComplete="current-password"
-              label={ intl.formatMessage({ id: 'login.password' }) }
-              onChange={ this.handleInputChange }
-              maxLength="225"
-              required
-              type={ showPassword ? 'text' : 'password' }
-              disabled={ pending }
-            />
-            <Checkbox
-              label={ intl.formatMessage({ id: 'login.showPassword'}) }
-              id="show-password"
-              onChange={ this.handleCheckboxChange }
-            />
-            <ButtonLargeBlue
-              icon="account"
-              type="submit"
-              pending={ pending }
-              disabled={ pending }
-              contentBefore
-            >
-              <FormattedMessage id="header.login" values={ { b: (msg) => <b>{msg}</b> } } />
-            </ButtonLargeBlue>
-            { error && <ErrorMessage message={ error } hasIcon /> }
-            <Link className="login__forgot" to="/forgot">
-              <FormattedMessage id="login.forgot" />
-            </Link>
-            <P className="login__join">
-              <FormattedMessage id="login.new" />
-              { ' ' }
-              <Link to="/join">
-                <FormattedMessage id="login.join" />
+          { token && activationPending && (
+            <Icon icon="spinner" className="categories__spinner" />
+          ) }
+          { activationSuccess && (
+            <SuccessMessage message="join.success.login" hasIcon />
+          ) }
+          { activationError && (
+            <ErrorMessage message={ activationError } hasIcon />
+          ) }
+          { (!activationPending && activationSuccess) || !token && (
+            <Form onSubmit={ this.handleSubmit }>
+              <H1>
+                <FormattedMessage id="login.headline" />
+              </H1>
+              <Input
+                value={ username }
+                name="username"
+                id="username"
+                autoComplete="username"
+                label={ intl.formatMessage({ id: 'login.usernameEmail' }) }
+                onChange={ this.handleInputChange }
+                maxLength="50"
+                required
+                disabled={ pending }
+              />
+              <Input
+                value={ password }
+                name="password"
+                id="password"
+                autoComplete="current-password"
+                label={ intl.formatMessage({ id: 'login.password' }) }
+                onChange={ this.handleInputChange }
+                maxLength="225"
+                required
+                type={ showPassword ? 'text' : 'password' }
+                disabled={ pending }
+              />
+              <Checkbox
+                label={ intl.formatMessage({ id: 'login.showPassword'}) }
+                id="show-password"
+                onChange={ this.handleCheckboxChange }
+              />
+              <ButtonLargeBlue
+                icon="account"
+                type="submit"
+                pending={ pending }
+                disabled={ pending }
+                contentBefore
+              >
+                <FormattedMessage id="header.login" values={ { b: (msg) => <b>{msg}</b> } } />
+              </ButtonLargeBlue>
+              { error && <ErrorMessage message={ error } hasIcon /> }
+              <Link className="login__forgot" to="/forgot">
+                <FormattedMessage id="login.forgot" />
               </Link>
-            </P>
-          </Form>
+              <P className="login__join">
+                <FormattedMessage id="login.new" />
+                { ' ' }
+                <Link to="/join">
+                  <FormattedMessage id="login.join" />
+                </Link>
+              </P>
+            </Form>
+          ) }
         </Section>
       </Page>
     );

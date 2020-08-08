@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 
 import Component from './Login';
-import { login } from '../../_state/user/actions';
+import { login, activate } from '../../_state/user/actions';
 
 export const mapDispatchToProps = {
-  login
+  login,
+  activate
 };
 
 const LoginContainer = connect(
