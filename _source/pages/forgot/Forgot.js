@@ -42,8 +42,6 @@ class Forgot extends Component {
     forgot({
       params,
       onSuccess: () => {
-        // console.log('success', data);
-
         window.scrollTo(0, 0);
         this.setState({
           pending: false,
@@ -51,9 +49,6 @@ class Forgot extends Component {
         });
       },
       onError: (error) => {
-        // console.log('error', error);
-
-        window.scrollTo(0, 0);
         this.setState({
           pending: false,
           error

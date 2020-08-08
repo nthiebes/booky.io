@@ -29,16 +29,14 @@ class Recovery extends Component {
       confirm({
         params: decodedParams,
         onSuccess: () => {
-          // console.log('success', data);
-  
+          window.scrollTo(0, 0);
           this.setState({
             pending: false,
             success: true
           });
         },
         onError: (error) => {
-          // console.log('error', error);
-  
+          window.scrollTo(0, 0);
           this.setState({
             pending: false,
             error
@@ -51,16 +49,14 @@ class Recovery extends Component {
       deny({
         params: decodedParams,
         onSuccess: () => {
-          // console.log('success', data);
-  
+          window.scrollTo(0, 0);
           this.setState({
             pending: false,
             success: true
           });
         },
         onError: (error) => {
-          // console.log('error', error);
-  
+          window.scrollTo(0, 0);
           this.setState({
             pending: false,
             error
@@ -77,7 +73,7 @@ class Recovery extends Component {
 
     return (
       <Page>
-        <Section>
+        <Section compact>
           { pending && (
             <Icon icon="spinner" className="categories__spinner" />
           ) }
