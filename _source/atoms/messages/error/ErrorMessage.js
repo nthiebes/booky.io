@@ -47,7 +47,11 @@ export default class ErrorMessage extends Component {
         <FormattedMessage
           tagName="span"
           id={ message }
-          values={ { mail: <Link href="mailto:hello@booky.io" color="dark">{ <FormattedMessage id="error.email" /> }</Link> } }
+          values={ {
+            mail: <Link href="mailto:hello@booky.io" color="dark">{ <FormattedMessage id="error.email" /> }</Link>,
+            login: <Link to="/login" color="dark">{ 'booky.io/login' }</Link>,
+            resend: <Link to="/resend" color="dark">{ 'booky.io/resend' }</Link>
+          } }
         />
       </P>
     );

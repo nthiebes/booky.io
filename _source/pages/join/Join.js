@@ -157,7 +157,7 @@ class Join extends Component {
                   disabled={ pending }
                   contentBefore
                 >
-                  <FormattedMessage id="join.joinNow" values={ { b: (msg) => <b>{msg}</b> } } />
+                  <FormattedMessage id="join.joinNow" />
                 </ButtonLargeBlue>
                 {error && <ErrorMessage message={ error } hasIcon />}
                 <P className="join__login">

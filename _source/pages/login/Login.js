@@ -115,7 +115,7 @@ class Login extends Component {
           { activationError && (
             <ErrorMessage message={ activationError } hasIcon />
           ) }
-          { (!activationPending && activationSuccess) || !token && (
+          { ((!activationPending && activationSuccess) || !token) && (
             <Form onSubmit={ this.handleSubmit }>
               <H1>
                 <FormattedMessage id="login.headline" />
