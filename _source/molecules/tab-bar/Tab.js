@@ -8,7 +8,13 @@ export default class Tab extends Component {
     active: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
     darkMode: PropTypes.bool,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    provided: PropTypes.object,
+    useTabindex: PropTypes.bool
+  }
+
+  static defaultProps = {
+    provided: {}
   }
 
   handleClick = () => {
@@ -24,7 +30,7 @@ export default class Tab extends Component {
   }
 
   render() {
-    const { children, active, darkMode } = this.props;
+    const { children, active, darkMode, provided, useTabindex } = this.props;
 
     return (
       // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
@@ -33,7 +39,11 @@ export default class Tab extends Component {
         onClick={ this.handleClick }
         onKeyDown={ this.handleKeyDown }
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex="0"
+        tabIndex={ useTabindex ? '-1' : '0' }
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+        role="button"
+        { ...provided.draggableProps }
+        ref={ provided.innerRef }
       >
         { children }
       </li>

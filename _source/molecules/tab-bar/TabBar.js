@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { injectIntl } from 'react-intl';
+import { Droppable } from 'react-beautiful-dnd';
 
 class TabBar extends Component {
   static propTypes = {
     children: PropTypes.array.isRequired,
     className: PropTypes.string,
     intl: PropTypes.object.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    darkMode: PropTypes.bool
   }
 
   state = {
@@ -52,9 +54,19 @@ class TabBar extends Component {
           className
         ) }
       >
-        <ul className="tab-bar__scroll-container" onScroll={ this.handleScroll }>
-          { children }
-        </ul>
+        <Droppable droppableId="dashboard-tabs" type="dashboard-tabs" direction="horizontal">
+          { (provided) => (
+            <ul
+              className="tab-bar__scroll-container"
+              onScroll={ this.handleScroll }
+              ref={ provided.innerRef }
+              { ...provided.droppableProps }
+            >
+              { children }
+              { provided.placeholder }
+            </ul>
+          ) }
+        </Droppable>
       </nav>
     );
   }

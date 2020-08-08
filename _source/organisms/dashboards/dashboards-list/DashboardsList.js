@@ -99,7 +99,7 @@ class DashboardsList extends PureComponent {
             useSkeleton={ noDashboards }
           />
         </div>
-        <Droppable droppableId={ `dashboards-${droppableIdSuffix}` } type={ `dashboard-${droppableIdSuffix}` }>
+        <Droppable droppableId={ `dashboard-${droppableIdSuffix}` } type={ `dashboard-${droppableIdSuffix}` }>
           { (providedDroppable) => (
             <ul
               className={ classNames(
@@ -140,6 +140,8 @@ class DashboardsList extends PureComponent {
                         { ...provided.draggableProps }
                         ref={ provided.innerRef }
                         style={ style }
+                        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                        role="button"
                       >
                         <span className={ classNames('dashboards__label', darkMode && 'dashboards__label--dark-mode') }>
                           { dashboard.name }

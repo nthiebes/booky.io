@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd';
 
 import Icon from '../../../atoms/icon';
 import Skeleton from '../../../atoms/skeleton';
@@ -17,7 +17,6 @@ class DashboardsTabs extends PureComponent {
     intl: PropTypes.object.isRequired,
     activeId: PropTypes.number,
     darkMode: PropTypes.bool.isRequired
-    // droppableIdSuffix: PropTypes.string.isRequired
   }
   
   static defaultProps = {
@@ -89,41 +88,53 @@ class DashboardsTabs extends PureComponent {
               <Skeleton />
             </>
           ) }
-          { dashboards.map((dashboard) => (
-            <Tab
-              key={ dashboard.id }
-              tabId={ dashboard.id }
-              active={ dashboard.id === activeId }
-              onClick={ this.handleDashboardClick }
+          { dashboards.map((dashboard, index) => (
+            <Draggable
+              index={ index }
+              draggableId={ `dashboard-tabs-${dashboard.id}` }
+              key={ `dashboard-tabs-${dashboard.id}` }
+              disableInteractiveElementBlocking
+              isDragDisabled={ !editMode }
             >
-              <span>{ dashboard.name }</span>
-              { editMode && (
-                <Fragment>
-                  <Icon
-                    icon="edit"
-                    label={ intl.formatMessage({ id: 'dashboard.edit' }) }
-                    stopPropagation
-                    onClick={ () => this.onIconClick('EditDashboard', dashboard) }
-                    isButton
-                  />
-                  <Icon
-                    className="dashboards__icon--delete"
-                    icon="delete"
-                    label={ intl.formatMessage({ id: 'dashboard.delete' }) }
-                    stopPropagation
-                    onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
-                    isButton
-                  />
-                  <Icon
-                    className="dashboards__icon--drag"
-                    icon="drag"
-                    label={ intl.formatMessage({ id: 'dashboard.drag' }) }
-                    // dragHandleProps={ provided.dragHandleProps }
-                    isButton
-                  />
-                </Fragment>
+              { (provided) => (
+                <Tab
+                  key={ dashboard.id }
+                  tabId={ dashboard.id }
+                  active={ dashboard.id === activeId }
+                  onClick={ this.handleDashboardClick }
+                  provided={ provided }
+                  useTabindex={ !editMode }
+                >
+                  <span>{ dashboard.name }</span>
+                  { editMode && (
+                    <Fragment>
+                      <Icon
+                        icon="edit"
+                        label={ intl.formatMessage({ id: 'dashboard.edit' }) }
+                        stopPropagation
+                        onClick={ () => this.onIconClick('EditDashboard', dashboard) }
+                        isButton
+                      />
+                      <Icon
+                        className="dashboards__icon--delete"
+                        icon="delete"
+                        label={ intl.formatMessage({ id: 'dashboard.delete' }) }
+                        stopPropagation
+                        onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
+                        isButton
+                      />
+                      <Icon
+                        className="dashboards__icon--drag"
+                        icon="drag"
+                        label={ intl.formatMessage({ id: 'dashboard.drag' }) }
+                        dragHandleProps={ provided.dragHandleProps }
+                        isButton
+                      />
+                    </Fragment>
+                  ) }
+                </Tab>
               ) }
-            </Tab>
+            </Draggable>
           )) }
         </TabBar>
         <Icon
