@@ -94,7 +94,7 @@
     "join.headline": "Join booky now",
     "join.registered": "Already joined?",
     "join.login": "Sign in now",
-    "join.joinNow": "<b>Join</b> now",
+    "join.joinNow": "Join",
     "home.display": "Store your favorite bookmarks online.",
     "home.display2": "Simple. Customizable. Private. Fast.",
     "home.performant": "Fast",
@@ -235,5 +235,6 @@
     "error.logic.user.alreadyRegistered.username": "This username is already taken.",
     "forgot.headline": "Password forgotten",
     "forgot.button": "<b>Request</b> password",
-    "forgot.success": "You will soon receive an email to reset your password."
+    "forgot.success": "You will soon receive an email to reset your password.",
+    "join.success.login": "Congratulations, your booky account has been successfully activated!"
 }
