@@ -233,11 +233,14 @@
     "error.notFound.user": "Unfortunately, we could not find an account with your username and email address.",
     "error.logic.user.alreadyRegistered.email": "This email address is already taken.",
     "error.logic.user.alreadyRegistered.username": "This username is already taken.",
-    "forgot.headline": "Password forgotten",
-    "forgot.button": "<b>Request</b> password",
+    "forgot.headline": "Forgot password",
+    "forgot.button": "<b>Reset</b> password",
     "forgot.success": "You will soon receive an email to reset your password.",
     "join.success.login": "Congratulations, your booky account has been successfully activated!",
     "error.logic.user.alreadyActive": "Your account is already active! You can log in here: {login}",
     "error.logic.user.notActive": "Your account is not yet active! Check your email inbox for our activation email or request a new one: {resend}",
-    "error.badRequest.username.notAlphanumeric": ""
+    "error.badRequest.username.notAlphanumeric": "",
+    "error.logic.user.unrequestedPasswordRecovery": "There is no open lost password request for your account. You can request a new one here: {forgot}",
+    "recovery.deny": "You have declined the reset of your password.",
+    "recovery.confirm": "Your password has been successfully reset. We'll send you an email with your new password right away."
 }
