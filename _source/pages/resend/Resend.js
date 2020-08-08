@@ -42,8 +42,6 @@ class Resend extends Component {
     resend({
       params,
       onSuccess: () => {
-        // console.log('success', data);
-
         window.scrollTo(0, 0);
         this.setState({
           pending: false,
@@ -51,12 +49,7 @@ class Resend extends Component {
         });
       },
       onError: (error) => {
-        // console.log('error', error);
-
-        // this.setState({
-        //   pending: false,
-        //   success: true
-        // });
+        window.scrollTo(0, 0);
         this.setState({
           pending: false,
           error

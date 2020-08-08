@@ -52,6 +52,7 @@ class Login extends Component {
           });
         },
         onError: (activationError) => {
+          window.scrollTo(0, 0);
           this.setState({
             activationPending: false,
             activationError
