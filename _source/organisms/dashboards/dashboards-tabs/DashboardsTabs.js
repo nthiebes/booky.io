@@ -83,6 +83,12 @@ class DashboardsTabs extends PureComponent {
           'dashboards-tabs',
           darkMode && 'dashboards-tabs--darkMode'
         ) }>
+          { noDashboards && (
+            <>
+              <Skeleton className="dashboards-tabs__skeleton" />
+              <Skeleton />
+            </>
+          ) }
           { dashboards.map((dashboard) => (
             <Tab
               key={ dashboard.id }
