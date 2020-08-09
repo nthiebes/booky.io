@@ -36,20 +36,15 @@ class Sidebar extends PureComponent {
     logoutPending: false
   }
 
-  onMenuClick(e) {
-    e.stopPropagation();
-  }
-
   onCustomizeClick = () => {
-    this.props.openModal('Customize');
-  }
+    const { openModal, closeSidebar } = this.props;
 
-  addDashboard = () => {
-    this.props.openModal('AddDashboard');
+    openModal('Customize');
+    closeSidebar();
   }
 
   handleLogout = () => {
-    const { history, logout } = this.props;
+    const { history, logout, closeSidebar } = this.props;
 
     this.setState({
       logoutPending: true
@@ -57,6 +52,7 @@ class Sidebar extends PureComponent {
 
     logout({
       onSuccess: () => {
+        closeSidebar();
         history.push('/');
       }
     });
