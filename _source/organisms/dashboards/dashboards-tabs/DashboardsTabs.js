@@ -51,10 +51,6 @@ class DashboardsTabs extends PureComponent {
     }
   }
 
-  addDashboard = () => {
-    this.props.openModal('AddDashboard');
-  }
-
   handleDashboardClick = (dashboardId) => {
     const { changeDashboard } = this.props;
     const { editMode } = this.state;
