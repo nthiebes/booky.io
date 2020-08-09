@@ -1,7 +1,7 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
@@ -23,7 +23,9 @@ class Toolbar extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     categoriesPending: PropTypes.bool,
     hasCategories: PropTypes.bool,
-    openModal: PropTypes.func.isRequired
+    openModal: PropTypes.func.isRequired,
+    hasDashboards: PropTypes.bool,
+    intl: PropTypes.object.isRequired
   }
 
   state = {
@@ -80,8 +82,12 @@ class Toolbar extends PureComponent {
     return '';
   }
 
-  onAddClick = () => {
+  onAddCategoryClick = () => {
     this.props.openModal('AddCategory');
+  }
+
+  onAddDashboardClick = () => {
+    this.props.openModal('AddDashboard');
   }
 
   render() {
@@ -91,7 +97,9 @@ class Toolbar extends PureComponent {
       dashboardsStyle,
       darkMode,
       categoriesPending,
-      hasCategories
+      hasCategories,
+      hasDashboards,
+      intl
     } = this.props;
 
     return (
@@ -102,30 +110,49 @@ class Toolbar extends PureComponent {
           </H1>
         ) }
         { dashboardsStyle === 'tabs' && (
-          <DashboardsTabs />
+          <>
+            <DashboardsTabs />
+            <Icon
+              icon="add-collection"
+              label={ intl.formatMessage({ id: 'modal.addDashboard' }) }
+              onClick={ this.onAddDashboardClick }
+              useSkeleton={ !hasDashboards }
+              isButton
+            />
+          </>
         ) }
         { hasCategories && (
-          <Fragment>
+          <>
             { dashboardsStyle === 'tabs' ? (
-              <Icon
-                icon="add-category"
-                onClick={ this.onAddClick }
-                useSkeleton={ categoriesPending }
-                isButton
-              >
-                <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
-              </Icon>
+              <>
+                <Icon
+                  icon="add-category"
+                  className="booky--hide-desktop"
+                  label={ intl.formatMessage({ id: 'modal.addCategory' }) }
+                  onClick={ this.onAddCategoryClick }
+                  useSkeleton={ categoriesPending }
+                  isButton
+                />
+                <ButtonSmallPrimary
+                  icon="add-category"
+                  className="toolbar__button booky--hide-mobile-tablet"
+                  onClick={ this.onAddCategoryClick }
+                  useSkeleton={ categoriesPending }
+                >
+                  <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
+                </ButtonSmallPrimary>
+              </>
             ) : (
               <ButtonSmallPrimary
                 icon="add-category"
                 className="toolbar__add-category"
-                onClick={ this.onAddClick }
+                onClick={ this.onAddCategoryClick }
                 useSkeleton={ categoriesPending }
               >
                 <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
               </ButtonSmallPrimary>
             ) }
-          </Fragment>
+          </>
         ) }
         <SearchField className="booky--hide-mobile-tablet" id="search-desktop" />
       </section>
@@ -133,4 +160,4 @@ class Toolbar extends PureComponent {
   }
 }
 
-export default Toolbar;
+export default injectIntl(Toolbar);

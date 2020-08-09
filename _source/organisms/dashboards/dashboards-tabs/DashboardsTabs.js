@@ -1,12 +1,11 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { Draggable } from 'react-beautiful-dnd';
 
 import Icon from '../../../atoms/icon';
 import Skeleton from '../../../atoms/skeleton';
-import { ButtonSmallPrimary } from '../../../atoms/button';
 import { TabBar, Tab } from '../../../molecules/tab-bar';
 
 class DashboardsTabs extends PureComponent {
@@ -145,22 +144,6 @@ class DashboardsTabs extends PureComponent {
           isButton
           useSkeleton={ noDashboards }
         />
-        <Icon
-          icon="add-collection"
-          className="booky--hide-desktop"
-          label={ intl.formatMessage({ id: 'modal.addDashboard' }) }
-          onClick={ this.addDashboard }
-          useSkeleton={ noDashboards }
-          isButton
-        />
-        <ButtonSmallPrimary
-          icon="add-collection"
-          className="dashboards-tabs__button booky--hide-mobile-tablet"
-          onClick={ this.addDashboard }
-          useSkeleton={ noDashboards }
-        >
-          <FormattedMessage id="dashboard.add" values={ { b: (msg) => <b>{msg}</b> } } />
-        </ButtonSmallPrimary>
       </Fragment>
     );
   }

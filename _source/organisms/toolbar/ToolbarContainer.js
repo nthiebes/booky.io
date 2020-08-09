@@ -11,7 +11,8 @@ export const mapStateToProps = (state) => ({
   dashboardsStyle: state.user.settings.dashboardsStyle,
   darkMode: state.user.settings.darkMode,
   categoriesPending: state.dashboards.pending,
-  hasCategories: state.categories.length > 0
+  hasCategories: state.categories.length > 0,
+  hasDashboards: (state.dashboards.items || []).length > 0
 });
 
 export const mapDispatchToProps = {

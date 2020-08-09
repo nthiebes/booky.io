@@ -68,3 +68,7 @@
 .toolbar__add-category {
   flex-shrink: 0;
 }
+
+.toolbar__button {
+  margin-left: calc(1rem - 6px);
+}
