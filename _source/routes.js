@@ -18,7 +18,6 @@ const Legal = lazy(() => import('./pages/legal'));
 const Contact = lazy(() => import('./pages/contact'));
 const Forgot = lazy(() => import('./pages/forgot'));
 const Resend = lazy(() => import('./pages/resend'));
-const Recovery = lazy(() => import('./pages/recovery'));
 const NotFound = lazy(() => import('./pages/not-found'));
 
 class Routes extends Component {
@@ -53,7 +52,7 @@ class Routes extends Component {
           <Route path="/forgot" component={ Forgot } />
           <Route path="/resend" component={ Resend } />
           <Route path="/activate/:token" component={ Login } />
-          <Route path="/recovery/:action/:params" component={ Recovery } />
+          <Route path="/recovery/:action/:params" component={ Login } />
           <Route path="*" component={ NotFound } />
         </Switch>
       </Suspense>

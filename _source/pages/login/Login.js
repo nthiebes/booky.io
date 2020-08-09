@@ -15,15 +15,15 @@ import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 import Icon from '../../atoms/icon';
 
-import './Login.scss';
-
 class Login extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired,
-    activate: PropTypes.func.isRequired
+    activate: PropTypes.func.isRequired,
+    confirm: PropTypes.func.isRequired,
+    deny: PropTypes.func.isRequired
   }
 
   state = {
@@ -32,30 +32,79 @@ class Login extends Component {
     pending: false,
     showPassword: false,
     error: null,
-    activationPending: true,
-    activationError: null,
-    activationSuccess: false
+    actionPending: true,
+    actionError: null,
+    actionSuccess: false
   }
 
+  // eslint-disable-next-line max-statements
   componentDidMount() {
-    const { activate, match } = this.props;
-    const { token } = match.params;
+    const { activate, confirm, deny, match } = this.props;
+    const { token, action, params } = match.params;
+    let decodedParams;
 
+    if (action) {
+      decodedParams = JSON.parse(atob(params));
+    }
+
+    // Account activation
     if (token) {
       activate({
         token,
         onSuccess: () => {
           window.scrollTo(0, 0);
           this.setState({
-            activationPending: false,
-            activationSuccess: true
+            actionPending: false,
+            actionSuccess: true
           });
         },
-        onError: (activationError) => {
+        onError: (actionError) => {
           window.scrollTo(0, 0);
           this.setState({
-            activationPending: false,
-            activationError
+            actionPending: false,
+            actionError
+          });
+        }
+      });
+    }
+
+    // Confirm password reset
+    if (action === 'confirm') {
+      confirm({
+        params: decodedParams,
+        onSuccess: () => {
+          window.scrollTo(0, 0);
+          this.setState({
+            actionPending: false,
+            actionSuccess: true
+          });
+        },
+        onError: (actionError) => {
+          window.scrollTo(0, 0);
+          this.setState({
+            actionPending: false,
+            actionError
+          });
+        }
+      });
+    }
+
+    // Deny password reset
+    if (action === 'deny') {
+      deny({
+        params: decodedParams,
+        onSuccess: () => {
+          window.scrollTo(0, 0);
+          this.setState({
+            actionPending: false,
+            actionSuccess: true
+          });
+        },
+        onError: (actionError) => {
+          window.scrollTo(0, 0);
+          this.setState({
+            actionPending: false,
+            actionError
           });
         }
       });
@@ -100,22 +149,37 @@ class Login extends Component {
 
   render() {
     const { intl, match } = this.props;
-    const { token } = match.params;
-    const { username, password, pending, showPassword, error, activationPending, activationSuccess, activationError } = this.state;
+    const { token, action } = match.params;
+    const {
+      username,
+      password,
+      pending,
+      showPassword,
+      error,
+      actionPending,
+      actionSuccess,
+      actionError
+    } = this.state;
 
     return (
       <Page>
         <Section compact>
-          { token && activationPending && (
+          { (token || action) && actionPending && (
             <Icon icon="spinner" className="categories__spinner" />
           ) }
-          { activationSuccess && (
+          { token && actionSuccess && (
             <SuccessMessage message="join.success.login" hasIcon />
           ) }
-          { activationError && (
-            <ErrorMessage message={ activationError } hasIcon />
+          { action === 'confirm' && actionSuccess && (
+            <SuccessMessage message="recovery.confirm" hasIcon icon="smile" />
           ) }
-          { ((!activationPending && activationSuccess) || !token) && (
+          { action === 'deny' && actionSuccess && (
+            <ErrorMessage message="recovery.deny" hasIcon />
+          ) }
+          { actionError && (
+            <ErrorMessage message={ actionError } hasIcon />
+          ) }
+          { ((!actionPending && actionSuccess) || (!token && !action)) && (
             <Form onSubmit={ this.handleSubmit }>
               <H1>
                 <FormattedMessage id="login.headline" />
