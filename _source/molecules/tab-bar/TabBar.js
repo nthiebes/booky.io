@@ -10,7 +10,8 @@ class TabBar extends Component {
     className: PropTypes.string,
     intl: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
-    darkMode: PropTypes.bool
+    darkMode: PropTypes.bool,
+    disabled: PropTypes.bool
   }
 
   state = {
@@ -40,7 +41,7 @@ class TabBar extends Component {
   }
 
   render() {
-    const { className, title, intl, children, darkMode } = this.props;
+    const { className, title, intl, children, darkMode, disabled } = this.props;
     const { scrolledToStart, scrolledToEnd } = this.state;
 
     return (
@@ -57,7 +58,7 @@ class TabBar extends Component {
         <Droppable droppableId="dashboard-tabs" type="dashboard-tabs" direction="horizontal">
           { (provided) => (
             <ul
-              className="tab-bar__scroll-container"
+              className={ classNames('tab-bar__scroll-container', disabled && 'tab-bar__scroll-container--disabled') }
               onScroll={ this.handleScroll }
               ref={ provided.innerRef }
               { ...provided.droppableProps }

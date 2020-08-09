@@ -78,7 +78,7 @@ class DashboardsTabs extends PureComponent {
 
     return (
       <Fragment>
-        <TabBar title="dashboard.title" className={ classNames(
+        <TabBar title="dashboard.title" disabled={ editMode } className={ classNames(
           'dashboards-tabs',
           darkMode && 'dashboards-tabs--darkMode'
         ) }>
@@ -103,7 +103,7 @@ class DashboardsTabs extends PureComponent {
                   active={ dashboard.id === activeId }
                   onClick={ this.handleDashboardClick }
                   provided={ provided }
-                  useTabindex={ !editMode }
+                  disabled={ editMode }
                 >
                   <span>{ dashboard.name }</span>
                   { editMode && (
