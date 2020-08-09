@@ -80,7 +80,8 @@ class DashboardsTabs extends PureComponent {
       <Fragment>
         <TabBar title="dashboard.title" disabled={ editMode } className={ classNames(
           'dashboards-tabs',
-          darkMode && 'dashboards-tabs--darkMode'
+          darkMode && 'dashboards-tabs--darkMode',
+          editMode && 'dashboards-tabs--editMode'
         ) }>
           { noDashboards && (
             <>
@@ -116,7 +117,7 @@ class DashboardsTabs extends PureComponent {
                         isButton
                       />
                       <Icon
-                        className="dashboards__icon--delete"
+                        className="dashboards-tabs__icon--delete"
                         icon="delete"
                         label={ intl.formatMessage({ id: 'dashboard.delete' }) }
                         stopPropagation
@@ -124,7 +125,7 @@ class DashboardsTabs extends PureComponent {
                         isButton
                       />
                       <Icon
-                        className="dashboards__icon--drag"
+                        className="dashboards-tabs__icon--drag"
                         icon="drag"
                         label={ intl.formatMessage({ id: 'dashboard.drag' }) }
                         dragHandleProps={ provided.dragHandleProps }
