@@ -12,11 +12,9 @@
 
   .tab-bar__scroll-container {
     padding-left: 3vw;
-    scroll-padding: 0 0 0 3vw;
 
     @include desktop {
       padding-left: 36px;
-      scroll-padding: 0 0 0 36px;
     }
   }
 }

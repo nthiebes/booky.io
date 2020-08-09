@@ -71,12 +71,9 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-  scroll-snap-type: x proximity;
-  scroll-padding: 0 3%;
 
   @include desktop {
     padding: 0.5rem 30px;
-    scroll-padding: 0 30px;
   }
 }
 
@@ -99,7 +96,6 @@
   border-bottom: 2px solid transparent;
   display: flex;
   align-items: center;
-  scroll-snap-align: start;
 
   &:last-child {
     margin-right: 0;
