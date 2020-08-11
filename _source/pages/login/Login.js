@@ -165,7 +165,7 @@ class Login extends Component {
       <Page>
         <Section compact>
           { (token || action) && actionPending && (
-            <Icon icon="spinner" className="categories__spinner" />
+            <Icon icon="spinner" className="login__spinner" />
           ) }
           { token && actionSuccess && (
             <SuccessMessage message="join.success.login" hasIcon />
