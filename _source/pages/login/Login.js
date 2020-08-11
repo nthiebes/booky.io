@@ -88,6 +88,7 @@ class Login extends Component {
               maxLength="50"
               required
               disabled={ pending }
+              inputMode="email"
             />
             <Input
               value={ password }

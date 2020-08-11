@@ -150,4 +150,10 @@
 
 .header__menu {
   flex-shrink: 0;
+  margin-left: calc(1rem - 6px);
+}
+
+.header__mobile-wrapper {
+  display: flex;
+  align-items: center;
 }

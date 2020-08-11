@@ -102,6 +102,7 @@ class AddBookmark extends PureComponent {
           disabled={ pending }
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
+          inputMode="url"
         />
         <Input
           id="bookmark-name"
