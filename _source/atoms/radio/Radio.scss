@@ -5,6 +5,10 @@
   padding-bottom: 0.5rem;
 }
 
+.radio--first {
+  margin-top: 0;
+}
+
 .radio__input {
   &:focus {
     outline: 2px dashed $color--primary;

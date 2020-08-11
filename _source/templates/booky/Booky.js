@@ -29,7 +29,7 @@ export default class Booky extends Component {
 
   onDragEnd = ({ type, destination, source, draggableId }) => {
     if (destination) {
-      if (type === 'dashboard-mobile' || type === 'dashboard-sidebar') {
+      if (type === 'dashboard-mobile' || type === 'dashboard-sidebar' || type === 'dashboard-tabs') {
         this.props.dragDashboard({
           destinationIndex: destination.index,
           sourceIndex: source.index,
@@ -37,6 +37,7 @@ export default class Booky extends Component {
             draggableId
               .replace('dashboard-mobile-', '')
               .replace('dashboard-sidebar-', '')
+              .replace('dashboard-tabs-', '')
             , 10)
         });
       }

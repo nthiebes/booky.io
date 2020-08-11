@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import Skeleton from '../skeleton';
 
@@ -19,7 +20,8 @@ export default class Icon extends Component {
     size: PropTypes.string,
     isButton: PropTypes.bool,
     useSkeleton: PropTypes.bool,
-    pending: PropTypes.bool
+    pending: PropTypes.bool,
+    to: PropTypes.string
   }
   
   static defaultProps = {
@@ -45,6 +47,7 @@ export default class Icon extends Component {
     }
   }
 
+  // eslint-disable-next-line max-statements
   render() {
     const {
       className,
@@ -57,17 +60,23 @@ export default class Icon extends Component {
       size,
       isButton,
       useSkeleton,
-      pending
+      pending,
+      to
     } = this.props;
     const icon = pending ? 'spinner' : this.props.icon;
     const link = `/_assets/symbol-defs.svg?=${process.env.VERSION}#icon-${icon}`;
     const additionalProps = {};
-    const CustomTag = isButton ? 'button' : 'span';
+    let CustomTag = isButton ? 'button' : 'span';
+    
+    if (to) {
+      CustomTag = Link;
+      additionalProps['aria-label'] = label;
+    }
     
     if (isButton) {
       additionalProps['aria-label'] = label;
       additionalProps.type = 'button';
-    } else {
+    } else if (!to) {
       additionalProps['aria-hidden'] = true;
     }
 
@@ -80,7 +89,7 @@ export default class Icon extends Component {
             'icon',
             `icon--size-${size}`,
             `icon--${color}`,
-            !isButton && 'icon--decorative',
+            !isButton && !to && 'icon--decorative',
             darkMode && !ignoreDarkMode && 'icon--dark-mode',
             className
           ) }
@@ -90,6 +99,7 @@ export default class Icon extends Component {
           { ...additionalProps }
           { ...dragHandleProps }
           tabIndex={ tabIndex }
+          to={ to }
         >
           <svg
             focusable="false"

@@ -14,8 +14,6 @@ import {
   AccountStatistics
 } from './tabs';
 
-import './Account.scss';
-
 class Account extends Component {
   constructor(props) {
     super(props);
@@ -58,9 +56,10 @@ class Account extends Component {
                 key={ tab.name }
                 tabId={ index }
                 active={ activeTab === index }
-                name={ tab.name }
                 onClick={ this.handleTabClick }
-              />
+              >
+                {tab.name}
+              </Tab>
             )) }
           </TabBar>
           { activeTab === 0 && (

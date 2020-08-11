@@ -163,9 +163,21 @@ class Header extends PureComponent {
               </ButtonSmallLight>
             </Fragment>
           ) }
-          <ButtonSmallLight className="booky--hide-desktop header__menu" onClick={ this.onMenuClick }>
-            <FormattedMessage id="header.menu" values={ { b: (msg) => <b>{msg}</b> } } />
-          </ButtonSmallLight>
+          <span className="header__mobile-wrapper">
+            { !loggedIn && (
+              <Icon
+                className="booky--hide-desktop"
+                icon="account"
+                color="light"
+                to="/login"
+                label={ intl.formatMessage({ id: 'menu.login' }) }
+                ignoreDarkMode
+              />
+            ) }
+            <ButtonSmallLight className="booky--hide-desktop header__menu" onClick={ this.onMenuClick }>
+              <FormattedMessage id="header.menu" values={ { b: (msg) => <b>{msg}</b> } } />
+            </ButtonSmallLight>
+          </span>
         </div>
       </header>
     );
