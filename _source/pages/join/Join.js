@@ -94,6 +94,9 @@ class Join extends Component {
                 <H1>
                   <FormattedMessage id="join.headline" />
                 </H1>
+                <P>
+                  <FormattedMessage id="home.promoText" />
+                </P>
                 <Input
                   value={ username }
                   name="username"
@@ -153,7 +156,7 @@ class Join extends Component {
                   disabled={ pending }
                   contentBefore
                 >
-                  <FormattedMessage id="join.joinNow" />
+                  <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
                 </ButtonLargeBlue>
                 {error && <ErrorMessage message={ error } hasIcon />}
                 <P className="join__login">
