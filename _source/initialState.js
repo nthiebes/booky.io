@@ -15,7 +15,7 @@ export default {
       openLinksInNewTab: true,
       pinned: true,
       preserveEditMode: true,
-      stickyHeader: true,
+      stickyHeader: false,
       stickyToolbar: true,
       autofillBookmarkNames: true,
       colorScheme: 0,
