@@ -91,10 +91,9 @@
     "login.new": "New to booky?",
     "login.join": "Join now",
     "login.showPassword": "Show password",
-    "join.headline": "Join booky now",
-    "join.registered": "Already joined?",
+    "join.headline": "Join booky",
+    "join.registered": "Already a member?",
     "join.login": "Sign in now",
-    "join.joinNow": "Join",
     "home.display": "Store your favorite bookmarks online.",
     "home.display2": "Simple. Customizable. Private. Fast.",
     "home.performant": "Fast",
@@ -131,7 +130,7 @@
     "customize.navColor": "Header color",
     "customize.maxWidth": "Limit width (2 columns)",
     "customize.sidebar": "Show as sidebar",
-    "customize.tabs": "Show as tab bar",
+    "customize.tabs": "Show as tab-bar",
     "customize.dropdown": "Show as dropdown",
     "dashboard.preferences": "Preferences",
     "customize.newTab": "Open bookmarks in a new tab",
@@ -242,5 +241,6 @@
     "error.badRequest.username.notAlphanumeric": "",
     "error.logic.user.unrequestedPasswordRecovery": "There is no open lost password request for your account. You can request a new one here: {forgot}",
     "recovery.deny": "You have declined the reset of your password.",
-    "recovery.confirm": "Your password has been successfully reset. We'll send you an email with your new password right away."
+    "recovery.confirm": "Your password has been successfully reset. We'll send you an email with your new password right away.",
+    "join.button": "<b>Join</b> now"
 }
