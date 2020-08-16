@@ -242,5 +242,6 @@
     "error.logic.user.unrequestedPasswordRecovery": "Es gibt keine offene Passwort vergessen Anfrage für deinen Account. Du kannst hier eine neue anfordern: {forgot}",
     "recovery.deny": "Du hast das Zurücksetzen deines Passwortes abgelehnt.",
     "recovery.confirm": "Dein Passwort wurde erfolgreich zurückgesetzt. Wir senden dir gleich eine E-Mail mit deinem neuen Passwort.",
-    "join.button": "Jetzt <b>beitreten</b>"
+    "join.button": "Jetzt <b>beitreten</b>",
+    "error.user.alreadyLoggedIn": "Du bist noch angemeldet."
 }
