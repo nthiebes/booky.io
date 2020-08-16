@@ -242,5 +242,6 @@
     "error.logic.user.unrequestedPasswordRecovery": "There is no open lost password request for your account. You can request a new one here: {forgot}",
     "recovery.deny": "You have declined the reset of your password.",
     "recovery.confirm": "Your password has been successfully reset. We'll send you an email with your new password right away.",
-    "join.button": "<b>Join</b> now"
+    "join.button": "<b>Join</b> now",
+    "error.user.alreadyLoggedIn": "You are still logged in."
 }
