@@ -126,6 +126,7 @@ class Login extends Component {
 
   handleSubmit = (params) => {
     const { history, login } = this.props;
+    const { actionSuccess } = this.state;
 
     this.setState({
       pending: true,
@@ -136,7 +137,12 @@ class Login extends Component {
       params,
       onSuccess: () => {
         document.title = 'booky';
-        history.push('/');
+
+        if (actionSuccess) {
+          history.push('/account');
+        } else {
+          history.push('/');
+        }
       },
       onError: (error) => {
         this.setState({
