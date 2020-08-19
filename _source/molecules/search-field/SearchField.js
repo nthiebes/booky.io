@@ -61,9 +61,6 @@ class Search extends Component {
 
     return (
       <form role="search" className={ classNames('search-field', className) } onSubmit={ this.handleSubmit }>
-        <Label htmlFor="search" className="search-field__label">
-          <FormattedMessage id="search.label" />
-        </Label>
         <Input
           placeholder={ intl.formatMessage({ id: 'search.placeholder' }) }
           className={ classNames(
@@ -76,6 +73,7 @@ class Search extends Component {
           icon="search"
           id={ id }
           disabled={ dashboardsPending }
+          ariaLabel={ intl.formatMessage({ id: 'search.label' }) }
         />
       </form>
     );
