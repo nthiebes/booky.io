@@ -65,7 +65,7 @@ class Home extends Component {
             <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonLargeLight>
           <Illustration
-            name="monitor-window"
+            name="desk-illustration"
             className="home__header-illustration"
           />
         </Section>

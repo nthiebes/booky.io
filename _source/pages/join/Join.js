@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
@@ -16,6 +17,10 @@ import Illustration from '../../atoms/illustration';
 
 import './Join.scss';
 
+import premium from './premium_13.jpg';
+
+import { Donut } from './donut';
+
 class Join extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
@@ -29,7 +34,8 @@ class Join extends Component {
     password: '',
     pending: false,
     showPassword: false,
-    error: null
+    error: null,
+    animation: ''
   };
 
   handleInputChange = (value, name) => {
@@ -44,6 +50,18 @@ class Join extends Component {
       showPassword: checked
     });
   };
+
+  handleFocus = (event) => {
+    this.setState({
+      animation: `animate-${event.target.name}`
+    });
+  }
+
+  handleBlur = () => {
+    this.setState({
+      animation: ''
+    });
+  }
 
   handleSubmit = (params) => {
     const { join } = this.props;
@@ -80,12 +98,13 @@ class Join extends Component {
       pending,
       showPassword,
       error,
-      success
+      success,
+      animation
     } = this.state;
 
     return (
       <Page>
-        <Section className="join">
+        <Section className={ classNames('join', animation) }>
           {success ? (
             <SuccessMessage message="join.success" hasIcon icon="smile" />
           ) : (
@@ -107,6 +126,8 @@ class Join extends Component {
                   maxLength="50"
                   required
                   disabled={ pending }
+                  onFocus={ this.handleFocus }
+                  onBlur={ this.handleBlur }
                 />
                 <Input
                   value={ email }
@@ -120,6 +141,8 @@ class Join extends Component {
                   type="email"
                   requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
                   disabled={ pending }
+                  onFocus={ this.handleFocus }
+                  onBlur={ this.handleBlur }
                 />
                 <Input
                   value={ password }
@@ -136,6 +159,8 @@ class Join extends Component {
                     id: 'misc.validPassword'
                   }) }
                   disabled={ pending }
+                  onFocus={ this.handleFocus }
+                  onBlur={ this.handleBlur }
                 />
                 <input value={ language } name="language" type="hidden" />
                 <input
@@ -167,11 +192,17 @@ class Join extends Component {
                 </P>
               </Form>
               <Illustration
-                name="monitor-window"
+                name="woman"
                 width="300"
                 height="300"
-                className="join__illustration"
+                className="donut"
               />
+              {/* <img
+                alt=""
+                src={ premium }
+                className="donut"
+              /> */}
+              {/* <Donut /> */}
             </Fragment>
           )}
         </Section>

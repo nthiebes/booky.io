@@ -18,8 +18,12 @@
   }
 }
 
-.join__illustration {
+.donut {
   flex-shrink: 0;
+  width: 300px;
+  height: 400px;
+  margin-top: 6rem;
+  margin-left: 1rem;
 
   @include mobile-tablet {
     display: none;
@@ -37,4 +41,447 @@
   width: 1px;
   height: 1px;
   pointer-events: none;
+}
+
+.animate-username {
+  .eye {
+    transform: translate3d(-10px, 2px, 0);
+  }
+}
+
+.animate-email {
+  .eye {
+    transform: translate3d(-10px, 5px, 0);
+  }
+}
+
+.animate-password {
+  .eye {
+    transform: translate3d(-7px, 5px, 0);
+  }
+}
+
+.cls-1,
+.cls-13,
+.cls-48,
+.cls-67,
+.cls-68 {
+  fill: #fff;
+}
+
+.cls-2 {
+  fill: #ff4dab;
+}
+
+.cls-3 {
+  fill: #f97dca;
+}
+
+.cls-4 {
+  opacity: 0.25;
+}
+
+.cls-11,
+.cls-15,
+.cls-17,
+.cls-19,
+.cls-24,
+.cls-27,
+.cls-28,
+.cls-32,
+.cls-33,
+.cls-39,
+.cls-43,
+.cls-47,
+.cls-5,
+.cls-50,
+.cls-54,
+.cls-59,
+.cls-62,
+.cls-63,
+.cls-69,
+.cls-71,
+.cls-72,
+.cls-75,
+.cls-76,
+.cls-8 {
+  fill: none;
+}
+
+.cls-15,
+.cls-17,
+.cls-28,
+.cls-5,
+.cls-72,
+.cls-8 {
+  stroke: #181828;
+}
+
+.cls-15,
+.cls-17,
+.cls-19,
+.cls-24,
+.cls-28,
+.cls-32,
+.cls-5,
+.cls-50,
+.cls-54,
+.cls-59,
+.cls-62,
+.cls-63,
+.cls-69,
+.cls-71,
+.cls-72,
+.cls-75,
+.cls-8 {
+  stroke-linecap: round;
+}
+
+.cls-15,
+.cls-17,
+.cls-19,
+.cls-24,
+.cls-28,
+.cls-32,
+.cls-5,
+.cls-50,
+.cls-54,
+.cls-59,
+.cls-62,
+.cls-63,
+.cls-69,
+.cls-71,
+.cls-72,
+.cls-75,
+.cls-76,
+.cls-8 {
+  stroke-linejoin: round;
+}
+
+.cls-19,
+.cls-24,
+.cls-27,
+.cls-32,
+.cls-39,
+.cls-47,
+.cls-5,
+.cls-50,
+.cls-69,
+.cls-72 {
+  stroke-width: 4px;
+}
+
+.cls-6 {
+  fill: #ffc37b;
+}
+
+.cls-7 {
+  fill: #e8a55b;
+}
+
+.cls-8 {
+  stroke-width: 5px;
+}
+
+.cls-9 {
+  fill: #c9ced2;
+}
+
+.cls-10 {
+  fill: #e88d4f;
+}
+
+.cls-11 {
+  stroke: #a0a5a7;
+  stroke-width: 6px;
+}
+
+.cls-11,
+.cls-27,
+.cls-33,
+.cls-39,
+.cls-43,
+.cls-47 {
+  stroke-miterlimit: 10;
+}
+
+.cls-12 {
+  fill: #93f5fe;
+}
+
+.cls-13 {
+  opacity: 0.75;
+}
+
+.cls-14,
+.cls-78 {
+  opacity: 0.4;
+}
+
+.cls-15,
+.cls-33,
+.cls-62,
+.cls-76 {
+  stroke-width: 3px;
+}
+
+.cls-16 {
+  fill: #d87d3f;
+}
+
+.cls-17,
+.cls-43,
+.cls-63,
+.cls-75 {
+  stroke-width: 2px;
+}
+
+.cls-18 {
+  fill: #dafcd1;
+}
+
+.cls-19,
+.cls-27 {
+  stroke: #181728;
+}
+
+.cls-20 {
+  opacity: 0.35;
+}
+
+.cls-21 {
+  fill: #cbd9ef;
+}
+
+.cls-22 {
+  opacity: 0.3;
+}
+
+.cls-23 {
+  fill: #b0bac1;
+}
+
+.cls-24 {
+  stroke: #e4ecef;
+}
+
+.cls-25 {
+  fill: #a0a5a7;
+}
+
+.cls-26 {
+  fill: #e4ecef;
+}
+
+.cls-29 {
+  fill: #818789;
+}
+
+.cls-30 {
+  fill: #c0ffc0;
+}
+
+.cls-31 {
+  fill: #fdc6a2;
+}
+
+.cls-32 {
+  stroke: #e89176;
+}
+
+.cls-32,
+.cls-57,
+.cls-58 {
+  opacity: 0.62;
+}
+
+.cls-33 {
+  stroke: #ffece3;
+}
+
+.cls-34 {
+  fill: #ef309d;
+}
+
+.cls-35 {
+  fill: #2fddd8;
+}
+
+.cls-36 {
+  fill: #fbb33a;
+}
+
+.cls-37 {
+  fill: #4f3e52;
+}
+
+.cls-38 {
+  fill: #3a2c3d;
+}
+
+.cls-39 {
+  stroke: #3a2c3d;
+}
+
+.cls-40 {
+  fill: #f9ab80;
+}
+
+.cls-41 {
+  fill: #6c5a70;
+}
+
+.cls-42 {
+  fill: #feecaa;
+}
+
+.cls-43 {
+  stroke: #f67e41;
+}
+
+.cls-44 {
+  fill: #26abab;
+}
+
+.cls-44,
+.cls-47 {
+  opacity: 0.5;
+}
+
+.cls-45 {
+  fill: #42e8e0;
+}
+
+.cls-46 {
+  fill: #181828;
+  transition: transform 0.2s ease;
+}
+
+.cls-47 {
+  stroke: #076164;
+}
+
+.cls-48 {
+  opacity: 0.55;
+}
+
+.cls-49,
+.cls-56,
+.cls-57 {
+  fill: #e89176;
+}
+
+.cls-49 {
+  opacity: 0.49;
+}
+
+.cls-50,
+.cls-59,
+.cls-62 {
+  stroke: #1b1b2b;
+}
+
+.cls-51 {
+  fill: #ba8063;
+}
+
+.cls-52 {
+  fill: #e89c7c;
+}
+
+.cls-53 {
+  fill: #a06247;
+}
+
+.cls-54 {
+  stroke: #131321;
+}
+
+.cls-54,
+.cls-59 {
+  stroke-width: 2.24px;
+}
+
+.cls-55 {
+  fill: #1b1b2b;
+}
+
+.cls-60 {
+  fill: #c08976;
+  opacity: 0.39;
+  isolation: isolate;
+}
+
+.cls-61 {
+  fill: #2e2d4c;
+}
+
+.cls-63 {
+  stroke: #2e2d4c;
+}
+
+.cls-64 {
+  fill: #d08c6f;
+}
+
+.cls-65 {
+  fill: #723f28;
+}
+
+.cls-66 {
+  fill: #ea9b78;
+}
+
+.cls-67 {
+  opacity: 0.89;
+}
+
+.cls-68 {
+  opacity: 0.59;
+}
+
+.cls-69,
+.cls-71,
+.cls-76 {
+  stroke: #fff;
+}
+
+.cls-70 {
+  opacity: 0.45;
+}
+
+.cls-71 {
+  stroke-width: 7px;
+}
+
+.cls-72 {
+  opacity: 0.12;
+}
+
+.cls-73 {
+  fill: #fcede6;
+}
+
+.cls-74 {
+  fill: #ffdecc;
+}
+
+.cls-75 {
+  stroke: #ffdc48;
+}
+
+.cls-76 {
+  stroke-linecap: square;
+}
+
+.cls-77 {
+  fill: #af143b;
+}
+
+.cls-78 {
+  fill: #670118;
+}
+
+.cls-79 {
+  fill: #d2f2ff;
 }

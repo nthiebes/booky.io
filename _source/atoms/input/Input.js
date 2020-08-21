@@ -45,8 +45,8 @@ export default class Input extends PureComponent {
     this.props.onChange(event.target.value, this.props.name);
   }
 
-  onFocus = () => {
-    this.props.onFocus && this.props.onFocus();
+  onFocus = (event) => {
+    this.props.onFocus && this.props.onFocus(event);
   }
 
   onBlur = (event) => {
