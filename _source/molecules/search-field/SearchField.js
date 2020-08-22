@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Input from '../../atoms/input';
-import Label from '../../atoms/label';
 
 class Search extends Component {
   static propTypes = {
