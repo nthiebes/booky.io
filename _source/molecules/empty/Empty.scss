@@ -24,8 +24,7 @@
 
 .empty__image {
   margin: 2rem 0 0;
-}
-
-.empty__image--dark-mode {
-  // filter: invert(100);
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
 }

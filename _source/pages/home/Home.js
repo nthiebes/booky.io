@@ -54,7 +54,7 @@ class Home extends Component {
         <section className="home__header">
           <div className="home__header-wrapper">
             <Display noMargin centered>
-              <FormattedMessage id="Your bookmarks always available." />
+              <FormattedMessage id="home.display" />
             </Display>
             <H2 noMargin centered>
               <FormattedMessage id="home.display2" />
@@ -162,10 +162,8 @@ class Home extends Component {
         </Section>
         <Section className="home__not-a-member">
           <Illustration
-            className="home__globe"
+            className="home__heart"
             name="heart"
-            height="300"
-            width="300"
           />
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="home.notAMember" />

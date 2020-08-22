@@ -110,8 +110,6 @@ class Resend extends Component {
               </Form>
               <Illustration
                 name="email"
-                width="300"
-                height="300"
                 className="resend__illustration"
               />
             </Fragment>

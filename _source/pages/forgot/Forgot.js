@@ -109,8 +109,6 @@ class Forgot extends Component {
               </Form>
               <Illustration
                 name="password"
-                width="300"
-                height="300"
                 className="forgot__illustration"
               />
             </Fragment>

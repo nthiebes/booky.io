@@ -8,6 +8,7 @@ import Link from '../../atoms/link';
 import Logo from '../../atoms/logo';
 import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
+import Illustration from '../../atoms/illustration';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends PureComponent {
@@ -81,6 +82,12 @@ class Footer extends PureComponent {
           </section>
         ) }
         <section className={ classNames('footer__social', darkMode && 'footer__social--dark-mode') }>
+          <Illustration
+            className="footer__illustration"
+            name="share"
+            width="100"
+            height="100"
+          />
           <a
             className="footer__social-item"
             target="_blank"
