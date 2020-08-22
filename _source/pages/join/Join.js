@@ -131,7 +131,7 @@ class Join extends Component {
             <SuccessMessage message="join.success" hasIcon icon="smile" />
           ) : (
             <Fragment>
-              <Form onSubmit={ this.handleSubmit } className="join__form">
+              <Form onSubmit={ this.handleSubmit }>
                 <H1>
                   <FormattedMessage id="join.headline" />
                 </H1>

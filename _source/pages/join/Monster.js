@@ -7,8 +7,7 @@ import classNames from 'classnames';
 import './Monster.scss';
 
 export const Monster = ({ className }) => (
-  <svg id="monster" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="1068.79"
-    height="689.43" viewBox="0 0 1068.79 689.43" className={ classNames('monster', className) } aria-hidden="true">
+  <svg id="monster" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1068.79 689.43" className={ classNames('monster', className) } aria-hidden="true">
     <path
       d="M1056,703.06,952.31,523.41a3.3,3.3,0,0,0-5.73,0L842.86,703.06a3.3,3.3,0,0,0,2.87,5h30.94a3.32,3.32,0,0,1,3.31,3.31v38.38a3.3,3.3,0,0,0,3.29,3.31h40.37a3.31,3.31,0,0,0,3.31-3.31V731.18a3.3,3.3,0,0,1,3.3-3.3h38.38a3.31,3.31,0,0,1,3.31,3.3v18.53a3.31,3.31,0,0,0,3.31,3.31h40.36a3.34,3.34,0,0,0,3.32-3.31V711.33a3.31,3.31,0,0,1,3.31-3.31h30.94A3.31,3.31,0,0,0,1056,703.06ZM911.43,722.94a3.34,3.34,0,0,1-2.35,1H894.52a3.31,3.31,0,0,1,0-6.62h14.56a3.3,3.3,0,0,1,3.31,3.31A3.34,3.34,0,0,1,911.43,722.94Zm95.27,0a3.29,3.29,0,0,1-2.34,1H989.81a3.32,3.32,0,0,1-3.31-3.31,3.33,3.33,0,0,1,3.31-3.31h14.55a3.3,3.3,0,0,1,2.34,5.65Z"
       transform="translate(-65.6 -105.28)" fill="#f5f5f5" />
