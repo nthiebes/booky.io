@@ -213,7 +213,7 @@ class Join extends Component {
                   </Link>
                 </P>
               </Form>
-              <Monster className={ classNames('join__monster', animation, showPassword && 'monster--show-password') } />
+              <Monster className={ classNames(animation, showPassword && 'monster--show-password') } />
             </Fragment>
           )}
         </Section>

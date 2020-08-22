@@ -2,21 +2,25 @@
 
 .monster {
   flex-shrink: 0;
-  width: 100%;
-  margin-top: 2rem;
+
+  @include mobile {
+    width: 80%;
+    order: -1;
+    margin-top: 2rem;
+  }
 
   @include tablet {
     width: 40%;
     height: 15rem;
     margin-left: 3rem;
-    margin-top: 14rem;
+    margin-top: 13rem;
   }
 
   @include desktop {
     width: 50%;
     height: 20rem;
     margin-left: 4rem;
-    margin-top: 12rem;
+    margin-top: 11rem;
   }
 }
 
@@ -36,9 +40,9 @@
 
 .username-focus {
   .monster__pupil {
-    transform: translateY(-14px);
+    transform: translateY(6px);
 
-    @include desktop {
+    @include tablet-desktop {
       transform: translate3d(-7px, -10px, 0);
     }
   }
@@ -79,9 +83,9 @@
 
 .email-focus {
   .monster__pupil {
-    transform: translateY(-10px);
+    transform: translateY(10px);
 
-    @include desktop {
+    @include tablet-desktop {
       transform: translate3d(-9px, -2px, 0);
     }
   }
@@ -116,7 +120,9 @@
     }
 
     .monster__pupil {
-      @include desktop {
+      transform: translateY(14px);
+
+      @include tablet-desktop {
         transform: translate3d(-8px, 7px, 0);
       }
     }

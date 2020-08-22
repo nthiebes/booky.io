@@ -1,8 +1,14 @@
 @import "../../templates/booky/config.scss";
 
 .join .section__content {
+  display: flex;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+  }
+
   @include tablet-desktop {
-    display: flex;
     justify-content: center;
   }
 }
