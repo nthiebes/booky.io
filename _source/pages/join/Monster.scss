@@ -1,0 +1,28 @@
+.monster {
+  flex-shrink: 0;
+  width: 50%;
+  margin-left: 4rem;
+  margin-top: -1rem;
+}
+
+.monster__eye {
+  transition: transform 0.3s ease;
+}
+
+.username-focus {
+  .monster__eye {
+    transform: translate3d(-7px, -10px, 0);
+  }
+}
+
+.email-focus {
+  .monster__eye {
+    transform: translate3d(-9px, -2px, 0);
+  }
+}
+
+.password-focus {
+  .monster__eye {
+    transform: translate3d(-8px, 7px, 0);
+  }
+}

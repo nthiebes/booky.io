@@ -4,7 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Page from '../../templates/page';
-import { H1 } from '../../atoms/headline';
+import { H1, H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
@@ -13,7 +13,8 @@ import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
-import Illustration from '../../atoms/illustration';
+
+import { Monster } from './Monster';
 
 class Join extends Component {
   static propTypes = {
@@ -98,7 +99,7 @@ class Join extends Component {
 
     return (
       <Page>
-        <Section className={ classNames('join', animation) }>
+        <Section className="join">
           {success ? (
             <SuccessMessage message="join.success" hasIcon icon="smile" />
           ) : (
@@ -107,9 +108,9 @@ class Join extends Component {
                 <H1>
                   <FormattedMessage id="join.headline" />
                 </H1>
-                <P>
+                <H2 className="join__subheadline">
                   <FormattedMessage id="home.promoText" />
-                </P>
+                </H2>
                 <Input
                   value={ username }
                   name="username"
@@ -185,12 +186,7 @@ class Join extends Component {
                   </Link>
                 </P>
               </Form>
-              <Illustration
-                name="undraw_joyride_hnno"
-                width="300"
-                height="300"
-                className="join__illustration"
-              />
+              <Monster className={ classNames('join__monster', animation) } />
             </Fragment>
           )}
         </Section>

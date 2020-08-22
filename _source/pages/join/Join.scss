@@ -2,31 +2,24 @@
 
 .join .section__content {
   @include tablet {
-    max-width: 40rem;
+    // max-width: 40rem;
   }
 
   @include desktop {
     display: flex;
-    max-width: 50rem;
+    // max-width: 50rem;
     justify-content: center;
   }
 }
 
-.join__form {
-  @include desktop {
-    margin-right: 2rem;
-  }
+.join__subheadline {
+  margin-top: 0;
+  padding-bottom: 1.5rem;
 }
 
-.join__illustration {
-  flex-shrink: 0;
-  width: 300px;
-  height: 400px;
-  margin-top: 6rem;
-  margin-left: 1rem;
-
-  @include mobile-tablet {
-    display: none;
+.join__form {
+  @include desktop {
+    // margin-right: 2rem;
   }
 }
 
@@ -41,22 +34,4 @@
   width: 1px;
   height: 1px;
   pointer-events: none;
-}
-
-.username-focus {
-  .eye {
-    // transform: translate3d(-10px, 2px, 0);
-  }
-}
-
-.email-focus {
-  .eye {
-    // transform: translate3d(-10px, 5px, 0);
-  }
-}
-
-.password-focus {
-  .eye {
-    // transform: translate3d(-7px, 5px, 0);
-  }
 }
