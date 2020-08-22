@@ -23,7 +23,7 @@ class Testimonials extends Component {
           <Testimonial
             // Ricardo Sebastián
             name="Anonymous"
-            image="_assets/illustrations/female.svg"
+            image="_assets/illustrations/female2.svg"
             text="A simple, lightweight, yet powerful application to store my bookmarks in the cloud."
           />
           <Testimonial
