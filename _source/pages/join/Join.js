@@ -33,10 +33,35 @@ class Join extends Component {
     animation: ''
   };
 
+  getAnimation = (value, name) => {
+    let valid;
+
+    if (name === 'username') {
+      valid = Boolean(value);
+    }
+
+    if (name === 'password') {
+      valid = Boolean(value.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/ig));
+    }
+
+    if (valid === true) {
+      return `${name}-focus ${name}-valid`;
+    }
+    
+    if (!value) { 
+      return `${name}-focus`;
+    }
+    
+    return `${name}-focus ${name}-invalid`;
+  }
+
   handleInputChange = (value, name) => {
+    const animation = this.getAnimation(value, name);
+
     this.setState({
       [name]: value,
-      pending: false
+      pending: false,
+      animation
     });
   };
 
@@ -47,8 +72,10 @@ class Join extends Component {
   };
 
   handleFocus = (event) => {
+    const animation = this.getAnimation(event.target.value, event.target.name);
+
     this.setState({
-      animation: `${event.target.name}-focus`
+      animation
     });
   }
 
@@ -186,7 +213,7 @@ class Join extends Component {
                   </Link>
                 </P>
               </Form>
-              <Monster className={ classNames('join__monster', animation) } />
+              <Monster className={ classNames('join__monster', animation, showPassword && 'monster--show-password') } />
             </Fragment>
           )}
         </Section>
