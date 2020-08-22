@@ -44,7 +44,7 @@ class Categories extends PureComponent {
             ) }
             { !categories.length && (
               <Fragment>
-                <Empty illustration="undraw_empty_xct9">
+                <Empty illustration="empty">
                   <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboardName }</b> } } />
                 </Empty>
                 <ButtonSmallPrimary

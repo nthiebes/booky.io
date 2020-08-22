@@ -86,7 +86,7 @@ class Search extends PureComponent {
 
     if (!total) {
       return this.getWrapper(
-        <Empty illustration="chip-head">
+        <Empty illustration="search">
           <FormattedMessage id="search.empty" values={ {
             keyword: <b>{ keyword }</b>
           } } />

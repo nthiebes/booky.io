@@ -15,12 +15,6 @@ import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 import Illustration from '../../atoms/illustration';
 
-import './Join.scss';
-
-import premium from './premium_13.jpg';
-
-import { Donut } from './donut';
-
 class Join extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
@@ -53,7 +47,7 @@ class Join extends Component {
 
   handleFocus = (event) => {
     this.setState({
-      animation: `animate-${event.target.name}`
+      animation: `${event.target.name}-focus`
     });
   }
 
@@ -192,17 +186,11 @@ class Join extends Component {
                 </P>
               </Form>
               <Illustration
-                name="undraw_good_team_m7uu.svg"
+                name="undraw_joyride_hnno"
                 width="300"
                 height="300"
-                className="donut"
+                className="join__illustration"
               />
-              {/* <img
-                alt=""
-                src={ premium }
-                className="donut"
-              /> */}
-              {/* <Donut /> */}
             </Fragment>
           )}
         </Section>

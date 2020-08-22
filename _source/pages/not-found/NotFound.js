@@ -12,7 +12,7 @@ class NotFound extends Component {
     return (
       <Page>
         <Section>
-          <Empty illustration="undraw_not_found_60pq">
+          <Empty illustration="404">
             <FormattedMessage
               id="notFound.figureText"
               values={ {
