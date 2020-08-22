@@ -83,7 +83,7 @@ class Home extends Component {
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'Customizable design.' }) }
+            headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
             text={ intl.formatMessage({ id: 'home.customizableText' }) }
             illustration="customize"
             direction="right"
@@ -141,14 +141,14 @@ class Home extends Component {
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'Fast and accessible.' }) }
+            headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
             text={ intl.formatMessage({ id: 'home.performantText' }) }
             illustration="speed"
           />
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'Available everywhere.' }) }
+            headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
             text={ intl.formatMessage({ id: 'home.mobileText' }) }
             illustration="mobile"
             direction="right"
