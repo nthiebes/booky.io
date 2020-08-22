@@ -108,7 +108,7 @@ class Forgot extends Component {
                 { error && <ErrorMessage message={ error } hasIcon /> }
               </Form>
               <Illustration
-                name="postman-receive-letter"
+                name="password"
                 width="300"
                 height="300"
                 className="forgot__illustration"

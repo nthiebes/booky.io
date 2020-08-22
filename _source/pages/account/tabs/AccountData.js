@@ -14,7 +14,7 @@ class AccountData extends Component {
     // const { intl, name, email } = this.props;
 
     return (
-      <Empty illustration="monitor-window">
+      <Empty illustration="empty">
         <FormattedMessage id="misc.comingSoon" />
       </Empty>
     );

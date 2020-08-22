@@ -11,7 +11,7 @@ class AccountExport extends Component {
     // const { intl } = this.props;
 
     return (
-      <Empty illustration="monitor-window">
+      <Empty illustration="empty">
         <FormattedMessage id="misc.comingSoon" />
       </Empty>
     );
