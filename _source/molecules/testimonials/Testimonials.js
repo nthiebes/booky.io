@@ -17,20 +17,20 @@ class Testimonials extends Component {
             name="David Lafond"
             twitter="kronozio"
             url="https://twitter.com/Kronozio"
-            image="_assets/illustrations/undraw_male_avatar_323b.svg"
+            image="_assets/illustrations/male.svg"
             text="My portal to the web. I tried many bookmark manager, and this is the best one."
           />
           <Testimonial
             // Ricardo Sebastián
             name="Anonymous"
-            image="_assets/illustrations/undraw_female_avatar_w3jk.svg"
+            image="_assets/illustrations/female.svg"
             text="A simple, lightweight, yet powerful application to store my bookmarks in the cloud."
           />
           <Testimonial
             name="Samira Stein"
             twitter="frontend_cat"
             url="https://twitter.com/frontend_cat"
-            image="_assets/illustrations/undraw_female_avatar_w3jk.svg"
+            image="_assets/illustrations/female.svg"
             text="I love the sleek and simple design! The focus lies on what's important: managing bookmarks."
           />
         </div>

@@ -53,7 +53,7 @@ class Home extends Component {
       <Page home className="home">
         <Section noMargin className="home__header">
           <Display noMargin className="home__headline">
-            <FormattedMessage id="home.display" />
+            <FormattedMessage id="Your bookmarks, always available." />
           </Display>
           <H2 noMargin>
             <FormattedMessage id="home.display2" />
@@ -65,7 +65,7 @@ class Home extends Component {
             <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonLargeLight>
           <Illustration
-            name="desk-illustration"
+            name="devices"
             className="home__header-illustration"
           />
         </Section>
@@ -76,14 +76,14 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.privateHeadline' }) }
             text={ intl.formatMessage({ id: 'home.privateText' }) }
-            illustration="stamp-document"
+            illustration="protection"
           />
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
+            headline={ intl.formatMessage({ id: 'Customizable design.' }) }
             text={ intl.formatMessage({ id: 'home.customizableText' }) }
-            illustration="color-palette"
+            illustration="customize"
             direction="right"
           />
         </Section>
@@ -139,16 +139,16 @@ class Home extends Component {
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
+            headline={ intl.formatMessage({ id: 'Fast and accessible.' }) }
             text={ intl.formatMessage({ id: 'home.performantText' }) }
-            illustration="monitor-loading-progress"
+            illustration="speed"
           />
         </Section>
         <Section>
           <Feature
-            headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
+            headline={ intl.formatMessage({ id: 'Available everywhere.' }) }
             text={ intl.formatMessage({ id: 'home.mobileText' }) }
-            illustration="android-phone"
+            illustration="mobile"
             direction="right"
           />
         </Section>
@@ -161,7 +161,7 @@ class Home extends Component {
         <Section className="home__not-a-member">
           <Illustration
             className="home__globe"
-            name="monitor-window"
+            name="heart"
             height="300"
             width="300"
           />

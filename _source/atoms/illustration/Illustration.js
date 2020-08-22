@@ -11,7 +11,7 @@ export default class Illustration extends Component {
         height={ height }
         alt={ alt }
         className={ className }
-        src={ `../../_assets/illustrations/${name}` }
+        src={ `../../_assets/illustrations/${name}.svg` }
         aria-hidden={ ariaHidden }
       />
     );

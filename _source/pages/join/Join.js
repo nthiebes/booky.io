@@ -192,7 +192,7 @@ class Join extends Component {
                 </P>
               </Form>
               <Illustration
-                name="woman"
+                name="undraw_good_team_m7uu.svg"
                 width="300"
                 height="300"
                 className="donut"
