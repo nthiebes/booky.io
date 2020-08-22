@@ -51,24 +51,26 @@ class Home extends Component {
       </Page>
     ) : (
       <Page home className="home">
-        <Section noMargin className="home__header">
-          <Display noMargin className="home__headline">
-            <FormattedMessage id="Your bookmarks, always available." />
-          </Display>
-          <H2 noMargin>
-            <FormattedMessage id="home.display2" />
-          </H2>
-          <ButtonLargeBlue icon="join" to="/join" className="home__join">
-            <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
-          </ButtonLargeBlue>
-          <ButtonLargeLight icon="about" to="/about">
-            <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
-          </ButtonLargeLight>
+        <section className="home__header">
+          <div className="home__header-wrapper">
+            <Display noMargin centered>
+              <FormattedMessage id="Your bookmarks always available." />
+            </Display>
+            <H2 noMargin centered>
+              <FormattedMessage id="home.display2" />
+            </H2>
+            <ButtonLargeBlue icon="join" to="/join" className="home__join">
+              <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
+            </ButtonLargeBlue>
+            <ButtonLargeLight icon="about" to="/about">
+              <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
+            </ButtonLargeLight>
+          </div>
           <Illustration
             name="devices"
             className="home__header-illustration"
           />
-        </Section>
+        </section>
         <Section color="light" noPadding contentClassName="home__testimonials">
           <Testimonials />
         </Section>

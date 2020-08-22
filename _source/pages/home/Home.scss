@@ -4,65 +4,53 @@
 
 .home__header {
   position: relative;
+  max-width: 1270px;
+  margin: 0 auto;
+  padding: 0 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 
   @include mobile {
-    padding-top: 6rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
   }
 
   @include tablet {
-    padding-top: 8rem;
-    padding-bottom: 5rem;
+    padding-top: 4rem;
   }
 
   @include desktop {
-    padding-top: 10rem;
-    padding-bottom: 12rem;
-
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   left: calc(50% - 900px);
-    //   right: calc(50% - 900px);
-    //   top: 0;
-    //   bottom: 0;
-    //   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 0) 100%);
-    //   min-width: 1000px;
-    // }
+    padding-top: 6rem;
   }
 }
 
-.home__headline {
-  width: 550px;
-
-  @include tablet {
-    width: 60%;
-  }
+.home__header-wrapper {
+  flex-shrink: 0;
 }
 
 .home__header-illustration {
-  max-width: 500px;
-  max-height: 500px;
+  height: auto;
+  margin-top: -3rem;
+  flex-grow: 1;
+  width: 80%;
+  position: relative;
+  bottom: -10vw;
+  z-index: 1;
 
   @include mobile {
-    position: relative;
-    width: 75%;
-    height: 75%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 2rem;
+    margin-top: -15vw;
+    bottom: -23vw;
+    width: 100%;
   }
 
-  @include tablet-desktop {
-    position: absolute;
-    right: 2vw;
-    top: 0;
-    width: 40vw;
-    height: 40vw;
+  @include tablet {
+    margin-top: -2rem;
   }
 
-  @include desktop {
-    right: -30px;
-    top: -7rem;
+  @include hd {
+    bottom: -8rem;
   }
 }
 
@@ -168,10 +156,24 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
-
+  
   @include desktop {
     padding-top: 4rem;
     padding-bottom: 5rem;
+  }
+}
+
+.home__testimonials {
+  @include mobile {
+    padding-top: 13vw;
+  }
+
+  @include tablet {
+    padding-top: 6rem;
+  }
+
+  @include desktop {
+    padding-top: 10rem;
   }
 }
 
