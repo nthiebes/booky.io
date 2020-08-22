@@ -31,7 +31,8 @@ export default class Input extends PureComponent {
     error: PropTypes.string,
     darkMode: PropTypes.bool,
     pending: PropTypes.bool,
-    inputMode: PropTypes.string
+    inputMode: PropTypes.string,
+    ariaLabel: PropTypes.string
   }
   
   static defaultProps = {
@@ -75,7 +76,8 @@ export default class Input extends PureComponent {
       error,
       darkMode,
       pending,
-      inputMode
+      inputMode,
+      ariaLabel
     } = this.props;
     const inputProps = {
       className: classNames(
@@ -101,7 +103,8 @@ export default class Input extends PureComponent {
       requirements,
       disabled,
       autoFocus,
-      inputMode
+      inputMode,
+      'aria-label': ariaLabel
     };
 
     return (
