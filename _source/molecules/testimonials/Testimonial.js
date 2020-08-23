@@ -12,7 +12,7 @@ class Testimonial extends Component {
     const { className, url, name, twitter, image, text } = this.props;
 
     return (
-      <blockquote className={ classNames('testimonials__testimonial', className && className) }>
+      <blockquote className={ classNames('testimonials__testimonial', className) }>
         <img src={ image } width="50" height="50" className="testimonials__image" alt="" aria-hidden="true" />
         <div>
           <H4 className="testimonials__header">

@@ -23,13 +23,15 @@ class Testimonials extends Component {
           <Testimonial
             name="David Lafond"
             twitter="kronozio"
-            url="https://twitter.com/Kronozio"
+            url="https://twitter.com/kronozio"
             image="_assets/illustrations/male.svg"
             text={ intl.formatMessage({ id: 'home.testimonial1' }) }
           />
           <Testimonial
             // Ricardo Sebastián
-            name="Anonymous"
+            name={ intl.formatMessage({ id: 'home.anonymous' }) }
+            twitter="booky_io"
+            url="https://twitter.com/booky_io"
             image="_assets/illustrations/female2.svg"
             text={ intl.formatMessage({ id: 'home.testimonial2' }) }
           />
