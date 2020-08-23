@@ -107,7 +107,7 @@
     "home.privateText": "With booky, you can store your favorite links online in private collections. All your bookmarks are kept confidential and are only visible to you.",
     "home.performantText": "We take great pride in providing you with an accessible site that's both fast and easy to use. Organize your bookmarks in collections and categories.",
     "home.mobileText": "At home or on the go? No problem with our mobile web app! Your bookmarks can be accessed and managed from anywhere on desktop or mobile.",
-    "home.customizableText": "Customize booky to your needs. A dark mode, different colors, and many other customizations are waiting for you.",
+    "home.customizableText": "Customize booky to your needs. A dark mode, different header and category colors, and many other customizations are waiting for you.",
     "home.notAMember": "Not a member yet? Join now!",
     "home.promoText": "No ads, no spam, no hidden costs.",
     "notFound.text": "This is not the web page you are looking for.",
@@ -243,5 +243,8 @@
     "recovery.deny": "You have declined the reset of your password.",
     "recovery.confirm": "Your password has been successfully reset. We'll send you an email with your new password right away.",
     "join.button": "<b>Join</b> now",
-    "error.user.alreadyLoggedIn": "You are still logged in."
+    "error.user.alreadyLoggedIn": "You are still logged in.",
+    "home.testimonial1": "My portal to the web. I tried many bookmark manager, and this is the best one.",
+    "home.testimonial2": "A simple, lightweight, yet powerful application to store my bookmarks in the cloud.",
+    "home.testimonial3": "I love the sleek and simple design! The focus lies on what's important: managing bookmarks."
 }

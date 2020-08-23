@@ -243,5 +243,8 @@
     "recovery.deny": "Du hast das Zurücksetzen deines Passwortes abgelehnt.",
     "recovery.confirm": "Dein Passwort wurde erfolgreich zurückgesetzt. Wir senden dir gleich eine E-Mail mit deinem neuen Passwort.",
     "join.button": "Jetzt <b>beitreten</b>",
-    "error.user.alreadyLoggedIn": "Du bist noch angemeldet."
+    "error.user.alreadyLoggedIn": "Du bist noch angemeldet.",
+    "home.testimonial1": "Mein Portal zum Web. Ich habe viele Lesezeichen-Manager ausprobiert, und dies ist der Beste.",
+    "home.testimonial2": "Eine einfache, schnelle und dennoch leistungsstarke App zum Speichern meiner Lesezeichen in der Cloud.",
+    "home.testimonial3": "Ich liebe das elegante und einfache Design! Der Fokus liegt auf dem, was wichtig ist: dem Verwalten von Lesezeichen."
 }
