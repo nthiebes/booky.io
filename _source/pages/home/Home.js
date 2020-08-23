@@ -151,7 +151,7 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
             text={ intl.formatMessage({ id: 'home.performantText' }) }
-            illustration="speed"
+            illustration="speed_opt"
           />
         </Section>
         <Section>
@@ -171,7 +171,7 @@ class Home extends Component {
         <Section className="home__not-a-member">
           <Illustration
             className="home__heart"
-            name="heart"
+            name="heart_opt"
           />
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="home.notAMember" />
