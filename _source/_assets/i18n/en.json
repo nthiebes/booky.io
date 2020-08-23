@@ -246,5 +246,6 @@
     "error.user.alreadyLoggedIn": "You are still logged in.",
     "home.testimonial1": "My portal to the web. I tried many bookmark manager, and this is the best one.",
     "home.testimonial2": "A simple, lightweight, yet powerful application to store my bookmarks in the cloud.",
-    "home.testimonial3": "I love the sleek and simple design! The focus lies on what's important: managing bookmarks."
+    "home.testimonial3": "I love the sleek and simple design! The focus lies on what's important: managing bookmarks.",
+    "home.anonymous": "Anonymous"
 }
