@@ -90,6 +90,14 @@ class Home extends Component {
           />
         </Section>
         <Section color="dark" contentClassName="home__bookmarklet">
+          <Illustration
+            className="home__plant booky--hide-mobile"
+            name="plant"
+          />
+          <Illustration
+            className="home__trees booky--hide-mobile-tablet"
+            name="trees"
+          />
           <H2 style="h1" color="light" noMargin centered>
             <FormattedMessage id="misc.feature1" />
           </H2>

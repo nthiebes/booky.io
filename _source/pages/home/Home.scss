@@ -1,5 +1,6 @@
 .home {
   padding-top: 0;
+  overflow: hidden;
 }
 
 .home__header {
@@ -117,10 +118,47 @@
   }
 }
 
+.home__plant {
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  max-width: 12rem;
+  width: 12vw;
+  left: 3%;
+
+  @include desktop {
+    width: 19vw;
+    left: 36px;
+  }
+
+  @include hd {
+    left: 0;
+  }
+}
+
+.home__trees {
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  max-width: 15rem;
+  right: -7rem;
+  width: 22vw;
+}
+
 .home__bookmarklet {
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @include mobile-tablet {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @include desktop {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+  }
 }
 
 .home__extension {
@@ -136,6 +174,8 @@
 
 .home__extension-icon {
   margin: 0 0.5rem 0.5rem;
+  max-width: 75px;
+  max-height: 75px;
 
   @include mobile {
     width: 19vw;
@@ -149,31 +189,32 @@
   align-items: center;
 }
 
-.home__features,
-.home__testimonials,
-.home__bookmarklet {
-  @include mobile-tablet {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-  
-  @include desktop {
-    padding-top: 4rem;
-    padding-bottom: 5rem;
-  }
-}
-
 .home__testimonials {
   @include mobile {
     padding-top: 13vw;
+    padding-bottom: 3rem;
   }
 
   @include tablet {
     padding-top: 6rem;
+    padding-bottom: 3rem;
   }
 
   @include desktop {
     padding-top: 10rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.home__features {
+  @include mobile-tablet {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @include desktop {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
   }
 }
 
