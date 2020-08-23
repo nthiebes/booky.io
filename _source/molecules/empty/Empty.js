@@ -9,7 +9,7 @@ class Empty extends Component {
     const { children, illustration, alt, className, darkMode, ariaHidden } = this.props;
 
     return (
-      <figure className={ classNames('empty', className && className) }>
+      <figure className={ classNames('empty', className) }>
         <Illustration
           name={ illustration }
           alt={ alt }

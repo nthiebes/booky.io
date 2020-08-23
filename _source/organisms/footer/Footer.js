@@ -57,7 +57,7 @@ class Footer extends PureComponent {
         'footer',
         hasSidebar && home && loggedIn && toolbarSticky && 'footer--sidebar',
         hasSidebar && home && loggedIn && dashboardsOpen && toolbarSticky && 'footer--shifted',
-        className && className
+        className
       ) }>
         { home && !loggedIn && (
           <section>

@@ -40,7 +40,7 @@ export default class Page extends Component {
           stickyHeader && 'page--sticky-header',
           darkMode && 'page--dark',
           blurContent && 'page--blur',
-          className && className
+          className
         ) }>
           <ErrorBoundary>
             { children }

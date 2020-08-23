@@ -82,7 +82,7 @@ export default class Input extends PureComponent {
     const inputProps = {
       className: classNames(
         'input__field',
-        className && className,
+        className,
         color && `input__field--color-${color}`,
         !validation && 'input__field--no-validation',
         icon && 'input__field--icon',

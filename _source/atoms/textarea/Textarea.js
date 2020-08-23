@@ -51,7 +51,7 @@ export default class Textarea extends Component {
         'textarea__field',
         color && `textarea__field--color-${color}`,
         !validation && 'textarea__field--no-validation',
-        className && className
+        className
       ),
       onBlur: this.onBlur,
       onFocus: this.onFocus,
@@ -72,7 +72,7 @@ export default class Textarea extends Component {
     return (
       <Fragment>
         { label && <Label htmlFor={ id }>{ label }</Label> }
-        <span className={ classNames('textarea', className && className) }>
+        <span className={ classNames('textarea', className) }>
           <textarea { ...textareaProps } />
           { validation && (
             <Fragment>
