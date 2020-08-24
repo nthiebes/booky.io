@@ -21,7 +21,7 @@ class AccountManage extends Component {
     // const { intl } = this.props;
 
     return (
-      <Empty illustration="empty">
+      <Empty illustration="empty_opt">
         <FormattedMessage id="misc.comingSoon" />
       </Empty>
     );

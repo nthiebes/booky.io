@@ -7,7 +7,7 @@ import Empty from '../../../molecules/empty';
 class AccountStatistics extends Component {
   render() {
     return (
-      <Empty illustration="empty">
+      <Empty illustration="empty_opt">
         <FormattedMessage id="misc.comingSoon" />
       </Empty>
     );
