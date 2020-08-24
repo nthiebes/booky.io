@@ -78,7 +78,7 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.privateHeadline' }) }
             text={ intl.formatMessage({ id: 'home.privateText' }) }
-            illustration="protection"
+            illustration="protection_opt"
           />
         </Section>
         <Section>
