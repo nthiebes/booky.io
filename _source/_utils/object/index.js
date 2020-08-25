@@ -10,3 +10,15 @@ export const removeUndefined = (object) => {
 
   return cleanObject;
 };
+
+export const removeEmpty = (object) => {
+  const cleanObject = {
+    ...object
+  };
+
+  Object.keys(cleanObject).forEach((key) => (
+    cleanObject[key] === '' && delete cleanObject[key])
+  );
+
+  return cleanObject;
+};

@@ -1,4 +1,5 @@
 import fetcher from '../../_utils/fetcher';
+import { removeEmpty } from '../../_utils/object';
 
 export const UPDATE_USER = 'UPDATE_USER';
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
@@ -8,21 +9,23 @@ export const resetUserState = () => ({
   type: RESET_USER_STATE
 });
 
-export const updateUser = (userData) => ((dispatch) => {
+export const updateUser = ({userData, onError, onSuccess}) => ((dispatch) => {
   dispatch({
     type: UPDATE_USER,
-    userData
+    userData: {
+      username: userData.username
+    }
   });
 
   fetcher({
-    url: '/user',
-    method: 'PATCH',
-    params: userData,
-    onSuccess: () => {
-      // console.log(data);
+    url: '/account',
+    method: 'POST',
+    params: removeEmpty(userData),
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
     },
-    onError: () => {
-      // console.log(error);
+    onError: (error) => {
+      onError && onError(error);
     }
   });
 });
