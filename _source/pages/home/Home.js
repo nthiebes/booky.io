@@ -85,7 +85,7 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
             text={ intl.formatMessage({ id: 'home.customizableText' }) }
-            illustration="customize"
+            illustration="customize_opt"
             direction="right"
           />
         </Section>
