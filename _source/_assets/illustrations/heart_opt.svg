@@ -4,7 +4,7 @@
   xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <style>
     .heart {
-      animation: 3s ease infinite pulse;
+      animation: 2.5s ease infinite pulse;
       transform-origin: center 220px;
     }
 
@@ -13,15 +13,15 @@
         transform: scale(1);
       }
 
-      40% {
+      30% {
         transform: scale(1);
       }
 
       50% {
-        transform: scale(1.15);
+        transform: scale(1.1);
       }
 
-      60% {
+      70% {
         transform: scale(1);
       }
 

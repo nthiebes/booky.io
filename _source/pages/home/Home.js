@@ -158,7 +158,7 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
             text={ intl.formatMessage({ id: 'home.mobileText' }) }
-            illustration="mobile"
+            illustration="mobile_opt"
             direction="right"
           />
         </Section>
