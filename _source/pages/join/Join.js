@@ -127,7 +127,7 @@ class Join extends Component {
     return (
       <Page>
         <Section className="join">
-          {success ? (
+          {true ? (
             <SuccessIllustration message="join.success" hasIcon icon="smile" />
           ) : (
             <Fragment>
