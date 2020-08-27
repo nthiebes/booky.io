@@ -112,6 +112,7 @@ class Home extends Component {
                 alt="Chrome browser extension"
                 className="home__extension-icon"
                 src="../../_assets/browsers/chrome.svg"
+                loading="lazy"
               />
               { 'Chrome' }
             </Link>
@@ -122,6 +123,7 @@ class Home extends Component {
                 alt="Firefox browser extension"
                 className="home__extension-icon"
                 src="../../_assets/browsers/firefox.svg"
+                loading="lazy"
               />
               { 'Firefox' }
             </Link>
@@ -132,6 +134,7 @@ class Home extends Component {
                 alt="Opera browser extension"
                 className="home__extension-icon"
                 src="../../_assets/browsers/opera.svg"
+                loading="lazy"
               />
               { 'Opera' }
             </Link>
@@ -142,6 +145,7 @@ class Home extends Component {
                 alt="Edge browser extension"
                 className="home__extension-icon"
                 src="../../_assets/browsers/edge.svg"
+                loading="lazy"
               />
               { 'Edge' }
             </Link>

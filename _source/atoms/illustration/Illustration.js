@@ -13,6 +13,7 @@ export default class Illustration extends Component {
         className={ className }
         src={ `../../_assets/illustrations/${name}.svg` }
         aria-hidden={ ariaHidden }
+        loading="lazy"
       />
     );
   }

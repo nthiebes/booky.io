@@ -19,6 +19,7 @@ export default class Logo extends Component {
         alt={ alt } 
         height={ height } 
         width={ width } 
+        loading="lazy"
       />
     );
   }
