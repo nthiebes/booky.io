@@ -8,7 +8,7 @@ import P from '../../../atoms/paragraph';
 import Label from '../../../atoms/label';
 import Form from '../../../molecules/form';
 import Checkbox from '../../../atoms/checkbox';
-import { ErrorMessage } from '../../../atoms/messages';
+import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
 
 class AccountData extends Component {
   state = {
@@ -17,7 +17,8 @@ class AccountData extends Component {
     newPassword: '',
     pending: false,
     showPassword: false,
-    error: null
+    error: null,
+    success: false
   };
 
   handleInputChange = (value, name) => {
@@ -38,7 +39,8 @@ class AccountData extends Component {
 
     this.setState({
       pending: true,
-      error: false
+      error: false,
+      success: false
     });
 
     updateUser({
@@ -127,7 +129,7 @@ class AccountData extends Component {
           <FormattedMessage id="button.update" values={ { b: (msg) => <b>{msg}</b> } } />
         </ButtonLargeBlue>
         {error && <ErrorMessage message={ error } hasIcon />}
-        {success && 'success'}
+        {success && <SuccessMessage message="account.success" hasIcon icon="smile" />}
       </Form>
     );
   }

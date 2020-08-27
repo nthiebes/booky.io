@@ -5,7 +5,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
 import Input from '../../atoms/input';
-import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
+import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
@@ -65,7 +65,7 @@ class Forgot extends Component {
       <Page>
         <Section className="forgot">
           { success ? (
-            <SuccessMessage message="forgot.success" hasIcon icon="smile" />
+            <SuccessIllustration message="forgot.success" hasIcon icon="smile" />
           ) : (
             <Fragment>
               <Form onSubmit={ this.handleSubmit } className="forgot__form">

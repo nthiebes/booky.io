@@ -11,14 +11,9 @@ export default class SuccessMessage extends Component {
     message: PropTypes.string,
     className: PropTypes.string,
     hasIcon: PropTypes.bool,
-    icon: PropTypes.string
+    noAnimation: PropTypes.bool
   }
   
-  static defaultProps = {
-    message: 'success.default',
-    icon: 'check'
-  }
-
   state = {
     animate: false
   }
@@ -34,23 +29,23 @@ export default class SuccessMessage extends Component {
   }
 
   render() {
-    const { message, className, hasIcon, icon } = this.props;
+    const { message, className, hasIcon, noAnimation } = this.props;
     const { animate } = this.state;
 
     return (
-      <P className={ classNames('success', className) } role="alert">
-        { hasIcon && (
-          <Icon
-            icon={ icon }
-            color="green"
-            size="large"
-            ignoreDarkMode
-            className={ classNames('success__icon', animate && 'success__icon--animate') }
-          />
+      <P
+        className={ classNames(
+          'success',
+          animate && !noAnimation && 'success--animate',
+          noAnimation && 'success--show',
+          className
         ) }
-        <span className={ classNames('success__text', animate && 'success__text--animate') }>
-          <FormattedMessage id={ message } />
-        </span>
+        role="alert"
+      >
+        { hasIcon && (
+          <Icon icon="check" color="green" ignoreDarkMode className="success__icon" />
+        ) }
+        <FormattedMessage id={ message } />
       </P>
     );
   }

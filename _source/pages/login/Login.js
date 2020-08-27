@@ -8,7 +8,7 @@ import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
-import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
+import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
@@ -174,10 +174,10 @@ class Login extends Component {
             <Icon icon="spinner" className="login__spinner" />
           ) }
           { token && actionSuccess && (
-            <SuccessMessage message="join.success.login" hasIcon />
+            <SuccessIllustration message="join.success.login" hasIcon />
           ) }
           { action === 'confirm' && actionSuccess && (
-            <SuccessMessage message="recovery.confirm" hasIcon icon="smile" />
+            <SuccessIllustration message="recovery.confirm" hasIcon icon="smile" />
           ) }
           { action === 'deny' && actionSuccess && (
             <ErrorMessage message="recovery.deny" hasIcon />

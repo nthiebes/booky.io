@@ -5,7 +5,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
 import Input from '../../atoms/input';
-import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
+import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
@@ -66,7 +66,7 @@ class Resend extends Component {
       <Page>
         <Section className="resend">
           { success ? (
-            <SuccessMessage message="resend.success" hasIcon icon="smile" />
+            <SuccessIllustration message="resend.success" hasIcon icon="smile" />
           ) : (
             <Fragment>
               <Form onSubmit={ this.handleSubmit } className="resend__form">

@@ -8,20 +8,26 @@ import Link from '../../link';
 import Icon from '../../icon';
 
 export default class ErrorMessage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.animate = this.animate.bind(this);
-    this.state = {
-      animate: false
-    };
+  static propTypes = {
+    message: PropTypes.string,
+    className: PropTypes.string,
+    hasIcon: PropTypes.bool,
+    noAnimation: PropTypes.bool
+  }
+  
+  static defaultProps = {
+    message: 'error.default'
+  }
+  
+  state = {
+    animate: false
   }
 
   componentDidMount() {
     window.setTimeout(this.animate, 100);
   }
 
-  animate() {
+  animate = () => {
     this.setState({
       animate: true
     });
@@ -58,14 +64,3 @@ export default class ErrorMessage extends Component {
     );
   }
 }
-
-ErrorMessage.propTypes = {
-  message: PropTypes.string,
-  className: PropTypes.string,
-  hasIcon: PropTypes.bool,
-  noAnimation: PropTypes.bool
-};
-
-ErrorMessage.defaultProps = {
-  message: 'error.default'
-};

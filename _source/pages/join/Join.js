@@ -8,7 +8,7 @@ import { H1, H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
-import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
+import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
@@ -128,7 +128,7 @@ class Join extends Component {
       <Page>
         <Section className="join">
           {success ? (
-            <SuccessMessage message="join.success" hasIcon icon="smile" />
+            <SuccessIllustration message="join.success" hasIcon icon="smile" />
           ) : (
             <Fragment>
               <Form onSubmit={ this.handleSubmit }>
