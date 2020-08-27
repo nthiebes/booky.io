@@ -16,7 +16,8 @@ class Categories extends PureComponent {
     dashboardName: PropTypes.string,
     className: PropTypes.string,
     pending: PropTypes.bool,
-    openModal: PropTypes.func.isRequired
+    openModal: PropTypes.func.isRequired,
+    categoriesLayout: PropTypes.string.isRequired
   }
 
   onAddClick = () => {
@@ -24,7 +25,15 @@ class Categories extends PureComponent {
   }
 
   render() {
-    const { categories, dashboardsOpen, hasSidebar, dashboardName, className, pending } = this.props;
+    const {
+      categories,
+      dashboardsOpen,
+      hasSidebar,
+      dashboardName,
+      className,
+      pending,
+      categoriesLayout
+    } = this.props;
     const Element = pending || !categories.length ? 'section' : 'ul';
 
     return (
@@ -32,7 +41,8 @@ class Categories extends PureComponent {
         'categories',
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
-        !pending && categories.length && 'categories--grid',
+        !pending && categories.length && categoriesLayout === 'grid' && 'categories--grid',
+        !pending && categories.length && categoriesLayout === 'column' && 'categories--column',
         className
       ) }>
         { pending ? (

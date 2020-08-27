@@ -9,6 +9,37 @@
 }
 
 .categories--grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: 3vw;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 36px;
+
+    &.categories--shifted {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @include hd {
+    &.categories {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @include fullhd {
+    &.categories {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.categories--column {
   columns: 274px auto;
   column-gap: 3%;
 
