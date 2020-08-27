@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import Page from '../../templates/page';
-import { H1 } from '../../atoms/headline';
+import { H1, H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 import Input from '../../atoms/input';
@@ -12,9 +13,8 @@ import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
-import Illustration from '../../atoms/illustration';
 
-import './Join.scss';
+import { Monster } from './Monster';
 
 class Join extends Component {
   static propTypes = {
@@ -29,13 +29,39 @@ class Join extends Component {
     password: '',
     pending: false,
     showPassword: false,
-    error: null
+    error: null,
+    animation: ''
   };
 
+  getAnimation = (value, name) => {
+    let valid;
+
+    if (name === 'username') {
+      valid = Boolean(value);
+    }
+
+    if (name === 'password') {
+      valid = Boolean(value.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/ig));
+    }
+
+    if (valid === true) {
+      return `${name}-focus ${name}-valid`;
+    }
+    
+    if (!value) { 
+      return `${name}-focus`;
+    }
+    
+    return `${name}-focus ${name}-invalid`;
+  }
+
   handleInputChange = (value, name) => {
+    const animation = this.getAnimation(value, name);
+
     this.setState({
       [name]: value,
-      pending: false
+      pending: false,
+      animation
     });
   };
 
@@ -44,6 +70,20 @@ class Join extends Component {
       showPassword: checked
     });
   };
+
+  handleFocus = (event) => {
+    const animation = this.getAnimation(event.target.value, event.target.name);
+
+    this.setState({
+      animation
+    });
+  }
+
+  handleBlur = () => {
+    this.setState({
+      animation: ''
+    });
+  }
 
   handleSubmit = (params) => {
     const { join } = this.props;
@@ -80,7 +120,8 @@ class Join extends Component {
       pending,
       showPassword,
       error,
-      success
+      success,
+      animation
     } = this.state;
 
     return (
@@ -90,13 +131,13 @@ class Join extends Component {
             <SuccessMessage message="join.success" hasIcon icon="smile" />
           ) : (
             <Fragment>
-              <Form onSubmit={ this.handleSubmit } className="join__form">
+              <Form onSubmit={ this.handleSubmit }>
                 <H1>
                   <FormattedMessage id="join.headline" />
                 </H1>
-                <P>
+                <H2 className="join__subheadline">
                   <FormattedMessage id="home.promoText" />
-                </P>
+                </H2>
                 <Input
                   value={ username }
                   name="username"
@@ -107,6 +148,8 @@ class Join extends Component {
                   maxLength="50"
                   required
                   disabled={ pending }
+                  onFocus={ this.handleFocus }
+                  onBlur={ this.handleBlur }
                 />
                 <Input
                   value={ email }
@@ -120,6 +163,8 @@ class Join extends Component {
                   type="email"
                   requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
                   disabled={ pending }
+                  onFocus={ this.handleFocus }
+                  onBlur={ this.handleBlur }
                 />
                 <Input
                   value={ password }
@@ -136,6 +181,8 @@ class Join extends Component {
                     id: 'misc.validPassword'
                   }) }
                   disabled={ pending }
+                  onFocus={ this.handleFocus }
+                  onBlur={ this.handleBlur }
                 />
                 <input value={ language } name="language" type="hidden" />
                 <input
@@ -166,12 +213,7 @@ class Join extends Component {
                   </Link>
                 </P>
               </Form>
-              <Illustration
-                name="monitor-window"
-                width="300"
-                height="300"
-                className="join__illustration"
-              />
+              <Monster className={ classNames(animation, showPassword && 'monster--show-password') } />
             </Fragment>
           )}
         </Section>

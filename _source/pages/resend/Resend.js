@@ -109,9 +109,7 @@ class Resend extends Component {
                 { error && <ErrorMessage message={ error } hasIcon /> }
               </Form>
               <Illustration
-                name="postman-receive-letter"
-                width="300"
-                height="300"
+                name="email"
                 className="resend__illustration"
               />
             </Fragment>

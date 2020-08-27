@@ -1,12 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { H2 } from '../../atoms/headline';
 
 import Testimonial from './Testimonial';
 
 class Testimonials extends Component {
+  static propTypes = {
+    intl: PropTypes.object.isRequired
+  }
+
   render() {
+    const { intl } = this.props;
+
     return (
       <Fragment>
         <H2 style="h1" className="testimonials-headline" noMargin>
@@ -14,24 +21,26 @@ class Testimonials extends Component {
         </H2>
         <div className="testimonials">
           <Testimonial
-            name="David Lafond"
-            twitter="kronozio"
-            url="https://twitter.com/Kronozio"
-            image="_assets/illustrations/hacker.svg"
-            text="My portal to the web. I tried many bookmark manager, and this is the best one."
-          />
-          <Testimonial
-            // Ricardo Sebastián
-            name="Anonymous"
-            image="_assets/illustrations/customer-service-man.svg"
-            text="A simple, lightweight, yet powerful application to store my bookmarks in the cloud."
-          />
-          <Testimonial
             name="Samira Stein"
             twitter="frontend_cat"
             url="https://twitter.com/frontend_cat"
-            image="_assets/illustrations/customer-service-woman.svg"
-            text="I love the sleek and simple design! The focus lies on what's important: managing bookmarks."
+            image="_assets/illustrations/female.svg"
+            text={ intl.formatMessage({ id: 'home.testimonial3' }) }
+          />
+          <Testimonial
+            name="David Lafond"
+            twitter="kronozio"
+            url="https://twitter.com/kronozio"
+            image="_assets/illustrations/male.svg"
+            text={ intl.formatMessage({ id: 'home.testimonial1' }) }
+          />
+          <Testimonial
+            // Ricardo Sebastián
+            name={ intl.formatMessage({ id: 'home.anonymous' }) }
+            twitter="booky_io"
+            url="https://twitter.com/booky_io"
+            image="_assets/illustrations/female2.svg"
+            text={ intl.formatMessage({ id: 'home.testimonial2' }) }
           />
         </div>
       </Fragment>
@@ -39,4 +48,4 @@ class Testimonials extends Component {
   }
 }
 
-export default Testimonials;
+export default injectIntl(Testimonials);

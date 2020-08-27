@@ -13,6 +13,7 @@ export default class Illustration extends Component {
         className={ className }
         src={ `../../_assets/illustrations/${name}.svg` }
         aria-hidden={ ariaHidden }
+        loading="lazy"
       />
     );
   }
@@ -28,7 +29,7 @@ Illustration.propTypes = {
 };
 
 Illustration.defaultProps = {
-  height: '200',
-  width: '200',
+  height: '300',
+  width: '300',
   ariaHidden: true
 };

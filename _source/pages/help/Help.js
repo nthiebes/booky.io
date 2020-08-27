@@ -53,8 +53,7 @@ export default class Help extends Component {
           <P className="help-intro">
             <FormattedMessage id="help.intro2" values={ introValues } />
           </P>
-          <Illustration name="customer-service-man" className="help-illustration" />
-
+          <Illustration name="help_opt" className="help-illustration booky--hide-mobile" />
           <H2>
             <FormattedMessage id="help.beta" />
           </H2>

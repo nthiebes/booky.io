@@ -34,7 +34,7 @@ class Menu extends Component {
     const menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     return (
-      <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className && className) }>
+      <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className) }>
         { menuItems.map(({ name, route }) => (
           <Link
             key={ name }

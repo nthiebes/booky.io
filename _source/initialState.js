@@ -20,7 +20,8 @@ export default {
       autofillBookmarkNames: true,
       colorScheme: 0,
       defaultDashboardId: null,
-      enableNotes: true
+      enableNotes: true,
+      categoriesLayout: 'grid'
     }
   },
   dashboards: {

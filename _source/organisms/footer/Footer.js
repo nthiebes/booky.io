@@ -8,6 +8,7 @@ import Link from '../../atoms/link';
 import Logo from '../../atoms/logo';
 import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
+import Illustration from '../../atoms/illustration';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends PureComponent {
@@ -56,31 +57,37 @@ class Footer extends PureComponent {
         'footer',
         hasSidebar && home && loggedIn && toolbarSticky && 'footer--sidebar',
         hasSidebar && home && loggedIn && dashboardsOpen && toolbarSticky && 'footer--shifted',
-        className && className
+        className
       ) }>
         { home && !loggedIn && (
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{ `35${thousandsSeparator}024` }</b>
+                <b>{ `37${thousandsSeparator}273` }</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{ `14${thousandsSeparator}332${thousandsSeparator}178` }</b>
+                <b>{ `15${thousandsSeparator}497${thousandsSeparator}515` }</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{ `1${thousandsSeparator}159${thousandsSeparator}204` }</b>
+                <b>{ `1${thousandsSeparator}249${thousandsSeparator}793` }</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{ `64${thousandsSeparator}026` }</b>
+                <b>{ `68${thousandsSeparator}178` }</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
           </section>
         ) }
         <section className={ classNames('footer__social', darkMode && 'footer__social--dark-mode') }>
+          <Illustration
+            className="footer__illustration"
+            name="share_opt"
+            width="100"
+            height="100"
+          />
           <a
             className="footer__social-item"
             target="_blank"
