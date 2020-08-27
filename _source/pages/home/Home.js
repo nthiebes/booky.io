@@ -67,7 +67,7 @@ class Home extends Component {
             </ButtonLargeLight>
           </div>
           <Illustration
-            name="devices"
+            name="devices_opt"
             className="home__header-illustration"
           />
         </section>
