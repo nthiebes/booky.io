@@ -19,7 +19,7 @@ export const updateUser = ({userData, onError, onSuccess}) => ((dispatch) => {
 
   fetcher({
     url: '/account',
-    method: 'POST',
+    method: 'PATCH',
     params: removeEmpty(userData),
     onSuccess: (data) => {
       onSuccess && onSuccess(data);

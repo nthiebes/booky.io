@@ -124,7 +124,7 @@ class AccountData extends Component {
           disabled={ pending }
           contentBefore
         >
-          <FormattedMessage id="join.button" values={ { b: (msg) => <b>{msg}</b> } } />
+          <FormattedMessage id="button.update" values={ { b: (msg) => <b>{msg}</b> } } />
         </ButtonLargeBlue>
         {error && <ErrorMessage message={ error } hasIcon />}
         {success && 'success'}
