@@ -4,10 +4,11 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Page from '../../templates/page';
+import Section from '../../molecules/section';
 import { H1, H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
-import Section from '../../molecules/section';
+import Illustration from '../../atoms/illustration';
 
 export default class Legal extends Component {
   render() {
@@ -16,6 +17,10 @@ export default class Legal extends Component {
     return (
       <Page>
         <Section>
+          <Illustration
+            name="legal_opt"
+            className="legal__illustration booky--hide-mobile"
+          />
           { locale === 'en' && (
             <Fragment>
               <H1>Legal Notice</H1>
