@@ -10,16 +10,8 @@
   }
 }
 
-.forgot__form {
-  @include desktop {
-    margin-right: 2rem;
-  }
-}
-
 .forgot__illustration {
   flex-shrink: 0;
-
-  @include mobile-tablet {
-    display: none;
-  }
+  margin-left: 3rem;
+  margin-top: 5rem;
 }

@@ -69,7 +69,7 @@ class Resend extends Component {
             <SuccessIllustration message="resend.success" illustration="join-success_opt" />
           ) : (
             <Fragment>
-              <Form onSubmit={ this.handleSubmit } className="resend__form">
+              <Form onSubmit={ this.handleSubmit }>
                 <H1>
                   <FormattedMessage id="resend.headline" />
                 </H1>
@@ -109,8 +109,8 @@ class Resend extends Component {
                 { error && <ErrorMessage message={ error } hasIcon /> }
               </Form>
               <Illustration
-                name="email"
-                className="resend__illustration"
+                name="email_opt"
+                className="resend__illustration booky--hide-mobile-tablet"
               />
             </Fragment>
           )}
