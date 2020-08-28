@@ -128,7 +128,7 @@ class Join extends Component {
       <Page>
         <Section className="join">
           {success ? (
-            <SuccessIllustration message="join.success" illustration="join-success_opt" />
+            <SuccessIllustration message="join.success" illustration="join-success_opt" width="400" />
           ) : (
             <Fragment>
               <Form onSubmit={ this.handleSubmit }>

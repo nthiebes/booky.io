@@ -10,15 +10,22 @@ export default class SuccessIllustration extends Component {
   static propTypes = {
     message: PropTypes.string,
     className: PropTypes.string,
-    illustration: PropTypes.string.isRequired
+    illustration: PropTypes.string.isRequired,
+    width: PropTypes.string,
+    height: PropTypes.string
   }
 
   state = {
     animate: false
   }
-
+  
   componentDidMount() {
     window.setTimeout(this.animate, 100);
+  }
+  
+  static defaultTypes = {
+    width: '300',
+    height: '300'
   }
 
   animate = () => {
@@ -28,15 +35,15 @@ export default class SuccessIllustration extends Component {
   }
 
   render() {
-    const { message, illustration } = this.props;
+    const { message, illustration, width, height } = this.props;
     const { animate } = this.state;
 
     return (
       <div role="alert" className="success-illustration">
         <Illustration
           name={ illustration }
-          width="400"
-          height="300"
+          width={ width }
+          height={ height }
           className={ classNames('success-illustration__image', animate && 'success-illustration__image--animate') }
         />
         <P className={ classNames('success-illustration__text', animate && 'success-illustration__text--animate') }>

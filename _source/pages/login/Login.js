@@ -11,9 +11,10 @@ import Input from '../../atoms/input';
 import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Checkbox from '../../atoms/checkbox';
+import Icon from '../../atoms/icon';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
-import Icon from '../../atoms/icon';
+import Empty from '../../molecules/empty';
 
 class Login extends Component {
   static propTypes = {
@@ -180,7 +181,7 @@ class Login extends Component {
             <SuccessIllustration message="recovery.confirm" illustration="success_opt" />
           ) }
           { action === 'deny' && actionSuccess && (
-            <ErrorMessage message="recovery.deny" hasIcon />
+            <SuccessIllustration message="recovery.deny" illustration="deny_opt" width="220" />
           ) }
           { actionError && (
             <ErrorMessage message={ actionError } hasIcon />

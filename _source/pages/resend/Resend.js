@@ -66,7 +66,7 @@ class Resend extends Component {
       <Page>
         <Section className="resend">
           { success ? (
-            <SuccessIllustration message="resend.success" illustration="join-success_opt" />
+            <SuccessIllustration message="resend.success" illustration="join-success_opt" width="400" />
           ) : (
             <Fragment>
               <Form onSubmit={ this.handleSubmit }>
