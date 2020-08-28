@@ -14,7 +14,6 @@ import Checkbox from '../../atoms/checkbox';
 import Icon from '../../atoms/icon';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
-import Empty from '../../molecules/empty';
 
 class Login extends Component {
   static propTypes = {
