@@ -1,5 +1,4 @@
 .success-illustration {
-  color: $color-font--medium;
   font-weight: bold;
   position: relative;
   display: flex;
@@ -8,30 +7,13 @@
   max-width: 34rem;
 }
 
-.success-illustration__icon {
-  transform: scale(0.7);
+.success-illustration__image {
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transform: translateY(-0.5rem);
   opacity: 0;
-  animation: 0.7s ease-out forwards popIn;
 }
 
-@keyframes popIn {
-  0% {
-    transform: scale(0.7);
-    opacity: 0;
-  }
-
-  30% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.success-illustration__icon--animate {
+.success-illustration__image--animate {
   transform: translateY(0);
   opacity: 1;
 }

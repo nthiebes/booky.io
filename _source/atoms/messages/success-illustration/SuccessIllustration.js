@@ -4,18 +4,13 @@ import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 import P from '../../paragraph';
-import Icon from '../../icon';
+import Illustration from '../../illustration';
 
 export default class SuccessIllustration extends Component {
   static propTypes = {
     message: PropTypes.string,
     className: PropTypes.string,
-    hasIcon: PropTypes.bool,
-    icon: PropTypes.string
-  }
-  
-  static defaultProps = {
-    icon: 'check'
+    illustration: PropTypes.string.isRequired
   }
 
   state = {
@@ -33,24 +28,19 @@ export default class SuccessIllustration extends Component {
   }
 
   render() {
-    const { message, className, hasIcon, icon } = this.props;
+    const { message, illustration } = this.props;
     const { animate } = this.state;
 
     return (
-      <P className={ classNames('success-illustration', className) } role="alert">
-        { hasIcon && (
-          <Icon
-            icon={ icon }
-            color="green"
-            size="large"
-            ignoreDarkMode
-            className={ classNames('success-illustration__icon', animate && 'success-illustration__icon--animate') }
-          />
-        ) }
-        <span className={ classNames('success-illustration__text', animate && 'success-illustration__text--animate') }>
+      <div role="alert" className="success-illustration">
+        <Illustration
+          name={ illustration }
+          className={ classNames('success-illustration__image', animate && 'success-illustration__image--animate') }
+        />
+        <P className={ classNames('success-illustration__text', animate && 'success-illustration__text--animate') }>
           <FormattedMessage id={ message } />
-        </span>
-      </P>
+        </P>
+      </div>
     );
   }
 }
