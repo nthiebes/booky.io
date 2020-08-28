@@ -35,6 +35,8 @@ export default class SuccessIllustration extends Component {
       <div role="alert" className="success-illustration">
         <Illustration
           name={ illustration }
+          width="400"
+          height="300"
           className={ classNames('success-illustration__image', animate && 'success-illustration__image--animate') }
         />
         <P className={ classNames('success-illustration__text', animate && 'success-illustration__text--animate') }>
