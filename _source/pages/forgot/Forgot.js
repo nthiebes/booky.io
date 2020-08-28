@@ -65,7 +65,7 @@ class Forgot extends Component {
       <Page>
         <Section className="forgot">
           { success ? (
-            <SuccessIllustration message="forgot.success" hasIcon icon="smile" />
+            <SuccessIllustration message="forgot.success" illustration="join-success_opt" />
           ) : (
             <Fragment>
               <Form onSubmit={ this.handleSubmit } className="forgot__form">
