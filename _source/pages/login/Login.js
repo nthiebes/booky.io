@@ -125,8 +125,8 @@ class Login extends Component {
   }
 
   handleSubmit = (params) => {
-    const { history, login } = this.props;
-    const { actionSuccess } = this.state;
+    const { history, login, match } = this.props;
+    const { action } = match.params;
 
     this.setState({
       pending: true,
@@ -138,7 +138,7 @@ class Login extends Component {
       onSuccess: () => {
         document.title = 'booky';
 
-        if (actionSuccess) {
+        if (action) {
           history.push('/account');
         } else {
           history.push('/');
