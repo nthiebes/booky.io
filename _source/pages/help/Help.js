@@ -87,11 +87,11 @@ export default class Help extends Component {
                 <FormattedMessage id="help.account.answer3" values={ introValues } />
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
+            {/* <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
               <P noPadding>
                 <FormattedMessage id="help.account.answer2" values={ deleteValues } />
               </P>
-            </Expandable>
+            </Expandable> */}
           </div>
 
           <H2>

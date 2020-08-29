@@ -28,11 +28,9 @@ class Account extends Component {
       name: props.intl.formatMessage({ id: 'account.import' })
     }, {
       name: props.intl.formatMessage({ id: 'account.export' })
-    }, {
-      name: props.intl.formatMessage({ id: 'account.statistics' })
-    }, {
-      name: props.intl.formatMessage({ id: 'account.account' })
     }];
+    // name: props.intl.formatMessage({ id: 'account.statistics' })
+    // name: props.intl.formatMessage({ id: 'account.account' })
   }
 
   handleTabClick(tabId) {
