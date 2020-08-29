@@ -18,7 +18,7 @@ export default class Legal extends Component {
       <Page>
         <Section>
           <Illustration
-            name="legal_opt"
+            name="legal"
             className="legal__illustration booky--hide-mobile"
           />
           { locale === 'en' && (

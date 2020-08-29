@@ -174,13 +174,13 @@ class Login extends Component {
             <Icon icon="spinner" className="login__spinner" />
           ) }
           { token && actionSuccess && (
-            <SuccessIllustration message="join.success.login" illustration="success_opt" />
+            <SuccessIllustration message="join.success.login" illustration="success" />
           ) }
           { action === 'confirm' && actionSuccess && (
-            <SuccessIllustration message="recovery.confirm" illustration="success_opt" />
+            <SuccessIllustration message="recovery.confirm" illustration="success" />
           ) }
           { action === 'deny' && actionSuccess && (
-            <SuccessIllustration message="recovery.deny" illustration="deny_opt" width="220" />
+            <SuccessIllustration message="recovery.deny" illustration="deny" width="220" />
           ) }
           { actionError && (
             <ErrorMessage message={ actionError } hasIcon />

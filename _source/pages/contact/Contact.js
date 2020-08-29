@@ -77,7 +77,7 @@ class Contact extends Component {
     return (
       <Page>
         <Section>
-          <Empty illustration="empty_opt">
+          <Empty illustration="empty">
             <FormattedMessage id="misc.comingSoon" />
           </Empty>
         </Section>

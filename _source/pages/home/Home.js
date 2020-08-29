@@ -67,7 +67,7 @@ class Home extends Component {
             </ButtonLargeLight>
           </div>
           <Illustration
-            name="devices_opt"
+            name="devices"
             className="home__header-illustration"
           />
         </section>
@@ -78,14 +78,14 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.privateHeadline' }) }
             text={ intl.formatMessage({ id: 'home.privateText' }) }
-            illustration="protection_opt"
+            illustration="protection"
           />
         </Section>
         <Section>
           <Feature
             headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
             text={ intl.formatMessage({ id: 'home.customizableText' }) }
-            illustration="customize_opt"
+            illustration="customize"
             direction="right"
           />
         </Section>
@@ -155,14 +155,14 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
             text={ intl.formatMessage({ id: 'home.performantText' }) }
-            illustration="speed_opt"
+            illustration="speed"
           />
         </Section>
         <Section>
           <Feature
             headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
             text={ intl.formatMessage({ id: 'home.mobileText' }) }
-            illustration="mobile_opt"
+            illustration="mobile"
             direction="right"
           />
         </Section>
@@ -175,7 +175,7 @@ class Home extends Component {
         <Section className="home__not-a-member">
           <Illustration
             className="home__heart"
-            name="heart_opt"
+            name="heart"
           />
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="home.notAMember" />

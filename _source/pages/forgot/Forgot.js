@@ -65,7 +65,7 @@ class Forgot extends Component {
       <Page>
         <Section className="forgot">
           { success ? (
-            <SuccessIllustration message="forgot.success" illustration="join-success_opt" width="400" />
+            <SuccessIllustration message="forgot.success" illustration="join-success" width="400" />
           ) : (
             <Fragment>
               <Form onSubmit={ this.handleSubmit }>
@@ -108,7 +108,7 @@ class Forgot extends Component {
                 { error && <ErrorMessage message={ error } hasIcon /> }
               </Form>
               <Illustration
-                name="password_opt"
+                name="password"
                 className="forgot__illustration booky--hide-mobile-tablet"
               />
             </Fragment>

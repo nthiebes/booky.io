@@ -84,7 +84,7 @@ class Footer extends PureComponent {
         <section className={ classNames('footer__social', darkMode && 'footer__social--dark-mode') }>
           <Illustration
             className="footer__illustration"
-            name="share_opt"
+            name="share"
             width="100"
             height="100"
           />
