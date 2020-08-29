@@ -28,18 +28,18 @@ export default class Help extends Component {
         </Link>
       )
     };
-    const deleteValues = {
-      link: (
-        <Link href="/account">
-          { 'booky.io/account' }
-        </Link>
-      ),
-      email: (
-        <Link to="/contact">
-          <FormattedMessage id="help.email" />
-        </Link>
-      )
-    };
+    // const deleteValues = {
+    //   link: (
+    //     <Link href="/account">
+    //       { 'booky.io/account' }
+    //     </Link>
+    //   ),
+    //   email: (
+    //     <Link to="/contact">
+    //       <FormattedMessage id="help.email" />
+    //     </Link>
+    //   )
+    // };
 
     return (
       <Page>
