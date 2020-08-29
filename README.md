@@ -6,7 +6,9 @@ booky.io is an online bookmark manager with a focus on simplicity, customizabili
 
 [Learn more about booky.io](https://booky.io/about)
 
-This project is a frontend rewrite of the existing site. It is work in progress.
+This repository contains the frontend part of the new booky.io. It's work in progress.
+
+Want to have a sneak peek? Check out the [beta version of booky](https://beta.booky.io)!
 
 ## Development
 ### Setup
