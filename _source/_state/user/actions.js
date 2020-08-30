@@ -97,13 +97,6 @@ export const join = ({ params, onSuccess, onError }) => (() => {
     method: 'POST',
     params,
     onSuccess: (data) => {
-      // const { settings, ...userData } = data;
-
-      // dispatch(updateUser({
-      //   ...userData
-      // }));
-      // dispatch(updateSettings(settings));
-
       onSuccess && onSuccess(data);
     },
     onError: (error) => {
