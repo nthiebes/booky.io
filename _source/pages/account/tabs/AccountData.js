@@ -129,7 +129,7 @@ class AccountData extends Component {
           <FormattedMessage id="button.update" values={ { b: (msg) => <b>{msg}</b> } } />
         </ButtonLargeBlue>
         {error && <ErrorMessage message={ error } hasIcon />}
-        {success && <SuccessMessage message="account.success" hasIcon icon="smile" />}
+        {success && <SuccessMessage message="account.success" hasIcon />}
       </Form>
     );
   }
