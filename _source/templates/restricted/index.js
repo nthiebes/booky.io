@@ -1,1 +1,1 @@
-export { default as restricted } from './restricted';
+export { restricted } from './restricted';

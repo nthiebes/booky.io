@@ -9,12 +9,14 @@ import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
+import Empty from '../../molecules/empty';
 import Illustration from '../../atoms/illustration';
 
 class Resend extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    resend: PropTypes.func.isRequired
+    resend: PropTypes.func.isRequired,
+    loggedIn: PropTypes.bool.isRequired
   }
 
   state = {
@@ -59,8 +61,20 @@ class Resend extends Component {
   }
 
   render() {
-    const { intl } = this.props;
+    const { intl, loggedIn } = this.props;
     const { username, email, pending, error, success } = this.state;
+
+    if (loggedIn) {
+      return (
+        <Page>
+          <Section>
+            <Empty illustration="404">
+              <FormattedMessage id="error.alreadyActive" />
+            </Empty>
+          </Section>
+        </Page>
+      );
+    }
 
     return (
       <Page>
