@@ -33,6 +33,7 @@ class Join extends Component {
     animation: ''
   };
 
+  // eslint-disable-next-line max-statements
   getAnimation = (value, name) => {
     let valid;
 
@@ -42,6 +43,10 @@ class Join extends Component {
 
     if (name === 'password') {
       valid = Boolean(value.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/ig));
+    }
+
+    if (name === 'email') {
+      valid = Boolean(value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ig));
     }
 
     if (valid === true) {
@@ -90,7 +95,8 @@ class Join extends Component {
 
     this.setState({
       pending: true,
-      error: false
+      error: false,
+      animation: ''
     });
 
     join({
@@ -99,13 +105,15 @@ class Join extends Component {
         window.scrollTo(0, 0);
         this.setState({
           pending: false,
-          success: true
+          success: true,
+          animation: 'username-valid'
         });
       },
       onError: (error) => {
         this.setState({
           pending: false,
-          error
+          error,
+          animation: 'username-invalid'
         });
       }
     });
