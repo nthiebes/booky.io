@@ -246,5 +246,6 @@
     "home.testimonial1": "Mein Portal zum Web. Ich habe viele Lesezeichen-Manager ausprobiert, und dies hier ist der Beste.",
     "home.testimonial2": "Eine einfache, schnelle und dennoch leistungsstarke App zum Speichern meiner Lesezeichen in der Cloud.",
     "home.testimonial3": "Ich liebe das elegante und einfache Design! Der Fokus liegt auf dem, was wichtig ist: dem Verwalten von Lesezeichen.",
-    "home.anonymous": "Anonym"
+    "home.anonymous": "Anonym",
+    "error.alreadyActive": "Dein Account ist bereits aktiv!"
 }
