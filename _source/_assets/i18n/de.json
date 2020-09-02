@@ -118,7 +118,7 @@
     "account.title": "Dein Account",
     "account.userData": "Zugangsdaten",
     "account.import": "Importieren",
-    "account.export": "Exportieren",
+    "account.exportButton": "Herunterladen",
     "account.account": "Account",
     "account.newPassword": "Neues Passwort",
     "account.deleteText": "Hier kannst du deinen Account endgültig löschen.",
@@ -247,5 +247,6 @@
     "home.testimonial2": "Eine einfache, schnelle und dennoch leistungsstarke App zum Speichern meiner Lesezeichen in der Cloud.",
     "home.testimonial3": "Ich liebe das elegante und einfache Design! Der Fokus liegt auf dem, was wichtig ist: dem Verwalten von Lesezeichen.",
     "home.anonymous": "Anonym",
-    "error.alreadyActive": "Dein Account ist bereits aktiv!"
+    "error.alreadyActive": "Dein Account ist bereits aktiv!",
+    "account.exportFavicons": "Inklusive Favicons"
 }
