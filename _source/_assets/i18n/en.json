@@ -248,5 +248,6 @@
     "home.testimonial3": "I love the sleek and simple design! The focus lies on what's important: managing bookmarks.",
     "home.anonymous": "Anonymous",
     "error.alreadyActive": "Your account is already active!",
-    "account.exportFavicons": "Including favicons"
+    "account.exportFavicons": "Including favicons",
+    "account.export": "Export"
 }
