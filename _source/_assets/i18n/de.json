@@ -248,5 +248,6 @@
     "home.testimonial3": "Ich liebe das elegante und einfache Design! Der Fokus liegt auf dem, was wichtig ist: dem Verwalten von Lesezeichen.",
     "home.anonymous": "Anonym",
     "error.alreadyActive": "Dein Account ist bereits aktiv!",
-    "account.exportFavicons": "Inklusive Favicons"
+    "account.exportFavicons": "Inklusive Favicons",
+    "account.export": "Exportieren"
 }
