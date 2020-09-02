@@ -118,7 +118,7 @@
     "account.title": "Your account",
     "account.userData": "Login data",
     "account.import": "Import",
-    "account.export": "Export",
+    "account.exportButton": "Download",
     "account.account": "Account",
     "account.newPassword": "New password",
     "account.deleteText": "Permanently delete your account",
@@ -235,7 +235,7 @@
     "forgot.headline": "Forgot password",
     "forgot.button": "<b>Reset</b> password",
     "forgot.success": "Roger that! We will send you an email right away so that you can reset your password.",
-    "join.success.login": "Great, your account is now active! Just login to add your first bookmark.",
+    "join.success.login": "Awesome, your account is now active! Just login to add your first bookmark.",
     "error.logic.user.alreadyActive": "Your account is already active! You can log in here: {login}",
     "error.logic.user.notActive": "Your account is not yet active! Check your email inbox for our activation email or request a new one: {resend}",
     "error.logic.user.unrequestedPasswordRecovery": "There is no open lost password request for your account. You can request a new one here: {forgot}",
@@ -247,5 +247,6 @@
     "home.testimonial2": "A simple, lightweight, yet powerful application to store my bookmarks in the cloud.",
     "home.testimonial3": "I love the sleek and simple design! The focus lies on what's important: managing bookmarks.",
     "home.anonymous": "Anonymous",
-    "error.alreadyActive": "Your account is already active!"
+    "error.alreadyActive": "Your account is already active!",
+    "account.exportFavicons": "Including favicons"
 }
