@@ -59,6 +59,7 @@ class AddBookmark extends PureComponent {
       },
       onError: () => {
         this.setState({
+          name: value,
           bookmarkTitlePending: false
         });
       }
