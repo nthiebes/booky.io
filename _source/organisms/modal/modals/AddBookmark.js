@@ -58,8 +58,10 @@ class AddBookmark extends PureComponent {
         });
       },
       onError: () => {
+        const match = value.match(/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/i);
+
         this.setState({
-          name: value,
+          name: match ? match[0] : value,
           bookmarkTitlePending: false
         });
       }

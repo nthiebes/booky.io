@@ -1,19 +1,24 @@
-import { OPEN_MODAL, CLOSE_MODAL } from './actions';
-
 const header = (state = {}, action) => {
   switch (action.type) {
-    case OPEN_MODAL:
+    case 'OPEN_MODAL':
       return {
         ...state,
         modal: action.modal,
         open: true,
+        showModal: true,
         data: action.data || {}
       };
 
-    case CLOSE_MODAL:
+    case 'CLOSE_MODAL':
       return {
         ...state,
         open: false
+      };
+    
+    case 'HIDE_MODAL':
+      return {
+        ...state,
+        showModal: Boolean(state.open)
       };
 
     default:
