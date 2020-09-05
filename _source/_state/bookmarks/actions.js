@@ -24,7 +24,10 @@ export const getBookmarks = (id) => ((dispatch) => {
     onSuccess: (bookmarks) => {
       dispatch(setBookmarks({
         id,
-        bookmarks,
+        bookmarks: bookmarks.map((bookmark) => ({
+          ...bookmark,
+          name: decodeURIComponent(bookmark.name)
+        })),
         error: null
       }));
     },
@@ -44,7 +47,7 @@ export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((
     url: `/categories/${categoryId}/bookmarks`,
     method: 'POST',
     params: {
-      name,
+      name: encodeURIComponent(name),
       url
     },
     onSuccess: ({ id, favicon }) => {
@@ -70,7 +73,7 @@ export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, po
     url: `/bookmarks/${id}`,
     method: 'PATCH',
     params: {
-      name,
+      name: encodeURIComponent(name),
       url,
       categoryId,
       position

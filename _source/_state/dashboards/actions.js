@@ -43,10 +43,16 @@ export const getDashboards = () => ((dispatch) => {
     url: '/dashboards',
     onSuccess: ({ dashboards, activeCategories }) => {
       dispatch(updateDashboardsData({
-        items: dashboards,
+        items: dashboards.map((dashboard) => ({
+          ...dashboard,
+          name: decodeURIComponent(dashboard.name)
+        })),
         pending: false
       }));
-      dispatch(setCategories(activeCategories));
+      dispatch(setCategories(activeCategories.map((category) => ({
+        ...category,
+        name: decodeURIComponent(category.name)
+      }))));
     },
     onError: (error) => {
       dispatch(updateDashboardsData({
@@ -62,7 +68,7 @@ export const addDashboard = ({ name, onSuccess, onError }) => ((dispatch) => {
     url: '/dashboards',
     method: 'POST',
     params: {
-      name
+      name: encodeURIComponent(name)
     },
     onSuccess: ({ id }) => {
       dispatch({
@@ -84,7 +90,7 @@ export const editDashboard = ({ name, position, id, onSuccess, onError, shouldUp
     url: `/dashboards/${id}`,
     method: 'PATCH',
     params: {
-      name,
+      name: encodeURIComponent(name),
       position
     },
     onSuccess: () => {
