@@ -22,6 +22,13 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <noscript>
+    <style>
+      .loading__spinner {
+        display: none;
+      }
+    </style>
+  </noscript>
 </head>
 
 <body>
@@ -49,7 +56,7 @@
   <div id="root">
     <!-- React content -->
   </div>
-  <span class="icon icon--size-small icon--medium loading__spinner" title="loading..." id="loading__spinner">
+  <span class="icon icon--size-small icon--medium loading__spinner" id="loading__spinner">
     <svg class="icon__svg icon__svg--size-small icon__svg--spinner" version="1.1" xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink">
       <path
@@ -61,12 +68,7 @@
     <h1 class="headline headline--h1">Please activate JavaScript</h1>
     <p class="paragraph">Oops! Please activate JavaScript to use booky. We offer a variety of features that can only be
       provided if JavaScript is enabled.</p>
-    <img src="/_assets/illustrations/404.svg" width="250" height="250">
-    <style>
-      .loading__spinner {
-        display: none;
-      }
-    </style>
+    <img src="/_assets/illustrations/404.svg" width="250" height="250" alt="">
   </noscript>
 </body>
 
