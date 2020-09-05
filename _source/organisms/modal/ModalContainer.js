@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import Component from './Modal';
-import { closeModal } from '../../_state/modal/actions';
+import {
+  closeModal,
+  hideModal
+} from '../../_state/modal/actions';
 import {
   addCategory,
   editCategory,
@@ -22,6 +25,7 @@ import { resetSearch } from '../../_state/search/actions';
 export const mapStateToProps = (state) => ({
   modal: state.modal.modal,
   open: state.modal.open,
+  showModal: state.modal.showModal,
   darkMode: state.user.settings.darkMode,
   data: {
     ...state.modal.data,
@@ -33,6 +37,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = {
   closeModal,
+  hideModal,
   addBookmark,
   editBookmark,
   deleteBookmark,

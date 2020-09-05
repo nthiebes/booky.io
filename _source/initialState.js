@@ -44,6 +44,7 @@ export default {
   modal: {
     modal: null,
     open: false,
+    showModal: false,
     data: {}
   },
   search: {
