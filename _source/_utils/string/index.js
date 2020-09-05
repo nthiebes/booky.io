@@ -8,7 +8,6 @@ const tryToDecode = (string) => {
   return true;
 };
 
-// eslint-disable-next-line max-statements
 export const decodeEmoji = (string) => {
   let decodedString;
   
