@@ -1,4 +1,5 @@
 import fetcher, { abortFetch } from '../../_utils/fetcher';
+import { encodeEmoji, decodeEmoji } from '../../_utils/string';
 
 import { setCategories, getCategories } from '../categories/actions';
 import { updateSettings } from '../user/actions';
@@ -45,13 +46,13 @@ export const getDashboards = () => ((dispatch) => {
       dispatch(updateDashboardsData({
         items: dashboards.map((dashboard) => ({
           ...dashboard,
-          name: decodeURIComponent(dashboard.name)
+          name: decodeEmoji(dashboard.name)
         })),
         pending: false
       }));
       dispatch(setCategories(activeCategories.map((category) => ({
         ...category,
-        name: decodeURIComponent(category.name)
+        name: decodeEmoji(category.name)
       }))));
     },
     onError: (error) => {
@@ -68,7 +69,7 @@ export const addDashboard = ({ name, onSuccess, onError }) => ((dispatch) => {
     url: '/dashboards',
     method: 'POST',
     params: {
-      name: encodeURIComponent(name)
+      name: encodeEmoji(name)
     },
     onSuccess: ({ id }) => {
       dispatch({
@@ -90,7 +91,7 @@ export const editDashboard = ({ name, position, id, onSuccess, onError, shouldUp
     url: `/dashboards/${id}`,
     method: 'PATCH',
     params: {
-      name: encodeURIComponent(name),
+      name: encodeEmoji(name),
       position
     },
     onSuccess: () => {

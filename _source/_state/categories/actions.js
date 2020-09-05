@@ -1,4 +1,5 @@
 import fetcher from '../../_utils/fetcher';
+import { encodeEmoji, decodeEmoji } from '../../_utils/string';
 import { updateDashboardsData } from '../dashboards/actions';
 import { getBookmarks, setBookmarks } from '../bookmarks/actions';
 
@@ -13,7 +14,7 @@ export const getCategories = (id) => ((dispatch) => {
     onSuccess: (data) => {
       dispatch(setCategories(data.map((category) => ({
         ...category,
-        name: decodeURIComponent(category.name)
+        name: decodeEmoji(category.name)
       }))));
       dispatch(updateDashboardsData({
         pending: false,
@@ -35,7 +36,7 @@ export const addCategory = ({ dashboardId, color, name, position, onError, onSuc
     method: 'POST',
     params: {
       color,
-      name: encodeURIComponent(name),
+      name: encodeEmoji(name),
       position
     },
     onSuccess: ({ id }) => {
@@ -62,7 +63,7 @@ export const editCategory = ({ id, color, name, hidden, position, dashboardId, o
     method: 'PATCH',
     params: {
       color,
-      name: encodeURIComponent(name),
+      name: encodeEmoji(name),
       dashboardId,
       hidden,
       position
