@@ -249,5 +249,6 @@
     "home.anonymous": "Anonym",
     "error.alreadyActive": "Dein Account ist bereits aktiv!",
     "account.exportFavicons": "Inklusive Favicons",
-    "account.export": "Exportieren"
+    "account.export": "Exportieren",
+    "footer.twitterText": "Online Lesezeichen-Manager mit Fokus auf Einfachheit, Anpassbarkeit, Privatsphäre und Geschwindigkeit."
 }
