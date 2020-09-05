@@ -70,11 +70,9 @@ export default class Icon extends Component {
     
     if (to) {
       CustomTag = Link;
-      additionalProps['aria-label'] = label;
     }
     
     if (isButton) {
-      additionalProps['aria-label'] = label;
       additionalProps.type = 'button';
     } else if (!to) {
       additionalProps['aria-hidden'] = true;
@@ -94,6 +92,7 @@ export default class Icon extends Component {
             className
           ) }
           title={ label }
+          aria-label={ label }
           onClick={ this.handleClick }
           onKeyDown={ this.handleKeyDown }
           { ...additionalProps }

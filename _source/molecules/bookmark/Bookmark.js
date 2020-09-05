@@ -66,6 +66,7 @@ class Bookmark extends PureComponent {
                 size="tiny"
                 className={ classNames('bookmark__favicon', darkMode && 'bookmark__favicon--dark-mode') }
                 dragHandleProps={ provided.dragHandleProps }
+                label={ intl.formatMessage({ id: 'bookmark.drag' }) }
               />
             ) : (
               <img
@@ -76,6 +77,8 @@ class Bookmark extends PureComponent {
                 className="bookmark__favicon"
                 { ...provided.dragHandleProps }
                 tabIndex="-1"
+                aria-hidden="true"
+                title={ intl.formatMessage({ id: 'bookmark.drag' }) }
               />
             ) }
             <a
