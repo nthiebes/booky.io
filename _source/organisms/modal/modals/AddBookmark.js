@@ -113,7 +113,7 @@ class AddBookmark extends PureComponent {
           value={ name }
           onChange={ this.onNameChange }
           required
-          maxLength="80"
+          maxLength="200"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
           pending={ bookmarkTitlePending }
