@@ -248,6 +248,7 @@
     "home.testimonial3": "I love the sleek and simple design! The focus lies on what's important: managing bookmarks.",
     "home.anonymous": "Anonymous",
     "error.alreadyActive": "Your account is already active!",
-    "account.exportFavicons": "Including favicons",
-    "account.export": "Export"
+    "account.exportFavicons": "Include favicons",
+    "account.export": "Export",
+    "footer.twitterText": "Online bookmark manager with a focus on simplicity, customizability, privacy, and speed."
 }

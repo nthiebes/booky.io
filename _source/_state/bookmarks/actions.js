@@ -1,4 +1,5 @@
 import fetcher from '../../_utils/fetcher';
+import { encodeEmoji, decodeEmoji } from '../../_utils/string';
 
 export const setBookmarks = ({bookmarks, id, error}) => ({
   type: 'SET_BOOKMARKS',
@@ -24,7 +25,10 @@ export const getBookmarks = (id) => ((dispatch) => {
     onSuccess: (bookmarks) => {
       dispatch(setBookmarks({
         id,
-        bookmarks,
+        bookmarks: bookmarks.map((bookmark) => ({
+          ...bookmark,
+          name: decodeEmoji(bookmark.name)
+        })),
         error: null
       }));
     },
@@ -44,7 +48,7 @@ export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((
     url: `/categories/${categoryId}/bookmarks`,
     method: 'POST',
     params: {
-      name,
+      name: encodeEmoji(name),
       url
     },
     onSuccess: ({ id, favicon }) => {
@@ -70,7 +74,7 @@ export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, po
     url: `/bookmarks/${id}`,
     method: 'PATCH',
     params: {
-      name,
+      name: encodeEmoji(name),
       url,
       categoryId,
       position

@@ -58,7 +58,10 @@ class AddBookmark extends PureComponent {
         });
       },
       onError: () => {
+        const match = value.match(/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/i);
+
         this.setState({
+          name: match ? match[0] : value,
           bookmarkTitlePending: false
         });
       }
@@ -110,7 +113,7 @@ class AddBookmark extends PureComponent {
           value={ name }
           onChange={ this.onNameChange }
           required
-          maxLength="80"
+          maxLength="200"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
           pending={ bookmarkTitlePending }

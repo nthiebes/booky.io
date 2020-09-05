@@ -20,7 +20,9 @@ export default class Modal extends PureComponent {
   static propTypes = {
     modal: PropTypes.string,
     open: PropTypes.bool.isRequired,
+    showModal: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
+    hideModal: PropTypes.func.isRequired,
     data: PropTypes.object,
     addBookmark: PropTypes.func.isRequired,
     editBookmark: PropTypes.func.isRequired,
@@ -38,18 +40,7 @@ export default class Modal extends PureComponent {
 
   state = {
     pending: false,
-    error: null,
-    showModal: false
-  }
-
-  componentDidUpdate(prevProps) {
-    if (!prevProps.open && this.props.open) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        showModal: true,
-        error: null
-      });
-    }
+    error: null
   }
 
   modalMap = {
@@ -134,7 +125,7 @@ export default class Modal extends PureComponent {
   }
 
   closeModal = () => {
-    const { closeModal } = this.props;
+    const { closeModal, hideModal } = this.props;
 
     this.setState({
       pending: false,
@@ -144,9 +135,7 @@ export default class Modal extends PureComponent {
     closeModal();
 
     window.setTimeout(() => {
-      this.setState({
-        showModal: false
-      });
+      hideModal();
     }, 500);
     // document.body.classList.remove('booky--no-scrolling');
   }
@@ -164,8 +153,8 @@ export default class Modal extends PureComponent {
   }
 
   render() {
-    const { modal, open, data, darkMode } = this.props;
-    const { pending, showModal, error } = this.state;
+    const { modal, open, showModal, data, darkMode } = this.props;
+    const { pending, error } = this.state;
     const CustomTag = this.modalMap[modal] && this.modalMap[modal].type;
 
     return (
@@ -177,7 +166,7 @@ export default class Modal extends PureComponent {
         ) }
         onMouseDown={ this.handleMouseDown }
         onKeyUp={ this.handleKeyUp }
-        aria-hidden={ open ? 'false' : 'true' }
+        aria-hidden="true"
       >
         <div className={ classNames('modal__inner', darkMode && 'modal__inner--dark') }>
           { CustomTag && showModal && (

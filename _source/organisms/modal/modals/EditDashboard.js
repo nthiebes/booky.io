@@ -39,7 +39,7 @@ class EditDashboard extends Component {
           value={ name }
           onChange={ this.onNameChange }
           required
-          maxLength="50"
+          maxLength="200"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
         />
