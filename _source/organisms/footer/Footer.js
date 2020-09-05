@@ -92,7 +92,7 @@ class Footer extends PureComponent {
             className="footer__social-item"
             target="_blank"
             rel="noopener noreferrer"
-            href={ `https://twitter.com/intent/tweet?url=https://booky.io&text=booky.io - ${intl.formatMessage({ id: 'footer.twitterText' })}` }
+            href={ `https://twitter.com/intent/tweet?url=https://booky.io&via=booky_io&text=booky.io - ${intl.formatMessage({ id: 'footer.twitterText' })}` }
           >
             <Icon className="footer__icon" icon="twitter" color="light" />
             <span className="footer__label">{ 'Twitter' }</span>
