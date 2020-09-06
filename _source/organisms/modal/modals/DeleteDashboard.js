@@ -7,26 +7,29 @@ import P from '../../../atoms/paragraph';
 import Select from '../../../atoms/select';
 
 class DeleteDashboard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-    this.state = {
-      id: props.data.id,
-      newId: null,
-      value: 0
-    };
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    intl: PropTypes.object.isRequired,
+    pending: PropTypes.bool,
+    darkMode: PropTypes.bool
   }
 
-  onChange(value) {
+  state = {
+    id: this.props.data.id,
+    newId: null,
+    value: 0
+  }
+
+  onChange = (value) => {
     this.setState({
       newId: value === '0' ? null : this.props.data.dashboards[value - 1].id,
       value
     });
   }
 
-  handleSave() {
+  handleSave = () => {
     this.props.onSave(this.state);
   }
 
@@ -54,26 +57,20 @@ class DeleteDashboard extends Component {
           <FormattedMessage id="modal.deleteDashboardLabel" /><br />
           <b>{ data.name }</b>
         </P>
-        <Select
-          id="dashboard-delete"
-          label={ intl.formatMessage({ id: 'modal.deleteDashboardFuture' }) }
-          options={ options }
-          onChange={ this.onChange }
-          selected="0"
-          disabled={ pending }
-        />
+        { /* Hide only empty active collections */ }
+        { (data.categories.length > 0 || data.activeDashboard !== data.id) && (
+          <Select
+            id="dashboard-delete"
+            label={ intl.formatMessage({ id: 'modal.deleteDashboardFuture' }) }
+            options={ options }
+            onChange={ this.onChange }
+            selected="0"
+            disabled={ pending }
+          />
+        ) }
       </Base>
     );
   }
 }
 
 export default injectIntl(DeleteDashboard);
-
-DeleteDashboard.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool,
-  darkMode: PropTypes.bool
-};
