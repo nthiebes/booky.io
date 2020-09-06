@@ -26,7 +26,7 @@ class AccountExport extends PureComponent {
     const { includeFavicon } = this.state;
     const downloadLink = `${process.env.NODE_ENV === 'development'
       ? 'http://localhost:8001/'
-      : '/'}api/bookmarks/export${includeFavicon ? '?includefavicon' : '?includefavicon="false"'}`;
+      : '/'}api/bookmarks/export${includeFavicon ? '' : '?noIcons=1'}`;
 
     return (
       <>
