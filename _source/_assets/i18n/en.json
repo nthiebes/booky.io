@@ -57,7 +57,7 @@
     "bookmark.drag": "Drag bookmark",
     "bookmark.empty": "No bookmarks yet.",
     "modal.close": "Close window",
-    "modal.url": "URL:",
+    "modal.url": "Link:",
     "modal.name": "Name:",
     "modal.color": "Color:",
     "modal.category": "Category:",
@@ -250,5 +250,7 @@
     "error.alreadyActive": "Your account is already active!",
     "account.exportFavicons": "Include favicons",
     "account.export": "Export",
-    "footer.twitterText": "Online bookmark manager with a focus on simplicity, customizability, privacy, and speed."
+    "footer.twitterText": "Online bookmark manager with a focus on simplicity, customizability, privacy, and speed.",
+    "help.comments": "Your comments",
+    "modal.urlPlaceholder": "e.g. example.com"
 }
