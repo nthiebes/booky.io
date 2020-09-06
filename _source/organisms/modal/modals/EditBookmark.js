@@ -92,6 +92,7 @@ class EditBookmark extends PureComponent {
           label={ intl.formatMessage({ id: 'modal.url' }) }
           disabled={ pending }
           inputMode="url"
+          placeholder={ intl.formatMessage({id: 'modal.urlPlaceholder'}) }
         />
         <Input
           id="bookmark-name"
