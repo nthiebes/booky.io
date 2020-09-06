@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import Icon from '../icon';
-import Link from '../link';
 import Skeleton from '../skeleton';
 
 export default class Button extends Component {
@@ -11,6 +11,7 @@ export default class Button extends Component {
     className: PropTypes.string,
     color: PropTypes.string.isRequired,
     href: PropTypes.string,
+    target: PropTypes.string,
     to: PropTypes.string,
     onClick: PropTypes.func,
     size: PropTypes.string.isRequired,
@@ -67,6 +68,7 @@ export default class Button extends Component {
       color,
       onClick,
       href,
+      target,
       to,
       children,
       disabled,
@@ -80,7 +82,15 @@ export default class Button extends Component {
       useSkeleton
     } = this.props;
     const { currentIcon } = this.state;
-    const CustomTag = href || to ? Link : 'button';
+    let CustomTag = 'button';
+    
+    if (to) {
+      CustomTag = Link;
+    }
+
+    if (href) {
+      CustomTag = 'a';
+    }
 
     return (
       useSkeleton ? (
@@ -98,6 +108,7 @@ export default class Button extends Component {
           ) }
           onClick={ onClick }
           href={ href }
+          target={ target }
           to={ to }
           tabIndex={ tabIndex }
           type={ type }
