@@ -106,6 +106,7 @@ class AddBookmark extends PureComponent {
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
           inputMode="url"
+          placeholder={ intl.formatMessage({id: 'modal.urlPlaceholder'}) }
         />
         <Input
           id="bookmark-name"
