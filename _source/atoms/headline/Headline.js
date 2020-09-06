@@ -34,8 +34,20 @@ export default class Headline extends Component {
         onClick={ onClick && onClick }
         id={ id }
         title={ title }
+        ref={ (element) => {
+          const { hash } = window.location;
+
+          if (hash !== '' && element) {
+            const hashId = hash.replace('#', '');
+
+            if (element.id === hashId) { element.scrollIntoView(); }
+          }
+        } }
       >
         { children }
+        {id && (
+          <a href={ `#${id}` } className="headline__hash">{'#'}</a>
+        )}
       </CustomTag>
     );
   }
