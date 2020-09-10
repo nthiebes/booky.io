@@ -105,7 +105,7 @@ class Category extends PureComponent {
             onClick={ this.toggleCategory }
             isButton
           />
-          <H2 className="category__name" onClick={ this.toggleCategory } title={ name }>
+          <H2 style="h3" className="category__name" onClick={ this.toggleCategory } title={ name }>
             { name }
           </H2>
           { editMode && (
