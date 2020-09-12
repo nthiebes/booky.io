@@ -6,6 +6,9 @@
 }
 
 .input__field {
+  /* stylelint-disable */
+  -webkit-appearance: none; // enables box-shadow on iOs
+  /* stylelint-enable */
   background-color: $color-background--ligth;
   box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.3) inset;
   border: 1px solid transparent;

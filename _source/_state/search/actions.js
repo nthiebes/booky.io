@@ -1,4 +1,5 @@
 import fetcher, { abortFetch } from '../../_utils/fetcher';
+import { decodeEmoji } from '../../_utils/string';
 import initialState from '../../initialState';
 
 export const resetSearch = () => ({
@@ -22,7 +23,18 @@ export const searchBookmarks = (keyword) => ((dispatch) => {
     url: `/bookmarks/search?searchTerm=${keyword}&limit=${initialState.search.limit}&offset=0`,
     onSuccess: ({ dashboards, total }) => {
       dispatch(updateSearchData({
-        dashboards,
+        dashboards: dashboards.map((dashboard) => ({
+          ...dashboard,
+          name: decodeEmoji(dashboard.name),
+          categories: dashboard.categories.map((category) => ({
+            ...category,
+            name: decodeEmoji(category.name),
+            bookmarks: category.bookmarks.map((bookmark) => ({
+              ...bookmark,
+              name: decodeEmoji(bookmark.name)
+            }))
+          }))
+        })),
         total,
         pending: false
       }));
@@ -50,7 +62,18 @@ export const loadMoreBookmarks = (
     url: `/bookmarks/search?searchTerm=${keyword}&limit=${limit}&offset=${offset}`,
     onSuccess: ({ dashboards, total }) => {
       dispatch(appendSearchResults({
-        dashboards,
+        dashboards: dashboards.map((dashboard) => ({
+          ...dashboard,
+          name: decodeEmoji(dashboard.name),
+          categories: dashboard.categories.map((category) => ({
+            ...category,
+            name: decodeEmoji(category.name),
+            bookmarks: category.bookmarks.map((bookmark) => ({
+              ...bookmark,
+              name: decodeEmoji(bookmark.name)
+            }))
+          }))
+        })),
         total,
         pending: false
       }));

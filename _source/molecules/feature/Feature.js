@@ -17,8 +17,6 @@ export default class Feature extends Component {
           <P noPadding>{ text }</P>
         </header>
         <Illustration
-          width="300"
-          height="300"
           name={ illustration }
           className="feature__illustration"
         />

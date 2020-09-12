@@ -1,28 +1,35 @@
 .feature__wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
   @include mobile {
     flex-wrap: wrap;
   }
 
-  @include tablet {
-    padding: 0 5%;
-  }
-
   @include desktop {
-    padding: 0 12%;
+    max-width: 930px;
+    margin: 0 auto;
   }
 }
 
 .feature__header {
-  margin-right: 1rem;
+  @include tablet {
+    margin-right: 2rem;
+  }
+
+  @include desktop {
+    margin-right: 3rem;
+  }
 }
 
 .feature__header--right {
+  @include tablet {
+    margin-left: 2rem;
+  }
+
   @include tablet-desktop {
-    margin-left: 1rem;
+    margin-left: 3rem;
     margin-right: 0;
     order: 1;
   }
@@ -32,6 +39,7 @@
   @include mobile {
     max-width: 250px;
     max-height: 250px;
+    margin-top: 1rem;
   }
 
   @include tablet {

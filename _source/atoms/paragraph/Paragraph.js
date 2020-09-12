@@ -13,7 +13,7 @@ export default class Paragraph extends Component {
           first && 'paragraph--first',
           darkMode && 'paragraph--dark-mode',
           noPadding && 'paragraph--no-padding',
-          className && className
+          className
         ) }
         role={ role }
       >

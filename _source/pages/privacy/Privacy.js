@@ -88,7 +88,7 @@ export default class Privacy extends Component {
                 <br /> 21079 Hamburg
               </P>
 
-              <P>E-mail: <Link href="mailto:hello@booky.io">{ 'hello@booky.io' }</Link></P>
+              <P>E-mail: <Link href="mailto:privacy@booky.io">{ 'privacy@booky.io' }</Link></P>
               <P>The controller is the natural person or legal entity that single-handedly or jointly with others makes decisions as to the purposes of and resources for the processing of personal data (e.g. names, e-mail addresses, etc.).</P>
 
               <H3>Revocation of your consent to the processing of data</H3>
@@ -231,7 +231,7 @@ export default class Privacy extends Component {
                 <br /> 21079 Hamburg
               </P>
 
-              <P>E-Mail: <Link href="mailto:hello@booky.io">{ 'privacy@booky.io' }</Link></P>
+              <P>E-Mail: <Link href="mailto:privacy@booky.io">{ 'privacy@booky.io' }</Link></P>
               <P>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.</P>
               
               <H3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</H3>

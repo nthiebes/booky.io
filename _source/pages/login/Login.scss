@@ -6,3 +6,8 @@
 .login__join {
   margin-top: 0.5rem;
 }
+
+.login__spinner {
+  margin-top: calc(3rem + 6px);
+  left: calc(50% - 18px);
+}

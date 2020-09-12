@@ -57,7 +57,7 @@ export default class Link extends Component {
           color && `link--${color}`,
           darkMode && 'link--dark-mode',
           noUnderline && 'link--noUnderline',
-          className && className
+          className
         ) }
         { ...navLinkProps }
       >

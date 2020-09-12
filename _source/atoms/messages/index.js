@@ -1,7 +1,9 @@
-import ErrorMessage from './error/ErrorMessageContainer';
-import SuccessMessage from './success/SuccessMessageContainer';
+import ErrorMessage from './error-message/ErrorMessageContainer';
+import SuccessMessage from './success-message/SuccessMessageContainer';
+import SuccessIllustration from './success-illustration/SuccessIllustrationContainer';
 
 export {
   ErrorMessage,
-  SuccessMessage
+  SuccessMessage,
+  SuccessIllustration
 };
