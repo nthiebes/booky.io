@@ -7,7 +7,7 @@ export default {
     new: true,
     premium: false,
     settings: {
-      blurEffect: true,
+      blurEffect: false,
       darkMode: false,
       dashboardsStyle: 'sidebar',
       maxWidth: false,
@@ -21,7 +21,12 @@ export default {
       colorScheme: 0,
       defaultDashboardId: null,
       enableNotes: true,
-      categoriesLayout: 'grid'
+      categoriesLayout: 'grid',
+      bookmarkEditOnHover: true,
+      autofocusSearch: false,
+      minimalBookmarkButton: false,
+      closeEditMode: true,
+      maxColumnCount: null
     }
   },
   dashboards: {
