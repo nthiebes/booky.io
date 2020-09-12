@@ -88,7 +88,7 @@
     "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-react": "7.20.6",
     "eslint-watch": "7.0.0",
-    "file-loader": "6.0.0",
+    "file-loader": "6.1.0",
     "hard-source-webpack-plugin": "0.13.1",
     "history": "4.10.1",
     "html-webpack-plugin": "4.4.1",
