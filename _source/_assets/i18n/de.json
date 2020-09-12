@@ -252,5 +252,6 @@
     "account.export": "Exportieren",
     "footer.twitterText": "Online Lesezeichen-Manager mit Fokus auf Einfachheit, Anpassbarkeit, Privatsphäre und Geschwindigkeit.",
     "help.comments": "Eure Kommentare",
-    "modal.urlPlaceholder": "z.B. example.com"
+    "modal.urlPlaceholder": "z.B. example.com",
+    "error.logic.user.invalidToken": "Dein Aktivierungs-Link ist leider ungültig. Aber keine Sorge! Du kannst deine Aktivierungsmail hier neu anfordern: {resend}"
 }

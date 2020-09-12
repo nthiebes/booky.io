@@ -252,5 +252,6 @@
     "account.export": "Export",
     "footer.twitterText": "Online bookmark manager with a focus on simplicity, customizability, privacy, and speed.",
     "help.comments": "Your comments",
-    "modal.urlPlaceholder": "e.g. example.com"
+    "modal.urlPlaceholder": "e.g. example.com",
+    "error.logic.user.invalidToken": "Unfortunately, your activation link is invalid. But no worries! You can resend your activation email here: {resend}"
 }
