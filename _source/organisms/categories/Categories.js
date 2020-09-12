@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import Category from '../../molecules/category';
 import Empty from '../../molecules/empty';
@@ -16,7 +16,8 @@ class Categories extends PureComponent {
     dashboardName: PropTypes.string,
     className: PropTypes.string,
     pending: PropTypes.bool,
-    openModal: PropTypes.func.isRequired
+    openModal: PropTypes.func.isRequired,
+    categoriesLayout: PropTypes.string.isRequired
   }
 
   onAddClick = () => {
@@ -24,7 +25,15 @@ class Categories extends PureComponent {
   }
 
   render() {
-    const { categories, dashboardsOpen, hasSidebar, dashboardName, className, pending } = this.props;
+    const {
+      categories,
+      dashboardsOpen,
+      hasSidebar,
+      dashboardName,
+      className,
+      pending,
+      categoriesLayout
+    } = this.props;
     const Element = pending || !categories.length ? 'section' : 'ul';
 
     return (
@@ -32,7 +41,8 @@ class Categories extends PureComponent {
         'categories',
         hasSidebar && 'categories--sidebar',
         hasSidebar && dashboardsOpen && 'categories--shifted',
-        !pending && categories.length && 'categories--grid',
+        !pending && categories.length && categoriesLayout === 'grid' && 'categories--grid',
+        !pending && categories.length && categoriesLayout === 'column' && 'categories--column',
         className
       ) }>
         { pending ? (
@@ -44,7 +54,7 @@ class Categories extends PureComponent {
             ) }
             { !categories.length && (
               <Fragment>
-                <Empty illustration="write-paper-ink">
+                <Empty illustration="empty">
                   <FormattedMessage id="category.empty" values={ { collection: <b>{ dashboardName }</b> } } />
                 </Empty>
                 <ButtonSmallPrimary
@@ -52,7 +62,7 @@ class Categories extends PureComponent {
                   className="categories__button"
                   onClick={ this.onAddClick }
                 >
-                  <FormattedHTMLMessage id="category.add" />
+                  <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
                 </ButtonSmallPrimary>
               </Fragment>
             ) }

@@ -39,6 +39,15 @@
   }
 }
 
+.categories--column {
+  columns: 274px auto;
+  column-gap: 3%;
+
+  @include desktop {
+    column-gap: 36px;
+  }
+}
+
 .categories--sidebar {
   @include desktop {
     width: calc(100% - 50px);

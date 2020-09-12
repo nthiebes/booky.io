@@ -9,8 +9,9 @@
 @import "../../atoms/checkbox/Checkbox";
 @import "../../atoms/headline/Headline";
 @import "../../atoms/paragraph/Paragraph";
-@import "../../atoms/messages/error/ErrorMessage";
-@import "../../atoms/messages/success/SuccessMessage";
+@import "../../atoms/messages/error-message/ErrorMessage";
+@import "../../atoms/messages/success-message/SuccessMessage";
+@import "../../atoms/messages/success-illustration/SuccessIllustration";
 @import "../../atoms/radio/Radio";
 @import "../../atoms/textarea/Textarea";
 @import "../../atoms/file-upload/FileUpload";
@@ -42,8 +43,16 @@
 @import "../../organisms/search/Search";
 @import "../../organisms/dashboards/dashboards-list/DashboardsList";
 @import "../../organisms/dashboards/dashboards-sidebar/DashboardsSidebar";
+@import "../../organisms/dashboards/dashboards-tabs/DashboardsTabs";
 @import "../../templates/page/Page";
 @import "../../pages/home/Home";
+@import "../../pages/resend/Resend";
+@import "../../pages/forgot/Forgot";
+@import "../../pages/login/Login";
+@import "../../pages/account/Account";
+@import "../../pages/loading/Loading";
+@import "../../pages/join/Join";
+@import "../../pages/legal/Legal";
 
 html {
   font-size: calc(14px + 0.2vw);

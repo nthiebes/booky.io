@@ -4,10 +4,11 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8">
-  <title>booky | Online Bookmark manager.</title>
+  <title>booky.io | Online bookmark manager.</title>
   <meta name="description"
     content="Online bookmark manager with a focus on simplicity, customizability, privacy, and speed.">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
   <link rel="apple-touch-icon" sizes="180x180" href="/_assets/icons/apple-touch-icon.png?v=QEGl7NqGjM">
   <link rel="icon" type="image/png" sizes="32x32" href="/_assets/icons/favicon-32x32.png?v=QEGl7NqGjM">
   <link rel="icon" type="image/png" sizes="16x16" href="/_assets/icons/favicon-16x16.png?v=QEGl7NqGjM">
@@ -21,6 +22,24 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta property="og:site_name" content="booky.io | Online bookmark manager.">
+  <meta property="og:description"
+    content="Online bookmark manager with a focus on simplicity, customizability, privacy, and speed.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="booky.io | Online bookmark manager.">
+  <meta property="og:url" content="https://booky.io">
+  <meta property="og:image" content="https://beta.booky.io/_assets/booky.png">
+  <meta property="og:image:width" content="499">
+  <meta property="og:image:height" content="295">
+  <meta property="og:image:alt" content="Illustration with three different devices and colors">
+
+  <noscript>
+    <style>
+      .loading__spinner {
+        display: none;
+      }
+    </style>
+  </noscript>
 </head>
 
 <body>
@@ -48,7 +67,7 @@
   <div id="root">
     <!-- React content -->
   </div>
-  <span class="icon icon--size-small icon--medium loading__spinner" title="loading..." id="loading__spinner">
+  <span class="icon icon--size-small icon--medium loading__spinner" id="loading__spinner">
     <svg class="icon__svg icon__svg--size-small icon__svg--spinner" version="1.1" xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink">
       <path
@@ -60,12 +79,7 @@
     <h1 class="headline headline--h1">Please activate JavaScript</h1>
     <p class="paragraph">Oops! Please activate JavaScript to use booky. We offer a variety of features that can only be
       provided if JavaScript is enabled.</p>
-    <img src="/_assets/illustrations/monitor-window.svg" width="250" height="250">
-    <style>
-      .loading__spinner {
-        display: none;
-      }
-    </style>
+    <img src="/_assets/illustrations/404.svg" width="250" height="250" alt="">
   </noscript>
 </body>
 

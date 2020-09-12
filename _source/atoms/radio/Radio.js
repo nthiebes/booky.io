@@ -18,7 +18,8 @@ export default class Radio extends Component {
     onChange: PropTypes.func,
     checked: PropTypes.bool,
     inputClassName: PropTypes.string,
-    labelClassName: PropTypes.string
+    labelClassName: PropTypes.string,
+    first: PropTypes.bool
   }
 
   handleInputChange = (event) => {
@@ -31,10 +32,10 @@ export default class Radio extends Component {
   }
 
   render() {
-    const { children, className, id, name, value, checked, inputClassName, labelClassName } = this.props;
+    const { children, className, id, name, value, checked, inputClassName, labelClassName, first } = this.props;
 
     return (
-      <div className={ classNames('radio', className) }>
+      <div className={ classNames('radio', first && 'radio--first', className) }>
         <input
           type="radio"
           id={ id }

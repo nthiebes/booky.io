@@ -78,7 +78,7 @@
   padding: 0 calc(3% + 6px);
   height: 3rem;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
 
   @include tablet {
     height: 4.4rem;
@@ -150,4 +150,10 @@
 
 .header__menu {
   flex-shrink: 0;
+  margin-left: calc(1rem - 6px);
+}
+
+.header__mobile-wrapper {
+  display: flex;
+  align-items: center;
 }

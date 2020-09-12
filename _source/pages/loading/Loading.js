@@ -9,7 +9,7 @@ export default class Loading extends Component {
     return (
       <Page>
         <Section>
-          <Icon icon="spinner" className="categories__spinner" />
+          <Icon icon="spinner" className="loading-page__spinner" />
         </Section>
       </Page>
     );

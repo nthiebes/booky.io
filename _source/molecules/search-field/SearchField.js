@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Input from '../../atoms/input';
-import Label from '../../atoms/label';
 
 class Search extends Component {
   static propTypes = {
@@ -61,9 +60,6 @@ class Search extends Component {
 
     return (
       <form role="search" className={ classNames('search-field', className) } onSubmit={ this.handleSubmit }>
-        <Label htmlFor="search" className="search-field__label">
-          <FormattedMessage id="search.label" />
-        </Label>
         <Input
           placeholder={ intl.formatMessage({ id: 'search.placeholder' }) }
           className={ classNames(
@@ -76,6 +72,7 @@ class Search extends Component {
           icon="search"
           id={ id }
           disabled={ dashboardsPending }
+          ariaLabel={ intl.formatMessage({ id: 'search.label' }) }
         />
       </form>
     );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { DiscussionEmbed } from 'disqus-react';
 
 import Page from '../../templates/page';
 import { H1, H2 } from '../../atoms/headline';
@@ -14,6 +15,11 @@ import './Help.scss';
 
 export default class Help extends Component {
   render() {
+    const disqusConfig = {
+      url: 'https://booky.io/help',
+      identifier: 'help',
+      title: 'booky.io | Help'
+    };
     const introValues = {
       email: (
         <Link to="/contact">
@@ -28,6 +34,18 @@ export default class Help extends Component {
         </Link>
       )
     };
+    // const deleteValues = {
+    //   link: (
+    //     <Link href="/account">
+    //       { 'booky.io/account' }
+    //     </Link>
+    //   ),
+    //   email: (
+    //     <Link to="/contact">
+    //       <FormattedMessage id="help.email" />
+    //     </Link>
+    //   )
+    // };
 
     return (
       <Page>
@@ -41,9 +59,8 @@ export default class Help extends Component {
           <P className="help-intro">
             <FormattedMessage id="help.intro2" values={ introValues } />
           </P>
-          <Illustration name="customer-service-man" className="help-illustration" />
-
-          <H2>
+          <Illustration name="help" className="help-illustration booky--hide-mobile" />
+          <H2 id="beta">
             <FormattedMessage id="help.beta" />
           </H2>
           <div className="help-container">
@@ -55,6 +72,44 @@ export default class Help extends Component {
             <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
               <P noPadding>
                 <FormattedMessage id="help.beta.answer2" values={ betaValues } />
+              </P>
+            </Expandable>
+          </div>
+
+          <H2 id="account">
+            <FormattedMessage id="help.account" />
+          </H2>
+          <div className="help-container">
+            <Expandable headline={ <FormattedMessage id="help.account.question1" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer1" />
+                <Link to="/forgot">
+                  {'booky.io/forgot'}
+                </Link>
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.account.question3" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer3" values={ introValues } />
+              </P>
+            </Expandable>
+            {/* <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer2" values={ deleteValues } />
+              </P>
+            </Expandable> */}
+          </div>
+
+          <H2 id="registration">
+            <FormattedMessage id="help.registration" />
+          </H2>
+          <div className="help-container">
+            <Expandable headline={ <FormattedMessage id="help.registration.question1" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.registration.answer1" />
+                <Link to="/resend">
+                  {'booky.io/resend'}
+                </Link>
               </P>
             </Expandable>
           </div>
@@ -98,6 +153,11 @@ export default class Help extends Component {
             <FormattedMessage id="help.account" />
           </H2>
           <P /> */}
+
+          <H2 id="comments">
+            <FormattedMessage id="help.comments" />
+          </H2>
+          <DiscussionEmbed shortname="quickbm" config={ disqusConfig } />
         </Section>
       </Page>
     );

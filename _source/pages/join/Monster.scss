@@ -1,0 +1,179 @@
+@import "../../templates/booky/config.scss";
+
+.monster {
+  flex-shrink: 0;
+
+  @include mobile {
+    width: 80%;
+    order: -1;
+    margin-top: 2rem;
+  }
+
+  @include tablet {
+    width: 40%;
+    height: 15rem;
+    margin-left: 3rem;
+    margin-top: 13rem;
+  }
+
+  @include desktop {
+    width: 50%;
+    height: 20rem;
+    margin-left: 4rem;
+    margin-top: 11rem;
+  }
+}
+
+.monster__eye-closed {
+  opacity: 0;
+}
+
+.monster__pupil {
+  transition: transform 0.3s ease;
+}
+
+.monster__mouth2,
+.monster__mouth3,
+.monster__mouth4 {
+  opacity: 0;
+}
+
+.username-focus {
+  .monster__pupil {
+    transform: translateY(6px);
+
+    @include tablet-desktop {
+      transform: translate3d(-7px, -10px, 0);
+    }
+  }
+
+  .monster__mouth1 {
+    opacity: 0;
+  }
+
+  .monster__mouth2 {
+    opacity: 1;
+  }
+}
+
+.username-valid {
+  .monster__mouth1,
+  .monster__mouth2 {
+    opacity: 0;
+  }
+
+  .monster__mouth3 {
+    opacity: 1;
+  }
+}
+
+.username-invalid {
+  .monster__mouth1,
+  .monster__mouth2,
+  .monster__mouth3 {
+    opacity: 0;
+  }
+
+  .monster__mouth4 {
+    opacity: 1;
+  }
+}
+
+.email-focus {
+  .monster__pupil {
+    transform: translateY(10px);
+
+    @include tablet-desktop {
+      transform: translate3d(-9px, -2px, 0);
+    }
+  }
+
+  .monster__mouth1 {
+    opacity: 0;
+  }
+
+  .monster__mouth2 {
+    opacity: 1;
+  }
+}
+
+.email-valid {
+  .monster__mouth1,
+  .monster__mouth2,
+  .monster__mouth4 {
+    opacity: 0;
+  }
+
+  .monster__mouth3 {
+    opacity: 1;
+  }
+}
+
+.email-invalid {
+  .monster__mouth1,
+  .monster__mouth2,
+  .monster__mouth3 {
+    opacity: 0;
+  }
+
+  .monster__mouth4 {
+    opacity: 1;
+  }
+}
+
+.password-focus {
+  .monster__eye-closed {
+    opacity: 1;
+  }
+
+  .monster__eye {
+    opacity: 0;
+  }
+
+  .monster__pupil {
+    opacity: 0;
+  }
+
+  &.monster--show-password {
+    .monster__eye1,
+    .monster__pupil1,
+    .monster__mouth2 {
+      opacity: 1;
+    }
+
+    .monster__pupil {
+      transform: translateY(14px);
+
+      @include tablet-desktop {
+        transform: translate3d(-8px, 7px, 0);
+      }
+    }
+  }
+}
+
+.password-valid {
+  &.monster--show-password {
+    .monster__mouth1,
+    .monster__mouth2 {
+      opacity: 0;
+    }
+
+    .monster__mouth3 {
+      opacity: 1;
+    }
+  }
+}
+
+.password-invalid {
+  &.monster--show-password {
+    .monster__mouth1,
+    .monster__mouth2,
+    .monster__mouth3 {
+      opacity: 0;
+    }
+
+    .monster__mouth4 {
+      opacity: 1;
+    }
+  }
+}

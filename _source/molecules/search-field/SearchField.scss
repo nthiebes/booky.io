@@ -1,5 +1,5 @@
 .search-field {
-  margin: 0 calc(1rem + 6px) 0 1rem;
+  margin: 0 12px 0 1rem;
   flex-grow: 1;
   position: relative;
 
@@ -13,13 +13,6 @@
     flex-grow: 0;
     margin: 0 0 0 1rem;
   }
-}
-
-.search-field__label {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
 }
 
 .search-field__input {

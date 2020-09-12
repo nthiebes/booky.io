@@ -51,7 +51,7 @@ class AddCategory extends Component {
           value={ name }
           onChange={ this.onNameChange }
           required
-          maxLength="50"
+          maxLength="200"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
           // eslint-disable-next-line jsx-a11y/no-autofocus

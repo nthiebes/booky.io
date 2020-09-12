@@ -7,7 +7,7 @@ import Page from '../../templates/page';
 // import { H1 } from '../../atoms/headline';
 // import P from '../../atoms/paragraph';
 // import Input from '../../atoms/input';
-// import { ErrorMessage, SuccessMessage } from '../../atoms/messages';
+// import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
 // import { ButtonLargeBlue } from '../../atoms/button';
 // import Textarea from '../../atoms/textarea';
 // import Form from '../../molecules/form';
@@ -77,7 +77,7 @@ class Contact extends Component {
     return (
       <Page>
         <Section>
-          <Empty illustration="monitor-window">
+          <Empty illustration="empty">
             <FormattedMessage id="misc.comingSoon" />
           </Empty>
         </Section>
@@ -125,7 +125,7 @@ class Contact extends Component {
               rows={ 5 }
             />
             { error && <ErrorMessage message={ error } hasIcon /> }
-            { success && <SuccessMessage message="contact.success" hasIcon /> }
+            { success && <SuccessIllustration message="contact.success" hasIcon /> }
             <ButtonLargeBlue
               icon="message"
               type="submit"
@@ -133,7 +133,7 @@ class Contact extends Component {
               disabled={ pending }
               contentBefore
             >
-              <FormattedHTMLMessage id="button.send" />
+              <FormattedMessage id="button.send" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonLargeBlue>
           </Form>
         </Section> */}
