@@ -46,7 +46,7 @@ export default class Headline extends Component {
       >
         { children }
         {id && (
-          <a href={ `#${id}` } className="headline__hash">{'#'}</a>
+          <a href={ `#${id}` } aria-hidden="true" className="headline__hash">{'#'}</a>
         )}
       </CustomTag>
     );

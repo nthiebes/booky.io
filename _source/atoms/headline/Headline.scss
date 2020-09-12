@@ -8,7 +8,7 @@
 
   &:hover {
     .headline__hash {
-      display: block;
+      opacity: 1;
     }
   }
 }
@@ -111,8 +111,9 @@
   color: inherit;
   margin-left: 0.5rem;
   font-size: inherit;
-  display: none;
+  opacity: 0;
   text-decoration: none;
+  transition: opacity 0.2s linear, color 0.2s linear;
 
   &:hover {
     color: $color-font--primary;
