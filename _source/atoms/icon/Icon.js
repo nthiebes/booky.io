@@ -64,17 +64,15 @@ export default class Icon extends Component {
       to
     } = this.props;
     const icon = pending ? 'spinner' : this.props.icon;
-    const link = `_assets/symbol-defs.svg?=${process.env.VERSION}#icon-${icon}`;
+    const link = `/_assets/symbol-defs.svg?=${process.env.VERSION}#icon-${icon}`;
     const additionalProps = {};
     let CustomTag = isButton ? 'button' : 'span';
     
     if (to) {
       CustomTag = Link;
-      additionalProps['aria-label'] = label;
     }
     
     if (isButton) {
-      additionalProps['aria-label'] = label;
       additionalProps.type = 'button';
     } else if (!to) {
       additionalProps['aria-hidden'] = true;
@@ -94,6 +92,7 @@ export default class Icon extends Component {
             className
           ) }
           title={ label }
+          aria-label={ label }
           onClick={ this.handleClick }
           onKeyDown={ this.handleKeyDown }
           { ...additionalProps }

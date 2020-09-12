@@ -8,6 +8,7 @@ import Link from '../../atoms/link';
 import Logo from '../../atoms/logo';
 import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
+import Illustration from '../../atoms/illustration';
 import LanguageSwitcher from '../../molecules/language-switcher';
 
 class Footer extends PureComponent {
@@ -56,36 +57,42 @@ class Footer extends PureComponent {
         'footer',
         hasSidebar && home && loggedIn && toolbarSticky && 'footer--sidebar',
         hasSidebar && home && loggedIn && dashboardsOpen && toolbarSticky && 'footer--shifted',
-        className && className
+        className
       ) }>
         { home && !loggedIn && (
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{ `32${thousandsSeparator}841` }</b>
+                <b>{ `37${thousandsSeparator}273` }</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{ `12${thousandsSeparator}491${thousandsSeparator}025` }</b>
+                <b>{ `15${thousandsSeparator}497${thousandsSeparator}515` }</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{ `1${thousandsSeparator}067${thousandsSeparator}167` }</b>
+                <b>{ `1${thousandsSeparator}249${thousandsSeparator}793` }</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{ `59${thousandsSeparator}713` }</b>
+                <b>{ `68${thousandsSeparator}178` }</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
           </section>
         ) }
         <section className={ classNames('footer__social', darkMode && 'footer__social--dark-mode') }>
+          <Illustration
+            className="footer__illustration"
+            name="share"
+            width="100"
+            height="100"
+          />
           <a
             className="footer__social-item"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://twitter.com/intent/tweet?text=booky.io%20%7C%20Online%20Bookmark%20manager.%20Your%20bookmarks%20always%20available."
+            href={ `https://twitter.com/intent/tweet?url=https://booky.io&via=booky_io&text=booky.io - ${intl.formatMessage({ id: 'footer.twitterText' })}` }
           >
             <Icon className="footer__icon" icon="twitter" color="light" />
             <span className="footer__label">{ 'Twitter' }</span>

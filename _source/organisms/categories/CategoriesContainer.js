@@ -9,7 +9,8 @@ export const mapStateToProps = (state) => ({
   hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
   dashboardName: (state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active) || {}).name,
   darkMode: state.user.settings.darkMode,
-  pending: state.dashboards.pending
+  pending: state.dashboards.pending,
+  categoriesLayout: state.user.settings.categoriesLayout
 });
 
 export const mapDispatchToProps = {

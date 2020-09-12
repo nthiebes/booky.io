@@ -1,3 +1,1 @@
-import restricted from './restricted';
-
-export { restricted };
+export { restricted } from './restricted';

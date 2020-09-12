@@ -126,4 +126,5 @@ if (window.Promise) {
   init();
 } else {
   loadScript(`/_assets/promise-polyfill.js?=${process.env.VERSION}`, init);
+  loadScript(`/_assets/svguse-polyfill.js?=${process.env.VERSION}`);
 }

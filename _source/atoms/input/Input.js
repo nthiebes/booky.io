@@ -46,8 +46,8 @@ export default class Input extends PureComponent {
     this.props.onChange(event.target.value, this.props.name);
   }
 
-  onFocus = () => {
-    this.props.onFocus && this.props.onFocus();
+  onFocus = (event) => {
+    this.props.onFocus && this.props.onFocus(event);
   }
 
   onBlur = (event) => {
@@ -82,7 +82,7 @@ export default class Input extends PureComponent {
     const inputProps = {
       className: classNames(
         'input__field',
-        className && className,
+        className,
         color && `input__field--color-${color}`,
         !validation && 'input__field--no-validation',
         icon && 'input__field--icon',

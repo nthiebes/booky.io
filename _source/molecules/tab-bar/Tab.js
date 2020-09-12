@@ -4,7 +4,10 @@ import classNames from 'classnames';
 
 export default class Tab extends Component {
   static propTypes = {
-    tabId: PropTypes.number.isRequired,
+    tabId: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]).isRequired,
     active: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
     darkMode: PropTypes.bool,

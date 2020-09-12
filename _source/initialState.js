@@ -15,12 +15,13 @@ export default {
       openLinksInNewTab: true,
       pinned: true,
       preserveEditMode: true,
-      stickyHeader: true,
+      stickyHeader: false,
       stickyToolbar: true,
       autofillBookmarkNames: true,
       colorScheme: 0,
       defaultDashboardId: null,
-      enableNotes: true
+      enableNotes: true,
+      categoriesLayout: 'grid'
     }
   },
   dashboards: {
@@ -43,6 +44,7 @@ export default {
   modal: {
     modal: null,
     open: false,
+    showModal: false,
     data: {}
   },
   search: {

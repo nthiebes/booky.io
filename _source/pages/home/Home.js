@@ -51,24 +51,26 @@ class Home extends Component {
       </Page>
     ) : (
       <Page home className="home">
-        <Section noMargin className="home__header">
-          <Display noMargin className="home__headline">
-            <FormattedMessage id="home.display" />
-          </Display>
-          <H2 noMargin>
-            <FormattedMessage id="home.display2" />
-          </H2>
-          <ButtonLargeBlue icon="join" to="/join" className="home__join">
-            <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
-          </ButtonLargeBlue>
-          <ButtonLargeLight icon="about" to="/about">
-            <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
-          </ButtonLargeLight>
+        <section className="home__header">
+          <div className="home__header-wrapper">
+            <Display noMargin centered>
+              <FormattedMessage id="home.display" />
+            </Display>
+            <H2 noMargin centered>
+              <FormattedMessage id="home.display2" />
+            </H2>
+            <ButtonLargeBlue icon="join" to="/join" className="home__join">
+              <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
+            </ButtonLargeBlue>
+            <ButtonLargeLight icon="about" to="/about">
+              <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
+            </ButtonLargeLight>
+          </div>
           <Illustration
-            name="monitor-window"
+            name="devices"
             className="home__header-illustration"
           />
-        </Section>
+        </section>
         <Section color="light" noPadding contentClassName="home__testimonials">
           <Testimonials />
         </Section>
@@ -76,18 +78,26 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.privateHeadline' }) }
             text={ intl.formatMessage({ id: 'home.privateText' }) }
-            illustration="stamp-document"
+            illustration="protection"
           />
         </Section>
         <Section>
           <Feature
             headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
             text={ intl.formatMessage({ id: 'home.customizableText' }) }
-            illustration="color-palette"
+            illustration="customize"
             direction="right"
           />
         </Section>
         <Section color="dark" contentClassName="home__bookmarklet">
+          <Illustration
+            className="home__plant booky--hide-mobile"
+            name="plant"
+          />
+          <Illustration
+            className="home__trees booky--hide-mobile-tablet"
+            name="trees"
+          />
           <H2 style="h1" color="light" noMargin centered>
             <FormattedMessage id="misc.feature1" />
           </H2>
@@ -102,6 +112,7 @@ class Home extends Component {
                 alt="Chrome browser extension"
                 className="home__extension-icon"
                 src="../../_assets/browsers/chrome.svg"
+                loading="lazy"
               />
               { 'Chrome' }
             </Link>
@@ -112,6 +123,7 @@ class Home extends Component {
                 alt="Firefox browser extension"
                 className="home__extension-icon"
                 src="../../_assets/browsers/firefox.svg"
+                loading="lazy"
               />
               { 'Firefox' }
             </Link>
@@ -122,6 +134,7 @@ class Home extends Component {
                 alt="Opera browser extension"
                 className="home__extension-icon"
                 src="../../_assets/browsers/opera.svg"
+                loading="lazy"
               />
               { 'Opera' }
             </Link>
@@ -132,6 +145,7 @@ class Home extends Component {
                 alt="Edge browser extension"
                 className="home__extension-icon"
                 src="../../_assets/browsers/edge.svg"
+                loading="lazy"
               />
               { 'Edge' }
             </Link>
@@ -141,14 +155,14 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
             text={ intl.formatMessage({ id: 'home.performantText' }) }
-            illustration="monitor-loading-progress"
+            illustration="speed"
           />
         </Section>
         <Section>
           <Feature
             headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
             text={ intl.formatMessage({ id: 'home.mobileText' }) }
-            illustration="android-phone"
+            illustration="mobile"
             direction="right"
           />
         </Section>
@@ -160,10 +174,8 @@ class Home extends Component {
         </Section>
         <Section className="home__not-a-member">
           <Illustration
-            className="home__globe"
-            name="monitor-window"
-            height="300"
-            width="300"
+            className="home__heart"
+            name="heart"
           />
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="home.notAMember" />

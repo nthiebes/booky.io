@@ -1,0 +1,13 @@
+{
+  "singleQuote": true,
+  "trailingComma": "none",
+  "arrowParens": "always",
+  "overrides": [
+    {
+      "files": ["_source/**/*.scss"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

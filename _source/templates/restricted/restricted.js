@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-export const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn
 });
 
-const restricted = (BaseComponent) => {
+export const restricted = (BaseComponent) => {
   class Restricted extends Component {
     componentDidMount() {
       this.checkAuthentication(this.props);
@@ -44,5 +44,3 @@ const restricted = (BaseComponent) => {
     withRouter(Restricted)
   );
 };
-
-export default restricted;
