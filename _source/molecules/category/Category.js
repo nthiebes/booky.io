@@ -25,7 +25,8 @@ class Category extends PureComponent {
     pending: PropTypes.bool,
     getBookmarks: PropTypes.func.isRequired,
     noFetch: PropTypes.bool,
-    error: PropTypes.string
+    error: PropTypes.string,
+    closeEditMode: PropTypes.bool.isRequired
   };
   
   static defaultProps = {
@@ -60,22 +61,34 @@ class Category extends PureComponent {
   }
 
   onEditClick = () => {
-    const { name, id, openModal, color } = this.props;
+    const { name, id, openModal, color, closeEditMode } = this.props;
 
     openModal('EditCategory', {
       name,
       id,
       color
     });
+
+    if (closeEditMode) {
+      this.setState({
+        editMode: false
+      });
+    }
   }
 
   onDeleteClick = () => {
-    const { name, id, openModal } = this.props;
+    const { name, id, openModal, closeEditMode } = this.props;
 
     openModal('DeleteCategory', {
       name,
       id
     });
+    
+    if (closeEditMode) {
+      this.setState({
+        editMode: false
+      });
+    }
   }
 
   onAddClick = () => {
@@ -157,6 +170,7 @@ class Category extends PureComponent {
                         name={ bookmark.name }
                         url={ bookmark.url }
                         favicon={ bookmark.favicon }
+                        onDeleteOrEditClick={ this.toggleEditMode }
                       />
                     )) }
                     { error && <ErrorMessage message={ error } className="category__error" noAnimation /> }

@@ -7,7 +7,7 @@ export const mapStateToProps = (state) => ({
   navColor: state.user.settings.navigationBarColor,
   newtab: state.user.settings.openLinksInNewTab,
   maxWidth: state.user.settings.maxWidth,
-  preserveEditMode: state.user.settings.preserveEditMode,
+  closeEditMode: state.user.settings.closeEditMode,
   dashboardsStyle: state.user.settings.dashboardsStyle,
   blurEffect: state.user.settings.blurEffect,
   stickyHeader: state.user.settings.stickyHeader,

@@ -15,7 +15,7 @@ class Customize extends PureComponent {
     navColor: PropTypes.number.isRequired,
     newtab: PropTypes.bool.isRequired,
     maxWidth: PropTypes.bool.isRequired,
-    preserveEditMode: PropTypes.bool.isRequired,
+    closeEditMode: PropTypes.bool.isRequired,
     dashboardsStyle: PropTypes.string.isRequired,
     blurEffect: PropTypes.bool.isRequired,
     stickyHeader: PropTypes.bool.isRequired,
@@ -47,8 +47,7 @@ class Customize extends PureComponent {
       intl,
       navColor,
       newtab,
-      // maxWidth,
-      // preserveEditMode,
+      closeEditMode,
       dashboardsStyle,
       blurEffect,
       stickyHeader,
@@ -97,13 +96,6 @@ class Customize extends PureComponent {
           onChange={ this.handleCheckboxChange }
           checked={ stickyToolbar }
         />
-        {/* <Checkbox
-          label={ intl.formatMessage({ id: 'customize.maxWidth'}) }
-          id="maxWidth"
-          name="maxWidth"
-          onChange={ this.handleCheckboxChange }
-          checked={ maxWidth }
-        /> */}
         <H3>
           <FormattedMessage id="dashboard.title" />
         </H3>
@@ -153,13 +145,13 @@ class Customize extends PureComponent {
           onChange={ this.handleCheckboxChange }
           checked={ autofillBookmarkNames }
         />
-        {/* <Checkbox
-          label={ intl.formatMessage({ id: 'customize.preserveEditMode'}) }
-          id="preserveEditMode"
-          name="preserveEditMode"
+        <Checkbox
+          label={ intl.formatMessage({ id: 'customize.closeEditMode'}) }
+          id="closeEditMode"
+          name="closeEditMode"
           onChange={ this.handleCheckboxChange }
-          checked={ preserveEditMode }
-        /> */}
+          checked={ closeEditMode }
+        />
       </Fragment>
     );
   }

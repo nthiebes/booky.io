@@ -19,11 +19,13 @@ class Bookmark extends PureComponent {
     intl: PropTypes.object.isRequired,
     newtab: PropTypes.bool.isRequired,
     favicon: PropTypes.string,
-    darkMode: PropTypes.bool.isRequired
+    darkMode: PropTypes.bool.isRequired,
+    closeEditMode: PropTypes.bool.isRequired,
+    onDeleteOrEditClick: PropTypes.func.isRequired
   }
 
   onEditClick = () => {
-    const { url, name, id, openModal, categoryId } = this.props;
+    const { url, name, id, openModal, categoryId, closeEditMode, editMode, onDeleteOrEditClick } = this.props;
 
     openModal('EditBookmark', {
       id,
@@ -31,10 +33,12 @@ class Bookmark extends PureComponent {
       name,
       categoryId
     });
+
+    closeEditMode && editMode && onDeleteOrEditClick();
   }
 
   onDeleteClick = () => {
-    const { url, name, id, openModal, categoryId } = this.props;
+    const { url, name, id, openModal, categoryId, closeEditMode, editMode, onDeleteOrEditClick } = this.props;
 
     openModal('DeleteBookmark', {
       id,
@@ -42,6 +46,8 @@ class Bookmark extends PureComponent {
       name,
       categoryId
     });
+
+    closeEditMode && editMode && onDeleteOrEditClick();
   }
 
   render() {

@@ -15,7 +15,8 @@ class DashboardsTabs extends PureComponent {
     dashboards: PropTypes.array,
     intl: PropTypes.object.isRequired,
     activeId: PropTypes.number,
-    darkMode: PropTypes.bool.isRequired
+    darkMode: PropTypes.bool.isRequired,
+    closeEditMode: PropTypes.bool.isRequired
   }
   
   static defaultProps = {
@@ -33,12 +34,18 @@ class DashboardsTabs extends PureComponent {
   }
 
   onIconClick = (type, dashboard) => {
-    const { openModal } = this.props;
+    const { openModal, closeEditMode } = this.props;
 
     openModal(type, {
       id: dashboard.id,
       name: dashboard.name
     });
+
+    if (closeEditMode) {
+      this.setState({
+        editMode: false
+      });
+    }
   }
 
   handleKeyDown = (event, dashboardId) => {
