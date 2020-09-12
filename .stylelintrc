@@ -50,6 +50,7 @@
     "selector-max-type": 1,
     "selector-max-universal": 1,
     "string-quotes": "double",
-    "value-no-vendor-prefix": true
+    "value-no-vendor-prefix": true,
+    "declaration-empty-line-before": "never"
   }
 }

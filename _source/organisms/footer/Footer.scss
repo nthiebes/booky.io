@@ -38,14 +38,14 @@
 }
 
 .footer__stats-item {
-  @include mobile {
-    width: 50%;
-  }
-
   display: flex;
   padding: 1rem;
   flex-direction: column;
   line-height: 1.5;
+
+  @include mobile {
+    width: 50%;
+  }
 }
 
 .footer__social {
