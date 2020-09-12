@@ -42,12 +42,14 @@ export default {
     }),
 
     // Copy translation files
-    new CopyPlugin([
-      {
-        from: '_source/_assets',
-        to: '_assets'
-      }
-    ]),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: '_source/_assets',
+          to: '_assets'
+        }
+      ]}
+    ),
 
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin(GLOBALS),
@@ -121,10 +123,12 @@ export default {
           }, {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [
-                require('cssnano'),
-                require('autoprefixer')
-              ],
+              postcssOptions: {
+                plugins: [
+                  'cssnano',
+                  'autoprefixer'
+                ]
+              },
               sourceMap: true
             }
           }, {
