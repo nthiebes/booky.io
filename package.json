@@ -74,7 +74,7 @@
     "babel-loader": "8.1.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "browser-sync": "2.26.12",
-    "chalk": "3.0.0",
+    "chalk": "4.1.0",
     "clean-webpack-plugin": "3.0.0",
     "connect-history-api-fallback": "1.6.0",
     "copy-webpack-plugin": "5.1.2",
