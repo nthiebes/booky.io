@@ -10,7 +10,7 @@ import Section from '../../molecules/section';
 import {
   AccountData,
   AccountImport,
-  AccountExport,
+  // AccountExport,
   AccountManage,
   AccountStatistics
 } from './tabs';
@@ -21,26 +21,22 @@ class Account extends Component {
     history: PropTypes.object.isRequired
   }
 
-  constructor(props) {
-    super(props);
-
-    this.tabs = [{
-      name: props.intl.formatMessage({ id: 'account.userData' }),
-      key: 'data'
-    }, {
-      name: props.intl.formatMessage({ id: 'account.import' }),
-      key: 'import'
-    }, {
-      name: props.intl.formatMessage({ id: 'account.export' }),
-      key: 'export'
-    }];
-    // name: props.intl.formatMessage({ id: 'account.statistics' })
-    // name: props.intl.formatMessage({ id: 'account.account' })
-  }
-
   state = {
     activeTab: document.location.hash ? document.location.hash.replace('#', '') : 'data'
   }
+  
+  tabs = [{
+    name: this.props.intl.formatMessage({ id: 'account.userData' }),
+    key: 'data'
+  }, {
+    name: this.props.intl.formatMessage({ id: 'account.import' }),
+    key: 'import'
+  }, {
+    name: this.props.intl.formatMessage({ id: 'account.export' }),
+    key: 'export'
+  }];
+  // name: props.intl.formatMessage({ id: 'account.statistics' })
+  // name: props.intl.formatMessage({ id: 'account.account' })
 
   handleTabClick = (activeTab) => {
     const {history} = this.props;
@@ -80,7 +76,7 @@ class Account extends Component {
             <AccountImport />
           ) }
           { activeTab === 'export' && (
-            <AccountExport />
+            <AccountImport />
           ) }
           { activeTab === 'stats' && (
             <AccountStatistics />
