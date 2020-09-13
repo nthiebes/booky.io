@@ -1,5 +1,6 @@
 import fetcher, { abortFetch } from '../../_utils/fetcher';
 import { encodeEmoji, decodeEmoji } from '../../_utils/string';
+import { removeEmpty } from '../../_utils/object';
 
 import { setCategories, getCategories } from '../categories/actions';
 import { updateSettings } from '../user/actions';
@@ -90,10 +91,10 @@ export const editDashboard = ({ name, position, id, onSuccess, onError, shouldUp
   fetcher({
     url: `/dashboards/${id}`,
     method: 'PATCH',
-    params: {
-      name: encodeEmoji(name),
+    params: removeEmpty({
+      name: name ? encodeEmoji(name) : '',
       position
-    },
+    }),
     onSuccess: () => {
       if (shouldUpdate) {
         dispatch({

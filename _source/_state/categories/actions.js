@@ -1,5 +1,6 @@
 import fetcher from '../../_utils/fetcher';
 import { encodeEmoji, decodeEmoji } from '../../_utils/string';
+import { removeEmpty } from '../../_utils/object';
 import { updateDashboardsData } from '../dashboards/actions';
 import { getBookmarks, setBookmarks } from '../bookmarks/actions';
 
@@ -61,13 +62,13 @@ export const editCategory = ({ id, color, name, hidden, position, dashboardId, o
   fetcher({
     url: `/categories/${id}`,
     method: 'PATCH',
-    params: {
+    params: removeEmpty({
       color,
-      name: encodeEmoji(name),
+      name: name ? encodeEmoji(name) : '',
       dashboardId,
       hidden,
       position
-    },
+    }),
     onSuccess: () => {
       dispatch({
         type: 'EDIT_CATEGORY',
