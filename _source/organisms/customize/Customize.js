@@ -23,7 +23,9 @@ class Customize extends PureComponent {
     stickyToolbar: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
     autofillBookmarkNames: PropTypes.bool,
-    categoriesLayout: PropTypes.string.isRequired
+    categoriesLayout: PropTypes.string.isRequired,
+    bookmarkEditOnHover: PropTypes.bool.isRequired,
+    minimalBookmarkButton: PropTypes.bool.minimalBookmarkButton
   }
 
   state = {
@@ -72,7 +74,9 @@ class Customize extends PureComponent {
       stickyToolbar,
       darkMode,
       autofillBookmarkNames,
-      categoriesLayout
+      categoriesLayout,
+      bookmarkEditOnHover,
+      minimalBookmarkButton
     } = this.props;
     const { error } = this.state;
 
@@ -192,6 +196,20 @@ class Customize extends PureComponent {
           name="closeEditMode"
           onChange={ this.handleCheckboxChange }
           checked={ closeEditMode }
+        />
+        <Checkbox
+          label={ intl.formatMessage({ id: 'customize.bookmarkEditOnHover'}) }
+          id="bookmarkEditOnHover"
+          name="bookmarkEditOnHover"
+          onChange={ this.handleCheckboxChange }
+          checked={ bookmarkEditOnHover }
+        />
+        <Checkbox
+          label={ intl.formatMessage({ id: 'customize.minimalBookmarkButton'}) }
+          id="minimalBookmarkButton"
+          name="minimalBookmarkButton"
+          onChange={ this.handleCheckboxChange }
+          checked={ minimalBookmarkButton }
         />
         { error && <ErrorMessage message={ error } hasIcon className="customize__error" /> }
       </Fragment>

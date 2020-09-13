@@ -14,7 +14,9 @@ export const mapStateToProps = (state) => ({
   stickyToolbar: state.user.settings.stickyToolbar,
   darkMode: state.user.settings.darkMode,
   autofillBookmarkNames: state.user.settings.autofillBookmarkNames,
-  categoriesLayout: state.user.settings.categoriesLayout
+  categoriesLayout: state.user.settings.categoriesLayout,
+  bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
+  minimalBookmarkButton: state.user.settings.minimalBookmarkButton
 });
 
 export const mapDispatchToProps = {
