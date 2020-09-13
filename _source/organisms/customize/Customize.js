@@ -7,6 +7,7 @@ import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
 import Radio from '../../atoms/radio';
+import { ErrorMessage } from '../../atoms/messages';
 
 class Customize extends PureComponent {
   static propTypes = {
@@ -21,24 +22,41 @@ class Customize extends PureComponent {
     stickyHeader: PropTypes.bool.isRequired,
     stickyToolbar: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    autofillBookmarkNames: PropTypes.bool
+    autofillBookmarkNames: PropTypes.bool,
+    categoriesLayout: PropTypes.string.isRequired
+  }
+
+  state = {
+    error: null
   }
 
   handleColorChange = (value) => {
     this.props.updateSettings({
       navigationBarColor: parseInt(value.replace(/color/g, ''), 10)
+    }, {
+      onError: this.errorCallback
     });
   }
 
   handleCheckboxChange = ({ name, checked }) => {
     this.props.updateSettings({
       [name]: checked
+    }, {
+      onError: this.errorCallback
     });
   }
 
   handleRadioChange = ({ name, value }) => {
     this.props.updateSettings({
       [name]: value
+    }, {
+      onError: this.errorCallback
+    });
+  }
+
+  errorCallback = (error) => {
+    this.setState({
+      error
     });
   }
 
@@ -53,8 +71,10 @@ class Customize extends PureComponent {
       stickyHeader,
       stickyToolbar,
       darkMode,
-      autofillBookmarkNames
+      autofillBookmarkNames,
+      categoriesLayout
     } = this.props;
+    const { error } = this.state;
 
     return (
       <Fragment>
@@ -96,6 +116,27 @@ class Customize extends PureComponent {
           onChange={ this.handleCheckboxChange }
           checked={ stickyToolbar }
         />
+        <H3>
+          <FormattedMessage id="customize.layout" />
+        </H3>
+        <Radio
+          id="categories-grid"
+          name="categoriesLayout"
+          onChange={ this.handleRadioChange }
+          value="grid"
+          checked={ categoriesLayout === 'grid' }
+        >
+          <FormattedMessage id="customize.grid" />
+        </Radio>
+        <Radio
+          id="categories-column"
+          name="categoriesLayout"
+          onChange={ this.handleRadioChange }
+          value="column"
+          checked={ categoriesLayout === 'column' }
+        >
+          <FormattedMessage id="customize.column" />
+        </Radio>
         <H3>
           <FormattedMessage id="dashboard.title" />
         </H3>
@@ -152,6 +193,7 @@ class Customize extends PureComponent {
           onChange={ this.handleCheckboxChange }
           checked={ closeEditMode }
         />
+        { error && <ErrorMessage message={ error } hasIcon className="customize__error" /> }
       </Fragment>
     );
   }

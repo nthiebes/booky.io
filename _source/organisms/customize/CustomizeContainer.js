@@ -13,7 +13,8 @@ export const mapStateToProps = (state) => ({
   stickyHeader: state.user.settings.stickyHeader,
   stickyToolbar: state.user.settings.stickyToolbar,
   darkMode: state.user.settings.darkMode,
-  autofillBookmarkNames: state.user.settings.autofillBookmarkNames
+  autofillBookmarkNames: state.user.settings.autofillBookmarkNames,
+  categoriesLayout: state.user.settings.categoriesLayout
 });
 
 export const mapDispatchToProps = {
