@@ -23,11 +23,15 @@ export default class Booky extends Component {
     loadingHeader.parentNode && loadingHeader.parentNode.removeChild(loadingHeader);
   }
 
-  onDragStart = () => {
-    // console.log('onDragStart', initial);
+  onDragStart = ({ type }) => {
+    this.props.startDragging({
+      dragType: type
+    });
   }
 
   onDragEnd = ({ type, destination, source, draggableId }) => {
+    this.props.stopDragging();
+
     if (destination) {
       if (type === 'dashboard-mobile' || type === 'dashboard-sidebar' || type === 'dashboard-tabs') {
         this.props.dragDashboard({
@@ -83,6 +87,8 @@ Booky.propTypes = {
   dragBookmark: PropTypes.func.isRequired,
   dragCategory: PropTypes.func.isRequired,
   dragDashboard: PropTypes.func.isRequired,
+  startDragging: PropTypes.func.isRequired,
+  stopDragging: PropTypes.func.isRequired,
   store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired
 };

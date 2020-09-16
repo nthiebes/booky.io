@@ -6,7 +6,8 @@ export const mapStateToProps = (state) => ({
   newtab: state.user.settings.openLinksInNewTab,
   darkMode: state.user.settings.darkMode,
   closeEditMode: state.user.settings.closeEditMode,
-  bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover
+  bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
+  isDragging: state.dragging.isDragging
 });
 
 export const mapDispatchToProps = (dispatch) => ({

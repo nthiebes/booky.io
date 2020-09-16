@@ -59,5 +59,9 @@ export default {
     offset: 0,
     limit: 30,
     dashboards: []
+  },
+  dragging: {
+    isDragging: false,
+    dragType: null
   }
 };

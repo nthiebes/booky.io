@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
@@ -21,7 +21,13 @@ class Bookmark extends PureComponent {
     favicon: PropTypes.string,
     darkMode: PropTypes.bool.isRequired,
     closeEditMode: PropTypes.bool.isRequired,
-    onDeleteOrEditClick: PropTypes.func.isRequired
+    onDeleteOrEditClick: PropTypes.func.isRequired,
+    bookmarkEditOnHover: PropTypes.bool.isRequired,
+    isDragging: PropTypes.bool.isRequired
+  }
+
+  state = {
+    hoverEditMode: false
   }
 
   onEditClick = () => {
@@ -50,8 +56,27 @@ class Bookmark extends PureComponent {
     closeEditMode && editMode && onDeleteOrEditClick();
   }
 
+  toggleHoverEditMode = () => {
+    this.setState({
+      hoverEditMode: !this.state.hoverEditMode
+    });
+  }
+
   render() {
-    const { url, name, editMode, id, index, intl, newtab, favicon, darkMode } = this.props;
+    const {
+      url,
+      name,
+      editMode,
+      id,
+      index,
+      intl,
+      newtab,
+      favicon,
+      darkMode,
+      bookmarkEditOnHover,
+      isDragging
+    } = this.props;
+    const { hoverEditMode } = this.state;
 
     return (
       <Draggable
@@ -62,9 +87,11 @@ class Bookmark extends PureComponent {
       >
         { (provided) => (
           <li
-            className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }
+            className={ classNames('bookmark', (editMode || hoverEditMode) && 'bookmark--edit-mode') }
             { ...provided.draggableProps }
             ref={ provided.innerRef }
+            onMouseEnter={ bookmarkEditOnHover ? this.toggleHoverEditMode : null }
+            onMouseLeave={ bookmarkEditOnHover ? this.toggleHoverEditMode : null }
           >
             { !favicon || favicon === 'default' ? (
               <Icon
@@ -95,8 +122,8 @@ class Bookmark extends PureComponent {
             >
               { name }
             </a>
-            { editMode && (
-              <Fragment>
+            { (editMode || hoverEditMode) && !isDragging && (
+              <>
                 <Icon
                   icon="edit"
                   label={ intl.formatMessage({ id: 'bookmark.edit' }) }
@@ -115,7 +142,7 @@ class Bookmark extends PureComponent {
                   dragHandleProps={ provided.dragHandleProps }
                   isButton
                 />
-              </Fragment>
+              </>
             ) }
           </li>
         ) }
