@@ -7,7 +7,8 @@ import { getBookmarks } from '../../_state/bookmarks/actions';
 
 export const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode,
-  closeEditMode: state.user.settings.closeEditMode
+  closeEditMode: state.user.settings.closeEditMode,
+  minimalBookmarkButton: state.user.settings.minimalBookmarkButton
 });
 
 export const mapDispatchToProps = {

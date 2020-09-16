@@ -26,7 +26,8 @@ class Category extends PureComponent {
     getBookmarks: PropTypes.func.isRequired,
     noFetch: PropTypes.bool,
     error: PropTypes.string,
-    closeEditMode: PropTypes.bool.isRequired
+    closeEditMode: PropTypes.bool.isRequired,
+    minimalBookmarkButton: PropTypes.bool.isRequired
   };
   
   static defaultProps = {
@@ -100,7 +101,7 @@ class Category extends PureComponent {
   }
 
   render() {
-    const { name, id, color, bookmarks, intl, darkMode, hidden, pending, error } = this.props;
+    const { name, id, color, bookmarks, intl, darkMode, hidden, pending, error, minimalBookmarkButton } = this.props;
     const { editMode } = this.state;
     const headerClassName = classNames(
       'category__header',
@@ -143,6 +144,14 @@ class Category extends PureComponent {
             onClick={ this.toggleEditMode }
             isButton
           />
+          { minimalBookmarkButton && (
+            <Icon
+              icon="add-link"
+              label={ intl.formatMessage({ id: 'bookmark.add' }) }
+              onClick={ this.onAddClick }
+              isButton
+            />
+          ) }
         </header>
         <Droppable droppableId={ id.toString() } type="bookmark">
           { (provided) => (
@@ -186,7 +195,7 @@ class Category extends PureComponent {
             </ul>
           ) }
         </Droppable>
-        { !hidden && !error && !pending && (
+        { !hidden && !error && !pending && !minimalBookmarkButton && (
           <ButtonSmallPrimary icon="add-link" className="category__button" onClick={ this.onAddClick }>
             <FormattedMessage id="bookmark.add" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonSmallPrimary>
