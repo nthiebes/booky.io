@@ -255,8 +255,8 @@
     "modal.urlPlaceholder": "z.B. example.com",
     "error.logic.user.invalidToken": "Dein Aktivierungs-Link ist leider ungültig. Aber keine Sorge! Du kannst deine Aktivierungsmail hier neu anfordern: {resend}",
     "customize.bookmarkEditOnHover": "Lesezeichen Buttons bei Mouseover anzeigen",
-    "customize.minimalBookmarkButton": "\"Neues Lesezeichen\" Button minimiert anzeigen (kompakter Modus)",
-    "customize.layout\n": "Kategorien Anordnung",
+    "customize.minimalBookmarkButton": "Kleiner \"Neues Lesezeichen\" Button (kompakter Modus)",
+    "customize.layout": "Kategorien Anordnung",
     "customize.grid": "Kategorien als Raster",
     "customize.column": "Kategorien in Spalten"
 }
