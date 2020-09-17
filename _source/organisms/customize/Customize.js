@@ -121,27 +121,6 @@ class Customize extends PureComponent {
           checked={ stickyToolbar }
         />
         <H3>
-          <FormattedMessage id="customize.layout" />
-        </H3>
-        <Radio
-          id="categories-grid"
-          name="categoriesLayout"
-          onChange={ this.handleRadioChange }
-          value="grid"
-          checked={ categoriesLayout === 'grid' }
-        >
-          <FormattedMessage id="customize.grid" />
-        </Radio>
-        <Radio
-          id="categories-column"
-          name="categoriesLayout"
-          onChange={ this.handleRadioChange }
-          value="column"
-          checked={ categoriesLayout === 'column' }
-        >
-          <FormattedMessage id="customize.column" />
-        </Radio>
-        <H3>
           <FormattedMessage id="dashboard.title" />
         </H3>
         <Radio
@@ -171,6 +150,28 @@ class Customize extends PureComponent {
           checked={ dashboardsStyle === 'tabs' }
         >
           <FormattedMessage id="customize.tabs" />
+        </Radio>
+        <H3>
+          <FormattedMessage id="customize.layout" />
+        </H3>
+        <Radio
+          id="categories-grid"
+          name="categoriesLayout"
+          onChange={ this.handleRadioChange }
+          value="grid"
+          checked={ categoriesLayout === 'grid' }
+          first
+        >
+          <FormattedMessage id="customize.grid" />
+        </Radio>
+        <Radio
+          id="categories-column"
+          name="categoriesLayout"
+          onChange={ this.handleRadioChange }
+          value="column"
+          checked={ categoriesLayout === 'column' }
+        >
+          <FormattedMessage id="customize.column" />
         </Radio>
         <H3>
           <FormattedMessage id="dashboard.preferences" />
