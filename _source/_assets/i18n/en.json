@@ -256,7 +256,7 @@
     "error.logic.user.invalidToken": "Unfortunately, your activation link is invalid. But no worries! You can resend your activation email here: {resend}",
     "customize.bookmarkEditOnHover": "Show bookmark buttons on mouseover",
     "customize.minimalBookmarkButton": "Small \"New bookmark\" button (compact mode)",
-    "customize.layout": "Categories layout",
-    "customize.grid": "Categories as grid",
-    "customize.column": "Categories in columns"
+    "customize.layout": "Categories",
+    "customize.grid": "Arrange as a grid",
+    "customize.column": "Arrange in columns"
 }
