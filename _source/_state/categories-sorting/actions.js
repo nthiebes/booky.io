@@ -1,4 +1,5 @@
 import fetcher from '../../_utils/fetcher';
+import { decodeEmoji } from '../../_utils/string';
 import { editCategory } from '../categories/actions';
 
 export const updateCategoriesSorting = (data) => ({
@@ -17,7 +18,10 @@ export const getCategories = (dashboardId) => ((dispatch) => {
     url: `/dashboards/${dashboardId}/categories`,
     onSuccess: (data) => {
       dispatch(updateCategoriesSorting({
-        items: data,
+        items: data.map((category) => ({
+          ...category,
+          name: decodeEmoji(category.name)
+        })),
         pending: false
       }));
     },

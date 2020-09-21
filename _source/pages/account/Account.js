@@ -10,7 +10,7 @@ import Section from '../../molecules/section';
 import {
   AccountData,
   AccountImport,
-  // AccountExport,
+  AccountExport,
   AccountManage,
   AccountStatistics
 } from './tabs';
@@ -76,7 +76,7 @@ class Account extends Component {
             <AccountImport />
           ) }
           { activeTab === 'export' && (
-            <AccountImport />
+            <AccountExport />
           ) }
           { activeTab === 'stats' && (
             <AccountStatistics />

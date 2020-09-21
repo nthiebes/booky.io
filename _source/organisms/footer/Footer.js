@@ -41,16 +41,6 @@ class Footer extends PureComponent {
       darkMode,
       locale
     } = this.props;
-    let thousandsSeparator;
-
-    switch (locale) {
-      case 'de':
-        thousandsSeparator = '.';
-        break;
-
-      default:
-        thousandsSeparator = ',';
-    }
 
     return (
       <footer className={ classNames(
@@ -63,19 +53,19 @@ class Footer extends PureComponent {
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{ `37${thousandsSeparator}273` }</b>
+                <b>{new Intl.NumberFormat(locale).format(37273)}</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{ `15${thousandsSeparator}497${thousandsSeparator}515` }</b>
+                <b>{new Intl.NumberFormat(locale).format(15497515)}</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{ `1${thousandsSeparator}249${thousandsSeparator}793` }</b>
+                <b>{new Intl.NumberFormat(locale).format(1249793)}</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{ `68${thousandsSeparator}178` }</b>
+                <b>{new Intl.NumberFormat(locale).format(68178)}</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
