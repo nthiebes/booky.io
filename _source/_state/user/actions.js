@@ -9,6 +9,13 @@ export const resetUserState = () => ({
   type: RESET_USER_STATE
 });
 
+export const updateUserData = (userData) => ((dispatch) => {
+  dispatch({
+    type: UPDATE_USER,
+    userData
+  });
+});
+
 export const updateUser = ({userData, onError, onSuccess}) => ((dispatch) => {
   dispatch({
     type: UPDATE_USER,

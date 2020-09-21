@@ -6,6 +6,7 @@ export default {
     title: '',
     new: true,
     premium: false,
+    isMobile: window.matchMedia('(max-width: 1000px)').matches,
     settings: {
       blurEffect: false,
       darkMode: false,

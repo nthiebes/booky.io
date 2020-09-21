@@ -28,7 +28,8 @@ class Category extends PureComponent {
     error: PropTypes.string,
     closeEditMode: PropTypes.bool.isRequired,
     minimalBookmarkButton: PropTypes.bool.isRequired,
-    bookmarkEditOnHover: PropTypes.bool.isRequired
+    bookmarkEditOnHover: PropTypes.bool.isRequired,
+    isMobile: PropTypes.bool.isRequired
   };
   
   static defaultProps = {
@@ -120,7 +121,8 @@ class Category extends PureComponent {
       pending,
       error,
       minimalBookmarkButton,
-      bookmarkEditOnHover
+      bookmarkEditOnHover,
+      isMobile
     } = this.props;
     const { editMode, hoverEditMode } = this.state;
     const headerClassName = classNames(
@@ -133,8 +135,8 @@ class Category extends PureComponent {
       <li className="category">
         <header
           className={ headerClassName }
-          onMouseEnter={ bookmarkEditOnHover ? this.toggleHoverEditMode : null }
-          onMouseLeave={ bookmarkEditOnHover ? this.toggleHoverEditMode : null }
+          onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
+          onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
         >
           <Icon
             className={ classNames('category__toggle-icon', hidden && 'category__toggle-icon--rotate') }

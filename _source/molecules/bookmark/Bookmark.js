@@ -23,7 +23,8 @@ class Bookmark extends PureComponent {
     closeEditMode: PropTypes.bool.isRequired,
     onDeleteOrEditClick: PropTypes.func.isRequired,
     bookmarkEditOnHover: PropTypes.bool.isRequired,
-    isDragging: PropTypes.bool.isRequired
+    isDragging: PropTypes.bool.isRequired,
+    isMobile: PropTypes.bool.isRequired
   }
 
   state = {
@@ -74,7 +75,8 @@ class Bookmark extends PureComponent {
       favicon,
       darkMode,
       bookmarkEditOnHover,
-      isDragging
+      isDragging,
+      isMobile
     } = this.props;
     const { hoverEditMode } = this.state;
 
@@ -90,8 +92,8 @@ class Bookmark extends PureComponent {
             className={ classNames('bookmark', (editMode || hoverEditMode) && 'bookmark--edit-mode') }
             { ...provided.draggableProps }
             ref={ provided.innerRef }
-            onMouseEnter={ bookmarkEditOnHover ? this.toggleHoverEditMode : null }
-            onMouseLeave={ bookmarkEditOnHover ? this.toggleHoverEditMode : null }
+            onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
+            onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
           >
             { !favicon || favicon === 'default' ? (
               <Icon
