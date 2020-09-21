@@ -103,26 +103,26 @@ class Customize extends PureComponent {
           onChange={ this.handleColorChange }
         />
         <Radio
-          id="darkMode"
-          name="darkMode"
-          onChange={ this.handleRadioChange }
-          value="true"
-          checked={ darkMode }
-          illustration="dark-mode"
-          className="customize__image--first"
-        >
-          <FormattedMessage id="customize.darkMode" />
-        </Radio>
-        <Radio
           id="lightMode"
           name="darkMode"
           onChange={ this.handleRadioChange }
           value="false"
           checked={ !darkMode }
           illustration="light-mode"
-          className="customize__image--second"
+          className="customize__image--first"
         >
           <FormattedMessage id="customize.lightMode" />
+        </Radio>
+        <Radio
+          id="darkMode"
+          name="darkMode"
+          onChange={ this.handleRadioChange }
+          value="true"
+          checked={ darkMode }
+          illustration="dark-mode"
+          className="customize__image--second"
+        >
+          <FormattedMessage id="customize.darkMode" />
         </Radio>
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.stickyHeader'}) }
