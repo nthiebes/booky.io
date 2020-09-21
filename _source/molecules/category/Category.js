@@ -27,7 +27,8 @@ class Category extends PureComponent {
     noFetch: PropTypes.bool,
     error: PropTypes.string,
     closeEditMode: PropTypes.bool.isRequired,
-    minimalBookmarkButton: PropTypes.bool.isRequired
+    minimalBookmarkButton: PropTypes.bool.isRequired,
+    bookmarkEditOnHover: PropTypes.bool.isRequired
   };
   
   static defaultProps = {
@@ -35,7 +36,8 @@ class Category extends PureComponent {
   };
 
   state = {
-    editMode: false
+    editMode: false,
+    hoverEditMode: false
   };
 
   componentDidMount() {
@@ -100,18 +102,40 @@ class Category extends PureComponent {
     });
   }
 
+  toggleHoverEditMode = () => {
+    this.setState({
+      hoverEditMode: !this.state.hoverEditMode
+    });
+  }
+
   render() {
-    const { name, id, color, bookmarks, intl, darkMode, hidden, pending, error, minimalBookmarkButton } = this.props;
-    const { editMode } = this.state;
+    const {
+      name,
+      id,
+      color,
+      bookmarks,
+      intl,
+      darkMode,
+      hidden,
+      pending,
+      error,
+      minimalBookmarkButton,
+      bookmarkEditOnHover
+    } = this.props;
+    const { editMode, hoverEditMode } = this.state;
     const headerClassName = classNames(
       'category__header',
       `category__header--${color}`,
-      editMode && 'category__header--edit-mode'
+      (editMode || hoverEditMode) && 'category__header--edit-mode'
     );
 
     return (
       <li className="category">
-        <header className={ headerClassName }>
+        <header
+          className={ headerClassName }
+          onMouseEnter={ bookmarkEditOnHover ? this.toggleHoverEditMode : null }
+          onMouseLeave={ bookmarkEditOnHover ? this.toggleHoverEditMode : null }
+        >
           <Icon
             className={ classNames('category__toggle-icon', hidden && 'category__toggle-icon--rotate') }
             icon="expand"
@@ -122,7 +146,7 @@ class Category extends PureComponent {
           <H2 style="h3" className="category__name" onClick={ this.toggleCategory } title={ name }>
             { name }
           </H2>
-          { editMode && (
+          { (editMode || hoverEditMode) && (
             <Fragment>
               <Icon
                 icon="edit"
