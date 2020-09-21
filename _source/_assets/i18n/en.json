@@ -258,5 +258,7 @@
     "customize.minimalBookmarkButton": "Small \"New bookmark\" button (compact mode)",
     "customize.layout": "Categories",
     "customize.grid": "Arrange as a grid",
-    "customize.column": "Arrange in columns"
+    "customize.column": "Arrange in columns",
+    "customize.lightMode": "Light mode",
+    "customize.enableNotes": "Bookmark notes"
 }
