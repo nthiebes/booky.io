@@ -85,8 +85,7 @@ class Customize extends PureComponent {
       autofillBookmarkNames,
       categoriesLayout,
       bookmarkEditOnHover,
-      minimalBookmarkButton,
-      enableNotes
+      minimalBookmarkButton
     } = this.props;
     const { error } = this.state;
 
@@ -230,13 +229,13 @@ class Customize extends PureComponent {
           onChange={ this.handleCheckboxChange }
           checked={ bookmarkEditOnHover }
         />
-        <Checkbox
+        {/* <Checkbox
           label={ intl.formatMessage({ id: 'customize.enableNotes'}) }
           id="enableNotes"
           name="enableNotes"
           onChange={ this.handleCheckboxChange }
           checked={ enableNotes }
-        />
+        /> */}
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.minimalBookmarkButton'}) }
           id="minimalBookmarkButton"
