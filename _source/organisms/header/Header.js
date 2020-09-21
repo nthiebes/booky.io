@@ -117,7 +117,8 @@ class Header extends PureComponent {
                 icon={ hasCategories ? 'add-link' : 'add-category' }
                 color="light"
                 onClick={ this.onAddButtonClick }
-                label={ intl.formatMessage({ id: hasCategories ? 'bookmark.add' : 'category.add' }) }
+                label={ intl.formatMessage({ id: hasCategories ? 'bookmark.add' : 'category.add' },
+                  { b: (msg) => msg }) }
                 ignoreDarkMode
                 isButton
               />
@@ -144,6 +145,17 @@ class Header extends PureComponent {
                 pending={ logoutPending }
                 isButton
               />
+              { home && (
+                <Icon
+                  className="booky--hide-desktop"
+                  icon="customize"
+                  color="light"
+                  onClick={ this.onCustomizeClick }
+                  label={ intl.formatMessage({ id: 'menu.customize' }) }
+                  ignoreDarkMode
+                  isButton
+                />
+              )}
               <ButtonSmallLight
                 className="header__add booky--hide-mobile-tablet"
                 onClick={ this.onCustomizeClick }
