@@ -122,7 +122,7 @@ class Bookmark extends PureComponent {
             >
               { name }
             </a>
-            { (editMode || hoverEditMode) && !isDragging && (
+            { (editMode || (hoverEditMode && !isDragging)) && (
               <>
                 <Icon
                   icon="edit"
