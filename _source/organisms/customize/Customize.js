@@ -25,7 +25,8 @@ class Customize extends PureComponent {
     autofillBookmarkNames: PropTypes.bool,
     categoriesLayout: PropTypes.string.isRequired,
     bookmarkEditOnHover: PropTypes.bool.isRequired,
-    minimalBookmarkButton: PropTypes.bool.minimalBookmarkButton
+    minimalBookmarkButton: PropTypes.bool.isRequired,
+    enableNotes: PropTypes.bool.isRequired
   }
 
   state = {
@@ -49,8 +50,16 @@ class Customize extends PureComponent {
   }
 
   handleRadioChange = ({ name, value }) => {
+    let updatedValue = value;
+
+    if (value === 'true') {
+      updatedValue = true;
+    } else if (value === 'false') {
+      updatedValue = false;
+    }
+
     this.props.updateSettings({
-      [name]: value
+      [name]: updatedValue
     }, {
       onError: this.errorCallback
     });
@@ -76,7 +85,8 @@ class Customize extends PureComponent {
       autofillBookmarkNames,
       categoriesLayout,
       bookmarkEditOnHover,
-      minimalBookmarkButton
+      minimalBookmarkButton,
+      enableNotes
     } = this.props;
     const { error } = this.state;
 
@@ -92,13 +102,25 @@ class Customize extends PureComponent {
           value={ (navColor).toString() }
           onChange={ this.handleColorChange }
         />
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.darkMode'}) }
+        <Radio
           id="darkMode"
           name="darkMode"
-          onChange={ this.handleCheckboxChange }
+          onChange={ this.handleRadioChange }
+          value="true"
           checked={ darkMode }
-        />
+          first
+        >
+          <FormattedMessage id="customize.darkMode" />
+        </Radio>
+        <Radio
+          id="lightMode"
+          name="darkMode"
+          onChange={ this.handleRadioChange }
+          value="false"
+          checked={ !darkMode }
+        >
+          <FormattedMessage id="customize.lightMode" />
+        </Radio>
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.blurEffect'}) }
           id="blurEffect"
@@ -204,6 +226,13 @@ class Customize extends PureComponent {
           name="bookmarkEditOnHover"
           onChange={ this.handleCheckboxChange }
           checked={ bookmarkEditOnHover }
+        />
+        <Checkbox
+          label={ intl.formatMessage({ id: 'customize.enableNotes'}) }
+          id="enableNotes"
+          name="enableNotes"
+          onChange={ this.handleCheckboxChange }
+          checked={ enableNotes }
         />
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.minimalBookmarkButton'}) }
