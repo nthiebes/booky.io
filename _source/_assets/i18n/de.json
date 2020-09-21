@@ -258,5 +258,7 @@
     "customize.minimalBookmarkButton": "Kleiner \"Neues Lesezeichen\" Button (kompakter Modus)",
     "customize.layout": "Kategorien",
     "customize.grid": "Als Raster anordnen",
-    "customize.column": "In Spalten einordnen"
+    "customize.column": "Als Spalten anordnen",
+    "customize.lightMode": "Helles Design",
+    "customize.enableNotes": "Lesezeichen Notizen"
 }
