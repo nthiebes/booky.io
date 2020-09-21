@@ -125,13 +125,6 @@ class Customize extends PureComponent {
           <FormattedMessage id="customize.lightMode" />
         </Radio>
         <Checkbox
-          label={ intl.formatMessage({ id: 'customize.blurEffect'}) }
-          id="blurEffect"
-          name="blurEffect"
-          onChange={ this.handleCheckboxChange }
-          checked={ blurEffect }
-        />
-        <Checkbox
           label={ intl.formatMessage({ id: 'customize.stickyHeader'}) }
           id="stickyHeader"
           name="stickyHeader"
@@ -144,6 +137,13 @@ class Customize extends PureComponent {
           name="stickyToolbar"
           onChange={ this.handleCheckboxChange }
           checked={ stickyToolbar }
+        />
+        <Checkbox
+          label={ intl.formatMessage({ id: 'customize.blurEffect'}) }
+          id="blurEffect"
+          name="blurEffect"
+          onChange={ this.handleCheckboxChange }
+          checked={ blurEffect }
         />
         <H3>
           <FormattedMessage id="dashboard.title" />
