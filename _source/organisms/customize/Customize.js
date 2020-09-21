@@ -108,6 +108,8 @@ class Customize extends PureComponent {
           onChange={ this.handleRadioChange }
           value="true"
           checked={ darkMode }
+          illustration="dark-mode"
+          className="customize__image--first"
         >
           <FormattedMessage id="customize.darkMode" />
         </Radio>
@@ -117,6 +119,8 @@ class Customize extends PureComponent {
           onChange={ this.handleRadioChange }
           value="false"
           checked={ !darkMode }
+          illustration="light-mode"
+          className="customize__image--second"
         >
           <FormattedMessage id="customize.lightMode" />
         </Radio>

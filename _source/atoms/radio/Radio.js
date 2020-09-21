@@ -19,7 +19,8 @@ export default class Radio extends Component {
     checked: PropTypes.bool,
     inputClassName: PropTypes.string,
     labelClassName: PropTypes.string,
-    first: PropTypes.bool
+    first: PropTypes.bool,
+    illustration: PropTypes.string
   }
 
   handleInputChange = (event) => {
@@ -32,10 +33,22 @@ export default class Radio extends Component {
   }
 
   render() {
-    const { children, className, id, name, value, checked, inputClassName, labelClassName, first } = this.props;
+    const { children, className, id, name, value, checked, inputClassName, labelClassName, first, illustration } = this.props;
 
     return (
-      <div className={ classNames('radio', first && 'radio--first', className) }>
+      <div className={ classNames('radio', first && 'radio--first', illustration && 'radio--image', className) }>
+        { illustration && (
+          <label htmlFor={ id } className="radio__image-label">
+            <img
+              width={ 200 }
+              alt=""
+              className="radio__image"
+              src={ `../../_assets/illustrations/${illustration}.svg` }
+              aria-hidden="true"
+              loading="lazy"
+            />
+          </label>
+        ) }
         <input
           type="radio"
           id={ id }
