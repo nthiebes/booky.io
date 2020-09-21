@@ -108,7 +108,6 @@ class Customize extends PureComponent {
           onChange={ this.handleRadioChange }
           value="true"
           checked={ darkMode }
-          first
         >
           <FormattedMessage id="customize.darkMode" />
         </Radio>
