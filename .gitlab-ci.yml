@@ -1,9 +1,10 @@
-image: node:14
+image: node:10
 
 stages:
   - install
   - quality
   - build
+  # - deploy
 
 cache:
   paths:
@@ -39,7 +40,15 @@ build:
     - CI=false npm run build
   artifacts:
     paths:
-      - build
+      - _public
     expire_in: 30 mins
   dependencies:
     - install
+
+# deploy:
+#   stage: deploy
+#   only:
+#     - production
+#   script:
+#     - apt-get update -qq && apt-get install -y -qq lftp
+#     - lftp -c "set ftp:ssl-allow no; open -u $USERNAME,$PASSWORD $HOST; mirror -Rev dist/ ./public_html  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
