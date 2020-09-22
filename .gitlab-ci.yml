@@ -33,6 +33,8 @@ quality:unit:
 
 build:
   stage: build
+  only:
+    - production
   script:
     - CI=false npm run build
   artifacts:
