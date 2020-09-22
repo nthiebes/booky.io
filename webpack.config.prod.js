@@ -50,7 +50,7 @@ export default {
         },
         {
           from: '_public/index.html',
-          to: 'templates/booky/index.html.twig'
+          to: 'templates/index.html.twig'
         }
       ]}
     ),
