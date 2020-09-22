@@ -7,13 +7,17 @@ export const mapStateToProps = (state) => ({
   navColor: state.user.settings.navigationBarColor,
   newtab: state.user.settings.openLinksInNewTab,
   maxWidth: state.user.settings.maxWidth,
-  preserveEditMode: state.user.settings.preserveEditMode,
+  closeEditMode: state.user.settings.closeEditMode,
   dashboardsStyle: state.user.settings.dashboardsStyle,
   blurEffect: state.user.settings.blurEffect,
   stickyHeader: state.user.settings.stickyHeader,
   stickyToolbar: state.user.settings.stickyToolbar,
   darkMode: state.user.settings.darkMode,
-  autofillBookmarkNames: state.user.settings.autofillBookmarkNames
+  autofillBookmarkNames: state.user.settings.autofillBookmarkNames,
+  categoriesLayout: state.user.settings.categoriesLayout,
+  bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
+  minimalBookmarkButton: state.user.settings.minimalBookmarkButton,
+  enableNotes: state.user.settings.enableNotes
 });
 
 export const mapDispatchToProps = {

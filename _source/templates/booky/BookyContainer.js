@@ -3,15 +3,22 @@ import Component from './Booky';
 import { dragDashboard } from '../../_state/dashboards/actions';
 import { dragCategory } from '../../_state/categories-sorting/actions';
 import { dragBookmark } from '../../_state/bookmarks/actions';
+import { startDragging, stopDragging } from '../../_state/dragging/actions';
+import { updateUserData } from '../../_state/user/actions';
 
-export const mapDispatchToProps = {
+const mapStateToProps = (state) => ({
+  isMobile: state.user.isMobile
+});
+const mapDispatchToProps = {
   dragDashboard,
   dragCategory,
-  dragBookmark
+  dragBookmark,
+  startDragging,
+  stopDragging,
+  updateUserData
 };
-
 const Container = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Component);
 

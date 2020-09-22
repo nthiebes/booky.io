@@ -150,7 +150,6 @@ class Join extends Component {
                   value={ username }
                   name="username"
                   id="username"
-                  autoComplete="username"
                   label={ intl.formatMessage({ id: 'login.username' }) }
                   onChange={ this.handleInputChange }
                   maxLength="50"

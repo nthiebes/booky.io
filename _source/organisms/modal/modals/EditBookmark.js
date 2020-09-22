@@ -56,7 +56,11 @@ class EditBookmark extends PureComponent {
         });
       },
       onError: () => {
+        // Host of a link
+        const match = value.match(/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/i);
+
         this.setState({
+          name: match ? match[0] : value,
           bookmarkTitlePending: false
         });
       }
