@@ -85,8 +85,8 @@ class Header extends PureComponent {
       home,
       className,
       sticky,
-      hasCategories
-      // dashboardsPending
+      hasCategories,
+      dashboardsPending
     } = this.props;
     const { logoutPending } = this.state;
 
@@ -121,6 +121,7 @@ class Header extends PureComponent {
                   { b: (msg) => msg }) }
                 ignoreDarkMode
                 isButton
+                useSkeleton={ dashboardsPending }
               />
               <SearchField className="booky--hide-desktop" id="search-mobile" />
             </Fragment>

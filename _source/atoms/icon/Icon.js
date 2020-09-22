@@ -80,7 +80,7 @@ export default class Icon extends Component {
 
     return (
       useSkeleton ? (
-        <Skeleton className={ classNames('icon--skeleton', className) } />
+        <Skeleton ignoreDarkMode={ ignoreDarkMode } className={ classNames('icon--skeleton', className) } />
       ) : (
         <CustomTag
           className={ classNames(
