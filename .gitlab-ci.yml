@@ -4,7 +4,7 @@ stages:
   - install
   - quality
   - build
-  # - deploy
+  - deploy
 
 cache:
   paths:
@@ -45,10 +45,10 @@ build:
   dependencies:
     - install
 
-# deploy:
-#   stage: deploy
-#   only:
-#     - production
-#   script:
-#     - apt-get update -qq && apt-get install -y -qq lftp
-#     - lftp -c "set ftp:ssl-allow no; open -u $USERNAME,$PASSWORD $HOST; mirror -Rev dist/ ./public_html  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+deploy:
+  stage: deploy
+  only:
+    - production
+  script:
+    - apt-get update -qq && apt-get install -y -qq lftp
+    - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rv _public/ ./booky.io/beta/deploy_test  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
