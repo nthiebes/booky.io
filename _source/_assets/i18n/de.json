@@ -134,7 +134,7 @@
     "customize.dropdown": "Als Dropdown-Liste anzeigen",
     "dashboard.preferences": "Vorlieben",
     "customize.newTab": "Lesezeichen in einem neuen Tab öffnen",
-    "customize.preserveEditMode": "Editiermodus nach dem Editieren aktiv lassen",
+    "customize.closeEditMode": "Editiermodus automatisch schließen",
     "customize.blurEffect": "Fenster mit einem Verwisch- und Graustufen-Hintergrundeffekt öffnen",
     "customize.stickyHeader": "Feste Kopfzeilen-Position",
     "customize.stickyToolbar": "Feste Funktionsleisten-Position",
@@ -253,5 +253,12 @@
     "footer.twitterText": "Online Lesezeichen-Manager mit Fokus auf Einfachheit, Anpassbarkeit, Privatsphäre und Geschwindigkeit.",
     "help.comments": "Eure Kommentare",
     "modal.urlPlaceholder": "z.B. example.com",
-    "error.logic.user.invalidToken": "Dein Aktivierungs-Link ist leider ungültig. Aber keine Sorge! Du kannst deine Aktivierungsmail hier neu anfordern: {resend}"
+    "error.logic.user.invalidToken": "Dein Aktivierungs-Link ist leider ungültig. Aber keine Sorge! Du kannst deine Aktivierungsmail hier neu anfordern: {resend}",
+    "customize.bookmarkEditOnHover": "Lesezeichen Buttons bei Mouseover anzeigen",
+    "customize.minimalBookmarkButton": "Kleiner \"Neues Lesezeichen\" Button (kompakter Modus)",
+    "customize.layout": "Kategorien",
+    "customize.grid": "Als Raster anordnen",
+    "customize.column": "Als Spalten anordnen",
+    "customize.lightMode": "Helles Design",
+    "customize.enableNotes": "Lesezeichen Notizen"
 }

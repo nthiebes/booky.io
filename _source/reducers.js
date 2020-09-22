@@ -10,6 +10,7 @@ import sidebar from './_state/sidebar';
 import modal from './_state/modal';
 import search from './_state/search/reducer';
 import categoriesSorting from './_state/categories-sorting/reducer';
+import dragging from './_state/dragging/reducer';
 
 const reducers = (history) => combineReducers({
   router: connectRouter(history),
@@ -21,7 +22,8 @@ const reducers = (history) => combineReducers({
   dashboards,
   categories,
   categoriesSorting,
-  search
+  search,
+  dragging
 });
 
 export default reducers;

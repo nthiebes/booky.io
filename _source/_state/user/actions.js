@@ -9,6 +9,13 @@ export const resetUserState = () => ({
   type: RESET_USER_STATE
 });
 
+export const updateUserData = (userData) => ((dispatch) => {
+  dispatch({
+    type: UPDATE_USER,
+    userData
+  });
+});
+
 export const updateUser = ({userData, onError, onSuccess}) => ((dispatch) => {
   dispatch({
     type: UPDATE_USER,
@@ -30,7 +37,7 @@ export const updateUser = ({userData, onError, onSuccess}) => ((dispatch) => {
   });
 });
 
-export const updateSettings = (userSettings) => ((dispatch) => {
+export const updateSettings = (userSettings, {onSuccess, onError} = {}) => ((dispatch) => {
   dispatch({
     type: UPDATE_SETTINGS,
     userSettings
@@ -41,10 +48,10 @@ export const updateSettings = (userSettings) => ((dispatch) => {
     method: 'PATCH',
     params: userSettings,
     onSuccess: () => {
-      // console.log(data);
+      onSuccess && onSuccess();
     },
-    onError: () => {
-      // console.log(error);
+    onError: (error) => {
+      onError && onError(error);
     }
   });
 });

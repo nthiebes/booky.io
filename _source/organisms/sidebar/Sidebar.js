@@ -225,7 +225,7 @@ class Sidebar extends PureComponent {
                       </span>
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <button
                       className={ classNames(
                         'sidebar__item',
@@ -241,7 +241,7 @@ class Sidebar extends PureComponent {
                         <FormattedMessage id="menu.customize" />
                       </span>
                     </button>
-                  </li>
+                  </li> */}
                   <li>
                     <button
                       className={ classNames(

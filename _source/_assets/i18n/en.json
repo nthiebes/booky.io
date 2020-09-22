@@ -134,7 +134,7 @@
     "customize.dropdown": "Show as dropdown",
     "dashboard.preferences": "Preferences",
     "customize.newTab": "Open bookmarks in a new tab",
-    "customize.preserveEditMode": "Keep edit mode active after editing",
+    "customize.closeEditMode": "Automatically close edit mode",
     "customize.blurEffect": "Open windows with a blur and grayscale background effect",
     "customize.stickyHeader": "Fixed header position",
     "customize.stickyToolbar": "Fixed toolbar position",
@@ -253,5 +253,12 @@
     "footer.twitterText": "Online bookmark manager with a focus on simplicity, customizability, privacy, and speed.",
     "help.comments": "Your comments",
     "modal.urlPlaceholder": "e.g. example.com",
-    "error.logic.user.invalidToken": "Unfortunately, your activation link is invalid. But no worries! You can resend your activation email here: {resend}"
+    "error.logic.user.invalidToken": "Unfortunately, your activation link is invalid. But no worries! You can resend your activation email here: {resend}",
+    "customize.bookmarkEditOnHover": "Show bookmark buttons on mouseover",
+    "customize.minimalBookmarkButton": "Small \"New bookmark\" button (compact mode)",
+    "customize.layout": "Categories",
+    "customize.grid": "Arrange as a grid",
+    "customize.column": "Arrange in columns",
+    "customize.lightMode": "Light mode",
+    "customize.enableNotes": "Bookmark notes"
 }
