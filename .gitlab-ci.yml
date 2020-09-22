@@ -15,7 +15,7 @@ install:
   script:
     - npm install
   artifacts:
-    name: "artifacts"
+    name: "node_modules"
     untracked: true
     expire_in: 30 mins
     paths:
@@ -39,9 +39,11 @@ build:
   script:
     - CI=false npm run build
   artifacts:
+    name: "_public"
+    untracked: true
+    expire_in: 30 mins
     paths:
       - _public
-    expire_in: 30 mins
   dependencies:
     - install
 
@@ -49,6 +51,8 @@ deploy:
   stage: deploy
   only:
     - production
+  dependencies:
+    - build
   script:
     - apt-get update -qq && apt-get install -y -qq lftp
     - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rv _public/ ./booky.io/beta/deploy_test  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
