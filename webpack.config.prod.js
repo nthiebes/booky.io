@@ -47,6 +47,10 @@ export default {
         {
           from: '_source/_assets',
           to: '_assets'
+        },
+        {
+          from: '_public/index.html',
+          to: 'templates/booky/index.html.twig'
         }
       ]}
     ),

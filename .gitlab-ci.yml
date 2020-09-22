@@ -55,5 +55,5 @@ deploy:
     - build
   script:
     - apt-get update -qq && apt-get install -y -qq lftp
-    - lftp -e "open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; mirror --reverse --verbose _public/ booky.io/beta/deploy_test/; mirror --reverse --verbose _public/index.html booky.io/beta/deploy_test/templates/booky/index.html.twig; bye"
+    - lftp -e "open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; mirror --reverse --verbose _public/ booky.io/beta/deploy_test/; mirror --reverse --verbose _public/templates/ booky.io/beta/deploy_test/templates/; bye"
 
