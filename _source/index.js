@@ -12,6 +12,8 @@ import { loadScript, loadGoogleAnalytics } from './_utils/script';
 import configureStore, { history } from './configureStore';
 import initialState from './initialState';
 
+console.log('deployed!');
+
 // Language detection
 const supportedLanguages = ['en', 'de'];
 const cookieLanguage = Cookies.get('lang');
