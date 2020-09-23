@@ -157,7 +157,6 @@
     "home.extensionText": "Manage your bookmarks with the booky browser extension.",
     "search.label": "Search for bookmarks",
     "account.importStep2": "Select your file or drag it into the browser",
-    "account.importStep3": "Import your bookmarks",
     "button.update": "Update",
     "misc.comingSoon": "Unfortunately, there is nothing here in the beta. We're working on it!",
     "account.yourEmail": "Your email address:",
@@ -260,5 +259,6 @@
     "customize.grid": "Arrange as a grid",
     "customize.column": "Arrange in columns",
     "customize.lightMode": "Light mode",
-    "customize.enableNotes": "Bookmark notes"
+    "customize.enableNotes": "Bookmark notes",
+    "error.email.invalidFormat": "Must be a valid email address."
 }
