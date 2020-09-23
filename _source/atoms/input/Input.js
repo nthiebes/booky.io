@@ -86,6 +86,7 @@ export default class Input extends PureComponent {
         color && `input__field--color-${color}`,
         !validation && 'input__field--no-validation',
         icon && 'input__field--icon',
+        error && 'input__field--error',
         darkMode && 'input__field--dark-mode'
       ),
       onBlur: this.onBlur,

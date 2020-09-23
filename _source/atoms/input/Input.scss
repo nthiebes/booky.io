@@ -50,7 +50,8 @@
       border-bottom-color: $color--green;
     }
 
-    &:invalid {
+    &:invalid,
+    &.input__field--error {
       border-bottom-color: $color--3;
     }
 
@@ -90,7 +91,8 @@
         border-bottom-color: $color--green;
       }
 
-      &:invalid {
+      &:invalid,
+      &.input__field--error {
         border-bottom-color: $color--3;
       }
     }
