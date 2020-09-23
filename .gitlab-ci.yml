@@ -5,6 +5,7 @@ stages:
   - quality
   - build
   - deploy
+  - deploy2
 
 cache:
   paths:
@@ -55,5 +56,15 @@ deploy:
     - build
   script:
     - apt-get update -qq && apt-get install -y -qq lftp
-    - lftp -e "open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; mirror --reverse --verbose _public/_assets/ booky.io/beta/deploy_test/templates/booky/; mirror --reverse --verbose _public/ booky.io/beta/deploy_test/; bye"
+    - lftp -e "open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; mirror --reverse --verbose _public/ booky.io/beta/deploy_test/; bye"
+
+deploy2:
+  stage: deploy2
+  only:
+    - production
+  dependencies:
+    - build
+  script:
+    - apt-get update -qq && apt-get install -y -qq lftp
+    - lftp -e "open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; mirror --reverse --verbose _public/templates/ booky.io/beta/deploy_test/templates/booky/; bye"
 
