@@ -20,18 +20,25 @@ class Join extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     join: PropTypes.func.isRequired,
+    validate: PropTypes.func.isRequired,
     language: PropTypes.string.isRequired
   };
 
   state = {
     username: '',
+    usernamePending: false,
+    usernameError: null,
     email: '',
+    emailPending: false,
+    emailError: null,
     password: '',
     pending: false,
     showPassword: false,
     error: null,
     animation: ''
   };
+
+  fetchTimeout;
 
   // eslint-disable-next-line max-statements
   getAnimation = (value, name) => {
@@ -61,6 +68,7 @@ class Join extends Component {
   }
 
   handleInputChange = (value, name) => {
+    const { validate } = this.props;
     const animation = this.getAnimation(value, name);
 
     this.setState({
@@ -68,6 +76,46 @@ class Join extends Component {
       pending: false,
       animation
     });
+
+    const validateField = () => {
+      this.setState({
+        [`${name}Pending`]: true
+      });
+
+      validate({
+        params: {
+          name,
+          value
+        },
+        onSuccess: ({ reason }) => {
+          this.setState({
+            [`${name}Error`]: reason,
+            [`${name}Pending`]: false
+          });
+        },
+        onError: (error) => {
+          this.setState({
+            [`${name}Pending`]: false,
+            error
+          });
+        }
+      });
+    };
+
+    if (name !== 'password') {
+      clearTimeout(this.fetchTimeout);
+
+      if (value === '') {
+        this.setState({
+          [`${name}Error`]: null,
+          [`${name}Pending`]: false
+        });
+      } else {
+        this.fetchTimeout = setTimeout(() => {
+          validateField();
+        }, 500);
+      }
+    }
   };
 
   handleCheckboxChange = ({ checked }) => {
@@ -129,7 +177,11 @@ class Join extends Component {
       showPassword,
       error,
       success,
-      animation
+      animation,
+      usernamePending,
+      usernameError,
+      emailPending,
+      emailError
     } = this.state;
 
     return (
@@ -155,8 +207,10 @@ class Join extends Component {
                   maxLength="50"
                   required
                   disabled={ pending }
+                  pending={ usernamePending }
                   onFocus={ this.handleFocus }
                   onBlur={ this.handleBlur }
+                  error={ usernameError }
                 />
                 <Input
                   value={ email }
@@ -168,10 +222,12 @@ class Join extends Component {
                   maxLength="150"
                   required
                   type="email"
-                  requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
+                  // requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
                   disabled={ pending }
+                  pending={ emailPending }
                   onFocus={ this.handleFocus }
                   onBlur={ this.handleBlur }
+                  error={ emailError }
                 />
                 <Input
                   value={ password }
