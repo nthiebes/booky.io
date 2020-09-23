@@ -97,7 +97,7 @@ class Join extends Component {
         onError: (error) => {
           this.setState({
             [`${name}Pending`]: false,
-            error
+            [`${name}Error`]: error
           });
         }
       });
