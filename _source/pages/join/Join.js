@@ -74,6 +74,7 @@ class Join extends Component {
     this.setState({
       [name]: value,
       pending: false,
+      error: null,
       animation
     });
 
