@@ -157,7 +157,6 @@
     "home.extensionText": "Verwalte deine Lesezeichen mit der booky Browser-Erweiterung.",
     "search.label": "Nach Lesezeichen suchen",
     "account.importStep2": "Wähle deine Datei aus oder ziehe sie in den Browser",
-    "account.importStep3": "Importiere deine Lesezeichen",
     "button.update": "Aktualisieren",
     "misc.comingSoon": "Hier gibt es in der Beta leider noch nichts. Wir arbeiten daran!",
     "account.yourEmail": "Deine E-Mail Adresse:",
@@ -260,5 +259,6 @@
     "customize.grid": "Als Raster anordnen",
     "customize.column": "Als Spalten anordnen",
     "customize.lightMode": "Helles Design",
-    "customize.enableNotes": "Lesezeichen Notizen"
+    "customize.enableNotes": "Lesezeichen Notizen",
+    "error.email.invalidFormat": "Muss eine valide E-Mail-Adresse sein."
 }
