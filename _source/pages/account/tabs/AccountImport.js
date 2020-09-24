@@ -37,12 +37,6 @@ class AccountImport extends PureComponent {
     });
   }
 
-  handleRejected = (files) => {
-    this.setState({
-      error: `error.${files[0].errors[0].code}`
-    });
-  }
-
   readFile = (file, callback) => {
     const reader = new FileReader();
 
@@ -112,28 +106,41 @@ class AccountImport extends PureComponent {
             <Icon icon="file" className="import__step-icon" />
             <Dropzone
               onDropAccepted={ this.handleAccepted }
-              onDropRejected={ this.handleRejected }
               accept="text/html"
               maxFiles={ 1 }
               multiple={ false }
             >
-              {({getRootProps, getInputProps, isDragActive, acceptedFiles}) => (
+              {({getRootProps, getInputProps, isDragActive, acceptedFiles, fileRejections}) => (
                 <div { ...getRootProps({
                   'aria-label': intl.formatMessage({ id: 'account.importStep2' }),
-                  className: classNames('import__drop-area', isDragActive && 'import__drop-area--active')
+                  className: classNames(
+                    'import__drop-area',
+                    isDragActive && 'import__drop-area--active',
+                    acceptedFiles.length > 0 && 'import__drop-area--accepted'
+                  )
                 }) }>
-                  <input { ...getInputProps({
-                    name: 'bookmarks'
-                  }) } />
-                  { acceptedFiles.length > 0 && (
-                    <P className="import__file">
-                      <Icon icon="file" />
-                      <b>{ acceptedFiles[0].name }</b>
+                  <input { ...getInputProps() } />
+                  { fileRejections.length > 0 && (
+                    <ErrorMessage
+                      message={ `error.${fileRejections[0].errors[0].code}` }
+                      className="import__error"
+                      hasIcon
+                      noAnimation
+                    />
+                  ) }
+                  { acceptedFiles.length > 0 ? (
+                    <>
+                      <Icon size="large" icon="check" color="green" />
+                      <P noPadding className="import__file">
+                        <Icon icon="file" />
+                        <b>{ acceptedFiles[0].name }</b>
+                      </P>
+                    </>
+                  ) : (
+                    <P noPadding>
+                      <FormattedMessage id="account.importStep2" values={ { strong: (msg) => <strong>{msg}</strong> } } />
                     </P>
                   ) }
-                  <P noPadding>
-                    <FormattedMessage id="account.importStep2" values={ { strong: (msg) => <strong>{msg}</strong> } } />
-                  </P>
                 </div>
               )}
             </Dropzone>

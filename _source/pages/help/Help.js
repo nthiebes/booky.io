@@ -30,7 +30,7 @@ export default class Help extends Component {
     const betaValues = {
       link: (
         <Link href="https://booky.io/settings">
-          { 'https://booky.io/settings' }
+          { 'booky.io/settings' }
         </Link>
       )
     };
@@ -72,6 +72,9 @@ export default class Help extends Component {
             <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
               <P noPadding>
                 <FormattedMessage id="help.beta.answer2" values={ betaValues } />
+                <Link to="https://booky.io/settings">
+                  {'booky.io/settings'}
+                </Link>
               </P>
             </Expandable>
           </div>
@@ -98,6 +101,22 @@ export default class Help extends Component {
                 <FormattedMessage id="help.account.answer2" values={ deleteValues } />
               </P>
             </Expandable> */}
+            <Expandable headline={ <FormattedMessage id="help.account.question4" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer4" />
+                <Link to="/account#import">
+                  {'booky.io/account#import'}
+                </Link>
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.account.question5" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer5" />
+                <Link to="/account#export">
+                  {'booky.io/account#export'}
+                </Link>
+              </P>
+            </Expandable>
           </div>
 
           <H2 id="registration">
@@ -146,11 +165,6 @@ export default class Help extends Component {
 
           <H2>
             <FormattedMessage id="help.bookmarks" />
-          </H2>
-          <P />
-
-          <H2>
-            <FormattedMessage id="help.account" />
           </H2>
           <P /> */}
 
