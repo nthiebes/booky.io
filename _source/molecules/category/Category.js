@@ -173,7 +173,9 @@ class Category extends PureComponent {
           { minimalBookmarkButton && (
             <Icon
               icon="add-link"
-              label={ intl.formatMessage({ id: 'bookmark.add' }) }
+              label={ intl.formatMessage({ id: 'bookmark.add' }, {
+                b: (msg) => msg
+              }) }
               onClick={ this.onAddClick }
               isButton
             />
