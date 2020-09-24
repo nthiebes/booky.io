@@ -62,6 +62,10 @@ class AccountImport extends PureComponent {
     const { importBookmarks } = this.props;
     const { file, importAsCollections } = this.state;
 
+    if (!file) {
+      return;
+    }
+
     this.setState({
       pending: true,
       error: false
@@ -101,11 +105,11 @@ class AccountImport extends PureComponent {
       <>
         <Form className="account__form" onSubmit={ this.handleSubmit }>
           <P className="import__step">
-            <Icon icon="download" className="import__step-icon" />
+            <Icon icon="file-download" className="import__step-icon" />
             <FormattedMessage id="account.importStep1" values={ { strong: (msg) => <strong>{msg}</strong> } } />
           </P>
           <div className="import__step">
-            <Icon icon="file-upload" className="import__step-icon" />
+            <Icon icon="file" className="import__step-icon" />
             <Dropzone
               onDropAccepted={ this.handleAccepted }
               onDropRejected={ this.handleRejected }
@@ -115,7 +119,7 @@ class AccountImport extends PureComponent {
             >
               {({getRootProps, getInputProps, isDragActive, acceptedFiles}) => (
                 <div { ...getRootProps({
-                  'aria-label': 'dies das label',
+                  'aria-label': intl.formatMessage({ id: 'account.importStep2' }),
                   className: classNames('import__drop-area', isDragActive && 'import__drop-area--active')
                 }) }>
                   <input { ...getInputProps({
@@ -128,7 +132,7 @@ class AccountImport extends PureComponent {
                     </P>
                   ) }
                   <P noPadding>
-                    <FormattedMessage id="account.importStep2" />
+                    <FormattedMessage id="account.importStep2" values={ { strong: (msg) => <strong>{msg}</strong> } } />
                   </P>
                 </div>
               )}
