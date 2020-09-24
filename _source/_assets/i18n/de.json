@@ -124,7 +124,7 @@
     "account.deleteText": "Hier kannst du deinen Account endgültig löschen.",
     "account.deleteButton": "Account <b>löschen</b>",
     "account.exportText": "Exportiere alle deine Lesezeichen als <b>.html</b>-Datei.",
-    "account.importStep1": "Exportieren deine Lesezeichen als <strong>.html</strong>-Datei",
+    "account.importStep1": "Lade deine Browser-Lesezeichen als <strong>.html</strong>-Datei herunter.",
     "customize.title": "booky anpassen",
     "customize.style": "Design",
     "customize.navColor": "Kopfzeilen Farbe",
@@ -156,7 +156,7 @@
     "testimonials.headline": "In den Worten unserer Nutzer:",
     "home.extensionText": "Verwalte deine Lesezeichen mit der booky Browser-Erweiterung.",
     "search.label": "Nach Lesezeichen suchen",
-    "account.importStep2": "Wähle deine Datei aus oder ziehe sie in den Browser",
+    "account.importStep2": "Ziehe deine Datei hierher oder klicke, um sie auszuwählen.",
     "button.update": "Aktualisieren",
     "misc.comingSoon": "Hier gibt es in der Beta leider noch nichts. Wir arbeiten daran!",
     "account.yourEmail": "Deine E-Mail Adresse:",
@@ -260,5 +260,8 @@
     "customize.column": "Als Spalten anordnen",
     "customize.lightMode": "Helles Design",
     "customize.enableNotes": "Lesezeichen Notizen",
-    "error.email.invalidFormat": "Muss eine valide E-Mail-Adresse sein."
+    "error.email.invalidFormat": "Muss eine valide E-Mail-Adresse sein.",
+    "account.importStep3": "Importiere deine Lesezeichen.",
+    "account.importAsCollections": "Alle obersten Ordner als Sammlungen anlegen",
+    "account.importNote": "(Ohne diese Option werden alle Ordner und Lesezeichen in einer neuen Sammlung \"Importierte Lesezeichen\" gespeichert.)"
 }
