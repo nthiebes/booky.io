@@ -8,12 +8,49 @@
   max-width: 100%;
 }
 
-.account__import-steps {
+.import__step {
+  position: relative;
+  padding-left: calc(1rem + 30px);
+  padding-bottom: 1rem;
   margin-top: 1rem;
-  list-style: decimal inside;
 }
 
-.account__import-step {
-  line-height: 1.5;
-  padding-bottom: 1rem;
+.import__step-icon {
+  position: absolute;
+  left: -6px;
+  top: -7px;
+}
+
+.import__drop-area {
+  border: 3px dashed $color--7;
+  transition: border-color 0.2s linear;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+
+  &:focus,
+  &:active,
+  &.import__drop-area--active {
+    border-color: $color--primary;
+  }
+
+  @include desktop {
+    padding: 3rem 1rem;
+
+    &:hover {
+      border-color: $color--primary;
+    }
+  }
+}
+
+.import__file {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  margin-right: 6px;
 }

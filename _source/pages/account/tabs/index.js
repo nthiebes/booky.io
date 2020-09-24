@@ -1,5 +1,5 @@
 import AccountData from './AccountDataContainer';
-import AccountImport from './AccountImport';
+import AccountImport from './AccountImportContainer';
 import AccountExport from './AccountExport';
 import AccountManage from './AccountManageContainer';
 import AccountStatistics from './AccountStatistics';

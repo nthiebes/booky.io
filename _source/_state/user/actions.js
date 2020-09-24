@@ -198,3 +198,17 @@ export const deleteAccount = () => (() => {
   //   }
   // });
 });
+
+export const importBookmarks = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/user/import',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
