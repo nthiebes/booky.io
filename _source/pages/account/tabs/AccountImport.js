@@ -83,7 +83,7 @@ class AccountImport extends PureComponent {
         onError: (error) => {
           this.setState({
             pending: false,
-            success: true
+            error
           });
         }
       });
