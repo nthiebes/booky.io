@@ -191,7 +191,7 @@
     "help.beta.question1": "Where is feature X/Y/Z and when is the beta phase completed?",
     "help.beta.question2": "Is the beta connected to my regular booky account?",
     "help.beta.answer1": "We will gradually add all previous features of booky, as well as new features. The beta can be used during the whole time. There is no official release date.",
-    "help.beta.answer2": "Yes, you can log in directly and get started. If any features are missing, you can also use them on the regular page. We recommend backing up your bookmarks before using the beta version: {link}",
+    "help.beta.answer2": "Yes, you can log in directly and get started. If any features are missing, you can also use them on the regular page. We recommend backing up your bookmarks before using the beta version: ",
     "help.customizations": "Customize booky",
     "help.categories": "Categories",
     "help.bookmarks": "Bookmarks",
@@ -265,5 +265,11 @@
     "account.importAsCollections": "Create all top folders as collections",
     "account.importNote": "(Without this option, all folders and bookmarks will be saved in a new \"Imported bookmarks\" collection.)",
     "error.file-invalid-type": "Oops! Please select an <strong>.html</strong> file.",
-    "error.too-many-files": "Oops! Please select only one file at a time."
+    "error.too-many-files": "Oops! Please select only one file at a time.",
+    "help.account.question4": "Can I import my browser bookmarks?",
+    "help.account.question5": "Can I export my booky bookmarks?",
+    "help.account.answer4": "You can import your browser bookmarks here: ",
+    "help.account.answer5": "You can export your booky bookmarks here: ",
+    "account.importSuccess": "Great, you have successfully imported {count} bookmarks! Take a look at them on the {home}.",
+    "account.importSuccessHome": "start page"
 }
