@@ -124,7 +124,7 @@
     "account.deleteText": "Permanently delete your account",
     "account.deleteButton": "<b>Delete</b> account",
     "account.exportText": "Export all your bookmarks as <b>.html</b> file.",
-    "account.importStep1": "Export your browser bookmarks as <strong>.html</strong> file",
+    "account.importStep1": "Download your browser bookmarks as <strong>.html</strong> file.",
     "customize.title": "Customize booky",
     "customize.style": "Design",
     "customize.navColor": "Header color",
@@ -156,7 +156,7 @@
     "testimonials.headline": "In the words of our users:",
     "home.extensionText": "Manage your bookmarks with the booky browser extension.",
     "search.label": "Search for bookmarks",
-    "account.importStep2": "Select your file or drag it into the browser",
+    "account.importStep2": "Drag 'n' drop your file here, or click to select it.",
     "button.update": "Update",
     "misc.comingSoon": "Unfortunately, there is nothing here in the beta. We're working on it!",
     "account.yourEmail": "Your email address:",
@@ -260,5 +260,8 @@
     "customize.column": "Arrange in columns",
     "customize.lightMode": "Light mode",
     "customize.enableNotes": "Bookmark notes",
-    "error.email.invalidFormat": "Must be a valid email address."
+    "error.email.invalidFormat": "Must be a valid email address.",
+    "account.importStep3": "Import your bookmarks.",
+    "account.importAsCollections": "Create all top folders as collections",
+    "account.importNote": "(Without this option, all folders and bookmarks will be saved in a new \"Imported bookmarks\" collection.)"
 }
