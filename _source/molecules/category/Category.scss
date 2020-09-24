@@ -7,10 +7,6 @@
   display: inline-block; // For Firefox
   page-break-inside: avoid; // For Firefox
   break-inside: avoid;
-
-  @supports (break-inside: avoid-column) {
-    display: block;
-  }
 }
 
 .category__bookmarks {
