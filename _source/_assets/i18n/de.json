@@ -140,7 +140,7 @@
     "customize.stickyToolbar": "Feste Funktionsleisten-Position",
     "customize.darkMode": "Dunkles Design",
     "account.success": "Deine Account Zugangsdaten wurden erfolgreich geändert!",
-    "error.default": "Oops! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
+    "error.default": "Hoppla! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
     "error.email": "E-Mail",
     "error.failedLogin": "Deine Login-Daten stimmen nicht überein. Bitte überprüfe deine Angaben und versuche es erneut.",
     "error.invalidEmail": "Bitte gib eine valide E-Mail-Adresse ein.",
@@ -156,7 +156,7 @@
     "testimonials.headline": "In den Worten unserer Nutzer:",
     "home.extensionText": "Verwalte deine Lesezeichen mit der booky Browser-Erweiterung.",
     "search.label": "Nach Lesezeichen suchen",
-    "account.importStep2": "Ziehe deine Datei hierher oder klicke, um sie auszuwählen.",
+    "account.importStep2": "Ziehe deine <strong>.html</strong>-Datei hierher oder klicke, um sie auszuwählen.",
     "button.update": "Aktualisieren",
     "misc.comingSoon": "Hier gibt es in der Beta leider noch nichts. Wir arbeiten daran!",
     "account.yourEmail": "Deine E-Mail Adresse:",
@@ -263,5 +263,7 @@
     "error.email.invalidFormat": "Muss eine valide E-Mail-Adresse sein.",
     "account.importStep3": "Importiere deine Lesezeichen.",
     "account.importAsCollections": "Alle obersten Ordner als Sammlungen anlegen",
-    "account.importNote": "(Ohne diese Option werden alle Ordner und Lesezeichen in einer neuen Sammlung \"Importierte Lesezeichen\" gespeichert.)"
+    "account.importNote": "(Ohne diese Option werden alle Ordner und Lesezeichen in einer neuen Sammlung \"Importierte Lesezeichen\" gespeichert.)",
+    "error.file-invalid-type": "Hoppla! Bitte wähle eine <strong>.html</strong>-Datei.",
+    "error.too-many-files": "Hoppla! Bitte wähle nur eine Datei gleichzeitig."
 }

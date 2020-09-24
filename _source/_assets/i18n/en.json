@@ -156,7 +156,7 @@
     "testimonials.headline": "In the words of our users:",
     "home.extensionText": "Manage your bookmarks with the booky browser extension.",
     "search.label": "Search for bookmarks",
-    "account.importStep2": "Drag 'n' drop your file here, or click to select it.",
+    "account.importStep2": "Drag 'n' drop your <strong>.html</strong> file here, or click to select it.",
     "button.update": "Update",
     "misc.comingSoon": "Unfortunately, there is nothing here in the beta. We're working on it!",
     "account.yourEmail": "Your email address:",
@@ -263,5 +263,7 @@
     "error.email.invalidFormat": "Must be a valid email address.",
     "account.importStep3": "Import your bookmarks.",
     "account.importAsCollections": "Create all top folders as collections",
-    "account.importNote": "(Without this option, all folders and bookmarks will be saved in a new \"Imported bookmarks\" collection.)"
+    "account.importNote": "(Without this option, all folders and bookmarks will be saved in a new \"Imported bookmarks\" collection.)",
+    "error.file-invalid-type": "Oops! Please select an <strong>.html</strong> file.",
+    "error.too-many-files": "Oops! Please select only one file at a time."
 }
