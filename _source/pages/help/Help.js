@@ -72,7 +72,7 @@ export default class Help extends Component {
             <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
               <P noPadding>
                 <FormattedMessage id="help.beta.answer2" values={ betaValues } />
-                <Link to="https://booky.io/settings">
+                <Link href="https://booky.io/settings" target="_blank">
                   {'booky.io/settings'}
                 </Link>
               </P>

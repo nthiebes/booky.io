@@ -96,14 +96,11 @@ class AccountImport extends PureComponent {
   
     if (success) {
       return (
-        <SuccessIllustration
-          illustration="import"
-          className="import__success"
-        >
+        <SuccessIllustration illustration="import">
           <FormattedMessage
             id="account.importSuccess"
             values={ {
-              mail: <Link to="/">{ <FormattedMessage id="account.importSuccessHome" /> }</Link>,
+              home: <Link to="/"><FormattedMessage id="account.importSuccessHome" /></Link>,
               count: bookmarksCount
             } }
           />
