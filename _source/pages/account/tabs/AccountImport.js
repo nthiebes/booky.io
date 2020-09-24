@@ -9,6 +9,7 @@ import P from '../../../atoms/paragraph';
 import Checkbox from '../../../atoms/checkbox';
 import { ErrorMessage, SuccessIllustration } from '../../../atoms/messages';
 import Icon from '../../../atoms/icon';
+import Link from '../../../atoms/link';
 import Form from '../../../molecules/form';
 
 class AccountImport extends PureComponent {
@@ -22,7 +23,8 @@ class AccountImport extends PureComponent {
     error: null,
     success: false,
     pending: false,
-    importAsCollections: false
+    importAsCollections: false,
+    bookmarksCount: 0
   }
 
   handleCheckboxChange = () => {
@@ -71,16 +73,17 @@ class AccountImport extends PureComponent {
           importAsCollections,
           file: html
         },
-        onSuccess: () => {
+        onSuccess: (bookmarksCount) => {
           this.setState({
             pending: false,
-            success: true
+            success: true,
+            bookmarksCount
           });
         },
         onError: (error) => {
           this.setState({
             pending: false,
-            error
+            success: true
           });
         }
       });
@@ -89,10 +92,23 @@ class AccountImport extends PureComponent {
 
   render() {
     const { intl } = this.props;
-    const { error, success, pending, importAsCollections } = this.state;
+    const { error, success, pending, importAsCollections, bookmarksCount } = this.state;
   
     if (success) {
-      <SuccessIllustration message="resend.success" illustration="join-success" width="400" />;
+      return (
+        <SuccessIllustration
+          illustration="import"
+          className="import__success"
+        >
+          <FormattedMessage
+            id="account.importSuccess"
+            values={ {
+              mail: <Link to="/">{ <FormattedMessage id="account.importSuccessHome" /> }</Link>,
+              count: bookmarksCount
+            } }
+          />
+        </SuccessIllustration>
+      );
     }
   
     return (
