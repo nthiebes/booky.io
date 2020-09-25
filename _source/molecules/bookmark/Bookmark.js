@@ -187,7 +187,7 @@ class Bookmark extends PureComponent {
                 </>
               ) }
             </span>
-            { showNotes && (
+            { showNotes && enableNotes && (
               <P noPadding className="bookmark__note">
                 <i>{ note }</i>
               </P>
