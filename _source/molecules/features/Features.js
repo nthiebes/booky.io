@@ -50,7 +50,7 @@ const Features = () => (
     </li>
     <li className="features__feature">
       <H3 style="h2" className="features__feature-name">
-        <Icon icon="notes" className="features__icon" />
+        <Icon icon="note" className="features__icon" />
         <FormattedMessage id="misc.feature9" />
       </H3>
     </li>

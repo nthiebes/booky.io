@@ -24,7 +24,9 @@ class Bookmark extends PureComponent {
     onDeleteOrEditClick: PropTypes.func.isRequired,
     bookmarkEditOnHover: PropTypes.bool.isRequired,
     isDragging: PropTypes.bool.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
+    enableNotes: PropTypes.bool.isRequired,
+    note: PropTypes.string
   }
 
   state = {
@@ -76,7 +78,9 @@ class Bookmark extends PureComponent {
       darkMode,
       bookmarkEditOnHover,
       isDragging,
-      isMobile
+      isMobile,
+      enableNotes,
+      note
     } = this.props;
     const { hoverEditMode } = this.state;
 
@@ -126,6 +130,14 @@ class Bookmark extends PureComponent {
             </a>
             { (editMode || (hoverEditMode && !isDragging)) && (
               <>
+                { enableNotes && (
+                  <Icon
+                    icon={ note ? 'note' : 'add-note' }
+                    label={ intl.formatMessage({ id: 'bookmark.note' }) }
+                    onClick={ this.onNotesClick }
+                    isButton
+                  />
+                ) }
                 <Icon
                   icon="edit"
                   label={ intl.formatMessage({ id: 'bookmark.edit' }) }

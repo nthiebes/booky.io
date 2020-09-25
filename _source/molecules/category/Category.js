@@ -204,6 +204,7 @@ class Category extends PureComponent {
                         editMode={ editMode }
                         name={ bookmark.name }
                         url={ bookmark.url }
+                        note={ bookmark.note }
                         favicon={ bookmark.favicon }
                         onDeleteOrEditClick={ this.toggleEditMode }
                       />
