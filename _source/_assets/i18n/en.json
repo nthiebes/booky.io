@@ -275,5 +275,11 @@
     "misc.name": "Your name",
     "bookmark.noteShow": "Show note",
     "bookmark.noteHide": "Hide note",
-    "modal.note": "Your note (optional):"
+    "modal.note": "Your note (optional):",
+    "help.collections.question1": "What is a collection?",
+    "help.collections.answer1": "A collection provides a structure for your bookmarks. It can contain multiple categories.",
+    "help.collections.question2": "How do I create a collection?",
+    "help.collections.answer2": "Select the button \"New Collection\" on the {home} of booky. On your smartphone, you can find it under \"Menu\".",
+    "help.collections.question3": "How do I edit a collection?",
+    "help.collections.answer3": "Activate the edit mode by clicking on the three dots next to the title \"Collections\".\n\nNow you can simply select one of the following symbols:"
 }
