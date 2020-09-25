@@ -271,5 +271,9 @@
     "help.account.answer4": "You can import your browser bookmarks here: ",
     "help.account.answer5": "You can export your booky bookmarks here: ",
     "account.importSuccess": "Great, you have successfully imported {count} bookmarks! Take a look at them on the {home}.",
-    "account.importSuccessHome": "start page"
+    "account.importSuccessHome": "start page",
+    "misc.name": "Your name",
+    "bookmark.noteShow": "Show note",
+    "bookmark.noteHide": "Hide note",
+    "modal.note": "Your note (optional):"
 }
