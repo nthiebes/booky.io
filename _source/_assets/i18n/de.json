@@ -275,5 +275,11 @@
     "misc.name": "Dein Name",
     "bookmark.noteShow": "Notiz anzeigen",
     "bookmark.noteHide": "Notiz ausblenden",
-    "modal.note": "Deine Notiz (optional):"
+    "modal.note": "Deine Notiz (optional):",
+    "help.collections.question1": "Was ist eine Sammlung?",
+    "help.collections.answer1": "Eine Sammlung bringt Struktur in deinen Lesezeichen. Sie kann mehrere Kategorien enthalten.",
+    "help.collections.question2": "Wie lege ich eine Sammlung an?",
+    "help.collections.answer2": "Wähle auf der {home} von booky den Button \"Neue Sammlung\". Auf deinem Smartphone findest du ihn unter \"Menü\".",
+    "help.collections.question3": "Wie bearbeite ich eine Sammlung?",
+    "help.collections.answer3": "Aktiviere den Editiermodus indem du auf die drei Punkte neben dem Titel \"Sammlungen\" klickst.\n\nJetzt kannst du einfach eines der folgenden Symbole auswählen:"
 }
