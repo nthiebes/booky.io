@@ -34,18 +34,18 @@ export default class Help extends Component {
         </Link>
       )
     };
-    // const deleteValues = {
-    //   link: (
-    //     <Link href="/account">
-    //       { 'booky.io/account' }
-    //     </Link>
-    //   ),
-    //   email: (
-    //     <Link to="/contact">
-    //       <FormattedMessage id="help.email" />
-    //     </Link>
-    //   )
-    // };
+    const deleteValues = {
+      link: (
+        <Link href="/account">
+          { 'booky.io/account' }
+        </Link>
+      ),
+      email: (
+        <Link to="/contact">
+          <FormattedMessage id="help.email" />
+        </Link>
+      )
+    };
 
     return (
       <Page>
@@ -60,6 +60,7 @@ export default class Help extends Component {
             <FormattedMessage id="help.intro2" values={ introValues } />
           </P>
           <Illustration name="help" className="help-illustration booky--hide-mobile" />
+
           <H2 id="beta">
             <FormattedMessage id="help.beta" />
           </H2>
@@ -72,6 +73,54 @@ export default class Help extends Component {
             <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
               <P noPadding>
                 <FormattedMessage id="help.beta.answer2" values={ betaValues } />
+              </P>
+            </Expandable>
+          </div>
+
+          <H2 id="collections">
+            <FormattedMessage id="help.collections" />
+          </H2>
+          <div className="help-container">
+            <Expandable headline={ <FormattedMessage id="help.collections.question1" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.collections.answer1" />
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.collections.question2" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.collections.answer2" values={ betaValues } />
+              </P>
+            </Expandable>
+          </div>
+
+          <H2 id="categories">
+            <FormattedMessage id="help.categories" />
+          </H2>
+          <div className="help-container">
+            <Expandable headline={ <FormattedMessage id="help.categories.question1" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.categories.answer1" />
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.categories.question2" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.categories.answer2" values={ betaValues } />
+              </P>
+            </Expandable>
+          </div>
+
+          <H2 id="bookmarks">
+            <FormattedMessage id="help.bookmarks" />
+          </H2>
+          <div className="help-container">
+            <Expandable headline={ <FormattedMessage id="help.bookmarks.question1" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.bookmarks.answer1" />
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.bookmarks.question2" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.bookmarks.answer2" values={ betaValues } />
               </P>
             </Expandable>
           </div>
@@ -93,11 +142,11 @@ export default class Help extends Component {
                 <FormattedMessage id="help.account.answer3" values={ introValues } />
               </P>
             </Expandable>
-            {/* <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
+            <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
               <P noPadding>
                 <FormattedMessage id="help.account.answer2" values={ deleteValues } />
               </P>
-            </Expandable> */}
+            </Expandable>
           </div>
 
           <H2 id="registration">
