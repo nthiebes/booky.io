@@ -273,5 +273,7 @@
     "account.importSuccess": "Great, you have successfully imported {count} bookmarks! Take a look at them on the {home}.",
     "account.importSuccessHome": "start page",
     "misc.name": "Your name",
-    "bookmark.note": "Edit note"
+    "bookmark.noteShow": "Show note",
+    "bookmark.noteHide": "Hide note",
+    "modal.note": "Your note (optional):"
 }
