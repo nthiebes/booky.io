@@ -7,23 +7,44 @@ import Icon from '../icon';
 import { ErrorMessage } from '../messages';
 
 export default class Textarea extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
+  static propTypes = {
+    className: PropTypes.string,
+    autoFocus: PropTypes.bool,
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
+    onChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    color: PropTypes.string,
+    name: PropTypes.string,
+    id: PropTypes.string,
+    required: PropTypes.bool,
+    value: PropTypes.string,
+    maxLength: PropTypes.string,
+    label: PropTypes.string,
+    autoComplete: PropTypes.string,
+    disabled: PropTypes.bool,
+    validation: PropTypes.bool,
+    error: PropTypes.string,
+    cols: PropTypes.number,
+    rows: PropTypes.number,
+    darkMode: PropTypes.bool
   }
 
-  onChange(event) {
+  static defaultProps = {
+    color: '',
+    value: '',
+    validation: true
+  }
+
+  onChange = (event) => {
     this.props.onChange(event.target.value, this.props.name);
   }
 
-  onFocus() {
+  onFocus = () => {
     this.props.onFocus && this.props.onFocus();
   }
 
-  onBlur() {
+  onBlur = () => {
     this.props.onBlur && this.props.onBlur();
   }
 
@@ -44,13 +65,15 @@ export default class Textarea extends Component {
       autoFocus,
       error,
       cols,
-      rows
+      rows,
+      darkMode
     } = this.props;
     const textareaProps = {
       className: classNames(
         'textarea__field',
         color && `textarea__field--color-${color}`,
         !validation && 'textarea__field--no-validation',
+        darkMode && 'textarea__field--dark-mode',
         className
       ),
       onBlur: this.onBlur,
@@ -88,31 +111,3 @@ export default class Textarea extends Component {
     );
   }
 }
-
-Textarea.propTypes = {
-  className: PropTypes.string,
-  autoFocus: PropTypes.bool,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  color: PropTypes.string,
-  name: PropTypes.string,
-  id: PropTypes.string,
-  required: PropTypes.bool,
-  value: PropTypes.string,
-  maxLength: PropTypes.string,
-  label: PropTypes.string,
-  autoComplete: PropTypes.string,
-  disabled: PropTypes.bool,
-  validation: PropTypes.bool,
-  error: PropTypes.string,
-  cols: PropTypes.number,
-  rows: PropTypes.number
-};
-
-Textarea.defaultProps = {
-  color: '',
-  value: '',
-  validation: true
-};
