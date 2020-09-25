@@ -3,7 +3,8 @@ import Component from './EditBookmark';
 import { getTitle } from '../../../_state/bookmarks/actions';
 
 const mapStateToProps = (state) => ({
-  autofillBookmarkNames: state.user.settings.autofillBookmarkNames
+  autofillBookmarkNames: state.user.settings.autofillBookmarkNames,
+  enableNotes: state.user.settings.enableNotes
 });
 const mapDispatchToProps = {
   getTitle

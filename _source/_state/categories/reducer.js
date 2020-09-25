@@ -18,7 +18,8 @@ const categories = (state = [], action) => {
     url,
     dragData,
     error,
-    favicon
+    favicon,
+    note
   } = action;
 
   switch (action.type) {
@@ -37,7 +38,8 @@ const categories = (state = [], action) => {
               name,
               url,
               categoryId,
-              favicon
+              favicon,
+              note
             }
           ]
         };    
@@ -61,7 +63,8 @@ const categories = (state = [], action) => {
               ...bookmark,
               url,
               name,
-              favicon
+              favicon,
+              note
             };
           })
         };

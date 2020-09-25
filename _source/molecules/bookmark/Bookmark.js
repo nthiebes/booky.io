@@ -37,13 +37,14 @@ class Bookmark extends PureComponent {
   }
 
   onEditClick = () => {
-    const { url, name, id, openModal, categoryId, closeEditMode, editMode, onDeleteOrEditClick } = this.props;
+    const { url, name, id, note, openModal, categoryId, closeEditMode, editMode, onDeleteOrEditClick } = this.props;
 
     openModal('EditBookmark', {
       id,
       url,
       name,
-      categoryId
+      categoryId,
+      note
     });
 
     closeEditMode && editMode && onDeleteOrEditClick();
