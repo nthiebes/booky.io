@@ -273,5 +273,7 @@
     "account.importSuccess": "Super, du hast {count} Lesezeichen erfolgreich importiert! Schau sie dir doch gleich auf der {home} an.",
     "account.importSuccessHome": "Startseite",
     "misc.name": "Dein Name",
-    "bookmark.note": "Notiz bearbeiten"
+    "bookmark.noteShow": "Notiz anzeigen",
+    "bookmark.noteHide": "Notiz ausblenden",
+    "modal.note": "Deine Notiz (optional):"
 }
