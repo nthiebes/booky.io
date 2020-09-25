@@ -90,7 +90,7 @@
     "eslint-watch": "7.0.0",
     "file-loader": "6.1.0",
     "hard-source-webpack-plugin": "0.13.1",
-    "history": "5.0.0",
+    "history": "4.10.1",
     "html-webpack-plugin": "4.4.1",
     "identity-obj-proxy": "3.0.0",
     "jest": "26.4.2",
