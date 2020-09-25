@@ -62,7 +62,7 @@ class AddBookmark extends PureComponent {
       url: parseBookmarkUrl(value, { protocol: 'https' }),
       onSuccess: (title) => {
         this.setState({
-          name: title,
+          name: this.state.name || title,
           bookmarkTitlePending: false
         });
       },
@@ -71,7 +71,7 @@ class AddBookmark extends PureComponent {
         const match = value.match(/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/i);
 
         this.setState({
-          name: match ? match[0] : value,
+          name: this.state.name || (match ? match[0] : value),
           bookmarkTitlePending: false
         });
       }
