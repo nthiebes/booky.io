@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
@@ -5,6 +6,7 @@ import { injectIntl } from 'react-intl';
 
 import classNames from 'classnames';
 import Icon from '../../atoms/icon';
+import P from '../../atoms/paragraph';
 
 class Bookmark extends PureComponent {
   static propTypes = {
@@ -30,7 +32,8 @@ class Bookmark extends PureComponent {
   }
 
   state = {
-    hoverEditMode: false
+    hoverEditMode: false,
+    showNotes: false
   }
 
   onEditClick = () => {
@@ -59,9 +62,21 @@ class Bookmark extends PureComponent {
     closeEditMode && editMode && onDeleteOrEditClick();
   }
 
-  toggleHoverEditMode = () => {
+  enableEditMode = () => {
     this.setState({
-      hoverEditMode: !this.state.hoverEditMode
+      hoverEditMode: true
+    });
+  }
+
+  disableEditMode = () => {
+    this.setState({
+      hoverEditMode: false
+    });
+  }
+
+  onNotesClick = () => {
+    this.setState({
+      showNotes: !this.state.showNotes
     });
   }
 
@@ -82,7 +97,7 @@ class Bookmark extends PureComponent {
       enableNotes,
       note
     } = this.props;
-    const { hoverEditMode } = this.state;
+    const { hoverEditMode, showNotes } = this.state;
 
     return (
       <Draggable
@@ -93,70 +108,88 @@ class Bookmark extends PureComponent {
       >
         { (provided) => (
           <li
-            className={ classNames('bookmark', (editMode || hoverEditMode) && 'bookmark--edit-mode') }
+            className={ classNames(
+              'bookmark',
+              (editMode || hoverEditMode) && 'bookmark--edit-mode'
+            ) }
             { ...provided.draggableProps }
             ref={ provided.innerRef }
-            onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
-            onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
+            onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.disableEditMode : null }
           >
-            { !favicon || favicon === 'default' ? (
-              <Icon
-                icon="earth"
-                size="tiny"
-                className={ classNames('bookmark__favicon', darkMode && 'bookmark__favicon--dark-mode') }
-                dragHandleProps={ provided.dragHandleProps }
-                label={ intl.formatMessage({ id: 'bookmark.drag' }) }
-              />
-            ) : (
-              <img
-                src={ favicon }
-                height="16"
-                width="16"
-                alt=""
-                className="bookmark__favicon"
-                { ...provided.dragHandleProps }
-                tabIndex="-1"
-                aria-hidden="true"
-                title={ intl.formatMessage({ id: 'bookmark.drag' }) }
-              />
-            ) }
-            <a
-              className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') }
-              href={ url }
-              target={ newtab ? '_blank' : '_self' }
-              rel={ newtab ? 'noopener noreferrer' : null }
-            >
-              { name }
-            </a>
-            { (editMode || (hoverEditMode && !isDragging)) && (
-              <>
-                { enableNotes && (
+            <span className="bookmark__wrapper">
+              { !favicon || favicon === 'default' ? (
+                <Icon
+                  icon="earth"
+                  size="tiny"
+                  className={ classNames('bookmark__favicon', darkMode && 'bookmark__favicon--dark-mode') }
+                  dragHandleProps={ provided.dragHandleProps }
+                  label={ intl.formatMessage({ id: 'bookmark.drag' }) }
+                />
+              ) : (
+                <img
+                  src={ favicon }
+                  height="16"
+                  width="16"
+                  alt=""
+                  className="bookmark__favicon"
+                  { ...provided.dragHandleProps }
+                  tabIndex="-1"
+                  aria-hidden="true"
+                  title={ intl.formatMessage({ id: 'bookmark.drag' }) }
+                />
+              ) }
+              <a
+                className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') }
+                href={ url }
+                target={ newtab ? '_blank' : '_self' }
+                rel={ newtab ? 'noopener noreferrer' : null }
+                onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.enableEditMode : null }
+              >
+                { name }
+              </a>
+              { (editMode || (hoverEditMode && !isDragging)) && (
+                <>
+                  { enableNotes && note && (
+                    <span className="bookmark__note-icon-wrapper">
+                      <Icon
+                        icon="note"
+                        label={ intl.formatMessage({ id: `bookmark.note${showNotes ? 'Hide' : 'Show'}` }) }
+                        onClick={ this.onNotesClick }
+                        isButton
+                      />
+                      <Icon
+                        icon={ showNotes ? 'hide' : 'show' }
+                        size="tiny"
+                        color="light"
+                        className={ classNames('bookmark__note-icon', darkMode && 'bookmark__note-icon--dark-mode') }
+                      />
+                    </span>
+                  ) }
                   <Icon
-                    icon={ note ? 'note' : 'add-note' }
-                    label={ intl.formatMessage({ id: 'bookmark.note' }) }
-                    onClick={ this.onNotesClick }
+                    icon="edit"
+                    label={ intl.formatMessage({ id: 'bookmark.edit' }) }
+                    onClick={ this.onEditClick }
                     isButton
                   />
-                ) }
-                <Icon
-                  icon="edit"
-                  label={ intl.formatMessage({ id: 'bookmark.edit' }) }
-                  onClick={ this.onEditClick }
-                  isButton
-                />
-                <Icon
-                  icon="delete"
-                  label={ intl.formatMessage({ id: 'bookmark.delete' }) }
-                  onClick={ this.onDeleteClick }
-                  isButton
-                />
-                <Icon
-                  icon="drag"
-                  label={ intl.formatMessage({ id: 'bookmark.drag' }) }
-                  dragHandleProps={ provided.dragHandleProps }
-                  isButton
-                />
-              </>
+                  <Icon
+                    icon="delete"
+                    label={ intl.formatMessage({ id: 'bookmark.delete' }) }
+                    onClick={ this.onDeleteClick }
+                    isButton
+                  />
+                  <Icon
+                    icon="drag"
+                    label={ intl.formatMessage({ id: 'bookmark.drag' }) }
+                    dragHandleProps={ provided.dragHandleProps }
+                    isButton
+                  />
+                </>
+              ) }
+            </span>
+            { showNotes && (
+              <P noPadding className="bookmark__note">
+                <i>{ note }</i>
+              </P>
             ) }
           </li>
         ) }
