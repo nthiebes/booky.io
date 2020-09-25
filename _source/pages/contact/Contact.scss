@@ -1,0 +1,23 @@
+.contact .section__content {
+  @include tablet {
+    max-width: 40rem;
+  }
+
+  @include desktop {
+    display: flex;
+    max-width: 50rem;
+    justify-content: center;
+  }
+}
+
+.contact__message {
+  @include desktop {
+    max-width: 380px;
+  }
+}
+
+.contact__illustration {
+  flex-shrink: 0;
+  margin-left: 3rem;
+  margin-top: 8rem;
+}
