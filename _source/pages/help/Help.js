@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { DiscussionEmbed } from 'disqus-react';
 
 import Page from '../../templates/page';
@@ -14,8 +15,13 @@ import Illustration from '../../atoms/illustration';
 
 import './Help.scss';
 
-export default class Help extends Component {
+class Help extends Component {
+  static propTypes = {
+    intl: PropTypes.object.isRequired
+  }
+
   render() {
+    const { intl } = this.props;
     const disqusConfig = {
       url: 'https://booky.io/help',
       identifier: 'help',
@@ -216,7 +222,7 @@ export default class Help extends Component {
             <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
               <P noPadding>
                 <FormattedMessage id="help.account.answer2" values={ {
-                  email: <Link href="mailto:account@booky.io">{ 'account@booky.io' }</Link>
+                  email: <Link href={ `mailto:account@booky.io?subject=${intl.formatMessage({ id: 'misc.deleteSubject' })}` }>{ 'account@booky.io' }</Link>
                 } } />
               </P>
             </Expandable>
@@ -285,3 +291,5 @@ export default class Help extends Component {
     );
   }
 }
+
+export default injectIntl(Help);
