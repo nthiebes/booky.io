@@ -5,10 +5,11 @@ import { DiscussionEmbed } from 'disqus-react';
 import Page from '../../templates/page';
 import { H1, H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
+import Icon from '../../atoms/icon';
+import { ButtonSmallPrimary } from '../../atoms/button';
 import Section from '../../molecules/section';
 import Link from '../../atoms/link';
 import Expandable from '../../molecules/expandable';
-// import Bookmarklet from '../../molecules/bookmarklet';
 import Illustration from '../../atoms/illustration';
 
 import './Help.scss';
@@ -31,18 +32,6 @@ export default class Help extends Component {
       link: (
         <Link href="https://booky.io/settings">
           { 'https://booky.io/settings' }
-        </Link>
-      )
-    };
-    const deleteValues = {
-      link: (
-        <Link href="/account">
-          { 'booky.io/account' }
-        </Link>
-      ),
-      email: (
-        <Link to="/contact">
-          <FormattedMessage id="help.email" />
         </Link>
       )
     };
@@ -77,18 +66,48 @@ export default class Help extends Component {
             </Expandable>
           </div>
 
-          <H2 id="collections">
-            <FormattedMessage id="help.collections" />
+          <H2 id="bookmarks">
+            <FormattedMessage id="help.bookmarks" />
           </H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.collections.question1" /> } className="help-container__item">
+            <Expandable headline={ <FormattedMessage id="help.bookmarks.question1" /> } className="help-container__item">
               <P noPadding>
-                <FormattedMessage id="help.collections.answer1" />
+                <FormattedMessage id="help.bookmarks.answer1" />
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.collections.question2" /> } className="help-container__item">
+            <Expandable headline={ <FormattedMessage id="help.bookmarks.question2" /> } className="help-container__item">
               <P noPadding>
-                <FormattedMessage id="help.collections.answer2" values={ betaValues } />
+                <FormattedMessage id="help.bookmarks.answer2" values={ {
+                  home: <Link to="/"><FormattedMessage id="misc.startpage" /></Link>
+                } } />
+              </P>
+              <ButtonSmallPrimary
+                icon="add-link"
+                className="help__button"
+                tabIndex="-1"
+              >
+                <FormattedMessage id="bookmark.add" values={ { b: (msg) => <b>{msg}</b> } } />
+              </ButtonSmallPrimary>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.bookmarks.question3" /> } className="help-container__item">
+              <P>
+                <FormattedMessage id="help.bookmarks.answer3" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="edit" />
+                <FormattedMessage id="bookmark.edit" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="delete" />
+                <FormattedMessage id="bookmark.delete" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="drag" />
+                <FormattedMessage id="bookmark.drag" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="show-note" />
+                <FormattedMessage id="bookmark.noteShow" />
               </P>
             </Expandable>
           </div>
@@ -104,23 +123,75 @@ export default class Help extends Component {
             </Expandable>
             <Expandable headline={ <FormattedMessage id="help.categories.question2" /> } className="help-container__item">
               <P noPadding>
-                <FormattedMessage id="help.categories.answer2" values={ betaValues } />
+                <FormattedMessage id="help.categories.answer2" values={ {
+                  home: <Link to="/"><FormattedMessage id="misc.startpage" /></Link>
+                } } />
+              </P>
+              <ButtonSmallPrimary
+                icon="add-category"
+                className="help__button"
+                tabIndex="-1"
+              >
+                <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
+              </ButtonSmallPrimary>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.categories.question3" /> } className="help-container__item">
+              <P>
+                <FormattedMessage id="help.categories.answer3" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="edit" />
+                <FormattedMessage id="category.edit" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="delete" />
+                <FormattedMessage id="category.delete" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="expand" />
+                <FormattedMessage id="category.expand" />
               </P>
             </Expandable>
           </div>
 
-          <H2 id="bookmarks">
-            <FormattedMessage id="help.bookmarks" />
+          <H2 id="collections">
+            <FormattedMessage id="help.collections" />
           </H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.bookmarks.question1" /> } className="help-container__item">
+            <Expandable headline={ <FormattedMessage id="help.collections.question1" /> } className="help-container__item">
               <P noPadding>
-                <FormattedMessage id="help.bookmarks.answer1" />
+                <FormattedMessage id="help.collections.answer1" />
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.bookmarks.question2" /> } className="help-container__item">
+            <Expandable headline={ <FormattedMessage id="help.collections.question2" /> } className="help-container__item">
               <P noPadding>
-                <FormattedMessage id="help.bookmarks.answer2" values={ betaValues } />
+                <FormattedMessage id="help.collections.answer2" values={ {
+                  home: <Link to="/"><FormattedMessage id="misc.startpage" /></Link>
+                } } />
+              </P>
+              <ButtonSmallPrimary
+                icon="add-collection"
+                className="help__button"
+                tabIndex="-1"
+              >
+                <FormattedMessage id="dashboard.add" values={ { b: (msg) => <b>{msg}</b> } } />
+              </ButtonSmallPrimary>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.collections.question3" /> } className="help-container__item">
+              <P>
+                <FormattedMessage id="help.collections.answer3" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="edit" />
+                <FormattedMessage id="dashboard.edit" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="delete" />
+                <FormattedMessage id="dashboard.delete" />
+              </P>
+              <P noPadding className="help__icon">
+                <Icon icon="drag" />
+                <FormattedMessage id="dashboard.drag" />
               </P>
             </Expandable>
           </div>
@@ -144,7 +215,9 @@ export default class Help extends Component {
             </Expandable>
             <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
               <P noPadding>
-                <FormattedMessage id="help.account.answer2" values={ deleteValues } />
+                <FormattedMessage id="help.account.answer2" values={ {
+                  email: <Link href="mailto:account@booky.io">{ 'account@booky.io' }</Link>
+                } } />
               </P>
             </Expandable>
           </div>
