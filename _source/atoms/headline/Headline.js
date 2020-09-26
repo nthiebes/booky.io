@@ -50,6 +50,7 @@ export default class Headline extends Component {
           color && `headline--color-${color}`,
           darkMode && 'headline--dark-mode',
           centered && 'headline--centered',
+          id && 'headline--with-link',
           className
         ) }
         onClick={ onClick }
@@ -67,9 +68,9 @@ export default class Headline extends Component {
         } }
       >
         { children }
-        {id && (
+        { id && (
           <a href={ `#${id}` } aria-hidden="true" className="headline__hash">{'#'}</a>
-        )}
+        ) }
       </CustomTag>
     );
   }

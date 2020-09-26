@@ -107,6 +107,10 @@
   color: $color-font--medium;
 }
 
+.headline--with-link {
+  display: inline-flex;
+}
+
 .headline__hash {
   color: inherit;
   margin-left: 0.5rem;
