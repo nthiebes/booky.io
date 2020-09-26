@@ -287,5 +287,6 @@
     "help.bookmarks.question3": "How do I edit a bookmark?",
     "help.bookmarks.answer1": "A bookmark is a link to a webpage that you want to find quickly. At booky, you can name your bookmarks, add notes, and organize them into categories.",
     "help.bookmarks.answer2": "Select the button \"New bookmark\" on the {home} of booky. Alternatively, you can use the booky browser extension or the bookmarklet.",
-    "help.bookmarks.answer3": "Simply move the mouse over the bookmark and select one of the icons:"
+    "help.bookmarks.answer3": "Simply move the mouse over the bookmark and select one of the icons:",
+    "misc.deleteSubject": "Please delete my booky.io account"
 }
