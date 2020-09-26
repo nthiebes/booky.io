@@ -221,7 +221,7 @@
     "help.account.answer1": "Du kannst hier dein Passwort zurücksetzen: ",
     "help.account.question3": "Ich habe meinen Benutzernamen vergessen. Was kann ich tun?",
     "help.account.answer3": "Bitte schreib uns eine {email} von deiner für die Registrierung bei booky genutzten E-Mail-Adresse. Wir nennen dir deinen Benutzernamen und du kannst anschließend dein Passwort zurücksetzen.",
-    "help.account.answer2": "Just send us an email to {email} from the email address you used for booky.",
+    "help.account.answer2": "Schicke uns einfach eine E-Mail an {email} von der E-Mail-Adresse, welche du für booky benutzt hast.",
     "error.notFound.user": "Für deinen Benutzernamen und E-Mail Adresse konnten wir leider keinen Account bei uns finden.",
     "error.logic.user.alreadyRegistered.email": "Diese E-Mail Adresse ist bereits vergeben.",
     "error.logic.user.alreadyRegistered.username": "Dieser Benutzername ist bereits vergeben.",
@@ -285,7 +285,7 @@
     "help.bookmarks.question1": "Was ist ein Lesezeichen?",
     "help.bookmarks.question2": "Wie füge ich ein Lesezeichen hinzu?",
     "help.bookmarks.question3": "Wie bearbeite ich ein Lesezeichen?",
-    "help.bookmarks.answer1": "Ein Lesezeichen ist ein Link zu einer Webseite, die du schnell wiederfinden möchtest. Bei booky kannst du deinen Lesezeichen Namen geben und Notizen hinzufügen und sie in Kategorien einordnen.",
+    "help.bookmarks.answer1": "Ein Lesezeichen ist ein Link zu einer Webseite, die du schnell wiederfinden möchtest. Bei booky kannst du deinen Lesezeichen Namen geben, Notizen hinzufügen und sie in Kategorien einordnen.",
     "help.bookmarks.answer2": "Wähle auf der {home} von booky den Button \"Neues Lesezeichen\". Alternativ kannst du die booky Browser-Erweiterung oder das Bookmarklet nutzen.",
     "help.bookmarks.answer3": "Fahre dazu einfach mit der Maus über das Lesezeichen und wähle eines der Symbole:"
 }
