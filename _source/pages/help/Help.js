@@ -106,7 +106,7 @@ export default class Help extends Component {
                 <FormattedMessage id="bookmark.drag" />
               </P>
               <P noPadding className="help__icon">
-                <Icon icon="show-note" />
+                <Icon icon="note" />
                 <FormattedMessage id="bookmark.noteShow" />
               </P>
             </Expandable>
