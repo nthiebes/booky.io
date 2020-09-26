@@ -105,7 +105,7 @@
     "prompt": "1.0.0",
     "prop-types": "15.7.2",
     "raf": "3.4.1",
-    "react-hot-loader": "4.12.21",
+    "react-hot-loader": "4.13.0",
     "react-storybook-addon-chapters": "3.1.7",
     "react-test-renderer": "16.13.1",
     "redux-immutable-state-invariant": "2.1.0",
