@@ -221,7 +221,7 @@
     "help.account.answer1": "You can reset your password here: ",
     "help.account.question3": "I forgot my username, what can I do?",
     "help.account.answer3": "Please write us an {email} from the email address you used to register with booky. We will give you your username and you can then reset your password.",
-    "help.account.answer2": "Schicke uns einfach eine E-Mail an {email} von der E-Mail-Adresse, welche du für booky benutzt hast.",
+    "help.account.answer2": "Just send us an email to {email} from the email address you used for booky.",
     "error.notFound.user": "Unfortunately, we could not find an account with your username and email address.",
     "error.logic.user.alreadyRegistered.email": "This email address is already taken.",
     "error.logic.user.alreadyRegistered.username": "This username is already taken.",
