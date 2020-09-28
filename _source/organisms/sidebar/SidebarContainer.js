@@ -7,7 +7,7 @@ import { logout } from '../../_state/user/actions';
 export const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn,
   open: state.sidebar.open,
-  dashboardsSidebar: state.user.settings.dashboardsStyle === 'sidebar',
+  hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
   darkMode: state.user.settings.darkMode,
   color: state.user.settings.navigationBarColor
 });

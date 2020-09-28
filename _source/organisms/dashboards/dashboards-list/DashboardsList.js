@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 import Icon from '../../../atoms/icon';
@@ -19,7 +19,8 @@ class DashboardsList extends PureComponent {
     activeId: PropTypes.number,
     useTabIndex: PropTypes.bool,
     darkMode: PropTypes.bool.isRequired,
-    droppableIdSuffix: PropTypes.string.isRequired
+    droppableIdSuffix: PropTypes.string.isRequired,
+    closeEditMode: PropTypes.bool.isRequired
   }
   
   static defaultProps = {
@@ -37,12 +38,18 @@ class DashboardsList extends PureComponent {
   }
 
   onIconClick = (type, dashboard) => {
-    const { openModal } = this.props;
+    const { openModal, closeEditMode } = this.props;
 
     openModal(type, {
       id: dashboard.id,
       name: dashboard.name
     });
+
+    if (closeEditMode) {
+      this.setState({
+        editMode: false
+      });
+    }
   }
 
   handleKeyDown = (event, dashboardId) => {
@@ -99,7 +106,7 @@ class DashboardsList extends PureComponent {
             useSkeleton={ noDashboards }
           />
         </div>
-        <Droppable droppableId={ `dashboards-${droppableIdSuffix}` } type={ `dashboard-${droppableIdSuffix}` }>
+        <Droppable droppableId={ `dashboard-${droppableIdSuffix}` } type={ `dashboard-${droppableIdSuffix}` }>
           { (providedDroppable) => (
             <ul
               className={ classNames(
@@ -140,6 +147,8 @@ class DashboardsList extends PureComponent {
                         { ...provided.draggableProps }
                         ref={ provided.innerRef }
                         style={ style }
+                        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                        role="button"
                       >
                         <span className={ classNames('dashboards__label', darkMode && 'dashboards__label--dark-mode') }>
                           { dashboard.name }
@@ -202,7 +211,7 @@ class DashboardsList extends PureComponent {
           tabIndex={ useTabIndex || pinned ? '0' : '-1' }
           useSkeleton={ noDashboards }
         >
-          <FormattedHTMLMessage id="dashboard.add" />
+          <FormattedMessage id="dashboard.add" values={ { b: (msg) => <b>{msg}</b> } } />
         </ButtonSmallPrimary>
       </Fragment>
     );

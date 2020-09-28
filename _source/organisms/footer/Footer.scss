@@ -38,14 +38,14 @@
 }
 
 .footer__stats-item {
-  @include mobile {
-    width: 50%;
-  }
-
   display: flex;
   padding: 1rem;
   flex-direction: column;
   line-height: 1.5;
+
+  @include mobile {
+    width: 50%;
+  }
 }
 
 .footer__social {
@@ -56,6 +56,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 
   @include desktop {
     padding-left: 36px;
@@ -96,6 +97,10 @@
   }
 }
 
+.footer__illustration {
+  margin-right: 1rem;
+}
+
 .footer__label {
   transition: color 0.2s linear;
   color: $color-font--white;
@@ -119,13 +124,13 @@
   list-style: none;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1.7rem;
 }
 
 .footer__menu-item {
   font-size: $font-size--small;
   padding: 0 0.5rem;
-  line-height: 1.5;
+  line-height: 2;
 }
 
 .footer__languages {

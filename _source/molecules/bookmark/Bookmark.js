@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
@@ -19,11 +19,20 @@ class Bookmark extends PureComponent {
     intl: PropTypes.object.isRequired,
     newtab: PropTypes.bool.isRequired,
     favicon: PropTypes.string,
-    darkMode: PropTypes.bool.isRequired
+    darkMode: PropTypes.bool.isRequired,
+    closeEditMode: PropTypes.bool.isRequired,
+    onDeleteOrEditClick: PropTypes.func.isRequired,
+    bookmarkEditOnHover: PropTypes.bool.isRequired,
+    isDragging: PropTypes.bool.isRequired,
+    isMobile: PropTypes.bool.isRequired
+  }
+
+  state = {
+    hoverEditMode: false
   }
 
   onEditClick = () => {
-    const { url, name, id, openModal, categoryId } = this.props;
+    const { url, name, id, openModal, categoryId, closeEditMode, editMode, onDeleteOrEditClick } = this.props;
 
     openModal('EditBookmark', {
       id,
@@ -31,10 +40,12 @@ class Bookmark extends PureComponent {
       name,
       categoryId
     });
+
+    closeEditMode && editMode && onDeleteOrEditClick();
   }
 
   onDeleteClick = () => {
-    const { url, name, id, openModal, categoryId } = this.props;
+    const { url, name, id, openModal, categoryId, closeEditMode, editMode, onDeleteOrEditClick } = this.props;
 
     openModal('DeleteBookmark', {
       id,
@@ -42,10 +53,32 @@ class Bookmark extends PureComponent {
       name,
       categoryId
     });
+
+    closeEditMode && editMode && onDeleteOrEditClick();
+  }
+
+  toggleHoverEditMode = () => {
+    this.setState({
+      hoverEditMode: !this.state.hoverEditMode
+    });
   }
 
   render() {
-    const { url, name, editMode, id, index, intl, newtab, favicon, darkMode } = this.props;
+    const {
+      url,
+      name,
+      editMode,
+      id,
+      index,
+      intl,
+      newtab,
+      favicon,
+      darkMode,
+      bookmarkEditOnHover,
+      isDragging,
+      isMobile
+    } = this.props;
+    const { hoverEditMode } = this.state;
 
     return (
       <Draggable
@@ -56,9 +89,11 @@ class Bookmark extends PureComponent {
       >
         { (provided) => (
           <li
-            className={ classNames('bookmark', editMode && 'bookmark--edit-mode') }
+            className={ classNames('bookmark', (editMode || hoverEditMode) && 'bookmark--edit-mode') }
             { ...provided.draggableProps }
             ref={ provided.innerRef }
+            onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
+            onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
           >
             { !favicon || favicon === 'default' ? (
               <Icon
@@ -66,6 +101,7 @@ class Bookmark extends PureComponent {
                 size="tiny"
                 className={ classNames('bookmark__favicon', darkMode && 'bookmark__favicon--dark-mode') }
                 dragHandleProps={ provided.dragHandleProps }
+                label={ intl.formatMessage({ id: 'bookmark.drag' }) }
               />
             ) : (
               <img
@@ -76,6 +112,8 @@ class Bookmark extends PureComponent {
                 className="bookmark__favicon"
                 { ...provided.dragHandleProps }
                 tabIndex="-1"
+                aria-hidden="true"
+                title={ intl.formatMessage({ id: 'bookmark.drag' }) }
               />
             ) }
             <a
@@ -86,8 +124,8 @@ class Bookmark extends PureComponent {
             >
               { name }
             </a>
-            { editMode && (
-              <Fragment>
+            { (editMode || (hoverEditMode && !isDragging)) && (
+              <>
                 <Icon
                   icon="edit"
                   label={ intl.formatMessage({ id: 'bookmark.edit' }) }
@@ -106,7 +144,7 @@ class Bookmark extends PureComponent {
                   dragHandleProps={ provided.dragHandleProps }
                   isButton
                 />
-              </Fragment>
+              </>
             ) }
           </li>
         ) }

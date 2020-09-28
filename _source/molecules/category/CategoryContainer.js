@@ -6,7 +6,11 @@ import { toggleCategory } from '../../_state/categories/actions';
 import { getBookmarks } from '../../_state/bookmarks/actions';
 
 export const mapStateToProps = (state) => ({
-  darkMode: state.user.settings.darkMode
+  darkMode: state.user.settings.darkMode,
+  closeEditMode: state.user.settings.closeEditMode,
+  minimalBookmarkButton: state.user.settings.minimalBookmarkButton,
+  bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
+  isMobile: state.user.isMobile
 });
 
 export const mapDispatchToProps = {

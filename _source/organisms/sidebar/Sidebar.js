@@ -20,7 +20,7 @@ class Sidebar extends PureComponent {
     location: PropTypes.object.isRequired,
     direction: PropTypes.string,
     className: PropTypes.string,
-    dashboardsSidebar: PropTypes.bool.isRequired,
+    hasSidebar: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
     openModal: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
@@ -36,20 +36,15 @@ class Sidebar extends PureComponent {
     logoutPending: false
   }
 
-  onMenuClick(e) {
-    e.stopPropagation();
-  }
-
   onCustomizeClick = () => {
-    this.props.openModal('Customize');
-  }
+    const { openModal, closeSidebar } = this.props;
 
-  addDashboard = () => {
-    this.props.openModal('AddDashboard');
+    openModal('Customize');
+    closeSidebar();
   }
 
   handleLogout = () => {
-    const { history, logout } = this.props;
+    const { history, logout, closeSidebar } = this.props;
 
     this.setState({
       logoutPending: true
@@ -57,6 +52,7 @@ class Sidebar extends PureComponent {
 
     logout({
       onSuccess: () => {
+        closeSidebar();
         history.push('/');
       }
     });
@@ -73,7 +69,7 @@ class Sidebar extends PureComponent {
       direction,
       location,
       className,
-      dashboardsSidebar,
+      hasSidebar,
       darkMode
     } = this.props;
     const { pathname } = location;
@@ -107,10 +103,10 @@ class Sidebar extends PureComponent {
           />
         </header>
         <div className="sidebar__scroll-wrapper">
-          { dashboards && dashboardsSidebar && (
+          { dashboards && hasSidebar && (
             <DashboardsList useTabIndex={ open } droppableIdSuffix="mobile" />
           ) }
-          { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
+          { dashboards && hasSidebar && <hr className="sidebar__hr" /> }
           <nav title={ intl.formatMessage({ id: 'menu.title' }) } className="sidebar__nav">
             <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
             <ul className="sidebar__list">
@@ -229,7 +225,7 @@ class Sidebar extends PureComponent {
                       </span>
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <button
                       className={ classNames(
                         'sidebar__item',
@@ -245,7 +241,7 @@ class Sidebar extends PureComponent {
                         <FormattedMessage id="menu.customize" />
                       </span>
                     </button>
-                  </li>
+                  </li> */}
                   <li>
                     <button
                       className={ classNames(

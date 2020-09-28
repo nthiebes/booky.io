@@ -21,7 +21,7 @@
 }
 
 .section--compact .section__content {
-  width: 480px;
+  width: 500px;
   max-width: 100%;
 
   @include tablet-desktop {
@@ -60,7 +60,7 @@
 
 .section__content {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1200px;
   padding: 0 calc(3% + 6px);
   position: relative;
 

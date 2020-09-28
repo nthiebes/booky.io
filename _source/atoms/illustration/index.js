@@ -1,3 +1,3 @@
-import component from './Illustration';
+import component from './IllustrationContainer';
 
 export default component;

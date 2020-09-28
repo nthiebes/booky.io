@@ -6,21 +6,27 @@ export default {
     title: '',
     new: true,
     premium: false,
+    isMobile: window.matchMedia('(max-width: 1000px)').matches,
     settings: {
-      blurEffect: true,
+      blurEffect: false,
       darkMode: false,
       dashboardsStyle: 'sidebar',
       maxWidth: false,
       navigationBarColor: 0,
       openLinksInNewTab: true,
       pinned: true,
-      preserveEditMode: true,
-      stickyHeader: true,
+      stickyHeader: false,
       stickyToolbar: true,
       autofillBookmarkNames: true,
       colorScheme: 0,
       defaultDashboardId: null,
-      enableNotes: true
+      enableNotes: true,
+      categoriesLayout: 'grid',
+      bookmarkEditOnHover: true,
+      autofocusSearch: false,
+      minimalBookmarkButton: false,
+      closeEditMode: true,
+      maxColumnCount: null
     }
   },
   dashboards: {
@@ -43,6 +49,7 @@ export default {
   modal: {
     modal: null,
     open: false,
+    showModal: false,
     data: {}
   },
   extension: {
@@ -61,5 +68,9 @@ export default {
     offset: 0,
     limit: 30,
     dashboards: []
+  },
+  dragging: {
+    isDragging: false,
+    dragType: null
   }
 };

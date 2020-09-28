@@ -3,6 +3,7 @@
   list-style: none;
   min-width: 0;
   padding-bottom: 2rem;
+  break-inside: avoid;
 }
 
 .category__bookmarks {
@@ -32,6 +33,7 @@
     left: 6px;
     position: absolute;
     right: 6px;
+    pointer-events: none;
   }
 
   &.category__header--color1::after {

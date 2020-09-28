@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom';
 
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
@@ -14,32 +15,36 @@ import {
   AccountStatistics
 } from './tabs';
 
-import './Account.scss';
-
 class Account extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleTabClick = this.handleTabClick.bind(this);
-    this.state = {
-      activeTab: 0
-    };
-    this.tabs = [{
-      name: props.intl.formatMessage({ id: 'account.userData' })
-    }, {
-      name: props.intl.formatMessage({ id: 'account.import' })
-    }, {
-      name: props.intl.formatMessage({ id: 'account.export' })
-    }, {
-      name: props.intl.formatMessage({ id: 'account.statistics' })
-    }, {
-      name: props.intl.formatMessage({ id: 'account.account' })
-    }];
+  static propTypes = {
+    intl: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
   }
 
-  handleTabClick(tabId) {
+  state = {
+    activeTab: document.location.hash ? document.location.hash.replace('#', '') : 'data'
+  }
+  
+  tabs = [{
+    name: this.props.intl.formatMessage({ id: 'account.userData' }),
+    key: 'data'
+  }, {
+    name: this.props.intl.formatMessage({ id: 'account.import' }),
+    key: 'import'
+  }, {
+    name: this.props.intl.formatMessage({ id: 'account.export' }),
+    key: 'export'
+  }];
+  // name: props.intl.formatMessage({ id: 'account.statistics' })
+  // name: props.intl.formatMessage({ id: 'account.account' })
+
+  handleTabClick = (activeTab) => {
+    const {history} = this.props;
+    
+    history.push(`#${activeTab}`);
+
     this.setState({
-      activeTab: tabId
+      activeTab
     });
   }
 
@@ -53,29 +58,30 @@ class Account extends Component {
             <FormattedMessage id="account.title" />
           </H1>
           <TabBar title="account.navigation" className="account__tab-bar">
-            { this.tabs.map((tab, index) => (
+            { this.tabs.map((tab) => (
               <Tab
-                key={ tab.name }
-                tabId={ index }
-                active={ activeTab === index }
-                name={ tab.name }
+                key={ tab.key }
+                tabId={ tab.key }
+                active={ activeTab === tab.key }
                 onClick={ this.handleTabClick }
-              />
+              >
+                {tab.name}
+              </Tab>
             )) }
           </TabBar>
-          { activeTab === 0 && (
+          { activeTab === 'data' && (
             <AccountData />
           ) }
-          { activeTab === 1 && (
+          { activeTab === 'import' && (
             <AccountImport />
           ) }
-          { activeTab === 2 && (
+          { activeTab === 'export' && (
             <AccountExport />
           ) }
-          { activeTab === 3 && (
+          { activeTab === 'stats' && (
             <AccountStatistics />
           ) }
-          { activeTab === 4 && (
+          { activeTab === 'manage' && (
             <AccountManage />
           ) }
         </Section>
@@ -84,8 +90,4 @@ class Account extends Component {
   }
 }
 
-Account.propTypes = {
-  intl: PropTypes.object.isRequired
-};
-
-export default injectIntl(Account);
+export default injectIntl(withRouter(Account));

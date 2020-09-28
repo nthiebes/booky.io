@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
-import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Bookmark from '../bookmark';
 import Icon from '../../atoms/icon';
@@ -25,7 +25,11 @@ class Category extends PureComponent {
     pending: PropTypes.bool,
     getBookmarks: PropTypes.func.isRequired,
     noFetch: PropTypes.bool,
-    error: PropTypes.string
+    error: PropTypes.string,
+    closeEditMode: PropTypes.bool.isRequired,
+    minimalBookmarkButton: PropTypes.bool.isRequired,
+    bookmarkEditOnHover: PropTypes.bool.isRequired,
+    isMobile: PropTypes.bool.isRequired
   };
   
   static defaultProps = {
@@ -33,7 +37,8 @@ class Category extends PureComponent {
   };
 
   state = {
-    editMode: false
+    editMode: false,
+    hoverEditMode: false
   };
 
   componentDidMount() {
@@ -60,22 +65,34 @@ class Category extends PureComponent {
   }
 
   onEditClick = () => {
-    const { name, id, openModal, color } = this.props;
+    const { name, id, openModal, color, closeEditMode } = this.props;
 
     openModal('EditCategory', {
       name,
       id,
       color
     });
+
+    if (closeEditMode) {
+      this.setState({
+        editMode: false
+      });
+    }
   }
 
   onDeleteClick = () => {
-    const { name, id, openModal } = this.props;
+    const { name, id, openModal, closeEditMode } = this.props;
 
     openModal('DeleteCategory', {
       name,
       id
     });
+    
+    if (closeEditMode) {
+      this.setState({
+        editMode: false
+      });
+    }
   }
 
   onAddClick = () => {
@@ -86,18 +103,41 @@ class Category extends PureComponent {
     });
   }
 
+  toggleHoverEditMode = () => {
+    this.setState({
+      hoverEditMode: !this.state.hoverEditMode
+    });
+  }
+
   render() {
-    const { name, id, color, bookmarks, intl, darkMode, hidden, pending, error } = this.props;
-    const { editMode } = this.state;
+    const {
+      name,
+      id,
+      color,
+      bookmarks,
+      intl,
+      darkMode,
+      hidden,
+      pending,
+      error,
+      minimalBookmarkButton,
+      bookmarkEditOnHover,
+      isMobile
+    } = this.props;
+    const { editMode, hoverEditMode } = this.state;
     const headerClassName = classNames(
       'category__header',
       `category__header--${color}`,
-      editMode && 'category__header--edit-mode'
+      (editMode || hoverEditMode) && 'category__header--edit-mode'
     );
 
     return (
       <li className="category">
-        <header className={ headerClassName }>
+        <header
+          className={ headerClassName }
+          onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
+          onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
+        >
           <Icon
             className={ classNames('category__toggle-icon', hidden && 'category__toggle-icon--rotate') }
             icon="expand"
@@ -105,10 +145,10 @@ class Category extends PureComponent {
             onClick={ this.toggleCategory }
             isButton
           />
-          <H2 className="category__name" onClick={ this.toggleCategory } title={ name }>
+          <H2 style="h3" className="category__name" onClick={ this.toggleCategory } title={ name }>
             { name }
           </H2>
-          { editMode && (
+          { (editMode || hoverEditMode) && (
             <Fragment>
               <Icon
                 icon="edit"
@@ -130,6 +170,14 @@ class Category extends PureComponent {
             onClick={ this.toggleEditMode }
             isButton
           />
+          { minimalBookmarkButton && (
+            <Icon
+              icon="add-link"
+              label={ intl.formatMessage({ id: 'bookmark.add' }) }
+              onClick={ this.onAddClick }
+              isButton
+            />
+          ) }
         </header>
         <Droppable droppableId={ id.toString() } type="bookmark">
           { (provided) => (
@@ -157,6 +205,7 @@ class Category extends PureComponent {
                         name={ bookmark.name }
                         url={ bookmark.url }
                         favicon={ bookmark.favicon }
+                        onDeleteOrEditClick={ this.toggleEditMode }
                       />
                     )) }
                     { error && <ErrorMessage message={ error } className="category__error" noAnimation /> }
@@ -165,16 +214,16 @@ class Category extends PureComponent {
               ) }
               { !hidden && !pending && bookmarks.length === 0 && !error && (
                 <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
-                  <i><FormattedHTMLMessage id="bookmark.empty" /></i>
+                  <i><FormattedMessage id="bookmark.empty" values={ { b: (msg) => <b>{msg}</b> } } /></i>
                 </li>
               ) }
               { provided.placeholder }
             </ul>
           ) }
         </Droppable>
-        { !hidden && !error && !pending && (
+        { !hidden && !error && !pending && !minimalBookmarkButton && (
           <ButtonSmallPrimary icon="add-link" className="category__button" onClick={ this.onAddClick }>
-            <FormattedHTMLMessage id="bookmark.add" />
+            <FormattedMessage id="bookmark.add" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonSmallPrimary>
         ) }
       </li>

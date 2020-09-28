@@ -1,15 +1,15 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H1 } from '../../atoms/headline';
 import Skeleton from '../../atoms/skeleton';
 import SearchField from '../../molecules/search-field';
-import { TabBar, Tab } from '../../molecules/tab-bar';
 import { ButtonSmallPrimary } from '../../atoms/button';
+import { DashboardsTabs } from '../dashboards';
 
 class Toolbar extends PureComponent {
   static propTypes = {
@@ -17,15 +17,15 @@ class Toolbar extends PureComponent {
     headerSticky: PropTypes.bool.isRequired,
     sticky: PropTypes.bool.isRequired,
     currentlySticky: PropTypes.bool.isRequired,
-    dashboards: PropTypes.object.isRequired,
     activeDashboardName: PropTypes.string,
     className: PropTypes.string,
     dashboardsStyle: PropTypes.string.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
     darkMode: PropTypes.bool.isRequired,
     categoriesPending: PropTypes.bool,
     hasCategories: PropTypes.bool,
-    openModal: PropTypes.func.isRequired
+    openModal: PropTypes.func.isRequired,
+    hasDashboards: PropTypes.bool,
+    intl: PropTypes.object.isRequired
   }
 
   state = {
@@ -82,8 +82,12 @@ class Toolbar extends PureComponent {
     return '';
   }
 
-  onAddClick = () => {
+  onAddCategoryClick = () => {
     this.props.openModal('AddCategory');
+  }
+
+  onAddDashboardClick = () => {
+    this.props.openModal('AddDashboard');
   }
 
   render() {
@@ -91,45 +95,64 @@ class Toolbar extends PureComponent {
       activeDashboardName,
       className,
       dashboardsStyle,
-      dashboards,
-      changeDashboard,
       darkMode,
       categoriesPending,
-      hasCategories
+      hasCategories,
+      hasDashboards,
+      intl
     } = this.props;
 
     return (
       <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
         { dashboardsStyle === 'sidebar' && (
-          <Fragment>
-            <Icon icon="collection" color={ darkMode ? 'grey' : 'medium' } />
-            <H1 style="h3" className="toolbar__headline" noMargin>
-              { activeDashboardName || <Skeleton /> }
-            </H1>
-          </Fragment>
+          <H1 style="h3" className="toolbar__headline" noMargin>
+            { activeDashboardName || <Skeleton /> }
+          </H1>
         ) }
         { dashboardsStyle === 'tabs' && (
-          <TabBar className="toolbar__tabs">
-            { dashboards.items.map((tab) => (
-              <Tab
-                key={ tab.id }
-                tabId={ tab.id }
-                active={ tab.id === dashboards.active }
-                name={ tab.name }
-                onClick={ changeDashboard }
-              />
-            )) }
-          </TabBar>
+          <>
+            <DashboardsTabs />
+            <Icon
+              icon="add-collection"
+              label={ intl.formatMessage({ id: 'modal.addDashboard' }) }
+              onClick={ this.onAddDashboardClick }
+              useSkeleton={ !hasDashboards }
+              isButton
+            />
+          </>
         ) }
         { hasCategories && (
-          <ButtonSmallPrimary
-            icon="add-category"
-            className="toolbar__add-category"
-            onClick={ this.onAddClick }
-            useSkeleton={ categoriesPending }
-          >
-            <FormattedHTMLMessage id="category.add" />
-          </ButtonSmallPrimary>
+          <>
+            { dashboardsStyle === 'tabs' ? (
+              <>
+                <Icon
+                  icon="add-category"
+                  className="booky--hide-desktop"
+                  label={ intl.formatMessage({ id: 'modal.addCategory' }) }
+                  onClick={ this.onAddCategoryClick }
+                  useSkeleton={ categoriesPending }
+                  isButton
+                />
+                <ButtonSmallPrimary
+                  icon="add-category"
+                  className="toolbar__button booky--hide-mobile-tablet"
+                  onClick={ this.onAddCategoryClick }
+                  useSkeleton={ categoriesPending }
+                >
+                  <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
+                </ButtonSmallPrimary>
+              </>
+            ) : (
+              <ButtonSmallPrimary
+                icon="add-category"
+                className="toolbar__add-category"
+                onClick={ this.onAddCategoryClick }
+                useSkeleton={ categoriesPending }
+              >
+                <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
+              </ButtonSmallPrimary>
+            ) }
+          </>
         ) }
         <SearchField className="booky--hide-mobile-tablet" id="search-desktop" />
       </section>
@@ -137,4 +160,4 @@ class Toolbar extends PureComponent {
   }
 }
 
-export default Toolbar;
+export default injectIntl(Toolbar);

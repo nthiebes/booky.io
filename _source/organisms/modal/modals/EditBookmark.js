@@ -56,7 +56,11 @@ class EditBookmark extends PureComponent {
         });
       },
       onError: () => {
+        // Host of a link
+        const match = value.match(/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/i);
+
         this.setState({
+          name: match ? match[0] : value,
           bookmarkTitlePending: false
         });
       }
@@ -91,6 +95,8 @@ class EditBookmark extends PureComponent {
           maxLength="2000"
           label={ intl.formatMessage({ id: 'modal.url' }) }
           disabled={ pending }
+          inputMode="url"
+          placeholder={ intl.formatMessage({id: 'modal.urlPlaceholder'}) }
         />
         <Input
           id="bookmark-name"
@@ -98,7 +104,7 @@ class EditBookmark extends PureComponent {
           value={ name }
           onChange={ this.onNameChange }
           required
-          maxLength="80"
+          maxLength="200"
           label={ intl.formatMessage({ id: 'modal.name' }) }
           disabled={ pending }
           pending={ bookmarkTitlePending }
