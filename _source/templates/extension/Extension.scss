@@ -1,22 +1,48 @@
 .extension {
-  background-color: $color__background--white;
+  background-color: $color-background--white;
   position: relative;
   min-height: 100vh;
-  padding: calc(4rem - 47px) 0 6rem 0;
-
-  @include tablet {
-    padding: calc(6rem - 71px) 0 10rem 0;
-  }
-
-  @include desktop {
-    padding: calc(10rem - 101px) 0 14rem 0;
-  }
-}
-
-.extension--blur {
-  filter: blur(3px) grayscale(100%);
+  padding-top: 4.5rem;
 }
 
 .extension--dark {
-  background-color: $color__background--dark-mode;
+  background-color: $color-background--dark-mode;
+}
+
+.extension__header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: $color--primary;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-top: calc(0.5rem - 6px);
+  height: 4.5rem;
+}
+
+.extension__nav {
+  display: flex;
+  justify-content: center;
+}
+
+.extension__nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: $color-font--white;
+  padding: 0 0.5rem 6px 0.5rem;
+  white-space: nowrap;
+
+  &:hover {
+    color: $color-font--dark;
+
+    .icon {
+      color: $color-font--dark;
+    }
+  }
+}
+
+.extension__nav-item--active {
+  border-bottom: 2px solid $color-font--white;
 }

@@ -4,7 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
 import Page from '../../templates/page';
-import ExtensionPage from '../../templates/extension';
+import Fullscreen from '../../templates/fullscreen';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
@@ -21,7 +21,7 @@ class Login extends Component {
     intl: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired,
-    isExtension: PropTypes.bool,
+    isExtension: PropTypes.bool.isRequired,
     match: PropTypes.object.isRequired,
     activate: PropTypes.func.isRequired,
     confirm: PropTypes.func.isRequired,
@@ -127,7 +127,7 @@ class Login extends Component {
   }
 
   handleSubmit = (params) => {
-    const { history, login, match } = this.props;
+    const { history, login, match, isExtension } = this.props;
     const { action } = match.params;
 
     this.setState({
@@ -143,7 +143,7 @@ class Login extends Component {
         if (action) {
           history.push('/account');
         } else {
-          history.push('/');
+          history.push(isExtension ? '/extension/add' : '/');
         }
       },
       onError: (error) => {
@@ -158,7 +158,7 @@ class Login extends Component {
   render() {
     const { intl, match, isExtension } = this.props;
     const { token, action } = match.params;
-    const TemplateComponent = isExtension ? ExtensionPage : Page;
+    const TemplateComponent = isExtension ? Fullscreen : Page;
     const {
       username,
       password,
@@ -232,16 +232,33 @@ class Login extends Component {
                 <FormattedMessage id="header.login" values={ { b: (msg) => <b>{msg}</b> } } />
               </ButtonLargeBlue>
               { error && <ErrorMessage message={ error } hasIcon /> }
-              <Link className="login__forgot" to="/forgot">
-                <FormattedMessage id="login.forgot" />
-              </Link>
-              <P className="login__join">
-                <FormattedMessage id="login.new" />
-                { ' ' }
-                <Link to="/join">
-                  <FormattedMessage id="login.join" />
-                </Link>
-              </P>
+              { isExtension ? (
+                <>
+                  <Link className="login__forgot" href="/forgot" target="_blank">
+                    <FormattedMessage id="login.forgot" />
+                  </Link>
+                  <P className="login__join">
+                    <FormattedMessage id="login.new" />
+                    { ' ' }
+                    <Link href="https://booky.io/join" target="_blank">
+                      <FormattedMessage id="login.join" />
+                    </Link>
+                  </P>
+                </>
+              ) : (
+                <>
+                  <Link className="login__forgot" to="/forgot">
+                    <FormattedMessage id="login.forgot" />
+                  </Link>
+                  <P className="login__join">
+                    <FormattedMessage id="login.new" />
+                    { ' ' }
+                    <Link to="/join">
+                      <FormattedMessage id="login.join" />
+                    </Link>
+                  </P>
+                </>
+              ) }
             </Form>
           ) }
         </Section>

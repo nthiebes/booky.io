@@ -1,27 +1,20 @@
-import React from 'react';
 import { connect } from 'react-redux';
 
 import Component from './Login';
 import { login, activate, confirm, deny } from '../../_state/user/actions';
 
+const matchStateToProps = (state) => ({
+  isExtension: state.extension.active
+});
 const mapDispatchToProps = {
   login,
   activate,
   confirm,
   deny
 };
-const PageLogin = (props) => (<Component { ...props } />);
-const ExtensionLogin = (props) => (<Component { ...props } isExtension />);
-const PageLoginContainer = connect(
-  null,
+const LoginContainer = connect(
+  matchStateToProps,
   mapDispatchToProps
-)(PageLogin);
-const ExtensionLoginContainer = connect(
-  null,
-  mapDispatchToProps
-)(ExtensionLogin);
+)(Component);
 
-export {
-  PageLoginContainer,
-  ExtensionLoginContainer
-};
+export default LoginContainer;

@@ -52,14 +52,6 @@ export default {
     showModal: false,
     data: {}
   },
-  extension: {
-    page: {
-      description: '',
-      url: '',
-      title: '',
-      favicon: null
-    }
-  },
   search: {
     keyword: '',
     pending: false,
@@ -72,5 +64,14 @@ export default {
   dragging: {
     isDragging: false,
     dragType: null
+  },
+  extension: {
+    active: Boolean(window.location.pathname.match(/extension/gi)),
+    page: {
+      description: '',
+      url: '',
+      title: '',
+      favicon: null
+    }
   }
 };

@@ -11,7 +11,7 @@ import Home from './pages/home';
 const About = lazy(() => import('./pages/about'));
 const Help = lazy(() => import('./pages/help'));
 const Account = lazy(() => import('./pages/account'));
-const { PageLogin, ExtensionLogin } = lazy(() => import('./pages/login'));
+const Login = lazy(() => import('./pages/login'));
 const Join = lazy(() => import('./pages/join'));
 const Feedback = lazy(() => import('./pages/feedback'));
 const Privacy = lazy(() => import('./pages/privacy'));
@@ -45,18 +45,18 @@ class Routes extends Component {
           <Route path="/about" component={ About }/>
           <Route path="/help" component={ Help } />
           <Route path="/account" component={ restricted(Account) } />
-          <Route path="/login" component={ publicOnly(PageLogin) } />
+          <Route path="/login" component={ publicOnly(Login) } />
           <Route path="/join" component={ publicOnly(Join) } />
           <Route path="/feedback" component={ Feedback } />
           <Route path="/privacy" component={ Privacy } />
           <Route path="/legal" component={ Legal } />
           <Route path="/contact" component={ Contact } />
           <Route path="/forgot" component={ Forgot } />
-          <Route path="/add" component={ Add } />
           <Route path="/resend" component={ Resend } />
-          <Route path="/activate/:token" component={ publicOnly(PageLogin) } />
-          <Route path="/recovery/:action/:params" component={ publicOnly(PageLogin) } />
-          <Route path="/extension/login" component={ ExtensionLogin } />
+          <Route path="/activate/:token" component={ publicOnly(Login) } />
+          <Route path="/recovery/:action/:params" component={ publicOnly(Login) } />
+          <Route path="/extension/login" component={ publicOnly(Login) } />
+          <Route path="/extension/add" component={ restricted(Add) } />
           <Route path="*" component={ NotFound } />
         </Switch>
       </Suspense>

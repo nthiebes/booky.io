@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -9,94 +9,77 @@ import Input from '../../atoms/input';
 import Checkbox from '../../atoms/checkbox';
 // import { H1 } from '../../atoms/headline';
 // import P from '../../atoms/paragraph';
-import ExtensionPage from '../../templates/extension';
+import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
+import Expandable from '../../molecules/expandable';
 
 class Add extends Component {
-  constructor(props) {
-    super(props);
-
-    this.toggleLocation = this.toggleLocation.bind(this);
-    this.toggleData = this.toggleData.bind(this);
-
-    this.state = {
-      locationOpen: true,
-      dataOpen: true
-    };
-  }
-
-  toggleLocation() {
-    this.setState({
-      locationOpen: !this.state.locationOpen
-    });
-  }
-
-  toggleData() {
-    this.setState({
-      dataOpen: !this.state.dataOpen
-    });
+  static propTypes = {
+    intl: PropTypes.object.isRequired,
+    title: PropTypes.string,
+    url: PropTypes.string,
+    description: PropTypes.string,
+    favicon: PropTypes.string
   }
 
   render() {
     const { intl, title, url, description, favicon } = this.props;
-    const { locationOpen, dataOpen } = this.state;
+    // const { locationOpen, dataOpen } = this.state;
 
     return (
-      <ExtensionPage>
+      <Extension>
         <Section>
-          <ButtonSmallPrimary className="add__add-button">
-            { 'Diese Seite hinzufügen' }
+          <ButtonSmallPrimary className="add__add-button" contentBefore icon="add-link">
+            <FormattedMessage id="extension.addButton" />
           </ButtonSmallPrimary>
           <hr className="add__hr" />
-          <Checkbox
-            checked={ locationOpen }
-            id="choose-location"
-            label="Sammlung/Kategorie auswählen"
-            onChange={ this.toggleLocation }
-          />
-          { locationOpen && (
-            <Fragment>
-              <Label htmlFor="collection" className="add__label">
-                { 'Sammlung' }
+          <Expandable headline={ <FormattedMessage id="extension.location" /> } className="help-container__item">
+            <>
+              <Label htmlFor="collections">
+                <FormattedMessage id="modal.editCategoryDashboard" />
               </Label>
-              <Select id="collection" options={ [{ text: 'Banana', value: 'banana' }] } />
-              <Label htmlFor="category">
-                { 'Kategorie' }
+              <Select id="collections" options={ [{ text: 'Banana',
+                value: 'banana' }] } />
+              <Label htmlFor="categories">
+                <FormattedMessage id="modal.category" />
               </Label>
-              <Select id="category" options={ [{ text: 'Banana', value: 'banana' }] } />
-            </Fragment>
-          ) }
+              <Select id="categories" options={ [{ text: 'Banana',
+                value: 'banana' }] } />
+            </>
+          </Expandable>
           <hr className="add__hr" />
-          <Checkbox
-            checked={ dataOpen }
-            id="edit-data"
-            label="Webseitendaten bearbeiten"
-            onChange={ this.toggleData }
-          />
-          { dataOpen && (
-            <Fragment>
-              <Label htmlFor="title" className="add__label">
-                { 'Name' }
-              </Label>
-              <Input id="title" value={ title } />
-              <Label htmlFor="url">
-                { 'Url' }
-              </Label>
-              <Input id="url" value={ url } />
-            </Fragment>
-          ) }
+          <Expandable headline={ <FormattedMessage id="extension.data" /> } className="help-container__item">
+            <>
+              <Input
+                id="bookmark-url"
+                name="url"
+                value={ url }
+                onChange={ this.onUrlChange }
+                onBlur={ this.onUrlBlur }
+                required
+                maxLength="2000"
+                label={ intl.formatMessage({ id: 'modal.url' }) }
+                // disabled={ pending }
+                inputMode="url"
+                placeholder={ intl.formatMessage({id: 'modal.urlPlaceholder'}) }
+              />
+              <Input
+                id="bookmark-name"
+                name="name"
+                value={ title }
+                onChange={ this.onNameChange }
+                required
+                maxLength="200"
+                label={ intl.formatMessage({ id: 'modal.name' }) }
+                // disabled={ pending }
+                // pending={ bookmarkTitlePending }
+              />
+            </>
+          </Expandable>
         </Section>
-      </ExtensionPage>
+      </Extension>
     );
   }
 }
-
-Add.propTypes = {
-  intl: PropTypes.object.isRequired,
-  title: PropTypes.string,
-  url: PropTypes.string,
-  description: PropTypes.string,
-  favicon: PropTypes.string
-};
 
 export default injectIntl(Add);

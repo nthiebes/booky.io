@@ -1,17 +1,28 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 
-export default class Extension extends Component {
+import Link from '../../atoms/link';
+import Icon from '../../atoms/icon';
+
+export default class Extension extends PureComponent {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    darkMode: PropTypes.bool.isRequired,
+    updateExtensionData: PropTypes.func.isRequired
+  }
+  
   componentDidMount() {
     const extension = window.parent;
     
     // Tell the extension that the page is ready to receive messages
-    extension.postMessage('ready', 'chrome-extension://bfbbnjmbdhohklfbfeoonobkkdjhilkj');
+    extension.postMessage('ready', 'chrome-extension://cdgbikmincdhncjonjcldflnkdbmbgco');
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      if (event.origin === 'chrome-extension://bfbbnjmbdhohklfbfeoonobkkdjhilkj') {
+      if (event.origin === 'chrome-extension://cdgbikmincdhncjonjcldflnkdbmbgco') {
         this.props.updateExtensionData({
           page: event.data
         });
@@ -23,28 +34,32 @@ export default class Extension extends Component {
     const { children, className, darkMode } = this.props;
 
     return (
-      <Fragment>
-        <header>header</header>
+      <>
+        <header className="extension__header">
+          <nav className="extension__nav">
+            <Link to="/extension/add" isNavLink className="extension__nav-item" activeClassName="extension__nav-item--active">
+              <Icon icon="add-link" color="light" />
+              <FormattedMessage id="extension.add" />
+            </Link>
+            <Link to="/extension/open" isNavLink className="extension__nav-item" activeClassName="extension__nav-item--active">
+              <Icon icon="open" color="light" />
+              <FormattedMessage id="extension.open" />
+            </Link>
+            <Link to="/extension/customize" isNavLink className="extension__nav-item" activeClassName="extension__nav-item--active">
+              <Icon icon="customize" color="light" />
+              <FormattedMessage id="extension.customize" />
+            </Link>
+          </nav>
+        </header>
         <main className={ classNames(
           'extension',
           darkMode && 'extension--dark',
-          className && className
+          className
         ) }>
           { children }
         </main>
         <footer>footer</footer>
-      </Fragment>
+      </>
     );
   }
 }
-
-Extension.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string
-  ]).isRequired,
-  className: PropTypes.string,
-  darkMode: PropTypes.bool.isRequired,
-  updateExtensionData: PropTypes.func.isRequired
-};
