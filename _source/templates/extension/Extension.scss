@@ -1,8 +1,8 @@
 .extension {
   background-color: $color-background--white;
   position: relative;
-  min-height: 100vh;
   padding-top: 4.5rem;
+  height: 100vh;
 }
 
 .extension--dark {
@@ -22,7 +22,7 @@
 
 .extension__nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .extension__nav-item {
@@ -34,7 +34,8 @@
   padding: 0 0.5rem 6px 0.5rem;
   white-space: nowrap;
 
-  &:hover {
+  &.link:hover,
+  &.link:focus {
     color: $color-font--dark;
 
     .icon {

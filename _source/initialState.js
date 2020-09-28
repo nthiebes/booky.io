@@ -70,8 +70,7 @@ export default {
     page: {
       description: '',
       url: '',
-      title: '',
-      favicon: null
+      title: ''
     }
   }
 };

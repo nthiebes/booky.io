@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -18,12 +19,12 @@ export default class Select extends Component {
     darkMode: PropTypes.bool
   }
 
-  onBlur = (event) => {
+  onChange = (event) => {
     this.props.onChange(event.target.value);
   }
 
   render() {
-    const { options, className, label, id, name, required, selected, disabled, darkMode } = this.props;
+    const { options, className, label, id, name, required, selected, disabled, darkMode, value } = this.props;
 
     return (
       <Fragment>
@@ -32,7 +33,8 @@ export default class Select extends Component {
           id={ id }
           name={ name }
           required={ required }
-          onBlur={ this.onBlur }
+          onChange={ this.onChange }
+          value={ value }
           defaultValue={ selected }
           disabled={ disabled }
           className={ classNames(
@@ -40,8 +42,8 @@ export default class Select extends Component {
             darkMode && 'select--dark-mode',
             className
           ) }>
-          { options.map(({ text, value }) => (
-            <option key={ value } value={ value }>
+          { options.map(({ text, value: optionValue }) => (
+            <option key={ optionValue } value={ optionValue }>
               { text }
             </option>
           )) }

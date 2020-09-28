@@ -16,13 +16,14 @@ export default class Extension extends PureComponent {
   
   componentDidMount() {
     const extension = window.parent;
+    const extensionId = process.env.NODE_ENV === 'development' ? 'cdgbikmincdhncjonjcldflnkdbmbgco' : 'pmcpkkipiedakcaolhnbijibndfemckf';
     
     // Tell the extension that the page is ready to receive messages
-    extension.postMessage('ready', 'chrome-extension://cdgbikmincdhncjonjcldflnkdbmbgco');
+    extension.postMessage('ready', `chrome-extension://${extensionId}`);
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      if (event.origin === 'chrome-extension://cdgbikmincdhncjonjcldflnkdbmbgco') {
+      if (event.origin === `chrome-extension://${extensionId}`) {
         this.props.updateExtensionData({
           page: event.data
         });
@@ -58,7 +59,6 @@ export default class Extension extends PureComponent {
         ) }>
           { children }
         </main>
-        <footer>footer</footer>
       </>
     );
   }
