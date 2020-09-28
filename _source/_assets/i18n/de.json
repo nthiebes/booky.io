@@ -288,5 +288,11 @@
     "help.bookmarks.answer1": "Ein Lesezeichen ist ein Link zu einer Webseite, die du schnell wiederfinden möchtest. Bei booky kannst du deinen Lesezeichen Namen geben, Notizen hinzufügen und sie in Kategorien einordnen.",
     "help.bookmarks.answer2": "Wähle auf der {home} von booky den Button \"Neues Lesezeichen\". Alternativ kannst du die booky Browser-Erweiterung oder das Bookmarklet nutzen.",
     "help.bookmarks.answer3": "Fahre dazu einfach mit der Maus über das Lesezeichen und wähle eines der Symbole:",
-    "misc.deleteSubject": "Bitte löscht meinen booky.io Account"
+    "misc.deleteSubject": "Bitte löscht meinen booky.io Account",
+    "extension.addButton": "Zu booky <b>hinzufügen</b>",
+    "extension.location": "Sammlung und Kategorie auswählen",
+    "extension.data": "Daten der Webseite",
+    "extension.add": "Hinzufügen",
+    "extension.open": "Öffnen",
+    "extension.customize": "Anpassen"
 }
