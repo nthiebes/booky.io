@@ -152,6 +152,7 @@ class AddBookmark extends PureComponent {
         { enableNotes && (
           <Expandable notBold headline={ <FormattedMessage id="modal.note" /> } className="modal__note">
             <Input
+              id="bookmark-note"
               name="note"
               value={ note }
               onChange={ this.onNoteChange }
