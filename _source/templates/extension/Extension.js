@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 import { config } from '../../config';
+import { postMessage } from '../../_utils/extension';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 
@@ -17,18 +18,16 @@ export default class Extension extends PureComponent {
   
   componentDidMount() {
     const { darkMode, updateExtensionData } = this.props;
-    const extension = window.parent;
-    const extensionId = process.env.NODE_ENV === 'development' ? config.extensionDevId : config.extensionProdId;
     
     // Tell the extension that the page is ready to receive messages
-    extension.postMessage({
+    postMessage({
       ready: true,
       darkMode
-    }, `chrome-extension://${extensionId}`);
+    });
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      if (event.origin === `chrome-extension://${extensionId}`) {
+      if (event.origin === `chrome-extension://${config.extensionId}`) {
         updateExtensionData({
           page: event.data
         });

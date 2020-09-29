@@ -1,4 +1,8 @@
+const extensionIds = {
+  development: 'cdgbikmincdhncjonjcldflnkdbmbgco',
+  production: 'pmcpkkipiedakcaolhnbijibndfemckf'
+};
+
 export const config = {
-  extensionDevId: 'cdgbikmincdhncjonjcldflnkdbmbgco',
-  extensionProdId: 'pmcpkkipiedakcaolhnbijibndfemckf'
+  extensionId: process.env.NODE_ENV === 'development' ? extensionIds.development : extensionIds.production
 };

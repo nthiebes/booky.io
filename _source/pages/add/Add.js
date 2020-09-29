@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { config } from '../../config';
+import { postMessage } from '../../_utils/extension';
 import { ButtonLargePrimary } from '../../atoms/button';
 import Select from '../../atoms/select';
 import Input from '../../atoms/input';
@@ -77,8 +77,6 @@ class Add extends Component {
 
   handleSubmit = (params) => {
     const { addBookmark } = this.props;
-    const extension = window.parent;
-    const extensionId = process.env.NODE_ENV === 'development' ? config.extensionDevId : config.extensionProdId;
 
     this.setState({
       pending: true,
@@ -93,7 +91,7 @@ class Add extends Component {
         });
 
         // Close the extension
-        extension.postMessage('close', `chrome-extension://${extensionId}`);
+        postMessage('close');
       },
       onError: (error) => {
         this.setState({
