@@ -86,6 +86,7 @@ export default class Input extends PureComponent {
         color && `input__field--color-${color}`,
         !validation && 'input__field--no-validation',
         icon && 'input__field--icon',
+        error && 'input__field--error',
         darkMode && 'input__field--dark-mode'
       ),
       onBlur: this.onBlur,
@@ -112,21 +113,24 @@ export default class Input extends PureComponent {
         { label && <Label htmlFor={ id }>{ label }</Label> }
         <span className={ classNames('input', className) }>
           <input { ...inputProps } />
-          { validation && !pending && (
+          { validation && !pending && !error && (
             <Fragment>
               <Icon icon="check" color="green" className="input__icon input__icon--valid" />
               <Icon icon="error" color="orange" className="input__icon input__icon--invalid" />
             </Fragment>
           ) }
+          { error && !pending && (
+            <Icon icon="error" color="orange" className="input__icon input__icon--error" />
+          ) }
           { icon && <Icon icon={ icon } className="input__icon input__icon--visible" /> }
           { pending && <Icon icon="spinner" className="input__icon input__icon--visible" /> }
-          { requirements && (
+          { requirements && !error && (
             <div className={ classNames('input__requirements', darkMode && 'input__requirements--dark-mode') }>
               { requirements }
             </div>
           ) }
           { error && (
-            <ErrorMessage id={ error } />
+            <ErrorMessage message={ error } noPadding />
           ) }
         </span>
       </Fragment>

@@ -44,13 +44,14 @@ export const getBookmarks = (id) => ((dispatch) => {
   });
 });
 
-export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((dispatch) => {
+export const addBookmark = ({ categoryId, name, url, note, onError, onSuccess }) => ((dispatch) => {
   fetcher({
     url: `/categories/${categoryId}/bookmarks`,
     method: 'POST',
     params: {
       name: encodeEmoji(name),
-      url
+      url,
+      note
     },
     onSuccess: ({ id, favicon }) => {
       dispatch({
@@ -59,6 +60,7 @@ export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((
         name,
         url,
         id,
+        note,
         favicon
       });
       onSuccess && onSuccess();
@@ -70,7 +72,7 @@ export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((
   });
 });
 
-export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, position, shouldUpdate = true }) => ((dispatch) => {
+export const editBookmark = ({ categoryId, name, url, note, onError, onSuccess, id, position, shouldUpdate = true }) => ((dispatch) => {
   fetcher({
     url: `/bookmarks/${id}`,
     method: 'PATCH',
@@ -78,7 +80,8 @@ export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, po
       name: name ? encodeEmoji(name) : '',
       url,
       categoryId,
-      position
+      position,
+      note
     }),
     onSuccess: ({ favicon }) => {
       if (shouldUpdate) {
@@ -88,7 +91,8 @@ export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, po
           url,
           favicon,
           id,
-          categoryId
+          categoryId,
+          note
         });
       }
       onSuccess && onSuccess();

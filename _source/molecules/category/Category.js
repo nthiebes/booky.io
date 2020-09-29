@@ -103,9 +103,15 @@ class Category extends PureComponent {
     });
   }
 
-  toggleHoverEditMode = () => {
+  enableEditMode = () => {
     this.setState({
-      hoverEditMode: !this.state.hoverEditMode
+      hoverEditMode: true
+    });
+  }
+
+  disableEditMode = () => {
+    this.setState({
+      hoverEditMode: false
     });
   }
 
@@ -135,8 +141,7 @@ class Category extends PureComponent {
       <li className="category">
         <header
           className={ headerClassName }
-          onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
-          onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
+          onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.disableEditMode : null }
         >
           <Icon
             className={ classNames('category__toggle-icon', hidden && 'category__toggle-icon--rotate') }
@@ -145,7 +150,12 @@ class Category extends PureComponent {
             onClick={ this.toggleCategory }
             isButton
           />
-          <H2 style="h3" className="category__name" onClick={ this.toggleCategory } title={ name }>
+          <H2
+            style="h3"
+            className="category__name"
+            onClick={ this.toggleCategory }
+            onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.enableEditMode : null }
+          >
             { name }
           </H2>
           { (editMode || hoverEditMode) && (
@@ -173,7 +183,9 @@ class Category extends PureComponent {
           { minimalBookmarkButton && (
             <Icon
               icon="add-link"
-              label={ intl.formatMessage({ id: 'bookmark.add' }) }
+              label={ intl.formatMessage({ id: 'bookmark.add' }, {
+                b: (msg) => msg
+              }) }
               onClick={ this.onAddClick }
               isButton
             />
@@ -204,6 +216,7 @@ class Category extends PureComponent {
                         editMode={ editMode }
                         name={ bookmark.name }
                         url={ bookmark.url }
+                        note={ bookmark.note }
                         favicon={ bookmark.favicon }
                         onDeleteOrEditClick={ this.toggleEditMode }
                       />
