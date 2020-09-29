@@ -16,15 +16,15 @@
   }
 }
 
+.expandable__summary--normal {
+  font-weight: normal;
+  color: $color-font--dark;
+}
+
 .expandable__summary--dark-mode {
   color: $color-font--white;
 
   &:focus {
     outline-color: $color-font--white;
   }
-}
-
-.expandable__summary--normal {
-  font-weight: normal;
-  color: $color-font--dark;
 }
