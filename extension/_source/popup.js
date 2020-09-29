@@ -58,12 +58,15 @@ window.addEventListener('message', function(event) {
       loadingSpinner.addEventListener('transitionend', transitionEndCallback);
       loadingSpinner.classList.add('loading__spinner--hide');
       loadingWrapper.classList.add('loading--hide');
-      if (message.darkMode) {
-        body.classList.add('booky--dark-mode');
-      }
     }
 
-    if (message === 'close') {
+    if (message.darkMode) {
+      body.classList.add('booky--dark-mode');
+    } else if (message.darkMode === false) {
+      body.classList.remove('booky--dark-mode');
+    }
+
+    if (message.close) {
       window.close();
     }
   }

@@ -118,7 +118,9 @@ class Add extends Component {
         });
 
         // Close the extension
-        postMessage('close');
+        postMessage({
+          close: true
+        });
       },
       onError: (error) => {
         this.setState({
