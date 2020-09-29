@@ -41,11 +41,11 @@ class Join extends Component {
   fetchTimeout;
 
   // eslint-disable-next-line max-statements
-  getAnimation = (value, name) => {
+  getAnimation = (value, name, error) => {
     let valid;
 
     if (name === 'username') {
-      valid = Boolean(value);
+      valid = Boolean(value) && error === false;
     }
 
     if (name === 'password') {
@@ -53,7 +53,7 @@ class Join extends Component {
     }
 
     if (name === 'email') {
-      valid = Boolean(value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ig));
+      valid = Boolean(value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ig)) && error === false;
     }
 
     if (valid === true) {
@@ -91,13 +91,15 @@ class Join extends Component {
         onSuccess: ({ reason }) => {
           this.setState({
             [`${name}Error`]: reason,
-            [`${name}Pending`]: false
+            [`${name}Pending`]: false,
+            animation: this.getAnimation(value, name, Boolean(reason))
           });
         },
         onError: (error) => {
           this.setState({
             [`${name}Pending`]: false,
-            [`${name}Error`]: error
+            [`${name}Error`]: error,
+            animation: this.getAnimation(value, name, true)
           });
         }
       });
@@ -126,7 +128,7 @@ class Join extends Component {
   };
 
   handleFocus = (event) => {
-    const animation = this.getAnimation(event.target.value, event.target.name);
+    const animation = this.getAnimation(event.target.value, event.target.name, Boolean(this.state[`${event.target.name}Error`]));
 
     this.setState({
       animation
