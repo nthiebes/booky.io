@@ -7,6 +7,7 @@ export const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode,
   closeEditMode: state.user.settings.closeEditMode,
   bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
+  enableNotes: state.user.settings.enableNotes,
   isDragging: state.dragging.isDragging,
   isMobile: state.user.isMobile,
   isExtension: state.extension.active

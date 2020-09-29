@@ -95,7 +95,8 @@ class Customize extends PureComponent {
       categoriesLayout,
       bookmarkEditOnHover,
       minimalBookmarkButton,
-      isExtension
+      isExtension,
+      enableNotes
     } = this.props;
     const { error } = this.state;
 
@@ -254,13 +255,13 @@ class Customize extends PureComponent {
             />
           </>
         ) }
-        {/* <Checkbox
+        <Checkbox
           label={ intl.formatMessage({ id: 'customize.enableNotes'}) }
           id="enableNotes"
           name="enableNotes"
           onChange={ this.handleCheckboxChange }
           checked={ enableNotes }
-        /> */}
+        />
         { error && <ErrorMessage message={ error } hasIcon className="customize__error" /> }
       </Fragment>
     );
