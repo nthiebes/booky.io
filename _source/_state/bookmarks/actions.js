@@ -64,7 +64,6 @@ export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((
       onSuccess && onSuccess();
     },
     onError: (error) => {
-      // console.log('error', error);
       onError && onError(error);
     }
   });

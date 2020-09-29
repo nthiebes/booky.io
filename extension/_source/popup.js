@@ -48,16 +48,23 @@ function sendToIframe(data) {
 }
 
 // Messages from the booky iframe
+// eslint-disable-next-line max-statements
 window.addEventListener('message', function(event) {
   var message = event.data;
   
-  if (event.origin === host && message.ready) {
-    sendToIframe(pageData);
-    loadingSpinner.addEventListener('transitionend', transitionEndCallback);
-    loadingSpinner.classList.add('loading__spinner--hide');
-    loadingWrapper.classList.add('loading--hide');
-    if (message.darkMode) {
-      body.classList.add('booky--dark-mode');
+  if (event.origin === host) {
+    if (message.ready) {
+      sendToIframe(pageData);
+      loadingSpinner.addEventListener('transitionend', transitionEndCallback);
+      loadingSpinner.classList.add('loading__spinner--hide');
+      loadingWrapper.classList.add('loading--hide');
+      if (message.darkMode) {
+        body.classList.add('booky--dark-mode');
+      }
+    }
+
+    if (message === 'close') {
+      window.close();
     }
   }
 });

@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+import { config } from '../../config';
 import { ButtonLargePrimary } from '../../atoms/button';
 import Select from '../../atoms/select';
 import Input from '../../atoms/input';
 import { ErrorMessage } from '../../atoms/messages';
-// import { H1 } from '../../atoms/headline';
-// import P from '../../atoms/paragraph';
 import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
@@ -26,7 +25,8 @@ class Add extends Component {
     dashboardsPending: PropTypes.bool,
     activeDashboard: PropTypes.number.isRequired,
     categories: PropTypes.array.isRequired,
-    dashboards: PropTypes.array.isRequired
+    dashboards: PropTypes.array.isRequired,
+    addBookmark: PropTypes.func.isRequired
   }
 
   state = {
@@ -76,33 +76,32 @@ class Add extends Component {
   }
 
   handleSubmit = (params) => {
-    console.log(params);
-    // const { history, login, match, isExtension } = this.props;
-    // const { action } = match.params;
+    const { addBookmark } = this.props;
+    const extension = window.parent;
+    const extensionId = process.env.NODE_ENV === 'development' ? config.extensionDevId : config.extensionProdId;
 
-    // this.setState({
-    //   pending: true,
-    //   error: null
-    // });
+    this.setState({
+      pending: true,
+      error: null
+    });
 
-    // login({
-    //   params,
-    //   onSuccess: () => {
-    //     document.title = 'booky';
+    addBookmark({
+      ...params,
+      onSuccess: () => {
+        this.setState({
+          pending: false
+        });
 
-    //     if (action) {
-    //       history.push('/account');
-    //     } else {
-    //       history.push(isExtension ? '/extension/add' : '/');
-    //     }
-    //   },
-    //   onError: (error) => {
-    //     this.setState({
-    //       pending: false,
-    //       error
-    //     });
-    //   }
-    // });
+        // Close the extension
+        extension.postMessage('close', `chrome-extension://${extensionId}`);
+      },
+      onError: (error) => {
+        this.setState({
+          pending: false,
+          error
+        });
+      }
+    });
   }
 
   render() {
@@ -140,7 +139,13 @@ class Add extends Component {
       <Extension>
         <Section>
           <Form onSubmit={ this.handleSubmit }>
-            <ButtonLargePrimary className="add__add-button" contentBefore type="submit" pending={ pending }>
+            <ButtonLargePrimary
+              className="add__add-button"
+              contentBefore
+              type="submit"
+              pending={ pending }
+              disabled={ pending }
+            >
               <FormattedMessage id="extension.addButton" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonLargePrimary>
             { error && <ErrorMessage message={ error } hasIcon /> }
@@ -190,7 +195,7 @@ class Add extends Component {
                 <Input
                   id="bookmark-name"
                   name="name"
-                  value={ name }
+                  value={ stateName || name }
                   onChange={ this.handleInputChange }
                   required
                   maxLength="200"
@@ -200,7 +205,7 @@ class Add extends Component {
                 <Input
                   id="bookmark-url"
                   name="url"
-                  value={ url }
+                  value={ stateUrl || url }
                   onChange={ this.handleInputChange }
                   required
                   maxLength="2000"
@@ -213,7 +218,7 @@ class Add extends Component {
                   <Input
                     id="bookmark-note"
                     name="note"
-                    value={ note }
+                    value={ stateNote || note }
                     onChange={ this.handleInputChange }
                     maxLength="100"
                     label={ intl.formatMessage({ id: 'modal.note' }) }
