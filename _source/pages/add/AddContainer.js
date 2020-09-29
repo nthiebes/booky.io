@@ -4,9 +4,9 @@ import { getDashboards, changeDashboard } from '../../_state/dashboards/actions'
 import Component from './Add';
 
 const mapStateToProps = (state) => ({
-  title: state.extension.page.title,
+  name: state.extension.page.title,
   url: state.extension.page.url,
-  description: state.extension.page.description,
+  note: state.extension.page.description,
   enableNotes: state.user.settings.enableNotes,
   categories: state.categories,
   dashboards: state.dashboards.items,

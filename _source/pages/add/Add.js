@@ -16,9 +16,9 @@ import Form from '../../molecules/form';
 class Add extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    title: PropTypes.string,
+    name: PropTypes.string,
     url: PropTypes.string,
-    description: PropTypes.string,
+    note: PropTypes.string,
     favicon: PropTypes.string,
     enableNotes: PropTypes.bool.isRequired,
     getDashboards: PropTypes.func.isRequired,
@@ -33,9 +33,9 @@ class Add extends Component {
     activeCategory: localStorage.getItem('activeCategory') || '',
     pending: false,
     error: null,
-    name: this.props.title,
+    name: this.props.name,
     url: this.props.url,
-    note: this.props.description
+    note: this.props.note
   }
 
   componentDidMount() {
@@ -112,15 +112,18 @@ class Add extends Component {
       dashboardsPending,
       categories,
       dashboards,
-      activeDashboard
+      activeDashboard,
+      name,
+      url,
+      note
     } = this.props;
     const {
       activeCategory,
       error,
       pending,
-      name,
-      url,
-      note
+      name: stateName,
+      url: stateUrl,
+      note: stateNote
     } = this.state;
     const showLocation = localStorage.getItem('showLocation');
     const showData = localStorage.getItem('showData');
@@ -152,8 +155,8 @@ class Add extends Component {
                 <Select
                   id="collection"
                   label={ intl.formatMessage({ id: 'modal.editCategoryDashboard' }) }
-                  options={ dashboards.map(({ name, id }) => ({
-                    text: name,
+                  options={ dashboards.map(({ name: text, id }) => ({
+                    text,
                     value: id.toString()
                   })) }
                   required
@@ -165,8 +168,8 @@ class Add extends Component {
                 <Select
                   id="category"
                   label={ intl.formatMessage({ id: 'modal.category' }) }
-                  options={ categories.map(({ name, id }) => ({
-                    text: name,
+                  options={ categories.map(({ name: text, id }) => ({
+                    text,
                     value: id.toString()
                   })) }
                   required
