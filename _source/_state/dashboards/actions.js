@@ -53,7 +53,8 @@ export const getDashboards = () => ((dispatch) => {
       }));
       dispatch(setCategories(activeCategories.map((category) => ({
         ...category,
-        name: decodeEmoji(category.name)
+        name: decodeEmoji(category.name),
+        pending: true
       }))));
     },
     onError: (error) => {
