@@ -91,10 +91,10 @@ class Open extends Component {
             disabled={ dashboardsPending }
             name="categoryId"
           />
-          <SearchField className="booky--hide-mobile-tablet" id="search-desktop" />
+          <SearchField className="open__search-field" id="search-extension" />
           { categoryData && !keywordExists && !dashboardsPending && <Category { ...categoryData } /> }
           { keywordExists && (
-            <Search />
+            <Search className="open__search" />
           ) }
         </Section>
       </Extension>
