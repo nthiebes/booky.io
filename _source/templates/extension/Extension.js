@@ -15,7 +15,8 @@ export default class Extension extends PureComponent {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     darkMode: PropTypes.bool.isRequired,
-    updateExtensionData: PropTypes.func.isRequired
+    updateExtensionData: PropTypes.func.isRequired,
+    color: PropTypes.number.isRequired
   }
   
   componentDidMount() {
@@ -38,12 +39,12 @@ export default class Extension extends PureComponent {
   }
 
   render() {
-    const { children, className, darkMode } = this.props;
+    const { children, className, darkMode, color } = this.props;
 
     return (
       <>
         <Modal />
-        <header className="extension__header">
+        <header className={ `extension__header header--color${color}` }>
           <nav className="extension__nav">
             <Link to="/extension/add" isNavLink className="extension__nav-item" activeClassName="extension__nav-item--active">
               <Icon icon="add-link" color="light" />

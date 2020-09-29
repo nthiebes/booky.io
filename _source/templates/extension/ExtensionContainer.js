@@ -4,7 +4,8 @@ import Component from './Extension';
 import { updateExtensionData } from '../../_state/extension/actions';
 
 const mapStateToProps = (state) => ({
-  darkMode: state.user.settings.darkMode
+  darkMode: state.user.settings.darkMode,
+  color: state.user.settings.navigationBarColor
 });
 const mapDispatchToProps = {
   updateExtensionData
