@@ -18,6 +18,10 @@
   }
 }
 
+.error--noPadding {
+  padding-top: 0;
+}
+
 .error--show {
   max-height: 6rem;
   opacity: 1;
