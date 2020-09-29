@@ -15,16 +15,20 @@ export default class Extension extends PureComponent {
   }
   
   componentDidMount() {
+    const { darkMode, updateExtensionData } = this.props;
     const extension = window.parent;
     const extensionId = process.env.NODE_ENV === 'development' ? 'cdgbikmincdhncjonjcldflnkdbmbgco' : 'pmcpkkipiedakcaolhnbijibndfemckf';
     
     // Tell the extension that the page is ready to receive messages
-    extension.postMessage('ready', `chrome-extension://${extensionId}`);
+    extension.postMessage({
+      ready: true,
+      darkMode
+    }, `chrome-extension://${extensionId}`);
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
       if (event.origin === `chrome-extension://${extensionId}`) {
-        this.props.updateExtensionData({
+        updateExtensionData({
           page: event.data
         });
       }

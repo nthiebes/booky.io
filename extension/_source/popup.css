@@ -2,4 +2,73 @@
   border: 0 none;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+.booky--dark-mode {
+  background-color: #444;
+}
+
+.icon {
+  border: 0 none;
+  background-color: transparent;
+  align-items: center;
+  display: inline-flex;
+  font-size: 16px;
+  transition: transform 0.2s linear;
+  user-select: none;
+  height: 36px;
+  width: 36px;
+  color: #657786;
+}
+
+.icon__svg {
+  fill: currentColor;
+  padding: 6px;
+  position: relative;
+  stroke-width: 0;
+  stroke: currentColor;
+  height: 36px;
+  width: 36px;
+  animation: 1s linear infinite rotate;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  height: 100%;
+  background-color: #fff;
+}
+
+.loading--hide {
+  transition: opacity 0.3s linear;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading__spinner {
+  position: absolute;
+  color: #657786;
+  pointer-events: none;
+  left: calc(50vw - 18px);
+  top: calc(50vh);
+}
+
+.loading__spinner--hide {
+  transition: opacity 0.3s linear, transform 0.4s ease-in;
+  transform: translateY(-3rem);
+  opacity: 0;
 }

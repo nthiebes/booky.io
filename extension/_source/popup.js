@@ -1,5 +1,8 @@
 /* eslint-disable no-var */
 var iframe = document.getElementById('booky'),
+  loadingSpinner = document.getElementById('loading__spinner'),
+  loadingWrapper = document.getElementById('loading'),
+  body = document.getElementsByTagName('body')[0],
   devHost = 'http://localhost:3000',
   prodHost = 'https://beta.booky.io',
   host = prodHost,
@@ -14,6 +17,11 @@ chrome.management.getSelf(function(extensionInfo) {
   }
   // id = extensionInfo.id;
 });
+
+function transitionEndCallback() {
+  loadingSpinner.removeEventListener('transitionend', transitionEndCallback);
+  loadingSpinner.parentNode && loadingSpinner.parentNode.removeChild(loadingSpinner);
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   // Load the content script
@@ -43,8 +51,14 @@ function sendToIframe(data) {
 window.addEventListener('message', function(event) {
   var message = event.data;
   
-  if (event.origin === host && message === 'ready') {
+  if (event.origin === host && message.ready) {
     sendToIframe(pageData);
+    loadingSpinner.addEventListener('transitionend', transitionEndCallback);
+    loadingSpinner.classList.add('loading__spinner--hide');
+    loadingWrapper.classList.add('loading--hide');
+    if (message.darkMode) {
+      body.classList.add('booky--dark-mode');
+    }
   }
 });
 
