@@ -7,6 +7,8 @@ import { config } from '../../config';
 import { postMessage } from '../../_utils/extension';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
+import Modal from '../../organisms/modal';
+import ErrorBoundary from '../../molecules/error-boundary';
 
 export default class Extension extends PureComponent {
   static propTypes = {
@@ -40,6 +42,7 @@ export default class Extension extends PureComponent {
 
     return (
       <>
+        <Modal />
         <header className="extension__header">
           <nav className="extension__nav">
             <Link to="/extension/add" isNavLink className="extension__nav-item" activeClassName="extension__nav-item--active">
@@ -61,7 +64,9 @@ export default class Extension extends PureComponent {
           darkMode && 'extension--dark',
           className
         ) }>
-          { children }
+          <ErrorBoundary>
+            { children }
+          </ErrorBoundary>
         </main>
       </>
     );

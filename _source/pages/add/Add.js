@@ -7,6 +7,7 @@ import { ButtonLargePrimary } from '../../atoms/button';
 import Select from '../../atoms/select';
 import Input from '../../atoms/input';
 import { ErrorMessage } from '../../atoms/messages';
+import Icon from '../../atoms/icon';
 import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
@@ -26,7 +27,8 @@ class Add extends Component {
     activeDashboard: PropTypes.number.isRequired,
     categories: PropTypes.array.isRequired,
     dashboards: PropTypes.array.isRequired,
-    addBookmark: PropTypes.func.isRequired
+    addBookmark: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired
   }
 
   state = {
@@ -42,6 +44,24 @@ class Add extends Component {
     const { getDashboards } = this.props;
 
     getDashboards();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { categories } = this.props;
+
+    // if (dashboards.length > prevProps.dashboards.length && prevProps.dashboards.length !== 0) {
+    //   changeDashboard(dashboards[dashboards.length - 1].id);
+    // }
+
+    if (categories.length > prevProps.categories.length && prevProps.categories.length !== 0) {
+      const categoryId = categories[categories.length - 1].id;
+
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        activeCategory: categoryId
+      });
+      localStorage.setItem('activeCategory', categoryId);
+    }
   }
 
   toggleLocation = () => {
@@ -73,6 +93,14 @@ class Add extends Component {
       [name]: value,
       pending: false
     });
+  }
+
+  onAddCategoryClick = () => {
+    this.props.openModal('AddCategory');
+  }
+
+  onAddDashboardClick = () => {
+    this.props.openModal('AddDashboard');
   }
 
   handleSubmit = (params) => {
@@ -155,32 +183,50 @@ class Add extends Component {
               onClick={ this.toggleLocation }
             >
               <>
-                <Select
-                  id="collection"
-                  label={ intl.formatMessage({ id: 'modal.editCategoryDashboard' }) }
-                  options={ dashboards.map(({ name: text, id }) => ({
-                    text,
-                    value: id.toString()
-                  })) }
-                  required
-                  onChange={ this.handleDashboardChange }
-                  value={ activeDashboard }
-                  disabled={ dashboardsPending || pending }
-                  name="dashboardId"
-                />
-                <Select
-                  id="category"
-                  label={ intl.formatMessage({ id: 'modal.category' }) }
-                  options={ categories.map(({ name: text, id }) => ({
-                    text,
-                    value: id.toString()
-                  })) }
-                  required
-                  onChange={ this.handleCategoryChange }
-                  value={ activeCategory }
-                  disabled={ dashboardsPending || pending }
-                  name="categoryId"
-                />
+                <span className="add__location-wrapper">
+                  <Select
+                    id="collection"
+                    label={ intl.formatMessage({ id: 'modal.editCategoryDashboard' }) }
+                    options={ dashboards.map(({ name: text, id }) => ({
+                      text,
+                      value: id.toString()
+                    })) }
+                    required
+                    onChange={ this.handleDashboardChange }
+                    value={ activeDashboard }
+                    disabled={ dashboardsPending || pending }
+                    name="dashboardId"
+                  />
+                  <Icon
+                    icon="add-collection"
+                    label={ intl.formatMessage({ id: 'modal.addDashboard' }) }
+                    onClick={ this.onAddDashboardClick }
+                    useSkeleton={ dashboardsPending }
+                    isButton
+                  />
+                </span>
+                <span className="add__location-wrapper">
+                  <Select
+                    id="category"
+                    label={ intl.formatMessage({ id: 'modal.category' }) }
+                    options={ categories.map(({ name: text, id }) => ({
+                      text,
+                      value: id.toString()
+                    })) }
+                    required
+                    onChange={ this.handleCategoryChange }
+                    value={ activeCategory }
+                    disabled={ dashboardsPending || pending }
+                    name="categoryId"
+                  />
+                  <Icon
+                    icon="add-category"
+                    label={ intl.formatMessage({ id: 'modal.addCategory' }) }
+                    onClick={ this.onAddCategoryClick }
+                    useSkeleton={ dashboardsPending }
+                    isButton
+                  />
+                </span>
               </>
             </Expandable>
             <Expandable

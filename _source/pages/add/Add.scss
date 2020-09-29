@@ -28,3 +28,28 @@
     margin-top: 0.5rem;
   }
 }
+
+.add__location-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .label {
+    width: 100%;
+  }
+
+  .select {
+    width: auto;
+    flex-grow: 1;
+  }
+
+  .icon {
+    margin-right: -6px;
+    margin-left: 6px;
+  }
+
+  .icon--skeleton {
+    margin-right: 0;
+    margin-left: 12px;
+  }
+}
