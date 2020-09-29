@@ -33,10 +33,12 @@
   color: $color-font--white;
   padding: 0 0.5rem 6px 0.5rem;
   white-space: nowrap;
+  transition: color 0.2s linear, border-color 0.2s linear;
 
   &.link:hover,
   &.link:focus {
     color: $color-font--dark;
+    border-bottom-color: $color-font--dark;
 
     .icon {
       color: $color-font--dark;

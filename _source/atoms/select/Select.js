@@ -16,7 +16,10 @@ export default class Select extends Component {
     required: PropTypes.bool,
     selected: PropTypes.string,
     disabled: PropTypes.bool,
-    darkMode: PropTypes.bool
+    darkMode: PropTypes.bool,
+    value: PropTypes.oneOfType([
+      PropTypes.string, PropTypes.number
+    ])
   }
 
   onChange = (event) => {

@@ -147,7 +147,7 @@ class Add extends Component {
             <hr className="add__hr" />
             <Expandable
               headline={ <FormattedMessage id="extension.location" /> }
-              className="help-container__item"
+              className="add__section"
               open={ localStorage.getItem('showLocation') === 'true' }
               onClick={ this.toggleLocation }
             >
@@ -182,7 +182,7 @@ class Add extends Component {
             </Expandable>
             <Expandable
               headline={ <FormattedMessage id="extension.data" /> }
-              className="help-container__item"
+              className="add__section"
               open={ localStorage.getItem('showData') === 'true' }
               onClick={ this.toggleData }
             >
