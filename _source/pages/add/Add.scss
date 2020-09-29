@@ -1,5 +1,6 @@
 .add__add-button {
   width: 100%;
+  margin-top: 1rem;
 
   &:hover,
   &:focus,
@@ -18,14 +19,24 @@
   height: 2px;
   width: calc(106% + 12px);
   background-color: rgba(0, 0, 0, 0.15);
-  margin: 1.5rem 0 1.5rem calc(-3% - 6px);
+  margin: 1rem 0 1rem calc(-3% - 6px);
 }
 
 .add__section {
-  margin-bottom: 2rem;
+  .label {
+    margin-top: 10px;
+  }
 
-  .label:first-of-type {
-    margin-top: 0.5rem;
+  &:first-of-type {
+    margin-bottom: 1.5rem;
+  }
+
+  &:last-of-type {
+    /* stylelint-disable */
+    .label:first-of-type {
+      margin-top: 0;
+    }
+    /* stylelint-enable */
   }
 }
 
@@ -52,5 +63,11 @@
   .icon--skeleton {
     margin-right: 0;
     margin-left: 12px;
+  }
+
+  &:first-of-type {
+    .label {
+      margin-top: 0;
+    }
   }
 }

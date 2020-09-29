@@ -162,11 +162,10 @@ class Add extends Component {
 
     return (
       <Extension>
-        <Section>
+        <Section noMargin>
           <Form onSubmit={ this.handleSubmit }>
             <ButtonLargePrimary
               className="add__add-button"
-              contentBefore
               type="submit"
               pending={ pending }
               disabled={ pending }

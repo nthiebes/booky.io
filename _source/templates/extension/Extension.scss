@@ -1,8 +1,30 @@
 .extension {
   background-color: $color-background--white;
   position: relative;
-  padding-top: 4.5rem;
+  padding-top: 70px;
   height: 100vh;
+
+  .icon {
+    &:hover {
+      color: $color-font--primary;
+    }
+
+    &.icon--dark-mode:hover {
+      color: $color-font--primary;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
+  }
+
+  .bookmark__link {
+    &:hover {
+      color: $color-font--primary;
+      text-decoration: underline;
+    }
+  }
 }
 
 .extension--dark {
