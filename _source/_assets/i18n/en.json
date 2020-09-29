@@ -279,7 +279,7 @@
     "help.categories.answer1": "You can group your bookmarks into categories.",
     "help.categories.question1": "What is a category?",
     "help.categories.answer2": "Select the button \"New Collection\" on the {home} of booky.",
-    "help.categories.answer3": "Simply move the mouse over the category and select one of the icons:",
+    "help.categories.answer3": "Simply move your mouse over the category and select one of the icons:",
     "help.categories.question2": "How do I create a category?",
     "help.categories.question3": "How do I edit a category?",
     "help.bookmarks.question1": "What is a bookmark?",
@@ -287,5 +287,12 @@
     "help.bookmarks.question3": "How do I edit a bookmark?",
     "help.bookmarks.answer1": "A bookmark is a link to a webpage that you want to find quickly. At booky, you can name your bookmarks, add notes, and organize them into categories.",
     "help.bookmarks.answer2": "Select the button \"New bookmark\" on the {home} of booky. Alternatively, you can use the booky browser extension or the bookmarklet.",
-    "help.bookmarks.answer3": "Simply move the mouse over the bookmark and select one of the icons:"
+    "help.bookmarks.answer3": "Simply move your mouse over the bookmark and select one of the icons:",
+    "misc.deleteSubject": "Please delete my booky.io account",
+    "extension.addButton": "<b>Add</b> to booky",
+    "extension.location": "Select collection and category",
+    "extension.data": "Website data",
+    "extension.add": "Add",
+    "extension.open": "Open",
+    "extension.customize": "Customize"
 }
