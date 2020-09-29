@@ -76,7 +76,8 @@ class Bookmark extends PureComponent {
       darkMode,
       bookmarkEditOnHover,
       isDragging,
-      isMobile
+      isMobile,
+      isExtension
     } = this.props;
     const { hoverEditMode } = this.state;
 
@@ -119,7 +120,7 @@ class Bookmark extends PureComponent {
             <a
               className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') }
               href={ url }
-              target={ newtab ? '_blank' : '_self' }
+              target={ (newtab || isExtension) ? '_blank' : '_self' }
               rel={ newtab ? 'noopener noreferrer' : null }
             >
               { name }

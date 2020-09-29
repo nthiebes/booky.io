@@ -8,7 +8,8 @@ export const mapStateToProps = (state) => ({
   closeEditMode: state.user.settings.closeEditMode,
   bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
   isDragging: state.dragging.isDragging,
-  isMobile: state.user.isMobile
+  isMobile: state.user.isMobile,
+  isExtension: state.extension.active
 });
 
 export const mapDispatchToProps = (dispatch) => ({
