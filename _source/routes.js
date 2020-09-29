@@ -21,6 +21,7 @@ const Forgot = lazy(() => import('./pages/forgot'));
 const Resend = lazy(() => import('./pages/resend'));
 const NotFound = lazy(() => import('./pages/not-found'));
 const Add = lazy(() => import('./pages/add'));
+const Open = lazy(() => import('./pages/open'));
 
 class Routes extends Component {
   static propTypes = {
@@ -57,6 +58,7 @@ class Routes extends Component {
           <Route path="/recovery/:action/:params" component={ publicOnly(Login) } />
           <Route path="/extension/login" component={ publicOnly(Login) } />
           <Route path="/extension/add" component={ restricted(Add) } />
+          <Route path="/extension/open" component={ restricted(Open) } />
           <Route path="*" component={ NotFound } />
         </Switch>
       </Suspense>

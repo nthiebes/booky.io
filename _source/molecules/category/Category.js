@@ -29,7 +29,8 @@ class Category extends PureComponent {
     closeEditMode: PropTypes.bool.isRequired,
     minimalBookmarkButton: PropTypes.bool.isRequired,
     bookmarkEditOnHover: PropTypes.bool.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
+    isExtension: PropTypes.bool.isRequired
   };
   
   static defaultProps = {
@@ -42,9 +43,9 @@ class Category extends PureComponent {
   };
 
   componentDidMount() {
-    const { hidden, id, getBookmarks, noFetch } = this.props;
+    const { hidden, id, getBookmarks, noFetch, isExtension } = this.props;
 
-    if (!hidden && !noFetch) {
+    if ((!hidden || isExtension) && !noFetch) {
       getBookmarks(id);
     }
   }
@@ -109,6 +110,7 @@ class Category extends PureComponent {
     });
   }
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       name,
@@ -122,7 +124,8 @@ class Category extends PureComponent {
       error,
       minimalBookmarkButton,
       bookmarkEditOnHover,
-      isMobile
+      isMobile,
+      isExtension
     } = this.props;
     const { editMode, hoverEditMode } = this.state;
     const headerClassName = classNames(
@@ -133,60 +136,62 @@ class Category extends PureComponent {
 
     return (
       <li className="category">
-        <header
-          className={ headerClassName }
-          onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
-          onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
-        >
-          <Icon
-            className={ classNames('category__toggle-icon', hidden && 'category__toggle-icon--rotate') }
-            icon="expand"
-            label={ hidden ? intl.formatMessage({ id: 'category.expand' }) : intl.formatMessage({ id: 'category.reduce' }) }
-            onClick={ this.toggleCategory }
-            isButton
-          />
-          <H2 style="h3" className="category__name" onClick={ this.toggleCategory } title={ name }>
-            { name }
-          </H2>
-          { (editMode || hoverEditMode) && (
-            <Fragment>
-              <Icon
-                icon="edit"
-                label={ intl.formatMessage({ id: 'category.edit' }) }
-                onClick={ this.onEditClick }
-                isButton
-              />
-              <Icon
-                icon="delete"
-                label={ intl.formatMessage({ id: 'category.delete' }) }
-                onClick={ this.onDeleteClick }
-                isButton
-              />
-            </Fragment>
-          ) }
-          <Icon
-            icon={ editMode ? 'close' : 'more-horiz' }
-            label={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
-            onClick={ this.toggleEditMode }
-            isButton
-          />
-          { minimalBookmarkButton && (
+        { !isExtension && (
+          <header
+            className={ headerClassName }
+            onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
+            onMouseLeave={ (bookmarkEditOnHover && !isMobile) ? this.toggleHoverEditMode : null }
+          >
             <Icon
-              icon="add-link"
-              label={ intl.formatMessage({ id: 'bookmark.add' }) }
-              onClick={ this.onAddClick }
+              className={ classNames('category__toggle-icon', hidden && 'category__toggle-icon--rotate') }
+              icon="expand"
+              label={ hidden ? intl.formatMessage({ id: 'category.expand' }) : intl.formatMessage({ id: 'category.reduce' }) }
+              onClick={ this.toggleCategory }
               isButton
             />
-          ) }
-        </header>
+            <H2 style="h3" className="category__name" onClick={ this.toggleCategory } title={ name }>
+              { name }
+            </H2>
+            { (editMode || hoverEditMode) && (
+              <Fragment>
+                <Icon
+                  icon="edit"
+                  label={ intl.formatMessage({ id: 'category.edit' }) }
+                  onClick={ this.onEditClick }
+                  isButton
+                />
+                <Icon
+                  icon="delete"
+                  label={ intl.formatMessage({ id: 'category.delete' }) }
+                  onClick={ this.onDeleteClick }
+                  isButton
+                />
+              </Fragment>
+            ) }
+            <Icon
+              icon={ editMode ? 'close' : 'more-horiz' }
+              label={ editMode ? intl.formatMessage({ id: 'category.editModeQuit' }) : intl.formatMessage({ id: 'category.editMode' }) }
+              onClick={ this.toggleEditMode }
+              isButton
+            />
+            { minimalBookmarkButton && (
+              <Icon
+                icon="add-link"
+                label={ intl.formatMessage({ id: 'bookmark.add' }) }
+                onClick={ this.onAddClick }
+                isButton
+              />
+            ) }
+          </header>
+        ) }
         <Droppable droppableId={ id.toString() } type="bookmark">
           { (provided) => (
             <ul
-              className={ classNames('category__bookmarks', hidden && 'category__bookmarks--hidden') }
+              className={ classNames('category__bookmarks', (hidden && !isExtension) && 'category__bookmarks--hidden') }
               ref={ provided.innerRef }
               { ...provided.droppableProps }
             >
-              { !hidden && (
+              { (!hidden || isExtension) && (
                 pending ? (
                   <Fragment>
                     <Skeleton className="category__skeleton" />
@@ -212,7 +217,7 @@ class Category extends PureComponent {
                   </Fragment>
                 )
               ) }
-              { !hidden && !pending && bookmarks.length === 0 && !error && (
+              { (!hidden || isExtension) && !pending && bookmarks.length === 0 && !error && (
                 <li className={ classNames('category__empty', darkMode && 'category__empty--dark-mode') }>
                   <i><FormattedMessage id="bookmark.empty" values={ { b: (msg) => <b>{msg}</b> } } /></i>
                 </li>
@@ -221,7 +226,7 @@ class Category extends PureComponent {
             </ul>
           ) }
         </Droppable>
-        { !hidden && !error && !pending && !minimalBookmarkButton && (
+        { !hidden && !error && !pending && !minimalBookmarkButton && !isExtension && (
           <ButtonSmallPrimary icon="add-link" className="category__button" onClick={ this.onAddClick }>
             <FormattedMessage id="bookmark.add" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonSmallPrimary>

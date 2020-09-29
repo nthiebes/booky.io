@@ -19,7 +19,6 @@ class Add extends Component {
     name: PropTypes.string,
     url: PropTypes.string,
     note: PropTypes.string,
-    favicon: PropTypes.string,
     enableNotes: PropTypes.bool.isRequired,
     getDashboards: PropTypes.func.isRequired,
     changeDashboard: PropTypes.func.isRequired,
