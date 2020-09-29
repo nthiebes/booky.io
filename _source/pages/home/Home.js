@@ -109,7 +109,7 @@ class Home extends Component {
               <img
                 width="75"
                 height="75"
-                alt="Chrome browser extension"
+                alt=""
                 className="home__extension-icon"
                 src="../../_assets/browsers/chrome.svg"
                 loading="lazy"
@@ -120,7 +120,7 @@ class Home extends Component {
               <img
                 width="75"
                 height="75"
-                alt="Firefox browser extension"
+                alt=""
                 className="home__extension-icon"
                 src="../../_assets/browsers/firefox.svg"
                 loading="lazy"
@@ -131,7 +131,7 @@ class Home extends Component {
               <img
                 width="75"
                 height="75"
-                alt="Opera browser extension"
+                alt=""
                 className="home__extension-icon"
                 src="../../_assets/browsers/opera.svg"
                 loading="lazy"
@@ -142,7 +142,7 @@ class Home extends Component {
               <img
                 width="75"
                 height="75"
-                alt="Edge browser extension"
+                alt=""
                 className="home__extension-icon"
                 src="../../_assets/browsers/edge.svg"
                 loading="lazy"

@@ -1,7 +1,9 @@
+/* eslint-disable max-lines */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { DiscussionEmbed } from 'disqus-react';
+import classNames from 'classnames';
 
 import Page from '../../templates/page';
 import { H1, H2 } from '../../atoms/headline';
@@ -17,11 +19,12 @@ import './Help.scss';
 
 class Help extends Component {
   static propTypes = {
-    intl: PropTypes.object.isRequired
+    intl: PropTypes.object.isRequired,
+    darkMode: PropTypes.bool
   }
 
   render() {
-    const { intl } = this.props;
+    const { intl, darkMode } = this.props;
     const disqusConfig = {
       url: 'https://booky.io/help',
       identifier: 'help',
@@ -112,7 +115,15 @@ class Help extends Component {
                 <FormattedMessage id="bookmark.drag" />
               </P>
               <P noPadding className="help__icon">
-                <Icon icon="note" />
+                <span className="bookmark__note-icon-wrapper">
+                  <Icon icon="note" />
+                  <Icon
+                    icon="show"
+                    size="tiny"
+                    color="light"
+                    className={ classNames('bookmark__note-icon', darkMode && 'bookmark__note-icon--dark-mode') }
+                  />
+                </span>
                 <FormattedMessage id="bookmark.noteShow" />
               </P>
             </Expandable>
