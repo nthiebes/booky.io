@@ -24,7 +24,8 @@ class Bookmark extends PureComponent {
     onDeleteOrEditClick: PropTypes.func.isRequired,
     bookmarkEditOnHover: PropTypes.bool.isRequired,
     isDragging: PropTypes.bool.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
+    isExtension: PropTypes.bool.isRequired
   }
 
   state = {
