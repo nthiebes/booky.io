@@ -4,6 +4,11 @@
   "author": "Nico Thiebes",
   "description": "Add new links to booky.io and browse your existing bookmarks.",
   "permissions": ["activeTab", "storage"],
+  "applications": {
+    "gecko": {
+      "id": "hello@booky.io"
+    }
+  },
   "externally_connectable": {
     "matches": [
       "https://booky.io/*",

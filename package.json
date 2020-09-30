@@ -26,7 +26,9 @@
     "test:watch": "jest --watchAll",
     "qa": "npm-run-all test lint",
     "storybook": "start-storybook -p 666 -c storybook -s ./_public",
-    "extension": "cd extension && ./manifest.sh firefox $npm_package_extensionVersion && ./manifest.sh chrome $npm_package_extensionVersion"
+    "extension": "cd extension && ./manifest.sh firefox $npm_package_extensionVersion && ./manifest.sh chrome $npm_package_extensionVersion",
+    "extension:chrome": "cd extension && ./manifest.sh chrome $npm_package_extensionVersion",
+    "extension:firefox": "cd extension && ./manifest.sh firefox $npm_package_extensionVersion"
   },
   "proxy": "http://localhost:8001/",
   "author": "Nico Thiebes",

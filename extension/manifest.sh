@@ -77,6 +77,7 @@ fi
 if [ "$browser" == "firefox" ]
 then
   echo "$manifest" > "_public/firefox/tmp/manifest.json"
+  echo "$manifest" > "_source/manifest.json"
   cd _public/firefox/tmp
   zip -r ../firefox_$version.zip ./*
   rm -r ../tmp

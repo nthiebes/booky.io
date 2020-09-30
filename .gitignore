@@ -6,3 +6,4 @@ docs
 *.lnk
 npm-debug.log
 .DS_Store
+/extension/_source/manifest.json
