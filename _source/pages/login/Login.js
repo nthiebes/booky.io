@@ -240,7 +240,7 @@ class Login extends Component {
                   <P className="login__join">
                     <FormattedMessage id="login.new" />
                     { ' ' }
-                    <Link href="https://booky.io/join" target="_blank">
+                    <Link href="/join" target="_blank">
                       <FormattedMessage id="login.join" />
                     </Link>
                   </P>
