@@ -13,8 +13,20 @@ then
   cp -r _source/ _public/firefox/tmp
 fi
 
+if [ "$browser" == "opera" ]
+then
+  cp -r _source/ _public/opera/tmp
+fi
+
 
 applications=""
+externally_connectable="
+  \"externally_connectable\": {
+    \"matches\": [
+      \"https://booky.io/*\",
+      \"https://beta.booky.io/*\"
+    ]
+  },"
 
 firefox_applications="
   \"applications\": {
@@ -22,10 +34,12 @@ firefox_applications="
       \"id\": \"hello@booky.io\"
     }
   },"
+firefox_externally_connectable=""
 
 if [ "$browser" == "firefox" ]
 then
   applications=$firefox_applications
+  externally_connectable=$firefox_externally_connectable
 fi
 
 manifest="{
@@ -34,12 +48,6 @@ manifest="{
   \"author\": \"Nico Thiebes\",
   \"description\": \"Add new links to booky.io and browse your existing bookmarks.\",
   \"permissions\": [\"activeTab\", \"storage\"],${applications}
-  \"externally_connectable\": {
-    \"matches\": [
-      \"https://booky.io/*\",
-      \"https://beta.booky.io/*\"
-    ]
-  },
   \"browser_action\": {
     \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
@@ -80,5 +88,14 @@ then
   echo "$manifest" > "_source/manifest.json"
   cd _public/firefox/tmp
   zip -r ../firefox_$version.zip ./*
+  rm -r ../tmp
+fi
+
+if [ "$browser" == "opera" ]
+then
+  echo "$manifest" > "_public/opera/tmp/manifest.json"
+  echo "$manifest" > "_source/manifest.json"
+  cd _public/opera/tmp
+  zip -r ../opera_$version.zip ./*
   rm -r ../tmp
 fi
