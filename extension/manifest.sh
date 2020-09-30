@@ -15,8 +15,6 @@ fi
 
 
 applications=""
-persistent="
-    \"persistent\": false,"
 
 firefox_applications="
   \"applications\": {
@@ -24,12 +22,10 @@ firefox_applications="
       \"id\": \"hello@booky.io\"
     }
   },"
-firefox_persistent=""
 
 if [ "$browser" == "firefox" ]
 then
   applications=$firefox_applications
-  persistent=$firefox_persistent
 fi
 
 manifest="{
@@ -37,23 +33,21 @@ manifest="{
   \"version\": \"${version}\",
   \"author\": \"Nico Thiebes\",
   \"description\": \"Add new links to booky.io and browse your existing bookmarks.\",
-  \"permissions\": [\"activeTab\", \"bookmarks\"],${applications}
-  \"background\": {${persistent}
-    \"scripts\": [\"background.js\"]
-  },
+  \"permissions\": [\"activeTab\", \"storage\"],${applications}
   \"externally_connectable\": {
     \"matches\": [
-      \"https://booky.io/*\"
+      \"https://booky.io/*\",
+      \"https://beta.booky.io/*\"
     ]
   },
   \"browser_action\": {
     \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
     \"default_icon\": {
-      \"16\": \"images/get_started16.png\",
-      \"32\": \"images/get_started32.png\",
-      \"48\": \"images/get_started48.png\",
-      \"128\": \"images/get_started128.png\"
+      \"16\": \"images/icon-16x16.png\",
+      \"32\": \"images/icon-32x32.png\",
+      \"48\": \"images/icon-48x48.png\",
+      \"128\": \"images/icon-128x128.png\"
     }
   },
   \"content_scripts\": [
@@ -63,10 +57,10 @@ manifest="{
     }
   ],
   \"icons\": {
-    \"16\": \"images/get_started16.png\",
-    \"32\": \"images/get_started32.png\",
-    \"48\": \"images/get_started48.png\",
-    \"128\": \"images/get_started128.png\"
+    \"16\": \"images/icon-16x16.png\",
+    \"32\": \"images/icon-32x32.png\",
+    \"48\": \"images/icon-48x48.png\",
+    \"128\": \"images/icon-128x128.png\"
   },
   \"manifest_version\": 2
 }"
