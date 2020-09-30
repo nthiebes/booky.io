@@ -190,7 +190,7 @@ class Login extends Component {
           ) }
           { ((!actionPending && actionSuccess) || (!token && !action)) && (
             <Form onSubmit={ this.handleSubmit }>
-              <H1>
+              <H1 noMargin={ isExtension }>
                 <FormattedMessage id="login.headline" />
               </H1>
               <Input
