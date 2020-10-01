@@ -7,15 +7,13 @@ var iframe = document.getElementById('booky'),
   prodHost = 'https://beta.booky.io',
   host = prodHost,
   pageData = {};
-  // environment = 'production',
-  // id;
 
 chrome.management.getSelf(function(extensionInfo) {
   if (extensionInfo.installType === 'development') {
-    // environment = 'development';
     host = devHost;
   }
-  // id = extensionInfo.id;
+  
+  iframe.src = host + '/extension/add';
 });
 
 function transitionEndCallback() {
