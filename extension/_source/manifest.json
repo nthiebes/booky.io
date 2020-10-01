@@ -1,14 +1,11 @@
 {
-  "name": "booky.io Extension",
+  "name": "__MSG_appName__",
   "version": "2.0.0",
   "author": "Nico Thiebes",
-  "description": "Add new links to booky.io and browse your existing bookmarks.",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
+  "content_security_policy": "default-src 'self'",
   "permissions": ["activeTab", "storage"],
-  "applications": {
-    "gecko": {
-      "id": "hello@booky.io"
-    }
-  },
   "browser_action": {
     "default_title": "booky.io Extension",
     "default_popup": "popup.html",

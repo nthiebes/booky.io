@@ -20,13 +20,6 @@ fi
 
 
 applications=""
-externally_connectable="
-  \"externally_connectable\": {
-    \"matches\": [
-      \"https://booky.io/*\",
-      \"https://beta.booky.io/*\"
-    ]
-  },"
 
 firefox_applications="
   \"applications\": {
@@ -34,19 +27,19 @@ firefox_applications="
       \"id\": \"hello@booky.io\"
     }
   },"
-firefox_externally_connectable=""
 
 if [ "$browser" == "firefox" ]
 then
   applications=$firefox_applications
-  externally_connectable=$firefox_externally_connectable
 fi
 
 manifest="{
-  \"name\": \"booky.io Extension\",
+  \"name\": \"__MSG_appName__\",
   \"version\": \"${version}\",
   \"author\": \"Nico Thiebes\",
-  \"description\": \"Add new links to booky.io and browse your existing bookmarks.\",
+  \"description\": \"__MSG_appDesc__\",
+  \"default_locale\": \"en\",
+  \"content_security_policy\": \"default-src 'self'\",
   \"permissions\": [\"activeTab\", \"storage\"],${applications}
   \"browser_action\": {
     \"default_title\": \"booky.io Extension\",
