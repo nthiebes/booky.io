@@ -82,7 +82,7 @@ class Modal extends PureComponent {
             pending={ pending }
             disabled={ pending }
             className="modal__button"
-            icon="add-link"
+            icon={ noCancel ? 'check' : 'save' }
             type="submit"
           >
             <FormattedMessage id={ noCancel ? 'button.done' : 'button.confirm' } />
