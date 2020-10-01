@@ -10,6 +10,7 @@
   padding-bottom: 0.5rem;
   color: $color-font--medium;
   line-height: 1.5;
+  display: list-item;
 
   &:focus {
     outline: 1px dashed $color-font--medium;
