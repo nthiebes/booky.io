@@ -17,7 +17,7 @@ const extensionIds = {
   chromeDev: 'chrome-extension://cdgbikmincdhncjonjcldflnkdbmbgco',
   chromeProd: 'chrome-extension://pmcpkkipiedakcaolhnbijibndfemckf',
   firefoxDev: 'moz-extension://ffe1d848-0e95-e247-8323-c93f1cc19443',
-  firefoxProd: 'moz-extension://ffe1d848-0e95-e247-8323-c93f1cc19443',
+  firefoxProd: 'moz-extension://17dcc72b-ab50-e94b-a287-5539977d1488',
   operaDev: 'op-extension://cdgbikmincdhncjonjcldflnkdbmbgco',
   operaProd: 'op-extension://cdgbikmincdhncjonjcldflnkdbmbgco'
 };
