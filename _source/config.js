@@ -18,8 +18,8 @@ const extensionIds = {
   chromeProd: 'chrome-extension://pmcpkkipiedakcaolhnbijibndfemckf',
   firefoxDev: 'moz-extension://6b1713db-fd5a-1344-bc24-18c2584c6ca4',
   firefoxProd: 'moz-extension://6b1713db-fd5a-1344-bc24-18c2584c6ca4',
-  operaDev: 'op-extension://cdgbikmincdhncjonjcldflnkdbmbgco',
-  operaProd: 'op-extension://iafdlnlobhkhinaaipdlmopphkeejjhc'
+  operaDev: 'chrome-extension://cdgbikmincdhncjonjcldflnkdbmbgco',
+  operaProd: 'chrome-extension://iafdlnlobhkhinaaipdlmopphkeejjhc'
 };
 
 export const config = {
