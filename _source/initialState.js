@@ -64,5 +64,13 @@ export default {
   dragging: {
     isDragging: false,
     dragType: null
+  },
+  extension: {
+    active: Boolean(window.location.pathname.match(/extension/gi)),
+    page: {
+      description: '',
+      url: '',
+      title: ''
+    }
   }
 };

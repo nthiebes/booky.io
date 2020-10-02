@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
 import Page from '../../templates/page';
+import Fullscreen from '../../templates/fullscreen';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
@@ -19,8 +20,9 @@ class Login extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired,
+    isExtension: PropTypes.bool.isRequired,
+    match: PropTypes.object.isRequired,
     activate: PropTypes.func.isRequired,
     confirm: PropTypes.func.isRequired,
     deny: PropTypes.func.isRequired
@@ -125,7 +127,7 @@ class Login extends Component {
   }
 
   handleSubmit = (params) => {
-    const { history, login, match } = this.props;
+    const { history, login, match, isExtension } = this.props;
     const { action } = match.params;
 
     this.setState({
@@ -141,7 +143,7 @@ class Login extends Component {
         if (action) {
           history.push('/account');
         } else {
-          history.push('/');
+          history.push(isExtension ? '/extension/add' : '/');
         }
       },
       onError: (error) => {
@@ -154,8 +156,9 @@ class Login extends Component {
   }
 
   render() {
-    const { intl, match } = this.props;
+    const { intl, match, isExtension } = this.props;
     const { token, action } = match.params;
+    const TemplateComponent = isExtension ? Fullscreen : Page;
     const {
       username,
       password,
@@ -168,7 +171,7 @@ class Login extends Component {
     } = this.state;
 
     return (
-      <Page>
+      <TemplateComponent>
         <Section compact>
           { (token || action) && actionPending && (
             <Icon icon="spinner" className="login__spinner" />
@@ -187,7 +190,7 @@ class Login extends Component {
           ) }
           { ((!actionPending && actionSuccess) || (!token && !action)) && (
             <Form onSubmit={ this.handleSubmit }>
-              <H1>
+              <H1 noMargin={ isExtension }>
                 <FormattedMessage id="login.headline" />
               </H1>
               <Input
@@ -229,20 +232,37 @@ class Login extends Component {
                 <FormattedMessage id="header.login" values={ { b: (msg) => <b>{msg}</b> } } />
               </ButtonLargeBlue>
               { error && <ErrorMessage message={ error } hasIcon /> }
-              <Link className="login__forgot" to="/forgot">
-                <FormattedMessage id="login.forgot" />
-              </Link>
-              <P className="login__join">
-                <FormattedMessage id="login.new" />
-                { ' ' }
-                <Link to="/join">
-                  <FormattedMessage id="login.join" />
-                </Link>
-              </P>
+              { isExtension ? (
+                <>
+                  <Link className="login__forgot" href="/forgot" target="_blank">
+                    <FormattedMessage id="login.forgot" />
+                  </Link>
+                  <P className="login__join">
+                    <FormattedMessage id="login.new" />
+                    { ' ' }
+                    <Link href="/join" target="_blank">
+                      <FormattedMessage id="login.join" />
+                    </Link>
+                  </P>
+                </>
+              ) : (
+                <>
+                  <Link className="login__forgot" to="/forgot">
+                    <FormattedMessage id="login.forgot" />
+                  </Link>
+                  <P className="login__join">
+                    <FormattedMessage id="login.new" />
+                    { ' ' }
+                    <Link to="/join">
+                      <FormattedMessage id="login.join" />
+                    </Link>
+                  </P>
+                </>
+              ) }
             </Form>
           ) }
         </Section>
-      </Page>
+      </TemplateComponent>
     );
   }
 }

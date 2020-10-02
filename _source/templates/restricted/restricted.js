@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
-  loggedIn: state.user.loggedIn
+  loggedIn: state.user.loggedIn,
+  isExtension: state.extension.active
 });
 
 export const restricted = (BaseComponent) => {
@@ -21,11 +22,11 @@ export const restricted = (BaseComponent) => {
       }
     }
 
-    checkAuthentication(params) {
-      const { history, loggedIn } = params;
+    checkAuthentication(props) {
+      const { history, loggedIn, isExtension } = props;
 
       if (!loggedIn) {
-        history.replace({ pathname: '/login' });
+        history.replace({ pathname: isExtension ? '/extension/login' : '/login' });
       }
     }
 
@@ -37,7 +38,8 @@ export const restricted = (BaseComponent) => {
   Restricted.propTypes = {
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    loggedIn: PropTypes.bool.isRequired
+    loggedIn: PropTypes.bool.isRequired,
+    isExtension: PropTypes.bool.isRequired
   };
 
   return connect(mapStateToProps)(

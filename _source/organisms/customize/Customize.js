@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
+import { postMessage } from '../../_utils/extension';
 import { H3 } from '../../atoms/headline';
 import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
@@ -26,7 +27,8 @@ class Customize extends PureComponent {
     categoriesLayout: PropTypes.string.isRequired,
     bookmarkEditOnHover: PropTypes.bool.isRequired,
     minimalBookmarkButton: PropTypes.bool.isRequired,
-    enableNotes: PropTypes.bool.isRequired
+    enableNotes: PropTypes.bool.isRequired,
+    isExtension: PropTypes.bool.isExtension
   }
 
   state = {
@@ -50,7 +52,14 @@ class Customize extends PureComponent {
   }
 
   handleRadioChange = ({ name, value }) => {
+    const { updateSettings, isExtension } = this.props;
     let updatedValue = value;
+
+    if (name === 'darkMode' && isExtension) {
+      postMessage({
+        darkMode: value === 'true'
+      });
+    }
 
     if (value === 'true') {
       updatedValue = true;
@@ -58,7 +67,7 @@ class Customize extends PureComponent {
       updatedValue = false;
     }
 
-    this.props.updateSettings({
+    updateSettings({
       [name]: updatedValue
     }, {
       onError: this.errorCallback
@@ -86,6 +95,7 @@ class Customize extends PureComponent {
       categoriesLayout,
       bookmarkEditOnHover,
       minimalBookmarkButton,
+      isExtension,
       enableNotes
     } = this.props;
     const { error } = this.state;
@@ -124,125 +134,133 @@ class Customize extends PureComponent {
         >
           <FormattedMessage id="customize.darkMode" />
         </Radio>
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.stickyHeader'}) }
-          id="stickyHeader"
-          name="stickyHeader"
-          onChange={ this.handleCheckboxChange }
-          checked={ stickyHeader }
-        />
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.stickyToolbar'}) }
-          id="stickyToolbar"
-          name="stickyToolbar"
-          onChange={ this.handleCheckboxChange }
-          checked={ stickyToolbar }
-        />
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.blurEffect'}) }
-          id="blurEffect"
-          name="blurEffect"
-          onChange={ this.handleCheckboxChange }
-          checked={ blurEffect }
-        />
-        <H3>
-          <FormattedMessage id="dashboard.title" />
-        </H3>
-        <Radio
-          id="dashboards-sidebar"
-          name="dashboardsStyle"
-          onChange={ this.handleRadioChange }
-          value="sidebar"
-          checked={ dashboardsStyle === 'sidebar' }
-          first
-        >
-          <FormattedMessage id="customize.sidebar" />
-        </Radio>
-        {/* <Radio
-          id="dashboards-dropdown"
-          name="dashboardsStyle"
-          onChange={ this.handleRadioChange }
-          value="dropdown"
-          checked={ dashboardsStyle === 'dropdown' }
-        >
-          <FormattedMessage id="customize.dropdown" />
-        </Radio> */}
-        <Radio
-          id="dashboards-tabs"
-          name="dashboardsStyle"
-          onChange={ this.handleRadioChange }
-          value="tabs"
-          checked={ dashboardsStyle === 'tabs' }
-        >
-          <FormattedMessage id="customize.tabs" />
-        </Radio>
-        <H3>
-          <FormattedMessage id="customize.layout" />
-        </H3>
-        <Radio
-          id="categories-grid"
-          name="categoriesLayout"
-          onChange={ this.handleRadioChange }
-          value="grid"
-          checked={ categoriesLayout === 'grid' }
-          first
-        >
-          <FormattedMessage id="customize.grid" />
-        </Radio>
-        <Radio
-          id="categories-column"
-          name="categoriesLayout"
-          onChange={ this.handleRadioChange }
-          value="column"
-          checked={ categoriesLayout === 'column' }
-        >
-          <FormattedMessage id="customize.column" />
-        </Radio>
+        { !isExtension && (
+          <>
+            <Checkbox
+              label={ intl.formatMessage({ id: 'customize.stickyHeader'}) }
+              id="stickyHeader"
+              name="stickyHeader"
+              onChange={ this.handleCheckboxChange }
+              checked={ stickyHeader }
+            />
+            <Checkbox
+              label={ intl.formatMessage({ id: 'customize.stickyToolbar'}) }
+              id="stickyToolbar"
+              name="stickyToolbar"
+              onChange={ this.handleCheckboxChange }
+              checked={ stickyToolbar }
+            />
+            <Checkbox
+              label={ intl.formatMessage({ id: 'customize.blurEffect'}) }
+              id="blurEffect"
+              name="blurEffect"
+              onChange={ this.handleCheckboxChange }
+              checked={ blurEffect }
+            />
+            <H3>
+              <FormattedMessage id="dashboard.title" />
+            </H3>
+            <Radio
+              id="dashboards-sidebar"
+              name="dashboardsStyle"
+              onChange={ this.handleRadioChange }
+              value="sidebar"
+              checked={ dashboardsStyle === 'sidebar' }
+              first
+            >
+              <FormattedMessage id="customize.sidebar" />
+            </Radio>
+            {/* <Radio
+              id="dashboards-dropdown"
+              name="dashboardsStyle"
+              onChange={ this.handleRadioChange }
+              value="dropdown"
+              checked={ dashboardsStyle === 'dropdown' }
+            >
+              <FormattedMessage id="customize.dropdown" />
+            </Radio> */}
+            <Radio
+              id="dashboards-tabs"
+              name="dashboardsStyle"
+              onChange={ this.handleRadioChange }
+              value="tabs"
+              checked={ dashboardsStyle === 'tabs' }
+            >
+              <FormattedMessage id="customize.tabs" />
+            </Radio>
+            <H3>
+              <FormattedMessage id="customize.layout" />
+            </H3>
+            <Radio
+              id="categories-grid"
+              name="categoriesLayout"
+              onChange={ this.handleRadioChange }
+              value="grid"
+              checked={ categoriesLayout === 'grid' }
+              first
+            >
+              <FormattedMessage id="customize.grid" />
+            </Radio>
+            <Radio
+              id="categories-column"
+              name="categoriesLayout"
+              onChange={ this.handleRadioChange }
+              value="column"
+              checked={ categoriesLayout === 'column' }
+            >
+              <FormattedMessage id="customize.column" />
+            </Radio>
+          </>
+        ) }
         <H3>
           <FormattedMessage id="dashboard.preferences" />
         </H3>
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.newTab'}) }
-          id="openLinksInNewTab"
-          name="openLinksInNewTab"
-          onChange={ this.handleCheckboxChange }
-          checked={ newtab }
-          first
-        />
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.autofill'}) }
-          id="autofillBookmarkNames"
-          name="autofillBookmarkNames"
-          onChange={ this.handleCheckboxChange }
-          checked={ autofillBookmarkNames }
-        />
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.closeEditMode'}) }
-          id="closeEditMode"
-          name="closeEditMode"
-          onChange={ this.handleCheckboxChange }
-          checked={ closeEditMode }
-        />
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.bookmarkEditOnHover'}) }
-          id="bookmarkEditOnHover"
-          name="bookmarkEditOnHover"
-          onChange={ this.handleCheckboxChange }
-          checked={ bookmarkEditOnHover }
-        />
+        { !isExtension && (
+          <>
+            <Checkbox
+              label={ intl.formatMessage({ id: 'customize.newTab'}) }
+              id="openLinksInNewTab"
+              name="openLinksInNewTab"
+              onChange={ this.handleCheckboxChange }
+              checked={ newtab }
+              first
+            />
+            <Checkbox
+              label={ intl.formatMessage({ id: 'customize.autofill'}) }
+              id="autofillBookmarkNames"
+              name="autofillBookmarkNames"
+              onChange={ this.handleCheckboxChange }
+              checked={ autofillBookmarkNames }
+            />
+            <Checkbox
+              label={ intl.formatMessage({ id: 'customize.closeEditMode'}) }
+              id="closeEditMode"
+              name="closeEditMode"
+              onChange={ this.handleCheckboxChange }
+              checked={ closeEditMode }
+            />
+            <Checkbox
+              label={ intl.formatMessage({ id: 'customize.bookmarkEditOnHover'}) }
+              id="bookmarkEditOnHover"
+              name="bookmarkEditOnHover"
+              onChange={ this.handleCheckboxChange }
+              checked={ bookmarkEditOnHover }
+            />
+            <Checkbox
+              label={ intl.formatMessage({ id: 'customize.minimalBookmarkButton'}) }
+              id="minimalBookmarkButton"
+              name="minimalBookmarkButton"
+              onChange={ this.handleCheckboxChange }
+              checked={ minimalBookmarkButton }
+            />
+          </>
+        ) }
         <Checkbox
           label={ intl.formatMessage({ id: 'customize.enableNotes'}) }
           id="enableNotes"
           name="enableNotes"
           onChange={ this.handleCheckboxChange }
           checked={ enableNotes }
-        />
-        <Checkbox
-          label={ intl.formatMessage({ id: 'customize.minimalBookmarkButton'}) }
-          id="minimalBookmarkButton"
-          name="minimalBookmarkButton"
-          onChange={ this.handleCheckboxChange }
-          checked={ minimalBookmarkButton }
         />
         { error && <ErrorMessage message={ error } hasIcon className="customize__error" /> }
       </Fragment>

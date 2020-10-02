@@ -15,7 +15,8 @@ export const getCategories = (id) => ((dispatch) => {
     onSuccess: (data) => {
       dispatch(setCategories(data.map((category) => ({
         ...category,
-        name: decodeEmoji(category.name)
+        name: decodeEmoji(category.name),
+        pending: true
       }))));
       dispatch(updateDashboardsData({
         pending: false,

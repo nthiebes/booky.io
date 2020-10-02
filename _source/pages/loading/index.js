@@ -1,3 +1,3 @@
-import component from './Loading';
+import component from './LoadingContainer';
 
 export default component;
