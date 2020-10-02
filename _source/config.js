@@ -8,8 +8,8 @@ const isFirefox = typeof InstallTrigger !== 'undefined';
 const isChrome = Boolean(window.chrome) && (Boolean(window.chrome.webstore) || Boolean(window.chrome.runtime));
 const isEdge = isChrome && navigator.userAgent.indexOf('Edg') !== -1;
 const isDevEnvironment = process.env.NODE_ENV === 'development';
-const browser = isChrome ? 'chrome'
-  : isOpera ? 'opera'
+const browser = isOpera ? 'opera'
+  : isChrome ? 'chrome'
     : isFirefox ? 'firefox'
       : isEdge ? 'edge'
         : 'chrome';
