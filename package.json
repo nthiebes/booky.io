@@ -1,6 +1,7 @@
 {
   "name": "booky.io",
-  "version": "2.0.0-beta.15",
+  "version": "2.0.0-beta.16",
+  "extensionVersion": "2.0.0",
   "description": "Online bookmarking service with high focus on performance, mobile support and customizability.",
   "homepage": "https://booky.io",
   "email": "hello@booky.io",
@@ -24,7 +25,11 @@
     "test:cover": "npm run test -- --coverage ",
     "test:watch": "jest --watchAll",
     "qa": "npm-run-all test lint",
-    "storybook": "start-storybook -p 666 -c storybook -s ./_public"
+    "storybook": "start-storybook -p 666 -c storybook -s ./_public",
+    "extension": "cd extension && ./manifest.sh firefox $npm_package_extensionVersion && ./manifest.sh opera $npm_package_extensionVersion && ./manifest.sh chrome $npm_package_extensionVersion",
+    "extension:chrome": "cd extension && ./manifest.sh chrome $npm_package_extensionVersion",
+    "extension:firefox": "cd extension && ./manifest.sh firefox $npm_package_extensionVersion",
+    "extension:opera": "cd extension && ./manifest.sh opera $npm_package_extensionVersion"
   },
   "proxy": "http://localhost:8001/",
   "author": "Nico Thiebes",

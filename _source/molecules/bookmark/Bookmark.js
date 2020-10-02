@@ -27,6 +27,7 @@ class Bookmark extends PureComponent {
     bookmarkEditOnHover: PropTypes.bool.isRequired,
     isDragging: PropTypes.bool.isRequired,
     isMobile: PropTypes.bool.isRequired,
+    isExtension: PropTypes.bool.isRequired,
     enableNotes: PropTypes.bool.isRequired,
     note: PropTypes.string
   }
@@ -95,6 +96,7 @@ class Bookmark extends PureComponent {
       bookmarkEditOnHover,
       isDragging,
       isMobile,
+      isExtension,
       enableNotes,
       note
     } = this.props;
@@ -142,7 +144,7 @@ class Bookmark extends PureComponent {
               <a
                 className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') }
                 href={ url }
-                target={ newtab ? '_blank' : '_self' }
+                target={ (newtab || isExtension) ? '_blank' : '_self' }
                 rel={ newtab ? 'noopener noreferrer' : null }
                 onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.enableEditMode : null }
               >

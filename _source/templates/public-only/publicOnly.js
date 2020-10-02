@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
-  loggedIn: state.user.loggedIn
+  loggedIn: state.user.loggedIn,
+  isExtension: state.extension.active
 });
 
 export const publicOnly = (BaseComponent) => {
-  class Restricted extends Component {
+  class PublicOnly extends Component {
     componentDidMount() {
       this.checkAuthentication(this.props);
     }
@@ -21,11 +22,11 @@ export const publicOnly = (BaseComponent) => {
       }
     }
 
-    checkAuthentication(params) {
-      const { history, loggedIn } = params;
+    checkAuthentication(props) {
+      const { history, loggedIn, isExtension } = props;
 
       if (loggedIn) {
-        history.replace({ pathname: '/' });
+        history.replace({ pathname: isExtension ? '/extension/add' : '/' });
       }
     }
 
@@ -34,13 +35,14 @@ export const publicOnly = (BaseComponent) => {
     }
   }
 
-  Restricted.propTypes = {
+  PublicOnly.propTypes = {
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    loggedIn: PropTypes.bool.isRequired
+    loggedIn: PropTypes.bool.isRequired,
+    isExtension: PropTypes.bool.isRequired
   };
 
   return connect(mapStateToProps)(
-    withRouter(Restricted)
+    withRouter(PublicOnly)
   );
 };

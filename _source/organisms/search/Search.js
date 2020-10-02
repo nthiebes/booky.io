@@ -25,17 +25,19 @@ class Search extends PureComponent {
     pending: PropTypes.bool,
     error: PropTypes.string,
     loadMoreBookmarks: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired
+    changeDashboard: PropTypes.func.isRequired,
+    className: PropTypes.string
   }
 
   getWrapper = (content) => {
-    const { hasSidebar, dashboardsOpen } = this.props;
+    const { hasSidebar, dashboardsOpen, className } = this.props;
 
     return (
       <section className={ classNames(
         'search',
         hasSidebar && 'search--sidebar',
-        hasSidebar && dashboardsOpen && 'search--shifted'
+        hasSidebar && dashboardsOpen && 'search--shifted',
+        className
       ) }>
         { content }
       </section>
