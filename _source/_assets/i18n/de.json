@@ -294,5 +294,7 @@
     "extension.data": "Daten der Webseite",
     "extension.add": "Hinzufügen",
     "extension.open": "Öffnen",
-    "extension.customize": "Anpassen"
+    "extension.customize": "Anpassen",
+    "error.user.name.taken": "Dieser Benutzername ist bereits vergeben.",
+    "customize.language": "Sprache"
 }
