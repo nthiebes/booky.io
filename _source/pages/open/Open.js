@@ -64,7 +64,7 @@ class Open extends Component {
 
     return (
       <Extension>
-        <Section>
+        <Section noMargin>
           <Select
             id="collection"
             label={ intl.formatMessage({ id: 'modal.editCategoryDashboard' }) }

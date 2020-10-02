@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { setLanguage } from '../../_utils/language';
 import Radio from '../../atoms/radio';
@@ -8,7 +9,8 @@ import Icon from '../../atoms/icon';
 export default class LanguageSwitcher extends Component {
   static propTypes = {
     updateIntl: PropTypes.func.isRequired,
-    language: PropTypes.string.isRequired
+    language: PropTypes.string.isRequired,
+    ignoreDarkMode: PropTypes.bool
   }
 
   handleChange = ({ value: language }) => {
@@ -29,12 +31,12 @@ export default class LanguageSwitcher extends Component {
   }
 
   render() {
-    const { language } = this.props;
+    const { language, ignoreDarkMode } = this.props;
 
     return (
       <Fragment>
         <Radio
-          className="language-switcher__item"
+          className={ classNames('language-switcher__item', ignoreDarkMode && 'language-switcher__item--light') }
           id="language-switcher-en"
           name="language"
           value="en"
@@ -45,7 +47,7 @@ export default class LanguageSwitcher extends Component {
           { 'English' }
         </Radio>
         <Radio
-          className="language-switcher__item"
+          className={ classNames('language-switcher__item', ignoreDarkMode && 'language-switcher__item--light') }
           id="language-switcher-de"
           name="language"
           value="de"

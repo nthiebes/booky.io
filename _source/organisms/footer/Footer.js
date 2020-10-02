@@ -116,7 +116,7 @@ class Footer extends PureComponent {
             </ButtonSmallLight>
           </div>
           <div className="footer__languages">
-            <LanguageSwitcher />
+            <LanguageSwitcher ignoreDarkMode />
           </div>
           <nav className="footer__menu">
             <Link className="footer__menu-item" color="light" to="/about">
