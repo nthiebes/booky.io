@@ -138,10 +138,7 @@ class Add extends Component {
       dashboardsPending,
       categories,
       dashboards,
-      activeDashboard,
-      name,
-      url,
-      note
+      activeDashboard
     } = this.props;
     const {
       activeCategory,
@@ -239,7 +236,7 @@ class Add extends Component {
                 <Input
                   id="bookmark-name"
                   name="name"
-                  value={ stateName || name }
+                  value={ stateName }
                   onChange={ this.handleInputChange }
                   required
                   maxLength="200"
@@ -249,7 +246,7 @@ class Add extends Component {
                 <Input
                   id="bookmark-url"
                   name="url"
-                  value={ stateUrl || url }
+                  value={ stateUrl }
                   onChange={ this.handleInputChange }
                   required
                   maxLength="2000"
@@ -262,7 +259,7 @@ class Add extends Component {
                   <Input
                     id="bookmark-note"
                     name="note"
-                    value={ stateNote || note }
+                    value={ stateNote }
                     onChange={ this.handleInputChange }
                     maxLength="100"
                     label={ intl.formatMessage({ id: 'modal.note' }) }
