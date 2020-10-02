@@ -294,5 +294,7 @@
     "extension.data": "Website data",
     "extension.add": "Add",
     "extension.open": "Open",
-    "extension.customize": "Customize"
+    "extension.customize": "Customize",
+    "error.user.name.taken": "This username is already taken.",
+    "customize.language": "Language"
 }
