@@ -39,8 +39,8 @@ manifest="{
   \"author\": \"Nico Thiebes\",
   \"description\": \"__MSG_appDesc__\",
   \"default_locale\": \"en\",
-  \"content_security_policy\": \"default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io\",
-  \"permissions\": [\"activeTab\", \"storage\"],${applications}
+  \"content_security_policy\": \"default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io https://booky.io\",
+  \"permissions\": [\"activeTab\"],${applications}
   \"browser_action\": {
     \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
