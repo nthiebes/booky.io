@@ -40,7 +40,7 @@ manifest="{
   \"description\": \"__MSG_appDesc__\",
   \"default_locale\": \"en\",
   \"content_security_policy\": \"default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io https://booky.io\",
-  \"permissions\": [\"activeTab\", \"http://localhost:3000\", \"https://*.booky.io\", \"https://booky.io\"],${applications}
+  \"permissions\": [\"activeTab\", \"management\", \"http://localhost:3000\", \"https://*.booky.io\", \"https://booky.io\"],${applications}
   \"browser_action\": {
     \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
