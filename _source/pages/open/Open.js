@@ -59,7 +59,7 @@ class Open extends Component {
     let categoryData = categories.find((category) => parseInt(activeCategory, 10) === category.id);
 
     if (!categoryData && categories.length) {
-      categoryData = categories[categories.length - 1];
+      categoryData = categories[0];
     }
 
     return (
