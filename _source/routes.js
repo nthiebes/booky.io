@@ -20,6 +20,7 @@ const Contact = lazy(() => import('./pages/contact'));
 const Forgot = lazy(() => import('./pages/forgot'));
 const Resend = lazy(() => import('./pages/resend'));
 const NotFound = lazy(() => import('./pages/not-found'));
+const Next = lazy(() => import('./pages/next'));
 const Add = lazy(() => import('./pages/add'));
 const Open = lazy(() => import('./pages/open'));
 const Customize = lazy(() => import('./pages/customize'));
@@ -55,6 +56,7 @@ class Routes extends Component {
           <Route path="/contact" component={ Contact } />
           <Route path="/forgot" component={ Forgot } />
           <Route path="/resend" component={ Resend } />
+          <Route path="/next" component={ Next } />
           <Route path="/activate/:token" component={ publicOnly(Login) } />
           <Route path="/recovery/:action/:params" component={ publicOnly(Login) } />
           <Route path="/extension/login" component={ publicOnly(Login) } />
