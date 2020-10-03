@@ -1,19 +1,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import React, { PureComponent } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { ErrorMessage } from '../../atoms/messages';
 import Icon from '../../atoms/icon';
 import javascript from './javascript';
 
 class Bookmarklet extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired
-  }
-
   state = {
     hasClicked: false
   }
@@ -28,10 +23,9 @@ class Bookmarklet extends PureComponent {
 
   render() {
     const { hasClicked } = this.state;
-    const { intl } = this.props;
 
     return (
-      <Fragment>
+      <>
         <a
           className="bookmarklet button button--large button--large-primary button--solid"
           onClick={ this.handleBookmarkletClick }
@@ -53,14 +47,14 @@ class Bookmarklet extends PureComponent {
         </a>
         { hasClicked && (
           <ErrorMessage
-            className="bookmarklet__error"
-            message={ intl.formatMessage({ id: 'bookmarklet.error' }) }
+            message="bookmarklet.error"
             hasIcon
+            noPadding
           />
         ) }
-      </Fragment>
+      </>
     );
   }
 }
 
-export default injectIntl(Bookmarklet);
+export default Bookmarklet;
