@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
-// import { DiscussionEmbed } from 'disqus-react';
+import { DiscussionEmbed } from 'disqus-react';
 
 import Page from '../../templates/page';
 import { H1, H2 } from '../../atoms/headline';
@@ -11,11 +11,11 @@ import Illustration from '../../atoms/illustration';
 
 export default class Next extends PureComponent {
   render() {
-    // const disqusConfig = {
-    //   url: 'https://booky.io/next',
-    //   identifier: 'next',
-    //   title: 'booky.io | Next'
-    // };
+    const disqusConfig = {
+      url: 'https://booky.io/next',
+      identifier: 'next',
+      title: 'booky.io | Next'
+    };
 
     return (
       <Page>
@@ -52,7 +52,12 @@ export default class Next extends PureComponent {
             name="next"
             className="next__illustration booky--hide-mobile-tablet"
           />
-          {/* <DiscussionEmbed shortname="quickbm" config={ disqusConfig } /> */}
+        </Section>
+        <Section>
+          <H2 nomargin>
+            <FormattedMessage id="help.comments" />
+          </H2>
+          <DiscussionEmbed shortname="quickbm" config={ disqusConfig } />
         </Section>
       </Page>
     );
