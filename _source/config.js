@@ -5,21 +5,23 @@ const isOpera =
   Boolean(window.opera) ||
   navigator.userAgent.indexOf(' OPR/') >= 0;
 const isFirefox = typeof InstallTrigger !== 'undefined';
-const isChrome = Boolean(window.chrome) && (Boolean(window.chrome.webstore) || Boolean(window.chrome.runtime));
+const isChrome = Boolean(window.chrome);
 const isEdge = isChrome && navigator.userAgent.indexOf('Edg') !== -1;
 const isDevEnvironment = process.env.NODE_ENV === 'development';
 const browser = isOpera ? 'opera'
-  : isChrome ? 'chrome'
-    : isFirefox ? 'firefox'
-      : isEdge ? 'edge'
-        : 'chrome';
+  : isEdge ? 'edge'
+    : isChrome ? 'chrome'
+      : isFirefox ? 'firefox'
+        : null;
 const extensionIds = {
   chromeDev: 'chrome-extension://cdgbikmincdhncjonjcldflnkdbmbgco',
   chromeProd: 'chrome-extension://pmcpkkipiedakcaolhnbijibndfemckf',
   firefoxDev: 'moz-extension://6b1713db-fd5a-1344-bc24-18c2584c6ca4',
   firefoxProd: 'moz-extension://6b1713db-fd5a-1344-bc24-18c2584c6ca4',
   operaDev: 'chrome-extension://cdgbikmincdhncjonjcldflnkdbmbgco',
-  operaProd: 'chrome-extension://iafdlnlobhkhinaaipdlmopphkeejjhc'
+  operaProd: 'chrome-extension://iafdlnlobhkhinaaipdlmopphkeejjhc',
+  edgeDev: 'chrome-extension://dohbhflggplgdmgbegknigcnffmggloh',
+  edgeProd: 'chrome-extension://iafdlnlobhkhinaaipdlmopphkeejjhc'
 };
 
 export const config = {
