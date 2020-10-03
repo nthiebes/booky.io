@@ -21,7 +21,7 @@ const extensionIds = {
   operaDev: 'chrome-extension://cdgbikmincdhncjonjcldflnkdbmbgco',
   operaProd: 'chrome-extension://iafdlnlobhkhinaaipdlmopphkeejjhc',
   edgeDev: 'chrome-extension://dohbhflggplgdmgbegknigcnffmggloh',
-  edgeProd: 'chrome-extension://iafdlnlobhkhinaaipdlmopphkeejjhc'
+  edgeProd: 'chrome-extension://gnhlkmoepijbfnmblekhhdgkgdahdjek'
 };
 
 export const config = {
