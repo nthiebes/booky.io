@@ -7,6 +7,7 @@ import { H1, H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
+import Illustration from '../../atoms/illustration';
 
 export default class Next extends PureComponent {
   render() {
@@ -18,33 +19,39 @@ export default class Next extends PureComponent {
 
     return (
       <Page>
-        <Section>
-          <H1>
-            <FormattedMessage id="next.title" />
-          </H1>
-          <P>
-            <FormattedMessage id="next.text" />
-          </P>
-          <div className="next__feature">
-            <H2>
-              <FormattedMessage id="next.current" />
-            </H2>
-            <Expandable headline={ <FormattedMessage id="next.current.title" /> }>
-              <P noPadding>
-                <FormattedMessage id="next.current.more" />
-              </P>
-            </Expandable>
-          </div>
-          <div className="next__feature">
-            <H2>
-              <FormattedMessage id="next.upcoming" />
-            </H2>
-            <Expandable headline={ <FormattedMessage id="next.upcoming.title" /> }>
-              <P noPadding>
-                <FormattedMessage id="next.upcoming.more" />
-              </P>
-            </Expandable>
-          </div>
+        <Section className="next">
+          <span>
+            <H1>
+              <FormattedMessage id="next.title" />
+            </H1>
+            <P>
+              <FormattedMessage id="next.text" />
+            </P>
+            <div className="next__feature">
+              <H2>
+                <FormattedMessage id="next.current" />
+              </H2>
+              <Expandable headline={ <FormattedMessage id="next.current.title" /> }>
+                <P noPadding>
+                  <FormattedMessage id="next.current.more" />
+                </P>
+              </Expandable>
+            </div>
+            <div className="next__feature">
+              <H2>
+                <FormattedMessage id="next.upcoming" />
+              </H2>
+              <Expandable headline={ <FormattedMessage id="next.upcoming.title" /> }>
+                <P noPadding>
+                  <FormattedMessage id="next.upcoming.more" />
+                </P>
+              </Expandable>
+            </div>
+          </span>
+          <Illustration
+            name="next"
+            className="next__illustration booky--hide-mobile-tablet"
+          />
           {/* <DiscussionEmbed shortname="quickbm" config={ disqusConfig } /> */}
         </Section>
       </Page>
