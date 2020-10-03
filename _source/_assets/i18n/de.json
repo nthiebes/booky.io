@@ -296,5 +296,14 @@
     "extension.open": "Öffnen",
     "extension.customize": "Anpassen",
     "error.user.name.taken": "Dieser Benutzername ist bereits vergeben.",
-    "customize.language": "Sprache"
+    "customize.language": "Sprache",
+    "next.title": "Kommende Funktionen",
+    "next.text": "Schau dir an, woran wir aktuell arbeiten und welche Funktion als nächstes verfügbar sein wird.",
+    "next.current": "Daran arbeiten wir aktuell",
+    "next.current.title": "Die neue Version von booky fertigstellen",
+    "next.current.more": "Es fehlt nicht mehr viel! Sobald die neue Version von booky verfügbar ist, können wir wieder an neuen Funktionen arbeiten. Eine Suche, ein dunkles Design und weitere neue Individualisierungen sind bereits verfügbar.",
+    "next.upcoming": "Diese Funktion kommt danach",
+    "next.upcoming.title": "Abstimmungssystem",
+    "next.upcoming.more": "Du wirst auf dieser Seite für die nächste Funktion abstimmen können. Nach jeder neuen Funktion ändern sich die Optionen und du kannst erneut abstimmen.",
+    "menu.next": "Kommend"
 }
