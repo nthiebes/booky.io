@@ -296,5 +296,14 @@
     "extension.open": "Open",
     "extension.customize": "Customize",
     "error.user.name.taken": "This username is already taken.",
-    "customize.language": "Language"
+    "customize.language": "Language",
+    "next.title": "Upcoming features",
+    "next.text": "Take a look at what we're currently working on and what feature will be available next.",
+    "next.current": "This is what we are currently working on",
+    "next.current.title": "Finish the new version of booky",
+    "next.current.more": "Not much is missing! As soon as the new version of booky is available, we can again work on new features. A search, a dark mode, and other new customizations are already available.",
+    "next.upcoming": "This feature comes next",
+    "next.upcoming.title": "Voting system",
+    "next.upcoming.more": "You will be able to vote for the next feature on this page. After each new feature, the options change, and you can vote again.",
+    "menu.next": "Next"
 }
