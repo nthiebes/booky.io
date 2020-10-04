@@ -36,7 +36,7 @@ class Bookmarklet extends PureComponent {
           } }
         >
           <Icon
-            icon="star"
+            icon="drag"
             color="light"
             className="button__icon"
             ignoreDarkMode
