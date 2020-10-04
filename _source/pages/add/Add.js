@@ -34,9 +34,9 @@ class Add extends Component {
     activeCategory: localStorage.getItem('activeCategory') || '',
     pending: false,
     error: null,
-    name: this.props.name,
-    url: this.props.url,
-    note: this.props.note
+    name: this.props.name || new URL(window.location.href).searchParams.get('name') || '',
+    url: this.props.url || new URL(window.location.href).searchParams.get('url') || '',
+    note: this.props.note || new URL(window.location.href).searchParams.get('note') || ''
   }
 
   componentDidMount() {
