@@ -45,7 +45,7 @@ export default {
     open: false
   },
   toolbar: {
-    currentlySticky: true
+    currentlySticky: false
   },
   modal: {
     modal: null,

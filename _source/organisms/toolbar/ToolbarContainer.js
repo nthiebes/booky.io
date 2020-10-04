@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import Component from './Toolbar';
-import { updateCurrentlySticky } from '../../_state/toolbar/actions';
 import { openModal } from '../../_state/modal/actions';
 
 export const mapStateToProps = (state) => ({
@@ -16,7 +15,6 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = {
-  updateCurrentlySticky,
   openModal
 };
 
