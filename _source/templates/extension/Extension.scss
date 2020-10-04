@@ -2,7 +2,9 @@
   background-color: $color-background--white;
   position: relative;
   padding-top: 70px;
-  height: 100vh;
+  min-height: 100vh;
+  max-width: 400px;
+  margin: 0 auto;
 
   .icon {
     &:hover {
@@ -39,6 +41,9 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   padding-top: calc(0.5rem - 6px);
   height: 70px;
+  max-width: 400px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .extension__nav {

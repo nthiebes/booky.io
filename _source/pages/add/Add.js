@@ -168,6 +168,7 @@ class Add extends Component {
               type="submit"
               pending={ pending }
               disabled={ pending }
+              icon="add-link"
             >
               <FormattedMessage id="extension.addButton" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonLargePrimary>

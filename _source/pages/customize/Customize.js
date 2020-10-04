@@ -11,7 +11,7 @@ export default class Customize extends Component {
   render() {
     return (
       <Extension>
-        <Section noMargin>
+        <Section noMargin className="customize--extension">
           <CustomizeComponent />
           <H3>
             <FormattedMessage id="customize.language" />
