@@ -22,7 +22,6 @@ class Sidebar extends PureComponent {
     className: PropTypes.string,
     hasSidebar: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    openModal: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     color: PropTypes.number.isRequired
@@ -34,13 +33,6 @@ class Sidebar extends PureComponent {
 
   state = {
     logoutPending: false
-  }
-
-  onCustomizeClick = () => {
-    const { openModal, closeSidebar } = this.props;
-
-    openModal('Customize');
-    closeSidebar();
   }
 
   handleLogout = () => {
