@@ -313,5 +313,6 @@
     "help.bookmarklet.text2": "Simply drag the following link into the bookmarks bar of your browser:",
     "bookmarklet.mobile.code": "Copy this text",
     "help.categories.question4": "How do I rearrange categories?",
-    "help.categories.answer4": "Edit the collection whose categories you want to rearrange. In the new window, you can move your categories via drag & drop."
+    "help.categories.answer4": "Edit the collection whose categories you want to rearrange. In the new window, you can move your categories via drag & drop.",
+    "help.bookmarklet": "Bookmarklet"
 }
