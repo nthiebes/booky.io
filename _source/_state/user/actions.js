@@ -201,7 +201,7 @@ export const deleteAccount = () => (() => {
 
 export const importBookmarks = ({ params, onSuccess, onError }) => (() => {
   fetcher({
-    url: '/user/import',
+    url: '/bookmarks/import',
     method: 'POST',
     params,
     onSuccess: (data) => {

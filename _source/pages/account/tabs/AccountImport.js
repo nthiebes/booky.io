@@ -71,7 +71,7 @@ class AccountImport extends PureComponent {
       importBookmarks({
         params: {
           importAsCollections,
-          file: html
+          bookmarks: html
         },
         onSuccess: (bookmarksCount) => {
           this.setState({
