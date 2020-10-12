@@ -18,6 +18,11 @@ then
   cp -r _source/ _public/opera/tmp
 fi
 
+if [ "$browser" == "edge" ]
+then
+  cp -r _source/ _public/edge/tmp
+fi
+
 
 applications=""
 
@@ -90,5 +95,14 @@ then
   echo "$manifest" > "_source/manifest.json"
   cd _public/opera/tmp
   zip -r ../opera_$version.zip ./*
+  rm -r ../tmp
+fi
+
+if [ "$browser" == "edge" ]
+then
+  echo "$manifest" > "_public/edge/tmp/manifest.json"
+  echo "$manifest" > "_source/manifest.json"
+  cd _public/edge/tmp
+  zip -r ../edge_$version.zip ./*
   rm -r ../tmp
 fi

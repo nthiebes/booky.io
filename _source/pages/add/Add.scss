@@ -32,6 +32,9 @@
   }
 
   &:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+
     /* stylelint-disable */
     .label:first-of-type {
       margin-top: 0;

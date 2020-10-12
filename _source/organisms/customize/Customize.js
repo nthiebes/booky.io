@@ -28,7 +28,7 @@ class Customize extends PureComponent {
     bookmarkEditOnHover: PropTypes.bool.isRequired,
     minimalBookmarkButton: PropTypes.bool.isRequired,
     enableNotes: PropTypes.bool.isRequired,
-    isExtension: PropTypes.bool.isExtension
+    isExtension: PropTypes.bool.isRequired
   }
 
   state = {

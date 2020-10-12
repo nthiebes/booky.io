@@ -43,7 +43,7 @@
 </head>
 
 <body>
-  <header class="header header--color0 header--sticky" id="loading__header">
+  <header class="header header--color0 header--sticky booky--hide" id="loading__header">
     <div class="header__wrapper">
       <span class="skeleton loading__logo">
         &zwnj;
@@ -75,6 +75,14 @@
       </path>
     </svg>
   </span>
+  <script>
+    var loadingHeader = document.getElementById('loading__header');
+    var isExtension = Boolean(window.location.pathname.match(/extension/gi));
+
+    if (!isExtension) {
+      loadingHeader.classList.remove('booky--hide');
+    }
+  </script>
   <noscript>
     <h1 class="headline headline--h1">Please activate JavaScript</h1>
     <p class="paragraph">Oops! Please activate JavaScript to use booky. We offer a variety of features that can only be

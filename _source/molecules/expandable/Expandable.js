@@ -32,5 +32,5 @@ Expandable.propTypes = {
 
 Expandable.defaultProps = {
   open: false,
-  notBold: PropTypes.bool
+  notBold: false
 };

@@ -171,7 +171,7 @@ class Login extends Component {
     } = this.state;
 
     return (
-      <TemplateComponent>
+      <TemplateComponent className={ isExtension ? 'login--extension' : '' }>
         <Section compact>
           { (token || action) && actionPending && (
             <Icon icon="spinner" className="login__spinner" />

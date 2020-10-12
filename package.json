@@ -1,6 +1,6 @@
 {
   "name": "booky.io",
-  "version": "2.0.0-beta.16",
+  "version": "2.0.0-beta.17",
   "extensionVersion": "2.0.4",
   "description": "Online bookmarking service with high focus on performance, mobile support and customizability.",
   "homepage": "https://booky.io",
@@ -26,10 +26,11 @@
     "test:watch": "jest --watchAll",
     "qa": "npm-run-all test lint",
     "storybook": "start-storybook -p 666 -c storybook -s ./_public",
-    "extension": "cd extension && ./manifest.sh firefox $npm_package_extensionVersion && ./manifest.sh opera $npm_package_extensionVersion && ./manifest.sh chrome $npm_package_extensionVersion",
+    "extension": "cd extension && ./manifest.sh firefox $npm_package_extensionVersion && ./manifest.sh opera $npm_package_extensionVersion && ./manifest.sh edge $npm_package_extensionVersion && ./manifest.sh chrome $npm_package_extensionVersion",
     "extension:chrome": "cd extension && ./manifest.sh chrome $npm_package_extensionVersion",
     "extension:firefox": "cd extension && ./manifest.sh firefox $npm_package_extensionVersion",
-    "extension:opera": "cd extension && ./manifest.sh opera $npm_package_extensionVersion"
+    "extension:opera": "cd extension && ./manifest.sh opera $npm_package_extensionVersion",
+    "extension:edge": "cd extension && ./manifest.sh edge $npm_package_extensionVersion"
   },
   "proxy": "http://localhost:8001/",
   "author": "Nico Thiebes",
@@ -50,6 +51,7 @@
     "react": "16.13.1",
     "react-beautiful-dnd": "13.0.0",
     "react-dom": "16.13.1",
+    "react-intersection-observer": "8.29.0",
     "react-intl": "5.8.1",
     "react-intl-redux": "2.2.0",
     "react-redux": "7.2.1",
