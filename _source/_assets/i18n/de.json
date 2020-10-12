@@ -177,9 +177,8 @@
     "button.okay": "Okay!",
     "button.no": "Nein, danke.",
     "bookmarklet.error": "Um unser Bookmarklet zu nutzen, ziehe es in die Lesezeichenleiste deines Browsers.",
-    "bookmarklet.text": "Zu booky <b>hinzufügen</b>",
-    "help.bookmarklet": "Bookmarklet",
-    "help.bookmarklet.text": "Du kannst unser Bookmarklet nutzen um schnell eine Webseite bei booky zu speichern. Ziehe dafür einfach den nachfolgenden Link in die Lesezeichenleiste deines Browsers:",
+    "bookmarklet.text": "Bei booky <b>speichern</b>",
+    "help.bookmarklet.text1": "Nutze das Bookmarklet, um schnell eine Webseite bei booky zu speichern.",
     "help.extensions": "Browser-Erweiterungen",
     "help.beta": "Beta-Phase",
     "help.beta.question1": "Wo ist die Funktion X/Y/Z und wann ist die Beta-Phase abgeschlossen?",
@@ -305,5 +304,14 @@
     "next.upcoming": "Diese Funktion kommt danach",
     "next.upcoming.title": "Abstimmungssystem",
     "next.upcoming.more": "Du wirst auf dieser Seite für die nächste Funktion abstimmen können. Nach jeder neuen Funktion ändern sich die Optionen und du kannst erneut abstimmen.",
-    "menu.next": "Kommend"
+    "menu.next": "Kommend",
+    "help.bookmarklet.question": "Wie nutze ich das Bookmarklet?",
+    "bookmarklet.mobile1": "Speichere diese Seite als Lesezeichen.",
+    "bookmarklet.mobile2": "Kopiere den nachfolgende Zeile:",
+    "bookmarklet.mobile3": "Editiere die Adresse deines soeben erstellten Lesezeichens. Ersetze die Adresse mit der Zeile, die du gerade kopiert hast.",
+    "bookmarklet.mobile4": "Das war es schon! Öffne einfach dein neues Lesezeichen auf der Seite, die du bei booky speichern möchtest.",
+    "help.bookmarklet.text2": "Ziehe dafür einfach den nachfolgenden Link in die Lesezeichenleiste deines Browsers:",
+    "bookmarklet.mobile.code": "Kopiere diesen Text",
+    "help.categories.question4": "Wie ordne ich Kategorien neu an?",
+    "help.categories.answer4": "Editiere die Sammlung, deren Kategorien du neu anordnen möchtest. In dem neuen Fenster kannst du deine Kategorien via Drag & Drop verschieben."
 }
