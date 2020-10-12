@@ -178,8 +178,7 @@
     "button.no": "No, thanks.",
     "bookmarklet.error": "To use our bookmarklet, drag it into the bookmarks bar of your browser.",
     "bookmarklet.text": "<b>Add</b> to booky",
-    "help.bookmarklet": "Bookmarklet",
-    "help.bookmarklet.text": "You can use our bookmarklet to quickly add a website to booky. Simply drag the following link into the bookmarks bar of your browser:",
+    "help.bookmarklet.text1": "You can use the bookmarklet to quickly add a website to booky.",
     "help.extensions": "Browser extensions",
     "help.beta": "Beta phase",
     "help.beta.question1": "Where is feature X/Y/Z and when is the beta phase completed?",
@@ -305,5 +304,14 @@
     "next.upcoming": "This feature comes next",
     "next.upcoming.title": "Voting system",
     "next.upcoming.more": "You will be able to vote for the next feature on this page. After each new feature, the options change, and you can vote again.",
-    "menu.next": "Next"
+    "menu.next": "Next",
+    "help.bookmarklet.question": "How do I use the bookmarklet?",
+    "bookmarklet.mobile1": "Save this page as a bookmark.",
+    "bookmarklet.mobile2": "Copy the following line:",
+    "bookmarklet.mobile3": "Edit the address of the bookmark you just created. Replace the address with the line you just copied.",
+    "bookmarklet.mobile4": "That's it! Simply open your new bookmark on the page you want to add to booky.",
+    "help.bookmarklet.text2": "Simply drag the following link into the bookmarks bar of your browser:",
+    "bookmarklet.mobile.code": "Copy this text",
+    "help.categories.question4": "How do I rearrange categories?",
+    "help.categories.answer4": "Edit the collection whose categories you want to rearrange. In the new window, you can move your categories via drag & drop."
 }
