@@ -313,6 +313,6 @@
     "help.bookmarklet.text2": "Ziehe dafür einfach den nachfolgenden Link in die Lesezeichenleiste deines Browsers:",
     "bookmarklet.mobile.code": "Kopiere diesen Text",
     "help.categories.question4": "Wie ordne ich Kategorien neu an?",
-    "help.categories.answer4": "Editiere die Sammlung, deren Kategorien du neu anordnen möchtest. In dem neuen Fenster kannst du deine Kategorien via Drag & Drop verschieben.",
+    "help.categories.answer4": "Editiere die Sammlung, deren Kategorien du neu anordnen möchtest. In dem neuen Fenster kannst du deine Kategorien via Ziehen und Ablegen verschieben.",
     "help.bookmarklet": "Bookmarklet"
 }
