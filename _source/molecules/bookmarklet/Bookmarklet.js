@@ -27,7 +27,7 @@ class Bookmarklet extends PureComponent {
     return (
       <>
         <a
-          className="bookmarklet button button--large button--large-primary button--solid"
+          className="bookmarklet button button--large button--large-primary button--solid booky--hide-mobile-tablet"
           onClick={ this.handleBookmarkletClick }
           ref={ (node) => {
             if (node) {

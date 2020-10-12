@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-function */
 /* eslint-disable max-lines */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -11,9 +12,13 @@ import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Section from '../../molecules/section';
+import Bookmarklet from '../../molecules/bookmarklet';
+import javascript from '../../molecules/bookmarklet/javascript';
 import Link from '../../atoms/link';
 import Expandable from '../../molecules/expandable';
 import Illustration from '../../atoms/illustration';
+import Input from '../../atoms/input';
+import { List, ListItem } from '../../atoms/list';
 
 import './Help.scss';
 
@@ -169,6 +174,11 @@ class Help extends Component {
                 <FormattedMessage id="category.expand" />
               </P>
             </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.categories.question4" /> } className="help-container__item">
+              <P>
+                <FormattedMessage id="help.categories.answer4" />
+              </P>
+            </Expandable>
           </div>
 
           <H2 id="collections">
@@ -213,6 +223,41 @@ class Help extends Component {
             </Expandable>
           </div>
 
+          <H2 id="bookmarklet">
+            <FormattedMessage id="help.bookmarklet" />
+          </H2>
+          <div className="help-container">
+            <Expandable headline={ <FormattedMessage id="help.bookmarklet.question" /> } className="help-container__item">
+              <P>
+                <FormattedMessage id="help.bookmarklet.text1" />
+              </P>
+              <P className="booky--hide-mobile-tablet">
+                <FormattedMessage id="help.bookmarklet.text2" />
+              </P>
+              <Bookmarklet />
+              <List className="booky--hide-desktop">
+                <ListItem>
+                  <FormattedMessage id="bookmarklet.mobile1" />
+                </ListItem>
+                <ListItem>
+                  <FormattedMessage id="bookmarklet.mobile2" />
+                  <Input
+                    className="help__input"
+                    value={ javascript }
+                    onChange={ () => {} }
+                    ariaLabel={ intl.formatMessage({ id: 'bookmarklet.mobile.code' }) }
+                  />
+                </ListItem>
+                <ListItem>
+                  <FormattedMessage id="bookmarklet.mobile3" />
+                </ListItem>
+              </List>
+              <P className="booky--hide-desktop">
+                <FormattedMessage id="bookmarklet.mobile4" />
+              </P>
+            </Expandable>
+          </div>
+
           <H2 id="account">
             <FormattedMessage id="help.account" />
           </H2>
@@ -252,6 +297,7 @@ class Help extends Component {
               </P>
             </Expandable>
           </div>
+          
 
           {/* <H2>
             <FormattedMessage id="help.extensions" />
@@ -260,38 +306,13 @@ class Help extends Component {
             <FormattedMessage id="help.extensions.text" />
           </P>
           <H2>
-            <FormattedMessage id="help.bookmarklet" />
-          </H2>
-          <P>
-            <FormattedMessage id="help.bookmarklet.text" />
-          </P>
-          <Bookmarklet />
-          <H2>
             <FormattedMessage id="help.customizations" />
           </H2>
           <P>
             <FormattedMessage id="help.customizations.text" />
           </P>
 
-          <H2>
-            <FormattedMessage id="help.collections" />
-          </H2>
-          <P />
-
-          <H2>
-            <FormattedMessage id="help.categories" />
-          </H2>
-          <P />
-
-          <H2>
-            <FormattedMessage id="help.bookmarks" />
-          </H2>
-          <P />
-
-          <H2>
-            <FormattedMessage id="help.account" />
-          </H2>
-          <P /> */}
+           */}
 
           <H2 id="comments">
             <FormattedMessage id="help.comments" />
