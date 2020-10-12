@@ -107,6 +107,7 @@ class Home extends Component {
           <nav className="home__extension">
             <Link
               href="https://chrome.google.com/webstore/detail/bookyio-extension/pmcpkkipiedakcaolhnbijibndfemckf"
+              target="_blank"
               color="light"
               className="home__extension-browser"
             >
@@ -120,7 +121,7 @@ class Home extends Component {
               />
               { 'Chrome' }
             </Link>
-            <Link to="/about" color="light" className="home__extension-browser">
+            <Link to="/about" target="_blank" color="light" className="home__extension-browser">
               <img
                 width="75"
                 height="75"
@@ -133,6 +134,7 @@ class Home extends Component {
             </Link>
             <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
+              target="_blank"
               color="light"
               className="home__extension-browser"
             >
@@ -148,6 +150,7 @@ class Home extends Component {
             </Link>
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
+              target="_blank"
               color="light"
               className="home__extension-browser"
             >
