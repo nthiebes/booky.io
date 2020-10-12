@@ -112,7 +112,7 @@ class About extends Component {
             <FormattedMessage id="Dies das lorem ipsum." />
           </P>
         </Section>
-        <Section color="dark" contentClassName="home__bookmarklet">
+        <Section color="dark" contentClassName="about__availability">
           <Illustration
             className="home__plant booky--hide-mobile"
             name="plant"
@@ -122,17 +122,17 @@ class About extends Component {
             name="trees"
           />
           <H2 style="h1" color="light" noMargin centered>
-            <FormattedMessage id="Other ways to use booky" />
+            <FormattedMessage id="Booky is available on many platforms." />
           </H2>
-          <H3 style="h2" color="light" noMargin centered>
-            <FormattedMessage id="Browser extension, bookmarklet, Mac App, Windows app, and mobile web-app." />
+          <H3 style="h2" color="light" noMargin centered className="about__availability-title">
+            <FormattedMessage id="As browser extension, bookmarklet, Mac App, Windows App, and mobile web app." />
           </H3>
-          <nav className="home__extension">
+          <nav className="about__platforms">
             <Link
               href="https://chrome.google.com/webstore/detail/bookyio-extension/pmcpkkipiedakcaolhnbijibndfemckf"
               target="_blank"
               color="light"
-              className="home__extension-browser"
+              className="about__platforms-platform"
             >
               <img
                 width="75"
@@ -144,7 +144,7 @@ class About extends Component {
               />
               { 'Chrome extension' }
             </Link>
-            <Link to="/about" target="_blank" color="light" className="home__extension-browser">
+            <Link to="#" target="_blank" color="light" className="about__platforms-platform">
               <img
                 width="75"
                 height="75"
@@ -159,7 +159,7 @@ class About extends Component {
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
               target="_blank"
               color="light"
-              className="home__extension-browser"
+              className="about__platforms-platform"
             >
               <img
                 width="75"
@@ -175,7 +175,7 @@ class About extends Component {
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
               target="_blank"
               color="light"
-              className="home__extension-browser"
+              className="about__platforms-platform"
             >
               <img
                 width="75"
@@ -188,26 +188,25 @@ class About extends Component {
               { 'Edge extension' }
             </Link>
             <Link
-              href=""
-              target="_blank"
+              to="/help#bookmarklet"
               color="light"
-              className="home__extension-browser"
+              className="about__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/logos/windows.svg"
+                src="../../_assets/icons/android-chrome-192x192.png"
                 loading="lazy"
               />
-              { 'Windows App' }
+              { 'Bookmarklet' }
             </Link>
             <Link
               href="../../_assets/downloads/booky.zip"
               target="_blank"
               color="light"
-              className="home__extension-browser"
+              className="about__platforms-platform"
             >
               <img
                 width="75"
@@ -220,20 +219,20 @@ class About extends Component {
               { 'Mac App' }
             </Link>
             <Link
-              href=""
+              href="https://www.groovypost.com/howto/using-web-apps-new-chromium-edge-windows-10/"
               target="_blank"
               color="light"
-              className="home__extension-browser"
+              className="about__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/icons/android-chrome-192x192.png"
+                src="../../_assets/logos/windows.svg"
                 loading="lazy"
               />
-              { 'Bookmarklet' }
+              { 'Windows App' }
             </Link>
           </nav>
         </Section>
@@ -255,7 +254,7 @@ class About extends Component {
               </div>
             </div>
             <div className="about__member">
-              <img src="_assets/rocky.jpg" width="100" height="100" className="about__member-image" alt="" aria-hidden="true" loading="lazy" />
+              <img src="_assets/sheldon.jpg" width="100" height="100" className="about__member-image" alt="" aria-hidden="true" loading="lazy" />
               <div>
                 <H4 className="about__member-header">
                   { 'Sheldon aka "Mariano"' }
@@ -290,7 +289,7 @@ class About extends Component {
 
             // eslint-disable-next-line no-lone-blocks
             return (
-              <Expandable key={ id } headline={
+              <Expandable className="about__updates" key={ id } headline={
                 <>
                   <span>{ `${name} -` }</span>
                   <time className="about__date">{ format(new Date(published_at), 'MM/dd/yyyy') }</time>

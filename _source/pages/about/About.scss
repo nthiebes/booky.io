@@ -11,11 +11,65 @@
   margin-left: 4px;
 }
 
-.about__members {
+.about__availability {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+
+  @include mobile-tablet {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @include desktop {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.about__availability-title {
+  @include desktop {
+    max-width: 80%;
+  }
+}
+
+.about__platforms {
+  display: flex;
+  margin-top: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+
+  @include tablet {
+    max-width: 80%;
+  }
+
+  @include desktop {
+    margin-top: 2rem;
+    max-width: 60%;
+  }
+}
+
+.about__platforms-platform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.about__members {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   margin-top: 1rem;
+
+  @include tablet-desktop {
+    justify-content: center;
+  }
+
+  @include desktop {
+    flex-wrap: nowrap;
+  }
 }
 
 .about__member {
@@ -25,17 +79,28 @@
   background-color: $color-background--ligth;
   border-radius: 5px;
   margin: 0 1rem 2rem 1rem;
+  width: 23rem;
 
   &:last-child {
-    // margin: 0;
+    margin-bottom: 0;
   }
 
   @include mobile {
-    // min-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   @include desktop {
     padding: 2rem 1rem 2.5rem;
+    margin-bottom: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
@@ -48,6 +113,8 @@
 
 .about__member-header {
   font-size: $font-size--small;
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
 }
 
@@ -58,6 +125,9 @@
 
 .about__member-link {
   font-size: $font-size--small;
-  white-space: nowrap;
-  margin-left: 0.5rem;
+  display: block;
+}
+
+.about__updates {
+  margin-top: 1rem;
 }
