@@ -1,10 +1,11 @@
+/* eslint-disable max-lines */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { format } from 'date-fns';
 
 import Page from '../../templates/page';
-import { H2, H3, Display } from '../../atoms/headline';
+import { H2, H3, H4, Display } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import { List, ListItem } from '../../atoms/list';
@@ -13,8 +14,6 @@ import Illustration from '../../atoms/illustration';
 import Features from '../../molecules/features';
 import Feature from '../../molecules/feature';
 import Expandable from '../../molecules/expandable';
-
-import './About.scss';
 
 class About extends Component {
   static propTypes = {
@@ -140,10 +139,10 @@ class About extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/chrome.svg"
+                src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              { 'Chrome' }
+              { 'Chrome extension' }
             </Link>
             <Link to="/about" target="_blank" color="light" className="home__extension-browser">
               <img
@@ -151,10 +150,10 @@ class About extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/firefox.svg"
+                src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              { 'Firefox' }
+              { 'Firefox extension' }
             </Link>
             <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
@@ -167,10 +166,10 @@ class About extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/opera.svg"
+                src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              { 'Opera' }
+              { 'Opera extension' }
             </Link>
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
@@ -183,10 +182,10 @@ class About extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/edge.svg"
+                src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              { 'Edge' }
+              { 'Edge extension' }
             </Link>
             <Link
               href=""
@@ -199,13 +198,13 @@ class About extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/edge.svg"
+                src="../../_assets/logos/windows.svg"
                 loading="lazy"
               />
-              { 'Bookmarklet' }
+              { 'Windows App' }
             </Link>
             <Link
-              href=""
+              href="../../_assets/downloads/booky.zip"
               target="_blank"
               color="light"
               className="home__extension-browser"
@@ -215,7 +214,7 @@ class About extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/edge.svg"
+                src="../../_assets/logos/apple.svg"
                 loading="lazy"
               />
               { 'Mac App' }
@@ -231,10 +230,10 @@ class About extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/edge.svg"
+                src="../../_assets/icons/android-chrome-192x192.png"
                 loading="lazy"
               />
-              { 'Windows App' }
+              { 'Bookmarklet' }
             </Link>
           </nav>
         </Section>
@@ -242,9 +241,44 @@ class About extends Component {
           <H2 style="h1">
             <FormattedMessage id="Meet the team" />
           </H2>
-          <P>
-            <FormattedMessage id="Well, their cats :-)." />
-          </P>
+          <div className="about__members">
+            <div className="about__member">
+              <img src="_assets/rocky.jpg" width="100" height="100" className="about__member-image" alt="" aria-hidden="true" loading="lazy" />
+              <div>
+                <H4 className="about__member-header">
+                  { 'Rocky aka "Nico"' }
+                  <Link href="https://twitter.com/_gscheid" target="_blank" className="about__member-link">
+                    { '@_gscheid' }
+                  </Link>
+                </H4>
+                <P className="about__member-text">{ 'Founder, Frontend developer' }</P>
+              </div>
+            </div>
+            <div className="about__member">
+              <img src="_assets/rocky.jpg" width="100" height="100" className="about__member-image" alt="" aria-hidden="true" loading="lazy" />
+              <div>
+                <H4 className="about__member-header">
+                  { 'Sheldon aka "Mariano"' }
+                  <Link href="https://github.com/mcustiel" target="_blank" className="about__member-link">
+                    { 'mcustiel' }
+                  </Link>
+                </H4>
+                <P className="about__member-text">{ 'Backend developer' }</P>
+              </div>
+            </div>
+            <div className="about__member">
+              <img src="_assets/bella.jpg" width="100" height="100" className="about__member-image" alt="" aria-hidden="true" loading="lazy" />
+              <div>
+                <H4 className="about__member-header">
+                  { 'Bella aka "Samira"' }
+                  <Link href="https://twitter.com/frontend_cat" target="_blank" className="about__member-link">
+                    { '@frontend_cat' }
+                  </Link>
+                </H4>
+                <P className="about__member-text">{ 'Consultant' }</P>
+              </div>
+            </div>
+          </div>
         </Section>
         <Section>
           <H2 style="h1">

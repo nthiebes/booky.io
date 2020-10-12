@@ -10,3 +10,54 @@
   display: inline-block;
   margin-left: 4px;
 }
+
+.about__members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.about__member {
+  display: flex;
+  padding: 1.5rem 1rem 2.5rem;
+  position: relative;
+  background-color: $color-background--ligth;
+  border-radius: 5px;
+  margin: 0 1rem 2rem 1rem;
+
+  &:last-child {
+    // margin: 0;
+  }
+
+  @include mobile {
+    // min-width: 100%;
+  }
+
+  @include desktop {
+    padding: 2rem 1rem 2.5rem;
+  }
+}
+
+.about__member-image {
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.about__member-header {
+  font-size: $font-size--small;
+  align-items: flex-start;
+}
+
+.about__member-text {
+  width: 100%;
+  padding-bottom: 0;
+}
+
+.about__member-link {
+  font-size: $font-size--small;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
