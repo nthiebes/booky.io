@@ -112,7 +112,7 @@ class About extends Component {
             <FormattedMessage id="Dies das lorem ipsum." />
           </P>
         </Section>
-        <Section color="dark" contentClassName="about__availability">
+        <Section color="dark" className="about__availability-wrapper" contentClassName="about__availability">
           <Illustration
             className="home__plant booky--hide-mobile"
             name="plant"

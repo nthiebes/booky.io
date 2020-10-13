@@ -11,11 +11,14 @@
   margin-left: 4px;
 }
 
+.about__availability-wrapper {
+  overflow: hidden;
+}
+
 .about__availability {
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow: hidden;
 
   @include mobile-tablet {
     padding-top: 3rem;
