@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Component from './About';
+import Component from './Donate';
 
 const mapStateToProps = (state) => ({
   locale: state.intl.locale

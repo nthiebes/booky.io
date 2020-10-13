@@ -10,6 +10,7 @@ import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import LanguageSwitcher from '../../molecules/language-switcher';
+import Donate from '../../molecules/donate';
 
 class Footer extends PureComponent {
   static propTypes = {
@@ -111,6 +112,7 @@ class Footer extends PureComponent {
             <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
               <Logo />
             </Link>
+            <Donate />
             <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
               <FormattedMessage id="footer.scroll" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonSmallLight>

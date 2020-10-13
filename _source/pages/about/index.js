@@ -1,3 +1,1 @@
-import component from './AboutContainer';
-
-export default component;
+export { default } from './About';

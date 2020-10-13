@@ -14,11 +14,11 @@ import Illustration from '../../atoms/illustration';
 import Features from '../../molecules/features';
 import Feature from '../../molecules/feature';
 import Expandable from '../../molecules/expandable';
+import Donate from '../../molecules/donate';
 
 class About extends PureComponent {
   static propTypes = {
-    intl: PropTypes.object.isRequired,
-    locale: PropTypes.string.isRequired
+    intl: PropTypes.object.isRequired
   };
 
   state = {
@@ -35,7 +35,7 @@ class About extends PureComponent {
   }
 
   render() {
-    const { intl, locale } = this.props;
+    const { intl } = this.props;
     const { releases } = this.state;
 
     return (
@@ -122,34 +122,7 @@ class About extends PureComponent {
           <P>
             <FormattedMessage id="about.supportText" />
           </P>
-          { locale === 'de' && (
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" className="about__donate">
-              <input type="hidden" name="cmd" value="_s-xclick" />
-              <input type="hidden" name="hosted_button_id" value="P9RTXBMK5Q3Q2" />
-              <input
-                type="image"
-                src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif"
-                border="0"
-                name="submit"
-                title="PayPal - The safer, easier way to pay online!" alt="Mit PayPal Button spenden"
-              />
-              <img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1" />
-            </form>
-          ) }
-          { locale === 'en' && (
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" className="about__donate">
-              <input type="hidden" name="cmd" value="_s-xclick" />
-              <input type="hidden" name="hosted_button_id" value="3PE7W9AAYEP4Q" />
-              <input
-                type="image"
-                src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                border="0"
-                name="submit"
-                title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"
-              />
-              <img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
-            </form>
-          ) }
+          <Donate className="about__donate" />
         </Section>
         <Section color="dark" className="about__availability-wrapper" contentClassName="about__availability">
           <Illustration
