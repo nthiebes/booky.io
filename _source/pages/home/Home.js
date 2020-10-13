@@ -105,44 +105,59 @@ class Home extends Component {
             <FormattedMessage id="home.extensionText" />
           </H3>
           <nav className="home__extension">
-            <Link to="/about" color="light" className="home__extension-browser">
+            <Link
+              href="https://chrome.google.com/webstore/detail/bookyio-extension/pmcpkkipiedakcaolhnbijibndfemckf"
+              target="_blank"
+              color="light"
+              className="home__extension-browser"
+            >
               <img
                 width="75"
                 height="75"
-                alt="Chrome browser extension"
+                alt=""
                 className="home__extension-icon"
                 src="../../_assets/browsers/chrome.svg"
                 loading="lazy"
               />
               { 'Chrome' }
             </Link>
-            <Link to="/about" color="light" className="home__extension-browser">
+            <Link to="/about" target="_blank" color="light" className="home__extension-browser">
               <img
                 width="75"
                 height="75"
-                alt="Firefox browser extension"
+                alt=""
                 className="home__extension-icon"
                 src="../../_assets/browsers/firefox.svg"
                 loading="lazy"
               />
               { 'Firefox' }
             </Link>
-            <Link to="/about" color="light" className="home__extension-browser">
+            <Link
+              href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
+              target="_blank"
+              color="light"
+              className="home__extension-browser"
+            >
               <img
                 width="75"
                 height="75"
-                alt="Opera browser extension"
+                alt=""
                 className="home__extension-icon"
                 src="../../_assets/browsers/opera.svg"
                 loading="lazy"
               />
               { 'Opera' }
             </Link>
-            <Link to="/about" color="light" className="home__extension-browser">
+            <Link
+              href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
+              target="_blank"
+              color="light"
+              className="home__extension-browser"
+            >
               <img
                 width="75"
                 height="75"
-                alt="Edge browser extension"
+                alt=""
                 className="home__extension-icon"
                 src="../../_assets/browsers/edge.svg"
                 loading="lazy"

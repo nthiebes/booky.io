@@ -1,0 +1,10 @@
+.next .section__content {
+  @include desktop {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.next__illustration {
+  margin-left: 3rem;
+}

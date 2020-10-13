@@ -12,7 +12,8 @@ export default class ErrorMessage extends Component {
     message: PropTypes.string,
     className: PropTypes.string,
     hasIcon: PropTypes.bool,
-    noAnimation: PropTypes.bool
+    noAnimation: PropTypes.bool,
+    noPadding: PropTypes.bool
   }
   
   static defaultProps = {
@@ -34,7 +35,7 @@ export default class ErrorMessage extends Component {
   }
 
   render() {
-    const { message, className, hasIcon, noAnimation } = this.props;
+    const { message, className, hasIcon, noAnimation, noPadding } = this.props;
     const { animate } = this.state;
 
     return (
@@ -43,6 +44,7 @@ export default class ErrorMessage extends Component {
           'error',
           animate && !noAnimation && 'error--animate',
           noAnimation && 'error--show',
+          noPadding && 'error--noPadding',
           className
         ) }
         role="alert"

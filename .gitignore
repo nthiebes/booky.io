@@ -1,8 +1,9 @@
 lib-cov
 coverage
 node_modules
-_public
+/_public
 docs
 *.lnk
 npm-debug.log
 .DS_Store
+/extension/_source/manifest.json

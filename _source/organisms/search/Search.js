@@ -25,17 +25,19 @@ class Search extends PureComponent {
     pending: PropTypes.bool,
     error: PropTypes.string,
     loadMoreBookmarks: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired
+    changeDashboard: PropTypes.func.isRequired,
+    className: PropTypes.string
   }
 
   getWrapper = (content) => {
-    const { hasSidebar, dashboardsOpen } = this.props;
+    const { hasSidebar, dashboardsOpen, className } = this.props;
 
     return (
       <section className={ classNames(
         'search',
         hasSidebar && 'search--sidebar',
-        hasSidebar && dashboardsOpen && 'search--shifted'
+        hasSidebar && dashboardsOpen && 'search--shifted',
+        className
       ) }>
         { content }
       </section>
@@ -120,29 +122,31 @@ class Search extends PureComponent {
                   </H3>
                   { bookmarks.map(({ id: bookmarkId, name: bookmarkName, url, favicon }) => (
                     <li key={ bookmarkId } className="bookmark search__bookmark">
-                      { !favicon || favicon === 'default' ? (
-                        <Icon
-                          icon="earth"
-                          size="tiny"
-                          className={ classNames('bookmark__favicon', darkMode && 'bookmark__favicon--dark-mode') }
-                        />
-                      ) : (
-                        <img
-                          src={ favicon }
-                          height="16"
-                          width="16"
-                          alt=""
-                          className="bookmark__favicon"
-                        />
-                      ) }
-                      <a
-                        className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') }
-                        href={ url }
-                        target={ newtab ? '_blank' : '_self' }
-                        rel={ newtab ? 'noopener noreferrer' : null }
-                      >
-                        { bookmarkName }
-                      </a>
+                      <span className="bookmark__wrapper">
+                        { !favicon || favicon === 'default' ? (
+                          <Icon
+                            icon="earth"
+                            size="tiny"
+                            className={ classNames('bookmark__favicon', darkMode && 'bookmark__favicon--dark-mode') }
+                          />
+                        ) : (
+                          <img
+                            src={ favicon }
+                            height="16"
+                            width="16"
+                            alt=""
+                            className="bookmark__favicon"
+                          />
+                        ) }
+                        <a
+                          className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') }
+                          href={ url }
+                          target={ newtab ? '_blank' : '_self' }
+                          rel={ newtab ? 'noopener noreferrer' : null }
+                        >
+                          { bookmarkName }
+                        </a>
+                      </span>
                     </li>
                   )) }
                 </ul>

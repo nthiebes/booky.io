@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { scrolling } from '../../_utils/scrolling';
 import Icon from '../../atoms/icon';
 import { H1 } from '../../atoms/headline';
 import Skeleton from '../../atoms/skeleton';
@@ -13,7 +12,6 @@ import { DashboardsTabs } from '../dashboards';
 
 class Toolbar extends PureComponent {
   static propTypes = {
-    updateCurrentlySticky: PropTypes.func.isRequired,
     headerSticky: PropTypes.bool.isRequired,
     sticky: PropTypes.bool.isRequired,
     currentlySticky: PropTypes.bool.isRequired,
@@ -30,42 +28,6 @@ class Toolbar extends PureComponent {
 
   state = {
     dashboardModalOpen: false
-  }
-
-  componentDidMount() {
-    scrolling.registerAction('toolbar', {
-      offset: 90,
-      scope: this,
-      isAbove: () => {
-        this.isAboveActions();
-      },
-      isBelow: () => {
-        this.isBelowActions();
-      }
-    });
-  }
-
-  componentDidUpdate(prevProps) {
-    this.nextProps = prevProps;
-    scrolling.updateStatus('toolbar');
-  }
-
-  componentWillUnmount() {
-    scrolling.removeAction('toolbar');
-  }
-
-  nextProps = {};
-
-  isAboveActions = () => {
-    if (this.nextProps.sticky && !this.nextProps.headerSticky) {
-      this.props.updateCurrentlySticky(false);
-    }
-  }
-
-  isBelowActions = () => {
-    if (this.nextProps.sticky && !this.nextProps.headerSticky) {
-      this.props.updateCurrentlySticky(true);
-    }
   }
 
   getStickyClass = () => {

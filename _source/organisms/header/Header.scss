@@ -129,6 +129,10 @@
 .header__logo {
   margin-right: 1.5rem;
 
+  @include mobile-tablet {
+    flex-grow: 1;
+  }
+
   &:focus {
     outline: 1px dashed $color-font--white;
   }

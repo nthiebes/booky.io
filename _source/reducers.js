@@ -8,6 +8,7 @@ import categories from './_state/categories';
 import toolbar from './_state/toolbar';
 import sidebar from './_state/sidebar';
 import modal from './_state/modal';
+import extension from './_state/extension/reducer';
 import search from './_state/search/reducer';
 import categoriesSorting from './_state/categories-sorting/reducer';
 import dragging from './_state/dragging/reducer';
@@ -23,6 +24,7 @@ const reducers = (history) => combineReducers({
   categories,
   categoriesSorting,
   search,
+  extension,
   dragging
 });
 

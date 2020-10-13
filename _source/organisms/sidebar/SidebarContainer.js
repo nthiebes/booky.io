@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import Component from './Sidebar';
 import { closeSidebar } from '../../_state/sidebar/actions';
-import { openModal } from '../../_state/modal/actions';
 import { logout } from '../../_state/user/actions';
 
 export const mapStateToProps = (state) => ({
@@ -14,7 +13,6 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = {
   closeSidebar,
-  openModal,
   logout
 };
 

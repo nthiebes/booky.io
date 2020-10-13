@@ -10,7 +10,8 @@ export const mapStateToProps = (state) => ({
   closeEditMode: state.user.settings.closeEditMode,
   minimalBookmarkButton: state.user.settings.minimalBookmarkButton,
   bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
-  isMobile: state.user.isMobile
+  isMobile: state.user.isMobile,
+  isExtension: state.extension.active
 });
 
 export const mapDispatchToProps = {

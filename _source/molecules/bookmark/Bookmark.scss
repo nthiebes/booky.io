@@ -1,13 +1,17 @@
 .bookmark {
-  display: flex;
-  align-items: center;
   padding: 0 6px;
-  height: 36px;
-  line-height: 36px;
+  position: relative;
 }
 
 .bookmark--edit-mode {
   padding-right: 0;
+}
+
+.bookmark__wrapper {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  line-height: 36px;
 }
 
 .bookmark__link {
@@ -57,4 +61,35 @@
   &:focus {
     color: $color-font--white;
   }
+}
+
+.bookmark__note {
+  word-break: break-word;
+  padding-left: 24px;
+  // top: 36px;
+  // left: 30px;
+  // right: 6px;
+  // text-overflow: ellipsis;
+  // overflow: hidden;
+  // white-space: nowrap;
+}
+
+.bookmark--edit-mode .bookmark__note {
+  padding-right: 6px;
+}
+
+.bookmark__note-icon-wrapper {
+  position: relative;
+  height: 36px;
+  width: 36px;
+}
+
+.bookmark__note-icon {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.bookmark__note-icon--dark-mode {
+  color: $color-background--dark-mode;
 }

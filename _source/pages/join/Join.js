@@ -20,12 +20,17 @@ class Join extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     join: PropTypes.func.isRequired,
+    validate: PropTypes.func.isRequired,
     language: PropTypes.string.isRequired
   };
 
   state = {
     username: '',
+    usernamePending: false,
+    usernameError: null,
     email: '',
+    emailPending: false,
+    emailError: null,
     password: '',
     pending: false,
     showPassword: false,
@@ -33,12 +38,14 @@ class Join extends Component {
     animation: ''
   };
 
+  fetchTimeout;
+
   // eslint-disable-next-line max-statements
-  getAnimation = (value, name) => {
+  getAnimation = (value, name, error) => {
     let valid;
 
     if (name === 'username') {
-      valid = Boolean(value);
+      valid = Boolean(value) && error === false;
     }
 
     if (name === 'password') {
@@ -46,7 +53,7 @@ class Join extends Component {
     }
 
     if (name === 'email') {
-      valid = Boolean(value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ig));
+      valid = Boolean(value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ig)) && error === false;
     }
 
     if (valid === true) {
@@ -61,13 +68,57 @@ class Join extends Component {
   }
 
   handleInputChange = (value, name) => {
+    const { validate } = this.props;
     const animation = this.getAnimation(value, name);
 
     this.setState({
       [name]: value,
       pending: false,
+      error: null,
       animation
     });
+
+    const validateField = () => {
+      this.setState({
+        [`${name}Pending`]: true
+      });
+
+      validate({
+        params: {
+          name,
+          value
+        },
+        onSuccess: ({ reason }) => {
+          this.setState({
+            [`${name}Error`]: reason,
+            [`${name}Pending`]: false,
+            animation: this.getAnimation(value, name, Boolean(reason))
+          });
+        },
+        onError: (error) => {
+          this.setState({
+            [`${name}Pending`]: false,
+            [`${name}Error`]: error,
+            animation: this.getAnimation(value, name, true)
+          });
+        }
+      });
+    };
+
+    if (name !== 'password') {
+      clearTimeout(this.fetchTimeout);
+
+      if (value === '') {
+        this.setState({
+          [`${name}Error`]: null,
+          [`${name}Pending`]: false
+        });
+      } else {
+        this.fetchTimeout = setTimeout(() => {
+          validateField();
+        }, 500);
+      }
+    }
   };
 
   handleCheckboxChange = ({ checked }) => {
@@ -77,7 +128,7 @@ class Join extends Component {
   };
 
   handleFocus = (event) => {
-    const animation = this.getAnimation(event.target.value, event.target.name);
+    const animation = this.getAnimation(event.target.value, event.target.name, Boolean(this.state[`${event.target.name}Error`]));
 
     this.setState({
       animation
@@ -129,7 +180,11 @@ class Join extends Component {
       showPassword,
       error,
       success,
-      animation
+      animation,
+      usernamePending,
+      usernameError,
+      emailPending,
+      emailError
     } = this.state;
 
     return (
@@ -155,8 +210,10 @@ class Join extends Component {
                   maxLength="50"
                   required
                   disabled={ pending }
+                  pending={ usernamePending }
                   onFocus={ this.handleFocus }
                   onBlur={ this.handleBlur }
+                  error={ usernameError }
                 />
                 <Input
                   value={ email }
@@ -168,10 +225,12 @@ class Join extends Component {
                   maxLength="150"
                   required
                   type="email"
-                  requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
+                  // requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
                   disabled={ pending }
+                  pending={ emailPending }
                   onFocus={ this.handleFocus }
                   onBlur={ this.handleBlur }
+                  error={ emailError }
                 />
                 <Input
                   value={ password }

@@ -10,10 +10,16 @@
   padding-bottom: 0.5rem;
   color: $color-font--medium;
   line-height: 1.5;
+  display: list-item;
 
   &:focus {
     outline: 1px dashed $color-font--medium;
   }
+}
+
+.expandable__summary--normal {
+  font-weight: normal;
+  color: $color-font--dark;
 }
 
 .expandable__summary--dark-mode {

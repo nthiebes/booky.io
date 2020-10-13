@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
 import Input from '../../../atoms/input';
+import Expandable from '../../../molecules/expandable';
 import { abortFetch } from '../../../_utils/fetcher';
 import { parseBookmarkUrl } from '../../../_utils/url';
 
@@ -16,12 +17,14 @@ class EditBookmark extends PureComponent {
     pending: PropTypes.bool,
     darkMode: PropTypes.bool,
     getTitle: PropTypes.func.isRequired,
-    autofillBookmarkNames: PropTypes.bool
+    autofillBookmarkNames: PropTypes.bool,
+    enableNotes: PropTypes.bool.isRequired
   }
 
   state = {
     name: this.props.data.name,
     url: this.props.data.url,
+    note: this.props.data.note,
     bookmarkTitlePending: false
   }
 
@@ -34,6 +37,12 @@ class EditBookmark extends PureComponent {
   onUrlChange = (value) => {
     this.setState({
       url: value
+    });
+  }
+
+  onNoteChange = (value) => {
+    this.setState({
+      note: value
     });
   }
 
@@ -51,7 +60,7 @@ class EditBookmark extends PureComponent {
       url: parseBookmarkUrl(value, { protocol: 'https' }),
       onSuccess: (title) => {
         this.setState({
-          name: title,
+          name: this.state.name || title,
           bookmarkTitlePending: false
         });
       },
@@ -60,7 +69,7 @@ class EditBookmark extends PureComponent {
         const match = value.match(/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/i);
 
         this.setState({
-          name: match ? match[0] : value,
+          name: this.state.name || (match ? match[0] : value),
           bookmarkTitlePending: false
         });
       }
@@ -75,8 +84,8 @@ class EditBookmark extends PureComponent {
   }
 
   render() {
-    const { intl, pending, data, ...props } = this.props;
-    const { name, url, bookmarkTitlePending } = this.state;
+    const { intl, pending, data, enableNotes, ...props } = this.props;
+    const { name, url, note, bookmarkTitlePending } = this.state;
 
     return (
       <Base
@@ -119,6 +128,18 @@ class EditBookmark extends PureComponent {
           value={ data.categoryId.toString() }
           type="hidden"
         />
+        { enableNotes && (
+          <Expandable notBold headline={ <FormattedMessage id="modal.note" /> } className="modal__note">
+            <Input
+              id="bookmark-note"
+              name="note"
+              value={ note }
+              onChange={ this.onNoteChange }
+              maxLength="100"
+              disabled={ pending }
+            />
+          </Expandable>
+        ) }
       </Base>
     );
   }

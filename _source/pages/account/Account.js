@@ -41,7 +41,7 @@ class Account extends Component {
   handleTabClick = (activeTab) => {
     const {history} = this.props;
     
-    history.push(`#${activeTab}`);
+    history.push(`/account#${activeTab}`);
 
     this.setState({
       activeTab

@@ -54,3 +54,18 @@
     padding: 0 0 0 3%;
   }
 }
+
+.help__button {
+  pointer-events: none;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.help__icon {
+  display: flex;
+  align-items: center;
+}
+
+.help__input {
+  margin-top: 0.5rem;
+}
