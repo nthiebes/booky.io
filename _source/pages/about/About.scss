@@ -2,6 +2,18 @@
   padding-top: 0;
 }
 
+.about--sticky {
+  padding-top: 3rem;
+
+  @include tablet {
+    padding-top: 4rem;
+  }
+
+  @include desktop {
+    padding-top: 5.6rem;
+  }
+}
+
 .about__header {
   padding: 3rem 0;
 

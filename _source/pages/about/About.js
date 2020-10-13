@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { format } from 'date-fns';
+import classNames from 'classnames';
 
 import Page from '../../templates/page';
 import { H2, H3, H4, Display } from '../../atoms/headline';
@@ -18,7 +19,8 @@ import Donate from '../../molecules/donate';
 
 class About extends PureComponent {
   static propTypes = {
-    intl: PropTypes.object.isRequired
+    intl: PropTypes.object.isRequired,
+    stickyHeader: PropTypes.bool
   };
 
   state = {
@@ -35,11 +37,11 @@ class About extends PureComponent {
   }
 
   render() {
-    const { intl } = this.props;
+    const { intl, stickyHeader } = this.props;
     const { releases } = this.state;
 
     return (
-      <Page className="about">
+      <Page className={ classNames('about', stickyHeader && 'about--sticky') }>
         <Section color="dark" className="about__header">
           <Display noMargin centered color="light">
             <FormattedMessage id="about.title" />
