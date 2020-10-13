@@ -80,6 +80,7 @@ class Help extends Component {
             </Expandable>
           </div>
 
+          <hr className="add__hr" />
           <H2 id="bookmarks">
             <FormattedMessage id="help.bookmarks" />
           </H2>
@@ -133,7 +134,8 @@ class Help extends Component {
               </P>
             </Expandable>
           </div>
-
+          
+          <hr className="add__hr" />
           <H2 id="categories">
             <FormattedMessage id="help.categories" />
           </H2>
@@ -181,6 +183,7 @@ class Help extends Component {
             </Expandable>
           </div>
 
+          <hr className="add__hr" />
           <H2 id="collections">
             <FormattedMessage id="help.collections" />
           </H2>

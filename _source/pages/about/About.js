@@ -41,10 +41,10 @@ class About extends Component {
       <Page className="about">
         <Section color="dark" className="about__header">
           <Display noMargin centered color="light">
-            <FormattedMessage id="What is booky?" />
+            <FormattedMessage id="about.title" />
           </Display>
           <H2 noMargin centered color="light">
-            <FormattedMessage id="Booky is an online bookmark manager with a focus on simplicity, customizability, privacy, and speed." />
+            <FormattedMessage id="about.subtitle" />
           </H2>
         </Section>
         <Section>
@@ -85,32 +85,62 @@ class About extends Component {
         </Section>
         <Section>
           <H2 style="h1">
-            <FormattedMessage id="A few words on..." />
+            <FormattedMessage id="about.topics" />
           </H2>
           <H3 style="h2">
-            <FormattedMessage id="Privacy" />
+            <FormattedMessage id="about.privacy" />
           </H3>
           <P>
-            <FormattedMessage id="Dies das lorem ipsum." />
+            <FormattedMessage id="about.privacyText" />
+          </P>
+          {/* <Link to="/privacy">
+            <FormattedMessage id="menu.privacy" />
+          </Link> */}
+          <H3 style="h2">
+            <FormattedMessage id="about.feedback" />
+          </H3>
+          <P>
+            <FormattedMessage id="contact.text" />
+          </P>
+          {/* <Link to="/contact">
+            <FormattedMessage id="contact.headline" />
+          </Link> */}
+          <H3 style="h2">
+            <FormattedMessage id="about.private" />
+          </H3>
+          <P>
+            <FormattedMessage id="about.privateText" />
           </P>
           <H3 style="h2">
-            <FormattedMessage id="Feedback matters" />
+            <FormattedMessage id="about.support" />
           </H3>
           <P>
-            <FormattedMessage id="We're constantly looking for new ways to improve the site and expand its features, so if you have a great idea for a new feature, have found a bug or have some general feedback, we'd love to hear from you!" />
+            <FormattedMessage id="about.supportText" />
           </P>
-          <H3 style="h2">
-            <FormattedMessage id="Private project" />
-          </H3>
-          <P>
-            <FormattedMessage id="booky.io is a private project and therefore completely free of charge. We want to provide a useful service for you and we do not ask for any money." />
-          </P>
-          <H3 style="h2">
-            <FormattedMessage id="Your support" />
-          </H3>
-          <P>
-            <FormattedMessage id="Dies das lorem ipsum." />
-          </P>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="3PE7W9AAYEP4Q" />
+            <input
+              type="image"
+              src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+              border="0"
+              name="submit"
+              title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"
+            />
+            <img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
+          </form>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="P9RTXBMK5Q3Q2" />
+            <input
+              type="image"
+              src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif"
+              border="0"
+              name="submit"
+              title="PayPal - The safer, easier way to pay online!" alt="Mit PayPal Button spenden"
+            />
+            <img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1" />
+          </form>
         </Section>
         <Section color="dark" className="about__availability-wrapper" contentClassName="about__availability">
           <Illustration
@@ -122,10 +152,10 @@ class About extends Component {
             name="trees"
           />
           <H2 style="h1" color="light" noMargin centered>
-            <FormattedMessage id="Booky is available on many platforms." />
+            <FormattedMessage id="about.platforms" />
           </H2>
           <H3 style="h2" color="light" noMargin centered className="about__availability-title">
-            <FormattedMessage id="As browser extension, bookmarklet, Mac App, Windows App, and mobile web app." />
+            <FormattedMessage id="about.platformsText" />
           </H3>
           <nav className="about__platforms">
             <Link
@@ -238,7 +268,7 @@ class About extends Component {
         </Section>
         <Section>
           <H2 style="h1">
-            <FormattedMessage id="Meet the team" />
+            <FormattedMessage id="about.team" />
           </H2>
           <div className="about__members">
             <div className="about__member">
@@ -250,7 +280,9 @@ class About extends Component {
                     { '@_gscheid' }
                   </Link>
                 </H4>
-                <P className="about__member-text">{ 'Founder, Frontend developer' }</P>
+                <P className="about__member-text">
+                  <FormattedMessage id="about.rockyText" />
+                </P>
               </div>
             </div>
             <div className="about__member">
@@ -262,7 +294,9 @@ class About extends Component {
                     { 'mcustiel' }
                   </Link>
                 </H4>
-                <P className="about__member-text">{ 'Backend developer' }</P>
+                <P className="about__member-text">
+                  <FormattedMessage id="about.sheldonText" />
+                </P>
               </div>
             </div>
             <div className="about__member">
@@ -274,7 +308,9 @@ class About extends Component {
                     { '@frontend_cat' }
                   </Link>
                 </H4>
-                <P className="about__member-text">{ 'Consultant' }</P>
+                <P className="about__member-text">
+                  <FormattedMessage id="about.bellaText" />
+                </P>
               </div>
             </div>
           </div>
