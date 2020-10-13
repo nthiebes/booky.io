@@ -112,7 +112,7 @@ class Footer extends PureComponent {
             <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
               <Logo />
             </Link>
-            <Donate />
+            <Donate color="light" className="footer__donate" />
             <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
               <FormattedMessage id="footer.scroll" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonSmallLight>

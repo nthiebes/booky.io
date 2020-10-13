@@ -122,7 +122,7 @@ class About extends PureComponent {
           <P>
             <FormattedMessage id="about.supportText" />
           </P>
-          <Donate className="about__donate" />
+          <Donate color="dark" className="about__donate" />
         </Section>
         <Section color="dark" className="about__availability-wrapper" contentClassName="about__availability">
           <Illustration
