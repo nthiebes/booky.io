@@ -78,7 +78,12 @@ class Contact extends PureComponent {
                   <FormattedMessage id="contact.headline" />
                 </H1>
                 <P first>
-                  <FormattedMessage id="contact.text" />
+                  <FormattedMessage
+                    id="contact.text"
+                    values={ {
+                      link: <FormattedMessage id="contact.textLink" />
+                    } }
+                  />
                 </P>
                 <Input
                   value={ name }
