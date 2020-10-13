@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { format } from 'date-fns';
@@ -15,7 +15,7 @@ import Features from '../../molecules/features';
 import Feature from '../../molecules/feature';
 import Expandable from '../../molecules/expandable';
 
-class About extends Component {
+class About extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired
