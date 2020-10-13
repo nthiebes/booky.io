@@ -91,20 +91,24 @@ class About extends Component {
             <FormattedMessage id="about.privacy" />
           </H3>
           <P>
-            <FormattedMessage id="about.privacyText" />
+            <FormattedMessage
+              id="about.privacyText"
+              values={ {
+                privacy: <Link to="/privacy">{ <FormattedMessage id="menu.privacy" /> }</Link>
+              } }
+            />
           </P>
-          {/* <Link to="/privacy">
-            <FormattedMessage id="menu.privacy" />
-          </Link> */}
           <H3 style="h2">
             <FormattedMessage id="about.feedback" />
           </H3>
           <P>
-            <FormattedMessage id="contact.text" />
+            <FormattedMessage
+              id="contact.text"
+              values={ {
+                link: <Link to="/contact">{ <FormattedMessage id="contact.textLink" /> }</Link>
+              } }
+            />
           </P>
-          {/* <Link to="/contact">
-            <FormattedMessage id="contact.headline" />
-          </Link> */}
           <H3 style="h2">
             <FormattedMessage id="about.private" />
           </H3>
@@ -304,8 +308,8 @@ class About extends Component {
               <div>
                 <H4 className="about__member-header">
                   { 'Bella aka "Samira"' }
-                  <Link href="https://twitter.com/frontend_cat" target="_blank" className="about__member-link">
-                    { '@frontend_cat' }
+                  <Link href="https://twitter.com/SamiTalksAbout" target="_blank" className="about__member-link">
+                    { '@SamiTalksAbout' }
                   </Link>
                 </H4>
                 <P className="about__member-text">
