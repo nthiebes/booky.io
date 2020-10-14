@@ -17,6 +17,7 @@
 @import "../../atoms/file-upload/FileUpload";
 @import "../../atoms/skeleton/Skeleton";
 @import "../../atoms/list/List";
+@import "../../atoms/hr/HorizontalRule";
 @import "../../molecules/menu/Menu";
 @import "../../molecules/bookmark/Bookmark";
 @import "../../molecules/category/Category";
@@ -33,6 +34,7 @@
 @import "../../molecules/cookie-banner/CookieBanner";
 @import "../../molecules/bookmarklet/Bookmarklet";
 @import "../../molecules/features/Features";
+@import "../../molecules/donate/Donate";
 @import "../../organisms/categories/Categories";
 @import "../../organisms/header/Header";
 @import "../../organisms/footer/Footer";
@@ -59,6 +61,7 @@
 @import "../../pages/join/Join";
 @import "../../pages/legal/Legal";
 @import "../../pages/next/Next";
+@import "../../pages/about/About";
 
 html {
   font-size: calc(14px + 0.2vw);

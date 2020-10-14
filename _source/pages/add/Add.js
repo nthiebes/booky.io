@@ -8,6 +8,7 @@ import Select from '../../atoms/select';
 import Input from '../../atoms/input';
 import { ErrorMessage } from '../../atoms/messages';
 import Icon from '../../atoms/icon';
+import Hr from '../../atoms/hr';
 import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
@@ -173,7 +174,7 @@ class Add extends Component {
               <FormattedMessage id="extension.addButton" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonLargePrimary>
             { error && <ErrorMessage message={ error } hasIcon /> }
-            <hr className="add__hr" />
+            <Hr />
             <Expandable
               headline={ <FormattedMessage id="extension.location" /> }
               className="add__section"

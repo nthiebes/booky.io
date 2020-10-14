@@ -1,0 +1,11 @@
+.hr {
+  height: 2px;
+  width: calc(106% + 12px);
+  background-color: rgba(0, 0, 0, 0.15);
+  margin: 1rem 0 1rem calc(-3% - 6px);
+
+  @include desktop {
+    width: calc(100% + 72px);
+    margin: 1rem 0 1rem -36px;
+  }
+}

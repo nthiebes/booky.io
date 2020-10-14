@@ -1,0 +1,57 @@
+.donate {
+  position: relative;
+  display: inline-block;
+}
+
+.donate__content {
+  border-radius: 3px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $font-size--small;
+  font-family: $font-family--text;
+  padding: 0 1.2rem;
+  height: calc(2rem + 2px);
+  transition: color 0.2s linear, background-color 0.2s linear;
+  user-select: none;
+  position: relative;
+  pointer-events: none;
+}
+
+.donate__content--light {
+  background-color: $color-background--light;
+  background-color: darken($color-background--white, 10%);
+  color: $color-font--dark;
+}
+
+.donate__content--dark {
+  background-color: $color-background--dark;
+  color: $color-font--white;
+}
+
+.donate__logo {
+  margin-right: 4px;
+}
+
+.donate__submit {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+
+  &:focus ~ .donate__content--light,
+  &:hover ~ .donate__content--light,
+  &:active ~ .donate__content--light {
+    color: $color--black;
+    background-color: $color-background--white;
+  }
+
+  &:focus ~ .donate__content--dark,
+  &:hover ~ .donate__content--dark,
+  &:active ~ .donate__content--dark {
+    background-color: $color-background--dark-mode;
+  }
+}

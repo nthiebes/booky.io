@@ -20,7 +20,8 @@ export default class Headline extends Component {
     centered: PropTypes.bool,
     title: PropTypes.string,
     style: PropTypes.string,
-    onMouseEnter: PropTypes.func
+    onMouseEnter: PropTypes.func,
+    ignoreDarkMode: PropTypes.bool
   }
   
   render() {
@@ -37,7 +38,8 @@ export default class Headline extends Component {
       centered,
       title,
       style,
-      onMouseEnter
+      onMouseEnter,
+      ignoreDarkMode
     } = this.props;
     const CustomTag = `h${type}`;
 
@@ -48,7 +50,7 @@ export default class Headline extends Component {
           display && 'headline--display',
           noMargin && 'headline--no-margin',
           color && `headline--color-${color}`,
-          darkMode && 'headline--dark-mode',
+          (darkMode && !ignoreDarkMode) && 'headline--dark-mode',
           centered && 'headline--centered',
           id && 'headline--with-link',
           className
