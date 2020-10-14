@@ -20,7 +20,8 @@ import Donate from '../../molecules/donate';
 class About extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    stickyHeader: PropTypes.bool
+    stickyHeader: PropTypes.bool,
+    darkMode: PropTypes.bool.isRequired
   };
 
   state = {
@@ -37,7 +38,7 @@ class About extends PureComponent {
   }
 
   render() {
-    const { intl, stickyHeader } = this.props;
+    const { intl, stickyHeader, darkMode } = this.props;
     const { releases } = this.state;
 
     return (
@@ -46,7 +47,7 @@ class About extends PureComponent {
           <Display noMargin centered color="light">
             <FormattedMessage id="about.title" />
           </Display>
-          <H2 noMargin centered color="light">
+          <H2 noMargin centered ignoreDarkMode color="light">
             <FormattedMessage id="about.subtitle" />
           </H2>
         </Section>
@@ -80,7 +81,7 @@ class About extends PureComponent {
             direction="right"
           />
         </Section>
-        <Section color="light" contentClassName="home__features">
+        <Section color={ darkMode ? 'dark' : 'light' } contentClassName="home__features">
           <H2 style="h1" noMargin centered className="home__features-headline">
             <FormattedMessage id="misc.features" />
           </H2>
@@ -124,7 +125,7 @@ class About extends PureComponent {
           <P>
             <FormattedMessage id="about.supportText" />
           </P>
-          <Donate color="dark" className="about__donate" />
+          <Donate color={ darkMode ? 'light' : 'dark' } className="about__donate" />
         </Section>
         <Section color="dark" className="about__availability-wrapper" contentClassName="about__availability">
           <Illustration
@@ -138,7 +139,7 @@ class About extends PureComponent {
           <H2 style="h1" color="light" noMargin centered>
             <FormattedMessage id="about.platforms" />
           </H2>
-          <H3 style="h2" color="light" noMargin centered className="about__availability-title">
+          <H3 style="h2" color="light" noMargin centered ignoreDarkMode className="about__availability-title">
             <FormattedMessage id="about.platformsText" />
           </H3>
           <nav className="about__platforms">
@@ -258,13 +259,13 @@ class About extends PureComponent {
             <div className="about__member">
               <img src="_assets/rocky.jpg" width="100" height="100" className="about__member-image" alt="" aria-hidden="true" loading="lazy" />
               <div>
-                <H4 className="about__member-header">
+                <H4 ignoreDarkMode className="about__member-header">
                   { 'Rocky aka "Nico"' }
                   <Link href="https://twitter.com/_gscheid" target="_blank" className="about__member-link">
                     { '@_gscheid' }
                   </Link>
                 </H4>
-                <P className="about__member-text">
+                <P ignoreDarkMode className="about__member-text">
                   <FormattedMessage id="about.rockyText" />
                 </P>
               </div>
@@ -272,13 +273,13 @@ class About extends PureComponent {
             <div className="about__member">
               <img src="_assets/sheldon.jpg" width="100" height="100" className="about__member-image" alt="" aria-hidden="true" loading="lazy" />
               <div>
-                <H4 className="about__member-header">
+                <H4 ignoreDarkMode className="about__member-header">
                   { 'Sheldon aka "Mariano"' }
                   <Link href="https://github.com/mcustiel" target="_blank" className="about__member-link">
                     { 'mcustiel' }
                   </Link>
                 </H4>
-                <P className="about__member-text">
+                <P ignoreDarkMode className="about__member-text">
                   <FormattedMessage id="about.sheldonText" />
                 </P>
               </div>
@@ -286,13 +287,13 @@ class About extends PureComponent {
             <div className="about__member">
               <img src="_assets/bella.jpg" width="100" height="100" className="about__member-image" alt="" aria-hidden="true" loading="lazy" />
               <div>
-                <H4 className="about__member-header">
+                <H4 ignoreDarkMode className="about__member-header">
                   { 'Bella aka "Samira"' }
                   <Link href="https://twitter.com/SamiTalksAbout" target="_blank" className="about__member-link">
                     { '@SamiTalksAbout' }
                   </Link>
                 </H4>
-                <P className="about__member-text">
+                <P ignoreDarkMode className="about__member-text">
                   <FormattedMessage id="about.bellaText" />
                 </P>
               </div>
