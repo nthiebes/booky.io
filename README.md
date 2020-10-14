@@ -6,14 +6,4 @@ booky.io is an online bookmark manager with a focus on simplicity, customizabili
 
 [Learn more about booky.io](https://booky.io/about)
 
-This repository contains the frontend part of the new booky.io. It's work in progress.
-
-Want to have a sneak peek? Check out the [beta version of booky](https://beta.booky.io)!
-
-## Development
-### Setup
-Install dependencies and start the server:
-```
-npm install
-npm start
-```
+This repository contains the frontend part of booky.
