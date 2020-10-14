@@ -123,6 +123,7 @@ class Add extends Component {
         postMessage({
           close: true
         });
+        window.close();
       },
       onError: (error) => {
         this.setState({

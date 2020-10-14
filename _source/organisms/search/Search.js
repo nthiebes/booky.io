@@ -26,7 +26,8 @@ class Search extends PureComponent {
     error: PropTypes.string,
     loadMoreBookmarks: PropTypes.func.isRequired,
     changeDashboard: PropTypes.func.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    isExtension: PropTypes.bool.isRequired
   }
 
   getWrapper = (content) => {
@@ -57,6 +58,12 @@ class Search extends PureComponent {
       window.scrollTo(0, 0);
       changeDashboard(dashboardId);
     };
+  }
+
+  handleOnClick = () => {
+    if (this.props.isExtension) {
+      window.close();
+    }
   }
 
   render() {
@@ -143,6 +150,7 @@ class Search extends PureComponent {
                           href={ url }
                           target={ newtab ? '_blank' : '_self' }
                           rel={ newtab ? 'noopener noreferrer' : null }
+                          onClick={ this.handleOnClick }
                         >
                           { bookmarkName }
                         </a>
