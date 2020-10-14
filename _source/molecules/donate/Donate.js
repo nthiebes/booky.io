@@ -8,7 +8,7 @@ const localeMap = {
     alt: 'Donate with PayPal button',
     copy: 'Donate',
     imageSrc: 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif',
-    pixelSrc: 'https://www.paypal.com/en_DE/i/scr/pixel.gif'
+    pixelSrc: 'https://www.paypal.com/en_US/i/scr/pixel.gif'
   },
   de: {
     value: 'P9RTXBMK5Q3Q2',

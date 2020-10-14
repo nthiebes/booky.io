@@ -1,3 +1,3 @@
-import component from './Fullscreen';
+import component from './FullscreenContainer';
 
 export default component;
