@@ -329,5 +329,6 @@
     "about.rockyText": "Gründer, Frontend Entwickler",
     "about.sheldonText": "Backend Entwickler",
     "about.bellaText": "Beraterin",
-    "misc.extension": "Erweiterung"
+    "misc.extension": "Erweiterung",
+    "extension.loading": "Wird geladen..."
 }
