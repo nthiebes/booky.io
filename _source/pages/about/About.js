@@ -157,7 +157,8 @@ class About extends PureComponent {
                 src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              { 'Chrome extension' }
+              { 'Chrome ' }
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link to="#" target="_blank" color="light" className="about__platforms-platform">
               <img
@@ -168,7 +169,8 @@ class About extends PureComponent {
                 src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              { 'Firefox extension' }
+              { 'Firefox ' }
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
@@ -184,7 +186,8 @@ class About extends PureComponent {
                 src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              { 'Opera extension' }
+              { 'Opera ' }
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
@@ -200,7 +203,8 @@ class About extends PureComponent {
                 src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              { 'Edge extension' }
+              { 'Edge ' }
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               to="/help#bookmarklet"
