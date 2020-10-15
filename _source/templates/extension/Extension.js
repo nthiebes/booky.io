@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
-import { config } from '../../config';
+// import { config } from '../../config';
 import { postMessage } from '../../_utils/extension';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
@@ -30,11 +30,11 @@ export default class Extension extends PureComponent {
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      if (event.origin === config.extensionId) {
-        updateExtensionData({
-          page: event.data
-        });
-      }
+      // if (event.origin === config.extensionId) {
+      updateExtensionData({
+        page: event.data
+      });
+      // }
     });
   }
 
