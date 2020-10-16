@@ -1,3 +1,3 @@
-import component from './Textarea';
+import component from './TextareaContainer';
 
 export default component;
