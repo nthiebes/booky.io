@@ -44,9 +44,23 @@ const menuItemsLoggedIn = [
 ];
 
 class Menu extends Component {
+  static propTypes = {
+    intl: PropTypes.object.isRequired,
+    className: PropTypes.string,
+    loggedIn: PropTypes.bool,
+    isBeta: PropTypes.bool.isRequired
+  }
+
   render() {
-    const { className, loggedIn, intl } = this.props;
-    const menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
+    const { className, loggedIn, intl, isBeta } = this.props;
+    let menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
+
+    menuItems = menuItems.filter((item) => {
+      if (item.name === 'feedback' && !isBeta) {
+        return false;
+      } 
+      return true;
+    });
 
     return (
       <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className) }>
@@ -70,9 +84,3 @@ class Menu extends Component {
 }
 
 export default injectIntl(Menu);
-
-Menu.propTypes = {
-  intl: PropTypes.object.isRequired,
-  className: PropTypes.string,
-  loggedIn: PropTypes.bool
-};
