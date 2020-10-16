@@ -5,13 +5,19 @@ import classNames from 'classnames';
 import Label from '../label';
 
 export default class Checkbox extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleInputChange = this.handleInputChange.bind(this);
+  static propTypes = {
+    id: PropTypes.string,
+    checked: PropTypes.bool,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    value: PropTypes.string,
+    className: PropTypes.string,
+    onChange: PropTypes.func,
+    tabIndex: PropTypes.string,
+    first: PropTypes.bool
   }
 
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     const { onChange } = this.props;
 
     onChange && onChange({
@@ -21,10 +27,10 @@ export default class Checkbox extends Component {
   }
 
   render() {
-    const { label, className, id, name, value, checked, tabIndex } = this.props;
+    const { label, className, id, name, value, checked, tabIndex, first } = this.props;
 
     return (
-      <div className={ classNames('checkbox', className && className) }>
+      <div className={ classNames('checkbox', first && 'checkbox--first', className) }>
         <input
           type="checkbox"
           id={ id }
@@ -40,14 +46,3 @@ export default class Checkbox extends Component {
     );
   }
 }
-
-Checkbox.propTypes = {
-  id: PropTypes.string,
-  checked: PropTypes.bool,
-  label: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.string,
-  className: PropTypes.string,
-  onChange: PropTypes.func,
-  tabIndex: PropTypes.string
-};

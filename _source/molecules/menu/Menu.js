@@ -21,10 +21,25 @@ const menuItemsLoggedOut = [
   }
 ];
 const menuItemsLoggedIn = [
-  ...menuItemsLoggedOut,
+  {
+    name: 'about',
+    route: '/about'
+  },
+  {
+    name: 'help',
+    route: '/help'
+  },
   {
     name: 'account',
     route: '/account'
+  },
+  {
+    name: 'next',
+    route: '/next'
+  },
+  {
+    name: 'feedback',
+    route: '/feedback'
   }
 ];
 
@@ -34,7 +49,7 @@ class Menu extends Component {
     const menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     return (
-      <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className && className) }>
+      <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className) }>
         { menuItems.map(({ name, route }) => (
           <Link
             key={ name }

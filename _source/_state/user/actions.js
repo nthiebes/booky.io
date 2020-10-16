@@ -1,4 +1,5 @@
 import fetcher from '../../_utils/fetcher';
+import { removeEmpty } from '../../_utils/object';
 
 export const UPDATE_USER = 'UPDATE_USER';
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
@@ -8,26 +9,35 @@ export const resetUserState = () => ({
   type: RESET_USER_STATE
 });
 
-export const updateUser = (userData) => ((dispatch) => {
+export const updateUserData = (userData) => ((dispatch) => {
   dispatch({
     type: UPDATE_USER,
     userData
   });
+});
+
+export const updateUser = ({userData, onError, onSuccess}) => ((dispatch) => {
+  dispatch({
+    type: UPDATE_USER,
+    userData: {
+      username: userData.username
+    }
+  });
 
   fetcher({
-    url: '/user',
+    url: '/account',
     method: 'PATCH',
-    params: userData,
-    onSuccess: () => {
-      // console.log(data);
+    params: removeEmpty(userData),
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
     },
-    onError: () => {
-      // console.log(error);
+    onError: (error) => {
+      onError && onError(error);
     }
   });
 });
 
-export const updateSettings = (userSettings) => ((dispatch) => {
+export const updateSettings = (userSettings, {onSuccess, onError} = {}) => ((dispatch) => {
   dispatch({
     type: UPDATE_SETTINGS,
     userSettings
@@ -38,10 +48,10 @@ export const updateSettings = (userSettings) => ((dispatch) => {
     method: 'PATCH',
     params: userSettings,
     onSuccess: () => {
-      // console.log(data);
+      onSuccess && onSuccess();
     },
-    onError: () => {
-      // console.log(error);
+    onError: (error) => {
+      onError && onError(error);
     }
   });
 });
@@ -88,19 +98,101 @@ export const logout = ({ onSuccess, onError }) => ((dispatch) => {
   });
 });
 
-export const join = ({ params, onSuccess, onError }) => ((dispatch) => {
+export const join = ({ params, onSuccess, onError }) => (() => {
   fetcher({
-    url: '/join',
+    url: '/user/register',
     method: 'POST',
     params,
     onSuccess: (data) => {
-      const { settings, ...userData } = data;
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
 
-      dispatch(updateUser({
-        ...userData
-      }));
-      dispatch(updateSettings(settings));
+export const validate = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/user/register/validation',
+    method: 'POST',
+    params: {
+      fieldName: params.name,
+      fieldValue: params.value
+    },
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
 
+export const resend = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/user/activation/resend',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
+export const activate = ({ token, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/activate',
+    method: 'POST',
+    params: {
+      token
+    },
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
+export const forgot = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/password/recovery/confirmation',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
+export const confirm = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/password/recovery',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
+export const deny = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/password/recovery/deny',
+    method: 'POST',
+    params,
+    onSuccess: (data) => {
       onSuccess && onSuccess(data);
     },
     onError: (error) => {

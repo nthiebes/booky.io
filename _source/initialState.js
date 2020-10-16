@@ -6,21 +6,28 @@ export default {
     title: '',
     new: true,
     premium: false,
+    isMobile: window.matchMedia('(max-width: 1000px)').matches,
+    isBeta: Boolean(window.location.host.match(/beta./gi)),
     settings: {
-      blurEffect: true,
+      blurEffect: false,
       darkMode: false,
       dashboardsStyle: 'sidebar',
       maxWidth: false,
       navigationBarColor: 0,
       openLinksInNewTab: true,
       pinned: true,
-      preserveEditMode: true,
-      stickyHeader: true,
+      stickyHeader: false,
       stickyToolbar: true,
       autofillBookmarkNames: true,
       colorScheme: 0,
       defaultDashboardId: null,
-      enableNotes: true
+      enableNotes: true,
+      categoriesLayout: 'grid',
+      bookmarkEditOnHover: true,
+      autofocusSearch: false,
+      minimalBookmarkButton: false,
+      closeEditMode: true,
+      maxColumnCount: null
     }
   },
   dashboards: {
@@ -38,11 +45,12 @@ export default {
     open: false
   },
   toolbar: {
-    currentlySticky: true
+    currentlySticky: false
   },
   modal: {
     modal: null,
     open: false,
+    showModal: false,
     data: {}
   },
   search: {
@@ -53,5 +61,17 @@ export default {
     offset: 0,
     limit: 30,
     dashboards: []
+  },
+  dragging: {
+    isDragging: false,
+    dragType: null
+  },
+  extension: {
+    active: Boolean(window.location.pathname.match(/extension/gi)),
+    page: {
+      description: '',
+      url: '',
+      title: ''
+    }
   }
 };

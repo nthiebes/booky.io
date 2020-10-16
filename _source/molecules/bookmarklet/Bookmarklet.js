@@ -1,26 +1,21 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedHTMLMessage, injectIntl } from 'react-intl';
+import React, { PureComponent } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { ErrorMessage } from '../../atoms/messages';
+import Icon from '../../atoms/icon';
 import javascript from './javascript';
 
-const updatedJavascript = process.env.NODE_ENV === 'production'
-  ? javascript.replace(/http:\/\/localhost:3000/, 'https://beta.booky.io')
-  : javascript;
-
 class Bookmarklet extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired
-  }
-
   state = {
     hasClicked: false
   }
 
   handleBookmarkletClick = (event) => {
     event.preventDefault();
+
     this.setState({
       hasClicked: true
     });
@@ -28,27 +23,38 @@ class Bookmarklet extends PureComponent {
 
   render() {
     const { hasClicked } = this.state;
-    const { intl } = this.props;
 
     return (
-      <Fragment>
+      <>
         <a
-          className="bookmarklet button button--small button--small-primary button--solid"
-          href={ `javascript:${updatedJavascript}` }
+          className="bookmarklet button button--large button--large-primary button--solid booky--hide-mobile-tablet"
           onClick={ this.handleBookmarkletClick }
+          ref={ (node) => {
+            if (node) {
+              node.setAttribute('href', `javascript:${javascript}`);
+            }
+          } }
         >
-          <FormattedHTMLMessage id="bookmarklet.text" />
+          <Icon
+            icon="drag"
+            color="light"
+            className="button__icon"
+            ignoreDarkMode
+          />
+          <span className="button__text">
+            <FormattedMessage id="bookmarklet.text" values={ { b: (msg) => <b>{msg}</b> } } />
+          </span>
         </a>
         { hasClicked && (
           <ErrorMessage
-            className="bookmarklet__error"
-            message={ intl.formatMessage({ id: 'bookmarklet.error' }) }
+            message="bookmarklet.error"
             hasIcon
+            noPadding
           />
         ) }
-      </Fragment>
+      </>
     );
   }
 }
 
-export default injectIntl(Bookmarklet);
+export default Bookmarklet;

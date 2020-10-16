@@ -22,7 +22,9 @@ export default class CookieBanner extends PureComponent {
   }
 
   handleDecline = () => {
-    Cookies.set('cookieConsent', 'false', { expires: 18250 });
+    Cookies.set('cookieConsent', 'false', { expires: 18250,
+      secure: process.env.NODE_ENV !== 'development'
+    });
     this.setState({
       cookieConsent: true
     });
@@ -31,7 +33,9 @@ export default class CookieBanner extends PureComponent {
   handleAccept = () => {
     const { language } = this.props;
 
-    Cookies.set('cookieConsent', 'true', { expires: 18250 });
+    Cookies.set('cookieConsent', 'true', { expires: 18250,
+      secure: process.env.NODE_ENV !== 'development'
+    });
     setLanguage(language);
     loadGoogleAnalytics();
     this.setState({

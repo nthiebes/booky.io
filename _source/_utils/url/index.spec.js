@@ -12,4 +12,10 @@ describe('parseBookmarkUrl', () => {
   it('uses a specified protocol', () => {
     expect(parseBookmarkUrl('Mokey.cat', { protocol: 'whatever' })).toBe('whatever://Mokey.cat');
   });
+
+  it('removes special characters', () => {
+    expect(parseBookmarkUrl('radis­son-blu.es')).toBe('//radisson-blu.es');
+    expect(parseBookmarkUrl('‪https://www.smashingmagazine.com/2018/06/bringing-personality-back-to-the-web/‬'))
+      .toBe('https://www.smashingmagazine.com/2018/06/bringing-personality-back-to-the-web/');
+  });
 });

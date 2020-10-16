@@ -15,7 +15,8 @@ const mapStateToProps = (state) => ({
   hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
   dashboardsOpen: state.user.settings.pinned,
   newtab: state.user.settings.openLinksInNewTab,
-  darkMode: state.user.settings.darkMode
+  darkMode: state.user.settings.darkMode,
+  isExtension: state.extension.active
 });
 const mapDispatchToProps = {
   loadMoreBookmarks,

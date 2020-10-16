@@ -270,6 +270,7 @@
     "react/jsx-no-target-blank": 1
   },
   "globals": {
+    "chrome": true,
     "AbortController": true
   }
 }

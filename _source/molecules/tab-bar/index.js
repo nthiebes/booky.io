@@ -1,4 +1,4 @@
-import TabBar from './TabBar';
+import TabBar from './TabBarContainer';
 import Tab from './TabContainer';
 
 export {

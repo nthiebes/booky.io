@@ -15,7 +15,8 @@ import initialState from './initialState';
 // Language detection
 const supportedLanguages = ['en', 'de'];
 const cookieLanguage = Cookies.get('lang');
-const locale = (cookieLanguage || navigator.language || navigator.userLanguage).slice(0, 2);
+const localStorageLanguage = localStorage.getItem('lang');
+const locale = (cookieLanguage || localStorageLanguage || navigator.language || navigator.userLanguage).slice(0, 2);
 const language = supportedLanguages.indexOf(locale) === -1 ? 'en' : locale;
 
 // Store language
@@ -126,4 +127,5 @@ if (window.Promise) {
   init();
 } else {
   loadScript(`/_assets/promise-polyfill.js?=${process.env.VERSION}`, init);
+  loadScript(`/_assets/svguse-polyfill.js?=${process.env.VERSION}`);
 }

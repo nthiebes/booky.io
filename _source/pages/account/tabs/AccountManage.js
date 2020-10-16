@@ -21,7 +21,7 @@ class AccountManage extends Component {
     // const { intl } = this.props;
 
     return (
-      <Empty illustration="monitor-window">
+      <Empty illustration="empty">
         <FormattedMessage id="misc.comingSoon" />
       </Empty>
     );
@@ -41,7 +41,7 @@ export default injectIntl(AccountManage);
     <FormattedMessage id="account.deleteText" />
   </P>
   <ButtonLargeBlue icon="delete" contentBefore onClick={ this.handleClick }>
-    <FormattedHTMLMessage id="account.deleteButton" />
+    <FormattedMessage id="account.deleteButton" values={ { b: (msg) => <b>{msg}</b> } } />
   </ButtonLargeBlue>
 </Fragment>
 */

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Page from '../../templates/page';
@@ -51,24 +51,26 @@ class Home extends Component {
       </Page>
     ) : (
       <Page home className="home">
-        <Section noMargin className="home__header">
-          <Display noMargin className="home__headline">
-            <FormattedMessage id="home.display" />
-          </Display>
-          <H2 noMargin>
-            <FormattedMessage id="home.display2" />
-          </H2>
-          <ButtonLargeBlue icon="join" to="/join" className="home__join">
-            <FormattedHTMLMessage id="header.register" />
-          </ButtonLargeBlue>
-          <ButtonLargeLight icon="about" to="/about">
-            <FormattedHTMLMessage id="header.learnMore" />
-          </ButtonLargeLight>
+        <section className="home__header">
+          <div className="home__header-wrapper">
+            <Display noMargin centered>
+              <FormattedMessage id="home.display" />
+            </Display>
+            <H2 noMargin centered>
+              <FormattedMessage id="home.display2" />
+            </H2>
+            <ButtonLargeBlue icon="join" to="/join" className="home__join">
+              <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
+            </ButtonLargeBlue>
+            <ButtonLargeLight icon="about" to="/about">
+              <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
+            </ButtonLargeLight>
+          </div>
           <Illustration
-            name="monitor-window"
+            name="devices"
             className="home__header-illustration"
           />
-        </Section>
+        </section>
         <Section color="light" noPadding contentClassName="home__testimonials">
           <Testimonials />
         </Section>
@@ -76,18 +78,26 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.privateHeadline' }) }
             text={ intl.formatMessage({ id: 'home.privateText' }) }
-            illustration="stamp-document"
+            illustration="protection"
           />
         </Section>
         <Section>
           <Feature
             headline={ intl.formatMessage({ id: 'home.customizableHeadline' }) }
             text={ intl.formatMessage({ id: 'home.customizableText' }) }
-            illustration="color-palette"
+            illustration="customize"
             direction="right"
           />
         </Section>
         <Section color="dark" contentClassName="home__bookmarklet">
+          <Illustration
+            className="home__plant booky--hide-mobile"
+            name="plant"
+          />
+          <Illustration
+            className="home__trees booky--hide-mobile-tablet"
+            name="trees"
+          />
           <H2 style="h1" color="light" noMargin centered>
             <FormattedMessage id="misc.feature1" />
           </H2>
@@ -95,43 +105,62 @@ class Home extends Component {
             <FormattedMessage id="home.extensionText" />
           </H3>
           <nav className="home__extension">
-            <Link to="/about" color="light" className="home__extension-browser">
+            <Link
+              href="https://chrome.google.com/webstore/detail/bookyio-extension/pmcpkkipiedakcaolhnbijibndfemckf"
+              target="_blank"
+              color="light"
+              className="home__extension-browser"
+            >
               <img
                 width="75"
                 height="75"
-                alt="Chrome browser extension"
+                alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/chrome.svg"
+                src="../../_assets/logos/chrome.svg"
+                loading="lazy"
               />
               { 'Chrome' }
             </Link>
-            <Link to="/about" color="light" className="home__extension-browser">
+            <Link to="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/" target="_blank" color="light" className="home__extension-browser">
               <img
                 width="75"
                 height="75"
-                alt="Firefox browser extension"
+                alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/firefox.svg"
+                src="../../_assets/logos/firefox.svg"
+                loading="lazy"
               />
               { 'Firefox' }
             </Link>
-            <Link to="/about" color="light" className="home__extension-browser">
+            <Link
+              href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
+              target="_blank"
+              color="light"
+              className="home__extension-browser"
+            >
               <img
                 width="75"
                 height="75"
-                alt="Opera browser extension"
+                alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/opera.svg"
+                src="../../_assets/logos/opera.svg"
+                loading="lazy"
               />
               { 'Opera' }
             </Link>
-            <Link to="/about" color="light" className="home__extension-browser">
+            <Link
+              href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
+              target="_blank"
+              color="light"
+              className="home__extension-browser"
+            >
               <img
                 width="75"
                 height="75"
-                alt="Edge browser extension"
+                alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/edge.svg"
+                src="../../_assets/logos/edge.svg"
+                loading="lazy"
               />
               { 'Edge' }
             </Link>
@@ -141,14 +170,14 @@ class Home extends Component {
           <Feature
             headline={ intl.formatMessage({ id: 'home.performantHeadline' }) }
             text={ intl.formatMessage({ id: 'home.performantText' }) }
-            illustration="monitor-loading-progress"
+            illustration="speed"
           />
         </Section>
         <Section>
           <Feature
             headline={ intl.formatMessage({ id: 'home.mobileHeadline' }) }
             text={ intl.formatMessage({ id: 'home.mobileText' }) }
-            illustration="android-phone"
+            illustration="mobile"
             direction="right"
           />
         </Section>
@@ -160,10 +189,8 @@ class Home extends Component {
         </Section>
         <Section className="home__not-a-member">
           <Illustration
-            className="home__globe"
-            name="monitor-window"
-            height="300"
-            width="300"
+            className="home__heart"
+            name="heart"
           />
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="home.notAMember" />
@@ -172,10 +199,10 @@ class Home extends Component {
             <FormattedMessage id="home.promoText" />
           </H3>
           <ButtonLargeBlue icon="join" to="/join" contentBefore className="home__join">
-            <FormattedHTMLMessage id="header.register" />
+            <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonLargeBlue>
           <ButtonLargeLight icon="about" to="/about">
-            <FormattedHTMLMessage id="header.learnMore" />
+            <FormattedMessage id="header.learnMore" values={ { b: (msg) => <b>{msg}</b> } } />
           </ButtonLargeLight>
         </Section>
       </Page>

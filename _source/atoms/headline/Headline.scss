@@ -5,6 +5,12 @@
   position: relative;
   display: flex;
   align-items: center;
+
+  &:hover {
+    .headline__hash {
+      opacity: 1;
+    }
+  }
 }
 
 .headline--centered {
@@ -99,4 +105,22 @@
 
 .headline--color-medium {
   color: $color-font--medium;
+}
+
+.headline--with-link {
+  display: inline-flex;
+}
+
+.headline__hash {
+  color: inherit;
+  margin-left: 0.5rem;
+  font-size: inherit;
+  opacity: 0;
+  text-decoration: none;
+  transition: opacity 0.2s linear, color 0.2s linear;
+
+  &:hover {
+    color: $color-font--primary;
+    text-decoration: underline;
+  }
 }

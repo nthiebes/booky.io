@@ -20,9 +20,8 @@ class Sidebar extends PureComponent {
     location: PropTypes.object.isRequired,
     direction: PropTypes.string,
     className: PropTypes.string,
-    dashboardsSidebar: PropTypes.bool.isRequired,
+    hasSidebar: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    openModal: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     color: PropTypes.number.isRequired
@@ -36,20 +35,8 @@ class Sidebar extends PureComponent {
     logoutPending: false
   }
 
-  onMenuClick(e) {
-    e.stopPropagation();
-  }
-
-  onCustomizeClick = () => {
-    this.props.openModal('Customize');
-  }
-
-  addDashboard = () => {
-    this.props.openModal('AddDashboard');
-  }
-
   handleLogout = () => {
-    const { history, logout } = this.props;
+    const { history, logout, closeSidebar } = this.props;
 
     this.setState({
       logoutPending: true
@@ -57,6 +44,7 @@ class Sidebar extends PureComponent {
 
     logout({
       onSuccess: () => {
+        closeSidebar();
         history.push('/');
       }
     });
@@ -73,7 +61,7 @@ class Sidebar extends PureComponent {
       direction,
       location,
       className,
-      dashboardsSidebar,
+      hasSidebar,
       darkMode
     } = this.props;
     const { pathname } = location;
@@ -107,10 +95,10 @@ class Sidebar extends PureComponent {
           />
         </header>
         <div className="sidebar__scroll-wrapper">
-          { dashboards && dashboardsSidebar && (
+          { dashboards && hasSidebar && (
             <DashboardsList useTabIndex={ open } droppableIdSuffix="mobile" />
           ) }
-          { dashboards && dashboardsSidebar && <hr className="sidebar__hr" /> }
+          { dashboards && hasSidebar && <hr className="sidebar__hr" /> }
           <nav title={ intl.formatMessage({ id: 'menu.title' }) } className="sidebar__nav">
             <H3 className="sidebar__headline"><FormattedMessage id="menu.navigation" /></H3>
             <ul className="sidebar__list">
@@ -147,24 +135,6 @@ class Sidebar extends PureComponent {
                   <Icon icon="help" />
                   <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                     <FormattedMessage id="menu.help" />
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={ classNames(
-                    'sidebar__item',
-                    pathname === '/feedback' && 'sidebar__item--active',
-                    darkMode && 'sidebar__item--dark-mode'
-                  ) }
-                  to="/feedback"
-                  onClick={ closeSidebar }
-                  tabIndex={ open ? '0' : '-1' }
-                  noUnderline
-                >
-                  <Icon icon="feedback" />
-                  <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
-                    <FormattedMessage id="menu.feedback" />
                   </span>
                 </Link>
               </li>
@@ -210,7 +180,7 @@ class Sidebar extends PureComponent {
                 </Fragment>
               ) }
               { loggedIn && (
-                <Fragment>
+                <>
                   <li>
                     <Link
                       className={ classNames(
@@ -230,39 +200,61 @@ class Sidebar extends PureComponent {
                     </Link>
                   </li>
                   <li>
-                    <button
+                    <Link
                       className={ classNames(
                         'sidebar__item',
-                        'booky--hide-desktop',
-                        pathname === '/customize' && 'sidebar__item--active',
+                        pathname === '/next' && 'sidebar__item--active',
                         darkMode && 'sidebar__item--dark-mode'
                       ) }
-                      onClick={ this.onCustomizeClick }
+                      to="/next"
+                      onClick={ closeSidebar }
                       tabIndex={ open ? '0' : '-1' }
+                      noUnderline
                     >
-                      <Icon icon="customize" />
+                      <Icon icon="next" />
                       <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
-                        <FormattedMessage id="menu.customize" />
+                        <FormattedMessage id="menu.next" />
                       </span>
-                    </button>
+                    </Link>
                   </li>
-                  <li>
-                    <button
-                      className={ classNames(
-                        'sidebar__item',
-                        'booky--hide-desktop',
-                        darkMode && 'sidebar__item--dark-mode'
-                      ) }
-                      onClick={ this.handleLogout }
-                      tabIndex={ open ? '0' : '-1' }
-                    >
-                      <Icon icon="logout" pending={ logoutPending } />
-                      <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
-                        <FormattedMessage id="menu.logout" />
-                      </span>
-                    </button>
-                  </li>
-                </Fragment>
+                </>
+              ) }
+              <li>
+                <Link
+                  className={ classNames(
+                    'sidebar__item',
+                    pathname === '/feedback' && 'sidebar__item--active',
+                    darkMode && 'sidebar__item--dark-mode'
+                  ) }
+                  to="/feedback"
+                  onClick={ closeSidebar }
+                  tabIndex={ open ? '0' : '-1' }
+                  noUnderline
+                >
+                  <Icon icon="feedback" />
+                  <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                    <FormattedMessage id="menu.feedback" />
+                  </span>
+                </Link>
+              </li>
+              { loggedIn && (
+                
+                <li>
+                  <button
+                    className={ classNames(
+                      'sidebar__item',
+                      'booky--hide-desktop',
+                      darkMode && 'sidebar__item--dark-mode'
+                    ) }
+                    onClick={ this.handleLogout }
+                    tabIndex={ open ? '0' : '-1' }
+                  >
+                    <Icon icon="logout" pending={ logoutPending } />
+                    <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                      <FormattedMessage id="menu.logout" />
+                    </span>
+                  </button>
+                </li>
               ) }
             </ul>
           </nav>

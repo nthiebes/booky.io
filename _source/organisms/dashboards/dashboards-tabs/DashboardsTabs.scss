@@ -1,0 +1,48 @@
+.dashboards-tabs {
+  width: 0;
+  margin-right: 0;
+
+  @include mobile-tablet {
+    margin-left: -3vw;
+  }
+
+  @include desktop {
+    margin-left: -42px;
+  }
+
+  .tab-bar__scroll-container {
+    padding-left: 3vw;
+
+    @include desktop {
+      padding-left: 36px;
+    }
+  }
+}
+
+.dashboards-tabs--darkMode {
+  &.tab-bar--start {
+    &::before {
+      background: linear-gradient(to right, $color-background--medium, rgba(62, 62, 62, 0));
+    }
+  }
+
+  &.tab-bar--end {
+    &::after {
+      background: linear-gradient(to left, $color-background--medium, rgba(62, 62, 62, 0));
+    }
+  }
+}
+
+.dashboards-tabs--editMode {
+  /* stylelint-disable selector-max-specificity */
+  .tab-bar__tab:first-child:last-of-type .dashboards-tabs__icon--delete,
+  .tab-bar__tab:first-child:last-of-type .dashboards-tabs__icon--drag {
+    display: none;
+  }
+  /* stylelint-enable */
+}
+
+.dashboards-tabs__skeleton {
+  margin-right: 1rem;
+  margin-left: 6px;
+}

@@ -2,24 +2,34 @@
 
 .help-headline,
 .help-intro {
-  width: calc(70% - 12px);
+  @include tablet {
+    width: 60%;
+  }
 
-  @include tablet-desktop {
-    width: calc(100% - 220px);
+  @include desktop {
+    width: calc(100% - 30vw - 36px);
+  }
+
+  @include hd {
+    width: 70%;
   }
 }
 
 .help-illustration {
   position: absolute;
-  top: 0;
-  width: 30vw;
-  height: 30vw;
+  top: -2rem;
+  width: 28vw;
+  height: 28vw;
   right: 3%;
 
   @include tablet-desktop {
-    width: 200px;
-    height: 200px;
+    max-width: 300px;
+    max-height: 300px;
     right: 36px;
+  }
+
+  @include desktop {
+    top: -4rem;
   }
 }
 
@@ -43,4 +53,19 @@
   @include tablet-desktop() {
     padding: 0 0 0 3%;
   }
+}
+
+.help__button {
+  pointer-events: none;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.help__icon {
+  display: flex;
+  align-items: center;
+}
+
+.help__input {
+  margin-top: 0.5rem;
 }

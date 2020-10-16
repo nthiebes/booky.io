@@ -7,26 +7,29 @@ import P from '../../../atoms/paragraph';
 import Select from '../../../atoms/select';
 
 class DeleteCategory extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-    this.state = {
-      id: props.data.id,
-      newId: null,
-      value: 0
-    };
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    intl: PropTypes.object.isRequired,
+    pending: PropTypes.bool,
+    darkMode: PropTypes.bool
   }
 
-  onChange(value) {
+  state = {
+    id: this.props.data.id,
+    newId: null,
+    value: 0
+  }
+
+  onChange = (value) => {
     this.setState({
       newId: value === '0' ? null : this.props.data.categories[value - 1].id,
       value
     });
   }
 
-  handleSave() {
+  handleSave = () => {
     this.props.onSave(this.state);
   }
 
@@ -54,26 +57,19 @@ class DeleteCategory extends Component {
           <FormattedMessage id="modal.deleteCategoryLabel" /><br />
           <b>{ data.name }</b>
         </P>
-        <Select
-          id="category-delete"
-          label={ intl.formatMessage({ id: 'modal.deleteCategoryFuture' }) }
-          options={ options }
-          onChange={ this.onChange }
-          selected="0"
-          disabled={ pending }
-        />
+        {data.bookmarkCount && (
+          <Select
+            id="category-delete"
+            label={ intl.formatMessage({ id: 'modal.deleteCategoryFuture' }) }
+            options={ options }
+            onChange={ this.onChange }
+            selected="0"
+            disabled={ pending }
+          />
+        )}
       </Base>
     );
   }
 }
 
 export default injectIntl(DeleteCategory);
-
-DeleteCategory.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool,
-  darkMode: PropTypes.bool
-};

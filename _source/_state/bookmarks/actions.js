@@ -1,4 +1,6 @@
 import fetcher from '../../_utils/fetcher';
+import { encodeEmoji, decodeEmoji } from '../../_utils/string';
+import { removeEmpty } from '../../_utils/object';
 
 export const setBookmarks = ({bookmarks, id, error}) => ({
   type: 'SET_BOOKMARKS',
@@ -24,7 +26,10 @@ export const getBookmarks = (id) => ((dispatch) => {
     onSuccess: (bookmarks) => {
       dispatch(setBookmarks({
         id,
-        bookmarks,
+        bookmarks: bookmarks.map((bookmark) => ({
+          ...bookmark,
+          name: decodeEmoji(bookmark.name)
+        })),
         error: null
       }));
     },
@@ -39,13 +44,14 @@ export const getBookmarks = (id) => ((dispatch) => {
   });
 });
 
-export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((dispatch) => {
+export const addBookmark = ({ categoryId, name, url, note, onError, onSuccess }) => ((dispatch) => {
   fetcher({
     url: `/categories/${categoryId}/bookmarks`,
     method: 'POST',
     params: {
-      name,
-      url
+      name: encodeEmoji(name),
+      url,
+      note
     },
     onSuccess: ({ id, favicon }) => {
       dispatch({
@@ -54,27 +60,28 @@ export const addBookmark = ({ categoryId, name, url, onError, onSuccess }) => ((
         name,
         url,
         id,
+        note,
         favicon
       });
       onSuccess && onSuccess();
     },
     onError: (error) => {
-      // console.log('error', error);
       onError && onError(error);
     }
   });
 });
 
-export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, position, shouldUpdate = true }) => ((dispatch) => {
+export const editBookmark = ({ categoryId, name, url, note, onError, onSuccess, id, position, shouldUpdate = true }) => ((dispatch) => {
   fetcher({
     url: `/bookmarks/${id}`,
     method: 'PATCH',
-    params: {
-      name,
+    params: removeEmpty({
+      name: name ? encodeEmoji(name) : '',
       url,
       categoryId,
-      position
-    },
+      position,
+      note
+    }),
     onSuccess: ({ favicon }) => {
       if (shouldUpdate) {
         dispatch({
@@ -83,7 +90,8 @@ export const editBookmark = ({ categoryId, name, url, onError, onSuccess, id, po
           url,
           favicon,
           id,
-          categoryId
+          categoryId,
+          note
         });
       }
       onSuccess && onSuccess();
