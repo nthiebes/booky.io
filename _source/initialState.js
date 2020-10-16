@@ -6,6 +6,7 @@ export default {
     title: '',
     new: true,
     premium: false,
+    voted: false,
     isMobile: window.matchMedia('(max-width: 1000px)').matches,
     isBeta: Boolean(window.location.host.match(/beta./gi)),
     settings: {

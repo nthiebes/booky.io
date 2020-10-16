@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -43,9 +43,16 @@ const menuItemsLoggedIn = [
   }
 ];
 
-class Menu extends Component {
+class Menu extends PureComponent {
+  static propTypes = {
+    intl: PropTypes.object.isRequired,
+    className: PropTypes.string,
+    voted: PropTypes.bool.isRequired,
+    loggedIn: PropTypes.bool
+  }
+
   render() {
-    const { className, loggedIn, intl } = this.props;
+    const { className, loggedIn, intl, voted } = this.props;
     const menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     return (
@@ -59,6 +66,7 @@ class Menu extends Component {
             color="light"
             isNavLink
             noUnderline
+            hasBadge={ !voted && name === 'next' }
           >
             <Icon icon={ name } color="light" />
             <FormattedMessage id={ `menu.${name}` } />
@@ -70,9 +78,3 @@ class Menu extends Component {
 }
 
 export default injectIntl(Menu);
-
-Menu.propTypes = {
-  intl: PropTypes.object.isRequired,
-  className: PropTypes.string,
-  loggedIn: PropTypes.bool
-};

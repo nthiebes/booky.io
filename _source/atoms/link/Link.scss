@@ -13,6 +13,47 @@
   text-decoration: none;
 }
 
+.link--badge {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    background-color: $color-font--white;
+    right: -8px;
+    top: 4px;
+    animation: 2.5s ease infinite badge;
+  }
+}
+
+@keyframes badge {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  30% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  5% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  70% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
 .link--primary {
   color: $color-font--primary;
 
