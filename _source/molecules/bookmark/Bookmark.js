@@ -82,6 +82,12 @@ class Bookmark extends PureComponent {
     });
   }
 
+  handleOnClick = () => {
+    if (this.props.isExtension) {
+      window.close();
+    }
+  }
+
   render() {
     const {
       url,
@@ -146,6 +152,7 @@ class Bookmark extends PureComponent {
                 href={ url }
                 target={ (newtab || isExtension) ? '_blank' : '_self' }
                 rel={ newtab ? 'noopener noreferrer' : null }
+                onClick={ this.handleOnClick }
                 onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.enableEditMode : null }
               >
                 { name }

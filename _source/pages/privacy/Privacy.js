@@ -19,7 +19,9 @@ export default class Privacy extends Component {
   }
 
   handleClick = () => {
-    Cookies.set('gaDisabled', 'true', { expires: 18250 });
+    Cookies.set('gaDisabled', 'true', { expires: 18250,
+      secure: process.env.NODE_ENV !== 'development'
+    });
   }
 
   render() {

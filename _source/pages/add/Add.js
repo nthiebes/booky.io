@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -8,6 +9,7 @@ import Select from '../../atoms/select';
 import Input from '../../atoms/input';
 import { ErrorMessage } from '../../atoms/messages';
 import Icon from '../../atoms/icon';
+import Hr from '../../atoms/hr';
 import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
@@ -121,6 +123,7 @@ class Add extends Component {
         postMessage({
           close: true
         });
+        window.close();
       },
       onError: (error) => {
         this.setState({
@@ -150,6 +153,20 @@ class Add extends Component {
     } = this.state;
     const showLocation = localStorage.getItem('showLocation');
     const showData = localStorage.getItem('showData');
+    const dashboardsOptions = dashboardsPending ? [{
+      text: intl.formatMessage({ id: 'extension.loading' }),
+      value: ''
+    }] : dashboards.map(({ name: text, id }) => ({
+      text,
+      value: id.toString()
+    }));
+    const categoriesOptions = dashboardsPending ? [{
+      text: intl.formatMessage({ id: 'extension.loading' }),
+      value: ''
+    }] : categories.map(({ name: text, id }) => ({
+      text,
+      value: id.toString()
+    }));
         
     if (!showLocation) {
       localStorage.setItem('showLocation', true);
@@ -173,7 +190,7 @@ class Add extends Component {
               <FormattedMessage id="extension.addButton" values={ { b: (msg) => <b>{msg}</b> } } />
             </ButtonLargePrimary>
             { error && <ErrorMessage message={ error } hasIcon /> }
-            <hr className="add__hr" />
+            <Hr />
             <Expandable
               headline={ <FormattedMessage id="extension.location" /> }
               className="add__section"
@@ -185,10 +202,7 @@ class Add extends Component {
                   <Select
                     id="collection"
                     label={ intl.formatMessage({ id: 'modal.editCategoryDashboard' }) }
-                    options={ dashboards.map(({ name: text, id }) => ({
-                      text,
-                      value: id.toString()
-                    })) }
+                    options={ dashboardsOptions }
                     required
                     onChange={ this.handleDashboardChange }
                     value={ activeDashboard }
@@ -207,10 +221,7 @@ class Add extends Component {
                   <Select
                     id="category"
                     label={ intl.formatMessage({ id: 'modal.category' }) }
-                    options={ categories.map(({ name: text, id }) => ({
-                      text,
-                      value: id.toString()
-                    })) }
+                    options={ categoriesOptions }
                     required
                     onChange={ this.handleCategoryChange }
                     value={ activeCategory }

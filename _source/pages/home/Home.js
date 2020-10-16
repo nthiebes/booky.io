@@ -116,18 +116,18 @@ class Home extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/chrome.svg"
+                src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
               { 'Chrome' }
             </Link>
-            <Link to="/about" target="_blank" color="light" className="home__extension-browser">
+            <Link to="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/" target="_blank" color="light" className="home__extension-browser">
               <img
                 width="75"
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/firefox.svg"
+                src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
               { 'Firefox' }
@@ -143,7 +143,7 @@ class Home extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/opera.svg"
+                src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
               { 'Opera' }
@@ -159,7 +159,7 @@ class Home extends Component {
                 height="75"
                 alt=""
                 className="home__extension-icon"
-                src="../../_assets/browsers/edge.svg"
+                src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
               { 'Edge' }

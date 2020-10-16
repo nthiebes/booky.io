@@ -316,22 +316,6 @@ class Help extends Component {
               </P>
             </Expandable>
           </div>
-          
-
-          {/* <H2>
-            <FormattedMessage id="help.extensions" />
-          </H2>
-          <P>
-            <FormattedMessage id="help.extensions.text" />
-          </P>
-          <H2>
-            <FormattedMessage id="help.customizations" />
-          </H2>
-          <P>
-            <FormattedMessage id="help.customizations.text" />
-          </P>
-
-           */}
 
           <H2 id="comments">
             <FormattedMessage id="help.comments" />

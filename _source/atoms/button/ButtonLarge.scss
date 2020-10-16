@@ -186,14 +186,14 @@
 }
 
 .button--large-light {
-  background-color: $color-background--ligth;
+  background-color: $color-background--light;
   color: $color-font--dark;
-  border-bottom: 2px solid darken($color-background--ligth, 15%);
+  border-bottom: 2px solid darken($color-background--light, 15%);
 
   @include mobile-tablet() {
     &:active,
     &:focus {
-      background-color: darken($color-background--ligth, 5%);
+      background-color: darken($color-background--light, 5%);
       color: $color-font--dark;
     }
   }
@@ -202,7 +202,7 @@
     &:hover,
     &:focus,
     &.button--pending {
-      background-color: darken($color-background--ligth, 5%);
+      background-color: darken($color-background--light, 5%);
       color: $color-font--dark;
     }
   }

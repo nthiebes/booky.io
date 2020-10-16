@@ -62,16 +62,28 @@ class Open extends Component {
       categoryData = categories[0];
     }
 
+    const dashboardsOptions = dashboardsPending ? [{
+      text: intl.formatMessage({ id: 'extension.loading' }),
+      value: ''
+    }] : dashboards.map(({ name: text, id }) => ({
+      text,
+      value: id.toString()
+    }));
+    const categoriesOptions = dashboardsPending ? [{
+      text: intl.formatMessage({ id: 'extension.loading' }),
+      value: ''
+    }] : categories.map(({ name: text, id }) => ({
+      text,
+      value: id.toString()
+    }));
+
     return (
       <Extension>
         <Section noMargin>
           <Select
             id="collection"
             label={ intl.formatMessage({ id: 'modal.editCategoryDashboard' }) }
-            options={ dashboards.map(({ name: text, id }) => ({
-              text,
-              value: id.toString()
-            })) }
+            options={ dashboardsOptions }
             required
             onChange={ this.handleDashboardChange }
             value={ activeDashboard }
@@ -81,10 +93,7 @@ class Open extends Component {
           <Select
             id="category"
             label={ intl.formatMessage({ id: 'modal.category' }) }
-            options={ categories.map(({ name: text, id }) => ({
-              text,
-              value: id.toString()
-            })) }
+            options={ categoriesOptions }
             required
             onChange={ this.handleCategoryChange }
             value={ activeCategory }
