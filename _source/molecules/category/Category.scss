@@ -2,7 +2,10 @@
   position: relative;
   list-style: none;
   min-width: 0;
+  width: 100%;
   padding-bottom: 2rem;
+  display: inline-block; // For Firefox
+  page-break-inside: avoid; // For Firefox
   break-inside: avoid;
 }
 
@@ -10,6 +13,8 @@
   width: 100%;
   list-style: none;
   margin-top: 0.7rem;
+  page-break-inside: avoid;
+  break-inside: avoid;
 
   &.category__bookmarks--hidden {
     height: 0;

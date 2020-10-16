@@ -19,7 +19,9 @@ export default class Privacy extends Component {
   }
 
   handleClick = () => {
-    Cookies.set('gaDisabled', 'true', { expires: 18250 });
+    Cookies.set('gaDisabled', 'true', { expires: 18250,
+      secure: process.env.NODE_ENV !== 'development'
+    });
   }
 
   render() {
@@ -34,7 +36,7 @@ export default class Privacy extends Component {
 
               <H2>1. An overview of data protection</H2>
 
-              <H3>General information</H3>
+              <H3 id="overview">General information</H3>
               <P>The following information will provide you with an easy to navigate overview of what will happen with your personal data when you visit this website. The term „personal data“ comprises all data that can be used to personally identify you. For detailed information about the subject matter of data protection, please consult our Data Protection Declaration, which we have included beneath this copy.</P>
 
               <H3>Data recording on this website</H3>
@@ -57,14 +59,14 @@ export default class Privacy extends Component {
               <P>There is a possibility that your browsing patterns will be statistically analysed when your visit this website. Such analyses are performed primarily with cookies and with what we refer to as analysis programmes. As a rule, the analyses of your browsing patterns are conducted anonymously; i.e. the browsing patterns cannot be traced back to you.</P>
               <P>You have the option to object to such analyses or you can prevent their performance by not using certain tools. For detailed information about the tools and about your options to object, please consult our Data Protection Declaration below.</P>
 
-              <H2>2. Hosting and Content Delivery Networks (CDN)</H2>
+              <H2 id="hosting">2. Hosting and Content Delivery Networks (CDN)</H2>
 
               <H3>External Hosting</H3>
               <P>This website is hosted by an external service provider (host). Personal data collected on this website are stored on the servers of the host. These may include, but are not limited to, IP addresses, contact requests, metadata and communications, contract information, contact information, names, web page access, and other data generated through a web site.</P>
               <P>The host is used for the purpose of fulfilling the contract with our potential and existing customers (Art. 6 para. 1 lit. b DSGVO) and in the interest of secure, fast and efficient provision of our online services by a professional provider (Art. 6 para. 1 lit. f DSGVO).</P>
               <P>Our host will only process your data to the extent necessary to fulfil its performance obligations and to follow our instructions with respect to such data.</P>
               
-              <H2>Cloudflare</H2>
+              <H3>Cloudflare</H3>
               <P>We use the “Cloudflare” service provided by Cloudflare, Inc. 665 3rd St. #200, San Francisco, CA 94107, USA. (hereinafter referred to as “Cloudflare”).</P>
               <P>Cloudflare offers a content delivery network with DNS that is available worldwide. As a result, the information transfer that occurs between your browser and our website is technically routed via Cloudflare’s network. This enables Cloudflare to analyze data transactions between your browser and our website and to work as a filter between our servers and potentially malicious data traffic from the Internet. In conjunction with this, Cloudflare may also use cookies. However, these cookies will only be used for the purpose described herein. </P>
               <P>We have executed a contract processing agreement with Cloudflare. Cloudflare is also a certified participant of the “EU-US Privacy Shield Framework.” Cloudflare has undertaken to handle all personal data originating from the member states of the European Union (EU) in compliance with the “Privacy Shield Framework.”</P>
@@ -74,7 +76,7 @@ export default class Privacy extends Component {
               <H4>Execution of a contract data processing agreement</H4>
               <P>In order to guarantee processing in compliance with data protection regulations, we have concluded an order processing contract with our host.</P>
 
-              <H2>3. General information and mandatory information</H2>
+              <H2 id="general">3. General information and mandatory information</H2>
 
               <H3>Data protection</H3>
               <P>The operators of this website and its pages take the protection of your personal data very seriously. Hence, we handle your personal data as confidential information and in compliance with the statutory data protection regulations and this Data Protection Declaration.</P>
@@ -121,7 +123,7 @@ export default class Privacy extends Component {
               </List>
               <P>If you have restricted the processing of your personal data, these data – with the exception of their archiving – may be processed only subject to your consent or to claim, exercise or defend legal entitlements or to protect the rights of other natural persons or legal entities or for important public interest reasons cited by the European Union or a member state of the EU.</P>
 
-              <H2>4. Recording of data on this website</H2>
+              <H2 id="data">4. Recording of data on this website</H2>
 
               <H3>Cookies</H3>
               <P>Our websites and pages use what the industry refers to as “cookies.” Cookies are small text tiles that do not cause any damage to your device. They are either stored temporarily for the duration of a session (session cookies) or they are permanently archived on your device (permanent cookies). Session cookies are automatically deleted once you terminate your visit. Permanent cookies remain archived on your device until you actively delete them or they are automatically eradicated by your web browser.</P>
@@ -147,7 +149,7 @@ export default class Privacy extends Component {
               <P>We shall process the data entered during the registration process on the basis of your consent (Art. 6 Sect. 1 lit. a GDPR).</P>
               <P>The data recorded during the registration process shall be stored by us as long as you are registered on this website. Subsequently, such data shall be deleted. This shall be without prejudice to mandatory statutory retention obligations.</P>
 
-              <H2>5. Analysis tools and advertising</H2>
+              <H2 id="tools">5. Analysis tools and advertising</H2>
 
               <H3>Google Analytics</H3>
               <P>This website uses functions of the web analysis service Google Analytics. The provider of this service is Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Ireland.</P>
@@ -175,7 +177,7 @@ export default class Privacy extends Component {
             <Fragment>
               <H1>Datenschutzerklärung</H1>
 
-              <H2>1. Datenschutz auf einen Blick</H2>
+              <H2 id="overview">1. Datenschutz auf einen Blick</H2>
               
               <H3>Allgemeine Hinweise</H3>
               <P>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</P>
@@ -200,7 +202,7 @@ export default class Privacy extends Component {
               <P>Beim Besuch dieser Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor allem mit Cookies und mit sogenannten Analyseprogrammen. Die Analyse Ihres Surf-Verhaltens erfolgt in der Regel anonym; das Surf-Verhalten kann nicht zu Ihnen zurückverfolgt werden.</P>
               <P>Sie können dieser Analyse widersprechen oder sie durch die Nichtbenutzung bestimmter Tools verhindern. Detaillierte Informationen zu diesen Tools und über Ihre Widerspruchsmöglichkeiten finden Sie in der folgenden Datenschutzerklärung.</P>
               
-              <H2>2. Hosting und Content Delivery Networks (CDN)</H2>
+              <H2 id="hosting">2. Hosting und Content Delivery Networks (CDN)</H2>
               
               <H3>Externes Hosting</H3>
               <P>Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Webseitenzugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</P>
@@ -217,7 +219,7 @@ export default class Privacy extends Component {
               <P>Der Einsatz von Cloudflare beruht auf unserem berechtigten Interesse an einer möglichst fehlerfreien und sicheren Bereitstellung unseres Webangebotes (Art. 6 Abs. 1 lit. f DSGVO).</P>
               <P>Weitere Informationen zum Thema Sicherheit und Datenschutz bei Cloudflare finden Sie hier: <Link target="_blank" href="https://www.cloudflare.com/privacypolicy/">https://www.cloudflare.com/privacypolicy/</Link></P>
 
-              <H2>3. Allgemeine Hinweise und Pflichtinformationen</H2>
+              <H2 id="general">3. Allgemeine Hinweise und Pflichtinformationen</H2>
               
               <H3>Datenschutz</H3>
               <P>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</P>
@@ -264,7 +266,7 @@ export default class Privacy extends Component {
               </List>
               <P>Wenn Sie die Verarbeitung Ihrer personenbezogenen Daten eingeschränkt haben, dürfen diese Daten – von ihrer Speicherung abgesehen – nur mit Ihrer Einwilligung oder zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder juristischen Person oder aus Gründen eines wichtigen öffentlichen Interesses der Europäischen Union oder eines Mitgliedstaats verarbeitet werden.</P>
               
-              <H2>4. Datenerfassung auf dieser Website</H2>
+              <H2 id="data">4. Datenerfassung auf dieser Website</H2>
               
               <H3>Cookies</H3>
               <P>Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Textdateien und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert bis Sie diese selbst löschen oder eine automatische Lösung durch Ihren Webbrowser erfolgt.</P>
@@ -290,7 +292,7 @@ export default class Privacy extends Component {
               <P>Die Verarbeitung der bei der Registrierung eingegebenen Daten erfolgt zum Zwecke der Durchführung des durch die Registrierung begründeten Nutzungsverhältnisses und ggf. zur Anbahnung weiterer Verträge (Art. 6 Abs. 1 lit. b DSGVO).</P>
               <P>Die bei der Registrierung erfassten Daten werden von uns gespeichert, solange Sie auf dieser Website registriert sind und werden anschließend gelöscht. Gesetzliche Aufbewahrungsfristen bleiben unberührt.</P>
               
-              <H2>5. Analyse-Tools und Werbung</H2>
+              <H2 id="tools">5. Analyse-Tools und Werbung</H2>
               
               <H3>Google Analytics</H3>
               <P>Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.</P>

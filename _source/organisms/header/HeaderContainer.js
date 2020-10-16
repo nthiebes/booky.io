@@ -3,6 +3,7 @@ import Component from './Header';
 import { logout } from '../../_state/user/actions';
 import { toggleSidebar, closeSidebar } from '../../_state/sidebar/actions';
 import { openModal } from '../../_state/modal/actions';
+import { updateCurrentlySticky } from '../../_state/toolbar/actions';
 
 export const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn,
@@ -17,7 +18,8 @@ export const mapDispatchToProps = {
   toggleSidebar,
   closeSidebar,
   logout,
-  openModal
+  openModal,
+  updateCurrentlySticky
 };
 
 const Container = connect(

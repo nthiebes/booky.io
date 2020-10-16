@@ -111,6 +111,7 @@
   padding: 2rem calc(3vw + 6px);
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   @include desktop {
     padding-left: 36px;
@@ -134,7 +135,6 @@
 }
 
 .footer__languages {
-  margin-top: 2rem;
   display: flex;
   justify-content: center;
 }
@@ -143,16 +143,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .footer__logo {
   color: $color-font--white;
   font-size: $font-size--small;
-  margin-right: 2rem;
+  margin: 0 1rem 2rem 1rem;
+  width: 84px;
 
   &:focus {
     outline: 1px dashed $color-font--white;
   }
+}
+
+.footer__donate {
+  margin: 0 1rem 2rem 1rem;
+}
+
+.footer__button {
+  margin: 0 1rem 2rem 1rem;
 }
 
 .footer__copy {

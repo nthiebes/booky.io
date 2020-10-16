@@ -21,10 +21,25 @@ const menuItemsLoggedOut = [
   }
 ];
 const menuItemsLoggedIn = [
-  ...menuItemsLoggedOut,
+  {
+    name: 'about',
+    route: '/about'
+  },
+  {
+    name: 'help',
+    route: '/help'
+  },
   {
     name: 'account',
     route: '/account'
+  },
+  {
+    name: 'next',
+    route: '/next'
+  },
+  {
+    name: 'feedback',
+    route: '/feedback'
   }
 ];
 

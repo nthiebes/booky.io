@@ -112,6 +112,23 @@ export const join = ({ params, onSuccess, onError }) => (() => {
   });
 });
 
+export const validate = ({ params, onSuccess, onError }) => (() => {
+  fetcher({
+    url: '/user/register/validation',
+    method: 'POST',
+    params: {
+      fieldName: params.name,
+      fieldValue: params.value
+    },
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+});
+
 export const resend = ({ params, onSuccess, onError }) => (() => {
   fetcher({
     url: '/user/activation/resend',

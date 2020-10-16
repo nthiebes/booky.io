@@ -104,7 +104,7 @@ export default class Textarea extends Component {
             </Fragment>
           ) }
           { error && (
-            <ErrorMessage id={ error } />
+            <ErrorMessage message={ error } />
           ) }
         </span>
       </Fragment>

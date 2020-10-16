@@ -22,8 +22,8 @@ class Testimonials extends Component {
         <div className="testimonials">
           <Testimonial
             name="Samira Stein"
-            twitter="frontend_cat"
-            url="https://twitter.com/frontend_cat"
+            twitter="SamiTalksAbout"
+            url="https://twitter.com/SamiTalksAbout"
             image="_assets/illustrations/female.svg"
             text={ intl.formatMessage({ id: 'home.testimonial3' }) }
           />

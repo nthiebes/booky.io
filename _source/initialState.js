@@ -7,6 +7,7 @@ export default {
     new: true,
     premium: false,
     isMobile: window.matchMedia('(max-width: 1000px)').matches,
+    isBeta: Boolean(window.location.host.match(/beta./gi)),
     settings: {
       blurEffect: false,
       darkMode: false,
@@ -44,7 +45,7 @@ export default {
     open: false
   },
   toolbar: {
-    currentlySticky: true
+    currentlySticky: false
   },
   modal: {
     modal: null,
@@ -64,5 +65,13 @@ export default {
   dragging: {
     isDragging: false,
     dragType: null
+  },
+  extension: {
+    active: Boolean(window.location.pathname.match(/extension/gi)),
+    page: {
+      description: '',
+      url: '',
+      title: ''
+    }
   }
 };

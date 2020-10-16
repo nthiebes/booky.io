@@ -9,7 +9,7 @@
   /* stylelint-disable */
   -webkit-appearance: none; // enables box-shadow on iOs
   /* stylelint-enable */
-  background-color: $color-background--ligth;
+  background-color: $color-background--light;
   box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.3) inset;
   border: 1px solid transparent;
   border-right: 1px solid rgba($color--black, 0.15);
@@ -50,7 +50,8 @@
       border-bottom-color: $color--green;
     }
 
-    &:invalid {
+    &:invalid,
+    &.input__field--error {
       border-bottom-color: $color--3;
     }
 
@@ -64,9 +65,13 @@
       color: $color--3;
     }
 
-    ~ .input__requirements {
+    &:invalid ~ .input__requirements {
       max-height: 5rem;
       opacity: 1;
+    }
+
+    ~ .input__icon--error {
+      color: $color--3;
     }
   }
 
@@ -86,7 +91,8 @@
         border-bottom-color: $color--green;
       }
 
-      &:invalid {
+      &:invalid,
+      &.input__field--error {
         border-bottom-color: $color--3;
       }
     }
@@ -123,6 +129,11 @@
 }
 
 .input__icon--visible {
+  transform: none;
+  opacity: 1;
+}
+
+.input__icon--error {
   transform: none;
   opacity: 1;
 }

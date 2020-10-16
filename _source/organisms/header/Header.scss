@@ -109,7 +109,7 @@
   height: auto;
   overflow: auto;
   width: auto;
-  background-color: $color-background--ligth;
+  background-color: $color-background--light;
   top: 0;
   left: 50%;
   padding: 0.5rem;
@@ -128,6 +128,10 @@
 
 .header__logo {
   margin-right: 1.5rem;
+
+  @include mobile-tablet {
+    flex-grow: 1;
+  }
 
   &:focus {
     outline: 1px dashed $color-font--white;
