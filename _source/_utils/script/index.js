@@ -18,12 +18,12 @@ export const loadGoogleAnalytics = () => {
   const gaDisabled = Cookies.get('gaDisabled');
 
   if (cookieConsent === 'true' && gaDisabled !== 'true') {
-    loadScript('https://www.googletagmanager.com/gtag/js?id=UA-45004279-5');
+    loadScript('https://www.googletagmanager.com/gtag/js?id=UA-45004279-3');
 
     window.dataLayer = window.dataLayer || [];
     // eslint-disable-next-line prefer-rest-params
     window.gtag = function gtag() { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
-    window.gtag('config', 'UA-45004279-5', { 'anonymize_ip': true });
+    window.gtag('config', 'UA-45004279-3', { 'anonymize_ip': true });
   }
 };
