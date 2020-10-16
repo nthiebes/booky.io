@@ -6,12 +6,13 @@ import fetcher from '../../_utils/fetcher';
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-import Input from '../../atoms/input';
-import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
-import { ButtonLargeBlue } from '../../atoms/button';
-import Textarea from '../../atoms/textarea';
+// import Input from '../../atoms/input';
+// import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
+// import { ButtonLargeBlue } from '../../atoms/button';
+// import Textarea from '../../atoms/textarea';
 import Illustration from '../../atoms/illustration';
-import Form from '../../molecules/form';
+import Link from '../../atoms/link';
+// import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 
 class Contact extends PureComponent {
@@ -63,13 +64,36 @@ class Contact extends PureComponent {
   }
 
   render() {
-    const { intl } = this.props;
-    const { name, email, message, pending, error, success } = this.state;
+    // const { intl } = this.props;
+    // const { name, email, message, pending, error, success } = this.state;
 
     return (
       <Page>
         <Section className="contact">
-          { success ? (
+          <span>
+            <H1>
+              <FormattedMessage id="contact.headline" />
+            </H1>
+            <P first>
+              <FormattedMessage
+                id="contact.text"
+                values={ {
+                  link: <FormattedMessage id="contact.textLink" />
+                } }
+              />
+            </P>
+            <P>
+              <FormattedMessage id="login.email" />
+              { ': ' }
+              <Link href="mailto:hello@booky.io">{ 'hello@booky.io' }</Link>
+            </P>
+          </span>
+          <Illustration
+            name="email"
+            className="contact__illustration"
+            // className="contact__illustration booky--hide-mobile-tablet"
+          />
+          { /* success ? (
             <SuccessIllustration message="contact.success" illustration="join-success" width="400" />
           ) : (
             <>
@@ -137,7 +161,7 @@ class Contact extends PureComponent {
                 className="contact__illustration booky--hide-mobile-tablet"
               />
             </>
-          ) }
+          ) */}
         </Section>
       </Page>
     );
