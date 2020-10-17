@@ -121,7 +121,7 @@ class Home extends Component {
               />
               { 'Chrome' }
             </Link>
-            <Link to="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/" target="_blank" color="light" className="home__extension-browser">
+            <Link href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/" target="_blank" color="light" className="home__extension-browser">
               <img
                 width="75"
                 height="75"

@@ -13,7 +13,7 @@ import Icon from '../../atoms/icon';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Section from '../../molecules/section';
 import Bookmarklet from '../../molecules/bookmarklet';
-import javascript from '../../molecules/bookmarklet/javascript';
+import { javascriptMobile } from '../../molecules/bookmarklet/javascript';
 import Link from '../../atoms/link';
 import Expandable from '../../molecules/expandable';
 import Illustration from '../../atoms/illustration';
@@ -243,7 +243,7 @@ class Help extends Component {
                   <FormattedMessage id="bookmarklet.mobile2" />
                   <Input
                     className="help__input"
-                    value={ javascript }
+                    value={ javascriptMobile }
                     onChange={ () => {} }
                     ariaLabel={ intl.formatMessage({ id: 'bookmarklet.mobile.code' }) }
                   />

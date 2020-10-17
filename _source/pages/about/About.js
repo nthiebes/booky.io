@@ -160,7 +160,7 @@ class About extends PureComponent {
               { 'Chrome ' }
               <FormattedMessage id="misc.extension" />
             </Link>
-            <Link to="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/" target="_blank" color="light" className="about__platforms-platform">
+            <Link href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/" target="_blank" color="light" className="about__platforms-platform">
               <img
                 width="75"
                 height="75"
