@@ -215,16 +215,18 @@ class DashboardsList extends PureComponent {
         >
           <FormattedMessage id="dashboard.add" values={ { b: (msg) => <b>{msg}</b> } } />
         </ButtonSmallPrimary>
-        <ButtonSmallPrimary
-          icon="upload"
-          className="dashboards__button-import"
-          tabIndex={ useTabIndex || pinned ? '0' : '-1' }
-          useSkeleton={ noDashboards }
-          to="/account#import"
-          onClick={ closeSidebar }
-        >
-          <FormattedMessage id="account.import" />
-        </ButtonSmallPrimary>
+        { dashboards.length === 1 && (
+          <ButtonSmallPrimary
+            icon="upload"
+            className="dashboards__button-import"
+            tabIndex={ useTabIndex || pinned ? '0' : '-1' }
+            useSkeleton={ noDashboards }
+            to="/account#import"
+            onClick={ closeSidebar }
+          >
+            <FormattedMessage id="account.import" />
+          </ButtonSmallPrimary>
+        ) }
       </Fragment>
     );
   }
