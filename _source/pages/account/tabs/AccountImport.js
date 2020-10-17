@@ -23,7 +23,7 @@ class AccountImport extends PureComponent {
     error: null,
     success: false,
     pending: false,
-    importAsCollections: false,
+    importAsCollections: true,
     bookmarksCount: 0
   }
 
@@ -70,7 +70,7 @@ class AccountImport extends PureComponent {
     this.readFile(file, (html) => {
       importBookmarks({
         params: {
-          importAsCollections,
+          importAsCollections: !importAsCollections,
           bookmarks: html
         },
         onSuccess: (bookmarksCount) => {
