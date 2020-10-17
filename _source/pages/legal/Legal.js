@@ -34,10 +34,10 @@ export default class Legal extends Component {
 
               <H2>Contact</H2>
               <P>
-                Email: <Link href="mailto:hello@booky.io">{ 'hello@booky.io' }</Link><br />
-                <Link to="/contact">
+                Email: <Link href="mailto:hello@booky.io">{ 'hello@booky.io' }</Link>
+                {/* <Link to="/contact">
                   Contact form
-                </Link>
+                </Link> */}
               </P>
 
               <H3>Liability for Contents</H3>
@@ -66,10 +66,10 @@ export default class Legal extends Component {
 
               <H2>Kontakt</H2>
               <P>
-                E-Mail: <Link href="mailto:hello@booky.io">{ 'hello@booky.io' }</Link><br />
-                <Link to="/contact">
+                E-Mail: <Link href="mailto:hello@booky.io">{ 'hello@booky.io' }</Link>
+                {/* <Link to="/contact">
                   Kontaktformular
-                </Link>
+                </Link> */}
               </P>
 
               <H3>Haftung für Inhalte</H3>

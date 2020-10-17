@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default `
+export const javascript = `
 javascript:(function() {
   function centeredPopupPosition(w, h) {
     var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
@@ -27,4 +27,6 @@ javascript:(function() {
   ).focus();
 }());
 `;
+
+export const javascriptMobile = `javascript:(function(){window.open('${window.location.origin}/extension/add?url='+encodeURIComponent(window.location.href)+'&name='+encodeURIComponent(document.title)+'&note='+(document.querySelector('meta[name=description]')?document.querySelector('meta[name=description]').getAttribute('content'):''),'bookyBookmarklet','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no').focus();}());`;
 /* eslint-enable */
