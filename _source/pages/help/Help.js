@@ -13,7 +13,7 @@ import Icon from '../../atoms/icon';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Section from '../../molecules/section';
 import Bookmarklet from '../../molecules/bookmarklet';
-import javascript from '../../molecules/bookmarklet/javascript';
+import { javascriptMobile } from '../../molecules/bookmarklet/javascript';
 import Link from '../../atoms/link';
 import Expandable from '../../molecules/expandable';
 import Illustration from '../../atoms/illustration';
@@ -25,11 +25,12 @@ import './Help.scss';
 class Help extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool
+    darkMode: PropTypes.bool,
+    isBeta: PropTypes.bool.isRequired
   }
 
   render() {
-    const { intl, darkMode } = this.props;
+    const { intl, darkMode, isBeta } = this.props;
     const disqusConfig = {
       url: 'https://booky.io/help',
       identifier: 'help',
@@ -39,13 +40,6 @@ class Help extends Component {
       email: (
         <Link to="/contact">
           <FormattedMessage id="help.email" />
-        </Link>
-      )
-    };
-    const betaValues = {
-      link: (
-        <Link href="https://booky.io/settings">
-          { 'booky.io/settings' }
         </Link>
       )
     };
@@ -64,24 +58,25 @@ class Help extends Component {
           </P>
           <Illustration name="help" className="help-illustration booky--hide-mobile" />
 
-          <H2 id="beta">
-            <FormattedMessage id="help.beta" />
-          </H2>
-          <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.beta.question1" /> } className="help-container__item">
-              <P noPadding>
-                <FormattedMessage id="help.beta.answer1" />
-              </P>
-            </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
-              <P noPadding>
-                <FormattedMessage id="help.beta.answer2" values={ betaValues } />
-                <Link href="https://booky.io/settings" target="_blank">
-                  {'booky.io/settings'}
-                </Link>
-              </P>
-            </Expandable>
-          </div>
+          { isBeta && (
+            <>
+              <H2 id="beta">
+                <FormattedMessage id="help.beta" />
+              </H2>
+              <div className="help-container">
+                <Expandable headline={ <FormattedMessage id="help.beta.question1" /> } className="help-container__item">
+                  <P noPadding>
+                    <FormattedMessage id="help.beta.answer1" />
+                  </P>
+                </Expandable>
+                <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
+                  <P noPadding>
+                    <FormattedMessage id="help.beta.answer2" />
+                  </P>
+                </Expandable>
+              </div>
+            </>
+          ) }
 
           <H2 id="bookmarks">
             <FormattedMessage id="help.bookmarks" />
@@ -246,7 +241,7 @@ class Help extends Component {
                   <FormattedMessage id="bookmarklet.mobile2" />
                   <Input
                     className="help__input"
-                    value={ javascript }
+                    value={ javascriptMobile }
                     onChange={ () => {} }
                     ariaLabel={ intl.formatMessage({ id: 'bookmarklet.mobile.code' }) }
                   />

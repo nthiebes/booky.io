@@ -4,7 +4,7 @@ var iframe = document.getElementById('booky'),
   loadingWrapper = document.getElementById('loading'),
   body = document.getElementsByTagName('body')[0],
   devHost = 'http://localhost:3000',
-  prodHost = 'https://beta.booky.io',
+  prodHost = 'https://booky.io',
   host = prodHost,
   pageData = {};
 
