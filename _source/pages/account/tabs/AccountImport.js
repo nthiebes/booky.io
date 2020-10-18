@@ -73,11 +73,11 @@ class AccountImport extends PureComponent {
           importAsCollections,
           bookmarks: html
         },
-        onSuccess: (bookmarksCount) => {
+        onSuccess: ({ count }) => {
           this.setState({
             pending: false,
             success: true,
-            bookmarksCount
+            bookmarksCount: count
           });
         },
         onError: (error) => {
