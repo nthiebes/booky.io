@@ -12,7 +12,7 @@ import CookieBanner from '../../molecules/cookie-banner';
 
 export default class Page extends Component {
   render() {
-    const { children, className, dashboards, home, toolbar, blurContent, stickyHeader, darkMode } = this.props;
+    const { children, className, dashboards, home, toolbar, blurContent, stickyHeader, darkMode, showStats } = this.props;
 
     return (
       <Fragment>
@@ -51,6 +51,7 @@ export default class Page extends Component {
             blurContent && 'page--blur'
           ) }
           home={ home }
+          showStats={ showStats }
         />
       </Fragment>
     );
@@ -69,5 +70,6 @@ Page.propTypes = {
   home: PropTypes.bool,
   blurContent: PropTypes.bool,
   stickyHeader: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired
+  darkMode: PropTypes.bool.isRequired,
+  showStats: PropTypes.bool
 };

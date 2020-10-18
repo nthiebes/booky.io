@@ -22,7 +22,8 @@ class Footer extends PureComponent {
     loggedIn: PropTypes.bool.isRequired,
     toolbarSticky: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    locale: PropTypes.string
+    locale: PropTypes.string,
+    showStats: PropTypes.bool
   }
 
   scrollToTop() {
@@ -40,7 +41,8 @@ class Footer extends PureComponent {
       loggedIn,
       toolbarSticky,
       darkMode,
-      locale
+      locale,
+      showStats
     } = this.props;
 
     return (
@@ -50,7 +52,7 @@ class Footer extends PureComponent {
         hasSidebar && home && loggedIn && dashboardsOpen && toolbarSticky && 'footer--shifted',
         className
       ) }>
-        { home && !loggedIn && (
+        { ((home && !loggedIn) || showStats) && (
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">

@@ -21,7 +21,8 @@ class About extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     stickyHeader: PropTypes.bool,
-    darkMode: PropTypes.bool.isRequired
+    darkMode: PropTypes.bool.isRequired,
+    isBeta: PropTypes.bool.isRequired
   };
 
   state = {
@@ -38,11 +39,11 @@ class About extends PureComponent {
   }
 
   render() {
-    const { intl, stickyHeader, darkMode } = this.props;
+    const { intl, stickyHeader, darkMode, isBeta } = this.props;
     const { releases } = this.state;
 
     return (
-      <Page className={ classNames('about', stickyHeader && 'about--sticky') }>
+      <Page showStats className={ classNames('about', stickyHeader && 'about--sticky') }>
         <Section color="dark" className="about__header">
           <Display noMargin centered color="light">
             <FormattedMessage id="about.title" />
@@ -304,34 +305,36 @@ class About extends PureComponent {
             </div>
           </div>
         </Section>
-        <Section>
-          <H2 style="h1">
-            <FormattedMessage id="about.betaUpdates" />
-          </H2>
-          { /* eslint-disable-next-line camelcase */ }
-          { releases.map(({ id, name, body, published_at }) => {
-            const lines = body.split('\n');
+        { isBeta && (
+          <Section>
+            <H2 style="h1">
+              <FormattedMessage id="about.betaUpdates" />
+            </H2>
+            { /* eslint-disable-next-line camelcase */ }
+            { releases.map(({ id, name, body, published_at }) => {
+              const lines = body.split('\n');
 
-            // eslint-disable-next-line no-lone-blocks
-            return (
-              <Expandable className="about__updates" key={ id } headline={
-                <>
-                  <span>{ `${name} -` }</span>
-                  <time className="about__date">{ format(new Date(published_at), 'MM/dd/yyyy') }</time>
-                </>
-              }>  
-                <List>
-                  { lines.map((line, index) => (
-                    <ListItem key={ index }>
-                      { line.replace(/- /g, '') }
-                      { index < lines.length - 1 && <br /> }
-                    </ListItem>
-                  )) }
-                </List>
-              </Expandable>
-            );
-          }) }
-        </Section>
+              // eslint-disable-next-line no-lone-blocks
+              return (
+                <Expandable className="about__updates" key={ id } headline={
+                  <>
+                    <span>{ `${name} -` }</span>
+                    <time className="about__date">{ format(new Date(published_at), 'MM/dd/yyyy') }</time>
+                  </>
+                }>  
+                  <List>
+                    { lines.map((line, index) => (
+                      <ListItem key={ index }>
+                        { line.replace(/- /g, '') }
+                        { index < lines.length - 1 && <br /> }
+                      </ListItem>
+                    )) }
+                  </List>
+                </Expandable>
+              );
+            }) }
+          </Section>
+        ) }
       </Page>
     );
   }
