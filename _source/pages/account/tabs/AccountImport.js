@@ -122,6 +122,7 @@ class AccountImport extends PureComponent {
               accept="text/html"
               maxFiles={ 1 }
               multiple={ false }
+              disabled={ pending }
             >
               {({getRootProps, getInputProps, isDragActive, acceptedFiles, fileRejections}) => (
                 <div { ...getRootProps({
@@ -167,6 +168,7 @@ class AccountImport extends PureComponent {
             id="import-as-collections"
             onChange={ this.handleCheckboxChange }
             checked={ importAsCollections }
+            disabled={ pending }
           />
           <P>
             <i><FormattedMessage id="account.importNote" /></i>
