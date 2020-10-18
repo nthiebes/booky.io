@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
-import { openModal } from '../../../_state/modal/actions';
-import Component from './AccountManage';
+import { importBookmarks } from '../../../_state/user/actions';
+import Component from './AccountImport';
 
 const mapDispatchToProps = {
-  openModal
+  importBookmarks
 };
 const Container = connect(
   null,

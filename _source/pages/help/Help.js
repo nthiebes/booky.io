@@ -280,6 +280,22 @@ class Help extends Component {
                 } } />
               </P>
             </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.account.question4" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer4" />
+                <Link to="/account#import">
+                  {'booky.io/account#import'}
+                </Link>
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.account.question5" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer5" />
+                <Link to="/account#export">
+                  {'booky.io/account#export'}
+                </Link>
+              </P>
+            </Expandable>
           </div>
 
           <H2 id="registration">

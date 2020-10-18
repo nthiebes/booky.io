@@ -12,7 +12,8 @@ export default class SuccessIllustration extends Component {
     className: PropTypes.string,
     illustration: PropTypes.string.isRequired,
     width: PropTypes.string,
-    height: PropTypes.string
+    height: PropTypes.string,
+    children: PropTypes.node
   }
 
   state = {
@@ -35,11 +36,11 @@ export default class SuccessIllustration extends Component {
   }
 
   render() {
-    const { message, illustration, width, height } = this.props;
+    const { message, illustration, width, height, className, children } = this.props;
     const { animate } = this.state;
 
     return (
-      <div role="alert" className="success-illustration">
+      <div role="alert" className={ classNames('success-illustration', className) }>
         <Illustration
           name={ illustration }
           width={ width }
@@ -47,7 +48,7 @@ export default class SuccessIllustration extends Component {
           className={ classNames('success-illustration__image', animate && 'success-illustration__image--animate') }
         />
         <P className={ classNames('success-illustration__text', animate && 'success-illustration__text--animate') }>
-          <FormattedMessage id={ message } />
+          { message ? <FormattedMessage id={ message } /> : children }
         </P>
       </div>
     );

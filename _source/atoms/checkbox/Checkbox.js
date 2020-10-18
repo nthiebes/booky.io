@@ -14,7 +14,8 @@ export default class Checkbox extends Component {
     className: PropTypes.string,
     onChange: PropTypes.func,
     tabIndex: PropTypes.string,
-    first: PropTypes.bool
+    first: PropTypes.bool,
+    disabled: PropTypes.bool
   }
 
   handleInputChange = (event) => {
@@ -27,7 +28,7 @@ export default class Checkbox extends Component {
   }
 
   render() {
-    const { label, className, id, name, value, checked, tabIndex, first } = this.props;
+    const { label, className, id, name, value, checked, tabIndex, first, disabled } = this.props;
 
     return (
       <div className={ classNames('checkbox', first && 'checkbox--first', className) }>
@@ -40,6 +41,7 @@ export default class Checkbox extends Component {
           checked={ checked }
           onChange={ this.handleInputChange }
           tabIndex={ tabIndex }
+          disabled={ disabled }
         />
         { label && <Label htmlFor={ id } className="checkbox__label">{ label }</Label> }
       </div>
