@@ -20,7 +20,8 @@ class DashboardsList extends PureComponent {
     useTabIndex: PropTypes.bool,
     darkMode: PropTypes.bool.isRequired,
     droppableIdSuffix: PropTypes.string.isRequired,
-    closeEditMode: PropTypes.bool.isRequired
+    closeEditMode: PropTypes.bool.isRequired,
+    closeSidebar: PropTypes.func.isRequired
   }
   
   static defaultProps = {
@@ -86,7 +87,8 @@ class DashboardsList extends PureComponent {
       pinned,
       useTabIndex,
       darkMode,
-      droppableIdSuffix
+      droppableIdSuffix,
+      closeSidebar
     } = this.props;
     const { editMode } = this.state;
     const noDashboards = dashboards.length === 0;
@@ -213,6 +215,18 @@ class DashboardsList extends PureComponent {
         >
           <FormattedMessage id="dashboard.add" values={ { b: (msg) => <b>{msg}</b> } } />
         </ButtonSmallPrimary>
+        { dashboards.length === 1 && (
+          <ButtonSmallPrimary
+            icon="upload"
+            className="dashboards__button-import"
+            tabIndex={ useTabIndex || pinned ? '0' : '-1' }
+            useSkeleton={ noDashboards }
+            to="/account#import"
+            onClick={ closeSidebar }
+          >
+            <FormattedMessage id="account.import" />
+          </ButtonSmallPrimary>
+        ) }
       </Fragment>
     );
   }

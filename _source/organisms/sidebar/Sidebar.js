@@ -24,7 +24,8 @@ class Sidebar extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     logout: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    color: PropTypes.number.isRequired
+    color: PropTypes.number.isRequired,
+    isBeta: PropTypes.bool.isRequired
   }
   
   static defaultProps = {
@@ -62,7 +63,8 @@ class Sidebar extends PureComponent {
       location,
       className,
       hasSidebar,
-      darkMode
+      darkMode,
+      isBeta
     } = this.props;
     const { pathname } = location;
     const { logoutPending } = this.state;
@@ -219,26 +221,27 @@ class Sidebar extends PureComponent {
                   </li>
                 </>
               ) }
-              <li>
-                <Link
-                  className={ classNames(
-                    'sidebar__item',
-                    pathname === '/feedback' && 'sidebar__item--active',
-                    darkMode && 'sidebar__item--dark-mode'
-                  ) }
-                  to="/feedback"
-                  onClick={ closeSidebar }
-                  tabIndex={ open ? '0' : '-1' }
-                  noUnderline
-                >
-                  <Icon icon="feedback" />
-                  <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
-                    <FormattedMessage id="menu.feedback" />
-                  </span>
-                </Link>
-              </li>
+              { isBeta && (
+                <li>
+                  <Link
+                    className={ classNames(
+                      'sidebar__item',
+                      pathname === '/feedback' && 'sidebar__item--active',
+                      darkMode && 'sidebar__item--dark-mode'
+                    ) }
+                    to="/feedback"
+                    onClick={ closeSidebar }
+                    tabIndex={ open ? '0' : '-1' }
+                    noUnderline
+                  >
+                    <Icon icon="feedback" />
+                    <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                      <FormattedMessage id="menu.feedback" />
+                    </span>
+                  </Link>
+                </li>
+              ) }
               { loggedIn && (
-                
                 <li>
                   <button
                     className={ classNames(

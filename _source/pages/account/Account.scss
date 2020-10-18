@@ -8,12 +8,68 @@
   max-width: 100%;
 }
 
-.account__import-steps {
+.import__step {
+  position: relative;
+  padding-left: calc(1rem + 30px);
+  padding-bottom: 1rem;
   margin-top: 1rem;
-  list-style: decimal inside;
 }
 
-.account__import-step {
-  line-height: 1.5;
+.import__step-icon {
+  position: absolute;
+  left: -6px;
+  top: -7px;
+}
+
+.import__drop-area {
+  border: 3px dashed $color--7;
+  transition: border-color 0.2s linear, background-color 0.2s linear;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+
+  &:focus,
+  &:active {
+    border-color: $color--blue;
+  }
+
+  @include desktop {
+    padding: 3rem 1rem;
+
+    &:hover {
+      border-color: $color--blue;
+    }
+  }
+}
+
+.import__drop-area--active {
+  border-color: $color--blue;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.import__drop-area--accepted {
+  padding-top: 1rem;
+
+  @include desktop {
+    padding-top: 2rem;
+  }
+}
+
+.import__error {
+  padding-top: 0;
   padding-bottom: 1rem;
+  text-align: left;
+}
+
+.import__file {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  margin-right: 6px;
+  word-break: break-all;
 }

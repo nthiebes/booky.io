@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
-import Component from './Help';
+import Component from './Menu';
 
-export const mapStateToProps = (state) => ({
-  darkMode: state.user.settings.darkMode,
+const mapStateToProps = (state) => ({
   isBeta: state.user.isBeta
 });
-
 const Container = connect(
   mapStateToProps
 )(Component);

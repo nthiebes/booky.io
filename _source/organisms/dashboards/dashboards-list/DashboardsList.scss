@@ -200,10 +200,17 @@
   color: $color-font--white;
 }
 
-.dashboards__button {
+.dashboards__button,
+.dashboards__button-import {
   margin: 1rem 0 1.5rem calc(3vw + 6px);
 
   @include desktop {
     margin: 1rem 0 0.5rem 36px;
+  }
+}
+
+.dashboards__button-import {
+  @include mobile-tablet {
+    margin-top: 0;
   }
 }
