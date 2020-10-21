@@ -87,7 +87,11 @@ const loadingDone = () => {
 const init = () => {
   loadPolyfills().then(() => {
     // Fetch translations
-    fetch(`/_assets/i18n/${language}.json?=${process.env.VERSION}`)
+    const headers = new Headers({'Content-Type': 'application/json'});
+
+    fetch(`/_assets/i18n/${language}.json?=${process.env.VERSION}`, {
+      headers
+    })
       .then((response) => response.json())
       .then((data) => {
         messages = data;
