@@ -215,6 +215,7 @@ class Customize extends PureComponent {
               checked={ categoriesLayout === 'grid' }
               illustration="light-mode"
               className="customize__image--first"
+              first
             >
               <FormattedMessage id="customize.grid" />
             </Radio>
@@ -226,6 +227,7 @@ class Customize extends PureComponent {
               checked={ categoriesLayout === 'column' }
               illustration="dark-mode"
               className="customize__image--second"
+              first
             >
               <FormattedMessage id="customize.column" />
             </Radio>
