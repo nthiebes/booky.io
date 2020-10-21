@@ -25,12 +25,11 @@ import './Help.scss';
 class Help extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool,
-    isBeta: PropTypes.bool.isRequired
+    darkMode: PropTypes.bool
   }
 
   render() {
-    const { intl, darkMode, isBeta } = this.props;
+    const { intl, darkMode } = this.props;
     const disqusConfig = {
       url: 'https://booky.io/help',
       identifier: 'help',
@@ -57,26 +56,6 @@ class Help extends Component {
             <FormattedMessage id="help.intro2" values={ introValues } />
           </P>
           <Illustration name="help" className="help-illustration booky--hide-mobile" />
-
-          { isBeta && (
-            <>
-              <H2 id="beta">
-                <FormattedMessage id="help.beta" />
-              </H2>
-              <div className="help-container">
-                <Expandable headline={ <FormattedMessage id="help.beta.question1" /> } className="help-container__item">
-                  <P noPadding>
-                    <FormattedMessage id="help.beta.answer1" />
-                  </P>
-                </Expandable>
-                <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
-                  <P noPadding>
-                    <FormattedMessage id="help.beta.answer2" />
-                  </P>
-                </Expandable>
-              </div>
-            </>
-          ) }
 
           <H2 id="bookmarks">
             <FormattedMessage id="help.bookmarks" />
