@@ -37,7 +37,7 @@ export default class Empty extends PureComponent {
         <img alt="" border="0" src={ localeData.pixelSrc } width="1" height="1" />
         <input type="submit" name="submit" className="donate__submit" />
         <span className={ classNames('donate__content', `donate__content--${color}`) }>
-          <img alt="" src={ `/_assets/logos/paypal_${color}.svg` } height="18" loading="lazy" className="donate__logo" />
+          <img alt="" src={ `/_assets/logos/paypal_${color}.svg` } height="18" width="68" loading="lazy" className="donate__logo" />
           { localeData.copy }
         </span>
       </form>
