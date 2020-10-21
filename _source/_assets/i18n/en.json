@@ -128,7 +128,7 @@
     "customize.title": "Customize booky",
     "customize.style": "Design",
     "customize.navColor": "Header color",
-    "customize.maxWidth": "Limit width (2 columns)",
+    "customize.maxColumnCount": "Specify the maximum number of columns",
     "customize.sidebar": "Show as sidebar",
     "customize.tabs": "Show as tab-bar",
     "customize.dropdown": "Show as dropdown",
@@ -178,11 +178,6 @@
     "bookmarklet.error": "To use our bookmarklet, drag it into the bookmarks bar of your browser.",
     "bookmarklet.text": "<b>Add</b> to booky",
     "help.bookmarklet.text1": "You can use the bookmarklet to quickly add a website to booky.",
-    "help.beta": "Beta phase",
-    "help.beta.question1": "Where is feature X/Y/Z and when is the beta phase completed?",
-    "help.beta.question2": "Is the beta connected to my regular booky account?",
-    "help.beta.answer1": "We will gradually add all previous features of booky, as well as new features. The beta can be used during the whole time. There is no official release date.",
-    "help.beta.answer2": "Yes, you can log in directly and get started. If any features are missing, you can also use them on the regular page.",
     "help.categories": "Categories",
     "help.bookmarks": "Bookmarks",
     "help.collections": "Collections",
@@ -329,5 +324,8 @@
     "about.sheldonText": "Backend developer",
     "about.bellaText": "Consultant",
     "misc.extension": "extension",
-    "extension.loading": "Loading..."
+    "extension.loading": "Loading...",
+    "help.general": "General",
+    "help.general.question1": "What is the booky web app?",
+    "help.general.answer1": "You can add booky to your home screen. Booky can then be used in a similar way to a regular app."
 }
