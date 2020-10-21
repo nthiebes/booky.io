@@ -57,6 +57,17 @@ class Help extends Component {
           </P>
           <Illustration name="help" className="help-illustration booky--hide-mobile" />
 
+          <H2 id="general">
+            <FormattedMessage id="help.general" />
+          </H2>
+          <div className="help-container">
+            <Expandable headline={ <FormattedMessage id="help.general.question1" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.general.answer1" />
+              </P>
+            </Expandable>
+          </div>
+
           <H2 id="bookmarks">
             <FormattedMessage id="help.bookmarks" />
           </H2>
