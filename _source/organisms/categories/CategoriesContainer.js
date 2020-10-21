@@ -10,7 +10,8 @@ export const mapStateToProps = (state) => ({
   dashboardName: (state.dashboards.items.find((dashboard) => dashboard.id === state.dashboards.active) || {}).name,
   darkMode: state.user.settings.darkMode,
   pending: state.dashboards.pending,
-  categoriesLayout: state.user.settings.categoriesLayout
+  categoriesLayout: state.user.settings.categoriesLayout,
+  maxColumnCount: state.user.settings.maxColumnCount
 });
 
 export const mapDispatchToProps = {

@@ -18,7 +18,8 @@ export const mapStateToProps = (state) => ({
   bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
   minimalBookmarkButton: state.user.settings.minimalBookmarkButton,
   enableNotes: state.user.settings.enableNotes,
-  isExtension: state.extension.active
+  isExtension: state.extension.active,
+  maxColumnCount: state.user.settings.maxColumnCount
 });
 
 export const mapDispatchToProps = {

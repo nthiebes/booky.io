@@ -21,20 +21,40 @@
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 36px;
 
+    &.categories--max-columns-2 {
+      grid-template-columns: 350px 350px;
+    }
+
     &.categories--shifted {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @include hd {
-    &.categories {
+    grid-template-columns: repeat(3, 1fr);
+
+    &.categories--shifted {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    &.categories--max-columns-2 {
+      grid-template-columns: 350px 350px;
     }
   }
 
   @include fullhd {
-    &.categories {
+    grid-template-columns: repeat(4, 1fr);
+
+    &.categories--shifted {
       grid-template-columns: repeat(4, 1fr);
+    }
+
+    &.categories--max-columns-2 {
+      grid-template-columns: 350px 350px;
+    }
+
+    &.categories--max-columns-3 {
+      grid-template-columns: 350px 350px 350px;
     }
   }
 }
@@ -42,6 +62,18 @@
 .categories--column {
   columns: 274px auto;
   column-gap: 3%;
+
+  &.categories--max-columns-2 {
+    columns: 274px 2;
+  }
+
+  &.categories--max-columns-3 {
+    columns: 274px 3;
+  }
+
+  &.categories--max-columns-4 {
+    columns: 274px 4;
+  }
 
   @include desktop {
     column-gap: 36px;
@@ -52,13 +84,52 @@
   @include desktop {
     width: calc(100% - 50px);
     margin-left: 50px;
-  }
-}
 
-.categories--shifted {
-  @include desktop {
-    width: calc(100% - 300px);
-    margin-left: 300px;
+    &.categories--max-columns-2 {
+      padding: 0;
+      width: 736px;
+      margin-left: calc(15px + 50% - 350px - 18px);
+    }
+
+    &.categories--shifted {
+      width: calc(100% - 300px);
+      margin-left: 300px;
+      padding: 0 30px;
+    }
+  }
+
+  @include hd {
+    &.categories--max-columns-2 {
+      padding: 0;
+      width: 736px;
+      margin-left: calc(15px + 50% - 350px - 18px);
+
+      &.categories--shifted {
+        margin-left: calc(150px + 50% - 350px - 18px);
+      }
+    }
+  }
+
+  @include fullhd {
+    &.categories--max-columns-3 {
+      padding: 0;
+      width: 1122px;
+      margin-left: calc(15px + 50% - 525px - 36px);
+
+      &.categories--shifted {
+        margin-left: calc(150px + 50% - 525px - 36px);
+      }
+    }
+
+    &.categories--max-columns-4 {
+      padding: 0;
+      width: 1508px;
+      margin-left: calc(15px + 50% - 718px - 36px);
+
+      &.categories--shifted {
+        margin-left: calc(150px + 50% - 718px - 36px);
+      }
+    }
   }
 }
 

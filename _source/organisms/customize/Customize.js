@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -8,6 +9,7 @@ import Label from '../../atoms/label';
 import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
 import Radio from '../../atoms/radio';
+import Input from '../../atoms/input';
 import { ErrorMessage } from '../../atoms/messages';
 
 class Customize extends PureComponent {
@@ -28,11 +30,33 @@ class Customize extends PureComponent {
     bookmarkEditOnHover: PropTypes.bool.isRequired,
     minimalBookmarkButton: PropTypes.bool.isRequired,
     enableNotes: PropTypes.bool.isRequired,
-    isExtension: PropTypes.bool.isRequired
+    isExtension: PropTypes.bool.isRequired,
+    maxColumnCount: PropTypes.number.isRequired
   }
 
   state = {
-    error: null
+    error: null,
+    maxColumns: this.props.maxColumnCount > 0
+  }
+
+  handleMaxColumnCheckbox = () => {
+    this.setState({
+      maxColumns: !this.state.maxColumns
+    });
+
+    this.props.updateSettings({
+      maxColumnCount: this.state.maxColumns ? null : 2
+    }, {
+      onError: this.errorCallback
+    });
+  }
+
+  handleNumberInputChange = (value, name) => {
+    this.props.updateSettings({
+      [name]: Number(value)
+    }, {
+      onError: this.errorCallback
+    });
   }
 
   handleColorChange = (value) => {
@@ -96,9 +120,10 @@ class Customize extends PureComponent {
       bookmarkEditOnHover,
       minimalBookmarkButton,
       isExtension,
-      enableNotes
+      enableNotes,
+      maxColumnCount
     } = this.props;
-    const { error } = this.state;
+    const { error, maxColumns } = this.state;
 
     return (
       <Fragment>
@@ -170,15 +195,6 @@ class Customize extends PureComponent {
             >
               <FormattedMessage id="customize.sidebar" />
             </Radio>
-            {/* <Radio
-              id="dashboards-dropdown"
-              name="dashboardsStyle"
-              onChange={ this.handleRadioChange }
-              value="dropdown"
-              checked={ dashboardsStyle === 'dropdown' }
-            >
-              <FormattedMessage id="customize.dropdown" />
-            </Radio> */}
             <Radio
               id="dashboards-tabs"
               name="dashboardsStyle"
@@ -197,7 +213,8 @@ class Customize extends PureComponent {
               onChange={ this.handleRadioChange }
               value="grid"
               checked={ categoriesLayout === 'grid' }
-              first
+              illustration="light-mode"
+              className="customize__image--first"
             >
               <FormattedMessage id="customize.grid" />
             </Radio>
@@ -207,9 +224,28 @@ class Customize extends PureComponent {
               onChange={ this.handleRadioChange }
               value="column"
               checked={ categoriesLayout === 'column' }
+              illustration="dark-mode"
+              className="customize__image--second"
             >
               <FormattedMessage id="customize.column" />
             </Radio>
+            <Checkbox
+              label={ intl.formatMessage({ id: 'customize.maxColumnCount'}) }
+              id="maxColumn"
+              onChange={ this.handleMaxColumnCheckbox }
+              checked={ maxColumns }
+            />
+            <Input
+              type="number"
+              min="2"
+              max="4"
+              id="maxColumnCount"
+              name="maxColumnCount"
+              disabled={ !maxColumns }
+              value={ maxColumnCount || '2' }
+              onChange={ this.handleNumberInputChange }
+              className="customize__max-columns"
+            />
           </>
         ) }
         <H3>
