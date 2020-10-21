@@ -31,7 +31,7 @@ class Customize extends PureComponent {
     minimalBookmarkButton: PropTypes.bool.isRequired,
     enableNotes: PropTypes.bool.isRequired,
     isExtension: PropTypes.bool.isRequired,
-    maxColumnCount: PropTypes.number.isRequired
+    maxColumnCount: PropTypes.number
   }
 
   state = {
@@ -40,14 +40,14 @@ class Customize extends PureComponent {
   }
 
   handleMaxColumnCheckbox = () => {
-    this.setState({
-      maxColumns: !this.state.maxColumns
-    });
-
     this.props.updateSettings({
       maxColumnCount: this.state.maxColumns ? null : 2
     }, {
       onError: this.errorCallback
+    });
+
+    this.setState({
+      maxColumns: !this.state.maxColumns
     });
   }
 
@@ -213,7 +213,7 @@ class Customize extends PureComponent {
               onChange={ this.handleRadioChange }
               value="grid"
               checked={ categoriesLayout === 'grid' }
-              illustration="light-mode"
+              illustration="grid"
               className="customize__image--first"
               first
             >
@@ -225,7 +225,7 @@ class Customize extends PureComponent {
               onChange={ this.handleRadioChange }
               value="column"
               checked={ categoriesLayout === 'column' }
-              illustration="dark-mode"
+              illustration="columns"
               className="customize__image--second"
               first
             >
@@ -244,7 +244,7 @@ class Customize extends PureComponent {
               id="maxColumnCount"
               name="maxColumnCount"
               disabled={ !maxColumns }
-              value={ maxColumnCount || '2' }
+              value={ maxColumnCount ? maxColumnCount.toString() : '2' }
               onChange={ this.handleNumberInputChange }
               className="customize__max-columns"
             />
