@@ -308,7 +308,7 @@ class About extends PureComponent {
         </Section>
         <Section>
           <H2 style="h1">
-            <FormattedMessage id="about.betaUpdates" />
+            <FormattedMessage id="about.updates" />
           </H2>
           { /* eslint-disable-next-line camelcase */ }
           { releases.map(({ id, name, body, published_at }, index) => {
