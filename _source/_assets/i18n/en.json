@@ -327,5 +327,6 @@
     "extension.loading": "Loading...",
     "help.general": "General",
     "help.general.question1": "What is the booky web app?",
-    "help.general.answer1": "You can add booky to your home screen. Booky can then be used in a similar way to a regular app."
+    "help.general.answer1": "You can add booky to your home screen. Booky can then be used in a similar way to a regular app.",
+    "menu.new": "New"
 }
