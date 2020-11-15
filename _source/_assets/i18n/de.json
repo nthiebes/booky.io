@@ -327,5 +327,6 @@
     "extension.loading": "Wird geladen...",
     "help.general": "Allgemein",
     "help.general.question1": "Was ist die booky Web-App?",
-    "help.general.answer1": "Du kannst booky zu deinem Startbildschirm hinzufügen. Benutzen lässt sich booky dann ähnlich zu einer regulären App."
+    "help.general.answer1": "Du kannst booky zu deinem Startbildschirm hinzufügen. Benutzen lässt sich booky dann ähnlich zu einer regulären App.",
+    "menu.new": "Neues"
 }
