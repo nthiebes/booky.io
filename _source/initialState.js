@@ -28,7 +28,7 @@ export default {
       minimalBookmarkButton: false,
       closeEditMode: true,
       maxColumnCount: null,
-      newsVersion: null
+      newsVersion: 0
     }
   },
   dashboards: {
