@@ -9,7 +9,8 @@ export const mapStateToProps = (state) => ({
   hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
   darkMode: state.user.settings.darkMode,
   color: state.user.settings.navigationBarColor,
-  isBeta: state.user.isBeta
+  isBeta: state.user.isBeta,
+  newsVersion: state.user.settings.newsVersion
 });
 
 export const mapDispatchToProps = {

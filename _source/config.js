@@ -25,5 +25,6 @@ const extensionIds = {
 };
 
 export const config = {
-  extensionId: isDevEnvironment ? extensionIds[`${browser}Dev`] : extensionIds[`${browser}Prod`]
+  extensionId: isDevEnvironment ? extensionIds[`${browser}Dev`] : extensionIds[`${browser}Prod`],
+  NEWS_VERSION: 9
 };

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedDate, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
+import { config } from '../../config';
 import Page from '../../templates/page';
 import { H2, H3, H4, Display } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
@@ -20,7 +21,9 @@ class About extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     stickyHeader: PropTypes.bool,
-    darkMode: PropTypes.bool.isRequired
+    darkMode: PropTypes.bool.isRequired,
+    updateSettings: PropTypes.func.isRequired,
+    newsVersion: PropTypes.number.isRequired
   };
 
   state = {
@@ -28,6 +31,8 @@ class About extends PureComponent {
   }
 
   componentDidMount() {
+    const { newsVersion, updateSettings } = this.props;
+
     fetch('https://api.github.com/repos/nthiebes/booky.io/releases')
       .then((response) => response.json())
       .then((releases) => {
@@ -36,6 +41,12 @@ class About extends PureComponent {
         });
       })
       .catch();
+
+    if (newsVersion < config.NEWS_VERSION) {
+      updateSettings({
+        newsVersion: config.NEWS_VERSION
+      });
+    }
   }
 
   render() {

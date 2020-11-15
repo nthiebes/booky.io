@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+import { config } from '../../config';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 
@@ -40,6 +41,10 @@ const menuItemsLoggedIn = [
   {
     name: 'feedback',
     route: '/feedback'
+  },
+  {
+    name: 'new',
+    route: '/about#new'
   }
 ];
 
@@ -48,17 +53,21 @@ class Menu extends Component {
     intl: PropTypes.object.isRequired,
     className: PropTypes.string,
     loggedIn: PropTypes.bool,
-    isBeta: PropTypes.bool.isRequired
+    isBeta: PropTypes.bool.isRequired,
+    newsVersion: PropTypes.number.isRequired
   }
 
   render() {
-    const { className, loggedIn, intl, isBeta } = this.props;
+    const { className, loggedIn, intl, isBeta, newsVersion } = this.props;
     let menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     menuItems = menuItems.filter((item) => {
       if (item.name === 'feedback' && !isBeta) {
         return false;
-      } 
+      }
+      if (item.name === 'new' && newsVersion >= config.NEWS_VERSION) {
+        return false;
+      }
       return true;
     });
 
@@ -68,7 +77,7 @@ class Menu extends Component {
           <Link
             key={ name }
             className="menu__item"
-            activeClassName="menu__item--active"
+            activeClassName={ classNames(name !== 'new' && 'menu__item--active') }
             to={ route }
             color="light"
             isNavLink

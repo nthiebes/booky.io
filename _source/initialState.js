@@ -27,7 +27,8 @@ export default {
       autofocusSearch: false,
       minimalBookmarkButton: false,
       closeEditMode: true,
-      maxColumnCount: null
+      maxColumnCount: null,
+      newsVersion: null
     }
   },
   dashboards: {
