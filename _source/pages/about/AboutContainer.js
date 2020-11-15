@@ -1,13 +1,19 @@
 import { connect } from 'react-redux';
+
+import { updateSettings } from '../../_state/user/actions';
 import Component from './About';
 
 const mapStateToProps = (state) => ({
   stickyHeader: state.user.settings.stickyHeader,
   darkMode: state.user.settings.darkMode,
-  isBeta: state.user.isBeta
+  newsVersion: state.user.settings.newsVersion
 });
+const mapDispatchToProps = {
+  updateSettings
+};
 const Container = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Component);
 
 export default Container;

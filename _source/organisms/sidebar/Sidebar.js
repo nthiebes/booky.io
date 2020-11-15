@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+import { config } from '../../config';
 import Logo from '../../atoms/logo';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
@@ -25,7 +26,8 @@ class Sidebar extends PureComponent {
     logout: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     color: PropTypes.number.isRequired,
-    isBeta: PropTypes.bool.isRequired
+    isBeta: PropTypes.bool.isRequired,
+    newsVersion: PropTypes.number.isRequired
   }
   
   static defaultProps = {
@@ -64,7 +66,8 @@ class Sidebar extends PureComponent {
       className,
       hasSidebar,
       darkMode,
-      isBeta
+      isBeta,
+      newsVersion
     } = this.props;
     const { pathname } = location;
     const { logoutPending } = this.state;
@@ -237,6 +240,26 @@ class Sidebar extends PureComponent {
                     <Icon icon="feedback" />
                     <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
                       <FormattedMessage id="menu.feedback" />
+                    </span>
+                  </Link>
+                </li>
+              ) }
+              { loggedIn && newsVersion < config.NEWS_VERSION && (
+                <li>
+                  <Link
+                    className={ classNames(
+                      'sidebar__item',
+                      darkMode && 'sidebar__item--dark-mode'
+                    ) }
+                    to="/about#new"
+                    onClick={ closeSidebar }
+                    tabIndex={ open ? '0' : '-1' }
+                    noUnderline
+                    hasBadge
+                  >
+                    <Icon icon="new" />
+                    <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>
+                      <FormattedMessage id="menu.new" />
                     </span>
                   </Link>
                 </li>

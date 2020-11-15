@@ -1,10 +1,10 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { format } from 'date-fns';
+import { FormattedMessage, FormattedDate, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
+import { config } from '../../config';
 import Page from '../../templates/page';
 import { H2, H3, H4, Display } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
@@ -22,7 +22,8 @@ class About extends PureComponent {
     intl: PropTypes.object.isRequired,
     stickyHeader: PropTypes.bool,
     darkMode: PropTypes.bool.isRequired,
-    isBeta: PropTypes.bool.isRequired
+    updateSettings: PropTypes.func.isRequired,
+    newsVersion: PropTypes.number.isRequired
   };
 
   state = {
@@ -30,16 +31,26 @@ class About extends PureComponent {
   }
 
   componentDidMount() {
+    const { newsVersion, updateSettings } = this.props;
+
     fetch('https://api.github.com/repos/nthiebes/booky.io/releases')
       .then((response) => response.json())
       .then((releases) => {
-        this.setState({ releases });
+        this.setState({
+          releases: releases.filter((release) => !release.prerelease)
+        });
       })
       .catch();
+
+    if (newsVersion < config.NEWS_VERSION) {
+      updateSettings({
+        newsVersion: config.NEWS_VERSION
+      });
+    }
   }
 
   render() {
-    const { intl, stickyHeader, darkMode, isBeta } = this.props;
+    const { intl, stickyHeader, darkMode } = this.props;
     const { releases } = this.state;
 
     return (
@@ -305,36 +316,36 @@ class About extends PureComponent {
             </div>
           </div>
         </Section>
-        { isBeta && (
-          <Section>
-            <H2 style="h1">
-              <FormattedMessage id="about.betaUpdates" />
-            </H2>
-            { /* eslint-disable-next-line camelcase */ }
-            { releases.map(({ id, name, body, published_at }) => {
-              const lines = body.split('\n');
+        <Section>
+          <H2 style="h1" id="new" noMargin>
+            <FormattedMessage id="about.updates" />
+          </H2>
+          { /* eslint-disable-next-line camelcase */ }
+          { releases.map(({ id, name, body, published_at }, index) => {
+            const lines = body.split('\n');
 
-              // eslint-disable-next-line no-lone-blocks
-              return (
-                <Expandable className="about__updates" key={ id } headline={
-                  <>
-                    <span>{ `${name} -` }</span>
-                    <time className="about__date">{ format(new Date(published_at), 'MM/dd/yyyy') }</time>
-                  </>
-                }>  
-                  <List>
-                    { lines.map((line, index) => (
-                      <ListItem key={ index }>
-                        { line.replace(/- /g, '') }
-                        { index < lines.length - 1 && <br /> }
-                      </ListItem>
-                    )) }
-                  </List>
-                </Expandable>
-              );
-            }) }
-          </Section>
-        ) }
+            // eslint-disable-next-line no-lone-blocks
+            return (
+              <Expandable className="about__updates" key={ id } open={ index === 0 } headline={
+                <>
+                  <span>{ `${name} -` }</span>
+                  <time className="about__date">
+                    <FormattedDate value={ new Date(published_at) } month="long" day="2-digit" year="numeric" />
+                  </time>
+                </>
+              }>  
+                <List>
+                  { lines.map((line, lineIndex) => (
+                    <ListItem key={ lineIndex }>
+                      { line.replace(/- /g, '') }
+                      { lineIndex < lines.length - 1 && <br /> }
+                    </ListItem>
+                  )) }
+                </List>
+              </Expandable>
+            );
+          }) }
+        </Section>
       </Page>
     );
   }

@@ -1,6 +1,6 @@
 {
   "name": "booky.io",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "extensionVersion": "2.0.5",
   "description": "Online bookmarking service with high focus on performance, mobile support and customizability.",
   "homepage": "https://booky.io",
@@ -43,7 +43,6 @@
     "classnames": "2.2.6",
     "connected-react-router": "6.8.0",
     "core-js": "3.6.5",
-    "date-fns": "2.16.1",
     "disqus-react": "1.0.10",
     "es-cookie": "1.3.2",
     "intersection-observer": "0.11.0",

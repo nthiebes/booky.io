@@ -142,7 +142,6 @@ class Footer extends PureComponent {
           <P className="footer__copy" noPadding>
             { `© 2014-${new Date().getFullYear()}` }
             <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
-            { '| ' }
             <FormattedMessage id="footer.copy" />
           </P>
         </section>
