@@ -82,6 +82,7 @@ class Menu extends Component {
             color="light"
             isNavLink
             noUnderline
+            hasBadge={ name === 'new' }
           >
             <Icon icon={ name } color="light" />
             <FormattedMessage id={ `menu.${name}` } />

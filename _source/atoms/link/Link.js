@@ -4,13 +4,33 @@ import { Link as RegularLink, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 export default class Link extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+  static propTypes = {
+    href: PropTypes.string,
+    to: PropTypes.string,
+    className: PropTypes.string,
+    children: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+      PropTypes.array
+    ]).isRequired,
+    title: PropTypes.string,
+    color: PropTypes.string,
+    onClick: PropTypes.func,
+    target: PropTypes.string,
+    darkMode: PropTypes.bool,
+    tabIndex: PropTypes.string,
+    isNavLink: PropTypes.bool,
+    activeClassName: PropTypes.string,
+    noUnderline: PropTypes.bool,
+    role: PropTypes.string,
+    hasBadge: PropTypes.bool
+  }
+  
+  static defaultProps = {
+    color: 'primary'
   }
 
-  handleKeyDown(event) {
+  handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       this.props.onClick && this.props.onClick(event);
     }
@@ -31,7 +51,8 @@ export default class Link extends Component {
       isNavLink,
       activeClassName,
       noUnderline,
-      role
+      role,
+      hasBadge
     } = this.props;
     const LinkComponent = isNavLink ? NavLink : RegularLink;
     const CustomTag = href ? 'a' : LinkComponent;
@@ -57,6 +78,7 @@ export default class Link extends Component {
           color && `link--${color}`,
           darkMode && 'link--dark-mode',
           noUnderline && 'link--noUnderline',
+          hasBadge && 'link--badge',
           className
         ) }
         { ...navLinkProps }
@@ -66,28 +88,6 @@ export default class Link extends Component {
     );
   }
 }
-
-Link.propTypes = {
-  href: PropTypes.string,
-  to: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.array
-  ]).isRequired,
-  title: PropTypes.string,
-  color: PropTypes.string,
-  onClick: PropTypes.func,
-  target: PropTypes.string,
-  darkMode: PropTypes.bool,
-  tabIndex: PropTypes.string,
-  isNavLink: PropTypes.bool,
-  activeClassName: PropTypes.string,
-  noUnderline: PropTypes.bool,
-  role: PropTypes.string
-};
-
 Link.defaultProps = {
   color: 'primary'
 };

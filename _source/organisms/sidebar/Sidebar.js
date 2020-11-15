@@ -244,7 +244,7 @@ class Sidebar extends PureComponent {
                   </Link>
                 </li>
               ) }
-              {newsVersion < config.NEWS_VERSION && (
+              { loggedIn && newsVersion < config.NEWS_VERSION && (
                 <li>
                   <Link
                     className={ classNames(
@@ -255,6 +255,7 @@ class Sidebar extends PureComponent {
                     onClick={ closeSidebar }
                     tabIndex={ open ? '0' : '-1' }
                     noUnderline
+                    hasBadge
                   >
                     <Icon icon="new" />
                     <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>

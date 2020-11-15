@@ -23,9 +23,17 @@
     transition: background-color 0.2s linear;
   }
 
+  &::before {
+    background-color: $color-font--white;
+  }
+
   &:active,
   &:focus {
     color: $color-font--dark;
+
+    &::before {
+      background-color: $color-font--dark;
+    }
 
     .icon {
       color: $color-font--dark;
@@ -35,6 +43,10 @@
   @include desktop {
     &:hover {
       color: $color-font--dark;
+
+      &::before {
+        background-color: $color-font--dark;
+      }
 
       .icon {
         color: $color-font--dark;
