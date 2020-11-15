@@ -1,8 +1,7 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { format } from 'date-fns';
+import { FormattedMessage, FormattedDate, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Page from '../../templates/page';
@@ -307,7 +306,7 @@ class About extends PureComponent {
           </div>
         </Section>
         <Section>
-          <H2 style="h1">
+          <H2 style="h1" id="new" noMargin>
             <FormattedMessage id="about.updates" />
           </H2>
           { /* eslint-disable-next-line camelcase */ }
@@ -319,7 +318,9 @@ class About extends PureComponent {
               <Expandable className="about__updates" key={ id } open={ index === 0 } headline={
                 <>
                   <span>{ `${name} -` }</span>
-                  <time className="about__date">{ format(new Date(published_at), 'MM/dd/yyyy') }</time>
+                  <time className="about__date">
+                    <FormattedDate value={ new Date(published_at) } month="long" day="2-digit" year="numeric" />
+                  </time>
                 </>
               }>  
                 <List>
