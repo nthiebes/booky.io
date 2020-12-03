@@ -53,7 +53,7 @@
     "react-dom": "16.13.1",
     "react-dropzone": "11.2.0",
     "react-intersection-observer": "8.29.0",
-    "react-intl": "5.8.1",
+    "react-intl": "5.10.6",
     "react-intl-redux": "2.2.0",
     "react-redux": "7.2.1",
     "react-router": "5.2.0",
