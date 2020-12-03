@@ -8,7 +8,7 @@
   "private": true,
   "jsnext:main": "_source/index.js",
   "engines": {
-    "node": ">=10",
+    "node": ">=14",
     "npm": ">=4"
   },
   "scripts": {
