@@ -106,7 +106,7 @@
     "json-loader": "0.5.7",
     "mini-css-extract-plugin": "1.3.2",
     "mockdate": "3.0.2",
-    "node-sass": "4.14.1",
+    "node-sass": "5.0.0",
     "opn-cli": "4.1.0",
     "postcss": "8.1.14",
     "postcss-loader": "4.1.0",
