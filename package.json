@@ -51,7 +51,7 @@
     "react": "16.14.0",
     "react-beautiful-dnd": "13.0.0",
     "react-dom": "16.14.0",
-    "react-dropzone": "11.2.0",
+    "react-dropzone": "11.2.4",
     "react-intersection-observer": "8.31.0",
     "react-intl": "5.10.6",
     "react-intl-redux": "2.2.0",
