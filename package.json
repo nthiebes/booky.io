@@ -125,7 +125,7 @@
     "stylelint": "13.8.0",
     "stylelint-a11y": "1.2.3",
     "stylelint-config-recommended": "3.0.0",
-    "url-loader": "4.1.0",
+    "url-loader": "4.1.1",
     "stylelint-config-standard": "20.0.0",
     "webpack": "4.44.2",
     "webpack-bundle-analyzer": "3.9.0",
