@@ -108,7 +108,7 @@
     "mockdate": "3.0.2",
     "node-sass": "5.0.0",
     "opn-cli": "4.1.0",
-    "postcss": "8.1.14",
+    "postcss": "8.2.4",
     "postcss-loader": "4.1.0",
     "prompt": "1.0.0",
     "prop-types": "15.7.2",
