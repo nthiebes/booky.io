@@ -38,7 +38,7 @@
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
     "@hot-loader/react-dom": "16.14.0",
-    "@sentry/browser": "5.28.0",
+    "@sentry/browser": "5.30.0",
     "abortcontroller-polyfill": "1.5.0",
     "classnames": "2.2.6",
     "connected-react-router": "6.8.0",
