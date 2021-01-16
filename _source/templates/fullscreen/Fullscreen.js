@@ -22,11 +22,9 @@ export default class Fullscreen extends PureComponent {
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      // if (event.origin === config.extensionId) {
       updateExtensionData({
         page: event.data
       });
-      // }
     });
   }
 
