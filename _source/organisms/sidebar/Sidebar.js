@@ -27,7 +27,8 @@ class Sidebar extends PureComponent {
     history: PropTypes.object.isRequired,
     color: PropTypes.number.isRequired,
     isBeta: PropTypes.bool.isRequired,
-    newsVersion: PropTypes.number.isRequired
+    newsVersion: PropTypes.number.isRequired,
+    voted: PropTypes.bool.isRequired
   }
   
   static defaultProps = {
@@ -67,7 +68,8 @@ class Sidebar extends PureComponent {
       hasSidebar,
       darkMode,
       isBeta,
-      newsVersion
+      newsVersion,
+      voted
     } = this.props;
     const { pathname } = location;
     const { logoutPending } = this.state;
@@ -215,6 +217,7 @@ class Sidebar extends PureComponent {
                       onClick={ closeSidebar }
                       tabIndex={ open ? '0' : '-1' }
                       noUnderline
+                      hasBadge={ !voted }
                     >
                       <Icon icon="next" />
                       <span className={ classNames('sidebar__label', darkMode && 'sidebar__label--dark-mode') }>

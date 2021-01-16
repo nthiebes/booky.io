@@ -10,7 +10,8 @@ export const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode,
   color: state.user.settings.navigationBarColor,
   isBeta: state.user.isBeta,
-  newsVersion: state.user.settings.newsVersion
+  newsVersion: state.user.settings.newsVersion,
+  voted: state.user.voted
 });
 
 export const mapDispatchToProps = {
