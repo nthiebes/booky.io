@@ -28,7 +28,8 @@ export const getBookmarks = (id) => ((dispatch) => {
         id,
         bookmarks: bookmarks.map((bookmark) => ({
           ...bookmark,
-          name: decodeEmoji(bookmark.name)
+          name: decodeEmoji(bookmark.name),
+          note: decodeEmoji(bookmark.note)
         })),
         error: null
       }));
@@ -51,7 +52,7 @@ export const addBookmark = ({ categoryId, name, url, note, onError, onSuccess })
     params: {
       name: encodeEmoji(name),
       url,
-      note
+      note: encodeEmoji(note)
     },
     onSuccess: ({ id, favicon }) => {
       dispatch({
@@ -80,7 +81,7 @@ export const editBookmark = ({ categoryId, name, url, note, onError, onSuccess, 
       url,
       categoryId,
       position,
-      note
+      note: note ? encodeEmoji(note) : ''
     }),
     onSuccess: ({ favicon }) => {
       if (shouldUpdate) {
