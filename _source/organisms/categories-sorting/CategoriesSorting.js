@@ -54,11 +54,11 @@ class CategoriesSorting extends PureComponent {
             <i><FormattedMessage id="category.empty" values={ { collection: <b>{ dashboardName }</b> } } /></i>
           </Paragraph>
         ) }
-        <Droppable droppableId={ `dashboard-${dashboardId}` } type="category" disableInteractiveElementBlocking>
+        <Droppable droppableId={ `dashboard-${dashboardId}` } type="category">
           { (provided) => (
             <ul className="categories-sorting" ref={ provided.innerRef } { ...provided.droppableProps }>
               { categories.map((category, index) => (
-                <Draggable draggableId={ `category-${category.id}` } key={ category.id } index={ index }>
+                <Draggable draggableId={ `category-${category.id}` } key={ category.id } index={ index } disableInteractiveElementBlocking>
                   { (providedInner, snapshot) => {
                     const style = {
                       ...providedInner.draggableProps.style,
