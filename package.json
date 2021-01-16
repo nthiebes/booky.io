@@ -110,7 +110,7 @@
     "opn-cli": "4.1.0",
     "postcss": "8.2.4",
     "postcss-loader": "4.1.0",
-    "prompt": "1.0.0",
+    "prompt": "1.1.0",
     "prop-types": "15.7.2",
     "raf": "3.4.1",
     "react-hot-loader": "4.13.0",
