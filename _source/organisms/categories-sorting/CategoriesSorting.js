@@ -19,7 +19,8 @@ class CategoriesSorting extends PureComponent {
     getCategories: PropTypes.func.isRequired,
     pending: PropTypes.bool,
     error: PropTypes.string,
-    dashboardName: PropTypes.string.isRequired
+    dashboardName: PropTypes.string.isRequired,
+    noTitle: PropTypes.bool
   }
 
   componentDidMount() {
@@ -29,13 +30,15 @@ class CategoriesSorting extends PureComponent {
   }
 
   render() {
-    const { dashboardId, dashboardName, intl, darkMode, categories, pending, error } = this.props;
+    const { dashboardId, dashboardName, intl, darkMode, categories, pending, error, noTitle } = this.props;
 
     return (
       <Fragment>
-        <Label>
-          <FormattedMessage id="category.sort" />{':'}
-        </Label>
+        { !noTitle && (
+          <Label>
+            <FormattedMessage id="category.sort" />{':'}
+          </Label>
+        ) }
         { pending && (
           <span>
             <Skeleton className="categories-sorting__skeleton" />

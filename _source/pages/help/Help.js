@@ -161,6 +161,10 @@ class Help extends Component {
                 <Icon icon="expand" />
                 <FormattedMessage id="category.expand" />
               </P>
+              <P noPadding className="help__icon">
+                <Icon icon="drag" />
+                <FormattedMessage id="category.sort" />
+              </P>
             </Expandable>
             <Expandable headline={ <FormattedMessage id="help.categories.question4" /> } className="help-container__item">
               <P>
