@@ -189,8 +189,8 @@ class Category extends PureComponent {
                   isButton
                 />
                 <Icon
-                  icon="drag"
-                  label={ intl.formatMessage({ id: 'category.drag' }) }
+                  icon="sort"
+                  label={ intl.formatMessage({ id: 'category.sort' }) }
                   onClick={ this.onDragClick }
                   isButton
                 />
