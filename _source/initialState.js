@@ -8,7 +8,7 @@ export default {
     premium: false,
     voted: false,
     isMobile: window.matchMedia('(max-width: 1000px)').matches,
-    isBeta: Boolean(window.location.host.match(/beta./gi)),
+    isBeta: Boolean(window.location.host.match(/beta|localhost./gi)),
     settings: {
       blurEffect: false,
       darkMode: false,
@@ -28,7 +28,8 @@ export default {
       autofocusSearch: false,
       minimalBookmarkButton: false,
       closeEditMode: true,
-      maxColumnCount: null
+      maxColumnCount: null,
+      newsVersion: 0
     }
   },
   dashboards: {

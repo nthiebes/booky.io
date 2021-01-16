@@ -11,8 +11,7 @@ import {
   AccountData,
   AccountImport,
   AccountExport,
-  AccountManage,
-  AccountStatistics
+  AccountManage
 } from './tabs';
 
 class Account extends Component {
@@ -35,7 +34,6 @@ class Account extends Component {
     name: this.props.intl.formatMessage({ id: 'account.export' }),
     key: 'export'
   }];
-  // name: props.intl.formatMessage({ id: 'account.statistics' })
   // name: props.intl.formatMessage({ id: 'account.account' })
 
   handleTabClick = (activeTab) => {
@@ -77,9 +75,6 @@ class Account extends Component {
           ) }
           { activeTab === 'export' && (
             <AccountExport />
-          ) }
-          { activeTab === 'stats' && (
-            <AccountStatistics />
           ) }
           { activeTab === 'manage' && (
             <AccountManage />

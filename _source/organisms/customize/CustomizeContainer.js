@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Component from './Customize';
 import { updateSettings } from '../../_state/user/actions';
 
-export const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   navColor: state.user.settings.navigationBarColor,
   newtab: state.user.settings.openLinksInNewTab,
   maxWidth: state.user.settings.maxWidth,
@@ -18,13 +18,12 @@ export const mapStateToProps = (state) => ({
   bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
   minimalBookmarkButton: state.user.settings.minimalBookmarkButton,
   enableNotes: state.user.settings.enableNotes,
-  isExtension: state.extension.active
+  isExtension: state.extension.active,
+  maxColumnCount: state.user.settings.maxColumnCount
 });
-
-export const mapDispatchToProps = {
+const mapDispatchToProps = {
   updateSettings
 };
-
 const CustomizeContainer = connect(
   mapStateToProps,
   mapDispatchToProps

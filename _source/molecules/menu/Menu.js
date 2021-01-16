@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+import { config } from '../../config';
 import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 
@@ -40,6 +41,10 @@ const menuItemsLoggedIn = [
   {
     name: 'feedback',
     route: '/feedback'
+  },
+  {
+    name: 'new',
+    route: '/about#new'
   }
 ];
 
@@ -47,13 +52,25 @@ class Menu extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     className: PropTypes.string,
-    voted: PropTypes.bool.isRequired,
-    loggedIn: PropTypes.bool
+    loggedIn: PropTypes.bool,
+    isBeta: PropTypes.bool.isRequired,
+    newsVersion: PropTypes.number.isRequired,
+    voted: PropTypes.bool.isRequired
   }
 
   render() {
-    const { className, loggedIn, intl, voted } = this.props;
-    const menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
+    const { className, loggedIn, intl, isBeta, newsVersion, voted } = this.props;
+    let menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
+
+    menuItems = menuItems.filter((item) => {
+      if (item.name === 'feedback' && !isBeta) {
+        return false;
+      }
+      if (item.name === 'new' && newsVersion >= config.NEWS_VERSION) {
+        return false;
+      }
+      return true;
+    });
 
     return (
       <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className) }>
@@ -61,12 +78,12 @@ class Menu extends PureComponent {
           <Link
             key={ name }
             className="menu__item"
-            activeClassName="menu__item--active"
+            activeClassName={ classNames(name !== 'new' && 'menu__item--active') }
             to={ route }
             color="light"
             isNavLink
             noUnderline
-            hasBadge={ !voted && name === 'next' }
+            hasBadge={ (!voted && name === 'next') || name === 'new' }
           >
             <Icon icon={ name } color="light" />
             <FormattedMessage id={ `menu.${name}` } />

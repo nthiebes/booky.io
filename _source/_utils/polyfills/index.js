@@ -22,9 +22,19 @@ export const loadPolyfills = () => {
       resolve();
     }, 'core-js');
   });
+  const fillIntersectionObserver = () => new Promise((resolve) => {
+    if ('IntersectionObserver' in window) { return resolve(); }
+
+    require.ensure([], () => {
+      require('intersection-observer');
+
+      resolve();
+    }, 'observer');
+  });
 
   return Promise.all([
     fillFetch(),
-    fillCoreJs()
+    fillCoreJs(),
+    fillIntersectionObserver()
   ]);
 };

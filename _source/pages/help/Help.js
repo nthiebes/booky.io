@@ -13,7 +13,7 @@ import Icon from '../../atoms/icon';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Section from '../../molecules/section';
 import Bookmarklet from '../../molecules/bookmarklet';
-import javascript from '../../molecules/bookmarklet/javascript';
+import { javascriptMobile } from '../../molecules/bookmarklet/javascript';
 import Link from '../../atoms/link';
 import Expandable from '../../molecules/expandable';
 import Illustration from '../../atoms/illustration';
@@ -42,13 +42,6 @@ class Help extends Component {
         </Link>
       )
     };
-    const betaValues = {
-      link: (
-        <Link href="https://booky.io/settings">
-          { 'https://booky.io/settings' }
-        </Link>
-      )
-    };
 
     return (
       <Page>
@@ -64,18 +57,13 @@ class Help extends Component {
           </P>
           <Illustration name="help" className="help-illustration booky--hide-mobile" />
 
-          <H2 id="beta">
-            <FormattedMessage id="help.beta" />
+          <H2 id="general">
+            <FormattedMessage id="help.general" />
           </H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.beta.question1" /> } className="help-container__item">
+            <Expandable headline={ <FormattedMessage id="help.general.question1" /> } className="help-container__item">
               <P noPadding>
-                <FormattedMessage id="help.beta.answer1" />
-              </P>
-            </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.beta.question2" /> } className="help-container__item">
-              <P noPadding>
-                <FormattedMessage id="help.beta.answer2" values={ betaValues } />
+                <FormattedMessage id="help.general.answer1" />
               </P>
             </Expandable>
           </div>
@@ -173,6 +161,10 @@ class Help extends Component {
                 <Icon icon="expand" />
                 <FormattedMessage id="category.expand" />
               </P>
+              <P noPadding className="help__icon">
+                <Icon icon="drag" />
+                <FormattedMessage id="category.sort" />
+              </P>
             </Expandable>
             <Expandable headline={ <FormattedMessage id="help.categories.question4" /> } className="help-container__item">
               <P>
@@ -243,7 +235,7 @@ class Help extends Component {
                   <FormattedMessage id="bookmarklet.mobile2" />
                   <Input
                     className="help__input"
-                    value={ javascript }
+                    value={ javascriptMobile }
                     onChange={ () => {} }
                     ariaLabel={ intl.formatMessage({ id: 'bookmarklet.mobile.code' }) }
                   />
@@ -280,6 +272,22 @@ class Help extends Component {
                 <FormattedMessage id="help.account.answer2" values={ {
                   email: <Link href={ `mailto:account@booky.io?subject=${intl.formatMessage({ id: 'misc.deleteSubject' })}` }>{ 'account@booky.io' }</Link>
                 } } />
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.account.question4" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer4" />
+                <Link to="/account#import">
+                  {'booky.io/account#import'}
+                </Link>
+              </P>
+            </Expandable>
+            <Expandable headline={ <FormattedMessage id="help.account.question5" /> } className="help-container__item">
+              <P noPadding>
+                <FormattedMessage id="help.account.answer5" />
+                <Link to="/account#export">
+                  {'booky.io/account#export'}
+                </Link>
               </P>
             </Expandable>
           </div>

@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { ErrorMessage } from '../../atoms/messages';
 import Icon from '../../atoms/icon';
-import javascript from './javascript';
+import { javascript } from './javascript';
 
 class Bookmarklet extends PureComponent {
   state = {
@@ -31,7 +31,7 @@ class Bookmarklet extends PureComponent {
           onClick={ this.handleBookmarkletClick }
           ref={ (node) => {
             if (node) {
-              node.setAttribute('href', `javascript:${javascript}`);
+              node.setAttribute('href', javascript);
             }
           } }
         >

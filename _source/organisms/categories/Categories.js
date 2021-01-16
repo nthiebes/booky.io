@@ -17,7 +17,8 @@ class Categories extends PureComponent {
     className: PropTypes.string,
     pending: PropTypes.bool,
     openModal: PropTypes.func.isRequired,
-    categoriesLayout: PropTypes.string.isRequired
+    categoriesLayout: PropTypes.string.isRequired,
+    maxColumnCount: PropTypes.number
   }
 
   onAddClick = () => {
@@ -32,7 +33,8 @@ class Categories extends PureComponent {
       dashboardName,
       className,
       pending,
-      categoriesLayout
+      categoriesLayout,
+      maxColumnCount
     } = this.props;
     const Element = pending || !categories.length ? 'section' : 'ul';
 
@@ -43,6 +45,7 @@ class Categories extends PureComponent {
         hasSidebar && dashboardsOpen && 'categories--shifted',
         !pending && categories.length && categoriesLayout === 'grid' && 'categories--grid',
         !pending && categories.length && categoriesLayout === 'column' && 'categories--column',
+        !pending && categories.length && maxColumnCount > 0 && `categories--max-columns-${maxColumnCount}`,
         className
       ) }>
         { pending ? (

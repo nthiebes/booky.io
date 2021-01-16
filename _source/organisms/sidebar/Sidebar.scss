@@ -142,12 +142,24 @@
 
   &.sidebar__item--dark-mode {
     background-color: $color-background--medium;
+
+    &::before {
+      background-color: $color-font--white;
+    }
+  }
+
+  &::before {
+    background-color: $color-font--dark;
   }
 
   &:active,
   &:focus {
     background-color: $color-background--light;
     color: $color-font--primary;
+
+    &::before {
+      background-color: $color-font--primary;
+    }
 
     &.sidebar__item--dark-mode {
       background-color: $color-background--dark;
@@ -160,6 +172,11 @@
     .icon {
       color: $color-font--primary;
     }
+  }
+
+  &.link::before {
+    right: auto;
+    left: 13px;
   }
 }
 

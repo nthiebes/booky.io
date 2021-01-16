@@ -88,3 +88,7 @@ export default class Link extends Component {
     );
   }
 }
+
+Link.defaultProps = {
+  color: 'primary'
+};

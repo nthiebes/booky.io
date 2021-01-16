@@ -22,7 +22,8 @@ class Footer extends PureComponent {
     loggedIn: PropTypes.bool.isRequired,
     toolbarSticky: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    locale: PropTypes.string
+    locale: PropTypes.string,
+    showStats: PropTypes.bool
   }
 
   scrollToTop() {
@@ -40,7 +41,8 @@ class Footer extends PureComponent {
       loggedIn,
       toolbarSticky,
       darkMode,
-      locale
+      locale,
+      showStats
     } = this.props;
 
     return (
@@ -50,23 +52,23 @@ class Footer extends PureComponent {
         hasSidebar && home && loggedIn && dashboardsOpen && toolbarSticky && 'footer--shifted',
         className
       ) }>
-        { home && !loggedIn && (
+        { ((home && !loggedIn) || showStats) && (
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(37273)}</b>
+                <b>{new Intl.NumberFormat(locale).format(38620)}</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(15497515)}</b>
+                <b>{new Intl.NumberFormat(locale).format(15836921)}</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(1249793)}</b>
+                <b>{new Intl.NumberFormat(locale).format(1282303)}</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(68178)}</b>
+                <b>{new Intl.NumberFormat(locale).format(70305)}</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
@@ -140,7 +142,6 @@ class Footer extends PureComponent {
           <P className="footer__copy" noPadding>
             { `© 2014-${new Date().getFullYear()}` }
             <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
-            { '| ' }
             <FormattedMessage id="footer.copy" />
           </P>
         </section>
