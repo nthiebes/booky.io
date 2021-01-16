@@ -5,8 +5,21 @@
   }
 }
 
-.next__feature {
+.next__results {
   overflow: hidden;
+  animation: 0.5s ease forwards fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .next__illustration {
