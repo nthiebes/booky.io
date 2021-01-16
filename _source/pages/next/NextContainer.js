@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import { updateUserData } from '../../_state/user/actions';
+import { updateSettings } from '../../_state/user/actions';
 import Component from './Next';
 
 const mapDispatchToProps = {
-  updateUserData
+  updateSettings
 };
 const mapStateToProps = (state) => ({
-  voted: state.user.voted
+  voted: state.user.settings.voted
 });
 const Container = connect(
   mapStateToProps,

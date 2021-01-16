@@ -22,7 +22,7 @@ const getPollPercentages = (results) => {
 export default class Next extends PureComponent {
   static propTypes = {
     voted: PropTypes.bool.isRequired,
-    updateUserData: PropTypes.func.isRequired
+    updateSettings: PropTypes.func.isRequired
   }
 
   state = {
@@ -33,14 +33,25 @@ export default class Next extends PureComponent {
 
   componentDidMount() {
     const pollResults = [60, 23, 16]; // from backend
-
+    
     // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
       pollResults,
-      pollPercentages: getPollPercentages(pollResults),
-      pollResultsAnimation: this.props.voted
+      pollPercentages: getPollPercentages(pollResults)
     });
+    
+    this.timeout = window.setTimeout(() => {
+      this.setState({
+        pollResultsAnimation: this.props.voted
+      });
+    }, 500);
   }
+
+  componentWillUnmount() {
+    window.clearTimeout(this.timeout);
+  }
+
+  timeout;
 
   handleRadioChange = (event) => {
     const pollResults = [...this.state.pollResults];
@@ -54,11 +65,11 @@ export default class Next extends PureComponent {
   }
 
   handleSubmit = () => {
-    this.props.updateUserData({
+    this.props.updateSettings({
       voted: true
     });
 
-    window.setTimeout(() => {
+    this.timeout = window.setTimeout(() => {
       this.setState({
         pollResultsAnimation: true
       });
