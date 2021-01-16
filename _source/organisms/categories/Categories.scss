@@ -13,6 +13,10 @@
   grid-template-columns: repeat(1, 1fr);
   grid-column-gap: 3vw;
 
+  @include mobile {
+    display: block;
+  }
+
   @include tablet {
     grid-template-columns: repeat(2, 1fr);
   }

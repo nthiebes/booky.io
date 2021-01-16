@@ -1,3 +1,5 @@
+import emojiRegex from 'emoji-regex/RGI_Emoji';
+
 const tryToDecode = (string) => {
   try {
     decodeURIComponent(string);
@@ -25,8 +27,22 @@ export const decodeEmoji = (string) => {
       }
     }
   }
-  
+
   return decodedString;
 };
 
-export const encodeEmoji = (string) => (encodeURIComponent(string));
+export const encodeEmoji = (string) => {
+  const regex = emojiRegex();
+  let match;
+  let newString = string;
+
+  // eslint-disable-next-line no-cond-assign
+  while (match = regex.exec(string)) {
+    const emoji = match[0];
+
+    // newString = newString.replace(emoji, `\\u${emojiUnicode(emoji).toUpperCase()}`);
+    newString = newString.replace(emoji, encodeURIComponent(emoji));
+  }
+
+  return newString;
+};

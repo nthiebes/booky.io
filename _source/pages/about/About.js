@@ -33,7 +33,7 @@ class About extends PureComponent {
   componentDidMount() {
     const { newsVersion, updateSettings } = this.props;
 
-    fetch('https://api.github.com/repos/nthiebes/booky.io/releases')
+    fetch('https://api.github.com/repos/nthiebes/booky.io/releases?per_page=10')
       .then((response) => response.json())
       .then((releases) => {
         this.setState({

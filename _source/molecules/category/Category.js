@@ -96,6 +96,18 @@ class Category extends PureComponent {
     }
   }
 
+  onDragClick = () => {
+    const { openModal, closeEditMode } = this.props;
+
+    openModal('SortCategories');
+    
+    if (closeEditMode) {
+      this.setState({
+        editMode: false
+      });
+    }
+  }
+
   onAddClick = () => {
     const { id, openModal } = this.props;
 
@@ -174,6 +186,12 @@ class Category extends PureComponent {
                   icon="delete"
                   label={ intl.formatMessage({ id: 'category.delete' }) }
                   onClick={ this.onDeleteClick }
+                  isButton
+                />
+                <Icon
+                  icon="drag"
+                  label={ intl.formatMessage({ id: 'category.drag' }) }
+                  onClick={ this.onDragClick }
                   isButton
                 />
               </Fragment>
