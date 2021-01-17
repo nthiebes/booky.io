@@ -97,7 +97,7 @@
     "home.display": "Your bookmarks always available.",
     "home.display2": "Simple. Customizable. Private. Fast.",
     "home.performant": "Fast",
-    "home.mobile": "Mobile",
+    "misc.mobile": "Mobile",
     "home.private": "Private",
     "home.customizable": "Customizable",
     "home.performantHeadline": "Fast and accessible.",
@@ -301,10 +301,9 @@
     "bookmarklet.mobile2": "Copy the following line:",
     "bookmarklet.mobile3": "Edit the address of the bookmark you just created and replace the address with the line you just copied.",
     "bookmarklet.mobile4": "That's it! Simply open your new bookmark on the page you want to add to booky.",
-    "help.bookmarklet.text2": "Simply drag the following link into the bookmarks bar of your browser:",
+    "bookmarklet.answer": "Simply drag the following link into the bookmarks bar of your browser:",
     "help.categories.question4": "How do I rearrange categories?",
     "help.categories.answer4": "Edit the collection whose categories you want to rearrange. In the new window, you can move your categories via drag & drop.",
-    "help.bookmarklet": "Bookmarklet",
     "about.privacy": "Data protection.",
     "about.privacyText": "We care about your privacy. In contrast to many other free services, you are not the product. Please refer to our {privacy} for detailed information. In short: No ads, no spam, no hidden costs.",
     "about.feedback": "Your feedback.",
@@ -329,5 +328,7 @@
     "menu.new": "New",
     "bookmarklet.info": "With the booky bookmarklet you can simply add the current website to booky.",
     "misc.copy": "Copy",
-    "misc.copied": "Copied!"
+    "misc.copied": "Copied!",
+    "bookmarklet.learnMore": "Learn more here: ",
+    "misc.desktop": "Desktop"
 }
