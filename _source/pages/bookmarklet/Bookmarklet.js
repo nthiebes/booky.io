@@ -28,10 +28,10 @@ class BookmarkletPage extends Component {
   }
   
   tabs = [{
-    name: this.props.intl.formatMessage({ id: 'Mobil' }),
+    name: this.props.intl.formatMessage({ id: 'misc.mobile' }),
     key: 'mobile'
   }, {
-    name: this.props.intl.formatMessage({ id: 'Desktop' }),
+    name: this.props.intl.formatMessage({ id: 'misc.desktop' }),
     key: 'desktop'
   }];
 
@@ -82,7 +82,7 @@ class BookmarkletPage extends Component {
           { activeTab === 'desktop' && (
             <>
               <P first>
-                <FormattedMessage id="help.bookmarklet.text2" />
+                <FormattedMessage id="bookmarklet.answer" />
               </P>
               <Bookmarklet />
               <div>
