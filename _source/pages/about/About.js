@@ -219,7 +219,7 @@ class About extends PureComponent {
               <FormattedMessage id="misc.extension" />
             </Link>
             <Link
-              to="/help#bookmarklet"
+              to="/bookmarklet"
               color="light"
               className="about__platforms-platform"
             >

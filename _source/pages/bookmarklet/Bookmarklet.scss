@@ -1,0 +1,42 @@
+@import "../../templates/booky/config.scss";
+
+.bookmarklet-page {
+  padding-top: 0;
+}
+
+.bookmarklet-page__header {
+  padding: 3rem 0;
+
+  @include tablet {
+    padding: 4rem 0;
+  }
+
+  @include desktop {
+    padding: 5rem 0;
+  }
+}
+
+.bookmarklet-page__image {
+  width: 300px;
+  margin-top: 1rem;
+
+  &:first-of-type {
+    margin-right: 1rem;
+  }
+}
+
+.bookmarklet-page__list {
+  margin-top: 1rem;
+}
+
+.bookmarklet-page__input.input__field {
+  margin-top: 0.5rem;
+  padding-right: 10px;
+}
+
+.bookmarklet-page__copy-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
