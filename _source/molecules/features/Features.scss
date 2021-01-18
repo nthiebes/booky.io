@@ -28,4 +28,19 @@
 
 .features__link {
   font-size: inherit;
+
+  &.link--dark-mode {
+    color: $color-font--light;
+  }
+
+  &.link--dark-mode:active,
+  &.link--dark-mode:focus {
+    color: $color-font--white;
+  }
+
+  @include desktop {
+    &.link--dark-mode:hover {
+      color: $color-font--white;
+    }
+  }
 }
