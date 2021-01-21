@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import Input from '../../atoms/input';
 
-class Search extends Component {
+class SearchField extends Component {
   static propTypes = {
     className: PropTypes.string,
     intl: PropTypes.object.isRequired,
@@ -79,4 +79,4 @@ class Search extends Component {
   }
 }
 
-export default injectIntl(Search);
+export default injectIntl(SearchField);

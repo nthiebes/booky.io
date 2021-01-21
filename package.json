@@ -61,6 +61,7 @@
     "react-router-dom": "5.2.0",
     "redux": "4.0.5",
     "redux-thunk": "2.3.0",
+    "url-search-params-polyfill": "8.1.0",
     "whatwg-fetch": "3.5.0"
   },
   "devDependencies": {

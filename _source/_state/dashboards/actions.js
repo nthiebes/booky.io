@@ -35,11 +35,11 @@ export const changeDashboard = (id) => ((dispatch) => {
   dispatch(resetSearch());
 });
 
-export const getDashboards = () => ((dispatch) => {
+export const getDashboards = ({ noReset }) => ((dispatch) => {
   dispatch(updateDashboardsData({
     pending: true
   }));
-  dispatch(resetSearch());
+  !noReset && dispatch(resetSearch());
 
   fetcher({
     url: '/dashboards',

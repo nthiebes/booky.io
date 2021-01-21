@@ -31,10 +31,21 @@ export const loadPolyfills = () => {
       resolve();
     }, 'observer');
   });
+  const fillURLSearchParams = () => new Promise((resolve) => {
+    if ('URLSearchParams' in window) { return resolve(); }
+
+    require.ensure([], () => {
+      require('url-search-params-polyfill');
+
+      resolve();
+    }, 'observer');
+  });
+  
 
   return Promise.all([
     fillFetch(),
     fillCoreJs(),
-    fillIntersectionObserver()
+    fillIntersectionObserver(),
+    fillURLSearchParams()
   ]);
 };
