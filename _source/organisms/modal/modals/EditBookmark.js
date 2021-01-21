@@ -135,7 +135,7 @@ class EditBookmark extends PureComponent {
               name="note"
               value={ note }
               onChange={ this.onNoteChange }
-              maxLength="100"
+              maxLength="300"
               disabled={ pending }
             />
           </Expandable>

@@ -273,7 +273,7 @@ class Add extends Component {
                     name="note"
                     value={ stateNote }
                     onChange={ this.handleInputChange }
-                    maxLength="100"
+                    maxLength="300"
                     label={ intl.formatMessage({ id: 'modal.note' }) }
                     disabled={ pending }
                   />
