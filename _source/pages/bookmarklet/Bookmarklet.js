@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import Page from '../../templates/page';
 import { Display, H2 } from '../../atoms/headline';
@@ -19,7 +20,8 @@ class BookmarkletPage extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     language: PropTypes.string.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
+    stickyHeader: PropTypes.bool
   }
 
   state = {
@@ -50,11 +52,11 @@ class BookmarkletPage extends Component {
   }
 
   render() {
-    const { language } = this.props;
+    const { language, stickyHeader } = this.props;
     const { activeTab, copied } = this.state;
 
     return (
-      <Page className="bookmarklet-page">
+      <Page className={ classNames('bookmarklet-page', stickyHeader && 'bookmarklet-page--sticky') }>
         <Section color="dark" className="bookmarklet-page__header">
           <Display noMargin centered color="light">
             <FormattedMessage id="bookmarklet.question" />
