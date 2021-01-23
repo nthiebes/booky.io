@@ -35,7 +35,7 @@ export const changeDashboard = (id) => ((dispatch) => {
   dispatch(resetSearch());
 });
 
-export const getDashboards = ({ noReset }) => ((dispatch) => {
+export const getDashboards = (noReset) => ((dispatch) => {
   dispatch(updateDashboardsData({
     pending: true
   }));

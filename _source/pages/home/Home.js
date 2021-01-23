@@ -48,7 +48,7 @@ class Home extends Component {
       });
     }
 
-    loggedIn && getDashboards({ noReset: Boolean(term) });
+    loggedIn && getDashboards(Boolean(term));
   }
 
   render() {
