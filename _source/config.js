@@ -15,6 +15,6 @@ const browser = isOpera ? 'opera'
 
 
 export const config = {
-  NEWS_VERSION: 10,
+  NEWS_VERSION: 12,
   browser
 };
