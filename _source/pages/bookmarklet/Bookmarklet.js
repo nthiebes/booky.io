@@ -67,9 +67,9 @@ class BookmarkletPage extends Component {
         </Section>
         <Section>
           <div className="bookmarklet-page__screens">
-            <img src={ `/_assets/bookmarklet_${language}_1.png` } width="300" alt="" />
-            <img src={ `/_assets/bookmarklet_${language}_2.png` } width="300" alt="" />
-            <img src={ `/_assets/bookmarklet_${language}_3.png` } width="300" alt="" />
+            <img src={ `/_assets/bookmarklet_${language}_1.png` } width="300" height="555" alt="" />
+            <img src={ `/_assets/bookmarklet_${language}_2.png` } width="300" height="555" alt="" />
+            <img src={ `/_assets/bookmarklet_${language}_3.png` } width="300" height="555" alt="" />
           </div>
           <H2>
             <FormattedMessage id="help.bookmarklet.question" />
@@ -93,8 +93,8 @@ class BookmarkletPage extends Component {
               </P>
               <Bookmarklet />
               <div>
-                <img src={ `/_assets/bookmarklet_drag_${language}.png` } className="bookmarklet-page__image" alt="" />
-                <img src={ `/_assets/bookmarklet_${language}.png` } className="bookmarklet-page__image" alt="" />
+                <img src={ `/_assets/bookmarklet_drag_${language}.png` } className="bookmarklet-page__image" width="300" height="103" alt="" />
+                <img src={ `/_assets/bookmarklet_${language}.png` } className="bookmarklet-page__image" width="300" height="103" alt="" />
               </div>
             </>
           ) }
