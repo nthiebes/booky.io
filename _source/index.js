@@ -34,7 +34,6 @@ if (process.env.NODE_ENV !== 'development') {
   });
 }
 
-let counter = 0;
 let error = false;
 let messages;
 let userData;
@@ -84,9 +83,24 @@ const loadingDone = () => {
     document.getElementById('root')
   );
 };
-const init = () => {
-  loadPolyfills().then(() => {
-    // Fetch translations
+const loadUserAndTranslations = () => {
+  const getUser = () => new Promise((resolve) => {
+    
+    fetcher({
+      url: '/user',
+      onSuccess: (data) => {
+        userData = data;
+
+        resolve();
+      },
+      onError: () => {
+        error = true;
+
+        resolve();
+      }
+    });
+  });
+  const getTranslations = () => new Promise((resolve) => {
     const headers = new Headers({'Content-Type': 'application/json'});
 
     fetch(`/_assets/i18n/${language}.json?=${process.env.VERSION}`, {
@@ -95,36 +109,21 @@ const init = () => {
       .then((response) => response.json())
       .then((data) => {
         messages = data;
-        counter++;
-      
-        if (counter === 2) {
-          loadingDone();
-        }
+
+        resolve();
       })
       .catch();
-    
-    // Fetch user data
-    fetcher({
-      url: '/user',
-      onSuccess: (data) => {
-        userData = data;
-        counter++;
-      
-        if (counter === 2) {
-          loadingDone();
-        }
-      },
-      onError: () => {
-        error = true;
-        counter++;
-      
-        if (counter === 2) {
-          loadingDone();
-        }
-      }
-    });
-    
-  });    
+  });
+
+  return Promise.all([
+    getUser(),
+    getTranslations()
+  ]);
+};
+const init = () => {
+  loadPolyfills().then(loadUserAndTranslations().then(() => {
+    loadingDone();
+  }));
 };
 
 if (window.Promise) {

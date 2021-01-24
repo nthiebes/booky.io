@@ -145,6 +145,7 @@ class Search extends PureComponent {
                             className="bookmark__favicon"
                           />
                         ) }
+                        { /* eslint-disable-next-line react/jsx-no-target-blank */ }
                         <a
                           className={ classNames('bookmark__link', darkMode && 'bookmark__link--dark') }
                           href={ url }

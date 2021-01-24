@@ -22,6 +22,8 @@ class Home extends Component {
     blurContent: PropTypes.bool.isRequired,
     hasSidebar: PropTypes.bool.isRequired,
     getDashboards: PropTypes.func.isRequired,
+    updateSearchData: PropTypes.func.isRequired,
+    searchBookmarks: PropTypes.func.isRequired,
     intl: PropTypes.object.isRequired,
     categoriesPending: PropTypes.bool,
     hasCategories: PropTypes.bool,
@@ -30,9 +32,23 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    const { loggedIn, getDashboards } = this.props;
+    const { loggedIn, getDashboards, updateSearchData, searchBookmarks } = this.props;
+    const params = new URLSearchParams(window.location.search);
+    const term = params.get('term');
 
-    loggedIn && getDashboards();
+    if (term) {
+      updateSearchData({
+        keyword: term,
+        pending: true
+      });
+  
+      searchBookmarks({
+        keyword: term,
+        abort: false
+      });
+    }
+
+    loggedIn && getDashboards(Boolean(term));
   }
 
   render() {

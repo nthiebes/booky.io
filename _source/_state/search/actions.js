@@ -16,8 +16,8 @@ export const appendSearchResults = (data) => ({
   data
 });
 
-export const searchBookmarks = (keyword) => ((dispatch) => {
-  abortFetch();
+export const searchBookmarks = ({ keyword, abort = true }) => ((dispatch) => {
+  abort && abortFetch();
 
   fetcher({
     url: `/bookmarks/search?searchTerm=${keyword}&limit=${initialState.search.limit}&offset=0`,

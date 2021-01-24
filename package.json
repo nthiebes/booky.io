@@ -1,6 +1,6 @@
 {
   "name": "booky.io",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "extensionVersion": "2.0.5",
   "description": "Online bookmarking service with high focus on performance, mobile support and customizability.",
   "homepage": "https://booky.io",
@@ -61,6 +61,7 @@
     "react-router-dom": "5.2.0",
     "redux": "4.0.5",
     "redux-thunk": "2.3.0",
+    "url-search-params-polyfill": "8.1.0",
     "whatwg-fetch": "3.5.0"
   },
   "devDependencies": {

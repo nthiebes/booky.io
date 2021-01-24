@@ -12,13 +12,9 @@ import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Section from '../../molecules/section';
-import Bookmarklet from '../../molecules/bookmarklet';
-import { javascriptMobile } from '../../molecules/bookmarklet/javascript';
 import Link from '../../atoms/link';
 import Expandable from '../../molecules/expandable';
 import Illustration from '../../atoms/illustration';
-import Input from '../../atoms/input';
-import { List, ListItem } from '../../atoms/list';
 
 import './Help.scss';
 
@@ -216,36 +212,15 @@ class Help extends Component {
           </div>
 
           <H2 id="bookmarklet">
-            <FormattedMessage id="help.bookmarklet" />
+            { 'Bookmarklet' }
           </H2>
           <div className="help-container">
             <Expandable headline={ <FormattedMessage id="help.bookmarklet.question" /> } className="help-container__item">
-              <P>
-                <FormattedMessage id="help.bookmarklet.text1" />
-              </P>
-              <P className="booky--hide-mobile-tablet">
-                <FormattedMessage id="help.bookmarklet.text2" />
-              </P>
-              <Bookmarklet />
-              <List className="booky--hide-desktop">
-                <ListItem>
-                  <FormattedMessage id="bookmarklet.mobile1" />
-                </ListItem>
-                <ListItem>
-                  <FormattedMessage id="bookmarklet.mobile2" />
-                  <Input
-                    className="help__input"
-                    value={ javascriptMobile }
-                    onChange={ () => {} }
-                    ariaLabel={ intl.formatMessage({ id: 'bookmarklet.mobile.code' }) }
-                  />
-                </ListItem>
-                <ListItem>
-                  <FormattedMessage id="bookmarklet.mobile3" />
-                </ListItem>
-              </List>
-              <P className="booky--hide-desktop">
-                <FormattedMessage id="bookmarklet.mobile4" />
+              <P noPadding>
+                <FormattedMessage id="bookmarklet.learnMore" />
+                <Link to="/bookmarklet">
+                  {'booky.io/bookmarklet'}
+                </Link>
               </P>
             </Expandable>
           </div>
