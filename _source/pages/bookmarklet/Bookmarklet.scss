@@ -28,9 +28,22 @@
   }
 }
 
+.bookmarklet-page__screens {
+  text-align: center;
+  white-space: nowrap;
+
+  @include mobile-tablet {
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 calc(-3vw - 6px);
+  }
+}
+
 .bookmarklet-page__image {
   width: 300px;
   margin-top: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  padding: 2px;
 
   &:first-of-type {
     margin-right: 1rem;

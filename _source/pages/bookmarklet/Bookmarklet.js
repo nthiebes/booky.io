@@ -66,6 +66,11 @@ class BookmarkletPage extends Component {
           </H2>
         </Section>
         <Section>
+          <div className="bookmarklet-page__screens">
+            <img src={ `/_assets/bookmarklet_${language}_1.png` } width="300" alt="" />
+            <img src={ `/_assets/bookmarklet_${language}_2.png` } width="300" alt="" />
+            <img src={ `/_assets/bookmarklet_${language}_3.png` } width="300" alt="" />
+          </div>
           <H2>
             <FormattedMessage id="help.bookmarklet.question" />
           </H2>
