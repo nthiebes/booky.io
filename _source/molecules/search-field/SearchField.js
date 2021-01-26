@@ -31,7 +31,7 @@ class SearchField extends Component {
     });
 
     const searchBookmarksByValue = () => {
-      searchBookmarks(keyword);
+      searchBookmarks({ keyword });
     };
 
     clearTimeout(this.fetchTimeout);
