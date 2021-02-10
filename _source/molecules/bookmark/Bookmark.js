@@ -155,6 +155,7 @@ class Bookmark extends PureComponent {
                 rel={ newtab ? 'noopener noreferrer' : null }
                 onClick={ this.handleOnClick }
                 onMouseEnter={ (bookmarkEditOnHover && !isMobile) ? this.enableEditMode : null }
+                title={ name }
               >
                 { name }
               </a>
