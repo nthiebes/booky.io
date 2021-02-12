@@ -76,7 +76,7 @@
     "@storybook/addon-viewport": "6.1.17",
     "@storybook/react": "6.1.17",
     "acorn": "8.0.4",
-    "ajv": "7.0.3",
+    "ajv": "7.1.0",
     "autoprefixer": "10.2.4",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.1.0",
