@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
+import { abortFetch } from '../../_utils/fetcher';
+
 import Input from '../../atoms/input';
+import Icon from '../../atoms/icon';
 
 class SearchField extends Component {
   static propTypes = {
@@ -38,6 +41,7 @@ class SearchField extends Component {
 
     if (keyword === '') {
       window.scrollTo(0, 0);
+      abortFetch();
       resetSearch();
     } else {
       this.fetchTimeout = setTimeout(() => {
@@ -53,6 +57,10 @@ class SearchField extends Component {
     event.preventDefault();
 
     this.handleChange(keyword);
+  };
+
+  handleClear = () => {
+    this.handleChange('');
   };
 
   render() {
@@ -80,11 +88,20 @@ class SearchField extends Component {
           value={keyword}
           onChange={this.handleChange}
           validation={false}
-          icon="search"
           id={id}
           disabled={dashboardsPending}
           ariaLabel={intl.formatMessage({ id: 'search.label' })}
         />
+        <Icon icon="search" className="search-field__icon" color="grey" />
+        {keyword.length > 0 && (
+          <Icon
+            icon="close"
+            className="search-field__clear"
+            isButton
+            onClick={this.handleClear}
+            label={intl.formatMessage({ id: 'search.clear' })}
+          />
+        )}
       </form>
     );
   }

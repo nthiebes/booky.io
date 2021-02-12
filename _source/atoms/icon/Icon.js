@@ -12,7 +12,15 @@ export default class Icon extends Component {
     label: PropTypes.string,
     onClick: PropTypes.func,
     stopPropagation: PropTypes.bool,
-    color: PropTypes.string,
+    color: PropTypes.oneOf([
+      'primary',
+      'dark',
+      'grey',
+      'medium',
+      'light',
+      'green',
+      'orange'
+    ]),
     dragHandleProps: PropTypes.object,
     tabIndex: PropTypes.string,
     darkMode: PropTypes.bool,
