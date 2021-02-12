@@ -330,5 +330,6 @@
     "misc.copy": "Copy",
     "misc.copied": "Copied!",
     "bookmarklet.learnMore": "Learn more here: ",
-    "misc.desktop": "Desktop"
+    "misc.desktop": "Desktop",
+    "search.clear": "Clear search term"
 }
