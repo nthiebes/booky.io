@@ -27,11 +27,12 @@ export const loadGoogleAnalytics = () => {
 
     window.dataLayer = window.dataLayer || [];
     // eslint-disable-next-line prefer-rest-params
-    window.gtag = function gtag() {
-      window.dataLayer.push(arguments);
+    window.gtag = function gtag(params) {
+      window.dataLayer.push(...params);
     };
     window.gtag('js', new Date());
     window.gtag('config', `UA-45004279-${isBeta ? 5 : 3}`, {
+      // eslint-disable-next-line camelcase
       anonymize_ip: true
     });
   }

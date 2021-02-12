@@ -59,8 +59,8 @@ class Modal extends PureComponent {
       <Form onSubmit={this.onSubmit}>
         <header className="modal__header">
           {useAnchor && (
-            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
             <span
+              // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
               tabIndex="0"
               className="modal__tab-index-link"
               ref={(anchor) => {

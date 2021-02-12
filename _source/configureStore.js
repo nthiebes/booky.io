@@ -40,8 +40,8 @@ function configureStoreDev(initialState) {
     thunk,
     reactRouterMiddleware
   ];
-  // eslint-disable-next-line no-underscore-dangle
   const composeEnhancers =
+    // eslint-disable-next-line no-underscore-dangle
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
   const store = createStore(
     createRootReducer(history), // root reducer with router state

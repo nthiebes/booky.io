@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';

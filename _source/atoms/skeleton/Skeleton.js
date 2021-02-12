@@ -7,13 +7,13 @@ export default class Skeleton extends Component {
     const { className, darkMode, ignoreDarkMode } = this.props;
 
     return (
-      // eslint-disable-next-line react/jsx-no-literals
       <span
         className={classNames(
           'skeleton',
           darkMode && !ignoreDarkMode && 'skeleton--darkMode',
           className
         )}
+        // eslint-disable-next-line react/jsx-no-literals
       >
         &zwnj;
       </span>

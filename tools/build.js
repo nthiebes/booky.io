@@ -40,6 +40,7 @@ webpack(config).run((buildError, stats) => {
   // if we got this far, the build succeeded.
   console.log(
     chalkSuccess(
+      // eslint-disable-next-line quotes
       "Your app is compiled in production mode in /_public. It's ready to roll!"
     )
   );

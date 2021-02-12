@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable max-statements */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';

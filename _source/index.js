@@ -31,7 +31,7 @@ setLanguage(language);
 document.addEventListener(
   'touchstart',
   () => {
-    /* Do nothing */
+    // Do nothing
   },
   { passive: true }
 );

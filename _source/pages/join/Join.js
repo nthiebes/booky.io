@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
