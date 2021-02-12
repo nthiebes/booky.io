@@ -26,7 +26,7 @@ class Login extends Component {
     activate: PropTypes.func.isRequired,
     confirm: PropTypes.func.isRequired,
     deny: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     username: '',
@@ -37,7 +37,7 @@ class Login extends Component {
     actionPending: true,
     actionError: null,
     actionSuccess: false
-  }
+  };
 
   // eslint-disable-next-line max-statements
   componentDidMount() {
@@ -118,13 +118,13 @@ class Login extends Component {
       [name]: value,
       pending: false
     });
-  }
+  };
 
   handleCheckboxChange = ({ checked }) => {
     this.setState({
       showPassword: checked
     });
-  }
+  };
 
   handleSubmit = (params) => {
     const { history, login, match, isExtension } = this.props;
@@ -153,7 +153,7 @@ class Login extends Component {
         });
       }
     });
-  }
+  };
 
   render() {
     const { intl, match, isExtension } = this.props;
@@ -171,75 +171,89 @@ class Login extends Component {
     } = this.state;
 
     return (
-      <TemplateComponent className={ isExtension ? 'login--extension' : '' }>
+      <TemplateComponent className={isExtension ? 'login--extension' : ''}>
         <Section compact>
-          { (token || action) && actionPending && (
+          {(token || action) && actionPending && (
             <Icon icon="spinner" className="login__spinner" />
-          ) }
-          { token && actionSuccess && (
-            <SuccessIllustration message="join.success.login" illustration="success" />
-          ) }
-          { action === 'confirm' && actionSuccess && (
-            <SuccessIllustration message="recovery.confirm" illustration="success" />
-          ) }
-          { action === 'deny' && actionSuccess && (
-            <SuccessIllustration message="recovery.deny" illustration="deny" width="220" />
-          ) }
-          { actionError && (
-            <ErrorMessage message={ actionError } hasIcon />
-          ) }
-          { ((!actionPending && actionSuccess) || (!token && !action)) && (
-            <Form onSubmit={ this.handleSubmit }>
-              <H1 noMargin={ isExtension }>
+          )}
+          {token && actionSuccess && (
+            <SuccessIllustration
+              message="join.success.login"
+              illustration="success"
+            />
+          )}
+          {action === 'confirm' && actionSuccess && (
+            <SuccessIllustration
+              message="recovery.confirm"
+              illustration="success"
+            />
+          )}
+          {action === 'deny' && actionSuccess && (
+            <SuccessIllustration
+              message="recovery.deny"
+              illustration="deny"
+              width="220"
+            />
+          )}
+          {actionError && <ErrorMessage message={actionError} hasIcon />}
+          {((!actionPending && actionSuccess) || (!token && !action)) && (
+            <Form onSubmit={this.handleSubmit}>
+              <H1 noMargin={isExtension}>
                 <FormattedMessage id="login.headline" />
               </H1>
               <Input
-                value={ username }
+                value={username}
                 name="username"
                 id="username"
                 autoComplete="username"
-                label={ intl.formatMessage({ id: 'login.usernameEmail' }) }
-                onChange={ this.handleInputChange }
+                label={intl.formatMessage({ id: 'login.usernameEmail' })}
+                onChange={this.handleInputChange}
                 maxLength="50"
                 required
-                disabled={ pending }
+                disabled={pending}
                 inputMode="email"
               />
               <Input
-                value={ password }
+                value={password}
                 name="password"
                 id="password"
                 autoComplete="current-password"
-                label={ intl.formatMessage({ id: 'login.password' }) }
-                onChange={ this.handleInputChange }
+                label={intl.formatMessage({ id: 'login.password' })}
+                onChange={this.handleInputChange}
                 maxLength="225"
                 required
-                type={ showPassword ? 'text' : 'password' }
-                disabled={ pending }
+                type={showPassword ? 'text' : 'password'}
+                disabled={pending}
               />
               <Checkbox
-                label={ intl.formatMessage({ id: 'login.showPassword'}) }
+                label={intl.formatMessage({ id: 'login.showPassword' })}
                 id="show-password"
-                onChange={ this.handleCheckboxChange }
+                onChange={this.handleCheckboxChange}
               />
               <ButtonLargeBlue
                 icon="account"
                 type="submit"
-                pending={ pending }
-                disabled={ pending }
+                pending={pending}
+                disabled={pending}
                 contentBefore
               >
-                <FormattedMessage id="header.login" values={ { b: (msg) => <b>{msg}</b> } } />
+                <FormattedMessage
+                  id="header.login"
+                  values={{ b: (msg) => <b>{msg}</b> }}
+                />
               </ButtonLargeBlue>
-              { error && <ErrorMessage message={ error } hasIcon /> }
-              { isExtension ? (
+              {error && <ErrorMessage message={error} hasIcon />}
+              {isExtension ? (
                 <>
-                  <Link className="login__forgot" href="/forgot" target="_blank">
+                  <Link
+                    className="login__forgot"
+                    href="/forgot"
+                    target="_blank"
+                  >
                     <FormattedMessage id="login.forgot" />
                   </Link>
                   <P className="login__join">
-                    <FormattedMessage id="login.new" />
-                    { ' ' }
+                    <FormattedMessage id="login.new" />{' '}
                     <Link href="/join" target="_blank">
                       <FormattedMessage id="login.join" />
                     </Link>
@@ -251,16 +265,15 @@ class Login extends Component {
                     <FormattedMessage id="login.forgot" />
                   </Link>
                   <P className="login__join">
-                    <FormattedMessage id="login.new" />
-                    { ' ' }
+                    <FormattedMessage id="login.new" />{' '}
                     <Link to="/join">
                       <FormattedMessage id="login.join" />
                     </Link>
                   </P>
                 </>
-              ) }
+              )}
             </Form>
-          ) }
+          )}
         </Section>
       </TemplateComponent>
     );

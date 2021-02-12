@@ -11,9 +11,9 @@ class Customize extends Component {
 
     return (
       <Base
-        headline={ intl.formatMessage({ id: 'customize.title' }) }
+        headline={intl.formatMessage({ id: 'customize.title' })}
         noCancel
-        { ...props }
+        {...props}
       >
         <CustomizeComponent />
       </Base>

@@ -14,24 +14,24 @@ class DeleteCategory extends Component {
     intl: PropTypes.object.isRequired,
     pending: PropTypes.bool,
     darkMode: PropTypes.bool
-  }
+  };
 
   state = {
     id: this.props.data.id,
     newId: null,
     value: 0
-  }
+  };
 
   onChange = (value) => {
     this.setState({
       newId: value === '0' ? null : this.props.data.categories[value - 1].id,
       value
     });
-  }
+  };
 
   handleSave = () => {
     this.props.onSave(this.state);
-  }
+  };
 
   render() {
     const { data, intl, pending, ...props } = this.props;
@@ -40,7 +40,7 @@ class DeleteCategory extends Component {
         text: intl.formatMessage({ id: 'modal.deleteAll' }),
         value: '0'
       },
-      ...data.categories.map(({name}, index) => ({
+      ...data.categories.map(({ name }, index) => ({
         text: `${intl.formatMessage({ id: 'modal.moveTo' })}: ${name}`,
         value: index + 1
       }))
@@ -48,23 +48,24 @@ class DeleteCategory extends Component {
 
     return (
       <Base
-        { ...props }
-        onSave={ this.handleSave }
-        pending={ pending }
-        headline={ intl.formatMessage({ id: 'modal.deleteCategory' }) }
+        {...props}
+        onSave={this.handleSave}
+        pending={pending}
+        headline={intl.formatMessage({ id: 'modal.deleteCategory' })}
       >
         <P>
-          <FormattedMessage id="modal.deleteCategoryLabel" /><br />
-          <b>{ data.name }</b>
+          <FormattedMessage id="modal.deleteCategoryLabel" />
+          <br />
+          <b>{data.name}</b>
         </P>
         {data.bookmarkCount && (
           <Select
             id="category-delete"
-            label={ intl.formatMessage({ id: 'modal.deleteCategoryFuture' }) }
-            options={ options }
-            onChange={ this.onChange }
+            label={intl.formatMessage({ id: 'modal.deleteCategoryFuture' })}
+            options={options}
+            onChange={this.onChange}
             selected="0"
-            disabled={ pending }
+            disabled={pending}
           />
         )}
       </Base>

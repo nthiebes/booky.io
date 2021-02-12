@@ -24,21 +24,35 @@ export default class Empty extends PureComponent {
     locale: PropTypes.string.isRequired,
     className: PropTypes.string,
     color: PropTypes.string.isRequired
-  }
+  };
 
   render() {
     const { locale, className, color } = this.props;
     const localeData = localeMap[locale];
 
     return (
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" className={ classNames('donate', className) }>
+      <form
+        action="https://www.paypal.com/cgi-bin/webscr"
+        method="post"
+        target="_top"
+        className={classNames('donate', className)}
+      >
         <input type="hidden" name="cmd" value="_s-xclick" />
-        <input type="hidden" name="hosted_button_id" value={ localeData.value } />
-        <img alt="" border="0" src={ localeData.pixelSrc } width="1" height="1" />
+        <input type="hidden" name="hosted_button_id" value={localeData.value} />
+        <img alt="" border="0" src={localeData.pixelSrc} width="1" height="1" />
         <input type="submit" name="submit" className="donate__submit" />
-        <span className={ classNames('donate__content', `donate__content--${color}`) }>
-          <img alt="" src={ `/_assets/logos/paypal_${color}.svg` } height="18" width="68" loading="lazy" className="donate__logo" />
-          { localeData.copy }
+        <span
+          className={classNames('donate__content', `donate__content--${color}`)}
+        >
+          <img
+            alt=""
+            src={`/_assets/logos/paypal_${color}.svg`}
+            height="18"
+            width="68"
+            loading="lazy"
+            className="donate__logo"
+          />
+          {localeData.copy}
         </span>
       </form>
     );

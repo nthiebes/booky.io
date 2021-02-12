@@ -12,12 +12,12 @@ class TabBar extends Component {
     title: PropTypes.string.isRequired,
     darkMode: PropTypes.bool,
     disabled: PropTypes.bool
-  }
+  };
 
   state = {
     scrolledToStart: true,
     scrolledToEnd: false
-  }
+  };
 
   handleScroll = (event) => {
     const element = event.target;
@@ -28,7 +28,10 @@ class TabBar extends Component {
         scrolledToStart: true
       });
       // Scrolled to the end
-    } else if (element.scrollWidth - element.scrollLeft === element.clientWidth) {
+    } else if (
+      element.scrollWidth - element.scrollLeft ===
+      element.clientWidth
+    ) {
       this.setState({
         scrolledToEnd: true
       });
@@ -38,7 +41,7 @@ class TabBar extends Component {
         scrolledToEnd: false
       });
     }
-  }
+  };
 
   render() {
     const { className, title, intl, children, darkMode, disabled } = this.props;
@@ -46,27 +49,34 @@ class TabBar extends Component {
 
     return (
       <nav
-        aria-label={ intl.formatMessage({ id: title }) }
-        className={ classNames(
+        aria-label={intl.formatMessage({ id: title })}
+        className={classNames(
           'tab-bar',
           darkMode && 'tab-bar--darkMode',
           !scrolledToStart && 'tab-bar--start',
           !scrolledToEnd && 'tab-bar--end',
           className
-        ) }
+        )}
       >
-        <Droppable droppableId="dashboard-tabs" type="dashboard-tabs" direction="horizontal">
-          { (provided) => (
+        <Droppable
+          droppableId="dashboard-tabs"
+          type="dashboard-tabs"
+          direction="horizontal"
+        >
+          {(provided) => (
             <ul
-              className={ classNames('tab-bar__scroll-container', disabled && 'tab-bar__scroll-container--disabled') }
-              onScroll={ this.handleScroll }
-              ref={ provided.innerRef }
-              { ...provided.droppableProps }
+              className={classNames(
+                'tab-bar__scroll-container',
+                disabled && 'tab-bar__scroll-container--disabled'
+              )}
+              onScroll={this.handleScroll}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
             >
-              { children }
-              { provided.placeholder }
+              {children}
+              {provided.placeholder}
             </ul>
-          ) }
+          )}
         </Droppable>
       </nav>
     );

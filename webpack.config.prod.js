@@ -48,8 +48,8 @@ export default {
           from: '_source/_assets',
           to: '_assets'
         }
-      ]}
-    ),
+      ]
+    }),
 
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin(GLOBALS),
@@ -120,18 +120,17 @@ export default {
             options: {
               sourceMap: true
             }
-          }, {
+          },
+          {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [
-                  'cssnano',
-                  'autoprefixer'
-                ]
+                plugins: ['cssnano', 'autoprefixer']
               },
               sourceMap: true
             }
-          }, {
+          },
+          {
             loader: 'sass-loader',
             options: {
               sassOptions: {

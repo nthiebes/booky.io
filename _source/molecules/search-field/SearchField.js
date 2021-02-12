@@ -16,10 +16,10 @@ class SearchField extends Component {
     updateSearchData: PropTypes.func.isRequired,
     keyword: PropTypes.string,
     dashboardsPending: PropTypes.bool
-  }
+  };
 
   fetchTimeout;
-  
+
   handleChange = (keyword) => {
     const { searchBookmarks, resetSearch, updateSearchData } = this.props;
 
@@ -45,7 +45,7 @@ class SearchField extends Component {
         searchBookmarksByValue();
       }, 500);
     }
-  }
+  };
 
   handleSubmit = (event) => {
     const { keyword } = this.props;
@@ -53,26 +53,37 @@ class SearchField extends Component {
     event.preventDefault();
 
     this.handleChange(keyword);
-  }
+  };
 
   render() {
-    const { className, intl, darkMode, id, keyword, dashboardsPending } = this.props;
+    const {
+      className,
+      intl,
+      darkMode,
+      id,
+      keyword,
+      dashboardsPending
+    } = this.props;
 
     return (
-      <form role="search" className={ classNames('search-field', className) } onSubmit={ this.handleSubmit }>
+      <form
+        role="search"
+        className={classNames('search-field', className)}
+        onSubmit={this.handleSubmit}
+      >
         <Input
-          placeholder={ intl.formatMessage({ id: 'search.placeholder' }) }
-          className={ classNames(
+          placeholder={intl.formatMessage({ id: 'search.placeholder' })}
+          className={classNames(
             'search-field__input',
             darkMode && 'search-field__input--dark-mode'
-          ) }
-          value={ keyword }
-          onChange={ this.handleChange }
-          validation={ false }
+          )}
+          value={keyword}
+          onChange={this.handleChange}
+          validation={false}
           icon="search"
-          id={ id }
-          disabled={ dashboardsPending }
-          ariaLabel={ intl.formatMessage({ id: 'search.label' }) }
+          id={id}
+          disabled={dashboardsPending}
+          ariaLabel={intl.formatMessage({ id: 'search.label' })}
         />
       </form>
     );

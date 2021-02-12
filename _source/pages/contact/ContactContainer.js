@@ -7,8 +7,6 @@ export const mapStateToProps = (state) => ({
   email: state.user.email
 });
 
-const ContactContainer = connect(
-  mapStateToProps
-)(Component);
+const ContactContainer = connect(mapStateToProps)(Component);
 
 export default ContactContainer;

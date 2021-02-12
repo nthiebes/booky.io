@@ -7,10 +7,7 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": [
-    "react",
-    "jsx-a11y"
-  ],
+  "plugins": ["react", "jsx-a11y"],
   "settings": {
     "react": {
       "version": "detect"
@@ -83,25 +80,13 @@
       1,
       {
         "blankLine": "always",
-        "prev": [
-          "const",
-          "let",
-          "var"
-        ],
+        "prev": ["const", "let", "var"],
         "next": "*"
       },
       {
         "blankLine": "never",
-        "prev": [
-          "const",
-          "let",
-          "var"
-        ],
-        "next": [
-          "const",
-          "let",
-          "var"
-        ]
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
       }
     ],
     "no-alert": 1,
@@ -192,23 +177,14 @@
     "prefer-rest-params": 1,
     "prefer-spread": 1,
     "quote-props": 0,
-    "quotes": [
-      1,
-      "single"
-    ],
+    "quotes": [1, "single"],
     "radix": 1,
     "rest-spread-spacing": 1,
     "semi": 1,
     "semi-spacing": 1,
     "space-before-blocks": 1,
-    "space-before-function-paren": [
-      1,
-      "never"
-    ],
-    "space-in-parens": [
-      1,
-      "never"
-    ],
+    "space-before-function-paren": [1, "never"],
+    "space-in-parens": [1, "never"],
     "space-infix-ops": 1,
     "space-unary-ops": 1,
     "spaced-comment": 1,
@@ -241,17 +217,12 @@
     "react/forbid-prop-types": [
       1,
       {
-        "forbid": [
-          "any"
-        ]
+        "forbid": ["any"]
       }
     ],
     "react/jsx-boolean-value": 0,
     "react/jsx-closing-bracket-location": 0,
-    "react/jsx-curly-spacing": [
-      1,
-      "always"
-    ],
+    "react/jsx-curly-spacing": [1, "always"],
     "react/jsx-indent": 0,
     "react/jsx-indent-props": 0,
     "react/jsx-key": 1,

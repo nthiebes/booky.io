@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -35,26 +35,26 @@ export default class Input extends PureComponent {
     ariaLabel: PropTypes.string,
     min: PropTypes.string,
     max: PropTypes.string
-  }
-  
+  };
+
   static defaultProps = {
     type: 'text',
     color: '',
     value: '',
     validation: true
-  }
+  };
 
   onChange = (event) => {
     this.props.onChange(event.target.value, this.props.name);
-  }
+  };
 
   onFocus = (event) => {
     this.props.onFocus && this.props.onFocus(event);
-  }
+  };
 
   onBlur = (event) => {
     this.props.onBlur && this.props.onBlur(event.target.value);
-  }
+  };
 
   render() {
     const {
@@ -115,31 +115,50 @@ export default class Input extends PureComponent {
     };
 
     return (
-      <Fragment>
-        { label && <Label htmlFor={ id }>{ label }</Label> }
-        <span className={ classNames('input', className) }>
-          <input { ...inputProps } />
-          { validation && !pending && !error && (
-            <Fragment>
-              <Icon icon="check" color="green" className="input__icon input__icon--valid" />
-              <Icon icon="error" color="orange" className="input__icon input__icon--invalid" />
-            </Fragment>
-          ) }
-          { error && !pending && (
-            <Icon icon="error" color="orange" className="input__icon input__icon--error" />
-          ) }
-          { icon && <Icon icon={ icon } className="input__icon input__icon--visible" /> }
-          { pending && <Icon icon="spinner" className="input__icon input__icon--visible" /> }
-          { requirements && !error && (
-            <div className={ classNames('input__requirements', darkMode && 'input__requirements--dark-mode') }>
-              { requirements }
+      <>
+        {label && <Label htmlFor={id}>{label}</Label>}
+        <span className={classNames('input', className)}>
+          <input {...inputProps} />
+          {validation && !pending && !error && (
+            <>
+              <Icon
+                icon="check"
+                color="green"
+                className="input__icon input__icon--valid"
+              />
+              <Icon
+                icon="error"
+                color="orange"
+                className="input__icon input__icon--invalid"
+              />
+            </>
+          )}
+          {error && !pending && (
+            <Icon
+              icon="error"
+              color="orange"
+              className="input__icon input__icon--error"
+            />
+          )}
+          {icon && (
+            <Icon icon={icon} className="input__icon input__icon--visible" />
+          )}
+          {pending && (
+            <Icon icon="spinner" className="input__icon input__icon--visible" />
+          )}
+          {requirements && !error && (
+            <div
+              className={classNames(
+                'input__requirements',
+                darkMode && 'input__requirements--dark-mode'
+              )}
+            >
+              {requirements}
             </div>
-          ) }
-          { error && (
-            <ErrorMessage message={ error } noPadding />
-          ) }
+          )}
+          {error && <ErrorMessage message={error} noPadding />}
         </span>
-      </Fragment>
+      </>
     );
   }
 }

@@ -10,18 +10,18 @@ import { javascript } from './javascript';
 class Bookmarklet extends PureComponent {
   handleBookmarkletClick = (event) => {
     event.preventDefault();
-  }
+  };
 
   render() {
     return (
       <a
         className="bookmarklet button button--large button--large-primary button--solid"
-        onClick={ (this.handleBookmarkletClick) }
-        ref={ (node) => {
+        onClick={this.handleBookmarkletClick}
+        ref={(node) => {
           if (node) {
             node.setAttribute('href', javascript);
           }
-        } }
+        }}
       >
         <Icon
           icon="drag"
@@ -30,7 +30,10 @@ class Bookmarklet extends PureComponent {
           ignoreDarkMode
         />
         <span className="button__text">
-          <FormattedMessage id="bookmarklet.text" values={ { b: (msg) => <b>{msg}</b> } } />
+          <FormattedMessage
+            id="bookmarklet.text"
+            values={{ b: (msg) => <b>{msg}</b> }}
+          />
         </span>
       </a>
     );

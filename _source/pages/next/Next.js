@@ -31,7 +31,9 @@ export default class Next extends PureComponent {
               <H2>
                 <FormattedMessage id="next.current" />
               </H2>
-              <Expandable headline={ <FormattedMessage id="next.current.title" /> }>
+              <Expandable
+                headline={<FormattedMessage id="next.current.title" />}
+              >
                 <P noPadding>
                   <FormattedMessage id="next.current.more" />
                 </P>
@@ -41,7 +43,9 @@ export default class Next extends PureComponent {
               <H2>
                 <FormattedMessage id="next.upcoming" />
               </H2>
-              <Expandable headline={ <FormattedMessage id="next.upcoming.title" /> }>
+              <Expandable
+                headline={<FormattedMessage id="next.upcoming.title" />}
+              >
                 <P noPadding>
                   <FormattedMessage id="next.upcoming.more" />
                 </P>
@@ -57,7 +61,7 @@ export default class Next extends PureComponent {
           <H2 nomargin>
             <FormattedMessage id="help.comments" />
           </H2>
-          <DiscussionEmbed shortname="quickbm" config={ disqusConfig } />
+          <DiscussionEmbed shortname="quickbm" config={disqusConfig} />
         </Section>
       </Page>
     );

@@ -15,10 +15,18 @@ class NotFound extends Component {
           <Empty illustration="404">
             <FormattedMessage
               id="notFound.figureText"
-              values={ {
-                mail: <Link to="/contact"><FormattedMessage id="error.email" /></Link>,
-                home: <Link to="/"><FormattedMessage id="misc.startpage" /></Link>
-              } }
+              values={{
+                mail: (
+                  <Link to="/contact">
+                    <FormattedMessage id="error.email" />
+                  </Link>
+                ),
+                home: (
+                  <Link to="/">
+                    <FormattedMessage id="misc.startpage" />
+                  </Link>
+                )
+              }}
             />
           </Empty>
         </Section>

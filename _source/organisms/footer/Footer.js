@@ -24,7 +24,7 @@ class Footer extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     locale: PropTypes.string,
     showStats: PropTypes.bool
-  }
+  };
 
   scrollToTop() {
     window.scrollTo(0, 0);
@@ -46,13 +46,20 @@ class Footer extends PureComponent {
     } = this.props;
 
     return (
-      <footer className={ classNames(
-        'footer',
-        hasSidebar && home && loggedIn && toolbarSticky && 'footer--sidebar',
-        hasSidebar && home && loggedIn && dashboardsOpen && toolbarSticky && 'footer--shifted',
-        className
-      ) }>
-        { ((home && !loggedIn) || showStats) && (
+      <footer
+        className={classNames(
+          'footer',
+          hasSidebar && home && loggedIn && toolbarSticky && 'footer--sidebar',
+          hasSidebar &&
+            home &&
+            loggedIn &&
+            dashboardsOpen &&
+            toolbarSticky &&
+            'footer--shifted',
+          className
+        )}
+      >
+        {((home && !loggedIn) || showStats) && (
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
@@ -73,8 +80,13 @@ class Footer extends PureComponent {
               </li>
             </ul>
           </section>
-        ) }
-        <section className={ classNames('footer__social', darkMode && 'footer__social--dark-mode') }>
+        )}
+        <section
+          className={classNames(
+            'footer__social',
+            darkMode && 'footer__social--dark-mode'
+          )}
+        >
           <Illustration
             className="footer__illustration"
             name="share"
@@ -85,10 +97,12 @@ class Footer extends PureComponent {
             className="footer__social-item"
             target="_blank"
             rel="noopener noreferrer"
-            href={ `https://twitter.com/intent/tweet?url=https://booky.io&via=booky_io&text=booky.io - ${intl.formatMessage({ id: 'footer.twitterText' })}` }
+            href={`https://twitter.com/intent/tweet?url=https://booky.io&via=booky_io&text=booky.io - ${intl.formatMessage(
+              { id: 'footer.twitterText' }
+            )}`}
           >
             <Icon className="footer__icon" icon="twitter" color="light" />
-            <span className="footer__label">{ 'Twitter' }</span>
+            <span className="footer__label">{'Twitter'}</span>
           </a>
           <a
             className="footer__social-item"
@@ -97,7 +111,7 @@ class Footer extends PureComponent {
             href="https://www.xing.com/spi/shares/new?sc_p=b7910_cb&url=https%3A%2F%2Fbooky.io"
           >
             <Icon className="footer__icon" icon="xing" color="light" />
-            <span className="footer__label">{ 'XING' }</span>
+            <span className="footer__label">{'XING'}</span>
           </a>
           <a
             className="footer__social-item"
@@ -106,17 +120,27 @@ class Footer extends PureComponent {
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbooky.io"
           >
             <Icon className="footer__icon" icon="facebook" color="light" />
-            <span className="footer__label">{ 'Facebook' }</span>
+            <span className="footer__label">{'Facebook'}</span>
           </a>
         </section>
         <section className="footer__content">
           <div className="footer__wrapper">
-            <Link to="/" title={ intl.formatMessage({ id: 'menu.home' }) } className="footer__logo">
+            <Link
+              to="/"
+              title={intl.formatMessage({ id: 'menu.home' })}
+              className="footer__logo"
+            >
               <Logo />
             </Link>
             <Donate color="light" className="footer__donate" />
-            <ButtonSmallLight className="footer__button" onClick={ this.scrollToTop }>
-              <FormattedMessage id="footer.scroll" values={ { b: (msg) => <b>{msg}</b> } } />
+            <ButtonSmallLight
+              className="footer__button"
+              onClick={this.scrollToTop}
+            >
+              <FormattedMessage
+                id="footer.scroll"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
             </ButtonSmallLight>
           </div>
           <div className="footer__languages">
@@ -140,8 +164,10 @@ class Footer extends PureComponent {
             </Link>
           </nav>
           <P className="footer__copy" noPadding>
-            { `© 2014-${new Date().getFullYear()}` }
-            <Link className="footer__copy-link" color="light" to="/about">{ 'booky.io' }</Link>
+            {`© 2014-${new Date().getFullYear()}`}
+            <Link className="footer__copy-link" color="light" to="/about">
+              {'booky.io'}
+            </Link>
             <FormattedMessage id="footer.copy" />
           </P>
         </section>

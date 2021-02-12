@@ -1,4 +1,4 @@
-import { configure, setAddon} from '@storybook/react';
+import { configure, setAddon } from '@storybook/react';
 import chaptersAddon, { setDefaults } from 'react-storybook-addon-chapters';
 
 import '../_source/templates/booky/Booky.scss';

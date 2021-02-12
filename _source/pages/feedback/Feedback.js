@@ -24,7 +24,7 @@ export default class Feedback extends Component {
           <P>
             <FormattedMessage id="feedback.text" />
           </P>
-          <DiscussionEmbed shortname="quickbm" config={ disqusConfig } />
+          <DiscussionEmbed shortname="quickbm" config={disqusConfig} />
         </Section>
       </Page>
     );

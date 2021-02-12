@@ -1,4 +1,4 @@
-import {createStore, compose, applyMiddleware} from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
@@ -41,7 +41,8 @@ function configureStoreDev(initialState) {
     reactRouterMiddleware
   ];
   // eslint-disable-next-line no-underscore-dangle
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
   const store = createStore(
     createRootReducer(history), // root reducer with router state
     initialState,
@@ -60,6 +61,9 @@ function configureStoreDev(initialState) {
   return store;
 }
 
-const configureStore = process.env.NODE_ENV === 'production' ? configureStoreProd : configureStoreDev;
+const configureStore =
+  process.env.NODE_ENV === 'production'
+    ? configureStoreProd
+    : configureStoreDev;
 
 export default configureStore;

@@ -25,11 +25,11 @@ class Modal extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     error: PropTypes.string,
     useAnchor: PropTypes.bool
-  }
+  };
 
   static defaultProps = {
     useAnchor: true
-  }
+  };
 
   componentDidMount() {
     if (this.props.useAnchor) {
@@ -41,51 +41,73 @@ class Modal extends PureComponent {
 
   onSubmit = (data) => {
     this.props.onSave(data);
-  }
+  };
 
   render() {
-    const { children, onClose, headline, noCancel, intl, pending, error, useAnchor } = this.props;
+    const {
+      children,
+      onClose,
+      headline,
+      noCancel,
+      intl,
+      pending,
+      error,
+      useAnchor
+    } = this.props;
 
     return (
-      <Form onSubmit={ this.onSubmit }>
+      <Form onSubmit={this.onSubmit}>
         <header className="modal__header">
-          { useAnchor && (
+          {useAnchor && (
             // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-            <span tabIndex="0" className="modal__tab-index-link" ref={ (anchor) => { this.anchor = anchor; } }>
+            <span
+              tabIndex="0"
+              className="modal__tab-index-link"
+              ref={(anchor) => {
+                this.anchor = anchor;
+              }}
+            >
               <FormattedMessage id="modal.tabAnchor" />
             </span>
-          ) }
-          { headline && <H2 className="modal__headline">{ headline }</H2> }
+          )}
+          {headline && <H2 className="modal__headline">{headline}</H2>}
           <Icon
             isButton
             icon="close"
-            onClick={ onClose }
-            label={ intl.formatMessage({ id: 'modal.close' }) }
+            onClick={onClose}
+            label={intl.formatMessage({ id: 'modal.close' })}
           />
         </header>
-        <div className="modal__content">
-          { children }
-        </div>
-        { error && <ErrorMessage message={ error } hasIcon className="modal__error" /> }
-        <footer className={ classNames('modal__footer', noCancel && 'modal__footer--one-button') }>
-          { !noCancel && (
+        <div className="modal__content">{children}</div>
+        {error && (
+          <ErrorMessage message={error} hasIcon className="modal__error" />
+        )}
+        <footer
+          className={classNames(
+            'modal__footer',
+            noCancel && 'modal__footer--one-button'
+          )}
+        >
+          {!noCancel && (
             <ButtonLargeLight
               className="modal__button modal__button--cancel"
               icon="close"
-              onClick={ onClose }
+              onClick={onClose}
               type="button"
             >
               <FormattedMessage id="button.cancel" />
             </ButtonLargeLight>
-          ) }
+          )}
           <ButtonLargeBlue
-            pending={ pending }
-            disabled={ pending }
+            pending={pending}
+            disabled={pending}
             className="modal__button"
-            icon={ noCancel ? 'check' : 'save' }
+            icon={noCancel ? 'check' : 'save'}
             type="submit"
           >
-            <FormattedMessage id={ noCancel ? 'button.done' : 'button.confirm' } />
+            <FormattedMessage
+              id={noCancel ? 'button.done' : 'button.confirm'}
+            />
           </ButtonLargeBlue>
         </footer>
       </Form>

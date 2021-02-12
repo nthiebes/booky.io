@@ -1,0 +1,7 @@
+_public/**/*.js
+coverage/**/*.js
+*.yml
+_source/_assets
+*.html
+package-lock.json
+*.md

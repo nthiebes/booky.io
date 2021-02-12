@@ -49,23 +49,28 @@ class Join extends Component {
     }
 
     if (name === 'password') {
-      valid = Boolean(value.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/ig));
+      valid = Boolean(value.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/gi));
     }
 
     if (name === 'email') {
-      valid = Boolean(value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ig)) && error === false;
+      valid =
+        Boolean(
+          value.match(
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/gi
+          )
+        ) && error === false;
     }
 
     if (valid === true) {
       return `${name}-focus ${name}-valid`;
     }
-    
-    if (!value) { 
+
+    if (!value) {
       return `${name}-focus`;
     }
-    
+
     return `${name}-focus ${name}-invalid`;
-  }
+  };
 
   handleInputChange = (value, name) => {
     const { validate } = this.props;
@@ -128,18 +133,22 @@ class Join extends Component {
   };
 
   handleFocus = (event) => {
-    const animation = this.getAnimation(event.target.value, event.target.name, Boolean(this.state[`${event.target.name}Error`]));
+    const animation = this.getAnimation(
+      event.target.value,
+      event.target.name,
+      Boolean(this.state[`${event.target.name}Error`])
+    );
 
     this.setState({
       animation
     });
-  }
+  };
 
   handleBlur = () => {
     this.setState({
       animation: ''
     });
-  }
+  };
 
   handleSubmit = (params) => {
     const { join } = this.props;
@@ -191,10 +200,14 @@ class Join extends Component {
       <Page>
         <Section className="join">
           {success ? (
-            <SuccessIllustration message="join.success" illustration="join-success" width="400" />
+            <SuccessIllustration
+              message="join.success"
+              illustration="join-success"
+              width="400"
+            />
           ) : (
             <Fragment>
-              <Form onSubmit={ this.handleSubmit }>
+              <Form onSubmit={this.handleSubmit}>
                 <H1>
                   <FormattedMessage id="join.headline" />
                 </H1>
@@ -202,55 +215,55 @@ class Join extends Component {
                   <FormattedMessage id="home.promoText" />
                 </H2>
                 <Input
-                  value={ username }
+                  value={username}
                   name="username"
                   id="username"
-                  label={ intl.formatMessage({ id: 'login.username' }) }
-                  onChange={ this.handleInputChange }
+                  label={intl.formatMessage({ id: 'login.username' })}
+                  onChange={this.handleInputChange}
                   maxLength="50"
                   required
-                  disabled={ pending }
-                  pending={ usernamePending }
-                  onFocus={ this.handleFocus }
-                  onBlur={ this.handleBlur }
-                  error={ usernameError }
+                  disabled={pending}
+                  pending={usernamePending}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
+                  error={usernameError}
                 />
                 <Input
-                  value={ email }
+                  value={email}
                   name="email"
                   id="email"
                   autoComplete="email"
-                  label={ intl.formatMessage({ id: 'login.email' }) }
-                  onChange={ this.handleInputChange }
+                  label={intl.formatMessage({ id: 'login.email' })}
+                  onChange={this.handleInputChange}
                   maxLength="150"
                   required
                   type="email"
                   // requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
-                  disabled={ pending }
-                  pending={ emailPending }
-                  onFocus={ this.handleFocus }
-                  onBlur={ this.handleBlur }
-                  error={ emailError }
+                  disabled={pending}
+                  pending={emailPending}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
+                  error={emailError}
                 />
                 <Input
-                  value={ password }
+                  value={password}
                   name="password"
                   id="password"
                   autoComplete="new-password"
-                  label={ intl.formatMessage({ id: 'login.password' }) }
-                  onChange={ this.handleInputChange }
+                  label={intl.formatMessage({ id: 'login.password' })}
+                  onChange={this.handleInputChange}
                   maxLength="225"
                   required
-                  type={ showPassword ? 'text' : 'password' }
+                  type={showPassword ? 'text' : 'password'}
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                  requirements={ intl.formatMessage({
+                  requirements={intl.formatMessage({
                     id: 'misc.validPassword'
-                  }) }
-                  disabled={ pending }
-                  onFocus={ this.handleFocus }
-                  onBlur={ this.handleBlur }
+                  })}
+                  disabled={pending}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
                 />
-                <input value={ language } name="language" type="hidden" />
+                <input value={language} name="language" type="hidden" />
                 <input
                   className="join__website"
                   name="website"
@@ -258,20 +271,23 @@ class Join extends Component {
                   tabIndex="-1"
                 />
                 <Checkbox
-                  label={ intl.formatMessage({ id: 'login.showPassword' }) }
+                  label={intl.formatMessage({ id: 'login.showPassword' })}
                   id="show-password"
-                  onChange={ this.handleCheckboxChange }
+                  onChange={this.handleCheckboxChange}
                 />
                 <ButtonLargeBlue
                   icon="join"
                   type="submit"
-                  pending={ pending }
-                  disabled={ pending }
+                  pending={pending}
+                  disabled={pending}
                   contentBefore
                 >
-                  <FormattedMessage id="join.button" values={ { b: (msg) => <b>{msg}</b> } } />
+                  <FormattedMessage
+                    id="join.button"
+                    values={{ b: (msg) => <b>{msg}</b> }}
+                  />
                 </ButtonLargeBlue>
-                {error && <ErrorMessage message={ error } hasIcon />}
+                {error && <ErrorMessage message={error} hasIcon />}
                 <P className="join__login">
                   <FormattedMessage id="join.registered" />{' '}
                   <Link to="/login">
@@ -279,7 +295,12 @@ class Join extends Component {
                   </Link>
                 </P>
               </Form>
-              <Monster className={ classNames(animation, showPassword && 'monster--show-password') } />
+              <Monster
+                className={classNames(
+                  animation,
+                  showPassword && 'monster--show-password'
+                )}
+              />
             </Fragment>
           )}
         </Section>

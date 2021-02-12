@@ -12,12 +12,12 @@ const tryToDecode = (string) => {
 
 export const decodeEmoji = (string) => {
   let decodedString;
-  
+
   try {
     decodedString = decodeURIComponent(string);
   } catch {
     let shortenedString = string;
-     
+
     for (let i = 0; i < string.length; i++) {
       shortenedString = shortenedString.slice(0, -1);
       const canBeDecoded = tryToDecode(shortenedString);
@@ -37,7 +37,7 @@ export const encodeEmoji = (string) => {
   let newString = string;
 
   // eslint-disable-next-line no-cond-assign
-  while (match = regex.exec(string)) {
+  while ((match = regex.exec(string))) {
     const emoji = match[0];
 
     // newString = newString.replace(emoji, `\\u${emojiUnicode(emoji).toUpperCase()}`);

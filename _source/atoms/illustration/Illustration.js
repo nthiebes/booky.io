@@ -3,17 +3,25 @@ import PropTypes from 'prop-types';
 
 export default class Illustration extends Component {
   render() {
-    const { className, height, width, name, alt, ariaHidden, darkMode } = this.props;
+    const {
+      className,
+      height,
+      width,
+      name,
+      alt,
+      ariaHidden,
+      darkMode
+    } = this.props;
     const fileName = darkMode ? `${name}_dark` : name;
 
     return (
       <img
-        width={ width }
-        height={ height }
-        alt={ alt }
-        className={ className }
-        src={ `../../_assets/illustrations/${fileName}.svg` }
-        aria-hidden={ ariaHidden }
+        width={width}
+        height={height}
+        alt={alt}
+        className={className}
+        src={`../../_assets/illustrations/${fileName}.svg`}
+        aria-hidden={ariaHidden}
         loading="lazy"
       />
     );

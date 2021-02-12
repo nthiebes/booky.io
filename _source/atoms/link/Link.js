@@ -24,17 +24,17 @@ export default class Link extends Component {
     noUnderline: PropTypes.bool,
     role: PropTypes.string,
     hasBadge: PropTypes.bool
-  }
-  
+  };
+
   static defaultProps = {
     color: 'primary'
-  }
+  };
 
   handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       this.props.onClick && this.props.onClick(event);
     }
-  }
+  };
 
   render() {
     const {
@@ -64,26 +64,26 @@ export default class Link extends Component {
 
     return (
       <CustomTag
-        href={ href }
-        to={ to }
-        title={ title }
-        onClick={ onClick }
-        target={ target }
-        rel={ target === '_blank' ? 'noopener noreferrer' : null }
-        tabIndex={ tabIndex }
-        onKeyDown={ this.handleKeyDown }
-        role={ role }
-        className={ classNames(
+        href={href}
+        to={to}
+        title={title}
+        onClick={onClick}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : null}
+        tabIndex={tabIndex}
+        onKeyDown={this.handleKeyDown}
+        role={role}
+        className={classNames(
           'link',
           color && `link--${color}`,
           darkMode && 'link--dark-mode',
           noUnderline && 'link--noUnderline',
           hasBadge && 'link--badge',
           className
-        ) }
-        { ...navLinkProps }
+        )}
+        {...navLinkProps}
       >
-        { children }
+        {children}
       </CustomTag>
     );
   }

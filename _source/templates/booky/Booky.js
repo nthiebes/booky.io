@@ -22,27 +22,35 @@ export default class Booky extends Component {
     store: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     isMobile: PropTypes.bool.isRequired
-  }
+  };
 
   componentDidMount() {
     const mediaQuery = window.matchMedia('(max-width: 1000px)');
 
-    loadingSpinner.addEventListener('transitionend', this.transitionEndCallback);
+    loadingSpinner.addEventListener(
+      'transitionend',
+      this.transitionEndCallback
+    );
     loadingSpinner.classList.add('loading__spinner--hide');
     mediaQuery.addListener(this.widthChange);
   }
 
   transitionEndCallback() {
-    loadingSpinner.removeEventListener('transitionend', this.transitionEndCallback);
-    loadingSpinner.parentNode && loadingSpinner.parentNode.removeChild(loadingSpinner);
-    loadingHeader.parentNode && loadingHeader.parentNode.removeChild(loadingHeader);
+    loadingSpinner.removeEventListener(
+      'transitionend',
+      this.transitionEndCallback
+    );
+    loadingSpinner.parentNode &&
+      loadingSpinner.parentNode.removeChild(loadingSpinner);
+    loadingHeader.parentNode &&
+      loadingHeader.parentNode.removeChild(loadingHeader);
   }
 
   widthChange = (mediaQuery) => {
     this.props.updateUserData({
       isMobile: mediaQuery.matches
     });
-  }
+  };
 
   onDragStart = ({ type }) => {
     const { isMobile, startDragging } = this.props;
@@ -52,17 +60,27 @@ export default class Booky extends Component {
         dragType: type
       });
     }
-  }
+  };
 
   onDragEnd = ({ type, destination, source, draggableId }) => {
-    const { isMobile, stopDragging, dragDashboard, dragCategory, dragBookmark } = this.props;
+    const {
+      isMobile,
+      stopDragging,
+      dragDashboard,
+      dragCategory,
+      dragBookmark
+    } = this.props;
 
     if (!isMobile) {
       stopDragging();
     }
 
     if (destination) {
-      if (type === 'dashboard-mobile' || type === 'dashboard-sidebar' || type === 'dashboard-tabs') {
+      if (
+        type === 'dashboard-mobile' ||
+        type === 'dashboard-sidebar' ||
+        type === 'dashboard-tabs'
+      ) {
         dragDashboard({
           destinationIndex: destination.index,
           sourceIndex: source.index,
@@ -70,16 +88,23 @@ export default class Booky extends Component {
             draggableId
               .replace('dashboard-mobile-', '')
               .replace('dashboard-sidebar-', '')
-              .replace('dashboard-tabs-', '')
-            , 10)
+              .replace('dashboard-tabs-', ''),
+            10
+          )
         });
       }
       if (type === 'category') {
         dragCategory({
           destinationIndex: destination.index,
           sourceIndex: source.index,
-          sourceDashboardId: parseInt(source.droppableId.replace('dashboard-', ''), 10),
-          destinationDashboardId: parseInt(destination.droppableId.replace('dashboard-', ''), 10),
+          sourceDashboardId: parseInt(
+            source.droppableId.replace('dashboard-', ''),
+            10
+          ),
+          destinationDashboardId: parseInt(
+            destination.droppableId.replace('dashboard-', ''),
+            10
+          ),
           categoryId: parseInt(draggableId.replace(/category-/g, ''), 10)
         });
       }
@@ -93,15 +118,18 @@ export default class Booky extends Component {
         });
       }
     }
-  }
+  };
 
   render() {
     const { store, history } = this.props;
 
     return (
-      <Provider store={ store }>
-        <DragDropContext onDragStart={ this.onDragStart } onDragEnd={ this.onDragEnd }>
-          <ConnectedRouter history={ history }>
+      <Provider store={store}>
+        <DragDropContext
+          onDragStart={this.onDragStart}
+          onDragEnd={this.onDragEnd}
+        >
+          <ConnectedRouter history={history}>
             <BrowserRouter>
               <Routes />
             </BrowserRouter>

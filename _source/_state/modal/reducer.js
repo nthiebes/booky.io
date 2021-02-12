@@ -14,7 +14,7 @@ const header = (state = {}, action) => {
         ...state,
         open: false
       };
-    
+
     case 'HIDE_MODAL':
       return {
         ...state,

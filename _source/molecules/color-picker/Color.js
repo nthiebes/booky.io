@@ -10,11 +10,11 @@ export default class Color extends Component {
     value: PropTypes.string.isRequired,
     color: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired
-  }
+  };
 
   handleChange = () => {
     this.props.onChange(this.props.color.key);
-  }
+  };
 
   render() {
     const { color, value } = this.props;
@@ -23,23 +23,23 @@ export default class Color extends Component {
       <Radio
         className="color-picker__color"
         inputClassName="color-picker__input"
-        labelClassName={ classNames(
+        labelClassName={classNames(
           'color-picker__label',
           `color-picker__label--${color.key}`
-        ) }
-        id={ `color${color.key}` }
+        )}
+        id={`color${color.key}`}
         name="color"
-        value={ `color${value}` }
-        onChange={ this.handleChange }
-        checked={ value === color.key }
+        value={`color${value}`}
+        onChange={this.handleChange}
+        checked={value === color.key}
       >
         <Icon
           icon="check"
           color="light"
-          className={ classNames(
+          className={classNames(
             'color-picker__icon',
             value === color.key && 'color-picker__icon--active'
-          ) }
+          )}
         />
       </Radio>
     );
