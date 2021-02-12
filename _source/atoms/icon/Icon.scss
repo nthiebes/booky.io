@@ -28,6 +28,13 @@
     transform: translateY(-50%) scale(1);
   }
 
+  &:hover .icon__label,
+  &:focus .icon__label,
+  &:active .icon__label {
+    opacity: 1;
+    transition: opacity 0.2s linear 0.5s;
+  }
+
   @include desktop {
     &:hover::after {
       opacity: 1;
@@ -309,4 +316,27 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.icon__label {
+  position: absolute;
+  top: calc(100% + 3px);
+  color: $color-font--dark;
+  background-color: $color-background--light;
+  opacity: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  font-size: $font-size--small;
+  pointer-events: none;
+  line-height: 1.3;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  transition: opacity 0.1s linear;
+  z-index: 10;
+}
+
+.icon__label--darkMode {
+  color: $color-font--white;
+  background-color: $color-background--dark;
 }

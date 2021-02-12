@@ -101,8 +101,6 @@ export default class Icon extends Component {
           darkMode && !ignoreDarkMode && 'icon--dark-mode',
           className
         )}
-        title={label}
-        aria-label={label}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
         {...additionalProps}
@@ -120,6 +118,16 @@ export default class Icon extends Component {
         >
           <use xlinkHref={link} />
         </svg>
+        {label && (
+          <span
+            className={classNames(
+              'icon__label',
+              darkMode && 'icon__label--darkMode'
+            )}
+          >
+            {label}
+          </span>
+        )}
       </CustomTag>
     );
   }
