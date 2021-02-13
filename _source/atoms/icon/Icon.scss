@@ -28,9 +28,9 @@
     transform: translateY(-50%) scale(1);
   }
 
-  &:hover .icon__label,
-  &:focus .icon__label,
-  &:active .icon__label {
+  // &:focus .icon__label,
+  // &:active .icon__label,
+  &:hover .icon__label {
     opacity: 1;
     transition: opacity 0.2s linear 0.5s;
   }
@@ -318,13 +318,18 @@
   }
 }
 
-.icon__label {
+// Second wrapper is needed to break out of overflow: hidden
+.icon__label-wrapper {
   position: absolute;
   top: calc(100% + 3px);
+  left: 50%;
+  z-index: 10;
+}
+
+.icon__label {
   color: $color-font--dark;
   background-color: $color-background--light;
   opacity: 0;
-  left: 50%;
   transform: translateX(-50%);
   padding: 0.5rem 1rem;
   border-radius: 3px;
@@ -333,7 +338,7 @@
   line-height: 1.3;
   border: 2px solid rgba(0, 0, 0, 0.15);
   transition: opacity 0.1s linear;
-  z-index: 10;
+  position: fixed;
 }
 
 .icon__label--darkMode {

@@ -167,7 +167,6 @@ export default class Modal extends PureComponent {
         className={classNames('modal', open && 'modal--open')}
         onMouseDown={this.handleMouseDown}
         onKeyUp={this.handleKeyUp}
-        aria-hidden="true"
       >
         <div
           className={classNames(

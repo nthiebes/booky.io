@@ -119,13 +119,15 @@ export default class Icon extends Component {
           <use xlinkHref={link} />
         </svg>
         {label && (
-          <span
-            className={classNames(
-              'icon__label',
-              darkMode && 'icon__label--darkMode'
-            )}
-          >
-            {label}
+          <span className="icon__label-wrapper">
+            <span
+              className={classNames(
+                'icon__label',
+                darkMode && 'icon__label--darkMode'
+              )}
+            >
+              {label}
+            </span>
           </span>
         )}
       </CustomTag>
