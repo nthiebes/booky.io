@@ -5,6 +5,18 @@ import classNames from 'classnames';
 import Icon from '../../atoms/icon';
 import Radio from '../../atoms/radio';
 
+const colorMap = {
+  1: 'Grey',
+  2: 'Black',
+  3: 'Orange',
+  4: 'Blue',
+  5: 'Purple',
+  6: 'Pink',
+  7: 'Green',
+  8: 'Turquoise',
+  9: 'Red'
+};
+
 export default class Color extends Component {
   static propTypes = {
     value: PropTypes.string.isRequired,
@@ -18,6 +30,7 @@ export default class Color extends Component {
 
   render() {
     const { color, value } = this.props;
+    const colorName = colorMap[color.key];
 
     return (
       <Radio
@@ -41,6 +54,7 @@ export default class Color extends Component {
             value === color.key && 'color-picker__icon--active'
           )}
         />
+        <span className="color-picker__name">{colorName}</span>
       </Radio>
     );
   }
