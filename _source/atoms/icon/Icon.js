@@ -29,12 +29,14 @@ export default class Icon extends Component {
     isButton: PropTypes.bool,
     useSkeleton: PropTypes.bool,
     pending: PropTypes.bool,
-    to: PropTypes.string
+    to: PropTypes.string,
+    labelDirection: PropTypes.string
   };
 
   static defaultProps = {
     color: 'medium',
-    size: 'small'
+    size: 'small',
+    labelDirection: 'bottom'
   };
 
   handleClick = (event) => {
@@ -69,7 +71,8 @@ export default class Icon extends Component {
       isButton,
       useSkeleton,
       pending,
-      to
+      to,
+      labelDirection
     } = this.props;
     const icon = pending ? 'spinner' : this.props.icon;
     const link = `/_assets/symbol-defs.svg?=${process.env.VERSION}#icon-${icon}`;
@@ -119,10 +122,16 @@ export default class Icon extends Component {
           <use xlinkHref={link} />
         </svg>
         {label && (
-          <span className="icon__label-wrapper">
+          <span
+            className={classNames(
+              'icon__label-wrapper',
+              `icon__label-wrapper--${labelDirection}`
+            )}
+          >
             <span
               className={classNames(
                 'icon__label',
+                `icon__label--${labelDirection}`,
                 darkMode && 'icon__label--darkMode'
               )}
             >

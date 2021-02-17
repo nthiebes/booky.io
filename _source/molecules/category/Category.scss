@@ -79,9 +79,11 @@
 }
 
 .category__toggle-icon {
-  transition: transform 0.2s linear, color 0.2s linear;
+  svg {
+    transition: transform 0.2s linear, color 0.2s linear;
+  }
 
-  &.category__toggle-icon--rotate {
+  &.category__toggle-icon--rotate svg {
     transform: rotate(-90deg);
   }
 }

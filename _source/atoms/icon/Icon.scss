@@ -321,9 +321,27 @@
 // Second wrapper is needed to break out of overflow: hidden
 .icon__label-wrapper {
   position: absolute;
+  z-index: 10;
+}
+
+.icon__label-wrapper--bottom {
   top: calc(100% + 3px);
   left: 50%;
-  z-index: 10;
+}
+
+.icon__label-wrapper--right {
+  left: calc(100% + 3px);
+  top: 50%;
+}
+
+.icon__label-wrapper--top {
+  bottom: calc(100% + 3px);
+  left: 50%;
+}
+
+.icon__label-wrapper--left {
+  right: calc(100% + 3px);
+  top: 50%;
 }
 
 .icon__label {
@@ -339,6 +357,16 @@
   border: 2px solid rgba(0, 0, 0, 0.15);
   transition: opacity 0.1s linear;
   position: fixed;
+}
+
+.icon__label--bottom,
+.icon__label--top {
+  transform: translateX(-50%);
+}
+
+.icon__label--right,
+.icon__label--left {
+  transform: translateY(-50%);
 }
 
 .icon__label--darkMode {
