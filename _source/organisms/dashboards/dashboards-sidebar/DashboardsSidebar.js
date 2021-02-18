@@ -68,7 +68,7 @@ class DashboardsSidebar extends PureComponent {
               ? intl.formatMessage({ id: 'dashboard.reduce' })
               : intl.formatMessage({ id: 'dashboard.expand' })
           }
-          labelDirection={pinned ? 'bottom' : 'right'}
+          tooltipDirection={pinned ? 'bottom' : 'right'}
           isButton
         />
       </aside>

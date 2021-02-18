@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import Skeleton from '../skeleton';
+import Tooltip from '../tooltip';
 
-export default class Icon extends Component {
+export default class Icon extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     icon: PropTypes.string.isRequired,
@@ -30,13 +31,13 @@ export default class Icon extends Component {
     useSkeleton: PropTypes.bool,
     pending: PropTypes.bool,
     to: PropTypes.string,
-    labelDirection: PropTypes.string
+    tooltipDirection: PropTypes.string
   };
 
   static defaultProps = {
     color: 'medium',
     size: 'small',
-    labelDirection: 'bottom'
+    tooltipDirection: 'bottom'
   };
 
   handleClick = (event) => {
@@ -72,7 +73,7 @@ export default class Icon extends Component {
       useSkeleton,
       pending,
       to,
-      labelDirection
+      tooltipDirection
     } = this.props;
     const icon = pending ? 'spinner' : this.props.icon;
     const link = `/_assets/symbol-defs.svg?=${process.env.VERSION}#icon-${icon}`;
@@ -121,24 +122,7 @@ export default class Icon extends Component {
         >
           <use xlinkHref={link} />
         </svg>
-        {label && (
-          <span
-            className={classNames(
-              'icon__label-wrapper',
-              `icon__label-wrapper--${labelDirection}`
-            )}
-          >
-            <span
-              className={classNames(
-                'icon__label',
-                `icon__label--${labelDirection}`,
-                darkMode && 'icon__label--darkMode'
-              )}
-            >
-              {label}
-            </span>
-          </span>
-        )}
+        {label && <Tooltip direction={tooltipDirection} text={label} />}
       </CustomTag>
     );
   }

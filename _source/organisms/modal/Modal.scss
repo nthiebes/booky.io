@@ -24,7 +24,7 @@
     transition: opacity 0.2s linear, width 0s 0.2s linear;
   }
 
-  .icon__label-wrapper {
+  .tooltip-wrapper {
     display: none;
   }
 }
@@ -46,7 +46,7 @@
     transform: none;
   }
 
-  .icon__label-wrapper {
+  .tooltip-wrapper {
     display: block;
   }
 }
