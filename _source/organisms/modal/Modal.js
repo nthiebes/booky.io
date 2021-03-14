@@ -146,7 +146,7 @@ export default class Modal extends PureComponent {
 
   handleKeyUp = (event) => {
     if (event.key === 'Escape') {
-      this.props.closeModal();
+      this.closeModal();
     }
   };
 
