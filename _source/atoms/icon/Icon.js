@@ -20,7 +20,8 @@ export default class Icon extends PureComponent {
       'medium',
       'light',
       'green',
-      'orange'
+      'orange',
+      ''
     ]),
     dragHandleProps: PropTypes.object,
     tabIndex: PropTypes.string,
