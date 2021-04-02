@@ -1,6 +1,5 @@
 import fetcher from '../../_utils/fetcher';
 import { encodeEmoji, decodeEmoji } from '../../_utils/string';
-import { removeEmpty } from '../../_utils/object';
 
 export const setBookmarks = ({ bookmarks, id, error }) => ({
   type: 'SET_BOOKMARKS',
@@ -99,13 +98,13 @@ export const editBookmark = ({
   fetcher({
     url: `/bookmarks/${id}`,
     method: 'PATCH',
-    params: removeEmpty({
-      name: name ? encodeEmoji(name) : '',
+    params: {
+      name: encodeEmoji(name),
       url,
       categoryId,
       position,
-      note: note ? encodeEmoji(note) : ''
-    }),
+      note: encodeEmoji(note)
+    },
     onSuccess: ({ favicon }) => {
       if (shouldUpdate) {
         dispatch({
