@@ -15,9 +15,6 @@ const mapDispatchToProps = {
   searchBookmarks,
   updateSearchData
 };
-const HomeContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default HomeContainer;

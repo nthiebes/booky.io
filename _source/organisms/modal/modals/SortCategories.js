@@ -15,14 +15,23 @@ class SortCategories extends Component {
     darkMode: PropTypes.bool,
     dashboardName: PropTypes.string,
     dashboardId: PropTypes.number
-  }
+  };
 
   render() {
     const { intl, pending, dashboardName, dashboardId, ...props } = this.props;
 
     return (
-      <Base { ...props } noCancel pending={ pending } headline={ intl.formatMessage({ id: 'category.sort' }) }>
-        <CategoriesSorting dashboardId={ dashboardId } dashboardName={ dashboardName } noTitle />
+      <Base
+        {...props}
+        noCancel
+        pending={pending}
+        headline={intl.formatMessage({ id: 'category.sort' })}
+      >
+        <CategoriesSorting
+          dashboardId={dashboardId}
+          dashboardName={dashboardName}
+          noTitle
+        />
       </Base>
     );
   }

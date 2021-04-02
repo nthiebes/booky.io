@@ -24,11 +24,11 @@ class Toolbar extends PureComponent {
     openModal: PropTypes.func.isRequired,
     hasDashboards: PropTypes.bool,
     intl: PropTypes.object.isRequired
-  }
+  };
 
   state = {
     dashboardModalOpen: false
-  }
+  };
 
   getStickyClass = () => {
     const { sticky, headerSticky, currentlySticky } = this.props;
@@ -42,15 +42,15 @@ class Toolbar extends PureComponent {
     }
 
     return '';
-  }
+  };
 
   onAddCategoryClick = () => {
     this.props.openModal('AddCategory');
-  }
+  };
 
   onAddDashboardClick = () => {
     this.props.openModal('AddDashboard');
-  }
+  };
 
   render() {
     const {
@@ -65,58 +65,74 @@ class Toolbar extends PureComponent {
     } = this.props;
 
     return (
-      <section className={ classNames('toolbar', this.getStickyClass(), darkMode && 'toolbar--dark-mode', className) }>
-        { dashboardsStyle === 'sidebar' && (
+      <section
+        className={classNames(
+          'toolbar',
+          this.getStickyClass(),
+          darkMode && 'toolbar--dark-mode',
+          className
+        )}
+      >
+        {dashboardsStyle === 'sidebar' && (
           <H1 style="h3" className="toolbar__headline" noMargin>
-            { activeDashboardName || <Skeleton /> }
+            {activeDashboardName || <Skeleton />}
           </H1>
-        ) }
-        { dashboardsStyle === 'tabs' && (
+        )}
+        {dashboardsStyle === 'tabs' && (
           <>
             <DashboardsTabs />
             <Icon
               icon="add-collection"
-              label={ intl.formatMessage({ id: 'modal.addDashboard' }) }
-              onClick={ this.onAddDashboardClick }
-              useSkeleton={ !hasDashboards }
+              label={intl.formatMessage({ id: 'modal.addDashboard' })}
+              onClick={this.onAddDashboardClick}
+              useSkeleton={!hasDashboards}
               isButton
             />
           </>
-        ) }
-        { hasCategories && (
+        )}
+        {hasCategories && (
           <>
-            { dashboardsStyle === 'tabs' ? (
+            {dashboardsStyle === 'tabs' ? (
               <>
                 <Icon
                   icon="add-category"
                   className="booky--hide-desktop"
-                  label={ intl.formatMessage({ id: 'modal.addCategory' }) }
-                  onClick={ this.onAddCategoryClick }
-                  useSkeleton={ categoriesPending }
+                  label={intl.formatMessage({ id: 'modal.addCategory' })}
+                  onClick={this.onAddCategoryClick}
+                  useSkeleton={categoriesPending}
                   isButton
                 />
                 <ButtonSmallPrimary
                   icon="add-category"
                   className="toolbar__button booky--hide-mobile-tablet"
-                  onClick={ this.onAddCategoryClick }
-                  useSkeleton={ categoriesPending }
+                  onClick={this.onAddCategoryClick}
+                  useSkeleton={categoriesPending}
                 >
-                  <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
+                  <FormattedMessage
+                    id="category.add"
+                    values={{ b: (msg) => <b>{msg}</b> }}
+                  />
                 </ButtonSmallPrimary>
               </>
             ) : (
               <ButtonSmallPrimary
                 icon="add-category"
                 className="toolbar__add-category"
-                onClick={ this.onAddCategoryClick }
-                useSkeleton={ categoriesPending }
+                onClick={this.onAddCategoryClick}
+                useSkeleton={categoriesPending}
               >
-                <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
+                <FormattedMessage
+                  id="category.add"
+                  values={{ b: (msg) => <b>{msg}</b> }}
+                />
               </ButtonSmallPrimary>
-            ) }
+            )}
           </>
-        ) }
-        <SearchField className="booky--hide-mobile-tablet" id="search-desktop" />
+        )}
+        <SearchField
+          className="booky--hide-mobile-tablet"
+          id="search-desktop"
+        />
       </section>
     );
   }

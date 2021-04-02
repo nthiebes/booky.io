@@ -9,7 +9,9 @@ export default class SearchSkeleton extends PureComponent {
   getCategory({ noMargin = false } = {}) {
     return (
       <ul>
-        <H3 noMargin={ noMargin }><Skeleton className="search-skeleton__category" /></H3>
+        <H3 noMargin={noMargin}>
+          <Skeleton className="search-skeleton__category" />
+        </H3>
         <li className="bookmark search__bookmark">
           <Icon icon="search" useSkeleton className="search-skeleton__icon" />
           <Skeleton className="search-skeleton__link1" />
@@ -34,10 +36,12 @@ export default class SearchSkeleton extends PureComponent {
         </P>
         <ul className="search-skeleton__wrapper">
           <li>
-            <H2><Skeleton className="search-skeleton__collection" /></H2>
-            { this.getCategory({ noMargin: true }) }
-            { this.getCategory() }
-            { this.getCategory() }
+            <H2>
+              <Skeleton className="search-skeleton__collection" />
+            </H2>
+            {this.getCategory({ noMargin: true })}
+            {this.getCategory()}
+            {this.getCategory()}
           </li>
         </ul>
       </Fragment>

@@ -22,13 +22,21 @@
 .dashboards-tabs--darkMode {
   &.tab-bar--start {
     &::before {
-      background: linear-gradient(to right, $color-background--medium, rgba(62, 62, 62, 0));
+      background: linear-gradient(
+        to right,
+        $color-background--medium,
+        rgba(62, 62, 62, 0)
+      );
     }
   }
 
   &.tab-bar--end {
     &::after {
-      background: linear-gradient(to left, $color-background--medium, rgba(62, 62, 62, 0));
+      background: linear-gradient(
+        to left,
+        $color-background--medium,
+        rgba(62, 62, 62, 0)
+      );
     }
   }
 }

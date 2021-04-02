@@ -22,8 +22,8 @@ export default class Headline extends Component {
     style: PropTypes.string,
     onMouseEnter: PropTypes.func,
     ignoreDarkMode: PropTypes.bool
-  }
-  
+  };
+
   render() {
     const {
       className,
@@ -45,34 +45,38 @@ export default class Headline extends Component {
 
     return (
       <CustomTag
-        className={ classNames(
+        className={classNames(
           style ? `headline headline--${style}` : `headline headline--h${type}`,
           display && 'headline--display',
           noMargin && 'headline--no-margin',
           color && `headline--color-${color}`,
-          (darkMode && !ignoreDarkMode) && 'headline--dark-mode',
+          darkMode && !ignoreDarkMode && 'headline--dark-mode',
           centered && 'headline--centered',
           id && 'headline--with-link',
           className
-        ) }
-        onClick={ onClick }
-        onMouseEnter={ onMouseEnter }
-        id={ id }
-        title={ title }
-        ref={ (element) => {
+        )}
+        onClick={onClick}
+        onMouseEnter={onMouseEnter}
+        id={id}
+        title={title}
+        ref={(element) => {
           const { hash } = window.location;
 
           if (hash !== '' && element) {
             const hashId = hash.replace('#', '');
 
-            if (element.id === hashId) { element.scrollIntoView(); }
+            if (element.id === hashId) {
+              element.scrollIntoView();
+            }
           }
-        } }
+        }}
       >
-        { children }
-        { id && (
-          <a href={ `#${id}` } aria-hidden="true" className="headline__hash">{'#'}</a>
-        ) }
+        {children}
+        {id && (
+          <a href={`#${id}`} aria-hidden="true" className="headline__hash">
+            {'#'}
+          </a>
+        )}
       </CustomTag>
     );
   }

@@ -30,15 +30,15 @@ export default class Button extends Component {
     value: PropTypes.string,
     id: PropTypes.string,
     useSkeleton: PropTypes.bool
-  }
-  
+  };
+
   static defaultProps = {
     disabled: false
-  }
+  };
 
   state = {
     currentIcon: this.props.icon
-  }
+  };
 
   componentDidUpdate(prevProps) {
     if (this.props.pending === false && prevProps.pending === true) {
@@ -83,7 +83,7 @@ export default class Button extends Component {
     } = this.props;
     const { currentIcon } = this.state;
     let CustomTag = 'button';
-    
+
     if (to) {
       CustomTag = Link;
     }
@@ -92,41 +92,39 @@ export default class Button extends Component {
       CustomTag = 'a';
     }
 
-    return (
-      useSkeleton ? (
-        <Skeleton className={ classNames('button--skeleton', className) } />
-      ) : (
-        <CustomTag
-          className={ classNames(
-            'button',
-            `button--${size}`,
-            `button--${size}-${color}`,
-            solid && 'button--solid',
-            pending && 'button--pending',
-            contentBefore && 'button--content-before',
-            className
-          ) }
-          onClick={ onClick }
-          href={ href }
-          target={ target }
-          to={ to }
-          tabIndex={ tabIndex }
-          type={ type }
-          disabled={ disabled }
-          value={ value }
-          id={ id }
-        >
-          { currentIcon && (
-            <Icon
-              icon={ currentIcon }
-              color={ size === 'small' ? color : 'light' }
-              className="button__icon"
-              ignoreDarkMode
-            />
-          ) }
-          <span className="button__text">{ children }</span>
-        </CustomTag>
-      )
+    return useSkeleton ? (
+      <Skeleton className={classNames('button--skeleton', className)} />
+    ) : (
+      <CustomTag
+        className={classNames(
+          'button',
+          `button--${size}`,
+          `button--${size}-${color}`,
+          solid && 'button--solid',
+          pending && 'button--pending',
+          contentBefore && 'button--content-before',
+          className
+        )}
+        onClick={onClick}
+        href={href}
+        target={target}
+        to={to}
+        tabIndex={tabIndex}
+        type={type}
+        disabled={disabled}
+        value={value}
+        id={id}
+      >
+        {currentIcon && (
+          <Icon
+            icon={currentIcon}
+            color={size === 'small' ? color : 'light'}
+            className="button__icon"
+            ignoreDarkMode
+          />
+        )}
+        <span className="button__text">{children}</span>
+      </CustomTag>
     );
   }
 }

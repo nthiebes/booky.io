@@ -17,9 +17,6 @@ const mapDispatchToProps = {
   stopDragging,
   updateUserData
 };
-const Container = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

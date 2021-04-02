@@ -17,21 +17,21 @@ class Resend extends Component {
     intl: PropTypes.object.isRequired,
     resend: PropTypes.func.isRequired,
     loggedIn: PropTypes.bool.isRequired
-  }
+  };
 
   state = {
     username: '',
     email: '',
     pending: false,
     error: null
-  }
+  };
 
   handleInputChange = (value, name) => {
     this.setState({
       [name]: value,
       pending: false
     });
-  }
+  };
 
   handleSubmit = (params) => {
     const { resend } = this.props;
@@ -58,7 +58,7 @@ class Resend extends Component {
         });
       }
     });
-  }
+  };
 
   render() {
     const { intl, loggedIn } = this.props;
@@ -79,48 +79,55 @@ class Resend extends Component {
     return (
       <Page>
         <Section className="resend">
-          { success ? (
-            <SuccessIllustration message="resend.success" illustration="join-success" width="400" />
+          {success ? (
+            <SuccessIllustration
+              message="resend.success"
+              illustration="join-success"
+              width="400"
+            />
           ) : (
             <Fragment>
-              <Form onSubmit={ this.handleSubmit }>
+              <Form onSubmit={this.handleSubmit}>
                 <H1>
                   <FormattedMessage id="resend.headline" />
                 </H1>
                 <Input
-                  value={ username }
+                  value={username}
                   name="username"
                   id="username"
                   autoComplete="username"
-                  label={ intl.formatMessage({ id: 'login.username' }) }
-                  onChange={ this.handleInputChange }
+                  label={intl.formatMessage({ id: 'login.username' })}
+                  onChange={this.handleInputChange}
                   maxLength="50"
                   required
-                  disabled={ pending }
+                  disabled={pending}
                 />
                 <Input
-                  value={ email }
+                  value={email}
                   name="email"
                   id="email"
                   autoComplete="email"
-                  label={ intl.formatMessage({ id: 'login.email' }) }
-                  onChange={ this.handleInputChange }
+                  label={intl.formatMessage({ id: 'login.email' })}
+                  onChange={this.handleInputChange}
                   maxLength="150"
                   required
                   type="email"
-                  requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
-                  disabled={ pending }
+                  requirements={intl.formatMessage({ id: 'misc.validEmail' })}
+                  disabled={pending}
                 />
                 <ButtonLargeBlue
                   icon="send"
                   type="submit"
-                  pending={ pending }
-                  disabled={ pending }
+                  pending={pending}
+                  disabled={pending}
                   contentBefore
                 >
-                  <FormattedMessage id="resend.button" values={ { b: (msg) => <b>{msg}</b> } } />
+                  <FormattedMessage
+                    id="resend.button"
+                    values={{ b: (msg) => <b>{msg}</b> }}
+                  />
                 </ButtonLargeBlue>
-                { error && <ErrorMessage message={ error } hasIcon /> }
+                {error && <ErrorMessage message={error} hasIcon />}
               </Form>
               <Illustration
                 name="email"

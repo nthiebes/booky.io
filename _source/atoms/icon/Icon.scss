@@ -28,6 +28,11 @@
     transform: translateY(-50%) scale(1);
   }
 
+  &:hover .tooltip {
+    opacity: 1;
+    transition: opacity 0.2s linear 0.5s;
+  }
+
   @include desktop {
     &:hover::after {
       opacity: 1;

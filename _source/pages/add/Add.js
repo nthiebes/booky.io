@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable max-statements */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -30,16 +31,25 @@ class Add extends Component {
     dashboards: PropTypes.array.isRequired,
     addBookmark: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     activeCategory: localStorage.getItem('activeCategory') || '',
     pending: false,
     error: null,
-    name: this.props.name || new URL(window.location.href).searchParams.get('name') || '',
-    url: this.props.url || new URL(window.location.href).searchParams.get('url') || '',
-    note: this.props.note || new URL(window.location.href).searchParams.get('note') || ''
-  }
+    name:
+      this.props.name ||
+      new URL(window.location.href).searchParams.get('name') ||
+      '',
+    url:
+      this.props.url ||
+      new URL(window.location.href).searchParams.get('url') ||
+      '',
+    note:
+      this.props.note ||
+      new URL(window.location.href).searchParams.get('note') ||
+      ''
+  };
 
   componentDidMount() {
     const { getDashboards } = this.props;
@@ -54,7 +64,10 @@ class Add extends Component {
     //   changeDashboard(dashboards[dashboards.length - 1].id);
     // }
 
-    if (categories.length > prevProps.categories.length && prevProps.categories.length !== 0) {
+    if (
+      categories.length > prevProps.categories.length &&
+      prevProps.categories.length !== 0
+    ) {
       const categoryId = categories[categories.length - 1].id;
 
       // eslint-disable-next-line react/no-did-update-set-state
@@ -69,17 +82,17 @@ class Add extends Component {
     const showLocation = localStorage.getItem('showLocation') === 'true';
 
     localStorage.setItem('showLocation', !showLocation);
-  }
+  };
 
   toggleData = () => {
     const showData = localStorage.getItem('showData') === 'true';
 
     localStorage.setItem('showData', !showData);
-  }
+  };
 
   handleDashboardChange = (value) => {
     this.props.changeDashboard(parseInt(value, 10));
-  }
+  };
 
   handleCategoryChange = (value) => {
     localStorage.setItem('activeCategory', value);
@@ -87,22 +100,22 @@ class Add extends Component {
     this.setState({
       activeCategory: value
     });
-  }
+  };
 
   handleInputChange = (value, name) => {
     this.setState({
       [name]: value,
       pending: false
     });
-  }
+  };
 
   onAddCategoryClick = () => {
     this.props.openModal('AddCategory');
-  }
+  };
 
   onAddDashboardClick = () => {
     this.props.openModal('AddDashboard');
-  }
+  };
 
   handleSubmit = (params) => {
     const { addBookmark } = this.props;
@@ -132,7 +145,7 @@ class Add extends Component {
         });
       }
     });
-  }
+  };
 
   render() {
     const {
@@ -153,21 +166,29 @@ class Add extends Component {
     } = this.state;
     const showLocation = localStorage.getItem('showLocation');
     const showData = localStorage.getItem('showData');
-    const dashboardsOptions = dashboardsPending ? [{
-      text: intl.formatMessage({ id: 'extension.loading' }),
-      value: ''
-    }] : dashboards.map(({ name: text, id }) => ({
-      text,
-      value: id.toString()
-    }));
-    const categoriesOptions = dashboardsPending ? [{
-      text: intl.formatMessage({ id: 'extension.loading' }),
-      value: ''
-    }] : categories.map(({ name: text, id }) => ({
-      text,
-      value: id.toString()
-    }));
-        
+    const dashboardsOptions = dashboardsPending
+      ? [
+          {
+            text: intl.formatMessage({ id: 'extension.loading' }),
+            value: ''
+          }
+        ]
+      : dashboards.map(({ name: text, id }) => ({
+          text,
+          value: id.toString()
+        }));
+    const categoriesOptions = dashboardsPending
+      ? [
+          {
+            text: intl.formatMessage({ id: 'extension.loading' }),
+            value: ''
+          }
+        ]
+      : categories.map(({ name: text, id }) => ({
+          text,
+          value: id.toString()
+        }));
+
     if (!showLocation) {
       localStorage.setItem('showLocation', true);
     }
@@ -179,105 +200,112 @@ class Add extends Component {
     return (
       <Extension>
         <Section noMargin>
-          <Form onSubmit={ this.handleSubmit }>
+          <Form onSubmit={this.handleSubmit}>
             <ButtonLargePrimary
               className="add__add-button"
               type="submit"
-              pending={ pending }
-              disabled={ pending }
+              pending={pending}
+              disabled={pending}
               icon="add-link"
             >
-              <FormattedMessage id="extension.addButton" values={ { b: (msg) => <b>{msg}</b> } } />
+              <FormattedMessage
+                id="extension.addButton"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
             </ButtonLargePrimary>
-            { error && <ErrorMessage message={ error } hasIcon /> }
+            {error && <ErrorMessage message={error} hasIcon />}
             <Hr />
             <Expandable
-              headline={ <FormattedMessage id="extension.location" /> }
+              headline={<FormattedMessage id="extension.location" />}
               className="add__section"
-              open={ localStorage.getItem('showLocation') === 'true' }
-              onClick={ this.toggleLocation }
+              open={localStorage.getItem('showLocation') === 'true'}
+              onClick={this.toggleLocation}
             >
               <>
                 <span className="add__location-wrapper">
                   <Select
                     id="collection"
-                    label={ intl.formatMessage({ id: 'modal.editCategoryDashboard' }) }
-                    options={ dashboardsOptions }
+                    label={intl.formatMessage({
+                      id: 'modal.editCategoryDashboard'
+                    })}
+                    options={dashboardsOptions}
                     required
-                    onChange={ this.handleDashboardChange }
-                    value={ activeDashboard }
-                    disabled={ dashboardsPending || pending }
+                    onChange={this.handleDashboardChange}
+                    value={activeDashboard}
+                    disabled={dashboardsPending || pending}
                     name="dashboardId"
                   />
                   <Icon
                     icon="add-collection"
-                    label={ intl.formatMessage({ id: 'modal.addDashboard' }) }
-                    onClick={ this.onAddDashboardClick }
-                    useSkeleton={ dashboardsPending }
+                    label={intl.formatMessage({ id: 'modal.addDashboard' })}
+                    onClick={this.onAddDashboardClick}
+                    useSkeleton={dashboardsPending}
                     isButton
                   />
                 </span>
                 <span className="add__location-wrapper">
                   <Select
                     id="category"
-                    label={ intl.formatMessage({ id: 'modal.category' }) }
-                    options={ categoriesOptions }
+                    label={intl.formatMessage({ id: 'modal.category' })}
+                    options={categoriesOptions}
                     required
-                    onChange={ this.handleCategoryChange }
-                    value={ activeCategory }
-                    disabled={ dashboardsPending || pending }
+                    onChange={this.handleCategoryChange}
+                    value={activeCategory}
+                    disabled={dashboardsPending || pending}
                     name="categoryId"
                   />
                   <Icon
                     icon="add-category"
-                    label={ intl.formatMessage({ id: 'modal.addCategory' }) }
-                    onClick={ this.onAddCategoryClick }
-                    useSkeleton={ dashboardsPending }
+                    label={intl.formatMessage({ id: 'modal.addCategory' })}
+                    onClick={this.onAddCategoryClick}
+                    useSkeleton={dashboardsPending}
                     isButton
                   />
                 </span>
               </>
             </Expandable>
             <Expandable
-              headline={ <FormattedMessage id="extension.data" /> }
+              headline={<FormattedMessage id="extension.data" />}
               className="add__section"
-              open={ localStorage.getItem('showData') === 'true' }
-              onClick={ this.toggleData }
+              open={localStorage.getItem('showData') === 'true'}
+              onClick={this.toggleData}
             >
               <>
                 <Input
                   id="bookmark-name"
                   name="name"
-                  value={ stateName }
-                  onChange={ this.handleInputChange }
+                  value={stateName}
+                  onChange={this.handleInputChange}
                   required
                   maxLength="200"
-                  label={ intl.formatMessage({ id: 'modal.name' }) }
-                  disabled={ pending }
+                  label={intl.formatMessage({ id: 'modal.name' })}
+                  disabled={pending}
                 />
                 <Input
                   id="bookmark-url"
                   name="url"
-                  value={ stateUrl }
-                  onChange={ this.handleInputChange }
+                  value={stateUrl}
+                  onChange={this.handleInputChange}
                   required
                   maxLength="2000"
-                  label={ intl.formatMessage({ id: 'modal.url' }) }
-                  disabled={ pending }
+                  label={intl.formatMessage({ id: 'modal.url' })}
+                  disabled={pending}
                   inputMode="url"
-                  placeholder={ intl.formatMessage({id: 'modal.urlPlaceholder'}) }
+                  placeholder={intl.formatMessage({
+                    id: 'modal.urlPlaceholder'
+                  })}
                 />
-                { enableNotes && (
+                {enableNotes && (
                   <Input
                     id="bookmark-note"
                     name="note"
-                    value={ stateNote }
-                    onChange={ this.handleInputChange }
+                    value={stateNote}
+                    onChange={this.handleInputChange}
                     maxLength="300"
-                    label={ intl.formatMessage({ id: 'modal.note' }) }
-                    disabled={ pending }
+                    label={intl.formatMessage({ id: 'modal.note' })}
+                    disabled={pending}
                   />
-                ) }
+                )}
               </>
             </Expandable>
           </Form>

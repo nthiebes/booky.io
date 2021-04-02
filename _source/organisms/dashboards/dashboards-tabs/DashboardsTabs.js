@@ -17,21 +17,21 @@ class DashboardsTabs extends PureComponent {
     activeId: PropTypes.number,
     darkMode: PropTypes.bool.isRequired,
     closeEditMode: PropTypes.bool.isRequired
-  }
-  
+  };
+
   static defaultProps = {
     useTabIndex: false
-  }
+  };
 
   state = {
     editMode: false
-  }
+  };
 
   toggleEditMode = () => {
     this.setState({
       editMode: !this.state.editMode
     });
-  }
+  };
 
   onIconClick = (type, dashboard) => {
     const { openModal, closeEditMode } = this.props;
@@ -46,7 +46,7 @@ class DashboardsTabs extends PureComponent {
         editMode: false
       });
     }
-  }
+  };
 
   handleKeyDown = (event, dashboardId) => {
     const { changeDashboard } = this.props;
@@ -56,7 +56,7 @@ class DashboardsTabs extends PureComponent {
       window.scrollTo(0, 0);
       changeDashboard(dashboardId);
     }
-  }
+  };
 
   handleDashboardClick = (dashboardId) => {
     const { changeDashboard } = this.props;
@@ -66,86 +66,93 @@ class DashboardsTabs extends PureComponent {
       window.scrollTo(0, 0);
       changeDashboard(dashboardId);
     }
-  }
+  };
 
   render() {
-    const {
-      dashboards,
-      intl,
-      activeId,
-      darkMode
-    } = this.props;
+    const { dashboards, intl, activeId, darkMode } = this.props;
     const { editMode } = this.state;
     const noDashboards = dashboards.length === 0;
 
     return (
       <Fragment>
-        <TabBar title="dashboard.title" disabled={ editMode } className={ classNames(
-          'dashboards-tabs',
-          darkMode && 'dashboards-tabs--darkMode',
-          editMode && 'dashboards-tabs--editMode'
-        ) }>
-          { noDashboards && (
+        <TabBar
+          title="dashboard.title"
+          disabled={editMode}
+          className={classNames(
+            'dashboards-tabs',
+            darkMode && 'dashboards-tabs--darkMode',
+            editMode && 'dashboards-tabs--editMode'
+          )}
+        >
+          {noDashboards && (
             <>
               <Skeleton className="dashboards-tabs__skeleton" />
               <Skeleton />
             </>
-          ) }
-          { dashboards.map((dashboard, index) => (
+          )}
+          {dashboards.map((dashboard, index) => (
             <Draggable
-              index={ index }
-              draggableId={ `dashboard-tabs-${dashboard.id}` }
-              key={ `dashboard-tabs-${dashboard.id}` }
+              index={index}
+              draggableId={`dashboard-tabs-${dashboard.id}`}
+              key={`dashboard-tabs-${dashboard.id}`}
               disableInteractiveElementBlocking
-              isDragDisabled={ !editMode }
+              isDragDisabled={!editMode}
             >
-              { (provided) => (
+              {(provided) => (
                 <Tab
-                  key={ dashboard.id }
-                  tabId={ dashboard.id }
-                  active={ dashboard.id === activeId }
-                  onClick={ this.handleDashboardClick }
-                  provided={ provided }
-                  disabled={ editMode }
+                  key={dashboard.id}
+                  tabId={dashboard.id}
+                  active={dashboard.id === activeId}
+                  onClick={this.handleDashboardClick}
+                  provided={provided}
+                  disabled={editMode}
                 >
-                  <span>{ dashboard.name }</span>
-                  { editMode && (
+                  <span>{dashboard.name}</span>
+                  {editMode && (
                     <Fragment>
                       <Icon
                         icon="edit"
-                        label={ intl.formatMessage({ id: 'dashboard.edit' }) }
+                        label={intl.formatMessage({ id: 'dashboard.edit' })}
                         stopPropagation
-                        onClick={ () => this.onIconClick('EditDashboard', dashboard) }
+                        onClick={() =>
+                          this.onIconClick('EditDashboard', dashboard)
+                        }
                         isButton
                       />
                       <Icon
                         className="dashboards-tabs__icon--delete"
                         icon="delete"
-                        label={ intl.formatMessage({ id: 'dashboard.delete' }) }
+                        label={intl.formatMessage({ id: 'dashboard.delete' })}
                         stopPropagation
-                        onClick={ () => this.onIconClick('DeleteDashboard', dashboard) }
+                        onClick={() =>
+                          this.onIconClick('DeleteDashboard', dashboard)
+                        }
                         isButton
                       />
                       <Icon
                         className="dashboards-tabs__icon--drag"
                         icon="drag"
-                        label={ intl.formatMessage({ id: 'dashboard.drag' }) }
-                        dragHandleProps={ provided.dragHandleProps }
+                        label={intl.formatMessage({ id: 'dashboard.drag' })}
+                        dragHandleProps={provided.dragHandleProps}
                         isButton
                       />
                     </Fragment>
-                  ) }
+                  )}
                 </Tab>
-              ) }
+              )}
             </Draggable>
-          )) }
+          ))}
         </TabBar>
         <Icon
-          icon={ editMode ? 'close' : 'more-horiz' }
-          label={ editMode ? intl.formatMessage({ id: 'dashboard.editModeQuit' }) : intl.formatMessage({ id: 'dashboard.editMode' }) }
-          onClick={ this.toggleEditMode }
+          icon={editMode ? 'close' : 'more-horiz'}
+          label={
+            editMode
+              ? intl.formatMessage({ id: 'dashboard.editModeQuit' })
+              : intl.formatMessage({ id: 'dashboard.editMode' })
+          }
+          onClick={this.toggleEditMode}
           isButton
-          useSkeleton={ noDashboards }
+          useSkeleton={noDashboards}
         />
       </Fragment>
     );

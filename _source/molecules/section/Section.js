@@ -16,20 +16,24 @@ export default class Section extends Component {
     } = this.props;
 
     return (
-      <section className={ classNames(
-        'section',
-        color && `section--${color}`,
-        fullWidth && 'section--full-width',
-        compact && 'section--compact',
-        noMargin && 'section--noMargin',
-        className
-      ) }>
-        <div className={ classNames(
-          'section__content',
-          noPadding && 'section__content--noPadding',
-          contentClassName
-        ) }>
-          { children }
+      <section
+        className={classNames(
+          'section',
+          color && `section--${color}`,
+          fullWidth && 'section--full-width',
+          compact && 'section--compact',
+          noMargin && 'section--noMargin',
+          className
+        )}
+      >
+        <div
+          className={classNames(
+            'section__content',
+            noPadding && 'section__content--noPadding',
+            contentClassName
+          )}
+        >
+          {children}
         </div>
       </section>
     );

@@ -13,17 +13,22 @@ export default class Label extends Component {
     className: PropTypes.string,
     darkMode: PropTypes.bool,
     first: PropTypes.bool
-  }
-  
+  };
+
   render() {
     const { children, htmlFor, className, darkMode, first } = this.props;
 
     return (
       <label
-        className={ classNames('label', darkMode && 'label--dark-mode', first && 'label--first', className) }
-        htmlFor={ htmlFor }
+        className={classNames(
+          'label',
+          darkMode && 'label--dark-mode',
+          first && 'label--first',
+          className
+        )}
+        htmlFor={htmlFor}
       >
-        { children }
+        {children}
       </label>
     );
   }

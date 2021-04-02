@@ -23,6 +23,10 @@
     top: 0;
     transition: opacity 0.2s linear, width 0s 0.2s linear;
   }
+
+  .tooltip-wrapper {
+    display: none;
+  }
 }
 
 .modal--open {
@@ -39,7 +43,11 @@
   .modal__inner {
     transition: opacity 0.2s linear, transform 0.2s;
     opacity: 1;
-    transform: scale(1);
+    transform: none;
+  }
+
+  .tooltip-wrapper {
+    display: block;
   }
 }
 

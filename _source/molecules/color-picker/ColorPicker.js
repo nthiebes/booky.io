@@ -11,17 +11,17 @@ export default class ColorPicker extends Component {
     onChange: PropTypes.func.isRequired,
     darkMode: PropTypes.bool,
     isLegacy: PropTypes.bool
-  }
-  
+  };
+
   static defaultProps = {
     value: 'color0'
-  }
+  };
 
   colors = [];
 
   onChange = (value) => {
     this.props.onChange(`color${value}`);
-  }
+  };
 
   getColors = () => {
     const { isLegacy } = this.props;
@@ -48,23 +48,29 @@ export default class ColorPicker extends Component {
     }
 
     return colors;
-  }
+  };
 
   render() {
     const { className, value, darkMode, isLegacy } = this.props;
-    const colors = this.getColors().map(((color) => (
+    const colors = this.getColors().map((color) => (
       <Color
-        key={ color.key }
-        color={ color }
-        value={ value.replace(/color/g, '') }
-        darkMode={ darkMode }
-        onChange={ this.onChange }
+        key={color.key}
+        color={color}
+        value={value.replace(/color/g, '')}
+        darkMode={darkMode}
+        onChange={this.onChange}
       />
-    )));
+    ));
 
     return (
-      <div className={ classNames('color-picker', isLegacy && 'color-picker__legacy', className) }>
-        { colors }
+      <div
+        className={classNames(
+          'color-picker',
+          isLegacy && 'color-picker__legacy',
+          className
+        )}
+      >
+        {colors}
       </div>
     );
   }

@@ -6,9 +6,6 @@ import Component from './AccountImport';
 const mapDispatchToProps = {
   importBookmarks
 };
-const Container = connect(
-  null,
-  mapDispatchToProps
-)(Component);
+const Container = connect(null, mapDispatchToProps)(Component);
 
 export default Container;

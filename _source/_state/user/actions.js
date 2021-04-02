@@ -9,14 +9,14 @@ export const resetUserState = () => ({
   type: RESET_USER_STATE
 });
 
-export const updateUserData = (userData) => ((dispatch) => {
+export const updateUserData = (userData) => (dispatch) => {
   dispatch({
     type: UPDATE_USER,
     userData
   });
-});
+};
 
-export const updateUser = ({userData, onError, onSuccess}) => ((dispatch) => {
+export const updateUser = ({ userData, onError, onSuccess }) => (dispatch) => {
   dispatch({
     type: UPDATE_USER,
     userData: {
@@ -35,9 +35,11 @@ export const updateUser = ({userData, onError, onSuccess}) => ((dispatch) => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const updateSettings = (userSettings, {onSuccess, onError} = {}) => ((dispatch) => {
+export const updateSettings = (userSettings, { onSuccess, onError } = {}) => (
+  dispatch
+) => {
   dispatch({
     type: UPDATE_SETTINGS,
     userSettings
@@ -54,9 +56,9 @@ export const updateSettings = (userSettings, {onSuccess, onError} = {}) => ((dis
       onError && onError(error);
     }
   });
-});
+};
 
-export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
+export const login = ({ params, onSuccess, onError }) => (dispatch) => {
   fetcher({
     url: '/login',
     method: 'POST',
@@ -82,9 +84,9 @@ export const login = ({ params, onSuccess, onError }) => ((dispatch) => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const logout = ({ onSuccess, onError }) => ((dispatch) => {
+export const logout = ({ onSuccess, onError }) => (dispatch) => {
   fetcher({
     url: '/logout',
     onSuccess: () => {
@@ -96,9 +98,9 @@ export const logout = ({ onSuccess, onError }) => ((dispatch) => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const join = ({ params, onSuccess, onError }) => (() => {
+export const join = ({ params, onSuccess, onError }) => () => {
   fetcher({
     url: '/user/register',
     method: 'POST',
@@ -110,9 +112,9 @@ export const join = ({ params, onSuccess, onError }) => (() => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const validate = ({ params, onSuccess, onError }) => (() => {
+export const validate = ({ params, onSuccess, onError }) => () => {
   fetcher({
     url: '/user/register/validation',
     method: 'POST',
@@ -127,9 +129,9 @@ export const validate = ({ params, onSuccess, onError }) => (() => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const resend = ({ params, onSuccess, onError }) => (() => {
+export const resend = ({ params, onSuccess, onError }) => () => {
   fetcher({
     url: '/user/activation/resend',
     method: 'POST',
@@ -141,9 +143,9 @@ export const resend = ({ params, onSuccess, onError }) => (() => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const activate = ({ token, onSuccess, onError }) => (() => {
+export const activate = ({ token, onSuccess, onError }) => () => {
   fetcher({
     url: '/activate',
     method: 'POST',
@@ -157,9 +159,9 @@ export const activate = ({ token, onSuccess, onError }) => (() => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const forgot = ({ params, onSuccess, onError }) => (() => {
+export const forgot = ({ params, onSuccess, onError }) => () => {
   fetcher({
     url: '/password/recovery/confirmation',
     method: 'POST',
@@ -171,9 +173,9 @@ export const forgot = ({ params, onSuccess, onError }) => (() => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const confirm = ({ params, onSuccess, onError }) => (() => {
+export const confirm = ({ params, onSuccess, onError }) => () => {
   fetcher({
     url: '/password/recovery',
     method: 'POST',
@@ -185,9 +187,9 @@ export const confirm = ({ params, onSuccess, onError }) => (() => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const deny = ({ params, onSuccess, onError }) => (() => {
+export const deny = ({ params, onSuccess, onError }) => () => {
   fetcher({
     url: '/password/recovery/deny',
     method: 'POST',
@@ -199,9 +201,9 @@ export const deny = ({ params, onSuccess, onError }) => (() => {
       onError && onError(error);
     }
   });
-});
+};
 
-export const deleteAccount = () => (() => {
+export const deleteAccount = () => () => {
   // fetcher({
   //   url: '/user',
   //   method: 'DELETE',
@@ -214,9 +216,9 @@ export const deleteAccount = () => (() => {
   //     // console.log('onError', error);
   //   }
   // });
-});
+};
 
-export const importBookmarks = ({ params, onSuccess, onError }) => (() => {
+export const importBookmarks = ({ params, onSuccess, onError }) => () => {
   fetcher({
     url: '/bookmarks/import',
     method: 'POST',
@@ -228,4 +230,4 @@ export const importBookmarks = ({ params, onSuccess, onError }) => (() => {
       onError && onError(error);
     }
   });
-});
+};

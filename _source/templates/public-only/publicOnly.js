@@ -31,7 +31,7 @@ export const publicOnly = (BaseComponent) => {
     }
 
     render() {
-      return <BaseComponent { ...this.props } />;
+      return <BaseComponent {...this.props} />;
     }
   }
 
@@ -42,7 +42,5 @@ export const publicOnly = (BaseComponent) => {
     isExtension: PropTypes.bool.isRequired
   };
 
-  return connect(mapStateToProps)(
-    withRouter(PublicOnly)
-  );
+  return connect(mapStateToProps)(withRouter(PublicOnly));
 };

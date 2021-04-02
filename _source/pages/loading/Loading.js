@@ -11,7 +11,7 @@ export default class Loading extends Component {
   static propTypes = {
     isExtension: PropTypes.bool.isRequired,
     loggedIn: PropTypes.bool.isRequired
-  }
+  };
 
   render() {
     const { isExtension, loggedIn } = this.props;

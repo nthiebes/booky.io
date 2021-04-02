@@ -2,22 +2,22 @@ import React from 'react';
 import Button from './Button';
 
 export function ButtonSmallPrimary(props) {
-  return <Button { ...props } size="small" color="primary" />;
+  return <Button {...props} size="small" color="primary" />;
 }
 ButtonSmallPrimary.displayName = 'ButtonSmallPrimary';
 
 export function ButtonSmallLight(props) {
-  return <Button { ...props } size="small" color="light" />;
+  return <Button {...props} size="small" color="light" />;
 }
 ButtonSmallLight.displayName = 'ButtonSmallLight';
 
 export function ButtonSmallMedium(props) {
-  return <Button { ...props } size="small" color="medium" />;
+  return <Button {...props} size="small" color="medium" />;
 }
 ButtonSmallMedium.displayName = 'ButtonSmallMedium';
 
 export function ButtonSmallDark(props) {
-  return <Button { ...props } size="small" color="dark" />;
+  return <Button {...props} size="small" color="dark" />;
 }
 ButtonSmallDark.displayName = 'ButtonSmallDark';
 
@@ -32,26 +32,26 @@ ButtonSmallDark.displayName = 'ButtonSmallDark';
 // ButtonSmallBlue.displayName = 'ButtonSmallGreen';
 
 export function ButtonLargePrimary(props) {
-  return <Button { ...props } size="large" color="primary" />;
+  return <Button {...props} size="large" color="primary" />;
 }
 ButtonLargePrimary.displayName = 'ButtonLargePrimary';
 
 export function ButtonLargeLight(props) {
-  return <Button { ...props } size="large" color="light" />;
+  return <Button {...props} size="large" color="light" />;
 }
 ButtonLargeLight.displayName = 'ButtonLargeLight';
 
 export function ButtonLargeDark(props) {
-  return <Button { ...props } size="large" color="dark" />;
+  return <Button {...props} size="large" color="dark" />;
 }
 ButtonLargeDark.displayName = 'ButtonLargeDark';
 
 export function ButtonLargeBlue(props) {
-  return <Button { ...props } size="large" color="blue" />;
+  return <Button {...props} size="large" color="blue" />;
 }
 ButtonLargeBlue.displayName = 'ButtonLargeBlue';
 
 export function ButtonLargeGreen(props) {
-  return <Button { ...props } size="large" color="green" />;
+  return <Button {...props} size="large" color="green" />;
 }
 ButtonLargeGreen.displayName = 'ButtonLargeGreen';

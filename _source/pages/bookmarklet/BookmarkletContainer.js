@@ -7,8 +7,6 @@ const mapStateToProps = (state) => ({
   isMobile: state.user.isMobile,
   stickyHeader: state.user.settings.stickyHeader
 });
-const Container = connect(
-  mapStateToProps
-)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export default Container;

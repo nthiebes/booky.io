@@ -11,7 +11,7 @@ export default class LanguageSwitcher extends Component {
     updateIntl: PropTypes.func.isRequired,
     language: PropTypes.string.isRequired,
     ignoreDarkMode: PropTypes.bool
-  }
+  };
 
   handleChange = ({ value: language }) => {
     const { updateIntl } = this.props;
@@ -28,7 +28,7 @@ export default class LanguageSwitcher extends Component {
       .catch(() => {
         // console.log('error', error);
       });
-  }
+  };
 
   render() {
     const { language, ignoreDarkMode } = this.props;
@@ -36,26 +36,32 @@ export default class LanguageSwitcher extends Component {
     return (
       <Fragment>
         <Radio
-          className={ classNames('language-switcher__item', ignoreDarkMode && 'language-switcher__item--light') }
+          className={classNames(
+            'language-switcher__item',
+            ignoreDarkMode && 'language-switcher__item--light'
+          )}
           id="language-switcher-en"
           name="language"
           value="en"
-          onChange={ this.handleChange }
-          checked={ language === 'en' }
+          onChange={this.handleChange}
+          checked={language === 'en'}
         >
           <Icon icon="usa" />
-          { 'English' }
+          {'English'}
         </Radio>
         <Radio
-          className={ classNames('language-switcher__item', ignoreDarkMode && 'language-switcher__item--light') }
+          className={classNames(
+            'language-switcher__item',
+            ignoreDarkMode && 'language-switcher__item--light'
+          )}
           id="language-switcher-de"
           name="language"
           value="de"
-          onChange={ this.handleChange }
-          checked={ language === 'de' }
+          onChange={this.handleChange}
+          checked={language === 'de'}
         >
           <Icon icon="germany" />
-          { 'Deutsch' }
+          {'Deutsch'}
         </Radio>
       </Fragment>
     );

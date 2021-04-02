@@ -10,9 +10,6 @@ const mapDispatchToProps = {
   join,
   validate
 };
-const JoinContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const JoinContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default JoinContainer;

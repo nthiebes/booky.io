@@ -6,9 +6,6 @@ import Component from './AccountManage';
 const mapDispatchToProps = {
   openModal
 };
-const Container = connect(
-  null,
-  mapDispatchToProps
-)(Component);
+const Container = connect(null, mapDispatchToProps)(Component);
 
 export default Container;

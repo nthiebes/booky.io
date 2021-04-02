@@ -11,15 +11,19 @@ export default class Feature extends Component {
     const { className, headline, text, illustration, direction } = this.props;
 
     return (
-      <div className={ classNames('feature__wrapper', className) }>
-        <header className={ classNames(direction === 'right' && 'feature__header--right', 'feature__header') }>
-          <H2 style="h1" noMargin>{ headline }</H2>
-          <P noPadding>{ text }</P>
+      <div className={classNames('feature__wrapper', className)}>
+        <header
+          className={classNames(
+            direction === 'right' && 'feature__header--right',
+            'feature__header'
+          )}
+        >
+          <H2 style="h1" noMargin>
+            {headline}
+          </H2>
+          <P noPadding>{text}</P>
         </header>
-        <Illustration
-          name={ illustration }
-          className="feature__illustration"
-        />
+        <Illustration name={illustration} className="feature__illustration" />
       </div>
     );
   }
