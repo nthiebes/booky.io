@@ -23,7 +23,9 @@ export const decodeEmoji = (string) => {
       const canBeDecoded = tryToDecode(shortenedString);
 
       if (canBeDecoded && !decodedString) {
-        decodedString = decodeURIComponent(shortenedString);
+        decodedString =
+          decodeURIComponent(shortenedString) +
+          string.slice((i + 1) * -1, string.length);
       }
     }
   }
@@ -40,7 +42,6 @@ export const encodeEmoji = (string) => {
   while ((match = regex.exec(string))) {
     const emoji = match[0];
 
-    // newString = newString.replace(emoji, `\\u${emojiUnicode(emoji).toUpperCase()}`);
     newString = newString.replace(emoji, encodeURIComponent(emoji));
   }
 
