@@ -5,8 +5,6 @@ export const mapStateToProps = (state) => ({
   locale: state.intl.locale
 });
 
-const Container = connect(
-  mapStateToProps
-)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export default Container;

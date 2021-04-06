@@ -6,9 +6,6 @@ import { updateExtensionData } from '../../_state/extension/actions';
 const mapDispatchToProps = {
   updateExtensionData
 };
-const Container = connect(
-  null,
-  mapDispatchToProps
-)(Component);
+const Container = connect(null, mapDispatchToProps)(Component);
 
 export default Container;

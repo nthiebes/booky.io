@@ -12,13 +12,9 @@ import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Section from '../../molecules/section';
-import Bookmarklet from '../../molecules/bookmarklet';
-import { javascriptMobile } from '../../molecules/bookmarklet/javascript';
 import Link from '../../atoms/link';
 import Expandable from '../../molecules/expandable';
 import Illustration from '../../atoms/illustration';
-import Input from '../../atoms/input';
-import { List, ListItem } from '../../atoms/list';
 
 import './Help.scss';
 
@@ -26,7 +22,7 @@ class Help extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     darkMode: PropTypes.bool
-  }
+  };
 
   render() {
     const { intl, darkMode } = this.props;
@@ -53,15 +49,21 @@ class Help extends Component {
             <FormattedMessage id="help.intro1" />
           </P>
           <P className="help-intro">
-            <FormattedMessage id="help.intro2" values={ introValues } />
+            <FormattedMessage id="help.intro2" values={introValues} />
           </P>
-          <Illustration name="help" className="help-illustration booky--hide-mobile" />
+          <Illustration
+            name="help"
+            className="help-illustration booky--hide-mobile"
+          />
 
           <H2 id="general">
             <FormattedMessage id="help.general" />
           </H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.general.question1" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.general.question1" />}
+              className="help-container__item"
+            >
               <P noPadding>
                 <FormattedMessage id="help.general.answer1" />
               </P>
@@ -72,26 +74,45 @@ class Help extends Component {
             <FormattedMessage id="help.bookmarks" />
           </H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.bookmarks.question1" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.bookmarks.question1" />}
+              className="help-container__item"
+            >
               <P noPadding>
                 <FormattedMessage id="help.bookmarks.answer1" />
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.bookmarks.question2" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.bookmarks.question2" />}
+              className="help-container__item"
+            >
               <P noPadding>
-                <FormattedMessage id="help.bookmarks.answer2" values={ {
-                  home: <Link to="/"><FormattedMessage id="misc.startpage" /></Link>
-                } } />
+                <FormattedMessage
+                  id="help.bookmarks.answer2"
+                  values={{
+                    home: (
+                      <Link to="/">
+                        <FormattedMessage id="misc.startpage" />
+                      </Link>
+                    )
+                  }}
+                />
               </P>
               <ButtonSmallPrimary
                 icon="add-link"
                 className="help__button"
                 tabIndex="-1"
               >
-                <FormattedMessage id="bookmark.add" values={ { b: (msg) => <b>{msg}</b> } } />
+                <FormattedMessage
+                  id="bookmark.add"
+                  values={{ b: (msg) => <b>{msg}</b> }}
+                />
               </ButtonSmallPrimary>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.bookmarks.question3" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.bookmarks.question3" />}
+              className="help-container__item"
+            >
               <P>
                 <FormattedMessage id="help.bookmarks.answer3" />
               </P>
@@ -114,7 +135,10 @@ class Help extends Component {
                     icon="show"
                     size="tiny"
                     color="light"
-                    className={ classNames('bookmark__note-icon', darkMode && 'bookmark__note-icon--dark-mode') }
+                    className={classNames(
+                      'bookmark__note-icon',
+                      darkMode && 'bookmark__note-icon--dark-mode'
+                    )}
                   />
                 </span>
                 <FormattedMessage id="bookmark.noteShow" />
@@ -126,26 +150,45 @@ class Help extends Component {
             <FormattedMessage id="help.categories" />
           </H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.categories.question1" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.categories.question1" />}
+              className="help-container__item"
+            >
               <P noPadding>
                 <FormattedMessage id="help.categories.answer1" />
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.categories.question2" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.categories.question2" />}
+              className="help-container__item"
+            >
               <P noPadding>
-                <FormattedMessage id="help.categories.answer2" values={ {
-                  home: <Link to="/"><FormattedMessage id="misc.startpage" /></Link>
-                } } />
+                <FormattedMessage
+                  id="help.categories.answer2"
+                  values={{
+                    home: (
+                      <Link to="/">
+                        <FormattedMessage id="misc.startpage" />
+                      </Link>
+                    )
+                  }}
+                />
               </P>
               <ButtonSmallPrimary
                 icon="add-category"
                 className="help__button"
                 tabIndex="-1"
               >
-                <FormattedMessage id="category.add" values={ { b: (msg) => <b>{msg}</b> } } />
+                <FormattedMessage
+                  id="category.add"
+                  values={{ b: (msg) => <b>{msg}</b> }}
+                />
               </ButtonSmallPrimary>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.categories.question3" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.categories.question3" />}
+              className="help-container__item"
+            >
               <P>
                 <FormattedMessage id="help.categories.answer3" />
               </P>
@@ -166,7 +209,10 @@ class Help extends Component {
                 <FormattedMessage id="category.sort" />
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.categories.question4" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.categories.question4" />}
+              className="help-container__item"
+            >
               <P>
                 <FormattedMessage id="help.categories.answer4" />
               </P>
@@ -177,26 +223,45 @@ class Help extends Component {
             <FormattedMessage id="help.collections" />
           </H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.collections.question1" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.collections.question1" />}
+              className="help-container__item"
+            >
               <P noPadding>
                 <FormattedMessage id="help.collections.answer1" />
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.collections.question2" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.collections.question2" />}
+              className="help-container__item"
+            >
               <P noPadding>
-                <FormattedMessage id="help.collections.answer2" values={ {
-                  home: <Link to="/"><FormattedMessage id="misc.startpage" /></Link>
-                } } />
+                <FormattedMessage
+                  id="help.collections.answer2"
+                  values={{
+                    home: (
+                      <Link to="/">
+                        <FormattedMessage id="misc.startpage" />
+                      </Link>
+                    )
+                  }}
+                />
               </P>
               <ButtonSmallPrimary
                 icon="add-collection"
                 className="help__button"
                 tabIndex="-1"
               >
-                <FormattedMessage id="dashboard.add" values={ { b: (msg) => <b>{msg}</b> } } />
+                <FormattedMessage
+                  id="dashboard.add"
+                  values={{ b: (msg) => <b>{msg}</b> }}
+                />
               </ButtonSmallPrimary>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.collections.question3" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.collections.question3" />}
+              className="help-container__item"
+            >
               <P>
                 <FormattedMessage id="help.collections.answer3" />
               </P>
@@ -215,37 +280,15 @@ class Help extends Component {
             </Expandable>
           </div>
 
-          <H2 id="bookmarklet">
-            <FormattedMessage id="help.bookmarklet" />
-          </H2>
+          <H2 id="bookmarklet">{'Bookmarklet'}</H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.bookmarklet.question" /> } className="help-container__item">
-              <P>
-                <FormattedMessage id="help.bookmarklet.text1" />
-              </P>
-              <P className="booky--hide-mobile-tablet">
-                <FormattedMessage id="help.bookmarklet.text2" />
-              </P>
-              <Bookmarklet />
-              <List className="booky--hide-desktop">
-                <ListItem>
-                  <FormattedMessage id="bookmarklet.mobile1" />
-                </ListItem>
-                <ListItem>
-                  <FormattedMessage id="bookmarklet.mobile2" />
-                  <Input
-                    className="help__input"
-                    value={ javascriptMobile }
-                    onChange={ () => {} }
-                    ariaLabel={ intl.formatMessage({ id: 'bookmarklet.mobile.code' }) }
-                  />
-                </ListItem>
-                <ListItem>
-                  <FormattedMessage id="bookmarklet.mobile3" />
-                </ListItem>
-              </List>
-              <P className="booky--hide-desktop">
-                <FormattedMessage id="bookmarklet.mobile4" />
+            <Expandable
+              headline={<FormattedMessage id="help.bookmarklet.question" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage id="bookmarklet.learnMore" />
+                <Link to="/bookmarklet">{'booky.io/bookmarklet'}</Link>
               </P>
             </Expandable>
           </div>
@@ -254,40 +297,63 @@ class Help extends Component {
             <FormattedMessage id="help.account" />
           </H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.account.question1" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.account.question1" />}
+              className="help-container__item"
+            >
               <P noPadding>
                 <FormattedMessage id="help.account.answer1" />
-                <Link to="/forgot">
-                  {'booky.io/forgot'}
-                </Link>
+                <Link to="/forgot">{'booky.io/forgot'}</Link>
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.account.question3" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.account.question3" />}
+              className="help-container__item"
+            >
               <P noPadding>
-                <FormattedMessage id="help.account.answer3" values={ introValues } />
+                <FormattedMessage
+                  id="help.account.answer3"
+                  values={introValues}
+                />
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.account.question2" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.account.question2" />}
+              className="help-container__item"
+            >
               <P noPadding>
-                <FormattedMessage id="help.account.answer2" values={ {
-                  email: <Link href={ `mailto:account@booky.io?subject=${intl.formatMessage({ id: 'misc.deleteSubject' })}` }>{ 'account@booky.io' }</Link>
-                } } />
+                <FormattedMessage
+                  id="help.account.answer2"
+                  values={{
+                    email: (
+                      <Link
+                        href={`mailto:account@booky.io?subject=${intl.formatMessage(
+                          { id: 'misc.deleteSubject' }
+                        )}`}
+                      >
+                        {'account@booky.io'}
+                      </Link>
+                    )
+                  }}
+                />
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.account.question4" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.account.question4" />}
+              className="help-container__item"
+            >
               <P noPadding>
                 <FormattedMessage id="help.account.answer4" />
-                <Link to="/account#import">
-                  {'booky.io/account#import'}
-                </Link>
+                <Link to="/account#import">{'booky.io/account#import'}</Link>
               </P>
             </Expandable>
-            <Expandable headline={ <FormattedMessage id="help.account.question5" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.account.question5" />}
+              className="help-container__item"
+            >
               <P noPadding>
                 <FormattedMessage id="help.account.answer5" />
-                <Link to="/account#export">
-                  {'booky.io/account#export'}
-                </Link>
+                <Link to="/account#export">{'booky.io/account#export'}</Link>
               </P>
             </Expandable>
           </div>
@@ -296,12 +362,13 @@ class Help extends Component {
             <FormattedMessage id="help.registration" />
           </H2>
           <div className="help-container">
-            <Expandable headline={ <FormattedMessage id="help.registration.question1" /> } className="help-container__item">
+            <Expandable
+              headline={<FormattedMessage id="help.registration.question1" />}
+              className="help-container__item"
+            >
               <P noPadding>
                 <FormattedMessage id="help.registration.answer1" />
-                <Link to="/resend">
-                  {'booky.io/resend'}
-                </Link>
+                <Link to="/resend">{'booky.io/resend'}</Link>
               </P>
             </Expandable>
           </div>
@@ -309,7 +376,7 @@ class Help extends Component {
           <H2 id="comments">
             <FormattedMessage id="help.comments" />
           </H2>
-          <DiscussionEmbed shortname="quickbm" config={ disqusConfig } />
+          <DiscussionEmbed shortname="quickbm" config={disqusConfig} />
         </Section>
       </Page>
     );

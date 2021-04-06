@@ -13,19 +13,20 @@ import search from './_state/search/reducer';
 import categoriesSorting from './_state/categories-sorting/reducer';
 import dragging from './_state/dragging/reducer';
 
-const reducers = (history) => combineReducers({
-  router: connectRouter(history),
-  intl: intlReducer,
-  user,
-  toolbar,
-  sidebar,
-  modal,
-  dashboards,
-  categories,
-  categoriesSorting,
-  search,
-  extension,
-  dragging
-});
+const reducers = (history) =>
+  combineReducers({
+    router: connectRouter(history),
+    intl: intlReducer,
+    user,
+    toolbar,
+    sidebar,
+    modal,
+    dashboards,
+    categories,
+    categoriesSorting,
+    search,
+    extension,
+    dragging
+  });
 
 export default reducers;

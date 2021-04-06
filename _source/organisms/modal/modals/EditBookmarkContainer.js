@@ -9,9 +9,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getTitle
 };
-const Container = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

@@ -6,7 +6,12 @@
   display: inline-block;
   border-radius: 3px;
   background-color: #eee;
-  background-image: linear-gradient(90deg, #eee, $color-background--light, #eee);
+  background-image: linear-gradient(
+    90deg,
+    #eee,
+    $color-background--light,
+    #eee
+  );
   background-size: 200px 100%;
   background-repeat: no-repeat;
   animation: skeletonKeyframes 1.2s ease-in-out infinite;
@@ -14,13 +19,12 @@
 
 .skeleton--darkMode {
   background-color: $color-background--dark;
-  background-image:
-    linear-gradient(
-      90deg,
-      $color-background--dark,
-      darken($color-background--dark, 3%),
-      $color-background--dark
-    );
+  background-image: linear-gradient(
+    90deg,
+    $color-background--dark,
+    darken($color-background--dark, 3%),
+    $color-background--dark
+  );
 }
 
 @keyframes skeletonKeyframes {

@@ -16,7 +16,7 @@ class DashboardsSidebar extends PureComponent {
     toolbarSticky: PropTypes.bool.isRequired,
     currentlySticky: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired
-  }
+  };
 
   togglePinned = () => {
     const { pinned, updateSettings } = this.props;
@@ -24,7 +24,7 @@ class DashboardsSidebar extends PureComponent {
     updateSettings({
       pinned: !pinned
     });
-  }
+  };
 
   getStickyClass = () => {
     const { toolbarSticky, headerSticky, currentlySticky } = this.props;
@@ -42,31 +42,33 @@ class DashboardsSidebar extends PureComponent {
     }
 
     return '';
-  }
+  };
 
   render() {
-    const {
-      className,
-      intl,
-      pinned,
-      darkMode
-    } = this.props;
+    const { className, intl, pinned, darkMode } = this.props;
 
     return (
-      <aside className={ classNames(
-        'dashboards-sidebar',
-        'booky--hide-mobile-tablet',
-        !pinned && 'dashboards-sidebar--hide',
-        this.getStickyClass(),
-        darkMode && 'dashboards-sidebar--dark-mode',
-        className
-      ) }>
+      <aside
+        className={classNames(
+          'dashboards-sidebar',
+          'booky--hide-mobile-tablet',
+          !pinned && 'dashboards-sidebar--hide',
+          this.getStickyClass(),
+          darkMode && 'dashboards-sidebar--dark-mode',
+          className
+        )}
+      >
         <DashboardsList droppableIdSuffix="sidebar" />
         <Icon
-          onClick={ this.togglePinned }
+          onClick={this.togglePinned}
           className="dashboards-sidebar__toggle"
-          icon={ pinned ? 'back' : 'forward' }
-          label={ pinned ? intl.formatMessage({ id: 'dashboard.reduce' }) : intl.formatMessage({ id: 'dashboard.expand' }) }
+          icon={pinned ? 'back' : 'forward'}
+          label={
+            pinned
+              ? intl.formatMessage({ id: 'dashboard.reduce' })
+              : intl.formatMessage({ id: 'dashboard.expand' })
+          }
+          tooltipDirection={pinned ? 'bottom' : 'right'}
           isButton
         />
       </aside>

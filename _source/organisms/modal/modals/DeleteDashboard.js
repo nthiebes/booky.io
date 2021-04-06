@@ -14,24 +14,24 @@ class DeleteDashboard extends Component {
     intl: PropTypes.object.isRequired,
     pending: PropTypes.bool,
     darkMode: PropTypes.bool
-  }
+  };
 
   state = {
     id: this.props.data.id,
     newId: null,
     value: 0
-  }
+  };
 
   onChange = (value) => {
     this.setState({
       newId: value === '0' ? null : this.props.data.dashboards[value - 1].id,
       value
     });
-  }
+  };
 
   handleSave = () => {
     this.props.onSave(this.state);
-  }
+  };
 
   render() {
     const { data, intl, pending, ...props } = this.props;
@@ -40,7 +40,7 @@ class DeleteDashboard extends Component {
         text: intl.formatMessage({ id: 'modal.deleteAll' }),
         value: '0'
       },
-      ...data.dashboards.map(({name}, index) => ({
+      ...data.dashboards.map(({ name }, index) => ({
         text: `${intl.formatMessage({ id: 'modal.moveTo' })}: ${name}`,
         value: index + 1
       }))
@@ -48,26 +48,27 @@ class DeleteDashboard extends Component {
 
     return (
       <Base
-        { ...props }
-        onSave={ this.handleSave }
-        pending={ pending }
-        headline={ intl.formatMessage({ id: 'modal.deleteDashboard' }) }
+        {...props}
+        onSave={this.handleSave}
+        pending={pending}
+        headline={intl.formatMessage({ id: 'modal.deleteDashboard' })}
       >
         <P>
-          <FormattedMessage id="modal.deleteDashboardLabel" /><br />
-          <b>{ data.name }</b>
+          <FormattedMessage id="modal.deleteDashboardLabel" />
+          <br />
+          <b>{data.name}</b>
         </P>
-        { /* Hide only empty active collections */ }
-        { (data.categories.length > 0 || data.activeDashboard !== data.id) && (
+        {/* Hide only empty active collections */}
+        {(data.categories.length > 0 || data.activeDashboard !== data.id) && (
           <Select
             id="dashboard-delete"
-            label={ intl.formatMessage({ id: 'modal.deleteDashboardFuture' }) }
-            options={ options }
-            onChange={ this.onChange }
+            label={intl.formatMessage({ id: 'modal.deleteDashboardFuture' })}
+            options={options}
+            onChange={this.onChange}
             selected="0"
-            disabled={ pending }
+            disabled={pending}
           />
-        ) }
+        )}
       </Base>
     );
   }

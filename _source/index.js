@@ -16,14 +16,25 @@ import initialState from './initialState';
 const supportedLanguages = ['en', 'de'];
 const cookieLanguage = Cookies.get('lang');
 const localStorageLanguage = localStorage.getItem('lang');
-const locale = (cookieLanguage || localStorageLanguage || navigator.language || navigator.userLanguage).slice(0, 2);
+const locale = (
+  cookieLanguage ||
+  localStorageLanguage ||
+  navigator.language ||
+  navigator.userLanguage
+).slice(0, 2);
 const language = supportedLanguages.indexOf(locale) === -1 ? 'en' : locale;
 
 // Store language
 setLanguage(language);
 
 // Activate the :active pseudo class on mobile
-document.addEventListener('touchstart', () => { /* Do nothing */ }, {passive: true});
+document.addEventListener(
+  'touchstart',
+  () => {
+    // Do nothing
+  },
+  { passive: true }
+);
 
 // Initialize Sentry error tracking
 if (process.env.NODE_ENV !== 'development') {
@@ -34,7 +45,6 @@ if (process.env.NODE_ENV !== 'development') {
   });
 }
 
-let counter = 0;
 let error = false;
 let messages;
 let userData;
@@ -54,7 +64,7 @@ const loadingDone = () => {
         messages
       }
     });
-  // Logged in
+    // Logged in
   } else {
     document.title = 'booky';
     store = configureStore({
@@ -79,52 +89,52 @@ const loadingDone = () => {
 
   render(
     <AppContainer>
-      <Booky store={ store } history={ history } />
+      <Booky store={store} history={history} />
     </AppContainer>,
     document.getElementById('root')
   );
 };
-const init = () => {
-  loadPolyfills().then(() => {
-    // Fetch translations
-    const headers = new Headers({'Content-Type': 'application/json'});
+const loadUserAndTranslations = () => {
+  const getUser = () =>
+    new Promise((resolve) => {
+      fetcher({
+        url: '/user',
+        onSuccess: (data) => {
+          userData = data;
 
-    fetch(`/_assets/i18n/${language}.json?=${process.env.VERSION}`, {
-      headers
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        messages = data;
-        counter++;
-      
-        if (counter === 2) {
-          loadingDone();
+          resolve();
+        },
+        onError: () => {
+          error = true;
+
+          resolve();
         }
-      })
-      .catch();
-    
-    // Fetch user data
-    fetcher({
-      url: '/user',
-      onSuccess: (data) => {
-        userData = data;
-        counter++;
-      
-        if (counter === 2) {
-          loadingDone();
-        }
-      },
-      onError: () => {
-        error = true;
-        counter++;
-      
-        if (counter === 2) {
-          loadingDone();
-        }
-      }
+      });
     });
-    
-  });    
+  const getTranslations = () =>
+    new Promise((resolve) => {
+      const headers = new Headers({ 'Content-Type': 'application/json' });
+
+      fetch(`/_assets/i18n/${language}.json?=${process.env.VERSION}`, {
+        headers
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          messages = data;
+
+          resolve();
+        })
+        .catch();
+    });
+
+  return Promise.all([getUser(), getTranslations()]);
+};
+const init = () => {
+  loadPolyfills().then(
+    loadUserAndTranslations().then(() => {
+      loadingDone();
+    })
+  );
 };
 
 if (window.Promise) {

@@ -7,7 +7,6 @@ const dashboards = (state = {}, action) => {
 
   switch (type) {
     case 'ADD_DASHBOARD':
-      
       return {
         ...state,
         items: [
@@ -26,7 +25,7 @@ const dashboards = (state = {}, action) => {
           if (dashboard.id !== id) {
             return dashboard;
           }
-          
+
           return {
             ...dashboard,
             name
@@ -86,7 +85,7 @@ const dashboards = (state = {}, action) => {
         ...state,
         ...action.data
       };
-    
+
     case 'RESET_USER_STATE': {
       return initialState.dashboards;
     }

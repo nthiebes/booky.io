@@ -6,8 +6,6 @@ const mapStateToProps = (state) => ({
   newsVersion: state.user.settings.newsVersion,
   voted: state.user.settings.voted
 });
-const Container = connect(
-  mapStateToProps
-)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export default Container;

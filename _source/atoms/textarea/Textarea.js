@@ -28,25 +28,25 @@ export default class Textarea extends Component {
     cols: PropTypes.number,
     rows: PropTypes.number,
     darkMode: PropTypes.bool
-  }
+  };
 
   static defaultProps = {
     color: '',
     value: '',
     validation: true
-  }
+  };
 
   onChange = (event) => {
     this.props.onChange(event.target.value, this.props.name);
-  }
+  };
 
   onFocus = () => {
     this.props.onFocus && this.props.onFocus();
-  }
+  };
 
   onBlur = () => {
     this.props.onBlur && this.props.onBlur();
-  }
+  };
 
   render() {
     const {
@@ -94,18 +94,24 @@ export default class Textarea extends Component {
 
     return (
       <Fragment>
-        { label && <Label htmlFor={ id }>{ label }</Label> }
-        <span className={ classNames('textarea', className) }>
-          <textarea { ...textareaProps } />
-          { validation && (
+        {label && <Label htmlFor={id}>{label}</Label>}
+        <span className={classNames('textarea', className)}>
+          <textarea {...textareaProps} />
+          {validation && (
             <Fragment>
-              <Icon icon="check" color="green" className="textarea__icon textarea__icon--valid" />
-              <Icon icon="error" color="orange" className="textarea__icon textarea__icon--invalid" />
+              <Icon
+                icon="check"
+                color="green"
+                className="textarea__icon textarea__icon--valid"
+              />
+              <Icon
+                icon="error"
+                color="orange"
+                className="textarea__icon textarea__icon--invalid"
+              />
             </Fragment>
-          ) }
-          { error && (
-            <ErrorMessage message={ error } />
-          ) }
+          )}
+          {error && <ErrorMessage message={error} />}
         </span>
       </Fragment>
     );

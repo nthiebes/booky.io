@@ -7,34 +7,40 @@ export const updateCategoriesSorting = (data) => ({
   data
 });
 
-export const getCategories = (dashboardId) => ((dispatch) => {
-  dispatch(updateCategoriesSorting({
-    pending: true,
-    items: [],
-    error: null
-  }));
+export const getCategories = (dashboardId) => (dispatch) => {
+  dispatch(
+    updateCategoriesSorting({
+      pending: true,
+      items: [],
+      error: null
+    })
+  );
 
   fetcher({
     url: `/dashboards/${dashboardId}/categories`,
     onSuccess: (data) => {
-      dispatch(updateCategoriesSorting({
-        items: data.map((category) => ({
-          ...category,
-          name: decodeEmoji(category.name)
-        })),
-        pending: false
-      }));
+      dispatch(
+        updateCategoriesSorting({
+          items: data.map((category) => ({
+            ...category,
+            name: decodeEmoji(category.name)
+          })),
+          pending: false
+        })
+      );
     },
     onError: (error) => {
-      dispatch(updateCategoriesSorting({
-        error,
-        pending: false
-      }));
+      dispatch(
+        updateCategoriesSorting({
+          error,
+          pending: false
+        })
+      );
     }
   });
-});
+};
 
-export const dragCategory = (dragData) => ((dispatch) => {
+export const dragCategory = (dragData) => (dispatch) => {
   const { destinationIndex, categoryId } = dragData;
 
   dispatch({
@@ -42,8 +48,10 @@ export const dragCategory = (dragData) => ((dispatch) => {
     dragData
   });
 
-  dispatch(editCategory({
-    id: categoryId,
-    position: destinationIndex + 1
-  }));
-});
+  dispatch(
+    editCategory({
+      id: categoryId,
+      position: destinationIndex + 1
+    })
+  );
+};

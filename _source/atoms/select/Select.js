@@ -17,39 +17,49 @@ export default class Select extends Component {
     selected: PropTypes.string,
     disabled: PropTypes.bool,
     darkMode: PropTypes.bool,
-    value: PropTypes.oneOfType([
-      PropTypes.string, PropTypes.number
-    ])
-  }
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  };
 
   onChange = (event) => {
     this.props.onChange(event.target.value);
-  }
+  };
 
   render() {
-    const { options, className, label, id, name, required, selected, disabled, darkMode, value } = this.props;
+    const {
+      options,
+      className,
+      label,
+      id,
+      name,
+      required,
+      selected,
+      disabled,
+      darkMode,
+      value
+    } = this.props;
 
     return (
       <Fragment>
-        { label && <Label htmlFor={ id }>{ label }</Label> }
+        {label && <Label htmlFor={id}>{label}</Label>}
         <select
-          id={ id }
-          name={ name }
-          required={ required }
-          onChange={ this.onChange }
-          value={ value }
-          defaultValue={ selected }
-          disabled={ disabled }
-          className={ classNames(
+          id={id}
+          name={name}
+          required={required}
+          onChange={this.onChange}
+          value={value}
+          defaultValue={selected}
+          disabled={disabled}
+          className={classNames(
             'select',
             darkMode && 'select--dark-mode',
             className
-          ) }>
-          { options.map(({ text, value: optionValue }) => (
-            <option key={ optionValue } value={ optionValue }>
-              { text }
+          )}
+        >
+          {options.map(({ text, value: optionValue }) => (
+            <option key={optionValue} value={optionValue}>
+              {text}
             </option>
-          )) }
+          ))}
         </select>
       </Fragment>
     );

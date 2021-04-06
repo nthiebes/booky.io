@@ -18,33 +18,39 @@ class Account extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
-  }
+  };
 
   state = {
-    activeTab: document.location.hash ? document.location.hash.replace('#', '') : 'data'
-  }
-  
-  tabs = [{
-    name: this.props.intl.formatMessage({ id: 'account.userData' }),
-    key: 'data'
-  }, {
-    name: this.props.intl.formatMessage({ id: 'account.import' }),
-    key: 'import'
-  }, {
-    name: this.props.intl.formatMessage({ id: 'account.export' }),
-    key: 'export'
-  }];
+    activeTab: document.location.hash
+      ? document.location.hash.replace('#', '')
+      : 'data'
+  };
+
+  tabs = [
+    {
+      name: this.props.intl.formatMessage({ id: 'account.userData' }),
+      key: 'data'
+    },
+    {
+      name: this.props.intl.formatMessage({ id: 'account.import' }),
+      key: 'import'
+    },
+    {
+      name: this.props.intl.formatMessage({ id: 'account.export' }),
+      key: 'export'
+    }
+  ];
   // name: props.intl.formatMessage({ id: 'account.account' })
 
   handleTabClick = (activeTab) => {
-    const {history} = this.props;
-    
+    const { history } = this.props;
+
     history.push(`/account#${activeTab}`);
 
     this.setState({
       activeTab
     });
-  }
+  };
 
   render() {
     const { activeTab } = this.state;
@@ -56,29 +62,21 @@ class Account extends Component {
             <FormattedMessage id="account.title" />
           </H1>
           <TabBar title="account.navigation" className="account__tab-bar">
-            { this.tabs.map((tab) => (
+            {this.tabs.map((tab) => (
               <Tab
-                key={ tab.key }
-                tabId={ tab.key }
-                active={ activeTab === tab.key }
-                onClick={ this.handleTabClick }
+                key={tab.key}
+                tabId={tab.key}
+                active={activeTab === tab.key}
+                onClick={this.handleTabClick}
               >
                 {tab.name}
               </Tab>
-            )) }
+            ))}
           </TabBar>
-          { activeTab === 'data' && (
-            <AccountData />
-          ) }
-          { activeTab === 'import' && (
-            <AccountImport />
-          ) }
-          { activeTab === 'export' && (
-            <AccountExport />
-          ) }
-          { activeTab === 'manage' && (
-            <AccountManage />
-          ) }
+          {activeTab === 'data' && <AccountData />}
+          {activeTab === 'import' && <AccountImport />}
+          {activeTab === 'export' && <AccountExport />}
+          {activeTab === 'manage' && <AccountManage />}
         </Section>
       </Page>
     );

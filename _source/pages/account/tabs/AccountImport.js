@@ -16,7 +16,7 @@ class AccountImport extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     importBookmarks: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     files: null,
@@ -25,19 +25,19 @@ class AccountImport extends PureComponent {
     pending: false,
     importAsCollections: true,
     bookmarksCount: 0
-  }
+  };
 
   handleCheckboxChange = () => {
     this.setState({
       importAsCollections: !this.state.importAsCollections
     });
-  }
+  };
 
   handleAccepted = (files) => {
     this.setState({
       file: files[0]
     });
-  }
+  };
 
   readFile = (file, callback) => {
     const reader = new FileReader();
@@ -52,7 +52,7 @@ class AccountImport extends PureComponent {
     };
 
     reader.readAsText(file);
-  }
+  };
 
   handleSubmit = () => {
     const { importBookmarks } = this.props;
@@ -88,73 +88,99 @@ class AccountImport extends PureComponent {
         }
       });
     });
-  }
+  };
 
   render() {
     const { intl } = this.props;
-    const { error, success, pending, importAsCollections, bookmarksCount } = this.state;
-  
+    const {
+      error,
+      success,
+      pending,
+      importAsCollections,
+      bookmarksCount
+    } = this.state;
+
     if (success) {
       return (
         <SuccessIllustration illustration="import">
           <FormattedMessage
             id="account.importSuccess"
-            values={ {
-              home: <Link to="/"><FormattedMessage id="account.importSuccessHome" /></Link>,
+            values={{
+              home: (
+                <Link to="/">
+                  <FormattedMessage id="account.importSuccessHome" />
+                </Link>
+              ),
               count: bookmarksCount
-            } }
+            }}
           />
         </SuccessIllustration>
       );
     }
-  
+
     return (
       <>
-        <Form className="account__form" onSubmit={ this.handleSubmit }>
+        <Form className="account__form" onSubmit={this.handleSubmit}>
           <P className="import__step">
             <Icon icon="file-download" className="import__step-icon" />
-            <FormattedMessage id="account.importStep1" values={ { strong: (msg) => <strong>{msg}</strong> } } />
+            <FormattedMessage
+              id="account.importStep1"
+              values={{ strong: (msg) => <strong>{msg}</strong> }}
+            />
           </P>
           <div className="import__step">
             <Icon icon="file" className="import__step-icon" />
             <Dropzone
-              onDropAccepted={ this.handleAccepted }
+              onDropAccepted={this.handleAccepted}
               accept="text/html"
-              maxFiles={ 1 }
-              multiple={ false }
-              disabled={ pending }
+              maxFiles={1}
+              multiple={false}
+              disabled={pending}
             >
-              {({getRootProps, getInputProps, isDragActive, acceptedFiles, fileRejections}) => (
-                <div { ...getRootProps({
-                  'aria-label': intl.formatMessage({ id: 'account.importStep2' }),
-                  className: classNames(
-                    'import__drop-area',
-                    isDragActive && 'import__drop-area--active',
-                    acceptedFiles.length > 0 && 'import__drop-area--accepted'
-                  )
-                }) }>
-                  <input { ...getInputProps() } />
-                  { fileRejections.length > 0 && (
+              {({
+                getRootProps,
+                getInputProps,
+                isDragActive,
+                acceptedFiles,
+                fileRejections
+              }) => (
+                <div
+                  {...getRootProps({
+                    'aria-label': intl.formatMessage({
+                      id: 'account.importStep2'
+                    }),
+                    className: classNames(
+                      'import__drop-area',
+                      isDragActive && 'import__drop-area--active',
+                      acceptedFiles.length > 0 && 'import__drop-area--accepted'
+                    )
+                  })}
+                >
+                  <input {...getInputProps()} />
+                  {fileRejections.length > 0 && (
                     <ErrorMessage
-                      message={ `error.${fileRejections[0].errors[0].code}` }
+                      message={`error.${fileRejections[0].errors[0].code}`}
                       className="import__error"
                       hasIcon
                       noAnimation
                     />
-                  ) }
-                  { acceptedFiles.length > 0 ? (
+                  )}
+                  {acceptedFiles.length > 0 ? (
                     <>
                       <Icon size="large" icon="check" color="green" />
                       <P noPadding className="import__file">
                         <Icon icon="file" />
-                        <b>{ acceptedFiles[0].name }</b>
+                        <b>{acceptedFiles[0].name}</b>
                       </P>
                     </>
                   ) : (
                     <P noPadding>
-                      <FormattedMessage id="account.importStep2" values={ { strong: (msg) => <strong>{msg}</strong> } } />
+                      <FormattedMessage
+                        id="account.importStep2"
+                        values={{ strong: (msg) => <strong>{msg}</strong> }}
+                      />
                     </P>
-                  ) }
+                  )}
                 </div>
               )}
             </Dropzone>
@@ -164,25 +190,27 @@ class AccountImport extends PureComponent {
             <FormattedMessage id="account.importStep3" />
           </P>
           <Checkbox
-            label={ intl.formatMessage({ id: 'account.importAsCollections' }) }
+            label={intl.formatMessage({ id: 'account.importAsCollections' })}
             id="import-as-collections"
-            onChange={ this.handleCheckboxChange }
-            checked={ importAsCollections }
-            disabled={ pending }
+            onChange={this.handleCheckboxChange}
+            checked={importAsCollections}
+            disabled={pending}
           />
           <P>
-            <i><FormattedMessage id="account.importNote" /></i>
+            <i>
+              <FormattedMessage id="account.importNote" />
+            </i>
           </P>
           <ButtonLargeBlue
             icon="upload"
             type="submit"
-            pending={ pending }
-            disabled={ pending }
+            pending={pending}
+            disabled={pending}
             contentBefore
           >
             <FormattedMessage id="account.import" />
           </ButtonLargeBlue>
-          { error && <ErrorMessage message={ error } hasIcon /> }
+          {error && <ErrorMessage message={error} hasIcon />}
         </Form>
       </>
     );

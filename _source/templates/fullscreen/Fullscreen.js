@@ -10,7 +10,7 @@ export default class Fullscreen extends PureComponent {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     updateExtensionData: PropTypes.func.isRequired
-  }
+  };
 
   componentDidMount() {
     const { updateExtensionData } = this.props;
@@ -32,12 +32,7 @@ export default class Fullscreen extends PureComponent {
     const { children, className } = this.props;
 
     return (
-      <main className={ classNames(
-        'fullscreen',
-        className
-      ) }>
-        { children }
-      </main>
+      <main className={classNames('fullscreen', className)}>{children}</main>
     );
   }
 }

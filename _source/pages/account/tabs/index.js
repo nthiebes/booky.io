@@ -3,9 +3,4 @@ import AccountImport from './AccountImportContainer';
 import AccountExport from './AccountExport';
 import AccountManage from './AccountManageContainer';
 
-export {
-  AccountData,
-  AccountImport,
-  AccountExport,
-  AccountManage
-};
+export { AccountData, AccountImport, AccountExport, AccountManage };

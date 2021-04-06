@@ -12,46 +12,49 @@ import CookieBanner from '../../molecules/cookie-banner';
 
 export default class Page extends Component {
   render() {
-    const { children, className, dashboards, home, toolbar, blurContent, stickyHeader, darkMode, showStats } = this.props;
+    const {
+      children,
+      className,
+      dashboards,
+      home,
+      toolbar,
+      blurContent,
+      stickyHeader,
+      darkMode,
+      showStats
+    } = this.props;
 
     return (
       <Fragment>
         <CookieBanner />
         <Modal />
         <Header
-          className={ classNames(
-            blurContent && 'page--blur'
-          ) }
-          home={ home }
+          className={classNames(blurContent && 'page--blur')}
+          home={home}
         />
-        { toolbar && (
-          <Toolbar className={ classNames(
-            blurContent && 'page--blur'
-          ) } />
-        ) }
+        {toolbar && (
+          <Toolbar className={classNames(blurContent && 'page--blur')} />
+        )}
         <Sidebar
-          className={ classNames(
-            blurContent && 'page--blur'
-          ) }
-          dashboards={ dashboards }
+          className={classNames(blurContent && 'page--blur')}
+          dashboards={dashboards}
         />
-        <main id="main" className={ classNames(
-          'page',
-          stickyHeader && 'page--sticky-header',
-          darkMode && 'page--dark',
-          blurContent && 'page--blur',
-          className
-        ) }>
-          <ErrorBoundary>
-            { children }
-          </ErrorBoundary>
+        <main
+          id="main"
+          className={classNames(
+            'page',
+            stickyHeader && 'page--sticky-header',
+            darkMode && 'page--dark',
+            blurContent && 'page--blur',
+            className
+          )}
+        >
+          <ErrorBoundary>{children}</ErrorBoundary>
         </main>
         <Footer
-          className={ classNames(
-            blurContent && 'page--blur'
-          ) }
-          home={ home }
-          showStats={ showStats }
+          className={classNames(blurContent && 'page--blur')}
+          home={home}
+          showStats={showStats}
         />
       </Fragment>
     );

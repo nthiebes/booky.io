@@ -9,37 +9,57 @@ import P from '../../atoms/paragraph';
 import Illustration from '../../atoms/illustration';
 import Radio from '../../atoms/radio';
 import { ButtonLargeBlue } from '../../atoms/button';
+import Skeleton from '../../atoms/skeleton';
+import { ErrorMessage } from '../../atoms/messages';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
 import Form from '../../molecules/form';
 
 const getPollPercentages = (results) => {
-  const onePercent = (results[0] + results[1] + results[2]) / 100;
+  const onePercent =
+    (results[0].votes + results[1].votes + results[2].votes) / 100;
 
-  return [Math.round(onePercent * results[0]), Math.round(onePercent * results[1]), Math.round(onePercent * results[2])];
+  return [
+    Math.round(onePercent * results[0].votes),
+    Math.round(onePercent * results[1].votes),
+    Math.round(onePercent * results[2].votes)
+  ];
 };
 
 export default class Next extends PureComponent {
   static propTypes = {
     voted: PropTypes.bool.isRequired,
-    updateSettings: PropTypes.func.isRequired
-  }
+    updateSettings: PropTypes.func.isRequired,
+    getPollResults: PropTypes.func.isRequired
+  };
 
   state = {
+    pending: true,
+    error: null,
     pollResults: null,
     pollPercentages: null,
     pollResultsAnimation: false
-  }
+  };
 
   componentDidMount() {
-    const pollResults = [60, 23, 16]; // from backend
-    
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState({
-      pollResults,
-      pollPercentages: getPollPercentages(pollResults)
+    const { getPollResults } = this.props;
+
+    getPollResults({
+      onSuccess: (data) => {
+        this.setState({
+          pending: false,
+          pollResults: data,
+          pollPercentages: getPollPercentages(data)
+        });
+      },
+      onError: (error) => {
+        this.setState({
+          pending: false,
+          error
+        });
+      }
     });
-    
+
     this.timeout = window.setTimeout(() => {
       this.setState({
         pollResultsAnimation: this.props.voted
@@ -56,13 +76,13 @@ export default class Next extends PureComponent {
   handleRadioChange = (event) => {
     const pollResults = [...this.state.pollResults];
 
-    pollResults[Number(event.value)] = pollResults[event.value] + 1;
+    pollResults[event.value].votes = pollResults[event.value].votes + 1;
 
     this.setState({
       pollResults,
       pollPercentages: getPollPercentages(pollResults)
     });
-  }
+  };
 
   handleSubmit = () => {
     this.props.updateSettings({
@@ -74,19 +94,29 @@ export default class Next extends PureComponent {
         pollResultsAnimation: true
       });
     }, 500);
-  }
+  };
 
   render() {
     const { voted } = this.props;
-    const { pollPercentages, pollResultsAnimation } = this.state;
+    const {
+      pollResults,
+      pending,
+      pollPercentages,
+      pollResultsAnimation,
+      error
+    } = this.state;
     const disqusConfig = {
       url: 'https://booky.io/next',
       identifier: 'next',
       title: 'booky.io | Next'
     };
-    const result1 = pollResultsAnimation ? `${pollPercentages[0]}%` : '3.5rem';
-    const result2 = pollResultsAnimation ? `${pollPercentages[1]}%` : '3.5rem';
-    const result3 = pollResultsAnimation ? `${pollPercentages[2]}%` : '3.5rem';
+    let result1, result2, result3;
+
+    if (pollPercentages) {
+      result1 = pollResultsAnimation ? `${pollPercentages[0]}%` : '3.5rem';
+      result2 = pollResultsAnimation ? `${pollPercentages[1]}%` : '3.5rem';
+      result3 = pollResultsAnimation ? `${pollPercentages[2]}%` : '3.5rem';
+    }
 
     return (
       <Page>
@@ -105,7 +135,7 @@ export default class Next extends PureComponent {
             <H2>
               <FormattedMessage id="next.current" />
             </H2>
-            <Expandable headline={ <FormattedMessage id="next.current.title" /> }>
+            <Expandable headline={<FormattedMessage id="next.current.title" />}>
               <P noPadding>
                 <FormattedMessage id="next.current.more" />
               </P>
@@ -113,53 +143,83 @@ export default class Next extends PureComponent {
             <H2>
               <FormattedMessage id="What feature would you like to see next?" />
             </H2>
-            { (voted && pollPercentages) ? (
+            {pending && (
+              <>
+                <Skeleton className="next__skeleton" />
+                <Skeleton className="next__skeleton" />
+                <Skeleton className="next__skeleton" />
+              </>
+            )}
+            {error && <ErrorMessage message={error} hasIcon />}
+            {voted && pollPercentages && (
               <div className="next__results">
-                <div style={ { width: result1 } } className="next__vote next__vote--option1">{ `${pollPercentages[0]}%` }</div>
+                <div
+                  style={{ width: result1 }}
+                  className="next__vote next__vote--option1"
+                >{`${pollPercentages[0]}%`}</div>
                 <P>
-                  <b><FormattedMessage id="Drag & drop bookmarks and categories to other collections" /></b>
+                  <b>
+                    <FormattedMessage id={pollResults[0].name} />
+                  </b>
                 </P>
-                <div style={ { width: result2 } } className="next__vote next__vote--option2">{ `${pollPercentages[1]}%` }</div>
+                <div
+                  style={{ width: result2 }}
+                  className="next__vote next__vote--option2"
+                >{`${pollPercentages[1]}%`}</div>
                 <P>
-                  <b><FormattedMessage id="Duplicate bookmarks finder" /></b>
+                  <b>
+                    <FormattedMessage id={pollResults[1].name} />
+                  </b>
                 </P>
-                <div style={ { width: result3 } } className="next__vote next__vote--option3">{ `${pollPercentages[2]}%` }</div>
+                <div
+                  style={{ width: result3 }}
+                  className="next__vote next__vote--option3"
+                >{`${pollPercentages[2]}%`}</div>
                 <P>
-                  <b><FormattedMessage id="Sorting of bookmarks, categories, and collections by name" /></b>
+                  <b>
+                    <FormattedMessage id={pollResults[2].name} />
+                  </b>
                 </P>
               </div>
-            ) : (
-              <Form onSubmit={ this.handleSubmit }>
+            )}
+            {!voted && pollResults && (
+              <Form onSubmit={this.handleSubmit}>
                 <Radio
                   id="poll-option-1"
                   name="poll"
-                  onChange={ this.handleRadioChange }
+                  onChange={this.handleRadioChange}
                   value="0"
                   checked
                 >
-                  <b><FormattedMessage id="Drag & drop bookmarks and categories to other collections" /></b>
+                  <b>
+                    <FormattedMessage id={pollResults[0].name} />
+                  </b>
                 </Radio>
                 <Radio
                   id="poll-option-2"
                   name="poll"
-                  onChange={ this.handleRadioChange }
+                  onChange={this.handleRadioChange}
                   value="1"
                 >
-                  <b><FormattedMessage id="Duplicate bookmarks finder" /></b>
+                  <b>
+                    <FormattedMessage id={pollResults[1].name} />
+                  </b>
                 </Radio>
                 <Radio
                   id="poll-option-3"
                   name="poll"
-                  onChange={ this.handleRadioChange }
+                  onChange={this.handleRadioChange}
                   value="2"
                 >
-                  <b><FormattedMessage id="Sorting of bookmarks, categories, and collections by name" /></b>
+                  <b>
+                    <FormattedMessage id={pollResults[2].name} />
+                  </b>
                 </Radio>
                 <ButtonLargeBlue contentBefore icon="vote">
                   {'Vote'}
                 </ButtonLargeBlue>
               </Form>
-            ) }
+            )}
           </span>
           <Illustration
             name="next"
@@ -170,7 +230,7 @@ export default class Next extends PureComponent {
           <H2 nomargin>
             <FormattedMessage id="help.comments" />
           </H2>
-          <DiscussionEmbed shortname="quickbm" config={ disqusConfig } />
+          <DiscussionEmbed shortname="quickbm" config={disqusConfig} />
         </Section>
       </Page>
     );

@@ -14,41 +14,41 @@ class EditDashboard extends Component {
     intl: PropTypes.object.isRequired,
     pending: PropTypes.bool,
     darkMode: PropTypes.bool
-  }
+  };
 
   state = {
     name: this.props.data.name
-  }
+  };
 
   onNameChange = (value) => {
     this.setState({
       name: value
     });
-  }
+  };
 
   render() {
     const { intl, data, pending, ...props } = this.props;
     const { name } = this.state;
 
     return (
-      <Base { ...props } pending={ pending } headline={ intl.formatMessage({ id: 'modal.editDashboard' }) }>
+      <Base
+        {...props}
+        pending={pending}
+        headline={intl.formatMessage({ id: 'modal.editDashboard' })}
+      >
         <Input
           id="dashboard-name"
           name="name"
           color="primary"
-          value={ name }
-          onChange={ this.onNameChange }
+          value={name}
+          onChange={this.onNameChange}
           required
           maxLength="200"
-          label={ intl.formatMessage({ id: 'modal.name' }) }
-          disabled={ pending }
+          label={intl.formatMessage({ id: 'modal.name' })}
+          disabled={pending}
         />
-        <Input
-          name="id"
-          value={ data.id.toString() }
-          type="hidden"
-        />
-        <CategoriesSorting dashboardId={ data.id } dashboardName={ name } />
+        <Input name="id" value={data.id.toString()} type="hidden" />
+        <CategoriesSorting dashboardId={data.id} dashboardName={name} />
       </Base>
     );
   }

@@ -56,10 +56,17 @@ class Menu extends PureComponent {
     isBeta: PropTypes.bool.isRequired,
     newsVersion: PropTypes.number.isRequired,
     voted: PropTypes.bool.isRequired
-  }
+  };
 
   render() {
-    const { className, loggedIn, intl, isBeta, newsVersion, voted } = this.props;
+    const {
+      className,
+      loggedIn,
+      intl,
+      isBeta,
+      newsVersion,
+      voted
+    } = this.props;
     let menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     menuItems = menuItems.filter((item) => {
@@ -73,22 +80,25 @@ class Menu extends PureComponent {
     });
 
     return (
-      <nav aria-label={ intl.formatMessage({ id: 'menu.title' }) } className={ classNames('menu', className) }>
-        { menuItems.map(({ name, route }) => (
+      <nav
+        aria-label={intl.formatMessage({ id: 'menu.title' })}
+        className={classNames('menu', className)}
+      >
+        {menuItems.map(({ name, route }) => (
           <Link
-            key={ name }
+            key={name}
             className="menu__item"
-            activeClassName={ classNames(name !== 'new' && 'menu__item--active') }
-            to={ route }
+            activeClassName={classNames(name !== 'new' && 'menu__item--active')}
+            to={route}
             color="light"
             isNavLink
             noUnderline
-            hasBadge={ (!voted && name === 'next') || name === 'new' }
+            hasBadge={(!voted && name === 'next') || name === 'new'}
           >
-            <Icon icon={ name } color="light" />
-            <FormattedMessage id={ `menu.${name}` } />
-          </Link>  
-        )) }
+            <Icon icon={name} color="light" />
+            <FormattedMessage id={`menu.${name}`} />
+          </Link>
+        ))}
       </nav>
     );
   }

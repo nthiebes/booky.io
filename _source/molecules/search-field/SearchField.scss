@@ -9,6 +9,10 @@
     }
   }
 
+  .input__field {
+    padding: 0 36px 0 36px;
+  }
+
   @include desktop {
     flex-grow: 0;
     margin: 0 0 0 1rem;
@@ -36,4 +40,16 @@
       background-color: $color-background--dark;
     }
   }
+}
+
+.search-field__icon {
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+
+.search-field__clear {
+  position: absolute;
+  top: 6px;
+  right: 0;
 }

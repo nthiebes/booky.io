@@ -17,11 +17,11 @@ export default class Extension extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     updateExtensionData: PropTypes.func.isRequired,
     color: PropTypes.number.isRequired
-  }
-  
+  };
+
   componentDidMount() {
     const { darkMode, updateExtensionData } = this.props;
-    
+
     // Tell the extension that the page is ready to receive messages
     postMessage({
       ready: true,
@@ -42,30 +42,45 @@ export default class Extension extends PureComponent {
     return (
       <>
         <Modal />
-        <header className={ `extension__header header--color${color}` }>
+        <header className={`extension__header header--color${color}`}>
           <nav className="extension__nav">
-            <Link to="/extension/add" isNavLink className="extension__nav-item" activeClassName="extension__nav-item--active">
+            <Link
+              to="/extension/add"
+              isNavLink
+              className="extension__nav-item"
+              activeClassName="extension__nav-item--active"
+            >
               <Icon icon="add-link" color="light" />
               <FormattedMessage id="extension.add" />
             </Link>
-            <Link to="/extension/open" isNavLink className="extension__nav-item" activeClassName="extension__nav-item--active">
+            <Link
+              to="/extension/open"
+              isNavLink
+              className="extension__nav-item"
+              activeClassName="extension__nav-item--active"
+            >
               <Icon icon="open" color="light" />
               <FormattedMessage id="extension.open" />
             </Link>
-            <Link to="/extension/customize" isNavLink className="extension__nav-item" activeClassName="extension__nav-item--active">
+            <Link
+              to="/extension/customize"
+              isNavLink
+              className="extension__nav-item"
+              activeClassName="extension__nav-item--active"
+            >
               <Icon icon="customize" color="light" />
               <FormattedMessage id="extension.customize" />
             </Link>
           </nav>
         </header>
-        <main className={ classNames(
-          'extension',
-          darkMode && 'extension--dark',
-          className
-        ) }>
-          <ErrorBoundary>
-            { children }
-          </ErrorBoundary>
+        <main
+          className={classNames(
+            'extension',
+            darkMode && 'extension--dark',
+            className
+          )}
+        >
+          <ErrorBoundary>{children}</ErrorBoundary>
         </main>
       </>
     );

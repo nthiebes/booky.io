@@ -11,27 +11,26 @@ export default class FileUpload extends Component {
 
   handleOnChange(event) {
     const { name, onChange } = this.props;
-    
+
     // console.log(event.target.value, name);
-    
+
     onChange && onChange(event.target.value, name);
   }
 
   render() {
-    const {
-      className,
-      name,
-      id,
-      darkMode
-    } = this.props;
+    const { className, name, id, darkMode } = this.props;
 
     return (
       <input
-        className={ classNames('file-upload', darkMode && 'file-upload--dark-mode', className) }
+        className={classNames(
+          'file-upload',
+          darkMode && 'file-upload--dark-mode',
+          className
+        )}
         type="file"
-        id={ id }
-        name={ name }
-        onChange={ this.handleOnChange }
+        id={id}
+        name={name}
+        onChange={this.handleOnChange}
       />
     );
   }

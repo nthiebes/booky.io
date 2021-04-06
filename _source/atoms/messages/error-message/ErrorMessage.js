@@ -14,15 +14,15 @@ export default class ErrorMessage extends Component {
     hasIcon: PropTypes.bool,
     noAnimation: PropTypes.bool,
     noPadding: PropTypes.bool
-  }
-  
+  };
+
   static defaultProps = {
     message: 'error.default'
-  }
-  
+  };
+
   state = {
     animate: false
-  }
+  };
 
   componentDidMount() {
     window.setTimeout(this.animate, 100);
@@ -32,7 +32,7 @@ export default class ErrorMessage extends Component {
     this.setState({
       animate: true
     });
-  }
+  };
 
   render() {
     const { message, className, hasIcon, noAnimation, noPadding } = this.props;
@@ -40,28 +40,49 @@ export default class ErrorMessage extends Component {
 
     return (
       <P
-        className={ classNames(
+        className={classNames(
           'error',
           animate && !noAnimation && 'error--animate',
           noAnimation && 'error--show',
           noPadding && 'error--noPadding',
           className
-        ) }
+        )}
         role="alert"
       >
-        { hasIcon && (
-          <Icon icon="error" color="orange" ignoreDarkMode className="error__icon" />
-        ) }
+        {hasIcon && (
+          <Icon
+            icon="error"
+            color="orange"
+            ignoreDarkMode
+            className="error__icon"
+          />
+        )}
         <FormattedMessage
           tagName="span"
-          id={ message }
-          values={ {
-            mail: <Link href="mailto:hello@booky.io" color="dark">{ <FormattedMessage id="error.email" /> }</Link>,
-            login: <Link to="/login" color="dark">{ 'booky.io/login' }</Link>,
-            resend: <Link to="/resend" color="dark">{ 'booky.io/resend' }</Link>,
-            forgot: <Link to="/forgot" color="dark">{ 'booky.io/forgot' }</Link>,
+          id={message}
+          values={{
+            mail: (
+              <Link href="mailto:hello@booky.io" color="dark">
+                {<FormattedMessage id="error.email" />}
+              </Link>
+            ),
+            login: (
+              <Link to="/login" color="dark">
+                {'booky.io/login'}
+              </Link>
+            ),
+            resend: (
+              <Link to="/resend" color="dark">
+                {'booky.io/resend'}
+              </Link>
+            ),
+            forgot: (
+              <Link to="/forgot" color="dark">
+                {'booky.io/forgot'}
+              </Link>
+            ),
             strong: (msg) => <strong>{msg}</strong>
-          } }
+          }}
         />
       </P>
     );

@@ -20,7 +20,7 @@ class Contact extends PureComponent {
     intl: PropTypes.object.isRequired,
     username: PropTypes.string,
     email: PropTypes.string
-  }
+  };
 
   state = {
     name: this.props.username,
@@ -29,14 +29,14 @@ class Contact extends PureComponent {
     pending: false,
     error: null,
     success: false
-  }
+  };
 
   handleInputChange = (value, name) => {
     this.setState({
       [name]: value,
       pending: false
     });
-  }
+  };
 
   handleSubmit = (params) => {
     this.setState({
@@ -61,7 +61,7 @@ class Contact extends PureComponent {
         });
       }
     });
-  }
+  };
 
   render() {
     // const { intl } = this.props;
@@ -77,15 +77,15 @@ class Contact extends PureComponent {
             <P first>
               <FormattedMessage
                 id="contact.text"
-                values={ {
+                values={{
                   link: <FormattedMessage id="contact.textLink" />
-                } }
+                }}
               />
             </P>
             <P>
               <FormattedMessage id="login.email" />
-              { ': ' }
-              <Link href="mailto:hello@booky.io">{ 'hello@booky.io' }</Link>
+              {': '}
+              <Link href="mailto:hello@booky.io">{'hello@booky.io'}</Link>
             </P>
           </span>
           <Illustration
@@ -93,7 +93,7 @@ class Contact extends PureComponent {
             className="contact__illustration"
             // className="contact__illustration booky--hide-mobile-tablet"
           />
-          { /* success ? (
+          {/* success ? (
             <SuccessIllustration message="contact.success" illustration="join-success" width="400" />
           ) : (
             <>

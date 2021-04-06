@@ -11,9 +11,9 @@ class DeleteAccount extends Component {
 
     return (
       <Base
-        { ...props }
-        onSave={ onSave }
-        headline={ intl.formatMessage({ id: 'modal.deleteAccount' }) }
+        {...props}
+        onSave={onSave}
+        headline={intl.formatMessage({ id: 'modal.deleteAccount' })}
       >
         <Label>
           <FormattedMessage id="modal.deleteAccountLabel" />

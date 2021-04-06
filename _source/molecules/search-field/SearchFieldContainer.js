@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 
-import { searchBookmarks, resetSearch, updateSearchData } from '../../_state/search/actions';
+import {
+  searchBookmarks,
+  resetSearch,
+  updateSearchData
+} from '../../_state/search/actions';
 import Component from './SearchField';
 
 export const mapStateToProps = (state) => ({
@@ -15,9 +19,6 @@ export const mapDispatchToProps = {
   updateSearchData
 };
 
-const Container = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

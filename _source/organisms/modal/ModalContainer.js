@@ -1,9 +1,6 @@
 import { connect } from 'react-redux';
 import Component from './Modal';
-import {
-  closeModal,
-  hideModal
-} from '../../_state/modal/actions';
+import { closeModal, hideModal } from '../../_state/modal/actions';
 import {
   addCategory,
   editCategory,
@@ -26,7 +23,9 @@ export const mapStateToProps = (state) => {
   let bookmarkCount;
 
   if (state.categories.length) {
-    const category = state.categories.find(({id}) => id === state.modal.data.id);
+    const category = state.categories.find(
+      ({ id }) => id === state.modal.data.id
+    );
 
     bookmarkCount = category ? category.bookmarks.length > 0 : null;
   }
@@ -38,8 +37,12 @@ export const mapStateToProps = (state) => {
     darkMode: state.user.settings.darkMode,
     data: {
       ...state.modal.data,
-      categories: state.categories.filter(({id}) => id !== state.modal.data.id),
-      dashboards: state.dashboards.items.filter(({id}) => id !== state.modal.data.id),
+      categories: state.categories.filter(
+        ({ id }) => id !== state.modal.data.id
+      ),
+      dashboards: state.dashboards.items.filter(
+        ({ id }) => id !== state.modal.data.id
+      ),
       activeDashboard: state.user.settings.defaultDashboardId,
       bookmarkCount
     }
@@ -62,9 +65,6 @@ export const mapDispatchToProps = {
   resetSearch
 };
 
-const Container = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

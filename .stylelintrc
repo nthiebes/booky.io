@@ -51,6 +51,8 @@
     "selector-max-universal": 1,
     "string-quotes": "double",
     "value-no-vendor-prefix": true,
-    "declaration-empty-line-before": "never"
+    "declaration-empty-line-before": "never",
+    "declaration-colon-newline-after": null,
+    "value-list-comma-newline-after": null
   }
 }
