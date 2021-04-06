@@ -231,3 +231,15 @@ export const importBookmarks = ({ params, onSuccess, onError }) => () => {
     }
   });
 };
+
+export const getPollResults = ({ onSuccess, onError }) => () => {
+  fetcher({
+    url: '/polls',
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+};
