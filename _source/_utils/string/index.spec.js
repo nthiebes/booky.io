@@ -12,6 +12,6 @@ describe('decodeEmoji', () => {
   });
 
   it('url decodes a string with broken emoji', () => {
-    expect(decodeEmoji('%F0%9F%92%AA%F0%9F%92%A')).toBe('💪');
+    expect(decodeEmoji('%F0%9F%92%AA%F0%9F%92%A')).toBe('💪%F0%9F%92%A');
   });
 });
