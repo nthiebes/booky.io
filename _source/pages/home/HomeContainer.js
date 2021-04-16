@@ -8,7 +8,10 @@ const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn,
   blurContent: state.modal.open && state.user.settings.blurEffect,
   hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
-  keywordExists: state.search.total !== null || state.search.pending
+  dashboardsOpen: state.user.settings.pinned,
+  keywordExists: state.search.total !== null || state.search.pending,
+  language: state.intl.locale,
+  darkMode: state.user.settings.darkMode
 });
 const mapDispatchToProps = {
   getDashboards,
