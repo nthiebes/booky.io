@@ -16,8 +16,8 @@ import Expandable from '../../molecules/expandable';
 import Form from '../../molecules/form';
 
 const getPollPercentages = (results) => {
-  const onePercent =
-    (results[0].votes + results[1].votes + results[2].votes) / 100;
+  const allVotes = results[0].votes + results[1].votes + results[2].votes;
+  const onePercent = 100 / (allVotes || 1);
 
   return [
     Math.round(onePercent * results[0].votes),
@@ -29,8 +29,9 @@ const getPollPercentages = (results) => {
 export default class Next extends PureComponent {
   static propTypes = {
     voted: PropTypes.bool.isRequired,
-    updateSettings: PropTypes.func.isRequired,
-    getPollResults: PropTypes.func.isRequired
+    getPollResults: PropTypes.func.isRequired,
+    vote: PropTypes.func.isRequired,
+    updateUserData: PropTypes.func.isRequired
   };
 
   state = {
@@ -38,11 +39,15 @@ export default class Next extends PureComponent {
     error: null,
     pollResults: null,
     pollPercentages: null,
-    pollResultsAnimation: false
+    pollResultsAnimation: false,
+    votePending: false,
+    activeValue: null,
+    voteError: null,
+    voted: this.props.voted
   };
 
   componentDidMount() {
-    const { getPollResults } = this.props;
+    const { getPollResults, voted } = this.props;
 
     getPollResults({
       onSuccess: (data) => {
@@ -51,6 +56,12 @@ export default class Next extends PureComponent {
           pollResults: data,
           pollPercentages: getPollPercentages(data)
         });
+
+        this.timeout = window.setTimeout(() => {
+          this.setState({
+            pollResultsAnimation: voted
+          });
+        }, 500);
       },
       onError: (error) => {
         this.setState({
@@ -59,12 +70,6 @@ export default class Next extends PureComponent {
         });
       }
     });
-
-    this.timeout = window.setTimeout(() => {
-      this.setState({
-        pollResultsAnimation: this.props.voted
-      });
-    }, 500);
   }
 
   componentWillUnmount() {
@@ -74,36 +79,65 @@ export default class Next extends PureComponent {
   timeout;
 
   handleRadioChange = (event) => {
-    const pollResults = [...this.state.pollResults];
-
-    pollResults[event.value].votes = pollResults[event.value].votes + 1;
-
     this.setState({
-      pollResults,
-      pollPercentages: getPollPercentages(pollResults)
+      activeValue: Number(event.value)
     });
   };
 
   handleSubmit = () => {
-    this.props.updateSettings({
-      voted: true
+    const { vote, updateUserData } = this.props;
+    const { activeValue, pollResults } = this.state;
+
+    this.setState({
+      votePending: true
     });
 
-    this.timeout = window.setTimeout(() => {
-      this.setState({
-        pollResultsAnimation: true
-      });
-    }, 500);
+    vote({
+      id: activeValue,
+      onSuccess: () => {
+        const newPollResults = [...pollResults];
+        const option = newPollResults.findIndex(({ id }) => id === activeValue);
+
+        newPollResults[option].votes = newPollResults[option].votes + 1;
+
+        updateUserData({
+          settings: {
+            voted: true
+          }
+        });
+
+        this.setState({
+          pollResults: newPollResults,
+          pollPercentages: getPollPercentages(newPollResults),
+          votePending: false,
+          voted: true
+        });
+
+        this.timeout = window.setTimeout(() => {
+          this.setState({
+            pollResultsAnimation: true
+          });
+        }, 500);
+      },
+      onError: (voteError) => {
+        this.setState({
+          votePending: false,
+          voteError
+        });
+      }
+    });
   };
 
   render() {
-    const { voted } = this.props;
     const {
       pollResults,
       pending,
       pollPercentages,
       pollResultsAnimation,
-      error
+      error,
+      votePending,
+      voteError,
+      voted
     } = this.state;
     const disqusConfig = {
       url: 'https://booky.io/next',
@@ -123,25 +157,23 @@ export default class Next extends PureComponent {
         <Section className="next">
           <span>
             <H1>
-              <FormattedMessage id="next.title" />
+              <FormattedMessage id="Was kommt als Nächstes?" />
             </H1>
             <P>
-              <FormattedMessage id="Take a look at what we're currently working on and vote for the next feature!" />
-            </P>
-            <P>
-              <FormattedMessage id="New poll options will be available after the winning feature of the previous poll is completed." />
-              <FormattedMessage id="The second place of a poll will stay, and two new options will be available." />
+              <FormattedMessage id="Sobald wir mit der aktuellen Funktion fertig sind, kannst du hier erneut abstimmen." />
             </P>
             <H2>
               <FormattedMessage id="next.current" />
             </H2>
-            <Expandable headline={<FormattedMessage id="next.current.title" />}>
+            <Expandable
+              headline={<FormattedMessage id="next.upcoming.title" />}
+            >
               <P noPadding>
-                <FormattedMessage id="next.current.more" />
+                <FormattedMessage id="next.upcoming.more" />
               </P>
             </Expandable>
             <H2>
-              <FormattedMessage id="What feature would you like to see next?" />
+              <FormattedMessage id="Was möchtest du danach sehen?" />
             </H2>
             {pending && (
               <>
@@ -188,8 +220,8 @@ export default class Next extends PureComponent {
                   id="poll-option-1"
                   name="poll"
                   onChange={this.handleRadioChange}
-                  value="0"
-                  checked
+                  value={pollResults[0].id}
+                  required
                 >
                   <b>
                     <FormattedMessage id={pollResults[0].name} />
@@ -199,7 +231,7 @@ export default class Next extends PureComponent {
                   id="poll-option-2"
                   name="poll"
                   onChange={this.handleRadioChange}
-                  value="1"
+                  value={pollResults[1].id}
                 >
                   <b>
                     <FormattedMessage id={pollResults[1].name} />
@@ -209,14 +241,20 @@ export default class Next extends PureComponent {
                   id="poll-option-3"
                   name="poll"
                   onChange={this.handleRadioChange}
-                  value="2"
+                  value={pollResults[2].id}
                 >
                   <b>
                     <FormattedMessage id={pollResults[2].name} />
                   </b>
                 </Radio>
-                <ButtonLargeBlue contentBefore icon="vote">
-                  {'Vote'}
+                {voteError && <ErrorMessage message={voteError} hasIcon />}
+                <ButtonLargeBlue
+                  contentBefore
+                  icon="vote"
+                  pending={votePending}
+                  disabled={votePending}
+                >
+                  <FormattedMessage id="Abstimmen" />
                 </ButtonLargeBlue>
               </Form>
             )}

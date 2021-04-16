@@ -243,3 +243,16 @@ export const getPollResults = ({ onSuccess, onError }) => () => {
     }
   });
 };
+
+export const vote = ({ id, onSuccess, onError }) => () => {
+  fetcher({
+    url: `/polls/${id}`,
+    method: 'POST',
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+};
