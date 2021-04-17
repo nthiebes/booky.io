@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -9,12 +10,32 @@ import Search from '../../organisms/search';
 import { DashboardsSidebar } from '../../organisms/dashboards';
 import { H2, H3, Display } from '../../atoms/headline';
 import Link from '../../atoms/link';
-import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
+import P from '../../atoms/paragraph';
+import {
+  ButtonLargeBlue,
+  ButtonLargeLight,
+  ButtonSmallPrimary,
+  ButtonSmallLight,
+  ButtonSmallMedium
+} from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
 import Feature from '../../molecules/feature';
 import Features from '../../molecules/features';
+
+const surveyMap = {
+  de: {
+    link: 'https://survey.typeform.com/to/baRC3Yb3',
+    copy: 'Hast du kurz Zeit, uns zu helfen, booky.io zu verbessern?',
+    yesCopy: 'Zur Umfrage'
+  },
+  en: {
+    link: 'https://survey.typeform.com/to/tyAz7rMT',
+    copy: 'Do you have a moment to help us improve booky.io?',
+    yesCopy: 'To the survey'
+  }
+};
 
 class Home extends Component {
   static propTypes = {
@@ -28,7 +49,13 @@ class Home extends Component {
     categoriesPending: PropTypes.bool,
     hasCategories: PropTypes.bool,
     dashboardsOpen: PropTypes.bool,
-    keywordExists: PropTypes.bool
+    keywordExists: PropTypes.bool,
+    language: PropTypes.string,
+    darkMode: PropTypes.bool
+  };
+
+  state = {
+    showSurveyBanner: !localStorage.getItem('hideSurveyBanner')
   };
 
   componentDidMount() {
@@ -56,14 +83,27 @@ class Home extends Component {
     loggedIn && getDashboards(Boolean(term));
   }
 
+  hideSurveyBanner = () => {
+    localStorage.setItem('hideSurveyBanner', true);
+
+    this.setState({
+      showSurveyBanner: false
+    });
+  };
+
   render() {
     const {
       loggedIn,
       blurContent,
       hasSidebar,
       intl,
-      keywordExists
+      keywordExists,
+      language,
+      darkMode,
+      dashboardsOpen
     } = this.props;
+    const { showSurveyBanner } = this.state;
+    const DeclineButton = darkMode ? ButtonSmallLight : ButtonSmallMedium;
 
     return loggedIn ? (
       <Page toolbar={loggedIn} dashboards home>
@@ -75,7 +115,38 @@ class Home extends Component {
         {keywordExists ? (
           <Search />
         ) : (
-          <Categories className={classNames(blurContent && 'page--blur')} />
+          <>
+            {showSurveyBanner && (
+              <div
+                role="banner"
+                className={classNames(
+                  'survey',
+                  darkMode && 'survey--dark-mode',
+                  hasSidebar && 'survey--sidebar',
+                  hasSidebar && dashboardsOpen && 'survey--shifted'
+                )}
+              >
+                <P noPadding className="survey__text">
+                  {surveyMap[language].copy}
+                </P>
+                <span className="survey__buttons">
+                  <ButtonSmallPrimary
+                    solid
+                    href={surveyMap[language].link}
+                    target="_blank"
+                    className="survey__confirm"
+                    onClick={this.hideSurveyBanner}
+                  >
+                    {surveyMap[language].yesCopy}
+                  </ButtonSmallPrimary>
+                  <DeclineButton onClick={this.hideSurveyBanner}>
+                    <FormattedMessage id="button.no" />
+                  </DeclineButton>
+                </span>
+              </div>
+            )}
+            <Categories className={classNames(blurContent && 'page--blur')} />
+          </>
         )}
       </Page>
     ) : (
