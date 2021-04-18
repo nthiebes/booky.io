@@ -220,7 +220,7 @@ export default class Next extends PureComponent {
                   id="poll-option-1"
                   name="poll"
                   onChange={this.handleRadioChange}
-                  value={pollResults[0].id}
+                  value={`${pollResults[0].id}`}
                   className="next__option"
                   required
                 >
@@ -232,7 +232,7 @@ export default class Next extends PureComponent {
                   id="poll-option-2"
                   name="poll"
                   onChange={this.handleRadioChange}
-                  value={pollResults[1].id}
+                  value={`${pollResults[1].id}`}
                   className="next__option"
                 >
                   <b>
@@ -243,7 +243,7 @@ export default class Next extends PureComponent {
                   id="poll-option-3"
                   name="poll"
                   onChange={this.handleRadioChange}
-                  value={pollResults[2].id}
+                  value={`${pollResults[2].id}`}
                   className="next__option"
                 >
                   <b>
