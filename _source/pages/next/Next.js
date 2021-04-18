@@ -219,6 +219,7 @@ export default class Next extends PureComponent {
                   name="poll"
                   onChange={this.handleRadioChange}
                   value={pollResults[0].id}
+                  className="next__option"
                   required
                 >
                   <b>
@@ -230,6 +231,7 @@ export default class Next extends PureComponent {
                   name="poll"
                   onChange={this.handleRadioChange}
                   value={pollResults[1].id}
+                  className="next__option"
                 >
                   <b>
                     <FormattedMessage id={pollResults[1].name} />
@@ -240,6 +242,7 @@ export default class Next extends PureComponent {
                   name="poll"
                   onChange={this.handleRadioChange}
                   value={pollResults[2].id}
+                  className="next__option"
                 >
                   <b>
                     <FormattedMessage id={pollResults[2].name} />
