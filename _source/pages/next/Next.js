@@ -147,9 +147,9 @@ export default class Next extends PureComponent {
     let result1, result2, result3;
 
     if (pollPercentages) {
-      result1 = pollResultsAnimation ? `${pollPercentages[0]}%` : '3.5rem';
-      result2 = pollResultsAnimation ? `${pollPercentages[1]}%` : '3.5rem';
-      result3 = pollResultsAnimation ? `${pollPercentages[2]}%` : '3.5rem';
+      result1 = pollResultsAnimation ? `${pollPercentages[0]}%` : '4rem';
+      result2 = pollResultsAnimation ? `${pollPercentages[1]}%` : '4rem';
+      result3 = pollResultsAnimation ? `${pollPercentages[2]}%` : '4rem';
     }
 
     return (

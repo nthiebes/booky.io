@@ -35,11 +35,11 @@
 
 .next__vote {
   position: relative;
-  transition: width 1s ease;
+  transition: width 1s ease-in-out;
   color: $color-font--white;
   padding: 5px 7px;
   margin-bottom: 5px;
-  min-width: 3rem;
+  min-width: 3.5rem;
 
   &::before {
     content: "";
