@@ -167,9 +167,6 @@ export default class Next extends PureComponent {
                 <FormattedMessage id="next.current.more" />
               </P>
             </Expandable>
-            <P>
-              <FormattedMessage id="next.text" />
-            </P>
             <H2>
               <FormattedMessage id="next.upcoming" />
             </H2>
@@ -182,35 +179,40 @@ export default class Next extends PureComponent {
             )}
             {error && <ErrorMessage message={error} hasIcon />}
             {voted && pollPercentages && (
-              <div className="next__results">
-                <div
-                  style={{ width: result1 }}
-                  className="next__vote next__vote--option1"
-                >{`${pollPercentages[0]}%`}</div>
-                <P>
-                  <b>
-                    <FormattedMessage id={pollResults[0].name} />
-                  </b>
+              <>
+                <div className="next__results">
+                  <div
+                    style={{ width: result1 }}
+                    className="next__vote next__vote--option1"
+                  >{`${pollPercentages[0]}%`}</div>
+                  <P>
+                    <b>
+                      <FormattedMessage id={pollResults[0].name} />
+                    </b>
+                  </P>
+                  <div
+                    style={{ width: result2 }}
+                    className="next__vote next__vote--option2"
+                  >{`${pollPercentages[1]}%`}</div>
+                  <P>
+                    <b>
+                      <FormattedMessage id={pollResults[1].name} />
+                    </b>
+                  </P>
+                  <div
+                    style={{ width: result3 }}
+                    className="next__vote next__vote--option3"
+                  >{`${pollPercentages[2]}%`}</div>
+                  <P>
+                    <b>
+                      <FormattedMessage id={pollResults[2].name} />
+                    </b>
+                  </P>
+                </div>
+                <P className="next__text">
+                  <FormattedMessage id="next.text" />
                 </P>
-                <div
-                  style={{ width: result2 }}
-                  className="next__vote next__vote--option2"
-                >{`${pollPercentages[1]}%`}</div>
-                <P>
-                  <b>
-                    <FormattedMessage id={pollResults[1].name} />
-                  </b>
-                </P>
-                <div
-                  style={{ width: result3 }}
-                  className="next__vote next__vote--option3"
-                >{`${pollPercentages[2]}%`}</div>
-                <P>
-                  <b>
-                    <FormattedMessage id={pollResults[2].name} />
-                  </b>
-                </P>
-              </div>
+              </>
             )}
             {!voted && pollResults && (
               <Form onSubmit={this.handleSubmit}>
