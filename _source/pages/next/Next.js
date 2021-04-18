@@ -20,9 +20,9 @@ const getPollPercentages = (results) => {
   const onePercent = 100 / (allVotes || 1);
 
   return [
-    Math.round(onePercent * results[0].votes),
-    Math.round(onePercent * results[1].votes),
-    Math.round(onePercent * results[2].votes)
+    Math.round(onePercent * results[0].votes * 10) / 10,
+    Math.round(onePercent * results[1].votes * 10) / 10,
+    Math.round(onePercent * results[2].votes * 10) / 10
   ];
 };
 
@@ -257,7 +257,7 @@ export default class Next extends PureComponent {
                   pending={votePending}
                   disabled={votePending}
                 >
-                  <FormattedMessage id="Abstimmen" />
+                  <FormattedMessage id="button.send" />
                 </ButtonLargeBlue>
               </Form>
             )}
