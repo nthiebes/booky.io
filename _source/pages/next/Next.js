@@ -157,23 +157,21 @@ export default class Next extends PureComponent {
         <Section className="next">
           <span>
             <H1>
-              <FormattedMessage id="Was kommt als Nächstes?" />
+              <FormattedMessage id="next.title" />
             </H1>
-            <P>
-              <FormattedMessage id="Sobald wir mit der aktuellen Funktion fertig sind, kannst du hier erneut abstimmen." />
-            </P>
             <H2>
               <FormattedMessage id="next.current" />
             </H2>
-            <Expandable
-              headline={<FormattedMessage id="next.upcoming.title" />}
-            >
+            <Expandable headline={<FormattedMessage id="next.current.title" />}>
               <P noPadding>
-                <FormattedMessage id="next.upcoming.more" />
+                <FormattedMessage id="next.current.more" />
               </P>
             </Expandable>
+            <P>
+              <FormattedMessage id="next.text" />
+            </P>
             <H2>
-              <FormattedMessage id="Was möchtest du danach sehen?" />
+              <FormattedMessage id="next.upcoming" />
             </H2>
             {pending && (
               <>
