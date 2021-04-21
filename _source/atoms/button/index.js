@@ -21,15 +21,15 @@ export function ButtonSmallDark(props) {
 }
 ButtonSmallDark.displayName = 'ButtonSmallDark';
 
-// export function ButtonSmallBlue(props) {
-//   return <Button { ...props } size="small" color="blue" />;
-// }
-// ButtonSmallBlue.displayName = 'ButtonSmallBlue';
+export function ButtonSmallBlue(props) {
+  return <Button {...props} size="small" color="blue" />;
+}
+ButtonSmallBlue.displayName = 'ButtonSmallBlue';
 
-// export function ButtonSmallGreen(props) {
-//   return <Button { ...props } size="small" color="green" />;
-// }
-// ButtonSmallBlue.displayName = 'ButtonSmallGreen';
+export function ButtonSmallGreen(props) {
+  return <Button {...props} size="small" color="green" />;
+}
+ButtonSmallBlue.displayName = 'ButtonSmallGreen';
 
 export function ButtonLargePrimary(props) {
   return <Button {...props} size="large" color="primary" />;
