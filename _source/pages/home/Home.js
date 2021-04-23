@@ -55,7 +55,8 @@ class Home extends Component {
   };
 
   state = {
-    showSurveyBanner: !localStorage.getItem('hideSurveyBanner')
+    // showSurveyBanner: !localStorage.getItem('hideSurveyBanner')
+    showSurveyBanner: false
   };
 
   componentDidMount() {
