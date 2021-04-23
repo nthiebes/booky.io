@@ -38,9 +38,12 @@ class Account extends Component {
     {
       name: this.props.intl.formatMessage({ id: 'account.export' }),
       key: 'export'
+    },
+    {
+      name: this.props.intl.formatMessage({ id: 'Verwalten' }),
+      key: 'manage'
     }
   ];
-  // name: props.intl.formatMessage({ id: 'account.account' })
 
   handleTabClick = (activeTab) => {
     const { history } = this.props;
