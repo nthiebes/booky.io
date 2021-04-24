@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -48,17 +48,25 @@ const menuItemsLoggedIn = [
   }
 ];
 
-class Menu extends Component {
+class Menu extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     className: PropTypes.string,
     loggedIn: PropTypes.bool,
     isBeta: PropTypes.bool.isRequired,
-    newsVersion: PropTypes.number.isRequired
+    newsVersion: PropTypes.number.isRequired,
+    voted: PropTypes.number.isRequired
   };
 
   render() {
-    const { className, loggedIn, intl, isBeta, newsVersion } = this.props;
+    const {
+      className,
+      loggedIn,
+      intl,
+      isBeta,
+      newsVersion,
+      voted
+    } = this.props;
     let menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     menuItems = menuItems.filter((item) => {
@@ -85,7 +93,9 @@ class Menu extends Component {
             color="light"
             isNavLink
             noUnderline
-            hasBadge={name === 'new'}
+            hasBadge={
+              (voted < config.POLL_VERSION && name === 'next') || name === 'new'
+            }
           >
             <Icon icon={name} color="light" />
             <FormattedMessage id={`menu.${name}`} />

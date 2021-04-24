@@ -231,3 +231,28 @@ export const importBookmarks = ({ params, onSuccess, onError }) => () => {
     }
   });
 };
+
+export const getPollResults = ({ onSuccess, onError }) => () => {
+  fetcher({
+    url: '/polls',
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+};
+
+export const vote = ({ id, onSuccess, onError }) => () => {
+  fetcher({
+    url: `/polls/${id}`,
+    method: 'POST',
+    onSuccess: (data) => {
+      onSuccess && onSuccess(data);
+    },
+    onError: (error) => {
+      onError && onError(error);
+    }
+  });
+};

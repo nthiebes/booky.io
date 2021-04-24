@@ -11,9 +11,16 @@
   color: $color-font--medium;
   line-height: 1.5;
   display: list-item;
+  transition: color 0.2s linear;
 
   &:focus {
     outline: 1px dashed $color-font--medium;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: $color-font--primary;
+    }
   }
 }
 
