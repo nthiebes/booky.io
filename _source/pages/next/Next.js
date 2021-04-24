@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { DiscussionEmbed } from 'disqus-react';
 
+import { config } from '../../config';
 import Page from '../../templates/page';
 import { H1, H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
@@ -28,10 +29,9 @@ const getPollPercentages = (results) => {
 
 export default class Next extends PureComponent {
   static propTypes = {
-    voted: PropTypes.bool.isRequired,
+    voted: PropTypes.number.isRequired,
     getPollResults: PropTypes.func.isRequired,
-    vote: PropTypes.func.isRequired,
-    updateUserData: PropTypes.func.isRequired
+    vote: PropTypes.func.isRequired
   };
 
   state = {
@@ -43,7 +43,7 @@ export default class Next extends PureComponent {
     votePending: false,
     activeValue: null,
     voteError: null,
-    voted: this.props.voted
+    voted: this.props.voted >= config.POLL_VERSION
   };
 
   componentDidMount() {
@@ -85,7 +85,7 @@ export default class Next extends PureComponent {
   };
 
   handleSubmit = () => {
-    const { vote, updateUserData } = this.props;
+    const { vote } = this.props;
     const { activeValue, pollResults } = this.state;
 
     this.setState({
@@ -99,12 +99,6 @@ export default class Next extends PureComponent {
         const option = newPollResults.findIndex(({ id }) => id === activeValue);
 
         newPollResults[option].votes = newPollResults[option].votes + 1;
-
-        updateUserData({
-          settings: {
-            voted: true
-          }
-        });
 
         this.setState({
           pollResults: newPollResults,

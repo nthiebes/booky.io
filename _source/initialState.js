@@ -29,7 +29,7 @@ export default {
       closeEditMode: true,
       maxColumnCount: null,
       newsVersion: 0,
-      voted: false
+      voted: 0
     }
   },
   dashboards: {

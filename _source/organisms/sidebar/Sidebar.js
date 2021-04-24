@@ -29,7 +29,7 @@ class Sidebar extends PureComponent {
     color: PropTypes.number.isRequired,
     isBeta: PropTypes.bool.isRequired,
     newsVersion: PropTypes.number.isRequired,
-    voted: PropTypes.bool.isRequired
+    voted: PropTypes.number.isRequired
   };
 
   static defaultProps = {
@@ -250,7 +250,7 @@ class Sidebar extends PureComponent {
                       onClick={closeSidebar}
                       tabIndex={open ? '0' : '-1'}
                       noUnderline
-                      hasBadge={!voted}
+                      hasBadge={voted < config.POLL_VERSION}
                     >
                       <Icon icon="next" />
                       <span

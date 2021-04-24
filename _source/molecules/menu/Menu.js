@@ -55,7 +55,7 @@ class Menu extends PureComponent {
     loggedIn: PropTypes.bool,
     isBeta: PropTypes.bool.isRequired,
     newsVersion: PropTypes.number.isRequired,
-    voted: PropTypes.bool.isRequired
+    voted: PropTypes.number.isRequired
   };
 
   render() {
@@ -93,7 +93,9 @@ class Menu extends PureComponent {
             color="light"
             isNavLink
             noUnderline
-            hasBadge={(!voted && name === 'next') || name === 'new'}
+            hasBadge={
+              (voted < config.POLL_VERSION && name === 'next') || name === 'new'
+            }
           >
             <Icon icon={name} color="light" />
             <FormattedMessage id={`menu.${name}`} />
