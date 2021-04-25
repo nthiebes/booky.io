@@ -31,6 +31,7 @@ export default class Next extends PureComponent {
   static propTypes = {
     voted: PropTypes.number.isRequired,
     getPollResults: PropTypes.func.isRequired,
+    updateUserData: PropTypes.func.isRequired,
     vote: PropTypes.func.isRequired
   };
 
@@ -85,7 +86,7 @@ export default class Next extends PureComponent {
   };
 
   handleSubmit = () => {
-    const { vote } = this.props;
+    const { vote, updateUserData } = this.props;
     const { activeValue, pollResults } = this.state;
 
     this.setState({
@@ -99,6 +100,12 @@ export default class Next extends PureComponent {
         const option = newPollResults.findIndex(({ id }) => id === activeValue);
 
         newPollResults[option].votes = newPollResults[option].votes + 1;
+
+        updateUserData({
+          settings: {
+            voted: config.POLL_VERSION
+          }
+        });
 
         this.setState({
           pollResults: newPollResults,
