@@ -57,7 +57,7 @@ class Routes extends Component {
           <Route path="/contact" component={Contact} />
           <Route path="/forgot" component={Forgot} />
           <Route path="/resend" component={Resend} />
-          <Route path="/next" component={Next} />
+          <Route path="/next" component={restricted(Next)} />
           <Route path="/bookmarklet" component={Bookmarklet} />
           <Route path="/activate/:token" component={publicOnly(Login)} />
           <Route

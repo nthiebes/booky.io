@@ -208,3 +208,67 @@
     }
   }
 }
+
+.button--small-green {
+  background-color: transparent;
+  border-color: $color--green;
+  color: $color--green;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color--green;
+      color: $color-font--white;
+    }
+
+    &:active .icon,
+    &:focus .icon {
+      color: $color-font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus {
+      background-color: $color--green;
+      color: $color-font--white;
+    }
+
+    &:hover .icon,
+    &:focus .icon {
+      color: $color-font--white;
+    }
+  }
+}
+
+.button--small-blue {
+  background-color: transparent;
+  border-color: $color--blue;
+  color: $color--blue;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color--blue;
+      color: $color-font--white;
+    }
+
+    &:active .icon,
+    &:focus .icon {
+      color: $color-font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus {
+      background-color: $color--blue;
+      color: $color-font--white;
+    }
+
+    &:hover .icon,
+    &:focus .icon {
+      color: $color-font--white;
+    }
+  }
+}

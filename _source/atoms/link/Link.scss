@@ -6,7 +6,7 @@
   display: inline-flex;
   cursor: pointer;
   text-decoration-skip-ink: auto;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .link--noUnderline {
@@ -20,6 +20,7 @@
     height: 7px;
     width: 7px;
     border-radius: 50%;
+    background-color: $color-font--white;
     right: -8px;
     top: 4px;
     animation: 2.5s ease infinite badge;

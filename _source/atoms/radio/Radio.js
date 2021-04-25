@@ -20,7 +20,8 @@ export default class Radio extends Component {
     inputClassName: PropTypes.string,
     labelClassName: PropTypes.string,
     first: PropTypes.bool,
-    illustration: PropTypes.string
+    illustration: PropTypes.string,
+    required: PropTypes.bool
   };
 
   handleInputChange = (event) => {
@@ -44,7 +45,8 @@ export default class Radio extends Component {
       inputClassName,
       labelClassName,
       first,
-      illustration
+      illustration,
+      required
     } = this.props;
 
     return (
@@ -76,6 +78,7 @@ export default class Radio extends Component {
           value={value}
           onChange={this.handleInputChange}
           defaultChecked={checked}
+          required={required}
         />
         <Label
           htmlFor={id}
