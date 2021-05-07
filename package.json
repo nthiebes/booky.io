@@ -42,7 +42,7 @@
     "@sentry/browser": "6.1.0",
     "abortcontroller-polyfill": "1.7.1",
     "classnames": "2.2.6",
-    "connected-react-router": "6.8.0",
+    "connected-react-router": "6.9.1",
     "core-js": "3.8.3",
     "disqus-react": "1.0.11",
     "emoji-regex": "9.2.1",
