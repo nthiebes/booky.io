@@ -11,7 +11,8 @@ export const mapStateToProps = (state) => ({
   minimalBookmarkButton: state.user.settings.minimalBookmarkButton,
   bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
   isMobile: state.user.isMobile,
-  isExtension: state.extension.active
+  isExtension: state.extension.active,
+  isDragging: state.dragging.isDragging
 });
 
 export const mapDispatchToProps = {

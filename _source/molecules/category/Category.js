@@ -31,7 +31,8 @@ class Category extends PureComponent {
     minimalBookmarkButton: PropTypes.bool.isRequired,
     bookmarkEditOnHover: PropTypes.bool.isRequired,
     isMobile: PropTypes.bool.isRequired,
-    isExtension: PropTypes.bool.isRequired
+    isExtension: PropTypes.bool.isRequired,
+    isDragging: PropTypes.bool
   };
 
   static defaultProps = {
@@ -97,7 +98,7 @@ class Category extends PureComponent {
     }
   };
 
-  onDragClick = () => {
+  onSortClick = () => {
     const { openModal, closeEditMode } = this.props;
 
     openModal('SortCategories');
@@ -144,7 +145,8 @@ class Category extends PureComponent {
       minimalBookmarkButton,
       bookmarkEditOnHover,
       isMobile,
-      isExtension
+      isExtension,
+      isDragging
     } = this.props;
     const { editMode, hoverEditMode } = this.state;
     const headerClassName = classNames(
@@ -203,7 +205,7 @@ class Category extends PureComponent {
                 <Icon
                   icon="sort"
                   label={intl.formatMessage({ id: 'category.sort' })}
-                  onClick={this.onDragClick}
+                  onClick={this.onSortClick}
                   isButton
                 />
               </Fragment>
@@ -234,10 +236,12 @@ class Category extends PureComponent {
           </header>
         )}
         <Droppable droppableId={id.toString()} type="bookmark">
-          {(provided) => (
+          {(provided, snapshot) => (
             <ul
               className={classNames(
                 'category__bookmarks',
+                isDragging && 'category_bookmarks--drag',
+                snapshot.isDraggingOver && 'category_bookmarks--drag-active',
                 hidden && !isExtension && 'category__bookmarks--hidden'
               )}
               ref={provided.innerRef}

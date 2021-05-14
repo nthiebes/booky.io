@@ -17,7 +17,8 @@ export default class Select extends Component {
     selected: PropTypes.string,
     disabled: PropTypes.bool,
     darkMode: PropTypes.bool,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    pending: PropTypes.bool
   };
 
   onChange = (event) => {
@@ -35,7 +36,8 @@ export default class Select extends Component {
       selected,
       disabled,
       darkMode,
-      value
+      value,
+      pending
     } = this.props;
 
     return (
@@ -48,18 +50,22 @@ export default class Select extends Component {
           onChange={this.onChange}
           value={value}
           defaultValue={selected}
-          disabled={disabled}
+          disabled={disabled || pending}
           className={classNames(
             'select',
             darkMode && 'select--dark-mode',
             className
           )}
         >
-          {options.map(({ text, value: optionValue }) => (
-            <option key={optionValue} value={optionValue}>
-              {text}
-            </option>
-          ))}
+          {pending ? (
+            <option value="">{'Loading...'}</option>
+          ) : (
+            options.map(({ text, value: optionValue }) => (
+              <option key={optionValue} value={optionValue}>
+                {text}
+              </option>
+            ))
+          )}
         </select>
       </Fragment>
     );

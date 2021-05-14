@@ -61,6 +61,7 @@ class CategoriesSorting extends PureComponent {
             message={error}
             className="categories-sorting__error"
             noAnimation
+            hasIcon
           />
         )}
         {!categories.length && !pending && !error && (
