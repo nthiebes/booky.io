@@ -18,7 +18,7 @@ const browser = isOpera
   : null;
 
 export const config = {
-  NEWS_VERSION: 12,
-  POLL_VERSION: 1,
+  NEWS_VERSION: 13,
+  POLL_VERSION: 2,
   browser
 };
