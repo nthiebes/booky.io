@@ -99,7 +99,6 @@ class AccountData extends Component {
           maxLength="225"
           required
           type={showPassword ? 'text' : 'password'}
-          autoComplete="current-password"
           disabled={pending}
         />
         <Input
