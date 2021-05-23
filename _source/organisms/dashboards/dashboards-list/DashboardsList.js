@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -22,7 +23,8 @@ class DashboardsList extends PureComponent {
     droppableIdSuffix: PropTypes.string.isRequired,
     closeEditMode: PropTypes.bool.isRequired,
     closeSidebar: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool
+    isDragging: PropTypes.bool,
+    minimalBookmarkButton: PropTypes.bool
   };
 
   static defaultProps = {
@@ -90,7 +92,8 @@ class DashboardsList extends PureComponent {
       darkMode,
       droppableIdSuffix,
       closeSidebar,
-      isDragging
+      isDragging,
+      minimalBookmarkButton
     } = this.props;
     const { editMode } = this.state;
     const noDashboards = dashboards.length === 0;
@@ -106,6 +109,21 @@ class DashboardsList extends PureComponent {
           <H2 style="h3" className="dashboards__headline">
             <FormattedMessage id="dashboard.title" />
           </H2>
+          {minimalBookmarkButton && (
+            <Icon
+              icon="add-collection"
+              label={intl.formatMessage(
+                { id: 'dashboard.add' },
+                {
+                  b: (msg) => msg
+                }
+              )}
+              onClick={this.addDashboard}
+              tabIndex={useTabIndex || pinned ? '0' : '-1'}
+              isButton
+              useSkeleton={noDashboards}
+            />
+          )}
           <Icon
             icon={editMode ? 'close' : 'more-horiz'}
             label={
@@ -259,18 +277,20 @@ class DashboardsList extends PureComponent {
             </ul>
           )}
         </Droppable>
-        <ButtonSmallPrimary
-          icon="add-collection"
-          className="dashboards__button"
-          onClick={this.addDashboard}
-          tabIndex={useTabIndex || pinned ? '0' : '-1'}
-          useSkeleton={noDashboards}
-        >
-          <FormattedMessage
-            id="dashboard.add"
-            values={{ b: (msg) => <b>{msg}</b> }}
-          />
-        </ButtonSmallPrimary>
+        {!minimalBookmarkButton && (
+          <ButtonSmallPrimary
+            icon="add-collection"
+            className="dashboards__button"
+            onClick={this.addDashboard}
+            tabIndex={useTabIndex || pinned ? '0' : '-1'}
+            useSkeleton={noDashboards}
+          >
+            <FormattedMessage
+              id="dashboard.add"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonSmallPrimary>
+        )}
         {dashboards.length === 1 && (
           <ButtonSmallPrimary
             icon="upload"

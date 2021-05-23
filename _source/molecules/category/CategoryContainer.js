@@ -5,7 +5,7 @@ import { openModal } from '../../_state/modal/actions';
 import { toggleCategory } from '../../_state/categories/actions';
 import { getBookmarks } from '../../_state/bookmarks/actions';
 
-export const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode,
   closeEditMode: state.user.settings.closeEditMode,
   minimalBookmarkButton: state.user.settings.minimalBookmarkButton,
@@ -14,13 +14,11 @@ export const mapStateToProps = (state) => ({
   isExtension: state.extension.active,
   isDragging: state.dragging.isDragging
 });
-
-export const mapDispatchToProps = {
+const mapDispatchToProps = {
   openModal,
   toggleCategory,
   getBookmarks
 };
-
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

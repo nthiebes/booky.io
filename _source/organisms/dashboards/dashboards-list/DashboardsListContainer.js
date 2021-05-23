@@ -11,7 +11,8 @@ const mapStateToProps = (state) => ({
   pinned: state.user.settings.pinned,
   darkMode: state.user.settings.darkMode,
   closeEditMode: state.user.settings.closeEditMode,
-  isDragging: state.dragging.isDragging
+  isDragging: state.dragging.isDragging,
+  minimalBookmarkButton: state.user.settings.minimalBookmarkButton
 });
 const mapDispatchToProps = {
   openModal,
