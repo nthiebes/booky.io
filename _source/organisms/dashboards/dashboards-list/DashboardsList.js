@@ -109,6 +109,18 @@ class DashboardsList extends PureComponent {
           <H2 style="h3" className="dashboards__headline">
             <FormattedMessage id="dashboard.title" />
           </H2>
+          <Icon
+            icon={editMode ? 'close' : 'more-horiz'}
+            label={
+              editMode
+                ? intl.formatMessage({ id: 'dashboard.editModeQuit' })
+                : intl.formatMessage({ id: 'dashboard.editMode' })
+            }
+            onClick={this.toggleEditMode}
+            tabIndex={useTabIndex || pinned ? '0' : '-1'}
+            isButton
+            useSkeleton={noDashboards}
+          />
           {minimalBookmarkButton && (
             <Icon
               icon="add-collection"
@@ -124,18 +136,6 @@ class DashboardsList extends PureComponent {
               useSkeleton={noDashboards}
             />
           )}
-          <Icon
-            icon={editMode ? 'close' : 'more-horiz'}
-            label={
-              editMode
-                ? intl.formatMessage({ id: 'dashboard.editModeQuit' })
-                : intl.formatMessage({ id: 'dashboard.editMode' })
-            }
-            onClick={this.toggleEditMode}
-            tabIndex={useTabIndex || pinned ? '0' : '-1'}
-            isButton
-            useSkeleton={noDashboards}
-          />
         </div>
         <Droppable
           droppableId={`dashboard-${droppableIdSuffix}`}
