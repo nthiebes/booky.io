@@ -8,7 +8,7 @@ stages:
 cache:
   paths:
     - node_modules/
-    - .cache/Cypress
+    - /root/.cache/Cypress
 
 install:
   stage: install
@@ -20,6 +20,7 @@ install:
     expire_in: 30 mins
     paths:
       - node_modules/
+      - /root/.cache/Cypress
 
 quality:lint:
   stage: quality
