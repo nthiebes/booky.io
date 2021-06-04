@@ -1,6 +1,5 @@
 {
   "workbench.colorTheme": "Monokai ST3",
-  "eslint.autoFixOnSave": true,
   "editor.tabSize": 2,
   "workbench.tree.indent": 20,
   "javascript.format.enable": false,
