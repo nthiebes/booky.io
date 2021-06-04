@@ -8,6 +8,7 @@ stages:
 cache:
   paths:
     - node_modules/
+    - /root/.cache/Cypress
 
 install:
   stage: install
