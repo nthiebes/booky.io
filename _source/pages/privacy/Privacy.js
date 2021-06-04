@@ -226,7 +226,7 @@ export default class Privacy extends Component {
               <P>The data processing controller on this website is:</P>
               <P>
                 Nico Thiebes
-                <br /> Wilseder Ring 43
+                <br /> Veritaskai 8
                 <br /> 21079 Hamburg
               </P>
 
@@ -809,7 +809,7 @@ export default class Privacy extends Component {
               </P>
               <P>
                 Nico Thiebes
-                <br /> Wilseder Ring 43
+                <br /> Veritaskai 8
                 <br /> 21079 Hamburg
               </P>
 

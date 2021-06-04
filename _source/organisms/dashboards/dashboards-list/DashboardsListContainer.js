@@ -10,7 +10,10 @@ const mapStateToProps = (state) => ({
   activeId: state.user.settings.defaultDashboardId,
   pinned: state.user.settings.pinned,
   darkMode: state.user.settings.darkMode,
-  closeEditMode: state.user.settings.closeEditMode
+  closeEditMode: state.user.settings.closeEditMode,
+  isDragging: state.dragging.isDragging,
+  dragType: state.dragging.type,
+  minimalBookmarkButton: state.user.settings.minimalBookmarkButton
 });
 const mapDispatchToProps = {
   openModal,

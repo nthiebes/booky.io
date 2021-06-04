@@ -22,6 +22,14 @@
   }
 }
 
+.category_bookmarks--drag {
+  outline: 2px dashed $color-font--medium;
+}
+
+.category_bookmarks--drag-active {
+  outline-color: $color-font--primary;
+}
+
 .category__bookmark-drag-wrapper {
   min-height: 36px;
 }

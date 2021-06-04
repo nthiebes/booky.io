@@ -7,6 +7,7 @@ import { parseBookmarkUrl } from '../../_utils/url';
 import AddBookmark from './modals/AddBookmarkContainer';
 import EditBookmark from './modals/EditBookmarkContainer';
 import DeleteBookmark from './modals/DeleteBookmark';
+import MoveBookmark from './modals/MoveBookmarkContainer';
 import AddCategory from './modals/AddCategory';
 import EditCategory from './modals/EditCategory';
 import DeleteCategory from './modals/DeleteCategory';
@@ -57,6 +58,10 @@ export default class Modal extends PureComponent {
       type: DeleteBookmark,
       action: this.props.deleteBookmark
     },
+    MoveBookmark: {
+      type: MoveBookmark,
+      action: this.props.editBookmark
+    },
     AddCategory: {
       type: AddCategory,
       action: this.props.addCategory
@@ -93,14 +98,20 @@ export default class Modal extends PureComponent {
     }
   };
 
+  // eslint-disable-next-line max-statements
   handleSave = (modalData) => {
     const { modal, data, resetSearch } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
     modalData.categoryId = parseInt(modalData.categoryId, 10);
     modalData.dashboardId = parseInt(modalData.dashboardId, 10);
+
     if (modalData.url) {
       modalData.url = parseBookmarkUrl(modalData.url);
+    }
+
+    if (modalData.position) {
+      modalData.position = parseInt(modalData.position, 10);
     }
 
     if (this.modalMap[modal].action) {
@@ -113,6 +124,7 @@ export default class Modal extends PureComponent {
         ...modalData,
         dashboardId: modalData.dashboardId || data.activeDashboard,
         onSuccess: () => {
+          modalData.onSuccess && modalData.onSuccess();
           this.closeModal();
           resetSearch();
         },

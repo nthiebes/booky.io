@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -21,7 +22,10 @@ class DashboardsList extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     droppableIdSuffix: PropTypes.string.isRequired,
     closeEditMode: PropTypes.bool.isRequired,
-    closeSidebar: PropTypes.func.isRequired
+    closeSidebar: PropTypes.func.isRequired,
+    isDragging: PropTypes.bool,
+    dragType: PropTypes.string,
+    minimalBookmarkButton: PropTypes.bool
   };
 
   static defaultProps = {
@@ -88,7 +92,10 @@ class DashboardsList extends PureComponent {
       useTabIndex,
       darkMode,
       droppableIdSuffix,
-      closeSidebar
+      closeSidebar,
+      isDragging,
+      dragType,
+      minimalBookmarkButton
     } = this.props;
     const { editMode } = this.state;
     const noDashboards = dashboards.length === 0;
@@ -116,6 +123,21 @@ class DashboardsList extends PureComponent {
             isButton
             useSkeleton={noDashboards}
           />
+          {minimalBookmarkButton && (
+            <Icon
+              icon="add-collection"
+              label={intl.formatMessage(
+                { id: 'dashboard.add' },
+                {
+                  b: (msg) => msg
+                }
+              )}
+              onClick={this.addDashboard}
+              tabIndex={useTabIndex || pinned ? '0' : '-1'}
+              isButton
+              useSkeleton={noDashboards}
+            />
+          )}
         </div>
         <Droppable
           droppableId={`dashboard-${droppableIdSuffix}`}
@@ -154,6 +176,7 @@ class DashboardsList extends PureComponent {
                           'dashboards__item',
                           dashboard.id === activeId &&
                             'dashboards__item--active',
+                          isDragging && 'dashboards__item--no-hover',
                           darkMode && 'dashboards__item--dark-mode'
                         )}
                         onClick={this.handleDashboardClick(dashboard.id)}
@@ -169,14 +192,33 @@ class DashboardsList extends PureComponent {
                         // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
                         role="button"
                       >
-                        <span
-                          className={classNames(
-                            'dashboards__label',
-                            darkMode && 'dashboards__label--dark-mode'
-                          )}
+                        <Droppable
+                          droppableId={`dashboard-${dashboard.id}`}
+                          type="bookmark"
+                          isDropDisabled={dashboard.id === activeId}
                         >
-                          {dashboard.name}
-                        </span>
+                          {(providedDroppableDashboard, snapshot) => (
+                            <span
+                              className={classNames(
+                                'dashboards__label',
+                                isDragging &&
+                                  dragType === 'bookmark' &&
+                                  dashboard.id !== activeId &&
+                                  'category_bookmarks--drag',
+                                snapshot.isDraggingOver &&
+                                  'category_bookmarks--drag-active',
+                                darkMode && 'dashboards__label--dark-mode'
+                              )}
+                              ref={providedDroppableDashboard.innerRef}
+                              {...providedDroppableDashboard.droppableProps}
+                            >
+                              {dashboard.name}
+                              <ul className="dashboards__placeholder">
+                                {providedDroppableDashboard.placeholder}
+                              </ul>
+                            </span>
+                          )}
+                        </Droppable>
                         {editMode && (
                           <Fragment>
                             <Icon
@@ -238,18 +280,20 @@ class DashboardsList extends PureComponent {
             </ul>
           )}
         </Droppable>
-        <ButtonSmallPrimary
-          icon="add-collection"
-          className="dashboards__button"
-          onClick={this.addDashboard}
-          tabIndex={useTabIndex || pinned ? '0' : '-1'}
-          useSkeleton={noDashboards}
-        >
-          <FormattedMessage
-            id="dashboard.add"
-            values={{ b: (msg) => <b>{msg}</b> }}
-          />
-        </ButtonSmallPrimary>
+        {!minimalBookmarkButton && (
+          <ButtonSmallPrimary
+            icon="add-collection"
+            className="dashboards__button"
+            onClick={this.addDashboard}
+            tabIndex={useTabIndex || pinned ? '0' : '-1'}
+            useSkeleton={noDashboards}
+          >
+            <FormattedMessage
+              id="dashboard.add"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonSmallPrimary>
+        )}
         {dashboards.length === 1 && (
           <ButtonSmallPrimary
             icon="upload"

@@ -66,7 +66,7 @@ export default {
   },
   dragging: {
     isDragging: false,
-    dragType: null
+    type: null
   },
   extension: {
     active: Boolean(window.location.pathname.match(/extension/gi)),
