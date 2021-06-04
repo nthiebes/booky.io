@@ -24,6 +24,7 @@ class DashboardsList extends PureComponent {
     closeEditMode: PropTypes.bool.isRequired,
     closeSidebar: PropTypes.func.isRequired,
     isDragging: PropTypes.bool,
+    dragType: PropTypes.string,
     minimalBookmarkButton: PropTypes.bool
   };
 
@@ -93,6 +94,7 @@ class DashboardsList extends PureComponent {
       droppableIdSuffix,
       closeSidebar,
       isDragging,
+      dragType,
       minimalBookmarkButton
     } = this.props;
     const { editMode } = this.state;
@@ -200,6 +202,7 @@ class DashboardsList extends PureComponent {
                               className={classNames(
                                 'dashboards__label',
                                 isDragging &&
+                                  dragType === 'bookmark' &&
                                   dashboard.id !== activeId &&
                                   'category_bookmarks--drag',
                                 snapshot.isDraggingOver &&

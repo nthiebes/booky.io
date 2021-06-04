@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode,
   closeEditMode: state.user.settings.closeEditMode,
   isDragging: state.dragging.isDragging,
+  dragType: state.dragging.type,
   minimalBookmarkButton: state.user.settings.minimalBookmarkButton
 });
 const mapDispatchToProps = {

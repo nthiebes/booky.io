@@ -12,7 +12,8 @@ const mapStateToProps = (state) => ({
   bookmarkEditOnHover: state.user.settings.bookmarkEditOnHover,
   isMobile: state.user.isMobile,
   isExtension: state.extension.active,
-  isDragging: state.dragging.isDragging
+  isDragging: state.dragging.isDragging,
+  dragType: state.dragging.type
 });
 const mapDispatchToProps = {
   openModal,

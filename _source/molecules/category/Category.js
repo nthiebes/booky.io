@@ -32,7 +32,8 @@ class Category extends PureComponent {
     bookmarkEditOnHover: PropTypes.bool.isRequired,
     isMobile: PropTypes.bool.isRequired,
     isExtension: PropTypes.bool.isRequired,
-    isDragging: PropTypes.bool
+    isDragging: PropTypes.bool,
+    dragType: PropTypes.string
   };
 
   static defaultProps = {
@@ -146,7 +147,8 @@ class Category extends PureComponent {
       bookmarkEditOnHover,
       isMobile,
       isExtension,
-      isDragging
+      isDragging,
+      dragType
     } = this.props;
     const { editMode, hoverEditMode } = this.state;
     const headerClassName = classNames(
@@ -240,7 +242,9 @@ class Category extends PureComponent {
             <ul
               className={classNames(
                 'category__bookmarks',
-                isDragging && 'category_bookmarks--drag',
+                isDragging &&
+                  dragType === 'bookmark' &&
+                  'category_bookmarks--drag',
                 snapshot.isDraggingOver && 'category_bookmarks--drag-active',
                 hidden && !isExtension && 'category__bookmarks--hidden'
               )}

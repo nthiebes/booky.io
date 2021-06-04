@@ -58,7 +58,7 @@ export default class Booky extends Component {
 
     if (!isMobile) {
       startDragging({
-        dragType: type
+        type
       });
     }
   };
