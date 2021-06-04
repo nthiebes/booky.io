@@ -8,7 +8,10 @@ export const mapStateToProps = (state) => ({
   open: state.sidebar.open,
   hasSidebar: state.user.settings.dashboardsStyle === 'sidebar',
   darkMode: state.user.settings.darkMode,
-  color: state.user.settings.navigationBarColor
+  color: state.user.settings.navigationBarColor,
+  isBeta: state.user.isBeta,
+  newsVersion: state.user.settings.newsVersion,
+  voted: state.user.settings.voted
 });
 
 export const mapDispatchToProps = {
@@ -16,9 +19,6 @@ export const mapDispatchToProps = {
   logout
 };
 
-const Container = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

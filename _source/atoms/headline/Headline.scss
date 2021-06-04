@@ -119,7 +119,9 @@
   text-decoration: none;
   transition: opacity 0.2s linear, color 0.2s linear;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    opacity: 1;
     color: $color-font--primary;
     text-decoration: underline;
   }

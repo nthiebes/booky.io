@@ -32,7 +32,8 @@ export default {
     new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({ // Create HTML file that includes references to bundled CSS and JS.
+    new HtmlWebpackPlugin({
+      // Create HTML file that includes references to bundled CSS and JS.
       template: '_source/index.ejs',
       minify: {
         removeComments: true,
@@ -109,17 +110,17 @@ export default {
               sourceMap: true,
               modules: 'global'
             }
-          }, {
+          },
+          {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [
-                  'autoprefixer'
-                ]
+                plugins: ['autoprefixer']
               },
               sourceMap: true
             }
-          }, {
+          },
+          {
             loader: 'sass-loader',
             options: {
               sassOptions: {

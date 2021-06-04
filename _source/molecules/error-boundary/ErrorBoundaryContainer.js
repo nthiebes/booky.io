@@ -5,8 +5,6 @@ export const mapStateToProps = (state) => ({
   dashboardsError: state.dashboards.error
 });
 
-const Container = connect(
-  mapStateToProps
-)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export default Container;

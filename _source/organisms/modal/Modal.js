@@ -7,6 +7,7 @@ import { parseBookmarkUrl } from '../../_utils/url';
 import AddBookmark from './modals/AddBookmarkContainer';
 import EditBookmark from './modals/EditBookmarkContainer';
 import DeleteBookmark from './modals/DeleteBookmark';
+import MoveBookmark from './modals/MoveBookmarkContainer';
 import AddCategory from './modals/AddCategory';
 import EditCategory from './modals/EditCategory';
 import DeleteCategory from './modals/DeleteCategory';
@@ -15,6 +16,7 @@ import EditDashboard from './modals/EditDashboard';
 import DeleteDashboard from './modals/DeleteDashboard';
 import Customize from './modals/Customize';
 import DeleteAccount from './modals/DeleteAccount';
+import SortCategories from './modals/SortCategoriesContainer';
 
 export default class Modal extends PureComponent {
   static propTypes = {
@@ -36,12 +38,12 @@ export default class Modal extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     deleteAccount: PropTypes.func.isRequired,
     resetSearch: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     pending: false,
     error: null
-  }
+  };
 
   modalMap = {
     AddBookmark: {
@@ -55,6 +57,10 @@ export default class Modal extends PureComponent {
     DeleteBookmark: {
       type: DeleteBookmark,
       action: this.props.deleteBookmark
+    },
+    MoveBookmark: {
+      type: MoveBookmark,
+      action: this.props.editBookmark
     },
     AddCategory: {
       type: AddCategory,
@@ -86,17 +92,26 @@ export default class Modal extends PureComponent {
     DeleteAccount: {
       type: DeleteAccount,
       action: this.props.deleteAccount
+    },
+    SortCategories: {
+      type: SortCategories
     }
-  }
+  };
 
+  // eslint-disable-next-line max-statements
   handleSave = (modalData) => {
     const { modal, data, resetSearch } = this.props;
 
     modalData.id = parseInt(modalData.id, 10);
     modalData.categoryId = parseInt(modalData.categoryId, 10);
     modalData.dashboardId = parseInt(modalData.dashboardId, 10);
+
     if (modalData.url) {
       modalData.url = parseBookmarkUrl(modalData.url);
+    }
+
+    if (modalData.position) {
+      modalData.position = parseInt(modalData.position, 10);
     }
 
     if (this.modalMap[modal].action) {
@@ -109,6 +124,7 @@ export default class Modal extends PureComponent {
         ...modalData,
         dashboardId: modalData.dashboardId || data.activeDashboard,
         onSuccess: () => {
+          modalData.onSuccess && modalData.onSuccess();
           this.closeModal();
           resetSearch();
         },
@@ -122,7 +138,7 @@ export default class Modal extends PureComponent {
     } else {
       this.closeModal();
     }
-  }
+  };
 
   closeModal = () => {
     const { closeModal, hideModal } = this.props;
@@ -138,19 +154,19 @@ export default class Modal extends PureComponent {
       hideModal();
     }, 500);
     // document.body.classList.remove('booky--no-scrolling');
-  }
+  };
 
   handleKeyUp = (event) => {
     if (event.key === 'Escape') {
-      this.props.closeModal();
+      this.closeModal();
     }
-  }
+  };
 
   handleMouseDown = (event) => {
     if (event.target.classList.contains('modal')) {
       this.closeModal();
     }
-  }
+  };
 
   render() {
     const { modal, open, showModal, data, darkMode } = this.props;
@@ -160,25 +176,26 @@ export default class Modal extends PureComponent {
     return (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div
-        className={ classNames(
-          'modal',
-          open && 'modal--open'
-        ) }
-        onMouseDown={ this.handleMouseDown }
-        onKeyUp={ this.handleKeyUp }
-        aria-hidden="true"
+        className={classNames('modal', open && 'modal--open')}
+        onMouseDown={this.handleMouseDown}
+        onKeyUp={this.handleKeyUp}
       >
-        <div className={ classNames('modal__inner', darkMode && 'modal__inner--dark') }>
-          { CustomTag && showModal && (
+        <div
+          className={classNames(
+            'modal__inner',
+            darkMode && 'modal__inner--dark'
+          )}
+        >
+          {CustomTag && showModal && (
             <CustomTag
-              onClose={ this.closeModal }
-              onSave={ this.handleSave }
-              data={ data }
-              pending={ pending }
-              darkMode={ darkMode }
-              error={ error }
+              onClose={this.closeModal}
+              onSave={this.handleSave}
+              data={data}
+              pending={pending}
+              darkMode={darkMode}
+              error={error}
             />
-          ) }
+          )}
         </div>
       </div>
     );

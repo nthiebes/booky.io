@@ -3,23 +3,23 @@ import { connect } from 'react-redux';
 import Component from './DashboardsList';
 import { openModal } from '../../../_state/modal/actions';
 import { changeDashboard } from '../../../_state/dashboards/actions';
+import { closeSidebar } from '../../../_state/sidebar/actions';
 
-export const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   dashboards: state.dashboards.items || [],
   activeId: state.user.settings.defaultDashboardId,
   pinned: state.user.settings.pinned,
   darkMode: state.user.settings.darkMode,
-  closeEditMode: state.user.settings.closeEditMode
+  closeEditMode: state.user.settings.closeEditMode,
+  isDragging: state.dragging.isDragging,
+  dragType: state.dragging.type,
+  minimalBookmarkButton: state.user.settings.minimalBookmarkButton
 });
-
-export const mapDispatchToProps = {
+const mapDispatchToProps = {
   openModal,
-  changeDashboard
+  changeDashboard,
+  closeSidebar
 };
-
-const Container = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

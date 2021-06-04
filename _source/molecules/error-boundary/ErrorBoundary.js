@@ -19,11 +19,11 @@ export default class ErrorBoundary extends PureComponent {
       PropTypes.string
     ]).isRequired,
     dashboardsError: PropTypes.string
-  }
+  };
 
   state = {
     hasError: false
-  }
+  };
 
   componentDidCatch(error, errorInfo) {
     Sentry.withScope((scope) => {
@@ -44,6 +44,6 @@ export default class ErrorBoundary extends PureComponent {
       );
     }
 
-    return children; 
+    return children;
   }
 }

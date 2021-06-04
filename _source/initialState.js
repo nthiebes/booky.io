@@ -7,7 +7,7 @@ export default {
     new: true,
     premium: false,
     isMobile: window.matchMedia('(max-width: 1000px)').matches,
-    isBeta: Boolean(window.location.host.match(/beta./gi)),
+    isBeta: Boolean(window.location.host.match(/beta|localhost./gi)),
     settings: {
       blurEffect: false,
       darkMode: false,
@@ -27,7 +27,9 @@ export default {
       autofocusSearch: false,
       minimalBookmarkButton: false,
       closeEditMode: true,
-      maxColumnCount: null
+      maxColumnCount: null,
+      newsVersion: 0,
+      voted: 0
     }
   },
   dashboards: {
@@ -64,7 +66,7 @@ export default {
   },
   dragging: {
     isDragging: false,
-    dragType: null
+    type: null
   },
   extension: {
     active: Boolean(window.location.pathname.match(/extension/gi)),

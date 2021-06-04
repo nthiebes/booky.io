@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 
-import { getDashboards, changeDashboard } from '../../_state/dashboards/actions';
+import {
+  getDashboards,
+  changeDashboard
+} from '../../_state/dashboards/actions';
 import { getBookmarks } from '../../_state/bookmarks/actions';
 import Component from './Open';
 
@@ -16,9 +19,6 @@ const mapDispatchToProps = {
   changeDashboard,
   getBookmarks
 };
-const OpenContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const OpenContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default OpenContainer;

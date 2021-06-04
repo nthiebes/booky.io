@@ -9,30 +9,46 @@ export const setCategories = (categories) => ({
   categories
 });
 
-export const getCategories = (id) => ((dispatch) => {
+export const getCategories = (id) => (dispatch) => {
   fetcher({
     url: `/dashboards/${id}/categories`,
     onSuccess: (data) => {
-      dispatch(setCategories(data.map((category) => ({
-        ...category,
-        name: decodeEmoji(category.name),
-        pending: true
-      }))));
-      dispatch(updateDashboardsData({
-        pending: false,
-        error: null
-      }));
+      dispatch(
+        setCategories(
+          data.map((category) => ({
+            ...category,
+            name: decodeEmoji(category.name),
+            pending: true
+          }))
+        )
+      );
+      dispatch(
+        updateDashboardsData({
+          pending: false,
+          error: null
+        })
+      );
     },
     onError: (error) => {
-      dispatch(updateDashboardsData({
-        error,
-        pending: false
-      }));
+      dispatch(
+        updateDashboardsData({
+          error,
+          pending: false
+        })
+      );
     }
   });
-});
+};
 
-export const addCategory = ({ dashboardId, color, name, position, onError, onSuccess }) => ((dispatch) => {
+export const addCategory = ({
+  dashboardId,
+  color,
+  name,
+  position,
+  onError,
+  onSuccess,
+  shouldUpdate = true
+}) => (dispatch) => {
   fetcher({
     url: `/dashboards/${dashboardId}/categories`,
     method: 'POST',
@@ -42,24 +58,34 @@ export const addCategory = ({ dashboardId, color, name, position, onError, onSuc
       position
     },
     onSuccess: ({ id }) => {
-      dispatch({
-        type: 'ADD_CATEGORY',
-        color,
-        name,
-        position,
-        id,
-        dashboardId
-      });
-      onSuccess && onSuccess();
+      if (shouldUpdate) {
+        dispatch({
+          type: 'ADD_CATEGORY',
+          color,
+          name,
+          position,
+          id,
+          dashboardId
+        });
+      }
+      onSuccess && onSuccess(id);
     },
     onError: (error) => {
-      // console.log('error', error);
       onError && onError(error);
     }
   });
-});
+};
 
-export const editCategory = ({ id, color, name, hidden, position, dashboardId, onError, onSuccess }) => ((dispatch) => {
+export const editCategory = ({
+  id,
+  color,
+  name,
+  hidden,
+  position,
+  dashboardId,
+  onError,
+  onSuccess
+}) => (dispatch) => {
   fetcher({
     url: `/categories/${id}`,
     method: 'PATCH',
@@ -87,19 +113,21 @@ export const editCategory = ({ id, color, name, hidden, position, dashboardId, o
       onError && onError(error);
     }
   });
-});
+};
 
-export const toggleCategory = ({ id, hidden }) => ((dispatch) => {
+export const toggleCategory = ({ id, hidden }) => (dispatch) => {
   dispatch({
     type: 'EDIT_CATEGORY',
     id,
     hidden
   });
   if (hidden) {
-    dispatch(setBookmarks({
-      id,
-      bookmarks: []
-    }));
+    dispatch(
+      setBookmarks({
+        id,
+        bookmarks: []
+      })
+    );
   } else {
     dispatch(getBookmarks(id));
   }
@@ -114,10 +142,14 @@ export const toggleCategory = ({ id, hidden }) => ((dispatch) => {
       // console.log('error', error);
     }
   });
-});
+};
 
-export const deleteCategory = ({ id, newId, onError, onSuccess }) => ((dispatch) => {
-  const url = newId ? `/categories/${id}?moveBookmarksTo=${newId}` : `/categories/${id}`;
+export const deleteCategory = ({ id, newId, onError, onSuccess }) => (
+  dispatch
+) => {
+  const url = newId
+    ? `/categories/${id}?moveBookmarksTo=${newId}`
+    : `/categories/${id}`;
 
   fetcher({
     url,
@@ -138,4 +170,4 @@ export const deleteCategory = ({ id, newId, onError, onSuccess }) => ((dispatch)
       onError && onError(error);
     }
   });
-});
+};

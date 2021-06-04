@@ -26,12 +26,14 @@ export const restricted = (BaseComponent) => {
       const { history, loggedIn, isExtension } = props;
 
       if (!loggedIn) {
-        history.replace({ pathname: isExtension ? '/extension/login' : '/login' });
+        history.replace({
+          pathname: isExtension ? '/extension/login' : '/login'
+        });
       }
     }
 
     render() {
-      return <BaseComponent { ...this.props } />;
+      return <BaseComponent {...this.props} />;
     }
   }
 
@@ -42,7 +44,5 @@ export const restricted = (BaseComponent) => {
     isExtension: PropTypes.bool.isRequired
   };
 
-  return connect(mapStateToProps)(
-    withRouter(Restricted)
-  );
+  return connect(mapStateToProps)(withRouter(Restricted));
 };

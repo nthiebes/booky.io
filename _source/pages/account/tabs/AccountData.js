@@ -59,7 +59,7 @@ class AccountData extends Component {
       }
     });
   };
-  
+
   render() {
     const { intl, email } = this.props;
     const {
@@ -73,62 +73,64 @@ class AccountData extends Component {
     } = this.state;
 
     return (
-      <Form className="account__form" onSubmit={ this.handleSubmit }>
+      <Form className="account__form" onSubmit={this.handleSubmit}>
         <Label>
           <FormattedMessage id="account.yourEmail" />
         </Label>
         <P noPadding className="account__email">
-          { email }
+          {email}
         </P>
         <Input
-          value={ username }
+          value={username}
           name="username"
           id="username"
-          label={ intl.formatMessage({ id: 'login.username' }) }
-          onChange={ this.handleInputChange }
+          label={intl.formatMessage({ id: 'login.username' })}
+          onChange={this.handleInputChange}
           maxLength="50"
           required
-          disabled={ pending }
+          disabled={pending}
         />
         <Input
-          value={ oldPassword }
+          value={oldPassword}
           name="oldPassword"
           id="oldPassword"
-          label={ intl.formatMessage({ id: 'login.password' }) }
-          onChange={ this.handleInputChange }
+          label={intl.formatMessage({ id: 'login.password' })}
+          onChange={this.handleInputChange}
           maxLength="225"
           required
-          type={ showPassword ? 'text' : 'password' }
-          autoComplete="current-password"
-          disabled={ pending }
+          type={showPassword ? 'text' : 'password'}
+          disabled={pending}
         />
         <Input
-          value={ newPassword }
+          value={newPassword}
           name="newPassword"
           id="newPassword"
-          label={ intl.formatMessage({ id: 'account.newPassword' }) }
-          onChange={ this.handleInputChange }
+          label={intl.formatMessage({ id: 'account.newPassword' })}
+          onChange={this.handleInputChange}
           maxLength="225"
-          type={ showPassword ? 'text' : 'password' }
+          type={showPassword ? 'text' : 'password'}
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-          requirements={ intl.formatMessage({ id: 'misc.validPassword' }) }
-          disabled={ pending }
+          requirements={intl.formatMessage({ id: 'misc.validPassword' })}
+          disabled={pending}
         />
         <Checkbox
-          label={ intl.formatMessage({ id: 'login.showPassword' }) }
+          label={intl.formatMessage({ id: 'login.showPassword' })}
           id="show-password"
-          onChange={ this.handleCheckboxChange }
+          onChange={this.handleCheckboxChange}
         />
         <ButtonLargeBlue
           icon="save"
           type="submit"
-          pending={ pending }
-          disabled={ pending }
+          pending={pending}
+          disabled={pending}
           contentBefore
         >
-          <FormattedMessage id="button.update" values={ { b: (msg) => <b>{msg}</b> } } />
+          <FormattedMessage
+            id="button.update"
+            values={{ b: (msg) => <b>{msg}</b> }}
+          />
         </ButtonLargeBlue>
-        {error && <ErrorMessage message={ error } hasIcon />}
+        {error && <ErrorMessage message={error} hasIcon />}
         {success && <SuccessMessage message="account.success" hasIcon />}
       </Form>
     );
@@ -143,4 +145,3 @@ AccountData.propTypes = {
 };
 
 export default injectIntl(AccountData);
-

@@ -29,6 +29,11 @@
   }
 
   @include desktop {
+    &:hover .tooltip {
+      opacity: 1;
+      transition: opacity 0.2s linear 0.5s;
+    }
+
     &:hover::after {
       opacity: 1;
       transform: translateY(-50%) scale(1);

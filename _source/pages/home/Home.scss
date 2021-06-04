@@ -242,3 +242,55 @@
   height: auto;
   margin-bottom: 2rem;
 }
+
+.survey {
+  margin: 3rem 3% 0 3%;
+  padding: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  max-width: 47rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @include tablet-desktop {
+    flex-direction: row;
+  }
+
+  @include desktop {
+    margin: 30px 36px 0 36px;
+  }
+}
+
+.survey--dark-mode {
+  background-color: $color--dark;
+}
+
+.survey--sidebar {
+  @include desktop {
+    width: calc(100% - 122px);
+    margin-left: 86px;
+
+    &.survey--shifted {
+      width: calc(100% - 372px);
+      margin-left: 336px;
+    }
+  }
+}
+
+.survey__text {
+  flex-grow: 1;
+}
+
+.survey__buttons {
+  white-space: nowrap;
+  margin-top: 1rem;
+
+  @include tablet-desktop {
+    margin-top: 0;
+  }
+}
+
+.survey__confirm {
+  margin: 0 1rem;
+}

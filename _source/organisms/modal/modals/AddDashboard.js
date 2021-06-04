@@ -12,17 +12,17 @@ class AddDashboard extends Component {
     intl: PropTypes.object.isRequired,
     pending: PropTypes.bool,
     darkMode: PropTypes.bool
-  }
+  };
 
   state = {
     name: ''
-  }
+  };
 
   onNameChange = (value) => {
     this.setState({
       name: value
     });
-  }
+  };
 
   render() {
     const { pending, intl, ...props } = this.props;
@@ -30,21 +30,21 @@ class AddDashboard extends Component {
 
     return (
       <Base
-        { ...props }
-        pending={ pending }
-        headline={ intl.formatMessage({ id: 'modal.addDashboard' }) }
-        useAnchor={ false }
+        {...props}
+        pending={pending}
+        headline={intl.formatMessage({ id: 'modal.addDashboard' })}
+        useAnchor={false}
       >
         <Input
           id="dashboard-name"
           name="name"
           color="primary"
-          value={ name }
-          onChange={ this.onNameChange }
+          value={name}
+          onChange={this.onNameChange}
           required
           maxLength="200"
-          label={ intl.formatMessage({ id: 'modal.name' }) }
-          disabled={ pending }
+          label={intl.formatMessage({ id: 'modal.name' })}
+          disabled={pending}
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
         />

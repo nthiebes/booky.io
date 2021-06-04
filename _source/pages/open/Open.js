@@ -20,11 +20,11 @@ class Open extends Component {
     dashboards: PropTypes.array.isRequired,
     keywordExists: PropTypes.bool,
     getBookmarks: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     activeCategory: localStorage.getItem('activeCategory') || ''
-  }
+  };
 
   componentDidMount() {
     const { getDashboards } = this.props;
@@ -34,7 +34,7 @@ class Open extends Component {
 
   handleDashboardChange = (value) => {
     this.props.changeDashboard(parseInt(value, 10));
-  }
+  };
 
   handleCategoryChange = (value) => {
     localStorage.setItem('activeCategory', value);
@@ -44,7 +44,7 @@ class Open extends Component {
     this.setState({
       activeCategory: value
     });
-  }
+  };
 
   render() {
     const {
@@ -56,55 +56,65 @@ class Open extends Component {
       keywordExists
     } = this.props;
     const { activeCategory } = this.state;
-    let categoryData = categories.find((category) => parseInt(activeCategory, 10) === category.id);
+    let categoryData = categories.find(
+      (category) => parseInt(activeCategory, 10) === category.id
+    );
 
     if (!categoryData && categories.length) {
       categoryData = categories[0];
     }
 
-    const dashboardsOptions = dashboardsPending ? [{
-      text: intl.formatMessage({ id: 'extension.loading' }),
-      value: ''
-    }] : dashboards.map(({ name: text, id }) => ({
-      text,
-      value: id.toString()
-    }));
-    const categoriesOptions = dashboardsPending ? [{
-      text: intl.formatMessage({ id: 'extension.loading' }),
-      value: ''
-    }] : categories.map(({ name: text, id }) => ({
-      text,
-      value: id.toString()
-    }));
+    const dashboardsOptions = dashboardsPending
+      ? [
+          {
+            text: intl.formatMessage({ id: 'extension.loading' }),
+            value: ''
+          }
+        ]
+      : dashboards.map(({ name: text, id }) => ({
+          text,
+          value: id.toString()
+        }));
+    const categoriesOptions = dashboardsPending
+      ? [
+          {
+            text: intl.formatMessage({ id: 'extension.loading' }),
+            value: ''
+          }
+        ]
+      : categories.map(({ name: text, id }) => ({
+          text,
+          value: id.toString()
+        }));
 
     return (
       <Extension>
         <Section noMargin>
           <Select
             id="collection"
-            label={ intl.formatMessage({ id: 'modal.editCategoryDashboard' }) }
-            options={ dashboardsOptions }
+            label={intl.formatMessage({ id: 'modal.editCategoryDashboard' })}
+            options={dashboardsOptions}
             required
-            onChange={ this.handleDashboardChange }
-            value={ activeDashboard }
-            disabled={ dashboardsPending }
+            onChange={this.handleDashboardChange}
+            value={activeDashboard}
+            disabled={dashboardsPending}
             name="dashboardId"
           />
           <Select
             id="category"
-            label={ intl.formatMessage({ id: 'modal.category' }) }
-            options={ categoriesOptions }
+            label={intl.formatMessage({ id: 'modal.category' })}
+            options={categoriesOptions}
             required
-            onChange={ this.handleCategoryChange }
-            value={ activeCategory }
-            disabled={ dashboardsPending }
+            onChange={this.handleCategoryChange}
+            value={activeCategory}
+            disabled={dashboardsPending}
             name="categoryId"
           />
           <SearchField className="open__search-field" id="search-extension" />
-          { categoryData && !keywordExists && !dashboardsPending && <Category { ...categoryData } /> }
-          { keywordExists && (
-            <Search className="open__search" />
-          ) }
+          {categoryData && !keywordExists && !dashboardsPending && (
+            <Category {...categoryData} />
+          )}
+          {keywordExists && <Search className="open__search" />}
         </Section>
       </Extension>
     );

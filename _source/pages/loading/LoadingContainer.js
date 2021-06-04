@@ -6,8 +6,6 @@ const mapStateToProps = (state) => ({
   isExtension: state.extension.active,
   loggedIn: state.user.loggedIn
 });
-const LoadingContainer = connect(
-  mapStateToProps
-)(Component);
+const LoadingContainer = connect(mapStateToProps)(Component);
 
 export default LoadingContainer;

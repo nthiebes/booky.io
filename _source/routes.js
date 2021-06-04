@@ -24,6 +24,7 @@ const Next = lazy(() => import('./pages/next'));
 const Add = lazy(() => import('./pages/add'));
 const Open = lazy(() => import('./pages/open'));
 const Customize = lazy(() => import('./pages/customize'));
+const Bookmarklet = lazy(() => import('./pages/bookmarklet'));
 
 class Routes extends Component {
   static propTypes = {
@@ -42,28 +43,35 @@ class Routes extends Component {
 
   render() {
     return (
-      <Suspense fallback={ <Loading /> }>
+      <Suspense fallback={<Loading />}>
         <Switch>
-          <Route exact path="/" component={ Home } />
-          <Route path="/about" component={ About }/>
-          <Route path="/help" component={ Help } />
-          <Route path="/account" component={ restricted(Account) } />
-          <Route path="/login" component={ publicOnly(Login) } />
-          <Route path="/join" component={ publicOnly(Join) } />
-          <Route path="/feedback" component={ Feedback } />
-          <Route path="/privacy" component={ Privacy } />
-          <Route path="/legal" component={ Legal } />
-          <Route path="/contact" component={ Contact } />
-          <Route path="/forgot" component={ Forgot } />
-          <Route path="/resend" component={ Resend } />
-          <Route path="/next" component={ Next } />
-          <Route path="/activate/:token" component={ publicOnly(Login) } />
-          <Route path="/recovery/:action/:params" component={ publicOnly(Login) } />
-          <Route path="/extension/login" component={ publicOnly(Login) } />
-          <Route path="/extension/add" component={ restricted(Add) } />
-          <Route path="/extension/open" component={ restricted(Open) } />
-          <Route path="/extension/customize" component={ restricted(Customize) } />
-          <Route path="*" component={ NotFound } />
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/help" component={Help} />
+          <Route path="/account" component={restricted(Account)} />
+          <Route path="/login" component={publicOnly(Login)} />
+          <Route path="/join" component={publicOnly(Join)} />
+          <Route path="/feedback" component={Feedback} />
+          <Route path="/privacy" component={Privacy} />
+          <Route path="/legal" component={Legal} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/forgot" component={Forgot} />
+          <Route path="/resend" component={Resend} />
+          <Route path="/next" component={restricted(Next)} />
+          <Route path="/bookmarklet" component={Bookmarklet} />
+          <Route path="/activate/:token" component={publicOnly(Login)} />
+          <Route
+            path="/recovery/:action/:params"
+            component={publicOnly(Login)}
+          />
+          <Route path="/extension/login" component={publicOnly(Login)} />
+          <Route path="/extension/add" component={restricted(Add)} />
+          <Route path="/extension/open" component={restricted(Open)} />
+          <Route
+            path="/extension/customize"
+            component={restricted(Customize)}
+          />
+          <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
     );

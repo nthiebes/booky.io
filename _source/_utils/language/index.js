@@ -5,7 +5,8 @@ export const setLanguage = (language) => {
   const isExtension = Boolean(window.location.pathname.match(/extension/gi));
 
   if (cookieConsent === 'true') {
-    Cookies.set('lang', language, { expires: 18250,
+    Cookies.set('lang', language, {
+      expires: 18250,
       secure: process.env.NODE_ENV !== 'development'
     });
   }

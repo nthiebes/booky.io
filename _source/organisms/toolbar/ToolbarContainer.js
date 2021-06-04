@@ -6,7 +6,11 @@ export const mapStateToProps = (state) => ({
   currentlySticky: state.toolbar.currentlySticky,
   headerSticky: state.user.settings.stickyHeader,
   sticky: state.user.settings.stickyToolbar,
-  activeDashboardName: (state.dashboards.items.find((dashboard) => dashboard.id === state.user.settings.defaultDashboardId) || {}).name,
+  activeDashboardName: (
+    state.dashboards.items.find(
+      (dashboard) => dashboard.id === state.user.settings.defaultDashboardId
+    ) || {}
+  ).name,
   dashboardsStyle: state.user.settings.dashboardsStyle,
   darkMode: state.user.settings.darkMode,
   categoriesPending: state.dashboards.pending,
@@ -18,9 +22,6 @@ export const mapDispatchToProps = {
   openModal
 };
 
-const Container = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

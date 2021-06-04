@@ -22,6 +22,14 @@
   }
 }
 
+.category_bookmarks--drag {
+  outline: 2px dashed $color-font--medium;
+}
+
+.category_bookmarks--drag-active {
+  outline-color: $color-font--primary;
+}
+
 .category__bookmark-drag-wrapper {
   min-height: 36px;
 }
@@ -79,9 +87,11 @@
 }
 
 .category__toggle-icon {
-  transition: transform 0.2s linear, color 0.2s linear;
+  svg {
+    transition: transform 0.2s linear, color 0.2s linear;
+  }
 
-  &.category__toggle-icon--rotate {
+  &.category__toggle-icon--rotate svg {
     transform: rotate(-90deg);
   }
 }

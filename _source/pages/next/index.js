@@ -1,1 +1,1 @@
-export { default } from './Next';
+export { default } from './NextContainer';

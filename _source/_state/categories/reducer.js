@@ -28,7 +28,7 @@ const categories = (state = [], action) => {
         if (category.id !== categoryId) {
           return category;
         }
-        
+
         return {
           ...category,
           bookmarks: [
@@ -42,7 +42,7 @@ const categories = (state = [], action) => {
               note
             }
           ]
-        };    
+        };
       });
     }
 
@@ -51,14 +51,14 @@ const categories = (state = [], action) => {
         if (category.id !== categoryId) {
           return category;
         }
-        
+
         return {
           ...category,
           bookmarks: category.bookmarks.map((bookmark) => {
             if (bookmark.id !== id) {
               return bookmark;
             }
-            
+
             return {
               ...bookmark,
               url,
@@ -84,7 +84,7 @@ const categories = (state = [], action) => {
             newBookmarks.splice(index, 1);
           }
         });
-        
+
         return {
           ...category,
           bookmarks: newBookmarks
@@ -108,36 +108,39 @@ const categories = (state = [], action) => {
       ];
 
     case 'EDIT_CATEGORY': {
-      return state.filter((category) => {
-        if (category.id !== id || !dashboardId) {
-          return true;
-        }
+      return state
+        .filter((category) => {
+          if (category.id !== id || !dashboardId) {
+            return true;
+          }
 
-        return category.dashboardId === dashboardId;
-      }).map((category) => {
-        if (category.id !== id) {
-          return category;
-        }
+          return category.dashboardId === dashboardId;
+        })
+        .map((category) => {
+          if (category.id !== id) {
+            return category;
+          }
 
-        const data = removeUndefined({
-          color,
-          name,
-          dashboardId,
-          id,
-          hidden,
-          position
+          const data = removeUndefined({
+            color,
+            name,
+            dashboardId,
+            id,
+            hidden,
+            position
+          });
+
+          return {
+            ...category,
+            ...data
+          };
         });
-          
-        return {
-          ...category,
-          ...data
-        };
-      });
     }
 
     case 'DELETE_CATEGORY': {
       let newState = state.slice();
-      const oldBookmarks = newState.find((category) => category.id === id).bookmarks;
+      const oldBookmarks = newState.find((category) => category.id === id)
+        .bookmarks;
 
       // Move bookmarks
       newState = newState.map((category) => {
@@ -162,17 +165,21 @@ const categories = (state = [], action) => {
     }
 
     case 'DRAG_BOOKMARK': {
-      const { destinationIndex, destinationCategoryId, sourceIndex, sourceCategoryId } = dragData;
+      const {
+        destinationIndex,
+        destinationCategoryId,
+        sourceIndex,
+        sourceCategoryId
+      } = dragData;
 
       return state.map((category) => {
         const newBookmarks = [...category.bookmarks];
-        
-        if (category.id === sourceCategoryId) {
 
+        if (category.id === sourceCategoryId) {
           // Same category - move bookmark
           if (category.id === destinationCategoryId) {
             arrayMove(newBookmarks, sourceIndex, destinationIndex);
-          // Different category - remove bookmark
+            // Different category - remove bookmark
           } else {
             newBookmarks.splice(sourceIndex, 1);
           }
@@ -181,10 +188,11 @@ const categories = (state = [], action) => {
             ...category,
             bookmarks: [...newBookmarks]
           };
-        // Insert bookmark in new category
+          // Insert bookmark in new category
         } else if (category.id === destinationCategoryId) {
-          const bookmark = state.find((item) => item.id === sourceCategoryId).bookmarks[sourceIndex];
-          
+          const bookmark = state.find((item) => item.id === sourceCategoryId)
+            .bookmarks[sourceIndex];
+
           newBookmarks.splice(destinationIndex, 0, bookmark);
 
           return {
@@ -202,13 +210,13 @@ const categories = (state = [], action) => {
         ...category,
         bookmarks: category.bookmarks ? category.bookmarks : []
       }));
-    
+
     case 'SET_BOOKMARKS': {
       return state.map((category) => {
         if (category.id !== id) {
           return category;
         }
-        
+
         return {
           ...category,
           bookmarks,
@@ -223,7 +231,7 @@ const categories = (state = [], action) => {
         if (category.id !== id) {
           return category;
         }
-        
+
         return {
           ...category,
           pending
@@ -232,9 +240,15 @@ const categories = (state = [], action) => {
     }
 
     case 'DRAG_CATEGORY': {
-      const { destinationIndex, sourceIndex, categoryId: dragCategoryId } = dragData;
+      const {
+        destinationIndex,
+        sourceIndex,
+        categoryId: dragCategoryId
+      } = dragData;
       const newCategories = [...state];
-      const categoryExists = Boolean(state.find((category) => category.id === dragCategoryId));
+      const categoryExists = Boolean(
+        state.find((category) => category.id === dragCategoryId)
+      );
 
       if (categoryExists) {
         arrayMove(newCategories, sourceIndex, destinationIndex);
@@ -246,7 +260,7 @@ const categories = (state = [], action) => {
     case 'RESET_USER_STATE': {
       return initialState.categories;
     }
-      
+
     default:
       return state;
   }

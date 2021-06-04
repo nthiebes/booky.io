@@ -23,9 +23,10 @@ export default class Form extends Component {
     const { onSubmit } = this.props;
 
     event.preventDefault();
-    onSubmit && onSubmit({
-      ...this.getData()
-    });
+    onSubmit &&
+      onSubmit({
+        ...this.getData()
+      });
   }
 
   render() {
@@ -34,22 +35,22 @@ export default class Form extends Component {
     return (
       // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
       <form
-        ref={ (form) => { this.form = form; } }
-        onSubmit={ this.handleSubmit }
-        className={ className }
-        onClick={ onClick }
+        ref={(form) => {
+          this.form = form;
+        }}
+        onSubmit={this.handleSubmit}
+        className={className}
+        onClick={onClick}
       >
-        { children }
+        {children}
       </form>
     );
   }
 }
 
 Form.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
+    .isRequired,
   onSubmit: PropTypes.func,
   onClick: PropTypes.func,
   className: PropTypes.string

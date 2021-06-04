@@ -10,14 +10,10 @@ export default class ListItem extends PureComponent {
       PropTypes.string
     ]).isRequired,
     className: PropTypes.string
-  }
+  };
   render() {
     const { children, className } = this.props;
 
-    return (
-      <li className={ classNames('list__item', className) }>
-        { children }
-      </li>
-    );
+    return <li className={classNames('list__item', className)}>{children}</li>;
   }
 }

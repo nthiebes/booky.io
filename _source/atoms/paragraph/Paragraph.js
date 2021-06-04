@@ -15,23 +15,31 @@ export default class Paragraph extends Component {
     noPadding: PropTypes.bool,
     role: PropTypes.string,
     ignoreDarkMode: PropTypes.bool
-  }
-  
+  };
+
   render() {
-    const { children, className, first, darkMode, noPadding, role, ignoreDarkMode } = this.props;
+    const {
+      children,
+      className,
+      first,
+      darkMode,
+      noPadding,
+      role,
+      ignoreDarkMode
+    } = this.props;
 
     return (
       <p
-        className={ classNames(
+        className={classNames(
           'paragraph',
           first && 'paragraph--first',
-          (darkMode && !ignoreDarkMode) && 'paragraph--dark-mode',
+          darkMode && !ignoreDarkMode && 'paragraph--dark-mode',
           noPadding && 'paragraph--no-padding',
           className
-        ) }
-        role={ role }
+        )}
+        role={role}
       >
-        { children }
+        {children}
       </p>
     );
   }

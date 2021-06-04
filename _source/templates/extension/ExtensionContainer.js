@@ -10,9 +10,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   updateExtensionData
 };
-const Container = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { InView } from 'react-intersection-observer'; 
+import { InView } from 'react-intersection-observer';
 
 import Menu from '../../molecules/menu';
 import Icon from '../../atoms/icon';
@@ -31,28 +31,28 @@ class Header extends PureComponent {
     hasCategories: PropTypes.bool,
     dashboardsPending: PropTypes.bool,
     updateCurrentlySticky: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     bookmarkModalOpen: false,
     logoutPending: false
-  }
+  };
 
   onBookmarkModalToggle = () => {
     this.setState({
       bookmarkModalOpen: !this.state.bookmarkModalOpen
     });
-  }
+  };
 
   onMenuClick = (event) => {
     event.stopPropagation();
 
     this.props.toggleSidebar();
-  }
+  };
 
   onCustomizeClick = () => {
     this.props.openModal('Customize');
-  }
+  };
 
   onAddButtonClick = () => {
     const { hasCategories, openModal } = this.props;
@@ -61,7 +61,7 @@ class Header extends PureComponent {
     openModal(modalType, {
       source: 'header'
     });
-  }
+  };
 
   handleLogout = () => {
     const { history, logout } = this.props;
@@ -75,11 +75,11 @@ class Header extends PureComponent {
         history.push('/');
       }
     });
-  }
+  };
 
   handleChange = (inView) => {
     this.props.updateCurrentlySticky(!inView);
-  }
+  };
 
   render() {
     const {
@@ -99,102 +99,145 @@ class Header extends PureComponent {
     return (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
       <header
-        className={ classNames(
+        className={classNames(
           'header',
           `header--color${color}`,
           sidebarOpen && 'header--overlay',
           sticky && 'header--sticky',
           className
-        ) }
-        onClick={ closeSidebar }
+        )}
+        onClick={closeSidebar}
         tabIndex="-1"
       >
-        <InView onChange={ this.handleChange } rootMargin="1px">
+        <InView onChange={this.handleChange} rootMargin="1px">
           {({ ref }) => (
-            <div ref={ ref } className={ classNames('header__wrapper', loggedIn && 'header__wrapper--full-width') }>
+            <div
+              ref={ref}
+              className={classNames(
+                'header__wrapper',
+                loggedIn && 'header__wrapper--full-width'
+              )}
+            >
               <Link className="header__skip-link" href="#main">
-                <FormattedMessage id="header.jumpToMain" values={ { b: (msg) => <b>{msg}</b> } } />
+                <FormattedMessage
+                  id="header.jumpToMain"
+                  values={{ b: (msg) => <b>{msg}</b> }}
+                />
               </Link>
               <Link className="header__skip-link" href="#language-switcher-en">
-                <FormattedMessage id="header.jumpToLanguage" values={ { b: (msg) => <b>{msg}</b> } } />
+                <FormattedMessage
+                  id="header.jumpToLanguage"
+                  values={{ b: (msg) => <b>{msg}</b> }}
+                />
               </Link>
-              { loggedIn && home && (
+              {loggedIn && home && (
                 <Fragment>
                   <Icon
                     className="booky--hide-desktop header__add-icon"
-                    icon={ hasCategories ? 'add-link' : 'add-category' }
+                    icon={hasCategories ? 'add-link' : 'add-category'}
                     color="light"
-                    onClick={ this.onAddButtonClick }
-                    label={ intl.formatMessage({ id: hasCategories ? 'bookmark.add' : 'category.add' },
-                      { b: (msg) => msg }) }
+                    onClick={this.onAddButtonClick}
+                    label={intl.formatMessage(
+                      { id: hasCategories ? 'bookmark.add' : 'category.add' },
+                      { b: (msg) => msg }
+                    )}
                     ignoreDarkMode
                     isButton
-                    useSkeleton={ dashboardsPending }
+                    useSkeleton={dashboardsPending}
                   />
-                  <SearchField className="booky--hide-desktop" id="search-mobile" />
+                  <SearchField
+                    className="booky--hide-desktop"
+                    id="search-mobile"
+                  />
                 </Fragment>
-              ) }
+              )}
               <Link
                 to="/"
-                title={ intl.formatMessage({ id: 'menu.home' }) }
-                className={ classNames('header__logo', loggedIn && home && 'booky--hide-mobile-tablet') }
+                title={intl.formatMessage({ id: 'menu.home' })}
+                className={classNames(
+                  'header__logo',
+                  loggedIn && home && 'booky--hide-mobile-tablet'
+                )}
               >
                 <Logo color="light" />
               </Link>
-              <Menu loggedIn={ loggedIn } className="booky--hide-mobile-tablet" />
-              { loggedIn && (
+              <Menu loggedIn={loggedIn} className="booky--hide-mobile-tablet" />
+              {loggedIn && (
                 <Fragment>
                   <Icon
                     className="booky--hide-mobile-tablet"
                     icon="logout"
                     color="light"
-                    onClick={ this.handleLogout }
-                    label={ intl.formatMessage({ id: 'menu.logout' }) }
+                    onClick={this.handleLogout}
+                    label={intl.formatMessage({ id: 'menu.logout' })}
                     ignoreDarkMode
-                    pending={ logoutPending }
+                    pending={logoutPending}
                     isButton
                   />
                   <Icon
                     className="booky--hide-desktop"
                     icon="customize"
                     color="light"
-                    onClick={ this.onCustomizeClick }
-                    label={ intl.formatMessage({ id: 'menu.customize' }) }
+                    onClick={this.onCustomizeClick}
+                    label={intl.formatMessage({ id: 'menu.customize' })}
                     ignoreDarkMode
                     isButton
                   />
                   <ButtonSmallLight
                     className="header__add booky--hide-mobile-tablet"
-                    onClick={ this.onCustomizeClick }
+                    onClick={this.onCustomizeClick}
                     icon="customize"
                   >
-                    <FormattedMessage id="menu.customize" values={ { b: (msg) => <b>{msg}</b> } } />
+                    <FormattedMessage
+                      id="menu.customize"
+                      values={{ b: (msg) => <b>{msg}</b> }}
+                    />
                   </ButtonSmallLight>
                 </Fragment>
-              ) }
-              { !loggedIn && (
+              )}
+              {!loggedIn && (
                 <Fragment>
-                  <ButtonSmallLight className="booky--hide-mobile-tablet header__login" to="/login">
-                    <FormattedMessage id="header.login" values={ { b: (msg) => <b>{msg}</b> } } />
+                  <ButtonSmallLight
+                    className="booky--hide-mobile-tablet header__login"
+                    to="/login"
+                  >
+                    <FormattedMessage
+                      id="header.login"
+                      values={{ b: (msg) => <b>{msg}</b> }}
+                    />
                   </ButtonSmallLight>
-                  <ButtonSmallLight className="booky--hide-mobile-tablet" to="/join" icon="join" solid>
-                    <FormattedMessage id="header.register" values={ { b: (msg) => <b>{msg}</b> } } />
+                  <ButtonSmallLight
+                    className="booky--hide-mobile-tablet"
+                    to="/join"
+                    icon="join"
+                    solid
+                  >
+                    <FormattedMessage
+                      id="header.register"
+                      values={{ b: (msg) => <b>{msg}</b> }}
+                    />
                   </ButtonSmallLight>
                 </Fragment>
-              ) }
+              )}
               <span className="header__mobile-wrapper">
-                { !loggedIn && (
+                {!loggedIn && (
                   <Icon
                     className="booky--hide-desktop"
                     icon="account"
                     color="light"
                     to="/login"
-                    label={ intl.formatMessage({ id: 'menu.login' }) }
+                    label={intl.formatMessage({ id: 'menu.login' })}
                     ignoreDarkMode
                   />
-                ) }
-                <ButtonSmallLight className="booky--hide-desktop header__menu" onClick={ this.onMenuClick }>
-                  <FormattedMessage id="header.menu" values={ { b: (msg) => <b>{msg}</b> } } />
+                )}
+                <ButtonSmallLight
+                  className="booky--hide-desktop header__menu"
+                  onClick={this.onMenuClick}
+                >
+                  <FormattedMessage
+                    id="header.menu"
+                    values={{ b: (msg) => <b>{msg}</b> }}
+                  />
                 </ButtonSmallLight>
               </span>
             </div>

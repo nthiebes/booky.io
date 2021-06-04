@@ -12,42 +12,61 @@ export default class SuccessIllustration extends Component {
     className: PropTypes.string,
     illustration: PropTypes.string.isRequired,
     width: PropTypes.string,
-    height: PropTypes.string
-  }
+    height: PropTypes.string,
+    children: PropTypes.node
+  };
 
   state = {
     animate: false
-  }
-  
+  };
+
   componentDidMount() {
     window.setTimeout(this.animate, 100);
   }
-  
+
   static defaultTypes = {
     width: '300',
     height: '300'
-  }
+  };
 
   animate = () => {
     this.setState({
       animate: true
     });
-  }
+  };
 
   render() {
-    const { message, illustration, width, height } = this.props;
+    const {
+      message,
+      illustration,
+      width,
+      height,
+      className,
+      children
+    } = this.props;
     const { animate } = this.state;
 
     return (
-      <div role="alert" className="success-illustration">
+      <div
+        role="alert"
+        className={classNames('success-illustration', className)}
+      >
         <Illustration
-          name={ illustration }
-          width={ width }
-          height={ height }
-          className={ classNames('success-illustration__image', animate && 'success-illustration__image--animate') }
+          name={illustration}
+          width={width}
+          height={height}
+          className={classNames(
+            'success-illustration__image',
+            animate && 'success-illustration__image--animate'
+          )}
         />
-        <P className={ classNames('success-illustration__text', animate && 'success-illustration__text--animate') }>
-          <FormattedMessage id={ message } />
+        <P
+          className={classNames(
+            'success-illustration__text',
+            animate && 'success-illustration__text--animate'
+          )}
+        >
+          {message ? <FormattedMessage id={message} /> : children}
         </P>
       </div>
     );

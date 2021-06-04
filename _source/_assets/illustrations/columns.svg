@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="528.12" height="327.99" data-name="Layer 1" version="1.1" viewBox="0 0 528.12 327.99" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <rect width="528.12" height="327.99" rx="23.26" ry="23.26" fill="#2d2c2c"/>
+ <rect x="11.11" y="47.81" width="504.77" height="267.95" fill="#fff"/>
+ <rect x="11.11" y="47.81" width="504.77" height="25.453" fill="#eb7260" stroke-width="3.5422"/>
+ <g fill="#fff">
+  <circle cx="263.5" cy="24.46" r="4.45"/>
+  <rect x="82.813" y="57.66" width="39.413" height="5.2482" stroke-width=".52825"/>
+  <rect x="23.343" y="55.676" width="39.413" height="9.3814" stroke-width=".70626"/>
+  <rect x="142.28" y="57.66" width="39.413" height="5.2482" stroke-width=".52825"/>
+  <rect x="201.75" y="57.66" width="39.413" height="5.2482" stroke-width=".52825"/>
+  <rect x="470.43" y="55.807" width="33.973" height="9.3814" stroke-width=".65571"/>
+  <rect x="450.14" y="55.807" width="10.292" height="9.3814" stroke-width=".36091"/>
+ </g>
+ <g fill="#657786" stroke-width="0">
+  <rect x="24.602" y="84.755" width="106.57" height="67.718"/>
+  <rect x="149.26" y="84.874" width="106.57" height="38.218"/>
+  <rect x="273.9" y="85.126" width="106.57" height="63.218"/>
+  <rect x="398.56" y="85.245" width="106.57" height="97.718"/>
+  <rect x="24.602" y="162.47" width="106.57" height="67.718"/>
+  <rect x="149.26" y="132.59" width="106.57" height="67.718"/>
+  <rect x="273.9" y="158.84" width="106.57" height="45.718"/>
+  <rect x="398.56" y="192.96" width="106.57" height="56.218"/>
+  <rect x="24.602" y="240.19" width="106.57" height="67.718"/>
+  <rect x="149.26" y="210.31" width="106.57" height="67.718"/>
+  <rect x="273.9" y="214.56" width="106.57" height="74.218"/>
+ </g>
+ <text fill="black" font-family="sans-serif" font-size="40px" style="line-height:1.25;shape-inside:url(#rect1144);white-space:pre" xml:space="preserve"/>
+ <g fill="#ffffff" font-family="sans-serif" font-size="26.394px" stroke-width=".65985">
+  <text transform="scale(.9627 1.0387)" x="70.61454" y="123.05269" style="line-height:1.25" xml:space="preserve"><tspan x="70.61454" y="123.05269" stroke-width=".65985">1</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="200.52972" y="108.78562" style="line-height:1.25" xml:space="preserve"><tspan x="200.52972" y="108.78562" stroke-width=".65985">4</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="329.85291" y="119.85674" style="line-height:1.25" xml:space="preserve"><tspan x="329.85291" y="119.85674" stroke-width=".65985">7</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="450.86615" y="135.25993" style="line-height:1.25" xml:space="preserve"><tspan x="450.86615" y="135.25993" stroke-width=".65985">10</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="71.961479" y="196.78647" style="line-height:1.25" xml:space="preserve"><tspan x="71.961479" y="196.78647" stroke-width=".65985">2</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="201.87665" y="167.11606" style="line-height:1.25" xml:space="preserve"><tspan x="201.87665" y="167.11606" stroke-width=".65985">5</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="331.19986" y="183.96339" style="line-height:1.25" xml:space="preserve"><tspan x="331.19986" y="183.96339" stroke-width=".65985">8</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="454.29077" y="220.54611" style="line-height:1.25" xml:space="preserve"><tspan x="454.29077" y="220.54611" stroke-width=".65985">11</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="74.039001" y="272.84006" style="line-height:1.25" xml:space="preserve"><tspan x="74.039001" y="272.84006" stroke-width=".65985">3</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="201.87672" y="243.16965" style="line-height:1.25" xml:space="preserve"><tspan x="201.87672" y="243.16965" stroke-width=".65985">6</tspan></text>
+  <text transform="scale(.9627 1.0387)" x="333.2774" y="250.38998" style="line-height:1.25" xml:space="preserve"><tspan x="333.2774" y="250.38998" stroke-width=".65985">9</tspan></text>
+ </g>
+</svg>

@@ -11,14 +11,14 @@ export default class Logo extends Component {
   render() {
     const { className, alt, height, width, color } = this.props;
     const src = colors[color];
-    
+
     return (
       <img
-        className={ className } 
-        src={ src } 
-        alt={ alt } 
-        height={ height } 
-        width={ width } 
+        className={className}
+        src={src}
+        alt={alt}
+        height={height}
+        width={width}
         loading="lazy"
       />
     );

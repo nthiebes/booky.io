@@ -21,48 +21,69 @@ export default class Booky extends Component {
     updateUserData: PropTypes.func.isRequired,
     store: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    isMobile: PropTypes.bool.isRequired
-  }
+    isMobile: PropTypes.bool.isRequired,
+    openModal: PropTypes.func.isRequired
+  };
 
   componentDidMount() {
     const mediaQuery = window.matchMedia('(max-width: 1000px)');
 
-    loadingSpinner.addEventListener('transitionend', this.transitionEndCallback);
+    loadingSpinner.addEventListener(
+      'transitionend',
+      this.transitionEndCallback
+    );
     loadingSpinner.classList.add('loading__spinner--hide');
     mediaQuery.addListener(this.widthChange);
   }
 
   transitionEndCallback() {
-    loadingSpinner.removeEventListener('transitionend', this.transitionEndCallback);
-    loadingSpinner.parentNode && loadingSpinner.parentNode.removeChild(loadingSpinner);
-    loadingHeader.parentNode && loadingHeader.parentNode.removeChild(loadingHeader);
+    loadingSpinner.removeEventListener(
+      'transitionend',
+      this.transitionEndCallback
+    );
+    loadingSpinner.parentNode &&
+      loadingSpinner.parentNode.removeChild(loadingSpinner);
+    loadingHeader.parentNode &&
+      loadingHeader.parentNode.removeChild(loadingHeader);
   }
 
   widthChange = (mediaQuery) => {
     this.props.updateUserData({
       isMobile: mediaQuery.matches
     });
-  }
+  };
 
   onDragStart = ({ type }) => {
     const { isMobile, startDragging } = this.props;
 
     if (!isMobile) {
       startDragging({
-        dragType: type
+        type
       });
     }
-  }
+  };
 
+  // eslint-disable-next-line max-statements
   onDragEnd = ({ type, destination, source, draggableId }) => {
-    const { isMobile, stopDragging, dragDashboard, dragCategory, dragBookmark } = this.props;
+    const {
+      isMobile,
+      stopDragging,
+      dragDashboard,
+      dragCategory,
+      dragBookmark,
+      openModal
+    } = this.props;
 
     if (!isMobile) {
       stopDragging();
     }
 
     if (destination) {
-      if (type === 'dashboard-mobile' || type === 'dashboard-sidebar' || type === 'dashboard-tabs') {
+      if (
+        type === 'dashboard-mobile' ||
+        type === 'dashboard-sidebar' ||
+        type === 'dashboard-tabs'
+      ) {
         dragDashboard({
           destinationIndex: destination.index,
           sourceIndex: source.index,
@@ -70,38 +91,63 @@ export default class Booky extends Component {
             draggableId
               .replace('dashboard-mobile-', '')
               .replace('dashboard-sidebar-', '')
-              .replace('dashboard-tabs-', '')
-            , 10)
+              .replace('dashboard-tabs-', ''),
+            10
+          )
         });
       }
       if (type === 'category') {
         dragCategory({
           destinationIndex: destination.index,
           sourceIndex: source.index,
-          sourceDashboardId: parseInt(source.droppableId.replace('dashboard-', ''), 10),
-          destinationDashboardId: parseInt(destination.droppableId.replace('dashboard-', ''), 10),
+          sourceDashboardId: parseInt(
+            source.droppableId.replace('dashboard-', ''),
+            10
+          ),
+          destinationDashboardId: parseInt(
+            destination.droppableId.replace('dashboard-', ''),
+            10
+          ),
           categoryId: parseInt(draggableId.replace(/category-/g, ''), 10)
         });
       }
       if (type === 'bookmark') {
-        dragBookmark({
-          destinationIndex: destination.index,
-          bookmarkId: parseInt(draggableId.replace(/bookmark-/g, ''), 10),
-          destinationCategoryId: parseInt(destination.droppableId, 10),
-          sourceCategoryId: parseInt(source.droppableId, 10),
-          sourceIndex: source.index
-        });
+        const hasDashboardDestination = destination.droppableId.match(
+          'dashboard-'
+        );
+
+        if (hasDashboardDestination) {
+          openModal('MoveBookmark', {
+            bookmarkId: parseInt(draggableId.replace(/bookmark-/g, ''), 10),
+            categoryId: parseInt(source.droppableId, 10),
+            dashboardId: parseInt(
+              destination.droppableId.replace(/dashboard-/g, ''),
+              10
+            )
+          });
+        } else {
+          dragBookmark({
+            destinationIndex: destination.index,
+            bookmarkId: parseInt(draggableId.replace(/bookmark-/g, ''), 10),
+            destinationCategoryId: parseInt(destination.droppableId, 10),
+            sourceCategoryId: parseInt(source.droppableId, 10),
+            sourceIndex: source.index
+          });
+        }
       }
     }
-  }
+  };
 
   render() {
     const { store, history } = this.props;
 
     return (
-      <Provider store={ store }>
-        <DragDropContext onDragStart={ this.onDragStart } onDragEnd={ this.onDragEnd }>
-          <ConnectedRouter history={ history }>
+      <Provider store={store}>
+        <DragDropContext
+          onDragStart={this.onDragStart}
+          onDragEnd={this.onDragEnd}
+        >
+          <ConnectedRouter history={history}>
             <BrowserRouter>
               <Routes />
             </BrowserRouter>

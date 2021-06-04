@@ -9,9 +9,6 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => ({
   loggedIn: state.user.loggedIn
 });
-const ResendContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Component);
+const ResendContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default ResendContainer;

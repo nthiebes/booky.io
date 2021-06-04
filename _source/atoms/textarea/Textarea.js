@@ -7,25 +7,46 @@ import Icon from '../icon';
 import { ErrorMessage } from '../messages';
 
 export default class Textarea extends Component {
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    className: PropTypes.string,
+    autoFocus: PropTypes.bool,
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
+    onChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    color: PropTypes.string,
+    name: PropTypes.string,
+    id: PropTypes.string,
+    required: PropTypes.bool,
+    value: PropTypes.string,
+    maxLength: PropTypes.string,
+    label: PropTypes.string,
+    autoComplete: PropTypes.string,
+    disabled: PropTypes.bool,
+    validation: PropTypes.bool,
+    error: PropTypes.string,
+    cols: PropTypes.number,
+    rows: PropTypes.number,
+    darkMode: PropTypes.bool
+  };
 
-    this.onChange = this.onChange.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
-  }
+  static defaultProps = {
+    color: '',
+    value: '',
+    validation: true
+  };
 
-  onChange(event) {
+  onChange = (event) => {
     this.props.onChange(event.target.value, this.props.name);
-  }
+  };
 
-  onFocus() {
+  onFocus = () => {
     this.props.onFocus && this.props.onFocus();
-  }
+  };
 
-  onBlur() {
+  onBlur = () => {
     this.props.onBlur && this.props.onBlur();
-  }
+  };
 
   render() {
     const {
@@ -44,13 +65,15 @@ export default class Textarea extends Component {
       autoFocus,
       error,
       cols,
-      rows
+      rows,
+      darkMode
     } = this.props;
     const textareaProps = {
       className: classNames(
         'textarea__field',
         color && `textarea__field--color-${color}`,
         !validation && 'textarea__field--no-validation',
+        darkMode && 'textarea__field--dark-mode',
         className
       ),
       onBlur: this.onBlur,
@@ -71,48 +94,26 @@ export default class Textarea extends Component {
 
     return (
       <Fragment>
-        { label && <Label htmlFor={ id }>{ label }</Label> }
-        <span className={ classNames('textarea', className) }>
-          <textarea { ...textareaProps } />
-          { validation && (
+        {label && <Label htmlFor={id}>{label}</Label>}
+        <span className={classNames('textarea', className)}>
+          <textarea {...textareaProps} />
+          {validation && (
             <Fragment>
-              <Icon icon="check" color="green" className="textarea__icon textarea__icon--valid" />
-              <Icon icon="error" color="orange" className="textarea__icon textarea__icon--invalid" />
+              <Icon
+                icon="check"
+                color="green"
+                className="textarea__icon textarea__icon--valid"
+              />
+              <Icon
+                icon="error"
+                color="orange"
+                className="textarea__icon textarea__icon--invalid"
+              />
             </Fragment>
-          ) }
-          { error && (
-            <ErrorMessage message={ error } />
-          ) }
+          )}
+          {error && <ErrorMessage message={error} />}
         </span>
       </Fragment>
     );
   }
 }
-
-Textarea.propTypes = {
-  className: PropTypes.string,
-  autoFocus: PropTypes.bool,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  color: PropTypes.string,
-  name: PropTypes.string,
-  id: PropTypes.string,
-  required: PropTypes.bool,
-  value: PropTypes.string,
-  maxLength: PropTypes.string,
-  label: PropTypes.string,
-  autoComplete: PropTypes.string,
-  disabled: PropTypes.bool,
-  validation: PropTypes.bool,
-  error: PropTypes.string,
-  cols: PropTypes.number,
-  rows: PropTypes.number
-};
-
-Textarea.defaultProps = {
-  color: '',
-  value: '',
-  validation: true
-};

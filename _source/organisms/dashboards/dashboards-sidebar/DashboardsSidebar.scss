@@ -65,6 +65,7 @@
 
 .dashboards-sidebar--hide {
   transform: translate3d(calc(-100% + 50px), 0, 0);
+  overflow: initial;
 }
 
 .dashboards-sidebar__toggle {
