@@ -36,7 +36,7 @@ quality:e2e:
   image: cypress/browsers:node12.14.1-chrome85-ff81
   script:
     # start the server in the background
-    - npm run start:ci &
+    - npm run start &
     # run Cypress tests
     - npx cypress run --record --browser firefox
   dependencies:
