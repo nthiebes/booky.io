@@ -1,4 +1,4 @@
-image: node:10
+image: node:14
 
 stages:
   - install
@@ -30,6 +30,17 @@ quality:unit:
   script:
     -  npm run test:cover
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+
+quality:e2e:
+  stage: quality
+  image: cypress/browsers:node12.14.1-chrome85-ff81
+  script:
+    # start the server in the background
+    - npm run start:ci &
+    # run Cypress tests
+    - npx cypress run --record --browser firefox
+  dependencies:
+    - install
 
 # build:
 #   stage: build
