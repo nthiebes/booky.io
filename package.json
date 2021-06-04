@@ -111,7 +111,7 @@
     "mockdate": "3.0.5",
     "node-sass": "5.0.0",
     "opn-cli": "4.1.0",
-    "postcss": "8.2.6",
+    "postcss": "8.3.0",
     "postcss-loader": "4.2.0",
     "prettier": "2.2.1",
     "prompt": "1.1.0",
