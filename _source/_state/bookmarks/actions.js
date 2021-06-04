@@ -147,6 +147,14 @@ export const deleteBookmark = ({ categoryId, id, onError, onSuccess }) => (
   });
 };
 
+export const removeBookmark = ({ id, categoryId }) => (dispatch) => {
+  dispatch({
+    type: 'DELETE_BOOKMARK',
+    id,
+    categoryId
+  });
+};
+
 export const dragBookmark = (dragData) => (dispatch) => {
   const { destinationCategoryId, bookmarkId, destinationIndex } = dragData;
 

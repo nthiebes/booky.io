@@ -21,7 +21,8 @@ export default class Booky extends Component {
     updateUserData: PropTypes.func.isRequired,
     store: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
+    openModal: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -57,18 +58,20 @@ export default class Booky extends Component {
 
     if (!isMobile) {
       startDragging({
-        dragType: type
+        type
       });
     }
   };
 
+  // eslint-disable-next-line max-statements
   onDragEnd = ({ type, destination, source, draggableId }) => {
     const {
       isMobile,
       stopDragging,
       dragDashboard,
       dragCategory,
-      dragBookmark
+      dragBookmark,
+      openModal
     } = this.props;
 
     if (!isMobile) {
@@ -109,13 +112,28 @@ export default class Booky extends Component {
         });
       }
       if (type === 'bookmark') {
-        dragBookmark({
-          destinationIndex: destination.index,
-          bookmarkId: parseInt(draggableId.replace(/bookmark-/g, ''), 10),
-          destinationCategoryId: parseInt(destination.droppableId, 10),
-          sourceCategoryId: parseInt(source.droppableId, 10),
-          sourceIndex: source.index
-        });
+        const hasDashboardDestination = destination.droppableId.match(
+          'dashboard-'
+        );
+
+        if (hasDashboardDestination) {
+          openModal('MoveBookmark', {
+            bookmarkId: parseInt(draggableId.replace(/bookmark-/g, ''), 10),
+            categoryId: parseInt(source.droppableId, 10),
+            dashboardId: parseInt(
+              destination.droppableId.replace(/dashboard-/g, ''),
+              10
+            )
+          });
+        } else {
+          dragBookmark({
+            destinationIndex: destination.index,
+            bookmarkId: parseInt(draggableId.replace(/bookmark-/g, ''), 10),
+            destinationCategoryId: parseInt(destination.droppableId, 10),
+            sourceCategoryId: parseInt(source.droppableId, 10),
+            sourceIndex: source.index
+          });
+        }
       }
     }
   };

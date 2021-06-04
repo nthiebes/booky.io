@@ -184,6 +184,10 @@
   }
 }
 
+.dashboards__item--no-hover {
+  pointer-events: none;
+}
+
 .dashboards__label {
   color: $color-font--dark;
   font-family: $font-family--text;
@@ -198,6 +202,19 @@
 
 .dashboards__label--dark-mode {
   color: $color-font--white;
+}
+
+.dashboards__label--drag {
+  outline: 2px dashed $color-font--medium;
+}
+
+.dashboards__label--drag-active {
+  outline-color: $color-font--primary;
+}
+
+.dashboards__placeholder {
+  position: absolute;
+  opacity: 0;
 }
 
 .dashboards__button,

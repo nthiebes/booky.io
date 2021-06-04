@@ -46,7 +46,8 @@ export const addCategory = ({
   name,
   position,
   onError,
-  onSuccess
+  onSuccess,
+  shouldUpdate = true
 }) => (dispatch) => {
   fetcher({
     url: `/dashboards/${dashboardId}/categories`,
@@ -57,18 +58,19 @@ export const addCategory = ({
       position
     },
     onSuccess: ({ id }) => {
-      dispatch({
-        type: 'ADD_CATEGORY',
-        color,
-        name,
-        position,
-        id,
-        dashboardId
-      });
-      onSuccess && onSuccess();
+      if (shouldUpdate) {
+        dispatch({
+          type: 'ADD_CATEGORY',
+          color,
+          name,
+          position,
+          id,
+          dashboardId
+        });
+      }
+      onSuccess && onSuccess(id);
     },
     onError: (error) => {
-      // console.log('error', error);
       onError && onError(error);
     }
   });
