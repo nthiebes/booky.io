@@ -37,7 +37,7 @@ install:
     untracked: true
     expire_in: 30 mins
     paths:
-      - node_modules/
+      - node_modules
 
 quality:lint:
   stage: quality

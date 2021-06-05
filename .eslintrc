@@ -5,13 +5,13 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:cypress/recommended"
+    "plugin:jsx-a11y/recommended"
+    // "plugin:cypress/recommended"
   ],
   "plugins": [
     "react",
-    "jsx-a11y",
-    "cypress"
+    "jsx-a11y"
+    // "cypress"
   ],
   "settings": {
     "react": {
@@ -31,8 +31,8 @@
     "es6": true,
     "browser": true,
     "node": true,
-    "jest": true,
-    "cypress/globals": true
+    "jest": true
+    // "cypress/globals": true
   },
   "rules": {
     "array-bracket-spacing": 1,
@@ -235,6 +235,7 @@
   },
   "globals": {
     "chrome": true,
-    "AbortController": true
+    "AbortController": true,
+    "cy": true
   }
 }
