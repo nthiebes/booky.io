@@ -53,7 +53,7 @@ quality:unit:
 e2e:chrome:
   stage: e2e
   image: cypress/browsers:node14.15.0-chrome86-ff82
-  parallel: 1
+  parallel: 2
   script:
     # start the server in the background
     - npm run start &
@@ -71,7 +71,7 @@ e2e:chrome:
 e2e:firefox:
   stage: e2e
   image: cypress/browsers:node14.15.0-chrome86-ff82
-  parallel: 1
+  parallel: 2
   script:
     # start the server in the background
     - npm run start &
