@@ -41,7 +41,7 @@ install:
 
 quality:lint:
   stage: quality
-  image: node:14
+  image: node:12
   script:
     -  npm run lint
 
