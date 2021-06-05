@@ -25,7 +25,7 @@ install:
   image: cypress/browsers:node14.15.0-chrome86-ff82
 
   script:
-    - npm install
+    - npm ci
     # check Cypress binary path and cached versions
     # useful to make sure we are not carrying around old versions
     # - npx cypress cache path
@@ -43,13 +43,14 @@ quality:lint:
   stage: quality
   image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
-    -  npm run lint
+    - npm install
+    - npm run lint
 
 quality:unit:
   stage: quality
   image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
-    -  npm run test:cover
+    - npm run test:cover
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
 
 e2e:chrome:
