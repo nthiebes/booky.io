@@ -3,26 +3,24 @@ image: node:14
 stages:
   - install
   - quality
+  - e2e
   # - build
 
 cache:
   paths:
-    - node_modules/
-    - /root/.cache/Cypress
-    - .cache/Cypress
+    - .cache/*
+    - cache/Cypress
 
 install:
   stage: install
   script:
-    - npm install
+    - npm ci install
   artifacts:
     name: "artifacts"
     untracked: true
     expire_in: 30 mins
     paths:
       - node_modules/
-      - /root/.cache/Cypress
-      - .cache/Cypress
 
 quality:lint:
   stage: quality
@@ -35,16 +33,31 @@ quality:unit:
     -  npm run test:cover
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
 
-quality:e2e:
-  stage: quality
-  image: cypress/browsers:node12.14.1-chrome85-ff81
+e2e:chrome:
+  stage: e2e
+  image: cypress/browsers:node14.15.0-chrome86-ff82
+  parallel: 5
   script:
-    # start the server in the background
     - npm run start &
-    # run Cypress tests
-    - npx cypress run --record --browser firefox
-  dependencies:
-    - install
+    - npx cypress run --record --parallel --browser chrome
+
+# e2e:firefox:
+#   stage: e2e
+#   image: cypress/browsers:node14.15.0-chrome86-ff82
+#   parallel: 5
+#   script:
+#     - npm run start &
+#     - npx cypress run --record --parallel --browser firefox --group "UI - Firefox" --spec "cypress/tests/ui/*"
+#   dependencies:
+#     - install
+
+# ui-chrome-mobile:
+#   image: cypress/browsers:node14.15.0-chrome86-ff82
+#   stage: test
+#   parallel: 5
+#   script:
+#     - yarn start:ci & npx wait-on http://localhost:3000
+#     - npx cypress run --record --parallel --browser chrome --group "UI - Chrome - Mobile" --spec "cypress/tests/ui/*" --config "viewportWidth=375,viewportHeight=667"
 
 # build:
 #   stage: build
