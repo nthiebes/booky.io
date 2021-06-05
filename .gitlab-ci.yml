@@ -43,7 +43,6 @@ install:
     # useful to make sure we are not carrying around old versions
     - npx cypress cache path
     - npx cypress cache list
-    - $(npm bin)/print-env CI
     - npm run cy:verify
     - npm run cy:info
 
@@ -68,6 +67,8 @@ e2e:chrome:
     - npm run start &
     # run Cypress test in load balancing mode
     - npx cypress run --record --parallel --browser chrome
+  only:
+    - external_pull_requests
   artifacts:
     when: always
     paths:
