@@ -1,45 +1,98 @@
-image: node:14
+# image: node:14
 
 stages:
   - install
-  - quality
+  # - quality
   - e2e
   # - build
 
+# to cache both npm modules and Cypress binary we use environment variables
+# to point at the folders we can list as paths in "cache" job settings
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+
+# cache using branch name
+# https://gitlab.com/help/ci/caching/index.md
 cache:
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - .cache/*
+    - .npm
     - cache/Cypress
+    - node_modules
 
+# install:
+#   stage: install
+#   script:
+#     - npm ci
+#   artifacts:
+#     name: "artifacts"
+#     untracked: true
+#     expire_in: 30 mins
+#     paths:
+#       - node_modules/
+
+# this job installs NPM dependencies and Cypress
 install:
+  image: cypress/browsers:node14.15.0-chrome86-ff82
   stage: install
-  script:
-    - npm ci install
-  artifacts:
-    name: "artifacts"
-    untracked: true
-    expire_in: 30 mins
-    paths:
-      - node_modules/
 
-quality:lint:
-  stage: quality
   script:
-    -  npm run lint
+    - npm ci
+    # check Cypress binary path and cached versions
+    # useful to make sure we are not carrying around old versions
+    - npx cypress cache path
+    - npx cypress cache list
+    - $(npm bin)/print-env CI
+    - npm run cy:verify
+    - npm run cy:info
 
-quality:unit:
-  stage: quality
-  script:
-    -  npm run test:cover
-  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+# quality:lint:
+#   stage: quality
+#   script:
+#     -  npm run lint
+
+# quality:unit:
+#   stage: quality
+#   script:
+#     -  npm run test:cover
+#   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
 
 e2e:chrome:
   stage: e2e
   image: cypress/browsers:node14.15.0-chrome86-ff82
-  parallel: 5
   script:
+    # print CI environment variables for reference
+    - $(npm bin)/print-env CI
+    # start the server in the background
     - npm run start &
+    # run Cypress test in load balancing mode
     - npx cypress run --record --parallel --browser chrome
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
+    expire_in: 1 day
+
+# e2e:chrome:
+#   stage: e2e
+#   image: cypress/browsers:node14.15.0-chrome86-ff82
+#   parallel: 1
+#   script:
+#     # - npm ci
+#     # print CI environment variables for reference
+#     - $(npm bin)/print-env CI
+#     # make sure Cypress can run
+#     - npm run cy:verify
+#     # start the server in the background
+#     - npm run start &
+#     - npx cypress run --record --parallel --browser chrome
+#   artifacts:
+#     paths:
+#       - cypress/videos
+#       - cypress/screenshots
+#     expire_in: 1 day
 
 # e2e:firefox:
 #   stage: e2e
