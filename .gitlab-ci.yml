@@ -43,8 +43,8 @@ install:
     # useful to make sure we are not carrying around old versions
     - npx cypress cache path
     - npx cypress cache list
-    - npm run cypress verify
-    - npm run cypress info
+    - npx cypress verify
+    - npx cypress info
 
 # quality:lint:
 #   stage: quality
