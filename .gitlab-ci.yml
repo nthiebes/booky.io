@@ -61,8 +61,6 @@ e2e:chrome:
   stage: e2e
   image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
-    # print CI environment variables for reference
-    - $(npm bin)/print-env CI
     # start the server in the background
     - npm run start &
     # run Cypress test in load balancing mode
