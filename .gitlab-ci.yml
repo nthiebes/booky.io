@@ -9,6 +9,7 @@ cache:
   paths:
     - node_modules/
     - /root/.cache/Cypress
+    - .cache/Cypress
 
 install:
   stage: install
@@ -21,6 +22,7 @@ install:
     paths:
       - node_modules/
       - /root/.cache/Cypress
+      - .cache/Cypress
 
 quality:lint:
   stage: quality
