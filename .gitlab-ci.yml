@@ -1,5 +1,3 @@
-image: node:14
-
 stages:
   - install
   - quality
@@ -23,7 +21,7 @@ cache:
 
 # this job installs NPM dependencies and Cypress
 install:
-  # image: cypress/browsers:node14.15.0-chrome86-ff82
+  image: cypress/browsers:node14.15.0-chrome86-ff82
   stage: install
 
   script:
