@@ -34,12 +34,12 @@ install:
     - npx cypress cache list
     - npx cypress verify
     - npx cypress info
-#   artifacts:
-#     name: "artifacts"
-#     untracked: true
-#     expire_in: 30 mins
-#     paths:
-#       - node_modules/
+  artifacts:
+    name: "artifacts"
+    untracked: true
+    expire_in: 30 mins
+    paths:
+      - node_modules/
 
 quality:lint:
   stage: quality
