@@ -6,9 +6,9 @@ stages:
 
 # to cache both npm modules and Cypress binary we use environment variables
 # to point at the folders we can list as paths in "cache" job settings
-variables:
-  # npm_config_cache: "$CI_PROJECT_DIR/.npm"
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+# variables:
+#   npm_config_cache: "$CI_PROJECT_DIR/.npm"
+#   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
@@ -16,8 +16,8 @@ cache:
   # key: ${CI_COMMIT_REF_SLUG}
   paths:
     # - .npm
-    - cache/Cypress
-    - node_modules
+    # - cache/Cypress
+    - node_modules/
 
 # this job installs NPM dependencies and Cypress
 install:
@@ -25,13 +25,13 @@ install:
   image: cypress/browsers:node14.15.0-chrome86-ff82
 
   script:
-    - npm ci
+    - npm install
     # check Cypress binary path and cached versions
     # useful to make sure we are not carrying around old versions
-    - npx cypress cache path
-    - npx cypress cache list
-    - npx cypress verify
-    - npx cypress info
+    # - npx cypress cache path
+    # - npx cypress cache list
+    # - npx cypress verify
+    # - npx cypress info
   artifacts:
     name: "artifacts"
     untracked: true
@@ -44,8 +44,6 @@ quality:lint:
   image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
     -  npm run lint
-  dependencies:
-    - install
 
 quality:unit:
   stage: quality
