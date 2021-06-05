@@ -21,8 +21,8 @@ cache:
 
 # this job installs NPM dependencies and Cypress
 install:
-  image: cypress/browsers:node14.15.0-chrome86-ff82
   stage: install
+  image: cypress/browsers:node14.15.0-chrome86-ff82
 
   script:
     - npm ci
@@ -41,11 +41,13 @@ install:
 
 quality:lint:
   stage: quality
+  image: node:14
   script:
     -  npm run lint
 
 quality:unit:
   stage: quality
+  image: node:14
   script:
     -  npm run test:cover
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
