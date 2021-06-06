@@ -18,6 +18,7 @@ cache:
     - .npm
     - cache/Cypress
     - node_modules
+    - /builds/Gscheid/booky-io/cache/Cypress
 
 # this job installs NPM dependencies and Cypress
 install:
