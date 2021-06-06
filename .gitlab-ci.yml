@@ -17,9 +17,13 @@ cache:
   paths:
     - .npm
     - cache/Cypress
+    - cache/Cypress/*
     - node_modules
     - /builds/Gscheid/booky-io/cache/Cypress
+    - /builds/Gscheid/booky-io/cache/Cypress/*
     - /root/.cache/Cypress/7.4.0/Cypress/Cypress
+    - /root/.cache/Cypress
+    - /root/.cache/Cypress/*
 
 # this job installs NPM dependencies and Cypress
 install:
