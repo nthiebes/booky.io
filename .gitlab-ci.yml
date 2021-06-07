@@ -17,13 +17,13 @@ cache:
   paths:
     - .npm
     - cache/Cypress
-    - cache/Cypress/*
+    # - cache/Cypress/*
     - node_modules
-    - /builds/Gscheid/booky-io/cache/Cypress
-    - /builds/Gscheid/booky-io/cache/Cypress/*
-    - /root/.cache/Cypress/7.4.0/Cypress/Cypress
-    - /root/.cache/Cypress
-    - /root/.cache/Cypress/*
+    # - /builds/Gscheid/booky-io/cache/Cypress
+    # - /builds/Gscheid/booky-io/cache/Cypress/*
+    # - /root/.cache/Cypress/7.4.0/Cypress/Cypress
+    # - /root/.cache/Cypress
+    # - /root/.cache/Cypress/*
 
 # this job installs NPM dependencies and Cypress
 install:
@@ -34,10 +34,10 @@ install:
     - npm install
     # check Cypress binary path and cached versions
     # useful to make sure we are not carrying around old versions
-    - npx cypress cache path
-    - npx cypress cache list
-    - npx cypress verify
-    - npx cypress info
+    # - npx cypress cache path
+    # - npx cypress cache list
+    # - npx cypress verify
+    # - npx cypress info
   artifacts:
     name: "artifacts"
     untracked: true
