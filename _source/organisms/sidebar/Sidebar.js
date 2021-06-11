@@ -27,7 +27,6 @@ class Sidebar extends PureComponent {
     logout: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     color: PropTypes.number.isRequired,
-    isBeta: PropTypes.bool.isRequired,
     newsVersion: PropTypes.number.isRequired,
     voted: PropTypes.number.isRequired
   };
@@ -68,7 +67,6 @@ class Sidebar extends PureComponent {
       className,
       hasSidebar,
       darkMode,
-      isBeta,
       newsVersion,
       voted
     } = this.props;
@@ -117,26 +115,101 @@ class Sidebar extends PureComponent {
               <FormattedMessage id="menu.navigation" />
             </H3>
             <ul className="sidebar__list">
+              {!loggedIn && (
+                <>
+                  <li>
+                    <Link
+                      className={classNames(
+                        'sidebar__item',
+                        pathname === '/about' && 'sidebar__item--active',
+                        darkMode && 'sidebar__item--dark-mode'
+                      )}
+                      to="/about"
+                      onClick={closeSidebar}
+                      tabIndex={open ? '0' : '-1'}
+                      noUnderline
+                    >
+                      <Icon icon="about" />
+                      <span
+                        className={classNames(
+                          'sidebar__label',
+                          darkMode && 'sidebar__label--dark-mode'
+                        )}
+                      >
+                        <FormattedMessage id="menu.about" />
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className={classNames(
+                        'sidebar__item',
+                        pathname === '/features' && 'sidebar__item--active',
+                        darkMode && 'sidebar__item--dark-mode'
+                      )}
+                      to="/features"
+                      onClick={closeSidebar}
+                      tabIndex={open ? '0' : '-1'}
+                      noUnderline
+                    >
+                      <Icon icon="star" />
+                      <span
+                        className={classNames(
+                          'sidebar__label',
+                          darkMode && 'sidebar__label--dark-mode'
+                        )}
+                      >
+                        <FormattedMessage id="menu.features" />
+                      </span>
+                    </Link>
+                  </li>
+                </>
+              )}
+              {loggedIn && (
+                <li>
+                  <Link
+                    className={classNames(
+                      'sidebar__item',
+                      pathname === '/account' && 'sidebar__item--active',
+                      darkMode && 'sidebar__item--dark-mode'
+                    )}
+                    to="/account"
+                    onClick={closeSidebar}
+                    tabIndex={open ? '0' : '-1'}
+                    noUnderline
+                  >
+                    <Icon icon="account" />
+                    <span
+                      className={classNames(
+                        'sidebar__label',
+                        darkMode && 'sidebar__label--dark-mode'
+                      )}
+                    >
+                      <FormattedMessage id="menu.account" />
+                    </span>
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   className={classNames(
                     'sidebar__item',
-                    pathname === '/about' && 'sidebar__item--active',
+                    pathname === '/supporter' && 'sidebar__item--active',
                     darkMode && 'sidebar__item--dark-mode'
                   )}
-                  to="/about"
+                  to="/supporter"
                   onClick={closeSidebar}
                   tabIndex={open ? '0' : '-1'}
                   noUnderline
                 >
-                  <Icon icon="about" />
+                  <Icon icon="heart" />
                   <span
                     className={classNames(
                       'sidebar__label',
                       darkMode && 'sidebar__label--dark-mode'
                     )}
                   >
-                    <FormattedMessage id="menu.about" />
+                    <FormattedMessage id="menu.supporter" />
                   </span>
                 </Link>
               </li>
@@ -164,7 +237,7 @@ class Sidebar extends PureComponent {
                 </Link>
               </li>
               {!loggedIn && (
-                <Fragment>
+                <>
                   <li>
                     <Link
                       className={classNames(
@@ -212,80 +285,30 @@ class Sidebar extends PureComponent {
                       </span>
                     </Link>
                   </li>
-                </Fragment>
-              )}
-              {loggedIn && (
-                <>
-                  <li>
-                    <Link
-                      className={classNames(
-                        'sidebar__item',
-                        pathname === '/account' && 'sidebar__item--active',
-                        darkMode && 'sidebar__item--dark-mode'
-                      )}
-                      to="/account"
-                      onClick={closeSidebar}
-                      tabIndex={open ? '0' : '-1'}
-                      noUnderline
-                    >
-                      <Icon icon="account" />
-                      <span
-                        className={classNames(
-                          'sidebar__label',
-                          darkMode && 'sidebar__label--dark-mode'
-                        )}
-                      >
-                        <FormattedMessage id="menu.account" />
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={classNames(
-                        'sidebar__item',
-                        pathname === '/next' && 'sidebar__item--active',
-                        darkMode && 'sidebar__item--dark-mode'
-                      )}
-                      to="/next"
-                      onClick={closeSidebar}
-                      tabIndex={open ? '0' : '-1'}
-                      noUnderline
-                      hasBadge={voted < config.POLL_VERSION}
-                    >
-                      <Icon icon="next" />
-                      <span
-                        className={classNames(
-                          'sidebar__label',
-                          darkMode && 'sidebar__label--dark-mode'
-                        )}
-                      >
-                        <FormattedMessage id="menu.next" />
-                      </span>
-                    </Link>
-                  </li>
                 </>
               )}
-              {isBeta && (
+              {loggedIn && (
                 <li>
                   <Link
                     className={classNames(
                       'sidebar__item',
-                      pathname === '/feedback' && 'sidebar__item--active',
+                      pathname === '/next' && 'sidebar__item--active',
                       darkMode && 'sidebar__item--dark-mode'
                     )}
-                    to="/feedback"
+                    to="/next"
                     onClick={closeSidebar}
                     tabIndex={open ? '0' : '-1'}
                     noUnderline
+                    hasBadge={voted < config.POLL_VERSION}
                   >
-                    <Icon icon="feedback" />
+                    <Icon icon="next" />
                     <span
                       className={classNames(
                         'sidebar__label',
                         darkMode && 'sidebar__label--dark-mode'
                       )}
                     >
-                      <FormattedMessage id="menu.feedback" />
+                      <FormattedMessage id="menu.next" />
                     </span>
                   </Link>
                 </li>

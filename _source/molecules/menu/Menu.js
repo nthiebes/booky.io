@@ -9,13 +9,28 @@ import Link from '../../atoms/link';
 
 const menuItemsLoggedOut = [
   {
+    name: 'about',
+    route: '/about'
+  },
+  {
     name: 'features',
     route: '/features',
     icon: 'star'
   },
   {
-    name: 'about',
-    route: '/about'
+    name: 'supporter',
+    route: '/supporter',
+    icon: 'heart'
+  },
+  {
+    name: 'help',
+    route: '/help'
+  }
+];
+const menuItemsLoggedIn = [
+  {
+    name: 'account',
+    route: '/account'
   },
   {
     name: 'supporter',
@@ -27,30 +42,8 @@ const menuItemsLoggedOut = [
     route: '/help'
   },
   {
-    name: 'feedback',
-    route: '/feedback'
-  }
-];
-const menuItemsLoggedIn = [
-  {
-    name: 'about',
-    route: '/about'
-  },
-  {
-    name: 'help',
-    route: '/help'
-  },
-  {
-    name: 'account',
-    route: '/account'
-  },
-  {
     name: 'next',
     route: '/next'
-  },
-  {
-    name: 'feedback',
-    route: '/feedback'
   },
   {
     name: 'new',
@@ -63,26 +56,15 @@ class Menu extends PureComponent {
     intl: PropTypes.object.isRequired,
     className: PropTypes.string,
     loggedIn: PropTypes.bool,
-    isBeta: PropTypes.bool.isRequired,
     newsVersion: PropTypes.number.isRequired,
     voted: PropTypes.number.isRequired
   };
 
   render() {
-    const {
-      className,
-      loggedIn,
-      intl,
-      isBeta,
-      newsVersion,
-      voted
-    } = this.props;
+    const { className, loggedIn, intl, newsVersion, voted } = this.props;
     let menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     menuItems = menuItems.filter((item) => {
-      if (item.name === 'feedback' && !isBeta) {
-        return false;
-      }
       if (item.name === 'new' && newsVersion >= config.NEWS_VERSION) {
         return false;
       }

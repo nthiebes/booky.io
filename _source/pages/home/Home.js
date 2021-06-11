@@ -176,7 +176,7 @@ class Home extends Component {
           </div>
           <Illustration name="devices" className="home__header-illustration" />
         </section>
-        <Section color="light" noPadding contentClassName="home__features">
+        <Section color="light" contentClassName="home__features">
           <H2 style="h1" noMargin centered className="home__features-headline">
             <FormattedMessage id="misc.features" />
           </H2>
@@ -400,7 +400,7 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="light" contentClassName="home__testimonials">
+        <Section color="light" noPadding contentClassName="home__testimonials">
           <Testimonials />
         </Section>
         <Section className="home__not-a-member">
