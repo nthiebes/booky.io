@@ -14,6 +14,7 @@
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
     "start": "npm run open:source",
+    "start:ci": "npm run open:source --no-clipboard",
     "open:source": "babel-node tools/srcServer.js",
     "open:public": "babel-node tools/distServer.js",
     "lint": "npm-run-all lint:css lint:js",
