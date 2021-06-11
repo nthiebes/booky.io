@@ -17,10 +17,14 @@ cache:
   paths:
     - node_modules
 
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+
 # this job installs NPM dependencies and Cypress
 install:
   stage: install
-  image: cypress/browsers:node14.15.0-chrome86-ff82
+  image: cypress/base:14.16.0
 
   script:
     - npm install
@@ -39,23 +43,27 @@ install:
 
 quality:lint:
   stage: quality
-  image: cypress/browsers:node14.15.0-chrome86-ff82
+  image: cypress/base:14.16.0
   script:
     - npm run lint
 
 quality:unit:
   stage: quality
-  image: cypress/browsers:node14.15.0-chrome86-ff82
+  image: cypress/base:14.16.0
   script:
     - npm run test:cover
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
 
 e2e:chrome:
   stage: e2e
-  image: cypress/browsers:node14.15.0-chrome86-ff82
+  image: cypress/base:14.16.0
+  cache:
+    paths:
+      - .npm
+      - cache/Cypress
   script:
-    - npm install
-    - npx cypress install
+    # - npm install
+    # - npx cypress install
     # start the server in the background
     - npm run start:ci &
     # run Cypress test in load balancing mode
@@ -71,7 +79,11 @@ e2e:chrome:
 
 e2e:firefox:
   stage: e2e
-  image: cypress/browsers:node14.15.0-chrome86-ff82
+  image: cypress/base:14.16.0
+  cache:
+    paths:
+      - .npm
+      - cache/Cypress
   script:
     - npm install
     - npx cypress install
