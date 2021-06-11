@@ -15,8 +15,6 @@ stages:
 cache:
   # key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - .npm
-    - cache/Cypress
     - node_modules
 
 # this job installs NPM dependencies and Cypress
@@ -59,7 +57,7 @@ e2e:chrome:
     - npm install
     - npx cypress install
     # start the server in the background
-    - npm run start:ci &
+    - npm start:ci &
     # run Cypress test in load balancing mode
     - npx cypress run --record --key 1eeb9ee4-c447-4459-9086-2327b856e9f6 --browser chrome
   only:
@@ -74,8 +72,12 @@ e2e:chrome:
 e2e:firefox:
   stage: e2e
   image: cypress/browsers:node14.15.0-chrome86-ff82
+  cache:
+    paths:
+      - .npm
+      - cache/Cypress
   script:
-    - npm install
+    # - npm install
     # - npx cypress install
     # start the server in the background
     - npm run start:ci &
