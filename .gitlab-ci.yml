@@ -13,17 +13,11 @@ stages:
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
 cache:
-  # key: ${CI_COMMIT_REF_SLUG}
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .npm
     - cache/Cypress
-    # - cache/Cypress/*
     - node_modules
-    # - /builds/Gscheid/booky-io/cache/Cypress
-    # - /builds/Gscheid/booky-io/cache/Cypress/*
-    # - /root/.cache/Cypress/7.4.0/Cypress/Cypress
-    # - /root/.cache/Cypress
-    # - /root/.cache/Cypress/*
 
 # this job installs NPM dependencies and Cypress
 install:
@@ -67,6 +61,7 @@ e2e:chrome:
   image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
     # start the server in the background
+    - npm install
     - npx cypress install
     - npm run start &
     # run Cypress test in load balancing mode
