@@ -16,6 +16,8 @@ cache:
   # key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules
+    - .npm
+    - cache/Cypress
 
 variables:
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
@@ -24,7 +26,7 @@ variables:
 # this job installs NPM dependencies and Cypress
 install:
   stage: install
-  image: cypress/base:14.16.0
+  image: cypress/browsers:node14.15.0-chrome86-ff82
 
   script:
     - npm install
@@ -43,20 +45,20 @@ install:
 
 quality:lint:
   stage: quality
-  image: cypress/base:14.16.0
+  image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
     - npm run lint
 
 quality:unit:
   stage: quality
-  image: cypress/base:14.16.0
+  image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
     - npm run test:cover
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
 
 e2e:chrome:
   stage: e2e
-  image: cypress/base:14.16.0
+  image: cypress/browsers:node14.15.0-chrome86-ff82
   cache:
     paths:
       - .npm
@@ -79,7 +81,7 @@ e2e:chrome:
 
 e2e:firefox:
   stage: e2e
-  image: cypress/base:14.16.0
+  image: cypress/browsers:node14.15.0-chrome86-ff82
   cache:
     paths:
       - .npm
