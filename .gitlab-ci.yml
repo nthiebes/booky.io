@@ -13,7 +13,7 @@ stages:
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
+  # key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .npm
     - cache/Cypress
