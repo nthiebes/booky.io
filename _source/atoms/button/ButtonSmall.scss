@@ -114,6 +114,7 @@
     background-color: $color-background--primary;
     border-bottom-color: darken($color-background--primary, 10%);
     color: $color-font--white;
+    border-bottom-width: 2px;
 
     .icon {
       color: $color-font--white;

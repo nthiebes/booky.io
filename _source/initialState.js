@@ -7,7 +7,7 @@ export default {
     new: true,
     premium: false,
     isMobile: window.matchMedia('(max-width: 1000px)').matches,
-    isBeta: Boolean(window.location.host.match(/beta|localhost./gi)),
+    isBeta: Boolean(window.location.host.match(/beta./gi)),
     settings: {
       blurEffect: false,
       darkMode: false,

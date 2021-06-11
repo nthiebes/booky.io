@@ -156,11 +156,7 @@ class About extends PureComponent {
             className="about__donate"
           />
         </Section>
-        <Section
-          color="dark"
-          className="about__availability-wrapper"
-          contentClassName="about__availability"
-        >
+        <Section color="dark" contentClassName="about__bookmarklet">
           <Illustration
             className="home__plant booky--hide-mobile"
             name="plant"
@@ -170,133 +166,75 @@ class About extends PureComponent {
             name="trees"
           />
           <H2 style="h1" color="light" noMargin centered>
-            <FormattedMessage id="about.platforms" />
+            <FormattedMessage id="misc.feature1" />
           </H2>
-          <H3
-            style="h2"
-            color="light"
-            noMargin
-            centered
-            ignoreDarkMode
-            className="about__availability-title"
-          >
-            <FormattedMessage id="about.platformsText" />
+          <H3 style="h2" color="light" noMargin centered>
+            <FormattedMessage id="home.extensionText" />
           </H3>
-          <nav className="about__platforms">
+          <nav className="about__extension">
             <Link
               href="https://chrome.google.com/webstore/detail/bookyio-extension/pmcpkkipiedakcaolhnbijibndfemckf"
               target="_blank"
               color="light"
-              className="about__platforms-platform"
+              className="about__extension-browser"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="home__extension-icon"
+                className="about__extension-icon"
                 src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              {'Chrome '}
-              <FormattedMessage id="misc.extension" />
+              {'Chrome'}
             </Link>
             <Link
               href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/"
               target="_blank"
               color="light"
-              className="about__platforms-platform"
+              className="about__extension-browser"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="home__extension-icon"
+                className="about__extension-icon"
                 src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              {'Firefox '}
-              <FormattedMessage id="misc.extension" />
+              {'Firefox'}
             </Link>
             <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
               target="_blank"
               color="light"
-              className="about__platforms-platform"
+              className="about__extension-browser"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="home__extension-icon"
+                className="about__extension-icon"
                 src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              {'Opera '}
-              <FormattedMessage id="misc.extension" />
+              {'Opera'}
             </Link>
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
               target="_blank"
               color="light"
-              className="about__platforms-platform"
+              className="about__extension-browser"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="home__extension-icon"
+                className="about__extension-icon"
                 src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              {'Edge '}
-              <FormattedMessage id="misc.extension" />
-            </Link>
-            <Link
-              to="/bookmarklet"
-              color="light"
-              className="about__platforms-platform"
-            >
-              <img
-                width="75"
-                height="75"
-                alt=""
-                className="home__extension-icon"
-                src="../../_assets/icons/android-chrome-192x192.png"
-                loading="lazy"
-              />
-              {'Bookmarklet'}
-            </Link>
-            <Link
-              href="../../_assets/downloads/booky.zip"
-              target="_blank"
-              color="light"
-              className="about__platforms-platform"
-            >
-              <img
-                width="75"
-                height="75"
-                alt=""
-                className="home__extension-icon"
-                src="../../_assets/logos/apple.svg"
-                loading="lazy"
-              />
-              {'Mac App'}
-            </Link>
-            <Link
-              href="https://www.groovypost.com/howto/using-web-apps-new-chromium-edge-windows-10/"
-              target="_blank"
-              color="light"
-              className="about__platforms-platform"
-            >
-              <img
-                width="75"
-                height="75"
-                alt=""
-                className="home__extension-icon"
-                src="../../_assets/logos/windows.svg"
-                loading="lazy"
-              />
-              {'Windows App'}
+              {'Edge'}
             </Link>
           </nav>
         </Section>

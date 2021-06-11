@@ -31,11 +31,7 @@
   margin-left: 4px;
 }
 
-.about__availability-wrapper {
-  overflow: hidden;
-}
-
-.about__availability {
+.about__bookmarklet {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -51,33 +47,32 @@
   }
 }
 
-.about__availability-title {
-  @include desktop {
-    max-width: 80%;
-  }
-}
-
-.about__platforms {
+.about__extension {
   display: flex;
+  width: 100%;
   margin-top: 1rem;
   justify-content: center;
-  flex-wrap: wrap;
-
-  @include tablet {
-    max-width: 80%;
-  }
 
   @include desktop {
     margin-top: 2rem;
-    max-width: 60%;
   }
 }
 
-.about__platforms-platform {
+.about__extension-icon {
+  margin: 0 0.5rem 0.5rem;
+  max-width: 75px;
+  max-height: 75px;
+
+  @include mobile {
+    width: 19vw;
+    height: 19vw;
+  }
+}
+
+.about__extension-browser {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0.5rem;
 }
 
 .about__members {

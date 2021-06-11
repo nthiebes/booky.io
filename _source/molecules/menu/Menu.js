@@ -9,8 +9,18 @@ import Link from '../../atoms/link';
 
 const menuItemsLoggedOut = [
   {
+    name: 'features',
+    route: '/features',
+    icon: 'star'
+  },
+  {
     name: 'about',
     route: '/about'
+  },
+  {
+    name: 'supporter',
+    route: '/supporter',
+    icon: 'heart'
   },
   {
     name: 'help',
@@ -84,7 +94,7 @@ class Menu extends PureComponent {
         aria-label={intl.formatMessage({ id: 'menu.title' })}
         className={classNames('menu', className)}
       >
-        {menuItems.map(({ name, route }) => (
+        {menuItems.map(({ name, icon, route }) => (
           <Link
             key={name}
             className="menu__item"
@@ -97,7 +107,7 @@ class Menu extends PureComponent {
               (voted < config.POLL_VERSION && name === 'next') || name === 'new'
             }
           >
-            <Icon icon={name} color="light" />
+            <Icon icon={icon || name} color="light" />
             <FormattedMessage id={`menu.${name}`} />
           </Link>
         ))}
