@@ -31,8 +31,7 @@ install:
   image: cypress/browsers:node14.15.0-chrome86-ff82
 
   script:
-    # - npm install
-    - CYPRESS_CACHE_FOLDER=./tmp/Cypress npm install
+    - npm ci
     # check Cypress binary path and cached versions
     # useful to make sure we are not carrying around old versions
     # - npx cypress cache path
@@ -51,8 +50,8 @@ quality:lint:
   image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
     - npm run lint
-  except:
-    - external_pull_requests
+  # except:
+  #   - external_pull_requests
 
 quality:unit:
   stage: quality
@@ -60,17 +59,18 @@ quality:unit:
   script:
     - npm run test:cover
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
-  except:
-    - external_pull_requests
+  # except:
+  #   - external_pull_requests
 
 e2e:chrome:
   stage: e2e
   image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
     # start the server in the background
+    - npx cypress install
     - npm run start &
     # run Cypress test in load balancing mode
-    - CYPRESS_CACHE_FOLDER=./tmp/Cypress npx cypress run --record --key 1eeb9ee4-c447-4459-9086-2327b856e9f6 --browser chrome
+    - npx cypress run --record --key 1eeb9ee4-c447-4459-9086-2327b856e9f6 --browser chrome
   only:
     - external_pull_requests
   artifacts:
