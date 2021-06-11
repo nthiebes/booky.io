@@ -6,22 +6,18 @@ stages:
 
 # to cache both npm modules and Cypress binary we use environment variables
 # to point at the folders we can list as paths in "cache" job settings
-# variables:
-#   npm_config_cache: "$CI_PROJECT_DIR/.npm"
-#   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
 cache:
-  # key: ${CI_COMMIT_REF_SLUG}
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules
     - .npm
     - cache/Cypress
-
-variables:
-  npm_config_cache: "$CI_PROJECT_DIR/.npm"
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
 # this job installs NPM dependencies and Cypress
 install:
@@ -32,10 +28,10 @@ install:
     - npm install
     # check Cypress binary path and cached versions
     # useful to make sure we are not carrying around old versions
-    # - npx cypress cache path
-    # - npx cypress cache list
-    # - npx cypress verify
-    # - npx cypress info
+    - npx cypress cache path
+    - npx cypress cache list
+    - npx cypress verify
+    - npx cypress info
   artifacts:
     name: "artifacts"
     untracked: true
@@ -43,11 +39,11 @@ install:
     paths:
       - node_modules
 
-quality:lint:
-  stage: quality
-  image: cypress/browsers:node14.15.0-chrome86-ff82
-  script:
-    - npm run lint
+# quality:lint:
+#   stage: quality
+#   image: cypress/browsers:node14.15.0-chrome86-ff82
+#   script:
+#     - npm run lint
 
 quality:unit:
   stage: quality
@@ -59,10 +55,6 @@ quality:unit:
 e2e:chrome:
   stage: e2e
   image: cypress/browsers:node14.15.0-chrome86-ff82
-  cache:
-    paths:
-      - .npm
-      - cache/Cypress
   script:
     # - npm install
     # - npx cypress install
@@ -82,13 +74,9 @@ e2e:chrome:
 e2e:firefox:
   stage: e2e
   image: cypress/browsers:node14.15.0-chrome86-ff82
-  cache:
-    paths:
-      - .npm
-      - cache/Cypress
   script:
-    - npm install
-    - npx cypress install
+    # - npm install
+    # - npx cypress install
     # start the server in the background
     - npm run start:ci &
     # run Cypress test in load balancing mode
