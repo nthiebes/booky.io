@@ -1,35 +1,95 @@
-image: node:10
-
 stages:
   - install
   - quality
+  - e2e
   # - build
 
-cache:
-  paths:
-    - node_modules/
+# to cache both npm modules and Cypress binary we use environment variables
+# to point at the folders we can list as paths in "cache" job settings
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
+# cache using branch name
+# https://gitlab.com/help/ci/caching/index.md
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules
+    - .npm
+    - cache/Cypress
+
+# this job installs NPM dependencies and Cypress
 install:
   stage: install
+  image: cypress/browsers:node14.15.0-chrome86-ff82
+
   script:
     - npm install
+    # check Cypress binary path and cached versions
+    # useful to make sure we are not carrying around old versions
+    - npx cypress cache path
+    - npx cypress cache list
+    - npx cypress verify
+    - npx cypress info
   artifacts:
     name: "artifacts"
     untracked: true
     expire_in: 30 mins
     paths:
-      - node_modules/
+      - node_modules
 
-quality:lint:
-  stage: quality
-  script:
-    -  npm run lint
+# quality:lint:
+#   stage: quality
+#   image: cypress/browsers:node14.15.0-chrome86-ff82
+#   script:
+#     - npm run lint
 
 quality:unit:
   stage: quality
+  image: cypress/browsers:node14.15.0-chrome86-ff82
   script:
-    -  npm run test:cover
+    - npm run test:cover
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+
+e2e:chrome:
+  stage: e2e
+  image: cypress/browsers:node14.15.0-chrome86-ff82
+  script:
+    # - npm install
+    # - npx cypress install
+    # start the server in the background
+    - npm run start:ci &
+    # run Cypress test in load balancing mode
+    - npx cypress run --record --key 1eeb9ee4-c447-4459-9086-2327b856e9f6 --browser chrome
+  only:
+    - external_pull_requests
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
+    expire_in: 1 day
+
+e2e:firefox:
+  stage: e2e
+  image: cypress/browsers:node14.15.0-chrome86-ff82
+  script:
+    # - npm install
+    # - npx cypress install
+    # start the server in the background
+    - npm run start:ci &
+    # run Cypress test in load balancing mode
+    - npx cypress run --record --key 1eeb9ee4-c447-4459-9086-2327b856e9f6 --browser firefox
+    # --config "viewportWidth=375,viewportHeight=667"
+  only:
+    - external_pull_requests
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
+    expire_in: 1 day
 
 # build:
 #   stage: build

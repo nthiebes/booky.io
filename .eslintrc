@@ -5,9 +5,10 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
+    "plugin:cypress/recommended"
   ],
-  "plugins": ["react", "jsx-a11y"],
+  "plugins": ["react", "jsx-a11y", "cypress"],
   "settings": {
     "react": {
       "version": "detect"
@@ -26,7 +27,8 @@
     "es6": true,
     "browser": true,
     "node": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "rules": {
     "array-bracket-spacing": 1,
