@@ -116,54 +116,29 @@ class Sidebar extends PureComponent {
             </H3>
             <ul className="sidebar__list">
               {!loggedIn && (
-                <>
-                  <li>
-                    <Link
+                <li>
+                  <Link
+                    className={classNames(
+                      'sidebar__item',
+                      pathname === '/features' && 'sidebar__item--active',
+                      darkMode && 'sidebar__item--dark-mode'
+                    )}
+                    to="/features"
+                    onClick={closeSidebar}
+                    tabIndex={open ? '0' : '-1'}
+                    noUnderline
+                  >
+                    <Icon icon="star" />
+                    <span
                       className={classNames(
-                        'sidebar__item',
-                        pathname === '/about' && 'sidebar__item--active',
-                        darkMode && 'sidebar__item--dark-mode'
+                        'sidebar__label',
+                        darkMode && 'sidebar__label--dark-mode'
                       )}
-                      to="/about"
-                      onClick={closeSidebar}
-                      tabIndex={open ? '0' : '-1'}
-                      noUnderline
                     >
-                      <Icon icon="about" />
-                      <span
-                        className={classNames(
-                          'sidebar__label',
-                          darkMode && 'sidebar__label--dark-mode'
-                        )}
-                      >
-                        <FormattedMessage id="menu.about" />
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={classNames(
-                        'sidebar__item',
-                        pathname === '/features' && 'sidebar__item--active',
-                        darkMode && 'sidebar__item--dark-mode'
-                      )}
-                      to="/features"
-                      onClick={closeSidebar}
-                      tabIndex={open ? '0' : '-1'}
-                      noUnderline
-                    >
-                      <Icon icon="star" />
-                      <span
-                        className={classNames(
-                          'sidebar__label',
-                          darkMode && 'sidebar__label--dark-mode'
-                        )}
-                      >
-                        <FormattedMessage id="menu.features" />
-                      </span>
-                    </Link>
-                  </li>
-                </>
+                      <FormattedMessage id="menu.features" />
+                    </span>
+                  </Link>
+                </li>
               )}
               {loggedIn && (
                 <li>
@@ -213,6 +188,31 @@ class Sidebar extends PureComponent {
                   </span>
                 </Link>
               </li>
+              {!loggedIn && (
+                <li>
+                  <Link
+                    className={classNames(
+                      'sidebar__item',
+                      pathname === '/about' && 'sidebar__item--active',
+                      darkMode && 'sidebar__item--dark-mode'
+                    )}
+                    to="/about"
+                    onClick={closeSidebar}
+                    tabIndex={open ? '0' : '-1'}
+                    noUnderline
+                  >
+                    <Icon icon="about" />
+                    <span
+                      className={classNames(
+                        'sidebar__label',
+                        darkMode && 'sidebar__label--dark-mode'
+                      )}
+                    >
+                      <FormattedMessage id="menu.about" />
+                    </span>
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   className={classNames(

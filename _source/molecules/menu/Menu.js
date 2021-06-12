@@ -9,10 +9,6 @@ import Link from '../../atoms/link';
 
 const menuItemsLoggedOut = [
   {
-    name: 'about',
-    route: '/about'
-  },
-  {
     name: 'features',
     route: '/features',
     icon: 'star'
@@ -21,6 +17,10 @@ const menuItemsLoggedOut = [
     name: 'supporter',
     route: '/supporter',
     icon: 'heart'
+  },
+  {
+    name: 'about',
+    route: '/about'
   },
   {
     name: 'help',
