@@ -1,5 +1,5 @@
 /* eslint-disable no-var */
-function getDescription() {
+function getDescriptionForBooky() {
   var meta = document.querySelector('meta[name=description]'),
     description = meta ? meta.getAttribute('content') : '';
 
@@ -7,7 +7,7 @@ function getDescription() {
 }
 
 chrome.runtime.connect().postMessage({
-  description: getDescription()
+  description: getDescriptionForBooky()
 });
 
 /* eslint-enable no-var */
