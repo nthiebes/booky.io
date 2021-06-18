@@ -1,7 +1,7 @@
 #!/bin/bash
 
 browser="$1"
-version="$2"
+version="2.1.0"
 
 if [ "$browser" == "chrome" ]
 then
@@ -45,7 +45,7 @@ manifest="{
   \"description\": \"__MSG_appDesc__\",
   \"default_locale\": \"en\",
   \"content_security_policy\": \"default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io https://booky.io\",
-  \"permissions\": [\"activeTab\", \"management\", \"storage\",],${applications}
+  \"permissions\": [\"activeTab\", \"management\", \"storage\"],${applications}
   \"browser_action\": {
     \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
