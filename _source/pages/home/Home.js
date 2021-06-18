@@ -23,7 +23,7 @@ import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
 import Feature from '../../molecules/feature';
-import Features from '../../molecules/features';
+import { AllFeatures } from '../../molecules/all-features';
 
 const surveyMap = {
   de: {
@@ -180,7 +180,7 @@ class Home extends Component {
           <H2 style="h1" noMargin centered className="home__features-headline">
             <FormattedMessage id="misc.features" />
           </H2>
-          <Features />
+          <AllFeatures />
           <ButtonLargePrimary icon="star" to="/features" contentBefore>
             <FormattedMessage
               id="home.allFeatures"
