@@ -10,9 +10,9 @@ export default class Section extends Component {
       children,
       fullWidth,
       compact,
-      noPadding,
       noMargin,
-      contentClassName
+      contentClassName,
+      contentSpace
     } = this.props;
 
     return (
@@ -20,7 +20,6 @@ export default class Section extends Component {
         className={classNames(
           'section',
           color && `section--${color}`,
-          fullWidth && 'section--full-width',
           compact && 'section--compact',
           noMargin && 'section--noMargin',
           className
@@ -29,7 +28,8 @@ export default class Section extends Component {
         <div
           className={classNames(
             'section__content',
-            noPadding && 'section__content--noPadding',
+            fullWidth && 'section__content--fullWidth',
+            contentSpace && 'section__content--more-space',
             contentClassName
           )}
         >
@@ -45,8 +45,8 @@ Section.propTypes = {
   color: PropTypes.string,
   fullWidth: PropTypes.bool,
   compact: PropTypes.bool,
-  noPadding: PropTypes.bool,
   children: PropTypes.node,
   noMargin: PropTypes.bool,
-  contentClassName: PropTypes.string
+  contentClassName: PropTypes.string,
+  contentSpace: PropTypes.bool
 };

@@ -11,17 +11,14 @@ import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import { List, ListItem } from '../../atoms/list';
 import Link from '../../atoms/link';
-import Illustration from '../../atoms/illustration';
-import Features from '../../molecules/features';
 import Feature from '../../molecules/feature';
 import Expandable from '../../molecules/expandable';
-import Donate from '../../molecules/donate';
+import { ButtonLargeBlue } from '../../atoms/button';
 
 class About extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     stickyHeader: PropTypes.bool,
-    darkMode: PropTypes.bool.isRequired,
     updateSettings: PropTypes.func.isRequired,
     newsVersion: PropTypes.number.isRequired
   };
@@ -50,7 +47,7 @@ class About extends PureComponent {
   }
 
   render() {
-    const { intl, stickyHeader, darkMode } = this.props;
+    const { intl, stickyHeader } = this.props;
     const { releases } = this.state;
 
     return (
@@ -81,6 +78,11 @@ class About extends PureComponent {
             direction="right"
           />
         </Section>
+        <Section color="light" contentSpace>
+          <H2 style="h1" noMargin centered className="home__features-headline">
+            <FormattedMessage id="about.why" />
+          </H2>
+        </Section>
         <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.performantHeadline' })}
@@ -96,16 +98,7 @@ class About extends PureComponent {
             direction="right"
           />
         </Section>
-        <Section
-          color={darkMode ? 'dark' : 'light'}
-          contentClassName="home__features"
-        >
-          <H2 style="h1" noMargin centered className="home__features-headline">
-            <FormattedMessage id="misc.features" />
-          </H2>
-          <Features />
-        </Section>
-        <Section>
+        <Section color="light" contentSpace>
           <H2 style="h1">
             <FormattedMessage id="about.topics" />
           </H2>
@@ -151,92 +144,12 @@ class About extends PureComponent {
           <P>
             <FormattedMessage id="about.supportText" />
           </P>
-          <Donate
-            color={darkMode ? 'light' : 'dark'}
-            className="about__donate"
-          />
-        </Section>
-        <Section color="dark" contentClassName="about__bookmarklet">
-          <Illustration
-            className="home__plant booky--hide-mobile"
-            name="plant"
-          />
-          <Illustration
-            className="home__trees booky--hide-mobile-tablet"
-            name="trees"
-          />
-          <H2 style="h1" color="light" noMargin centered>
-            <FormattedMessage id="misc.feature1" />
-          </H2>
-          <H3 style="h2" color="light" noMargin centered>
-            <FormattedMessage id="home.extensionText" />
-          </H3>
-          <nav className="about__extension">
-            <Link
-              href="https://chrome.google.com/webstore/detail/bookyio-extension/pmcpkkipiedakcaolhnbijibndfemckf"
-              target="_blank"
-              color="light"
-              className="about__extension-browser"
-            >
-              <img
-                width="75"
-                height="75"
-                alt=""
-                className="about__extension-icon"
-                src="../../_assets/logos/chrome.svg"
-                loading="lazy"
-              />
-              {'Chrome'}
-            </Link>
-            <Link
-              href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/"
-              target="_blank"
-              color="light"
-              className="about__extension-browser"
-            >
-              <img
-                width="75"
-                height="75"
-                alt=""
-                className="about__extension-icon"
-                src="../../_assets/logos/firefox.svg"
-                loading="lazy"
-              />
-              {'Firefox'}
-            </Link>
-            <Link
-              href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
-              target="_blank"
-              color="light"
-              className="about__extension-browser"
-            >
-              <img
-                width="75"
-                height="75"
-                alt=""
-                className="about__extension-icon"
-                src="../../_assets/logos/opera.svg"
-                loading="lazy"
-              />
-              {'Opera'}
-            </Link>
-            <Link
-              href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
-              target="_blank"
-              color="light"
-              className="about__extension-browser"
-            >
-              <img
-                width="75"
-                height="75"
-                alt=""
-                className="about__extension-icon"
-                src="../../_assets/logos/edge.svg"
-                loading="lazy"
-              />
-              {'Edge'}
-            </Link>
-          </nav>
+          <ButtonLargeBlue icon="heart" to="/supporter">
+            <FormattedMessage
+              id="button.memberships"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonLargeBlue>
         </Section>
         <Section>
           <H2 style="h1">

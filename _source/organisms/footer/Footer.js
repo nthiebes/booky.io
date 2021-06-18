@@ -147,14 +147,14 @@ class Footer extends PureComponent {
             <LanguageSwitcher ignoreDarkMode />
           </div>
           <nav className="footer__menu">
-            <Link className="footer__menu-item" color="light" to="/about">
-              <FormattedMessage id="menu.about" />
-            </Link>
             <Link className="footer__menu-item" color="light" to="/features">
               <FormattedMessage id="menu.features" />
             </Link>
             <Link className="footer__menu-item" color="light" to="/supporter">
               <FormattedMessage id="menu.supporter" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/about">
+              <FormattedMessage id="menu.about" />
             </Link>
             <Link className="footer__menu-item" color="light" to="/help">
               <FormattedMessage id="menu.help" />

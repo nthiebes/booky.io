@@ -149,16 +149,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-
-  @include mobile-tablet {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  @include desktop {
-    padding-top: 4rem;
-    padding-bottom: 5rem;
-  }
 }
 
 .home__availability-title {
@@ -206,29 +196,14 @@
 
   @include mobile {
     padding-top: 13vw;
-    padding-bottom: 3rem;
   }
 
   @include tablet {
     padding-top: 6rem;
-    padding-bottom: 3rem;
   }
 
   @include desktop {
     padding-top: 10rem;
-    padding-bottom: 5rem;
-  }
-}
-
-.home__testimonials {
-  @include mobile-tablet {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  @include desktop {
-    padding-top: 4rem;
-    padding-bottom: 5rem;
   }
 }
 

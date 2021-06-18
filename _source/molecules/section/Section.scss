@@ -15,11 +15,6 @@
   margin-bottom: 0;
 }
 
-.section--full-width .section__content {
-  margin: 0;
-  max-width: none;
-}
-
 .section--compact .section__content {
   width: 500px;
   max-width: 100%;
@@ -69,6 +64,18 @@
   }
 }
 
-.section__content--noPadding {
+.section__content--fullWidth {
   padding: 0;
+}
+
+.section__content--more-space {
+  @include mobile-tablet {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @include desktop {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+  }
 }

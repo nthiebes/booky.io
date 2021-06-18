@@ -176,7 +176,7 @@ class Home extends Component {
           </div>
           <Illustration name="devices" className="home__header-illustration" />
         </section>
-        <Section color="light" contentClassName="home__features">
+        <Section color="light" contentSpace contentClassName="home__features">
           <H2 style="h1" noMargin centered className="home__features-headline">
             <FormattedMessage id="misc.features" />
           </H2>
@@ -207,6 +207,7 @@ class Home extends Component {
           color="dark"
           className="home__availability-wrapper"
           contentClassName="home__availability"
+          contentSpace
         >
           <Illustration
             className="home__plant booky--hide-mobile"
@@ -219,16 +220,6 @@ class Home extends Component {
           <H2 style="h1" color="light" noMargin centered>
             <FormattedMessage id="about.platforms" />
           </H2>
-          {/* <H3
-            style="h2"
-            color="light"
-            noMargin
-            centered
-            ignoreDarkMode
-            className="home__availability-title"
-          >
-            <FormattedMessage id="about.platformsText" />
-          </H3> */}
           <nav className="home__platforms">
             <Link
               href="https://chrome.google.com/webstore/detail/bookyio-extension/pmcpkkipiedakcaolhnbijibndfemckf"
@@ -244,8 +235,7 @@ class Home extends Component {
                 src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              {'Chrome '}
-              <FormattedMessage id="misc.extension" />
+              {'Chrome'}
             </Link>
             <Link
               href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/"
@@ -261,8 +251,7 @@ class Home extends Component {
                 src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              {'Firefox '}
-              <FormattedMessage id="misc.extension" />
+              {'Firefox'}
             </Link>
             <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
@@ -278,8 +267,7 @@ class Home extends Component {
                 src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              {'Opera '}
-              <FormattedMessage id="misc.extension" />
+              {'Opera'}
             </Link>
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
@@ -295,8 +283,7 @@ class Home extends Component {
                 src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              {'Edge '}
-              <FormattedMessage id="misc.extension" />
+              {'Edge'}
             </Link>
             <Link
               to="/bookmarklet"
@@ -327,7 +314,7 @@ class Home extends Component {
                 src="../../_assets/logos/android.svg"
                 loading="lazy"
               />
-              {'Android App'}
+              {'Android'}
             </Link>
             <Link
               href="#"
@@ -343,7 +330,7 @@ class Home extends Component {
                 src="../../_assets/logos/apple.svg"
                 loading="lazy"
               />
-              {'iOS Web App'}
+              {'iOS (Web)'}
             </Link>
             <Link
               href="../../_assets/downloads/booky.zip"
@@ -359,7 +346,7 @@ class Home extends Component {
                 src="../../_assets/logos/finder.svg"
                 loading="lazy"
               />
-              {'macOS App'}
+              {'macOS'}
             </Link>
             <Link
               href="https://www.groovypost.com/howto/using-web-apps-new-chromium-edge-windows-10/"
@@ -375,10 +362,14 @@ class Home extends Component {
                 src="../../_assets/logos/windows.svg"
                 loading="lazy"
               />
-              {'Windows App'}
+              {'Windows'}
             </Link>
           </nav>
-          <ButtonLargeLight icon="platform" to="/platforms" contentBefore>
+          <ButtonLargeLight
+            icon="platform"
+            to="/features#platforms"
+            contentBefore
+          >
             <FormattedMessage
               id="header.learnMore"
               values={{ b: (msg) => <b>{msg}</b> }}
@@ -400,7 +391,7 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="light" noPadding contentClassName="home__testimonials">
+        <Section color="light" fullWidth contentSpace>
           <Testimonials />
         </Section>
         <Section className="home__not-a-member">
