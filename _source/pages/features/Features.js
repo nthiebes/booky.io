@@ -1,22 +1,23 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedDate, injectIntl } from 'react-intl';
-import classNames from 'classnames';
+import { FormattedMessage, injectIntl } from 'react-intl';
+// import classNames from 'classnames';
 
-import { config } from '../../config';
+// import { config } from '../../config';
 import Page from '../../templates/page';
-import { H2, H3, H4, Display } from '../../atoms/headline';
+import { H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
-import { List, ListItem } from '../../atoms/list';
+// import { List, ListItem } from '../../atoms/list';
 import Link from '../../atoms/link';
 import Illustration from '../../atoms/illustration';
 import Icon from '../../atoms/icon';
-import Features from '../../molecules/features';
-import Feature from '../../molecules/feature';
-import Expandable from '../../molecules/expandable';
-import Donate from '../../molecules/donate';
+import { FeatureCard } from '../../molecules/feature-card/FeatureCard';
+// import Features from '../../molecules/features';
+// import Feature from '../../molecules/feature';
+// import Expandable from '../../molecules/expandable';
+// import Donate from '../../molecules/donate';
 
 class FeaturesPage extends PureComponent {
   static propTypes = {
@@ -27,12 +28,27 @@ class FeaturesPage extends PureComponent {
   };
 
   render() {
-    const { intl, darkMode } = this.props;
+    const { intl } = this.props;
 
     return (
-      <Page showStats>
-        <Section>
-          <Icon icon="customize" className="" />
+      <Page showStats className="features-page">
+        <Section color="medium" contentSpace>
+          <FeatureCard
+            headline={intl.formatMessage({ id: 'home.privateHeadline' })}
+            text={intl.formatMessage({ id: 'home.privateText' })}
+            illustration="protection"
+          />
+          <FeatureCard
+            headline={intl.formatMessage({ id: 'home.privateHeadline' })}
+            text={intl.formatMessage({ id: 'home.privateText' })}
+            illustration="protection"
+          />
+          <FeatureCard
+            headline={intl.formatMessage({ id: 'home.privateHeadline' })}
+            text={intl.formatMessage({ id: 'home.privateText' })}
+            illustration="protection"
+          />
+          {/* <Icon icon="customize" className="" />
           <H2 className="">
             <FormattedMessage id="Customize" />
           </H2>
@@ -53,7 +69,7 @@ class FeaturesPage extends PureComponent {
           </H3>
           <P className="">
             <FormattedMessage id="Dies das text." />
-          </P>
+          </P> */}
         </Section>
         <Section>
           <Icon icon="collection" className="" />
@@ -118,12 +134,12 @@ class FeaturesPage extends PureComponent {
             direction="right"
           />
         </Section> */}
-        <Section color={darkMode ? 'dark' : 'light'} contentSpace>
+        {/* <Section color={darkMode ? 'dark' : 'light'} contentSpace>
           <H2 style="h1" noMargin centered className="home__features-headline">
             <FormattedMessage id="misc.features" />
           </H2>
           <Features />
-        </Section>
+        </Section> */}
         {/* <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.performantHeadline' })}

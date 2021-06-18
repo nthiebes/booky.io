@@ -1,0 +1,59 @@
+.feature-card__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: $color-background--white;
+  padding: 1.5rem;
+  border-radius: 5px;
+  max-width: 50%;
+  margin: 0 1rem 1rem 0;
+
+  // @include mobile {
+  //   flex-wrap: wrap;
+  // }
+
+  // @include desktop {
+  //   max-width: 930px;
+  //   margin: 0 auto;
+  // }
+}
+
+.feature-card__header {
+  @include tablet {
+    margin-right: 2rem;
+  }
+
+  @include desktop {
+    margin-right: 3rem;
+  }
+}
+
+.feature-card__header--right {
+  @include tablet {
+    margin-left: 2rem;
+  }
+
+  @include tablet-desktop {
+    margin-left: 3rem;
+    margin-right: 0;
+    order: 1;
+  }
+}
+
+.feature-card__illustration {
+  max-width: 100px;
+  max-height: 100px;
+
+  // @include mobile {
+  //   // margin-top: 1rem;
+  // }
+
+  // @include tablet {
+  //   min-width: 40vw;
+  //   max-width: 300px;
+  // }
+
+  // @include desktop {
+  //   flex-shrink: 0;
+  // }
+}
