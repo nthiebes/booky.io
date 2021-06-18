@@ -13,7 +13,9 @@ chrome.management.getSelf(function (extensionInfo) {
     host = devHost;
   }
 
-  iframe.src = host + '/extension/add';
+  chrome.storage.local.get(['activeTab'], function ({ activeTab }) {
+    iframe.src = host + `/extension/${activeTab || 'add'}`;
+  });
 });
 
 function transitionEndCallback() {
@@ -67,6 +69,10 @@ window.addEventListener('message', function (event) {
 
     if (message.close) {
       window.close();
+    }
+
+    if (message.activeTab) {
+      chrome.storage.local.set({ activeTab: message.activeTab });
     }
   }
 });

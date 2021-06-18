@@ -142,8 +142,12 @@ class Login extends Component {
 
         if (action) {
           history.push('/account');
+        } else if (isExtension) {
+          const activeTab = localStorage.getItem('activeTab') || 'add';
+
+          history.push(`/extension/${activeTab}`);
         } else {
-          history.push(isExtension ? '/extension/add' : '/');
+          history.push('/');
         }
       },
       onError: (error) => {

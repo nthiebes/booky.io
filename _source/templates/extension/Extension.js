@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
-// import { config } from '../../config';
 import { postMessage } from '../../_utils/extension';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
@@ -36,12 +35,18 @@ export default class Extension extends PureComponent {
     });
   }
 
+  setActiveTab = (tab) => {
+    localStorage.setItem('activeTab', tab);
+    postMessage({
+      activeTab: tab
+    });
+  };
+
   render() {
     const { children, className, darkMode, color } = this.props;
 
     return (
       <>
-        <Modal />
         <header className={`extension__header header--color${color}`}>
           <nav className="extension__nav">
             <Link
@@ -49,6 +54,7 @@ export default class Extension extends PureComponent {
               isNavLink
               className="extension__nav-item"
               activeClassName="extension__nav-item--active"
+              onClick={() => this.setActiveTab('add')}
             >
               <Icon icon="add-link" color="light" />
               <FormattedMessage id="extension.add" />
@@ -58,6 +64,7 @@ export default class Extension extends PureComponent {
               isNavLink
               className="extension__nav-item"
               activeClassName="extension__nav-item--active"
+              onClick={() => this.setActiveTab('open')}
             >
               <Icon icon="open" color="light" />
               <FormattedMessage id="extension.open" />
@@ -67,6 +74,7 @@ export default class Extension extends PureComponent {
               isNavLink
               className="extension__nav-item"
               activeClassName="extension__nav-item--active"
+              onClick={() => this.setActiveTab('customize')}
             >
               <Icon icon="customize" color="light" />
               <FormattedMessage id="extension.customize" />
@@ -82,6 +90,7 @@ export default class Extension extends PureComponent {
         >
           <ErrorBoundary>{children}</ErrorBoundary>
         </main>
+        <Modal />
       </>
     );
   }
