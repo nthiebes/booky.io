@@ -61,12 +61,8 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    const {
-      loggedIn,
-      getDashboards,
-      updateSearchData,
-      searchBookmarks
-    } = this.props;
+    const { loggedIn, getDashboards, updateSearchData, searchBookmarks } =
+      this.props;
     const params = new URLSearchParams(window.location.search);
     const term = params.get('term');
 
@@ -235,7 +231,8 @@ class Home extends Component {
                 src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              {'Chrome'}
+              {'Chrome '}
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/"
@@ -251,7 +248,8 @@ class Home extends Component {
                 src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              {'Firefox'}
+              {'Firefox '}
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
@@ -267,7 +265,8 @@ class Home extends Component {
                 src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              {'Opera'}
+              {'Opera '}
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
@@ -283,7 +282,8 @@ class Home extends Component {
                 src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              {'Edge'}
+              {'Edge '}
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               to="/bookmarklet"
@@ -301,8 +301,7 @@ class Home extends Component {
               {'Bookmarklet'}
             </Link>
             <Link
-              href="#"
-              target="_blank"
+              to="/features#android"
               color="light"
               className="home__platforms-platform"
             >
@@ -317,8 +316,7 @@ class Home extends Component {
               {'Android'}
             </Link>
             <Link
-              href="#"
-              target="_blank"
+              to="/features#ios"
               color="light"
               className="home__platforms-platform"
             >
@@ -371,7 +369,7 @@ class Home extends Component {
             contentBefore
           >
             <FormattedMessage
-              id="header.learnMore"
+              id="button.platforms"
               values={{ b: (msg) => <b>{msg}</b> }}
             />
           </ButtonLargeLight>
