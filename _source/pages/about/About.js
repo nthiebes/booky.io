@@ -13,7 +13,8 @@ import { List, ListItem } from '../../atoms/list';
 import Link from '../../atoms/link';
 import Feature from '../../molecules/feature';
 import Expandable from '../../molecules/expandable';
-import { ButtonLargeBlue } from '../../atoms/button';
+import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
+import Illustration from '../../atoms/illustration';
 
 class About extends PureComponent {
   static propTypes = {
@@ -275,6 +276,32 @@ class About extends PureComponent {
               </Expandable>
             );
           })}
+        </Section>
+        <Section className="home__not-a-member">
+          <Illustration className="home__heart" name="heart" />
+          <H2 style="h1" centered noMargin>
+            <FormattedMessage id="home.notAMember" />
+          </H2>
+          <H3 style="h2" noMargin centered>
+            <FormattedMessage id="home.promoText" />
+          </H3>
+          <ButtonLargeBlue
+            icon="join"
+            to="/join"
+            contentBefore
+            className="home__join"
+          >
+            <FormattedMessage
+              id="header.register"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonLargeBlue>
+          <ButtonLargeLight icon="star" to="/features">
+            <FormattedMessage
+              id="home.allFeatures"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonLargeLight>
         </Section>
       </Page>
     );
