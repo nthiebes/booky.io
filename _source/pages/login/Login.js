@@ -159,6 +159,7 @@ class Login extends Component {
     });
   };
 
+  // eslint-disable-next-line complexity
   render() {
     const { intl, match, isExtension } = this.props;
     const { token, action } = match.params;
@@ -240,6 +241,7 @@ class Login extends Component {
                 pending={pending}
                 disabled={pending}
                 contentBefore
+                className="login__button"
               >
                 <FormattedMessage
                   id="header.login"
@@ -247,35 +249,19 @@ class Login extends Component {
                 />
               </ButtonLargeBlue>
               {error && <ErrorMessage message={error} hasIcon />}
-              {isExtension ? (
-                <>
-                  <Link
-                    className="login__forgot"
-                    href="/forgot"
-                    target="_blank"
-                  >
-                    <FormattedMessage id="login.forgot" />
-                  </Link>
-                  <P className="login__join">
-                    <FormattedMessage id="login.new" />{' '}
-                    <Link href="/join" target="_blank">
-                      <FormattedMessage id="login.join" />
-                    </Link>
-                  </P>
-                </>
-              ) : (
-                <>
-                  <Link className="login__forgot" to="/forgot">
-                    <FormattedMessage id="login.forgot" />
-                  </Link>
-                  <P className="login__join">
-                    <FormattedMessage id="login.new" />{' '}
-                    <Link to="/join">
-                      <FormattedMessage id="login.join" />
-                    </Link>
-                  </P>
-                </>
-              )}
+              <Link
+                className="login__forgot"
+                to="/forgot"
+                target={isExtension ? '_blank' : '_self'}
+              >
+                <FormattedMessage id="login.forgot" />
+              </Link>
+              <P className="login__join">
+                <FormattedMessage id="login.new" />{' '}
+                <Link to="/join" target={isExtension ? '_blank' : '_self'}>
+                  <FormattedMessage id="login.join" />
+                </Link>
+              </P>
             </Form>
           )}
         </Section>

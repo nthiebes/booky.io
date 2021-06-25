@@ -50,6 +50,7 @@ class Customize extends Component {
           </H3>
           <LanguageSwitcher />
           <ButtonSmallPrimary
+            className="customize__logout"
             contentBefore
             onClick={this.handleLogout}
             icon="logout"
