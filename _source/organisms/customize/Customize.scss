@@ -21,3 +21,16 @@
 .customize__max-columns {
   width: 5rem;
 }
+
+.customize__logout {
+  &:hover,
+  &:focus {
+    background-color: $color-font--primary;
+    color: $color-font--white;
+  }
+
+  &:hover .icon,
+  &:focus .icon {
+    color: $color-font--white;
+  }
+}

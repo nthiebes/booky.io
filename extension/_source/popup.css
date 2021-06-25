@@ -67,8 +67,8 @@ body {
   position: absolute;
   color: #657786;
   pointer-events: none;
-  left: calc(50vw - 18px);
-  top: calc(50vh);
+  left: calc(50% - 18px);
+  top: 50%;
 }
 
 .loading__spinner--hide {
