@@ -1,14 +1,22 @@
 import { connect } from 'react-redux';
 
-import { updateUser } from '../../../_state/user/actions';
+import { openModal } from '../../../_state/modal/actions';
+import {
+  newSubscription,
+  updateSubscription,
+  cancelSubscription
+} from '../../../_state/subscription/actions';
 import Component from './AccountSupporter';
 
 const mapStateToProps = (state) => ({
-  name: state.user.name,
-  email: state.user.email
+  isPremium: state.user.premium,
+  supportAmount: state.user.supportAmount
 });
 const mapDispatchToProps = {
-  updateUser
+  openModal,
+  newSubscription,
+  updateSubscription,
+  cancelSubscription
 };
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
