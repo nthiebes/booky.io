@@ -267,7 +267,11 @@ class Add extends Component {
             <Expandable
               headline={<FormattedMessage id="extension.data" />}
               className="add__section"
-              open={localStorage.getItem('showData') === 'true'}
+              open={Boolean(
+                localStorage.getItem('showData') === 'true' ||
+                  !stateName ||
+                  !stateUrl
+              )}
               onClick={this.toggleData}
             >
               <>
