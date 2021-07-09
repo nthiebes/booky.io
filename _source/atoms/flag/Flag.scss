@@ -1,0 +1,13 @@
+.flag {
+  display: inline-flex;
+  justify-content: center;
+  color: $color-font--white;
+  font-size: $font-size--small;
+  border-radius: 3px;
+  padding: 3px 6px;
+  font-weight: bold;
+}
+
+.flag--supporter {
+  background-color: $color--green;
+}

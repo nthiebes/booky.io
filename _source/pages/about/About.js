@@ -1,16 +1,15 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedDate, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
-import { config } from '../../config';
 import Page from '../../templates/page';
 import { H2, H3, H4, Display } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
-import { List, ListItem } from '../../atoms/list';
 import Link from '../../atoms/link';
+import Icon from '../../atoms/icon';
 import Feature from '../../molecules/feature';
 import Expandable from '../../molecules/expandable';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
@@ -19,37 +18,11 @@ import Illustration from '../../atoms/illustration';
 class About extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    stickyHeader: PropTypes.bool,
-    updateSettings: PropTypes.func.isRequired,
-    newsVersion: PropTypes.number.isRequired
+    stickyHeader: PropTypes.bool
   };
-
-  state = {
-    releases: []
-  };
-
-  componentDidMount() {
-    const { newsVersion, updateSettings } = this.props;
-
-    fetch('https://api.github.com/repos/nthiebes/booky.io/releases?per_page=10')
-      .then((response) => response.json())
-      .then((releases) => {
-        this.setState({
-          releases: releases.filter((release) => !release.prerelease)
-        });
-      })
-      .catch();
-
-    if (newsVersion < config.NEWS_VERSION) {
-      updateSettings({
-        newsVersion: config.NEWS_VERSION
-      });
-    }
-  }
 
   render() {
     const { intl, stickyHeader } = this.props;
-    const { releases } = this.state;
 
     return (
       <Page
@@ -83,6 +56,22 @@ class About extends PureComponent {
           <H2 style="h1" noMargin centered className="home__features-headline">
             <FormattedMessage id="about.why" />
           </H2>
+          <P>
+            <Icon icon="check" />
+            <FormattedMessage id="Save and access links across browsers and devices" />
+            <Icon icon="check" />
+            <FormattedMessage id="Better organisation of your bookmarks" />
+            <Icon icon="check" />
+            <FormattedMessage id="Cloud" />
+          </P>
+          <H3 style="h2">
+            <FormattedMessage id="Save whatever you like on booky! Some typical use cases:" />
+          </H3>
+          <Expandable headline={<FormattedMessage id="Collect recipes" />}>
+            <P>
+              <FormattedMessage id="about.privacyText" />
+            </P>
+          </Expandable>
         </Section>
         <Section>
           <Feature
@@ -133,12 +122,12 @@ class About extends PureComponent {
               }}
             />
           </P>
-          <H3 style="h2">
+          {/* <H3 style="h2">
             <FormattedMessage id="about.private" />
           </H3>
           <P>
             <FormattedMessage id="about.privateText" />
-          </P>
+          </P> */}
           <H3 style="h2">
             <FormattedMessage id="about.support" />
           </H3>
@@ -236,46 +225,6 @@ class About extends PureComponent {
               </div>
             </div>
           </div>
-        </Section>
-        <Section>
-          <H2 style="h1" id="new" noMargin>
-            <FormattedMessage id="about.updates" />
-          </H2>
-          {/* eslint-disable-next-line camelcase */}
-          {releases.map(({ id, name, body, published_at }, index) => {
-            const lines = body.split('\n');
-
-            // eslint-disable-next-line no-lone-blocks
-            return (
-              <Expandable
-                className="about__updates"
-                key={id}
-                open={index === 0}
-                headline={
-                  <>
-                    <span>{`${name} -`}</span>
-                    <time className="about__date">
-                      <FormattedDate
-                        value={new Date(published_at)}
-                        month="long"
-                        day="2-digit"
-                        year="numeric"
-                      />
-                    </time>
-                  </>
-                }
-              >
-                <List>
-                  {lines.map((line, lineIndex) => (
-                    <ListItem key={lineIndex}>
-                      {line.replace(/- /g, '')}
-                      {lineIndex < lines.length - 1 && <br />}
-                    </ListItem>
-                  ))}
-                </List>
-              </Expandable>
-            );
-          })}
         </Section>
         <Section className="home__not-a-member">
           <Illustration className="home__heart" name="heart" />

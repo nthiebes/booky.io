@@ -1,12 +1,11 @@
 .feature-card__wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  background-color: $color-background--white;
-  padding: 1.5rem;
+  flex-direction: column;
+  padding: 0 1.5rem;
   border-radius: 5px;
-  max-width: 50%;
-  margin: 0 1rem 1rem 0;
+  max-width: 30%;
+  margin: 3.5rem 1rem 0 1rem;
 
   // @include mobile {
   //   flex-wrap: wrap;
@@ -18,31 +17,17 @@
   // }
 }
 
-.feature-card__header {
-  @include tablet {
-    margin-right: 2rem;
-  }
-
-  @include desktop {
-    margin-right: 3rem;
-  }
-}
-
-.feature-card__header--right {
-  @include tablet {
-    margin-left: 2rem;
-  }
-
-  @include tablet-desktop {
-    margin-left: 3rem;
-    margin-right: 0;
-    order: 1;
-  }
+.feature-card--white {
+  background-color: $color-background--white;
+  border-bottom: 2px solid darken($color-font--white, 10%);
+  padding-bottom: 1.5rem;
 }
 
 .feature-card__illustration {
-  max-width: 100px;
-  max-height: 100px;
+  min-width: 150px;
+  min-height: 150px;
+  margin-top: -2rem;
+  margin-bottom: 1rem;
 
   // @include mobile {
   //   // margin-top: 1rem;
@@ -56,4 +41,10 @@
   // @include desktop {
   //   flex-shrink: 0;
   // }
+}
+
+.feature-card__flag {
+  margin-left: 1rem;
+  position: relative;
+  top: 2px;
 }

@@ -82,6 +82,7 @@
   border-radius: 5px;
   margin: 0 1rem 2rem 1rem;
   width: 23rem;
+  border-bottom: 2px solid darken($color-background--light, 5%);
 
   &:last-child {
     margin-bottom: 0;

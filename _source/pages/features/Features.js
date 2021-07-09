@@ -1,16 +1,16 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedDate, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 // import classNames from 'classnames';
 
-// import { config } from '../../config';
+import { config } from '../../config';
 import Page from '../../templates/page';
-import { H1, H2, H3 } from '../../atoms/headline';
+import { H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
-// import { List, ListItem } from '../../atoms/list';
+import { List, ListItem } from '../../atoms/list';
 import Link from '../../atoms/link';
 import Illustration from '../../atoms/illustration';
 import Icon from '../../atoms/icon';
@@ -19,7 +19,7 @@ import { FeatureCard } from '../../molecules/feature-card/FeatureCard';
 import { TabBar, Tab } from '../../molecules/tab-bar';
 // import Features from '../../molecules/features';
 // import Feature from '../../molecules/feature';
-// import Expandable from '../../molecules/expandable';
+import Expandable from '../../molecules/expandable';
 // import Donate from '../../molecules/donate';
 
 class FeaturesPage extends PureComponent {
@@ -32,8 +32,28 @@ class FeaturesPage extends PureComponent {
   };
 
   state = {
-    activeTab: 'bookmarklet'
+    activeTab: 'bookmarklet',
+    releases: []
   };
+
+  componentDidMount() {
+    const { newsVersion, updateSettings } = this.props;
+
+    fetch('https://api.github.com/repos/nthiebes/booky.io/releases?per_page=10')
+      .then((response) => response.json())
+      .then((releases) => {
+        this.setState({
+          releases: releases.filter((release) => !release.prerelease)
+        });
+      })
+      .catch();
+
+    if (newsVersion < config.NEWS_VERSION) {
+      updateSettings({
+        newsVersion: config.NEWS_VERSION
+      });
+    }
+  }
 
   tabs = [
     {
@@ -70,7 +90,7 @@ class FeaturesPage extends PureComponent {
 
   render() {
     const { intl } = this.props;
-    const { activeTab } = this.state;
+    const { activeTab, releases } = this.state;
 
     return (
       <Page showStats className="features-page">
@@ -78,62 +98,74 @@ class FeaturesPage extends PureComponent {
           {/* <H1>
             <FormattedMessage id="Features" />
           </H1> */}
-          <H2>
-            <FormattedMessage id="Customize" />
+          <H2 style="h1" centered>
+            <FormattedMessage id="Customize the design" />
           </H2>
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Dark mode' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
-          />
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Colors' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
-          />
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Layout' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
-          />
+          <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Dark mode' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/development"
+              background="white"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Colors' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/arts"
+              background="white"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Layout' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/comparison"
+              background="white"
+            />
+          </div>
         </Section>
         <Section>
-          <H2>
-            <FormattedMessage id="Organize" />
+          <H2 style="h1" centered>
+            <FormattedMessage id="Organize your bookmarks" />
           </H2>
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Collections & categories' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
-          />
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Drag & drop' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
-          />
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Bookmark search' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
-          />
-          <H2>
-            <FormattedMessage id="Control" />
+          <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Collections & categories' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/folder_data"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Drag & drop' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/work_flow"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Bookmark search' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/searching"
+            />
+          </div>
+        </Section>
+        <Section>
+          <H2 style="h1" centered>
+            <FormattedMessage id="Take control" />
           </H2>
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Private collections' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
-          />
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Public collections' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
-          />
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Preferences' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
-          />
+          <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Private collections' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/privacy"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Public collections' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/teamwork"
+              payed
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Preferences' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/Page_Under_Construction"
+            />
+          </div>
         </Section>
         <Section
           color="dark"
@@ -277,24 +309,64 @@ class FeaturesPage extends PureComponent {
           )}
         </Section>
         <Section>
-          <H2>
+          <H2 style="h1">
             <FormattedMessage id="More features" />
           </H2>
           <FeatureCard
             headline={intl.formatMessage({ id: 'Bookmark import/export' })}
             text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
+            illustration="icons/uploading"
           />
           <FeatureCard
             headline={intl.formatMessage({ id: 'Bookmark notes' })}
             text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
+            illustration="icons/notes"
           />
           <FeatureCard
             headline={intl.formatMessage({ id: 'Search engine' })}
             text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="protection"
+            illustration="icons/searching"
           />
+        </Section>
+        <Section>
+          <H2 style="h1" id="new" noMargin>
+            <FormattedMessage id="about.updates" />
+          </H2>
+          {/* eslint-disable-next-line camelcase */}
+          {releases.map(({ id, name, body, published_at }, index) => {
+            const lines = body.split('\n');
+
+            // eslint-disable-next-line no-lone-blocks
+            return (
+              <Expandable
+                className="about__updates"
+                key={id}
+                open={index === 0}
+                headline={
+                  <>
+                    <span>{`${name} -`}</span>
+                    <time className="about__date">
+                      <FormattedDate
+                        value={new Date(published_at)}
+                        month="long"
+                        day="2-digit"
+                        year="numeric"
+                      />
+                    </time>
+                  </>
+                }
+              >
+                <List>
+                  {lines.map((line, lineIndex) => (
+                    <ListItem key={lineIndex}>
+                      {line.replace(/- /g, '')}
+                      {lineIndex < lines.length - 1 && <br />}
+                    </ListItem>
+                  ))}
+                </List>
+              </Expandable>
+            );
+          })}
         </Section>
         <Section className="home__not-a-member">
           <Illustration className="home__heart" name="heart" />

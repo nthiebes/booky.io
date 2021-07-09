@@ -39,6 +39,7 @@
 
 .section--light {
   background-color: $color-background--light;
+  border-bottom: 2px solid darken($color-background--light, 5%);
 }
 
 .section--blue {
@@ -51,6 +52,7 @@
 
 .section--dark {
   background-color: $color--dark;
+  border-bottom: 2px solid $color-font--medium;
 }
 
 .section--medium {
