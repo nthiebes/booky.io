@@ -285,7 +285,7 @@ class Home extends Component {
               {'Edge '}
               <FormattedMessage id="misc.extension" />
             </Link>
-            <Link
+            {/* <Link
               to="/bookmarklet"
               color="light"
               className="home__platforms-platform"
@@ -299,7 +299,7 @@ class Home extends Component {
                 loading="lazy"
               />
               {'Bookmarklet'}
-            </Link>
+            </Link> */}
             <Link
               to="/features#android"
               color="light"

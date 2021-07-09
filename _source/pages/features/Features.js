@@ -99,7 +99,7 @@ class FeaturesPage extends PureComponent {
             <FormattedMessage id="Features" />
           </H1> */}
           <H2 style="h1" centered>
-            <FormattedMessage id="Customize the design" />
+            <FormattedMessage id="Customize the design." />
           </H2>
           <div className="features-page__cluster">
             <FeatureCard
@@ -124,7 +124,7 @@ class FeaturesPage extends PureComponent {
         </Section>
         <Section>
           <H2 style="h1" centered>
-            <FormattedMessage id="Organize your bookmarks" />
+            <FormattedMessage id="Organize your bookmarks." />
           </H2>
           <div className="features-page__cluster">
             <FeatureCard
@@ -146,7 +146,7 @@ class FeaturesPage extends PureComponent {
         </Section>
         <Section>
           <H2 style="h1" centered>
-            <FormattedMessage id="Take control" />
+            <FormattedMessage id="Take control." />
           </H2>
           <div className="features-page__cluster">
             <FeatureCard
@@ -308,25 +308,53 @@ class FeaturesPage extends PureComponent {
             </>
           )}
         </Section>
-        <Section>
-          <H2 style="h1">
-            <FormattedMessage id="More features" />
+        <Section color="light" contentSpace>
+          <H2 style="h1" centered noMargin>
+            <FormattedMessage id="Even more features." />
           </H2>
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Bookmark import/export' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="icons/uploading"
-          />
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Bookmark notes' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="icons/notes"
-          />
-          <FeatureCard
-            headline={intl.formatMessage({ id: 'Search engine' })}
-            text={intl.formatMessage({ id: 'home.privateText' })}
-            illustration="icons/searching"
-          />
+          <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Bookmark import/export' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/uploading"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Bookmark notes' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/notes"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Search engine' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/searching"
+            />
+          </div>
+        </Section>
+        <Section className="home__not-a-member">
+          <Illustration className="home__heart" name="heart" />
+          <H2 style="h1" centered noMargin>
+            <FormattedMessage id="home.notAMember" />
+          </H2>
+          <H3 style="h2" noMargin centered>
+            <FormattedMessage id="home.promoText" />
+          </H3>
+          <ButtonLargeBlue
+            icon="join"
+            to="/join"
+            contentBefore
+            className="home__join"
+          >
+            <FormattedMessage
+              id="header.register"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonLargeBlue>
+          <ButtonLargeLight icon="about" to="/about">
+            <FormattedMessage
+              id="home.aboutBooky"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonLargeLight>
         </Section>
         <Section>
           <H2 style="h1" id="new" noMargin>
@@ -367,32 +395,6 @@ class FeaturesPage extends PureComponent {
               </Expandable>
             );
           })}
-        </Section>
-        <Section className="home__not-a-member">
-          <Illustration className="home__heart" name="heart" />
-          <H2 style="h1" centered noMargin>
-            <FormattedMessage id="home.notAMember" />
-          </H2>
-          <H3 style="h2" noMargin centered>
-            <FormattedMessage id="home.promoText" />
-          </H3>
-          <ButtonLargeBlue
-            icon="join"
-            to="/join"
-            contentBefore
-            className="home__join"
-          >
-            <FormattedMessage
-              id="header.register"
-              values={{ b: (msg) => <b>{msg}</b> }}
-            />
-          </ButtonLargeBlue>
-          <ButtonLargeLight icon="about" to="/about">
-            <FormattedMessage
-              id="home.aboutBooky"
-              values={{ b: (msg) => <b>{msg}</b> }}
-            />
-          </ButtonLargeLight>
         </Section>
       </Page>
     );
