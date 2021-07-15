@@ -186,7 +186,7 @@ class Bookmark extends PureComponent {
                 }
                 title={name}
               >
-                {name}
+                {name || '\xa0'}
               </a>
               {(editMode || (hoverEditMode && !isDragging)) && (
                 <>
