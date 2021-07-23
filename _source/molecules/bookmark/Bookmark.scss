@@ -64,14 +64,8 @@
 }
 
 .bookmark__note {
-  word-break: break-word;
   padding-left: 24px;
-  // top: 36px;
-  // left: 30px;
-  // right: 6px;
-  // text-overflow: ellipsis;
-  // overflow: hidden;
-  // white-space: nowrap;
+  white-space: pre-wrap;
 }
 
 .bookmark--edit-mode .bookmark__note {

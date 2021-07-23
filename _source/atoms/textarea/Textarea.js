@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Label from '../label';
-import Icon from '../icon';
+// import Icon from '../icon';
 import { ErrorMessage } from '../messages';
 
 export default class Textarea extends Component {
@@ -99,7 +99,7 @@ export default class Textarea extends Component {
           <textarea {...textareaProps} />
           {validation && (
             <Fragment>
-              <Icon
+              {/* <Icon
                 icon="check"
                 color="green"
                 className="textarea__icon textarea__icon--valid"
@@ -108,7 +108,7 @@ export default class Textarea extends Component {
                 icon="error"
                 color="orange"
                 className="textarea__icon textarea__icon--invalid"
-              />
+              /> */}
             </Fragment>
           )}
           {error && <ErrorMessage message={error} />}

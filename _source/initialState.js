@@ -8,6 +8,7 @@ export default {
     premium: false,
     isMobile: window.matchMedia('(max-width: 1000px)').matches,
     isBeta: Boolean(window.location.host.match(/beta./gi)),
+    supportAmount: null,
     settings: {
       blurEffect: false,
       darkMode: false,
