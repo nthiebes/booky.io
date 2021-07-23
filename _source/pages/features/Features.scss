@@ -4,8 +4,8 @@
 
 .features-page__cluster {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 .about__header {

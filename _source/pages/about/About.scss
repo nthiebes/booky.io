@@ -112,6 +112,21 @@
   flex-shrink: 0;
   border-radius: 50%;
   border: 2px solid rgba(0, 0, 0, 0.1);
+
+  &:hover ~ .about__member-image--face {
+    opacity: 1;
+  }
+}
+
+.about__member-image--face {
+  position: absolute;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background-color: $color-background--white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in;
 }
 
 .about__member-header {

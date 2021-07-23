@@ -49,26 +49,19 @@ class Help extends Component {
           <H2 noMargin centered ignoreDarkMode color="light">
             <FormattedMessage id="help.intro1" />
           </H2>
-          <H2
-            noMargin
-            centered
-            ignoreDarkMode
-            color="light"
-            className="help__subtitle"
-          >
+          <H2 centered ignoreDarkMode color="light" className="help__subtitle">
             <FormattedMessage id="help.intro2" values={introValues} />
           </H2>
         </Section>
 
         <Section>
           <H3 style="h1" id="general">
-            <Illustration
-              name="icons/Library"
+            {/* <Illustration
+              name="icons/FAQ"
               className="help__illustration"
               height="50"
               width="50"
-            />
-            {/* <Icon icon="about" /> */}
+            /> */}
             <FormattedMessage id="help.general" />
           </H3>
           <div className="help-container">
@@ -89,18 +82,49 @@ class Help extends Component {
                 <Link to="/bookmarklet">{'booky.io/bookmarklet'}</Link>
               </P>
             </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="Android" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage id="bookmarklet.learnMore" />
+              </P>
+            </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="iOS (Web)" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage id="bookmarklet.learnMore" />
+              </P>
+            </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="macOS" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage id="bookmarklet.learnMore" />
+              </P>
+            </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="Windows" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage id="bookmarklet.learnMore" />
+              </P>
+            </Expandable>
           </div>
         </Section>
 
         <Section color="light" contentSpace>
           <H3 style="h1" id="bookmarks">
-            {/* <Icon icon="add-link" /> */}
-            <Illustration
+            {/* <Illustration
               name="icons/PDF"
               className="help__illustration"
               height="50"
               width="50"
-            />
+            /> */}
             <FormattedMessage id="help.bookmarks" />
           </H3>
           <div className="help-container">
@@ -179,13 +203,12 @@ class Help extends Component {
 
         <Section>
           <H3 style="h1" id="categories">
-            {/* <Icon icon="add-category" /> */}
-            <Illustration
+            {/* <Illustration
               name="icons/folder_data"
               className="help__illustration"
               height="50"
               width="50"
-            />
+            /> */}
             <FormattedMessage id="help.categories" />
           </H3>
           <div className="help-container">
@@ -261,13 +284,12 @@ class Help extends Component {
 
         <Section color="light" contentSpace>
           <H3 style="h1" id="collections">
-            {/* <Icon icon="add-collection" /> */}
-            <Illustration
+            {/* <Illustration
               name="icons/Project_Management"
               className="help__illustration"
               height="50"
               width="50"
-            />
+            /> */}
             <FormattedMessage id="help.collections" />
           </H3>
           <div className="help-container">
@@ -331,13 +353,12 @@ class Help extends Component {
 
         <Section>
           <H3 style="h1" id="account">
-            {/* <Icon icon="account" /> */}
-            <Illustration
+            {/* <Illustration
               name="icons/Manager"
               className="help__illustration"
               height="50"
               width="50"
-            />
+            /> */}
             <FormattedMessage id="help.account" />
           </H3>
           <div className="help-container">
@@ -451,13 +472,12 @@ class Help extends Component {
 
         <Section color="light" contentSpace>
           <H3 style="h1" id="registration">
-            {/* <Icon icon="join" /> */}
-            <Illustration
+            {/* <Illustration
               name="icons/Log_in"
               className="help__illustration"
               height="50"
               width="50"
-            />
+            /> */}
             <FormattedMessage id="help.registration" />
           </H3>
           <div className="help-container">

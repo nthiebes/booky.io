@@ -3,7 +3,6 @@ import { FormattedMessage } from 'react-intl';
 
 import { H3 } from '../../atoms/headline';
 import Icon from '../../atoms/icon';
-import Link from '../../atoms/link';
 
 export const AllFeatures = () => (
   <ul className="all-features">
@@ -40,9 +39,7 @@ export const AllFeatures = () => (
     <li className="all-features__feature">
       <H3 style="h2" className="all-features__feature-name">
         <Icon icon="star" className="all-features__icon" />
-        <Link to="/bookmarklet" className="all-features__link" color="medium">
-          <FormattedMessage id="misc.feature2" />
-        </Link>
+        <FormattedMessage id="misc.feature2" />
       </H3>
     </li>
     <li className="all-features__feature">

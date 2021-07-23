@@ -4,13 +4,27 @@
   flex-direction: column;
   padding: 0 1.5rem;
   border-radius: 5px;
-  max-width: 21rem;
+  width: 23rem;
   margin: 3.5rem 1rem 0 1rem;
+}
+
+.feature-card__wrapper:first-of-type {
+  margin-left: 0;
+}
+
+.feature-card__wrapper:last-of-type {
+  margin-right: 0;
 }
 
 .feature-card--white {
   background-color: $color-background--white;
   border-bottom: 2px solid darken($color-font--white, 10%);
+  padding-bottom: 1.5rem;
+}
+
+.feature-card--light {
+  background-color: $color-background--light;
+  border-bottom: 2px solid darken($color-background--light, 5%);
   padding-bottom: 1.5rem;
 }
 
@@ -32,6 +46,10 @@
   // @include desktop {
   //   flex-shrink: 0;
   // }
+}
+
+.feature-card__text {
+  flex-grow: 1;
 }
 
 .feature-card__flag {

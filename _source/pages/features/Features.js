@@ -1,21 +1,19 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedDate, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 // import classNames from 'classnames';
 
-import { config } from '../../config';
 import Page from '../../templates/page';
-import { H2, H3 } from '../../atoms/headline';
+import { H1, H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
-import { List, ListItem } from '../../atoms/list';
 import Link from '../../atoms/link';
 import Illustration from '../../atoms/illustration';
 import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
-import { FeatureCard } from '../../molecules/feature-card/FeatureCard';
+import { FeatureCard } from '../../molecules/feature-card';
 import { TabBar, Tab } from '../../molecules/tab-bar';
 // import Features from '../../molecules/features';
 // import Feature from '../../molecules/feature';
@@ -26,34 +24,12 @@ class FeaturesPage extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool.isRequired,
-    updateSettings: PropTypes.func.isRequired,
-    newsVersion: PropTypes.number.isRequired
+    darkMode: PropTypes.bool.isRequired
   };
 
   state = {
-    activeTab: 'bookmarklet',
-    releases: []
+    activeTab: 'bookmarklet'
   };
-
-  componentDidMount() {
-    const { newsVersion, updateSettings } = this.props;
-
-    fetch('https://api.github.com/repos/nthiebes/booky.io/releases?per_page=10')
-      .then((response) => response.json())
-      .then((releases) => {
-        this.setState({
-          releases: releases.filter((release) => !release.prerelease)
-        });
-      })
-      .catch();
-
-    if (newsVersion < config.NEWS_VERSION) {
-      updateSettings({
-        newsVersion: config.NEWS_VERSION
-      });
-    }
-  }
 
   tabs = [
     {
@@ -93,9 +69,10 @@ class FeaturesPage extends PureComponent {
     const { activeTab, releases } = this.state;
 
     return (
-      <Page showStats className="features-page">
-        <Section color="light" contentSpace>
-          {/* <H1>
+      <Page showStats>
+        {/* className="features-page" */}
+        <Section>
+          {/* <H1 centered>
             <FormattedMessage id="Features" />
           </H1> */}
           <H2 style="h1" centered>
@@ -105,24 +82,25 @@ class FeaturesPage extends PureComponent {
             <FeatureCard
               headline={intl.formatMessage({ id: 'Dark mode' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/development"
-              background="white"
+              illustration="icons/glyph/development"
+              background="light"
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'Colors' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/arts"
-              background="white"
+              illustration="icons/glyph/arts"
+              background="light"
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'Layout' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/comparison"
-              background="white"
+              illustration="icons/glyph/comparison"
+              background="light"
             />
           </div>
         </Section>
-        <Section>
+
+        <Section color="light" contentSpace>
           <H2 style="h1" centered>
             <FormattedMessage id="Organize your bookmarks." />
           </H2>
@@ -130,20 +108,24 @@ class FeaturesPage extends PureComponent {
             <FeatureCard
               headline={intl.formatMessage({ id: 'Collections & categories' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/folder_data"
+              illustration="icons/glyph/folder_data"
+              background="white"
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'Drag & drop' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/work_flow"
+              illustration="icons/glyph/work_flow"
+              background="white"
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'Bookmark search' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/searching"
+              illustration="icons/glyph/searching"
+              background="white"
             />
           </div>
         </Section>
+
         <Section>
           <H2 style="h1" centered>
             <FormattedMessage id="Take control." />
@@ -152,25 +134,30 @@ class FeaturesPage extends PureComponent {
             <FeatureCard
               headline={intl.formatMessage({ id: 'Private collections' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/privacy"
+              illustration="icons/glyph/privacy"
+              background="light"
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'Public collections' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/teamwork"
+              illustration="icons/glyph/teamwork"
+              background="light"
               payed
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'Preferences' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/Page_Under_Construction"
+              illustration="icons/glyph/Page_Under_Construction"
+              background="light"
             />
           </div>
         </Section>
+
         <Section
           color="dark"
+          className="home__availability-wrapper"
+          contentClassName="home__availability"
           contentSpace
-          contentClassName="features__bookmarklet"
         >
           <Illustration
             className="home__plant booky--hide-mobile"
@@ -180,80 +167,185 @@ class FeaturesPage extends PureComponent {
             className="home__trees booky--hide-mobile-tablet"
             name="trees"
           />
-          <H2 style="h1" color="light" id="platforms" noMargin centered>
-            <FormattedMessage id="misc.feature1" />
+          <H2 style="h1" color="light" noMargin centered>
+            <FormattedMessage id="Access from anywhere." />
           </H2>
-          <H3 style="h2" color="light" noMargin centered>
-            <FormattedMessage id="home.extensionText" />
-          </H3>
-          <nav className="about__extension">
+          <nav className="home__platforms">
             <Link
               href="https://chrome.google.com/webstore/detail/bookyio-extension/pmcpkkipiedakcaolhnbijibndfemckf"
               target="_blank"
               color="light"
-              className="about__extension-browser"
+              className="home__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="about__extension-icon"
+                className="home__platforms-icon"
                 src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              {'Chrome'}
+              {'Chrome '}
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/"
               target="_blank"
               color="light"
-              className="about__extension-browser"
+              className="home__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="about__extension-icon"
+                className="home__platforms-icon"
                 src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              {'Firefox'}
+              {'Firefox '}
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
               target="_blank"
               color="light"
-              className="about__extension-browser"
+              className="home__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="about__extension-icon"
+                className="home__platforms-icon"
                 src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              {'Opera'}
+              {'Opera '}
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
               target="_blank"
               color="light"
-              className="about__extension-browser"
+              className="home__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="about__extension-icon"
+                className="home__platforms-icon"
                 src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              {'Edge'}
+              {'Edge '}
+              <FormattedMessage id="misc.extension" />
+            </Link>
+            <Link
+              to="/bookmarklet"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/icons/android-chrome-192x192.png"
+                loading="lazy"
+              />
+              {'Bookmarklet'}
+            </Link>
+            <Link
+              to="/features#android"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/logos/android.svg"
+                loading="lazy"
+              />
+              {'Android'}
+            </Link>
+            <Link
+              to="/features#ios"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/logos/apple.svg"
+                loading="lazy"
+              />
+              {'iOS (Web)'}
+            </Link>
+            <Link
+              href="../../_assets/downloads/booky.zip"
+              target="_blank"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/logos/finder.svg"
+                loading="lazy"
+              />
+              {'macOS'}
+            </Link>
+            <Link
+              href="https://www.groovypost.com/howto/using-web-apps-new-chromium-edge-windows-10/"
+              target="_blank"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/logos/windows.svg"
+                loading="lazy"
+              />
+              {'Windows'}
             </Link>
           </nav>
         </Section>
+
         <Section>
+          <H2 style="h1" centered noMargin>
+            <FormattedMessage id="Explore even more." />
+          </H2>
+          <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Bookmark import/export' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/glyph/uploading"
+              background="light"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Bookmark notes' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/glyph/notes"
+              background="light"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'Search engine' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="icons/glyph/searching"
+              background="light"
+            />
+          </div>
+        </Section>
+
+        {/* <Section>
           <H2 style="h1">
             <FormattedMessage id="How else can I use booky?" />
           </H2>
@@ -307,29 +399,8 @@ class FeaturesPage extends PureComponent {
               </H3>
             </>
           )}
-        </Section>
-        <Section color="light" contentSpace>
-          <H2 style="h1" centered noMargin>
-            <FormattedMessage id="Even more features." />
-          </H2>
-          <div className="features-page__cluster">
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'Bookmark import/export' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/uploading"
-            />
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'Bookmark notes' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/notes"
-            />
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'Search engine' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/searching"
-            />
-          </div>
-        </Section>
+        </Section> */}
+
         <Section className="home__not-a-member">
           <Illustration className="home__heart" name="heart" />
           <H2 style="h1" centered noMargin>
@@ -355,46 +426,6 @@ class FeaturesPage extends PureComponent {
               values={{ b: (msg) => <b>{msg}</b> }}
             />
           </ButtonLargeLight>
-        </Section>
-        <Section>
-          <H2 style="h1" id="new" noMargin>
-            <FormattedMessage id="about.updates" />
-          </H2>
-          {/* eslint-disable-next-line camelcase */}
-          {releases.map(({ id, name, body, published_at }, index) => {
-            const lines = body.split('\n');
-
-            // eslint-disable-next-line no-lone-blocks
-            return (
-              <Expandable
-                className="about__updates"
-                key={id}
-                open={index === 0}
-                headline={
-                  <>
-                    <span>{`${name} -`}</span>
-                    <time className="about__date">
-                      <FormattedDate
-                        value={new Date(published_at)}
-                        month="long"
-                        day="2-digit"
-                        year="numeric"
-                      />
-                    </time>
-                  </>
-                }
-              >
-                <List>
-                  {lines.map((line, lineIndex) => (
-                    <ListItem key={lineIndex}>
-                      {line.replace(/- /g, '')}
-                      {lineIndex < lines.length - 1 && <br />}
-                    </ListItem>
-                  ))}
-                </List>
-              </Expandable>
-            );
-          })}
         </Section>
       </Page>
     );

@@ -6,6 +6,11 @@ import { H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import { Flag } from '../../atoms/flag';
 import Illustration from '../../atoms/illustration';
+import {
+  ButtonLargeBlue,
+  ButtonLargePrimary,
+  ButtonLargeGreen
+} from '../../atoms/button';
 
 export class FeatureCard extends PureComponent {
   static propTypes = {
@@ -14,12 +19,22 @@ export class FeatureCard extends PureComponent {
     text: PropTypes.string.isRequired,
     illustration: PropTypes.string.isRequired,
     background: PropTypes.string,
-    payed: PropTypes.bool
+    payed: PropTypes.bool,
+    cta: PropTypes.string,
+    ctaTo: PropTypes.string
   };
 
   render() {
-    const { className, headline, text, illustration, background, payed } =
-      this.props;
+    const {
+      className,
+      headline,
+      text,
+      illustration,
+      background,
+      payed,
+      cta,
+      ctaTo
+    } = this.props;
 
     return (
       <div
@@ -39,7 +54,14 @@ export class FeatureCard extends PureComponent {
           {headline}
           {payed && <Flag type="supporter" className="feature-card__flag" />}
         </H2>
-        <P noPadding>{text}</P>
+        <P noPadding className="feature-card__text">
+          {text}
+        </P>
+        {cta && (
+          <ButtonLargeGreen icon="heart" to={ctaTo} contentBefore>
+            {cta}
+          </ButtonLargeGreen>
+        )}
       </div>
     );
   }
