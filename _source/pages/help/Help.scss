@@ -1,5 +1,37 @@
 @import "../../templates/booky/config.scss";
 
+.help {
+  padding-top: 0;
+}
+
+.help--sticky {
+  padding-top: 3rem;
+
+  @include tablet {
+    padding-top: 4rem;
+  }
+
+  @include desktop {
+    padding-top: 5.6rem;
+  }
+}
+
+.help__header {
+  padding: 3rem 0;
+
+  @include tablet {
+    padding: 4rem 0;
+  }
+
+  @include desktop {
+    padding: 5rem 0;
+  }
+}
+
+.help__illustration {
+  margin-right: 1rem;
+}
+
 .help-headline,
 .help-intro {
   @include tablet {
@@ -12,24 +44,6 @@
 
   @include hd {
     width: 70%;
-  }
-}
-
-.help-illustration {
-  position: absolute;
-  top: -2rem;
-  width: 28vw;
-  height: 28vw;
-  right: 3%;
-
-  @include tablet-desktop {
-    max-width: 300px;
-    max-height: 300px;
-    right: 36px;
-  }
-
-  @include desktop {
-    top: -4rem;
   }
 }
 
@@ -64,4 +78,8 @@
 .help__icon {
   display: flex;
   align-items: center;
+}
+
+.help__subtitle {
+  display: block;
 }
