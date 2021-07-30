@@ -147,5 +147,14 @@
 }
 
 .about__updates {
-  margin-top: 1rem;
+  @include tablet-desktop {
+    min-width: 47%;
+  }
+}
+
+.about__updates-wrapper {
+  @include tablet-desktop {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

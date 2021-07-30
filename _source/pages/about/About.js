@@ -257,47 +257,6 @@ class About extends PureComponent {
           </div>
         </Section>
 
-        <Section>
-          <H2 style="h1" id="new">
-            <FormattedMessage id="about.updates" />
-          </H2>
-          {/* eslint-disable-next-line camelcase */}
-          {releases.map(({ id, name, body, published_at }, index) => {
-            const lines = body.split('\n');
-
-            // eslint-disable-next-line no-lone-blocks
-            return (
-              <Expandable
-                className="about__updates"
-                key={id}
-                open={index === 0}
-                headline={
-                  <>
-                    <span>{`${name} -`}</span>
-                    <time className="about__date">
-                      <FormattedDate
-                        value={new Date(published_at)}
-                        month="long"
-                        day="2-digit"
-                        year="numeric"
-                      />
-                    </time>
-                  </>
-                }
-              >
-                <List>
-                  {lines.map((line, lineIndex) => (
-                    <ListItem key={lineIndex}>
-                      {line.replace(/- /g, '')}
-                      {lineIndex < lines.length - 1 && <br />}
-                    </ListItem>
-                  ))}
-                </List>
-              </Expandable>
-            );
-          })}
-        </Section>
-
         <Section className="home__not-a-member">
           <Illustration className="home__heart" name="heart" />
           <H2 style="h1" centered noMargin>
@@ -323,6 +282,49 @@ class About extends PureComponent {
               values={{ b: (msg) => <b>{msg}</b> }}
             />
           </ButtonLargeLight>
+        </Section>
+
+        <Section>
+          <H2 style="h1" id="new">
+            <FormattedMessage id="about.updates" />
+          </H2>
+          <div className="about__updates-wrapper">
+            {/* eslint-disable-next-line camelcase */}
+            {releases.map(({ id, name, body, published_at }, index) => {
+              const lines = body.split('\n');
+
+              // eslint-disable-next-line no-lone-blocks
+              return (
+                <Expandable
+                  className="about__updates"
+                  key={id}
+                  open={index === 0}
+                  headline={
+                    <>
+                      <span>{`${name} -`}</span>
+                      <time className="about__date">
+                        <FormattedDate
+                          value={new Date(published_at)}
+                          month="long"
+                          day="2-digit"
+                          year="numeric"
+                        />
+                      </time>
+                    </>
+                  }
+                >
+                  <List>
+                    {lines.map((line, lineIndex) => (
+                      <ListItem key={lineIndex}>
+                        {line.replace(/- /g, '')}
+                        {lineIndex < lines.length - 1 && <br />}
+                      </ListItem>
+                    ))}
+                  </List>
+                </Expandable>
+              );
+            })}
+          </div>
         </Section>
       </Page>
     );
