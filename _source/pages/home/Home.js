@@ -172,6 +172,7 @@ class Home extends Component {
           </div>
           <Illustration name="devices" className="home__header-illustration" />
         </section>
+
         <Section color="light" contentSpace contentClassName="home__features">
           <H2 style="h1" noMargin centered className="home__features-headline">
             <FormattedMessage id="misc.features" />
@@ -184,6 +185,7 @@ class Home extends Component {
             />
           </ButtonLargePrimary>
         </Section>
+
         <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.privateHeadline' })}
@@ -191,6 +193,7 @@ class Home extends Component {
             illustration="protection"
           />
         </Section>
+
         <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.customizableHeadline' })}
@@ -199,6 +202,7 @@ class Home extends Component {
             direction="right"
           />
         </Section>
+
         <Section
           color="dark"
           className="home__availability-wrapper"
@@ -374,6 +378,7 @@ class Home extends Component {
             />
           </ButtonLargeLight> */}
         </Section>
+
         <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.performantHeadline' })}
@@ -381,6 +386,7 @@ class Home extends Component {
             illustration="speed"
           />
         </Section>
+
         <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.mobileHeadline' })}
@@ -389,9 +395,11 @@ class Home extends Component {
             direction="right"
           />
         </Section>
+
         <Section color="light" fullWidth contentSpace>
           <Testimonials />
         </Section>
+
         <Section className="home__not-a-member">
           <Illustration className="home__heart" name="heart" />
           <H2 style="h1" centered noMargin>

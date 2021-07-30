@@ -158,3 +158,23 @@
     flex-wrap: wrap;
   }
 }
+
+.about__bullets {
+  width: 100%;
+}
+
+.about__usecase-title {
+  width: 45rem;
+}
+
+.about__usecases {
+  display: flex;
+}
+
+.about__usecase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 1rem;
+}

@@ -65,28 +65,46 @@ class About extends PureComponent {
             <FormattedMessage id="about.subtitle" />
           </H2>
         </Section>
+
         <Section>
-          <H2 style="h1">
+          <H2 style="h1" centered>
             <FormattedMessage id="about.why" />
           </H2>
-          <P>
-            <Icon icon="check" />
-            <FormattedMessage id="Save and access links across browsers and devices" />
-            <Icon icon="check" />
-            <FormattedMessage id="Better organisation of your bookmarks" />
-            <Icon icon="check" />
-            <FormattedMessage id="Cloud" />
-          </P>
-          <H3 style="h2">
-            <FormattedMessage id="Save whatever you like on booky! Some typical use cases:" />
-          </H3>
-          <Expandable headline={<FormattedMessage id="Collect recipes" />}>
-            <P>
-              <FormattedMessage id="about.privacyText" />
-            </P>
-          </Expandable>
+          <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({
+                id: 'about.anyDeviceTitle' // Save and access links across browsers and devices
+              })}
+              text={intl.formatMessage({
+                id: 'about.anyDevice'
+              })}
+              illustration="mobile"
+              background="light"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({
+                id: 'about.organizeTitle'
+              })}
+              text={intl.formatMessage({
+                id: 'about.organize'
+              })}
+              illustration="organize"
+              background="light"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({
+                id: 'about.cloudTitle'
+              })}
+              text={intl.formatMessage({
+                id: 'about.cloud'
+              })}
+              illustration="import"
+              background="light"
+            />
+          </div>
         </Section>
-        <Section color="light" contentSpace>
+
+        <Section>
           <H2 style="h1" centered>
             <FormattedMessage id="about.topics" />
           </H2>
@@ -103,8 +121,8 @@ class About extends PureComponent {
                   )
                 }
               )}
-              illustration="icons/glyph/privacy"
-              background="white"
+              illustration="protection"
+              background="light"
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'about.feedback' })}
@@ -118,8 +136,8 @@ class About extends PureComponent {
                   )
                 }
               )}
-              illustration="icons/glyph/Reviews"
-              background="white"
+              illustration="feedback"
+              background="light"
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'about.support' })}
@@ -133,8 +151,8 @@ class About extends PureComponent {
                   )
                 }
               )}
-              illustration="icons/glyph/Affiliate"
-              background="white"
+              illustration="support"
+              background="light"
               cta={intl.formatMessage(
                 { id: 'button.memberships' },
                 { b: (msg) => <b>{msg}</b> }
@@ -144,8 +162,56 @@ class About extends PureComponent {
           </div>
         </Section>
 
+        <Section
+          color="dark"
+          className="home__availability-wrapper" // features__bookmarklet
+          contentClassName="home__availability"
+          contentSpace
+        >
+          <Illustration
+            className="home__plant booky--hide-mobile"
+            name="plant"
+          />
+          <Illustration
+            className="home__trees booky--hide-mobile-tablet"
+            name="trees"
+          />
+          <H2
+            style="h1"
+            color="light"
+            noMargin
+            centered
+            className="about__usecase-title"
+          >
+            <FormattedMessage id="about.usecases" />
+          </H2>
+          <H3 style="h2" color="light" noMargin centered>
+            <FormattedMessage id="about.usecasesSubtitle" />
+          </H3>
+          <ul className="about__usecases">
+            <li className="about__usecase">
+              <Illustration name="hamburger" width="200" height="200" />
+              <H4 style="h3" color="light" centered noMargin>
+                <FormattedMessage id="Lieblingsrezepte" />
+              </H4>
+            </li>
+            <li className="about__usecase">
+              <Illustration name="vacation" width="200" height="200" />
+              <H4 style="h3" color="light" centered noMargin>
+                <FormattedMessage id="Urlaubsplanung" />
+              </H4>
+            </li>
+            <li className="about__usecase">
+              <Illustration name="work" width="200" height="200" />
+              <H4 style="h3" color="light" centered noMargin>
+                <FormattedMessage id="Arbeitslinks" />
+              </H4>
+            </li>
+          </ul>
+        </Section>
+
         <Section>
-          <H2 style="h1">
+          <H2 style="h1" centered>
             <FormattedMessage id="about.team" />
           </H2>
           <div className="about__members">
