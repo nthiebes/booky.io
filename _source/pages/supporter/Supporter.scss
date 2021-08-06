@@ -1,0 +1,86 @@
+@import "../../templates/booky/config.scss";
+
+.supporter {
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.supporter--sticky {
+  padding-top: 3rem;
+
+  @include tablet {
+    padding-top: 4rem;
+  }
+
+  @include desktop {
+    padding-top: 5.6rem;
+  }
+}
+
+.supporter__header {
+  padding: 3rem 0 0;
+
+  @include tablet {
+    padding: 4rem 0 0;
+  }
+
+  @include desktop {
+    padding: 5rem 0 0;
+  }
+}
+
+.supporter__illustration {
+  margin-left: 1rem;
+  margin-right: -7rem;
+  position: relative;
+  top: 7.5rem;
+}
+
+.supporter__header-content {
+  display: flex;
+}
+
+.supporter__headline {
+  padding-top: 2rem;
+}
+
+.supporter__advantages {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.supporter__advantage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 16rem;
+  padding: 0 1rem 1rem 1rem;
+
+  @include desktop {
+    max-width: 14rem;
+  }
+}
+
+.supporter__advantage-headline {
+  white-space: nowrap;
+}
+
+.faq {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.faq__item {
+  padding: 1rem 1rem 0 1rem;
+
+  @include tablet {
+    max-width: 50%;
+  }
+
+  @include desktop {
+    max-width: 33%;
+  }
+}

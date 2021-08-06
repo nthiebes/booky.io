@@ -26,6 +26,7 @@ const Open = lazy(() => import('./pages/open'));
 const Customize = lazy(() => import('./pages/customize'));
 const Bookmarklet = lazy(() => import('./pages/bookmarklet'));
 const Features = lazy(() => import('./pages/features'));
+const Supporter = lazy(() => import('./pages/supporter'));
 
 class Routes extends Component {
   static propTypes = {
@@ -61,6 +62,7 @@ class Routes extends Component {
           <Route path="/next" component={restricted(Next)} />
           <Route path="/bookmarklet" component={Bookmarklet} />
           <Route path="/features" component={Features} />
+          <Route path="/supporter" component={Supporter} />
           <Route path="/activate/:token" component={publicOnly(Login)} />
           <Route
             path="/recovery/:action/:params"

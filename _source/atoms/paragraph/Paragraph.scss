@@ -1,5 +1,4 @@
 .paragraph {
-  color: $color-font--dark;
   font-family: $font-family--text;
   line-height: 1.5;
   padding-bottom: 1rem;
@@ -16,4 +15,20 @@
 
 .paragraph--no-padding {
   padding: 0;
+}
+
+.paragraph--normal {
+  font-size: 1rem;
+}
+
+.paragraph--large {
+  font-size: 1.3rem;
+}
+
+.paragraph--dark {
+  color: $color-font--dark;
+}
+
+.paragraph--light {
+  color: $color-font--white;
 }

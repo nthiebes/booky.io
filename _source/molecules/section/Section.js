@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default class Section extends Component {
+  static propTypes = {
+    className: PropTypes.string,
+    color: PropTypes.string,
+    fullWidth: PropTypes.bool,
+    compact: PropTypes.bool,
+    children: PropTypes.node,
+    noMargin: PropTypes.bool,
+    contentClassName: PropTypes.string,
+    contentSpace: PropTypes.bool,
+    wave: PropTypes.bool
+  };
+
   render() {
     const {
       className,
@@ -12,7 +24,8 @@ export default class Section extends Component {
       compact,
       noMargin,
       contentClassName,
-      contentSpace
+      contentSpace,
+      wave
     } = this.props;
 
     return (
@@ -22,9 +35,11 @@ export default class Section extends Component {
           color && `section--${color}`,
           compact && 'section--compact',
           noMargin && 'section--noMargin',
+          wave && 'section--wave',
           className
         )}
       >
+        {wave && <div className="section__wave" />}
         <div
           className={classNames(
             'section__content',
@@ -39,14 +54,3 @@ export default class Section extends Component {
     );
   }
 }
-
-Section.propTypes = {
-  className: PropTypes.string,
-  color: PropTypes.string,
-  fullWidth: PropTypes.bool,
-  compact: PropTypes.bool,
-  children: PropTypes.node,
-  noMargin: PropTypes.bool,
-  contentClassName: PropTypes.string,
-  contentSpace: PropTypes.bool
-};

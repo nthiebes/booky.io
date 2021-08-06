@@ -11,6 +11,18 @@
   }
 }
 
+.section--wave {
+  margin-bottom: calc(3rem + 40px);
+
+  @include tablet {
+    margin-bottom: calc(4rem + 40px);
+  }
+
+  @include desktop {
+    margin-bottom: calc(6rem + 40px);
+  }
+}
+
 .section--noMargin {
   margin-bottom: 0;
 }
@@ -40,22 +52,34 @@
 .section--light {
   background-color: $color-background--light;
   border-bottom: 2px solid darken($color-background--light, 5%);
+
+  .section__wave,
+  .section__wave::after {
+    background-color: $color-background--light;
+  }
 }
 
-.section--blue {
+.section--blue,
+.section--blue .section__wave,
+.section--blue .section__wave::after {
   background-color: $color--blue;
 }
 
-.section--green {
+.section--green,
+.section--green .section__wave,
+.section--green .section__wave::after {
   background-color: $color--green;
 }
 
-.section--dark {
+.section--dark,
+.section--dark .section__wave,
+.section--dark .section__wave::after {
   background-color: $color--dark;
-  border-bottom: 2px solid $color-font--medium;
 }
 
-.section--medium {
+.section--medium,
+.section--medium .section__wave,
+.section--medium .section__wave::after {
   background-color: $color-font--medium;
 }
 
@@ -83,5 +107,36 @@
   @include desktop {
     padding-top: 4rem;
     padding-bottom: 5rem;
+  }
+}
+
+.section__wave {
+  display: block;
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  bottom: -40px;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    width: 100%;
+    height: 300px;
+    background-color: $color-background--white;
+    right: -25%;
+    top: 20px;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    width: 100%;
+    height: 300px;
+    left: -25%;
+    top: -240px;
   }
 }
