@@ -39,7 +39,7 @@ export class FeatureCard extends PureComponent {
     return (
       <div
         className={classNames(
-          'feature-card__wrapper',
+          'feature-card',
           `feature-card--${background}`,
           className
         )}
@@ -47,8 +47,8 @@ export class FeatureCard extends PureComponent {
         <Illustration
           name={illustration}
           className="feature-card__illustration"
-          height="150"
-          width="150"
+          height="200"
+          width="200"
         />
         <H2 noMargin centered>
           {headline}

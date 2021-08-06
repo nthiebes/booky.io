@@ -78,11 +78,10 @@
   display: flex;
   padding: 1.5rem 1rem 2.5rem;
   position: relative;
-  background-color: $color-background--light;
-  border-radius: 5px;
+  border-radius: 30px;
   margin: 0 1rem 2rem 1rem;
   width: 23rem;
-  border-bottom: 2px solid darken($color-background--light, 5%);
+  border: 2px solid $color-border--light;
 
   &:last-child {
     margin-bottom: 0;
@@ -110,8 +109,8 @@
 .about__member-image {
   margin-right: 0.5rem;
   flex-shrink: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  border: 2px solid $color-border--light;
 
   &:hover ~ .about__member-image--face {
     opacity: 1;
@@ -121,9 +120,9 @@
 .about__member-image--face {
   position: absolute;
   flex-shrink: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  background-color: $color-background--white;
+  border-radius: 30px;
+  border: 2px solid $color-border--light;
+  background-color: $color-border--light;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in;

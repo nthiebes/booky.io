@@ -1,5 +1,7 @@
 .button--large {
   justify-content: center;
+  border-width: 2px;
+  border-radius: 10px;
 
   @include mobile-tablet() {
     height: 40px;
@@ -186,14 +188,13 @@
 }
 
 .button--large-light {
-  background-color: $color-background--light;
   color: $color-font--dark;
-  border-bottom: 2px solid darken($color-background--light, 15%);
+  border-color: $color-border--light;
 
   @include mobile-tablet() {
     &:active,
     &:focus {
-      background-color: darken($color-background--light, 5%);
+      background-color: $color-background--light;
       color: $color-font--dark;
     }
   }
@@ -202,7 +203,7 @@
     &:hover,
     &:focus,
     &.button--pending {
-      background-color: darken($color-background--light, 5%);
+      background-color: $color-background--light;
       color: $color-font--dark;
     }
   }
