@@ -78,7 +78,7 @@ class About extends PureComponent {
               text={intl.formatMessage({
                 id: 'about.anyDevice'
               })}
-              illustration="mobile"
+              illustration="available"
               background="light"
             />
             <FeatureCard
@@ -121,7 +121,7 @@ class About extends PureComponent {
                   )
                 }
               )}
-              illustration="protection"
+              illustration="privacy"
               background="light"
             />
             <FeatureCard
