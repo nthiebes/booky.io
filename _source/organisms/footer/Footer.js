@@ -63,7 +63,7 @@ class Footer extends PureComponent {
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(50084)}</b>
+                <b>{new Intl.NumberFormat(locale).format(51325)}</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
@@ -71,11 +71,11 @@ class Footer extends PureComponent {
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(1545429)}</b>
+                <b>{new Intl.NumberFormat(locale).format(1635757)}</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(138144)}</b>
+                <b>{new Intl.NumberFormat(locale).format(207702)}</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
