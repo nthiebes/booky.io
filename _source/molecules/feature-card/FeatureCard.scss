@@ -30,6 +30,10 @@
   border: 2px solid $color-border--light;
 }
 
+.feature-card--centered {
+  text-align: center;
+}
+
 .feature-card__illustration {
   min-width: 150px;
   min-height: 150px;
@@ -47,6 +51,6 @@
 }
 
 .feature-card__flag {
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   position: relative;
 }

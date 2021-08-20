@@ -10,9 +10,10 @@ import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import Link from '../../atoms/link';
 import Illustration from '../../atoms/illustration';
-import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
 import { FeatureCard } from '../../molecules/feature-card';
+
+import './Features.scss';
 
 class FeaturesPage extends PureComponent {
   static propTypes = {
@@ -36,22 +37,31 @@ class FeaturesPage extends PureComponent {
           <div className="features-page__cluster">
             <FeatureCard
               headline={intl.formatMessage({ id: 'customize.darkMode' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({
+                id: 'features.darkModeText'
+              })}
               illustration="dark-mode-switch"
               background="light"
               illustrationClassName="features-page__dark-mode"
+              centered
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'features.colors' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({
+                id: 'features.colorsText'
+              })}
               illustration="colors"
               background="light"
+              centered
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'features.layout' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({
+                id: 'features.layoutText'
+              })}
               illustration="organize"
               background="light"
+              centered
             />
           </div>
         </Section>
@@ -62,22 +72,25 @@ class FeaturesPage extends PureComponent {
           </H2>
           <div className="features-page__cluster">
             <FeatureCard
-              headline={intl.formatMessage({ id: 'misc.feature6' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              headline={intl.formatMessage({ id: 'features.structure' })}
+              text={intl.formatMessage({ id: 'features.structureText' })}
               illustration="folders"
               background="white"
+              centered
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'features.sort' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({ id: 'features.dragText' })}
               illustration="drag"
               background="white"
+              centered
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'misc.feature4' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({ id: 'features.searchText' })}
               illustration="search"
               background="white"
+              centered
             />
           </div>
         </Section>
@@ -91,24 +104,31 @@ class FeaturesPage extends PureComponent {
               headline={intl.formatMessage({
                 id: 'features.privateCollections'
               })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({
+                id: 'features.privateCollectionsText'
+              })}
               illustration="private-collections"
               background="light"
+              centered
             />
             <FeatureCard
               headline={intl.formatMessage({
                 id: 'features.publicCollections'
               })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({
+                id: 'features.publicCollectionsText'
+              })}
               illustration="share-collections"
               background="light"
+              centered
               payed
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'features.settings' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({ id: 'features.settingsText' })}
               illustration="settings"
               background="light"
+              centered
             />
           </div>
         </Section>
@@ -286,21 +306,24 @@ class FeaturesPage extends PureComponent {
           <div className="features-page__cluster">
             <FeatureCard
               headline={intl.formatMessage({ id: 'misc.feature3' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({ id: 'features.importText' })}
               illustration="import"
               background="light"
+              centered
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'misc.feature9' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({ id: 'features.notesText' })}
               illustration="notes"
               background="light"
+              centered
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'features.searchEngine' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
+              text={intl.formatMessage({ id: 'features.searchEngineText' })}
               illustration="search"
               background="light"
+              centered
             />
           </div>
         </Section>

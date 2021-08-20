@@ -18,7 +18,8 @@ export class FeatureCard extends PureComponent {
     background: PropTypes.string,
     payed: PropTypes.bool,
     cta: PropTypes.node,
-    ctaTo: PropTypes.string
+    ctaTo: PropTypes.string,
+    centered: PropTypes.bool
   };
 
   render() {
@@ -31,7 +32,8 @@ export class FeatureCard extends PureComponent {
       background,
       payed,
       cta,
-      ctaTo
+      ctaTo,
+      centered
     } = this.props;
 
     return (
@@ -39,6 +41,7 @@ export class FeatureCard extends PureComponent {
         className={classNames(
           'feature-card',
           `feature-card--${background}`,
+          centered && 'feature-card--centered',
           className
         )}
       >
@@ -54,10 +57,10 @@ export class FeatureCard extends PureComponent {
         <H2 noMargin centered>
           {headline}
         </H2>
-        {payed && <Flag type="supporter" className="feature-card__flag" />}
         <P noPadding className="feature-card__text">
           {text}
         </P>
+        {payed && <Flag type="supporter" className="feature-card__flag" />}
         {cta && (
           <ButtonLargeBlue icon="heart" to={ctaTo} contentBefore>
             {cta}

@@ -114,6 +114,14 @@ class Help extends Component {
                 <FormattedMessage id="bookmarklet.learnMore" />
               </P>
             </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="Search engine" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage id="bookmarklet.learnMore" />
+              </P>
+            </Expandable>
           </div>
         </Section>
 
