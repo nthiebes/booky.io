@@ -21,6 +21,7 @@ export default class Icon extends PureComponent {
       'light',
       'green',
       'orange',
+      'blue',
       ''
     ]),
     dragHandleProps: PropTypes.object,

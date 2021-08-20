@@ -6,11 +6,14 @@ import { withRouter } from 'react-router-dom';
 
 import Page from '../../templates/page';
 import { H1, H2, H3 } from '../../atoms/headline';
-import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import Link from '../../atoms/link';
 import Illustration from '../../atoms/illustration';
-import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
+import {
+  ButtonLargeBlue,
+  ButtonLargeLight,
+  ButtonSmallBlue
+} from '../../atoms/button';
 import { FeatureCard } from '../../molecules/feature-card';
 
 import './Features.scss';
@@ -74,7 +77,7 @@ class FeaturesPage extends PureComponent {
             <FeatureCard
               headline={intl.formatMessage({ id: 'features.structure' })}
               text={intl.formatMessage({ id: 'features.structureText' })}
-              illustration="folders"
+              illustration="structure"
               background="white"
               centered
             />
@@ -122,6 +125,19 @@ class FeaturesPage extends PureComponent {
               background="light"
               centered
               payed
+              noWrap
+              cta={
+                <ButtonSmallBlue
+                  to="/supporter"
+                  icon="heart"
+                  className="features-page__memberships"
+                >
+                  {intl.formatMessage(
+                    { id: 'button.memberships' },
+                    { b: (msg) => <b>{msg}</b> }
+                  )}
+                </ButtonSmallBlue>
+              }
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'features.settings' })}

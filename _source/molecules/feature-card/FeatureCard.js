@@ -4,9 +4,10 @@ import classNames from 'classnames';
 
 import { H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-import { Flag } from '../../atoms/flag';
+import Icon from '../../atoms/icon';
 import Illustration from '../../atoms/illustration';
-import { ButtonLargeBlue } from '../../atoms/button';
+
+import './FeatureCard.scss';
 
 export class FeatureCard extends PureComponent {
   static propTypes = {
@@ -18,8 +19,8 @@ export class FeatureCard extends PureComponent {
     background: PropTypes.string,
     payed: PropTypes.bool,
     cta: PropTypes.node,
-    ctaTo: PropTypes.string,
-    centered: PropTypes.bool
+    centered: PropTypes.bool,
+    noWrap: PropTypes.bool
   };
 
   render() {
@@ -32,8 +33,8 @@ export class FeatureCard extends PureComponent {
       background,
       payed,
       cta,
-      ctaTo,
-      centered
+      centered,
+      noWrap
     } = this.props;
 
     return (
@@ -54,18 +55,18 @@ export class FeatureCard extends PureComponent {
           height="150"
           width="150"
         />
-        <H2 noMargin centered>
+        <H2
+          noMargin
+          centered
+          className={classNames(noWrap && 'feature-card__headline--noWrap')}
+        >
           {headline}
+          {payed && <Icon icon="heart" color="blue" />}
         </H2>
         <P noPadding className="feature-card__text">
           {text}
         </P>
-        {payed && <Flag type="supporter" className="feature-card__flag" />}
-        {cta && (
-          <ButtonLargeBlue icon="heart" to={ctaTo} contentBefore>
-            {cta}
-          </ButtonLargeBlue>
-        )}
+        {cta}
       </div>
     );
   }

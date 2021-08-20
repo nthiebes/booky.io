@@ -115,11 +115,14 @@ class About extends PureComponent {
               text={intl.formatMessage({ id: 'about.supportText' })}
               illustration="support"
               background="light"
-              cta={intl.formatMessage(
-                { id: 'button.memberships' },
-                { b: (msg) => <b>{msg}</b> }
-              )}
-              ctaTo="/supporter"
+              cta={
+                <ButtonLargeBlue icon="heart" to="/supporter" contentBefore>
+                  {intl.formatMessage(
+                    { id: 'button.memberships' },
+                    { b: (msg) => <b>{msg}</b> }
+                  )}
+                </ButtonLargeBlue>
+              }
             />
           </div>
         </Section>

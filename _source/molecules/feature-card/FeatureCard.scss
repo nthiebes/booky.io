@@ -1,3 +1,5 @@
+@import "../../templates/booky/config.scss";
+
 .feature-card {
   display: flex;
   align-items: center;
@@ -46,11 +48,12 @@
   }
 }
 
-.feature-card__text {
-  flex-grow: 1;
+.feature-card__headline--noWrap {
+  @include tablet-desktop {
+    white-space: nowrap;
+  }
 }
 
-.feature-card__flag {
-  margin-top: 1rem;
-  position: relative;
+.feature-card__text {
+  flex-grow: 1;
 }
