@@ -158,7 +158,7 @@ class Supporter extends PureComponent {
           </P>
         </Section>
 
-        <Section color="light" contentSpace>
+        <Section contentSpace>
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="FAQ's zur Support-Mitgliedschaft." />
           </H2>

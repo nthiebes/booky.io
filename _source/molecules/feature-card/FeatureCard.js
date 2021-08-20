@@ -20,7 +20,8 @@ export class FeatureCard extends PureComponent {
     payed: PropTypes.bool,
     cta: PropTypes.node,
     centered: PropTypes.bool,
-    noWrap: PropTypes.bool
+    noWrap: PropTypes.bool,
+    darkMode: PropTypes.bool
   };
 
   render() {
@@ -34,7 +35,8 @@ export class FeatureCard extends PureComponent {
       payed,
       cta,
       centered,
-      noWrap
+      noWrap,
+      darkMode
     } = this.props;
 
     return (
@@ -42,6 +44,7 @@ export class FeatureCard extends PureComponent {
         className={classNames(
           'feature-card',
           `feature-card--${background}`,
+          darkMode && 'feature-card--darkMode',
           centered && 'feature-card--centered',
           className
         )}

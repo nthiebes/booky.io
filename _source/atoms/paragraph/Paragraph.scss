@@ -9,10 +9,6 @@
   margin-top: 1rem;
 }
 
-.paragraph--dark-mode {
-  color: $color-font--white;
-}
-
 .paragraph--no-padding {
   padding: 0;
 }
@@ -30,5 +26,9 @@
 }
 
 .paragraph--light {
+  color: $color-font--white;
+}
+
+.paragraph--dark-mode {
   color: $color-font--white;
 }

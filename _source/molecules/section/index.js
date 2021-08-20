@@ -1,3 +1,1 @@
-import component from './Section';
-
-export default component;
+export { default } from './SectionContainer';

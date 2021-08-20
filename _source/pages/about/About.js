@@ -17,11 +17,12 @@ import Illustration from '../../atoms/illustration';
 class About extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    stickyHeader: PropTypes.bool
+    stickyHeader: PropTypes.bool,
+    darkMode: PropTypes.bool
   };
 
   render() {
-    const { intl, stickyHeader } = this.props;
+    const { intl, stickyHeader, darkMode } = this.props;
 
     return (
       <Page
@@ -197,7 +198,12 @@ class About extends PureComponent {
           <H2 style="h1" centered>
             <FormattedMessage id="about.team" />
           </H2>
-          <div className="about__members">
+          <div
+            className={classNames(
+              'about__members',
+              darkMode && 'about__members--darkMode'
+            )}
+          >
             <div className="about__member">
               <img
                 src="_assets/rocky.jpg"
@@ -218,7 +224,7 @@ class About extends PureComponent {
                 loading="lazy"
               />
               <div>
-                <H4 ignoreDarkMode className="about__member-header">
+                <H4 className="about__member-header">
                   {'Rocky aka "Nico"'}
                   <Link
                     href="https://twitter.com/_gscheid"
@@ -228,7 +234,7 @@ class About extends PureComponent {
                     {'@_gscheid'}
                   </Link>
                 </H4>
-                <P ignoreDarkMode className="about__member-text">
+                <P className="about__member-text">
                   <FormattedMessage id="about.rockyText" />
                 </P>
               </div>
@@ -253,7 +259,7 @@ class About extends PureComponent {
                 loading="lazy"
               />
               <div>
-                <H4 ignoreDarkMode className="about__member-header">
+                <H4 className="about__member-header">
                   {'Sheldon aka "Mariano"'}
                   <Link
                     href="https://github.com/mcustiel"
@@ -263,7 +269,7 @@ class About extends PureComponent {
                     {'mcustiel'}
                   </Link>
                 </H4>
-                <P ignoreDarkMode className="about__member-text">
+                <P className="about__member-text">
                   <FormattedMessage id="about.sheldonText" />
                 </P>
               </div>
@@ -288,7 +294,7 @@ class About extends PureComponent {
                 loading="lazy"
               />
               <div>
-                <H4 ignoreDarkMode className="about__member-header">
+                <H4 className="about__member-header">
                   {'Bella aka "Samira"'}
                   <Link
                     href="https://twitter.com/SamiTalksAbout"
@@ -298,7 +304,7 @@ class About extends PureComponent {
                     {'@SamiTalksAbout'}
                   </Link>
                 </H4>
-                <P ignoreDarkMode className="about__member-text">
+                <P className="about__member-text">
                   <FormattedMessage id="about.bellaText" />
                 </P>
               </div>

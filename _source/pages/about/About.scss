@@ -97,6 +97,13 @@
   }
 }
 
+.about__members--darkMode {
+  .about__member,
+  .about__member-image {
+    border-color: $color-background--dark;
+  }
+}
+
 .about__member-image {
   margin-right: 0.5rem;
   flex-shrink: 0;

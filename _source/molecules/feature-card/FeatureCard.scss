@@ -26,10 +26,18 @@
 
 .feature-card--white {
   background-color: $color-background--white;
+
+  &.feature-card--darkMode {
+    background-color: $color-background--dark-mode;
+  }
 }
 
 .feature-card--light {
   border: 2px solid $color-border--light;
+
+  &.feature-card--darkMode {
+    border-color: $color-background--dark;
+  }
 }
 
 .feature-card--centered {

@@ -52,6 +52,10 @@
 .section--light {
   background-color: $color-background--light;
 
+  &.section--darkMode {
+    background-color: $color--dark;
+  }
+
   .section__wave,
   .section__wave::after {
     background-color: $color-background--light;
@@ -137,5 +141,11 @@
     height: 300px;
     left: -25%;
     top: -240px;
+  }
+}
+
+.section--wave-dark {
+  &::before {
+    background-color: $color-background--dark-mode;
   }
 }

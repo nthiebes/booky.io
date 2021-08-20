@@ -12,7 +12,8 @@ export default class Section extends Component {
     noMargin: PropTypes.bool,
     contentClassName: PropTypes.string,
     contentSpace: PropTypes.bool,
-    wave: PropTypes.bool
+    wave: PropTypes.bool,
+    darkMode: PropTypes.bool
   };
 
   render() {
@@ -25,7 +26,8 @@ export default class Section extends Component {
       noMargin,
       contentClassName,
       contentSpace,
-      wave
+      wave,
+      darkMode
     } = this.props;
 
     return (
@@ -36,10 +38,18 @@ export default class Section extends Component {
           compact && 'section--compact',
           noMargin && 'section--noMargin',
           wave && 'section--wave',
+          darkMode && 'section--darkMode',
           className
         )}
       >
-        {wave && <div className="section__wave" />}
+        {wave && (
+          <div
+            className={classNames(
+              'section__wave',
+              darkMode && 'section--wave-dark'
+            )}
+          />
+        )}
         <div
           className={classNames(
             'section__content',

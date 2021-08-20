@@ -1,1 +1,1 @@
-export * from './FeatureCard';
+export { FeatureCardContainer as FeatureCard } from './FeatureCardContainer';

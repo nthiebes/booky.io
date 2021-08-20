@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 
-import Component from './About';
+import Component from './Section';
 
 const mapStateToProps = (state) => ({
-  stickyHeader: state.user.settings.stickyHeader,
   darkMode: state.user.settings.darkMode
 });
 const Container = connect(mapStateToProps)(Component);
