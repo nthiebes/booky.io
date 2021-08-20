@@ -156,39 +156,51 @@ class About extends PureComponent {
           </H3>
           <ul className="about__usecases">
             <li className="about__usecase">
-              <Icon icon="food" color="primary" />
+              <Icon icon="food" color="primary" size="medium" />
               <P color="light">
-                <FormattedMessage id="about.recipes" />
+                <b>
+                  <FormattedMessage id="about.recipes" />
+                </b>
               </P>
             </li>
             <li className="about__usecase">
-              <Icon icon="globe" color="primary" />
+              <Icon icon="globe" color="primary" size="medium" />
               <P color="light">
-                <FormattedMessage id="about.travel" />
+                <b>
+                  <FormattedMessage id="about.travel" />
+                </b>
               </P>
             </li>
             <li className="about__usecase">
-              <Icon icon="school" color="primary" />
+              <Icon icon="school" color="primary" size="medium" />
               <P color="light">
-                <FormattedMessage id="about.studies" />
+                <b>
+                  <FormattedMessage id="about.studies" />
+                </b>
               </P>
             </li>
             <li className="about__usecase">
-              <Icon icon="intranet" color="primary" />
+              <Icon icon="intranet" color="primary" size="medium" />
               <P color="light">
-                <FormattedMessage id="about.intranet" />
+                <b>
+                  <FormattedMessage id="about.intranet" />
+                </b>
               </P>
             </li>
             <li className="about__usecase">
-              <Icon icon="gift" color="primary" />
+              <Icon icon="gift" color="primary" size="medium" />
               <P color="light">
-                <FormattedMessage id="about.gifts" />
+                <b>
+                  <FormattedMessage id="about.gifts" />
+                </b>
               </P>
             </li>
             <li className="about__usecase">
-              <Icon icon="list" color="primary" />
+              <Icon icon="list" color="primary" size="medium" />
               <P color="light">
-                <FormattedMessage id="about.shopping" />
+                <b>
+                  <FormattedMessage id="about.shopping" />
+                </b>
               </P>
             </li>
           </ul>
