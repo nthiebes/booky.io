@@ -1,5 +1,13 @@
-.features-page {
-  padding-top: 0;
+.features-page__title {
+  opacity: 0;
+  position: absolute;
+  height: 0;
+  width: 0;
+}
+
+.features-page__dark-mode {
+  min-width: 130px;
+  width: 130px;
 }
 
 .features-page__cluster {

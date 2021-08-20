@@ -11,6 +11,7 @@ import { ButtonLargeBlue } from '../../atoms/button';
 export class FeatureCard extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
+    illustrationClassName: PropTypes.string,
     headline: PropTypes.string.isRequired,
     text: PropTypes.node.isRequired,
     illustration: PropTypes.string.isRequired,
@@ -23,6 +24,7 @@ export class FeatureCard extends PureComponent {
   render() {
     const {
       className,
+      illustrationClassName,
       headline,
       text,
       illustration,
@@ -42,14 +44,17 @@ export class FeatureCard extends PureComponent {
       >
         <Illustration
           name={illustration}
-          className="feature-card__illustration"
+          className={classNames(
+            'feature-card__illustration',
+            illustrationClassName
+          )}
           height="150"
           width="150"
         />
         <H2 noMargin centered>
           {headline}
-          {payed && <Flag type="supporter" className="feature-card__flag" />}
         </H2>
+        {payed && <Flag type="supporter" className="feature-card__flag" />}
         <P noPadding className="feature-card__text">
           {text}
         </P>

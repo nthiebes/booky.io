@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import Icon from '../../atoms/icon';
 
 const translateIds = {
-  supporter: 'misc.supporter'
+  supporter: 'misc.supporterMembership'
 };
 
 export class Flag extends PureComponent {

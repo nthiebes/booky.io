@@ -3,7 +3,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
-// import classNames from 'classnames';
 
 import Page from '../../templates/page';
 import { H1, H2, H3 } from '../../atoms/headline';
@@ -14,11 +13,6 @@ import Illustration from '../../atoms/illustration';
 import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
 import { FeatureCard } from '../../molecules/feature-card';
-import { TabBar, Tab } from '../../molecules/tab-bar';
-// import Features from '../../molecules/features';
-// import Feature from '../../molecules/feature';
-import Expandable from '../../molecules/expandable';
-// import Donate from '../../molecules/donate';
 
 class FeaturesPage extends PureComponent {
   static propTypes = {
@@ -27,74 +21,36 @@ class FeaturesPage extends PureComponent {
     darkMode: PropTypes.bool.isRequired
   };
 
-  state = {
-    activeTab: 'bookmarklet'
-  };
-
-  tabs = [
-    {
-      name: this.props.intl.formatMessage({ id: 'Bookmarklet' }),
-      key: 'bookmarklet'
-    },
-    {
-      name: this.props.intl.formatMessage({ id: 'Android App' }),
-      key: 'android'
-    },
-    {
-      name: this.props.intl.formatMessage({ id: 'iOS Web App' }),
-      key: 'ios'
-    },
-    {
-      name: this.props.intl.formatMessage({ id: 'macOS App' }),
-      key: 'macos'
-    },
-    {
-      name: this.props.intl.formatMessage({ id: 'Windows App' }),
-      key: 'windows'
-    }
-  ];
-
-  handleTabClick = (activeTab) => {
-    const { history } = this.props;
-
-    // history.push(`/features#${activeTab}`);
-
-    this.setState({
-      activeTab
-    });
-  };
-
   render() {
     const { intl } = this.props;
-    const { activeTab, releases } = this.state;
 
     return (
       <Page showStats>
-        {/* className="features-page" */}
         <Section>
-          {/* <H1 centered>
-            <FormattedMessage id="Features" />
-          </H1> */}
+          <H1 className="features-page__title">
+            <FormattedMessage id="menu.features" />
+          </H1>
           <H2 style="h1" centered>
-            <FormattedMessage id="Customize the design." />
+            <FormattedMessage id="features.customize" />
           </H2>
           <div className="features-page__cluster">
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Dark mode' })}
+              headline={intl.formatMessage({ id: 'customize.darkMode' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/development"
+              illustration="dark-mode-switch"
+              background="light"
+              illustrationClassName="features-page__dark-mode"
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'features.colors' })}
+              text={intl.formatMessage({ id: 'home.privateText' })}
+              illustration="colors"
               background="light"
             />
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Colors' })}
+              headline={intl.formatMessage({ id: 'features.layout' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/arts"
-              background="light"
-            />
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'Layout' })}
-              text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/comparison"
+              illustration="organize"
               background="light"
             />
           </div>
@@ -102,25 +58,25 @@ class FeaturesPage extends PureComponent {
 
         <Section color="light" contentSpace>
           <H2 style="h1" centered>
-            <FormattedMessage id="Organize your bookmarks." />
+            <FormattedMessage id="features.organize" />
           </H2>
           <div className="features-page__cluster">
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Collections & categories' })}
+              headline={intl.formatMessage({ id: 'misc.feature6' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/folder_data"
+              illustration="folders"
               background="white"
             />
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Drag & drop' })}
+              headline={intl.formatMessage({ id: 'features.sort' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/work_flow"
+              illustration="drag"
               background="white"
             />
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Bookmark search' })}
+              headline={intl.formatMessage({ id: 'misc.feature4' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/searching"
+              illustration="search"
               background="white"
             />
           </div>
@@ -128,26 +84,30 @@ class FeaturesPage extends PureComponent {
 
         <Section>
           <H2 style="h1" centered>
-            <FormattedMessage id="Take control." />
+            <FormattedMessage id="features.control" />
           </H2>
           <div className="features-page__cluster">
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Private collections' })}
+              headline={intl.formatMessage({
+                id: 'features.privateCollections'
+              })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/privacy"
+              illustration="private-collections"
               background="light"
             />
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Public collections' })}
+              headline={intl.formatMessage({
+                id: 'features.publicCollections'
+              })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/teamwork"
+              illustration="share-collections"
               background="light"
               payed
             />
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Preferences' })}
+              headline={intl.formatMessage({ id: 'features.settings' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/Page_Under_Construction"
+              illustration="settings"
               background="light"
             />
           </div>
@@ -168,7 +128,7 @@ class FeaturesPage extends PureComponent {
             name="trees"
           />
           <H2 style="h1" color="light" noMargin centered>
-            <FormattedMessage id="Access from anywhere." />
+            <FormattedMessage id="features.access" />
           </H2>
           <nav className="home__platforms">
             <Link
@@ -321,85 +281,29 @@ class FeaturesPage extends PureComponent {
 
         <Section>
           <H2 style="h1" centered noMargin>
-            <FormattedMessage id="Explore even more." />
+            <FormattedMessage id="features.explore" />
           </H2>
           <div className="features-page__cluster">
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Bookmark import/export' })}
+              headline={intl.formatMessage({ id: 'misc.feature3' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/uploading"
+              illustration="import"
               background="light"
             />
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Bookmark notes' })}
+              headline={intl.formatMessage({ id: 'misc.feature9' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/notes"
+              illustration="notes"
               background="light"
             />
             <FeatureCard
-              headline={intl.formatMessage({ id: 'Search engine' })}
+              headline={intl.formatMessage({ id: 'features.searchEngine' })}
               text={intl.formatMessage({ id: 'home.privateText' })}
-              illustration="icons/glyph/searching"
+              illustration="search"
               background="light"
             />
           </div>
         </Section>
-
-        {/* <Section>
-          <H2 style="h1">
-            <FormattedMessage id="How else can I use booky?" />
-          </H2>
-          <TabBar title="account.navigation" className="account__tab-bar">
-            {this.tabs.map((tab) => (
-              <Tab
-                key={tab.key}
-                tabId={tab.key}
-                active={activeTab === tab.key}
-                onClick={this.handleTabClick}
-              >
-                {tab.name}
-              </Tab>
-            ))}
-          </TabBar>
-          {activeTab === 'bookmarklet' && (
-            <>
-              <H3 className="" id="bookmarklet">
-                <FormattedMessage id="Bookmarklet" />
-              </H3>
-            </>
-          )}
-          {activeTab === 'android' && (
-            <>
-              <H3 className="" id="bookmarklet">
-                <FormattedMessage id="Bookmarklet" />
-              </H3>
-            </>
-          )}
-          {activeTab === 'ios' && (
-            <>
-              <H3>
-                <FormattedMessage id="What's a web app?" />
-              </H3>
-              <P>
-                <FormattedMessage id="Dies das" />
-              </P>
-            </>
-          )}
-          {activeTab === 'macos' && (
-            <>
-              <H3 className="" id="bookmarklet">
-                <FormattedMessage id="Bookmarklet" />
-              </H3>
-            </>
-          )}
-          {activeTab === 'windows' && (
-            <>
-              <H3 className="" id="bookmarklet">
-                <FormattedMessage id="Bookmarklet" />
-              </H3>
-            </>
-          )}
-        </Section> */}
 
         <Section className="home__not-a-member">
           <Illustration className="home__heart" name="heart" />
