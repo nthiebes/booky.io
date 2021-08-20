@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, FormattedDate, injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import { config } from '../../config';
@@ -11,9 +11,7 @@ import P from '../../atoms/paragraph';
 import Section from '../../molecules/section';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
-import { List, ListItem } from '../../atoms/list';
 import { FeatureCard } from '../../molecules/feature-card';
-import Expandable from '../../molecules/expandable';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 
@@ -339,49 +337,6 @@ class About extends PureComponent {
               values={{ b: (msg) => <b>{msg}</b> }}
             />
           </ButtonLargeLight>
-        </Section>
-
-        <Section>
-          <H2 style="h1" id="new">
-            <FormattedMessage id="about.updates" />
-          </H2>
-          <div className="about__updates-wrapper">
-            {/* eslint-disable-next-line camelcase */}
-            {releases.map(({ id, name, body, published_at }, index) => {
-              const lines = body.split('\n');
-
-              // eslint-disable-next-line no-lone-blocks
-              return (
-                <Expandable
-                  className="about__updates"
-                  key={id}
-                  open={index === 0}
-                  headline={
-                    <>
-                      <span>{`${name} -`}</span>
-                      <time className="about__date">
-                        <FormattedDate
-                          value={new Date(published_at)}
-                          month="long"
-                          day="2-digit"
-                          year="numeric"
-                        />
-                      </time>
-                    </>
-                  }
-                >
-                  <List>
-                    {lines.map((line, lineIndex) => (
-                      <ListItem key={lineIndex}>
-                        {line.replace(/- /g, '')}
-                        {lineIndex < lines.length - 1 && <br />}
-                      </ListItem>
-                    ))}
-                  </List>
-                </Expandable>
-              );
-            })}
-          </div>
         </Section>
       </Page>
     );

@@ -47,7 +47,7 @@ const menuItemsLoggedIn = [
   },
   {
     name: 'new',
-    route: '/about#new'
+    route: '/new'
   }
 ];
 

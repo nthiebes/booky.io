@@ -26,11 +26,6 @@
   }
 }
 
-.about__date {
-  display: inline-block;
-  margin-left: 4px;
-}
-
 .about__extension {
   display: flex;
   width: 100%;
@@ -143,23 +138,6 @@
 .about__member-link {
   font-size: $font-size--small;
   display: block;
-}
-
-.about__updates {
-  @include tablet-desktop {
-    min-width: 47%;
-  }
-}
-
-.about__updates-wrapper {
-  @include tablet-desktop {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-
-.about__bullets {
-  width: 100%;
 }
 
 .about__usecase-title {

@@ -320,7 +320,7 @@ class Sidebar extends PureComponent {
                       'sidebar__item',
                       darkMode && 'sidebar__item--dark-mode'
                     )}
-                    to="/about#new"
+                    to="/new"
                     onClick={closeSidebar}
                     tabIndex={open ? '0' : '-1'}
                     noUnderline
