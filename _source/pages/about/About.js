@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
-import { config } from '../../config';
 import Page from '../../templates/page';
 import { H2, H3, H4, Display } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
@@ -18,37 +17,11 @@ import Illustration from '../../atoms/illustration';
 class About extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    stickyHeader: PropTypes.bool,
-    updateSettings: PropTypes.func.isRequired,
-    newsVersion: PropTypes.number.isRequired
+    stickyHeader: PropTypes.bool
   };
-
-  state = {
-    releases: []
-  };
-
-  componentDidMount() {
-    const { newsVersion, updateSettings } = this.props;
-
-    fetch('https://api.github.com/repos/nthiebes/booky.io/releases?per_page=10')
-      .then((response) => response.json())
-      .then((releases) => {
-        this.setState({
-          releases: releases.filter((release) => !release.prerelease)
-        });
-      })
-      .catch();
-
-    if (newsVersion < config.NEWS_VERSION) {
-      updateSettings({
-        newsVersion: config.NEWS_VERSION
-      });
-    }
-  }
 
   render() {
     const { intl, stickyHeader } = this.props;
-    const { releases } = this.state;
 
     return (
       <Page
@@ -68,7 +41,7 @@ class About extends PureComponent {
           <H2 style="h1" centered>
             <FormattedMessage id="about.why" />
           </H2>
-          <div className="features-page__cluster">
+          <div className="about__cluster">
             <FeatureCard
               headline={intl.formatMessage({
                 id: 'about.anyDeviceTitle' // Save and access links across browsers and devices
@@ -106,7 +79,7 @@ class About extends PureComponent {
           <H2 style="h1" centered>
             <FormattedMessage id="about.topics" />
           </H2>
-          <div className="features-page__cluster">
+          <div className="about__cluster">
             <FeatureCard
               headline={intl.formatMessage({ id: 'about.privacy' })}
               text={intl.formatMessage(
@@ -179,22 +152,40 @@ class About extends PureComponent {
           </H3>
           <ul className="about__usecases">
             <li className="about__usecase">
-              <Illustration name="hamburger" width="200" height="200" />
-              <H4 style="h3" color="light" centered noMargin>
-                <FormattedMessage id="Lieblingsrezepte" />
-              </H4>
+              <Icon icon="food" color="primary" />
+              <P color="light">
+                <FormattedMessage id="about.recipes" />
+              </P>
             </li>
             <li className="about__usecase">
-              <Illustration name="vacation" width="200" height="200" />
-              <H4 style="h3" color="light" centered noMargin>
-                <FormattedMessage id="Urlaubsplanung" />
-              </H4>
+              <Icon icon="globe" color="primary" />
+              <P color="light">
+                <FormattedMessage id="about.travel" />
+              </P>
             </li>
             <li className="about__usecase">
-              <Illustration name="work" width="200" height="200" />
-              <H4 style="h3" color="light" centered noMargin>
-                <FormattedMessage id="Arbeitslinks" />
-              </H4>
+              <Icon icon="school" color="primary" />
+              <P color="light">
+                <FormattedMessage id="about.studies" />
+              </P>
+            </li>
+            <li className="about__usecase">
+              <Icon icon="intranet" color="primary" />
+              <P color="light">
+                <FormattedMessage id="about.intranet" />
+              </P>
+            </li>
+            <li className="about__usecase">
+              <Icon icon="gift" color="primary" />
+              <P color="light">
+                <FormattedMessage id="about.gifts" />
+              </P>
+            </li>
+            <li className="about__usecase">
+              <Icon icon="list" color="primary" />
+              <P color="light">
+                <FormattedMessage id="about.shopping" />
+              </P>
             </li>
           </ul>
         </Section>

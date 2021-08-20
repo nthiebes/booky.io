@@ -12,11 +12,11 @@ export class FeatureCard extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     headline: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
+    text: PropTypes.node.isRequired,
     illustration: PropTypes.string.isRequired,
     background: PropTypes.string,
     payed: PropTypes.bool,
-    cta: PropTypes.string,
+    cta: PropTypes.node,
     ctaTo: PropTypes.string
   };
 
@@ -43,8 +43,8 @@ export class FeatureCard extends PureComponent {
         <Illustration
           name={illustration}
           className="feature-card__illustration"
-          height="200"
-          width="200"
+          height="150"
+          width="150"
         />
         <H2 noMargin centered>
           {headline}
