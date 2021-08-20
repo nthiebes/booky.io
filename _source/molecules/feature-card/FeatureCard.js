@@ -6,11 +6,7 @@ import { H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import { Flag } from '../../atoms/flag';
 import Illustration from '../../atoms/illustration';
-import {
-  ButtonLargeBlue,
-  ButtonLargePrimary,
-  ButtonLargeGreen
-} from '../../atoms/button';
+import { ButtonLargeBlue } from '../../atoms/button';
 
 export class FeatureCard extends PureComponent {
   static propTypes = {
@@ -58,9 +54,9 @@ export class FeatureCard extends PureComponent {
           {text}
         </P>
         {cta && (
-          <ButtonLargeGreen icon="heart" to={ctaTo} contentBefore>
+          <ButtonLargeBlue icon="heart" to={ctaTo} contentBefore>
             {cta}
-          </ButtonLargeGreen>
+          </ButtonLargeBlue>
         )}
       </div>
     );

@@ -40,13 +40,13 @@ class Supporter extends PureComponent {
               <FormattedMessage id="Deine booky Support-Mitgliedschaft" />
             </Display>
             <P size="large" ignoreDarkMode color="light" noPadding>
-              <FormattedMessage id="Mit der Support-Mitgliedschaft kannst du booky unterstützen und erhälst Zugriff auf exklusive Funktionen. Dabei bestimmst du, wie viel du zahlst, hast volle Flexibilität and behälst immer die Kontrolle!" />
+              <FormattedMessage id="Mit der Support-Mitgliedschaft kannst du booky unterstützen und erhälst Zugriff auf exklusive Funktionen. Dabei bestimmst du, wie viel du zahlst und behälst immer die Kontrolle!" />
             </P>
             {/* <H2 style="h3" noMargin ignoreDarkMode color="light">
             </H2> */}
             <ButtonLargeBlue
               icon="heart"
-              to="/supporter"
+              to="/upsell"
               contentBefore
               // className="home__join"
             >
@@ -66,7 +66,7 @@ class Supporter extends PureComponent {
 
         <Section>
           <H2 style="h1" centered className="supporter__headline">
-            <FormattedMessage id="Die Vorteile der Support-Mitgliedschaft" />
+            <FormattedMessage id="Warum die Support-Mitgliedschaft?" />
           </H2>
           <div className="supporter__advantages">
             <div className="supporter__advantage">
@@ -80,7 +80,7 @@ class Supporter extends PureComponent {
                 {'Dein booky, nur mehr.'}
               </H3>
               <P noPadding>
-                {'Natürlich alle Funktionen der Member-Mitgliedschaft.'}
+                {'Natürlich alle Funktionen der regulären Mitgliedschaft.'}
               </P>
             </div>
             <div className="supporter__advantage">
@@ -108,7 +108,7 @@ class Supporter extends PureComponent {
                 {'Du hast die Kontrolle.'}
               </H3>
               <P noPadding>
-                {'Wähle den Betrag, monatliche Laufzeit, monatlich kündbar.'}
+                {'Wähle deinen monatlichen Beitrag, monatlich kündbar.'}
               </P>
             </div>
             <div className="supporter__advantage">
@@ -136,7 +136,7 @@ class Supporter extends PureComponent {
                 {'Neue exklusive Inhalte.'}
               </H3>
               <P noPadding>
-                {'Zugriff auf alle zukünftigen booky Funktionen.'}
+                {'Zugriff auf alle zukünftigen Support-Funktionen.'}
               </P>
             </div>
           </div>
@@ -146,7 +146,7 @@ class Supporter extends PureComponent {
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="Warum die Support-Mitgliedschaft?" />
           </H2>
-          <P size="large">
+          <P size="large" first>
             {
               'Zugriff auf alle zukünftigen booky Funktionen. Zugriff auf alle zukünftigen booky Funktionen. Zugriff auf alle zukünftigen booky Funktionen. Zugriff auf alle zukünftigen booky Funktionen. Zugriff auf alle zukünftigen booky Funktionen. Zugriff auf alle zukünftigen booky Funktionen.'
             }
@@ -160,7 +160,7 @@ class Supporter extends PureComponent {
 
         <Section color="light" contentSpace>
           <H2 style="h1" centered noMargin>
-            <FormattedMessage id="FAQ's zur Support-Mitgliedschaft" />
+            <FormattedMessage id="FAQ's zur Support-Mitgliedschaft." />
           </H2>
           <div className="faq">
             <div className="faq__item">

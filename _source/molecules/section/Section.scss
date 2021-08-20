@@ -51,7 +51,6 @@
 
 .section--light {
   background-color: $color-background--light;
-  border-bottom: 2px solid darken($color-background--light, 5%);
 
   .section__wave,
   .section__wave::after {

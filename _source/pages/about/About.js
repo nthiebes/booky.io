@@ -141,16 +141,7 @@ class About extends PureComponent {
             />
             <FeatureCard
               headline={intl.formatMessage({ id: 'about.support' })}
-              text={intl.formatMessage(
-                { id: 'about.supportText' },
-                {
-                  supporter: (
-                    <Link to="/supporter">
-                      {<FormattedMessage id="misc.supporter" />}
-                    </Link>
-                  )
-                }
-              )}
+              text={intl.formatMessage({ id: 'about.supportText' })}
               illustration="support"
               background="light"
               cta={intl.formatMessage(

@@ -10,7 +10,7 @@ import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import LanguageSwitcher from '../../molecules/language-switcher';
-import Donate from '../../molecules/donate';
+// import Donate from '../../molecules/donate';
 
 class Footer extends PureComponent {
   static propTypes = {
@@ -132,7 +132,7 @@ class Footer extends PureComponent {
             >
               <Logo />
             </Link>
-            <Donate color="light" className="footer__donate" />
+            {/* <Donate color="light" className="footer__donate" /> */}
             <ButtonSmallLight
               className="footer__button"
               onClick={this.scrollToTop}
