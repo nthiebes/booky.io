@@ -53,7 +53,7 @@ class FeaturesPage extends PureComponent {
               text={intl.formatMessage({
                 id: 'features.colorsText'
               })}
-              illustration="colors"
+              illustration="color-picker"
               background="light"
               centered
             />
