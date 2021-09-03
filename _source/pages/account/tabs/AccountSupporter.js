@@ -46,17 +46,17 @@ class AccountSupporter extends PureComponent {
                 quantity: supportAmount
               });
             },
-            onApprove: ({ subscriptionID }) => {
+            onApprove: ({ subscriptionID, ...data }) => {
               const { supportAmount } = this.state;
               const { newSubscription } = this.props;
 
-              console.log('oh yes!', subscriptionID);
+              console.log('oh yes!', subscriptionID, data);
 
               newSubscription({
                 subscriptionID,
                 supportAmount,
-                onSuccess: () => {
-                  console.log('success');
+                onSuccess: (bla) => {
+                  console.log('success', bla);
                 },
                 onError: (error) => {
                   console.log('error', error);
@@ -82,8 +82,8 @@ class AccountSupporter extends PureComponent {
 
     updateSubscription({
       supportAmount,
-      onSuccess: () => {
-        console.log('success');
+      onSuccess: (data) => {
+        console.log('success', data);
       },
       onError: (error) => {
         console.log('error', error);
@@ -95,8 +95,8 @@ class AccountSupporter extends PureComponent {
     const { cancelSubscription } = this.props;
 
     cancelSubscription({
-      onSuccess: () => {
-        console.log('success');
+      onSuccess: (data) => {
+        console.log('success', data);
       },
       onError: (error) => {
         console.log('error', error);
