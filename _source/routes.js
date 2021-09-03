@@ -29,6 +29,7 @@ const Features = lazy(() => import('./pages/features'));
 const Supporter = lazy(() => import('./pages/supporter'));
 const Upsell = lazy(() => import('./pages/upsell'));
 const New = lazy(() => import('./pages/new'));
+const Shared = lazy(() => import('./pages/shared'));
 
 class Routes extends Component {
   static propTypes = {
@@ -67,6 +68,7 @@ class Routes extends Component {
           <Route path="/supporter" component={Supporter} />
           <Route path="/upsell" component={Upsell} />
           <Route path="/new" component={New} />
+          <Route path="/shared/:id" component={Shared} />
           <Route path="/activate/:token" component={publicOnly(Login)} />
           <Route
             path="/recovery/:action/:params"
