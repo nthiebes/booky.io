@@ -1,4 +1,5 @@
 import fetcher from '../../_utils/fetcher';
+import { track } from '../../_utils/tracking';
 
 export const UPDATE_USER = 'UPDATE_USER';
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
@@ -15,6 +16,8 @@ export const newSubscription =
         quantity: supportAmount
       },
       onSuccess: (data) => {
+        track.supporter.subscribe(supportAmount);
+
         onSuccess && onSuccess(data);
       },
       onError: (error) => {
@@ -33,6 +36,8 @@ export const updateSubscription =
         quantity: supportAmount
       },
       onSuccess: (data) => {
+        track.supporter.update(supportAmount);
+
         onSuccess && onSuccess(data);
       },
       onError: (error) => {
@@ -48,6 +53,8 @@ export const cancelSubscription =
       url: '/subscriptions',
       method: 'DELETE',
       onSuccess: (data) => {
+        track.supporter.cancel();
+
         onSuccess && onSuccess(data);
       },
       onError: (error) => {
