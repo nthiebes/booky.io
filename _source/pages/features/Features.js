@@ -35,6 +35,35 @@ class FeaturesPage extends PureComponent {
             <FormattedMessage id="menu.features" />
           </H1>
           <H2 style="h1" centered>
+            <FormattedMessage id="features.organize" />
+          </H2>
+          <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'features.structure' })}
+              text={intl.formatMessage({ id: 'features.structureText' })}
+              illustration="structure"
+              background="light"
+              centered
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'features.sort' })}
+              text={intl.formatMessage({ id: 'features.dragText' })}
+              illustration="drag"
+              background="light"
+              centered
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'misc.feature4' })}
+              text={intl.formatMessage({ id: 'features.searchText' })}
+              illustration="search"
+              background="light"
+              centered
+            />
+          </div>
+        </Section>
+
+        <Section color="light" contentSpace>
+          <H2 style="h1" centered noMargin>
             <FormattedMessage id="features.customize" />
           </H2>
           <div className="features-page__cluster">
@@ -44,7 +73,7 @@ class FeaturesPage extends PureComponent {
                 id: 'features.darkModeText'
               })}
               illustration="dark-mode-switch"
-              background="light"
+              background="white"
               illustrationClassName="features-page__dark-mode"
               centered
             />
@@ -54,7 +83,7 @@ class FeaturesPage extends PureComponent {
                 id: 'features.colorsText'
               })}
               illustration="color-picker"
-              background="light"
+              background="white"
               centered
             />
             <FeatureCard
@@ -63,35 +92,6 @@ class FeaturesPage extends PureComponent {
                 id: 'features.layoutText'
               })}
               illustration="organize"
-              background="light"
-              centered
-            />
-          </div>
-        </Section>
-
-        <Section color="light" contentSpace>
-          <H2 style="h1" centered>
-            <FormattedMessage id="features.organize" />
-          </H2>
-          <div className="features-page__cluster">
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'features.structure' })}
-              text={intl.formatMessage({ id: 'features.structureText' })}
-              illustration="structure"
-              background="white"
-              centered
-            />
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'features.sort' })}
-              text={intl.formatMessage({ id: 'features.dragText' })}
-              illustration="drag"
-              background="white"
-              centered
-            />
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'misc.feature4' })}
-              text={intl.formatMessage({ id: 'features.searchText' })}
-              illustration="search"
               background="white"
               centered
             />
@@ -263,7 +263,7 @@ class FeaturesPage extends PureComponent {
                 src="../../_assets/logos/android.svg"
                 loading="lazy"
               />
-              {'Android'}
+              {'Android (Web app)'}
             </Link>
             <Link
               to="/features#ios"
@@ -278,7 +278,7 @@ class FeaturesPage extends PureComponent {
                 src="../../_assets/logos/apple.svg"
                 loading="lazy"
               />
-              {'iOS (Web)'}
+              {'iOS (Web app)'}
             </Link>
             <Link
               href="../../_assets/downloads/booky.zip"

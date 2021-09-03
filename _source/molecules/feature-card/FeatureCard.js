@@ -64,7 +64,7 @@ export class FeatureCard extends PureComponent {
           className={classNames(noWrap && 'feature-card__headline--noWrap')}
         >
           {headline}
-          {payed && <Icon icon="heart" color="blue" />}
+          {payed && <Icon icon="money" color="blue" />}
         </H2>
         <P noPadding className="feature-card__text">
           {text}
