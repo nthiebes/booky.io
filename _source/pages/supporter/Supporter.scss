@@ -29,15 +29,32 @@
   }
 }
 
+.supporter__display {
+  @include tablet-desktop {
+    white-space: nowrap;
+  }
+}
+
 .supporter__illustration {
-  margin-left: 1rem;
   margin-right: -7rem;
+  margin-bottom: -8rem;
+  margin-left: 1rem;
   position: relative;
-  top: 7.5rem;
+  top: 0;
+  max-width: 40%;
+  max-height: 40%;
+
+  @include mobile-tablet {
+    display: none;
+  }
 }
 
 .supporter__header-content {
   display: flex;
+
+  @include mobile-tablet {
+    padding-bottom: 2rem;
+  }
 }
 
 .supporter__headline {
@@ -74,7 +91,9 @@
 }
 
 .faq__item {
-  padding: 1rem 1rem 0 1rem;
+  @include tablet-desktop {
+    padding: 0 1rem 0 1rem;
+  }
 
   @include tablet {
     max-width: 50%;
@@ -83,4 +102,96 @@
   @include desktop {
     max-width: 33%;
   }
+}
+
+.supporter__vision-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.supporter__vision-illustration {
+  margin-right: 3rem;
+  max-width: 35%;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.supporter__compare {
+  width: 100%;
+  background-color: $color-background--white;
+  border-radius: 30px;
+  margin-top: 2rem;
+  padding: 0 3rem 0 3rem;
+  border-spacing: 0;
+}
+
+.supporter__price {
+  font-size: 1.6rem;
+}
+
+.supporter__compare-head {
+  vertical-align: top;
+  width: 50%;
+  padding: 3rem 2rem 0 1rem;
+  font-weight: initial;
+
+  &:last-of-type {
+    padding: 3rem 1rem 0 2rem;
+    border-left: 2px solid $color-border--light;
+  }
+
+  @include mobile {
+    &:last-of-type {
+      padding: 3rem 0 0 0;
+      border-left: 0 none;
+    }
+  }
+}
+
+.supporter__compare-entry {
+  vertical-align: top;
+  width: 50%;
+  padding: 1rem 2rem 0 1rem;
+  border-top: 2px solid $color-border--light;
+  position: relative;
+
+  &:last-of-type {
+    padding: 1rem 1rem 0 2rem;
+    border-left: 2px solid $color-border--light;
+  }
+
+  @include mobile {
+    &:last-of-type {
+      padding: 1rem 0 0 0;
+      border-left: 0 none;
+    }
+  }
+}
+
+.supporter__compare-entry-plus {
+  border-top-color: $color--blue;
+}
+
+.supporter__compare-plus {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  height: 30px;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: $color-background--white;
+}
+
+.supporter__compare-feature {
+  display: flex;
+  align-items: center;
+}
+
+.supporter__upsell {
+  margin: 3rem auto 3.5rem;
+  display: flex;
 }
