@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
+import { newSubscription } from '../../_state/subscription/actions';
 import Component from './Upsell';
 
-export const mapStateToProps = () => ({
-  // username: state.user.name
-});
-
-const ContactContainer = connect(mapStateToProps)(Component);
+const mapDispatchToProps = {
+  newSubscription
+};
+const ContactContainer = connect(null, mapDispatchToProps)(Component);
 
 export default ContactContainer;

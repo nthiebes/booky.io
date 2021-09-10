@@ -5,8 +5,6 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import P from '../../../atoms/paragraph';
 import { ButtonLargeBlue } from '../../../atoms/button';
 import Input from '../../../atoms/input';
-import { loadScript } from '../../../_utils/script';
-import { clientID, planID } from '../../../config';
 
 class AccountSupporter extends PureComponent {
   static propTypes = {
@@ -14,7 +12,6 @@ class AccountSupporter extends PureComponent {
     openModal: PropTypes.func.isRequired,
     supportAmount: PropTypes.number,
     isPremium: PropTypes.bool,
-    newSubscription: PropTypes.func.isRequired,
     updateSubscription: PropTypes.func.isRequired,
     cancelSubscription: PropTypes.func.isRequired
   };
@@ -22,55 +19,6 @@ class AccountSupporter extends PureComponent {
   state = {
     supportAmount: this.props.supportAmount || 2
   };
-
-  componentDidMount() {
-    loadScript(
-      `https://www.paypal.com/sdk/js?client-id=${clientID}&currency=EUR&intent=subscription&vault=true`,
-      () => {
-        paypal
-          // eslint-disable-next-line new-cap
-          .Buttons({
-            env: 'sandbox',
-            style: {
-              shape: 'rect',
-              color: 'gold',
-              layout: 'vertical',
-              label: 'subscribe'
-            },
-            createSubscription: (data, actions) => {
-              const { supportAmount } = this.state;
-
-              return actions.subscription.create({
-                // eslint-disable-next-line camelcase
-                plan_id: planID,
-                quantity: supportAmount
-              });
-            },
-            onApprove: ({ subscriptionID, ...data }) => {
-              const { supportAmount } = this.state;
-              const { newSubscription } = this.props;
-
-              console.log('oh yes!', subscriptionID, data);
-
-              newSubscription({
-                subscriptionID,
-                supportAmount,
-                onSuccess: (bla) => {
-                  console.log('success', bla);
-                },
-                onError: (error) => {
-                  console.log('error', error);
-                }
-              });
-            },
-            onError: (error) => {
-              console.log('oh no!', error);
-            }
-          })
-          .render('#paypal-button-container');
-      }
-    );
-  }
 
   handleOnChange = (value) => {
     this.setState({ supportAmount: Math.floor(value) });

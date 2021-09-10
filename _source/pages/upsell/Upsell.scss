@@ -1,7 +1,30 @@
 @import "../../templates/booky/config.scss";
 
-.upsell__link {
+.upsell__wrapper {
+  @include tablet-desktop {
+    display: flex;
+  }
+}
+
+.upsell__facts {
+  @include tablet-desktop {
+    margin-left: 3rem;
+    border-left: 2px solid $color-border--light;
+    padding-left: 3rem;
+  }
+}
+
+.upsell__fact {
   display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
+  align-items: center;
+  margin-left: -6px;
+}
+
+.upsell__paypal {
+  margin-top: 1rem;
+}
+
+.upsell__paypal--disabled {
+  opacity: 0.7;
+  pointer-events: none;
 }

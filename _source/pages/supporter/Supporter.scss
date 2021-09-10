@@ -123,8 +123,12 @@
   background-color: $color-background--white;
   border-radius: 30px;
   margin-top: 2rem;
-  padding: 0 3rem 0 3rem;
+  padding: 0 1rem 0 1rem;
   border-spacing: 0;
+
+  @include desktop {
+    padding: 0 3rem 0 3rem;
+  }
 }
 
 .supporter__price {
@@ -134,11 +138,11 @@
 .supporter__compare-head {
   vertical-align: top;
   width: 50%;
-  padding: 3rem 2rem 0 1rem;
+  padding: 3rem 2rem 0 0;
   font-weight: initial;
 
   &:last-of-type {
-    padding: 3rem 1rem 0 2rem;
+    padding: 3rem 0 0 2rem;
     border-left: 2px solid $color-border--light;
   }
 
@@ -153,12 +157,12 @@
 .supporter__compare-entry {
   vertical-align: top;
   width: 50%;
-  padding: 1rem 2rem 0 1rem;
+  padding: 1rem 2rem 0 0;
   border-top: 2px solid $color-border--light;
   position: relative;
 
   &:last-of-type {
-    padding: 1rem 1rem 0 2rem;
+    padding: 1rem 0 0 2rem;
     border-left: 2px solid $color-border--light;
   }
 

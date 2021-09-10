@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 
 import { openModal } from '../../../_state/modal/actions';
 import {
-  newSubscription,
   updateSubscription,
   cancelSubscription
 } from '../../../_state/subscription/actions';
@@ -14,7 +13,6 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = {
   openModal,
-  newSubscription,
   updateSubscription,
   cancelSubscription
 };

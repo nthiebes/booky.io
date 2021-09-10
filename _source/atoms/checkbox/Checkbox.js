@@ -15,7 +15,8 @@ export default class Checkbox extends Component {
     onChange: PropTypes.func,
     tabIndex: PropTypes.string,
     first: PropTypes.bool,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    required: PropTypes.bool
   };
 
   handleInputChange = (event) => {
@@ -38,7 +39,8 @@ export default class Checkbox extends Component {
       checked,
       tabIndex,
       first,
-      disabled
+      disabled,
+      required
     } = this.props;
 
     return (
@@ -59,6 +61,7 @@ export default class Checkbox extends Component {
           onChange={this.handleInputChange}
           tabIndex={tabIndex}
           disabled={disabled}
+          required={required}
         />
         {label && (
           <Label htmlFor={id} className="checkbox__label">
