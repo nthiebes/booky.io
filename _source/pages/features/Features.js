@@ -251,7 +251,7 @@ class FeaturesPage extends PureComponent {
               {'Bookmarklet'}
             </Link>
             <Link
-              to="/features#android"
+              to="/help#general"
               color="light"
               className="home__platforms-platform"
             >
@@ -266,7 +266,7 @@ class FeaturesPage extends PureComponent {
               {'Android (Web app)'}
             </Link>
             <Link
-              to="/features#ios"
+              to="/help#general"
               color="light"
               className="home__platforms-platform"
             >
@@ -297,7 +297,7 @@ class FeaturesPage extends PureComponent {
               {'macOS'}
             </Link>
             <Link
-              href="https://www.groovypost.com/howto/using-web-apps-new-chromium-edge-windows-10/"
+              href="/help#general"
               target="_blank"
               color="light"
               className="home__platforms-platform"

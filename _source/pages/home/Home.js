@@ -273,7 +273,7 @@ class Home extends Component {
               <FormattedMessage id="misc.extension" />
             </Link>
             <Link
-              href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
+              href="/help#general"
               target="_blank"
               color="light"
               className="home__platforms-platform"
@@ -305,7 +305,7 @@ class Home extends Component {
               {'Bookmarklet'}
             </Link>
             <Link
-              to="/features#android"
+              to="/help#general"
               color="light"
               className="home__platforms-platform"
             >
@@ -317,10 +317,10 @@ class Home extends Component {
                 src="../../_assets/logos/android.svg"
                 loading="lazy"
               />
-              {'Android'}
+              {'Android (Web app)'}
             </Link>
             <Link
-              to="/features#ios"
+              to="/help#general"
               color="light"
               className="home__platforms-platform"
             >
@@ -332,7 +332,7 @@ class Home extends Component {
                 src="../../_assets/logos/apple.svg"
                 loading="lazy"
               />
-              {'iOS (Web)'}
+              {'iOS (Web app)'}
             </Link>
             <Link
               href="../../_assets/downloads/booky.zip"

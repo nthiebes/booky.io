@@ -74,21 +74,21 @@ class Supporter extends PureComponent {
               </P>
             </div>
             <div className="supporter__advantage">
-              <Icon icon="coffee" size="medium" color="primary" />
-              <H3 noMargin centered className="supporter__advantage-headline">
-                <FormattedMessage id="supporter.supportTitle" />
-              </H3>
-              <P noPadding>
-                <FormattedMessage id="supporter.supportText" />
-              </P>
-            </div>
-            <div className="supporter__advantage">
               <Icon icon="lock" size="medium" color="primary" />
               <H3 noMargin centered className="supporter__advantage-headline">
                 <FormattedMessage id="supporter.exclusiveTitle" />
               </H3>
               <P noPadding>
                 <FormattedMessage id="supporter.exclusiveText" />
+              </P>
+            </div>
+            <div className="supporter__advantage">
+              <Icon icon="coffee" size="medium" color="primary" />
+              <H3 noMargin centered className="supporter__advantage-headline">
+                <FormattedMessage id="supporter.supportTitle" />
+              </H3>
+              <P noPadding>
+                <FormattedMessage id="supporter.supportText" />
               </P>
             </div>
             <div className="supporter__advantage">
