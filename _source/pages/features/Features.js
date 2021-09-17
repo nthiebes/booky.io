@@ -297,8 +297,7 @@ class FeaturesPage extends PureComponent {
               {'macOS'}
             </Link>
             <Link
-              href="/help#general"
-              target="_blank"
+              to="/help#general"
               color="light"
               className="home__platforms-platform"
             >

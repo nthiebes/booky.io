@@ -273,7 +273,7 @@ class Home extends Component {
               <FormattedMessage id="misc.extension" />
             </Link>
             <Link
-              href="/help#general"
+              href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
               target="_blank"
               color="light"
               className="home__platforms-platform"
@@ -351,8 +351,7 @@ class Home extends Component {
               {'macOS'}
             </Link>
             <Link
-              href="https://www.groovypost.com/howto/using-web-apps-new-chromium-edge-windows-10/"
-              target="_blank"
+              to="/help#general"
               color="light"
               className="home__platforms-platform"
             >

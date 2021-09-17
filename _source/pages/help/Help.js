@@ -71,12 +71,6 @@ class Help extends Component {
                   />
                 </ListItem>
               </List>
-              <P>
-                <FormattedMessage id="Dies das" />
-              </P>
-              <P noPadding>
-                <FormattedMessage id="banana" />
-              </P>
             </Expandable>
             <Expandable
               headline={<FormattedMessage id="help.general.ios" />}
