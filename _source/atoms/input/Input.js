@@ -34,7 +34,8 @@ export default class Input extends PureComponent {
     inputMode: PropTypes.string,
     ariaLabel: PropTypes.string,
     min: PropTypes.string,
-    max: PropTypes.string
+    max: PropTypes.string,
+    step: PropTypes.string
   };
 
   static defaultProps = {
@@ -81,7 +82,8 @@ export default class Input extends PureComponent {
       inputMode,
       ariaLabel,
       min,
-      max
+      max,
+      step
     } = this.props;
     const inputProps = {
       className: classNames(
@@ -111,6 +113,7 @@ export default class Input extends PureComponent {
       inputMode,
       min,
       max,
+      step,
       'aria-label': ariaLabel
     };
 

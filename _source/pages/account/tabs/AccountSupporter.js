@@ -5,6 +5,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import P from '../../../atoms/paragraph';
 import { ButtonLargeBlue } from '../../../atoms/button';
 import Input from '../../../atoms/input';
+import { ErrorMessage, SuccessIllustration } from '../../../atoms/messages';
 
 class AccountSupporter extends PureComponent {
   static propTypes = {
@@ -17,7 +18,8 @@ class AccountSupporter extends PureComponent {
   };
 
   state = {
-    supportAmount: this.props.supportAmount || 2
+    supportAmount: this.props.supportAmount,
+    error: null
   };
 
   handleOnChange = (value) => {
@@ -28,6 +30,8 @@ class AccountSupporter extends PureComponent {
     const { supportAmount } = this.state;
     const { updateSubscription } = this.props;
 
+    this.setState({ error: null });
+
     updateSubscription({
       supportAmount,
       onSuccess: (data) => {
@@ -35,6 +39,7 @@ class AccountSupporter extends PureComponent {
       },
       onError: (error) => {
         console.log('error', error);
+        this.setState({ error: error });
       }
     });
   };
@@ -42,63 +47,61 @@ class AccountSupporter extends PureComponent {
   handleCancelClick = () => {
     const { cancelSubscription } = this.props;
 
+    this.setState({ error: null });
+
     cancelSubscription({
       onSuccess: (data) => {
         console.log('success', data);
       },
       onError: (error) => {
         console.log('error', error);
+        this.setState({ error: error });
       }
     });
   };
 
   render() {
-    const { supportAmount } = this.state;
+    const { supportAmount, error } = this.state;
     const { isPremium } = this.props;
 
     return (
       <>
-        {/* {isPremium ? ( */}
-        <>
-          <P first>
-            <FormattedMessage id="Update your monthly amount." />
-          </P>
-          <Input
-            value={supportAmount.toString()}
-            type="number"
-            onChange={this.handleOnChange}
-            min="1"
-          />
-          <ButtonLargeBlue icon="save" onClick={this.handleUpdateClick}>
-            <FormattedMessage
-              id="supporter.update"
-              values={{ b: (msg) => <b>{msg}</b> }}
+        {true ? (
+          <>
+            <P first>
+              <FormattedMessage id="Update your monthly amount." />
+            </P>
+            <Input
+              value={supportAmount.toString()}
+              type="number"
+              onChange={this.handleOnChange}
+              min="1"
             />
-          </ButtonLargeBlue>
-          <P>
-            <FormattedMessage id="Cancel your booky supporter subscription." />
-          </P>
-          <ButtonLargeBlue icon="close" onClick={this.handleCancelClick}>
-            <FormattedMessage
-              id="supporter.cancel"
-              values={{ b: (msg) => <b>{msg}</b> }}
-            />
-          </ButtonLargeBlue>
-        </>
-        {/* ) : ( */}
-        <>
-          <P>
-            <FormattedMessage id="Select your monthly amount and subscribe." />
-          </P>
-          <Input
-            value={supportAmount.toString()}
-            type="number"
-            onChange={this.handleOnChange}
-            min="1"
-          />
-          <div id="paypal-button-container" />
-        </>
-        {/* )} */}
+            <ButtonLargeBlue
+              icon="save"
+              onClick={this.handleUpdateClick}
+              disabled={supportAmount <= 0}
+            >
+              <FormattedMessage
+                id="supporter.update"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
+            </ButtonLargeBlue>
+            {error && <ErrorMessage message={error} hasIcon />}
+            <P>
+              <FormattedMessage id="Cancel your booky supporter subscription." />
+            </P>
+            <ButtonLargeBlue icon="close" onClick={this.handleCancelClick}>
+              <FormattedMessage
+                id="supporter.cancel"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
+            </ButtonLargeBlue>
+            {error && <ErrorMessage message={error} hasIcon />}
+          </>
+        ) : (
+          <>{'dies das'}</>
+        )}
       </>
     );
   }
