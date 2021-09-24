@@ -105,7 +105,7 @@ class Supporter extends PureComponent {
                 icon="account"
                 to="/account#supporter"
                 contentBefore
-                className="home__join"
+                className="supporter__account"
               >
                 <FormattedMessage
                   id="Mitgliedschaft bearbeiten"

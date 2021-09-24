@@ -11,6 +11,7 @@ import Link from '../../atoms/link';
 import Checkbox from '../../atoms/checkbox';
 import Input from '../../atoms/input';
 import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
+import { ButtonLargeBlue } from '../../atoms/button';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 import { loadScript } from '../../_utils/script';
@@ -29,7 +30,9 @@ class Upsell extends PureComponent {
   state = {
     supportAmount: '',
     agbAccepted: false,
-    error: null
+    error: null,
+    success: null,
+    pending: false
   };
 
   componentDidMount() {
@@ -60,18 +63,16 @@ class Upsell extends PureComponent {
               const { newSubscription } = this.props;
 
               console.log('oh yes!', subscriptionID, data);
-              this.setState({ error: null });
+              this.setState({ error: null, pending: true });
 
               newSubscription({
                 subscriptionID,
                 supportAmount,
                 onSuccess: () => {
-                  console.log('success');
-                  this.setState({ error: null });
+                  this.setState({ error: null, success: true, pending: false });
                 },
                 onError: (error) => {
-                  console.log('error', error);
-                  this.setState({ error: error });
+                  this.setState({ error: error, pending: false });
                 }
               });
             },
@@ -95,85 +96,114 @@ class Upsell extends PureComponent {
 
   render() {
     const { intl } = this.props;
-    const { supportAmount, agbAccepted, error } = this.state;
+    const { supportAmount, agbAccepted, error, success, pending } = this.state;
 
     return (
       <Page>
-        <Section>
-          <H1>
-            <FormattedMessage id="supporter.yourMembership" />
-          </H1>
-          <P size="large">
-            <FormattedMessage id="supporter.subtitle" />
-          </P>
-        </Section>
-        <Section contentClassName="upsell__wrapper">
-          <div>
-            <H2>
-              <FormattedMessage id="Betrag wählen und Abonnement abschließen" />
-            </H2>
-            <Form>
-              <Input
-                label="Dein monatlicher Betrag"
-                id="amount"
-                value={supportAmount.toString()}
-                type="number"
-                onChange={this.handleAmountChange}
-                min="1"
-                required
-                placeholder="z.B. einen kleinen Cappuccino im Monat (2,50 €)"
-              />
-              <Checkbox
-                label={intl.formatMessage(
-                  {
-                    id: 'upsell.termsLabel'
-                  },
-                  {
-                    terms: (
-                      <Link to="/terms" target="_blank">
-                        <FormattedMessage id="upsell.terms" />
-                      </Link>
-                    )
-                  }
-                )}
-                id="closeEditMode"
-                name="closeEditMode"
-                onChange={this.handleAgbChange}
-                checked={agbAccepted}
-                required
-              />
-              <div
-                id="paypal-button-container"
-                className={classNames(
-                  'upsell__paypal',
-                  (!agbAccepted || !supportAmount) && 'upsell__paypal--disabled'
-                )}
-              />
-              {error && <ErrorMessage message={error} hasIcon />}
-            </Form>
-          </div>
-          <div className="upsell__facts">
-            <H2>
-              <FormattedMessage id="Die wichtigsten Fakten" />
-            </H2>
-            <P first className="upsell__fact">
-              <Icon icon="check" color="blue" />
-              <FormattedMessage id="Du bestimmst den Preis (Mindestens 1 €)" />
-            </P>
-            <P className="upsell__fact">
-              <Icon icon="check" color="blue" />
-              <FormattedMessage id="Monatlich bezahlt" />
-            </P>
-            <P className="upsell__fact">
-              <Icon icon="check" color="blue" />
-              <FormattedMessage id="Jederzeit kündbar" />
-            </P>
-            <P className="upsell__fact">
-              <Icon icon="check" color="blue" />
-              <FormattedMessage id="Passe den Betrag jederzeit an" />
-            </P>
-          </div>
-        </Section>
+        {success ? (
+          <Section contentClassName="upsell__success">
+            <SuccessIllustration
+              message="Wir freuen uns, dich als booky Supporter·in mit an Bord zu haben! Probier' die neue Teilen-Funktion doch gleich mal aus."
+              headline="Hurra, das hat geklappt!"
+              illustration="supporter-success"
+              width="400"
+              cta={
+                <ButtonLargeBlue
+                  icon="collection"
+                  to="/"
+                  contentBefore
+                  autoWidth
+                >
+                  <FormattedMessage
+                    id="Zu meinen Sammlungen"
+                    values={{ b: (msg) => <b>{msg}</b> }}
+                  />
+                </ButtonLargeBlue>
+              }
+            />
+          </Section>
+        ) : (
+          <>
+            <Section>
+              <H1>
+                <FormattedMessage id="supporter.yourMembership" />
+              </H1>
+              <P size="large">
+                <FormattedMessage id="supporter.subtitle" />
+              </P>
+            </Section>
+            <Section contentClassName="upsell__wrapper">
+              <div>
+                <H2>
+                  <FormattedMessage id="Betrag wählen und Abonnement abschließen" />
+                </H2>
+                <Form>
+                  <Input
+                    label="Dein monatlicher Betrag"
+                    id="amount"
+                    value={supportAmount.toString()}
+                    type="number"
+                    onChange={this.handleAmountChange}
+                    min="1"
+                    required
+                    placeholder="z.B. einen kleinen Cappuccino im Monat (2 €)"
+                    disabled={pending}
+                  />
+                  <Checkbox
+                    label={intl.formatMessage(
+                      {
+                        id: 'upsell.termsLabel'
+                      },
+                      {
+                        terms: (
+                          <Link to="/terms" target="_blank">
+                            <FormattedMessage id="upsell.terms" />
+                          </Link>
+                        )
+                      }
+                    )}
+                    id="closeEditMode"
+                    name="closeEditMode"
+                    onChange={this.handleAgbChange}
+                    checked={agbAccepted}
+                    required
+                    disabled={pending}
+                  />
+                  <div
+                    id="paypal-button-container"
+                    className={classNames(
+                      'upsell__paypal',
+                      (!agbAccepted || !supportAmount || pending) &&
+                        'upsell__paypal--disabled'
+                    )}
+                  />
+                  {error && <ErrorMessage message={error} hasIcon />}
+                </Form>
+              </div>
+              <div className="upsell__facts">
+                <H2>
+                  <FormattedMessage id="Die wichtigsten Fakten" />
+                </H2>
+                <P first className="upsell__fact">
+                  <Icon icon="check" color="blue" />
+                  <FormattedMessage id="Du bestimmst den Preis (Mindestens 1 €)" />
+                </P>
+                <P className="upsell__fact">
+                  <Icon icon="check" color="blue" />
+                  <FormattedMessage id="Monatlich bezahlt" />
+                </P>
+                <P className="upsell__fact">
+                  <Icon icon="check" color="blue" />
+                  <FormattedMessage id="Jederzeit kündbar" />
+                </P>
+                <P className="upsell__fact">
+                  <Icon icon="check" color="blue" />
+                  <FormattedMessage id="Passe den Betrag jederzeit an" />
+                </P>
+              </div>
+            </Section>
+          </>
+        )}
       </Page>
     );
   }

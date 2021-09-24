@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 import P from '../../paragraph';
+import { H1 } from '../../headline';
 import Illustration from '../../illustration';
 
 export default class SuccessIllustration extends Component {
@@ -13,7 +14,9 @@ export default class SuccessIllustration extends Component {
     illustration: PropTypes.string.isRequired,
     width: PropTypes.string,
     height: PropTypes.string,
-    children: PropTypes.node
+    children: PropTypes.node,
+    headline: PropTypes.string,
+    cta: PropTypes.node
   };
 
   state = {
@@ -42,7 +45,9 @@ export default class SuccessIllustration extends Component {
       width,
       height,
       className,
-      children
+      children,
+      headline,
+      cta
     } = this.props;
     const { animate } = this.state;
 
@@ -60,7 +65,18 @@ export default class SuccessIllustration extends Component {
             animate && 'success-illustration__image--animate'
           )}
         />
+        {headline && (
+          <H1
+            className={classNames(
+              'success-illustration__headline',
+              animate && 'success-illustration__headline--animate'
+            )}
+          >
+            <FormattedMessage id={headline} />
+          </H1>
+        )}
         <P
+          size="large"
           className={classNames(
             'success-illustration__text',
             animate && 'success-illustration__text--animate'
@@ -68,6 +84,16 @@ export default class SuccessIllustration extends Component {
         >
           {message ? <FormattedMessage id={message} /> : children}
         </P>
+        {cta && (
+          <div
+            className={classNames(
+              'success-illustration__cta',
+              animate && 'success-illustration__cta--animate'
+            )}
+          >
+            {cta}
+          </div>
+        )}
       </div>
     );
   }

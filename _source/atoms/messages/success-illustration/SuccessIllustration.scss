@@ -1,5 +1,4 @@
 .success-illustration {
-  font-weight: bold;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -18,6 +17,7 @@
   opacity: 1;
 }
 
+.success-illustration__headline,
 .success-illustration__text {
   transition: opacity 0.4s ease-out 0.3s, transform 0.4s ease-out 0.3s;
   transform: translateY(-0.5rem);
@@ -25,7 +25,15 @@
   text-align: center;
 }
 
-.success-illustration__text--animate {
+.success-illustration__cta {
+  transition: opacity 0.4s ease-out 0.6s, transform 0.4s ease-out 0.6s;
+  transform: translateY(-0.5rem);
+  opacity: 0;
+}
+
+.success-illustration__headline--animate,
+.success-illustration__text--animate,
+.success-illustration__cta--animate {
   transform: translateY(0);
   opacity: 1;
 }
