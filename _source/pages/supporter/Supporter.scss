@@ -49,6 +49,12 @@
   }
 }
 
+.supporter__illustration--supporter {
+  @include desktop {
+    max-width: none;
+  }
+}
+
 .supporter__header-content {
   display: flex;
 
@@ -59,6 +65,10 @@
 
 .supporter__headline {
   padding-top: 2rem;
+}
+
+.supporter__headline--supporter {
+  text-align: center;
 }
 
 .supporter__advantages {

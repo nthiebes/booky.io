@@ -44,7 +44,7 @@ export default class New extends PureComponent {
     const { releases } = this.state;
 
     return (
-      <Page showStats className="new">
+      <Page className="new">
         <Section>
           <H1 id="new" className="new__title">
             <FormattedMessage id="about.updates" />

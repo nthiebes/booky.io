@@ -10,6 +10,7 @@ import Icon from '../../atoms/icon';
 import Link from '../../atoms/link';
 import Checkbox from '../../atoms/checkbox';
 import Input from '../../atoms/input';
+import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 import { loadScript } from '../../_utils/script';
@@ -27,7 +28,8 @@ class Upsell extends PureComponent {
 
   state = {
     supportAmount: '',
-    agbAccepted: false
+    agbAccepted: false,
+    error: null
   };
 
   componentDidMount() {
@@ -58,20 +60,24 @@ class Upsell extends PureComponent {
               const { newSubscription } = this.props;
 
               console.log('oh yes!', subscriptionID, data);
+              this.setState({ error: null });
 
               newSubscription({
                 subscriptionID,
                 supportAmount,
-                onSuccess: (bla) => {
-                  console.log('success', bla);
+                onSuccess: () => {
+                  console.log('success');
+                  this.setState({ error: null });
                 },
                 onError: (error) => {
                   console.log('error', error);
+                  this.setState({ error: error });
                 }
               });
             },
             onError: (error) => {
               console.log('oh no!', error);
+              this.setState({ error: 'error.default' });
             }
           })
           .render('#paypal-button-container');
@@ -89,7 +95,7 @@ class Upsell extends PureComponent {
 
   render() {
     const { intl } = this.props;
-    const { supportAmount, agbAccepted } = this.state;
+    const { supportAmount, agbAccepted, error } = this.state;
 
     return (
       <Page>
@@ -140,9 +146,10 @@ class Upsell extends PureComponent {
                 id="paypal-button-container"
                 className={classNames(
                   'upsell__paypal',
-                  !agbAccepted && 'upsell__paypal--disabled'
+                  (!agbAccepted || !supportAmount) && 'upsell__paypal--disabled'
                 )}
               />
+              {error && <ErrorMessage message={error} hasIcon />}
             </Form>
           </div>
           <div className="upsell__facts">
