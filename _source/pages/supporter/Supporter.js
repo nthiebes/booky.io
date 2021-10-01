@@ -24,7 +24,7 @@ class Supporter extends PureComponent {
   };
 
   render() {
-    const { stickyHeader, intl, loggedIn, premium } = this.props;
+    const { stickyHeader, intl, premium, loggedIn } = this.props;
 
     return (
       <Page
@@ -40,7 +40,7 @@ class Supporter extends PureComponent {
           <div>
             <H1 noMargin color="light" className="supporter__display">
               {premium ? (
-                <FormattedMessage id="Schön, dass du Supporter·in bist!" />
+                <FormattedMessage id="supporter.welcome" />
               ) : (
                 <>
                   <FormattedMessage id="supporter.yourBooky" />
@@ -51,7 +51,7 @@ class Supporter extends PureComponent {
             </H1>
             <P size="large" ignoreDarkMode color="light" noPadding>
               {premium ? (
-                <FormattedMessage id="Hier findest du alle Vorteile deiner Mitgliedschaft, sowie Antworten auf häufig gestellte Fragen." />
+                <FormattedMessage id="supporter.subtitle2" />
               ) : (
                 <FormattedMessage id="supporter.subtitle" />
               )}
@@ -92,30 +92,31 @@ class Supporter extends PureComponent {
         >
           <H2 style="h1" centered className="supporter__headline">
             {premium ? (
-              <FormattedMessage id="Was möchtest tu tun?" />
+              <FormattedMessage id="supporter.nextsteps" />
             ) : (
               <FormattedMessage id="supporter.overviewTitle" />
             )}
           </H2>
           {premium && (
             <>
-              <P size="large" ignoreDarkMode color="light">
-                <FormattedMessage id="Alles rund um deine Support-Mitgliedschaft findest du in deinen Account-Einstellungen. Dir gefällt die Mitgliedschaft oder etwas passt nicht? Teile es uns gerne mit!" />
+              <P size="large">
+                <FormattedMessage id="supporter.nextstepsText" />
               </P>
               <ButtonLargeBlue
                 icon="account"
                 to="/account#supporter"
                 contentBefore
+                autoWidth
                 className="supporter__account"
               >
                 <FormattedMessage
-                  id="Mitgliedschaft bearbeiten"
+                  id="button.editMembership"
                   values={{ b: (msg) => <b>{msg}</b> }}
                 />
               </ButtonLargeBlue>
               <ButtonLargeLight icon="feedback" to="/contact">
                 <FormattedMessage
-                  id="Feedback geben"
+                  id="button.feedback"
                   values={{ b: (msg) => <b>{msg}</b> }}
                 />
               </ButtonLargeLight>
@@ -432,6 +433,13 @@ class Supporter extends PureComponent {
                       <FormattedMessage id="Zugriff auf alle kommenden Support-Funktionen" />
                     </strong>
                   </P>
+                  {loggedIn && premium && (
+                    <P className="supporter__compare-active" ignoreDarkMode>
+                      <i>
+                        <FormattedMessage id="supporter.active" />
+                      </i>
+                    </P>
+                  )}
                   {loggedIn && !premium && (
                     <ButtonLargeBlue
                       icon="heart"
@@ -472,7 +480,7 @@ class Supporter extends PureComponent {
           </div>
         </Section>
 
-        <Section contentSpace color="light" noMargin>
+        <Section contentSpace color="light">
           <H2 style="h1" centered noMargin>
             <FormattedMessage id="supporter.faqsTitle" />
           </H2>
@@ -563,6 +571,35 @@ class Supporter extends PureComponent {
             </div>
           </div>
         </Section>
+
+        {!loggedIn && (
+          <Section className="home__not-a-member" noMargin>
+            <Illustration className="home__heart" name="heart" />
+            <H2 style="h1" centered noMargin>
+              <FormattedMessage id="home.notAMember" />
+            </H2>
+            <H3 style="h2" noMargin centered>
+              <FormattedMessage id="home.promoText" />
+            </H3>
+            <ButtonLargeBlue
+              icon="join"
+              to="/join"
+              contentBefore
+              className="home__join"
+            >
+              <FormattedMessage
+                id="header.register"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
+            </ButtonLargeBlue>
+            <ButtonLargeLight icon="about" to="/about">
+              <FormattedMessage
+                id="home.aboutBooky"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
+            </ButtonLargeLight>
+          </Section>
+        )}
       </Page>
     );
   }

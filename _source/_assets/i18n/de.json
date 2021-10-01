@@ -1,4 +1,11 @@
 {
+    "supporter.active": "Deine aktuelle Mitgliedschaft.",
+    "button.feedback": "Feedback <b>geben</b>",
+    "button.editMembership": "Mitgliedschaft <b>bearbeiten</b>",
+    "supporter.nextstepsText": "Alles rund um deine Support-Mitgliedschaft findest du in den Account-Einstellungen. Dir gefällt die Mitgliedschaft oder etwas passt nicht? Teile es uns gerne mit!",
+    "supporter.nextsteps": "Was möchtest du tun?",
+    "supporter.subtitle2": "Hier findest du alle Vorteile deiner Mitgliedschaft, sowie Antworten auf häufig gestellte Fragen.",
+    "supporter.welcome": "Schön, dass du Supporter·in bist!",
     "help.regular.coststext": "Ja. Die reguläre Mitgliedschaft ist und bleibt kostenlos.",
     "help.regular.costs": "Wird die reguläre Mitgliedschaft kostenlos bleiben?",
     "help.supporter.canceledtext2": "Deinen aktuellen Zahlungszeitraum kannst du in den {account} einsehen.",
