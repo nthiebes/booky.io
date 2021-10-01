@@ -11,6 +11,7 @@ import Section from '../../molecules/section';
 import Icon from '../../atoms/icon';
 import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
+import Link from '../../atoms/link/Link';
 
 import './Supporter.scss';
 
@@ -354,16 +355,12 @@ class Supporter extends PureComponent {
                       values={{
                         support: (
                           <strong>
-                            {intl.formatMessage({
-                              id: 'supporter.support'
-                            })}
+                            <FormattedMessage id="supporter.support" />
                           </strong>
                         ),
                         exclusive: (
                           <strong>
-                            {intl.formatMessage({
-                              id: 'supporter.exclusive'
-                            })}
+                            <FormattedMessage id="supporter.exclusive" />
                           </strong>
                         )
                       }}
@@ -375,9 +372,7 @@ class Supporter extends PureComponent {
                       values={{
                         price: (
                           <strong className="supporter__price">
-                            {intl.formatMessage({
-                              id: 'supporter.price'
-                            })}
+                            <FormattedMessage id="supporter.price" />
                           </strong>
                         )
                       }}
@@ -483,51 +478,87 @@ class Supporter extends PureComponent {
           </H2>
           <div className="faq">
             <div className="faq__item">
-              <H3>{'Kann ich meine Zahlungen ändern oder einstellen?'}</H3>
+              <H3>
+                <FormattedMessage id="help.supporter.features" />
+              </H3>
+              <P>
+                <FormattedMessage id="help.supporter.featurestext" />
+              </P>
               <P noPadding>
-                {
-                  'Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft.'
-                }
+                <FormattedMessage id="help.supporter.featurestext2" />
               </P>
             </div>
             <div className="faq__item">
-              <H3>{'Kann ich meine Zahlungen ändern oder einstellen?'}</H3>
+              <H3>
+                <FormattedMessage id="help.supporter.amount" />
+              </H3>
               <P noPadding>
-                {
-                  'Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft.'
-                }
+                <FormattedMessage
+                  id="help.supporter.amounttext"
+                  values={{
+                    account: (
+                      <Link to="/account#supporter">
+                        <FormattedMessage id="misc.accountSettings" />
+                      </Link>
+                    )
+                  }}
+                />
               </P>
             </div>
             <div className="faq__item">
-              <H3>{'Kann ich meine Zahlungen ändern oder einstellen?'}</H3>
+              <H3>
+                <FormattedMessage id="help.supporter.minimum" />
+              </H3>
+              <P>
+                <FormattedMessage id="help.supporter.minimumtext" />
+              </P>
               <P noPadding>
-                {
-                  'Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft.'
-                }
+                <FormattedMessage id="help.supporter.minimumtext2" />
               </P>
             </div>
             <div className="faq__item">
-              <H3>{'Kann ich meine Zahlungen ändern oder einstellen?'}</H3>
+              <H3>
+                <FormattedMessage id="help.supporter.payment" />
+              </H3>
               <P noPadding>
-                {
-                  'Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft.'
-                }
+                <FormattedMessage id="help.supporter.paymenttext" />
               </P>
             </div>
             <div className="faq__item">
-              <H3>{'Kann ich meine Zahlungen ändern oder einstellen?'}</H3>
+              <H3>
+                <FormattedMessage id="help.supporter.data" />
+              </H3>
               <P noPadding>
-                {
-                  'Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft.'
-                }
+                <FormattedMessage id="help.supporter.datatext" />
               </P>
             </div>
             <div className="faq__item">
-              <H3>{'Kann ich meine Zahlungen ändern oder einstellen?'}</H3>
+              <H3>
+                <FormattedMessage id="help.supporter.cancel" />
+              </H3>
+              <P>
+                <FormattedMessage
+                  id="help.supporter.canceltext"
+                  values={{
+                    account: (
+                      <Link to="/account#supporter">
+                        <FormattedMessage id="misc.accountSettings" />
+                      </Link>
+                    )
+                  }}
+                />
+              </P>
               <P noPadding>
-                {
-                  'Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft. Natürlich alle Funktionen der Member-Mitgliedschaft.'
-                }
+                <FormattedMessage
+                  id="help.supporter.canceltext2"
+                  values={{
+                    help: (
+                      <Link to="/help#supporter">
+                        <FormattedMessage id="help.title" />
+                      </Link>
+                    )
+                  }}
+                />
               </P>
             </div>
           </div>
