@@ -21,7 +21,7 @@
 }
 
 .upsell__paypal {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .upsell__paypal--disabled {
@@ -33,4 +33,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.upsell__amount-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.upsell__amount {
+  margin-bottom: 0;
+  width: 19rem;
+  flex-grow: initial;
+}
+
+.upsell__euro {
+  margin-left: 1rem;
 }

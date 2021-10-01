@@ -1,4 +1,11 @@
 {
+    "upsell.fact3": "Passe den Betrag flexibel an",
+    "upsell.fact2": "Jederzeit kündbar",
+    "upsell.fact1": "Du bestimmst den Preis, Minimum 1 € / Monat",
+    "upsell.facts": "Die wichtigsten Fakten",
+    "upsell.placeholder": "z. B. einen kleinen Cappuccino (2 €)",
+    "upsell.amount": "Dein monatlicher Betrag",
+    "upsell.title": "Betrag wählen und Abonnement abschließen",
     "supporter.active": "Deine aktuelle Mitgliedschaft.",
     "button.feedback": "Feedback <b>geben</b>",
     "button.editMembership": "Mitgliedschaft <b>bearbeiten</b>",

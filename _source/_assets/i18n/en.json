@@ -1,4 +1,11 @@
 {
+    "upsell.fact3": "Adjust the amount flexibly",
+    "upsell.fact2": "Cancel anytime",
+    "upsell.fact1": "You determine the price, minimum € 1 / month",
+    "upsell.facts": "The most important facts",
+    "upsell.placeholder": "e.g. a small cappuccino (€ 2)",
+    "upsell.amount": "Your monthly amount",
+    "upsell.title": "Choose the amount and subscribe",
     "supporter.active": "Your current membership.",
     "button.feedback": "<b>Give</b> feedback",
     "button.editMembership": "<b>Edit</b> membership",

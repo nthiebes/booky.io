@@ -12,6 +12,7 @@ import Checkbox from '../../atoms/checkbox';
 import Input from '../../atoms/input';
 import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
 import { ButtonLargeBlue } from '../../atoms/button';
+import Label from '../../atoms/label';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 import { loadScript } from '../../_utils/script';
@@ -135,20 +136,30 @@ class Upsell extends PureComponent {
             <Section contentClassName="upsell__wrapper">
               <div>
                 <H2>
-                  <FormattedMessage id="Betrag wählen und Abonnement abschließen" />
+                  <FormattedMessage id="upsell.title" />
                 </H2>
                 <Form>
-                  <Input
-                    label="Dein monatlicher Betrag"
-                    id="amount"
-                    value={supportAmount.toString()}
-                    type="number"
-                    onChange={this.handleAmountChange}
-                    min="1"
-                    required
-                    placeholder="z.B. einen kleinen Cappuccino im Monat (2 €)"
-                    disabled={pending}
-                  />
+                  <Label htmlFor="amount">
+                    <FormattedMessage id="upsell.amount" />
+                  </Label>
+                  <div className="upsell__amount-wrapper">
+                    <Input
+                      id="amount"
+                      value={supportAmount.toString()}
+                      type="number"
+                      onChange={this.handleAmountChange}
+                      min="1"
+                      required
+                      placeholder={intl.formatMessage({
+                        id: 'upsell.placeholder'
+                      })}
+                      disabled={pending}
+                      className="upsell__amount"
+                    />
+                    <P size="large" className="upsell__euro" noPadding>
+                      {'€'}
+                    </P>
+                  </div>
                   <Checkbox
                     label={intl.formatMessage(
                       {
@@ -182,23 +193,19 @@ class Upsell extends PureComponent {
               </div>
               <div className="upsell__facts">
                 <H2>
-                  <FormattedMessage id="Die wichtigsten Fakten" />
+                  <FormattedMessage id="upsell.facts" />
                 </H2>
                 <P first className="upsell__fact">
                   <Icon icon="check" color="blue" />
-                  <FormattedMessage id="Du bestimmst den Preis (Mindestens 1 €)" />
+                  <FormattedMessage id="upsell.fact1" />
                 </P>
                 <P className="upsell__fact">
                   <Icon icon="check" color="blue" />
-                  <FormattedMessage id="Monatlich bezahlt" />
+                  <FormattedMessage id="upsell.fact2" />
                 </P>
                 <P className="upsell__fact">
                   <Icon icon="check" color="blue" />
-                  <FormattedMessage id="Jederzeit kündbar" />
-                </P>
-                <P className="upsell__fact">
-                  <Icon icon="check" color="blue" />
-                  <FormattedMessage id="Passe den Betrag jederzeit an" />
+                  <FormattedMessage id="upsell.fact3" />
                 </P>
               </div>
             </Section>
