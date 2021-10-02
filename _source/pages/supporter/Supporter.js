@@ -58,7 +58,7 @@ class Supporter extends PureComponent {
             </P>
             {!premium && (
               <ButtonLargeBlue
-                icon={loggedIn ? 'heart' : 'join'}
+                icon={loggedIn ? 'membership' : 'join'}
                 to={loggedIn ? '/upsell' : '/join'}
                 contentBefore
               >
@@ -442,7 +442,7 @@ class Supporter extends PureComponent {
                   )}
                   {loggedIn && !premium && (
                     <ButtonLargeBlue
-                      icon="heart"
+                      icon="membership"
                       to="/upsell"
                       className="supporter__upsell"
                     >

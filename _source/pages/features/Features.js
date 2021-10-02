@@ -129,7 +129,7 @@ class FeaturesPage extends PureComponent {
               cta={
                 <ButtonSmallBlue
                   to="/supporter"
-                  icon="heart"
+                  icon="membership"
                   className="features-page__memberships"
                 >
                   {intl.formatMessage(

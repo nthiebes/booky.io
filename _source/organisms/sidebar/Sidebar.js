@@ -177,7 +177,7 @@ class Sidebar extends PureComponent {
                   tabIndex={open ? '0' : '-1'}
                   noUnderline
                 >
-                  <Icon icon="heart" />
+                  <Icon icon="membership" />
                   <span
                     className={classNames(
                       'sidebar__label',

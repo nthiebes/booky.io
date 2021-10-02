@@ -16,7 +16,7 @@ const menuItemsLoggedOut = [
   {
     name: 'supporter',
     route: '/supporter',
-    icon: 'heart'
+    icon: 'membership'
   },
   {
     name: 'about',
@@ -35,7 +35,7 @@ const menuItemsLoggedIn = [
   {
     name: 'supporter',
     route: '/supporter',
-    icon: 'heart'
+    icon: 'membership'
   },
   {
     name: 'help',
