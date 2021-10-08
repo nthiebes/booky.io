@@ -17,9 +17,10 @@ import {
   deleteDashboard
 } from '../../_state/dashboards/actions';
 import { deleteAccount } from '../../_state/user/actions';
+import { cancelSubscription } from '../../_state/subscription/actions';
 import { resetSearch } from '../../_state/search/actions';
 
-export const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   let bookmarkCount;
 
   if (state.categories.length) {
@@ -48,8 +49,7 @@ export const mapStateToProps = (state) => {
     }
   };
 };
-
-export const mapDispatchToProps = {
+const mapDispatchToProps = {
   closeModal,
   hideModal,
   addBookmark,
@@ -62,9 +62,9 @@ export const mapDispatchToProps = {
   editDashboard,
   deleteDashboard,
   deleteAccount,
-  resetSearch
+  resetSearch,
+  cancelSubscription
 };
-
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

@@ -77,7 +77,17 @@
 .account__overview {
   display: flex;
   justify-content: space-between;
-  max-width: 22rem;
+  width: 30rem;
+  white-space: nowrap;
+
+  @include mobile {
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.account__overview-value {
+  width: 13rem;
 }
 
 .account__amount-wrapper {

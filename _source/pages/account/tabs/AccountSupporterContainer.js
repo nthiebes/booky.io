@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 
 import { openModal } from '../../../_state/modal/actions';
-import {
-  updateSubscription,
-  cancelSubscription
-} from '../../../_state/subscription/actions';
+import { updateSubscription } from '../../../_state/subscription/actions';
 import Component from './AccountSupporter';
 
 const mapStateToProps = (state) => ({
@@ -15,8 +12,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = {
   openModal,
-  updateSubscription,
-  cancelSubscription
+  updateSubscription
 };
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 

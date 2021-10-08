@@ -1,4 +1,6 @@
 {
+    "modal.cancelText": "Deine Support-Mitgliedschaft noch bis zum {date} verfügbar. Bis dahin hast du immer noch Zugriff auf alle Support-Funktionen.",
+    "modal.cancelSubscription": "Kündigung <b>bestätigen</b>",
     "account.updateSuccess": "Dein Betrag wurde erfolgreich angepasst!",
     "account.cancelTitle": "Mitgliedschaft kündigen",
     "account.cancelText": "Wenn du jetzt kündigst, ist deine Support-Mitgliedschaft noch bis zum {date} verfügbar. Danach kannst du booky mit allen kostenfreien Funktionen natürlich weiterhin nutzen.",
@@ -8,6 +10,7 @@
     "account.updateSupporter": "Deine Mitgliedschaft anpassen",
     "account.yourAmount": "Dein monatlicher Betrag:",
     "account.memberships": "Deine Mitgliedschaft",
+    "account.supporterCanceled": "Supporter·in (gekündigt)",
     "account.supporter": "Supporter·in",
     "account.member": "Mitglied",
     "account.discover": "Support-Mitgliedschaft <b>entdecken</b>",

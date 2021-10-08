@@ -17,6 +17,7 @@ import DeleteDashboard from './modals/DeleteDashboard';
 import Customize from './modals/Customize';
 import DeleteAccount from './modals/DeleteAccount';
 import SortCategories from './modals/SortCategoriesContainer';
+import CancelSubscription from './modals/CancelSubscription';
 
 export default class Modal extends PureComponent {
   static propTypes = {
@@ -37,7 +38,8 @@ export default class Modal extends PureComponent {
     deleteDashboard: PropTypes.func.isRequired,
     darkMode: PropTypes.bool.isRequired,
     deleteAccount: PropTypes.func.isRequired,
-    resetSearch: PropTypes.func.isRequired
+    resetSearch: PropTypes.func.isRequired,
+    cancelSubscription: PropTypes.func.isRequired
   };
 
   state = {
@@ -95,6 +97,10 @@ export default class Modal extends PureComponent {
     },
     SortCategories: {
       type: SortCategories
+    },
+    CancelSubscription: {
+      type: CancelSubscription,
+      action: this.props.cancelSubscription
     }
   };
 
