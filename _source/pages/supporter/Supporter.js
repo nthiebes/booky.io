@@ -251,13 +251,13 @@ class Supporter extends PureComponent {
                 <td className="supporter__compare-entry booky--hide-mobile">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Unbegrenzte Lesezeichen, Kategorien, und Sammlungen" />
+                    <FormattedMessage id="supporter.feature.unlimited" />
                   </P>
                 </td>
                 <td className="supporter__compare-entry">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Unbegrenzte Lesezeichen, Kategorien, und Sammlungen" />
+                    <FormattedMessage id="supporter.feature.unlimited" />
                   </P>
                 </td>
               </tr>
@@ -265,13 +265,13 @@ class Supporter extends PureComponent {
                 <td className="supporter__compare-entry booky--hide-mobile">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Auf jedem Browser und Endgerät verfügbar" />
+                    <FormattedMessage id="supporter.feature.devices" />
                   </P>
                 </td>
                 <td className="supporter__compare-entry">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Auf jedem Browser und Endgerät verfügbar" />
+                    <FormattedMessage id="supporter.feature.devices" />
                   </P>
                 </td>
               </tr>
@@ -279,13 +279,13 @@ class Supporter extends PureComponent {
                 <td className="supporter__compare-entry booky--hide-mobile">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Private Sammlungen" />
+                    <FormattedMessage id="features.privateCollections" />
                   </P>
                 </td>
                 <td className="supporter__compare-entry">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Private Sammlungen" />
+                    <FormattedMessage id="features.privateCollections" />
                   </P>
                 </td>
               </tr>
@@ -293,13 +293,13 @@ class Supporter extends PureComponent {
                 <td className="supporter__compare-entry booky--hide-mobile">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Individuelles Design" />
+                    <FormattedMessage id="misc.feature5" />
                   </P>
                 </td>
                 <td className="supporter__compare-entry">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Individuelles Design" />
+                    <FormattedMessage id="misc.feature5" />
                   </P>
                 </td>
               </tr>
@@ -307,13 +307,13 @@ class Supporter extends PureComponent {
                 <td className="supporter__compare-entry booky--hide-mobile">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Schnell, barrierefrei und einfach" />
+                    <FormattedMessage id="misc.feature11" />
                   </P>
                 </td>
                 <td className="supporter__compare-entry">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Schnell, barrierefrei und einfach" />
+                    <FormattedMessage id="misc.feature11" />
                   </P>
                 </td>
               </tr>
@@ -321,13 +321,13 @@ class Supporter extends PureComponent {
                 <td className="supporter__compare-entry booky--hide-mobile">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Keine Werbung" />
+                    <FormattedMessage id="supporter.feature.ads" />
                   </P>
                 </td>
                 <td className="supporter__compare-entry">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Keine Werbung" />
+                    <FormattedMessage id="supporter.feature.ads" />
                   </P>
                 </td>
               </tr>
@@ -335,13 +335,13 @@ class Supporter extends PureComponent {
                 <td className="supporter__compare-entry booky--hide-mobile">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Persönlicher Support" />
+                    <FormattedMessage id="supporter.feature.support" />
                   </P>
                 </td>
                 <td className="supporter__compare-entry">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Persönlicher Support" />
+                    <FormattedMessage id="supporter.feature.support" />
                   </P>
                 </td>
               </tr>
@@ -386,7 +386,7 @@ class Supporter extends PureComponent {
                 <td className="supporter__compare-entry">
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
-                    <FormattedMessage id="Alle Funktionen der regulären Mitgliedschaft" />
+                    <FormattedMessage id="supporter.feature.regular" />
                   </P>
                 </td>
               </tr>
@@ -401,14 +401,14 @@ class Supporter extends PureComponent {
                   >
                     <strong>
                       <i>
-                        <FormattedMessage id="PLUS" />
+                        <FormattedMessage id="misc.plus" />
                       </i>
                     </strong>
                   </P>
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
                     <strong>
-                      <FormattedMessage id="Teile deine Sammlungen öffentlich" />
+                      <FormattedMessage id="supporter.feature.public" />
                     </strong>
                   </P>
                 </td>
@@ -419,7 +419,7 @@ class Supporter extends PureComponent {
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
                     <strong>
-                      <FormattedMessage id="Unterstütze uns, booky am Laufen zu halten" />
+                      <FormattedMessage id="supporter.feature.coffee" />
                     </strong>
                   </P>
                 </td>
@@ -430,7 +430,7 @@ class Supporter extends PureComponent {
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
                     <strong>
-                      <FormattedMessage id="Zugriff auf alle kommenden Support-Funktionen" />
+                      <FormattedMessage id="supporter.feature.future" />
                     </strong>
                   </P>
                   {loggedIn && premium && (

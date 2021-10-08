@@ -1,4 +1,13 @@
 {
+    "misc.plus": "PLUS",
+    "supporter.feature.future": "Zugriff auf alle kommenden Support-Funktionen",
+    "supporter.feature.coffee": "Unterstütze uns, booky am Laufen zu halten",
+    "supporter.feature.public": "Teile deine Sammlungen öffentlich",
+    "supporter.feature.regular": "Alle Funktionen der regulären Mitgliedschaft",
+    "supporter.feature.support": "Persönlicher Support",
+    "supporter.feature.ads": "Keine Werbung",
+    "supporter.feature.devices": "Unbegrenzte Lesezeichen, Kategorien und Sammlungen",
+    "supporter.feature.unlimited": "Unbegrenzte Lesezeichen, Kategorien und Sammlungen",
     "upsell.fact3": "Passe den Betrag flexibel an",
     "upsell.fact2": "Jederzeit kündbar",
     "upsell.fact1": "Du bestimmst den Preis, Minimum 1 € / Monat",
