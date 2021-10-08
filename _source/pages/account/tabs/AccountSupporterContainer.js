@@ -9,7 +9,9 @@ import Component from './AccountSupporter';
 
 const mapStateToProps = (state) => ({
   isPremium: state.user.premium,
-  supportAmount: state.user.supportAmount
+  supportAmount: state.user.supportAmount,
+  supportExpires: state.user.supportExpires,
+  supportStart: state.user.supportStart
 });
 const mapDispatchToProps = {
   openModal,

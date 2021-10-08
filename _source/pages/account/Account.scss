@@ -73,3 +73,40 @@
   margin-right: 6px;
   word-break: break-word;
 }
+
+.account__overview {
+  display: flex;
+  justify-content: space-between;
+  max-width: 22rem;
+}
+
+.account__amount-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+
+  @include mobile {
+    flex-wrap: wrap;
+  }
+}
+
+.account__amount {
+  width: 17rem;
+  margin-bottom: 0.5rem;
+  flex-grow: initial;
+}
+
+.account__euro {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  white-space: nowrap;
+  margin-bottom: 1rem;
+}
+
+.account__update {
+  margin-bottom: 1rem;
+}
+
+.account__message {
+  padding: 0;
+}

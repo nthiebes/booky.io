@@ -5,7 +5,6 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Input from '../../../atoms/input';
 import { ButtonLargeBlue } from '../../../atoms/button';
 import P from '../../../atoms/paragraph';
-import Label from '../../../atoms/label';
 import Form from '../../../molecules/form';
 import Checkbox from '../../../atoms/checkbox';
 import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
@@ -74,11 +73,11 @@ class AccountData extends Component {
 
     return (
       <Form className="account__form" onSubmit={this.handleSubmit}>
-        <Label>
+        <P first noPadding>
           <FormattedMessage id="account.yourEmail" />
-        </Label>
-        <P noPadding className="account__email">
-          {email}
+        </P>
+        <P>
+          <b>{email}</b>
         </P>
         <Input
           value={username}

@@ -33,16 +33,16 @@ class Account extends Component {
       key: 'data'
     },
     {
+      name: this.props.intl.formatMessage({ id: 'account.memberships' }),
+      key: 'supporter'
+    },
+    {
       name: this.props.intl.formatMessage({ id: 'account.import' }),
       key: 'import'
     },
     {
       name: this.props.intl.formatMessage({ id: 'account.export' }),
       key: 'export'
-    },
-    {
-      name: this.props.intl.formatMessage({ id: 'menu.supporter' }),
-      key: 'supporter'
     }
   ];
   // name: props.intl.formatMessage({ id: 'account.account' })
