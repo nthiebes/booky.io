@@ -165,6 +165,9 @@ class Footer extends PureComponent {
             <Link className="footer__menu-item" color="light" to="/privacy">
               <FormattedMessage id="menu.privacy" />
             </Link>
+            <Link className="footer__menu-item" color="light" to="/terms">
+              <FormattedMessage id="upsell.terms" />
+            </Link>
             <Link className="footer__menu-item" color="light" to="/legal">
               <FormattedMessage id="menu.legal" />
             </Link>
