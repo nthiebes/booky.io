@@ -1,70 +1,140 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { H3 } from '../../atoms/headline';
+import P from '../../atoms/paragraph';
 import Icon from '../../atoms/icon';
 
 export const AllFeatures = () => (
   <ul className="all-features">
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="lock" className="all-features__icon" />
-        <FormattedMessage id="misc.feature8" />
-      </H3>
+      <Icon
+        icon="lock"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="misc.feature8" />
+        </b>
+      </P>
     </li>
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="customize" className="all-features__icon" />
-        <FormattedMessage id="misc.feature5" />
-      </H3>
+      <Icon
+        icon="customize"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P noPadding>
+        <b>
+          <FormattedMessage id="misc.feature5" />
+        </b>
+      </P>
     </li>
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="phone" className="all-features__icon" />
-        <FormattedMessage id="misc.feature7" />
-      </H3>
+      <Icon
+        icon="phone"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="misc.feature7" />
+        </b>
+      </P>
     </li>
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="search" className="all-features__icon" />
-        <FormattedMessage id="misc.feature4" />
-      </H3>
+      <Icon
+        icon="search"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="misc.feature4" />
+        </b>
+      </P>
     </li>
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="extension" className="all-features__icon" />
-        <FormattedMessage id="misc.feature1" />
-      </H3>
+      <Icon
+        icon="extension"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="misc.feature1" />
+        </b>
+      </P>
     </li>
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="star" className="all-features__icon" />
-        <FormattedMessage id="misc.feature2" />
-      </H3>
+      <Icon
+        icon="star"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="misc.feature2" />
+        </b>
+      </P>
     </li>
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="collection" className="all-features__icon" />
-        <FormattedMessage id="misc.feature6" />
-      </H3>
+      <Icon
+        icon="collection"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="misc.feature6" />
+        </b>
+      </P>
     </li>
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="notes" className="all-features__icon" />
-        <FormattedMessage id="misc.feature9" />
-      </H3>
+      <Icon
+        icon="notes"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="misc.feature9" />
+        </b>
+      </P>
     </li>
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="import-export" className="all-features__icon" />
-        <FormattedMessage id="misc.feature3" />
-      </H3>
+      <Icon
+        icon="import-export"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="misc.feature3" />
+        </b>
+      </P>
     </li>
     <li className="all-features__feature">
-      <H3 style="h2" className="all-features__feature-name">
-        <Icon icon="accessible" className="all-features__icon" />
-        <FormattedMessage id="misc.feature11" />
-      </H3>
+      <Icon
+        icon="accessible"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="misc.feature11" />
+        </b>
+      </P>
     </li>
   </ul>
 );

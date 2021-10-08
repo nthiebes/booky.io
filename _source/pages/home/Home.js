@@ -366,16 +366,6 @@ class Home extends Component {
               {'Windows'}
             </Link>
           </nav>
-          {/* <ButtonLargeLight
-            icon="platform"
-            to="/features#platforms"
-            contentBefore
-          >
-            <FormattedMessage
-              id="button.platforms"
-              values={{ b: (msg) => <b>{msg}</b> }}
-            />
-          </ButtonLargeLight> */}
         </Section>
 
         <Section>
