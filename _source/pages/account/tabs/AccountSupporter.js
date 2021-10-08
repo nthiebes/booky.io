@@ -100,7 +100,7 @@ class AccountSupporter extends PureComponent {
             </P>
             {supportExpires && (
               <P className="account__overview">
-                <FormattedMessage id="Verfügbar bis:" />
+                <FormattedMessage id="account.date" />
                 <b className="account__overview-value">{supportExpires}</b>
               </P>
             )}

@@ -59,11 +59,10 @@ class Upsell extends PureComponent {
                 quantity: supportAmount
               });
             },
-            onApprove: ({ subscriptionID, ...data }) => {
+            onApprove: ({ subscriptionID }) => {
               const { supportAmount } = this.state;
               const { newSubscription } = this.props;
 
-              console.log('oh yes!', subscriptionID, data);
               this.setState({ error: null, pending: true });
 
               newSubscription({
@@ -77,8 +76,7 @@ class Upsell extends PureComponent {
                 }
               });
             },
-            onError: (error) => {
-              console.log('oh no!', error);
+            onError: () => {
               this.setState({ error: 'error.default' });
             }
           })
@@ -104,8 +102,8 @@ class Upsell extends PureComponent {
         {success ? (
           <Section contentClassName="upsell__success">
             <SuccessIllustration
-              message="Wir freuen uns, dich als booky Supporter·in mit an Bord zu haben! Probier' die neue Teilen-Funktion doch gleich mal aus."
-              headline="Hurra, das hat geklappt!"
+              message="upsell.successText"
+              headline="upsell.successTitle"
               illustration="supporter-success"
               width="400"
               cta={
@@ -116,7 +114,7 @@ class Upsell extends PureComponent {
                   autoWidth
                 >
                   <FormattedMessage
-                    id="Zu meinen Sammlungen"
+                    id="upsell.successButton"
                     values={{ b: (msg) => <b>{msg}</b> }}
                   />
                 </ButtonLargeBlue>

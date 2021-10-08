@@ -1,6 +1,10 @@
 {
+    "upsell.successButton": "Zu meinen <b>Sammlungen</b>",
+    "upsell.successTitle": "Hurra, das hat geklappt!",
+    "upsell.successText": "Wir freuen uns, dich als booky Supporter·in mit an Bord zu haben! Probier’ die neue Teilen-Funktion doch gleich mal aus.",
     "modal.cancelText": "Deine Support-Mitgliedschaft noch bis zum {date} verfügbar. Bis dahin hast du immer noch Zugriff auf alle Support-Funktionen.",
     "modal.cancelSubscription": "Kündigung <b>bestätigen</b>",
+    "account.date": "Verfügbar bis:",
     "account.updateSuccess": "Dein Betrag wurde erfolgreich angepasst!",
     "account.cancelTitle": "Mitgliedschaft kündigen",
     "account.cancelText": "Wenn du jetzt kündigst, ist deine Support-Mitgliedschaft noch bis zum {date} verfügbar. Danach kannst du booky mit allen kostenfreien Funktionen natürlich weiterhin nutzen.",
