@@ -4,11 +4,12 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import P from '../../../atoms/paragraph';
 import { H2 } from '../../../atoms/headline';
-import { ButtonSmallPrimary } from '../../../atoms/button';
+import { ButtonSmallPrimary, ButtonSmallLight } from '../../../atoms/button';
 import Input from '../../../atoms/input';
 import Label from '../../../atoms/label';
 import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
 import Form from '../../../molecules/form';
+import Link from '../../../atoms/link/Link';
 
 class AccountSupporter extends PureComponent {
   static propTypes = {
@@ -73,7 +74,8 @@ class AccountSupporter extends PureComponent {
       newSupportAmount,
       updateSuccess
     } = this.state;
-    const { intl, supportExpires, isPremium } = this.props;
+    const { intl, isPremium } = this.props;
+    const supportExpires = 'DATE';
 
     return (
       <>
@@ -92,7 +94,10 @@ class AccountSupporter extends PureComponent {
                 )}
               </b>
             </P>
-            <P noPadding className="account__overview">
+            <P
+              noPadding={Boolean(supportExpires)}
+              className="account__overview"
+            >
               <FormattedMessage id="account.yourAmount" />
               <b className="account__overview-value">
                 {supportExpires ? '-' : `${supportAmount} €`}
@@ -165,18 +170,17 @@ class AccountSupporter extends PureComponent {
                 <H2>
                   <FormattedMessage id="misc.supporterMembership" />
                 </H2>
+                <SuccessMessage
+                  noAnimation
+                  message="account.canceledText"
+                  hasIcon
+                />
                 <P>
-                  <FormattedMessage
-                    id="modal.cancelText"
-                    values={{ date: <b>{supportExpires}</b> }}
-                  />
+                  <FormattedMessage id="account.canceledFeedback" />
+                  <Link to="/contact" className="account__feedback">
+                    <FormattedMessage id="account.canceledLink" />
+                  </Link>
                 </P>
-                <ButtonSmallPrimary to="/upsell" icon="membership">
-                  <FormattedMessage
-                    id="button.supporter"
-                    values={{ b: (msg) => <b>{msg}</b> }}
-                  />
-                </ButtonSmallPrimary>
               </>
             ) : (
               <>
