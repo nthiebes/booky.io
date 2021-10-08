@@ -21,11 +21,11 @@ class Testimonials extends Component {
         </H2>
         <div className="testimonials">
           <Testimonial
-            name="Samira Stein"
-            twitter="SamiTalksAbout"
-            url="https://twitter.com/SamiTalksAbout"
-            image="_assets/illustrations/female.svg"
-            text={intl.formatMessage({ id: 'home.testimonial3' })}
+            name="Hyun-Kyung Yi"
+            twitter="booky_io"
+            url="https://twitter.com/booky_io"
+            image="_assets/illustrations/female2.svg"
+            text={intl.formatMessage({ id: 'home.testimonial2' })}
           />
           <Testimonial
             name="David Lafond"
@@ -35,12 +35,11 @@ class Testimonials extends Component {
             text={intl.formatMessage({ id: 'home.testimonial1' })}
           />
           <Testimonial
-            // Ricardo Sebastián
             name={intl.formatMessage({ id: 'home.anonymous' })}
             twitter="booky_io"
             url="https://twitter.com/booky_io"
-            image="_assets/illustrations/female2.svg"
-            text={intl.formatMessage({ id: 'home.testimonial2' })}
+            image="_assets/illustrations/male2.svg"
+            text={intl.formatMessage({ id: 'home.testimonial3' })}
           />
         </div>
       </Fragment>

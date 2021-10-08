@@ -1,5 +1,6 @@
 .testimonials-headline {
   padding: 0 calc(3% + 6px) 1rem;
+  overflow: visible;
 
   @include tablet-desktop {
     padding: 0 calc(3% + 6px) 1rem;
