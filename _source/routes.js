@@ -66,7 +66,7 @@ class Routes extends Component {
           <Route path="/bookmarklet" component={Bookmarklet} />
           <Route path="/features" component={Features} />
           <Route path="/supporter" component={Supporter} />
-          <Route path="/upsell" component={Upsell} />
+          <Route path="/upsell" component={restricted(Upsell)} />
           <Route path="/new" component={New} />
           <Route path="/shared/:id" component={Shared} />
           <Route path="/activate/:token" component={publicOnly(Login)} />

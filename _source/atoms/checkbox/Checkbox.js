@@ -8,7 +8,7 @@ export default class Checkbox extends Component {
   static propTypes = {
     id: PropTypes.string,
     checked: PropTypes.bool,
-    label: PropTypes.string,
+    label: PropTypes.node,
     name: PropTypes.string,
     value: PropTypes.string,
     className: PropTypes.string,
