@@ -98,7 +98,6 @@ export const addDashboard =
         onSuccess();
       },
       onError: () => {
-        // console.log('error', error);
         onError();
       }
     });
@@ -125,8 +124,30 @@ export const editDashboard =
         onSuccess && onSuccess();
       },
       onError: () => {
-        // console.log('error', error);
         onError && onError();
+      }
+    });
+  };
+
+export const shareDashboard =
+  ({ id, isPublic, onSuccess, onError }) =>
+  (dispatch) => {
+    fetcher({
+      url: `/dashboards/${id}`,
+      method: 'PATCH',
+      params: {
+        public: isPublic
+      },
+      onSuccess: () => {
+        dispatch({
+          type: 'SHARE_DASHBOARD',
+          isPublic,
+          id
+        });
+        onSuccess && onSuccess();
+      },
+      onError: (error) => {
+        onError && onError(error);
       }
     });
   };

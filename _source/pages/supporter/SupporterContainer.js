@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Component from './Supporter';
 
 const mapStateToProps = (state) => ({
-  premium: state.user.settings.premium,
+  premium: state.user.premium,
   stickyHeader: state.user.settings.stickyHeader,
   loggedIn: state.user.loggedIn
 });

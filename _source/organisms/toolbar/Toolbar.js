@@ -16,19 +16,28 @@ class Toolbar extends PureComponent {
     sticky: PropTypes.bool.isRequired,
     currentlySticky: PropTypes.bool.isRequired,
     activeDashboardName: PropTypes.string,
+    activeDashboardId: PropTypes.number,
+    isActiveDashboardPublic: PropTypes.bool,
     className: PropTypes.string,
     dashboardsStyle: PropTypes.string.isRequired,
     darkMode: PropTypes.bool.isRequired,
     categoriesPending: PropTypes.bool,
-    hasCategories: PropTypes.bool,
     openModal: PropTypes.func.isRequired,
     hasDashboards: PropTypes.bool,
+    isPremium: PropTypes.bool,
     intl: PropTypes.object.isRequired
   };
 
   state = {
-    dashboardModalOpen: false
+    dashboardModalOpen: false,
+    copied: false
   };
+
+  componentWillUnmount() {
+    window.clearTimeout(this.timeout);
+  }
+
+  timeout;
 
   getStickyClass = () => {
     const { sticky, headerSticky, currentlySticky } = this.props;
@@ -52,6 +61,37 @@ class Toolbar extends PureComponent {
     this.props.openModal('AddDashboard');
   };
 
+  onShareClick = () => {
+    const {
+      activeDashboardName,
+      activeDashboardId,
+      isActiveDashboardPublic,
+      openModal
+    } = this.props;
+
+    openModal('ShareDashboard', {
+      id: activeDashboardId,
+      name: activeDashboardName,
+      public: isActiveDashboardPublic
+    });
+  };
+
+  copy = () => {
+    navigator.clipboard.writeText(
+      `${window.location.origin}/shared/${this.props.activeDashboardId}`
+    );
+
+    this.setState({
+      copied: true
+    });
+
+    this.timeout = window.setTimeout(() => {
+      this.setState({
+        copied: false
+      });
+    }, 2000);
+  };
+
   render() {
     const {
       activeDashboardName,
@@ -59,10 +99,12 @@ class Toolbar extends PureComponent {
       dashboardsStyle,
       darkMode,
       categoriesPending,
-      hasCategories,
       hasDashboards,
-      intl
+      intl,
+      isPremium,
+      isActiveDashboardPublic
     } = this.props;
+    const { copied } = this.state;
 
     return (
       <section
@@ -74,9 +116,27 @@ class Toolbar extends PureComponent {
         )}
       >
         {dashboardsStyle === 'sidebar' && (
-          <H1 style="h3" className="toolbar__headline" noMargin>
-            {activeDashboardName || <Skeleton />}
-          </H1>
+          <>
+            {isActiveDashboardPublic && (
+              <Icon
+                icon="copy"
+                label={intl.formatMessage(
+                  {
+                    id: copied ? 'misc.copied' : 'modal.shareLinkButton'
+                  },
+                  {
+                    b: (msg) => msg
+                  }
+                )}
+                onClick={this.copy}
+                useSkeleton={!hasDashboards}
+                isButton
+              />
+            )}
+            <H1 style="h3" className="toolbar__headline" noMargin>
+              {activeDashboardName || <Skeleton />}
+            </H1>
+          </>
         )}
         {dashboardsStyle === 'tabs' && (
           <>
@@ -90,45 +150,70 @@ class Toolbar extends PureComponent {
             />
           </>
         )}
-        {hasCategories && (
+
+        {isPremium && (
           <>
-            {dashboardsStyle === 'tabs' ? (
-              <>
-                <Icon
-                  icon="add-category"
-                  className="booky--hide-desktop"
-                  label={intl.formatMessage({ id: 'modal.addCategory' })}
-                  onClick={this.onAddCategoryClick}
-                  useSkeleton={categoriesPending}
-                  isButton
-                />
-                <ButtonSmallPrimary
-                  icon="add-category"
-                  className="toolbar__button booky--hide-mobile-tablet"
-                  onClick={this.onAddCategoryClick}
-                  useSkeleton={categoriesPending}
-                >
-                  <FormattedMessage
-                    id="category.add"
-                    values={{ b: (msg) => <b>{msg}</b> }}
-                  />
-                </ButtonSmallPrimary>
-              </>
-            ) : (
-              <ButtonSmallPrimary
-                icon="add-category"
-                className="toolbar__add-category"
-                onClick={this.onAddCategoryClick}
-                useSkeleton={categoriesPending}
-              >
-                <FormattedMessage
-                  id="category.add"
-                  values={{ b: (msg) => <b>{msg}</b> }}
-                />
-              </ButtonSmallPrimary>
-            )}
+            <Icon
+              icon="share"
+              label={intl.formatMessage({ id: 'button.share' })}
+              onClick={this.onShareClick}
+              useSkeleton={!hasDashboards}
+              isButton
+              className="toolbar__share booky--hide-desktop"
+            />
+            <ButtonSmallPrimary
+              icon="share"
+              className={classNames(
+                'toolbar__share booky--hide-mobile-tablet',
+                dashboardsStyle === 'tabs' && 'toolbar__share--tabs'
+              )}
+              onClick={this.onShareClick}
+              useSkeleton={categoriesPending}
+            >
+              <FormattedMessage
+                id="button.share"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
+            </ButtonSmallPrimary>
           </>
         )}
+
+        {dashboardsStyle === 'tabs' ? (
+          <>
+            <Icon
+              icon="add-category"
+              className="booky--hide-desktop"
+              label={intl.formatMessage({ id: 'modal.addCategory' })}
+              onClick={this.onAddCategoryClick}
+              useSkeleton={categoriesPending}
+              isButton
+            />
+            <ButtonSmallPrimary
+              icon="add-category"
+              className="toolbar__button booky--hide-mobile-tablet"
+              onClick={this.onAddCategoryClick}
+              useSkeleton={categoriesPending}
+            >
+              <FormattedMessage
+                id="category.add"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
+            </ButtonSmallPrimary>
+          </>
+        ) : (
+          <ButtonSmallPrimary
+            icon="add-category"
+            className="toolbar__add-category"
+            onClick={this.onAddCategoryClick}
+            useSkeleton={categoriesPending}
+          >
+            <FormattedMessage
+              id="category.add"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonSmallPrimary>
+        )}
+
         <SearchField
           className="booky--hide-mobile-tablet"
           id="search-desktop"

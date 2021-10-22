@@ -1,4 +1,13 @@
 {
+    "button.share": "<b>Share</b> collection",
+    "modal.shareText": "Share your collection {name} or keep it private.",
+    "modal.shareVisibility": "Visibility",
+    "modal.sharePrivate": "Just for me",
+    "modal.sharePrivateText": "Nobody but you can access it.",
+    "modal.sharePublic": "Public via link",
+    "modal.sharePublicText": "Anyone who has the link can access it.",
+    "modal.shareLink": "Link to the collection:",
+    "modal.shareLinkButton": "<b>Copy</b> link",
     "account.canceledLink": "Please let us know!",
     "account.canceledFeedback": "Do you have any feedback on the supporter membership?",
     "account.canceledText": "You canceled your supporter membership.",

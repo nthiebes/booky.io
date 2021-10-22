@@ -3,7 +3,7 @@ import initialState from '../../initialState';
 
 // eslint-disable-next-line max-statements
 const dashboards = (state = {}, action) => {
-  const { name, id, type, dragData } = action;
+  const { name, isPublic, id, type, dragData } = action;
 
   switch (type) {
     case 'ADD_DASHBOARD':
@@ -29,6 +29,22 @@ const dashboards = (state = {}, action) => {
           return {
             ...dashboard,
             name
+          };
+        })
+      };
+    }
+
+    case 'SHARE_DASHBOARD': {
+      return {
+        ...state,
+        items: state.items.map((dashboard) => {
+          if (dashboard.id !== id) {
+            return dashboard;
+          }
+
+          return {
+            ...dashboard,
+            public: isPublic
           };
         })
       };

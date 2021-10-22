@@ -1,4 +1,13 @@
 {
+    "button.share": "Sammlung <b>teilen</b>",
+    "modal.shareText": "Teile deine Sammlung {name} oder halte sie privat.",
+    "modal.shareVisibility": "Sichtbarkeit",
+    "modal.sharePrivate": "Nur für mich",
+    "modal.sharePrivateText": "Niemand außer dir kann auf sie zugreifen.",
+    "modal.sharePublic": "Öffentlich via Link",
+    "modal.sharePublicText": "Alle, die den Link besitzen, können auf sie zugreifen.",
+    "modal.shareLink": "Link zur Sammlung:",
+    "modal.shareLinkButton": "Link <b>kopieren</b>",
     "account.canceledLink": "Teile es uns gerne mit!",
     "account.canceledFeedback": "Hast du Feedback zur Support-Mitgliedschaft?",
     "account.canceledText": "Du hast deine Support-Mitgliedschaft gekündigt.",

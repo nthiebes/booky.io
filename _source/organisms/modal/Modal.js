@@ -18,6 +18,7 @@ import Customize from './modals/Customize';
 import DeleteAccount from './modals/DeleteAccount';
 import SortCategories from './modals/SortCategoriesContainer';
 import CancelSubscription from './modals/CancelSubscription';
+import ShareDashboard from './modals/ShareDashboardContainer';
 
 export default class Modal extends PureComponent {
   static propTypes = {
@@ -87,6 +88,9 @@ export default class Modal extends PureComponent {
     DeleteDashboard: {
       type: DeleteDashboard,
       action: this.props.deleteDashboard
+    },
+    ShareDashboard: {
+      type: ShareDashboard
     },
     Customize: {
       type: Customize

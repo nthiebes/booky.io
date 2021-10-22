@@ -11,10 +11,16 @@ export const mapStateToProps = (state) => ({
       (dashboard) => dashboard.id === state.user.settings.defaultDashboardId
     ) || {}
   ).name,
+  isActiveDashboardPublic: (
+    state.dashboards.items.find(
+      (dashboard) => dashboard.id === state.user.settings.defaultDashboardId
+    ) || {}
+  ).public,
+  activeDashboardId: state.user.settings.defaultDashboardId,
   dashboardsStyle: state.user.settings.dashboardsStyle,
   darkMode: state.user.settings.darkMode,
+  isPremium: state.user.premium,
   categoriesPending: state.dashboards.pending,
-  hasCategories: state.categories.length > 0,
   hasDashboards: (state.dashboards.items || []).length > 0
 });
 
