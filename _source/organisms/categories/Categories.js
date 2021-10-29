@@ -46,7 +46,7 @@ class Categories extends PureComponent {
 
     return (
       <>
-        {!pending && <H1>{sharedDashboardName}</H1>}
+        {sharedDashboardName && <H1>{sharedDashboardName}</H1>}
         <Element
           className={classNames(
             'categories',
