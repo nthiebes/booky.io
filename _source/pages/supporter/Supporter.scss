@@ -222,4 +222,8 @@
 
 .supporter__account {
   margin-right: 1rem;
+
+  @include mobile {
+    margin-bottom: 1rem;
+  }
 }

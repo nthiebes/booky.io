@@ -209,8 +209,9 @@
     }
   }
 }
-
-.button--auto-width {
-  width: auto;
-  padding: 0 1.6rem;
+@include desktop {
+  .button--auto-width {
+    width: auto;
+    padding: 0 1.6rem;
+  }
 }

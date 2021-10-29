@@ -105,8 +105,8 @@ class Supporter extends PureComponent {
               <ButtonLargeBlue
                 icon="account"
                 to="/account#supporter"
-                contentBefore
                 autoWidth
+                contentBefore
                 className="supporter__account"
               >
                 <FormattedMessage
