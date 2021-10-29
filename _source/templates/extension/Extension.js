@@ -29,9 +29,13 @@ export default class Extension extends PureComponent {
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      updateExtensionData({
-        page: event.data
-      });
+      const { type, ...pageData } = event.data;
+
+      if (type === 'BOOKY') {
+        updateExtensionData({
+          page: pageData
+        });
+      }
     });
   }
 

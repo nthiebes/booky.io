@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-// import { config } from '../../config';
 import { postMessage } from '../../_utils/extension';
 
 export default class Fullscreen extends PureComponent {
@@ -22,9 +21,13 @@ export default class Fullscreen extends PureComponent {
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      updateExtensionData({
-        page: event.data
-      });
+      const { type, ...pageData } = event.data;
+
+      if (type === 'BOOKY') {
+        updateExtensionData({
+          page: pageData
+        });
+      }
     });
   }
 

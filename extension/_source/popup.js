@@ -45,7 +45,13 @@ chrome.runtime.onConnect.addListener(function (port) {
 function sendToIframe(data) {
   var receiver = iframe.contentWindow;
 
-  receiver.postMessage(data, host);
+  receiver.postMessage(
+    {
+      ...data,
+      type: 'BOOKY'
+    },
+    host
+  );
 }
 
 // Messages from the booky iframe
