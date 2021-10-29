@@ -426,7 +426,12 @@ class Supporter extends PureComponent {
               </tr>
               <tr>
                 <td className="booky--hide-mobile" />
-                <td className="supporter__compare-entry">
+                <td
+                  className={classNames(
+                    'supporter__compare-entry',
+                    !loggedIn && 'supporter__compare-entry--last'
+                  )}
+                >
                   <P className="supporter__compare-feature" ignoreDarkMode>
                     <Icon icon="check" color="blue" />
                     <strong>

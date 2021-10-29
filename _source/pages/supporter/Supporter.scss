@@ -182,6 +182,10 @@
       border-left: 0 none;
     }
   }
+
+  &.supporter__compare-entry--last {
+    padding-bottom: 2rem;
+  }
 }
 
 .supporter__compare-entry-plus {
