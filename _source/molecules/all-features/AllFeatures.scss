@@ -12,7 +12,7 @@
   padding: 1rem 1rem 0 1rem;
   max-width: 14rem;
   min-width: 14rem;
-  
+
   @include mobile {
     max-width: calc(47% - 6px);
     min-width: calc(47% - 6px);
@@ -21,15 +21,6 @@
 
 .all-features__feature-name {
   line-height: 1;
-}
-
-.all-features__icon {
-  border-radius: 30px;
-  color: $color-font--white;
-  background-color: $color-font--medium;
-  padding: 12px;
-  height: auto;
-  margin-bottom: 1rem;
 }
 
 .all-features__link {
