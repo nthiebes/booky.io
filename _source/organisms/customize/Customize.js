@@ -318,6 +318,7 @@ class Customize extends PureComponent {
           name="enableNotes"
           onChange={this.handleCheckboxChange}
           checked={enableNotes}
+          first={isExtension}
         />
         {error && (
           <ErrorMessage message={error} hasIcon className="customize__error" />
