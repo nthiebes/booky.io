@@ -75,7 +75,7 @@ export default class Link extends Component {
         tabIndex={tabIndex}
         onKeyDown={this.handleKeyDown}
         role={role}
-        ariaLabel={ariaLabel}
+        aria-label={ariaLabel}
         className={classNames(
           'link',
           color && `link--${color}`,

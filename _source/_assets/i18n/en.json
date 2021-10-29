@@ -220,6 +220,7 @@
     "category.editModeQuit": "Quit edit mode",
     "category.drag": "Move category",
     "category.empty": "Your collection {collection} doesn't have any categories yet. Add your first category now!",
+    "category.emptyViewOnly": "The collection {collection} doesn't have any categories yet.",
     "bookmark.add": "New <b>bookmark</b>",
     "bookmark.edit": "Edit bookmark",
     "bookmark.delete": "Delete bookmark",

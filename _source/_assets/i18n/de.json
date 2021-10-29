@@ -218,6 +218,7 @@
     "category.editModeQuit": "Editiermodus beenden",
     "category.drag": "Kategorie verschieben",
     "category.empty": "Deine Sammlung {collection} hat noch keine Kategorien. Füge jetzt eine Erste hinzu!",
+    "category.emptyViewOnly": "Die Sammlung {collection} hat noch keine Kategorien.",
     "bookmark.add": "Neues <b>Lesezeichen</b>",
     "bookmark.edit": "Lesezeichen bearbeiten",
     "bookmark.delete": "Lesezeichen löschen",

@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
 import Page from '../../templates/page';
+import Categories from '../../organisms/categories';
 import Section from '../../molecules/section';
+
+import './Shared.scss';
 
 class Shared extends Component {
   static propTypes = {
-    intl: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
+    dashboards: PropTypes.array,
     getDashboard: PropTypes.func.isRequired
-  };
-
-  state = {
-    username: '',
-    email: '',
-    pending: false,
-    error: null
   };
 
   componentDidMount() {
@@ -28,15 +23,22 @@ class Shared extends Component {
   }
 
   render() {
-    // const { intl } = this.props;
-    // const { username, email, pending, error, success } = this.state;
+    const { dashboards } = this.props;
 
     return (
       <Page>
-        <Section className="share">{'share'}</Section>
+        <Section>
+          <Categories
+            className="share__categories"
+            viewOnly
+            sharedDashboardName={
+              dashboards.length > 0 ? dashboards[0].name : ''
+            }
+          />
+        </Section>
       </Page>
     );
   }
 }
 
-export default injectIntl(withRouter(Shared));
+export default withRouter(Shared);

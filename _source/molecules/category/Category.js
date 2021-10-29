@@ -33,7 +33,8 @@ class Category extends PureComponent {
     isMobile: PropTypes.bool.isRequired,
     isExtension: PropTypes.bool.isRequired,
     isDragging: PropTypes.bool,
-    dragType: PropTypes.string
+    dragType: PropTypes.string,
+    viewOnly: PropTypes.bool
   };
 
   static defaultProps = {
@@ -46,20 +47,22 @@ class Category extends PureComponent {
   };
 
   componentDidMount() {
-    const { hidden, id, getBookmarks, noFetch, isExtension } = this.props;
+    const { hidden, id, getBookmarks, noFetch, isExtension, viewOnly } =
+      this.props;
 
-    if ((!hidden || isExtension) && !noFetch) {
+    if ((!hidden || isExtension || viewOnly) && !noFetch) {
       getBookmarks(id);
     }
   }
 
   toggleCategory = () => {
-    const { toggleCategory, hidden, id } = this.props;
+    const { toggleCategory, hidden, id, viewOnly } = this.props;
 
-    toggleCategory({
-      id,
-      hidden: !hidden
-    });
+    !viewOnly &&
+      toggleCategory({
+        id,
+        hidden: !hidden
+      });
   };
 
   toggleEditMode = () => {
@@ -148,13 +151,15 @@ class Category extends PureComponent {
       isMobile,
       isExtension,
       isDragging,
-      dragType
+      dragType,
+      viewOnly
     } = this.props;
     const { editMode, hoverEditMode } = this.state;
     const headerClassName = classNames(
       'category__header',
       `category__header--${color}`,
-      (editMode || hoverEditMode) && 'category__header--edit-mode'
+      (editMode || hoverEditMode) && 'category__header--edit-mode',
+      viewOnly && 'category__header--viewOnly'
     );
 
     return (
@@ -163,34 +168,44 @@ class Category extends PureComponent {
           <header
             className={headerClassName}
             onMouseLeave={
-              bookmarkEditOnHover && !isMobile ? this.disableEditMode : null
+              bookmarkEditOnHover && !isMobile && !viewOnly
+                ? this.disableEditMode
+                : null
             }
           >
-            <Icon
-              className={classNames(
-                'category__toggle-icon',
-                hidden && 'category__toggle-icon--rotate'
-              )}
-              icon="expand"
-              label={
-                hidden
-                  ? intl.formatMessage({ id: 'category.expand' })
-                  : intl.formatMessage({ id: 'category.reduce' })
-              }
-              onClick={this.toggleCategory}
-              isButton
-            />
+            {!viewOnly && (
+              <Icon
+                className={classNames(
+                  'category__toggle-icon',
+                  hidden && 'category__toggle-icon--rotate'
+                )}
+                icon="expand"
+                label={
+                  hidden
+                    ? intl.formatMessage({ id: 'category.expand' })
+                    : intl.formatMessage({ id: 'category.reduce' })
+                }
+                onClick={this.toggleCategory}
+                isButton
+              />
+            )}
             <H2
               style="h3"
-              className="category__name"
+              className={classNames(
+                'category__name',
+                viewOnly && 'category__name--viewOnly',
+                darkMode && viewOnly && 'category__name--viewOnly-darkMode'
+              )}
               onClick={this.toggleCategory}
               onMouseEnter={
-                bookmarkEditOnHover && !isMobile ? this.enableEditMode : null
+                bookmarkEditOnHover && !isMobile && !viewOnly
+                  ? this.enableEditMode
+                  : null
               }
             >
               {name}
             </H2>
-            {(editMode || hoverEditMode) && (
+            {(editMode || hoverEditMode) && !viewOnly && (
               <Fragment>
                 <Icon
                   icon="edit"
@@ -222,7 +237,7 @@ class Category extends PureComponent {
               onClick={this.toggleEditMode}
               isButton
             />
-            {minimalBookmarkButton && (
+            {minimalBookmarkButton && !viewOnly && (
               <Icon
                 icon="add-link"
                 label={intl.formatMessage(
@@ -246,12 +261,15 @@ class Category extends PureComponent {
                   dragType === 'bookmark' &&
                   'category_bookmarks--drag',
                 snapshot.isDraggingOver && 'category_bookmarks--drag-active',
-                hidden && !isExtension && 'category__bookmarks--hidden'
+                hidden &&
+                  !isExtension &&
+                  !viewOnly &&
+                  'category__bookmarks--hidden'
               )}
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              {(!hidden || isExtension) &&
+              {(!hidden || isExtension || viewOnly) &&
                 (pending ? (
                   <Fragment>
                     <Skeleton className="category__skeleton" />
@@ -272,6 +290,7 @@ class Category extends PureComponent {
                         note={bookmark.note}
                         favicon={bookmark.favicon}
                         onDeleteOrEditClick={this.toggleEditMode}
+                        viewOnly={viewOnly}
                       />
                     ))}
                     {error && (
@@ -283,7 +302,7 @@ class Category extends PureComponent {
                     )}
                   </Fragment>
                 ))}
-              {(!hidden || isExtension) &&
+              {(!hidden || isExtension || viewOnly) &&
                 !pending &&
                 bookmarks.length === 0 &&
                 !error && (
@@ -308,6 +327,7 @@ class Category extends PureComponent {
         {!hidden &&
           !error &&
           !pending &&
+          !viewOnly &&
           !minimalBookmarkButton &&
           !isExtension && (
             <ButtonSmallPrimary

@@ -63,6 +63,10 @@
   }
 }
 
+.bookmark__favicon--viewOnly {
+  pointer-events: none;
+}
+
 .bookmark__note {
   padding-left: 24px;
   white-space: pre-wrap;

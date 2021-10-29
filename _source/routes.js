@@ -7,6 +7,7 @@ import { restricted } from './templates/restricted';
 import { publicOnly } from './templates/public-only';
 import Loading from './pages/loading';
 import Home from './pages/home';
+import Shared from './pages/shared';
 
 const About = lazy(() => import('./pages/about'));
 const Help = lazy(() => import('./pages/help'));
@@ -29,7 +30,6 @@ const Features = lazy(() => import('./pages/features'));
 const Supporter = lazy(() => import('./pages/supporter'));
 const Upsell = lazy(() => import('./pages/upsell'));
 const New = lazy(() => import('./pages/new'));
-const Shared = lazy(() => import('./pages/shared'));
 const Terms = lazy(() => import('./pages/terms'));
 
 class Routes extends Component {

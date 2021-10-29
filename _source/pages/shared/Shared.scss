@@ -1,17 +1,5 @@
-.forgot .section__content {
-  @include tablet {
-    max-width: 40rem;
-  }
-
-  @include desktop {
-    display: flex;
-    max-width: 50rem;
-    justify-content: center;
-  }
-}
-
-.forgot__illustration {
-  flex-shrink: 0;
-  margin-left: 3rem;
-  margin-top: 5rem;
+.share__categories {
+  margin: 1rem 0 0 -6px !important;
+  padding: 0 !important;
+  width: calc(100% + 12px) !important;
 }

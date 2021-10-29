@@ -113,6 +113,22 @@
     color: $color-font--primary;
   }
 }
+
+.category__name--viewOnly {
+  margin-left: 6px !important;
+  user-select: initial;
+  cursor: initial;
+
+  &:active {
+    color: $color-font--medium;
+  }
+}
+
+.category__name--viewOnly-darkMode {
+  &:active {
+    color: $color-font--light;
+  }
+}
 /* stylelint-enable */
 
 .category__button {

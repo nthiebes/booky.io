@@ -203,43 +203,42 @@ export const dragDashboard = (dragData) => (dispatch) => {
 };
 
 export const getDashboard = (id) => (dispatch) => {
-  // dispatch(
-  //   updateDashboardsData({
-  //     pending: true
-  //   })
-  // );
+  dispatch(
+    updateDashboardsData({
+      pending: true
+    })
+  );
 
   fetcher({
     url: `/dashboards/${id}/shared`,
     onSuccess: ({ name, activeCategories }) => {
-      console.log(name, activeCategories);
-      // dispatch(
-      //   updateDashboardsData({
-      //     items: dashboards.map((dashboard) => ({
-      //       ...dashboard,
-      //       name: decodeEmoji(dashboard.name)
-      //     })),
-      //     pending: false
-      //   })
-      // );
-      // dispatch(
-      //   setCategories(
-      //     activeCategories.map((category) => ({
-      //       ...category,
-      //       name: decodeEmoji(category.name),
-      //       pending: true
-      //     }))
-      //   )
-      // );
+      dispatch(
+        updateDashboardsData({
+          items: [
+            {
+              name: decodeEmoji(name)
+            }
+          ],
+          pending: false
+        })
+      );
+      dispatch(
+        setCategories(
+          activeCategories.map((category) => ({
+            ...category,
+            name: decodeEmoji(category.name),
+            pending: true
+          }))
+        )
+      );
     },
     onError: (error) => {
-      console.log('error', error);
-      // dispatch(
-      //   updateDashboardsData({
-      //     error,
-      //     pending: false
-      //   })
-      // );
+      dispatch(
+        updateDashboardsData({
+          error,
+          pending: false
+        })
+      );
     }
   });
 };
