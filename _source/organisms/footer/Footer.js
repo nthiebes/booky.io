@@ -128,6 +128,7 @@ class Footer extends PureComponent {
             <Link
               to="/"
               title={intl.formatMessage({ id: 'menu.home' })}
+              ariaLabel={intl.formatMessage({ id: 'menu.home' })}
               className="footer__logo"
             >
               <Logo />

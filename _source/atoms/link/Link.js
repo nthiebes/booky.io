@@ -23,7 +23,8 @@ export default class Link extends Component {
     activeClassName: PropTypes.string,
     noUnderline: PropTypes.bool,
     role: PropTypes.string,
-    hasBadge: PropTypes.bool
+    hasBadge: PropTypes.bool,
+    ariaLabel: PropTypes.string
   };
 
   static defaultProps = {
@@ -52,7 +53,8 @@ export default class Link extends Component {
       activeClassName,
       noUnderline,
       role,
-      hasBadge
+      hasBadge,
+      ariaLabel
     } = this.props;
     const LinkComponent = isNavLink ? NavLink : RegularLink;
     const CustomTag = href ? 'a' : LinkComponent;
@@ -73,6 +75,7 @@ export default class Link extends Component {
         tabIndex={tabIndex}
         onKeyDown={this.handleKeyDown}
         role={role}
+        ariaLabel={ariaLabel}
         className={classNames(
           'link',
           color && `link--${color}`,

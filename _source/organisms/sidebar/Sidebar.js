@@ -88,6 +88,7 @@ class Sidebar extends PureComponent {
           <Link
             to="/"
             title={intl.formatMessage({ id: 'menu.home' })}
+            ariaLabel={intl.formatMessage({ id: 'menu.home' })}
             className="sidebar__logo"
             onClick={closeSidebar}
             tabIndex={open ? '0' : '-1'}
