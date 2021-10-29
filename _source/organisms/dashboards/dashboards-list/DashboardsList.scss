@@ -26,7 +26,6 @@
 
 .dashboards__list {
   transition: opacity 0.3s linear;
-  margin-bottom: 1rem;
 }
 
 .dashboards__list--edit-mode {
@@ -220,7 +219,7 @@
 
 .dashboards__button,
 .dashboards__button-import {
-  margin: 0 0 1.5rem calc(3vw + 6px);
+  margin: 1rem 0 1.5rem calc(3vw + 6px);
 
   @include desktop {
     margin: 1rem 0 0.5rem 36px;
