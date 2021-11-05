@@ -1,0 +1,117 @@
+@import "../../templates/booky/config";
+
+.terms__iubenda {
+  display: none !important;
+}
+
+#iub-pp-container {
+  h1 {
+    display: none;
+  }
+
+  p {
+    font-family: $font-family--text;
+    line-height: 1.5;
+    padding-bottom: 1rem;
+    word-wrap: break-word;
+  }
+
+  .iub_header p:first-of-type {
+    margin-top: 1rem;
+  }
+
+  h2,
+  h3,
+  h4 {
+    color: $color-font--dark;
+    font-family: $font-family--heading;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+    color: $color-font--medium;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+    color: $color-font--medium;
+    line-height: 1.3;
+  }
+
+  h4,
+  h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    padding-bottom: 0.3rem;
+    color: $color-font--dark;
+    line-height: 1.5;
+  }
+
+  ul {
+    margin-bottom: 1rem;
+  }
+
+  li {
+    list-style: none;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    position: relative;
+  }
+
+  /* stylelint-disable a11y/content-property-no-static-value */
+  li::before {
+    content: "»";
+    position: absolute;
+    left: 0;
+  }
+  /* stylelint-enable */
+
+  a {
+    font-size: 1em;
+    position: relative;
+    text-decoration: underline;
+    transition: color 0.2s linear;
+    display: inline-flex;
+    cursor: pointer;
+    text-decoration-skip-ink: auto;
+    word-break: break-word;
+    color: $color-font--primary;
+
+    &:active,
+    &:focus {
+      color: $color-font--medium;
+    }
+
+    @include desktop {
+      &:hover {
+        color: $color-font--medium;
+      }
+    }
+  }
+}
+
+.terms--darkMode #iub-pp-container {
+  p,
+  ul {
+    color: $color-font--white;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: $color-font--light;
+  }
+}
