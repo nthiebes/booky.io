@@ -464,6 +464,7 @@
     "next.upcoming": "What do you want to see after that?",
     "next.option1": "Show notes in the search results",
     "next.option2": "Define a collection as the start page for each device/browser",
+    "next.option3": "Edit bookmarks/categories/collections directly in the search results",
     "menu.next": "Next",
     "help.bookmarklet.question": "How do I use the bookmarklet?",
     "bookmarklet.mobile1": "Save this page as a bookmark.",
@@ -495,6 +496,5 @@
     "bookmarklet.learnMore": "You can find out more here: ",
     "misc.desktop": "Desktop",
     "search.clear": "Clear search term",
-    "next.option3": "Edit bookmarks/categories/collections directly in the search results",
     "menu.features": "Features"
 }

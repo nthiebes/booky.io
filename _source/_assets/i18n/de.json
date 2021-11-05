@@ -462,6 +462,7 @@
     "next.upcoming": "Was möchtest du danach sehen?",
     "next.option1": "Notizen in den Suchergebnissen anzeigen",
     "next.option2": "Festlegen einer Sammlung als Startseite pro Gerät/Browser",
+    "next.option3": "Lesezeichen/Kategorien/Sammlungen direkt in den Suchergebnissen bearbeiten",
     "menu.next": "Abstimmung",
     "help.bookmarklet.question": "Wie nutze ich das Bookmarklet?",
     "bookmarklet.mobile1": "Speichere diese Seite als Lesezeichen.",
@@ -493,6 +494,5 @@
     "bookmarklet.learnMore": "Hier kannst du mehr erfahren: ",
     "misc.desktop": "Desktop",
     "search.clear": "Suchbegriff entfernen",
-    "next.option3": "Lesezeichen/Kategorien/Sammlungen direkt in den Suchergebnissen bearbeiten",
     "menu.features": "Funktionen"
 }
