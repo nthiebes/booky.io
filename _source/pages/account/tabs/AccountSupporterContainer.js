@@ -8,7 +8,8 @@ const mapStateToProps = (state) => ({
   isPremium: state.user.premium,
   supportAmount: state.user.supportAmount,
   supportExpires: state.user.supportExpires,
-  supportStart: state.user.supportStart
+  supportStart: state.user.supportStart,
+  language: state.intl.locale
 });
 const mapDispatchToProps = {
   openModal,

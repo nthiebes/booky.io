@@ -4,7 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import P from '../../../atoms/paragraph';
 import { H2 } from '../../../atoms/headline';
-import { ButtonSmallPrimary, ButtonSmallLight } from '../../../atoms/button';
+import { ButtonSmallPrimary } from '../../../atoms/button';
 import Input from '../../../atoms/input';
 import Label from '../../../atoms/label';
 import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
@@ -19,7 +19,8 @@ class AccountSupporter extends PureComponent {
     supportExpires: PropTypes.string,
     supportStart: PropTypes.string,
     isPremium: PropTypes.bool,
-    updateSubscription: PropTypes.func.isRequired
+    updateSubscription: PropTypes.func.isRequired,
+    language: PropTypes.string.isRequired
   };
 
   state = {
@@ -61,8 +62,10 @@ class AccountSupporter extends PureComponent {
   };
 
   handleCancelClick = () => {
-    this.props.openModal('CancelSubscription', {
-      date: 'DATE'
+    const { language, openModal } = this.props;
+
+    openModal('CancelSubscription', {
+      date: new Date('2021-11-12 09:20:23').toLocaleDateString(language)
     });
   };
 
@@ -74,8 +77,8 @@ class AccountSupporter extends PureComponent {
       newSupportAmount,
       updateSuccess
     } = this.state;
-    const { intl, isPremium } = this.props;
-    const supportExpires = 'DATE';
+    const { intl, isPremium, language } = this.props;
+    const supportExpires = new Date('2021-11-12 09:20:23');
 
     return (
       <>
@@ -106,7 +109,9 @@ class AccountSupporter extends PureComponent {
             {supportExpires && (
               <P className="account__overview">
                 <FormattedMessage id="account.date" />
-                <b className="account__overview-value">{supportExpires}</b>
+                <b className="account__overview-value">
+                  {supportExpires.toLocaleDateString(language)}
+                </b>
               </P>
             )}
 
