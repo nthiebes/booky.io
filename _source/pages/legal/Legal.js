@@ -29,7 +29,7 @@ export default class Legal extends Component {
               <P>
                 {'Nico Thiebes'}
                 <br />
-                {'Veritaskai 8'}
+                {'Wilseder Ring 43'}
                 <br />
                 {'21079 Hamburg'}
               </P>
@@ -106,7 +106,7 @@ export default class Legal extends Component {
               <P>
                 {'Nico Thiebes'}
                 <br />
-                {'Veritaskai 8'}
+                {'Wilseder Ring 43'}
                 <br />
                 {'21079 Hamburg'}
               </P>
