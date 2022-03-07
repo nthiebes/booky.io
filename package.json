@@ -123,7 +123,7 @@
     "redux-mock-store": "1.5.4",
     "replace": "1.2.1",
     "rimraf": "3.0.2",
-    "sass-loader": "10.2.0",
+    "sass-loader": "12.6.0",
     "style-loader": "2.0.0",
     "stylelint": "13.13.1",
     "stylelint-a11y": "1.2.3",
