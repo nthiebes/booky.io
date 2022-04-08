@@ -93,6 +93,7 @@ class Menu extends PureComponent {
             color="light"
             isNavLink
             noUnderline
+            hasBadge={name === 'new'}
             // hasBadge={
             //   (voted < config.POLL_VERSION && name === 'next') || name === 'new'
             // }
