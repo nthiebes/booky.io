@@ -8,13 +8,13 @@ import Page from '../../templates/page';
 import { H1, H2 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Illustration from '../../atoms/illustration';
-import Radio from '../../atoms/radio';
-import { ButtonLargeBlue } from '../../atoms/button';
-import Skeleton from '../../atoms/skeleton';
-import { ErrorMessage } from '../../atoms/messages';
+// import Radio from '../../atoms/radio';
+// import { ButtonLargeBlue } from '../../atoms/button';
+// import Skeleton from '../../atoms/skeleton';
+// import { ErrorMessage } from '../../atoms/messages';
+// import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
-import Form from '../../molecules/form';
 
 const getPollPercentages = (results) => {
   const allVotes = results[0].votes + results[1].votes + results[2].votes;
@@ -130,28 +130,28 @@ export default class Next extends PureComponent {
   };
 
   render() {
-    const {
-      pollResults,
-      pending,
-      pollPercentages,
-      pollResultsAnimation,
-      error,
-      votePending,
-      voteError,
-      voted
-    } = this.state;
+    // const {
+    //   pollResults,
+    //   pending,
+    //   pollPercentages,
+    //   pollResultsAnimation,
+    //   error,
+    //   votePending,
+    //   voteError,
+    //   voted
+    // } = this.state;
     const disqusConfig = {
       url: 'https://booky.io/next',
       identifier: 'next',
       title: 'booky.io | Next'
     };
-    let result1, result2, result3;
+    // let result1, result2, result3;
 
-    if (pollPercentages) {
-      result1 = pollResultsAnimation ? `${pollPercentages[0]}%` : '4rem';
-      result2 = pollResultsAnimation ? `${pollPercentages[1]}%` : '4rem';
-      result3 = pollResultsAnimation ? `${pollPercentages[2]}%` : '4rem';
-    }
+    // if (pollPercentages) {
+    //   result1 = pollResultsAnimation ? `${pollPercentages[0]}%` : '4rem';
+    //   result2 = pollResultsAnimation ? `${pollPercentages[1]}%` : '4rem';
+    //   result3 = pollResultsAnimation ? `${pollPercentages[2]}%` : '4rem';
+    // }
 
     return (
       <Page>
@@ -171,7 +171,10 @@ export default class Next extends PureComponent {
             <H2>
               <FormattedMessage id="next.upcoming" />
             </H2>
-            {pending && (
+            <P>
+              <FormattedMessage id="next.text" />
+            </P>
+            {/* {pending && (
               <>
                 <Skeleton className="next__skeleton" />
                 <Skeleton className="next__skeleton" />
@@ -261,7 +264,7 @@ export default class Next extends PureComponent {
                   <FormattedMessage id="button.send" />
                 </ButtonLargeBlue>
               </Form>
-            )}
+            )} */}
           </span>
           <Illustration
             name="next"
