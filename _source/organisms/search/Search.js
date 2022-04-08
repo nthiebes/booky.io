@@ -184,8 +184,7 @@ class Search extends PureComponent {
                           url={bookmark.url}
                           note={bookmark.note}
                           favicon={bookmark.favicon}
-                          // eslint-disable-next-line no-empty-function
-                          onDeleteOrEditClick={() => {}}
+                          onDeleteOrEditClick={this.toggleEditMode}
                           isSearch
                         />
                       ))}
