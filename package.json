@@ -38,7 +38,7 @@
   "license": "SEE LICENSE IN \"LICENSE\"",
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
-    "@hot-loader/react-dom": "17.0.1",
+    "@hot-loader/react-dom": "17.0.2",
     "@sentry/browser": "6.7.1",
     "abortcontroller-polyfill": "1.7.3",
     "classnames": "2.3.1",
