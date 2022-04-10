@@ -69,8 +69,8 @@ class Sidebar extends PureComponent {
       hasSidebar,
       darkMode,
       isBeta,
-      newsVersion,
-      voted
+      newsVersion
+      // voted
     } = this.props;
     const { pathname } = location;
     const { logoutPending } = this.state;
@@ -250,7 +250,7 @@ class Sidebar extends PureComponent {
                       onClick={closeSidebar}
                       tabIndex={open ? '0' : '-1'}
                       noUnderline
-                      hasBadge={voted < config.POLL_VERSION}
+                      // hasBadge={voted < config.POLL_VERSION}
                     >
                       <Icon icon="next" />
                       <span
