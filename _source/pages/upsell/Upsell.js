@@ -25,7 +25,8 @@ class Upsell extends PureComponent {
     intl: PropTypes.object.isRequired,
     username: PropTypes.string,
     email: PropTypes.string,
-    newSubscription: PropTypes.func.isRequired
+    newSubscription: PropTypes.func.isRequired,
+    updateUserData: PropTypes.func.isRequired
   };
 
   state = {
@@ -61,7 +62,7 @@ class Upsell extends PureComponent {
             },
             onApprove: ({ subscriptionID }) => {
               const { supportAmount } = this.state;
-              const { newSubscription } = this.props;
+              const { newSubscription, updateUserData } = this.props;
 
               this.setState({ error: null, pending: true });
 
@@ -70,6 +71,9 @@ class Upsell extends PureComponent {
                 supportAmount,
                 onSuccess: () => {
                   this.setState({ error: null, success: true, pending: false });
+                  updateUserData({
+                    premium: true
+                  });
                 },
                 onError: (error) => {
                   this.setState({ error: error, pending: false });
