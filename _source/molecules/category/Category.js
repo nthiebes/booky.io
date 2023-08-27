@@ -227,16 +227,18 @@ class Category extends PureComponent {
                 />
               </Fragment>
             )}
-            <Icon
-              icon={editMode ? 'close' : 'more-horiz'}
-              label={
-                editMode
-                  ? intl.formatMessage({ id: 'category.editModeQuit' })
-                  : intl.formatMessage({ id: 'category.editMode' })
-              }
-              onClick={this.toggleEditMode}
-              isButton
-            />
+            {!viewOnly && (
+              <Icon
+                icon={editMode ? 'close' : 'more-horiz'}
+                label={
+                  editMode
+                    ? intl.formatMessage({ id: 'category.editModeQuit' })
+                    : intl.formatMessage({ id: 'category.editMode' })
+                }
+                onClick={this.toggleEditMode}
+                isButton
+              />
+            )}
             {minimalBookmarkButton && !viewOnly && (
               <Icon
                 icon="add-link"
