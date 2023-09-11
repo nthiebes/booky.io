@@ -121,7 +121,12 @@ export default class Input extends PureComponent {
       <>
         {label && <Label htmlFor={id}>{label}</Label>}
         <span className={classNames('input', className)}>
-          <input {...inputProps} />
+          {type === 'number' ? (
+            <input {...inputProps} pattern="[0-9]*" />
+          ) : (
+            <input {...inputProps} />
+          )}
+
           {validation && !pending && !error && (
             <>
               <Icon
