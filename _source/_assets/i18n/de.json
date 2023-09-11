@@ -1,8 +1,8 @@
 {
     "error.logic.user.expiredToken": "Dein Aktivierungs-Link ist leider abgelaufen. Aber keine Sorge! Du kannst deine Aktivierungsmail hier neu anfordern: {resend}",
-    "button.share": "Sammlung <b>teilen</b>",
+    "button.share": "Sichtbarkeit",
     "modal.shareText": "Teile deine Sammlung {name} oder halte sie privat.",
-    "modal.shareVisibility": "Sichtbarkeit",
+    "modal.shareVisibility": "Sichtbarkeit einstellen",
     "modal.sharePrivate": "Nur für mich",
     "modal.sharePrivateText": "Niemand außer dir kann auf sie zugreifen.",
     "modal.sharePublic": "Öffentlich via Link",
@@ -495,5 +495,7 @@
     "bookmarklet.learnMore": "Hier kannst du mehr erfahren: ",
     "misc.desktop": "Desktop",
     "search.clear": "Suchbegriff entfernen",
-    "menu.features": "Funktionen"
+    "menu.features": "Funktionen",
+    "misc.shared": "Öffentlich",
+    "misc.private": "Privat"
 }

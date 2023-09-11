@@ -7,8 +7,9 @@ import Component from './AccountSupporter';
 const mapStateToProps = (state) => ({
   isPremium: state.user.premium,
   supportAmount: state.user.supportAmount,
-  supportExpires: state.user.supportExpires,
+  supportExpiration: state.user.supportExpiration,
   supportStart: state.user.supportStart,
+  subscriptionDate: state.user.subscriptionDate,
   language: state.intl.locale
 });
 const mapDispatchToProps = {

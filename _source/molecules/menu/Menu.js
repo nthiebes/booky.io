@@ -41,10 +41,10 @@ const menuItemsLoggedIn = [
     name: 'help',
     route: '/help'
   },
-  {
-    name: 'next',
-    route: '/next'
-  },
+  // {
+  //   name: 'next',
+  //   route: '/next'
+  // },
   {
     name: 'new',
     route: '/new'

@@ -191,6 +191,7 @@
   color: $color-font--dark;
   border-color: $color-border--light;
   background-color: $color-background--light;
+  border-bottom: 2px solid darken($color-background--light, 15%);
 
   @include mobile-tablet() {
     &:active,

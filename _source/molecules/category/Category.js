@@ -293,6 +293,7 @@ class Category extends PureComponent {
                         favicon={bookmark.favicon}
                         onDeleteOrEditClick={this.toggleEditMode}
                         viewOnly={viewOnly}
+                        color={color}
                       />
                     ))}
                     {error && (

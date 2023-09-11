@@ -255,7 +255,7 @@ class Home extends Component {
               {'Firefox '}
               <FormattedMessage id="misc.extension" />
             </Link>
-            <Link
+            {/* <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
               target="_blank"
               color="light"
@@ -271,7 +271,7 @@ class Home extends Component {
               />
               {'Opera '}
               <FormattedMessage id="misc.extension" />
-            </Link>
+            </Link> */}
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
               target="_blank"

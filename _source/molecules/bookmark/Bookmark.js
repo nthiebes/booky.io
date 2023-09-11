@@ -30,7 +30,8 @@ class Bookmark extends PureComponent {
     isExtension: PropTypes.bool.isRequired,
     enableNotes: PropTypes.bool.isRequired,
     note: PropTypes.string,
-    viewOnly: PropTypes.bool
+    viewOnly: PropTypes.bool,
+    color: PropTypes.string
   };
 
   state = {
@@ -125,7 +126,8 @@ class Bookmark extends PureComponent {
       isExtension,
       enableNotes,
       note,
-      viewOnly
+      viewOnly,
+      color
     } = this.props;
     const { hoverEditMode, showNotes } = this.state;
 
@@ -150,17 +152,18 @@ class Bookmark extends PureComponent {
           >
             <span className="bookmark__wrapper">
               {!favicon || favicon === 'default' ? (
-                <Icon
-                  icon="earth"
-                  size="tiny"
+                <div
                   className={classNames(
-                    'bookmark__favicon',
-                    darkMode && 'bookmark__favicon--dark-mode',
+                    'bookmark__fallback-icon',
+                    `bookmark__fallback-icon--${color}`,
                     viewOnly && 'bookmark__favicon--viewOnly'
                   )}
-                  dragHandleProps={provided.dragHandleProps}
-                  label={intl.formatMessage({ id: 'bookmark.drag' })}
-                />
+                  {...provided.dragHandleProps}
+                  aria-label={intl.formatMessage({ id: 'bookmark.drag' })}
+                  title={intl.formatMessage({ id: 'bookmark.drag' })}
+                >
+                  {name.substring(0, 1).toUpperCase()}
+                </div>
               ) : (
                 <img
                   src={favicon}

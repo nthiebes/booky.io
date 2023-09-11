@@ -9,6 +9,7 @@ import Icon from '../../../atoms/icon';
 import { H2 } from '../../../atoms/headline';
 import { ButtonSmallPrimary } from '../../../atoms/button';
 import Skeleton from '../../../atoms/skeleton';
+import { Badge } from '../../../atoms/badge';
 
 class DashboardsList extends PureComponent {
   static propTypes = {
@@ -25,7 +26,8 @@ class DashboardsList extends PureComponent {
     closeSidebar: PropTypes.func.isRequired,
     isDragging: PropTypes.bool,
     dragType: PropTypes.string,
-    minimalBookmarkButton: PropTypes.bool
+    minimalBookmarkButton: PropTypes.bool,
+    isPremium: PropTypes.bool
   };
 
   static defaultProps = {
@@ -95,7 +97,8 @@ class DashboardsList extends PureComponent {
       closeSidebar,
       isDragging,
       dragType,
-      minimalBookmarkButton
+      minimalBookmarkButton,
+      isPremium
     } = this.props;
     const { editMode } = this.state;
     const noDashboards = dashboards.length === 0;
@@ -219,6 +222,11 @@ class DashboardsList extends PureComponent {
                             </span>
                           )}
                         </Droppable>
+                        {isPremium && dashboard.public && (
+                          <Badge className="dashboards__badge">
+                            <FormattedMessage id="misc.shared" />
+                          </Badge>
+                        )}
                         {editMode && (
                           <Fragment>
                             <Icon

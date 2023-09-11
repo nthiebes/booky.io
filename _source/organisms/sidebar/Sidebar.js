@@ -67,8 +67,8 @@ class Sidebar extends PureComponent {
       className,
       hasSidebar,
       darkMode,
-      newsVersion,
-      voted
+      newsVersion
+      // voted
     } = this.props;
     const { pathname } = location;
     const { logoutPending } = this.state;
@@ -288,7 +288,7 @@ class Sidebar extends PureComponent {
                   </li>
                 </>
               )}
-              {loggedIn && (
+              {/* {loggedIn && (
                 <li>
                   <Link
                     className={classNames(
@@ -313,7 +313,7 @@ class Sidebar extends PureComponent {
                     </span>
                   </Link>
                 </li>
-              )}
+              )} */}
               {loggedIn && newsVersion < config.NEWS_VERSION && (
                 <li>
                   <Link

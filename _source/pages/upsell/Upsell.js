@@ -72,7 +72,8 @@ class Upsell extends PureComponent {
                 onSuccess: () => {
                   this.setState({ error: null, success: true, pending: false });
                   updateUserData({
-                    premium: true
+                    premium: true,
+                    supportExpiration: null
                   });
                 },
                 onError: (error) => {

@@ -54,7 +54,7 @@ export const cancelSubscription =
         dispatch({
           type: 'UPDATE_USER',
           userData: {
-            supportExpires: 'DATE'
+            supportExpiration: data.supportExpiration
           }
         });
 

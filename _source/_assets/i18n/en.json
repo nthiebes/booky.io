@@ -1,6 +1,6 @@
 {
     "error.logic.user.expiredToken": "Unfortunately, your activation link is outdated. But no worries! You can resend your activation email here: {resend}",
-    "button.share": "<b>Share</b> collection",
+    "button.share": "<b>Edit</b> visibility",
     "modal.shareText": "Share your collection {name} or keep it private.",
     "modal.shareVisibility": "Visibility",
     "modal.sharePrivate": "Just for me",
@@ -26,7 +26,7 @@
     "account.newAmount": "New monthly amount",
     "account.updateSupporter": "Manage your membership",
     "account.yourAmount": "Your monthly amount:",
-    "account.memberships": "Your memberships",
+    "account.memberships": "Your membership",
     "account.supporterCanceled": "Supporter (canceled)",
     "account.supporter": "Supporter",
     "account.member": "Member",
@@ -497,5 +497,7 @@
     "bookmarklet.learnMore": "You can find out more here: ",
     "misc.desktop": "Desktop",
     "search.clear": "Clear search term",
-    "menu.features": "Features"
+    "menu.features": "Features",
+    "misc.shared": "Public",
+    "misc.private": "Private"
 }

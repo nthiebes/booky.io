@@ -8,7 +8,7 @@ import Booky from './templates/booky';
 import fetcher from './_utils/fetcher';
 import { setLanguage } from './_utils/language';
 import { loadPolyfills } from './_utils/polyfills';
-import { loadScript, loadGoogleAnalytics } from './_utils/script';
+import { loadScript } from './_utils/script';
 import configureStore, { history } from './configureStore';
 import initialState from './initialState';
 
@@ -85,7 +85,7 @@ const loadingDone = () => {
     });
   }
 
-  loadGoogleAnalytics();
+  // loadGoogleAnalytics();
 
   render(
     <AppContainer>

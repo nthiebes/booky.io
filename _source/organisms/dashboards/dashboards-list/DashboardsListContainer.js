@@ -13,7 +13,8 @@ const mapStateToProps = (state) => ({
   closeEditMode: state.user.settings.closeEditMode,
   isDragging: state.dragging.isDragging,
   dragType: state.dragging.type,
-  minimalBookmarkButton: state.user.settings.minimalBookmarkButton
+  minimalBookmarkButton: state.user.settings.minimalBookmarkButton,
+  isPremium: state.user.premium
 });
 const mapDispatchToProps = {
   openModal,

@@ -201,7 +201,7 @@ class FeaturesPage extends PureComponent {
               {'Firefox '}
               <FormattedMessage id="misc.extension" />
             </Link>
-            <Link
+            {/* <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
               target="_blank"
               color="light"
@@ -217,7 +217,7 @@ class FeaturesPage extends PureComponent {
               />
               {'Opera '}
               <FormattedMessage id="misc.extension" />
-            </Link>
+            </Link> */}
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
               target="_blank"

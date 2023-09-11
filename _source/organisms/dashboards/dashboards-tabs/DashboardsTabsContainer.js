@@ -8,7 +8,8 @@ export const mapStateToProps = (state) => ({
   dashboards: state.dashboards.items || [],
   activeId: state.user.settings.defaultDashboardId,
   darkMode: state.user.settings.darkMode,
-  closeEditMode: state.user.settings.closeEditMode
+  closeEditMode: state.user.settings.closeEditMode,
+  isPremium: state.user.premium
 });
 
 export const mapDispatchToProps = {

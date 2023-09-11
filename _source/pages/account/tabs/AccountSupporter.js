@@ -11,12 +11,22 @@ import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
 import Form from '../../../molecules/form';
 import Link from '../../../atoms/link/Link';
 
+const addMonths = (date, months) => {
+  const d = date.getDate();
+
+  date.setMonth(date.getMonth() + Number(months));
+  if (date.getDate() !== d) {
+    date.setDate(0);
+  }
+  return date;
+};
+
 class AccountSupporter extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     openModal: PropTypes.func.isRequired,
     supportAmount: PropTypes.number,
-    supportExpires: PropTypes.string,
+    supportExpiration: PropTypes.string,
     supportStart: PropTypes.string,
     isPremium: PropTypes.bool,
     updateSubscription: PropTypes.func.isRequired,
@@ -65,7 +75,7 @@ class AccountSupporter extends PureComponent {
     const { language, openModal } = this.props;
 
     openModal('CancelSubscription', {
-      date: new Date('2021-11-12 09:20:23').toLocaleDateString(language)
+      date: addMonths(new Date(), 1).toLocaleDateString(language)
     });
   };
 
@@ -77,8 +87,13 @@ class AccountSupporter extends PureComponent {
       newSupportAmount,
       updateSuccess
     } = this.state;
-    const { intl, isPremium, language } = this.props;
-    const supportExpires = new Date('2021-11-12 09:20:23');
+    const { intl, language, supportExpiration, isPremium, subscriptionDate } =
+      this.props;
+    const expirationDate = supportExpiration
+      ? new Date(supportExpiration).toLocaleDateString(language)
+      : addMonths(new Date(), 1).toLocaleDateString(language);
+
+    console.log(subscriptionDate);
 
     return (
       <>
@@ -90,7 +105,7 @@ class AccountSupporter extends PureComponent {
             <P noPadding className="account__overview">
               <FormattedMessage id="account.yourMembership" />
               <b className="account__overview-value">
-                {supportExpires ? (
+                {supportExpiration ? (
                   <FormattedMessage id="account.supporterCanceled" />
                 ) : (
                   <FormattedMessage id="account.supporter" />
@@ -98,24 +113,22 @@ class AccountSupporter extends PureComponent {
               </b>
             </P>
             <P
-              noPadding={Boolean(supportExpires)}
+              noPadding={Boolean(supportExpiration)}
               className="account__overview"
             >
               <FormattedMessage id="account.yourAmount" />
               <b className="account__overview-value">
-                {supportExpires ? '-' : `${supportAmount} €`}
+                {supportExpiration ? '-' : `${supportAmount} €`}
               </b>
             </P>
-            {supportExpires && (
+            {supportExpiration && (
               <P className="account__overview">
                 <FormattedMessage id="account.date" />
-                <b className="account__overview-value">
-                  {supportExpires.toLocaleDateString(language)}
-                </b>
+                <b className="account__overview-value">{expirationDate}</b>
               </P>
             )}
 
-            {!supportExpires && (
+            {!supportExpiration && (
               <Form>
                 <H2>
                   <FormattedMessage id="account.updateSupporter" />
@@ -170,7 +183,7 @@ class AccountSupporter extends PureComponent {
               </Form>
             )}
 
-            {supportExpires ? (
+            {supportExpiration ? (
               <>
                 <H2>
                   <FormattedMessage id="misc.supporterMembership" />
@@ -186,6 +199,15 @@ class AccountSupporter extends PureComponent {
                     <FormattedMessage id="account.canceledLink" />
                   </Link>
                 </P>
+                <P>
+                  <FormattedMessage id="account.learnMore" />
+                </P>
+                <ButtonSmallPrimary to="/upsell" icon="membership">
+                  <FormattedMessage
+                    id="button.supporter"
+                    values={{ b: (msg) => <b>{msg}</b> }}
+                  />
+                </ButtonSmallPrimary>
               </>
             ) : (
               <>
@@ -195,7 +217,7 @@ class AccountSupporter extends PureComponent {
                 <P>
                   <FormattedMessage
                     id="account.cancelText"
-                    values={{ date: <b>{'DATE'}</b> }}
+                    values={{ date: <b>{expirationDate}</b> }}
                   />
                 </P>
                 <ButtonSmallPrimary

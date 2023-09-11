@@ -168,7 +168,7 @@ class About extends PureComponent {
               </P>
             </li>
             <li className="about__usecase">
-              <Icon icon="globe" color="primary" size="medium" />
+              <Icon icon="earth" color="primary" size="medium" />
               <P color="light">
                 <b>
                   <FormattedMessage id="about.travel" />

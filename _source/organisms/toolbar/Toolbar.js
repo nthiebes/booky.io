@@ -6,8 +6,9 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Icon from '../../atoms/icon';
 import { H1 } from '../../atoms/headline';
 import Skeleton from '../../atoms/skeleton';
-import SearchField from '../../molecules/search-field';
 import { ButtonSmallPrimary } from '../../atoms/button';
+import { Badge } from '../../atoms/badge';
+import SearchField from '../../molecules/search-field';
 import { DashboardsTabs } from '../dashboards';
 
 class Toolbar extends PureComponent {
@@ -29,8 +30,7 @@ class Toolbar extends PureComponent {
   };
 
   state = {
-    dashboardModalOpen: false,
-    copied: false
+    dashboardModalOpen: false
   };
 
   componentWillUnmount() {
@@ -76,22 +76,6 @@ class Toolbar extends PureComponent {
     });
   };
 
-  copy = () => {
-    navigator.clipboard.writeText(
-      `${window.location.origin}/shared/${this.props.activeDashboardId}`
-    );
-
-    this.setState({
-      copied: true
-    });
-
-    this.timeout = window.setTimeout(() => {
-      this.setState({
-        copied: false
-      });
-    }, 2000);
-  };
-
   render() {
     const {
       activeDashboardName,
@@ -104,7 +88,6 @@ class Toolbar extends PureComponent {
       isPremium,
       isActiveDashboardPublic
     } = this.props;
-    const { copied } = this.state;
 
     return (
       <section
@@ -117,21 +100,10 @@ class Toolbar extends PureComponent {
       >
         {dashboardsStyle === 'sidebar' && (
           <>
-            {isActiveDashboardPublic && (
-              <Icon
-                icon="copy"
-                label={intl.formatMessage(
-                  {
-                    id: copied ? 'misc.copied' : 'modal.shareLinkButton'
-                  },
-                  {
-                    b: (msg) => msg
-                  }
-                )}
-                onClick={this.copy}
-                useSkeleton={!hasDashboards}
-                isButton
-              />
+            {isPremium && isActiveDashboardPublic && (
+              <Badge className="toolbar__badge">
+                <FormattedMessage id="misc.shared" />
+              </Badge>
             )}
             <H1 style="h3" className="toolbar__headline" noMargin>
               {activeDashboardName || <Skeleton />}
@@ -201,17 +173,27 @@ class Toolbar extends PureComponent {
             </ButtonSmallPrimary>
           </>
         ) : (
-          <ButtonSmallPrimary
-            icon="add-category"
-            className="toolbar__add-category"
-            onClick={this.onAddCategoryClick}
-            useSkeleton={categoriesPending}
-          >
-            <FormattedMessage
-              id="category.add"
-              values={{ b: (msg) => <b>{msg}</b> }}
+          <>
+            <Icon
+              icon="add-category"
+              label={intl.formatMessage({ id: 'category.add' })}
+              onClick={this.onAddCategoryClick}
+              useSkeleton={categoriesPending}
+              isButton
+              className="toolbar__add-category-icon booky--hide-desktop"
             />
-          </ButtonSmallPrimary>
+            <ButtonSmallPrimary
+              icon="add-category"
+              className="toolbar__add-category booky--hide-mobile-tablet"
+              onClick={this.onAddCategoryClick}
+              useSkeleton={categoriesPending}
+            >
+              <FormattedMessage
+                id="category.add"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
+            </ButtonSmallPrimary>
+          </>
         )}
 
         <SearchField

@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
+import { FormattedMessage } from 'react-intl';
 
 import { ErrorMessage } from '../../atoms/messages';
-import Section from '../section/Section';
+import Link from '../../atoms/link';
+import Section from '../section';
+import Empty from '../empty';
 
 export default class ErrorBoundary extends PureComponent {
   static getDerivedStateFromError() {
@@ -37,6 +40,30 @@ export default class ErrorBoundary extends PureComponent {
     const { hasError } = this.state;
 
     if (hasError || dashboardsError) {
+      if (dashboardsError === 'error.notFound.dashboard') {
+        return (
+          <Section>
+            <Empty illustration="404">
+              <FormattedMessage
+                id="notFound.figureText"
+                values={{
+                  mail: (
+                    <Link to="/contact">
+                      <FormattedMessage id="error.email" />
+                    </Link>
+                  ),
+                  home: (
+                    <Link to="/">
+                      <FormattedMessage id="misc.startpage" />
+                    </Link>
+                  )
+                }}
+              />
+            </Empty>
+          </Section>
+        );
+      }
+
       return (
         <Section>
           <ErrorMessage hasIcon noAnimation className="error-boundary" />

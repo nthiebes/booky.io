@@ -18,6 +18,7 @@
   background-color: transparent;
   border-color: $color-font--white;
   color: $color-font--white;
+  border-bottom-width: 2px;
 
   @include mobile-tablet() {
     &:active,
