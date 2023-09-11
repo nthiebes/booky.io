@@ -23,12 +23,6 @@ class CancelSubscription extends PureComponent {
         {...props}
         onSave={onSave}
         headline={intl.formatMessage({ id: 'account.cancelTitle' })}
-        confirmText={intl.formatMessage(
-          { id: 'modal.cancelSubscription' },
-          {
-            b: (msg) => <b>{msg}</b>
-          }
-        )}
       >
         <P>
           <FormattedMessage

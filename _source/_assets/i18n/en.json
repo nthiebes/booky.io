@@ -16,7 +16,6 @@
     "upsell.successTitle": "Hurray, that worked!",
     "upsell.successText": "We look forward to having you onboard as a booky supporter! How about trying the new share feature right away?",
     "modal.cancelText": "Your supporter membership is still available until {date}. Until then, you will still have access to all supporter features.",
-    "modal.cancelSubscription": "<b>Confirm</b> termination",
     "account.date": "Available until:",
     "account.updateSuccess": "Your amount has been successfully adjusted!",
     "account.cancelTitle": "Cancel membership",

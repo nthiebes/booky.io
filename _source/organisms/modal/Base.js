@@ -24,8 +24,7 @@ class Modal extends PureComponent {
     pending: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
     error: PropTypes.string,
-    useAnchor: PropTypes.bool,
-    confirmText: PropTypes.node
+    useAnchor: PropTypes.bool
   };
 
   static defaultProps = {
@@ -53,8 +52,7 @@ class Modal extends PureComponent {
       intl,
       pending,
       error,
-      useAnchor,
-      confirmText
+      useAnchor
     } = this.props;
 
     return (
@@ -106,15 +104,10 @@ class Modal extends PureComponent {
             className="modal__button"
             icon={noCancel ? 'check' : 'save'}
             type="submit"
-            autoWidth={Boolean(confirmText)}
           >
-            {confirmText ? (
-              confirmText
-            ) : (
-              <FormattedMessage
-                id={noCancel ? 'button.done' : 'button.confirm'}
-              />
-            )}
+            <FormattedMessage
+              id={noCancel ? 'button.done' : 'button.confirm'}
+            />
           </ButtonLargeBlue>
         </footer>
       </Form>
