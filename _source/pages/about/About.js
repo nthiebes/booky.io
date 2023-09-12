@@ -310,16 +310,7 @@ class About extends PureComponent {
                 loading="lazy"
               />
               <div>
-                <H4 className="about__member-header">
-                  {'Bella aka "Samira"'}
-                  <Link
-                    href="https://twitter.com/SamiTalksAbout"
-                    target="_blank"
-                    className="about__member-link"
-                  >
-                    {'@SamiTalksAbout'}
-                  </Link>
-                </H4>
+                <H4 className="about__member-header">{'Bella aka "Samira"'}</H4>
                 <P className="about__member-text">
                   <FormattedMessage id="about.bellaText" />
                 </P>
