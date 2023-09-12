@@ -24,9 +24,21 @@ function transitionEndCallback() {
     loadingSpinner.parentNode.removeChild(loadingSpinner);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+async function getCurrentTab() {
+  const queryOptions = { active: true, currentWindow: true };
+  const [tab] = await chrome.tabs.query(queryOptions);
+
+  return tab;
+}
+
+document.addEventListener('DOMContentLoaded', async function () {
+  const tab = await getCurrentTab();
+
   // Load the content script
-  chrome.tabs.executeScript(null, { file: 'content.js' });
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ['content.js']
+  });
 });
 
 // Connect to the current tab
