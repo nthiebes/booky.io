@@ -6,7 +6,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Icon from '../../atoms/icon';
 import { H1 } from '../../atoms/headline';
 import Skeleton from '../../atoms/skeleton';
-import { ButtonSmallPrimary } from '../../atoms/button';
+import { ButtonSmallPrimary, ButtonSmallBlue } from '../../atoms/button';
 import { Badge } from '../../atoms/badge';
 import SearchField from '../../molecules/search-field';
 import { DashboardsTabs } from '../dashboards';
@@ -123,7 +123,7 @@ class Toolbar extends PureComponent {
           </>
         )}
 
-        {isPremium && (
+        {isPremium ? (
           <>
             <Icon
               icon="share"
@@ -147,6 +147,31 @@ class Toolbar extends PureComponent {
                 values={{ b: (msg) => <b>{msg}</b> }}
               />
             </ButtonSmallPrimary>
+          </>
+        ) : (
+          <>
+            <Icon
+              icon="share"
+              label={intl.formatMessage({ id: 'button.share' })}
+              useSkeleton={!hasDashboards}
+              to="/supporter"
+              className="toolbar__share booky--hide-desktop"
+              color="blue"
+            />
+            <ButtonSmallBlue
+              icon="money"
+              className={classNames(
+                'toolbar__share booky--hide-mobile-tablet',
+                dashboardsStyle === 'tabs' && 'toolbar__share--tabs'
+              )}
+              to="/supporter"
+              useSkeleton={categoriesPending}
+            >
+              <FormattedMessage
+                id="button.share"
+                values={{ b: (msg) => <b>{msg}</b> }}
+              />
+            </ButtonSmallBlue>
           </>
         )}
 
