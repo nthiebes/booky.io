@@ -498,5 +498,10 @@
     "search.clear": "Clear search term",
     "menu.features": "Features",
     "misc.shared": "Public",
-    "misc.private": "Private"
+    "misc.private": "Private",
+    "new.oldUpdates": "Previous updates",
+    "new.update1Title": "Supporter membership with public collections",
+    "new.update1Subtitle": "New features:",
+    "new.update1Feature1": "Optionally share collections publicly with others",
+    "new.update1Feature2": "Extensions: Bookmarks can be edited/deleted"
 }

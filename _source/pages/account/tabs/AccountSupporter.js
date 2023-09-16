@@ -4,7 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import P from '../../../atoms/paragraph';
 import { H2 } from '../../../atoms/headline';
-import { ButtonSmallPrimary } from '../../../atoms/button';
+import { ButtonSmallPrimary, ButtonSmallBlue } from '../../../atoms/button';
 import Input from '../../../atoms/input';
 import Label from '../../../atoms/label';
 import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
@@ -202,12 +202,12 @@ class AccountSupporter extends PureComponent {
                 <P>
                   <FormattedMessage id="account.learnMore" />
                 </P>
-                <ButtonSmallPrimary to="/upsell" icon="membership">
+                <ButtonSmallBlue to="/upsell" icon="membership">
                   <FormattedMessage
                     id="button.supporter"
                     values={{ b: (msg) => <b>{msg}</b> }}
                   />
-                </ButtonSmallPrimary>
+                </ButtonSmallBlue>
               </>
             ) : (
               <>
@@ -249,12 +249,12 @@ class AccountSupporter extends PureComponent {
             <P>
               <FormattedMessage id="account.learnMore" />
             </P>
-            <ButtonSmallPrimary to="/supporter" icon="membership">
+            <ButtonSmallBlue to="/supporter" icon="membership">
               <FormattedMessage
                 id="account.discover"
                 values={{ b: (msg) => <b>{msg}</b> }}
               />
-            </ButtonSmallPrimary>
+            </ButtonSmallBlue>
           </>
         )}
       </>

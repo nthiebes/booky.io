@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 
 import { config } from '../../config';
-import Page from '../../templates/page';
-import { H1 } from '../../atoms/headline';
-import Section from '../../molecules/section';
+import { H1, H2, H3 } from '../../atoms/headline';
+import P from '../../atoms/paragraph';
+import { ButtonSmallBlue } from '../../atoms/button';
+import Icon from '../../atoms/icon';
 import { List, ListItem } from '../../atoms/list';
+import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
+import Page from '../../templates/page';
 
 import './New.scss';
 
@@ -45,10 +48,61 @@ export default class New extends PureComponent {
 
     return (
       <Page className="new">
-        <Section>
-          <H1 id="new" className="new__title">
+        <Section noMargin>
+          <H1 className="new__title">
             <FormattedMessage id="about.updates" />
           </H1>
+        </Section>
+
+        <Section color="light" contentSpace>
+          <H2>
+            <FormattedMessage id="new.update1Title" />
+          </H2>
+          <P size="small">
+            <time>
+              <i>
+                <FormattedDate
+                  value={new Date('2023-09-24 20:22:21')}
+                  month="long"
+                  day="2-digit"
+                  year="numeric"
+                />
+              </i>
+            </time>
+          </P>
+          <P>
+            <FormattedMessage id="supporter.visionText1" />
+          </P>
+          <P>
+            <FormattedMessage id="supporter.visionText2" />
+          </P>
+          <H3>
+            <FormattedMessage id="new.update1Subtitle" />
+          </H3>
+          <List>
+            <ListItem className="new__item">
+              <FormattedMessage id="new.update1Feature1" />
+              <Icon icon="money" color="blue" />
+            </ListItem>
+            <ListItem>
+              <FormattedMessage id="new.update1Feature2" />
+            </ListItem>
+          </List>
+          <P className="new__learn-more">
+            <FormattedMessage id="account.learnMore" />
+          </P>
+          <ButtonSmallBlue to="/supporter" icon="membership">
+            <FormattedMessage
+              id="account.discover"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonSmallBlue>
+        </Section>
+
+        <Section>
+          <H2>
+            <FormattedMessage id="new.oldUpdates" />
+          </H2>
           <div>
             {/* eslint-disable-next-line camelcase */}
             {releases.map(({ id, name, body, published_at }, index) => {

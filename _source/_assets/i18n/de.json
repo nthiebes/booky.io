@@ -357,7 +357,7 @@
     "misc.feature4": "Lesezeichen-Suche",
     "misc.feature5": "Individuelles Design",
     "misc.feature6": "Sammlungen und Kategorien",
-    "about.updates": "Was ist neu?",
+    "about.updates": "Was gibt es Neues?",
     "misc.feature7": "Web-App auf mobilen Geräten",
     "misc.feature8": "Private oder öffentliche Sammlungen",
     "misc.feature9": "Lesezeichen-Notizen",
@@ -496,5 +496,10 @@
     "search.clear": "Suchbegriff entfernen",
     "menu.features": "Funktionen",
     "misc.shared": "Öffentlich",
-    "misc.private": "Privat"
+    "misc.private": "Privat",
+    "new.oldUpdates": "Vergangene Updates",
+    "new.update1Title": "Support-Mitgliedschaft mit öffentlichen Sammlungen",
+    "new.update1Subtitle": "Neue Funktionen:",
+    "new.update1Feature1": "Teile Sammlungen optional öffentlich mit Anderen",
+    "new.update1Feature2": "Erweiterungen: Lesezeichen lassen sich editieren/löschen"
 }

@@ -1,5 +1,15 @@
 @import "../../templates/booky/config.scss";
 
+.new .section__content {
+  @include tablet {
+    max-width: 40rem;
+  }
+
+  @include desktop {
+    max-width: 50rem;
+  }
+}
+
 .new__title {
   margin-bottom: 1rem;
 }
@@ -7,4 +17,13 @@
 .new__date {
   display: inline-block;
   margin-left: 4px;
+}
+
+.new__item {
+  display: flex;
+  align-items: center;
+}
+
+.new__learn-more {
+  margin-top: 2rem;
 }
