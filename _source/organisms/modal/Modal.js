@@ -40,7 +40,10 @@ export default class Modal extends PureComponent {
     darkMode: PropTypes.bool.isRequired,
     deleteAccount: PropTypes.func.isRequired,
     resetSearch: PropTypes.func.isRequired,
-    cancelSubscription: PropTypes.func.isRequired
+    cancelSubscription: PropTypes.func.isRequired,
+    searchBookmarks: PropTypes.func.isRequired,
+    updateSearchData: PropTypes.func.isRequired,
+    keyword: PropTypes.string
   };
 
   state = {
@@ -110,7 +113,8 @@ export default class Modal extends PureComponent {
 
   // eslint-disable-next-line max-statements
   handleSave = (modalData) => {
-    const { modal, data, resetSearch } = this.props;
+    const { modal, data, keyword, searchBookmarks, updateSearchData } =
+      this.props;
 
     modalData.id = parseInt(modalData.id, 10);
     modalData.categoryId = parseInt(modalData.categoryId, 10);
@@ -136,7 +140,15 @@ export default class Modal extends PureComponent {
         onSuccess: () => {
           modalData.onSuccess && modalData.onSuccess();
           this.closeModal();
-          resetSearch();
+
+          if (keyword) {
+            updateSearchData({
+              pending: true,
+              error: null,
+              offset: 0
+            });
+            searchBookmarks({ keyword });
+          }
         },
         onError: (error) => {
           this.setState({

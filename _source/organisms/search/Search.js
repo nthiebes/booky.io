@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import { ErrorMessage } from '../../atoms/messages';
@@ -9,6 +9,7 @@ import { ButtonSmallMedium, ButtonSmallLight } from '../../atoms/button';
 import { H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Empty from '../../molecules/empty';
+import Bookmark from '../../molecules/bookmark';
 import SearchSkeleton from './SearchSkeleton';
 
 class Search extends PureComponent {
@@ -27,7 +28,12 @@ class Search extends PureComponent {
     loadMoreBookmarks: PropTypes.func.isRequired,
     changeDashboard: PropTypes.func.isRequired,
     className: PropTypes.string,
-    isExtension: PropTypes.bool.isRequired
+    isExtension: PropTypes.bool.isRequired,
+    intl: PropTypes.object.isRequired
+  };
+
+  state = {
+    editMode: false
   };
 
   getWrapper = (content) => {
@@ -68,18 +74,26 @@ class Search extends PureComponent {
     }
   };
 
+  toggleEditMode = () => {
+    this.setState({
+      editMode: !this.state.editMode
+    });
+  };
+
+  // eslint-disable-next-line max-statements
   render() {
     const {
       dashboards,
       total,
       darkMode,
-      newtab,
       keyword,
       pending,
       error,
       offset,
-      limit
+      limit,
+      intl
     } = this.props;
+    const { editMode } = this.state;
     const LoadMoreButton = darkMode ? ButtonSmallLight : ButtonSmallMedium;
 
     if (error) {
@@ -144,54 +158,36 @@ class Search extends PureComponent {
                       >
                         <Icon icon="category" color={darkMode ? 'grey' : ''} />
                         {categoryName}
+                        <Icon
+                          icon={editMode ? 'close' : 'more-horiz'}
+                          label={
+                            editMode
+                              ? intl.formatMessage({
+                                  id: 'category.editModeQuit'
+                                })
+                              : intl.formatMessage({ id: 'category.editMode' })
+                          }
+                          onClick={this.toggleEditMode}
+                          isButton
+                          className="search__edit-mode"
+                        />
                       </H3>
-                      {bookmarks.map(
-                        ({
-                          id: bookmarkId,
-                          name: bookmarkName,
-                          url,
-                          favicon
-                        }) => (
-                          <li
-                            key={bookmarkId}
-                            className="bookmark search__bookmark"
-                          >
-                            <span className="bookmark__wrapper">
-                              {!favicon || favicon === 'default' ? (
-                                <Icon
-                                  icon="earth"
-                                  size="tiny"
-                                  className={classNames(
-                                    'bookmark__favicon',
-                                    darkMode && 'bookmark__favicon--dark-mode'
-                                  )}
-                                />
-                              ) : (
-                                <img
-                                  src={favicon}
-                                  height="16"
-                                  width="16"
-                                  alt=""
-                                  className="bookmark__favicon"
-                                />
-                              )}
-                              {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                              <a
-                                className={classNames(
-                                  'bookmark__link',
-                                  darkMode && 'bookmark__link--dark'
-                                )}
-                                href={url}
-                                target={newtab ? '_blank' : '_self'}
-                                rel={newtab ? 'noopener noreferrer' : null}
-                                onClick={this.handleOnClick}
-                              >
-                                {bookmarkName}
-                              </a>
-                            </span>
-                          </li>
-                        )
-                      )}
+                      {bookmarks.map((bookmark, bookmarkIndex) => (
+                        <Bookmark
+                          className="search__bookmark"
+                          key={bookmark.id}
+                          index={bookmarkIndex}
+                          id={bookmark.id}
+                          categoryId={categoryId}
+                          editMode={editMode}
+                          name={bookmark.name}
+                          url={bookmark.url}
+                          note={bookmark.note}
+                          favicon={bookmark.favicon}
+                          onDeleteOrEditClick={this.toggleEditMode}
+                          isSearch
+                        />
+                      ))}
                     </ul>
                   )
                 )}
@@ -220,4 +216,4 @@ class Search extends PureComponent {
   }
 }
 
-export default Search;
+export default injectIntl(Search);

@@ -61,7 +61,14 @@ class Menu extends PureComponent {
   };
 
   render() {
-    const { className, loggedIn, intl, newsVersion, voted } = this.props;
+    const {
+      className,
+      loggedIn,
+      intl,
+      // isBeta,
+      newsVersion
+      // voted
+    } = this.props;
     let menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     menuItems = menuItems.filter((item) => {
@@ -85,9 +92,10 @@ class Menu extends PureComponent {
             color="light"
             isNavLink
             noUnderline
-            hasBadge={
-              (voted < config.POLL_VERSION && name === 'next') || name === 'new'
-            }
+            hasBadge={name === 'new'}
+            // hasBadge={
+            //   (voted < config.POLL_VERSION && name === 'next') || name === 'new'
+            // }
           >
             <Icon icon={icon || name} color="light" />
             <FormattedMessage id={`menu.${name}`} />

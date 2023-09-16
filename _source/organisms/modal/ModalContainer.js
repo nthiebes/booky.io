@@ -18,7 +18,11 @@ import {
 } from '../../_state/dashboards/actions';
 import { deleteAccount } from '../../_state/user/actions';
 import { cancelSubscription } from '../../_state/subscription/actions';
-import { resetSearch } from '../../_state/search/actions';
+import {
+  resetSearch,
+  searchBookmarks,
+  updateSearchData
+} from '../../_state/search/actions';
 
 const mapStateToProps = (state) => {
   let bookmarkCount;
@@ -36,6 +40,7 @@ const mapStateToProps = (state) => {
     open: state.modal.open,
     showModal: state.modal.showModal,
     darkMode: state.user.settings.darkMode,
+    keyword: state.search.keyword,
     data: {
       ...state.modal.data,
       categories: state.categories.filter(
@@ -63,7 +68,9 @@ const mapDispatchToProps = {
   deleteDashboard,
   deleteAccount,
   resetSearch,
-  cancelSubscription
+  cancelSubscription,
+  searchBookmarks,
+  updateSearchData
 };
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 

@@ -1,12 +1,14 @@
 /* eslint-disable complexity */
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
-
 import classNames from 'classnames';
+
 import Icon from '../../atoms/icon';
 import P from '../../atoms/paragraph';
+
+const Empty = ({ children }) => <Fragment>{children({})}</Fragment>;
 
 class Bookmark extends PureComponent {
   static propTypes = {
@@ -31,7 +33,9 @@ class Bookmark extends PureComponent {
     enableNotes: PropTypes.bool.isRequired,
     note: PropTypes.string,
     viewOnly: PropTypes.bool,
-    color: PropTypes.string
+    color: PropTypes.string,
+    isSearch: PropTypes.bool,
+    className: PropTypes.string
   };
 
   state = {
@@ -127,12 +131,15 @@ class Bookmark extends PureComponent {
       enableNotes,
       note,
       viewOnly,
-      color
+      color,
+      isSearch,
+      className
     } = this.props;
     const { hoverEditMode, showNotes } = this.state;
+    const Wrapper = isSearch ? Empty : Draggable;
 
     return (
-      <Draggable
+      <Wrapper
         index={index}
         draggableId={`bookmark-${id}`}
         key={`bookmark-${id}`}
@@ -142,7 +149,8 @@ class Bookmark extends PureComponent {
           <li
             className={classNames(
               'bookmark',
-              (editMode || hoverEditMode) && 'bookmark--edit-mode'
+              (editMode || hoverEditMode) && 'bookmark--edit-mode',
+              className
             )}
             {...provided.draggableProps}
             ref={provided.innerRef}
@@ -234,12 +242,14 @@ class Bookmark extends PureComponent {
                         onClick={this.onDeleteClick}
                         isButton
                       />
-                      <Icon
-                        icon="drag"
-                        label={intl.formatMessage({ id: 'bookmark.drag' })}
-                        dragHandleProps={provided.dragHandleProps}
-                        isButton
-                      />
+                      {!isSearch && (
+                        <Icon
+                          icon="drag"
+                          label={intl.formatMessage({ id: 'bookmark.drag' })}
+                          dragHandleProps={provided.dragHandleProps}
+                          isButton
+                        />
+                      )}
                     </>
                   )}
                 </>
@@ -252,7 +262,7 @@ class Bookmark extends PureComponent {
             )}
           </li>
         )}
-      </Draggable>
+      </Wrapper>
     );
   }
 }

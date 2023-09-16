@@ -67,6 +67,7 @@ class Sidebar extends PureComponent {
       className,
       hasSidebar,
       darkMode,
+      // isBeta,
       newsVersion
       // voted
     } = this.props;
