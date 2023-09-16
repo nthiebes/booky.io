@@ -157,6 +157,9 @@ class Footer extends PureComponent {
             <Link className="footer__menu-item" color="light" to="/about">
               <FormattedMessage id="menu.about" />
             </Link>
+            <Link className="footer__menu-item" color="light" to="/new">
+              <FormattedMessage id="menu.new" />
+            </Link>
             <Link className="footer__menu-item" color="light" to="/help">
               <FormattedMessage id="menu.help" />
             </Link>
