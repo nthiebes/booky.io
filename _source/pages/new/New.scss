@@ -22,6 +22,10 @@
 .new__item {
   display: flex;
   align-items: center;
+
+  .icon {
+    height: 24px;
+  }
 }
 
 .new__learn-more {

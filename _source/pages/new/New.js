@@ -87,6 +87,9 @@ export default class New extends PureComponent {
             <ListItem>
               <FormattedMessage id="new.update1Feature2" />
             </ListItem>
+            <ListItem>
+              <FormattedMessage id="new.update1Feature3" />
+            </ListItem>
           </List>
           <P className="new__learn-more">
             <FormattedMessage id="account.learnMore" />
