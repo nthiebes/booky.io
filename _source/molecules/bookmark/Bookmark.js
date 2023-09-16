@@ -155,7 +155,9 @@ class Bookmark extends PureComponent {
             {...provided.draggableProps}
             ref={provided.innerRef}
             onMouseLeave={
-              bookmarkEditOnHover && !isMobile ? this.disableEditMode : null
+              bookmarkEditOnHover && (!isMobile || isExtension)
+                ? this.disableEditMode
+                : null
             }
           >
             <span className="bookmark__wrapper">
@@ -199,7 +201,9 @@ class Bookmark extends PureComponent {
                 rel={newtab ? 'noopener noreferrer' : null}
                 onClick={this.handleOnClick}
                 onMouseEnter={
-                  bookmarkEditOnHover && !isMobile ? this.enableEditMode : null
+                  bookmarkEditOnHover && (!isMobile || isExtension)
+                    ? this.enableEditMode
+                    : null
                 }
                 title={name}
               >

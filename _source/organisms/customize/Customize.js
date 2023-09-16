@@ -268,6 +268,16 @@ class Customize extends PureComponent {
         <H3>
           <FormattedMessage id="dashboard.preferences" />
         </H3>
+        <Checkbox
+          label={intl.formatMessage({
+            id: 'customize.bookmarkEditOnHover'
+          })}
+          id="bookmarkEditOnHover"
+          name="bookmarkEditOnHover"
+          onChange={this.handleCheckboxChange}
+          checked={bookmarkEditOnHover}
+          first
+        />
         {!isExtension && (
           <>
             <Checkbox
@@ -276,7 +286,6 @@ class Customize extends PureComponent {
               name="openLinksInNewTab"
               onChange={this.handleCheckboxChange}
               checked={newtab}
-              first
             />
             <Checkbox
               label={intl.formatMessage({ id: 'customize.autofill' })}
@@ -291,15 +300,6 @@ class Customize extends PureComponent {
               name="closeEditMode"
               onChange={this.handleCheckboxChange}
               checked={closeEditMode}
-            />
-            <Checkbox
-              label={intl.formatMessage({
-                id: 'customize.bookmarkEditOnHover'
-              })}
-              id="bookmarkEditOnHover"
-              name="bookmarkEditOnHover"
-              onChange={this.handleCheckboxChange}
-              checked={bookmarkEditOnHover}
             />
             <Checkbox
               label={intl.formatMessage({
