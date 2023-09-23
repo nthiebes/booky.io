@@ -27,6 +27,7 @@ class AccountSupporter extends PureComponent {
     openModal: PropTypes.func.isRequired,
     supportAmount: PropTypes.number,
     supportExpiration: PropTypes.string,
+    subscriptionDate: PropTypes.string,
     supportStart: PropTypes.string,
     isPremium: PropTypes.bool,
     updateSubscription: PropTypes.func.isRequired,
@@ -72,11 +73,32 @@ class AccountSupporter extends PureComponent {
   };
 
   handleCancelClick = () => {
-    const { language, openModal } = this.props;
+    const { language, openModal, subscriptionDate } = this.props;
 
     openModal('CancelSubscription', {
-      date: addMonths(new Date(), 1).toLocaleDateString(language)
+      date: this.getExpirationDate(subscriptionDate).toLocaleDateString(
+        language
+      )
     });
+  };
+
+  getExpirationDate = (subscriptionDate) => {
+    const subscriptionDateObject = new Date(subscriptionDate);
+    const today = new Date();
+    const diff = new Date(today.getTime() - subscriptionDateObject.getTime());
+    const yearsDiff = diff.getUTCFullYear() - 1970;
+    const monthsDiff = diff.getUTCMonth();
+    let expirationDate = subscriptionDateObject;
+
+    if (yearsDiff > 0) {
+      expirationDate.setUTCFullYear(
+        expirationDate.getUTCFullYear() + yearsDiff
+      );
+    }
+
+    expirationDate = addMonths(expirationDate, monthsDiff + 1);
+
+    return expirationDate;
   };
 
   render() {
@@ -91,9 +113,7 @@ class AccountSupporter extends PureComponent {
       this.props;
     const expirationDate = supportExpiration
       ? new Date(supportExpiration).toLocaleDateString(language)
-      : addMonths(new Date(), 1).toLocaleDateString(language);
-
-    console.log(subscriptionDate);
+      : this.getExpirationDate(subscriptionDate).toLocaleDateString(language);
 
     return (
       <>
@@ -127,6 +147,14 @@ class AccountSupporter extends PureComponent {
                 <b className="account__overview-value">{expirationDate}</b>
               </P>
             )}
+            <P>
+              <Link
+                href="https://www.paypal.com/myaccount/autopay/"
+                target="_blank"
+              >
+                <FormattedMessage id="account.paypalSubscriptions" />
+              </Link>
+            </P>
 
             {!supportExpiration && (
               <Form>
@@ -153,19 +181,19 @@ class AccountSupporter extends PureComponent {
                   <P size="large" className="account__euro" noPadding>
                     {'€'}
                   </P>
-                  <ButtonSmallPrimary
-                    icon="save"
-                    onClick={this.handleUpdateClick}
-                    pending={updatePending}
-                    disabled={newSupportAmount <= 0 || updatePending}
-                    className="account__update"
-                  >
-                    <FormattedMessage
-                      id="account.updateAmount"
-                      values={{ b: (msg) => <b>{msg}</b> }}
-                    />
-                  </ButtonSmallPrimary>
                 </div>
+                <ButtonSmallPrimary
+                  icon="save"
+                  onClick={this.handleUpdateClick}
+                  pending={updatePending}
+                  disabled={newSupportAmount <= 0 || updatePending}
+                  className="account__update"
+                >
+                  <FormattedMessage
+                    id="account.updateAmount"
+                    values={{ b: (msg) => <b>{msg}</b> }}
+                  />
+                </ButtonSmallPrimary>
                 {updateSuccess && (
                   <SuccessMessage
                     className="account__message"
@@ -219,6 +247,8 @@ class AccountSupporter extends PureComponent {
                     id="account.cancelText"
                     values={{ date: <b>{expirationDate}</b> }}
                   />
+                  <br />
+                  <FormattedMessage id="account.cancelText2" />
                 </P>
                 <ButtonSmallPrimary
                   icon="close"
