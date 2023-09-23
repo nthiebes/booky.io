@@ -202,6 +202,7 @@ class Category extends PureComponent {
                   ? this.enableEditMode
                   : null
               }
+              title={name}
             >
               {name}
             </H2>

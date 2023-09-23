@@ -75,15 +75,28 @@ export default class SuccessIllustration extends Component {
             <FormattedMessage id={headline} />
           </H1>
         )}
-        <P
-          size="large"
-          className={classNames(
-            'success-illustration__text',
-            animate && 'success-illustration__text--animate'
-          )}
-        >
-          {message ? <FormattedMessage id={message} /> : children}
-        </P>
+        {message && (
+          <P
+            size="large"
+            className={classNames(
+              'success-illustration__text',
+              animate && 'success-illustration__text--animate'
+            )}
+          >
+            <FormattedMessage id={message} />
+          </P>
+        )}
+        {children && (
+          <div
+            size="large"
+            className={classNames(
+              'success-illustration__text',
+              animate && 'success-illustration__text--animate'
+            )}
+          >
+            {children}
+          </div>
+        )}
         {cta && (
           <div
             className={classNames(

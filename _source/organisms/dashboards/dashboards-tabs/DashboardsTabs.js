@@ -112,6 +112,12 @@ class DashboardsTabs extends PureComponent {
                   <span>{dashboard.name}</span>
                   {isPremium && dashboard.public && (
                     <Badge className="dashboard-tabs__badge">
+                      <Icon
+                        className="dashboard-tabs__badge-icon"
+                        icon="earth"
+                        color="blue"
+                        size="mini"
+                      />
                       <FormattedMessage id="misc.shared" />
                     </Badge>
                   )}

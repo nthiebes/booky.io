@@ -102,6 +102,12 @@ class Toolbar extends PureComponent {
           <>
             {isPremium && isActiveDashboardPublic && (
               <Badge className="toolbar__badge">
+                <Icon
+                  className="toolbar__badge-icon"
+                  icon="earth"
+                  color="blue"
+                  size="mini"
+                />
                 <FormattedMessage id="misc.shared" />
               </Badge>
             )}

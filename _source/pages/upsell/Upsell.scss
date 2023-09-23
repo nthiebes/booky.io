@@ -33,6 +33,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .success-illustration__headline {
+    white-space: nowrap;
+  }
 }
 
 .upsell__amount-wrapper {

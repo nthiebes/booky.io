@@ -52,7 +52,9 @@ class Modal extends PureComponent {
       intl,
       pending,
       error,
-      useAnchor
+      useAnchor,
+      cancelText,
+      confirmText
     } = this.props;
 
     return (
@@ -95,7 +97,11 @@ class Modal extends PureComponent {
               onClick={onClose}
               type="button"
             >
-              <FormattedMessage id="button.cancel" />
+              {cancelText ? (
+                cancelText
+              ) : (
+                <FormattedMessage id="button.cancel" />
+              )}
             </ButtonLargeLight>
           )}
           <ButtonLargeBlue
@@ -105,9 +111,13 @@ class Modal extends PureComponent {
             icon={noCancel ? 'check' : 'save'}
             type="submit"
           >
-            <FormattedMessage
-              id={noCancel ? 'button.done' : 'button.confirm'}
-            />
+            {confirmText ? (
+              confirmText
+            ) : (
+              <FormattedMessage
+                id={noCancel ? 'button.done' : 'button.confirm'}
+              />
+            )}
           </ButtonLargeBlue>
         </footer>
       </Form>

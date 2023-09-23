@@ -9,7 +9,6 @@ import Icon from '../../../atoms/icon';
 import { H2 } from '../../../atoms/headline';
 import { ButtonSmallPrimary } from '../../../atoms/button';
 import Skeleton from '../../../atoms/skeleton';
-import { Badge } from '../../../atoms/badge';
 
 class DashboardsList extends PureComponent {
   static propTypes = {
@@ -223,9 +222,7 @@ class DashboardsList extends PureComponent {
                           )}
                         </Droppable>
                         {isPremium && dashboard.public && (
-                          <Badge className="dashboards__badge">
-                            <FormattedMessage id="misc.shared" />
-                          </Badge>
+                          <Icon icon="earth" color="blue" size="tiny" />
                         )}
                         {editMode && (
                           <Fragment>

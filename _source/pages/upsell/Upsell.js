@@ -100,14 +100,13 @@ class Upsell extends PureComponent {
 
   render() {
     const { intl } = this.props;
-    const { supportAmount, agbAccepted, error, success, pending } = this.state;
+    const { supportAmount, agbAccepted, error, pending, success } = this.state;
 
     return (
       <Page>
         {success ? (
           <Section contentClassName="upsell__success">
             <SuccessIllustration
-              message="upsell.successText"
               headline="upsell.successTitle"
               illustration="supporter-success"
               width="400"
@@ -115,8 +114,8 @@ class Upsell extends PureComponent {
                 <ButtonLargeBlue
                   icon="collection"
                   to="/"
-                  contentBefore
                   autoWidth
+                  contentBefore
                 >
                   <FormattedMessage
                     id="upsell.successButton"
@@ -124,7 +123,14 @@ class Upsell extends PureComponent {
                   />
                 </ButtonLargeBlue>
               }
-            />
+            >
+              <P size="large">
+                <FormattedMessage id="upsell.successText" />
+              </P>
+              <H2 centered>
+                <FormattedMessage id="upsell.nbaText" />
+              </H2>
+            </SuccessIllustration>
           </Section>
         ) : (
           <>
