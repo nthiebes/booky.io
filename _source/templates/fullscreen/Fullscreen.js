@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 
+import P from '../../atoms/paragraph';
 import { postMessage } from '../../_utils/extension';
+import { config } from '../../config';
 
 export default class Fullscreen extends PureComponent {
   static propTypes = {
@@ -33,6 +36,16 @@ export default class Fullscreen extends PureComponent {
 
   render() {
     const { children, className } = this.props;
+
+    if (config.updateInProgress) {
+      return (
+        <div className="page--update">
+          <P>
+            <FormattedMessage id="misc.updateInProgress" />
+          </P>
+        </div>
+      );
+    }
 
     return (
       <main className={classNames('fullscreen', className)}>{children}</main>

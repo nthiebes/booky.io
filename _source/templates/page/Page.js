@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 
+import P from '../../atoms/paragraph';
 import Header from '../../organisms/header';
 import Sidebar from '../../organisms/sidebar';
 import Footer from '../../organisms/footer';
@@ -9,6 +11,7 @@ import Modal from '../../organisms/modal';
 import Toolbar from '../../organisms/toolbar';
 import ErrorBoundary from '../../molecules/error-boundary';
 import CookieBanner from '../../molecules/cookie-banner';
+import { config } from '../../config';
 
 export default class Page extends Component {
   render() {
@@ -23,6 +26,16 @@ export default class Page extends Component {
       darkMode,
       showStats
     } = this.props;
+
+    if (config.updateInProgress) {
+      return (
+        <div className="page--update">
+          <P>
+            <FormattedMessage id="misc.updateInProgress" />
+          </P>
+        </div>
+      );
+    }
 
     return (
       <Fragment>

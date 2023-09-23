@@ -20,6 +20,7 @@ const browser = isOpera
 export const config = {
   NEWS_VERSION: 14,
   POLL_VERSION: 2,
+  updateInProgress: true,
   browser
 };
 
