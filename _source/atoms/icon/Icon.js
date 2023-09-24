@@ -28,7 +28,7 @@ export default class Icon extends PureComponent {
     tabIndex: PropTypes.string,
     darkMode: PropTypes.bool,
     ignoreDarkMode: PropTypes.bool,
-    size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
+    size: PropTypes.oneOf(['mini', 'tiny', 'small', 'medium', 'large']),
     isButton: PropTypes.bool,
     useSkeleton: PropTypes.bool,
     pending: PropTypes.bool,
