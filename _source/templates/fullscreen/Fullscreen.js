@@ -24,13 +24,13 @@ export default class Fullscreen extends PureComponent {
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      const { type, ...pageData } = event.data;
+      // const { type, ...pageData } = event.data;
 
-      if (type === 'BOOKY') {
-        updateExtensionData({
-          page: pageData
-        });
-      }
+      // if (type === 'BOOKY') {
+      updateExtensionData({
+        page: event.data
+      });
+      // }
     });
   }
 
