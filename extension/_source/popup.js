@@ -31,7 +31,7 @@ async function getCurrentTab() {
   return tab;
 }
 
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', async () => {
   const tab = await getCurrentTab();
 
   // Load the content script
@@ -54,12 +54,12 @@ chrome.runtime.onConnect.addListener(function (port) {
   });
 });
 
-function sendToIframe(data) {
+function sendToIframe() {
   var receiver = iframe.contentWindow;
 
   receiver.postMessage(
     {
-      ...data,
+      ...pageData,
       type: 'BOOKY'
     },
     host
@@ -73,7 +73,7 @@ window.addEventListener('message', function (event) {
 
   if (event.origin === host) {
     if (message.ready) {
-      sendToIframe(pageData);
+      sendToIframe();
       loadingSpinner.addEventListener('transitionend', transitionEndCallback);
       loadingSpinner.classList.add('loading__spinner--hide');
       loadingWrapper.classList.add('loading--hide');
