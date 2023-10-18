@@ -505,9 +505,9 @@ export default class Privacy extends Component {
                 prejudice to mandatory statutory retention obligations.
               </P>
 
-              <H2 id="tools">5. Analysis tools and advertising</H2>
+              {/* <H2 id="tools">5. Analysis tools and advertising</H2> */}
 
-              <H3>Google Analytics</H3>
+              {/* <H3>Google Analytics</H3>
               <P>
                 This website uses functions of the web analysis service Google
                 Analytics. The provider of this service is Google Ireland
@@ -613,7 +613,7 @@ export default class Privacy extends Component {
                 >
                   https://support.google.com/analytics/answer/7667196?hl=en
                 </Link>
-              </P>
+              </P> */}
             </Fragment>
           )}
           {locale === 'de' && (
@@ -1098,9 +1098,9 @@ export default class Privacy extends Component {
                 bleiben unberührt.
               </P>
 
-              <H2 id="tools">5. Analyse-Tools und Werbung</H2>
+              {/* <H2 id="tools">5. Analyse-Tools und Werbung</H2> */}
 
-              <H3>Google Analytics</H3>
+              {/* <H3>Google Analytics</H3>
               <P>
                 Diese Website nutzt Funktionen des Webanalysedienstes Google
                 Analytics. Anbieter ist die Google Ireland Limited („Google“),
@@ -1207,7 +1207,7 @@ export default class Privacy extends Component {
                 >
                   https://support.google.com/analytics/answer/7667196?hl=de
                 </Link>
-              </P>
+              </P> */}
             </Fragment>
           )}
         </Section>

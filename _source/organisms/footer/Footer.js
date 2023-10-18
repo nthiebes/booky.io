@@ -10,7 +10,7 @@ import P from '../../atoms/paragraph';
 import { ButtonSmallLight } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 import LanguageSwitcher from '../../molecules/language-switcher';
-import Donate from '../../molecules/donate';
+// import Donate from '../../molecules/donate';
 
 class Footer extends PureComponent {
   static propTypes = {
@@ -63,19 +63,19 @@ class Footer extends PureComponent {
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(62128)}</b>
+                <b>{new Intl.NumberFormat(locale).format(89484)}</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(22186726)}</b>
+                <b>{new Intl.NumberFormat(locale).format(26311251)}</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(1929284)}</b>
+                <b>{new Intl.NumberFormat(locale).format(2326127)}</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(334158)}</b>
+                <b>{new Intl.NumberFormat(locale).format(456862)}</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
@@ -128,11 +128,12 @@ class Footer extends PureComponent {
             <Link
               to="/"
               title={intl.formatMessage({ id: 'menu.home' })}
+              ariaLabel={intl.formatMessage({ id: 'menu.home' })}
               className="footer__logo"
             >
               <Logo />
             </Link>
-            <Donate color="light" className="footer__donate" />
+            {/* <Donate color="light" className="footer__donate" /> */}
             <ButtonSmallLight
               className="footer__button"
               onClick={this.scrollToTop}
@@ -147,8 +148,17 @@ class Footer extends PureComponent {
             <LanguageSwitcher ignoreDarkMode />
           </div>
           <nav className="footer__menu">
+            <Link className="footer__menu-item" color="light" to="/features">
+              <FormattedMessage id="menu.features" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/supporter">
+              <FormattedMessage id="menu.supporter" />
+            </Link>
             <Link className="footer__menu-item" color="light" to="/about">
               <FormattedMessage id="menu.about" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/new">
+              <FormattedMessage id="menu.new" />
             </Link>
             <Link className="footer__menu-item" color="light" to="/help">
               <FormattedMessage id="menu.help" />
@@ -158,6 +168,9 @@ class Footer extends PureComponent {
             </Link>
             <Link className="footer__menu-item" color="light" to="/privacy">
               <FormattedMessage id="menu.privacy" />
+            </Link>
+            <Link className="footer__menu-item" color="light" to="/terms">
+              <FormattedMessage id="upsell.terms" />
             </Link>
             <Link className="footer__menu-item" color="light" to="/legal">
               <FormattedMessage id="menu.legal" />

@@ -1,11 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Draggable } from 'react-beautiful-dnd';
 
 import Icon from '../../../atoms/icon';
 import Skeleton from '../../../atoms/skeleton';
+import { Badge } from '../../../atoms/badge';
 import { TabBar, Tab } from '../../../molecules/tab-bar';
 
 class DashboardsTabs extends PureComponent {
@@ -16,7 +17,8 @@ class DashboardsTabs extends PureComponent {
     intl: PropTypes.object.isRequired,
     activeId: PropTypes.number,
     darkMode: PropTypes.bool.isRequired,
-    closeEditMode: PropTypes.bool.isRequired
+    closeEditMode: PropTypes.bool.isRequired,
+    isPremium: PropTypes.bool
   };
 
   static defaultProps = {
@@ -69,7 +71,7 @@ class DashboardsTabs extends PureComponent {
   };
 
   render() {
-    const { dashboards, intl, activeId, darkMode } = this.props;
+    const { dashboards, intl, activeId, darkMode, isPremium } = this.props;
     const { editMode } = this.state;
     const noDashboards = dashboards.length === 0;
 
@@ -108,6 +110,17 @@ class DashboardsTabs extends PureComponent {
                   disabled={editMode}
                 >
                   <span>{dashboard.name}</span>
+                  {isPremium && dashboard.public && (
+                    <Badge className="dashboard-tabs__badge">
+                      <Icon
+                        className="dashboard-tabs__badge-icon"
+                        icon="earth"
+                        color="blue"
+                        size="mini"
+                      />
+                      <FormattedMessage id="misc.shared" />
+                    </Badge>
+                  )}
                   {editMode && (
                     <Fragment>
                       <Icon

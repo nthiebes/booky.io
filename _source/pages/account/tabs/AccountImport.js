@@ -71,7 +71,7 @@ class AccountImport extends PureComponent {
       importBookmarks({
         params: {
           importAsCollections,
-          bookmarks: html
+          bookmarks: html.replace(/(<p>\n|<p>\r|<p>\r\n|<p>)$/i, '')
         },
         onSuccess: ({ count }) => {
           this.setState({
@@ -92,28 +92,25 @@ class AccountImport extends PureComponent {
 
   render() {
     const { intl } = this.props;
-    const {
-      error,
-      success,
-      pending,
-      importAsCollections,
-      bookmarksCount
-    } = this.state;
+    const { error, success, pending, importAsCollections, bookmarksCount } =
+      this.state;
 
     if (success) {
       return (
         <SuccessIllustration illustration="import">
-          <FormattedMessage
-            id="account.importSuccess"
-            values={{
-              home: (
-                <Link to="/">
-                  <FormattedMessage id="account.importSuccessHome" />
-                </Link>
-              ),
-              count: bookmarksCount
-            }}
-          />
+          <P size="large">
+            <FormattedMessage
+              id="account.importSuccess"
+              values={{
+                home: (
+                  <Link to="/">
+                    <FormattedMessage id="account.importSuccessHome" />
+                  </Link>
+                ),
+                count: bookmarksCount
+              }}
+            />
+          </P>
         </SuccessIllustration>
       );
     }

@@ -9,42 +9,45 @@ import Link from '../../atoms/link';
 
 const menuItemsLoggedOut = [
   {
+    name: 'features',
+    route: '/features',
+    icon: 'star'
+  },
+  {
+    name: 'supporter',
+    route: '/supporter',
+    icon: 'membership'
+  },
+  {
     name: 'about',
     route: '/about'
   },
   {
     name: 'help',
     route: '/help'
-  },
-  {
-    name: 'feedback',
-    route: '/feedback'
   }
 ];
 const menuItemsLoggedIn = [
-  {
-    name: 'about',
-    route: '/about'
-  },
-  {
-    name: 'help',
-    route: '/help'
-  },
   {
     name: 'account',
     route: '/account'
   },
   {
-    name: 'next',
-    route: '/next'
+    name: 'supporter',
+    route: '/supporter',
+    icon: 'membership'
   },
   {
-    name: 'feedback',
-    route: '/feedback'
+    name: 'help',
+    route: '/help'
   },
+  // {
+  //   name: 'next',
+  //   route: '/next'
+  // },
   {
     name: 'new',
-    route: '/about#new'
+    route: '/new'
   }
 ];
 
@@ -53,7 +56,6 @@ class Menu extends PureComponent {
     intl: PropTypes.object.isRequired,
     className: PropTypes.string,
     loggedIn: PropTypes.bool,
-    isBeta: PropTypes.bool.isRequired,
     newsVersion: PropTypes.number.isRequired,
     voted: PropTypes.number.isRequired
   };
@@ -63,16 +65,13 @@ class Menu extends PureComponent {
       className,
       loggedIn,
       intl,
-      isBeta,
+      // isBeta,
       newsVersion
       // voted
     } = this.props;
     let menuItems = loggedIn ? menuItemsLoggedIn : menuItemsLoggedOut;
 
     menuItems = menuItems.filter((item) => {
-      if (item.name === 'feedback' && !isBeta) {
-        return false;
-      }
       if (item.name === 'new' && newsVersion >= config.NEWS_VERSION) {
         return false;
       }
@@ -84,7 +83,7 @@ class Menu extends PureComponent {
         aria-label={intl.formatMessage({ id: 'menu.title' })}
         className={classNames('menu', className)}
       >
-        {menuItems.map(({ name, route }) => (
+        {menuItems.map(({ name, icon, route }) => (
           <Link
             key={name}
             className="menu__item"
@@ -98,7 +97,7 @@ class Menu extends PureComponent {
             //   (voted < config.POLL_VERSION && name === 'next') || name === 'new'
             // }
           >
-            <Icon icon={name} color="light" />
+            <Icon icon={icon || name} color="light" />
             <FormattedMessage id={`menu.${name}`} />
           </Link>
         ))}

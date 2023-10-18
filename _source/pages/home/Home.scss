@@ -145,34 +145,40 @@
   width: 22vw;
 }
 
-.home__bookmarklet {
+.home__availability {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
 
-  @include mobile-tablet {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
+.home__availability-title {
   @include desktop {
-    padding-top: 4rem;
-    padding-bottom: 5rem;
+    max-width: 80%;
   }
 }
 
-.home__extension {
+.home__platforms {
   display: flex;
-  width: 100%;
-  margin-top: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
+
+  @include tablet {
+    max-width: 80%;
+  }
 
   @include desktop {
-    margin-top: 2rem;
+    max-width: 60%;
   }
 }
 
-.home__extension-icon {
+.home__platforms-platform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.home__platforms-icon {
   margin: 0 0.5rem 0.5rem;
   max-width: 75px;
   max-height: 75px;
@@ -183,38 +189,21 @@
   }
 }
 
-.home__extension-browser {
+.home__features {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-.home__testimonials {
   @include mobile {
     padding-top: 13vw;
-    padding-bottom: 3rem;
   }
 
   @include tablet {
     padding-top: 6rem;
-    padding-bottom: 3rem;
   }
 
   @include desktop {
     padding-top: 10rem;
-    padding-bottom: 5rem;
-  }
-}
-
-.home__features {
-  @include mobile-tablet {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  @include desktop {
-    padding-top: 4rem;
-    padding-bottom: 5rem;
   }
 }
 
@@ -293,4 +282,8 @@
 
 .survey__confirm {
   margin: 0 1rem;
+}
+
+.home__availability-wrapper {
+  overflow: hidden;
 }

@@ -80,93 +80,110 @@ export const getDashboards = (noReset) => (dispatch) => {
   });
 };
 
-export const addDashboard = ({ name, onSuccess, onError }) => (dispatch) => {
-  fetcher({
-    url: '/dashboards',
-    method: 'POST',
-    params: {
-      name: encodeEmoji(name)
-    },
-    onSuccess: ({ id }) => {
-      dispatch({
-        type: 'ADD_DASHBOARD',
-        name,
-        id
-      });
-      onSuccess();
-    },
-    onError: () => {
-      // console.log('error', error);
-      onError();
-    }
-  });
-};
-
-export const editDashboard = ({
-  name,
-  position,
-  id,
-  onSuccess,
-  onError,
-  shouldUpdate = true
-}) => (dispatch) => {
-  fetcher({
-    url: `/dashboards/${id}`,
-    method: 'PATCH',
-    params: removeEmpty({
-      name: name ? encodeEmoji(name) : '',
-      position
-    }),
-    onSuccess: () => {
-      if (shouldUpdate) {
+export const addDashboard =
+  ({ name, onSuccess, onError }) =>
+  (dispatch) => {
+    fetcher({
+      url: '/dashboards',
+      method: 'POST',
+      params: {
+        name: encodeEmoji(name)
+      },
+      onSuccess: ({ id }) => {
         dispatch({
-          type: 'EDIT_DASHBOARD',
+          type: 'ADD_DASHBOARD',
           name,
           id
         });
+        onSuccess();
+      },
+      onError: () => {
+        onError();
       }
-      onSuccess && onSuccess();
-    },
-    onError: () => {
-      // console.log('error', error);
-      onError && onError();
-    }
-  });
-};
+    });
+  };
 
-export const deleteDashboard = ({ id, newId, onSuccess, onError }) => (
-  dispatch,
-  getState
-) => {
-  const dashboards = getState().dashboards.items;
-  const activeDashboardId = getState().user.settings.defaultDashboardId;
-  const defaultDashboardId =
-    newId || (dashboards.length ? dashboards[0].id : null);
-  const url = newId
-    ? `/dashboards/${id}?moveCategoriesTo=${newId}`
-    : `/dashboards/${id}`;
-
-  fetcher({
-    url,
-    method: 'DELETE',
-    onSuccess: () => {
-      // The order is important since in the onSuccess callback "abortFetch" is called
-      onSuccess();
-
-      dispatch({
-        type: 'DELETE_DASHBOARD',
-        newId,
-        id
-      });
-      if (activeDashboardId === id) {
-        dispatch(changeDashboard(defaultDashboardId));
+export const editDashboard =
+  ({ name, position, id, onSuccess, onError, shouldUpdate = true }) =>
+  (dispatch) => {
+    fetcher({
+      url: `/dashboards/${id}`,
+      method: 'PATCH',
+      params: removeEmpty({
+        name: name ? encodeEmoji(name) : '',
+        position
+      }),
+      onSuccess: () => {
+        if (shouldUpdate) {
+          dispatch({
+            type: 'EDIT_DASHBOARD',
+            name,
+            id
+          });
+        }
+        onSuccess && onSuccess();
+      },
+      onError: () => {
+        onError && onError();
       }
-    },
-    onError: () => {
-      onError();
-    }
-  });
-};
+    });
+  };
+
+export const shareDashboard =
+  ({ id, isPublic, onSuccess, onError }) =>
+  (dispatch) => {
+    fetcher({
+      url: `/dashboards/${id}`,
+      method: 'PATCH',
+      params: {
+        public: isPublic
+      },
+      onSuccess: () => {
+        dispatch({
+          type: 'SHARE_DASHBOARD',
+          isPublic,
+          id
+        });
+        onSuccess && onSuccess();
+      },
+      onError: (error) => {
+        onError && onError(error);
+      }
+    });
+  };
+
+export const deleteDashboard =
+  ({ id, newId, onSuccess, onError }) =>
+  (dispatch, getState) => {
+    const dashboards = getState().dashboards.items;
+    const activeDashboardId = getState().user.settings.defaultDashboardId;
+    const defaultDashboardId =
+      newId || (dashboards.length ? dashboards[0].id : null);
+    const url = newId
+      ? `/dashboards/${id}?moveCategoriesTo=${newId}`
+      : `/dashboards/${id}`;
+
+    fetcher({
+      url,
+      method: 'DELETE',
+      onSuccess: () => {
+        // The order is important since in the onSuccess callback "abortFetch" is called
+        onSuccess();
+
+        dispatch({
+          type: 'DELETE_DASHBOARD',
+          newId,
+          id
+        });
+        if (activeDashboardId === id) {
+          dispatch(changeDashboard(defaultDashboardId));
+        }
+      },
+      onError: () => {
+        onError();
+      }
+    });
+  };
 
 export const dragDashboard = (dragData) => (dispatch) => {
   const { destinationIndex, dashboardId } = dragData;
@@ -183,4 +200,45 @@ export const dragDashboard = (dragData) => (dispatch) => {
       shouldUpdate: false
     })
   );
+};
+
+export const getDashboard = (id) => (dispatch) => {
+  dispatch(
+    updateDashboardsData({
+      pending: true
+    })
+  );
+
+  fetcher({
+    url: `/dashboards/${id}/shared`,
+    onSuccess: ({ name, activeCategories }) => {
+      dispatch(
+        updateDashboardsData({
+          items: [
+            {
+              name: decodeEmoji(name)
+            }
+          ],
+          pending: false
+        })
+      );
+      dispatch(
+        setCategories(
+          activeCategories.map((category) => ({
+            ...category,
+            name: decodeEmoji(category.name),
+            pending: true
+          }))
+        )
+      );
+    },
+    onError: (error) => {
+      dispatch(
+        updateDashboardsData({
+          error,
+          pending: false
+        })
+      );
+    }
+  });
 };

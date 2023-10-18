@@ -17,6 +17,8 @@ import DeleteDashboard from './modals/DeleteDashboard';
 import Customize from './modals/Customize';
 import DeleteAccount from './modals/DeleteAccount';
 import SortCategories from './modals/SortCategoriesContainer';
+import CancelSubscription from './modals/CancelSubscription';
+import ShareDashboard from './modals/ShareDashboardContainer';
 
 export default class Modal extends PureComponent {
   static propTypes = {
@@ -37,6 +39,8 @@ export default class Modal extends PureComponent {
     deleteDashboard: PropTypes.func.isRequired,
     darkMode: PropTypes.bool.isRequired,
     deleteAccount: PropTypes.func.isRequired,
+    resetSearch: PropTypes.func.isRequired,
+    cancelSubscription: PropTypes.func.isRequired,
     searchBookmarks: PropTypes.func.isRequired,
     updateSearchData: PropTypes.func.isRequired,
     keyword: PropTypes.string
@@ -88,6 +92,9 @@ export default class Modal extends PureComponent {
       type: DeleteDashboard,
       action: this.props.deleteDashboard
     },
+    ShareDashboard: {
+      type: ShareDashboard
+    },
     Customize: {
       type: Customize
     },
@@ -97,6 +104,10 @@ export default class Modal extends PureComponent {
     },
     SortCategories: {
       type: SortCategories
+    },
+    CancelSubscription: {
+      type: CancelSubscription,
+      action: this.props.cancelSubscription
     }
   };
 

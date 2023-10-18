@@ -17,9 +17,14 @@ import {
   deleteDashboard
 } from '../../_state/dashboards/actions';
 import { deleteAccount } from '../../_state/user/actions';
-import { searchBookmarks, updateSearchData } from '../../_state/search/actions';
+import { cancelSubscription } from '../../_state/subscription/actions';
+import {
+  resetSearch,
+  searchBookmarks,
+  updateSearchData
+} from '../../_state/search/actions';
 
-export const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   let bookmarkCount;
 
   if (state.categories.length) {
@@ -49,8 +54,7 @@ export const mapStateToProps = (state) => {
     }
   };
 };
-
-export const mapDispatchToProps = {
+const mapDispatchToProps = {
   closeModal,
   hideModal,
   addBookmark,
@@ -63,10 +67,11 @@ export const mapDispatchToProps = {
   editDashboard,
   deleteDashboard,
   deleteAccount,
+  resetSearch,
+  cancelSubscription,
   searchBookmarks,
   updateSearchData
 };
-
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default Container;

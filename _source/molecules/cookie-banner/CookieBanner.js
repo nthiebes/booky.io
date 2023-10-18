@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { setLanguage } from '../../_utils/language';
-import { loadGoogleAnalytics } from '../../_utils/script';
+// import { loadGoogleAnalytics } from '../../_utils/script';
 import { List, ListItem } from '../../atoms/list';
 import {
   ButtonSmallPrimary,
@@ -43,7 +43,7 @@ export default class CookieBanner extends PureComponent {
       secure: process.env.NODE_ENV !== 'development'
     });
     setLanguage(language);
-    loadGoogleAnalytics();
+    // loadGoogleAnalytics();
     this.setState({
       cookieConsent: true
     });
@@ -71,9 +71,9 @@ export default class CookieBanner extends PureComponent {
           <ListItem>
             <FormattedMessage id="cookie.item2" />
           </ListItem>
-          <ListItem>
+          {/* <ListItem>
             <FormattedMessage id="cookie.item3" />
-          </ListItem>
+          </ListItem> */}
         </List>
         <Link to="/privacy">
           <FormattedMessage id="menu.privacy" />

@@ -1,0 +1,67 @@
+@import "../../templates/booky/config.scss";
+
+.feature-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  border-radius: 30px;
+  width: 23rem;
+  margin: 3.5rem 0 1rem 0;
+
+  @include tablet-desktop {
+    margin: 3.5rem 1rem 1rem 1rem;
+  }
+}
+
+@include desktop {
+  .feature-card:first-of-type {
+    margin-left: 0;
+  }
+
+  .feature-card:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.feature-card--white {
+  background-color: $color-background--white;
+
+  &.feature-card--darkMode {
+    background-color: $color-background--dark-mode;
+  }
+}
+
+.feature-card--light {
+  border: 2px solid $color-border--light;
+
+  &.feature-card--darkMode {
+    border-color: $color-background--dark;
+  }
+}
+
+.feature-card--centered {
+  text-align: center;
+}
+
+.feature-card__illustration {
+  min-width: 150px;
+  min-height: 150px;
+  margin-top: -3rem;
+
+  @include tablet {
+    min-width: 200px;
+    min-height: 200px;
+    margin-top: -4rem;
+  }
+}
+
+.feature-card__headline--noWrap {
+  @include tablet-desktop {
+    white-space: nowrap;
+  }
+}
+
+.feature-card__text {
+  flex-grow: 1;
+}

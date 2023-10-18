@@ -6,10 +6,10 @@
   position: absolute;
   top: calc(3rem + 2px);
   width: 100%;
-  z-index: 1;
   height: 42px;
   background-color: rgba($color-background--white, 0.95);
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  z-index: 3;
 
   @include tablet {
     top: calc(4.4rem + 2px);
@@ -59,16 +59,38 @@
   text-overflow: ellipsis;
   display: block;
   margin-right: 1rem;
-
-  @include desktop {
-    // max-width: 618px;
-  }
 }
 
 .toolbar__add-category {
   flex-shrink: 0;
 }
 
-.toolbar__button {
+.toolbar__share {
+  flex-shrink: 0;
+
+  @include tablet-desktop {
+    margin-right: 1rem;
+  }
+}
+
+.toolbar__button,
+.toolbar__share--tabs {
   margin-left: calc(1rem - 6px);
+}
+
+.toolbar__share--tabs {
+  margin-right: 6px;
+}
+
+.toolbar__badge {
+  margin-right: 0.5rem;
+  margin-left: 6px;
+}
+
+.toolbar__badge-icon {
+  margin-right: 0.2rem;
+}
+
+.toolbar__add-category-icon {
+  margin-right: -6px;
 }

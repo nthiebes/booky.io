@@ -231,6 +231,7 @@
   },
   "globals": {
     "chrome": true,
-    "AbortController": true
+    "AbortController": true,
+    "paypal": true
   }
 }

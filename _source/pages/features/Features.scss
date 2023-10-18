@@ -1,0 +1,45 @@
+@import "../../templates/booky/config.scss";
+
+.features-page__title {
+  opacity: 0;
+  position: absolute;
+  height: 0;
+  width: 0;
+}
+
+.features-page__dark-mode {
+  min-width: 130px;
+  width: 130px;
+}
+
+.features-page__cluster {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+
+  @include desktop {
+    flex-wrap: nowrap;
+  }
+}
+
+.features__bookmarklet {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about__extension {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: center;
+
+  @include desktop {
+    margin-top: 2rem;
+  }
+}
+
+.features-page__memberships {
+  margin-top: 1rem;
+}

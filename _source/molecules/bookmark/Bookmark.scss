@@ -47,31 +47,66 @@
 .bookmark__favicon {
   flex-shrink: 0;
   pointer-events: initial;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: $color-font--medium;
-  }
+  margin: 4px;
 }
 
-.bookmark__favicon.bookmark__favicon--dark-mode {
-  &:hover,
-  &:active,
-  &:focus {
-    color: $color-font--white;
+.bookmark__favicon--viewOnly {
+  pointer-events: none;
+}
+
+.bookmark__fallback-icon {
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+  font-weight: bold;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-font--white;
+  cursor: default;
+
+  &.bookmark__fallback-icon--color1 {
+    background-color: $color--7;
+  }
+
+  &.bookmark__fallback-icon--color2 {
+    background-color: $color--8;
+  }
+
+  &.bookmark__fallback-icon--color3 {
+    background-color: $color--3;
+  }
+
+  &.bookmark__fallback-icon--color4 {
+    background-color: $color--1;
+  }
+
+  &.bookmark__fallback-icon--color5 {
+    background-color: $color--5;
+  }
+
+  &.bookmark__fallback-icon--color6 {
+    background-color: $color--4;
+  }
+
+  &.bookmark__fallback-icon--color7 {
+    background-color: $color--2;
+  }
+
+  &.bookmark__fallback-icon--color8 {
+    background-color: $color--6;
+  }
+
+  &.bookmark__fallback-icon--color9 {
+    background-color: $color--0;
   }
 }
 
 .bookmark__note {
-  word-break: break-word;
   padding-left: 24px;
-  // top: 36px;
-  // left: 30px;
-  // right: 6px;
-  // text-overflow: ellipsis;
-  // overflow: hidden;
-  // white-space: nowrap;
+  white-space: pre-wrap;
 }
 
 .bookmark--edit-mode .bookmark__note {

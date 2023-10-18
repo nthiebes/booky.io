@@ -1,7 +1,7 @@
 #!/bin/bash
 
 browser="$1"
-version="2.1.0"
+version="3.0.0"
 
 if [ "$browser" == "chrome" ]
 then
@@ -44,9 +44,11 @@ manifest="{
   \"author\": \"Nico Thiebes\",
   \"description\": \"__MSG_appDesc__\",
   \"default_locale\": \"en\",
-  \"content_security_policy\": \"default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io https://booky.io\",
-  \"permissions\": [\"activeTab\", \"management\", \"storage\"],${applications}
-  \"browser_action\": {
+  \"content_security_policy\": {
+    \"extension_pages\": \"default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io https://booky.io\"
+  },
+  \"permissions\": [\"activeTab\", \"management\",  \"storage\", \"scripting\"],${applications}
+  \"action\": {
     \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
     \"default_icon\": {
@@ -68,7 +70,7 @@ manifest="{
     \"48\": \"images/icon-48x48.png\",
     \"128\": \"images/icon-128x128.png\"
   },
-  \"manifest_version\": 2
+  \"manifest_version\": 3
 }"
 
 if [ "$browser" == "chrome" ]

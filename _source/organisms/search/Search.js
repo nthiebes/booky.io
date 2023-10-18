@@ -148,7 +148,7 @@ class Search extends PureComponent {
                 </button>
                 {categories.map(
                   (
-                    { id: categoryId, name: categoryName, bookmarks },
+                    { id: categoryId, name: categoryName, bookmarks, color },
                     categoryIndex
                   ) => (
                     <ul key={`${categoryId}-${categoryIndex}`}>
@@ -186,6 +186,7 @@ class Search extends PureComponent {
                           favicon={bookmark.favicon}
                           onDeleteOrEditClick={this.toggleEditMode}
                           isSearch
+                          color={color}
                         />
                       ))}
                     </ul>

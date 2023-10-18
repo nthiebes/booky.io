@@ -32,6 +32,8 @@ class Bookmark extends PureComponent {
     isExtension: PropTypes.bool.isRequired,
     enableNotes: PropTypes.bool.isRequired,
     note: PropTypes.string,
+    viewOnly: PropTypes.bool,
+    color: PropTypes.string,
     isSearch: PropTypes.bool,
     className: PropTypes.string
   };
@@ -128,6 +130,8 @@ class Bookmark extends PureComponent {
       isExtension,
       enableNotes,
       note,
+      viewOnly,
+      color,
       isSearch,
       className
     } = this.props;
@@ -151,28 +155,35 @@ class Bookmark extends PureComponent {
             {...provided.draggableProps}
             ref={provided.innerRef}
             onMouseLeave={
-              bookmarkEditOnHover && !isMobile ? this.disableEditMode : null
+              bookmarkEditOnHover && (!isMobile || isExtension)
+                ? this.disableEditMode
+                : null
             }
           >
             <span className="bookmark__wrapper">
               {!favicon || favicon === 'default' ? (
-                <Icon
-                  icon="earth"
-                  size="tiny"
+                <div
                   className={classNames(
-                    'bookmark__favicon',
-                    darkMode && 'bookmark__favicon--dark-mode'
+                    'bookmark__fallback-icon',
+                    `bookmark__fallback-icon--${color}`,
+                    viewOnly && 'bookmark__favicon--viewOnly'
                   )}
-                  dragHandleProps={provided.dragHandleProps}
-                  label={intl.formatMessage({ id: 'bookmark.drag' })}
-                />
+                  {...provided.dragHandleProps}
+                  aria-label={intl.formatMessage({ id: 'bookmark.drag' })}
+                  title={intl.formatMessage({ id: 'bookmark.drag' })}
+                >
+                  {name.substring(0, 1).toUpperCase()}
+                </div>
               ) : (
                 <img
                   src={favicon}
                   height="16"
                   width="16"
                   alt=""
-                  className="bookmark__favicon"
+                  className={classNames(
+                    'bookmark__favicon',
+                    viewOnly && 'bookmark__favicon--viewOnly'
+                  )}
                   {...provided.dragHandleProps}
                   tabIndex="-1"
                   aria-hidden="true"
@@ -190,15 +201,17 @@ class Bookmark extends PureComponent {
                 rel={newtab ? 'noopener noreferrer' : null}
                 onClick={this.handleOnClick}
                 onMouseEnter={
-                  bookmarkEditOnHover && !isMobile ? this.enableEditMode : null
+                  bookmarkEditOnHover && (!isMobile || isExtension)
+                    ? this.enableEditMode
+                    : null
                 }
                 title={name}
               >
-                {name}
+                {name.trim() || '\xa0'}
               </a>
               {(editMode || (hoverEditMode && !isDragging)) && (
                 <>
-                  {enableNotes && note && (
+                  {(enableNotes || viewOnly) && note && (
                     <span className="bookmark__note-icon-wrapper">
                       <Icon
                         icon="note"
@@ -219,25 +232,29 @@ class Bookmark extends PureComponent {
                       />
                     </span>
                   )}
-                  <Icon
-                    icon="edit"
-                    label={intl.formatMessage({ id: 'bookmark.edit' })}
-                    onClick={this.onEditClick}
-                    isButton
-                  />
-                  <Icon
-                    icon="delete"
-                    label={intl.formatMessage({ id: 'bookmark.delete' })}
-                    onClick={this.onDeleteClick}
-                    isButton
-                  />
-                  {!isSearch && (
-                    <Icon
-                      icon="drag"
-                      label={intl.formatMessage({ id: 'bookmark.drag' })}
-                      dragHandleProps={provided.dragHandleProps}
-                      isButton
-                    />
+                  {!viewOnly && (
+                    <>
+                      <Icon
+                        icon="edit"
+                        label={intl.formatMessage({ id: 'bookmark.edit' })}
+                        onClick={this.onEditClick}
+                        isButton
+                      />
+                      <Icon
+                        icon="delete"
+                        label={intl.formatMessage({ id: 'bookmark.delete' })}
+                        onClick={this.onDeleteClick}
+                        isButton
+                      />
+                      {!isSearch && (
+                        <Icon
+                          icon="drag"
+                          label={intl.formatMessage({ id: 'bookmark.drag' })}
+                          dragHandleProps={provided.dragHandleProps}
+                          isButton
+                        />
+                      )}
+                    </>
                   )}
                 </>
               )}

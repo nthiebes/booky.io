@@ -11,7 +11,8 @@ import {
   AccountData,
   AccountImport,
   AccountExport,
-  AccountManage
+  AccountManage,
+  AccountSupporter
 } from './tabs';
 
 class Account extends Component {
@@ -30,6 +31,10 @@ class Account extends Component {
     {
       name: this.props.intl.formatMessage({ id: 'account.userData' }),
       key: 'data'
+    },
+    {
+      name: this.props.intl.formatMessage({ id: 'account.memberships' }),
+      key: 'supporter'
     },
     {
       name: this.props.intl.formatMessage({ id: 'account.import' }),
@@ -77,6 +82,7 @@ class Account extends Component {
           {activeTab === 'import' && <AccountImport />}
           {activeTab === 'export' && <AccountExport />}
           {activeTab === 'manage' && <AccountManage />}
+          {activeTab === 'supporter' && <AccountSupporter />}
         </Section>
       </Page>
     );

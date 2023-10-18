@@ -25,7 +25,8 @@ class DashboardsList extends PureComponent {
     closeSidebar: PropTypes.func.isRequired,
     isDragging: PropTypes.bool,
     dragType: PropTypes.string,
-    minimalBookmarkButton: PropTypes.bool
+    minimalBookmarkButton: PropTypes.bool,
+    isPremium: PropTypes.bool
   };
 
   static defaultProps = {
@@ -95,7 +96,8 @@ class DashboardsList extends PureComponent {
       closeSidebar,
       isDragging,
       dragType,
-      minimalBookmarkButton
+      minimalBookmarkButton,
+      isPremium
     } = this.props;
     const { editMode } = this.state;
     const noDashboards = dashboards.length === 0;
@@ -219,6 +221,9 @@ class DashboardsList extends PureComponent {
                             </span>
                           )}
                         </Droppable>
+                        {isPremium && dashboard.public && (
+                          <Icon icon="earth" color="blue" size="tiny" />
+                        )}
                         {editMode && (
                           <Fragment>
                             <Icon

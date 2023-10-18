@@ -6,8 +6,10 @@ import { FormattedMessage } from 'react-intl';
 import { postMessage } from '../../_utils/extension';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
+import P from '../../atoms/paragraph';
 import Modal from '../../organisms/modal';
 import ErrorBoundary from '../../molecules/error-boundary';
+import { config } from '../../config';
 
 export default class Extension extends PureComponent {
   static propTypes = {
@@ -29,9 +31,13 @@ export default class Extension extends PureComponent {
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
+      // const { type, ...pageData } = event.data;
+
+      // if (type === 'BOOKY') {
       updateExtensionData({
         page: event.data
       });
+      // }
     });
   }
 
@@ -44,6 +50,16 @@ export default class Extension extends PureComponent {
 
   render() {
     const { children, className, darkMode, color } = this.props;
+
+    if (config.updateInProgress) {
+      return (
+        <div className="page--update">
+          <P>
+            <FormattedMessage id="misc.updateInProgress" />
+          </P>
+        </div>
+      );
+    }
 
     return (
       <>

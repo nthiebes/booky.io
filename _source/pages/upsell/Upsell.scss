@@ -1,0 +1,56 @@
+@import "../../templates/booky/config.scss";
+
+.upsell__wrapper {
+  @include tablet-desktop {
+    display: flex;
+  }
+}
+
+.upsell__facts {
+  @include tablet-desktop {
+    margin-left: 3rem;
+    border-left: 2px solid $color-border--light;
+    padding-left: 3rem;
+  }
+}
+
+.upsell__fact {
+  display: flex;
+  align-items: center;
+  margin-left: -6px;
+}
+
+.upsell__paypal {
+  margin-top: 1.5rem;
+}
+
+.upsell__paypal--disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.upsell__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .success-illustration__headline {
+    white-space: nowrap;
+  }
+}
+
+.upsell__amount-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.upsell__amount {
+  margin-bottom: 0;
+  width: 19rem;
+  flex-grow: initial;
+}
+
+.upsell__euro {
+  margin-left: 1rem;
+}

@@ -7,6 +7,7 @@ import { restricted } from './templates/restricted';
 import { publicOnly } from './templates/public-only';
 import Loading from './pages/loading';
 import Home from './pages/home';
+import Shared from './pages/shared';
 
 const About = lazy(() => import('./pages/about'));
 const Help = lazy(() => import('./pages/help'));
@@ -25,6 +26,11 @@ const Add = lazy(() => import('./pages/add'));
 const Open = lazy(() => import('./pages/open'));
 const Customize = lazy(() => import('./pages/customize'));
 const Bookmarklet = lazy(() => import('./pages/bookmarklet'));
+const Features = lazy(() => import('./pages/features'));
+const Supporter = lazy(() => import('./pages/supporter'));
+const Upsell = lazy(() => import('./pages/upsell'));
+const New = lazy(() => import('./pages/new'));
+const Terms = lazy(() => import('./pages/terms'));
 
 class Routes extends Component {
   static propTypes = {
@@ -59,6 +65,12 @@ class Routes extends Component {
           <Route path="/resend" component={Resend} />
           <Route path="/next" component={restricted(Next)} />
           <Route path="/bookmarklet" component={Bookmarklet} />
+          <Route path="/features" component={Features} />
+          <Route path="/supporter" component={Supporter} />
+          <Route path="/upsell" component={restricted(Upsell)} />
+          <Route path="/new" component={New} />
+          <Route path="/terms" component={Terms} />
+          <Route path="/shared/:id" component={Shared} />
           <Route path="/activate/:token" component={publicOnly(Login)} />
           <Route
             path="/recovery/:action/:params"

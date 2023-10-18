@@ -14,6 +14,7 @@ import P from '../../atoms/paragraph';
 import {
   ButtonLargeBlue,
   ButtonLargeLight,
+  ButtonLargePrimary,
   ButtonSmallPrimary,
   ButtonSmallLight,
   ButtonSmallMedium
@@ -22,7 +23,7 @@ import Illustration from '../../atoms/illustration';
 import Section from '../../molecules/section';
 import Testimonials from '../../molecules/testimonials';
 import Feature from '../../molecules/feature';
-import Features from '../../molecules/features';
+import { AllFeatures } from '../../molecules/all-features';
 
 const surveyMap = {
   de: {
@@ -60,12 +61,8 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    const {
-      loggedIn,
-      getDashboards,
-      updateSearchData,
-      searchBookmarks
-    } = this.props;
+    const { loggedIn, getDashboards, updateSearchData, searchBookmarks } =
+      this.props;
     const params = new URLSearchParams(window.location.search);
     const term = params.get('term');
 
@@ -168,16 +165,27 @@ class Home extends Component {
             </ButtonLargeBlue>
             <ButtonLargeLight icon="about" to="/about">
               <FormattedMessage
-                id="header.learnMore"
+                id="home.aboutBooky"
                 values={{ b: (msg) => <b>{msg}</b> }}
               />
             </ButtonLargeLight>
           </div>
           <Illustration name="devices" className="home__header-illustration" />
         </section>
-        <Section color="light" noPadding contentClassName="home__testimonials">
-          <Testimonials />
+
+        <Section color="light" contentSpace contentClassName="home__features">
+          <H2 style="h1" noMargin centered className="home__features-headline">
+            <FormattedMessage id="misc.features" />
+          </H2>
+          <AllFeatures />
+          <ButtonLargePrimary icon="star" to="/features" contentBefore>
+            <FormattedMessage
+              id="home.allFeatures"
+              values={{ b: (msg) => <b>{msg}</b> }}
+            />
+          </ButtonLargePrimary>
         </Section>
+
         <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.privateHeadline' })}
@@ -185,6 +193,7 @@ class Home extends Component {
             illustration="protection"
           />
         </Section>
+
         <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.customizableHeadline' })}
@@ -193,7 +202,13 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="dark" contentClassName="home__bookmarklet">
+
+        <Section
+          color="dark"
+          className="home__availability-wrapper"
+          contentClassName="home__availability"
+          contentSpace
+        >
           <Illustration
             className="home__plant booky--hide-mobile"
             name="plant"
@@ -203,78 +218,156 @@ class Home extends Component {
             name="trees"
           />
           <H2 style="h1" color="light" noMargin centered>
-            <FormattedMessage id="misc.feature1" />
+            <FormattedMessage id="about.platforms" />
           </H2>
-          <H3 style="h2" color="light" noMargin centered>
-            <FormattedMessage id="home.extensionText" />
-          </H3>
-          <nav className="home__extension">
+          <nav className="home__platforms">
             <Link
               href="https://chrome.google.com/webstore/detail/bookyio-extension/pmcpkkipiedakcaolhnbijibndfemckf"
               target="_blank"
               color="light"
-              className="home__extension-browser"
+              className="home__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="home__extension-icon"
+                className="home__platforms-icon"
                 src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              {'Chrome'}
+              {'Chrome '}
+              <FormattedMessage id="misc.extension" />
             </Link>
             <Link
               href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/"
               target="_blank"
               color="light"
-              className="home__extension-browser"
+              className="home__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="home__extension-icon"
+                className="home__platforms-icon"
                 src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              {'Firefox'}
+              {'Firefox '}
+              <FormattedMessage id="misc.extension" />
             </Link>
-            <Link
+            {/* <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
               target="_blank"
               color="light"
-              className="home__extension-browser"
+              className="home__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="home__extension-icon"
+                className="home__platforms-icon"
                 src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              {'Opera'}
-            </Link>
+              {'Opera '}
+              <FormattedMessage id="misc.extension" />
+            </Link> */}
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
               target="_blank"
               color="light"
-              className="home__extension-browser"
+              className="home__platforms-platform"
             >
               <img
                 width="75"
                 height="75"
                 alt=""
-                className="home__extension-icon"
+                className="home__platforms-icon"
                 src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              {'Edge'}
+              {'Edge '}
+              <FormattedMessage id="misc.extension" />
+            </Link>
+            <Link
+              to="/bookmarklet"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/icons/android-chrome-192x192.png"
+                loading="lazy"
+              />
+              {'Bookmarklet'}
+            </Link>
+            <Link
+              to="/help#general"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/logos/android.svg"
+                loading="lazy"
+              />
+              {'Android (Web app)'}
+            </Link>
+            <Link
+              to="/help#general"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/logos/apple.svg"
+                loading="lazy"
+              />
+              {'iOS (Web app)'}
+            </Link>
+            <Link
+              href="../../_assets/downloads/booky.zip"
+              target="_blank"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/logos/finder.svg"
+                loading="lazy"
+              />
+              {'macOS'}
+            </Link>
+            <Link
+              to="/help#general"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/logos/windows.svg"
+                loading="lazy"
+              />
+              {'Windows'}
             </Link>
           </nav>
         </Section>
+
         <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.performantHeadline' })}
@@ -282,6 +375,7 @@ class Home extends Component {
             illustration="speed"
           />
         </Section>
+
         <Section>
           <Feature
             headline={intl.formatMessage({ id: 'home.mobileHeadline' })}
@@ -290,12 +384,11 @@ class Home extends Component {
             direction="right"
           />
         </Section>
-        <Section color="light" contentClassName="home__features">
-          <H2 style="h1" noMargin centered className="home__features-headline">
-            <FormattedMessage id="misc.features" />
-          </H2>
-          <Features />
+
+        <Section color="light" fullWidth contentSpace>
+          <Testimonials />
         </Section>
+
         <Section className="home__not-a-member">
           <Illustration className="home__heart" name="heart" />
           <H2 style="h1" centered noMargin>
@@ -317,7 +410,7 @@ class Home extends Component {
           </ButtonLargeBlue>
           <ButtonLargeLight icon="about" to="/about">
             <FormattedMessage
-              id="header.learnMore"
+              id="home.aboutBooky"
               values={{ b: (msg) => <b>{msg}</b> }}
             />
           </ButtonLargeLight>

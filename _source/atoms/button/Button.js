@@ -29,7 +29,8 @@ export default class Button extends Component {
     pending: PropTypes.bool,
     value: PropTypes.string,
     id: PropTypes.string,
-    useSkeleton: PropTypes.bool
+    useSkeleton: PropTypes.bool,
+    autoWidth: PropTypes.bool
   };
 
   static defaultProps = {
@@ -79,7 +80,8 @@ export default class Button extends Component {
       pending,
       value,
       id,
-      useSkeleton
+      useSkeleton,
+      autoWidth
     } = this.props;
     const { currentIcon } = this.state;
     let CustomTag = 'button';
@@ -103,6 +105,7 @@ export default class Button extends Component {
           solid && 'button--solid',
           pending && 'button--pending',
           contentBefore && 'button--content-before',
+          autoWidth && 'button--auto-width',
           className
         )}
         onClick={onClick}

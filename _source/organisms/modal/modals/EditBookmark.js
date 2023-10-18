@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
 import Input from '../../../atoms/input';
+import Textarea from '../../../atoms/textarea';
 import Expandable from '../../../molecules/expandable';
 import { abortFetch } from '../../../_utils/fetcher';
 import { parseBookmarkUrl } from '../../../_utils/url';
@@ -134,13 +135,14 @@ class EditBookmark extends PureComponent {
             headline={<FormattedMessage id="modal.note" />}
             className="modal__note"
           >
-            <Input
+            <Textarea
               id="bookmark-note"
               name="note"
               value={note}
               onChange={this.onNoteChange}
               maxLength="300"
               disabled={pending}
+              rows={3}
             />
           </Expandable>
         )}

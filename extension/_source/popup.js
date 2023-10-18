@@ -24,9 +24,21 @@ function transitionEndCallback() {
     loadingSpinner.parentNode.removeChild(loadingSpinner);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+async function getCurrentTab() {
+  const queryOptions = { active: true, currentWindow: true };
+  const [tab] = await chrome.tabs.query(queryOptions);
+
+  return tab;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const tab = await getCurrentTab();
+
   // Load the content script
-  chrome.tabs.executeScript(null, { file: 'content.js' });
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ['content.js']
+  });
 });
 
 // Connect to the current tab
@@ -42,10 +54,16 @@ chrome.runtime.onConnect.addListener(function (port) {
   });
 });
 
-function sendToIframe(data) {
+function sendToIframe() {
   var receiver = iframe.contentWindow;
 
-  receiver.postMessage(data, host);
+  receiver.postMessage(
+    {
+      ...pageData,
+      type: 'BOOKY'
+    },
+    host
+  );
 }
 
 // Messages from the booky iframe
@@ -55,7 +73,7 @@ window.addEventListener('message', function (event) {
 
   if (event.origin === host) {
     if (message.ready) {
-      sendToIframe(pageData);
+      sendToIframe();
       loadingSpinner.addEventListener('transitionend', transitionEndCallback);
       loadingSpinner.classList.add('loading__spinner--hide');
       loadingWrapper.classList.add('loading--hide');

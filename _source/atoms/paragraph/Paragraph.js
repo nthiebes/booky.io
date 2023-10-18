@@ -14,7 +14,14 @@ export default class Paragraph extends Component {
     darkMode: PropTypes.bool,
     noPadding: PropTypes.bool,
     role: PropTypes.string,
-    ignoreDarkMode: PropTypes.bool
+    ignoreDarkMode: PropTypes.bool,
+    size: PropTypes.string,
+    color: PropTypes.string
+  };
+
+  static defaultProps = {
+    size: 'normal',
+    color: 'dark'
   };
 
   render() {
@@ -25,13 +32,17 @@ export default class Paragraph extends Component {
       darkMode,
       noPadding,
       role,
-      ignoreDarkMode
+      ignoreDarkMode,
+      size,
+      color
     } = this.props;
 
     return (
       <p
         className={classNames(
           'paragraph',
+          `paragraph--${size}`,
+          `paragraph--${color}`,
           first && 'paragraph--first',
           darkMode && !ignoreDarkMode && 'paragraph--dark-mode',
           noPadding && 'paragraph--no-padding',

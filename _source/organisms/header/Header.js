@@ -154,6 +154,7 @@ class Header extends PureComponent {
               <Link
                 to="/"
                 title={intl.formatMessage({ id: 'menu.home' })}
+                ariaLabel={intl.formatMessage({ id: 'menu.home' })}
                 className={classNames(
                   'header__logo',
                   loggedIn && home && 'booky--hide-mobile-tablet'

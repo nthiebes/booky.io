@@ -8,9 +8,10 @@ import { postMessage } from '../../_utils/extension';
 import { ButtonLargePrimary } from '../../atoms/button';
 import Select from '../../atoms/select';
 import Input from '../../atoms/input';
+import Textarea from '../../atoms/textarea';
 import { ErrorMessage } from '../../atoms/messages';
 import Icon from '../../atoms/icon';
-import Hr from '../../atoms/hr';
+import { Hr } from '../../atoms/hr';
 import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
@@ -205,7 +206,7 @@ class Add extends Component {
               className="add__add-button"
               type="submit"
               pending={pending}
-              disabled={pending}
+              disabled={pending || dashboardsPending}
               icon="add-link"
             >
               <FormattedMessage
@@ -300,7 +301,7 @@ class Add extends Component {
                   })}
                 />
                 {enableNotes && (
-                  <Input
+                  <Textarea
                     id="bookmark-note"
                     name="note"
                     value={stateNote}
@@ -308,6 +309,7 @@ class Add extends Component {
                     maxLength="300"
                     label={intl.formatMessage({ id: 'modal.note' })}
                     disabled={pending}
+                    rows={3}
                   />
                 )}
               </>
