@@ -24,6 +24,13 @@ export default class LanguageSwitcher extends Component {
           locale: language,
           messages
         });
+        document.title = messages['misc.pageTitle'];
+        document
+          .querySelector('meta[name=description]')
+          .setAttribute('content', messages['footer.twitterText']);
+        document
+          .querySelector('meta[property="og:description"]')
+          .setAttribute('content', messages['footer.twitterText']);
       })
       .catch(() => {
         // console.log('error', error);

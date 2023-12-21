@@ -1,4 +1,5 @@
 {
+    "misc.pageTitle": "booky.io | Online bookmark manager.",
     "error.logic.user.expiredToken": "Unfortunately, your activation link is outdated. But no worries! You can resend your activation email here: {resend}",
     "button.share": "<b>Edit</b> visibility",
     "modal.shareText": "Share your collection {name} or keep it private.",

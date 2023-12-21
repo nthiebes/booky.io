@@ -1,4 +1,5 @@
 {
+    "misc.pageTitle": "booky.io | Online Lesezeichen-Manager.",
     "error.logic.user.expiredToken": "Dein Aktivierungs-Link ist leider abgelaufen. Aber keine Sorge! Du kannst deine Aktivierungsmail hier neu anfordern: {resend}",
     "button.share": "Sichtbarkeit",
     "modal.shareText": "Teile deine Sammlung {name} oder halte sie privat.",
