@@ -414,6 +414,7 @@
     "help.comments": "Your comments",
     "modal.urlPlaceholder": "e.g. example.com",
     "error.logic.user.invalidToken": "Unfortunately, your activation link is invalid. But no worries! You can resend your activation email here: {resend}",
+    "error.badRequest.activationToken.invalid": "Unfortunately, your activation link is invalid. But no worries! You can resend your activation email here: {resend}",
     "customize.bookmarkEditOnHover": "Show bookmark buttons on mouseover",
     "customize.minimalBookmarkButton": "Compact mode (Small \"New bookmark\" and \"New collection\" buttons)",
     "customize.layout": "Categories",

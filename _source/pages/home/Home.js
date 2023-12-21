@@ -170,7 +170,11 @@ class Home extends Component {
               />
             </ButtonLargeLight>
           </div>
-          <Illustration name="devices" className="home__header-illustration" />
+          <Illustration
+            name="devices"
+            loading="eager"
+            className="home__header-illustration"
+          />
         </section>
 
         <Section color="light" contentSpace contentClassName="home__features">

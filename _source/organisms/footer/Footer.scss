@@ -125,13 +125,15 @@
   list-style: none;
   justify-content: center;
   align-items: center;
-  margin-top: 1.7rem;
+  margin-top: 1.2rem;
 }
 
 .footer__menu-item {
   font-size: $font-size--small;
   padding: 0 0.5rem;
-  line-height: 2;
+  line-height: 3;
+  min-width: 48px;
+  display: inline-block;
 }
 
 .footer__languages {
@@ -167,7 +169,7 @@
 
 .footer__copy {
   color: $color-font--light;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   font-size: $font-size--small;
 }
 

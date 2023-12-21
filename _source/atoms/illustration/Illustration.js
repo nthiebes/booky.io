@@ -10,7 +10,8 @@ export default class Illustration extends Component {
       name,
       alt,
       ariaHidden,
-      darkMode
+      darkMode,
+      loading
     } = this.props;
     const fileName = darkMode ? `${name}_dark` : name;
 
@@ -22,7 +23,7 @@ export default class Illustration extends Component {
         className={className}
         src={`../../_assets/illustrations/${fileName}.svg`}
         aria-hidden={ariaHidden}
-        loading="lazy"
+        loading={loading}
       />
     );
   }
@@ -35,11 +36,13 @@ Illustration.propTypes = {
   width: PropTypes.string,
   alt: PropTypes.string,
   ariaHidden: PropTypes.bool,
-  darkMode: PropTypes.bool
+  darkMode: PropTypes.bool,
+  loading: PropTypes.oneOf[('lazy', 'eager')]
 };
 
 Illustration.defaultProps = {
   height: '300',
   width: '300',
-  ariaHidden: true
+  ariaHidden: true,
+  loading: 'lazy'
 };
