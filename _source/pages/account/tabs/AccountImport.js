@@ -131,6 +131,7 @@ class AccountImport extends PureComponent {
               onDropAccepted={this.handleAccepted}
               accept="text/html"
               maxFiles={1}
+              maxSize={1572864}
               multiple={false}
               disabled={pending}
             >
@@ -171,12 +172,19 @@ class AccountImport extends PureComponent {
                       </P>
                     </>
                   ) : (
-                    <P noPadding>
-                      <FormattedMessage
-                        id="account.importStep2"
-                        values={{ strong: (msg) => <strong>{msg}</strong> }}
-                      />
-                    </P>
+                    <>
+                      <P>
+                        <FormattedMessage
+                          id="account.importStep2"
+                          values={{ strong: (msg) => <strong>{msg}</strong> }}
+                        />
+                      </P>
+                      <P noPadding>
+                        <i>
+                          <FormattedMessage id="account.importStep2.fileSize" />
+                        </i>
+                      </P>
+                    </>
                   )}
                 </div>
               )}

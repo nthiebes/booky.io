@@ -1,6 +1,7 @@
 {
     "misc.pageTitle": "booky.io | Online Lesezeichen-Manager.",
     "error.logic.user.expiredToken": "Dein Aktivierungs-Link ist leider abgelaufen. Aber keine Sorge! Du kannst deine Aktivierungsmail hier neu anfordern: {resend}",
+    "error.file-too-large": "Die Datei ist zu groß (max. 1.5 MB).",
     "button.share": "Sichtbarkeit",
     "modal.shareText": "Teile deine Sammlung {name} oder halte sie privat.",
     "modal.shareVisibility": "Sichtbarkeit einstellen",
@@ -330,6 +331,7 @@
     "home.extensionText": "Verwalte deine Lesezeichen mit der booky Browser-Erweiterung.",
     "search.label": "Nach Lesezeichen suchen",
     "account.importStep2": "Ziehe deine <strong>.html</strong>-Datei hierher oder klicke, um sie auszuwählen.",
+    "account.importStep2.fileSize": "(max. 1.5 MB)",
     "button.update": "Aktualisieren",
     "account.yourEmail": "Deine E-Mail Adresse:",
     "menu.feedback": "Feedback",

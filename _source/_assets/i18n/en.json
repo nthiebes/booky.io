@@ -1,6 +1,7 @@
 {
     "misc.pageTitle": "booky.io | Online bookmark manager.",
     "error.logic.user.expiredToken": "Unfortunately, your activation link is outdated. But no worries! You can resend your activation email here: {resend}",
+    "error.file-too-large": "The file is too large (max. 1.5 MB).",
     "button.share": "<b>Edit</b> visibility",
     "modal.shareText": "Share your collection {name} or keep it private.",
     "modal.shareVisibility": "Visibility",
@@ -332,6 +333,7 @@
     "home.extensionText": "Manage your bookmarks with the booky browser extension.",
     "search.label": "Search for bookmarks",
     "account.importStep2": "Drag 'n' drop your <strong>.html</strong> file here, or click to select it.",
+    "account.importStep2.fileSize": "(max. 1.5 MB)",
     "button.update": "Update",
     "account.yourEmail": "Your email address:",
     "menu.feedback": "Feedback",
