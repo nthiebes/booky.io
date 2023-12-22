@@ -1,7 +1,7 @@
 #!/bin/bash
 
 browser="$1"
-version="3.0.0"
+version="3.0.2"
 
 if [ "$browser" == "chrome" ]
 then
