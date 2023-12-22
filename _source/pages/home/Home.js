@@ -61,6 +61,16 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    this.loadCollections();
+
+    // window.addEventListener('focus', this.loadCollections);
+  }
+
+  componentWillUnmount() {
+    // window.removeEventListener('focus', this.loadCollections);
+  }
+
+  loadCollections = () => {
     const { loggedIn, getDashboards, updateSearchData, searchBookmarks } =
       this.props;
     const params = new URLSearchParams(window.location.search);
@@ -79,7 +89,7 @@ class Home extends Component {
     }
 
     loggedIn && getDashboards(Boolean(term));
-  }
+  };
 
   hideSurveyBanner = () => {
     localStorage.setItem('hideSurveyBanner', true);
