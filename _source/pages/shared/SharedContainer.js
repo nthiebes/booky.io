@@ -4,7 +4,8 @@ import Component from './Shared';
 import { getDashboard } from '../../_state/dashboards/actions';
 
 const mapStateToProps = (state) => ({
-  dashboards: state.dashboards.items || []
+  dashboards: state.dashboards.items || [],
+  loggedIn: state.user.loggedIn
 });
 const mapDispatchToProps = {
   getDashboard

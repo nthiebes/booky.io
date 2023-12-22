@@ -37,7 +37,7 @@ Illustration.propTypes = {
   alt: PropTypes.string,
   ariaHidden: PropTypes.bool,
   darkMode: PropTypes.bool,
-  loading: PropTypes.oneOf[('lazy', 'eager')]
+  loading: PropTypes.string
 };
 
 Illustration.defaultProps = {

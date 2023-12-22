@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
 import Categories from '../../organisms/categories';
@@ -12,7 +13,9 @@ class Shared extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     dashboards: PropTypes.array,
-    getDashboard: PropTypes.func.isRequired
+    getDashboard: PropTypes.func.isRequired,
+    loggedIn: PropTypes.bool.isRequired,
+    intl: PropTypes.object.isRequired
   };
 
   componentDidMount() {
@@ -20,6 +23,24 @@ class Shared extends Component {
     const { id } = match.params;
 
     getDashboard(id);
+  }
+
+  componentDidUpdate(oldProps) {
+    if (this.props.dashboards.length > 0 && oldProps.dashboards.length === 0) {
+      document.title = `booky | ${this.props.dashboards[0].name}`;
+    }
+  }
+
+  componentWillUnmount() {
+    const { loggedIn, intl } = this.props;
+
+    if (loggedIn) {
+      document.title = 'booky';
+    } else {
+      document.title = intl.formatMessage({
+        id: 'misc.pageTitle'
+      });
+    }
   }
 
   render() {
@@ -41,4 +62,4 @@ class Shared extends Component {
   }
 }
 
-export default withRouter(Shared);
+export default injectIntl(withRouter(Shared));
