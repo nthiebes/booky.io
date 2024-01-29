@@ -31,7 +31,7 @@ export default class Legal extends Component {
                 <br />
                 {'Wilseder Ring 43'}
                 <br />
-                {'21079 Hamburg'}
+                {'21079 Hamburg, Germany'}
               </P>
 
               <H2>Contact</H2>
@@ -108,7 +108,7 @@ export default class Legal extends Component {
                 <br />
                 {'Wilseder Ring 43'}
                 <br />
-                {'21079 Hamburg'}
+                {'21079 Hamburg, Deutschland'}
               </P>
 
               <H2>Kontakt</H2>
