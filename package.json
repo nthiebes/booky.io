@@ -92,7 +92,7 @@
     "cssnano": "5.0.6",
     "cypress": "7.7.0",
     "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.6",
+    "enzyme-adapter-react-16": "1.15.8",
     "eslint": "7.32.0",
     "eslint-plugin-cypress": "2.11.3",
     "eslint-plugin-import": "2.23.4",
