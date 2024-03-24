@@ -30,8 +30,7 @@ export default {
   output: {
     path: path.resolve(__dirname, '_public'),
     publicPath: '/',
-    filename: '[name].[contenthash].js',
-    hashFunction: 'sha256'
+    filename: '[name].[contenthash].js'
   },
   plugins: [
     // Remove _public folder before build
