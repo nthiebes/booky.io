@@ -30,8 +30,7 @@ export default {
   output: {
     path: path.resolve(__dirname, '_public'),
     publicPath: '/',
-    filename: '[name].[contenthash].js',
-    hashFunction: 'sha256'
+    filename: '[name].[contenthash].js'
   },
   plugins: [
     // Remove _public folder before build
@@ -79,6 +78,11 @@ export default {
       },
       inject: true
       // Note that you can add custom options here if you need to handle other custom logic in index.html
+    }),
+
+    // fix "process is not defined" error:
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
     })
   ],
   module: {
