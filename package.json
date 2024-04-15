@@ -58,7 +58,7 @@
     "react-intersection-observer": "8.32.0",
     "react-intl": "5.24.8",
     "react-intl-redux": "2.4.1",
-    "react-redux": "7.2.4",
+    "react-redux": "7.2.9",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "redux": "4.1.0",
