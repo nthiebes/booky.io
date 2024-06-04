@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
 export default {
   resolve: {
@@ -13,7 +12,7 @@ export default {
   },
   // more info: https://webpack.js.org/guides/development/#using-source-maps
   // and https://webpack.js.org/configuration/devtool/
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-cheap-module-source-map',
   entry: [
     // must be first entry to properly set public path
     './_source/webpack-public-path',
@@ -28,10 +27,11 @@ export default {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  optimization: {
+    emitOnErrors: true
+  },
   plugins: [
-    new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       template: '_source/index.ejs',
@@ -40,6 +40,10 @@ export default {
         collapseWhitespace: true
       },
       inject: true
+    }),
+    // fix "process is not defined" error:
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
     })
   ],
   module: {

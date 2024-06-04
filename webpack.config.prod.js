@@ -78,6 +78,11 @@ export default {
       },
       inject: true
       // Note that you can add custom options here if you need to handle other custom logic in index.html
+    }),
+
+    // fix "process is not defined" error:
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
     })
   ],
   module: {
