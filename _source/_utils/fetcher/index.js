@@ -33,6 +33,71 @@ const checkEmptyResponse = (response) => {
 const abortFetch = () => {
   controller && controller.abort();
 };
+const CSRF_ERROR = 'error.forbidden.csrf';
+const writeMethods = ['POST', 'DELETE', 'PUT', 'PATCH'];
+let csrfToken = null;
+let csrfRequest = null;
+const requiresCsrfToken = (method, url) =>
+  writeMethods.includes(method) || url === '/logout';
+const getCsrfToken = () => {
+  if (csrfToken) {
+    return Promise.resolve(csrfToken);
+  }
+
+  if (!csrfRequest) {
+    csrfRequest = fetch(`${baseUrl}/csrf-token`, defaultOptions)
+      .then((response) => response.json())
+      .then(({ token }) => {
+        csrfToken = token;
+
+        return token;
+      })
+      .finally(() => {
+        csrfRequest = null;
+      });
+  }
+
+  return csrfRequest;
+};
+const request = ({ method, url, params, options, csrf, signal }) =>
+  fetch(`${baseUrl}${url}`, {
+    ...defaultOptions,
+    ...options,
+    method,
+    headers: {
+      ...(writeMethods.includes(method) && {
+        'Content-Type': 'application/json'
+      }),
+      ...(csrf && { 'X-CSRF-Token': csrf })
+    },
+    ...(writeMethods.includes(method) && { body: JSON.stringify(params) }),
+    signal
+  })
+    .then((response) => checkEmptyResponse(response))
+    .then(formatResponse);
+const send = (requestOptions, retry = true) => {
+  if (!requiresCsrfToken(requestOptions.method, requestOptions.url)) {
+    return request(requestOptions);
+  }
+
+  return getCsrfToken()
+    .then((csrf) => request({ ...requestOptions, csrf }))
+    .then((response) => {
+      if (response.error === CSRF_ERROR && retry) {
+        // The session token changed (e.g. session expired), fetch a new one once
+        csrfToken = null;
+
+        return send(requestOptions, false);
+      }
+
+      if (requestOptions.url === '/logout') {
+        // Logout destroys the session including its CSRF token
+        csrfToken = null;
+      }
+
+      return response;
+    });
+};
 const fetcher = ({
   params,
   method = 'GET',
@@ -43,63 +108,21 @@ const fetcher = ({
 }) => {
   controller = new AbortController();
 
-  if (method === 'GET') {
-    fetch(`${baseUrl}${url}`, {
-      ...defaultOptions,
-      ...options,
-      signal: controller.signal
+  send({ method, url, params, options, signal: controller.signal })
+    .then((response) => {
+      const { data, error } = response;
+
+      if (error) {
+        onError(error);
+      } else {
+        onSuccess(data);
+      }
     })
-      .then((response) => checkEmptyResponse(response))
-      .then(formatResponse)
-      .then((response) => {
-        const { data, error } = response;
-
-        if (error) {
-          onError(error);
-        } else {
-          onSuccess(data);
-        }
-      })
-      .catch((error) => {
-        if (error.name !== 'AbortError') {
-          onError(error.statusText || 'error.default');
-        }
-      });
-  }
-
-  if (
-    method === 'POST' ||
-    method === 'DELETE' ||
-    method === 'PUT' ||
-    method === 'PATCH'
-  ) {
-    fetch(`${baseUrl}${url}`, {
-      ...defaultOptions,
-      ...options,
-      method: method,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(params),
-      signal: controller.signal
-    })
-      .then((response) => checkEmptyResponse(response))
-      .then(formatResponse)
-      .then((response) => {
-        const { data, error } = response;
-
-        if (error) {
-          onError(error);
-        } else {
-          onSuccess(data);
-        }
-      })
-      .catch((error) => {
-        if (error.name !== 'AbortError') {
-          onError(error.statusText || 'error.default');
-        }
-      });
-  }
+    .catch((error) => {
+      if (error.name !== 'AbortError') {
+        onError(error.statusText || 'error.default');
+      }
+    });
 };
 
 export { abortFetch };
