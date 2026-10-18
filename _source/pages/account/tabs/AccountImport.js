@@ -12,6 +12,8 @@ import Icon from '../../../atoms/icon';
 import Link from '../../../atoms/link';
 import Form from '../../../molecules/form';
 
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB
+
 class AccountImport extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
@@ -131,7 +133,7 @@ class AccountImport extends PureComponent {
               onDropAccepted={this.handleAccepted}
               accept="text/html"
               maxFiles={1}
-              maxSize={1572864}
+              maxSize={MAX_FILE_SIZE}
               multiple={false}
               disabled={pending}
             >
