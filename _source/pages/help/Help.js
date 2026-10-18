@@ -394,11 +394,11 @@ class Help extends Component {
                   values={{
                     email: (
                       <Link
-                        href={`mailto:account@booky.io?subject=${intl.formatMessage(
+                        href={`mailto:hello@booky.io?subject=${intl.formatMessage(
                           { id: 'misc.deleteSubject' }
                         )}`}
                       >
-                        {'account@booky.io'}
+                        {'hello@booky.io'}
                       </Link>
                     )
                   }}
