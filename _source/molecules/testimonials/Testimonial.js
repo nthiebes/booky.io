@@ -9,7 +9,7 @@ import Icon from '../../atoms/icon';
 
 class Testimonial extends Component {
   render() {
-    const { className, url, name, twitter, image, text } = this.props;
+    const { className, url, name, social, image, text } = this.props;
 
     return (
       <blockquote
@@ -29,7 +29,7 @@ class Testimonial extends Component {
             {name}
             {url && (
               <Link href={url} target="_blank" className="testimonials__link">
-                {twitter && `@${twitter}`}
+                {social && `@${social}`}
               </Link>
             )}
           </H3>
@@ -51,7 +51,7 @@ Testimonial.propTypes = {
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   className: PropTypes.string,
-  twitter: PropTypes.string,
+  social: PropTypes.string,
   url: PropTypes.string
 };
 

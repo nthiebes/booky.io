@@ -13,7 +13,7 @@ import configureStore, { history } from './configureStore';
 import initialState from './initialState';
 
 // Language detection
-const supportedLanguages = ['en', 'de'];
+const supportedLanguages = ['en', 'de', 'ja', 'hi'];
 const cookieLanguage = Cookies.get('lang');
 const localStorageLanguage = localStorage.getItem('lang');
 const locale = (
@@ -56,10 +56,10 @@ const loadingDone = () => {
     document.title = messages['misc.pageTitle'];
     document
       .querySelector('meta[name=description]')
-      .setAttribute('content', messages['footer.twitterText']);
+      .setAttribute('content', messages['footer.blueskyText']);
     document
       .querySelector('meta[property="og:description"]')
-      .setAttribute('content', messages['footer.twitterText']);
+      .setAttribute('content', messages['footer.blueskyText']);
 
     store = configureStore({
       ...initialState,

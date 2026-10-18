@@ -22,22 +22,22 @@ class Testimonials extends Component {
         <div className="testimonials">
           <Testimonial
             name="Hyun-Kyung Yi"
-            twitter="booky_io"
-            url="https://twitter.com/booky_io"
+            social="booky-io"
+            url="https://bsky.app/profile/booky-io.bsky.social"
             image="_assets/illustrations/female2.svg"
             text={intl.formatMessage({ id: 'home.testimonial2' })}
           />
           <Testimonial
             name="David Lafond"
-            twitter="kronozio"
+            social="kronozio"
             url="https://twitter.com/kronozio"
             image="_assets/illustrations/male.svg"
             text={intl.formatMessage({ id: 'home.testimonial1' })}
           />
           <Testimonial
             name={intl.formatMessage({ id: 'home.anonymous' })}
-            twitter="booky_io"
-            url="https://twitter.com/booky_io"
+            social="booky-io"
+            url="https://bsky.app/profile/booky-io.bsky.social"
             image="_assets/illustrations/male2.svg"
             text={intl.formatMessage({ id: 'home.testimonial3' })}
           />

@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 import { setLanguage } from '../../_utils/language';
 import Radio from '../../atoms/radio';
-import Icon from '../../atoms/icon';
 
 export default class LanguageSwitcher extends Component {
   static propTypes = {
@@ -27,10 +26,10 @@ export default class LanguageSwitcher extends Component {
         document.title = messages['misc.pageTitle'];
         document
           .querySelector('meta[name=description]')
-          .setAttribute('content', messages['footer.twitterText']);
+          .setAttribute('content', messages['footer.blueskyText']);
         document
           .querySelector('meta[property="og:description"]')
-          .setAttribute('content', messages['footer.twitterText']);
+          .setAttribute('content', messages['footer.blueskyText']);
       })
       .catch(() => {
         // console.log('error', error);
@@ -53,7 +52,7 @@ export default class LanguageSwitcher extends Component {
           onChange={this.handleChange}
           checked={language === 'en'}
         >
-          <Icon icon="usa" />
+          {/* <Icon icon="usa" /> */}
           {'English'}
         </Radio>
         <Radio
@@ -67,8 +66,36 @@ export default class LanguageSwitcher extends Component {
           onChange={this.handleChange}
           checked={language === 'de'}
         >
-          <Icon icon="germany" />
+          {/* <Icon icon="germany" /> */}
           {'Deutsch'}
+        </Radio>
+        <Radio
+          className={classNames(
+            'language-switcher__item',
+            ignoreDarkMode && 'language-switcher__item--light'
+          )}
+          id="language-switcher-ja"
+          name="language"
+          value="ja"
+          onChange={this.handleChange}
+          checked={language === 'ja'}
+        >
+          {/* <Icon icon="japan" /> */}
+          {'日本語'}
+        </Radio>
+        <Radio
+          className={classNames(
+            'language-switcher__item',
+            ignoreDarkMode && 'language-switcher__item--light'
+          )}
+          id="language-switcher-hi"
+          name="language"
+          value="hi"
+          onChange={this.handleChange}
+          checked={language === 'hi'}
+        >
+          {/* <Icon icon="india" /> */}
+          {'हिंदी'}
         </Radio>
       </Fragment>
     );

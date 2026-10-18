@@ -63,19 +63,19 @@ class Footer extends PureComponent {
           <section>
             <ul className="footer__stats">
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(89484)}</b>
+                <b>{new Intl.NumberFormat(locale).format(136580)}</b>
                 <FormattedMessage id="footer.people" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(26311251)}</b>
+                <b>{new Intl.NumberFormat(locale).format(36662528)}</b>
                 <FormattedMessage id="footer.bookmarks" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(2326127)}</b>
+                <b>{new Intl.NumberFormat(locale).format(2664968)}</b>
                 <FormattedMessage id="footer.categories" />
               </li>
               <li className="footer__stats-item">
-                <b>{new Intl.NumberFormat(locale).format(456862)}</b>
+                <b>{new Intl.NumberFormat(locale).format(650297)}</b>
                 <FormattedMessage id="footer.dashboards" />
               </li>
             </ul>
@@ -97,12 +97,12 @@ class Footer extends PureComponent {
             className="footer__social-item"
             target="_blank"
             rel="noopener noreferrer"
-            href={`https://twitter.com/intent/tweet?url=https://booky.io&via=booky_io&text=booky.io - ${intl.formatMessage(
-              { id: 'footer.twitterText' }
+            href={`https://bsky.app/intent/compose?text=${encodeURIComponent(
+              `booky.io ${intl.formatMessage({ id: 'footer.blueskyText' })}`
             )}`}
           >
-            <Icon className="footer__icon" icon="twitter" color="light" />
-            <span className="footer__label">{'Twitter'}</span>
+            <Icon className="footer__icon" icon="bluesky" color="light" />
+            <span className="footer__label">{'Bluesky'}</span>
           </a>
           <a
             className="footer__social-item"
@@ -112,6 +112,15 @@ class Footer extends PureComponent {
           >
             <Icon className="footer__icon" icon="xing" color="light" />
             <span className="footer__label">{'XING'}</span>
+          </a>
+          <a
+            className="footer__social-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbooky.io"
+          >
+            <Icon className="footer__icon" icon="linkedin" color="light" />
+            <span className="footer__label">{'LinkedIn'}</span>
           </a>
           <a
             className="footer__social-item"
@@ -133,7 +142,6 @@ class Footer extends PureComponent {
             >
               <Logo />
             </Link>
-            {/* <Donate color="light" className="footer__donate" /> */}
             <ButtonSmallLight
               className="footer__button"
               onClick={this.scrollToTop}
