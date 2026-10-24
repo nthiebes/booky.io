@@ -5,9 +5,11 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Base from '../Base';
 import Input from '../../../atoms/input';
 import Textarea from '../../../atoms/textarea';
+import { ErrorMessage } from '../../../atoms/messages';
 import Expandable from '../../../molecules/expandable';
 import { abortFetch } from '../../../_utils/fetcher';
 import { parseBookmarkUrl } from '../../../_utils/url';
+import { decodeEmoji } from '../../../_utils/string';
 
 class EditBookmark extends PureComponent {
   static propTypes = {
@@ -18,15 +20,20 @@ class EditBookmark extends PureComponent {
     pending: PropTypes.bool,
     darkMode: PropTypes.bool,
     getTitle: PropTypes.func.isRequired,
+    getDuplicates: PropTypes.func.isRequired,
+    changeDashboard: PropTypes.func.isRequired,
     autofillBookmarkNames: PropTypes.bool,
-    enableNotes: PropTypes.bool.isRequired
+    enableNotes: PropTypes.bool.isRequired,
+    isPremium: PropTypes.bool.isRequired
   };
 
   state = {
     name: this.props.data.name,
     url: this.props.data.url,
     note: this.props.data.note,
-    bookmarkTitlePending: false
+    bookmarkTitlePending: false,
+    exists: false,
+    existingBookmarks: []
   };
 
   onNameChange = (value) => {
@@ -47,38 +54,78 @@ class EditBookmark extends PureComponent {
     });
   };
 
+  // eslint-disable-next-line max-statements
   onUrlBlur = (value) => {
-    const { getTitle, autofillBookmarkNames } = this.props;
+    const { getTitle, getDuplicates, autofillBookmarkNames, isPremium } =
+      this.props;
     const { name } = this.state;
 
-    if (!autofillBookmarkNames || !value || name) {
+    if (!value) {
+      this.setState({
+        exists: false,
+        existingBookmarks: []
+      });
       return;
     }
 
-    this.setState({
-      bookmarkTitlePending: true
-    });
+    if (autofillBookmarkNames && !name) {
+      this.setState({
+        bookmarkTitlePending: true
+      });
 
-    getTitle({
-      url: parseBookmarkUrl(value, { protocol: 'https' }),
-      onSuccess: (title) => {
-        this.setState({
-          name: this.state.name || title,
-          bookmarkTitlePending: false
-        });
-      },
-      onError: () => {
-        // Host of a link
-        const match = value.match(
-          /(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/i
-        );
+      getTitle({
+        url: parseBookmarkUrl(value, { protocol: 'https' }),
+        onSuccess: (title) => {
+          this.setState({
+            name: this.state.name || title,
+            bookmarkTitlePending: false
+          });
+        },
+        onError: () => {
+          // Host of a link
+          const match = value.match(
+            /(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/i
+          );
 
-        this.setState({
-          name: this.state.name || (match ? match[0] : value),
-          bookmarkTitlePending: false
-        });
-      }
-    });
+          this.setState({
+            name: this.state.name || (match ? match[0] : value),
+            bookmarkTitlePending: false
+          });
+        }
+      });
+    }
+
+    if (value === this.props.data.url) {
+      this.setState({
+        exists: false,
+        existingBookmarks: []
+      });
+    } else if (isPremium) {
+      getDuplicates({
+        url: encodeURIComponent(this.state.url),
+        onSuccess: ({ exists, bookmarks }) => {
+          this.setState({
+            exists,
+            existingBookmarks: bookmarks
+          });
+        },
+        onError: () => {
+          this.setState({
+            exists: false,
+            existingBookmarks: []
+          });
+        }
+      });
+    }
+  };
+
+  handleDashboardClick = (event, dashboardId) => {
+    const { changeDashboard } = this.props;
+
+    event.preventDefault();
+    this.handleClose();
+    window.scrollTo(0, 0);
+    changeDashboard(dashboardId);
   };
 
   handleClose = () => {
@@ -90,7 +137,9 @@ class EditBookmark extends PureComponent {
 
   render() {
     const { intl, pending, data, enableNotes, ...props } = this.props;
-    const { name, url, note, bookmarkTitlePending } = this.state;
+    const { name, url, note, bookmarkTitlePending, exists, existingBookmarks } =
+      this.state;
+    const duplicateErrorMessage = exists ? 'error.duplicateLink' : null;
 
     return (
       <Base
@@ -112,6 +161,29 @@ class EditBookmark extends PureComponent {
           inputMode="url"
           placeholder={intl.formatMessage({ id: 'modal.urlPlaceholder' })}
         />
+        {exists && existingBookmarks.length > 0 ? (
+          <ErrorMessage
+            message={duplicateErrorMessage}
+            noPadding
+            values={{
+              collection: (
+                <button
+                  type="button"
+                  className="link link--error"
+                  onClick={(event) => {
+                    this.handleDashboardClick(
+                      event,
+                      existingBookmarks[0].dashboardId
+                    );
+                  }}
+                >
+                  <b>{decodeEmoji(existingBookmarks[0].dashboardName)}</b>
+                </button>
+              ),
+              category: decodeEmoji(existingBookmarks[0].categoryName)
+            }}
+          />
+        ) : null}
         <Input
           id="bookmark-name"
           name="name"

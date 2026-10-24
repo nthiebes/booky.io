@@ -512,5 +512,6 @@
   "new.update1Feature1": "Optionally share collections publicly with others",
   "new.update1Feature2": "Extensions: Bookmarks can be edited/deleted",
   "new.update1Feature3": "Smaller bugfixes and design/content changes",
-  "misc.updateInProgress": "We are currently updating booky - please try again soon!"
+  "misc.updateInProgress": "We are currently updating booky - please try again soon!",
+  "error.duplicateLink": "This link already exists in the collection {collection} ({category})."
 }

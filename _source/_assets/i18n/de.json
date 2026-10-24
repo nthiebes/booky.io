@@ -512,5 +512,6 @@
   "new.update1Feature1": "Teile Sammlungen optional öffentlich mit Anderen",
   "new.update1Feature2": "Erweiterungen: Lesezeichen lassen sich editieren/löschen",
   "new.update1Feature3": "Kleine Bugfixes und Design-/Inhalts-Anpassungen",
-  "misc.updateInProgress": "Wir aktualisieren gerade booky - versuch es bitte gleich nochmal!"
+  "misc.updateInProgress": "Wir aktualisieren gerade booky - versuch es bitte gleich nochmal!",
+  "error.duplicateLink": "Dieser Link existiert bereits in der Sammlung {collection} ({category})."
 }

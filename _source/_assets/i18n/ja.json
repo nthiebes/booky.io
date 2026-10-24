@@ -512,5 +512,6 @@
   "new.update1Feature1": "必要に応じてコレクションを他の人に公開共有",
   "new.update1Feature2": "拡張機能: ブックマークの編集/削除が可能",
   "new.update1Feature3": "小さなバグ修正とデザイン/コンテンツの変更",
-  "misc.updateInProgress": "現在bookyを更新中です。しばらくしてからもう一度お試しください！"
+  "misc.updateInProgress": "現在bookyを更新中です。しばらくしてからもう一度お試しください！",
+  "error.duplicateLink": "このリンクはすでにコレクション{collection}（{category}）に存在します。"
 }
