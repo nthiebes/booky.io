@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
       ({ id }) => id === state.modal.data.id
     );
 
-    bookmarkCount = category ? category.bookmarks.length > 0 : null;
+    bookmarkCount = category ? category.bookmarkCount : 0;
   }
 
   return {
