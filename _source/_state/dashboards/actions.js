@@ -21,7 +21,7 @@ export const updateDashboardsData = (data) => ({
   data
 });
 
-export const changeDashboard = (id) => (dispatch) => {
+export const changeDashboard = (id, callback) => (dispatch) => {
   dispatch(
     updateDashboardsData({
       pending: true
@@ -29,9 +29,19 @@ export const changeDashboard = (id) => (dispatch) => {
   );
   abortFetch();
   dispatch(
-    updateSettings({
-      defaultDashboardId: id
-    })
+    updateSettings(
+      {
+        defaultDashboardId: id
+      },
+      {
+        onSuccess: () => {
+          callback && callback();
+        },
+        onError: () => {
+          callback && callback();
+        }
+      }
+    )
   );
 
   dispatch(closeSidebar());

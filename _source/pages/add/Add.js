@@ -16,6 +16,7 @@ import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
 import Form from '../../molecules/form';
+import { decodeEmoji } from '../../_utils/string';
 
 class Add extends Component {
   static propTypes = {
@@ -31,35 +32,40 @@ class Add extends Component {
     categories: PropTypes.array.isRequired,
     dashboards: PropTypes.array.isRequired,
     addBookmark: PropTypes.func.isRequired,
-    openModal: PropTypes.func.isRequired
+    openModal: PropTypes.func.isRequired,
+    getDuplicates: PropTypes.func.isRequired,
+    isPremium: PropTypes.bool.isRequired
   };
 
-  state = {
-    activeCategory: localStorage.getItem('activeCategory') || '',
-    pending: false,
-    error: null,
-    name:
-      this.props.name ||
-      new URL(window.location.href).searchParams.get('name') ||
-      '',
-    url:
-      this.props.url ||
-      new URL(window.location.href).searchParams.get('url') ||
-      '',
-    note:
-      this.props.note ||
-      new URL(window.location.href).searchParams.get('note') ||
-      ''
-  };
+  constructor(props) {
+    super(props);
+
+    const searchParams = new URL(window.location.href).searchParams;
+    const name = props.name || searchParams.get('name') || '';
+    const url = props.url || searchParams.get('url') || '';
+
+    this.state = {
+      activeCategory: localStorage.getItem('activeCategory') || '',
+      pending: false,
+      error: null,
+      exists: false,
+      existingBookmarks: [],
+      isDataOpen: Boolean(
+        localStorage.getItem('showData') === 'true' || !name || !url
+      ),
+      name,
+      url,
+      note: props.note || searchParams.get('note') || ''
+    };
+  }
 
   componentDidMount() {
-    const { getDashboards } = this.props;
-
-    getDashboards();
+    this.props.getDashboards();
+    this.checkDuplicates(this.state.url);
   }
 
   componentDidUpdate(prevProps) {
-    const { categories } = this.props;
+    const { categories, name, url, note } = this.props;
 
     // if (dashboards.length > prevProps.dashboards.length && prevProps.dashboards.length !== 0) {
     //   changeDashboard(dashboards[dashboards.length - 1].id);
@@ -77,7 +83,75 @@ class Add extends Component {
       });
       localStorage.setItem('activeCategory', categoryId);
     }
+
+    // The extension sends the page data via postMessage after mounting,
+    // so fill the fields that are still empty once it arrives
+    if (
+      prevProps.name !== name ||
+      prevProps.url !== url ||
+      prevProps.note !== note
+    ) {
+      const nextName = this.state.name || name || '';
+      const nextUrl = this.state.url || url || '';
+
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        name: nextName,
+        url: nextUrl,
+        note: this.state.note || note || '',
+        // Don't collapse the section if the user already filled in both fields
+        isDataOpen:
+          this.state.name && this.state.url
+            ? this.state.isDataOpen
+            : Boolean(
+                localStorage.getItem('showData') === 'true' ||
+                  !nextName ||
+                  !nextUrl
+              )
+      });
+
+      if (nextUrl !== this.state.url) {
+        this.checkDuplicates(nextUrl);
+      }
+    }
   }
+
+  checkDuplicates = (url) => {
+    const { getDuplicates, isPremium } = this.props;
+
+    if (!url) {
+      this.setState({
+        exists: false,
+        existingBookmarks: []
+      });
+      return;
+    }
+
+    if (!isPremium) {
+      return;
+    }
+
+    getDuplicates({
+      url: encodeURIComponent(url),
+      onSuccess: ({ exists, bookmarks }) => {
+        // Ignore responses for a URL that has been changed in the meantime
+        if (url !== this.state.url) {
+          return;
+        }
+
+        this.setState({
+          exists,
+          existingBookmarks: bookmarks
+        });
+      },
+      onError: () => {
+        this.setState({
+          exists: false,
+          existingBookmarks: []
+        });
+      }
+    });
+  };
 
   toggleLocation = () => {
     const showLocation = localStorage.getItem('showLocation') === 'true';
@@ -85,10 +159,17 @@ class Add extends Component {
     localStorage.setItem('showLocation', !showLocation);
   };
 
-  toggleData = () => {
-    const showData = localStorage.getItem('showData') === 'true';
+  toggleData = (event) => {
+    // Control the <details> element via state so the duplicate message
+    // placement stays in sync with what is actually visible
+    event.preventDefault();
 
-    localStorage.setItem('showData', !showData);
+    const isDataOpen = !this.state.isDataOpen;
+
+    localStorage.setItem('showData', isDataOpen);
+    this.setState({
+      isDataOpen
+    });
   };
 
   handleDashboardChange = (value) => {
@@ -116,6 +197,24 @@ class Add extends Component {
 
   onAddDashboardClick = () => {
     this.props.openModal('AddDashboard');
+  };
+
+  onUrlBlur = (value) => {
+    this.checkDuplicates(value);
+  };
+
+  handleDashboardClick = (event, dashboardId) => {
+    const { changeDashboard } = this.props;
+
+    event.preventDefault();
+    window.scrollTo(0, 0);
+    localStorage.setItem('activeTab', 'open');
+    postMessage({
+      activeTab: 'open'
+    });
+    changeDashboard(dashboardId, () => {
+      window.location.href = '/extension/open';
+    });
   };
 
   handleSubmit = (params) => {
@@ -163,8 +262,12 @@ class Add extends Component {
       pending,
       name: stateName,
       url: stateUrl,
-      note: stateNote
+      note: stateNote,
+      exists,
+      existingBookmarks,
+      isDataOpen
     } = this.state;
+    const duplicateErrorMessage = exists ? 'error.duplicateLink' : null;
     const showLocation = localStorage.getItem('showLocation');
     const showData = localStorage.getItem('showData');
     const dashboardsOptions = dashboardsPending
@@ -215,6 +318,28 @@ class Add extends Component {
               />
             </ButtonLargePrimary>
             {error && <ErrorMessage message={error} hasIcon />}
+            {exists && !isDataOpen && existingBookmarks.length > 0 ? (
+              <ErrorMessage
+                message={duplicateErrorMessage}
+                values={{
+                  collection: (
+                    <button
+                      type="button"
+                      className="link link--error"
+                      onClick={(event) => {
+                        this.handleDashboardClick(
+                          event,
+                          existingBookmarks[0].dashboardId
+                        );
+                      }}
+                    >
+                      <b>{decodeEmoji(existingBookmarks[0].dashboardName)}</b>
+                    </button>
+                  ),
+                  category: decodeEmoji(existingBookmarks[0].categoryName)
+                }}
+              />
+            ) : null}
             <Hr />
             <Expandable
               headline={<FormattedMessage id="extension.location" />}
@@ -268,11 +393,7 @@ class Add extends Component {
             <Expandable
               headline={<FormattedMessage id="extension.data" />}
               className="add__section"
-              open={Boolean(
-                localStorage.getItem('showData') === 'true' ||
-                  !stateName ||
-                  !stateUrl
-              )}
+              open={isDataOpen}
               onClick={this.toggleData}
             >
               <>
@@ -299,7 +420,33 @@ class Add extends Component {
                   placeholder={intl.formatMessage({
                     id: 'modal.urlPlaceholder'
                   })}
+                  onBlur={this.onUrlBlur}
                 />
+                {exists && existingBookmarks.length > 0 ? (
+                  <ErrorMessage
+                    message={duplicateErrorMessage}
+                    noPadding
+                    values={{
+                      collection: (
+                        <button
+                          type="button"
+                          className="link link--error"
+                          onClick={(event) => {
+                            this.handleDashboardClick(
+                              event,
+                              existingBookmarks[0].dashboardId
+                            );
+                          }}
+                        >
+                          <b>
+                            {decodeEmoji(existingBookmarks[0].dashboardName)}
+                          </b>
+                        </button>
+                      ),
+                      category: decodeEmoji(existingBookmarks[0].categoryName)
+                    }}
+                  />
+                ) : null}
                 {enableNotes && (
                   <Textarea
                     id="bookmark-note"
