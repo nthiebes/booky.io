@@ -50,6 +50,7 @@ export default class Extension extends PureComponent {
 
   render() {
     const { children, className, darkMode, color } = this.props;
+    const { search } = window.location;
 
     if (config.updateInProgress) {
       return (
@@ -66,7 +67,7 @@ export default class Extension extends PureComponent {
         <header className={`extension__header header--color${color}`}>
           <nav className="extension__nav">
             <Link
-              to="/extension/add"
+              to={`/extension/add${search}`}
               isNavLink
               className="extension__nav-item"
               activeClassName="extension__nav-item--active"
@@ -76,7 +77,7 @@ export default class Extension extends PureComponent {
               <FormattedMessage id="extension.add" />
             </Link>
             <Link
-              to="/extension/open"
+              to={`/extension/open${search}`}
               isNavLink
               className="extension__nav-item"
               activeClassName="extension__nav-item--active"
@@ -86,7 +87,7 @@ export default class Extension extends PureComponent {
               <FormattedMessage id="extension.open" />
             </Link>
             <Link
-              to="/extension/customize"
+              to={`/extension/customize${search}`}
               isNavLink
               className="extension__nav-item"
               activeClassName="extension__nav-item--active"

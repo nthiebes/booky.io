@@ -21,33 +21,28 @@ export const updateDashboardsData = (data) => ({
   data
 });
 
-export const changeDashboard = (id, callback) => (dispatch) => {
-  dispatch(
-    updateDashboardsData({
-      pending: true
-    })
-  );
-  abortFetch();
-  dispatch(
-    updateSettings(
-      {
-        defaultDashboardId: id
-      },
-      {
-        onSuccess: () => {
-          callback && callback();
+export const changeDashboard =
+  (id, { onSuccess, onError } = {}) =>
+  (dispatch) => {
+    dispatch(
+      updateDashboardsData({
+        pending: true
+      })
+    );
+    abortFetch();
+    dispatch(
+      updateSettings(
+        {
+          defaultDashboardId: id
         },
-        onError: () => {
-          callback && callback();
-        }
-      }
-    )
-  );
+        { onSuccess, onError }
+      )
+    );
 
-  dispatch(closeSidebar());
-  dispatch(getCategories(id));
-  dispatch(resetSearch());
-};
+    dispatch(closeSidebar());
+    dispatch(getCategories(id));
+    dispatch(resetSearch());
+  };
 
 export const getDashboards = (noReset) => (dispatch) => {
   dispatch(

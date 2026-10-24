@@ -34,7 +34,8 @@ class Add extends Component {
     addBookmark: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired,
     getDuplicates: PropTypes.func.isRequired,
-    isPremium: PropTypes.bool.isRequired
+    isPremium: PropTypes.bool.isRequired,
+    history: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -204,16 +205,29 @@ class Add extends Component {
   };
 
   handleDashboardClick = (event, dashboardId) => {
-    const { changeDashboard } = this.props;
+    const { changeDashboard, history } = this.props;
 
     event.preventDefault();
-    window.scrollTo(0, 0);
-    localStorage.setItem('activeTab', 'open');
-    postMessage({
-      activeTab: 'open'
+    this.setState({
+      error: null
     });
-    changeDashboard(dashboardId, () => {
-      window.location.href = '/extension/open';
+
+    // Wait until the new default dashboard is saved, otherwise the Open page
+    // would still load the categories of the previous one
+    changeDashboard(dashboardId, {
+      onSuccess: () => {
+        window.scrollTo(0, 0);
+        localStorage.setItem('activeTab', 'open');
+        postMessage({
+          activeTab: 'open'
+        });
+        history.push(`/extension/open${window.location.search}`);
+      },
+      onError: (error) => {
+        this.setState({
+          error
+        });
+      }
     });
   };
 

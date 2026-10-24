@@ -145,7 +145,7 @@ class Login extends Component {
         } else if (isExtension) {
           const activeTab = localStorage.getItem('activeTab') || 'add';
 
-          history.push(`/extension/${activeTab}`);
+          history.push(`/extension/${activeTab}${window.location.search}`);
         } else {
           history.push('/');
         }
