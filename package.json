@@ -21,6 +21,7 @@
     "lint:css": "stylelint _source/**/*.scss",
     "build:open": "babel-node tools/build.js && npm run open:public",
     "build": "babel-node tools/build.js",
+    "deploy:backend": "bash tools/deployToBackend.sh",
     "test": "jest",
     "test:cover": "npm run test -- --coverage ",
     "test:watch": "jest --watchAll",
