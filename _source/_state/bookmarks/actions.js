@@ -187,11 +187,11 @@ export const getTitle =
 export const getDuplicates =
   ({ url, onSuccess, onError }) =>
   () => {
-    fetcher({
-      url: `/bookmarks/exists?url=${url}`,
-      onSuccess: (data) => {
-        onSuccess(data);
-      },
-      onError
-    });
+    // fetcher({
+    //   url: `/bookmarks/exists?url=${url}`,
+    //   onSuccess: (data) => {
+    //     onSuccess(data);
+    //   },
+    //   onError
+    // });
   };

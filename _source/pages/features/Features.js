@@ -341,6 +341,32 @@ class FeaturesPage extends PureComponent {
               centered
             />
           </div>
+          {/* <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({
+                id: 'features.duplicateFinder'
+              })}
+              text={intl.formatMessage({
+                id: 'features.duplicateFinderText'
+              })}
+              illustration="share-collections"
+              background="light"
+              centered
+              payed
+              cta={
+                <ButtonSmallBlue
+                  to="/supporter"
+                  icon="membership"
+                  className="features-page__memberships"
+                >
+                  {intl.formatMessage(
+                    { id: 'button.memberships' },
+                    { b: (msg) => <b>{msg}</b> }
+                  )}
+                </ButtonSmallBlue>
+              }
+            />
+          </div> */}
         </Section>
 
         <Section className="home__not-a-member">

@@ -413,6 +413,17 @@ class Supporter extends PureComponent {
                   </P>
                 </td>
               </tr>
+              {/* <tr>
+                <td className="booky--hide-mobile" />
+                <td className="supporter__compare-entry">
+                  <P className="supporter__compare-feature" ignoreDarkMode>
+                    <Icon icon="check" color="blue" />
+                    <strong>
+                      <FormattedMessage id="supporter.feature.duplicates" />
+                    </strong>
+                  </P>
+                </td>
+              </tr> */}
               <tr>
                 <td className="booky--hide-mobile" />
                 <td className="supporter__compare-entry">
