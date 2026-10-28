@@ -173,20 +173,25 @@ body {
 }
 
 .loading__spinner--hide {
-  transition:
-    opacity 0.3s linear,
-    transform 0.4s ease-in;
+  transition: opacity 0.3s linear, transform 0.4s ease-in;
   transform: translateY(-3rem);
   opacity: 0;
 }
 
-noscript {
-  text-align: center;
-  margin-top: 10rem;
+.booky__javascript-disabled {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0 3%;
+  padding: 1rem 3%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  background-color: $color--error;
+  width: 100%;
+  color: $color-font--white;
+  font-weight: bold;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  z-index: 5;
 }
 
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {

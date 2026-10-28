@@ -5,7 +5,6 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import CopyPlugin from 'copy-webpack-plugin';
 import path from 'path';
 const version = require('./package.json').version;
@@ -35,11 +34,6 @@ export default {
   plugins: [
     // Remove _public folder before build
     new CleanWebpackPlugin(),
-
-    // Analyze the bundle sizes
-    new BundleAnalyzerPlugin({
-      openAnalyzer: true
-    }),
 
     // Copy translation files
     new CopyPlugin({

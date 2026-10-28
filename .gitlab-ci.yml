@@ -5,7 +5,9 @@ stages:
 
 # point npm at a folder we can list as a path in "cache" job settings
 variables:
-  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  npm_config_cache: '$CI_PROJECT_DIR/.npm'
+  # CI only runs tests, the Chrome download is only needed for "npm run prerender"
+  PUPPETEER_SKIP_DOWNLOAD: 'true'
 
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
@@ -23,7 +25,7 @@ install:
   script:
     - npm install
   artifacts:
-    name: "artifacts"
+    name: 'artifacts'
     untracked: true
     expire_in: 30 mins
     paths:
