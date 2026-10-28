@@ -25,7 +25,10 @@
       position: absolute;
       transform: translateY(-10px);
       opacity: 0;
-      transition: color 0.2s linear, transform 0.3s ease, opacity 0.2s ease;
+      transition:
+        color 0.2s linear,
+        transform 0.3s ease,
+        opacity 0.2s ease;
     }
   }
 
@@ -61,15 +64,15 @@
       top: calc(50% - 18px);
       position: absolute;
       transform: translateX(-100%);
-      transition: color 0.2s linear, transform 0.2s ease;
+      transition:
+        color 0.2s linear,
+        transform 0.2s ease;
 
       &:hover,
       &:focus {
-        /* stylelint-disable max-nesting-depth */
         .icon__svg {
           transform: none;
         }
-        /* stylelint-enable */
       }
     }
   }

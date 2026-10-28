@@ -2,7 +2,7 @@ import { arrayMove } from '../../_utils/array';
 import { removeUndefined } from '../../_utils/object';
 import initialState from '../../initialState';
 
-// eslint-disable-next-line max-statements
+ 
 const categories = (state = [], action) => {
   const {
     name,
@@ -139,8 +139,9 @@ const categories = (state = [], action) => {
 
     case 'DELETE_CATEGORY': {
       let newState = state.slice();
-      const oldBookmarks = newState.find((category) => category.id === id)
-        .bookmarks;
+      const oldBookmarks = newState.find(
+        (category) => category.id === id
+      ).bookmarks;
 
       // Move bookmarks
       newState = newState.map((category) => {

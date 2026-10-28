@@ -5,7 +5,7 @@ describe('removeUndefined', () => {
     expect(
       removeUndefined({
         super: 'defined',
-        // eslint-disable-next-line no-undefined
+         
         really: undefined
       })
     ).toEqual({

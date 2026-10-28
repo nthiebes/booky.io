@@ -51,14 +51,8 @@ class SearchField extends Component {
   };
 
   render() {
-    const {
-      className,
-      intl,
-      darkMode,
-      id,
-      keyword,
-      dashboardsPending
-    } = this.props;
+    const { className, intl, darkMode, id, keyword, dashboardsPending } =
+      this.props;
 
     return (
       <form

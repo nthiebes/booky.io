@@ -12,7 +12,9 @@
   font-family: $font-family--text;
   padding: 0 1.2rem;
   height: calc(2rem + 2px);
-  transition: color 0.2s linear, background-color 0.2s linear;
+  transition:
+    color 0.2s linear,
+    background-color 0.2s linear;
   user-select: none;
   position: relative;
   pointer-events: none;

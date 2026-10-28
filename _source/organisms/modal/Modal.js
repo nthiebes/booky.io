@@ -85,7 +85,7 @@ export default class Modal extends PureComponent {
     }
   };
 
-  // eslint-disable-next-line max-statements
+   
   handleSave = (modalData) => {
     const { modal, data, keyword, searchBookmarks, updateSearchData } =
       this.props;

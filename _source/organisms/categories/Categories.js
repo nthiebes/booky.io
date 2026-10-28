@@ -13,7 +13,7 @@ class Categories extends PureComponent {
     this.props.openModal('AddCategory');
   };
 
-  // eslint-disable-next-line complexity
+   
   render() {
     const {
       categories,

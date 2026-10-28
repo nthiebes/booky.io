@@ -10,14 +10,13 @@ Frontend of [booky.io](https://booky.io), an online bookmark manager. React 17 +
 
 - `npm start` — dev server (browser-sync + webpack hot middleware) on http://localhost:3000. In development the API is expected at `http://<hostname>:8001/api` (see `_source/_utils/fetcher`).
 - `npm run build` — production build via `tools/build.js` / `webpack.config.prod.js`; `npm run open:public` serves the built output.
-- `npm run lint` — ESLint (`lint:js`) + stylelint on `_source/**/*.scss` (`lint:css`).
-- `npm test` — Jest (Enzyme with the React 17 adapter, set up in `tools/enzymeTestAdapterSetup.js`). Single file: `npx jest _source/_utils/string`.
+- `npm run lint` — ESLint (`lint:js`, flat config in `eslint.config.js`) + Prettier check (`lint:format`). Prettier owns all formatting, including SCSS; there is no stylelint.
+- `npm test` — Jest (config in `jest.config.json`). Single file: `npx jest _source/_utils/string`.
 - `npm run qa` — tests + lint.
 - `npm run prettier` — format everything.
-- `npm run cypress:open` — Cypress e2e (`cypress/integration`), needs the dev server running.
 - `npm run extension:<chrome|firefox|opera|edge>` — package the browser extension (`extension/manifest.sh`).
 
-Node >= 14 (enforced by `preinstall`).
+Node >= 18.18 (enforced by `preinstall`; required by ESLint 9).
 
 ## Architecture
 
@@ -47,4 +46,4 @@ Node >= 14 (enforced by `preinstall`).
 ### Other
 - `config.js` holds browser detection and feature version flags (`NEWS_VERSION`, `POLL_VERSION`) plus PayPal client/plan IDs that differ between dev and prod.
 - Sentry is initialized only outside development.
-- CI is GitLab (`.gitlab-ci.yml`): runs `test:cover`, and Cypress in Chrome/Firefox for external PRs.
+- CI is GitLab (`.gitlab-ci.yml`): runs `test:cover`.

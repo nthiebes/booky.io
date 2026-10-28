@@ -40,4 +40,3 @@ class DeleteBookmark extends Component {
 }
 
 export default injectIntl(DeleteBookmark);
-

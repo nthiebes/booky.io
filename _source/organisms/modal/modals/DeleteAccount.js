@@ -23,4 +23,3 @@ class DeleteAccount extends Component {
 }
 
 export default injectIntl(DeleteAccount);
-

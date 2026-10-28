@@ -75,7 +75,6 @@ html {
   }
 }
 
-/* stylelint-disable property-no-vendor-prefix */
 body {
   -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
   -moz-text-size-adjust: 100%; /* Prevent font scaling in landscape */
@@ -87,7 +86,6 @@ body {
   height: 100%;
   color: $color-font--dark;
 }
-/* stylelint-enable */
 
 ::-moz-selection {
   color: $color-font--white;
@@ -103,11 +101,9 @@ body {
   overflow: hidden;
 }
 
-/* stylelint-disable declaration-no-important */
 .booky--no-animation {
   transition: none !important;
 }
-/* stylelint-enable */
 
 .booky--hide {
   display: none;
@@ -177,7 +173,9 @@ body {
 }
 
 .loading__spinner--hide {
-  transition: opacity 0.3s linear, transform 0.4s ease-in;
+  transition:
+    opacity 0.3s linear,
+    transform 0.4s ease-in;
   transform: translateY(-3rem);
   opacity: 0;
 }
@@ -191,7 +189,6 @@ noscript {
   padding: 0 3%;
 }
 
-/* stylelint-disable declaration-no-important */
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
   * {
     animation-duration: 0.001ms !important;
@@ -199,4 +196,3 @@ noscript {
     transition-duration: 0.001ms !important;
   }
 }
-/* stylelint-enable */

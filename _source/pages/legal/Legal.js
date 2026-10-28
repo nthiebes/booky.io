@@ -1,5 +1,4 @@
-/* eslint-disable max-len */
-/* eslint-disable react/jsx-no-literals */
+ 
 import React, { Component, Fragment } from 'react';
 
 import Page from '../../templates/page';
@@ -181,4 +180,3 @@ export default class Legal extends Component {
     );
   }
 }
-

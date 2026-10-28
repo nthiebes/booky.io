@@ -13,5 +13,5 @@ compiler.run((error, stats) => {
     throw new Error(error);
   }
 
-  console.log(stats); // eslint-disable-line no-console
+  console.log(stats);  
 });

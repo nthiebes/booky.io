@@ -21,4 +21,3 @@ class Customize extends Component {
 }
 
 export default injectIntl(Customize);
-

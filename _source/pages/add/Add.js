@@ -1,5 +1,5 @@
-/* eslint-disable max-lines */
-/* eslint-disable max-statements */
+ 
+ 
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -58,7 +58,6 @@ class Add extends Component {
     ) {
       const categoryId = categories[categories.length - 1].id;
 
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         activeCategory: categoryId
       });
@@ -75,7 +74,6 @@ class Add extends Component {
       const nextName = this.state.name || name || '';
       const nextUrl = this.state.url || url || '';
 
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         name: nextName,
         url: nextUrl,
@@ -86,8 +84,8 @@ class Add extends Component {
             ? this.state.isDataOpen
             : Boolean(
                 localStorage.getItem('showData') === 'true' ||
-                  !nextName ||
-                  !nextUrl
+                !nextName ||
+                !nextUrl
               )
       });
 

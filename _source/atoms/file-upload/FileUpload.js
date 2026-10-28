@@ -34,4 +34,3 @@ export default class FileUpload extends Component {
     );
   }
 }
-

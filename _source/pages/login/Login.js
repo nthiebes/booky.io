@@ -27,7 +27,7 @@ class Login extends Component {
     actionSuccess: false
   };
 
-  // eslint-disable-next-line max-statements
+   
   componentDidMount() {
     const { activate, confirm, deny, match } = this.props;
     const { token, action, params } = match.params;
@@ -147,7 +147,7 @@ class Login extends Component {
     });
   };
 
-  // eslint-disable-next-line complexity
+   
   render() {
     const { intl, match, isExtension } = this.props;
     const { token, action } = match.params;

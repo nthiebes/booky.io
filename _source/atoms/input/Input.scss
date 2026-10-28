@@ -6,9 +6,7 @@
 }
 
 .input__field {
-  /* stylelint-disable */
   -webkit-appearance: none; // enables box-shadow on iOs
-  /* stylelint-enable */
   background-color: $color-background--light;
   box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.3) inset;
   border: 1px solid transparent;
@@ -20,7 +18,9 @@
   font-size: 16px;
   height: 3rem;
   padding: 0 10px;
-  transition: background-color 0.3s, border-color 0.3s linear,
+  transition:
+    background-color 0.3s,
+    border-color 0.3s linear,
     box-shadow 0.3s linear;
   width: 100%;
   margin-bottom: 0.5rem;
@@ -124,7 +124,10 @@
   right: 0;
   top: 6px;
   transform: translateX(100%);
-  transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s ease;
+  transition:
+    color 0.2s linear,
+    opacity 0.2s linear,
+    transform 0.2s ease;
   opacity: 0;
   color: $color-font--medium;
 }
@@ -141,7 +144,9 @@
 
 .input__requirements {
   max-height: 0;
-  transition: opacity 0.4s ease, max-height 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    max-height 0.4s ease;
   color: $color-font--medium;
   opacity: 0;
 }

@@ -84,4 +84,3 @@ class EditCategory extends Component {
 }
 
 export default injectIntl(EditCategory);
-

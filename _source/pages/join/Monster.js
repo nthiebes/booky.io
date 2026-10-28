@@ -1,5 +1,5 @@
-/* eslint-disable max-lines */
-/* eslint-disable max-len */
+ 
+
 import React from 'react';
 import classNames from 'classnames';
 
@@ -440,4 +440,3 @@ export const Monster = ({ className }) => (
     />
   </svg>
 );
-

@@ -1,5 +1,4 @@
-/* eslint-disable no-empty-function */
-/* eslint-disable max-lines */
+ 
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { DiscussionEmbed } from 'disqus-react';

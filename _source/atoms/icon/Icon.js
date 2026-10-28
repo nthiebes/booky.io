@@ -30,7 +30,7 @@ export default class Icon extends PureComponent {
     }
   };
 
-  // eslint-disable-next-line max-statements
+   
   render() {
     const {
       className,

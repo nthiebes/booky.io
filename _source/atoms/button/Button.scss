@@ -10,7 +10,9 @@
   overflow: hidden;
   padding: 0 1.2rem;
   position: relative;
-  transition: color 0.2s linear, background-color 0.2s linear;
+  transition:
+    color 0.2s linear,
+    background-color 0.2s linear;
   user-select: none;
   white-space: nowrap;
   justify-content: center;
@@ -32,7 +34,9 @@
 .button__text {
   display: inline-block;
   font-size: 1rem;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
   height: 2rem;
   line-height: 2;
   width: 100%;
@@ -43,10 +47,8 @@
   pointer-events: none;
 }
 
-/* stylelint-disable declaration-no-important */
 .button--skeleton {
   position: relative;
   height: 2rem;
   width: 12rem !important;
 }
-/* stylelint-enable */

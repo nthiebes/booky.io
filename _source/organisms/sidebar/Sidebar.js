@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+ 
 import React, { PureComponent, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
@@ -35,7 +35,7 @@ class Sidebar extends PureComponent {
     });
   };
 
-  // eslint-disable-next-line complexity
+   
   render() {
     const {
       loggedIn,

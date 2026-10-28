@@ -1,7 +1,6 @@
-/* eslint-disable max-lines */
-/* eslint-disable no-script-url */
-/* eslint-disable max-len */
-/* eslint-disable react/jsx-no-literals */
+ 
+
+ 
 import React, { Component, Fragment } from 'react';
 
 import * as Cookies from 'es-cookie';
@@ -57,13 +56,13 @@ export default class Privacy extends Component {
               <H4>Wie erfassen wir Ihre Daten?</H4>
               <P>
                 Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese
-                mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie
-                in ein Kontaktformular eingeben.
+                mitteilen. Hierbei kann es sich z.&nbsp;B. um Daten handeln, die
+                Sie in ein Kontaktformular eingeben.
               </P>
               <P>
                 Andere Daten werden automatisch beim Besuch der Website durch
                 unsere IT-Systeme erfasst. Das sind vor allem technische Daten
-                (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des
+                (z.&nbsp;B. Internetbrowser, Betriebssystem oder Uhrzeit des
                 Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch,
                 sobald Sie diese Website betreten.
               </P>
@@ -207,7 +206,7 @@ export default class Privacy extends Component {
               </P>
               <P>
                 Wir weisen darauf hin, dass die Datenübertragung im Internet
-                (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken
+                (z.&nbsp;B. bei der Kommunikation per E-Mail) Sicherheitslücken
                 aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff
                 durch Dritte ist nicht möglich.
               </P>
@@ -230,8 +229,8 @@ export default class Privacy extends Component {
               <P>
                 Verantwortliche Stelle ist die natürliche oder juristische
                 Person, die allein oder gemeinsam mit anderen über die Zwecke
-                und Mittel der Verarbeitung von personenbezogenen Daten (z. B.
-                Namen, E-Mail-Adressen o. Ä.) entscheidet.
+                und Mittel der Verarbeitung von personenbezogenen Daten
+                (z.&nbsp;B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
               </P>
 
               <H3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</H3>
@@ -446,7 +445,7 @@ export default class Privacy extends Component {
                 Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben
                 bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung
                 zur Speicherung widerrufen oder der Zweck für die
-                Datenspeicherung entfällt (z. B. nach abgeschlossener
+                Datenspeicherung entfällt (z.&nbsp;B. nach abgeschlossener
                 Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen –
                 insbesondere Aufbewahrungsfristen – bleiben unberührt.
               </P>
@@ -473,7 +472,7 @@ export default class Privacy extends Component {
                 Die von Ihnen an uns per Kontaktanfragen übersandten Daten
                 verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre
                 Einwilligung zur Speicherung widerrufen oder der Zweck für die
-                Datenspeicherung entfällt (z. B. nach abgeschlossener
+                Datenspeicherung entfällt (z.&nbsp;B. nach abgeschlossener
                 Bearbeitung Ihres Anliegens). Zwingende gesetzliche Bestimmungen
                 – insbesondere gesetzliche Aufbewahrungsfristen – bleiben
                 unberührt.
@@ -530,7 +529,7 @@ export default class Privacy extends Component {
                 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes
                 Interesse an der Analyse des Nutzerverhaltens, um sowohl sein
                 Webangebot als auch seine Werbung zu optimieren. Sofern eine
-                entsprechende Einwilligung abgefragt wurde (z. B. eine
+                entsprechende Einwilligung abgefragt wurde (z.&nbsp;B. eine
                 Einwilligung zur Speicherung von Cookies), erfolgt die
                 Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit.
                 a DSGVO; die Einwilligung ist jederzeit widerrufbar.
@@ -607,8 +606,8 @@ export default class Privacy extends Component {
               <H4>Speicherdauer</H4>
               <P>
                 Bei Google gespeicherte Daten auf Nutzer- und Ereignisebene, die
-                mit Cookies, Nutzerkennungen (z. B. User ID) oder Werbe-IDs
-                (z. B. DoubleClick-Cookies, Android-Werbe-ID) verknüpft sind,
+                mit Cookies, Nutzerkennungen (z.&nbsp;B. User ID) oder Werbe-IDs
+                (z.&nbsp;B. DoubleClick-Cookies, Android-Werbe-ID) verknüpft sind,
                 werden nach 14 Monaten anonymisiert bzw. gelöscht. Details
                 hierzu ersehen Sie unter folgendem Link:{' '}
                 <Link

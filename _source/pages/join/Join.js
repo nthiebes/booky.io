@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+ 
 import React, { Component, Fragment } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
@@ -33,7 +33,7 @@ class Join extends Component {
 
   fetchTimeout;
 
-  // eslint-disable-next-line max-statements
+   
   getAnimation = (value, name, error) => {
     let valid;
 

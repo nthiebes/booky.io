@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+ 
 import React, { PureComponent, Fragment } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';

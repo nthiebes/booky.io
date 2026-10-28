@@ -107,7 +107,9 @@
   padding: 6px;
   flex: 0 0 auto;
   cursor: pointer;
-  transition: color 0.2s linear, border-bottom-color 0.2s;
+  transition:
+    color 0.2s linear,
+    border-bottom-color 0.2s;
   margin-right: 1rem;
   list-style: none;
   border-bottom: 2px solid transparent;

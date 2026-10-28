@@ -23,7 +23,9 @@
 
 .import__drop-area {
   border: 3px dashed $color--7;
-  transition: border-color 0.2s linear, background-color 0.2s linear;
+  transition:
+    border-color 0.2s linear,
+    background-color 0.2s linear;
   padding: 2rem 1rem;
   display: flex;
   align-items: center;

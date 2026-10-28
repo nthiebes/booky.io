@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+ 
 import React, { PureComponent } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';

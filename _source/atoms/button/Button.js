@@ -22,7 +22,6 @@ export default class Button extends Component {
         });
       }, 250);
     } else if (this.props.pending === true && prevProps.pending === false) {
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         currentIcon: 'spinner'
       });

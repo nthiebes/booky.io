@@ -33,7 +33,7 @@ class Upsell extends PureComponent {
       `https://www.paypal.com/sdk/js?client-id=${clientID}&currency=EUR&intent=subscription&vault=true`,
       () => {
         paypal
-          // eslint-disable-next-line new-cap
+           
           .Buttons({
             env: 'sandbox',
             style: {
@@ -46,12 +46,12 @@ class Upsell extends PureComponent {
               const { supportAmount } = this.state;
 
               return actions.subscription.create({
-                // eslint-disable-next-line camelcase
+                 
                 plan_id: planID,
                 quantity: supportAmount,
-                // eslint-disable-next-line camelcase
+                 
                 application_context: {
-                  // eslint-disable-next-line camelcase
+                   
                   shipping_preference: 'NO_SHIPPING'
                 }
               });

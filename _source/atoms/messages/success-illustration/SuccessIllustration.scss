@@ -7,7 +7,9 @@
 }
 
 .success-illustration__image {
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transition:
+    opacity 0.4s ease-out,
+    transform 0.4s ease-out;
   transform: translateY(-0.5rem);
   opacity: 0;
   max-width: 100%;
@@ -20,14 +22,18 @@
 
 .success-illustration__headline,
 .success-illustration__text {
-  transition: opacity 0.4s ease-out 0.3s, transform 0.4s ease-out 0.3s;
+  transition:
+    opacity 0.4s ease-out 0.3s,
+    transform 0.4s ease-out 0.3s;
   transform: translateY(-0.5rem);
   opacity: 0;
   text-align: center;
 }
 
 .success-illustration__cta {
-  transition: opacity 0.4s ease-out 0.6s, transform 0.4s ease-out 0.6s;
+  transition:
+    opacity 0.4s ease-out 0.6s,
+    transform 0.4s ease-out 0.6s;
   transform: translateY(-0.5rem);
   opacity: 0;
 }

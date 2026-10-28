@@ -101,11 +101,10 @@ export default class New extends PureComponent {
             <FormattedMessage id="new.oldUpdates" />
           </H2>
           <div>
-            {/* eslint-disable-next-line camelcase */}
+            { }
             {releases.map(({ id, name, body, published_at }, index) => {
               const lines = body.split('\n');
 
-              // eslint-disable-next-line no-lone-blocks
               return (
                 <Expandable
                   key={id}

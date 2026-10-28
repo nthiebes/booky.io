@@ -21,7 +21,9 @@
     position: fixed;
     width: 0;
     top: 0;
-    transition: opacity 0.2s linear, width 0s 0.2s linear;
+    transition:
+      opacity 0.2s linear,
+      width 0s 0.2s linear;
   }
 
   .tooltip-wrapper {
@@ -41,7 +43,9 @@
   }
 
   .modal__inner {
-    transition: opacity 0.2s linear, transform 0.2s;
+    transition:
+      opacity 0.2s linear,
+      transform 0.2s;
     opacity: 1;
     transform: none;
   }
@@ -52,7 +56,9 @@
 }
 
 .modal__inner {
-  transition: opacity 0.2s linear, transform 0.2s;
+  transition:
+    opacity 0.2s linear,
+    transform 0.2s;
   transform: scale(0.95);
   opacity: 0;
   z-index: 6;

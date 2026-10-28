@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+ 
 import React, { PureComponent, Fragment } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
@@ -109,7 +109,7 @@ class Category extends PureComponent {
     });
   };
 
-  // eslint-disable-next-line complexity
+   
   render() {
     const {
       name,

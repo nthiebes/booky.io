@@ -5,14 +5,8 @@ import Illustration from '../../atoms/illustration';
 
 class Empty extends Component {
   render() {
-    const {
-      children,
-      illustration,
-      alt,
-      className,
-      darkMode,
-      ariaHidden
-    } = this.props;
+    const { children, illustration, alt, className, darkMode, ariaHidden } =
+      this.props;
 
     return (
       <figure className={classNames('empty', className)}>

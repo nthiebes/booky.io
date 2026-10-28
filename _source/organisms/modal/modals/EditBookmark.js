@@ -38,7 +38,7 @@ class EditBookmark extends PureComponent {
     });
   };
 
-  // eslint-disable-next-line max-statements
+   
   onUrlBlur = (value) => {
     const { getTitle, getDuplicates, autofillBookmarkNames, isPremium } =
       this.props;

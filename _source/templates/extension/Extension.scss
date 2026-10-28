@@ -59,7 +59,9 @@
   color: $color-font--white;
   padding: 0 0.5rem 6px 0.5rem;
   white-space: nowrap;
-  transition: color 0.2s linear, border-color 0.2s linear;
+  transition:
+    color 0.2s linear,
+    border-color 0.2s linear;
 
   &.link:hover,
   &.link:focus {

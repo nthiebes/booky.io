@@ -1,6 +1,6 @@
 // More info on Webpack's Node API here: https://webpack.js.org/api/node/
 // Allowing console calls below since this is a build file.
-/* eslint-disable no-console */
+ 
 import webpack from 'webpack';
 import config from '../webpack.config.prod';
 import {
@@ -16,7 +16,7 @@ console.log(
   chalkProcessing('Generating minified bundle. This will take a moment...')
 );
 
-// eslint-disable-next-line max-statements
+ 
 webpack(config).run((buildError, stats) => {
   if (buildError) {
     // so a fatal error occurred. Stop here.
@@ -41,7 +41,6 @@ webpack(config).run((buildError, stats) => {
   // if we got this far, the build succeeded.
   console.log(
     chalkSuccess(
-      // eslint-disable-next-line quotes
       "Your app is compiled in production mode in /_public. It's ready to roll!"
     )
   );

@@ -49,7 +49,7 @@ export default class Booky extends Component {
     }
   };
 
-  // eslint-disable-next-line max-statements
+   
   onDragEnd = ({ type, destination, source, draggableId }) => {
     const {
       isMobile,

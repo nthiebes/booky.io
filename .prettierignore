@@ -1,6 +1,4 @@
 _public/**/*.js
-coverage/**/*.js
-*.yml
-*.html
 package-lock.json
-*.md
+_source/_assets/promise-polyfill.js
+_source/_assets/svguse-polyfill.js

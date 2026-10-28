@@ -15,7 +15,9 @@
       position: fixed;
       width: 0;
       top: 0;
-      transition: opacity 0.3s linear, width 0s 0.3s linear;
+      transition:
+        opacity 0.3s linear,
+        width 0s 0.3s linear;
     }
   }
 }

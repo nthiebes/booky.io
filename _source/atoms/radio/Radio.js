@@ -39,13 +39,13 @@ export default class Radio extends Component {
         )}
       >
         {illustration && (
-          <label htmlFor={id} className="radio__image-label">
+          // eslint-disable-next-line jsx-a11y/label-has-associated-control
+          <label htmlFor={id} className="radio__image-label" aria-hidden="true">
             <img
               width={200}
               alt=""
               className="radio__image"
               src={`../../_assets/illustrations/${illustration}.svg`}
-              aria-hidden="true"
               loading="lazy"
             />
           </label>

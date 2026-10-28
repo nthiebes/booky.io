@@ -5,7 +5,7 @@ export const removeUndefined = (object) => {
 
   Object.keys(cleanObject).forEach(
     (key) =>
-      // eslint-disable-next-line no-undefined
+       
       cleanObject[key] === undefined && delete cleanObject[key]
   );
 

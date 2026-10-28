@@ -12,11 +12,10 @@ export default class Skeleton extends Component {
           darkMode && !ignoreDarkMode && 'skeleton--darkMode',
           className
         )}
-        // eslint-disable-next-line react/jsx-no-literals
+         
       >
         &zwnj;
       </span>
     );
   }
 }
-

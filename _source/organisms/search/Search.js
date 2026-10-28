@@ -60,7 +60,7 @@ class Search extends PureComponent {
     });
   };
 
-  // eslint-disable-next-line max-statements
+   
   render() {
     const {
       dashboards,

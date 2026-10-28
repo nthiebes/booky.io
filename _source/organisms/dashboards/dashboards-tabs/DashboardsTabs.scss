@@ -42,12 +42,10 @@
 }
 
 .dashboards-tabs--editMode {
-  /* stylelint-disable selector-max-specificity */
   .tab-bar__tab:first-child:last-of-type .dashboards-tabs__icon--delete,
   .tab-bar__tab:first-child:last-of-type .dashboards-tabs__icon--drag {
     display: none;
   }
-  /* stylelint-enable */
 }
 
 .dashboards-tabs__skeleton {

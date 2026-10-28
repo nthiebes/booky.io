@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+ 
 import React, { PureComponent, Fragment } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 

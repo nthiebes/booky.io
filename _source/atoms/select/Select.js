@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-onchange */
 import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
 

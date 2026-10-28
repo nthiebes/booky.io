@@ -1,4 +1,4 @@
-/* eslint-disable no-var */
+ 
 var iframe = document.getElementById('booky'),
   loadingSpinner = document.getElementById('loading__spinner'),
   loadingWrapper = document.getElementById('loading'),
@@ -67,7 +67,7 @@ function sendToIframe() {
 }
 
 // Messages from the booky iframe
-// eslint-disable-next-line max-statements
+ 
 window.addEventListener('message', function (event) {
   var message = event.data;
 
@@ -95,4 +95,4 @@ window.addEventListener('message', function (event) {
   }
 });
 
-/* eslint-enable no-var */
+ 

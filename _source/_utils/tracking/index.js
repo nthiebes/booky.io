@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 export const track = {
   account: {
     register: () => {
