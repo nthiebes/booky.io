@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -18,13 +17,6 @@ import Section from '../../molecules/section';
 import { Monster } from './Monster';
 
 class Join extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    join: PropTypes.func.isRequired,
-    validate: PropTypes.func.isRequired,
-    language: PropTypes.string.isRequired
-  };
-
   state = {
     username: '',
     usernamePending: false,

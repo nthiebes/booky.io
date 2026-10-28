@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Page from '../../templates/page';
@@ -10,11 +9,6 @@ import { H1 } from '../../atoms/headline';
 import './Terms.scss';
 
 export default class Terms extends PureComponent {
-  static propTypes = {
-    locale: PropTypes.string.isRequired,
-    darkMode: PropTypes.bool
-  };
-
   componentDidMount = () => {
     const script = document.createElement('script'),
       tag = document.getElementsByTagName('script')[0];

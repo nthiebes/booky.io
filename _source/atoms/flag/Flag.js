@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
@@ -10,11 +9,6 @@ const translateIds = {
 };
 
 export class Flag extends PureComponent {
-  static propTypes = {
-    type: PropTypes.oneOf(['supporter']),
-    className: PropTypes.string
-  };
-
   render() {
     const { type, className } = this.props;
 

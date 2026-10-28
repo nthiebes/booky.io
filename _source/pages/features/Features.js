@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
@@ -19,12 +18,6 @@ import { FeatureCard } from '../../molecules/feature-card';
 import './Features.scss';
 
 class FeaturesPage extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool.isRequired
-  };
-
   render() {
     const { intl } = this.props;
 

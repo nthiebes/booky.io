@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default class Skeleton extends Component {
@@ -21,8 +20,3 @@ export default class Skeleton extends Component {
   }
 }
 
-Skeleton.propTypes = {
-  className: PropTypes.string,
-  darkMode: PropTypes.bool,
-  ignoreDarkMode: PropTypes.bool
-};

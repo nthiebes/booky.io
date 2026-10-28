@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
@@ -7,32 +6,6 @@ import Icon from '../icon';
 import Skeleton from '../skeleton';
 
 export default class Button extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    color: PropTypes.string.isRequired,
-    href: PropTypes.string,
-    target: PropTypes.string,
-    to: PropTypes.string,
-    onClick: PropTypes.func,
-    size: PropTypes.string.isRequired,
-    icon: PropTypes.string,
-    disabled: PropTypes.bool,
-    children: PropTypes.oneOfType([
-      PropTypes.array,
-      PropTypes.element,
-      PropTypes.string
-    ]).isRequired,
-    tabIndex: PropTypes.string,
-    solid: PropTypes.bool,
-    type: PropTypes.string,
-    contentBefore: PropTypes.bool,
-    pending: PropTypes.bool,
-    value: PropTypes.string,
-    id: PropTypes.string,
-    useSkeleton: PropTypes.bool,
-    autoWidth: PropTypes.bool
-  };
-
   static defaultProps = {
     disabled: false
   };

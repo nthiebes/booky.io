@@ -1,21 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default class Section extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    color: PropTypes.string,
-    fullWidth: PropTypes.bool,
-    compact: PropTypes.bool,
-    children: PropTypes.node,
-    noMargin: PropTypes.bool,
-    contentClassName: PropTypes.string,
-    contentSpace: PropTypes.bool,
-    wave: PropTypes.bool,
-    darkMode: PropTypes.bool
-  };
-
   render() {
     const {
       className,

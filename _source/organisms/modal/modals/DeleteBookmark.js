@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
@@ -42,11 +41,3 @@ class DeleteBookmark extends Component {
 
 export default injectIntl(DeleteBookmark);
 
-DeleteBookmark.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
-  pending: PropTypes.bool,
-  darkMode: PropTypes.bool
-};

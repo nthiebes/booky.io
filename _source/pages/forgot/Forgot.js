@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
@@ -12,12 +11,6 @@ import Section from '../../molecules/section';
 import Illustration from '../../atoms/illustration';
 
 class Forgot extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    forgot: PropTypes.func.isRequired,
-    language: PropTypes.string
-  };
-
   state = {
     username: '',
     email: '',

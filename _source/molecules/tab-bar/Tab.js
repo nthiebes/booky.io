@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default class Tab extends Component {
-  static propTypes = {
-    tabId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    active: PropTypes.bool,
-    onClick: PropTypes.func.isRequired,
-    darkMode: PropTypes.bool,
-    children: PropTypes.node.isRequired,
-    provided: PropTypes.object,
-    disabled: PropTypes.bool
-  };
-
   static defaultProps = {
     provided: {}
   };

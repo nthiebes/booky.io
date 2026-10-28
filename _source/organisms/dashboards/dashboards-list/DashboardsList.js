@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
@@ -11,24 +10,6 @@ import { ButtonSmallPrimary } from '../../../atoms/button';
 import Skeleton from '../../../atoms/skeleton';
 
 class DashboardsList extends PureComponent {
-  static propTypes = {
-    openModal: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    dashboards: PropTypes.array,
-    intl: PropTypes.object.isRequired,
-    pinned: PropTypes.bool,
-    activeId: PropTypes.number,
-    useTabIndex: PropTypes.bool,
-    darkMode: PropTypes.bool.isRequired,
-    droppableIdSuffix: PropTypes.string.isRequired,
-    closeEditMode: PropTypes.bool.isRequired,
-    closeSidebar: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool,
-    dragType: PropTypes.string,
-    minimalBookmarkButton: PropTypes.bool,
-    isPremium: PropTypes.bool
-  };
-
   static defaultProps = {
     useTabIndex: false
   };

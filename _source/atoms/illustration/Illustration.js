@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 export default class Illustration extends Component {
   render() {
@@ -28,17 +27,6 @@ export default class Illustration extends Component {
     );
   }
 }
-
-Illustration.propTypes = {
-  className: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  height: PropTypes.string,
-  width: PropTypes.string,
-  alt: PropTypes.string,
-  ariaHidden: PropTypes.bool,
-  darkMode: PropTypes.bool,
-  loading: PropTypes.string
-};
 
 Illustration.defaultProps = {
   height: '300',

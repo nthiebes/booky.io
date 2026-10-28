@@ -1,6 +1,5 @@
 /* eslint-disable complexity */
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
@@ -11,33 +10,6 @@ import P from '../../atoms/paragraph';
 const Empty = ({ children }) => <Fragment>{children({})}</Fragment>;
 
 class Bookmark extends PureComponent {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    editMode: PropTypes.bool.isRequired,
-    target: PropTypes.string,
-    id: PropTypes.number.isRequired,
-    openModal: PropTypes.func.isRequired,
-    categoryId: PropTypes.number.isRequired,
-    index: PropTypes.number.isRequired,
-    intl: PropTypes.object.isRequired,
-    newtab: PropTypes.bool.isRequired,
-    favicon: PropTypes.string,
-    darkMode: PropTypes.bool.isRequired,
-    closeEditMode: PropTypes.bool.isRequired,
-    onDeleteOrEditClick: PropTypes.func.isRequired,
-    bookmarkEditOnHover: PropTypes.bool.isRequired,
-    isDragging: PropTypes.bool.isRequired,
-    isMobile: PropTypes.bool.isRequired,
-    isExtension: PropTypes.bool.isRequired,
-    enableNotes: PropTypes.bool.isRequired,
-    note: PropTypes.string,
-    viewOnly: PropTypes.bool,
-    color: PropTypes.string,
-    isSearch: PropTypes.bool,
-    className: PropTypes.string
-  };
-
   state = {
     hoverEditMode: false,
     showNotes: false

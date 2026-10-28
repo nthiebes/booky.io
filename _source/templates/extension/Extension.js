@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
@@ -12,14 +11,6 @@ import ErrorBoundary from '../../molecules/error-boundary';
 import { config } from '../../config';
 
 export default class Extension extends PureComponent {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-    darkMode: PropTypes.bool.isRequired,
-    updateExtensionData: PropTypes.func.isRequired,
-    color: PropTypes.number.isRequired
-  };
-
   componentDidMount() {
     const { darkMode, updateExtensionData } = this.props;
 

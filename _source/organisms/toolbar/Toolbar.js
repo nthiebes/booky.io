@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -12,23 +11,6 @@ import SearchField from '../../molecules/search-field';
 import { DashboardsTabs } from '../dashboards';
 
 class Toolbar extends PureComponent {
-  static propTypes = {
-    headerSticky: PropTypes.bool.isRequired,
-    sticky: PropTypes.bool.isRequired,
-    currentlySticky: PropTypes.bool.isRequired,
-    activeDashboardName: PropTypes.string,
-    activeDashboardId: PropTypes.number,
-    isActiveDashboardPublic: PropTypes.bool,
-    className: PropTypes.string,
-    dashboardsStyle: PropTypes.string.isRequired,
-    darkMode: PropTypes.bool.isRequired,
-    categoriesPending: PropTypes.bool,
-    openModal: PropTypes.func.isRequired,
-    hasDashboards: PropTypes.bool,
-    isPremium: PropTypes.bool,
-    intl: PropTypes.object.isRequired
-  };
-
   state = {
     dashboardModalOpen: false
   };

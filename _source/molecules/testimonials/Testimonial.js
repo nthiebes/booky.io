@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Link from '../../atoms/link';
@@ -45,14 +44,5 @@ class Testimonial extends Component {
     );
   }
 }
-
-Testimonial.propTypes = {
-  text: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  social: PropTypes.string,
-  url: PropTypes.string
-};
 
 export default Testimonial;

@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -21,14 +20,6 @@ import { clientID, planID } from '../../config';
 import './Upsell.scss';
 
 class Upsell extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    username: PropTypes.string,
-    email: PropTypes.string,
-    newSubscription: PropTypes.func.isRequired,
-    updateUserData: PropTypes.func.isRequired
-  };
-
   state = {
     supportAmount: '',
     agbAccepted: false,

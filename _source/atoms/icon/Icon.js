@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
@@ -7,35 +6,6 @@ import Skeleton from '../skeleton';
 import Tooltip from '../tooltip';
 
 export default class Icon extends PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    icon: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    onClick: PropTypes.func,
-    stopPropagation: PropTypes.bool,
-    color: PropTypes.oneOf([
-      'primary',
-      'dark',
-      'grey',
-      'medium',
-      'light',
-      'green',
-      'orange',
-      'blue',
-      ''
-    ]),
-    dragHandleProps: PropTypes.object,
-    tabIndex: PropTypes.string,
-    darkMode: PropTypes.bool,
-    ignoreDarkMode: PropTypes.bool,
-    size: PropTypes.oneOf(['mini', 'tiny', 'small', 'medium', 'large']),
-    isButton: PropTypes.bool,
-    useSkeleton: PropTypes.bool,
-    pending: PropTypes.bool,
-    to: PropTypes.string,
-    tooltipDirection: PropTypes.string
-  };
-
   static defaultProps = {
     color: 'medium',
     size: 'small',

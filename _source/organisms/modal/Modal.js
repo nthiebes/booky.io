@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { abortFetch } from '../../_utils/fetcher';
 import { parseBookmarkUrl } from '../../_utils/url';
@@ -21,31 +20,6 @@ import CancelSubscription from './modals/CancelSubscription';
 import ShareDashboard from './modals/ShareDashboardContainer';
 
 export default class Modal extends PureComponent {
-  static propTypes = {
-    modal: PropTypes.string,
-    open: PropTypes.bool.isRequired,
-    showModal: PropTypes.bool.isRequired,
-    closeModal: PropTypes.func.isRequired,
-    hideModal: PropTypes.func.isRequired,
-    data: PropTypes.object,
-    addBookmark: PropTypes.func.isRequired,
-    editBookmark: PropTypes.func.isRequired,
-    deleteBookmark: PropTypes.func.isRequired,
-    addCategory: PropTypes.func.isRequired,
-    editCategory: PropTypes.func.isRequired,
-    deleteCategory: PropTypes.func.isRequired,
-    addDashboard: PropTypes.func.isRequired,
-    editDashboard: PropTypes.func.isRequired,
-    deleteDashboard: PropTypes.func.isRequired,
-    darkMode: PropTypes.bool.isRequired,
-    deleteAccount: PropTypes.func.isRequired,
-    resetSearch: PropTypes.func.isRequired,
-    cancelSubscription: PropTypes.func.isRequired,
-    searchBookmarks: PropTypes.func.isRequired,
-    updateSearchData: PropTypes.func.isRequired,
-    keyword: PropTypes.string
-  };
-
   state = {
     pending: false,
     error: null

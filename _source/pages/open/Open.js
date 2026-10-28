@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 
 import Select from '../../atoms/select';
@@ -10,18 +9,6 @@ import Category from '../../molecules/category';
 import Search from '../../organisms/search';
 
 class Open extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    getDashboards: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    dashboardsPending: PropTypes.bool,
-    activeDashboard: PropTypes.number.isRequired,
-    categories: PropTypes.array.isRequired,
-    dashboards: PropTypes.array.isRequired,
-    keywordExists: PropTypes.bool,
-    getBookmarks: PropTypes.func.isRequired
-  };
-
   state = {
     activeCategory: localStorage.getItem('activeCategory') || ''
   };

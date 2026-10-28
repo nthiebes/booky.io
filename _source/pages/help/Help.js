@@ -1,7 +1,6 @@
 /* eslint-disable no-empty-function */
 /* eslint-disable max-lines */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { DiscussionEmbed } from 'disqus-react';
 import classNames from 'classnames';
@@ -19,12 +18,6 @@ import { List, ListItem } from '../../atoms/list';
 import './Help.scss';
 
 class Help extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool,
-    stickyHeader: PropTypes.bool
-  };
-
   render() {
     const { intl, darkMode, stickyHeader } = this.props;
     const disqusConfig = {

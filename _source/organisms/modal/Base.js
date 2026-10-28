@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -10,23 +9,6 @@ import { H2 } from '../../atoms/headline';
 import Form from '../../molecules/form';
 
 class Modal extends PureComponent {
-  static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.array,
-      PropTypes.element,
-      PropTypes.string
-    ]).isRequired,
-    onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    headline: PropTypes.string,
-    noCancel: PropTypes.bool,
-    intl: PropTypes.object.isRequired,
-    pending: PropTypes.bool.isRequired,
-    darkMode: PropTypes.bool.isRequired,
-    error: PropTypes.string,
-    useAnchor: PropTypes.bool
-  };
-
   static defaultProps = {
     useAnchor: true
   };

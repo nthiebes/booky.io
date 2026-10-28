@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -13,24 +12,6 @@ import { H3 } from '../../atoms/headline';
 import { DashboardsList } from '../../organisms/dashboards';
 
 class Sidebar extends PureComponent {
-  static propTypes = {
-    loggedIn: PropTypes.bool.isRequired,
-    open: PropTypes.bool.isRequired,
-    closeSidebar: PropTypes.func.isRequired,
-    dashboards: PropTypes.bool,
-    intl: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    direction: PropTypes.string,
-    className: PropTypes.string,
-    hasSidebar: PropTypes.bool.isRequired,
-    darkMode: PropTypes.bool.isRequired,
-    logout: PropTypes.func.isRequired,
-    history: PropTypes.object.isRequired,
-    color: PropTypes.number.isRequired,
-    newsVersion: PropTypes.number.isRequired,
-    voted: PropTypes.number.isRequired
-  };
-
   static defaultProps = {
     direction: 'right'
   };

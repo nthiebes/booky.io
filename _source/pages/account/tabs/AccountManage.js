@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import P from '../../../atoms/paragraph';
 import { ButtonLargeBlue } from '../../../atoms/button';
 
 export default class AccountManage extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    openModal: PropTypes.func.isRequired
-  };
-
   handleClick = () => {
     this.props.openModal('DeleteAccount');
   };

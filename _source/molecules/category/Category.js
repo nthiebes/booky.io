@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -13,30 +12,6 @@ import Skeleton from '../../atoms/skeleton';
 import { ErrorMessage } from '../../atoms/messages';
 
 class Category extends PureComponent {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    hidden: PropTypes.bool.isRequired,
-    id: PropTypes.number.isRequired,
-    bookmarks: PropTypes.array,
-    openModal: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool.isRequired,
-    toggleCategory: PropTypes.func.isRequired,
-    pending: PropTypes.bool,
-    getBookmarks: PropTypes.func.isRequired,
-    noFetch: PropTypes.bool,
-    error: PropTypes.string,
-    closeEditMode: PropTypes.bool.isRequired,
-    minimalBookmarkButton: PropTypes.bool.isRequired,
-    bookmarkEditOnHover: PropTypes.bool.isRequired,
-    isMobile: PropTypes.bool.isRequired,
-    isExtension: PropTypes.bool.isRequired,
-    isDragging: PropTypes.bool,
-    dragType: PropTypes.string,
-    viewOnly: PropTypes.bool
-  };
-
   static defaultProps = {
     bookmarks: []
   };

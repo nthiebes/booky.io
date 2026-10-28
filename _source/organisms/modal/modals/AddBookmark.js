@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
@@ -13,21 +12,6 @@ import { parseBookmarkUrl } from '../../../_utils/url';
 import { decodeEmoji } from '../../../_utils/string';
 
 class AddBookmark extends PureComponent {
-  static propTypes = {
-    onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    data: PropTypes.object,
-    intl: PropTypes.object.isRequired,
-    pending: PropTypes.bool,
-    darkMode: PropTypes.bool,
-    getTitle: PropTypes.func.isRequired,
-    getDuplicates: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    autofillBookmarkNames: PropTypes.bool,
-    enableNotes: PropTypes.bool.isRequired,
-    isPremium: PropTypes.bool.isRequired
-  };
-
   state = {
     name: '',
     url: '',

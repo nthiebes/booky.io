@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
@@ -74,18 +73,3 @@ export default class Page extends Component {
   }
 }
 
-Page.propTypes = {
-  toolbar: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string
-  ]).isRequired,
-  className: PropTypes.string,
-  dashboards: PropTypes.bool,
-  home: PropTypes.bool,
-  blurContent: PropTypes.bool,
-  stickyHeader: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired,
-  showStats: PropTypes.bool
-};

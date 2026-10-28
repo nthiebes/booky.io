@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -37,13 +36,6 @@ export const restricted = (BaseComponent) => {
       return <BaseComponent {...this.props} />;
     }
   }
-
-  Restricted.propTypes = {
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    loggedIn: PropTypes.bool.isRequired,
-    isExtension: PropTypes.bool.isRequired
-  };
 
   return connect(mapStateToProps)(withRouter(Restricted));
 };

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
@@ -9,21 +8,6 @@ import Select from '../../../atoms/select';
 import { ErrorMessage } from '../../../atoms/messages';
 
 class MoveCategory extends Component {
-  static propTypes = {
-    onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
-    intl: PropTypes.object.isRequired,
-    pending: PropTypes.bool,
-    darkMode: PropTypes.bool,
-    getCategories: PropTypes.func.isRequired,
-    categoriesPending: PropTypes.bool,
-    categoriesError: PropTypes.string,
-    categories: PropTypes.array,
-    addCategory: PropTypes.func.isRequired,
-    removeBookmark: PropTypes.func.isRequired
-  };
-
   state = {
     categoryId: null,
     categoryName: '',

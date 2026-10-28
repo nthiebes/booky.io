@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
@@ -8,15 +7,6 @@ import Link from '../../link';
 import Icon from '../../icon';
 
 export default class ErrorMessage extends Component {
-  static propTypes = {
-    message: PropTypes.string,
-    className: PropTypes.string,
-    hasIcon: PropTypes.bool,
-    noAnimation: PropTypes.bool,
-    noPadding: PropTypes.bool,
-    values: PropTypes.object
-  };
-
   static defaultProps = {
     message: 'error.default',
     values: {}

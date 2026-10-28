@@ -1,24 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Label from '../label';
 
 export default class Checkbox extends Component {
-  static propTypes = {
-    id: PropTypes.string,
-    checked: PropTypes.bool,
-    label: PropTypes.node,
-    name: PropTypes.string,
-    value: PropTypes.string,
-    className: PropTypes.string,
-    onChange: PropTypes.func,
-    tabIndex: PropTypes.string,
-    first: PropTypes.bool,
-    disabled: PropTypes.bool,
-    required: PropTypes.bool
-  };
-
   handleInputChange = (event) => {
     const { onChange } = this.props;
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
@@ -17,17 +16,6 @@ import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 
 class Login extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    login: PropTypes.func.isRequired,
-    isExtension: PropTypes.bool.isRequired,
-    match: PropTypes.object.isRequired,
-    activate: PropTypes.func.isRequired,
-    confirm: PropTypes.func.isRequired,
-    deny: PropTypes.func.isRequired
-  };
-
   state = {
     username: '',
     password: '',

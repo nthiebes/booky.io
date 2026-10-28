@@ -1,5 +1,4 @@
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -13,26 +12,6 @@ import SearchField from '../../molecules/search-field';
 import { ButtonSmallLight } from '../../atoms/button';
 
 class Header extends PureComponent {
-  static propTypes = {
-    color: PropTypes.number.isRequired,
-    loggedIn: PropTypes.bool.isRequired,
-    closeSidebar: PropTypes.func.isRequired,
-    toggleSidebar: PropTypes.func.isRequired,
-    sticky: PropTypes.bool.isRequired,
-    openModal: PropTypes.func.isRequired,
-    dashboards: PropTypes.bool,
-    intl: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    sidebarOpen: PropTypes.bool,
-    home: PropTypes.bool,
-    className: PropTypes.string,
-    history: PropTypes.object.isRequired,
-    logout: PropTypes.func.isRequired,
-    hasCategories: PropTypes.bool,
-    dashboardsPending: PropTypes.bool,
-    updateCurrentlySticky: PropTypes.func.isRequired
-  };
-
   state = {
     bookmarkModalOpen: false,
     logoutPending: false

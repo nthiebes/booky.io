@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
@@ -10,20 +9,6 @@ import { H1 } from '../../atoms/headline';
 import Icon from '../../atoms/icon';
 
 class Categories extends PureComponent {
-  static propTypes = {
-    categories: PropTypes.array.isRequired,
-    dashboardsOpen: PropTypes.bool.isRequired,
-    hasSidebar: PropTypes.bool.isRequired,
-    dashboardName: PropTypes.string,
-    className: PropTypes.string,
-    pending: PropTypes.bool,
-    openModal: PropTypes.func.isRequired,
-    categoriesLayout: PropTypes.string.isRequired,
-    maxColumnCount: PropTypes.number,
-    viewOnly: PropTypes.bool,
-    sharedDashboardName: PropTypes.string
-  };
-
   onAddClick = () => {
     this.props.openModal('AddCategory');
   };

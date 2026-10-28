@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
@@ -16,11 +15,6 @@ import {
 } from './tabs';
 
 class Account extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
   state = {
     activeTab: document.location.hash
       ? document.location.hash.replace('#', '')

@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { injectIntl } from 'react-intl';
 import { Droppable } from 'react-beautiful-dnd';
 
 class TabBar extends Component {
-  static propTypes = {
-    children: PropTypes.array.isRequired,
-    className: PropTypes.string,
-    intl: PropTypes.object.isRequired,
-    title: PropTypes.string.isRequired,
-    darkMode: PropTypes.bool,
-    disabled: PropTypes.bool
-  };
-
   state = {
     scrolledToStart: true,
     scrolledToEnd: false

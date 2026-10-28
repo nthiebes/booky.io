@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { DiscussionEmbed } from 'disqus-react';
 
@@ -28,13 +27,6 @@ const getPollPercentages = (results) => {
 };
 
 export default class Next extends PureComponent {
-  static propTypes = {
-    voted: PropTypes.number.isRequired,
-    getPollResults: PropTypes.func.isRequired,
-    updateUserData: PropTypes.func.isRequired,
-    vote: PropTypes.func.isRequired
-  };
-
   state = {
     pending: true,
     error: null,

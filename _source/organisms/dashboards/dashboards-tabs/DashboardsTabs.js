@@ -1,5 +1,4 @@
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Draggable } from 'react-beautiful-dnd';
@@ -10,17 +9,6 @@ import { Badge } from '../../../atoms/badge';
 import { TabBar, Tab } from '../../../molecules/tab-bar';
 
 class DashboardsTabs extends PureComponent {
-  static propTypes = {
-    openModal: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    dashboards: PropTypes.array,
-    intl: PropTypes.object.isRequired,
-    activeId: PropTypes.number,
-    darkMode: PropTypes.bool.isRequired,
-    closeEditMode: PropTypes.bool.isRequired,
-    isPremium: PropTypes.bool
-  };
-
   static defaultProps = {
     useTabIndex: false
   };

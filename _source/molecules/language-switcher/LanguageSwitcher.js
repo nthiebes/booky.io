@@ -1,17 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { setLanguage } from '../../_utils/language';
 import Radio from '../../atoms/radio';
 
 export default class LanguageSwitcher extends Component {
-  static propTypes = {
-    updateIntl: PropTypes.func.isRequired,
-    language: PropTypes.string.isRequired,
-    ignoreDarkMode: PropTypes.bool
-  };
-
   handleChange = ({ value: language }) => {
     const { updateIntl } = this.props;
 

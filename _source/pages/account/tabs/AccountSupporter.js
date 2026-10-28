@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import P from '../../../atoms/paragraph';
@@ -22,18 +21,6 @@ const addMonths = (date, months) => {
 };
 
 class AccountSupporter extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    openModal: PropTypes.func.isRequired,
-    supportAmount: PropTypes.number,
-    supportExpiration: PropTypes.string,
-    subscriptionDate: PropTypes.string,
-    supportStart: PropTypes.string,
-    isPremium: PropTypes.bool,
-    updateSubscription: PropTypes.func.isRequired,
-    language: PropTypes.string.isRequired
-  };
-
   state = {
     newSupportAmount: this.props.supportAmount,
     supportAmount: this.props.supportAmount,

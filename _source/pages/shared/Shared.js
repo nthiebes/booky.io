@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
 
@@ -10,14 +9,6 @@ import Section from '../../molecules/section';
 import './Shared.scss';
 
 class Shared extends Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    dashboards: PropTypes.array,
-    getDashboard: PropTypes.func.isRequired,
-    loggedIn: PropTypes.bool.isRequired,
-    intl: PropTypes.object.isRequired
-  };
-
   componentDidMount() {
     const { getDashboard, match } = this.props;
     const { id } = match.params;

@@ -1,5 +1,4 @@
 import React, { Component, Suspense, lazy } from 'react';
-import PropTypes from 'prop-types';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
@@ -33,10 +32,6 @@ const New = lazy(() => import('./pages/new'));
 const Terms = lazy(() => import('./pages/terms'));
 
 class Routes extends Component {
-  static propTypes = {
-    location: PropTypes.object
-  };
-
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       this.onRouteChanged();

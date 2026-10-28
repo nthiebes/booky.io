@@ -1,5 +1,4 @@
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -13,25 +12,6 @@ import Bookmark from '../../molecules/bookmark';
 import SearchSkeleton from './SearchSkeleton';
 
 class Search extends PureComponent {
-  static propTypes = {
-    keyword: PropTypes.string,
-    dashboards: PropTypes.array.isRequired,
-    total: PropTypes.number,
-    offset: PropTypes.number.isRequired,
-    limit: PropTypes.number.isRequired,
-    hasSidebar: PropTypes.bool,
-    dashboardsOpen: PropTypes.bool,
-    darkMode: PropTypes.bool,
-    newtab: PropTypes.bool,
-    pending: PropTypes.bool,
-    error: PropTypes.string,
-    loadMoreBookmarks: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    className: PropTypes.string,
-    isExtension: PropTypes.bool.isRequired,
-    intl: PropTypes.object.isRequired
-  };
-
   state = {
     editMode: false
   };

@@ -1,7 +1,6 @@
 /* eslint-disable max-lines */
 /* eslint-disable max-statements */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { postMessage } from '../../_utils/extension';
@@ -19,25 +18,6 @@ import Form from '../../molecules/form';
 import { decodeEmoji } from '../../_utils/string';
 
 class Add extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    name: PropTypes.string,
-    url: PropTypes.string,
-    note: PropTypes.string,
-    enableNotes: PropTypes.bool.isRequired,
-    getDashboards: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    dashboardsPending: PropTypes.bool,
-    activeDashboard: PropTypes.number.isRequired,
-    categories: PropTypes.array.isRequired,
-    dashboards: PropTypes.array.isRequired,
-    addBookmark: PropTypes.func.isRequired,
-    openModal: PropTypes.func.isRequired,
-    getDuplicates: PropTypes.func.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
   constructor(props) {
     super(props);
 

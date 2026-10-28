@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -9,18 +8,6 @@ import Input from '../../atoms/input';
 import Icon from '../../atoms/icon';
 
 class SearchField extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    intl: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool,
-    id: PropTypes.string.isRequired,
-    searchBookmarks: PropTypes.func.isRequired,
-    resetSearch: PropTypes.func.isRequired,
-    updateSearchData: PropTypes.func.isRequired,
-    keyword: PropTypes.string,
-    dashboardsPending: PropTypes.bool
-  };
-
   fetchTimeout;
 
   handleChange = (keyword) => {

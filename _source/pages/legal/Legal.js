@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-literals */
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 import Page from '../../templates/page';
 import Section from '../../molecules/section';
@@ -183,6 +182,3 @@ export default class Legal extends Component {
   }
 }
 
-Legal.propTypes = {
-  locale: PropTypes.string.isRequired
-};

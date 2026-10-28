@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BrowserRouter } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
@@ -12,19 +11,6 @@ const loadingSpinner = document.getElementById('loading__spinner');
 const loadingHeader = document.getElementById('loading__header');
 
 export default class Booky extends Component {
-  static propTypes = {
-    dragBookmark: PropTypes.func.isRequired,
-    dragCategory: PropTypes.func.isRequired,
-    dragDashboard: PropTypes.func.isRequired,
-    startDragging: PropTypes.func.isRequired,
-    stopDragging: PropTypes.func.isRequired,
-    updateUserData: PropTypes.func.isRequired,
-    store: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    isMobile: PropTypes.bool.isRequired,
-    openModal: PropTypes.func.isRequired
-  };
-
   componentDidMount() {
     const mediaQuery = window.matchMedia('(max-width: 1000px)');
 

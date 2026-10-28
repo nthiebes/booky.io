@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import fetcher from '../../_utils/fetcher';
@@ -16,12 +15,6 @@ import Link from '../../atoms/link';
 import Section from '../../molecules/section';
 
 class Contact extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    username: PropTypes.string,
-    email: PropTypes.string
-  };
-
   state = {
     name: this.props.username,
     email: this.props.email,

@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Color from './Color';
 
 export default class ColorPicker extends Component {
-  static propTypes = {
-    value: PropTypes.string,
-    className: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-    darkMode: PropTypes.bool,
-    isLegacy: PropTypes.bool
-  };
-
   static defaultProps = {
     value: 'color0'
   };

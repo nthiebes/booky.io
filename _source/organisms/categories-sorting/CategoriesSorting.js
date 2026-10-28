@@ -1,5 +1,4 @@
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
@@ -11,18 +10,6 @@ import Paragraph from '../../atoms/paragraph';
 import { ErrorMessage } from '../../atoms/messages';
 
 class CategoriesSorting extends PureComponent {
-  static propTypes = {
-    dashboardId: PropTypes.number.isRequired,
-    intl: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool,
-    categories: PropTypes.array.isRequired,
-    getCategories: PropTypes.func.isRequired,
-    pending: PropTypes.bool,
-    error: PropTypes.string,
-    dashboardName: PropTypes.string.isRequired,
-    noTitle: PropTypes.bool
-  };
-
   componentDidMount() {
     const { dashboardId, getCategories } = this.props;
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default class FileUpload extends Component {
@@ -36,10 +35,3 @@ export default class FileUpload extends Component {
   }
 }
 
-FileUpload.propTypes = {
-  className: PropTypes.string,
-  onChange: PropTypes.func,
-  name: PropTypes.string,
-  id: PropTypes.string,
-  darkMode: PropTypes.bool
-};

@@ -3,7 +3,6 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-literals */
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 import * as Cookies from 'es-cookie';
 import Page from '../../templates/page';
@@ -14,10 +13,6 @@ import { List, ListItem } from '../../atoms/list';
 import Section from '../../molecules/section';
 
 export default class Privacy extends Component {
-  static propTypes = {
-    locale: PropTypes.string.isRequired
-  };
-
   handleClick = () => {
     Cookies.set('gaDisabled', 'true', {
       expires: 18250,

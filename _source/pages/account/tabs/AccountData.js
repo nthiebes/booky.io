@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Input from '../../../atoms/input';
@@ -135,12 +134,5 @@ class AccountData extends Component {
     );
   }
 }
-
-AccountData.propTypes = {
-  intl: PropTypes.object.isRequired,
-  updateUser: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired
-};
 
 export default injectIntl(AccountData);

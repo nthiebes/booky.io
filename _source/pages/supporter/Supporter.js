@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -16,13 +15,6 @@ import Link from '../../atoms/link/Link';
 import './Supporter.scss';
 
 class Supporter extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    premium: PropTypes.bool,
-    stickyHeader: PropTypes.bool,
-    loggedIn: PropTypes.bool
-  };
-
   render() {
     const { stickyHeader, intl, premium, loggedIn } = this.props;
 

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import * as Cookies from 'es-cookie';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { setLanguage } from '../../_utils/language';
@@ -16,11 +15,6 @@ import P from '../../atoms/paragraph';
 import Link from '../../atoms/link';
 
 export default class CookieBanner extends PureComponent {
-  static propTypes = {
-    language: PropTypes.string.isRequired,
-    darkMode: PropTypes.bool
-  };
-
   state = {
     cookieConsent: Cookies.get('cookieConsent')
   };

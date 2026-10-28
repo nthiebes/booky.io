@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 
 import { config } from '../../config';
@@ -15,11 +14,6 @@ import Page from '../../templates/page';
 import './New.scss';
 
 export default class New extends PureComponent {
-  static propTypes = {
-    updateSettings: PropTypes.func.isRequired,
-    newsVersion: PropTypes.number.isRequired
-  };
-
   state = {
     releases: []
   };

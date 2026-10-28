@@ -1,7 +1,6 @@
 /* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import PropTypes from 'prop-types';
 
 import { postMessage } from '../../_utils/extension';
 import { H3 } from '../../atoms/headline';
@@ -14,27 +13,6 @@ import P from '../../atoms/paragraph';
 import { ErrorMessage } from '../../atoms/messages';
 
 class Customize extends PureComponent {
-  static propTypes = {
-    updateSettings: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired,
-    navColor: PropTypes.number.isRequired,
-    newtab: PropTypes.bool.isRequired,
-    maxWidth: PropTypes.bool.isRequired,
-    closeEditMode: PropTypes.bool.isRequired,
-    dashboardsStyle: PropTypes.string.isRequired,
-    blurEffect: PropTypes.bool.isRequired,
-    stickyHeader: PropTypes.bool.isRequired,
-    stickyToolbar: PropTypes.bool.isRequired,
-    darkMode: PropTypes.bool.isRequired,
-    autofillBookmarkNames: PropTypes.bool,
-    categoriesLayout: PropTypes.string.isRequired,
-    bookmarkEditOnHover: PropTypes.bool.isRequired,
-    minimalBookmarkButton: PropTypes.bool.isRequired,
-    enableNotes: PropTypes.bool.isRequired,
-    isExtension: PropTypes.bool.isRequired,
-    maxColumnCount: PropTypes.number
-  };
-
   state = {
     error: null,
     maxColumns: this.props.maxColumnCount > 0

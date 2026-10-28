@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -39,22 +38,6 @@ const surveyMap = {
 };
 
 class Home extends Component {
-  static propTypes = {
-    loggedIn: PropTypes.bool.isRequired,
-    blurContent: PropTypes.bool.isRequired,
-    hasSidebar: PropTypes.bool.isRequired,
-    getDashboards: PropTypes.func.isRequired,
-    updateSearchData: PropTypes.func.isRequired,
-    searchBookmarks: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired,
-    categoriesPending: PropTypes.bool,
-    hasCategories: PropTypes.bool,
-    dashboardsOpen: PropTypes.bool,
-    keywordExists: PropTypes.bool,
-    language: PropTypes.string,
-    darkMode: PropTypes.bool
-  };
-
   state = {
     // showSurveyBanner: !localStorage.getItem('hideSurveyBanner')
     showSurveyBanner: false

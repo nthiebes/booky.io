@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
@@ -8,12 +7,6 @@ import { postMessage } from '../../_utils/extension';
 import { config } from '../../config';
 
 export default class Fullscreen extends PureComponent {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-    updateExtensionData: PropTypes.func.isRequired
-  };
-
   componentDidMount() {
     const { updateExtensionData } = this.props;
 

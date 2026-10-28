@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
@@ -13,12 +12,6 @@ import Empty from '../../molecules/empty';
 import Illustration from '../../atoms/illustration';
 
 class Resend extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    resend: PropTypes.func.isRequired,
-    loggedIn: PropTypes.bool.isRequired
-  };
-
   state = {
     username: '',
     email: '',
