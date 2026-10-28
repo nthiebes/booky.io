@@ -473,7 +473,7 @@ export default class Privacy extends Component {
                 Die von Ihnen an uns per Kontaktanfragen übersandten Daten
                 verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre
                 Einwilligung zur Speicherung widerrufen oder der Zweck für die
-                Datenspeicherung entfällt (z. B. nach abgeschlossener
+                Datenspeicherung entfällt (z. B. nach abgeschlossener
                 Bearbeitung Ihres Anliegens). Zwingende gesetzliche Bestimmungen
                 – insbesondere gesetzliche Aufbewahrungsfristen – bleiben
                 unberührt.
@@ -607,8 +607,8 @@ export default class Privacy extends Component {
               <H4>Speicherdauer</H4>
               <P>
                 Bei Google gespeicherte Daten auf Nutzer- und Ereignisebene, die
-                mit Cookies, Nutzerkennungen (z. B. User ID) oder Werbe-IDs
-                (z. B. DoubleClick-Cookies, Android-Werbe-ID) verknüpft sind,
+                mit Cookies, Nutzerkennungen (z. B. User ID) oder Werbe-IDs
+                (z. B. DoubleClick-Cookies, Android-Werbe-ID) verknüpft sind,
                 werden nach 14 Monaten anonymisiert bzw. gelöscht. Details
                 hierzu ersehen Sie unter folgendem Link:{' '}
                 <Link

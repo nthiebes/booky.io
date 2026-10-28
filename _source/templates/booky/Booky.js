@@ -98,9 +98,8 @@ export default class Booky extends Component {
         });
       }
       if (type === 'bookmark') {
-        const hasDashboardDestination = destination.droppableId.match(
-          'dashboard-'
-        );
+        const hasDashboardDestination =
+          destination.droppableId.match('dashboard-');
 
         if (hasDashboardDestination) {
           openModal('MoveBookmark', {

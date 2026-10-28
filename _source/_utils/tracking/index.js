@@ -22,14 +22,14 @@ export const track = {
     }
   },
   supporter: {
-    subscribe: (value) => {
+    subscribe: () => {
       // window.gtag &&
       //   window.gtag('event', 'subscribe', {
       //     event_category: 'supporter',
       //     value
       //   });
     },
-    update: (value) => {
+    update: () => {
       // window.gtag &&
       //   window.gtag('event', 'update', {
       //     event_category: 'supporter',
