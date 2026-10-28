@@ -13,11 +13,13 @@ export default class ErrorMessage extends Component {
     className: PropTypes.string,
     hasIcon: PropTypes.bool,
     noAnimation: PropTypes.bool,
-    noPadding: PropTypes.bool
+    noPadding: PropTypes.bool,
+    values: PropTypes.object
   };
 
   static defaultProps = {
-    message: 'error.default'
+    message: 'error.default',
+    values: {}
   };
 
   state = {
@@ -35,7 +37,8 @@ export default class ErrorMessage extends Component {
   };
 
   render() {
-    const { message, className, hasIcon, noAnimation, noPadding } = this.props;
+    const { message, className, hasIcon, noAnimation, noPadding, values } =
+      this.props;
     const { animate } = this.state;
 
     return (
@@ -81,7 +84,8 @@ export default class ErrorMessage extends Component {
                 {'booky.io/forgot'}
               </Link>
             ),
-            strong: (msg) => <strong>{msg}</strong>
+            strong: (msg) => <strong>{msg}</strong>,
+            ...values
           }}
         />
       </P>

@@ -348,7 +348,7 @@ class Home extends Component {
               />
               {'iOS (Web app)'}
             </Link>
-            <Link
+            {/* <Link
               href="../../_assets/downloads/booky.zip"
               target="_blank"
               color="light"
@@ -363,7 +363,7 @@ class Home extends Component {
                 loading="lazy"
               />
               {'macOS'}
-            </Link>
+            </Link> */}
             <Link
               to="/help#general"
               color="light"

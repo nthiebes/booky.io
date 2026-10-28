@@ -18,7 +18,7 @@ export const publicOnly = (BaseComponent) => {
       const { location } = this.props;
 
       if (prevProps.location !== location) {
-        this.checkAuthentication(location);
+        this.checkAuthentication(this.props);
       }
     }
 
@@ -26,7 +26,10 @@ export const publicOnly = (BaseComponent) => {
       const { history, loggedIn, isExtension } = props;
 
       if (loggedIn) {
-        history.replace({ pathname: isExtension ? '/extension/add' : '/' });
+        history.replace({
+          pathname: isExtension ? '/extension/add' : '/',
+          search: isExtension ? window.location.search : ''
+        });
       }
     }
 

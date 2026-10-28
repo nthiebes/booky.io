@@ -162,7 +162,7 @@ class Upsell extends PureComponent {
                       value={supportAmount.toString()}
                       type="number"
                       onChange={this.handleAmountChange}
-                      min="1"
+                      min="2"
                       required
                       placeholder={intl.formatMessage({
                         id: 'upsell.placeholder'

@@ -50,110 +50,109 @@ export const getBookmarks = (id) => (dispatch) => {
   });
 };
 
-export const addBookmark = ({
-  categoryId,
-  name,
-  url,
-  note,
-  onError,
-  onSuccess
-}) => (dispatch) => {
-  fetcher({
-    url: `/categories/${categoryId}/bookmarks`,
-    method: 'POST',
-    params: {
-      name: encodeEmoji(name),
-      url,
-      note: encodeEmoji(note)
-    },
-    onSuccess: ({ id, favicon }) => {
-      dispatch({
-        type: 'ADD_BOOKMARK',
-        categoryId,
-        name,
+export const addBookmark =
+  ({ categoryId, name, url, note, onError, onSuccess }) =>
+  (dispatch) => {
+    fetcher({
+      url: `/categories/${categoryId}/bookmarks`,
+      method: 'POST',
+      params: {
+        name: encodeEmoji(name),
         url,
-        id,
-        note,
-        favicon
-      });
-      onSuccess && onSuccess();
-    },
-    onError: (error) => {
-      onError && onError(error);
-    }
-  });
-};
-
-export const editBookmark = ({
-  categoryId,
-  name,
-  url,
-  note,
-  onError,
-  onSuccess,
-  id,
-  position,
-  shouldUpdate = true
-}) => (dispatch) => {
-  fetcher({
-    url: `/bookmarks/${id}`,
-    method: 'PATCH',
-    params: {
-      name: encodeEmoji(name),
-      url,
-      categoryId,
-      position,
-      note: encodeEmoji(note)
-    },
-    onSuccess: ({ favicon }) => {
-      if (shouldUpdate) {
+        note: encodeEmoji(note)
+      },
+      onSuccess: ({ id, favicon }) => {
         dispatch({
-          type: 'EDIT_BOOKMARK',
+          type: 'ADD_BOOKMARK',
+          categoryId,
           name,
           url,
-          favicon,
           id,
-          categoryId,
-          note
+          note,
+          favicon
         });
+        onSuccess && onSuccess();
+      },
+      onError: (error) => {
+        onError && onError(error);
       }
-      onSuccess && onSuccess();
-    },
-    onError: (error) => {
-      // console.log('error', error);
-      onError && onError(error);
-    }
-  });
-};
+    });
+  };
 
-export const deleteBookmark = ({ categoryId, id, onError, onSuccess }) => (
-  dispatch
-) => {
-  fetcher({
-    url: `/bookmarks/${id}`,
-    method: 'DELETE',
-    onSuccess: () => {
-      dispatch({
-        type: 'DELETE_BOOKMARK',
-        id,
-        categoryId
-      });
-      onSuccess && onSuccess();
-    },
-    onError: (error) => {
-      // console.log('error', error);
-      onError && onError(error);
-    }
-  });
-};
-
-export const removeBookmark = ({ id, categoryId }) => (dispatch) => {
-  dispatch({
-    type: 'DELETE_BOOKMARK',
+export const editBookmark =
+  ({
+    categoryId,
+    name,
+    url,
+    note,
+    onError,
+    onSuccess,
     id,
-    categoryId
-  });
-};
+    position,
+    shouldUpdate = true
+  }) =>
+  (dispatch) => {
+    fetcher({
+      url: `/bookmarks/${id}`,
+      method: 'PATCH',
+      params: {
+        name: encodeEmoji(name),
+        url,
+        categoryId,
+        position,
+        note: encodeEmoji(note)
+      },
+      onSuccess: ({ favicon }) => {
+        if (shouldUpdate) {
+          dispatch({
+            type: 'EDIT_BOOKMARK',
+            name,
+            url,
+            favicon,
+            id,
+            categoryId,
+            note
+          });
+        }
+        onSuccess && onSuccess();
+      },
+      onError: (error) => {
+        // console.log('error', error);
+        onError && onError(error);
+      }
+    });
+  };
+
+export const deleteBookmark =
+  ({ categoryId, id, onError, onSuccess }) =>
+  (dispatch) => {
+    fetcher({
+      url: `/bookmarks/${id}`,
+      method: 'DELETE',
+      onSuccess: () => {
+        dispatch({
+          type: 'DELETE_BOOKMARK',
+          id,
+          categoryId
+        });
+        onSuccess && onSuccess();
+      },
+      onError: (error) => {
+        // console.log('error', error);
+        onError && onError(error);
+      }
+    });
+  };
+
+export const removeBookmark =
+  ({ id, categoryId }) =>
+  (dispatch) => {
+    dispatch({
+      type: 'DELETE_BOOKMARK',
+      id,
+      categoryId
+    });
+  };
 
 export const dragBookmark = (dragData) => (dispatch) => {
   const { destinationCategoryId, bookmarkId, destinationIndex } = dragData;
@@ -173,12 +172,26 @@ export const dragBookmark = (dragData) => (dispatch) => {
   );
 };
 
-export const getTitle = ({ url, onSuccess, onError }) => () => {
-  fetcher({
-    url: `/helpers/page-title/?url=${url}`,
-    onSuccess: ({ title }) => {
-      onSuccess(title);
-    },
-    onError
-  });
-};
+export const getTitle =
+  ({ url, onSuccess, onError }) =>
+  () => {
+    fetcher({
+      url: `/helpers/page-title?url=${url}`,
+      onSuccess: ({ title }) => {
+        onSuccess(title);
+      },
+      onError
+    });
+  };
+
+export const getDuplicates =
+  ({ url, onSuccess, onError }) =>
+  () => {
+    // fetcher({
+    //   url: `/bookmarks/exists?url=${url}`,
+    //   onSuccess: (data) => {
+    //     onSuccess(data);
+    //   },
+    //   onError
+    // });
+  };

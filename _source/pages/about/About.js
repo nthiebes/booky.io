@@ -243,11 +243,11 @@ class About extends PureComponent {
                 <H4 className="about__member-header">
                   {'Rocky aka "Nico"'}
                   <Link
-                    href="https://twitter.com/_gscheid"
+                    href="https://bsky.app/profile/booky-io.bsky.social"
                     target="_blank"
                     className="about__member-link"
                   >
-                    {'@_gscheid'}
+                    {'@booky-io.bsky.social'}
                   </Link>
                 </H4>
                 <P className="about__member-text">
@@ -277,13 +277,6 @@ class About extends PureComponent {
               <div>
                 <H4 className="about__member-header">
                   {'Sheldon aka "Mariano"'}
-                  <Link
-                    href="https://github.com/mcustiel"
-                    target="_blank"
-                    className="about__member-link"
-                  >
-                    {'mcustiel'}
-                  </Link>
                 </H4>
                 <P className="about__member-text">
                   <FormattedMessage id="about.sheldonText" />

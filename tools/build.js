@@ -21,13 +21,14 @@ webpack(config).run((buildError, stats) => {
   if (buildError) {
     // so a fatal error occurred. Stop here.
     console.log(chalkError(buildError));
-    return 1;
+    process.exit(1);
   }
 
   const jsonStats = stats.toJson();
 
   if (jsonStats.hasErrors) {
-    return jsonStats.errors.map((error) => console.log(chalkError(error)));
+    jsonStats.errors.map((error) => console.log(chalkError(error)));
+    process.exit(1);
   }
 
   if (jsonStats.hasWarnings) {
@@ -45,5 +46,6 @@ webpack(config).run((buildError, stats) => {
     )
   );
 
-  return 0;
+  // Exit explicitly: webpack keeps handles open, so the process would otherwise never end.
+  process.exit(0);
 });

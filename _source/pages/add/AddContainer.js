@@ -4,7 +4,7 @@ import {
   getDashboards,
   changeDashboard
 } from '../../_state/dashboards/actions';
-import { addBookmark } from '../../_state/bookmarks/actions';
+import { addBookmark, getDuplicates } from '../../_state/bookmarks/actions';
 import { openModal } from '../../_state/modal/actions';
 import Component from './Add';
 
@@ -16,13 +16,15 @@ const mapStateToProps = (state) => ({
   categories: state.categories,
   dashboards: state.dashboards.items,
   dashboardsPending: state.dashboards.pending,
-  activeDashboard: state.user.settings.defaultDashboardId
+  activeDashboard: state.user.settings.defaultDashboardId,
+  isPremium: state.user.premium
 });
 const mapDispatchToProps = {
   getDashboards,
   changeDashboard,
   addBookmark,
-  openModal
+  openModal,
+  getDuplicates
 };
 const AddContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 

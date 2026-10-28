@@ -21,23 +21,28 @@ export const updateDashboardsData = (data) => ({
   data
 });
 
-export const changeDashboard = (id) => (dispatch) => {
-  dispatch(
-    updateDashboardsData({
-      pending: true
-    })
-  );
-  abortFetch();
-  dispatch(
-    updateSettings({
-      defaultDashboardId: id
-    })
-  );
+export const changeDashboard =
+  (id, { onSuccess, onError } = {}) =>
+  (dispatch) => {
+    dispatch(
+      updateDashboardsData({
+        pending: true
+      })
+    );
+    abortFetch();
+    dispatch(
+      updateSettings(
+        {
+          defaultDashboardId: id
+        },
+        { onSuccess, onError }
+      )
+    );
 
-  dispatch(closeSidebar());
-  dispatch(getCategories(id));
-  dispatch(resetSearch());
-};
+    dispatch(closeSidebar());
+    dispatch(getCategories(id));
+    dispatch(resetSearch());
+  };
 
 export const getDashboards = (noReset) => (dispatch) => {
   dispatch(

@@ -7,6 +7,7 @@
   cursor: pointer;
   text-decoration-skip-ink: auto;
   word-break: break-word;
+  background: none;
 }
 
 .link--noUnderline {
@@ -128,6 +129,34 @@
   @include desktop {
     &:hover {
       color: $color-font--primary;
+    }
+  }
+}
+
+.link--error {
+  color: $color--error;
+
+  &:active,
+  &:focus {
+    color: $color-font--medium;
+  }
+
+  &.link--dark-mode {
+    &:active,
+    &:focus {
+      color: $color-font--light;
+    }
+  }
+
+  @include desktop {
+    &:hover {
+      color: $color-font--medium;
+    }
+
+    &.link--dark-mode {
+      &:hover {
+        color: $color-font--light;
+      }
     }
   }
 }

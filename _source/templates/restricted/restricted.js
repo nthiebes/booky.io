@@ -18,7 +18,7 @@ export const restricted = (BaseComponent) => {
       const { location } = this.props;
 
       if (prevProps.location !== location) {
-        this.checkAuthentication(location);
+        this.checkAuthentication(this.props);
       }
     }
 
@@ -27,7 +27,8 @@ export const restricted = (BaseComponent) => {
 
       if (!loggedIn) {
         history.replace({
-          pathname: isExtension ? '/extension/login' : '/login'
+          pathname: isExtension ? '/extension/login' : '/login',
+          search: isExtension ? window.location.search : ''
         });
       }
     }

@@ -91,7 +91,7 @@ class Help extends Component {
                 </ListItem>
               </List>
             </Expandable>
-            <Expandable
+            {/* <Expandable
               headline={<FormattedMessage id="help.general.macos" />}
               className="help-container__item"
             >
@@ -99,7 +99,7 @@ class Help extends Component {
                 <FormattedMessage id="help.general.macostext" />
                 <Link to="/_assets/downloads/booky.zip">{'macOS App'}</Link>
               </P>
-            </Expandable>
+            </Expandable> */}
             <Expandable
               headline={<FormattedMessage id="help.general.windows" />}
               className="help-container__item"
@@ -394,11 +394,11 @@ class Help extends Component {
                   values={{
                     email: (
                       <Link
-                        href={`mailto:account@booky.io?subject=${intl.formatMessage(
+                        href={`mailto:hello@booky.io?subject=${intl.formatMessage(
                           { id: 'misc.deleteSubject' }
                         )}`}
                       >
-                        {'account@booky.io'}
+                        {'hello@booky.io'}
                       </Link>
                     )
                   }}

@@ -1,6 +1,6 @@
 {
   "name": "booky.io",
-  "version": "3.0.6",
+  "version": "3.1.0",
   "description": "Online bookmarking service with high focus on performance, mobile support and customizability.",
   "homepage": "https://booky.io",
   "email": "hello@booky.io",
@@ -21,6 +21,7 @@
     "lint:css": "stylelint _source/**/*.scss",
     "build:open": "babel-node tools/build.js && npm run open:public",
     "build": "babel-node tools/build.js",
+    "deploy:backend": "bash tools/deployToBackend.sh",
     "test": "jest",
     "test:cover": "npm run test -- --coverage ",
     "test:watch": "jest --watchAll",
