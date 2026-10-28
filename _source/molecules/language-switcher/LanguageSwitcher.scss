@@ -1,8 +1,12 @@
 .language-switcher__item {
-  margin: 0 0.5rem;
+  margin: 0;
   padding: 0;
 }
 
 .language-switcher__item--light .label {
   color: $color-font--white;
+}
+
+.language-switcher__item .label{
+  white-space: nowrap;
 }

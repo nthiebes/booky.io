@@ -10,6 +10,7 @@ import ColorPicker from '../../molecules/color-picker';
 import Checkbox from '../../atoms/checkbox';
 import Radio from '../../atoms/radio';
 import Input from '../../atoms/input';
+import P from '../../atoms/paragraph';
 import { ErrorMessage } from '../../atoms/messages';
 
 class Customize extends PureComponent {
@@ -310,6 +311,11 @@ class Customize extends PureComponent {
               onChange={this.handleCheckboxChange}
               checked={minimalBookmarkButton}
             />
+            <P>
+              <i>
+                <FormattedMessage id="customize.minimalBookmarkButtonInfo" />
+              </i>
+            </P>
           </>
         )}
         <Checkbox

@@ -282,6 +282,7 @@ class Join extends Component {
                   pending={pending}
                   disabled={pending}
                   contentBefore
+                  autoWidth={language === 'fr'}
                 >
                   <FormattedMessage
                     id="join.button"

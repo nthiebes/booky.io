@@ -52,7 +52,6 @@ export default class LanguageSwitcher extends Component {
           onChange={this.handleChange}
           checked={language === 'en'}
         >
-          {/* <Icon icon="usa" /> */}
           {'English'}
         </Radio>
         <Radio
@@ -66,7 +65,6 @@ export default class LanguageSwitcher extends Component {
           onChange={this.handleChange}
           checked={language === 'de'}
         >
-          {/* <Icon icon="germany" /> */}
           {'Deutsch'}
         </Radio>
         <Radio
@@ -74,14 +72,26 @@ export default class LanguageSwitcher extends Component {
             'language-switcher__item',
             ignoreDarkMode && 'language-switcher__item--light'
           )}
-          id="language-switcher-ja"
+          id="language-switcher-fr"
           name="language"
-          value="ja"
+          value="fr"
           onChange={this.handleChange}
-          checked={language === 'ja'}
+          checked={language === 'fr'}
         >
-          {/* <Icon icon="japan" /> */}
-          {'日本語'}
+          {'Français'}
+        </Radio>
+        <Radio
+          className={classNames(
+            'language-switcher__item',
+            ignoreDarkMode && 'language-switcher__item--light'
+          )}
+          id="language-switcher-nl"
+          name="language"
+          value="nl"
+          onChange={this.handleChange}
+          checked={language === 'nl'}
+        >
+          {'Nederlands'}
         </Radio>
         <Radio
           className={classNames(
@@ -94,8 +104,33 @@ export default class LanguageSwitcher extends Component {
           onChange={this.handleChange}
           checked={language === 'hi'}
         >
-          {/* <Icon icon="india" /> */}
           {'हिंदी'}
+        </Radio>
+        <Radio
+          className={classNames(
+            'language-switcher__item',
+            ignoreDarkMode && 'language-switcher__item--light'
+          )}
+          id="language-switcher-ja"
+          name="language"
+          value="ja"
+          onChange={this.handleChange}
+          checked={language === 'ja'}
+        >
+          {'日本語'}
+        </Radio>
+        <Radio
+          className={classNames(
+            'language-switcher__item',
+            ignoreDarkMode && 'language-switcher__item--light'
+          )}
+          id="language-switcher-ko"
+          name="language"
+          value="ko"
+          onChange={this.handleChange}
+          checked={language === 'ko'}
+        >
+          {'한국어'}
         </Radio>
       </Fragment>
     );

@@ -192,7 +192,12 @@ class Home extends Component {
             <FormattedMessage id="misc.features" />
           </H2>
           <AllFeatures />
-          <ButtonLargePrimary icon="star" to="/features" contentBefore>
+          <ButtonLargePrimary
+            icon="star"
+            to="/features"
+            contentBefore
+            autoWidth={language === 'fr'}
+          >
             <FormattedMessage
               id="home.allFeatures"
               values={{ b: (msg) => <b>{msg}</b> }}
@@ -249,8 +254,10 @@ class Home extends Component {
                 src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              {'Chrome '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Chrome' }}
+              />
             </Link>
             <Link
               href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/"
@@ -266,8 +273,10 @@ class Home extends Component {
                 src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              {'Firefox '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Firefox' }}
+              />
             </Link>
             {/* <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
@@ -283,8 +292,10 @@ class Home extends Component {
                 src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              {'Opera '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Opera' }}
+              />
             </Link> */}
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
@@ -300,8 +311,10 @@ class Home extends Component {
                 src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              {'Edge '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Edge' }}
+              />
             </Link>
             <Link
               to="/bookmarklet"

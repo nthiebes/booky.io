@@ -14,7 +14,8 @@ import Illustration from '../../atoms/illustration';
 class Forgot extends Component {
   static propTypes = {
     intl: PropTypes.object.isRequired,
-    forgot: PropTypes.func.isRequired
+    forgot: PropTypes.func.isRequired,
+    language: PropTypes.string
   };
 
   state = {
@@ -58,7 +59,7 @@ class Forgot extends Component {
   };
 
   render() {
-    const { intl } = this.props;
+    const { intl, language } = this.props;
     const { username, email, pending, error, success } = this.state;
 
     return (
@@ -106,6 +107,7 @@ class Forgot extends Component {
                   pending={pending}
                   disabled={pending}
                   contentBefore
+                  autoWidth={language === 'fr' || language === 'nl'}
                 >
                   <FormattedMessage
                     id="forgot.button"

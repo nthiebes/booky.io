@@ -13,7 +13,7 @@ import configureStore, { history } from './configureStore';
 import initialState from './initialState';
 
 // Language detection
-const supportedLanguages = ['en', 'de', 'ja', 'hi'];
+const supportedLanguages = ['en', 'de', 'ja', 'hi', 'ko', 'fr', 'nl'];
 const cookieLanguage = Cookies.get('lang');
 const localStorageLanguage = localStorage.getItem('lang');
 const locale = (

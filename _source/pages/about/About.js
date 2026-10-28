@@ -18,11 +18,12 @@ class About extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,
     stickyHeader: PropTypes.bool,
-    darkMode: PropTypes.bool
+    darkMode: PropTypes.bool,
+    language: PropTypes.string
   };
 
   render() {
-    const { intl, stickyHeader, darkMode } = this.props;
+    const { intl, stickyHeader, darkMode, language } = this.props;
 
     return (
       <Page
@@ -331,7 +332,11 @@ class About extends PureComponent {
               values={{ b: (msg) => <b>{msg}</b> }}
             />
           </ButtonLargeBlue>
-          <ButtonLargeLight icon="star" to="/features">
+          <ButtonLargeLight
+            icon="star"
+            to="/features"
+            autoWidth={language === 'fr'}
+          >
             <FormattedMessage
               id="home.allFeatures"
               values={{ b: (msg) => <b>{msg}</b> }}
