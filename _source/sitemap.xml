@@ -25,6 +25,9 @@
   <loc>https://booky.io/join</loc>
 </url>
 <url>
+  <loc>https://booky.io/login</loc>
+</url>
+<url>
   <loc>https://booky.io/forgot</loc>
 </url>
 <url>
@@ -35,6 +38,9 @@
 </url>
 <url>
   <loc>https://booky.io/legal</loc>
+</url>
+<url>
+  <loc>https://booky.io/terms</loc>
 </url>
 <url>
   <loc>https://booky.io/resend</loc>
