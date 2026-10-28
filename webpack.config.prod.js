@@ -47,7 +47,9 @@ export default {
         {
           from: '_source/_assets',
           to: '_assets'
-        }
+        },
+        { from: '_source/robots.txt' },
+        { from: '_source/sitemap.xml' }
       ]
     }),
 
