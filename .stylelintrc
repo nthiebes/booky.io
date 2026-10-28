@@ -38,6 +38,7 @@
       {
         "ignoreSelectors": [
           ":focus",
+          ":focus-within",
           ":hover",
           ":active",
           ":valid",

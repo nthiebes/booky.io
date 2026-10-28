@@ -76,8 +76,12 @@ class DashboardsTabs extends PureComponent {
         >
           {noDashboards && (
             <>
-              <Skeleton className="dashboards-tabs__skeleton" />
-              <Skeleton />
+              <li className="dashboards-tabs__skeleton dashboards-tabs__skeleton--first">
+                <Skeleton />
+              </li>
+              <li className="dashboards-tabs__skeleton">
+                <Skeleton />
+              </li>
             </>
           )}
           {dashboards.map((dashboard, index) => (

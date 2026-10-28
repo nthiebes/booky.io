@@ -51,6 +51,11 @@
 }
 
 .dashboards-tabs__skeleton {
+  list-style: none;
+  flex: 0 1 15rem;
+}
+
+.dashboards-tabs__skeleton--first {
   margin-right: 1rem;
   margin-left: 6px;
 }

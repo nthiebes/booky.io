@@ -147,20 +147,18 @@ class Bookmark extends PureComponent {
                   {name.substring(0, 1).toUpperCase()}
                 </div>
               ) : (
-                <img
-                  src={favicon}
-                  height="16"
-                  width="16"
-                  alt=""
-                  className={classNames(
-                    'bookmark__favicon',
-                    viewOnly && 'bookmark__favicon--viewOnly'
-                  )}
+                <div
                   {...provided.dragHandleProps}
                   tabIndex="-1"
                   aria-hidden="true"
                   title={intl.formatMessage({ id: 'bookmark.drag' })}
-                />
+                  className={classNames(
+                    'bookmark__favicon',
+                    viewOnly && 'bookmark__favicon--viewOnly'
+                  )}
+                >
+                  <img src={favicon} height="16" width="16" alt="" />
+                </div>
               )}
               {/* eslint-disable-next-line react/jsx-no-target-blank */}
               <a

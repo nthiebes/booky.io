@@ -33,7 +33,7 @@
     padding: 0 3vw 0 calc(3vw + 6px);
 
     &:active,
-    &:focus {
+    &:focus-within {
       color: inherit;
       background-color: inherit;
       cursor: default;
@@ -130,7 +130,7 @@
   }
 
   &:active,
-  &:focus {
+  &:focus-within {
     background-color: $color-background--light;
     color: $color-font--primary;
 

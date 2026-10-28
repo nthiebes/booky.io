@@ -22,7 +22,7 @@ export default class Tab extends Component {
     const { children, active, darkMode, provided, disabled } = this.props;
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
       <li
         className={classNames(
           'tab-bar__tab',
@@ -31,15 +31,17 @@ export default class Tab extends Component {
           disabled && 'tab-bar__tab--disabled'
         )}
         onClick={this.handleClick}
-        onKeyDown={this.handleKeyDown}
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex={disabled ? '-1' : '0'}
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-        role="button"
         {...provided.draggableProps}
         ref={provided.innerRef}
       >
-        {children}
+        <span
+          className="tab-bar__button"
+          role={disabled ? null : 'button'}
+          tabIndex={disabled ? null : '0'}
+          onKeyDown={disabled ? null : this.handleKeyDown}
+        >
+          {children}
+        </span>
       </li>
     );
   }

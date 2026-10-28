@@ -87,6 +87,7 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-width: thin;
 
   @include desktop {
     padding: 0.5rem 30px;
@@ -118,7 +119,7 @@
   }
 
   &:active,
-  &:focus {
+  &:focus-within {
     color: $color-font--dark;
   }
 
@@ -129,11 +130,16 @@
   }
 }
 
+.tab-bar__button {
+  display: flex;
+  align-items: center;
+}
+
 .tab-bar__tab--dark-mode {
   color: $color-font--light;
 
   &:active,
-  &:focus {
+  &:focus-within {
     color: $color-font--white;
   }
 
@@ -148,7 +154,7 @@
   color: $color--primary;
   border-bottom-color: $color--primary;
 
-  &:focus {
+  &:focus-within {
     color: $color-font--dark;
     border-bottom-color: $color-font--dark;
   }
@@ -161,7 +167,7 @@
   }
 
   &.tab-bar__tab--dark-mode {
-    &:focus {
+    &:focus-within {
       color: $color-font--white;
       border-bottom-color: $color-font--white;
     }
@@ -181,7 +187,7 @@
   cursor: default;
   padding-bottom: 0;
 
-  &:focus {
+  &:focus-within {
     color: $color-font--medium;
     border-bottom-color: transparent;
   }
@@ -201,7 +207,7 @@
     color: $color-font--light;
     border-bottom-color: transparent;
 
-    &:focus {
+    &:focus-within {
       color: $color-font--light;
     }
 

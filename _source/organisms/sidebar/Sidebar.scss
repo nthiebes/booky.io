@@ -76,6 +76,7 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-width: thin;
 
   @include tablet {
     top: 4.4rem;

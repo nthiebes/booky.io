@@ -152,7 +152,7 @@ class DashboardsList extends PureComponent {
                     };
 
                     return (
-                      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+                      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
                       <li
                         key={dashboard.id}
                         className={classNames(
@@ -163,17 +163,9 @@ class DashboardsList extends PureComponent {
                           darkMode && 'dashboards__item--dark-mode'
                         )}
                         onClick={this.handleDashboardClick(dashboard.id)}
-                        onKeyDown={(event) => {
-                          this.handleKeyDown(event, dashboard.id);
-                        }}
-                        tabIndex={
-                          (useTabIndex || pinned) && !editMode ? '0' : '-1'
-                        }
                         {...provided.draggableProps}
                         ref={provided.innerRef}
                         style={style}
-                        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-                        role="button"
                       >
                         <Droppable
                           droppableId={`dashboard-${dashboard.id}`}
@@ -194,6 +186,15 @@ class DashboardsList extends PureComponent {
                               )}
                               ref={providedDroppableDashboard.innerRef}
                               {...providedDroppableDashboard.droppableProps}
+                              role={editMode ? null : 'button'}
+                              tabIndex={
+                                (useTabIndex || pinned) && !editMode
+                                  ? '0'
+                                  : '-1'
+                              }
+                              onKeyDown={(event) => {
+                                this.handleKeyDown(event, dashboard.id);
+                              }}
                             >
                               {dashboard.name}
                               <ul className="dashboards__placeholder">
