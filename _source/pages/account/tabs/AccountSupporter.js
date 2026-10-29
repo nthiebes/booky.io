@@ -157,7 +157,7 @@ class AccountSupporter extends PureComponent {
                     value={newSupportAmount.toString()}
                     type="number"
                     onChange={this.handleOnChange}
-                    min="1"
+                    min="2"
                     required
                     placeholder={intl.formatMessage({
                       id: 'upsell.placeholder'

@@ -1,4 +1,3 @@
- 
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { DiscussionEmbed } from 'disqus-react';
@@ -131,6 +130,25 @@ class Help extends Component {
                   {'makeuseof.com'}
                 </Link>
               </P>
+            </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="help.general.allTabs" />}
+              className="help-container__item"
+            >
+              <List>
+                <ListItem>
+                  <FormattedMessage
+                    id="help.general.allTabsText1"
+                    values={{ strong: (msg) => <strong>{msg}</strong> }}
+                  />
+                </ListItem>
+                <ListItem>
+                  <FormattedMessage
+                    id="help.general.allTabsText2"
+                    values={{ strong: (msg) => <strong>{msg}</strong> }}
+                  />
+                </ListItem>
+              </List>
             </Expandable>
           </div>
         </Section>

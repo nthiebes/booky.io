@@ -1,4 +1,3 @@
- 
 const isOpera =
   // eslint-disable-next-line no-undef
   (Boolean(window.opr) && Boolean(opr.addons)) ||
@@ -18,7 +17,7 @@ const browser = isOpera
         : null;
 
 export const config = {
-  NEWS_VERSION: 15,
+  NEWS_VERSION: 16,
   POLL_VERSION: 2,
   updateInProgress: false,
   browser

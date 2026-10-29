@@ -33,7 +33,7 @@ class Upsell extends PureComponent {
       `https://www.paypal.com/sdk/js?client-id=${clientID}&currency=EUR&intent=subscription&vault=true`,
       () => {
         paypal
-           
+
           .Buttons({
             env: 'sandbox',
             style: {
@@ -46,12 +46,10 @@ class Upsell extends PureComponent {
               const { supportAmount } = this.state;
 
               return actions.subscription.create({
-                 
                 plan_id: planID,
                 quantity: supportAmount,
-                 
+
                 application_context: {
-                   
                   shipping_preference: 'NO_SHIPPING'
                 }
               });

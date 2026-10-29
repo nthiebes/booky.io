@@ -1,4 +1,3 @@
- 
 import React, { PureComponent } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
@@ -321,29 +320,6 @@ class FeaturesPage extends PureComponent {
           </H2>
           <div className="features-page__cluster">
             <FeatureCard
-              headline={intl.formatMessage({ id: 'misc.feature3' })}
-              text={intl.formatMessage({ id: 'features.importText' })}
-              illustration="import"
-              background="light"
-              centered
-            />
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'misc.feature9' })}
-              text={intl.formatMessage({ id: 'features.notesText' })}
-              illustration="notes"
-              background="light"
-              centered
-            />
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'features.searchEngine' })}
-              text={intl.formatMessage({ id: 'features.searchEngineText' })}
-              illustration="search"
-              background="light"
-              centered
-            />
-          </div>
-          {/* <div className="features-page__cluster">
-            <FeatureCard
               headline={intl.formatMessage({
                 id: 'features.duplicateFinder'
               })}
@@ -367,7 +343,49 @@ class FeaturesPage extends PureComponent {
                 </ButtonSmallBlue>
               }
             />
-          </div> */}
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'misc.feature3' })}
+              text={intl.formatMessage({ id: 'features.importText' })}
+              illustration="import"
+              background="light"
+              centered
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'misc.feature9' })}
+              text={intl.formatMessage({ id: 'features.notesText' })}
+              illustration="notes"
+              background="light"
+              centered
+            />
+          </div>
+          <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({
+                id: 'features.searchEngine'
+              })}
+              text={intl.formatMessage(
+                { id: 'features.searchEngineText' },
+                {
+                  a: (msg) => <Link to="/help#general">{msg}</Link>
+                }
+              )}
+              illustration="search"
+              background="light"
+              centered
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'features.allTabs' })}
+              text={intl.formatMessage(
+                { id: 'features.allTabsText' },
+                {
+                  a: (msg) => <Link to="/help#general">{msg}</Link>
+                }
+              )}
+              illustration="organize"
+              background="light"
+              centered
+            />
+          </div>
         </Section>
 
         <Section className="home__not-a-member">
