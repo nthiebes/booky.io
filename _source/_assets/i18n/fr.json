@@ -422,6 +422,7 @@
   "modal.urlPlaceholder": "p. ex. example.com",
   "error.logic.user.invalidToken": "Malheureusement, ton lien d'activation n'est pas valide. Mais pas d'inquiétude ! Tu peux demander un nouvel e-mail d'activation ici : {resend}",
   "error.badRequest.activationToken.invalid": "Malheureusement, ton lien d'activation n'est pas valide. Mais pas d'inquiétude ! Tu peux demander un nouvel e-mail d'activation ici : {resend}",
+  "error.badRequest.subscriptionAmount.belowMinimum": "Le montant minimum est de 2 € par mois.",
   "customize.bookmarkEditOnHover": "Afficher les boutons des favoris au survol de la souris",
   "customize.minimalBookmarkButton": "Mode compact",
   "customize.minimalBookmarkButtonInfo": "(petits boutons « Nouveau favori » et « Nouvelle collection »)",

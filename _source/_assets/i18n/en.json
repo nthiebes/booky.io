@@ -422,6 +422,7 @@
   "modal.urlPlaceholder": "e.g. example.com",
   "error.logic.user.invalidToken": "Unfortunately, your activation link is invalid. But no worries! You can resend your activation email here: {resend}",
   "error.badRequest.activationToken.invalid": "Unfortunately, your activation link is invalid. But no worries! You can resend your activation email here: {resend}",
+  "error.badRequest.subscriptionAmount.belowMinimum": "The minimum amount is € 2 per month.",
   "customize.bookmarkEditOnHover": "Show bookmark buttons on mouseover",
   "customize.minimalBookmarkButton": "Compact mode",
   "customize.minimalBookmarkButtonInfo": "(Small \"New bookmark\" and \"New collection\" buttons)",

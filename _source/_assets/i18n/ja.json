@@ -422,6 +422,7 @@
   "modal.urlPlaceholder": "例: example.com",
   "error.logic.user.invalidToken": "申し訳ありませんが、アクティベーションリンクは無効です。でも大丈夫です。こちらからアクティベーションメールを再送できます: {resend}",
   "error.badRequest.activationToken.invalid": "申し訳ありませんが、アクティベーションリンクは無効です。でも大丈夫です。こちらからアクティベーションメールを再送できます: {resend}",
+  "error.badRequest.subscriptionAmount.belowMinimum": "最低金額は月額 € 2 です。",
   "customize.bookmarkEditOnHover": "マウスオーバー時にブックマークボタンを表示",
   "customize.minimalBookmarkButton": "コンパクトモード",
   "customize.minimalBookmarkButtonInfo": "（小さい「新規ブックマーク」と「新規コレクション」ボタン）",

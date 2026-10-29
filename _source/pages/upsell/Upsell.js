@@ -15,13 +15,14 @@ import Label from '../../atoms/label';
 import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 import { loadScript } from '../../_utils/script';
-import { clientID, planID } from '../../config';
+import { clientID, planID, MIN_SUPPORT_AMOUNT } from '../../config';
 
 import './Upsell.scss';
 
 class Upsell extends PureComponent {
   state = {
-    supportAmount: '',
+    // A whole number of euros, null while the field is empty
+    supportAmount: null,
     agbAccepted: false,
     error: null,
     success: null,
@@ -42,12 +43,16 @@ class Upsell extends PureComponent {
               layout: 'vertical',
               label: 'subscribe'
             },
+            // The disabled style only blocks the mouse, so check again here
+            onClick: (data, actions) =>
+              this.canSubscribe() ? actions.resolve() : actions.reject(),
             createSubscription: (data, actions) => {
               const { supportAmount } = this.state;
 
               return actions.subscription.create({
                 plan_id: planID,
-                quantity: supportAmount,
+                // PayPal expects the quantity as a string
+                quantity: String(supportAmount),
 
                 application_context: {
                   shipping_preference: 'NO_SHIPPING'
@@ -84,8 +89,16 @@ class Upsell extends PureComponent {
     );
   }
 
+  canSubscribe = () => {
+    const { supportAmount, agbAccepted, pending } = this.state;
+
+    return agbAccepted && supportAmount >= MIN_SUPPORT_AMOUNT && !pending;
+  };
+
   handleAmountChange = (value) => {
-    this.setState({ supportAmount: Math.floor(value) });
+    this.setState({
+      supportAmount: value === '' ? null : Math.floor(Number(value))
+    });
   };
 
   handleAgbChange = () => {
@@ -148,10 +161,12 @@ class Upsell extends PureComponent {
                   <div className="upsell__amount-wrapper">
                     <Input
                       id="amount"
-                      value={supportAmount.toString()}
+                      value={
+                        supportAmount === null ? '' : supportAmount.toString()
+                      }
                       type="number"
                       onChange={this.handleAmountChange}
-                      min="2"
+                      min={MIN_SUPPORT_AMOUNT}
                       required
                       placeholder={intl.formatMessage({
                         id: 'upsell.placeholder'
@@ -187,8 +202,7 @@ class Upsell extends PureComponent {
                     id="paypal-button-container"
                     className={classNames(
                       'upsell__paypal',
-                      (!agbAccepted || !supportAmount || pending) &&
-                        'upsell__paypal--disabled'
+                      !this.canSubscribe() && 'upsell__paypal--disabled'
                     )}
                   />
                   {error && <ErrorMessage message={error} hasIcon />}

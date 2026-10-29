@@ -422,6 +422,7 @@
   "modal.urlPlaceholder": "z.B. example.com",
   "error.logic.user.invalidToken": "Dein Aktivierungs-Link ist leider ungültig. Aber keine Sorge! Du kannst deine Aktivierungsmail hier neu anfordern: {resend}",
   "error.badRequest.activationToken.invalid": "Dein Aktivierungs-Link ist leider ungültig. Aber keine Sorge! Du kannst deine Aktivierungsmail hier neu anfordern: {resend}",
+  "error.badRequest.subscriptionAmount.belowMinimum": "Der Mindestbetrag liegt bei 2 € pro Monat.",
   "customize.bookmarkEditOnHover": "Lesezeichen-Buttons bei Mouseover anzeigen",
   "customize.minimalBookmarkButton": "Kompakter Modus",
   "customize.minimalBookmarkButtonInfo": "(Kleine \"Neues Lesezeichen\" und \"Neue Sammlung\" Buttons)",

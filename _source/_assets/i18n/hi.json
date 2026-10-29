@@ -422,6 +422,7 @@
   "modal.urlPlaceholder": "जैसे example.com",
   "error.logic.user.invalidToken": "दुर्भाग्य से, आपका एक्टिवेशन लिंक अमान्य है। लेकिन चिंता न करें! आप अपना एक्टिवेशन ईमेल यहां फिर से भेज सकते हैं: {resend}",
   "error.badRequest.activationToken.invalid": "दुर्भाग्य से, आपका एक्टिवेशन लिंक अमान्य है। लेकिन चिंता न करें! आप अपना एक्टिवेशन ईमेल यहां फिर से भेज सकते हैं: {resend}",
+  "error.badRequest.subscriptionAmount.belowMinimum": "न्यूनतम राशि € 2 प्रति महीना है।",
   "customize.bookmarkEditOnHover": "माउसओवर पर बुकमार्क बटन दिखाएं",
   "customize.minimalBookmarkButton": "कॉम्पैक्ट मोड",
   "customize.minimalBookmarkButtonInfo": "(छोटे “नया बुकमार्क” और “नया संग्रह” बटन)",

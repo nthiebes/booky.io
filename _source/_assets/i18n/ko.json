@@ -422,6 +422,7 @@
   "modal.urlPlaceholder": "예: example.com",
   "error.logic.user.invalidToken": "아쉽게도 활성화 링크가 유효하지 않아요. 하지만 걱정하지 마세요! 여기에서 활성화 이메일을 다시 요청할 수 있어요: {resend}",
   "error.badRequest.activationToken.invalid": "아쉽게도 활성화 링크가 유효하지 않아요. 하지만 걱정하지 마세요! 여기에서 활성화 이메일을 다시 요청할 수 있어요: {resend}",
+  "error.badRequest.subscriptionAmount.belowMinimum": "최소 금액은 월 € 2예요.",
   "customize.bookmarkEditOnHover": "마우스를 올리면 북마크 버튼 표시",
   "customize.minimalBookmarkButton": "간소화 모드",
   "customize.minimalBookmarkButtonInfo": "(작은 \"새 북마크\" 및 \"새 컬렉션\" 버튼)",

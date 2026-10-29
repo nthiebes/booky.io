@@ -23,6 +23,10 @@ export const config = {
   browser
 };
 
+// New subscriptions and amount changes need at least this amount (also enforced
+// by the backend). Supporters who subscribed with less may keep their amount.
+export const MIN_SUPPORT_AMOUNT = 2;
+
 export const clientID =
   process.env.NODE_ENV === 'development'
     ? 'AfEjqLduFx2sXN6-g97vpIceMbvrTKb7YWOaEwUIbyJ5wO03KMtAPBIxlmbdTnC57h7TFljx7SZUd-y2'

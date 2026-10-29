@@ -9,6 +9,7 @@ import Label from '../../../atoms/label';
 import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
 import Form from '../../../molecules/form';
 import Link from '../../../atoms/link/Link';
+import { MIN_SUPPORT_AMOUNT } from '../../../config';
 
 const addMonths = (date, months) => {
   const d = date.getDate();
@@ -33,6 +34,14 @@ class AccountSupporter extends PureComponent {
   handleOnChange = (value) => {
     this.setState({ newSupportAmount: Math.floor(value) });
   };
+
+  // Supporters who subscribed with less than the current minimum may keep
+  // their amount, but can't lower it below the minimum
+  getMinAmount = () =>
+    Math.min(
+      MIN_SUPPORT_AMOUNT,
+      this.state.supportAmount || MIN_SUPPORT_AMOUNT
+    );
 
   handleUpdateClick = () => {
     const { newSupportAmount } = this.state;
@@ -157,7 +166,7 @@ class AccountSupporter extends PureComponent {
                     value={newSupportAmount.toString()}
                     type="number"
                     onChange={this.handleOnChange}
-                    min="2"
+                    min={this.getMinAmount()}
                     required
                     placeholder={intl.formatMessage({
                       id: 'upsell.placeholder'
@@ -173,7 +182,9 @@ class AccountSupporter extends PureComponent {
                   icon="save"
                   onClick={this.handleUpdateClick}
                   pending={updatePending}
-                  disabled={newSupportAmount <= 0 || updatePending}
+                  disabled={
+                    newSupportAmount < this.getMinAmount() || updatePending
+                  }
                   className="account__update"
                 >
                   <FormattedMessage

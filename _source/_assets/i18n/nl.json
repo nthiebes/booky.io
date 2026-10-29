@@ -422,6 +422,7 @@
   "modal.urlPlaceholder": "bijv. example.com",
   "error.logic.user.invalidToken": "Helaas is je activatielink ongeldig. Maar geen zorgen! Je kunt hier een nieuwe activatiemail aanvragen: {resend}",
   "error.badRequest.activationToken.invalid": "Helaas is je activatielink ongeldig. Maar geen zorgen! Je kunt hier een nieuwe activatiemail aanvragen: {resend}",
+  "error.badRequest.subscriptionAmount.belowMinimum": "Het minimumbedrag is € 2 per maand.",
   "customize.bookmarkEditOnHover": "Bladwijzerknoppen tonen bij aanwijzen met de muis",
   "customize.minimalBookmarkButton": "Compacte modus",
   "customize.minimalBookmarkButtonInfo": "(Kleine knoppen \"Nieuwe bladwijzer\" en \"Nieuwe collectie\")",
