@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
-import { postMessage } from '../../_utils/extension';
+import { postMessage, isExtensionMessage } from '../../_utils/extension';
 import Link from '../../atoms/link';
 import Icon from '../../atoms/icon';
 import P from '../../atoms/paragraph';
@@ -22,13 +22,16 @@ export default class Extension extends PureComponent {
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      // const { type, ...pageData } = event.data;
+      if (!isExtensionMessage(event)) {
+        return;
+      }
 
-      // if (type === 'BOOKY') {
+      // eslint-disable-next-line no-unused-vars
+      const { type, ...page } = event.data;
+
       updateExtensionData({
-        page: event.data
+        page
       });
-      // }
     });
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 
-import { postMessage } from '../../_utils/extension';
+import { postMessage, isExtensionPopup } from '../../_utils/extension';
 import Select from '../../atoms/select';
 import Icon from '../../atoms/icon';
 import Extension from '../../templates/extension';
@@ -100,7 +100,7 @@ class Open extends Component {
             disabled={dashboardsPending}
             name="dashboardId"
           />
-          <div className="open__category-wrapper">
+          <div className={isExtensionPopup() ? 'open__category-wrapper' : null}>
             <Select
               id="category"
               label={intl.formatMessage({ id: 'modal.category' })}
@@ -111,14 +111,17 @@ class Open extends Component {
               disabled={dashboardsPending}
               name="categoryId"
             />
-            <Icon
-              icon="open"
-              label={intl.formatMessage({ id: 'modal.openAllBookmarks' })}
-              onClick={() => this.openAllBookmarks(categoryData.bookmarks)}
-              useSkeleton={dashboardsPending || !categoryData}
-              isButton
-              tooltipDirection="left"
-            />
+            {/* Opening tabs needs the extension, the bookmarklet can't */}
+            {isExtensionPopup() && (
+              <Icon
+                icon="open"
+                label={intl.formatMessage({ id: 'modal.openAllBookmarks' })}
+                onClick={() => this.openAllBookmarks(categoryData.bookmarks)}
+                useSkeleton={dashboardsPending || !categoryData}
+                isButton
+                tooltipDirection="left"
+              />
+            )}
           </div>
           <SearchField className="open__search-field" id="search-extension" />
           {categoryData && !keywordExists && !dashboardsPending && (

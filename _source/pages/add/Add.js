@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { postMessage } from '../../_utils/extension';
+import { postMessage, isExtensionPopup } from '../../_utils/extension';
 import { ButtonLargePrimary } from '../../atoms/button';
 import Select from '../../atoms/select';
 import Checkbox from '../../atoms/checkbox';
@@ -394,14 +394,16 @@ class Add extends Component {
                 values={{ b: (msg) => <b>{msg}</b> }}
               />
             </ButtonLargePrimary>
-            <Checkbox
-              label={intl.formatMessage({ id: 'extension.saveAllTabs' })}
-              id="saveAllTabs"
-              name="saveAllTabs"
-              onChange={this.toggleSaveAllTabs}
-              checked={saveAllTabs}
-              disabled={pending}
-            />
+            {isExtensionPopup() && (
+              <Checkbox
+                label={intl.formatMessage({ id: 'extension.saveAllTabs' })}
+                id="saveAllTabs"
+                name="saveAllTabs"
+                onChange={this.toggleSaveAllTabs}
+                checked={saveAllTabs}
+                disabled={pending}
+              />
+            )}
             {missingTabsPermission && (
               <ErrorMessage
                 message="extension.saveAllTabsPermission"

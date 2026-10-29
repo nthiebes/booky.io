@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 import P from '../../atoms/paragraph';
-import { postMessage } from '../../_utils/extension';
+import { postMessage, isExtensionMessage } from '../../_utils/extension';
 import { config } from '../../config';
 
 export default class Fullscreen extends PureComponent {
@@ -17,13 +17,16 @@ export default class Fullscreen extends PureComponent {
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      // const { type, ...pageData } = event.data;
+      if (!isExtensionMessage(event)) {
+        return;
+      }
 
-      // if (type === 'BOOKY') {
+      // eslint-disable-next-line no-unused-vars
+      const { type, ...page } = event.data;
+
       updateExtensionData({
-        page: event.data
+        page
       });
-      // }
     });
   }
 
