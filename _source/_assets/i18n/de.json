@@ -503,6 +503,7 @@
   "extension.loading": "Wird geladen...",
   "extension.saveAllTabs": "Alle offenen Tabs speichern",
   "extension.saveAllTabsPermission": "Um alle Tabs zu speichern, wird eine zusätzliche Berechtigung benötigt. Du kannst sie in den <options>Optionen der Erweiterung</options> erteilen.",
+  "extension.saveAllTabsEmpty": "Es gibt keine offenen Tabs, die gespeichert werden können.",
   "error.badRequest.bookmarks.tooMany": "Du kannst höchstens 100 Tabs auf einmal hinzufügen.",
   "menu.new": "Neues",
   "bookmarklet.info": "Speichere die aktuelle Webseite bei booky und greife auf all deine Lesezeichen zu.",

@@ -503,6 +503,7 @@
   "extension.loading": "Loading...",
   "extension.saveAllTabs": "Save all open tabs",
   "extension.saveAllTabsPermission": "Saving all tabs needs an additional permission. You can grant it in the <options>extension options</options>.",
+  "extension.saveAllTabsEmpty": "There are no open tabs that can be saved.",
   "error.badRequest.bookmarks.tooMany": "You can add at most 100 tabs at once.",
   "menu.new": "News",
   "bookmarklet.info": "Add the current website to booky and access all your bookmarks.",

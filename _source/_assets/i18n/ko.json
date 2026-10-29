@@ -503,6 +503,7 @@
   "extension.loading": "불러오는 중...",
   "extension.saveAllTabs": "열려 있는 모든 탭 저장",
   "extension.saveAllTabsPermission": "모든 탭을 저장하려면 추가 권한이 필요해요. <options>확장 프로그램 옵션</options>에서 허용할 수 있어요.",
+  "extension.saveAllTabsEmpty": "저장할 수 있는 열린 탭이 없어요.",
   "error.badRequest.bookmarks.tooMany": "한 번에 최대 100개의 탭을 추가할 수 있어요.",
   "menu.new": "새 소식",
   "bookmarklet.info": "현재 웹사이트를 booky에 저장하고 모든 북마크에 접근하세요.",

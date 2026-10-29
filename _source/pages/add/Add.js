@@ -14,7 +14,26 @@ import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
 import Form from '../../molecules/form';
-import { decodeEmoji } from '../../_utils/string';
+import { decodeEmoji, encodeEmoji } from '../../_utils/string';
+
+const MAX_NAME_LENGTH = 200;
+const MAX_URL_LENGTH = 2000;
+
+// Turns a tab title into a name the backend accepts for every tab, since one
+// invalid name would reject all of them: no markup (XSS check), no characters
+// the database can't store and at most 200 characters once emojis are encoded
+const getTabName = ({ title, url }) => {
+  let characters = Array.from((title || '').replace(/[<>]/g, '').trim()).filter(
+    (character) =>
+      character.codePointAt(0) <= 0xffff || encodeEmoji(character) !== character
+  );
+
+  while (encodeEmoji(characters.join('')).length > MAX_NAME_LENGTH) {
+    characters = characters.slice(0, -1);
+  }
+
+  return characters.join('').trim() || url.slice(0, MAX_NAME_LENGTH);
+};
 
 class Add extends Component {
   constructor(props) {
@@ -242,12 +261,21 @@ class Add extends Component {
 
   saveAllTabs = (categoryId) => {
     const { addBookmarks, tabs } = this.props;
+    const savableTabs = tabs.filter(({ url }) => url.length <= MAX_URL_LENGTH);
+
+    if (savableTabs.length === 0) {
+      this.setState({
+        pending: false,
+        error: 'extension.saveAllTabsEmpty'
+      });
+      return;
+    }
 
     addBookmarks({
-      bookmarks: tabs.map(({ title, url }) => ({
+      bookmarks: savableTabs.map((tab) => ({
         categoryId: parseInt(categoryId, 10),
-        name: (title || url).slice(0, 200),
-        url
+        name: getTabName(tab),
+        url: tab.url
       })),
       onSuccess: () => {
         this.setState({

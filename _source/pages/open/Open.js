@@ -39,7 +39,10 @@ class Open extends Component {
     // The iframe can't open several tabs itself (popup blocker), so the
     // extension does it
     postMessage({
-      openTabs: bookmarks.map(({ url }) => url)
+      // Bookmarks added without a protocol are saved as //example.com
+      openTabs: bookmarks.map(({ url }) =>
+        url.startsWith('//') ? `https:${url}` : url
+      )
     });
   };
 
