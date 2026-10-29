@@ -37,16 +37,28 @@
   border: 2px solid rgba(0, 0, 0, 0.15);
   transition: opacity 0.1s linear;
   position: fixed;
+  // Otherwise the width is limited by the space right of the wrapper,
+  // which squeezes left tooltips of icons at the right edge
+  width: max-content;
+  max-width: 15rem;
 }
 
-.tooltip--bottom,
-.tooltip--top {
+// The tooltip is fixed and starts at the top left corner of its empty wrapper,
+// so for top and left it has to be moved by its own height or width
+.tooltip--bottom {
   transform: translateX(-50%);
 }
 
-.tooltip--right,
-.tooltip--left {
+.tooltip--top {
+  transform: translate(-50%, -100%);
+}
+
+.tooltip--right {
   transform: translateY(-50%);
+}
+
+.tooltip--left {
+  transform: translate(-100%, -50%);
 }
 
 .tooltip--darkMode {

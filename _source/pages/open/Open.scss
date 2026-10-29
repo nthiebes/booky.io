@@ -8,3 +8,24 @@
   padding: 0 6px;
   margin-top: 0.5rem;
 }
+
+.open__category-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .label {
+    width: 100%;
+  }
+
+  .select {
+    width: auto;
+    flex-grow: 1;
+    max-width: calc(100% - 36px);
+  }
+
+  .icon {
+    margin-right: -6px;
+    margin-left: 6px;
+  }
+}

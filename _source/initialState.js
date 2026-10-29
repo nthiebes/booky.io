@@ -77,7 +77,9 @@ export default {
     page: {
       description: '',
       url: '',
-      title: ''
+      title: '',
+      // All http(s) tabs of the current window, null without the optional "tabs" permission
+      tabs: null
     }
   }
 };

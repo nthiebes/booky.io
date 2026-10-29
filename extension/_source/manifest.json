@@ -1,6 +1,6 @@
 {
   "name": "__MSG_appName__",
-  "version": "3.0.2",
+  "version": "3.2.0",
   "author": "Nico Thiebes",
   "description": "__MSG_appDesc__",
   "default_locale": "en",
@@ -8,6 +8,7 @@
     "extension_pages": "default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io https://booky.io"
   },
   "permissions": ["activeTab", "management",  "storage", "scripting"],
+  "optional_permissions": ["tabs"],
   "action": {
     "default_title": "booky.io Extension",
     "default_popup": "popup.html",
@@ -17,6 +18,10 @@
       "48": "images/icon-48x48.png",
       "128": "images/icon-128x128.png"
     }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
   },
   "content_scripts": [
     {

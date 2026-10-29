@@ -1,7 +1,7 @@
 #!/bin/bash
 
 browser="$1"
-version="3.0.2"
+version="3.2.0"
 
 if [ "$browser" == "chrome" ]
 then
@@ -47,7 +47,8 @@ manifest="{
   \"content_security_policy\": {
     \"extension_pages\": \"default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io https://booky.io\"
   },
-  \"permissions\": [\"activeTab\", \"management\",  \"storage\", \"scripting\"],${applications}
+  \"permissions\": [\"activeTab\", \"management\",  \"storage\", \"scripting\"],
+  \"optional_permissions\": [\"tabs\"],${applications}
   \"action\": {
     \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
@@ -57,6 +58,10 @@ manifest="{
       \"48\": \"images/icon-48x48.png\",
       \"128\": \"images/icon-128x128.png\"
     }
+  },
+  \"options_ui\": {
+    \"page\": \"options.html\",
+    \"open_in_tab\": false
   },
   \"content_scripts\": [
     {

@@ -4,7 +4,11 @@ import {
   getDashboards,
   changeDashboard
 } from '../../_state/dashboards/actions';
-import { addBookmark, getDuplicates } from '../../_state/bookmarks/actions';
+import {
+  addBookmark,
+  addBookmarks,
+  getDuplicates
+} from '../../_state/bookmarks/actions';
 import { openModal } from '../../_state/modal/actions';
 import Component from './Add';
 
@@ -12,6 +16,7 @@ const mapStateToProps = (state) => ({
   name: state.extension.page.title,
   url: state.extension.page.url,
   note: state.extension.page.description,
+  tabs: state.extension.page.tabs,
   enableNotes: state.user.settings.enableNotes,
   categories: state.categories,
   dashboards: state.dashboards.items,
@@ -23,6 +28,7 @@ const mapDispatchToProps = {
   getDashboards,
   changeDashboard,
   addBookmark,
+  addBookmarks,
   openModal,
   getDuplicates
 };

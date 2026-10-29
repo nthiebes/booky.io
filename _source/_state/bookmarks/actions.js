@@ -79,6 +79,42 @@ export const addBookmark =
     });
   };
 
+// Adds several bookmarks (each with its own categoryId) in one request,
+// either all of them are saved or none
+export const addBookmarks =
+  ({ bookmarks, onError, onSuccess }) =>
+  (dispatch) => {
+    fetcher({
+      url: '/bookmarks/batch',
+      method: 'POST',
+      params: {
+        bookmarks: bookmarks.map(({ categoryId, name, url, note }) => ({
+          categoryId,
+          name: encodeEmoji(name),
+          url,
+          ...(note ? { note: encodeEmoji(note) } : {})
+        }))
+      },
+      onSuccess: ({ bookmarks: created }) => {
+        created.forEach(({ id, categoryId, name, url, note, favicon }) => {
+          dispatch({
+            type: 'ADD_BOOKMARK',
+            categoryId,
+            name: decodeEmoji(name),
+            url,
+            id,
+            note: decodeEmoji(note),
+            favicon
+          });
+        });
+        onSuccess && onSuccess(created);
+      },
+      onError: (error) => {
+        onError && onError(error);
+      }
+    });
+  };
+
 export const editBookmark =
   ({
     categoryId,

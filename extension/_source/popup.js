@@ -1,4 +1,3 @@
- 
 var iframe = document.getElementById('booky'),
   loadingSpinner = document.getElementById('loading__spinner'),
   loadingWrapper = document.getElementById('loading'),
@@ -54,20 +53,53 @@ chrome.runtime.onConnect.addListener(function (port) {
   });
 });
 
-function sendToIframe() {
+// All http(s) tabs of the current window, or null if the optional "tabs"
+// permission hasn't been granted in the options page
+async function getAllTabs() {
+  const hasTabs = await chrome.permissions.contains({ permissions: ['tabs'] });
+
+  if (!hasTabs) {
+    return null;
+  }
+
+  const tabs = await chrome.tabs.query({ currentWindow: true });
+
+  return tabs
+    .filter((tab) => /^https?:\/\//.test(tab.url))
+    .map(({ title, url }) => ({ title, url }));
+}
+
+async function sendToIframe() {
   var receiver = iframe.contentWindow;
 
   receiver.postMessage(
     {
       ...pageData,
+      tabs: await getAllTabs(),
       type: 'BOOKY'
     },
     host
   );
 }
 
+// Opens the bookmarks in the background first, because activating a tab
+// closes the popup and would stop the loop
+async function openTabs(urls) {
+  const tabs = [];
+
+  for (const url of urls) {
+    if (typeof url === 'string' && /^https?:\/\//i.test(url)) {
+      tabs.push(await chrome.tabs.create({ url, active: false }));
+    }
+  }
+
+  if (tabs.length) {
+    chrome.tabs.update(tabs[0].id, { active: true });
+  }
+}
+
 // Messages from the booky iframe
- 
+
 window.addEventListener('message', function (event) {
   var message = event.data;
 
@@ -89,10 +121,16 @@ window.addEventListener('message', function (event) {
       window.close();
     }
 
+    if (Array.isArray(message.openTabs)) {
+      openTabs(message.openTabs);
+    }
+
+    if (message.openOptions) {
+      chrome.runtime.openOptionsPage().then(() => window.close());
+    }
+
     if (message.activeTab) {
       chrome.storage.local.set({ activeTab: message.activeTab });
     }
   }
 });
-
- 

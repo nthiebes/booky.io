@@ -4,5 +4,11 @@
   },
   "appDesc": {
     "message": "Add new links to booky.io and browse your existing bookmarks."
+  },
+  "optionsSaveAllTabs": {
+    "message": "Save all tabs"
+  },
+  "optionsSaveAllTabsDescription": {
+    "message": "Lets the booky popup read the titles and addresses of the tabs in the current window, so they can all be added at once. Your browser asks for permission when you turn this on."
   }
 }

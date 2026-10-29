@@ -19,6 +19,15 @@
       opacity: 1;
       transform: translateY(-50%) scale(1);
     }
+
+    // The popup iframe is narrower than the desktop breakpoint the tooltips
+    // are bound to, so show them for any device that can hover
+    @media (hover: hover) {
+      &:hover .tooltip {
+        opacity: 1;
+        transition: opacity 0.2s linear 0.5s;
+      }
+    }
   }
 
   .bookmark__link {

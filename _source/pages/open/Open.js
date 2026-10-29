@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 
+import { postMessage } from '../../_utils/extension';
 import Select from '../../atoms/select';
+import Icon from '../../atoms/icon';
 import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import SearchField from '../../molecules/search-field';
@@ -30,6 +32,14 @@ class Open extends Component {
 
     this.setState({
       activeCategory: value
+    });
+  };
+
+  openAllBookmarks = (bookmarks) => {
+    // The iframe can't open several tabs itself (popup blocker), so the
+    // extension does it
+    postMessage({
+      openTabs: bookmarks.map(({ url }) => url)
     });
   };
 
@@ -87,16 +97,26 @@ class Open extends Component {
             disabled={dashboardsPending}
             name="dashboardId"
           />
-          <Select
-            id="category"
-            label={intl.formatMessage({ id: 'modal.category' })}
-            options={categoriesOptions}
-            required
-            onChange={this.handleCategoryChange}
-            value={activeCategory}
-            disabled={dashboardsPending}
-            name="categoryId"
-          />
+          <div className="open__category-wrapper">
+            <Select
+              id="category"
+              label={intl.formatMessage({ id: 'modal.category' })}
+              options={categoriesOptions}
+              required
+              onChange={this.handleCategoryChange}
+              value={activeCategory}
+              disabled={dashboardsPending}
+              name="categoryId"
+            />
+            <Icon
+              icon="open"
+              label={intl.formatMessage({ id: 'modal.openAllBookmarks' })}
+              onClick={() => this.openAllBookmarks(categoryData.bookmarks)}
+              useSkeleton={dashboardsPending || !categoryData}
+              isButton
+              tooltipDirection="left"
+            />
+          </div>
           <SearchField className="open__search-field" id="search-extension" />
           {categoryData && !keywordExists && !dashboardsPending && (
             <Category {...categoryData} />

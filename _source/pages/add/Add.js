@@ -1,11 +1,10 @@
- 
- 
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { postMessage } from '../../_utils/extension';
 import { ButtonLargePrimary } from '../../atoms/button';
 import Select from '../../atoms/select';
+import Checkbox from '../../atoms/checkbox';
 import Input from '../../atoms/input';
 import Textarea from '../../atoms/textarea';
 import { ErrorMessage } from '../../atoms/messages';
@@ -30,6 +29,8 @@ class Add extends Component {
       pending: false,
       error: null,
       exists: false,
+      saveAllTabs: false,
+      missingTabsPermission: false,
       existingBookmarks: [],
       isDataOpen: Boolean(
         localStorage.getItem('showData') === 'true' || !name || !url
@@ -182,6 +183,29 @@ class Add extends Component {
     this.checkDuplicates(value);
   };
 
+  toggleSaveAllTabs = ({ checked }) => {
+    // The extension only sends the tabs if the optional "tabs" permission
+    // was granted in its options page, so point there instead
+    if (checked && !this.props.tabs) {
+      this.setState({
+        missingTabsPermission: true
+      });
+      return;
+    }
+
+    this.setState({
+      saveAllTabs: checked,
+      missingTabsPermission: false,
+      error: null
+    });
+  };
+
+  openExtensionOptions = () => {
+    postMessage({
+      openOptions: true
+    });
+  };
+
   handleDashboardClick = (event, dashboardId) => {
     const { changeDashboard, history } = this.props;
 
@@ -209,6 +233,37 @@ class Add extends Component {
     });
   };
 
+  closeExtension = () => {
+    postMessage({
+      close: true
+    });
+    window.close();
+  };
+
+  saveAllTabs = (categoryId) => {
+    const { addBookmarks, tabs } = this.props;
+
+    addBookmarks({
+      bookmarks: tabs.map(({ title, url }) => ({
+        categoryId: parseInt(categoryId, 10),
+        name: (title || url).slice(0, 200),
+        url
+      })),
+      onSuccess: () => {
+        this.setState({
+          pending: false
+        });
+        this.closeExtension();
+      },
+      onError: (error) => {
+        this.setState({
+          pending: false,
+          error
+        });
+      }
+    });
+  };
+
   handleSubmit = (params) => {
     const { addBookmark } = this.props;
 
@@ -217,18 +272,18 @@ class Add extends Component {
       error: null
     });
 
+    if (this.state.saveAllTabs) {
+      this.saveAllTabs(params.categoryId);
+      return;
+    }
+
     addBookmark({
       ...params,
       onSuccess: () => {
         this.setState({
           pending: false
         });
-
-        // Close the extension
-        postMessage({
-          close: true
-        });
-        window.close();
+        this.closeExtension();
       },
       onError: (error) => {
         this.setState({
@@ -257,7 +312,9 @@ class Add extends Component {
       note: stateNote,
       exists,
       existingBookmarks,
-      isDataOpen
+      isDataOpen,
+      saveAllTabs,
+      missingTabsPermission
     } = this.state;
     const duplicateErrorMessage = exists ? 'error.duplicateLink' : null;
     const showLocation = localStorage.getItem('showLocation');
@@ -309,10 +366,41 @@ class Add extends Component {
                 values={{ b: (msg) => <b>{msg}</b> }}
               />
             </ButtonLargePrimary>
-            {error && <ErrorMessage message={error} hasIcon />}
-            {exists && !isDataOpen && existingBookmarks.length > 0 ? (
+            <Checkbox
+              label={intl.formatMessage({ id: 'extension.saveAllTabs' })}
+              id="saveAllTabs"
+              name="saveAllTabs"
+              onChange={this.toggleSaveAllTabs}
+              checked={saveAllTabs}
+              disabled={pending}
+            />
+            {missingTabsPermission && (
+              <ErrorMessage
+                message="extension.saveAllTabsPermission"
+                hasIcon
+                noPadding
+                values={{
+                  options: (msg) => (
+                    <button
+                      type="button"
+                      className="link link--error"
+                      onClick={this.openExtensionOptions}
+                    >
+                      <b>{msg}</b>
+                    </button>
+                  )
+                }}
+              />
+            )}
+            {error && <ErrorMessage message={error} hasIcon noPadding />}
+            {!saveAllTabs &&
+            exists &&
+            !isDataOpen &&
+            existingBookmarks.length > 0 ? (
               <ErrorMessage
                 message={duplicateErrorMessage}
+                hasIcon
+                noPadding
                 values={{
                   collection: (
                     <button
@@ -359,6 +447,7 @@ class Add extends Component {
                     onClick={this.onAddDashboardClick}
                     useSkeleton={dashboardsPending}
                     isButton
+                    tooltipDirection="left"
                   />
                 </span>
                 <span className="add__location-wrapper">
@@ -378,81 +467,84 @@ class Add extends Component {
                     onClick={this.onAddCategoryClick}
                     useSkeleton={dashboardsPending}
                     isButton
+                    tooltipDirection="left"
                   />
                 </span>
               </>
             </Expandable>
-            <Expandable
-              headline={<FormattedMessage id="extension.data" />}
-              className="add__section"
-              open={isDataOpen}
-              onClick={this.toggleData}
-            >
-              <>
-                <Input
-                  id="bookmark-name"
-                  name="name"
-                  value={stateName}
-                  onChange={this.handleInputChange}
-                  required
-                  maxLength="200"
-                  label={intl.formatMessage({ id: 'modal.name' })}
-                  disabled={pending}
-                />
-                <Input
-                  id="bookmark-url"
-                  name="url"
-                  value={stateUrl}
-                  onChange={this.handleInputChange}
-                  required
-                  maxLength="2000"
-                  label={intl.formatMessage({ id: 'modal.url' })}
-                  disabled={pending}
-                  inputMode="url"
-                  placeholder={intl.formatMessage({
-                    id: 'modal.urlPlaceholder'
-                  })}
-                  onBlur={this.onUrlBlur}
-                />
-                {exists && existingBookmarks.length > 0 ? (
-                  <ErrorMessage
-                    message={duplicateErrorMessage}
-                    noPadding
-                    values={{
-                      collection: (
-                        <button
-                          type="button"
-                          className="link link--error"
-                          onClick={(event) => {
-                            this.handleDashboardClick(
-                              event,
-                              existingBookmarks[0].dashboardId
-                            );
-                          }}
-                        >
-                          <b>
-                            {decodeEmoji(existingBookmarks[0].dashboardName)}
-                          </b>
-                        </button>
-                      ),
-                      category: decodeEmoji(existingBookmarks[0].categoryName)
-                    }}
-                  />
-                ) : null}
-                {enableNotes && (
-                  <Textarea
-                    id="bookmark-note"
-                    name="note"
-                    value={stateNote}
+            {saveAllTabs ? null : (
+              <Expandable
+                headline={<FormattedMessage id="extension.data" />}
+                className="add__section"
+                open={isDataOpen}
+                onClick={this.toggleData}
+              >
+                <>
+                  <Input
+                    id="bookmark-name"
+                    name="name"
+                    value={stateName}
                     onChange={this.handleInputChange}
-                    maxLength="300"
-                    label={intl.formatMessage({ id: 'modal.note' })}
+                    required
+                    maxLength="200"
+                    label={intl.formatMessage({ id: 'modal.name' })}
                     disabled={pending}
-                    rows={3}
                   />
-                )}
-              </>
-            </Expandable>
+                  <Input
+                    id="bookmark-url"
+                    name="url"
+                    value={stateUrl}
+                    onChange={this.handleInputChange}
+                    required
+                    maxLength="2000"
+                    label={intl.formatMessage({ id: 'modal.url' })}
+                    disabled={pending}
+                    inputMode="url"
+                    placeholder={intl.formatMessage({
+                      id: 'modal.urlPlaceholder'
+                    })}
+                    onBlur={this.onUrlBlur}
+                  />
+                  {exists && existingBookmarks.length > 0 ? (
+                    <ErrorMessage
+                      message={duplicateErrorMessage}
+                      noPadding
+                      values={{
+                        collection: (
+                          <button
+                            type="button"
+                            className="link link--error"
+                            onClick={(event) => {
+                              this.handleDashboardClick(
+                                event,
+                                existingBookmarks[0].dashboardId
+                              );
+                            }}
+                          >
+                            <b>
+                              {decodeEmoji(existingBookmarks[0].dashboardName)}
+                            </b>
+                          </button>
+                        ),
+                        category: decodeEmoji(existingBookmarks[0].categoryName)
+                      }}
+                    />
+                  ) : null}
+                  {enableNotes && (
+                    <Textarea
+                      id="bookmark-note"
+                      name="note"
+                      value={stateNote}
+                      onChange={this.handleInputChange}
+                      maxLength="300"
+                      label={intl.formatMessage({ id: 'modal.note' })}
+                      disabled={pending}
+                      rows={3}
+                    />
+                  )}
+                </>
+              </Expandable>
+            )}
           </Form>
         </Section>
       </Extension>
