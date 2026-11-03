@@ -331,6 +331,7 @@
   "contact.text": "We zijn altijd op zoek naar nieuwe manieren om booky te verbeteren en uit te breiden. Heb je een goed idee voor een nieuwe functie, heb je een fout ontdekt of wil je gewoon feedback geven? {link}!",
   "contact.message": "Je bericht",
   "contact.success": "Je bericht is succesvol verstuurd!",
+  "contact.language": "We spreken Duits en Engels.",
   "help.intro1": "Heb je een vraag over booky? Hier vind je vast een antwoord.",
   "error.unauthorized": "Geen toegang. Ben je ingelogd?",
   "header.jumpToMain": "Naar de hoofdinhoud",
@@ -527,10 +528,10 @@
   "new.update1Feature1": "Deel collecties optioneel openbaar met anderen",
   "new.update1Feature2": "Extensies: bladwijzers kunnen worden bewerkt/verwijderd",
   "new.update1Feature3": "Kleine bugfixes en aanpassingen aan ontwerp/inhoud",
-  "new.update2Title": "Dubbelzoeker, alle tabbladen tegelijk en vijf nieuwe talen",
-  "new.update2Description": "Deze update brengt de dubbelzoeker voor supporters, laat je met de browserextensie alle tabbladen tegelijk opslaan of openen en maakt booky beschikbaar in vijf extra talen. Daarnaast hebben we hier en daar veel kleinere dingen verbeterd.",
+  "new.update2Title": "Dubbelzoeker, alle tabbladen tegelijk en zes nieuwe talen",
+  "new.update2Description": "Deze update brengt de dubbelzoeker voor supporters, laat je met de browserextensie alle tabbladen tegelijk opslaan of openen en maakt booky beschikbaar in zes extra talen. Daarnaast hebben we hier en daar veel kleinere dingen verbeterd.",
   "features.update2Feature2": "Alle open tabbladen opslaan of een categorie in tabbladen openen (extensie)",
-  "new.update2Feature3": "Nieuwe talen: Frans, Nederlands, Japans, Koreaans en Hindi",
+  "new.update2Feature3": "Nieuwe talen: Frans, Spaans, Nederlands, Japans, Koreaans en Hindi",
   "misc.updateInProgress": "We zijn booky aan het bijwerken - probeer het zo meteen nog eens!",
   "error.duplicateLink": "Deze link bestaat al in de collectie {collection} ({category})."
 }

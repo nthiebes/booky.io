@@ -331,6 +331,7 @@
   "contact.text": "Nous cherchons constamment de nouvelles façons d'améliorer booky et d'étendre ses fonctionnalités. Si tu as une super idée de fonctionnalité, as trouvé un bug ou souhaites simplement nous faire part de tes retours, {link} !",
   "contact.message": "Ton message",
   "contact.success": "Ton message a bien été envoyé !",
+  "contact.language": "Nous parlons allemand et anglais.",
   "help.intro1": "Tu as une question sur booky ? Tu trouveras certainement une réponse ici.",
   "error.unauthorized": "Accès refusé. Ta session est-elle ouverte ?",
   "header.jumpToMain": "Aller au contenu principal",
@@ -527,10 +528,10 @@
   "new.update1Feature1": "Partage des collections publiquement avec d'autres, si tu le souhaites",
   "new.update1Feature2": "Extensions : les favoris peuvent être modifiés/supprimés",
   "new.update1Feature3": "Petites corrections de bugs et ajustements du design/contenu",
-  "new.update2Title": "Détection des doublons, tous les onglets d'un coup et cinq nouvelles langues",
-  "new.update2Description": "Cette mise à jour apporte la détection des doublons pour les membres de soutien, te permet d'enregistrer ou d'ouvrir tous les onglets d'un coup avec l'extension de navigateur et rend booky disponible dans cinq langues supplémentaires. En plus, nous avons amélioré de nombreux petits détails ici et là.",
+  "new.update2Title": "Détection des doublons, tous les onglets d'un coup et six nouvelles langues",
+  "new.update2Description": "Cette mise à jour apporte la détection des doublons pour les membres de soutien, te permet d'enregistrer ou d'ouvrir tous les onglets d'un coup avec l'extension de navigateur et rend booky disponible dans six langues supplémentaires. En plus, nous avons amélioré de nombreux petits détails ici et là.",
   "features.update2Feature2": "Enregistrer tous les onglets ouverts ou ouvrir une catégorie en onglets (extension)",
-  "new.update2Feature3": "Nouvelles langues : français, néerlandais, japonais, coréen et hindi",
+  "new.update2Feature3": "Nouvelles langues : français, espagnol, néerlandais, japonais, coréen et hindi",
   "misc.updateInProgress": "Nous sommes en train de mettre à jour booky - réessaie dans un instant !",
   "error.duplicateLink": "Ce lien existe déjà dans la collection {collection} ({category})."
 }

@@ -1,4 +1,3 @@
- 
 import React, { PureComponent } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
@@ -327,7 +326,7 @@ class About extends PureComponent {
           <ButtonLargeLight
             icon="star"
             to="/features"
-            autoWidth={language === 'fr'}
+            autoWidth={language === 'fr' || language === 'es'}
           >
             <FormattedMessage
               id="home.allFeatures"

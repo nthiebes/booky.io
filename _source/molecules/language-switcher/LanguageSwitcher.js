@@ -78,6 +78,19 @@ export default class LanguageSwitcher extends Component {
             'language-switcher__item',
             ignoreDarkMode && 'language-switcher__item--light'
           )}
+          id="language-switcher-es"
+          name="language"
+          value="es"
+          onChange={this.handleChange}
+          checked={language === 'es'}
+        >
+          {'Español'}
+        </Radio>
+        <Radio
+          className={classNames(
+            'language-switcher__item',
+            ignoreDarkMode && 'language-switcher__item--light'
+          )}
           id="language-switcher-nl"
           name="language"
           value="nl"

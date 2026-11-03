@@ -5,13 +5,8 @@ import fetcher from '../../_utils/fetcher';
 import Page from '../../templates/page';
 import { H1 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
-// import Input from '../../atoms/input';
-// import { ErrorMessage, SuccessIllustration } from '../../atoms/messages';
-// import { ButtonLargeBlue } from '../../atoms/button';
-// import Textarea from '../../atoms/textarea';
 import Illustration from '../../atoms/illustration';
 import Link from '../../atoms/link';
-// import Form from '../../molecules/form';
 import Section from '../../molecules/section';
 
 class Contact extends PureComponent {
@@ -57,9 +52,6 @@ class Contact extends PureComponent {
   };
 
   render() {
-    // const { intl } = this.props;
-    // const { name, email, message, pending, error, success } = this.state;
-
     return (
       <Page>
         <Section className="contact">
@@ -80,81 +72,11 @@ class Contact extends PureComponent {
               {': '}
               <Link href="mailto:hello@booky.io">{'hello@booky.io'}</Link>
             </P>
+            <P>
+              <FormattedMessage id="contact.language" />
+            </P>
           </span>
-          <Illustration
-            name="email"
-            className="contact__illustration"
-            // className="contact__illustration booky--hide-mobile-tablet"
-          />
-          {/* success ? (
-            <SuccessIllustration message="contact.success" illustration="join-success" width="400" />
-          ) : (
-            <>
-              <Form onSubmit={ this.handleSubmit }>
-                <H1>
-                  <FormattedMessage id="contact.headline" />
-                </H1>
-                <P first>
-                  <FormattedMessage
-                    id="contact.text"
-                    values={ {
-                      link: <FormattedMessage id="contact.textLink" />
-                    } }
-                  />
-                </P>
-                <Input
-                  value={ name }
-                  name="name"
-                  id="name"
-                  autoComplete="username"
-                  label={ intl.formatMessage({ id: 'misc.name' }) }
-                  onChange={ this.handleInputChange }
-                  maxLength="50"
-                  required
-                  disabled={ pending }
-                />
-                <Input
-                  value={ email }
-                  name="email"
-                  id="email"
-                  autoComplete="email"
-                  label={ intl.formatMessage({ id: 'login.email' }) }
-                  onChange={ this.handleInputChange }
-                  maxLength="150"
-                  required
-                  type="email"
-                  requirements={ intl.formatMessage({ id: 'misc.validEmail' }) }
-                  disabled={ pending }
-                />
-                <Textarea
-                  value={ message }
-                  name="message"
-                  id="message"
-                  label={ intl.formatMessage({ id: 'contact.message' }) }
-                  onChange={ this.handleInputChange }
-                  maxLength="5000"
-                  required
-                  disabled={ pending }
-                  rows={ 5 }
-                  className="contact__message"
-                />
-                <ButtonLargeBlue
-                  icon="send"
-                  type="submit"
-                  pending={ pending }
-                  disabled={ pending }
-                  contentBefore
-                >
-                  <FormattedMessage id="button.send" values={ { b: (msg) => <b>{msg}</b> } } />
-                </ButtonLargeBlue>
-                { error && <ErrorMessage message={ error } hasIcon /> }
-              </Form>
-              <Illustration
-                name="email"
-                className="contact__illustration booky--hide-mobile-tablet"
-              />
-            </>
-          ) */}
+          <Illustration name="email" className="contact__illustration" />
         </Section>
       </Page>
     );

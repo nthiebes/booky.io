@@ -34,12 +34,12 @@ Node >= 18.18 (enforced by `preinstall`; required by ESLint 9).
 
 ### Bootstrapping & routing
 
-- `_source/index.js` detects the language (cookie → localStorage → navigator; supported: `en`, `de`, `ja`, `hi`, `ko`, `fr`, `nl`), fetches `/_assets/i18n/<lang>.json` and `/user`, then builds the store with the logged-in/logged-out state and renders `templates/booky`.
+- `_source/index.js` detects the language (cookie → localStorage → navigator; supported: `en`, `de`, `ja`, `hi`, `ko`, `fr`, `nl`, `es`), fetches `/_assets/i18n/<lang>.json` and `/user`, then builds the store with the logged-in/logged-out state and renders `templates/booky`.
 - `routes.js` lazy-loads most pages. Access is gated by the `restricted` (logged-in only) and `publicOnly` HOCs from `templates/`.
 
 ### i18n
 
-- `react-intl` via `react-intl-redux`; messages are stored in Redux (`state.intl`). Strings live in `_source/_assets/i18n/{en,de,ja,hi,ko,fr,nl}.json`. Add new keys to **all** language files. Use `intl.formatMessage({ id })` / `<FormattedMessage>`.
+- `react-intl` via `react-intl-redux`; messages are stored in Redux (`state.intl`). Strings live in `_source/_assets/i18n/{en,de,ja,hi,ko,fr,nl,es}.json`. Add new keys to **all** language files. Use `intl.formatMessage({ id })` / `<FormattedMessage>`.
 
 ### Icons
 

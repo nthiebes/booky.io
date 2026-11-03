@@ -1,4 +1,3 @@
- 
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
@@ -179,7 +178,7 @@ class Home extends Component {
             icon="star"
             to="/features"
             contentBefore
-            autoWidth={language === 'fr'}
+            autoWidth={language === 'fr' || language === 'es'}
           >
             <FormattedMessage
               id="home.allFeatures"

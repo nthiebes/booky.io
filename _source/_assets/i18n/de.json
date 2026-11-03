@@ -331,6 +331,7 @@
   "contact.text": "Wir sind ständig auf der Suche nach neuen Möglichkeiten, wie wir booky besser machen oder erweitern können. Wenn du eine tolle Idee hast, generell Feedback geben möchtest oder einen Fehler auf der Seite entdeckt hast, {link}!",
   "contact.message": "Deine Nachricht",
   "contact.success": "Deine Nachricht wurde erfolgreich verschickt!",
+  "contact.language": "Wir sprechen Deutsch und Englisch.",
   "help.intro1": "Wenn du mal eine Frage rund um booky hast – Hier findest du bestimmt eine Antwort.",
   "error.unauthorized": "Kein Zugriff. Bist du eingeloggt?",
   "header.jumpToMain": "Zum Hauptinhalt springen",
@@ -527,10 +528,10 @@
   "new.update1Feature1": "Teile Sammlungen optional öffentlich mit Anderen",
   "new.update1Feature2": "Erweiterungen: Lesezeichen lassen sich editieren/löschen",
   "new.update1Feature3": "Kleine Bugfixes und Design-/Inhalts-Anpassungen",
-  "new.update2Title": "Duplikatsuche, alle Tabs auf einmal und fünf neue Sprachen",
-  "new.update2Description": "Dieses Update bringt die Duplikatsuche für Supporter·innen, lässt dich mit der Browser-Erweiterung alle Tabs auf einmal speichern oder öffnen und macht booky in fünf weiteren Sprachen verfügbar. Außerdem haben wir hier und da viele kleinere Dinge verbessert.",
+  "new.update2Title": "Duplikatsuche, alle Tabs auf einmal und sechs neue Sprachen",
+  "new.update2Description": "Dieses Update bringt die Duplikatsuche für Supporter·innen, lässt dich mit der Browser-Erweiterung alle Tabs auf einmal speichern oder öffnen und macht booky in sechs weiteren Sprachen verfügbar. Außerdem haben wir hier und da viele kleinere Dinge verbessert.",
   "features.update2Feature2": "Alle offenen Tabs speichern oder eine Kategorie in Tabs öffnen (Erweiterung)",
-  "new.update2Feature3": "Neue Sprachen: Französisch, Niederländisch, Japanisch, Koreanisch und Hindi",
+  "new.update2Feature3": "Neue Sprachen: Französisch, Spanisch, Niederländisch, Japanisch, Koreanisch und Hindi",
   "misc.updateInProgress": "Wir aktualisieren gerade booky - versuch es bitte gleich nochmal!",
   "error.duplicateLink": "Dieser Link existiert bereits in der Sammlung {collection} ({category})."
 }

@@ -100,7 +100,7 @@ class Forgot extends Component {
                   pending={pending}
                   disabled={pending}
                   contentBefore
-                  autoWidth={language === 'fr' || language === 'nl'}
+                  autoWidth={['fr', 'nl', 'es'].includes(language)}
                 >
                   <FormattedMessage
                     id="forgot.button"

@@ -331,6 +331,7 @@
   "contact.text": "저희는 booky를 더 좋게 만들고 기능을 확장할 새로운 방법을 늘 찾고 있어요. 새로운 기능에 대한 좋은 아이디어가 있거나, 버그를 발견했거나, 일반적인 피드백이 있다면 {link}!",
   "contact.message": "메시지",
   "contact.success": "메시지가 성공적으로 전송되었어요!",
+  "contact.language": "저희는 독일어와 영어로 소통할 수 있어요.",
   "help.intro1": "booky에 대해 궁금한 점이 있다면 여기에서 답을 찾을 수 있어요.",
   "error.unauthorized": "접근 권한이 없어요. 로그인하셨나요?",
   "header.jumpToMain": "본문으로 바로가기",
@@ -527,10 +528,10 @@
   "new.update1Feature1": "원하면 컬렉션을 다른 사람과 공개적으로 공유",
   "new.update1Feature2": "확장 프로그램: 북마크 편집/삭제 가능",
   "new.update1Feature3": "작은 버그 수정 및 디자인/콘텐츠 변경",
-  "new.update2Title": "중복 찾기, 모든 탭을 한 번에, 5개의 새로운 언어",
-  "new.update2Description": "이번 업데이트로 서포터를 위한 중복 찾기 기능이 추가되고, 브라우저 확장 프로그램에서 모든 탭을 한 번에 저장하거나 열 수 있으며, booky를 5개 언어로 더 사용할 수 있어요. 그 밖에도 여기저기 작은 부분들을 많이 개선했어요.",
+  "new.update2Title": "중복 찾기, 모든 탭을 한 번에, 6개의 새로운 언어",
+  "new.update2Description": "이번 업데이트로 서포터를 위한 중복 찾기 기능이 추가되고, 브라우저 확장 프로그램에서 모든 탭을 한 번에 저장하거나 열 수 있으며, booky를 6개 언어로 더 사용할 수 있어요. 그 밖에도 여기저기 작은 부분들을 많이 개선했어요.",
   "features.update2Feature2": "열린 탭 모두 저장 또는 카테고리를 탭으로 열기 (확장 프로그램)",
-  "new.update2Feature3": "새로운 언어: 프랑스어, 네덜란드어, 일본어, 한국어, 힌디어",
+  "new.update2Feature3": "새로운 언어: 프랑스어, 스페인어, 네덜란드어, 일본어, 한국어, 힌디어",
   "misc.updateInProgress": "지금 booky를 업데이트하는 중이에요 - 잠시 후 다시 시도해 주세요!",
   "error.duplicateLink": "이 링크는 이미 {collection} 컬렉션({category})에 있어요."
 }
