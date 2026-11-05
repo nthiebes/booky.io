@@ -39,6 +39,8 @@ let csrfToken = null;
 let csrfRequest = null;
 const requiresCsrfToken = (method, url) =>
   writeMethods.includes(method) || url === '/logout';
+const destroysSession = ({ method, url }) =>
+  url === '/logout' || (method === 'DELETE' && url === '/account');
 const getCsrfToken = () => {
   if (csrfToken) {
     return Promise.resolve(csrfToken);
@@ -90,8 +92,8 @@ const send = (requestOptions, retry = true) => {
         return send(requestOptions, false);
       }
 
-      if (requestOptions.url === '/logout') {
-        // Logout destroys the session including its CSRF token
+      if (destroysSession(requestOptions)) {
+        // The session is gone including its CSRF token
         csrfToken = null;
       }
 

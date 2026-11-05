@@ -85,7 +85,6 @@ export default class Modal extends PureComponent {
     }
   };
 
-   
   handleSave = (modalData) => {
     const { modal, data, keyword, searchBookmarks, updateSearchData } =
       this.props;

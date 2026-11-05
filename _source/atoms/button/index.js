@@ -29,7 +29,12 @@ ButtonSmallBlue.displayName = 'ButtonSmallBlue';
 export function ButtonSmallGreen(props) {
   return <Button {...props} size="small" color="green" />;
 }
-ButtonSmallBlue.displayName = 'ButtonSmallGreen';
+ButtonSmallGreen.displayName = 'ButtonSmallGreen';
+
+export function ButtonSmallOrange(props) {
+  return <Button {...props} size="small" color="orange" />;
+}
+ButtonSmallOrange.displayName = 'ButtonSmallOrange';
 
 export function ButtonLargePrimary(props) {
   return <Button {...props} size="large" color="primary" />;

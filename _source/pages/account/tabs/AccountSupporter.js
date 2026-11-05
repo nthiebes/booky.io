@@ -3,7 +3,11 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import P from '../../../atoms/paragraph';
 import { H2 } from '../../../atoms/headline';
-import { ButtonSmallPrimary, ButtonSmallBlue } from '../../../atoms/button';
+import {
+  ButtonSmallPrimary,
+  ButtonSmallBlue,
+  ButtonSmallOrange
+} from '../../../atoms/button';
 import Input from '../../../atoms/input';
 import Label from '../../../atoms/label';
 import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
@@ -76,6 +80,12 @@ class AccountSupporter extends PureComponent {
         language
       )
     });
+  };
+
+  handleDeleteClick = () => {
+    const { openModal } = this.props;
+
+    openModal('DeleteAccount');
   };
 
   getExpirationDate = (subscriptionDate) => {
@@ -185,7 +195,7 @@ class AccountSupporter extends PureComponent {
                   disabled={
                     newSupportAmount < this.getMinAmount() || updatePending
                   }
-                  className="account__update"
+                  className="account__button"
                 >
                   <FormattedMessage
                     id="account.updateAmount"
@@ -251,6 +261,7 @@ class AccountSupporter extends PureComponent {
                 <ButtonSmallPrimary
                   icon="close"
                   onClick={this.handleCancelClick}
+                  className="account__button"
                 >
                   <FormattedMessage
                     id="account.cancelButton"
@@ -277,7 +288,11 @@ class AccountSupporter extends PureComponent {
             <P>
               <FormattedMessage id="account.learnMore" />
             </P>
-            <ButtonSmallBlue to="/supporter" icon="membership">
+            <ButtonSmallBlue
+              to="/supporter"
+              icon="membership"
+              className="account__button"
+            >
               <FormattedMessage
                 id="account.discover"
                 values={{ b: (msg) => <b>{msg}</b> }}
@@ -285,6 +300,22 @@ class AccountSupporter extends PureComponent {
             </ButtonSmallBlue>
           </>
         )}
+        <H2 color="danger" className="account__danger-zone">
+          <FormattedMessage id="account.dangerZone" />
+        </H2>
+        <P>
+          <FormattedMessage id="account.deleteText" />
+        </P>
+        <ButtonSmallOrange
+          icon="delete"
+          onClick={this.handleDeleteClick}
+          className="account__button"
+        >
+          <FormattedMessage
+            id="account.deleteButton"
+            values={{ b: (msg) => <b>{msg}</b> }}
+          />
+        </ButtonSmallOrange>
       </>
     );
   }

@@ -10,7 +10,6 @@ import {
   AccountData,
   AccountImport,
   AccountExport,
-  AccountManage,
   AccountSupporter
 } from './tabs';
 
@@ -39,7 +38,6 @@ class Account extends Component {
       key: 'export'
     }
   ];
-  // name: props.intl.formatMessage({ id: 'account.account' })
 
   handleTabClick = (activeTab) => {
     const { history } = this.props;
@@ -75,7 +73,6 @@ class Account extends Component {
           {activeTab === 'data' && <AccountData />}
           {activeTab === 'import' && <AccountImport />}
           {activeTab === 'export' && <AccountExport />}
-          {activeTab === 'manage' && <AccountManage />}
           {activeTab === 'supporter' && <AccountSupporter />}
         </Section>
       </Page>

@@ -228,21 +228,24 @@ export const deny =
     });
   };
 
-export const deleteAccount = () => () => {
-  // fetcher({
-  //   url: '/user',
-  //   method: 'DELETE',
-  //   onSuccess: () => {
-  //     track.account.delete();
-  //     dispatch(updateUser({
-  //       loggedIn: false
-  //     }));
-  //   },
-  //   onError: () => {
-  //     // console.log('onError', error);
-  //   }
-  // });
-};
+export const deleteAccount =
+  ({ password, onSuccess, onDeleted, onError }) =>
+  (dispatch) => {
+    fetcher({
+      url: '/account',
+      method: 'DELETE',
+      params: { password },
+      onSuccess: () => {
+        track.account.delete();
+        onSuccess && onSuccess();
+        dispatch(resetUserState());
+        onDeleted && onDeleted();
+      },
+      onError: (error) => {
+        onError && onError(error);
+      }
+    });
+  };
 
 export const importBookmarks =
   ({ params, onSuccess, onError }) =>
