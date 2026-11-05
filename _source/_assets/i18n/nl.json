@@ -159,6 +159,8 @@
   "features.customize": "Pas het ontwerp aan.",
   "features.duplicateFinder": "Dubbele links vinden",
   "features.duplicateFinderText": "Vind dubbele links en voorkom nieuwe duplicaten.",
+  "features.duplicateFinderInline": "Je ziet een melding als je een bladwijzer toevoegt of bewerkt met een link die al is opgeslagen",
+  "features.duplicateFinderTool": "Onder Account > Hulpmiddelen kun je al je bladwijzers doorzoeken op dubbele links",
   "features.allTabs": "Alle tabbladen tegelijk",
   "features.allTabsText": "Sla <a>alle open tabbladen</a> op of open een categorie in tabbladen.",
   "about.recipes": "Favoriete recepten",
@@ -453,6 +455,8 @@
   "help.account.answer5": "Je kunt je booky-bladwijzers hier exporteren: ",
   "help.account.question6": "Hoe kan ik mijn e-mailadres wijzigen?",
   "help.account.answer6": "Je kunt je e-mailadres wijzigen in je {account}. We sturen dan een bevestigingslink naar het nieuwe adres. Zodra je erop klikt, geldt het nieuwe adres. De link is 24 uur geldig.",
+  "help.account.question7": "Hoe kan ik dubbele bladwijzers vinden?",
+  "help.account.answer7": "Met het supporterlidmaatschap kun je onder {tools} in je account al je bladwijzers doorzoeken op dubbele links. Links die je meerdere keren hebt opgeslagen, worden onder elkaar getoond, zodat je ze meteen kunt bewerken of verwijderen.",
   "account.importSuccess": "Super, je hebt {count} {count, plural, one {bladwijzer} other {bladwijzers}} succesvol geïmporteerd! Bekijk ze meteen op de {home}.",
   "account.importSuccessHome": "startpagina",
   "misc.name": "Je naam",
@@ -548,7 +552,7 @@
   "account.tools": "Hulpmiddelen",
   "account.findDuplicatesText": "Ontdek welke links je meerdere keren hebt opgeslagen. Al je bladwijzers worden gecontroleerd en duplicaten worden onder elkaar getoond.",
   "account.findDuplicatesButton": "<b>Duplicaten</b> vinden",
-  "account.findDuplicatesSupporter": "De duplicatenzoeker hoort bij het supporterslidmaatschap.",
+  "account.findDuplicatesSupporter": "De dubbelzoeker hoort bij het supporterlidmaatschap.",
   "duplicates.results": "We hebben {results} meerdere keren {count, plural, one {opgeslagen link} other {opgeslagen links}} gevonden:",
   "duplicates.empty": "Goed nieuws: je hebt geen dubbele links."
 }

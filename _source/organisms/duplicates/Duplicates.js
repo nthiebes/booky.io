@@ -44,7 +44,7 @@ export default class Duplicates extends PureComponent {
     if (pending && !groups.length) {
       return (
         <section className="duplicates">
-          <SearchSkeleton />;
+          <SearchSkeleton />
         </section>
       );
     }

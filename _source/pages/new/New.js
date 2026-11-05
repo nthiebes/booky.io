@@ -77,6 +77,14 @@ export default class New extends PureComponent {
               <FormattedMessage id="features.duplicateFinder" />
               <Icon icon="money" color="blue" />
             </ListItem>
+            <ListItem isSecondary className="new__item">
+              <FormattedMessage id="features.duplicateFinderInline" />
+              <Icon icon="money" color="blue" />
+            </ListItem>
+            <ListItem isSecondary className="new__item">
+              <FormattedMessage id="features.duplicateFinderTool" />
+              <Icon icon="money" color="blue" />
+            </ListItem>
             <ListItem>
               <FormattedMessage id="features.update2Feature2" />
             </ListItem>

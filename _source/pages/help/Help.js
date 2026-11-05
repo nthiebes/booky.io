@@ -455,6 +455,23 @@ class Help extends Component {
                 <Link to="/account#export">{'booky.io/account#export'}</Link>
               </P>
             </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="help.account.question7" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage
+                  id="help.account.answer7"
+                  values={{
+                    tools: (
+                      <Link to="/account#tools">
+                        <FormattedMessage id="account.tools" />
+                      </Link>
+                    )
+                  }}
+                />
+              </P>
+            </Expandable>
           </div>
         </Section>
 

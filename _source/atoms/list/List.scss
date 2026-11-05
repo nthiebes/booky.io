@@ -19,3 +19,12 @@
   position: absolute;
   left: 0;
 }
+
+.list__item--secondary {
+  padding-left: 2rem;
+}
+
+.list__item--secondary::before {
+  content: "»";
+  left: 1rem;
+}

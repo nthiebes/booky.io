@@ -159,6 +159,8 @@
   "features.customize": "Passe das Design an.",
   "features.duplicateFinder": "Doppelte Links finden",
   "features.duplicateFinderText": "Finde doppelte Links und vermeide neue Duplikate.",
+  "features.duplicateFinderInline": "Beim Hinzufügen oder Bearbeiten eines Lesezeichens siehst du einen Hinweis, wenn der Link schon gespeichert ist",
+  "features.duplicateFinderTool": "Unter Account > Werkzeuge kannst du alle deine Lesezeichen nach doppelten Links durchsuchen",
   "features.allTabs": "Alle Tabs auf einmal",
   "features.allTabsText": "Speichere <a>alle offenen Tabs</a> oder öffne eine Kategorie in Tabs.",
   "about.recipes": "Lieblingsrezepte",
@@ -453,6 +455,8 @@
   "help.account.answer5": "Du kannst deine booky-Lesezeichen hier exportieren: ",
   "help.account.question6": "Wie kann ich meine E-Mail-Adresse ändern?",
   "help.account.answer6": "Du kannst deine E-Mail-Adresse in deinen {account} ändern. Wir schicken dann einen Bestätigungslink an die neue Adresse. Sobald du ihn anklickst, gilt die neue Adresse. Der Link ist 24 Stunden gültig.",
+  "help.account.question7": "Wie finde ich doppelte Lesezeichen?",
+  "help.account.answer7": "Mit der Support-Mitgliedschaft kannst du unter {tools} in deinem Account alle deine Lesezeichen nach doppelten Links durchsuchen. Mehrfach gespeicherte Links werden untereinander angezeigt, sodass du sie direkt bearbeiten oder löschen kannst.",
   "account.importSuccess": "Super, du hast {count} Lesezeichen erfolgreich importiert! Schau sie dir doch gleich auf der {home} an.",
   "account.importSuccessHome": "Startseite",
   "misc.name": "Dein Name",
@@ -548,7 +552,7 @@
   "account.tools": "Werkzeuge",
   "account.findDuplicatesText": "Finde heraus, welche Links du mehrfach gespeichert hast. Dafür werden alle deine Lesezeichen geprüft und Duplikate untereinander angezeigt.",
   "account.findDuplicatesButton": "<b>Duplikate</b> finden",
-  "account.findDuplicatesSupporter": "Die Duplikatsuche ist Teil der Supporter-Mitgliedschaft.",
+  "account.findDuplicatesSupporter": "Die Duplikatsuche ist Teil der Support-Mitgliedschaft.",
   "duplicates.results": "Wir haben {results} mehrfach {count, plural, one {gespeicherten Link} other {gespeicherte Links}} gefunden:",
   "duplicates.empty": "Sehr gut: Du hast keine doppelten Links."
 }
