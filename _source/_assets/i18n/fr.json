@@ -544,5 +544,11 @@
   "features.update2Feature2": "Enregistrer tous les onglets ouverts ou ouvrir une catégorie en onglets (extension)",
   "new.update2Feature3": "Nouvelles langues : français, espagnol, néerlandais, japonais, coréen et hindi",
   "misc.updateInProgress": "Nous sommes en train de mettre à jour booky - réessaie dans un instant !",
-  "error.duplicateLink": "Ce lien existe déjà dans la collection {collection} ({category})."
+  "error.duplicateLink": "Ce lien existe déjà dans la collection {collection} ({category}).",
+  "account.tools": "Outils",
+  "account.findDuplicatesText": "Découvre quels liens tu as enregistrés plusieurs fois. Tous tes favoris sont vérifiés et les doublons sont affichés les uns sous les autres.",
+  "account.findDuplicatesButton": "Trouver les <b>doublons</b>",
+  "account.findDuplicatesSupporter": "La recherche de doublons fait partie de l'adhésion de soutien.",
+  "duplicates.results": "Nous avons trouvé {results} {count, plural, one {lien enregistré} other {liens enregistrés}} plusieurs fois :",
+  "duplicates.empty": "Bonne nouvelle : tu n'as aucun lien en double."
 }

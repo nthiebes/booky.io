@@ -544,5 +544,11 @@
   "features.update2Feature2": "開いているタブをまとめて保存、カテゴリーをタブで開く（拡張機能）",
   "new.update2Feature3": "新しい言語：フランス語、スペイン語、オランダ語、日本語、韓国語、ヒンディー語",
   "misc.updateInProgress": "現在bookyを更新中です。しばらくしてからもう一度お試しください！",
-  "error.duplicateLink": "このリンクはすでにコレクション{collection}（{category}）に存在します。"
+  "error.duplicateLink": "このリンクはすでにコレクション{collection}（{category}）に存在します。",
+  "account.tools": "ツール",
+  "account.findDuplicatesText": "複数回保存されているリンクを見つけます。すべてのブックマークを確認し、重複を並べて表示します。",
+  "account.findDuplicatesButton": "<b>重複</b>を検出",
+  "account.findDuplicatesSupporter": "重複検出はサポーターメンバーシップに含まれています。",
+  "duplicates.results": "複数回保存された{count, plural, other {リンク}}が{results}件見つかりました：",
+  "duplicates.empty": "重複リンクはありません。"
 }

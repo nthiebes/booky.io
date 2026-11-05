@@ -1,19 +1,24 @@
 import React, { PureComponent, Fragment } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 
 import { ErrorMessage } from '../../atoms/messages';
 import Icon from '../../atoms/icon';
 import { ButtonSmallMedium, ButtonSmallLight } from '../../atoms/button';
-import { H2, H3 } from '../../atoms/headline';
 import P from '../../atoms/paragraph';
 import Empty from '../../molecules/empty';
-import Bookmark from '../../molecules/bookmark';
+import SearchResults from './SearchResults';
 import SearchSkeleton from './SearchSkeleton';
 
-class Search extends PureComponent {
+export default class Search extends PureComponent {
   state = {
     editMode: false
+  };
+
+  toggleEditMode = () => {
+    this.setState({
+      editMode: !this.state.editMode
+    });
   };
 
   getWrapper = (content) => {
@@ -54,13 +59,6 @@ class Search extends PureComponent {
     }
   };
 
-  toggleEditMode = () => {
-    this.setState({
-      editMode: !this.state.editMode
-    });
-  };
-
-   
   render() {
     const {
       dashboards,
@@ -70,10 +68,8 @@ class Search extends PureComponent {
       pending,
       error,
       offset,
-      limit,
-      intl
+      limit
     } = this.props;
-    const { editMode } = this.state;
     const LoadMoreButton = darkMode ? ButtonSmallLight : ButtonSmallMedium;
 
     if (error) {
@@ -110,72 +106,13 @@ class Search extends PureComponent {
             }}
           />
         </P>
-        <ul>
-          {dashboards.map(
-            (
-              { id: dashboardId, name: dashboardName, categories },
-              dashboardIndex
-            ) => (
-              <li key={`${dashboardId}-${dashboardIndex}`}>
-                <button
-                  className="search__dashboard"
-                  onClick={this.handleDashboardClick(dashboardId)}
-                >
-                  <H2 className="search__headline">
-                    <Icon icon="collection" color={darkMode ? 'grey' : ''} />
-                    {dashboardName}
-                  </H2>
-                </button>
-                {categories.map(
-                  (
-                    { id: categoryId, name: categoryName, bookmarks, color },
-                    categoryIndex
-                  ) => (
-                    <ul key={`${categoryId}-${categoryIndex}`}>
-                      <H3
-                        className="search__headline"
-                        noMargin={categoryIndex === 0}
-                      >
-                        <Icon icon="category" color={darkMode ? 'grey' : ''} />
-                        {categoryName}
-                        <Icon
-                          icon={editMode ? 'close' : 'more-horiz'}
-                          label={
-                            editMode
-                              ? intl.formatMessage({
-                                  id: 'category.editModeQuit'
-                                })
-                              : intl.formatMessage({ id: 'category.editMode' })
-                          }
-                          onClick={this.toggleEditMode}
-                          isButton
-                          className="search__edit-mode"
-                        />
-                      </H3>
-                      {bookmarks.map((bookmark, bookmarkIndex) => (
-                        <Bookmark
-                          className="search__bookmark"
-                          key={bookmark.id}
-                          index={bookmarkIndex}
-                          id={bookmark.id}
-                          categoryId={categoryId}
-                          editMode={editMode}
-                          name={bookmark.name}
-                          url={bookmark.url}
-                          note={bookmark.note}
-                          favicon={bookmark.favicon}
-                          onDeleteOrEditClick={this.toggleEditMode}
-                          isSearch
-                          color={color}
-                        />
-                      ))}
-                    </ul>
-                  )
-                )}
-              </li>
-            )
-          )}
-        </ul>
+        <SearchResults
+          dashboards={dashboards}
+          darkMode={darkMode}
+          editMode={this.state.editMode}
+          onDashboardClick={this.handleDashboardClick}
+          onToggleEditMode={this.toggleEditMode}
+        />
         <div className="search__load-more-wrapper">
           {pending && offset >= limit && (
             <Icon icon="spinner" className="search__spinner" />
@@ -196,5 +133,3 @@ class Search extends PureComponent {
     );
   }
 }
-
-export default injectIntl(Search);

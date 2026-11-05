@@ -544,5 +544,11 @@
   "features.update2Feature2": "Alle offenen Tabs speichern oder eine Kategorie in Tabs öffnen (Erweiterung)",
   "new.update2Feature3": "Neue Sprachen: Französisch, Spanisch, Niederländisch, Japanisch, Koreanisch und Hindi",
   "misc.updateInProgress": "Wir aktualisieren gerade booky - versuch es bitte gleich nochmal!",
-  "error.duplicateLink": "Dieser Link existiert bereits in der Sammlung {collection} ({category})."
+  "error.duplicateLink": "Dieser Link existiert bereits in der Sammlung {collection} ({category}).",
+  "account.tools": "Werkzeuge",
+  "account.findDuplicatesText": "Finde heraus, welche Links du mehrfach gespeichert hast. Dafür werden alle deine Lesezeichen geprüft und Duplikate untereinander angezeigt.",
+  "account.findDuplicatesButton": "<b>Duplikate</b> finden",
+  "account.findDuplicatesSupporter": "Die Duplikatsuche ist Teil der Supporter-Mitgliedschaft.",
+  "duplicates.results": "Wir haben {results} mehrfach {count, plural, one {gespeicherten Link} other {gespeicherte Links}} gefunden:",
+  "duplicates.empty": "Sehr gut: Du hast keine doppelten Links."
 }

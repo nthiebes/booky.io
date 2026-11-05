@@ -544,5 +544,11 @@
   "features.update2Feature2": "सभी खुले टैब सहेजें या किसी श्रेणी को टैब में खोलें (एक्सटेंशन)",
   "new.update2Feature3": "नई भाषाएं: फ़्रेंच, स्पेनिश, डच, जापानी, कोरियाई और हिंदी",
   "misc.updateInProgress": "हम अभी booky को अपडेट कर रहे हैं - कृपया थोड़ी देर बाद फिर कोशिश करें!",
-  "error.duplicateLink": "यह लिंक पहले से संग्रह {collection} ({category}) में मौजूद है।"
+  "error.duplicateLink": "यह लिंक पहले से संग्रह {collection} ({category}) में मौजूद है।",
+  "account.tools": "टूल",
+  "account.findDuplicatesText": "पता करें कि आपने कौन-से लिंक एक से अधिक बार सहेजे हैं। आपके सभी बुकमार्क जांचे जाते हैं और डुप्लिकेट एक के नीचे एक दिखाए जाते हैं।",
+  "account.findDuplicatesButton": "<b>डुप्लिकेट</b> खोजें",
+  "account.findDuplicatesSupporter": "डुप्लिकेट खोज सपोर्टर सदस्यता का हिस्सा है।",
+  "duplicates.results": "हमें एक से अधिक बार सहेजे गए {results} {count, plural, other {लिंक}} मिले:",
+  "duplicates.empty": "बहुत बढ़िया: आपके पास कोई डुप्लिकेट लिंक नहीं है।"
 }

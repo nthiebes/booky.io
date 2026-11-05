@@ -544,5 +544,11 @@
   "features.update2Feature2": "열린 탭 모두 저장 또는 카테고리를 탭으로 열기 (확장 프로그램)",
   "new.update2Feature3": "새로운 언어: 프랑스어, 스페인어, 네덜란드어, 일본어, 한국어, 힌디어",
   "misc.updateInProgress": "지금 booky를 업데이트하는 중이에요 - 잠시 후 다시 시도해 주세요!",
-  "error.duplicateLink": "이 링크는 이미 {collection} 컬렉션({category})에 있어요."
+  "error.duplicateLink": "이 링크는 이미 {collection} 컬렉션({category})에 있어요.",
+  "account.tools": "도구",
+  "account.findDuplicatesText": "두 번 이상 저장한 링크를 찾아보세요. 모든 북마크를 확인해서 중복된 항목을 나란히 보여드려요.",
+  "account.findDuplicatesButton": "<b>중복</b> 찾기",
+  "account.findDuplicatesSupporter": "중복 찾기는 서포터 멤버십에 포함되어 있어요.",
+  "duplicates.results": "두 번 이상 저장된 {count, plural, other {링크}}를 {results}개 찾았어요:",
+  "duplicates.empty": "중복된 링크가 없어요."
 }

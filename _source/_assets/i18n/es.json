@@ -544,5 +544,11 @@
   "features.update2Feature2": "Guarda todas las pestañas abiertas o abre una categoría en pestañas (extensión)",
   "new.update2Feature3": "Nuevos idiomas: francés, español, neerlandés, japonés, coreano e hindi",
   "misc.updateInProgress": "Estamos actualizando booky. ¡Inténtalo de nuevo en breve!",
-  "error.duplicateLink": "Este enlace ya existe en la colección {collection} ({category})."
+  "error.duplicateLink": "Este enlace ya existe en la colección {collection} ({category}).",
+  "account.tools": "Herramientas",
+  "account.findDuplicatesText": "Descubre qué enlaces has guardado más de una vez. Se revisan todos tus marcadores y los duplicados se muestran uno debajo de otro.",
+  "account.findDuplicatesButton": "Encontrar <b>duplicados</b>",
+  "account.findDuplicatesSupporter": "El buscador de duplicados forma parte de la membresía de apoyo.",
+  "duplicates.results": "Hemos encontrado {results} {count, plural, one {enlace guardado} other {enlaces guardados}} más de una vez:",
+  "duplicates.empty": "¡Buenas noticias! No tienes enlaces duplicados."
 }

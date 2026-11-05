@@ -68,6 +68,13 @@ export default {
     limit: 30,
     dashboards: []
   },
+  duplicates: {
+    pending: false,
+    error: null,
+    total: null,
+    limit: 30,
+    groups: []
+  },
   dragging: {
     isDragging: false,
     type: null

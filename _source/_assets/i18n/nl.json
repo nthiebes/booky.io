@@ -544,5 +544,11 @@
   "features.update2Feature2": "Alle open tabbladen opslaan of een categorie in tabbladen openen (extensie)",
   "new.update2Feature3": "Nieuwe talen: Frans, Spaans, Nederlands, Japans, Koreaans en Hindi",
   "misc.updateInProgress": "We zijn booky aan het bijwerken - probeer het zo meteen nog eens!",
-  "error.duplicateLink": "Deze link bestaat al in de collectie {collection} ({category})."
+  "error.duplicateLink": "Deze link bestaat al in de collectie {collection} ({category}).",
+  "account.tools": "Hulpmiddelen",
+  "account.findDuplicatesText": "Ontdek welke links je meerdere keren hebt opgeslagen. Al je bladwijzers worden gecontroleerd en duplicaten worden onder elkaar getoond.",
+  "account.findDuplicatesButton": "<b>Duplicaten</b> vinden",
+  "account.findDuplicatesSupporter": "De duplicatenzoeker hoort bij het supporterslidmaatschap.",
+  "duplicates.results": "We hebben {results} meerdere keren {count, plural, one {opgeslagen link} other {opgeslagen links}} gevonden:",
+  "duplicates.empty": "Goed nieuws: je hebt geen dubbele links."
 }

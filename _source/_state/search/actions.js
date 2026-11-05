@@ -2,6 +2,20 @@ import fetcher, { abortFetch } from '../../_utils/fetcher';
 import { decodeEmoji } from '../../_utils/string';
 import initialState from '../../initialState';
 
+export const decodeSearchDashboards = (dashboards) =>
+  dashboards.map((dashboard) => ({
+    ...dashboard,
+    name: decodeEmoji(dashboard.name),
+    categories: dashboard.categories.map((category) => ({
+      ...category,
+      name: decodeEmoji(category.name),
+      bookmarks: category.bookmarks.map((bookmark) => ({
+        ...bookmark,
+        name: decodeEmoji(bookmark.name)
+      }))
+    }))
+  }));
+
 export const resetSearch = () => ({
   type: 'RESET_SEARCH'
 });
@@ -26,18 +40,7 @@ export const searchBookmarks =
       onSuccess: ({ dashboards, total }) => {
         dispatch(
           updateSearchData({
-            dashboards: dashboards.map((dashboard) => ({
-              ...dashboard,
-              name: decodeEmoji(dashboard.name),
-              categories: dashboard.categories.map((category) => ({
-                ...category,
-                name: decodeEmoji(category.name),
-                bookmarks: category.bookmarks.map((bookmark) => ({
-                  ...bookmark,
-                  name: decodeEmoji(bookmark.name)
-                }))
-              }))
-            })),
+            dashboards: decodeSearchDashboards(dashboards),
             total,
             pending: false
           })
@@ -70,18 +73,7 @@ export const loadMoreBookmarks =
       onSuccess: ({ dashboards, total }) => {
         dispatch(
           appendSearchResults({
-            dashboards: dashboards.map((dashboard) => ({
-              ...dashboard,
-              name: decodeEmoji(dashboard.name),
-              categories: dashboard.categories.map((category) => ({
-                ...category,
-                name: decodeEmoji(category.name),
-                bookmarks: category.bookmarks.map((bookmark) => ({
-                  ...bookmark,
-                  name: decodeEmoji(bookmark.name)
-                }))
-              }))
-            })),
+            dashboards: decodeSearchDashboards(dashboards),
             total,
             pending: false
           })

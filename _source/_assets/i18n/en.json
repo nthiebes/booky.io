@@ -544,5 +544,11 @@
   "features.update2Feature2": "Save all open tabs or open a category in tabs (extension)",
   "new.update2Feature3": "New languages: French, Spanish, Dutch, Japanese, Korean and Hindi",
   "misc.updateInProgress": "We are currently updating booky - please try again soon!",
-  "error.duplicateLink": "This link already exists in the collection {collection} ({category})."
+  "error.duplicateLink": "This link already exists in the collection {collection} ({category}).",
+  "account.tools": "Tools",
+  "account.findDuplicatesText": "Find out which links you have saved more than once. All your bookmarks are checked, and duplicates are listed below each other.",
+  "account.findDuplicatesButton": "Find <b>duplicates</b>",
+  "account.findDuplicatesSupporter": "The duplicate finder is part of the supporter membership.",
+  "duplicates.results": "We found {results} {count, plural, one {link} other {links}} saved more than once:",
+  "duplicates.empty": "Great news: you have no duplicate links."
 }
