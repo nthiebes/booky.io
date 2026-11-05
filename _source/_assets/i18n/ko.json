@@ -356,6 +356,8 @@
   "account.navigation": "계정 메뉴",
   "error.executionLogic": "앗! 저희 쪽에서 문제가 발생했어요. 다시 시도하거나 {mail}을 보내 주세요.",
   "error.unexpected": "앗! 저희 쪽에서 문제가 발생했어요. 다시 시도하거나 {mail}을 보내 주세요.",
+  "error.unavailable": "booky를 일시적으로 사용할 수 없어요. 잠시 후 다시 시도해 주세요.",
+  "error.reload": "다시 시도",
   "cookie.text": "저희는 개인정보를 소중히 여기며, 오직 더 나은 사용 경험을 위해서만 다음 쿠키를 사용하고자 해요:",
   "cookie.item1": "세션 쿠키 (필수)",
   "cookie.item2": "언어 설정",

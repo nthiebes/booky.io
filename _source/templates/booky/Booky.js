@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-intl-redux';
 
 import Routes from '../../routes';
+import Unavailable from '../../pages/unavailable';
 import './Booky.scss';
 
 const loadingSpinner = document.getElementById('loading__spinner');
@@ -124,7 +125,7 @@ export default class Booky extends Component {
   };
 
   render() {
-    const { store, history } = this.props;
+    const { store, history, unavailable } = this.props;
 
     return (
       <Provider store={store}>
@@ -134,7 +135,7 @@ export default class Booky extends Component {
         >
           <ConnectedRouter history={history}>
             <BrowserRouter>
-              <Routes />
+              {unavailable ? <Unavailable /> : <Routes />}
             </BrowserRouter>
           </ConnectedRouter>
         </DragDropContext>

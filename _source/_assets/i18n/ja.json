@@ -356,6 +356,8 @@
   "account.navigation": "アカウントナビゲーション",
   "error.executionLogic": "おっと！こちらで問題が発生しました。もう一度試すか、{mail}でご連絡ください。",
   "error.unexpected": "おっと！こちらで問題が発生しました。もう一度試すか、{mail}でご連絡ください。",
+  "error.unavailable": "booky は一時的にご利用いただけません。しばらくしてからもう一度お試しください。",
+  "error.reload": "再試行",
   "cookie.text": "私たちはあなたのプライバシーを大切にしており、体験をより良くする目的のみで次のCookieを使用したいと考えています:",
   "cookie.item1": "セッションCookie（必須）",
   "cookie.item2": "言語設定",

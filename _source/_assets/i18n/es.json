@@ -356,6 +356,8 @@
   "account.navigation": "Navegación de la cuenta",
   "error.executionLogic": "¡Vaya! Algo ha fallado por nuestra parte. Inténtalo de nuevo o escríbenos un {mail}.",
   "error.unexpected": "¡Vaya! Algo ha fallado por nuestra parte. Inténtalo de nuevo o escríbenos un {mail}.",
+  "error.unavailable": "booky no está disponible temporalmente. Inténtalo de nuevo en un momento.",
+  "error.reload": "Reintentar",
   "cookie.text": "Nos importa tu privacidad y nos gustaría usar las siguientes cookies únicamente para mejorar tu experiencia:",
   "cookie.item1": "Cookie de sesión (obligatoria)",
   "cookie.item2": "Preferencia de idioma",

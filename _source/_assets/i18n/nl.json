@@ -356,6 +356,8 @@
   "account.navigation": "Accountnavigatie",
   "error.executionLogic": "Oeps! Er is bij ons iets misgegaan. Probeer het opnieuw of stuur ons een {mail}.",
   "error.unexpected": "Oeps! Er is bij ons iets misgegaan. Probeer het opnieuw of stuur ons een {mail}.",
+  "error.unavailable": "booky is tijdelijk niet beschikbaar. Probeer het zo meteen opnieuw.",
+  "error.reload": "Opnieuw proberen",
   "cookie.text": "Je privacy is belangrijk voor ons. We willen de volgende cookies uitsluitend gebruiken om je ervaring te verbeteren:",
   "cookie.item1": "Sessiecookie (vereist)",
   "cookie.item2": "Taalvoorkeur",

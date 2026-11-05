@@ -356,6 +356,8 @@
   "account.navigation": "Navigation du compte",
   "error.executionLogic": "Oups ! Un problème est survenu de notre côté. Réessaie ou écris-nous un {mail}.",
   "error.unexpected": "Oups ! Un problème est survenu de notre côté. Réessaie ou écris-nous un {mail}.",
+  "error.unavailable": "booky est temporairement indisponible. Réessaie dans un instant.",
+  "error.reload": "Réessayer",
   "cookie.text": "Ta vie privée nous tient à cœur, et nous aimerions utiliser les cookies suivants uniquement pour améliorer ton expérience :",
   "cookie.item1": "Cookie de session (obligatoire)",
   "cookie.item2": "Préférence de langue",

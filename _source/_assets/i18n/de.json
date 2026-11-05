@@ -356,6 +356,8 @@
   "account.navigation": "Accountnavigation",
   "error.executionLogic": "Hoppla! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
   "error.unexpected": "Hoppla! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
+  "error.unavailable": "booky ist vorübergehend nicht erreichbar. Bitte versuche es gleich noch einmal.",
+  "error.reload": "Erneut versuchen",
   "cookie.text": "Deine Privatsphäre ist uns wichtig, und wir würden gerne die folgenden Cookies einzig und allein dazu verwenden, deine Nutzererfahrung zu verbessern:",
   "cookie.item1": "Sitzungs-Cookie (erforderlich)",
   "cookie.item2": "Spracheinstellung",
