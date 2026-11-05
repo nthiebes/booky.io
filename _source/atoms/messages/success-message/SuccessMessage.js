@@ -21,7 +21,7 @@ export default class SuccessMessage extends Component {
   };
 
   render() {
-    const { message, className, hasIcon, noAnimation } = this.props;
+    const { message, className, hasIcon, noAnimation, values } = this.props;
     const { animate } = this.state;
 
     return (
@@ -42,7 +42,7 @@ export default class SuccessMessage extends Component {
             className="success__icon"
           />
         )}
-        <FormattedMessage id={message} />
+        <FormattedMessage id={message} values={values} />
       </P>
     );
   }

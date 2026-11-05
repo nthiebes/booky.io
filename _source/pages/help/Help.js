@@ -395,6 +395,23 @@ class Help extends Component {
               </P>
             </Expandable>
             <Expandable
+              headline={<FormattedMessage id="help.account.question6" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage
+                  id="help.account.answer6"
+                  values={{
+                    account: (
+                      <Link to="/account#data">
+                        <FormattedMessage id="misc.accountSettings" />
+                      </Link>
+                    )
+                  }}
+                />
+              </P>
+            </Expandable>
+            <Expandable
               headline={<FormattedMessage id="help.account.question2" />}
               className="help-container__item"
             >
@@ -402,6 +419,11 @@ class Help extends Component {
                 <FormattedMessage
                   id="help.account.answer2"
                   values={{
+                    account: (
+                      <Link to="/account#supporter">
+                        <FormattedMessage id="misc.accountSettings" />
+                      </Link>
+                    ),
                     email: (
                       <Link
                         href={`mailto:hello@booky.io?subject=${intl.formatMessage(

@@ -20,18 +20,18 @@ export const updateUserData = (userData) => (dispatch) => {
 export const updateUser =
   ({ userData, onError, onSuccess }) =>
   (dispatch) => {
-    dispatch({
-      type: UPDATE_USER,
-      userData: {
-        username: userData.username
-      }
-    });
-
     fetcher({
       url: '/account',
       method: 'PATCH',
       params: removeEmpty(userData),
       onSuccess: (data) => {
+        dispatch({
+          type: UPDATE_USER,
+          userData: {
+            name: userData.username
+          }
+        });
+
         onSuccess && onSuccess(data);
       },
       onError: (error) => {
@@ -173,6 +173,36 @@ export const activate =
         track.account.activate();
 
         onSuccess && onSuccess(data);
+      },
+      onError: (error) => {
+        onError && onError(error);
+      }
+    });
+  };
+
+export const confirmEmail =
+  ({ token, onSuccess, onError }) =>
+  (dispatch, getState) => {
+    fetcher({
+      url: '/account/email/confirmation',
+      method: 'POST',
+      params: {
+        token
+      },
+      onSuccess: () => {
+        onSuccess && onSuccess();
+
+        // The link may belong to another account than the one logged in here,
+        // so the current address has to come from the backend.
+        if (getState().user.loggedIn) {
+          fetcher({
+            url: '/user',
+            onSuccess: ({ email }) => {
+              dispatch(updateUserData({ email }));
+            },
+            onError: () => {}
+          });
+        }
       },
       onError: (error) => {
         onError && onError(error);

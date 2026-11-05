@@ -3,7 +3,6 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Input from '../../../atoms/input';
 import { ButtonLargeBlue } from '../../../atoms/button';
-import P from '../../../atoms/paragraph';
 import Form from '../../../molecules/form';
 import Checkbox from '../../../atoms/checkbox';
 import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
@@ -11,6 +10,12 @@ import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
 class AccountData extends Component {
   state = {
     username: this.props.name,
+    usernamePending: false,
+    usernameError: null,
+    email: this.props.email,
+    emailPending: false,
+    emailError: null,
+    confirmationSentTo: null,
     oldPassword: '',
     newPassword: '',
     pending: false,
@@ -19,11 +24,66 @@ class AccountData extends Component {
     success: false
   };
 
+  componentWillUnmount() {
+    Object.values(this.fetchTimeouts).forEach(clearTimeout);
+  }
+
+  fetchTimeouts = {};
+
   handleInputChange = (value, name) => {
     this.setState({
       [name]: value,
       pending: false
     });
+
+    if (name === 'email' || name === 'username') {
+      this.validateField(name, value);
+    }
+  };
+
+  validateField = (name, value) => {
+    const { email, name: username, validate } = this.props;
+    const currentValue = name === 'email' ? email : username;
+
+    clearTimeout(this.fetchTimeouts[name]);
+
+    if (!value || value.toLowerCase() === currentValue.toLowerCase()) {
+      this.setState({
+        [`${name}Error`]: null,
+        [`${name}Pending`]: false
+      });
+
+      return;
+    }
+
+    this.fetchTimeouts[name] = setTimeout(() => {
+      this.setState({
+        [`${name}Pending`]: true
+      });
+
+      validate({
+        params: {
+          name,
+          value
+        },
+        onSuccess: ({ reason }) => {
+          this.handleFieldValidated(name, value, reason);
+        },
+        onError: (error) => {
+          this.handleFieldValidated(name, value, error);
+        }
+      });
+    }, 500);
+  };
+
+  handleFieldValidated = (name, value, error) => {
+    // A slower response for an earlier input must not overwrite the current state
+    if (value === this.state[name]) {
+      this.setState({
+        [`${name}Error`]: error,
+        [`${name}Pending`]: false
+      });
+    }
   };
 
   handleCheckboxChange = ({ checked }) => {
@@ -38,15 +98,21 @@ class AccountData extends Component {
     this.setState({
       pending: true,
       error: false,
-      success: false
+      success: false,
+      confirmationSentTo: null
     });
 
     updateUser({
       userData,
-      onSuccess: () => {
+      onSuccess: ({ emailConfirmationSent }) => {
         this.setState({
           pending: false,
-          success: true
+          success: true,
+          // The current address stays active until the new one is confirmed
+          ...(emailConfirmationSent && {
+            email: this.props.email,
+            confirmationSentTo: userData.email
+          })
         });
       },
       onError: (error) => {
@@ -59,9 +125,15 @@ class AccountData extends Component {
   };
 
   render() {
-    const { intl, email } = this.props;
+    const { intl } = this.props;
     const {
       username,
+      usernamePending,
+      usernameError,
+      email,
+      emailPending,
+      emailError,
+      confirmationSentTo,
       oldPassword,
       newPassword,
       pending,
@@ -72,21 +144,32 @@ class AccountData extends Component {
 
     return (
       <Form className="account__form" onSubmit={this.handleSubmit}>
-        <P first noPadding>
-          <FormattedMessage id="account.yourEmail" />
-        </P>
-        <P>
-          <b>{email}</b>
-        </P>
+        <Input
+          value={email}
+          name="email"
+          id="email"
+          autoComplete="email"
+          label={intl.formatMessage({ id: 'login.email' })}
+          onChange={this.handleInputChange}
+          maxLength="150"
+          type="email"
+          required
+          disabled={pending}
+          pending={emailPending}
+          error={emailError}
+        />
         <Input
           value={username}
           name="username"
           id="username"
+          autoComplete="username"
           label={intl.formatMessage({ id: 'login.username' })}
           onChange={this.handleInputChange}
           maxLength="50"
           required
           disabled={pending}
+          pending={usernamePending}
+          error={usernameError}
         />
         <Input
           value={oldPassword}
@@ -129,7 +212,16 @@ class AccountData extends Component {
           />
         </ButtonLargeBlue>
         {error && <ErrorMessage message={error} hasIcon />}
-        {success && <SuccessMessage message="account.success" hasIcon />}
+        {success && !confirmationSentTo && (
+          <SuccessMessage message="account.success" hasIcon />
+        )}
+        {confirmationSentTo && (
+          <SuccessMessage
+            message="account.emailConfirmation"
+            values={{ email: confirmationSentTo }}
+            hasIcon
+          />
+        )}
       </Form>
     );
   }

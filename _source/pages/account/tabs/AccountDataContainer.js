@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { updateUser } from '../../../_state/user/actions';
+import { updateUser, validate } from '../../../_state/user/actions';
 import Component from './AccountData';
 
 const mapStateToProps = (state) => ({
@@ -8,7 +8,8 @@ const mapStateToProps = (state) => ({
   email: state.user.email
 });
 const mapDispatchToProps = {
-  updateUser
+  updateUser,
+  validate
 };
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 

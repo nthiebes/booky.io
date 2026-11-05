@@ -12,6 +12,7 @@ const About = lazy(() => import('./pages/about'));
 const Help = lazy(() => import('./pages/help'));
 const Account = lazy(() => import('./pages/account'));
 const Login = lazy(() => import('./pages/login'));
+const ConfirmEmail = lazy(() => import('./pages/confirm-email'));
 const Join = lazy(() => import('./pages/join'));
 const Feedback = lazy(() => import('./pages/feedback'));
 const Privacy = lazy(() => import('./pages/privacy'));
@@ -67,6 +68,7 @@ class Routes extends Component {
           <Route path="/terms" component={Terms} />
           <Route path="/shared/:id" component={Shared} />
           <Route path="/activate/:token" component={publicOnly(Login)} />
+          <Route path="/confirm-email/:token" component={ConfirmEmail} />
           <Route
             path="/recovery/:action/:params"
             component={publicOnly(Login)}
