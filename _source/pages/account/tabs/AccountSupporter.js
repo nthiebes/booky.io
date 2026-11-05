@@ -238,7 +238,11 @@ class AccountSupporter extends PureComponent {
                 <P>
                   <FormattedMessage id="account.learnMore" />
                 </P>
-                <ButtonSmallBlue to="/upsell" icon="membership">
+                <ButtonSmallBlue
+                  to="/upsell"
+                  icon="membership"
+                  className="account__button"
+                >
                   <FormattedMessage
                     id="button.supporter"
                     values={{ b: (msg) => <b>{msg}</b> }}

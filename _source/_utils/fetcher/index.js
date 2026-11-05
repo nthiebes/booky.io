@@ -106,6 +106,7 @@ const fetcher = ({
   url,
   onSuccess,
   onError,
+  onAbort,
   options = {}
 }) => {
   controller = new AbortController();
@@ -123,6 +124,8 @@ const fetcher = ({
     .catch((error) => {
       if (error.name !== 'AbortError') {
         onError(error.statusText || 'error.default');
+      } else if (onAbort) {
+        onAbort();
       }
     });
 };

@@ -17,7 +17,11 @@ export default class ErrorMessage extends Component {
   };
 
   componentDidMount() {
-    window.setTimeout(this.animate, 100);
+    this.animationTimeout = window.setTimeout(this.animate, 100);
+  }
+
+  componentWillUnmount() {
+    window.clearTimeout(this.animationTimeout);
   }
 
   animate = () => {

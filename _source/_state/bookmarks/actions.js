@@ -221,13 +221,14 @@ export const getTitle =
   };
 
 export const getDuplicates =
-  ({ url, onSuccess, onError }) =>
+  ({ url, onSuccess, onError, onAbort }) =>
   () => {
     fetcher({
       url: `/bookmarks/exists?url=${url}`,
       onSuccess: (data) => {
         onSuccess(data);
       },
-      onError
+      onError,
+      onAbort
     });
   };

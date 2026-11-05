@@ -15,6 +15,7 @@ import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
 import Form from '../../molecules/form';
 import { decodeEmoji, encodeEmoji } from '../../_utils/string';
+import { createDuplicateCheck } from '../../_utils/duplicate-check';
 
 const MAX_NAME_LENGTH = 200;
 const MAX_URL_LENGTH = 2000;
@@ -51,6 +52,7 @@ class Add extends Component {
       saveAllTabs: false,
       missingTabsPermission: false,
       existingBookmarks: [],
+      duplicatePending: false,
       isDataOpen: Boolean(
         localStorage.getItem('showData') === 'true' || !name || !url
       ),
@@ -63,6 +65,10 @@ class Add extends Component {
   componentDidMount() {
     this.props.getDashboards();
     this.checkDuplicates(this.state.url);
+  }
+
+  componentWillUnmount() {
+    this.duplicateCheck.cancel();
   }
 
   componentDidUpdate(prevProps) {
@@ -115,41 +121,16 @@ class Add extends Component {
     }
   }
 
+  duplicateCheck = createDuplicateCheck({
+    getDuplicates: this.props.getDuplicates,
+    onChange: (result) => this.setState(result)
+  });
+
+  // For URLs that are filled in automatically, since nobody is typing
   checkDuplicates = (url) => {
-    const { getDuplicates, isPremium } = this.props;
-
-    if (!url) {
-      this.setState({
-        exists: false,
-        existingBookmarks: []
-      });
-      return;
+    if (this.props.isPremium) {
+      this.duplicateCheck.checkNow(url);
     }
-
-    if (!isPremium) {
-      return;
-    }
-
-    getDuplicates({
-      url: encodeURIComponent(url),
-      onSuccess: ({ exists, bookmarks }) => {
-        // Ignore responses for a URL that has been changed in the meantime
-        if (url !== this.state.url) {
-          return;
-        }
-
-        this.setState({
-          exists,
-          existingBookmarks: bookmarks
-        });
-      },
-      onError: () => {
-        this.setState({
-          exists: false,
-          existingBookmarks: []
-        });
-      }
-    });
   };
 
   toggleLocation = () => {
@@ -188,6 +169,10 @@ class Add extends Component {
       [name]: value,
       pending: false
     });
+
+    if (name === 'url' && this.props.isPremium) {
+      this.duplicateCheck.checkDelayed(value);
+    }
   };
 
   onAddCategoryClick = () => {
@@ -196,10 +181,6 @@ class Add extends Component {
 
   onAddDashboardClick = () => {
     this.props.openModal('AddDashboard');
-  };
-
-  onUrlBlur = (value) => {
-    this.checkDuplicates(value);
   };
 
   toggleSaveAllTabs = ({ checked }) => {
@@ -533,7 +514,7 @@ class Add extends Component {
                     placeholder={intl.formatMessage({
                       id: 'modal.urlPlaceholder'
                     })}
-                    onBlur={this.onUrlBlur}
+                    pending={this.state.duplicatePending}
                   />
                   {exists && existingBookmarks.length > 0 ? (
                     <ErrorMessage

@@ -8,6 +8,7 @@ import { ErrorMessage } from '../../../atoms/messages';
 import Expandable from '../../../molecules/expandable';
 import { abortFetch } from '../../../_utils/fetcher';
 import { parseBookmarkUrl } from '../../../_utils/url';
+import { createDuplicateCheck } from '../../../_utils/duplicate-check';
 import { decodeEmoji } from '../../../_utils/string';
 
 class EditBookmark extends PureComponent {
@@ -17,8 +18,19 @@ class EditBookmark extends PureComponent {
     note: this.props.data.note,
     bookmarkTitlePending: false,
     exists: false,
-    existingBookmarks: []
+    existingBookmarks: [],
+    duplicatePending: false
   };
+
+  componentWillUnmount() {
+    this.duplicateCheck.cancel();
+  }
+
+  duplicateCheck = createDuplicateCheck({
+    getDuplicates: this.props.getDuplicates,
+    onChange: (result) => this.setState(result),
+    ignoreId: this.props.data.id
+  });
 
   onNameChange = (value) => {
     this.setState({
@@ -27,9 +39,16 @@ class EditBookmark extends PureComponent {
   };
 
   onUrlChange = (value) => {
+    const { isPremium, data } = this.props;
+
     this.setState({
       url: value
     });
+
+    if (isPremium) {
+      // An unchanged URL only clears the current result
+      this.duplicateCheck.checkDelayed(value === data.url ? '' : value);
+    }
   };
 
   onNoteChange = (value) => {
@@ -38,17 +57,11 @@ class EditBookmark extends PureComponent {
     });
   };
 
-   
   onUrlBlur = (value) => {
-    const { getTitle, getDuplicates, autofillBookmarkNames, isPremium } =
-      this.props;
+    const { getTitle, autofillBookmarkNames } = this.props;
     const { name } = this.state;
 
     if (!value) {
-      this.setState({
-        exists: false,
-        existingBookmarks: []
-      });
       return;
     }
 
@@ -78,29 +91,6 @@ class EditBookmark extends PureComponent {
         }
       });
     }
-
-    if (value === this.props.data.url) {
-      this.setState({
-        exists: false,
-        existingBookmarks: []
-      });
-    } else if (isPremium) {
-      getDuplicates({
-        url: encodeURIComponent(this.state.url),
-        onSuccess: ({ exists, bookmarks }) => {
-          this.setState({
-            exists,
-            existingBookmarks: bookmarks
-          });
-        },
-        onError: () => {
-          this.setState({
-            exists: false,
-            existingBookmarks: []
-          });
-        }
-      });
-    }
   };
 
   handleDashboardClick = (event, dashboardId) => {
@@ -115,14 +105,22 @@ class EditBookmark extends PureComponent {
   handleClose = () => {
     const { onClose } = this.props;
 
+    this.duplicateCheck.cancel();
     abortFetch();
     onClose();
   };
 
   render() {
     const { intl, pending, data, enableNotes, ...props } = this.props;
-    const { name, url, note, bookmarkTitlePending, exists, existingBookmarks } =
-      this.state;
+    const {
+      name,
+      url,
+      note,
+      bookmarkTitlePending,
+      exists,
+      existingBookmarks,
+      duplicatePending
+    } = this.state;
     const duplicateErrorMessage = exists ? 'error.duplicateLink' : null;
 
     return (
@@ -142,6 +140,7 @@ class EditBookmark extends PureComponent {
           maxLength="2000"
           label={intl.formatMessage({ id: 'modal.url' })}
           disabled={pending}
+          pending={duplicatePending}
           inputMode="url"
           placeholder={intl.formatMessage({ id: 'modal.urlPlaceholder' })}
         />
