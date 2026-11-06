@@ -5,7 +5,8 @@ import Component from './Features';
 
 const mapStateToProps = (state) => ({
   darkMode: state.user.settings.darkMode,
-  newsVersion: state.user.settings.newsVersion
+  newsVersion: state.user.settings.newsVersion,
+  language: state.intl.locale
 });
 const mapDispatchToProps = {
   updateSettings

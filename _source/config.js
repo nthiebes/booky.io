@@ -27,6 +27,12 @@ export const config = {
 // by the backend). Supporters who subscribed with less may keep their amount.
 export const MIN_SUPPORT_AMOUNT = 2;
 
+// iCloud links to the iOS Shortcut, per language (fallback: en).
+export const SHORTCUT_URLS = {
+  de: 'https://www.icloud.com/shortcuts/0aed9a68f2ff4d28a052e303159cabc8',
+  en: 'https://www.icloud.com/shortcuts/4d6113bd7dd244f6a47a8da8cf1fc1e9'
+};
+
 export const clientID =
   process.env.NODE_ENV === 'development'
     ? 'AfEjqLduFx2sXN6-g97vpIceMbvrTKb7YWOaEwUIbyJ5wO03KMtAPBIxlmbdTnC57h7TFljx7SZUd-y2'

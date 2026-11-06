@@ -12,12 +12,13 @@ import Link from '../../atoms/link';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
 import { List, ListItem } from '../../atoms/list';
+import { SHORTCUT_URLS } from '../../config';
 
 import './Help.scss';
 
 class Help extends Component {
   render() {
-    const { intl, darkMode, stickyHeader } = this.props;
+    const { intl, darkMode, stickyHeader, language } = this.props;
     const disqusConfig = {
       url: 'https://booky.io/help',
       identifier: 'help',
@@ -77,6 +78,34 @@ class Help extends Component {
                 <ListItem>
                   <FormattedMessage
                     id="help.general.iostext2"
+                    values={{ strong: (msg) => <strong>{msg}</strong> }}
+                  />
+                </ListItem>
+              </List>
+            </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="help.general.shortcut" />}
+              className="help-container__item"
+            >
+              <List>
+                <ListItem>
+                  <FormattedMessage
+                    id="help.general.shortcutText1"
+                    values={{
+                      a: (msg) => (
+                        <Link
+                          href={SHORTCUT_URLS[language] || SHORTCUT_URLS.en}
+                          target="_blank"
+                        >
+                          {msg}
+                        </Link>
+                      )
+                    }}
+                  />
+                </ListItem>
+                <ListItem>
+                  <FormattedMessage
+                    id="help.general.shortcutText2"
                     values={{ strong: (msg) => <strong>{msg}</strong> }}
                   />
                 </ListItem>

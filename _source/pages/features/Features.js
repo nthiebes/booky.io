@@ -14,11 +14,13 @@ import {
 } from '../../atoms/button';
 import { FeatureCard } from '../../molecules/feature-card';
 
+import { SHORTCUT_URLS } from '../../config';
+
 import './Features.scss';
 
 class FeaturesPage extends PureComponent {
   render() {
-    const { intl } = this.props;
+    const { intl, language } = this.props;
 
     return (
       <Page showStats>
@@ -310,6 +312,22 @@ class FeaturesPage extends PureComponent {
                 loading="lazy"
               />
               {'Windows'}
+            </Link>
+            <Link
+              href={SHORTCUT_URLS[language] || SHORTCUT_URLS.en}
+              target="_blank"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/shortcuts.svg"
+                loading="lazy"
+              />
+              <FormattedMessage id="features.shortcut" />
             </Link>
           </nav>
         </Section>
