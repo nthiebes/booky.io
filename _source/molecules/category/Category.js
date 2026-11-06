@@ -1,4 +1,3 @@
- 
 import React, { PureComponent, Fragment } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import classNames from 'classnames';
@@ -10,6 +9,10 @@ import { H2 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
 import Skeleton from '../../atoms/skeleton';
 import { ErrorMessage } from '../../atoms/messages';
+import whenVisible from '../../_utils/when-visible';
+
+// Matches .bookmark__wrapper, so a loading category is as tall as its loaded bookmarks.
+export const BOOKMARK_HEIGHT = 36;
 
 class Category extends PureComponent {
   static defaultProps = {
@@ -18,17 +21,70 @@ class Category extends PureComponent {
 
   state = {
     editMode: false,
-    hoverEditMode: false
+    hoverEditMode: false,
+    waitingForVisibility: false
   };
 
+  rootRef = React.createRef();
+
+  cancelVisibleLoad = null;
+
   componentDidMount() {
-    const { hidden, id, getBookmarks, noFetch, isExtension, viewOnly } =
+    const { hidden, noFetch, isExtension, viewOnly, bookmarkCount } =
       this.props;
 
-    if ((!hidden || isExtension || viewOnly) && !noFetch) {
-      getBookmarks(id);
+    // An empty category has nothing to load.
+    if (
+      (hidden && !isExtension && !viewOnly) ||
+      noFetch ||
+      bookmarkCount === 0
+    ) {
+      return;
+    }
+
+    // The extension shows only the active category, so it loads right away, even if collapsed on the website.
+    if (isExtension) {
+      this.fetchBookmarks();
+
+      return;
+    }
+
+    // Collections can have hundreds of categories, so only those near the viewport load.
+    this.setState({ waitingForVisibility: true });
+    this.cancelVisibleLoad = whenVisible(this.rootRef.current, () => {
+      this.cancelVisibleLoad = null;
+      this.setState({ waitingForVisibility: false });
+      this.fetchBookmarks();
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    // Expanding and collapsing load or clear the bookmarks via toggleCategory.
+    if (prevProps.hidden !== this.props.hidden) {
+      this.stopVisibleLoad();
     }
   }
+
+  componentWillUnmount() {
+    this.cancelVisibleLoad?.();
+    this.cancelVisibleLoad = null;
+  }
+
+  fetchBookmarks = () => {
+    const { id, getBookmarks } = this.props;
+
+    getBookmarks(id);
+  };
+
+  stopVisibleLoad = () => {
+    if (!this.cancelVisibleLoad) {
+      return;
+    }
+
+    this.cancelVisibleLoad();
+    this.cancelVisibleLoad = null;
+    this.setState({ waitingForVisibility: false });
+  };
 
   toggleCategory = () => {
     const { toggleCategory, hidden, id, viewOnly } = this.props;
@@ -109,7 +165,31 @@ class Category extends PureComponent {
     });
   };
 
-   
+  renderSkeleton() {
+    const { bookmarkCount } = this.props;
+
+    if (!bookmarkCount) {
+      return (
+        <Fragment>
+          <Skeleton className="category__skeleton" />
+          <Skeleton className="category__skeleton" />
+          <Skeleton className="category__skeleton" />
+        </Fragment>
+      );
+    }
+
+    // One element drawn as rows: a category can have hundreds of bookmarks, and the page hundreds of categories.
+    return (
+      <li
+        className="category__placeholder"
+        style={{ height: bookmarkCount * BOOKMARK_HEIGHT }}
+        aria-hidden="true"
+      >
+        <Skeleton className="category__placeholder-rows" />
+      </li>
+    );
+  }
+
   render() {
     const {
       name,
@@ -129,7 +209,8 @@ class Category extends PureComponent {
       dragType,
       viewOnly
     } = this.props;
-    const { editMode, hoverEditMode } = this.state;
+    const { editMode, hoverEditMode, waitingForVisibility } = this.state;
+    const isLoading = pending || waitingForVisibility;
     const headerClassName = classNames(
       'category__header',
       `category__header--${color}`,
@@ -138,7 +219,7 @@ class Category extends PureComponent {
     );
 
     return (
-      <li className="category">
+      <li className="category" ref={this.rootRef}>
         {!isExtension && (
           <header
             className={headerClassName}
@@ -248,12 +329,8 @@ class Category extends PureComponent {
               {...provided.droppableProps}
             >
               {(!hidden || isExtension || viewOnly) &&
-                (pending ? (
-                  <Fragment>
-                    <Skeleton className="category__skeleton" />
-                    <Skeleton className="category__skeleton" />
-                    <Skeleton className="category__skeleton" />
-                  </Fragment>
+                (isLoading ? (
+                  this.renderSkeleton()
                 ) : (
                   <Fragment>
                     {bookmarks.map((bookmark, index) => (
@@ -282,7 +359,7 @@ class Category extends PureComponent {
                   </Fragment>
                 ))}
               {(!hidden || isExtension || viewOnly) &&
-                !pending &&
+                !isLoading &&
                 bookmarks.length === 0 &&
                 !error && (
                   <li
@@ -305,7 +382,7 @@ class Category extends PureComponent {
         </Droppable>
         {!hidden &&
           !error &&
-          !pending &&
+          !isLoading &&
           !viewOnly &&
           !minimalBookmarkButton &&
           !isExtension && (

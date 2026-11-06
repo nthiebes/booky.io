@@ -69,7 +69,8 @@ export const getDashboards = (noReset) => (dispatch) => {
           activeCategories.map((category) => ({
             ...category,
             name: decodeEmoji(category.name),
-            pending: true
+            // Empty categories never load, so they must not start out as loading.
+            pending: category.bookmarkCount !== 0
           }))
         )
       );
@@ -232,7 +233,8 @@ export const getDashboard = (id) => (dispatch) => {
           activeCategories.map((category) => ({
             ...category,
             name: decodeEmoji(category.name),
-            pending: true
+            // Empty categories never load, so they must not start out as loading.
+            pending: category.bookmarkCount !== 0
           }))
         )
       );

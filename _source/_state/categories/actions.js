@@ -18,7 +18,8 @@ export const getCategories = (id) => (dispatch) => {
           data.map((category) => ({
             ...category,
             name: decodeEmoji(category.name),
-            pending: true
+            // Empty categories never load, so they must not start out as loading.
+            pending: category.bookmarkCount !== 0
           }))
         )
       );
