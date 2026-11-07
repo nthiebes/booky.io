@@ -336,6 +336,7 @@
   "error.default": "¡Vaya! Algo ha fallado por nuestra parte. Inténtalo de nuevo o escríbenos un {mail}.",
   "error.email": "correo electrónico",
   "error.failedLogin": "Tus datos de acceso no coinciden. Compruébalos e inténtalo de nuevo.",
+  "error.tooManyLoginAttempts": "Demasiados intentos fallidos de inicio de sesión. Espera 15 minutos e inténtalo de nuevo.",
   "error.invalidEmail": "Introduce una dirección de correo electrónico válida.",
   "error.invalidPassword": "Lamentablemente, tu contraseña actual no es correcta.",
   "contact.headline": "¡Escríbenos!",

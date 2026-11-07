@@ -336,6 +336,7 @@
   "error.default": "Hoppla! Da ist bei uns wohl etwas schief gelaufen. Bitte versuche es noch einmal oder schreib uns eine {mail}.",
   "error.email": "E-Mail",
   "error.failedLogin": "Deine Login-Daten stimmen nicht überein. Bitte überprüfe deine Angaben und versuche es erneut.",
+  "error.tooManyLoginAttempts": "Zu viele fehlgeschlagene Anmeldeversuche. Bitte warte 15 Minuten und versuche es erneut.",
   "error.invalidEmail": "Bitte gib eine valide E-Mail-Adresse ein.",
   "error.invalidPassword": "Dein aktuelles Passwort ist leider nicht korrekt.",
   "contact.headline": "Schreib uns!",

@@ -336,6 +336,7 @@
   "error.default": "Oeps! Er is bij ons iets misgegaan. Probeer het opnieuw of stuur ons een {mail}.",
   "error.email": "e-mail",
   "error.failedLogin": "Je inloggegevens komen niet overeen. Controleer je gegevens en probeer het opnieuw.",
+  "error.tooManyLoginAttempts": "Te veel mislukte inlogpogingen. Wacht 15 minuten en probeer het opnieuw.",
   "error.invalidEmail": "Voer een geldig e-mailadres in.",
   "error.invalidPassword": "Je huidige wachtwoord is helaas niet juist.",
   "contact.headline": "Schrijf ons!",

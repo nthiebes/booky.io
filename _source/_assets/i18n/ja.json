@@ -336,6 +336,7 @@
   "error.default": "おっと！こちらで問題が発生しました。もう一度試すか、{mail}でご連絡ください。",
   "error.email": "メール",
   "error.failedLogin": "ログイン情報が一致しません。確認してもう一度お試しください。",
+  "error.tooManyLoginAttempts": "ログインの失敗が多すぎます。15分待ってからもう一度お試しください。",
   "error.invalidEmail": "有効なメールアドレスを入力してください。",
   "error.invalidPassword": "現在のパスワードが正しくありません。",
   "contact.headline": "ご連絡ください！",

@@ -336,6 +336,7 @@
   "error.default": "앗! 저희 쪽에서 문제가 발생했어요. 다시 시도하거나 {mail}을 보내 주세요.",
   "error.email": "이메일",
   "error.failedLogin": "로그인 정보가 일치하지 않아요. 입력한 내용을 확인하고 다시 시도해 주세요.",
+  "error.tooManyLoginAttempts": "로그인 실패 횟수가 너무 많아요. 15분 후에 다시 시도해 주세요.",
   "error.invalidEmail": "유효한 이메일 주소를 입력해 주세요.",
   "error.invalidPassword": "현재 비밀번호가 올바르지 않아요.",
   "contact.headline": "문의하기!",

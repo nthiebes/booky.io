@@ -336,6 +336,7 @@
   "error.default": "Oups ! Un problème est survenu de notre côté. Réessaie ou écris-nous un {mail}.",
   "error.email": "e-mail",
   "error.failedLogin": "Tes identifiants ne correspondent pas. Vérifie tes informations et réessaie.",
+  "error.tooManyLoginAttempts": "Trop de tentatives de connexion échouées. Attends 15 minutes et réessaie.",
   "error.invalidEmail": "Saisis une adresse e-mail valide.",
   "error.invalidPassword": "Ton mot de passe actuel est malheureusement incorrect.",
   "contact.headline": "Écris-nous !",

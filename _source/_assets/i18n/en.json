@@ -336,6 +336,7 @@
   "error.default": "Oops! Something went wrong on our end. Please try again or write us an {mail}.",
   "error.email": "email",
   "error.failedLogin": "Your login details do not match. Please double-check and try again.",
+  "error.tooManyLoginAttempts": "Too many failed login attempts. Please wait 15 minutes and try again.",
   "error.invalidEmail": "Please enter a valid email address.",
   "error.invalidPassword": "Your current password is unfortunately not correct.",
   "contact.headline": "Write us!",
