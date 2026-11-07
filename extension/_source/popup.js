@@ -76,6 +76,9 @@ async function sendToIframe() {
     {
       ...pageData,
       tabs: await getAllTabs(),
+      // Tells the app that this popup can open tabs and send them. Older
+      // versions of the extension can't, so the app keeps their behavior.
+      supportsTabs: true,
       type: 'BOOKY'
     },
     host

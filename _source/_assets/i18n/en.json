@@ -560,6 +560,7 @@
   "new.update2Description": "This update brings the duplicate finder for supporters, lets you save or open all tabs at once with the browser extension and makes booky available in six more languages. On top of that, we improved many smaller things here and there.",
   "features.update2Feature2": "Save all open tabs or open a category in tabs (extension)",
   "new.update2Feature3": "New languages: French, Spanish, Dutch, Japanese, Korean and Hindi",
+  "new.update2Feature4": "iOS Shortcut: save links from Safari or any other app on your iPhone or iPad",
   "misc.updateInProgress": "We are currently updating booky - please try again soon!",
   "error.duplicateLink": "This link already exists in the collection {collection} ({category}).",
   "account.tools": "Tools",

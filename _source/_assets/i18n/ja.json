@@ -560,6 +560,7 @@
   "new.update2Description": "今回のアップデートでは、サポーター向けの重複検出機能が加わり、ブラウザ拡張機能ですべてのタブを一度に保存したり開いたりできるようになり、bookyが新たに6つの言語に対応しました。さらに、細かな点もあちこちで改善しています。",
   "features.update2Feature2": "開いているタブをまとめて保存、カテゴリーをタブで開く（拡張機能）",
   "new.update2Feature3": "新しい言語：フランス語、スペイン語、オランダ語、日本語、韓国語、ヒンディー語",
+  "new.update2Feature4": "iOSショートカット：iPhoneやiPadのSafariや他のAppからリンクを保存",
   "misc.updateInProgress": "現在bookyを更新中です。しばらくしてからもう一度お試しください！",
   "error.duplicateLink": "このリンクはすでにコレクション{collection}（{category}）に存在します。",
   "account.tools": "ツール",

@@ -560,6 +560,7 @@
   "new.update2Description": "Esta actualización trae el buscador de duplicados para la membresía de apoyo, te permite guardar o abrir todas las pestañas a la vez con la extensión del navegador y hace que booky esté disponible en seis idiomas más. Además, hemos mejorado muchos pequeños detalles aquí y allá.",
   "features.update2Feature2": "Guarda todas las pestañas abiertas o abre una categoría en pestañas (extensión)",
   "new.update2Feature3": "Nuevos idiomas: francés, español, neerlandés, japonés, coreano e hindi",
+  "new.update2Feature4": "Atajo de iOS: guarda enlaces desde Safari o cualquier otra app en tu iPhone o iPad",
   "misc.updateInProgress": "Estamos actualizando booky. ¡Inténtalo de nuevo en breve!",
   "error.duplicateLink": "Este enlace ya existe en la colección {collection} ({category}).",
   "account.tools": "Herramientas",

@@ -6,7 +6,8 @@ import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import P from '../../atoms/paragraph';
-import { isSafeUrl } from '../../_utils/url';
+import { isSafeUrl, getTabUrl } from '../../_utils/url';
+import { postMessage } from '../../_utils/extension';
 
 const Empty = ({ children }) => <Fragment>{children({})}</Fragment>;
 
@@ -80,8 +81,23 @@ class Bookmark extends PureComponent {
     });
   };
 
-  handleOnClick = () => {
-    if (this.props.isExtension) {
+  handleOnClick = (event) => {
+    const { isExtension, supportsTabs, url } = this.props;
+
+    if (!isExtension) {
+      return;
+    }
+
+    // Links in the popup's iframe open inside the iframe or not at all,
+    // depending on the browser, so the extension opens the tab (#446)
+    const tabUrl = supportsTabs && getTabUrl(url);
+
+    if (tabUrl) {
+      event.preventDefault();
+      postMessage({
+        openTabs: [tabUrl]
+      });
+    } else {
       window.close();
     }
   };

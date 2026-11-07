@@ -560,6 +560,7 @@
   "new.update2Description": "Cette mise à jour apporte la détection des doublons pour les membres de soutien, te permet d'enregistrer ou d'ouvrir tous les onglets d'un coup avec l'extension de navigateur et rend booky disponible dans six langues supplémentaires. En plus, nous avons amélioré de nombreux petits détails ici et là.",
   "features.update2Feature2": "Enregistrer tous les onglets ouverts ou ouvrir une catégorie en onglets (extension)",
   "new.update2Feature3": "Nouvelles langues : français, espagnol, néerlandais, japonais, coréen et hindi",
+  "new.update2Feature4": "Raccourci iOS : enregistrez des liens depuis Safari ou toute autre app sur votre iPhone ou iPad",
   "misc.updateInProgress": "Nous sommes en train de mettre à jour booky - réessaie dans un instant !",
   "error.duplicateLink": "Ce lien existe déjà dans la collection {collection} ({category}).",
   "account.tools": "Outils",

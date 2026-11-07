@@ -560,6 +560,7 @@
   "new.update2Description": "이번 업데이트로 서포터를 위한 중복 찾기 기능이 추가되고, 브라우저 확장 프로그램에서 모든 탭을 한 번에 저장하거나 열 수 있으며, booky를 6개 언어로 더 사용할 수 있어요. 그 밖에도 여기저기 작은 부분들을 많이 개선했어요.",
   "features.update2Feature2": "열린 탭 모두 저장 또는 카테고리를 탭으로 열기 (확장 프로그램)",
   "new.update2Feature3": "새로운 언어: 프랑스어, 스페인어, 네덜란드어, 일본어, 한국어, 힌디어",
+  "new.update2Feature4": "iOS 단축어: iPhone 또는 iPad의 Safari나 다른 앱에서 링크 저장",
   "misc.updateInProgress": "지금 booky를 업데이트하는 중이에요 - 잠시 후 다시 시도해 주세요!",
   "error.duplicateLink": "이 링크는 이미 {collection} 컬렉션({category})에 있어요.",
   "account.tools": "도구",

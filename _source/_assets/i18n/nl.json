@@ -560,6 +560,7 @@
   "new.update2Description": "Deze update brengt de dubbelzoeker voor supporters, laat je met de browserextensie alle tabbladen tegelijk opslaan of openen en maakt booky beschikbaar in zes extra talen. Daarnaast hebben we hier en daar veel kleinere dingen verbeterd.",
   "features.update2Feature2": "Alle open tabbladen opslaan of een categorie in tabbladen openen (extensie)",
   "new.update2Feature3": "Nieuwe talen: Frans, Spaans, Nederlands, Japans, Koreaans en Hindi",
+  "new.update2Feature4": "iOS-opdracht: sla links op vanuit Safari of elke andere app op je iPhone of iPad",
   "misc.updateInProgress": "We zijn booky aan het bijwerken - probeer het zo meteen nog eens!",
   "error.duplicateLink": "Deze link bestaat al in de collectie {collection} ({category}).",
   "account.tools": "Hulpmiddelen",

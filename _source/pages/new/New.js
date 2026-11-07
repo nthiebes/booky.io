@@ -58,7 +58,7 @@ export default class New extends PureComponent {
             <time>
               <i>
                 <FormattedDate
-                  value={new Date('2026-11-03 20:22:21')}
+                  value={new Date('2026-11-07 20:22:21')}
                   month="long"
                   day="2-digit"
                   year="numeric"
@@ -90,6 +90,9 @@ export default class New extends PureComponent {
             </ListItem>
             <ListItem>
               <FormattedMessage id="new.update2Feature3" />
+            </ListItem>
+            <ListItem>
+              <FormattedMessage id="new.update2Feature4" />
             </ListItem>
           </List>
         </Section>
@@ -147,7 +150,6 @@ export default class New extends PureComponent {
             <FormattedMessage id="new.oldUpdates" />
           </H2>
           <div>
-            {}
             {releases.map(({ id, name, body, published_at }, index) => {
               const lines = body.split('\n');
 

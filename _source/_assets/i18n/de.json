@@ -560,6 +560,7 @@
   "new.update2Description": "Dieses Update bringt die Duplikatsuche für Supporter·innen, lässt dich mit der Browser-Erweiterung alle Tabs auf einmal speichern oder öffnen und macht booky in sechs weiteren Sprachen verfügbar. Außerdem haben wir hier und da viele kleinere Dinge verbessert.",
   "features.update2Feature2": "Alle offenen Tabs speichern oder eine Kategorie in Tabs öffnen (Erweiterung)",
   "new.update2Feature3": "Neue Sprachen: Französisch, Spanisch, Niederländisch, Japanisch, Koreanisch und Hindi",
+  "new.update2Feature4": "iOS-Kurzbefehl: Speichere Links aus Safari oder jeder anderen App auf deinem iPhone oder iPad",
   "misc.updateInProgress": "Wir aktualisieren gerade booky - versuch es bitte gleich nochmal!",
   "error.duplicateLink": "Dieser Link existiert bereits in der Sammlung {collection} ({category}).",
   "account.tools": "Werkzeuge",

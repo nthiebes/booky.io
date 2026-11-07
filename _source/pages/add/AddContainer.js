@@ -17,6 +17,7 @@ const mapStateToProps = (state) => ({
   url: state.extension.page.url,
   note: state.extension.page.description,
   tabs: state.extension.page.tabs,
+  supportsTabs: Boolean(state.extension.page.supportsTabs),
   enableNotes: state.user.settings.enableNotes,
   categories: state.categories,
   dashboards: state.dashboards.items,

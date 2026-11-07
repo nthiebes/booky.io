@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 
 import { postMessage, isExtensionPopup } from '../../_utils/extension';
+import { getTabUrl } from '../../_utils/url';
 import Select from '../../atoms/select';
 import Icon from '../../atoms/icon';
 import Extension from '../../templates/extension';
@@ -39,10 +40,7 @@ class Open extends Component {
     // The iframe can't open several tabs itself (popup blocker), so the
     // extension does it
     postMessage({
-      // Bookmarks added without a protocol are saved as //example.com
-      openTabs: bookmarks.map(({ url }) =>
-        url.startsWith('//') ? `https:${url}` : url
-      )
+      openTabs: bookmarks.map(({ url }) => getTabUrl(url)).filter(Boolean)
     });
   };
 
@@ -112,7 +110,7 @@ class Open extends Component {
               name="categoryId"
             />
             {/* Opening tabs needs the extension, the bookmarklet can't */}
-            {isExtensionPopup() && (
+            {this.props.supportsTabs && (
               <Icon
                 icon="open"
                 label={intl.formatMessage({ id: 'modal.openAllBookmarks' })}

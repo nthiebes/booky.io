@@ -1,4 +1,4 @@
-import { parseBookmarkUrl, isSafeUrl } from './index';
+import { parseBookmarkUrl, isSafeUrl, getTabUrl } from './index';
 
 describe('parseBookmarkUrl', () => {
   it('transforms url into protocol relative url', () => {
@@ -48,5 +48,21 @@ describe('isSafeUrl', () => {
   it('rejects non-strings', () => {
     expect(isSafeUrl(undefined)).toBe(false);
     expect(isSafeUrl(null)).toBe(false);
+  });
+});
+
+describe('getTabUrl', () => {
+  it('keeps http(s) urls', () => {
+    expect(getTabUrl('https://booky.io')).toBe('https://booky.io');
+    expect(getTabUrl('http://booky.io')).toBe('http://booky.io');
+  });
+
+  it('adds https to protocol relative urls', () => {
+    expect(getTabUrl('//booky.io')).toBe('https://booky.io');
+  });
+
+  it('returns null for other schemes', () => {
+    expect(getTabUrl('ftp://booky.io')).toBe(null);
+    expect(getTabUrl('javascript:alert(1)')).toBe(null);
   });
 });

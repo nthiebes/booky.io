@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { postMessage, isExtensionPopup } from '../../_utils/extension';
+import { postMessage } from '../../_utils/extension';
 import { ButtonLargePrimary } from '../../atoms/button';
 import Select from '../../atoms/select';
 import Checkbox from '../../atoms/checkbox';
@@ -378,7 +378,7 @@ class Add extends Component {
                 values={{ b: (msg) => <b>{msg}</b> }}
               />
             </ButtonLargePrimary>
-            {isExtensionPopup() && (
+            {this.props.supportsTabs && (
               <Checkbox
                 label={intl.formatMessage({ id: 'extension.saveAllTabs' })}
                 id="saveAllTabs"
