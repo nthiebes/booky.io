@@ -532,6 +532,7 @@
   "extension.saveAllTabsPermission": "L'enregistrement de tous les onglets nécessite une autorisation supplémentaire. Tu peux l'accorder dans les <options>options de l'extension</options>.",
   "extension.saveAllTabsEmpty": "Il n'y a aucun onglet ouvert pouvant être enregistré.",
   "error.badRequest.bookmarks.tooMany": "Tu peux ajouter au maximum 100 onglets à la fois.",
+  "error.badRequest.bookmarkUrl.unsafeScheme": "Ce lien ne peut pas être enregistré, car il exécute du code (javascript:, data: ou vbscript:).",
   "menu.new": "Nouveautés",
   "bookmarklet.info": "Ajoute le site web actuel à booky et accède à tous tes favoris.",
   "misc.copy": "Copier",

@@ -8,7 +8,6 @@ const defaultOptions = {
   credentials:
     process.env.NODE_ENV === 'development' ? 'include' : 'same-origin'
 };
-let controller;
 const formatResponse = (response) =>
   // if (response.status >= 200 && response.status < 300) {
   //   return response;
@@ -30,8 +29,35 @@ const checkEmptyResponse = (response) => {
 
   return response.json();
 };
-const abortFetch = () => {
-  controller && controller.abort();
+// Requests started with an abortKey can be cancelled as a group, e.g. all
+// search requests. Requests without one are never aborted, so cancelling one
+// feature can't break another (like the lazy loading of categories).
+const controllers = new Map();
+const abortFetch = (abortKey) => {
+  const group = controllers.get(abortKey);
+
+  if (group) {
+    controllers.delete(abortKey);
+    group.forEach((controller) => controller.abort());
+  }
+};
+const registerController = (abortKey, controller) => {
+  if (!controllers.has(abortKey)) {
+    controllers.set(abortKey, new Set());
+  }
+
+  controllers.get(abortKey).add(controller);
+};
+const unregisterController = (abortKey, controller) => {
+  const group = controllers.get(abortKey);
+
+  if (group) {
+    group.delete(controller);
+
+    if (!group.size) {
+      controllers.delete(abortKey);
+    }
+  }
 };
 const CSRF_ERROR = 'error.forbidden.csrf';
 const writeMethods = ['POST', 'DELETE', 'PUT', 'PATCH'];
@@ -107,9 +133,14 @@ const fetcher = ({
   onSuccess,
   onError,
   onAbort,
+  abortKey,
   options = {}
 }) => {
-  controller = new AbortController();
+  const controller = new AbortController();
+
+  if (abortKey) {
+    registerController(abortKey, controller);
+  }
 
   send({ method, url, params, options, signal: controller.signal })
     .then((response) => {
@@ -127,7 +158,18 @@ const fetcher = ({
       } else if (onAbort) {
         onAbort();
       }
+    })
+    .finally(() => {
+      if (abortKey) {
+        unregisterController(abortKey, controller);
+      }
     });
+};
+
+export const ABORT_KEYS = {
+  search: 'search',
+  categories: 'categories',
+  modal: 'modal'
 };
 
 export { abortFetch };

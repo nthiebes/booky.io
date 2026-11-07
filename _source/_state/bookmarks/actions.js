@@ -1,4 +1,4 @@
-import fetcher from '../../_utils/fetcher';
+import fetcher, { ABORT_KEYS } from '../../_utils/fetcher';
 import { encodeEmoji, decodeEmoji } from '../../_utils/string';
 
 export const setBookmarks = ({ bookmarks, id, error }) => ({
@@ -213,6 +213,7 @@ export const getTitle =
   () => {
     fetcher({
       url: `/helpers/page-title?url=${url}`,
+      abortKey: ABORT_KEYS.modal,
       onSuccess: ({ title }) => {
         onSuccess(title);
       },
@@ -225,6 +226,7 @@ export const getDuplicates =
   () => {
     fetcher({
       url: `/bookmarks/exists?url=${url}`,
+      abortKey: ABORT_KEYS.modal,
       onSuccess: (data) => {
         onSuccess(data);
       },

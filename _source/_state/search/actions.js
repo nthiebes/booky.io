@@ -1,4 +1,4 @@
-import fetcher, { abortFetch } from '../../_utils/fetcher';
+import fetcher, { abortFetch, ABORT_KEYS } from '../../_utils/fetcher';
 import { decodeEmoji } from '../../_utils/string';
 import initialState from '../../initialState';
 
@@ -33,10 +33,11 @@ export const appendSearchResults = (data) => ({
 export const searchBookmarks =
   ({ keyword, abort = true }) =>
   (dispatch) => {
-    abort && abortFetch();
+    abort && abortFetch(ABORT_KEYS.search);
 
     fetcher({
       url: `/bookmarks/search?searchTerm=${keyword}&limit=${initialState.search.limit}&offset=0`,
+      abortKey: ABORT_KEYS.search,
       onSuccess: ({ dashboards, total }) => {
         dispatch(
           updateSearchData({
@@ -66,10 +67,11 @@ export const loadMoreBookmarks =
         offset
       })
     );
-    abortFetch();
+    abortFetch(ABORT_KEYS.search);
 
     fetcher({
       url: `/bookmarks/search?searchTerm=${keyword}&limit=${limit}&offset=${offset}`,
+      abortKey: ABORT_KEYS.search,
       onSuccess: ({ dashboards, total }) => {
         dispatch(
           appendSearchResults({

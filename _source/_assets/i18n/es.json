@@ -532,6 +532,7 @@
   "extension.saveAllTabsPermission": "Para guardar todas las pestañas se necesita un permiso adicional. Puedes concederlo en las <options>opciones de la extensión</options>.",
   "extension.saveAllTabsEmpty": "No hay pestañas abiertas que se puedan guardar.",
   "error.badRequest.bookmarks.tooMany": "Puedes añadir como máximo 100 pestañas a la vez.",
+  "error.badRequest.bookmarkUrl.unsafeScheme": "Este enlace no se puede guardar porque ejecuta código (javascript:, data: o vbscript:).",
   "menu.new": "Novedades",
   "bookmarklet.info": "Añade el sitio web actual a booky y accede a todos tus marcadores.",
   "misc.copy": "Copiar",

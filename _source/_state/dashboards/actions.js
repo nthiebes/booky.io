@@ -1,4 +1,4 @@
-import fetcher, { abortFetch } from '../../_utils/fetcher';
+import fetcher, { abortFetch, ABORT_KEYS } from '../../_utils/fetcher';
 import { encodeEmoji, decodeEmoji } from '../../_utils/string';
 import { removeEmpty } from '../../_utils/object';
 
@@ -29,7 +29,9 @@ export const changeDashboard =
         pending: true
       })
     );
-    abortFetch();
+    // A slower response for the previous collection must not overwrite this one
+    abortFetch(ABORT_KEYS.search);
+    abortFetch(ABORT_KEYS.categories);
     dispatch(
       updateSettings(
         {
@@ -173,7 +175,6 @@ export const deleteDashboard =
       url,
       method: 'DELETE',
       onSuccess: () => {
-        // The order is important since in the onSuccess callback "abortFetch" is called
         onSuccess();
 
         dispatch({

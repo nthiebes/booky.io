@@ -532,6 +532,7 @@
   "extension.saveAllTabsPermission": "Voor het opslaan van alle tabbladen is een extra toestemming nodig. Je kunt deze geven in de <options>opties van de extensie</options>.",
   "extension.saveAllTabsEmpty": "Er zijn geen open tabbladen die kunnen worden opgeslagen.",
   "error.badRequest.bookmarks.tooMany": "Je kunt maximaal 100 tabbladen tegelijk toevoegen.",
+  "error.badRequest.bookmarkUrl.unsafeScheme": "Deze link kan niet worden opgeslagen, omdat hij code uitvoert (javascript:, data: of vbscript:).",
   "menu.new": "Nieuws",
   "bookmarklet.info": "Sla de huidige website op in booky en open al je bladwijzers.",
   "misc.copy": "Kopiëren",

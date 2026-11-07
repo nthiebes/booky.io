@@ -532,6 +532,7 @@
   "extension.saveAllTabsPermission": "Um alle Tabs zu speichern, wird eine zusätzliche Berechtigung benötigt. Du kannst sie in den <options>Optionen der Erweiterung</options> erteilen.",
   "extension.saveAllTabsEmpty": "Es gibt keine offenen Tabs, die gespeichert werden können.",
   "error.badRequest.bookmarks.tooMany": "Du kannst höchstens 100 Tabs auf einmal hinzufügen.",
+  "error.badRequest.bookmarkUrl.unsafeScheme": "Dieser Link kann nicht gespeichert werden, da er Code ausführt (javascript:, data: oder vbscript:).",
   "menu.new": "Neues",
   "bookmarklet.info": "Speichere die aktuelle Webseite bei booky und greife auf all deine Lesezeichen zu.",
   "misc.copy": "Kopieren",

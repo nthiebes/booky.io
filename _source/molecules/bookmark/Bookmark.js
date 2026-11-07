@@ -6,6 +6,7 @@ import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import P from '../../atoms/paragraph';
+import { isSafeUrl } from '../../_utils/url';
 
 const Empty = ({ children }) => <Fragment>{children({})}</Fragment>;
 
@@ -108,6 +109,9 @@ class Bookmark extends PureComponent {
       className
     } = this.props;
     const { hoverEditMode, showNotes } = this.state;
+    // Bookmarks can be shared with other users, so a javascript: URL must never become a link
+    const href = isSafeUrl(url) ? url : undefined;
+    const target = newtab || isExtension ? '_blank' : '_self';
     const Wrapper = isSearch ? Empty : Draggable;
 
     return (
@@ -160,15 +164,14 @@ class Bookmark extends PureComponent {
                   <img src={favicon} height="16" width="16" alt="" />
                 </div>
               )}
-              {/* eslint-disable-next-line react/jsx-no-target-blank */}
               <a
                 className={classNames(
                   'bookmark__link',
                   darkMode && 'bookmark__link--dark'
                 )}
-                href={url}
-                target={newtab || isExtension ? '_blank' : '_self'}
-                rel={newtab ? 'noopener noreferrer' : null}
+                href={href}
+                target={target}
+                rel={target === '_blank' ? 'noopener noreferrer' : null}
                 onClick={this.handleOnClick}
                 onMouseEnter={
                   bookmarkEditOnHover && (!isMobile || isExtension)

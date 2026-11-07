@@ -1,4 +1,4 @@
-import fetcher from '../../_utils/fetcher';
+import fetcher, { ABORT_KEYS } from '../../_utils/fetcher';
 import { encodeEmoji, decodeEmoji } from '../../_utils/string';
 import { removeEmpty } from '../../_utils/object';
 import { updateDashboardsData } from '../dashboards/actions';
@@ -12,6 +12,7 @@ export const setCategories = (categories) => ({
 export const getCategories = (id) => (dispatch) => {
   fetcher({
     url: `/dashboards/${id}/categories`,
+    abortKey: ABORT_KEYS.categories,
     onSuccess: (data) => {
       dispatch(
         setCategories(

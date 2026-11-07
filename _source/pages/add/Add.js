@@ -16,6 +16,7 @@ import Expandable from '../../molecules/expandable';
 import Form from '../../molecules/form';
 import { decodeEmoji, encodeEmoji } from '../../_utils/string';
 import { createDuplicateCheck } from '../../_utils/duplicate-check';
+import { isSafeUrl } from '../../_utils/url';
 
 const MAX_NAME_LENGTH = 200;
 const MAX_URL_LENGTH = 2000;
@@ -242,7 +243,9 @@ class Add extends Component {
 
   saveAllTabs = (categoryId) => {
     const { addBookmarks, tabs } = this.props;
-    const savableTabs = tabs.filter(({ url }) => url.length <= MAX_URL_LENGTH);
+    const savableTabs = tabs.filter(
+      ({ url }) => isSafeUrl(url) && url.length <= MAX_URL_LENGTH
+    );
 
     if (savableTabs.length === 0) {
       this.setState({

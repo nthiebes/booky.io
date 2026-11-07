@@ -6,7 +6,7 @@ import Input from '../../../atoms/input';
 import Textarea from '../../../atoms/textarea';
 import { ErrorMessage } from '../../../atoms/messages';
 import Expandable from '../../../molecules/expandable';
-import { abortFetch } from '../../../_utils/fetcher';
+import { abortFetch, ABORT_KEYS } from '../../../_utils/fetcher';
 import { parseBookmarkUrl } from '../../../_utils/url';
 import { createDuplicateCheck } from '../../../_utils/duplicate-check';
 import { decodeEmoji } from '../../../_utils/string';
@@ -106,7 +106,7 @@ class EditBookmark extends PureComponent {
     const { onClose } = this.props;
 
     this.duplicateCheck.cancel();
-    abortFetch();
+    abortFetch(ABORT_KEYS.modal);
     onClose();
   };
 

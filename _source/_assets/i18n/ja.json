@@ -532,6 +532,7 @@
   "extension.saveAllTabsPermission": "すべてのタブを保存するには追加の権限が必要です。<options>拡張機能のオプション</options>で許可できます。",
   "extension.saveAllTabsEmpty": "保存できる開いているタブがありません。",
   "error.badRequest.bookmarks.tooMany": "一度に追加できるタブは最大100件です。",
+  "error.badRequest.bookmarkUrl.unsafeScheme": "このリンクはコードを実行するため保存できません（javascript:、data:、vbscript:）。",
   "menu.new": "ニュース",
   "bookmarklet.info": "現在のWebサイトをbookyに追加し、すべてのブックマークにアクセスできます。",
   "misc.copy": "コピー",

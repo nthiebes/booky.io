@@ -29,6 +29,10 @@ then
   },"
 fi
 
+# host_permissions for booky's own origins are required: without them the
+# browser treats the iframe in the popup as a third-party context and doesn't
+# send the session cookie, so the user is logged out and login fails.
+# localhost is for development.
 manifest() {
   echo "{
   \"name\": \"__MSG_appName__\",
@@ -40,7 +44,8 @@ manifest() {
     \"extension_pages\": \"default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io https://booky.io\"
   },
   \"permissions\": [\"activeTab\", \"management\",  \"storage\", \"scripting\"],
-  \"optional_permissions\": [\"tabs\"],$1
+  \"optional_permissions\": [\"tabs\"],
+  \"host_permissions\": [\"https://booky.io/*\", \"https://*.booky.io/*\", \"http://localhost/*\"],$1
   \"action\": {
     \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
@@ -55,12 +60,6 @@ manifest() {
     \"page\": \"options.html\",
     \"open_in_tab\": false
   },
-  \"content_scripts\": [
-    {
-      \"matches\": [\"<all_urls>\"],
-      \"js\": [\"content.js\"]
-    }
-  ],
   \"icons\": {
     \"16\": \"images/icon-16x16.png\",
     \"32\": \"images/icon-32x32.png\",

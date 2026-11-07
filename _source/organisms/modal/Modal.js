@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import { abortFetch } from '../../_utils/fetcher';
+import { abortFetch, ABORT_KEYS } from '../../_utils/fetcher';
 import { parseBookmarkUrl } from '../../_utils/url';
 
 import AddBookmark from './modals/AddBookmarkContainer';
@@ -151,7 +151,7 @@ export default class Modal extends PureComponent {
       pending: false,
       error: null
     });
-    abortFetch();
+    abortFetch(ABORT_KEYS.modal);
     closeModal();
 
     window.setTimeout(() => {
