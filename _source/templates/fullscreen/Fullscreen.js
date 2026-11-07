@@ -1,19 +1,12 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 import P from '../../atoms/paragraph';
-import { postMessage } from '../../_utils/extension';
+import { postMessage, isExtensionMessage } from '../../_utils/extension';
 import { config } from '../../config';
 
 export default class Fullscreen extends PureComponent {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-    updateExtensionData: PropTypes.func.isRequired
-  };
-
   componentDidMount() {
     const { updateExtensionData } = this.props;
 
@@ -24,13 +17,16 @@ export default class Fullscreen extends PureComponent {
 
     // Messages from the popup
     window.addEventListener('message', (event) => {
-      // const { type, ...pageData } = event.data;
+      if (!isExtensionMessage(event)) {
+        return;
+      }
 
-      // if (type === 'BOOKY') {
+      // eslint-disable-next-line no-unused-vars
+      const { type, ...page } = event.data;
+
       updateExtensionData({
-        page: event.data
+        page
       });
-      // }
     });
   }
 

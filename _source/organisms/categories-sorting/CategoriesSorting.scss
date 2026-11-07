@@ -12,13 +12,11 @@
   display: block;
   font-style: italic;
 
-  /* stylelint-disable a11y/content-property-no-static-value */
   &::before {
     content: "»";
     position: absolute;
     left: 0;
   }
-  /* stylelint-enable */
 }
 
 .categories-sorting__name--dark-mode {

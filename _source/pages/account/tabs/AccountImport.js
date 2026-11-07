@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Dropzone from 'react-dropzone';
 import classNames from 'classnames';
@@ -15,11 +14,6 @@ import Form from '../../../molecules/form';
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB
 
 class AccountImport extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    importBookmarks: PropTypes.func.isRequired
-  };
-
   state = {
     files: null,
     error: null,

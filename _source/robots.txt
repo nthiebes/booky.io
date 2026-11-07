@@ -1,2 +1,10 @@
 User-agent: *
-Disallow:
+Disallow: /account
+Disallow: /next
+Disallow: /upsell
+Disallow: /extension/
+Disallow: /activate/
+Disallow: /recovery/
+Disallow: /api/
+
+Sitemap: https://booky.io/sitemap.xml

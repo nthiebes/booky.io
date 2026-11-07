@@ -1,26 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
-import { abortFetch } from '../../_utils/fetcher';
+import { abortFetch, ABORT_KEYS } from '../../_utils/fetcher';
 
 import Input from '../../atoms/input';
 import Icon from '../../atoms/icon';
 
 class SearchField extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    intl: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool,
-    id: PropTypes.string.isRequired,
-    searchBookmarks: PropTypes.func.isRequired,
-    resetSearch: PropTypes.func.isRequired,
-    updateSearchData: PropTypes.func.isRequired,
-    keyword: PropTypes.string,
-    dashboardsPending: PropTypes.bool
-  };
-
   fetchTimeout;
 
   handleChange = (keyword) => {
@@ -41,7 +28,7 @@ class SearchField extends Component {
 
     if (keyword === '') {
       window.scrollTo(0, 0);
-      abortFetch();
+      abortFetch(ABORT_KEYS.search);
       resetSearch();
     } else {
       this.fetchTimeout = setTimeout(() => {
@@ -64,14 +51,8 @@ class SearchField extends Component {
   };
 
   render() {
-    const {
-      className,
-      intl,
-      darkMode,
-      id,
-      keyword,
-      dashboardsPending
-    } = this.props;
+    const { className, intl, darkMode, id, keyword, dashboardsPending } =
+      this.props;
 
     return (
       <form

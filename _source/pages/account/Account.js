@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
@@ -11,16 +10,11 @@ import {
   AccountData,
   AccountImport,
   AccountExport,
-  AccountManage,
-  AccountSupporter
+  AccountSupporter,
+  AccountTools
 } from './tabs';
 
 class Account extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
   state = {
     activeTab: document.location.hash
       ? document.location.hash.replace('#', '')
@@ -43,9 +37,12 @@ class Account extends Component {
     {
       name: this.props.intl.formatMessage({ id: 'account.export' }),
       key: 'export'
+    },
+    {
+      name: this.props.intl.formatMessage({ id: 'account.tools' }),
+      key: 'tools'
     }
   ];
-  // name: props.intl.formatMessage({ id: 'account.account' })
 
   handleTabClick = (activeTab) => {
     const { history } = this.props;
@@ -81,8 +78,8 @@ class Account extends Component {
           {activeTab === 'data' && <AccountData />}
           {activeTab === 'import' && <AccountImport />}
           {activeTab === 'export' && <AccountExport />}
-          {activeTab === 'manage' && <AccountManage />}
           {activeTab === 'supporter' && <AccountSupporter />}
+          {activeTab === 'tools' && <AccountTools />}
         </Section>
       </Page>
     );

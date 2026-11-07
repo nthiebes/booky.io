@@ -1,43 +1,17 @@
-/* eslint-disable complexity */
+ 
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
 import P from '../../atoms/paragraph';
+import { isSafeUrl, getTabUrl } from '../../_utils/url';
+import { postMessage } from '../../_utils/extension';
 
 const Empty = ({ children }) => <Fragment>{children({})}</Fragment>;
 
 class Bookmark extends PureComponent {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    editMode: PropTypes.bool.isRequired,
-    target: PropTypes.string,
-    id: PropTypes.number.isRequired,
-    openModal: PropTypes.func.isRequired,
-    categoryId: PropTypes.number.isRequired,
-    index: PropTypes.number.isRequired,
-    intl: PropTypes.object.isRequired,
-    newtab: PropTypes.bool.isRequired,
-    favicon: PropTypes.string,
-    darkMode: PropTypes.bool.isRequired,
-    closeEditMode: PropTypes.bool.isRequired,
-    onDeleteOrEditClick: PropTypes.func.isRequired,
-    bookmarkEditOnHover: PropTypes.bool.isRequired,
-    isDragging: PropTypes.bool.isRequired,
-    isMobile: PropTypes.bool.isRequired,
-    isExtension: PropTypes.bool.isRequired,
-    enableNotes: PropTypes.bool.isRequired,
-    note: PropTypes.string,
-    viewOnly: PropTypes.bool,
-    color: PropTypes.string,
-    isSearch: PropTypes.bool,
-    className: PropTypes.string
-  };
-
   state = {
     hoverEditMode: false,
     showNotes: false
@@ -107,8 +81,23 @@ class Bookmark extends PureComponent {
     });
   };
 
-  handleOnClick = () => {
-    if (this.props.isExtension) {
+  handleOnClick = (event) => {
+    const { isExtension, supportsTabs, url } = this.props;
+
+    if (!isExtension) {
+      return;
+    }
+
+    // Links in the popup's iframe open inside the iframe or not at all,
+    // depending on the browser, so the extension opens the tab (#446)
+    const tabUrl = supportsTabs && getTabUrl(url);
+
+    if (tabUrl) {
+      event.preventDefault();
+      postMessage({
+        openTabs: [tabUrl]
+      });
+    } else {
       window.close();
     }
   };
@@ -136,6 +125,9 @@ class Bookmark extends PureComponent {
       className
     } = this.props;
     const { hoverEditMode, showNotes } = this.state;
+    // Bookmarks can be shared with other users, so a javascript: URL must never become a link
+    const href = isSafeUrl(url) ? url : undefined;
+    const target = newtab || isExtension ? '_blank' : '_self';
     const Wrapper = isSearch ? Empty : Draggable;
 
     return (
@@ -175,30 +167,27 @@ class Bookmark extends PureComponent {
                   {name.substring(0, 1).toUpperCase()}
                 </div>
               ) : (
-                <img
-                  src={favicon}
-                  height="16"
-                  width="16"
-                  alt=""
-                  className={classNames(
-                    'bookmark__favicon',
-                    viewOnly && 'bookmark__favicon--viewOnly'
-                  )}
+                <div
                   {...provided.dragHandleProps}
                   tabIndex="-1"
                   aria-hidden="true"
                   title={intl.formatMessage({ id: 'bookmark.drag' })}
-                />
+                  className={classNames(
+                    'bookmark__favicon',
+                    viewOnly && 'bookmark__favicon--viewOnly'
+                  )}
+                >
+                  <img src={favicon} height="16" width="16" alt="" />
+                </div>
               )}
-              {/* eslint-disable-next-line react/jsx-no-target-blank */}
               <a
                 className={classNames(
                   'bookmark__link',
                   darkMode && 'bookmark__link--dark'
                 )}
-                href={url}
-                target={newtab || isExtension ? '_blank' : '_self'}
-                rel={newtab ? 'noopener noreferrer' : null}
+                href={href}
+                target={target}
+                rel={target === '_blank' ? 'noopener noreferrer' : null}
                 onClick={this.handleOnClick}
                 onMouseEnter={
                   bookmarkEditOnHover && (!isMobile || isExtension)

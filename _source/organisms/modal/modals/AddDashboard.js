@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 
 import Base from '../Base';
 import Input from '../../../atoms/input';
 
 class AddDashboard extends Component {
-  static propTypes = {
-    onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired,
-    pending: PropTypes.bool,
-    darkMode: PropTypes.bool
-  };
-
   state = {
     name: ''
   };

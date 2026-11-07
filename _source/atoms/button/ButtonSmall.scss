@@ -276,3 +276,35 @@
     }
   }
 }
+
+.button--small-orange {
+  background-color: transparent;
+  border-color: $color--orange;
+  color: $color--orange;
+
+  @include mobile-tablet() {
+    &:active,
+    &:focus {
+      background-color: $color--orange;
+      color: $color-font--white;
+    }
+
+    &:active .icon,
+    &:focus .icon {
+      color: $color-font--white;
+    }
+  }
+
+  @include desktop() {
+    &:hover,
+    &:focus {
+      background-color: $color--orange;
+      color: $color-font--white;
+    }
+
+    &:hover .icon,
+    &:focus .icon {
+      color: $color-font--white;
+    }
+  }
+}

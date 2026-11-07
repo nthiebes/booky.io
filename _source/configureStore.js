@@ -41,7 +41,7 @@ function configureStoreDev(initialState) {
     reactRouterMiddleware
   ];
   const composeEnhancers =
-    // eslint-disable-next-line no-underscore-dangle
+     
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
   const store = createStore(
     createRootReducer(history), // root reducer with router state
@@ -52,7 +52,7 @@ function configureStoreDev(initialState) {
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers').default; // eslint-disable-line global-require
+      const nextRootReducer = require('./reducers').default;
 
       store.replaceReducer(connectRouterHistory(nextRootReducer));
     });

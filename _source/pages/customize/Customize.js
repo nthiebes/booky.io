@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { postMessage } from '../../_utils/extension';
@@ -11,11 +10,6 @@ import { H3 } from '../../atoms/headline';
 import { ButtonSmallPrimary } from '../../atoms/button';
 
 class Customize extends Component {
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-    logout: PropTypes.func.isRequired
-  };
-
   state = {
     logoutPending: false
   };

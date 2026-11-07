@@ -1,6 +1,4 @@
-/* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -16,13 +14,6 @@ import Link from '../../atoms/link/Link';
 import './Supporter.scss';
 
 class Supporter extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    premium: PropTypes.bool,
-    stickyHeader: PropTypes.bool,
-    loggedIn: PropTypes.bool
-  };
-
   render() {
     const { stickyHeader, intl, premium, loggedIn } = this.props;
 
@@ -413,7 +404,7 @@ class Supporter extends PureComponent {
                   </P>
                 </td>
               </tr>
-              {/* <tr>
+              <tr>
                 <td className="booky--hide-mobile" />
                 <td className="supporter__compare-entry">
                   <P className="supporter__compare-feature" ignoreDarkMode>
@@ -423,7 +414,7 @@ class Supporter extends PureComponent {
                     </strong>
                   </P>
                 </td>
-              </tr> */}
+              </tr>
               <tr>
                 <td className="booky--hide-mobile" />
                 <td className="supporter__compare-entry">

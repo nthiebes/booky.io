@@ -20,18 +20,18 @@ export const updateUserData = (userData) => (dispatch) => {
 export const updateUser =
   ({ userData, onError, onSuccess }) =>
   (dispatch) => {
-    dispatch({
-      type: UPDATE_USER,
-      userData: {
-        username: userData.username
-      }
-    });
-
     fetcher({
       url: '/account',
       method: 'PATCH',
       params: removeEmpty(userData),
       onSuccess: (data) => {
+        dispatch({
+          type: UPDATE_USER,
+          userData: {
+            name: userData.username
+          }
+        });
+
         onSuccess && onSuccess(data);
       },
       onError: (error) => {
@@ -180,6 +180,36 @@ export const activate =
     });
   };
 
+export const confirmEmail =
+  ({ token, onSuccess, onError }) =>
+  (dispatch, getState) => {
+    fetcher({
+      url: '/account/email/confirmation',
+      method: 'POST',
+      params: {
+        token
+      },
+      onSuccess: () => {
+        onSuccess && onSuccess();
+
+        // The link may belong to another account than the one logged in here,
+        // so the current address has to come from the backend.
+        if (getState().user.loggedIn) {
+          fetcher({
+            url: '/user',
+            onSuccess: ({ email }) => {
+              dispatch(updateUserData({ email }));
+            },
+            onError: () => {}
+          });
+        }
+      },
+      onError: (error) => {
+        onError && onError(error);
+      }
+    });
+  };
+
 export const forgot =
   ({ params, onSuccess, onError }) =>
   () => {
@@ -228,21 +258,24 @@ export const deny =
     });
   };
 
-export const deleteAccount = () => () => {
-  // fetcher({
-  //   url: '/user',
-  //   method: 'DELETE',
-  //   onSuccess: () => {
-  //     track.account.delete();
-  //     dispatch(updateUser({
-  //       loggedIn: false
-  //     }));
-  //   },
-  //   onError: () => {
-  //     // console.log('onError', error);
-  //   }
-  // });
-};
+export const deleteAccount =
+  ({ password, onSuccess, onDeleted, onError }) =>
+  (dispatch) => {
+    fetcher({
+      url: '/account',
+      method: 'DELETE',
+      params: { password },
+      onSuccess: () => {
+        track.account.delete();
+        onSuccess && onSuccess();
+        dispatch(resetUserState());
+        onDeleted && onDeleted();
+      },
+      onError: (error) => {
+        onError && onError(error);
+      }
+    });
+  };
 
 export const importBookmarks =
   ({ params, onSuccess, onError }) =>

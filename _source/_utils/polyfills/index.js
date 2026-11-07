@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return */
+ 
 export const loadPolyfills = () => {
   const fillFetch = () =>
     new Promise((resolve) => {

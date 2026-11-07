@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Label from '../label';
@@ -7,37 +6,6 @@ import Icon from '../icon';
 import { ErrorMessage } from '../messages';
 
 export default class Input extends PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    autoFocus: PropTypes.bool,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    onChange: PropTypes.func,
-    placeholder: PropTypes.string,
-    type: PropTypes.string,
-    color: PropTypes.string,
-    name: PropTypes.string,
-    id: PropTypes.string,
-    required: PropTypes.bool,
-    value: PropTypes.string,
-    maxLength: PropTypes.string,
-    label: PropTypes.string,
-    autoComplete: PropTypes.string,
-    pattern: PropTypes.string,
-    requirements: PropTypes.string,
-    disabled: PropTypes.bool,
-    validation: PropTypes.bool,
-    icon: PropTypes.string,
-    error: PropTypes.string,
-    darkMode: PropTypes.bool,
-    pending: PropTypes.bool,
-    inputMode: PropTypes.string,
-    ariaLabel: PropTypes.string,
-    min: PropTypes.string,
-    max: PropTypes.string,
-    step: PropTypes.string
-  };
-
   static defaultProps = {
     type: 'text',
     color: '',

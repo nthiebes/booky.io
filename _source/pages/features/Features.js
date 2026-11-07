@@ -1,6 +1,4 @@
-/* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
@@ -16,17 +14,13 @@ import {
 } from '../../atoms/button';
 import { FeatureCard } from '../../molecules/feature-card';
 
+import { SHORTCUT_URLS } from '../../config';
+
 import './Features.scss';
 
 class FeaturesPage extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool.isRequired
-  };
-
   render() {
-    const { intl } = this.props;
+    const { intl, language } = this.props;
 
     return (
       <Page showStats>
@@ -181,8 +175,10 @@ class FeaturesPage extends PureComponent {
                 src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              {'Chrome '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Chrome' }}
+              />
             </Link>
             <Link
               href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/"
@@ -198,8 +194,10 @@ class FeaturesPage extends PureComponent {
                 src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              {'Firefox '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Firefox' }}
+              />
             </Link>
             {/* <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
@@ -215,8 +213,10 @@ class FeaturesPage extends PureComponent {
                 src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              {'Opera '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Opera' }}
+              />
             </Link> */}
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
@@ -232,8 +232,10 @@ class FeaturesPage extends PureComponent {
                 src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              {'Edge '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Edge' }}
+              />
             </Link>
             <Link
               to="/bookmarklet"
@@ -311,6 +313,22 @@ class FeaturesPage extends PureComponent {
               />
               {'Windows'}
             </Link>
+            <Link
+              href={SHORTCUT_URLS[language] || SHORTCUT_URLS.en}
+              target="_blank"
+              color="light"
+              className="home__platforms-platform"
+            >
+              <img
+                width="75"
+                height="75"
+                alt=""
+                className="home__platforms-icon"
+                src="../../_assets/shortcuts.svg"
+                loading="lazy"
+              />
+              <FormattedMessage id="features.shortcut" />
+            </Link>
           </nav>
         </Section>
 
@@ -319,29 +337,6 @@ class FeaturesPage extends PureComponent {
             <FormattedMessage id="features.explore" />
           </H2>
           <div className="features-page__cluster">
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'misc.feature3' })}
-              text={intl.formatMessage({ id: 'features.importText' })}
-              illustration="import"
-              background="light"
-              centered
-            />
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'misc.feature9' })}
-              text={intl.formatMessage({ id: 'features.notesText' })}
-              illustration="notes"
-              background="light"
-              centered
-            />
-            <FeatureCard
-              headline={intl.formatMessage({ id: 'features.searchEngine' })}
-              text={intl.formatMessage({ id: 'features.searchEngineText' })}
-              illustration="search"
-              background="light"
-              centered
-            />
-          </div>
-          {/* <div className="features-page__cluster">
             <FeatureCard
               headline={intl.formatMessage({
                 id: 'features.duplicateFinder'
@@ -366,7 +361,49 @@ class FeaturesPage extends PureComponent {
                 </ButtonSmallBlue>
               }
             />
-          </div> */}
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'misc.feature3' })}
+              text={intl.formatMessage({ id: 'features.importText' })}
+              illustration="import"
+              background="light"
+              centered
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'misc.feature9' })}
+              text={intl.formatMessage({ id: 'features.notesText' })}
+              illustration="notes"
+              background="light"
+              centered
+            />
+          </div>
+          <div className="features-page__cluster">
+            <FeatureCard
+              headline={intl.formatMessage({
+                id: 'features.searchEngine'
+              })}
+              text={intl.formatMessage(
+                { id: 'features.searchEngineText' },
+                {
+                  a: (msg) => <Link to="/help#general">{msg}</Link>
+                }
+              )}
+              illustration="search"
+              background="light"
+              centered
+            />
+            <FeatureCard
+              headline={intl.formatMessage({ id: 'features.allTabs' })}
+              text={intl.formatMessage(
+                { id: 'features.allTabsText' },
+                {
+                  a: (msg) => <Link to="/help#general">{msg}</Link>
+                }
+              )}
+              illustration="organize"
+              background="light"
+              centered
+            />
+          </div>
         </Section>
 
         <Section className="home__not-a-member">

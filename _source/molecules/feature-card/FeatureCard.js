@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { H2 } from '../../atoms/headline';
@@ -10,20 +9,6 @@ import Illustration from '../../atoms/illustration';
 import './FeatureCard.scss';
 
 export class FeatureCard extends PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    illustrationClassName: PropTypes.string,
-    headline: PropTypes.string.isRequired,
-    text: PropTypes.node.isRequired,
-    illustration: PropTypes.string.isRequired,
-    background: PropTypes.string,
-    payed: PropTypes.bool,
-    cta: PropTypes.node,
-    centered: PropTypes.bool,
-    noWrap: PropTypes.bool,
-    darkMode: PropTypes.bool
-  };
-
   render() {
     const {
       className,

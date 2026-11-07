@@ -1,6 +1,5 @@
-/* eslint-disable max-lines */
+ 
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
@@ -11,24 +10,6 @@ import { ButtonSmallPrimary } from '../../../atoms/button';
 import Skeleton from '../../../atoms/skeleton';
 
 class DashboardsList extends PureComponent {
-  static propTypes = {
-    openModal: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    dashboards: PropTypes.array,
-    intl: PropTypes.object.isRequired,
-    pinned: PropTypes.bool,
-    activeId: PropTypes.number,
-    useTabIndex: PropTypes.bool,
-    darkMode: PropTypes.bool.isRequired,
-    droppableIdSuffix: PropTypes.string.isRequired,
-    closeEditMode: PropTypes.bool.isRequired,
-    closeSidebar: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool,
-    dragType: PropTypes.string,
-    minimalBookmarkButton: PropTypes.bool,
-    isPremium: PropTypes.bool
-  };
-
   static defaultProps = {
     useTabIndex: false
   };
@@ -171,7 +152,7 @@ class DashboardsList extends PureComponent {
                     };
 
                     return (
-                      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+                      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
                       <li
                         key={dashboard.id}
                         className={classNames(
@@ -182,17 +163,9 @@ class DashboardsList extends PureComponent {
                           darkMode && 'dashboards__item--dark-mode'
                         )}
                         onClick={this.handleDashboardClick(dashboard.id)}
-                        onKeyDown={(event) => {
-                          this.handleKeyDown(event, dashboard.id);
-                        }}
-                        tabIndex={
-                          (useTabIndex || pinned) && !editMode ? '0' : '-1'
-                        }
                         {...provided.draggableProps}
                         ref={provided.innerRef}
                         style={style}
-                        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-                        role="button"
                       >
                         <Droppable
                           droppableId={`dashboard-${dashboard.id}`}
@@ -213,6 +186,15 @@ class DashboardsList extends PureComponent {
                               )}
                               ref={providedDroppableDashboard.innerRef}
                               {...providedDroppableDashboard.droppableProps}
+                              role={editMode ? null : 'button'}
+                              tabIndex={
+                                (useTabIndex || pinned) && !editMode
+                                  ? '0'
+                                  : '-1'
+                              }
+                              onKeyDown={(event) => {
+                                this.handleKeyDown(event, dashboard.id);
+                              }}
                             >
                               {dashboard.name}
                               <ul className="dashboards__placeholder">

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 
 import Base from '../Base';
@@ -7,15 +6,6 @@ import Input from '../../../atoms/input';
 import CategoriesSorting from '../../categories-sorting';
 
 class EditDashboard extends Component {
-  static propTypes = {
-    onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
-    intl: PropTypes.object.isRequired,
-    pending: PropTypes.bool,
-    darkMode: PropTypes.bool
-  };
-
   state = {
     name: this.props.data.name
   };

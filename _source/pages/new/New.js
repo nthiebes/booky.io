@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 
 import { config } from '../../config';
@@ -15,11 +14,6 @@ import Page from '../../templates/page';
 import './New.scss';
 
 export default class New extends PureComponent {
-  static propTypes = {
-    updateSettings: PropTypes.func.isRequired,
-    newsVersion: PropTypes.number.isRequired
-  };
-
   state = {
     releases: []
   };
@@ -29,10 +23,12 @@ export default class New extends PureComponent {
 
     fetch('https://api.github.com/repos/nthiebes/booky.io/releases?per_page=10')
       .then((response) => response.json())
-      .then((releases) => {
-        this.setState({
-          releases: releases.filter((release) => !release.prerelease)
-        });
+      .then((response) => {
+        if (Array.isArray(response)) {
+          this.setState({
+            releases: response.filter((release) => !release.prerelease)
+          });
+        }
       })
       .catch();
 
@@ -54,7 +50,54 @@ export default class New extends PureComponent {
           </H1>
         </Section>
 
-        <Section color="light" contentSpace>
+        <Section color="light" contentSpace noMargin>
+          <H2>
+            <FormattedMessage id="new.update2Title" />
+          </H2>
+          <P size="small">
+            <time>
+              <i>
+                <FormattedDate
+                  value={new Date('2026-11-07 20:22:21')}
+                  month="long"
+                  day="2-digit"
+                  year="numeric"
+                />
+              </i>
+            </time>
+          </P>
+          <P>
+            <FormattedMessage id="new.update2Description" />
+          </P>
+          <H3>
+            <FormattedMessage id="new.update1Subtitle" />
+          </H3>
+          <List>
+            <ListItem className="new__item">
+              <FormattedMessage id="features.duplicateFinder" />
+              <Icon icon="money" color="blue" />
+            </ListItem>
+            <ListItem isSecondary className="new__item">
+              <FormattedMessage id="features.duplicateFinderInline" />
+              <Icon icon="money" color="blue" />
+            </ListItem>
+            <ListItem isSecondary className="new__item">
+              <FormattedMessage id="features.duplicateFinderTool" />
+              <Icon icon="money" color="blue" />
+            </ListItem>
+            <ListItem>
+              <FormattedMessage id="features.update2Feature2" />
+            </ListItem>
+            <ListItem>
+              <FormattedMessage id="new.update2Feature3" />
+            </ListItem>
+            <ListItem>
+              <FormattedMessage id="new.update2Feature4" />
+            </ListItem>
+          </List>
+        </Section>
+
+        <Section contentSpace noMargin>
           <H2>
             <FormattedMessage id="new.update1Title" />
           </H2>
@@ -107,11 +150,9 @@ export default class New extends PureComponent {
             <FormattedMessage id="new.oldUpdates" />
           </H2>
           <div>
-            {/* eslint-disable-next-line camelcase */}
             {releases.map(({ id, name, body, published_at }, index) => {
               const lines = body.split('\n');
 
-              // eslint-disable-next-line no-lone-blocks
               return (
                 <Expandable
                   key={id}

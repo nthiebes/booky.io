@@ -46,6 +46,7 @@
 @import "../../organisms/sidebar/Sidebar";
 @import "../../organisms/modal/Modal";
 @import "../../organisms/search/Search";
+@import "../../organisms/duplicates/Duplicates";
 @import "../../organisms/customize/Customize";
 @import "../../organisms/dashboards/dashboards-list/DashboardsList";
 @import "../../organisms/dashboards/dashboards-sidebar/DashboardsSidebar";
@@ -66,6 +67,7 @@
 @import "../../pages/contact/Contact";
 @import "../../pages/next/Next";
 @import "../../pages/about/About";
+@import "../../pages/unavailable/Unavailable";
 
 html {
   font-size: calc(14px + 0.2vw);
@@ -75,7 +77,6 @@ html {
   }
 }
 
-/* stylelint-disable property-no-vendor-prefix */
 body {
   -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
   -moz-text-size-adjust: 100%; /* Prevent font scaling in landscape */
@@ -87,7 +88,6 @@ body {
   height: 100%;
   color: $color-font--dark;
 }
-/* stylelint-enable */
 
 ::-moz-selection {
   color: $color-font--white;
@@ -103,11 +103,9 @@ body {
   overflow: hidden;
 }
 
-/* stylelint-disable declaration-no-important */
 .booky--no-animation {
   transition: none !important;
 }
-/* stylelint-enable */
 
 .booky--hide {
   display: none;
@@ -182,16 +180,22 @@ body {
   opacity: 0;
 }
 
-noscript {
-  text-align: center;
-  margin-top: 10rem;
+.booky__javascript-disabled {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0 3%;
+  padding: 1rem 3%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  background-color: $color--error;
+  width: 100%;
+  color: $color-font--white;
+  font-weight: bold;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  z-index: 5;
 }
 
-/* stylelint-disable declaration-no-important */
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
   * {
     animation-duration: 0.001ms !important;
@@ -199,4 +203,3 @@ noscript {
     transition-duration: 0.001ms !important;
   }
 }
-/* stylelint-enable */

@@ -136,5 +136,18 @@ export const AllFeatures = () => (
         </b>
       </P>
     </li>
+    <li className="all-features__feature">
+      <Icon
+        icon="duplicate"
+        color="primary"
+        size="medium"
+        className="all-features__icon"
+      />
+      <P>
+        <b>
+          <FormattedMessage id="features.duplicateFinder" />
+        </b>
+      </P>
+    </li>
   </ul>
 );

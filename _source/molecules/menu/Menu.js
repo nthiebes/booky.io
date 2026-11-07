@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
@@ -52,14 +51,6 @@ const menuItemsLoggedIn = [
 ];
 
 class Menu extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    className: PropTypes.string,
-    loggedIn: PropTypes.bool,
-    newsVersion: PropTypes.number.isRequired,
-    voted: PropTypes.number.isRequired
-  };
-
   render() {
     const {
       className,

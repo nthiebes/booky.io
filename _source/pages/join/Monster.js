@@ -1,7 +1,6 @@
-/* eslint-disable max-lines */
-/* eslint-disable max-len */
+ 
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './Monster.scss';
@@ -441,7 +440,3 @@ export const Monster = ({ className }) => (
     />
   </svg>
 );
-
-Monster.propTypes = {
-  className: PropTypes.string
-};

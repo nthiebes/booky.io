@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const localeMap = {
@@ -20,12 +19,6 @@ const localeMap = {
 };
 
 export default class Empty extends PureComponent {
-  static propTypes = {
-    locale: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    color: PropTypes.string.isRequired
-  };
-
   render() {
     const { locale, className, color } = this.props;
     const localeData = localeMap[locale];

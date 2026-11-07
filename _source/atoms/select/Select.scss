@@ -9,7 +9,9 @@
   height: 3rem;
   line-height: 3;
   padding: 0 9px;
-  transition: background-color 0.3s, border-color 0.3s linear;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s linear;
   width: 100%;
 
   &:active,

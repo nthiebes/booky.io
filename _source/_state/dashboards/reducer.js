@@ -1,7 +1,7 @@
 import { arrayMove } from '../../_utils/array';
 import initialState from '../../initialState';
 
-// eslint-disable-next-line max-statements
+ 
 const dashboards = (state = {}, action) => {
   const { name, isPublic, id, type, dragData } = action;
 

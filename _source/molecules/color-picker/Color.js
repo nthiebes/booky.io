@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Icon from '../../atoms/icon';
@@ -18,12 +17,6 @@ const colorMap = {
 };
 
 export default class Color extends Component {
-  static propTypes = {
-    value: PropTypes.string.isRequired,
-    color: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired
-  };
-
   handleChange = () => {
     this.props.onChange(this.props.color.key);
   };

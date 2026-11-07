@@ -1,7 +1,4 @@
-/* eslint-disable no-empty-function */
-/* eslint-disable max-lines */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { DiscussionEmbed } from 'disqus-react';
 import classNames from 'classnames';
@@ -15,18 +12,13 @@ import Link from '../../atoms/link';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
 import { List, ListItem } from '../../atoms/list';
+import { SHORTCUT_URLS } from '../../config';
 
 import './Help.scss';
 
 class Help extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    darkMode: PropTypes.bool,
-    stickyHeader: PropTypes.bool
-  };
-
   render() {
-    const { intl, darkMode, stickyHeader } = this.props;
+    const { intl, darkMode, stickyHeader, language } = this.props;
     const disqusConfig = {
       url: 'https://booky.io/help',
       identifier: 'help',
@@ -91,6 +83,34 @@ class Help extends Component {
                 </ListItem>
               </List>
             </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="help.general.shortcut" />}
+              className="help-container__item"
+            >
+              <List>
+                <ListItem>
+                  <FormattedMessage
+                    id="help.general.shortcutText1"
+                    values={{
+                      a: (msg) => (
+                        <Link
+                          href={SHORTCUT_URLS[language] || SHORTCUT_URLS.en}
+                          target="_blank"
+                        >
+                          {msg}
+                        </Link>
+                      )
+                    }}
+                  />
+                </ListItem>
+                <ListItem>
+                  <FormattedMessage
+                    id="help.general.shortcutText2"
+                    values={{ strong: (msg) => <strong>{msg}</strong> }}
+                  />
+                </ListItem>
+              </List>
+            </Expandable>
             {/* <Expandable
               headline={<FormattedMessage id="help.general.macos" />}
               className="help-container__item"
@@ -139,6 +159,25 @@ class Help extends Component {
                   {'makeuseof.com'}
                 </Link>
               </P>
+            </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="help.general.allTabs" />}
+              className="help-container__item"
+            >
+              <List>
+                <ListItem>
+                  <FormattedMessage
+                    id="help.general.allTabsText1"
+                    values={{ strong: (msg) => <strong>{msg}</strong> }}
+                  />
+                </ListItem>
+                <ListItem>
+                  <FormattedMessage
+                    id="help.general.allTabsText2"
+                    values={{ strong: (msg) => <strong>{msg}</strong> }}
+                  />
+                </ListItem>
+              </List>
             </Expandable>
           </div>
         </Section>
@@ -385,6 +424,23 @@ class Help extends Component {
               </P>
             </Expandable>
             <Expandable
+              headline={<FormattedMessage id="help.account.question6" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage
+                  id="help.account.answer6"
+                  values={{
+                    account: (
+                      <Link to="/account#data">
+                        <FormattedMessage id="misc.accountSettings" />
+                      </Link>
+                    )
+                  }}
+                />
+              </P>
+            </Expandable>
+            <Expandable
               headline={<FormattedMessage id="help.account.question2" />}
               className="help-container__item"
             >
@@ -392,6 +448,11 @@ class Help extends Component {
                 <FormattedMessage
                   id="help.account.answer2"
                   values={{
+                    account: (
+                      <Link to="/account#supporter">
+                        <FormattedMessage id="misc.accountSettings" />
+                      </Link>
+                    ),
                     email: (
                       <Link
                         href={`mailto:hello@booky.io?subject=${intl.formatMessage(
@@ -421,6 +482,23 @@ class Help extends Component {
               <P noPadding>
                 <FormattedMessage id="help.account.answer5" />
                 <Link to="/account#export">{'booky.io/account#export'}</Link>
+              </P>
+            </Expandable>
+            <Expandable
+              headline={<FormattedMessage id="help.account.question7" />}
+              className="help-container__item"
+            >
+              <P noPadding>
+                <FormattedMessage
+                  id="help.account.answer7"
+                  values={{
+                    tools: (
+                      <Link to="/account#tools">
+                        <FormattedMessage id="account.tools" />
+                      </Link>
+                    )
+                  }}
+                />
               </P>
             </Expandable>
           </div>

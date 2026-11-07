@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -13,19 +12,6 @@ import LanguageSwitcher from '../../molecules/language-switcher';
 // import Donate from '../../molecules/donate';
 
 class Footer extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    dashboardsOpen: PropTypes.bool,
-    hasSidebar: PropTypes.bool,
-    className: PropTypes.string,
-    home: PropTypes.bool,
-    loggedIn: PropTypes.bool.isRequired,
-    toolbarSticky: PropTypes.bool.isRequired,
-    darkMode: PropTypes.bool.isRequired,
-    locale: PropTypes.string,
-    showStats: PropTypes.bool
-  };
-
   scrollToTop() {
     window.scrollTo(0, 0);
     document.getElementsByTagName('header')[0].focus();

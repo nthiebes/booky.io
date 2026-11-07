@@ -1,4 +1,4 @@
-import { parseBookmarkUrl } from './index';
+import { parseBookmarkUrl, isSafeUrl, getTabUrl } from './index';
 
 describe('parseBookmarkUrl', () => {
   it('transforms url into protocol relative url', () => {
@@ -24,5 +24,45 @@ describe('parseBookmarkUrl', () => {
     ).toBe(
       'https://www.smashingmagazine.com/2018/06/bringing-personality-back-to-the-web/'
     );
+  });
+});
+
+describe('isSafeUrl', () => {
+  it('allows regular urls', () => {
+    expect(isSafeUrl('https://booky.io')).toBe(true);
+    expect(isSafeUrl('//booky.io')).toBe(true);
+    expect(isSafeUrl('ftp://booky.io')).toBe(true);
+    expect(isSafeUrl('https://booky.io/?q=javascript:alert(1)')).toBe(true);
+  });
+
+  it('rejects urls that run code', () => {
+    expect(isSafeUrl('javascript:alert(1)')).toBe(false);
+    expect(isSafeUrl('javascript://%0Aalert(1)')).toBe(false);
+    expect(isSafeUrl('JaVaScRiPt:alert(1)')).toBe(false);
+    expect(isSafeUrl(' \u0001javascript:alert(1)')).toBe(false);
+    expect(isSafeUrl('java\tscr\nipt:alert(1)')).toBe(false);
+    expect(isSafeUrl('vbscript:msgbox(1)')).toBe(false);
+    expect(isSafeUrl('data:text/html,<script>alert(1)</script>')).toBe(false);
+  });
+
+  it('rejects non-strings', () => {
+    expect(isSafeUrl(undefined)).toBe(false);
+    expect(isSafeUrl(null)).toBe(false);
+  });
+});
+
+describe('getTabUrl', () => {
+  it('keeps http(s) urls', () => {
+    expect(getTabUrl('https://booky.io')).toBe('https://booky.io');
+    expect(getTabUrl('http://booky.io')).toBe('http://booky.io');
+  });
+
+  it('adds https to protocol relative urls', () => {
+    expect(getTabUrl('//booky.io')).toBe('https://booky.io');
+  });
+
+  it('returns null for other schemes', () => {
+    expect(getTabUrl('ftp://booky.io')).toBe(null);
+    expect(getTabUrl('javascript:alert(1)')).toBe(null);
   });
 });

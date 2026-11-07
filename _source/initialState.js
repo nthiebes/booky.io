@@ -68,6 +68,13 @@ export default {
     limit: 30,
     dashboards: []
   },
+  duplicates: {
+    pending: false,
+    error: null,
+    total: null,
+    limit: 30,
+    groups: []
+  },
   dragging: {
     isDragging: false,
     type: null
@@ -77,7 +84,9 @@ export default {
     page: {
       description: '',
       url: '',
-      title: ''
+      title: '',
+      // All http(s) tabs of the current window, null without the optional "tabs" permission
+      tabs: null
     }
   }
 };

@@ -1,6 +1,4 @@
-/* eslint-disable max-lines */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -39,22 +37,6 @@ const surveyMap = {
 };
 
 class Home extends Component {
-  static propTypes = {
-    loggedIn: PropTypes.bool.isRequired,
-    blurContent: PropTypes.bool.isRequired,
-    hasSidebar: PropTypes.bool.isRequired,
-    getDashboards: PropTypes.func.isRequired,
-    updateSearchData: PropTypes.func.isRequired,
-    searchBookmarks: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired,
-    categoriesPending: PropTypes.bool,
-    hasCategories: PropTypes.bool,
-    dashboardsOpen: PropTypes.bool,
-    keywordExists: PropTypes.bool,
-    language: PropTypes.string,
-    darkMode: PropTypes.bool
-  };
-
   state = {
     // showSurveyBanner: !localStorage.getItem('hideSurveyBanner')
     showSurveyBanner: false
@@ -192,7 +174,12 @@ class Home extends Component {
             <FormattedMessage id="misc.features" />
           </H2>
           <AllFeatures />
-          <ButtonLargePrimary icon="star" to="/features" contentBefore>
+          <ButtonLargePrimary
+            icon="star"
+            to="/features"
+            contentBefore
+            autoWidth={language === 'fr' || language === 'es'}
+          >
             <FormattedMessage
               id="home.allFeatures"
               values={{ b: (msg) => <b>{msg}</b> }}
@@ -249,8 +236,10 @@ class Home extends Component {
                 src="../../_assets/logos/chrome.svg"
                 loading="lazy"
               />
-              {'Chrome '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Chrome' }}
+              />
             </Link>
             <Link
               href="https://addons.mozilla.org/en-US/firefox/addon/booky-io-extension/"
@@ -266,8 +255,10 @@ class Home extends Component {
                 src="../../_assets/logos/firefox.svg"
                 loading="lazy"
               />
-              {'Firefox '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Firefox' }}
+              />
             </Link>
             {/* <Link
               href="https://addons.opera.com/de/extensions/details/bookyio-extension/"
@@ -283,8 +274,10 @@ class Home extends Component {
                 src="../../_assets/logos/opera.svg"
                 loading="lazy"
               />
-              {'Opera '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Opera' }}
+              />
             </Link> */}
             <Link
               href="https://microsoftedge.microsoft.com/addons/detail/bookyio-erweiterung/gnhlkmoepijbfnmblekhhdgkgdahdjek"
@@ -300,8 +293,10 @@ class Home extends Component {
                 src="../../_assets/logos/edge.svg"
                 loading="lazy"
               />
-              {'Edge '}
-              <FormattedMessage id="misc.extension" />
+              <FormattedMessage
+                id="misc.extension"
+                values={{ browser: 'Edge' }}
+              />
             </Link>
             <Link
               to="/bookmarklet"

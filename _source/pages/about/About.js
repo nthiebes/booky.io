@@ -1,6 +1,4 @@
-/* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -15,14 +13,8 @@ import { ButtonLargeBlue, ButtonLargeLight } from '../../atoms/button';
 import Illustration from '../../atoms/illustration';
 
 class About extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    stickyHeader: PropTypes.bool,
-    darkMode: PropTypes.bool
-  };
-
   render() {
-    const { intl, stickyHeader, darkMode } = this.props;
+    const { intl, stickyHeader, darkMode, language } = this.props;
 
     return (
       <Page
@@ -331,7 +323,11 @@ class About extends PureComponent {
               values={{ b: (msg) => <b>{msg}</b> }}
             />
           </ButtonLargeBlue>
-          <ButtonLargeLight icon="star" to="/features">
+          <ButtonLargeLight
+            icon="star"
+            to="/features"
+            autoWidth={language === 'fr' || language === 'es'}
+          >
             <FormattedMessage
               id="home.allFeatures"
               values={{ b: (msg) => <b>{msg}</b> }}

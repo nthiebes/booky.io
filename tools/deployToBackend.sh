@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Builds the frontend and copies it into a checkout of the backend (booky.io-Backend):
-#   _public/index.html -> <backend>/templates/booky/index.phtml (rendered by the backend's IndexPage)
-#   everything else    -> <backend>/public/                     (served directly by nginx)
-# Both must always be updated together: index.phtml references the hashed main.*.js/css bundles.
+#   _public/index.html     -> <backend>/templates/booky/index.phtml   (rendered by the backend's IndexPage)
+#   _public/prerendered/   -> <backend>/templates/booky/prerendered/  (served by IndexPage for public pages)
+#   everything else        -> <backend>/public/                       (served directly by nginx)
+# All must always be updated together: the HTML references the hashed main.*.js/css bundles.
 #
 # Usage: npm run deploy:backend [-- <backend-dir>] [-- --skip-build]
 #   <backend-dir> defaults to $BOOKY_BACKEND_DIR, then ../booky.io-Backend.
@@ -50,9 +51,16 @@ for bundle in $bundles; do
   [ -f "_public/$bundle" ] || fail "$index_html references _public/$bundle, which does not exist"
 done
 
-rsync -a --exclude 'index.html' --exclude 'index.php' _public/ "$backend_dir/public/"
+prerendered="_public/prerendered"
+[ -f "$prerendered/home.html" ] || fail "$prerendered/home.html not found, did the prerender fail?"
+if [ "$skip_build" = false ] && [ "$prerendered/home.html" -ot "$build_marker" ]; then
+  fail "$prerendered was not regenerated, the prerender probably failed"
+fi
+
+rsync -a --exclude 'index.html' --exclude 'index.php' --exclude 'prerendered' _public/ "$backend_dir/public/"
 cp "$index_html" "$backend_dir/templates/booky/index.phtml"
+rsync -a --delete "$prerendered/" "$backend_dir/templates/booky/prerendered/"
 
 echo "deploy:backend: copied frontend into $backend_dir"
 echo "  templates/booky/index.phtml now loads: $(echo "$bundles" | tr '\n' ' ')"
-echo "  Commit templates/booky/index.phtml in the backend and upload public/ with it."
+echo "  Run tools/deploy.sh in the backend to package everything (the frontend files are gitignored there)."

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 
@@ -17,13 +16,6 @@ import { List, ListItem } from '../../atoms/list';
 import './Bookmarklet.scss';
 
 class BookmarkletPage extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    language: PropTypes.string.isRequired,
-    isMobile: PropTypes.bool.isRequired,
-    stickyHeader: PropTypes.bool
-  };
-
   state = {
     activeTab: this.props.isMobile ? 'mobile' : 'desktop',
     copied: false

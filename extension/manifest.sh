@@ -1,44 +1,40 @@
 #!/bin/bash
+# Usage: ./manifest.sh <chrome|firefox|opera|edge>
+# Builds _public/<browser>/<browser>_<version>.zip from _source/.
 
-browser="$1"
-version="3.0.2"
+set -euo pipefail
 
-if [ "$browser" == "chrome" ]
-then
-  cp -r _source/ _public/chrome/tmp
-fi
+browser="${1:-}"
+version="3.2.0"
+
+case "$browser" in
+  chrome | firefox | opera | edge) ;;
+  *)
+    echo "Usage: $0 <chrome|firefox|opera|edge>" >&2
+    exit 1
+    ;;
+esac
+
+cd "$(dirname "$0")"
+
+browser_specific_settings=""
 
 if [ "$browser" == "firefox" ]
 then
-  cp -r _source/ _public/firefox/tmp
-fi
-
-if [ "$browser" == "opera" ]
-then
-  cp -r _source/ _public/opera/tmp
-fi
-
-if [ "$browser" == "edge" ]
-then
-  cp -r _source/ _public/edge/tmp
-fi
-
-
-applications=""
-
-firefox_applications="
-  \"applications\": {
+  browser_specific_settings="
+  \"browser_specific_settings\": {
     \"gecko\": {
       \"id\": \"hello@booky.io\"
     }
   },"
-
-if [ "$browser" == "firefox" ]
-then
-  applications=$firefox_applications
 fi
 
-manifest="{
+# host_permissions for booky's own origins are required: without them the
+# browser treats the iframe in the popup as a third-party context and doesn't
+# send the session cookie, so the user is logged out and login fails.
+# localhost is for development.
+manifest() {
+  echo "{
   \"name\": \"__MSG_appName__\",
   \"version\": \"${version}\",
   \"author\": \"Nico Thiebes\",
@@ -47,7 +43,9 @@ manifest="{
   \"content_security_policy\": {
     \"extension_pages\": \"default-src 'self'; frame-src 'self' http://localhost:3000 https://*.booky.io https://booky.io\"
   },
-  \"permissions\": [\"activeTab\", \"management\",  \"storage\", \"scripting\"],${applications}
+  \"permissions\": [\"activeTab\", \"management\",  \"storage\", \"scripting\"],
+  \"optional_permissions\": [\"tabs\"],
+  \"host_permissions\": [\"https://booky.io/*\", \"https://*.booky.io/*\", \"http://localhost/*\"],$1
   \"action\": {
     \"default_title\": \"booky.io Extension\",
     \"default_popup\": \"popup.html\",
@@ -58,12 +56,10 @@ manifest="{
       \"128\": \"images/icon-128x128.png\"
     }
   },
-  \"content_scripts\": [
-    {
-      \"matches\": [\"<all_urls>\"],
-      \"js\": [\"content.js\"]
-    }
-  ],
+  \"options_ui\": {
+    \"page\": \"options.html\",
+    \"open_in_tab\": false
+  },
   \"icons\": {
     \"16\": \"images/icon-16x16.png\",
     \"32\": \"images/icon-32x32.png\",
@@ -72,39 +68,24 @@ manifest="{
   },
   \"manifest_version\": 3
 }"
+}
 
-if [ "$browser" == "chrome" ]
-then
-  echo "$manifest" > "_public/chrome/tmp/manifest.json"
-  echo "$manifest" > "_source/manifest.json"
-  cd _public/chrome/tmp
-  zip -r ../chrome_$version.zip ./*
-  rm -r ../tmp
-fi
+# This script is the source of truth for the manifest. _source/manifest.json
+# is generated for loading the unpacked extension locally, so it matches the
+# browser that was built last.
+manifest "$browser_specific_settings" > _source/manifest.json
 
-if [ "$browser" == "firefox" ]
-then
-  echo "$manifest" > "_public/firefox/tmp/manifest.json"
-  echo "$manifest" > "_source/manifest.json"
-  cd _public/firefox/tmp
-  zip -r ../firefox_$version.zip ./*
-  rm -r ../tmp
-fi
+out_dir="_public/$browser"
+tmp="$out_dir/tmp"
+zip_file="${browser}_${version}.zip"
 
-if [ "$browser" == "opera" ]
-then
-  echo "$manifest" > "_public/opera/tmp/manifest.json"
-  echo "$manifest" > "_source/manifest.json"
-  cd _public/opera/tmp
-  zip -r ../opera_$version.zip ./*
-  rm -r ../tmp
-fi
+mkdir -p "$out_dir"
+rm -rf "$tmp"
+cp -R _source "$tmp"
 
-if [ "$browser" == "edge" ]
-then
-  echo "$manifest" > "_public/edge/tmp/manifest.json"
-  echo "$manifest" > "_source/manifest.json"
-  cd _public/edge/tmp
-  zip -r ../edge_$version.zip ./*
-  rm -r ../tmp
-fi
+# Rebuild the archive from scratch so removed files don't linger in it.
+rm -f "$out_dir/$zip_file"
+(cd "$tmp" && zip -r -X "../$zip_file" . -x '.*' '*/.*')
+
+rm -rf "$tmp"
+echo "Created $out_dir/$zip_file"

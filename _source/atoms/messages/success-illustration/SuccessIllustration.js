@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
@@ -8,17 +7,6 @@ import { H1 } from '../../headline';
 import Illustration from '../../illustration';
 
 export default class SuccessIllustration extends Component {
-  static propTypes = {
-    message: PropTypes.string,
-    className: PropTypes.string,
-    illustration: PropTypes.string.isRequired,
-    width: PropTypes.string,
-    height: PropTypes.string,
-    children: PropTypes.node,
-    headline: PropTypes.string,
-    cta: PropTypes.node
-  };
-
   state = {
     animate: false
   };

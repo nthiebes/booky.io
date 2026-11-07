@@ -139,6 +139,8 @@
 .footer__languages {
   display: flex;
   justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .footer__wrapper {

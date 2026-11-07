@@ -38,7 +38,6 @@ export const encodeEmoji = (string) => {
   let match;
   let newString = string;
 
-  // eslint-disable-next-line no-cond-assign
   while ((match = regex.exec(string))) {
     const emoji = match[0];
 

@@ -10,7 +10,8 @@ export const mapStateToProps = (state) => ({
   enableNotes: state.user.settings.enableNotes,
   isDragging: state.dragging.isDragging,
   isMobile: state.user.isMobile,
-  isExtension: state.extension.active
+  isExtension: state.extension.active,
+  supportsTabs: Boolean(state.extension.page?.supportsTabs)
 });
 
 export const mapDispatchToProps = (dispatch) => ({

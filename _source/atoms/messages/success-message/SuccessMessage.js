@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
@@ -7,13 +6,6 @@ import P from '../../paragraph';
 import Icon from '../../icon';
 
 export default class SuccessMessage extends Component {
-  static propTypes = {
-    message: PropTypes.string,
-    className: PropTypes.string,
-    hasIcon: PropTypes.bool,
-    noAnimation: PropTypes.bool
-  };
-
   state = {
     animate: false
   };
@@ -29,7 +21,7 @@ export default class SuccessMessage extends Component {
   };
 
   render() {
-    const { message, className, hasIcon, noAnimation } = this.props;
+    const { message, className, hasIcon, noAnimation, values } = this.props;
     const { animate } = this.state;
 
     return (
@@ -50,7 +42,7 @@ export default class SuccessMessage extends Component {
             className="success__icon"
           />
         )}
-        <FormattedMessage id={message} />
+        <FormattedMessage id={message} values={values} />
       </P>
     );
   }

@@ -107,6 +107,10 @@
   color: $color-font--medium;
 }
 
+.headline--color-danger {
+  color: $color--3 !important;
+}
+
 .headline--with-link {
   display: inline-flex;
 }
@@ -117,7 +121,9 @@
   font-size: inherit;
   opacity: 0;
   text-decoration: none;
-  transition: opacity 0.2s linear, color 0.2s linear;
+  transition:
+    opacity 0.2s linear,
+    color 0.2s linear;
 
   &:hover,
   &:focus {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
@@ -11,15 +10,6 @@ import { ButtonSmallPrimary, ButtonSmallDark } from '../../../atoms/button';
 import { ErrorMessage } from '../../../atoms/messages';
 
 class EditDashboard extends Component {
-  static propTypes = {
-    onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
-    intl: PropTypes.object.isRequired,
-    shareDashboard: PropTypes.func.isRequired,
-    darkMode: PropTypes.bool
-  };
-
   state = {
     copied: false,
     isPublic: this.props.data.public,

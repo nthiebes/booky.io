@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
@@ -8,38 +7,34 @@ import Textarea from '../../../atoms/textarea';
 import Select from '../../../atoms/select';
 import { ErrorMessage } from '../../../atoms/messages';
 import Expandable from '../../../molecules/expandable';
-import { abortFetch } from '../../../_utils/fetcher';
+import { abortFetch, ABORT_KEYS } from '../../../_utils/fetcher';
 import { parseBookmarkUrl } from '../../../_utils/url';
+import { createDuplicateCheck } from '../../../_utils/duplicate-check';
 import { decodeEmoji } from '../../../_utils/string';
 
 class AddBookmark extends PureComponent {
-  static propTypes = {
-    onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    data: PropTypes.object,
-    intl: PropTypes.object.isRequired,
-    pending: PropTypes.bool,
-    darkMode: PropTypes.bool,
-    getTitle: PropTypes.func.isRequired,
-    getDuplicates: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    autofillBookmarkNames: PropTypes.bool,
-    enableNotes: PropTypes.bool.isRequired,
-    isPremium: PropTypes.bool.isRequired
-  };
-
   state = {
     name: '',
     url: '',
     note: '',
     exists: false,
     existingBookmarks: [],
+    duplicatePending: false,
     bookmarkTitlePending: false,
     categoryId:
       this.props.data.source === 'header'
         ? this.props.data.categories[0].id
         : this.props.data.categoryId
   };
+
+  componentWillUnmount() {
+    this.duplicateCheck.cancel();
+  }
+
+  duplicateCheck = createDuplicateCheck({
+    getDuplicates: this.props.getDuplicates,
+    onChange: (result) => this.setState(result)
+  });
 
   onNameChange = (value) => {
     this.setState({
@@ -51,6 +46,10 @@ class AddBookmark extends PureComponent {
     this.setState({
       url: value
     });
+
+    if (this.props.isPremium) {
+      this.duplicateCheck.checkDelayed(value);
+    }
   };
 
   onNoteChange = (value) => {
@@ -60,15 +59,10 @@ class AddBookmark extends PureComponent {
   };
 
   onUrlBlur = (value) => {
-    const { getTitle, getDuplicates, autofillBookmarkNames, isPremium } =
-      this.props;
+    const { getTitle, autofillBookmarkNames } = this.props;
     const { name } = this.state;
 
     if (!value) {
-      this.setState({
-        exists: false,
-        existingBookmarks: []
-      });
       return;
     }
 
@@ -98,24 +92,6 @@ class AddBookmark extends PureComponent {
         }
       });
     }
-
-    if (isPremium) {
-      getDuplicates({
-        url: encodeURIComponent(this.state.url),
-        onSuccess: ({ exists, bookmarks }) => {
-          this.setState({
-            exists,
-            existingBookmarks: bookmarks
-          });
-        },
-        onError: () => {
-          this.setState({
-            exists: false,
-            existingBookmarks: []
-          });
-        }
-      });
-    }
   };
 
   handleDashboardClick = (event, dashboardId) => {
@@ -136,14 +112,22 @@ class AddBookmark extends PureComponent {
   handleClose = () => {
     const { onClose } = this.props;
 
-    abortFetch();
+    this.duplicateCheck.cancel();
+    abortFetch(ABORT_KEYS.modal);
     onClose();
   };
 
   render() {
     const { data, intl, pending, enableNotes, ...props } = this.props;
-    const { name, url, note, bookmarkTitlePending, exists, existingBookmarks } =
-      this.state;
+    const {
+      name,
+      url,
+      note,
+      bookmarkTitlePending,
+      exists,
+      existingBookmarks,
+      duplicatePending
+    } = this.state;
     const duplicateErrorMessage = exists ? 'error.duplicateLink' : null;
 
     return (
@@ -164,6 +148,7 @@ class AddBookmark extends PureComponent {
           maxLength="2000"
           label={intl.formatMessage({ id: 'modal.url' })}
           disabled={pending}
+          pending={duplicatePending}
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
           inputMode="url"

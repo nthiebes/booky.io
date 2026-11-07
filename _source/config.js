@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 const isOpera =
   // eslint-disable-next-line no-undef
   (Boolean(window.opr) && Boolean(opr.addons)) ||
@@ -10,18 +9,28 @@ const isEdge = isChrome && navigator.userAgent.indexOf('Edg') !== -1;
 const browser = isOpera
   ? 'opera'
   : isEdge
-  ? 'edge'
-  : isChrome
-  ? 'chrome'
-  : isFirefox
-  ? 'firefox'
-  : null;
+    ? 'edge'
+    : isChrome
+      ? 'chrome'
+      : isFirefox
+        ? 'firefox'
+        : null;
 
 export const config = {
-  NEWS_VERSION: 15,
+  NEWS_VERSION: 16,
   POLL_VERSION: 2,
   updateInProgress: false,
   browser
+};
+
+// New subscriptions and amount changes need at least this amount (also enforced
+// by the backend). Supporters who subscribed with less may keep their amount.
+export const MIN_SUPPORT_AMOUNT = 2;
+
+// iCloud links to the iOS Shortcut, per language (fallback: en).
+export const SHORTCUT_URLS = {
+  de: 'https://www.icloud.com/shortcuts/0aed9a68f2ff4d28a052e303159cabc8',
+  en: 'https://www.icloud.com/shortcuts/4d6113bd7dd244f6a47a8da8cf1fc1e9'
 };
 
 export const clientID =

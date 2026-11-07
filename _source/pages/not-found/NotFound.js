@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
@@ -34,9 +33,5 @@ class NotFound extends Component {
     );
   }
 }
-
-NotFound.propTypes = {
-  intl: PropTypes.object.isRequired
-};
 
 export default injectIntl(NotFound);

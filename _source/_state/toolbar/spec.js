@@ -1,5 +1,3 @@
-/* eslint-disable max-lines */
-/* eslint-disable max-statements */
 import { toggleSearch, toggleEditMode, updateCurrentlySticky } from './actions';
 import reducer from './reducer';
 
@@ -103,5 +101,4 @@ xdescribe('toolbar', function () {
   });
 });
 
-/* eslint-enable max-lines */
 /* eslint-enabled max-statements */

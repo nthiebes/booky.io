@@ -76,6 +76,7 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-width: thin;
 
   @include tablet {
     top: 4.4rem;
@@ -133,7 +134,9 @@
   list-style: none;
   padding: 0 calc(3vw + 6px) 0 3vw;
   user-select: none;
-  transition: background-color 0.2s linear, color 0.2s linear;
+  transition:
+    background-color 0.2s linear,
+    color 0.2s linear;
   cursor: pointer;
 
   .icon {

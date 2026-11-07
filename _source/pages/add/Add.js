@@ -1,12 +1,10 @@
-/* eslint-disable max-lines */
-/* eslint-disable max-statements */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { postMessage } from '../../_utils/extension';
 import { ButtonLargePrimary } from '../../atoms/button';
 import Select from '../../atoms/select';
+import Checkbox from '../../atoms/checkbox';
 import Input from '../../atoms/input';
 import Textarea from '../../atoms/textarea';
 import { ErrorMessage } from '../../atoms/messages';
@@ -16,28 +14,30 @@ import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import Expandable from '../../molecules/expandable';
 import Form from '../../molecules/form';
-import { decodeEmoji } from '../../_utils/string';
+import { decodeEmoji, encodeEmoji } from '../../_utils/string';
+import { createDuplicateCheck } from '../../_utils/duplicate-check';
+import { isSafeUrl } from '../../_utils/url';
+
+const MAX_NAME_LENGTH = 200;
+const MAX_URL_LENGTH = 2000;
+
+// Turns a tab title into a name the backend accepts for every tab, since one
+// invalid name would reject all of them: no markup (XSS check), no characters
+// the database can't store and at most 200 characters once emojis are encoded
+const getTabName = ({ title, url }) => {
+  let characters = Array.from((title || '').replace(/[<>]/g, '').trim()).filter(
+    (character) =>
+      character.codePointAt(0) <= 0xffff || encodeEmoji(character) !== character
+  );
+
+  while (encodeEmoji(characters.join('')).length > MAX_NAME_LENGTH) {
+    characters = characters.slice(0, -1);
+  }
+
+  return characters.join('').trim() || url.slice(0, MAX_NAME_LENGTH);
+};
 
 class Add extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    name: PropTypes.string,
-    url: PropTypes.string,
-    note: PropTypes.string,
-    enableNotes: PropTypes.bool.isRequired,
-    getDashboards: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    dashboardsPending: PropTypes.bool,
-    activeDashboard: PropTypes.number.isRequired,
-    categories: PropTypes.array.isRequired,
-    dashboards: PropTypes.array.isRequired,
-    addBookmark: PropTypes.func.isRequired,
-    openModal: PropTypes.func.isRequired,
-    getDuplicates: PropTypes.func.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
   constructor(props) {
     super(props);
 
@@ -50,7 +50,10 @@ class Add extends Component {
       pending: false,
       error: null,
       exists: false,
+      saveAllTabs: false,
+      missingTabsPermission: false,
       existingBookmarks: [],
+      duplicatePending: false,
       isDataOpen: Boolean(
         localStorage.getItem('showData') === 'true' || !name || !url
       ),
@@ -63,6 +66,10 @@ class Add extends Component {
   componentDidMount() {
     this.props.getDashboards();
     this.checkDuplicates(this.state.url);
+  }
+
+  componentWillUnmount() {
+    this.duplicateCheck.cancel();
   }
 
   componentDidUpdate(prevProps) {
@@ -78,7 +85,6 @@ class Add extends Component {
     ) {
       const categoryId = categories[categories.length - 1].id;
 
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         activeCategory: categoryId
       });
@@ -95,7 +101,6 @@ class Add extends Component {
       const nextName = this.state.name || name || '';
       const nextUrl = this.state.url || url || '';
 
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         name: nextName,
         url: nextUrl,
@@ -106,8 +111,8 @@ class Add extends Component {
             ? this.state.isDataOpen
             : Boolean(
                 localStorage.getItem('showData') === 'true' ||
-                  !nextName ||
-                  !nextUrl
+                !nextName ||
+                !nextUrl
               )
       });
 
@@ -117,41 +122,16 @@ class Add extends Component {
     }
   }
 
+  duplicateCheck = createDuplicateCheck({
+    getDuplicates: this.props.getDuplicates,
+    onChange: (result) => this.setState(result)
+  });
+
+  // For URLs that are filled in automatically, since nobody is typing
   checkDuplicates = (url) => {
-    const { getDuplicates, isPremium } = this.props;
-
-    if (!url) {
-      this.setState({
-        exists: false,
-        existingBookmarks: []
-      });
-      return;
+    if (this.props.isPremium) {
+      this.duplicateCheck.checkNow(url);
     }
-
-    if (!isPremium) {
-      return;
-    }
-
-    getDuplicates({
-      url: encodeURIComponent(url),
-      onSuccess: ({ exists, bookmarks }) => {
-        // Ignore responses for a URL that has been changed in the meantime
-        if (url !== this.state.url) {
-          return;
-        }
-
-        this.setState({
-          exists,
-          existingBookmarks: bookmarks
-        });
-      },
-      onError: () => {
-        this.setState({
-          exists: false,
-          existingBookmarks: []
-        });
-      }
-    });
   };
 
   toggleLocation = () => {
@@ -190,6 +170,10 @@ class Add extends Component {
       [name]: value,
       pending: false
     });
+
+    if (name === 'url' && this.props.isPremium) {
+      this.duplicateCheck.checkDelayed(value);
+    }
   };
 
   onAddCategoryClick = () => {
@@ -200,8 +184,27 @@ class Add extends Component {
     this.props.openModal('AddDashboard');
   };
 
-  onUrlBlur = (value) => {
-    this.checkDuplicates(value);
+  toggleSaveAllTabs = ({ checked }) => {
+    // The extension only sends the tabs if the optional "tabs" permission
+    // was granted in its options page, so point there instead
+    if (checked && !this.props.tabs) {
+      this.setState({
+        missingTabsPermission: true
+      });
+      return;
+    }
+
+    this.setState({
+      saveAllTabs: checked,
+      missingTabsPermission: false,
+      error: null
+    });
+  };
+
+  openExtensionOptions = () => {
+    postMessage({
+      openOptions: true
+    });
   };
 
   handleDashboardClick = (event, dashboardId) => {
@@ -231,6 +234,48 @@ class Add extends Component {
     });
   };
 
+  closeExtension = () => {
+    postMessage({
+      close: true
+    });
+    window.close();
+  };
+
+  saveAllTabs = (categoryId) => {
+    const { addBookmarks, tabs } = this.props;
+    const savableTabs = tabs.filter(
+      ({ url }) => isSafeUrl(url) && url.length <= MAX_URL_LENGTH
+    );
+
+    if (savableTabs.length === 0) {
+      this.setState({
+        pending: false,
+        error: 'extension.saveAllTabsEmpty'
+      });
+      return;
+    }
+
+    addBookmarks({
+      bookmarks: savableTabs.map((tab) => ({
+        categoryId: parseInt(categoryId, 10),
+        name: getTabName(tab),
+        url: tab.url
+      })),
+      onSuccess: () => {
+        this.setState({
+          pending: false
+        });
+        this.closeExtension();
+      },
+      onError: (error) => {
+        this.setState({
+          pending: false,
+          error
+        });
+      }
+    });
+  };
+
   handleSubmit = (params) => {
     const { addBookmark } = this.props;
 
@@ -239,18 +284,18 @@ class Add extends Component {
       error: null
     });
 
+    if (this.state.saveAllTabs) {
+      this.saveAllTabs(params.categoryId);
+      return;
+    }
+
     addBookmark({
       ...params,
       onSuccess: () => {
         this.setState({
           pending: false
         });
-
-        // Close the extension
-        postMessage({
-          close: true
-        });
-        window.close();
+        this.closeExtension();
       },
       onError: (error) => {
         this.setState({
@@ -279,7 +324,9 @@ class Add extends Component {
       note: stateNote,
       exists,
       existingBookmarks,
-      isDataOpen
+      isDataOpen,
+      saveAllTabs,
+      missingTabsPermission
     } = this.state;
     const duplicateErrorMessage = exists ? 'error.duplicateLink' : null;
     const showLocation = localStorage.getItem('showLocation');
@@ -331,10 +378,43 @@ class Add extends Component {
                 values={{ b: (msg) => <b>{msg}</b> }}
               />
             </ButtonLargePrimary>
-            {error && <ErrorMessage message={error} hasIcon />}
-            {exists && !isDataOpen && existingBookmarks.length > 0 ? (
+            {this.props.supportsTabs && (
+              <Checkbox
+                label={intl.formatMessage({ id: 'extension.saveAllTabs' })}
+                id="saveAllTabs"
+                name="saveAllTabs"
+                onChange={this.toggleSaveAllTabs}
+                checked={saveAllTabs}
+                disabled={pending}
+              />
+            )}
+            {missingTabsPermission && (
+              <ErrorMessage
+                message="extension.saveAllTabsPermission"
+                hasIcon
+                noPadding
+                values={{
+                  options: (msg) => (
+                    <button
+                      type="button"
+                      className="link link--error"
+                      onClick={this.openExtensionOptions}
+                    >
+                      <b>{msg}</b>
+                    </button>
+                  )
+                }}
+              />
+            )}
+            {error && <ErrorMessage message={error} hasIcon noPadding />}
+            {!saveAllTabs &&
+            exists &&
+            !isDataOpen &&
+            existingBookmarks.length > 0 ? (
               <ErrorMessage
                 message={duplicateErrorMessage}
+                hasIcon
+                noPadding
                 values={{
                   collection: (
                     <button
@@ -381,6 +461,7 @@ class Add extends Component {
                     onClick={this.onAddDashboardClick}
                     useSkeleton={dashboardsPending}
                     isButton
+                    tooltipDirection="left"
                   />
                 </span>
                 <span className="add__location-wrapper">
@@ -400,81 +481,84 @@ class Add extends Component {
                     onClick={this.onAddCategoryClick}
                     useSkeleton={dashboardsPending}
                     isButton
+                    tooltipDirection="left"
                   />
                 </span>
               </>
             </Expandable>
-            <Expandable
-              headline={<FormattedMessage id="extension.data" />}
-              className="add__section"
-              open={isDataOpen}
-              onClick={this.toggleData}
-            >
-              <>
-                <Input
-                  id="bookmark-name"
-                  name="name"
-                  value={stateName}
-                  onChange={this.handleInputChange}
-                  required
-                  maxLength="200"
-                  label={intl.formatMessage({ id: 'modal.name' })}
-                  disabled={pending}
-                />
-                <Input
-                  id="bookmark-url"
-                  name="url"
-                  value={stateUrl}
-                  onChange={this.handleInputChange}
-                  required
-                  maxLength="2000"
-                  label={intl.formatMessage({ id: 'modal.url' })}
-                  disabled={pending}
-                  inputMode="url"
-                  placeholder={intl.formatMessage({
-                    id: 'modal.urlPlaceholder'
-                  })}
-                  onBlur={this.onUrlBlur}
-                />
-                {exists && existingBookmarks.length > 0 ? (
-                  <ErrorMessage
-                    message={duplicateErrorMessage}
-                    noPadding
-                    values={{
-                      collection: (
-                        <button
-                          type="button"
-                          className="link link--error"
-                          onClick={(event) => {
-                            this.handleDashboardClick(
-                              event,
-                              existingBookmarks[0].dashboardId
-                            );
-                          }}
-                        >
-                          <b>
-                            {decodeEmoji(existingBookmarks[0].dashboardName)}
-                          </b>
-                        </button>
-                      ),
-                      category: decodeEmoji(existingBookmarks[0].categoryName)
-                    }}
-                  />
-                ) : null}
-                {enableNotes && (
-                  <Textarea
-                    id="bookmark-note"
-                    name="note"
-                    value={stateNote}
+            {saveAllTabs ? null : (
+              <Expandable
+                headline={<FormattedMessage id="extension.data" />}
+                className="add__section"
+                open={isDataOpen}
+                onClick={this.toggleData}
+              >
+                <>
+                  <Input
+                    id="bookmark-name"
+                    name="name"
+                    value={stateName}
                     onChange={this.handleInputChange}
-                    maxLength="300"
-                    label={intl.formatMessage({ id: 'modal.note' })}
+                    required
+                    maxLength="200"
+                    label={intl.formatMessage({ id: 'modal.name' })}
                     disabled={pending}
-                    rows={3}
                   />
-                )}
-              </>
-            </Expandable>
+                  <Input
+                    id="bookmark-url"
+                    name="url"
+                    value={stateUrl}
+                    onChange={this.handleInputChange}
+                    required
+                    maxLength="2000"
+                    label={intl.formatMessage({ id: 'modal.url' })}
+                    disabled={pending}
+                    inputMode="url"
+                    placeholder={intl.formatMessage({
+                      id: 'modal.urlPlaceholder'
+                    })}
+                    pending={this.state.duplicatePending}
+                  />
+                  {exists && existingBookmarks.length > 0 ? (
+                    <ErrorMessage
+                      message={duplicateErrorMessage}
+                      noPadding
+                      values={{
+                        collection: (
+                          <button
+                            type="button"
+                            className="link link--error"
+                            onClick={(event) => {
+                              this.handleDashboardClick(
+                                event,
+                                existingBookmarks[0].dashboardId
+                              );
+                            }}
+                          >
+                            <b>
+                              {decodeEmoji(existingBookmarks[0].dashboardName)}
+                            </b>
+                          </button>
+                        ),
+                        category: decodeEmoji(existingBookmarks[0].categoryName)
+                      }}
+                    />
+                  ) : null}
+                  {enableNotes && (
+                    <Textarea
+                      id="bookmark-note"
+                      name="note"
+                      value={stateNote}
+                      onChange={this.handleInputChange}
+                      maxLength="300"
+                      label={intl.formatMessage({ id: 'modal.note' })}
+                      disabled={pending}
+                      rows={3}
+                    />
+                  )}
+                </>
+              </Expandable>
+            )}
           </Form>
         </Section>
       </Extension>

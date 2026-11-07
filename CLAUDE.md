@@ -9,42 +9,56 @@ Frontend of [booky.io](https://booky.io), an online bookmark manager. React 17 +
 ## Commands
 
 - `npm start` — dev server (browser-sync + webpack hot middleware) on http://localhost:3000. In development the API is expected at `http://<hostname>:8001/api` (see `_source/_utils/fetcher`).
-- `npm run build` — production build via `tools/build.js` / `webpack.config.prod.js`; `npm run open:public` serves the built output.
-- `npm run lint` — ESLint (`lint:js`) + stylelint on `_source/**/*.scss` (`lint:css`).
-- `npm test` — Jest (Enzyme with the React 17 adapter, set up in `tools/enzymeTestAdapterSetup.js`). Single file: `npx jest _source/_utils/string`.
+- `npm run build` — production build via `tools/build.js` / `webpack.config.prod.js`, followed by `npm run prerender`; `npm run open:public` serves the built output.
+- `npm run lint` — ESLint (`lint:js`, flat config in `eslint.config.js`) + Prettier check (`lint:format`). Prettier owns all formatting, including SCSS; there is no stylelint.
+- `npm test` — Jest (config in `jest.config.json`). Single file: `npx jest _source/_utils/string`.
 - `npm run qa` — tests + lint.
 - `npm run prettier` — format everything.
-- `npm run cypress:open` — Cypress e2e (`cypress/integration`), needs the dev server running.
 - `npm run extension:<chrome|firefox|opera|edge>` — package the browser extension (`extension/manifest.sh`).
 
-Node >= 14 (enforced by `preinstall`).
+Node >= 18.18 (enforced by `preinstall`; required by ESLint 9).
 
 ## Architecture
 
 ### Directory layout in `_source/`
+
 - `atoms/` → `molecules/` → `organisms/` → `templates/` → `pages/` — Atomic Design levels. Each component lives in its own folder with `Component.js`, `Component.scss`, and `index.js`.
-- **Container pattern:** components that need Redux have a `XContainer.js` that does `connect(mapStateToProps, mapDispatchToProps)` on the presentational component, and `index.js` re-exports the *container*. Importing a folder gives you the connected version. Presentational components get state and actions only through props.
+- **Container pattern:** components that need Redux have a `XContainer.js` that does `connect(mapStateToProps, mapDispatchToProps)` on the presentational component, and `index.js` re-exports the _container_. Importing a folder gives you the connected version. Presentational components get state and actions only through props.
 - `_state/<slice>/` — Redux slices, each with `actions.js` (plain action creators + thunks) and `reducer.js`, combined in `_source/reducers.js`. The initial shape is in `_source/initialState.js`; the store is in `configureStore.js` (includes `connected-react-router`, and `redux-immutable-state-invariant` in dev).
 - `_utils/` — shared helpers (fetcher, string/emoji, url, language, tracking, …). These are where the few unit tests (`*.spec.js`) live.
 
 ### Data flow / API
+
 - All HTTP goes through `_utils/fetcher` (`fetcher({ url, method, params, onSuccess, onError })`). It prefixes `/api`, JSON-encodes bodies for write methods, and automatically fetches and attaches a CSRF token (`X-CSRF-Token`) for POST/PUT/PATCH/DELETE and `/logout`, retrying once on a CSRF error.
 - Thunks in `_state/*/actions.js` call `fetcher` and dispatch on success. Names (category, dashboard, bookmark) are emoji-encoded before sending and decoded on receipt (`encodeEmoji`/`decodeEmoji` from `_utils/string`). Keep this symmetric when adding endpoints.
 
 ### Bootstrapping & routing
-- `_source/index.js` detects the language (cookie → localStorage → navigator; supported: `en`, `de`, `ja`, `hi`), fetches `/_assets/i18n/<lang>.json` and `/user`, then builds the store with the logged-in/logged-out state and renders `templates/booky`.
+
+- `_source/index.js` detects the language (cookie → localStorage → navigator; supported: `en`, `de`, `ja`, `hi`, `ko`, `fr`, `nl`, `es`), fetches `/_assets/i18n/<lang>.json` and `/user`, then builds the store with the logged-in/logged-out state and renders `templates/booky`.
 - `routes.js` lazy-loads most pages. Access is gated by the `restricted` (logged-in only) and `publicOnly` HOCs from `templates/`.
 
 ### i18n
-- `react-intl` via `react-intl-redux`; messages are stored in Redux (`state.intl`). Strings live in `_source/_assets/i18n/{en,de,ja,hi}.json`. Add new keys to **all** language files. Use `intl.formatMessage({ id })` / `<FormattedMessage>`.
+
+- `react-intl` via `react-intl-redux`; messages are stored in Redux (`state.intl`). Strings live in `_source/_assets/i18n/{en,de,ja,hi,ko,fr,nl,es}.json`. Add new keys to **all** language files. Use `intl.formatMessage({ id })` / `<FormattedMessage>`.
 
 ### Icons
+
 - `atoms/icon` renders `<use xlinkHref="/_assets/symbol-defs.svg#icon-<name>">`. A new icon has to be added as a `<symbol id="icon-<name>">` in `_source/_assets/symbol-defs.svg`.
 
 ### Browser extension
+
 - `extension/_source` is a small popup that embeds the web app in an iframe (`https://booky.io/extension/...`) and talks to it via `postMessage`. Inside the app, `state.extension.active` (e.g. `isExtension` props) switches to extension-specific behavior. The `templates/extension` template is used for those routes.
+- The manifest needs `host_permissions` for booky's own origins (and `localhost` for development). Without them the browser treats the iframe as a third-party context and doesn't send the session cookie, so the user stays logged out. The popup injects `content.js` on demand via `scripting` + `activeTab`, so no `content_scripts` entry is needed.
+- The `tabs` permission is optional and is granted in the extension's options page (`options.html`), because `chrome.permissions.request` only works in a click handler of an extension page and not in the iframe. Only with it does the popup send `tabs` (all http(s) tabs of the window) for "save all tabs". `extension/manifest.sh` is the source of truth for the manifest: make manifest changes there. `extension/_source/manifest.json` is generated by it (for loading the unpacked extension locally) and matches the browser built last.
+
+### Prerendering
+
+- `tools/prerender.js` (Puppeteer) loads the public, logged-out pages of the build and writes their HTML to `_public/prerendered/<page>.html`, so crawlers and AI agents that don't run JavaScript see real content. The page list mirrors `_source/sitemap.xml`; keep both in sync.
+- The prerendered markup sits in `#root` inside `.prerendered`, which is hidden unless JavaScript is off; React replaces it on render.
+- `deploy:backend` copies the files to `<backend>/templates/booky/prerendered/` (gitignored there, packaged by the backend's `tools/deploy.sh`); the backend's `IndexPage` serves `<name>.html` for `/<name>` (`home.html` for `/`) and falls back to `index.phtml`.
 
 ### Other
+
 - `config.js` holds browser detection and feature version flags (`NEWS_VERSION`, `POLL_VERSION`) plus PayPal client/plan IDs that differ between dev and prod.
 - Sentry is initialized only outside development.
-- CI is GitLab (`.gitlab-ci.yml`): runs `test:cover`, and Cypress in Chrome/Firefox for external PRs.
+- CI is GitLab (`.gitlab-ci.yml`): runs `test:cover`.

@@ -23,7 +23,9 @@
 
 .import__drop-area {
   border: 3px dashed $color--7;
-  transition: border-color 0.2s linear, background-color 0.2s linear;
+  transition:
+    border-color 0.2s linear,
+    background-color 0.2s linear;
   padding: 2rem 1rem;
   display: flex;
   align-items: center;
@@ -113,7 +115,7 @@
   margin-bottom: 1rem;
 }
 
-.account__update {
+.account__button {
   margin-bottom: 1rem;
 }
 
@@ -124,4 +126,9 @@
 .account__feedback {
   margin-left: 0.5rem;
   text-transform: initial;
+}
+
+.account__danger-zone {
+  text-transform: uppercase;
+  font-weight: bold;
 }

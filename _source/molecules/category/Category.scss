@@ -94,7 +94,9 @@
 
 .category__toggle-icon {
   svg {
-    transition: transform 0.2s linear, color 0.2s linear;
+    transition:
+      transform 0.2s linear,
+      color 0.2s linear;
   }
 
   &.category__toggle-icon--rotate svg {
@@ -102,7 +104,6 @@
   }
 }
 
-/* stylelint-disable declaration-no-important */
 .category__name {
   display: block;
   cursor: default;
@@ -135,7 +136,6 @@
     color: $color-font--light;
   }
 }
-/* stylelint-enable */
 
 .category__button {
   margin: 10px 6px 0 6px;
@@ -171,4 +171,27 @@
 
 .category__error {
   padding: 10px 6px 0;
+}
+
+// Stands in for the bookmarks while they load, at the height they will take.
+.category__placeholder {
+  list-style: none;
+  padding: 0 6px;
+}
+
+// Nested so it overrides the width of .skeleton regardless of stylesheet order.
+.category__placeholder .category__placeholder-rows {
+  display: block;
+  width: 100%;
+  height: 100%;
+  // Cuts the skeleton into one bar per bookmark row, matching .bookmark__wrapper.
+  mask-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 9px,
+    #000 9px,
+    #000 27px,
+    transparent 27px,
+    transparent 36px
+  );
 }

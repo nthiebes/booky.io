@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 const colors = {
   light: `../../_assets/logo_l.svg?=${process.env.VERSION}`,
@@ -24,15 +23,6 @@ export default class Logo extends Component {
     );
   }
 }
-
-Logo.propTypes = {
-  className: PropTypes.string,
-  src: PropTypes.string,
-  alt: PropTypes.string,
-  height: PropTypes.string,
-  width: PropTypes.string,
-  color: PropTypes.string
-};
 
 Logo.defaultProps = {
   alt: '',

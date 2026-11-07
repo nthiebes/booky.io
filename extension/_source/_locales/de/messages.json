@@ -4,5 +4,11 @@
   },
   "appDesc": {
     "message": "Füge neue Links zu booky.io hinzu und durchsuche deine vorhandenen Lesezeichen."
+  },
+  "optionsSaveAllTabs": {
+    "message": "Alle Tabs speichern"
+  },
+  "optionsSaveAllTabsDescription": {
+    "message": "Erlaubt dem booky-Popup, die Titel und Adressen der Tabs im aktuellen Fenster zu lesen, damit sie alle auf einmal hinzugefügt werden können. Dein Browser fragt beim Einschalten nach der Berechtigung."
   }
 }

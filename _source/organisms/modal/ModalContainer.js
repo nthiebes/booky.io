@@ -23,6 +23,7 @@ import {
   searchBookmarks,
   updateSearchData
 } from '../../_state/search/actions';
+import { refreshDuplicates } from '../../_state/duplicates/actions';
 
 const mapStateToProps = (state) => {
   let bookmarkCount;
@@ -41,6 +42,7 @@ const mapStateToProps = (state) => {
     showModal: state.modal.showModal,
     darkMode: state.user.settings.darkMode,
     keyword: state.search.keyword,
+    showsDuplicates: state.duplicates.total !== null,
     data: {
       ...state.modal.data,
       categories: state.categories.filter(
@@ -70,7 +72,8 @@ const mapDispatchToProps = {
   resetSearch,
   cancelSubscription,
   searchBookmarks,
-  updateSearchData
+  updateSearchData,
+  refreshDuplicates
 };
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 

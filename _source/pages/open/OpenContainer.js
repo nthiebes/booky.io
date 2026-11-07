@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
   dashboards: state.dashboards.items,
   dashboardsPending: state.dashboards.pending,
   activeDashboard: state.user.settings.defaultDashboardId,
+  supportsTabs: Boolean(state.extension.page?.supportsTabs),
   keywordExists: state.search.total !== null || state.search.pending
 });
 const mapDispatchToProps = {

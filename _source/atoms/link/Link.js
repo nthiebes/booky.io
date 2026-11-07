@@ -1,32 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link as RegularLink, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 export default class Link extends Component {
-  static propTypes = {
-    href: PropTypes.string,
-    to: PropTypes.string,
-    className: PropTypes.string,
-    children: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element,
-      PropTypes.array
-    ]).isRequired,
-    title: PropTypes.string,
-    color: PropTypes.string,
-    onClick: PropTypes.func,
-    target: PropTypes.string,
-    darkMode: PropTypes.bool,
-    tabIndex: PropTypes.string,
-    isNavLink: PropTypes.bool,
-    activeClassName: PropTypes.string,
-    noUnderline: PropTypes.bool,
-    role: PropTypes.string,
-    hasBadge: PropTypes.bool,
-    ariaLabel: PropTypes.string
-  };
-
   static defaultProps = {
     color: 'primary'
   };

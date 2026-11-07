@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 import P from '../../paragraph';
 import Link from '../../link';
 import Icon from '../../icon';
+import resolveErrorMessageId from '../../../_utils/error-message';
 
 export default class ErrorMessage extends Component {
-  static propTypes = {
-    message: PropTypes.string,
-    className: PropTypes.string,
-    hasIcon: PropTypes.bool,
-    noAnimation: PropTypes.bool,
-    noPadding: PropTypes.bool,
-    values: PropTypes.object
-  };
-
   static defaultProps = {
     message: 'error.default',
     values: {}
@@ -27,7 +18,11 @@ export default class ErrorMessage extends Component {
   };
 
   componentDidMount() {
-    window.setTimeout(this.animate, 100);
+    this.animationTimeout = window.setTimeout(this.animate, 100);
+  }
+
+  componentWillUnmount() {
+    window.clearTimeout(this.animationTimeout);
   }
 
   animate = () => {
@@ -37,8 +32,15 @@ export default class ErrorMessage extends Component {
   };
 
   render() {
-    const { message, className, hasIcon, noAnimation, noPadding, values } =
-      this.props;
+    const {
+      message,
+      messages,
+      className,
+      hasIcon,
+      noAnimation,
+      noPadding,
+      values
+    } = this.props;
     const { animate } = this.state;
 
     return (
@@ -62,7 +64,7 @@ export default class ErrorMessage extends Component {
         )}
         <FormattedMessage
           tagName="span"
-          id={message}
+          id={resolveErrorMessageId(message, messages)}
           values={{
             mail: (
               <Link href="mailto:hello@booky.io" color="dark">

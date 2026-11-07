@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 export default class Form extends Component {
   constructor(props) {
@@ -47,11 +46,3 @@ export default class Form extends Component {
     );
   }
 }
-
-Form.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
-    .isRequired,
-  onSubmit: PropTypes.func,
-  onClick: PropTypes.func,
-  className: PropTypes.string
-};

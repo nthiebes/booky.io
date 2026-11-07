@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Base from '../Base';
@@ -7,15 +6,6 @@ import P from '../../../atoms/paragraph';
 import Select from '../../../atoms/select';
 
 class DeleteDashboard extends Component {
-  static propTypes = {
-    onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
-    intl: PropTypes.object.isRequired,
-    pending: PropTypes.bool,
-    darkMode: PropTypes.bool
-  };
-
   state = {
     id: this.props.data.id,
     newId: null,

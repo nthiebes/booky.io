@@ -6,6 +6,7 @@ import { AppContainer } from 'react-hot-loader';
 
 import Booky from './templates/booky';
 import fetcher from './_utils/fetcher';
+import loadUser, { USER_STATES } from './_utils/load-user';
 import { setLanguage } from './_utils/language';
 import { loadPolyfills } from './_utils/polyfills';
 import { loadScript } from './_utils/script';
@@ -13,7 +14,7 @@ import configureStore, { history } from './configureStore';
 import initialState from './initialState';
 
 // Language detection
-const supportedLanguages = ['en', 'de', 'ja', 'hi'];
+const supportedLanguages = ['en', 'de', 'ja', 'hi', 'ko', 'fr', 'nl', 'es'];
 const cookieLanguage = Cookies.get('lang');
 const localStorageLanguage = localStorage.getItem('lang');
 const locale = (
@@ -46,13 +47,14 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let error = false;
+let unavailable = false;
 let messages;
 let userData;
 const loadingDone = () => {
   let store;
 
-  // Not logged in
-  if (error) {
+  // Not logged in, or unknown because the backend is unavailable
+  if (error || unavailable) {
     document.title = messages['misc.pageTitle'];
     document
       .querySelector('meta[name=description]')
@@ -98,27 +100,17 @@ const loadingDone = () => {
 
   render(
     <AppContainer>
-      <Booky store={store} history={history} />
+      <Booky store={store} history={history} unavailable={unavailable} />
     </AppContainer>,
     document.getElementById('root')
   );
 };
 const loadUserAndTranslations = () => {
   const getUser = () =>
-    new Promise((resolve) => {
-      fetcher({
-        url: '/user',
-        onSuccess: (data) => {
-          userData = data;
-
-          resolve();
-        },
-        onError: () => {
-          error = true;
-
-          resolve();
-        }
-      });
+    loadUser(fetcher).then(({ state, data }) => {
+      userData = data;
+      error = state === USER_STATES.LOGGED_OUT;
+      unavailable = state === USER_STATES.UNAVAILABLE;
     });
   const getTranslations = () =>
     new Promise((resolve) => {

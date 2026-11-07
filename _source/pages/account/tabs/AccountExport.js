@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { ButtonLargeBlue } from '../../../atoms/button';
@@ -7,10 +6,6 @@ import P from '../../../atoms/paragraph';
 import Checkbox from '../../../atoms/checkbox';
 
 class AccountExport extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired
-  };
-
   state = {
     includeFavicon: true
   };

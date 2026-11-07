@@ -1,30 +1,17 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BrowserRouter } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-intl-redux';
 
 import Routes from '../../routes';
+import Unavailable from '../../pages/unavailable';
 import './Booky.scss';
 
 const loadingSpinner = document.getElementById('loading__spinner');
 const loadingHeader = document.getElementById('loading__header');
 
 export default class Booky extends Component {
-  static propTypes = {
-    dragBookmark: PropTypes.func.isRequired,
-    dragCategory: PropTypes.func.isRequired,
-    dragDashboard: PropTypes.func.isRequired,
-    startDragging: PropTypes.func.isRequired,
-    stopDragging: PropTypes.func.isRequired,
-    updateUserData: PropTypes.func.isRequired,
-    store: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    isMobile: PropTypes.bool.isRequired,
-    openModal: PropTypes.func.isRequired
-  };
-
   componentDidMount() {
     const mediaQuery = window.matchMedia('(max-width: 1000px)');
 
@@ -63,7 +50,7 @@ export default class Booky extends Component {
     }
   };
 
-  // eslint-disable-next-line max-statements
+   
   onDragEnd = ({ type, destination, source, draggableId }) => {
     const {
       isMobile,
@@ -112,9 +99,8 @@ export default class Booky extends Component {
         });
       }
       if (type === 'bookmark') {
-        const hasDashboardDestination = destination.droppableId.match(
-          'dashboard-'
-        );
+        const hasDashboardDestination =
+          destination.droppableId.match('dashboard-');
 
         if (hasDashboardDestination) {
           openModal('MoveBookmark', {
@@ -139,7 +125,7 @@ export default class Booky extends Component {
   };
 
   render() {
-    const { store, history } = this.props;
+    const { store, history, unavailable } = this.props;
 
     return (
       <Provider store={store}>
@@ -149,7 +135,7 @@ export default class Booky extends Component {
         >
           <ConnectedRouter history={history}>
             <BrowserRouter>
-              <Routes />
+              {unavailable ? <Unavailable /> : <Routes />}
             </BrowserRouter>
           </ConnectedRouter>
         </DragDropContext>

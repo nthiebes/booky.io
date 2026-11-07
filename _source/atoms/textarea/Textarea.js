@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Label from '../label';
@@ -7,29 +6,6 @@ import Label from '../label';
 import { ErrorMessage } from '../messages';
 
 export default class Textarea extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    autoFocus: PropTypes.bool,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    onChange: PropTypes.func,
-    placeholder: PropTypes.string,
-    color: PropTypes.string,
-    name: PropTypes.string,
-    id: PropTypes.string,
-    required: PropTypes.bool,
-    value: PropTypes.string,
-    maxLength: PropTypes.string,
-    label: PropTypes.string,
-    autoComplete: PropTypes.string,
-    disabled: PropTypes.bool,
-    validation: PropTypes.bool,
-    error: PropTypes.string,
-    cols: PropTypes.number,
-    rows: PropTypes.number,
-    darkMode: PropTypes.bool
-  };
-
   static defaultProps = {
     color: '',
     value: '',

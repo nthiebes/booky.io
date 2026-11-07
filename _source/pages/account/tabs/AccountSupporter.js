@@ -1,15 +1,19 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import P from '../../../atoms/paragraph';
 import { H2 } from '../../../atoms/headline';
-import { ButtonSmallPrimary, ButtonSmallBlue } from '../../../atoms/button';
+import {
+  ButtonSmallPrimary,
+  ButtonSmallBlue,
+  ButtonSmallOrange
+} from '../../../atoms/button';
 import Input from '../../../atoms/input';
 import Label from '../../../atoms/label';
 import { ErrorMessage, SuccessMessage } from '../../../atoms/messages';
 import Form from '../../../molecules/form';
 import Link from '../../../atoms/link/Link';
+import { MIN_SUPPORT_AMOUNT } from '../../../config';
 
 const addMonths = (date, months) => {
   const d = date.getDate();
@@ -22,18 +26,6 @@ const addMonths = (date, months) => {
 };
 
 class AccountSupporter extends PureComponent {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    openModal: PropTypes.func.isRequired,
-    supportAmount: PropTypes.number,
-    supportExpiration: PropTypes.string,
-    subscriptionDate: PropTypes.string,
-    supportStart: PropTypes.string,
-    isPremium: PropTypes.bool,
-    updateSubscription: PropTypes.func.isRequired,
-    language: PropTypes.string.isRequired
-  };
-
   state = {
     newSupportAmount: this.props.supportAmount,
     supportAmount: this.props.supportAmount,
@@ -46,6 +38,14 @@ class AccountSupporter extends PureComponent {
   handleOnChange = (value) => {
     this.setState({ newSupportAmount: Math.floor(value) });
   };
+
+  // Supporters who subscribed with less than the current minimum may keep
+  // their amount, but can't lower it below the minimum
+  getMinAmount = () =>
+    Math.min(
+      MIN_SUPPORT_AMOUNT,
+      this.state.supportAmount || MIN_SUPPORT_AMOUNT
+    );
 
   handleUpdateClick = () => {
     const { newSupportAmount } = this.state;
@@ -80,6 +80,12 @@ class AccountSupporter extends PureComponent {
         language
       )
     });
+  };
+
+  handleDeleteClick = () => {
+    const { openModal } = this.props;
+
+    openModal('DeleteAccount');
   };
 
   getExpirationDate = (subscriptionDate) => {
@@ -170,7 +176,7 @@ class AccountSupporter extends PureComponent {
                     value={newSupportAmount.toString()}
                     type="number"
                     onChange={this.handleOnChange}
-                    min="1"
+                    min={this.getMinAmount()}
                     required
                     placeholder={intl.formatMessage({
                       id: 'upsell.placeholder'
@@ -186,8 +192,10 @@ class AccountSupporter extends PureComponent {
                   icon="save"
                   onClick={this.handleUpdateClick}
                   pending={updatePending}
-                  disabled={newSupportAmount <= 0 || updatePending}
-                  className="account__update"
+                  disabled={
+                    newSupportAmount < this.getMinAmount() || updatePending
+                  }
+                  className="account__button"
                 >
                   <FormattedMessage
                     id="account.updateAmount"
@@ -230,7 +238,11 @@ class AccountSupporter extends PureComponent {
                 <P>
                   <FormattedMessage id="account.learnMore" />
                 </P>
-                <ButtonSmallBlue to="/upsell" icon="membership">
+                <ButtonSmallBlue
+                  to="/upsell"
+                  icon="membership"
+                  className="account__button"
+                >
                   <FormattedMessage
                     id="button.supporter"
                     values={{ b: (msg) => <b>{msg}</b> }}
@@ -253,6 +265,7 @@ class AccountSupporter extends PureComponent {
                 <ButtonSmallPrimary
                   icon="close"
                   onClick={this.handleCancelClick}
+                  className="account__button"
                 >
                   <FormattedMessage
                     id="account.cancelButton"
@@ -279,7 +292,11 @@ class AccountSupporter extends PureComponent {
             <P>
               <FormattedMessage id="account.learnMore" />
             </P>
-            <ButtonSmallBlue to="/supporter" icon="membership">
+            <ButtonSmallBlue
+              to="/supporter"
+              icon="membership"
+              className="account__button"
+            >
               <FormattedMessage
                 id="account.discover"
                 values={{ b: (msg) => <b>{msg}</b> }}
@@ -287,6 +304,22 @@ class AccountSupporter extends PureComponent {
             </ButtonSmallBlue>
           </>
         )}
+        <H2 color="danger" className="account__danger-zone">
+          <FormattedMessage id="account.dangerZone" />
+        </H2>
+        <P>
+          <FormattedMessage id="account.deleteText" />
+        </P>
+        <ButtonSmallOrange
+          icon="delete"
+          onClick={this.handleDeleteClick}
+          className="account__button"
+        >
+          <FormattedMessage
+            id="account.deleteButton"
+            values={{ b: (msg) => <b>{msg}</b> }}
+          />
+        </ButtonSmallOrange>
       </>
     );
   }

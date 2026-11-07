@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Page from '../../templates/page';
@@ -12,11 +11,6 @@ import Section from '../../molecules/section';
 import Illustration from '../../atoms/illustration';
 
 class Forgot extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    forgot: PropTypes.func.isRequired
-  };
-
   state = {
     username: '',
     email: '',
@@ -58,7 +52,7 @@ class Forgot extends Component {
   };
 
   render() {
-    const { intl } = this.props;
+    const { intl, language } = this.props;
     const { username, email, pending, error, success } = this.state;
 
     return (
@@ -106,6 +100,7 @@ class Forgot extends Component {
                   pending={pending}
                   disabled={pending}
                   contentBefore
+                  autoWidth={['fr', 'nl', 'es'].includes(language)}
                 >
                   <FormattedMessage
                     id="forgot.button"

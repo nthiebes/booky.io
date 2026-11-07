@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 16px;
+  color: #1b1b1b;
+  background-color: #fff;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.option__input {
+  flex-shrink: 0;
+  margin: 2px 0 0;
+}
+
+.option__label {
+  display: block;
+  font-weight: 600;
+}
+
+.option__description {
+  display: block;
+  color: #657786;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+    background-color: #292a2d;
+  }
+
+  .option__description {
+    color: #aab8c2;
+  }
+}

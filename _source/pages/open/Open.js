@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 
+import { postMessage, isExtensionPopup } from '../../_utils/extension';
+import { getTabUrl } from '../../_utils/url';
 import Select from '../../atoms/select';
+import Icon from '../../atoms/icon';
 import Extension from '../../templates/extension';
 import Section from '../../molecules/section';
 import SearchField from '../../molecules/search-field';
@@ -10,18 +12,6 @@ import Category from '../../molecules/category';
 import Search from '../../organisms/search';
 
 class Open extends Component {
-  static propTypes = {
-    intl: PropTypes.object.isRequired,
-    getDashboards: PropTypes.func.isRequired,
-    changeDashboard: PropTypes.func.isRequired,
-    dashboardsPending: PropTypes.bool,
-    activeDashboard: PropTypes.number.isRequired,
-    categories: PropTypes.array.isRequired,
-    dashboards: PropTypes.array.isRequired,
-    keywordExists: PropTypes.bool,
-    getBookmarks: PropTypes.func.isRequired
-  };
-
   state = {
     activeCategory: localStorage.getItem('activeCategory') || ''
   };
@@ -43,6 +33,14 @@ class Open extends Component {
 
     this.setState({
       activeCategory: value
+    });
+  };
+
+  openAllBookmarks = (bookmarks) => {
+    // The iframe can't open several tabs itself (popup blocker), so the
+    // extension does it
+    postMessage({
+      openTabs: bookmarks.map(({ url }) => getTabUrl(url)).filter(Boolean)
     });
   };
 
@@ -100,16 +98,29 @@ class Open extends Component {
             disabled={dashboardsPending}
             name="dashboardId"
           />
-          <Select
-            id="category"
-            label={intl.formatMessage({ id: 'modal.category' })}
-            options={categoriesOptions}
-            required
-            onChange={this.handleCategoryChange}
-            value={activeCategory}
-            disabled={dashboardsPending}
-            name="categoryId"
-          />
+          <div className={isExtensionPopup() ? 'open__category-wrapper' : null}>
+            <Select
+              id="category"
+              label={intl.formatMessage({ id: 'modal.category' })}
+              options={categoriesOptions}
+              required
+              onChange={this.handleCategoryChange}
+              value={activeCategory}
+              disabled={dashboardsPending}
+              name="categoryId"
+            />
+            {/* Opening tabs needs the extension, the bookmarklet can't */}
+            {this.props.supportsTabs && (
+              <Icon
+                icon="open"
+                label={intl.formatMessage({ id: 'modal.openAllBookmarks' })}
+                onClick={() => this.openAllBookmarks(categoryData.bookmarks)}
+                useSkeleton={dashboardsPending || !categoryData}
+                isButton
+                tooltipDirection="left"
+              />
+            )}
+          </div>
           <SearchField className="open__search-field" id="search-extension" />
           {categoryData && !keywordExists && !dashboardsPending && (
             <Category {...categoryData} />

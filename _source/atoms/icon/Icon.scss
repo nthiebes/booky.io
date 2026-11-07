@@ -6,7 +6,10 @@
   display: inline-flex;
   font-size: 1rem;
   position: relative;
-  transition: color 0.2s linear, opacity 0.2s linear, transform 0.2s linear;
+  transition:
+    color 0.2s linear,
+    opacity 0.2s linear,
+    transform 0.2s linear;
   user-select: none;
 
   &::after {
@@ -294,13 +297,11 @@
   pointer-events: none;
 }
 
-/* stylelint-disable declaration-no-important */
 .icon--skeleton {
   width: 24px !important;
   height: 24px;
   margin: 6px;
 }
-/* stylelint-enable */
 
 .icon__svg {
   fill: currentColor;

@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { injectIntl } from 'react-intl';
 
@@ -7,17 +6,6 @@ import Icon from '../../../atoms/icon';
 import { DashboardsList } from '../index';
 
 class DashboardsSidebar extends PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    intl: PropTypes.object.isRequired,
-    pinned: PropTypes.bool,
-    updateSettings: PropTypes.func.isRequired,
-    headerSticky: PropTypes.bool.isRequired,
-    toolbarSticky: PropTypes.bool.isRequired,
-    currentlySticky: PropTypes.bool.isRequired,
-    darkMode: PropTypes.bool.isRequired
-  };
-
   togglePinned = () => {
     const { pinned, updateSettings } = this.props;
 
