@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import P from '../../paragraph';
 import Link from '../../link';
 import Icon from '../../icon';
+import resolveErrorMessageId from '../../../_utils/error-message';
 
 export default class ErrorMessage extends Component {
   static defaultProps = {
@@ -31,8 +32,15 @@ export default class ErrorMessage extends Component {
   };
 
   render() {
-    const { message, className, hasIcon, noAnimation, noPadding, values } =
-      this.props;
+    const {
+      message,
+      messages,
+      className,
+      hasIcon,
+      noAnimation,
+      noPadding,
+      values
+    } = this.props;
     const { animate } = this.state;
 
     return (
@@ -56,7 +64,7 @@ export default class ErrorMessage extends Component {
         )}
         <FormattedMessage
           tagName="span"
-          id={message}
+          id={resolveErrorMessageId(message, messages)}
           values={{
             mail: (
               <Link href="mailto:hello@booky.io" color="dark">
