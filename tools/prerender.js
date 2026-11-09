@@ -163,6 +163,11 @@ const buildHtml = (route, { content, headline, stylesheets }) => {
     );
   }
 
+  html = html.replace(
+    /(<meta property="og:url" content=")[^"]*/,
+    `$1${ORIGIN}${route}`
+  );
+
   return html.replace('</head>', `${head.join('')}</head>`);
 };
 
