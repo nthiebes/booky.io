@@ -166,6 +166,7 @@ class Home extends Component {
             name="devices"
             loading="eager"
             className="home__header-illustration"
+            fetchPriority="high"
           />
         </section>
 

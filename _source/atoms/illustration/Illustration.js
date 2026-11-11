@@ -10,7 +10,8 @@ export default class Illustration extends Component {
       alt,
       ariaHidden,
       darkMode,
-      loading
+      loading,
+      fetchPriority = 'auto'
     } = this.props;
     const fileName = darkMode ? `${name}_dark` : name;
 
@@ -23,6 +24,7 @@ export default class Illustration extends Component {
         src={`../../_assets/illustrations/${fileName}.svg`}
         aria-hidden={ariaHidden}
         loading={loading}
+        fetchPriority={fetchPriority}
       />
     );
   }
