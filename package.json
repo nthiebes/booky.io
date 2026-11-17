@@ -114,7 +114,7 @@
     "puppeteer": "24.24.0",
     "react-hot-loader": "4.13.0",
     "redux-immutable-state-invariant": "2.1.0",
-    "replace": "1.2.1",
+    "replace": "1.2.2",
     "rimraf": "3.0.2",
     "sass-loader": "10.5.2",
     "style-loader": "2.0.0",
