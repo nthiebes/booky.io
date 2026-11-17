@@ -6,6 +6,7 @@ import { Provider } from 'react-intl-redux';
 
 import Routes from '../../routes';
 import Unavailable from '../../pages/unavailable';
+import { config } from '../../config';
 import './Booky.scss';
 
 const loadingSpinner = document.getElementById('loading__spinner');
@@ -50,7 +51,6 @@ export default class Booky extends Component {
     }
   };
 
-   
   onDragEnd = ({ type, destination, source, draggableId }) => {
     const {
       isMobile,
@@ -125,7 +125,9 @@ export default class Booky extends Component {
   };
 
   render() {
-    const { store, history, unavailable } = this.props;
+    const { store, history, unavailable, loggedIn } = this.props;
+    // Also applies right after a login, because loggedIn comes from the store
+    const maintenance = config.maintenance && loggedIn;
 
     return (
       <Provider store={store}>
@@ -135,7 +137,11 @@ export default class Booky extends Component {
         >
           <ConnectedRouter history={history}>
             <BrowserRouter>
-              {unavailable ? <Unavailable /> : <Routes />}
+              {unavailable || maintenance ? (
+                <Unavailable maintenance={maintenance} />
+              ) : (
+                <Routes />
+              )}
             </BrowserRouter>
           </ConnectedRouter>
         </DragDropContext>

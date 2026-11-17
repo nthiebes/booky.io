@@ -371,6 +371,7 @@
   "error.premiumRequired": "この機能はサポーター限定です。",
   "error.logic.poll.alreadyVoted": "このアンケートにはすでに投票済みです。",
   "error.logic.support.alreadyCancelled": "サポーターメンバーシップはすでにキャンセルされています。",
+  "error.maintenance": "booky は現在メンテナンス中です。データは安全です。できるだけ早く再開しますので、しばらくしてからもう一度お試しください。",
   "error.unavailable": "booky は一時的にご利用いただけません。しばらくしてからもう一度お試しください。",
   "error.reload": "再試行",
   "cookie.text": "私たちはあなたのプライバシーを大切にしており、体験をより良くする目的のみで次のCookieを使用したいと考えています:",

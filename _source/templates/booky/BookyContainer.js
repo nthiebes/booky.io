@@ -8,7 +8,8 @@ import { updateUserData } from '../../_state/user/actions';
 import { openModal } from '../../_state/modal/actions';
 
 const mapStateToProps = (state) => ({
-  isMobile: state.user.isMobile
+  isMobile: state.user.isMobile,
+  loggedIn: state.user.loggedIn
 });
 const mapDispatchToProps = {
   dragDashboard,

@@ -371,6 +371,7 @@
   "error.premiumRequired": "Deze functie is exclusief voor supporters.",
   "error.logic.poll.alreadyVoted": "Je hebt al gestemd in deze peiling.",
   "error.logic.support.alreadyCancelled": "Je supporterlidmaatschap is al opgezegd.",
+  "error.maintenance": "booky is momenteel in onderhoud. Je gegevens zijn veilig, en we zijn zo snel mogelijk terug. Probeer het later opnieuw.",
   "error.unavailable": "booky is tijdelijk niet beschikbaar. Probeer het zo meteen opnieuw.",
   "error.reload": "Opnieuw proberen",
   "cookie.text": "Je privacy is belangrijk voor ons. We willen de volgende cookies uitsluitend gebruiken om je ervaring te verbeteren:",

@@ -371,6 +371,7 @@
   "error.premiumRequired": "Diese Funktion gibt es exklusiv für Supporter·innen.",
   "error.logic.poll.alreadyVoted": "Du hast bei dieser Umfrage schon abgestimmt.",
   "error.logic.support.alreadyCancelled": "Deine Support-Mitgliedschaft ist bereits gekündigt.",
+  "error.maintenance": "booky wird gerade gewartet. Deine Daten sind sicher, und wir sind so schnell wie möglich wieder für dich da. Bitte versuche es später noch einmal.",
   "error.unavailable": "booky ist vorübergehend nicht erreichbar. Bitte versuche es gleich noch einmal.",
   "error.reload": "Erneut versuchen",
   "cookie.text": "Deine Privatsphäre ist uns wichtig, und wir würden gerne die folgenden Cookies einzig und allein dazu verwenden, deine Nutzererfahrung zu verbessern:",

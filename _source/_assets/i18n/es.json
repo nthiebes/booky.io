@@ -371,6 +371,7 @@
   "error.premiumRequired": "Esta función está disponible exclusivamente con la membresía de apoyo.",
   "error.logic.poll.alreadyVoted": "Ya has votado en esta encuesta.",
   "error.logic.support.alreadyCancelled": "Tu membresía de apoyo ya está cancelada.",
+  "error.maintenance": "booky está en mantenimiento en este momento. Tus datos están seguros y volveremos lo antes posible. Inténtalo de nuevo más tarde.",
   "error.unavailable": "booky no está disponible temporalmente. Inténtalo de nuevo en un momento.",
   "error.reload": "Reintentar",
   "cookie.text": "Nos importa tu privacidad y nos gustaría usar las siguientes cookies únicamente para mejorar tu experiencia:",

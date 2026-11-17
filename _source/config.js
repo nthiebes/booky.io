@@ -16,10 +16,35 @@ const browser = isOpera
         ? 'firefox'
         : null;
 
+// Logged-in users only see a maintenance screen, so no requests for their
+// data reach the backend. Logged-out pages keep working.
+const MAINTENANCE = false;
+
+// For testing during maintenance: ?maintenance=off bypasses the screen in this
+// browser until ?maintenance=on. Only hides the screen, the API stays as is.
+const hasMaintenanceOverride = () => {
+  try {
+    const param = new URLSearchParams(window.location.search).get(
+      'maintenance'
+    );
+
+    if (param === 'off') {
+      localStorage.setItem('maintenanceOverride', '1');
+    } else if (param === 'on') {
+      localStorage.removeItem('maintenanceOverride');
+    }
+
+    return localStorage.getItem('maintenanceOverride') === '1';
+  } catch {
+    return false;
+  }
+};
+
 export const config = {
   NEWS_VERSION: 16,
   POLL_VERSION: 2,
   updateInProgress: false,
+  maintenance: MAINTENANCE && !hasMaintenanceOverride(),
   browser
 };
 

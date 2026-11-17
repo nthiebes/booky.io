@@ -371,6 +371,7 @@
   "error.premiumRequired": "이 기능은 서포터 전용이에요.",
   "error.logic.poll.alreadyVoted": "이 설문에 이미 투표했어요.",
   "error.logic.support.alreadyCancelled": "서포터 멤버십이 이미 해지되었어요.",
+  "error.maintenance": "booky는 지금 점검 중이에요. 데이터는 안전하며, 최대한 빨리 돌아올게요. 잠시 후 다시 시도해 주세요.",
   "error.unavailable": "booky를 일시적으로 사용할 수 없어요. 잠시 후 다시 시도해 주세요.",
   "error.reload": "다시 시도",
   "cookie.text": "저희는 개인정보를 소중히 여기며, 오직 더 나은 사용 경험을 위해서만 다음 쿠키를 사용하고자 해요:",

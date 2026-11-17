@@ -371,6 +371,7 @@
   "error.premiumRequired": "This feature is available exclusively for supporters.",
   "error.logic.poll.alreadyVoted": "You have already voted in this poll.",
   "error.logic.support.alreadyCancelled": "Your supporter membership is already canceled.",
+  "error.maintenance": "booky is currently undergoing maintenance. Your data is safe, and we'll be back as soon as possible. Please try again later.",
   "error.unavailable": "booky is temporarily unavailable. Please try again in a moment.",
   "error.reload": "Try again",
   "cookie.text": "We care about your privacy, and we'd love to use the following cookies solely to make your experience better:",

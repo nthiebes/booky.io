@@ -13,12 +13,14 @@ export default class Unavailable extends Component {
   };
 
   render() {
+    const { maintenance } = this.props;
+
     return (
       <Page>
         <Section>
           <Empty illustration="404">
             <FormattedMessage
-              id="error.unavailable"
+              id={maintenance ? 'error.maintenance' : 'error.unavailable'}
               values={{
                 mail: (
                   <Link to="/contact">
