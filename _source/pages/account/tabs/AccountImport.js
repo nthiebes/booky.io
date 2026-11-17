@@ -52,9 +52,11 @@ class AccountImport extends PureComponent {
 
   handleSubmit = () => {
     const { importBookmarks } = this.props;
-    const { file, importAsCollections } = this.state;
+    const { file, importAsCollections, pending } = this.state;
 
-    if (!file) {
+    // A second import of the same file would run in parallel on the server
+    // and duplicate all bookmarks, so only one may run at a time.
+    if (!file || pending) {
       return;
     }
 
